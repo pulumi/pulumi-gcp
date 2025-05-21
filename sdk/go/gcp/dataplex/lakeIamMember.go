@@ -299,7 +299,10 @@ type LakeIamMember struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Used to find the parent resource to bind the IAM policy to
-	Lake     pulumi.StringOutput `pulumi:"lake"`
+	Lake pulumi.StringOutput `pulumi:"lake"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -365,7 +368,10 @@ type lakeIamMemberState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// Used to find the parent resource to bind the IAM policy to
-	Lake     *string `pulumi:"lake"`
+	Lake *string `pulumi:"lake"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -393,7 +399,10 @@ type LakeIamMemberState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
-	Lake     pulumi.StringPtrInput
+	Lake pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -423,7 +432,10 @@ func (LakeIamMemberState) ElementType() reflect.Type {
 type lakeIamMemberArgs struct {
 	Condition *LakeIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to
-	Lake     string  `pulumi:"lake"`
+	Lake string `pulumi:"lake"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -450,7 +462,10 @@ type lakeIamMemberArgs struct {
 type LakeIamMemberArgs struct {
 	Condition LakeIamMemberConditionPtrInput
 	// Used to find the parent resource to bind the IAM policy to
-	Lake     pulumi.StringInput
+	Lake pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -574,6 +589,9 @@ func (o LakeIamMemberOutput) Lake() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeIamMember) pulumi.StringOutput { return v.Lake }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o LakeIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

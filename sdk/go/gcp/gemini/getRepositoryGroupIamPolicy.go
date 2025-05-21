@@ -53,6 +53,7 @@ func LookupRepositoryGroupIamPolicy(ctx *pulumi.Context, args *LookupRepositoryG
 
 // A collection of arguments for invoking getRepositoryGroupIamPolicy.
 type LookupRepositoryGroupIamPolicyArgs struct {
+	// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
 	CodeRepositoryIndex string `pulumi:"codeRepositoryIndex"`
 	// The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -60,8 +61,9 @@ type LookupRepositoryGroupIamPolicyArgs struct {
 	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           *string `pulumi:"project"`
-	RepositoryGroupId string  `pulumi:"repositoryGroupId"`
+	Project *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
+	RepositoryGroupId string `pulumi:"repositoryGroupId"`
 }
 
 // A collection of values returned by getRepositoryGroupIamPolicy.
@@ -90,6 +92,7 @@ func LookupRepositoryGroupIamPolicyOutput(ctx *pulumi.Context, args LookupReposi
 
 // A collection of arguments for invoking getRepositoryGroupIamPolicy.
 type LookupRepositoryGroupIamPolicyOutputArgs struct {
+	// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
 	CodeRepositoryIndex pulumi.StringInput `pulumi:"codeRepositoryIndex"`
 	// The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -97,8 +100,9 @@ type LookupRepositoryGroupIamPolicyOutputArgs struct {
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           pulumi.StringPtrInput `pulumi:"project"`
-	RepositoryGroupId pulumi.StringInput    `pulumi:"repositoryGroupId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
+	RepositoryGroupId pulumi.StringInput `pulumi:"repositoryGroupId"`
 }
 
 func (LookupRepositoryGroupIamPolicyOutputArgs) ElementType() reflect.Type {

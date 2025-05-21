@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test_access = new AccessPolicy("test-access", AccessPolicyArgs.builder()
- *             .parent("organizations/")
+ *             .parent("organizations/123456789")
  *             .title("my policy")
  *             .build());
  * 

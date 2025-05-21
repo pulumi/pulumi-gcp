@@ -308,7 +308,8 @@ type ScopeIamBinding struct {
 	// The role that should be applied. Only one
 	// `gkehub.ScopeIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role    pulumi.StringOutput `pulumi:"role"`
+	Role pulumi.StringOutput `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ScopeId pulumi.StringOutput `pulumi:"scopeId"`
 }
 
@@ -372,7 +373,8 @@ type scopeIamBindingState struct {
 	// The role that should be applied. Only one
 	// `gkehub.ScopeIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role    *string `pulumi:"role"`
+	Role *string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ScopeId *string `pulumi:"scopeId"`
 }
 
@@ -398,7 +400,8 @@ type ScopeIamBindingState struct {
 	// The role that should be applied. Only one
 	// `gkehub.ScopeIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role    pulumi.StringPtrInput
+	Role pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	ScopeId pulumi.StringPtrInput
 }
 
@@ -426,7 +429,8 @@ type scopeIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `gkehub.ScopeIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role    string `pulumi:"role"`
+	Role string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ScopeId string `pulumi:"scopeId"`
 }
 
@@ -451,7 +455,8 @@ type ScopeIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `gkehub.ScopeIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role    pulumi.StringInput
+	Role pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
 	ScopeId pulumi.StringInput
 }
 
@@ -579,6 +584,7 @@ func (o ScopeIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScopeIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o ScopeIamBindingOutput) ScopeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScopeIamBinding) pulumi.StringOutput { return v.ScopeId }).(pulumi.StringOutput)
 }

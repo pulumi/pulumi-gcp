@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleMetadataFilterArgs;
 import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleServiceDirectoryRegistrationsArgs;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -81,6 +82,66 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * Specifies the canary migration state for the backend buckets attached to this forwarding rule.
+     * Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
+     * To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+     * PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+     * changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+     * traffic to backend buckets attached to this forwarding rule by percentage using
+     * externalManagedBackendBucketMigrationTestingPercentage.
+     * Rolling back a migration requires the states to be set in reverse order. So changing the
+     * scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+     * the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+     * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+     * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+     * 
+     */
+    @Import(name="externalManagedBackendBucketMigrationState")
+    private @Nullable Output<String> externalManagedBackendBucketMigrationState;
+
+    /**
+     * @return Specifies the canary migration state for the backend buckets attached to this forwarding rule.
+     * Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
+     * To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+     * PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+     * changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+     * traffic to backend buckets attached to this forwarding rule by percentage using
+     * externalManagedBackendBucketMigrationTestingPercentage.
+     * Rolling back a migration requires the states to be set in reverse order. So changing the
+     * scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+     * the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+     * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+     * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+     * 
+     */
+    public Optional<Output<String>> externalManagedBackendBucketMigrationState() {
+        return Optional.ofNullable(this.externalManagedBackendBucketMigrationState);
+    }
+
+    /**
+     * Determines the fraction of requests to backend buckets that should be processed by the Global
+     * external Application Load Balancer.
+     * The value of this field must be in the range [0, 100].
+     * This value can only be set if the loadBalancingScheme in the forwarding rule is set to
+     * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+     * 
+     */
+    @Import(name="externalManagedBackendBucketMigrationTestingPercentage")
+    private @Nullable Output<Double> externalManagedBackendBucketMigrationTestingPercentage;
+
+    /**
+     * @return Determines the fraction of requests to backend buckets that should be processed by the Global
+     * external Application Load Balancer.
+     * The value of this field must be in the range [0, 100].
+     * This value can only be set if the loadBalancingScheme in the forwarding rule is set to
+     * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+     * 
+     */
+    public Optional<Output<Double>> externalManagedBackendBucketMigrationTestingPercentage() {
+        return Optional.ofNullable(this.externalManagedBackendBucketMigrationTestingPercentage);
     }
 
     /**
@@ -666,6 +727,8 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         this.baseForwardingRule = $.baseForwardingRule;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
+        this.externalManagedBackendBucketMigrationState = $.externalManagedBackendBucketMigrationState;
+        this.externalManagedBackendBucketMigrationTestingPercentage = $.externalManagedBackendBucketMigrationTestingPercentage;
         this.forwardingRuleId = $.forwardingRuleId;
         this.ipAddress = $.ipAddress;
         this.ipProtocol = $.ipProtocol;
@@ -792,6 +855,78 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param externalManagedBackendBucketMigrationState Specifies the canary migration state for the backend buckets attached to this forwarding rule.
+         * Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
+         * To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+         * PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+         * changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+         * traffic to backend buckets attached to this forwarding rule by percentage using
+         * externalManagedBackendBucketMigrationTestingPercentage.
+         * Rolling back a migration requires the states to be set in reverse order. So changing the
+         * scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+         * the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+         * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+         * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalManagedBackendBucketMigrationState(@Nullable Output<String> externalManagedBackendBucketMigrationState) {
+            $.externalManagedBackendBucketMigrationState = externalManagedBackendBucketMigrationState;
+            return this;
+        }
+
+        /**
+         * @param externalManagedBackendBucketMigrationState Specifies the canary migration state for the backend buckets attached to this forwarding rule.
+         * Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
+         * To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+         * PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+         * changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+         * traffic to backend buckets attached to this forwarding rule by percentage using
+         * externalManagedBackendBucketMigrationTestingPercentage.
+         * Rolling back a migration requires the states to be set in reverse order. So changing the
+         * scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+         * the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+         * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+         * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalManagedBackendBucketMigrationState(String externalManagedBackendBucketMigrationState) {
+            return externalManagedBackendBucketMigrationState(Output.of(externalManagedBackendBucketMigrationState));
+        }
+
+        /**
+         * @param externalManagedBackendBucketMigrationTestingPercentage Determines the fraction of requests to backend buckets that should be processed by the Global
+         * external Application Load Balancer.
+         * The value of this field must be in the range [0, 100].
+         * This value can only be set if the loadBalancingScheme in the forwarding rule is set to
+         * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalManagedBackendBucketMigrationTestingPercentage(@Nullable Output<Double> externalManagedBackendBucketMigrationTestingPercentage) {
+            $.externalManagedBackendBucketMigrationTestingPercentage = externalManagedBackendBucketMigrationTestingPercentage;
+            return this;
+        }
+
+        /**
+         * @param externalManagedBackendBucketMigrationTestingPercentage Determines the fraction of requests to backend buckets that should be processed by the Global
+         * external Application Load Balancer.
+         * The value of this field must be in the range [0, 100].
+         * This value can only be set if the loadBalancingScheme in the forwarding rule is set to
+         * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalManagedBackendBucketMigrationTestingPercentage(Double externalManagedBackendBucketMigrationTestingPercentage) {
+            return externalManagedBackendBucketMigrationTestingPercentage(Output.of(externalManagedBackendBucketMigrationTestingPercentage));
         }
 
         /**

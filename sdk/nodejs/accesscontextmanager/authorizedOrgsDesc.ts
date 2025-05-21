@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const test_access = new gcp.accesscontextmanager.AccessPolicy("test-access", {
- *     parent: "organizations/",
+ *     parent: "organizations/123456789",
  *     title: "my policy",
  * });
  * const authorized_orgs_desc = new gcp.accesscontextmanager.AuthorizedOrgsDesc("authorized-orgs-desc", {

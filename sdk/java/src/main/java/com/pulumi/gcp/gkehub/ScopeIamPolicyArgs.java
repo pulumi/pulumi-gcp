@@ -50,9 +50,17 @@ public final class ScopeIamPolicyArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="scopeId", required=true)
     private Output<String> scopeId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> scopeId() {
         return this.scopeId;
     }
@@ -129,11 +137,23 @@ public final class ScopeIamPolicyArgs extends com.pulumi.resources.ResourceArgs 
             return project(Output.of(project));
         }
 
+        /**
+         * @param scopeId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopeId(Output<String> scopeId) {
             $.scopeId = scopeId;
             return this;
         }
 
+        /**
+         * @param scopeId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopeId(String scopeId) {
             return scopeId(Output.of(scopeId));
         }

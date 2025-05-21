@@ -33,6 +33,9 @@ export function getDatascanIamPolicy(args: GetDatascanIamPolicyArgs, opts?: pulu
  * A collection of arguments for invoking getDatascanIamPolicy.
  */
 export interface GetDatascanIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     dataScanId: string;
     /**
      * The location where the data scan should reside.
@@ -98,6 +101,9 @@ export function getDatascanIamPolicyOutput(args: GetDatascanIamPolicyOutputArgs,
  * A collection of arguments for invoking getDatascanIamPolicy.
  */
 export interface GetDatascanIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     dataScanId: pulumi.Input<string>;
     /**
      * The location where the data scan should reside.

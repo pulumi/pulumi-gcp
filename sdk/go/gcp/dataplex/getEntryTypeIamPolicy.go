@@ -52,6 +52,7 @@ func LookupEntryTypeIamPolicy(ctx *pulumi.Context, args *LookupEntryTypeIamPolic
 
 // A collection of arguments for invoking getEntryTypeIamPolicy.
 type LookupEntryTypeIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	EntryTypeId string `pulumi:"entryTypeId"`
 	// The location where entry type will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -88,6 +89,7 @@ func LookupEntryTypeIamPolicyOutput(ctx *pulumi.Context, args LookupEntryTypeIam
 
 // A collection of arguments for invoking getEntryTypeIamPolicy.
 type LookupEntryTypeIamPolicyOutputArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	EntryTypeId pulumi.StringInput `pulumi:"entryTypeId"`
 	// The location where entry type will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,

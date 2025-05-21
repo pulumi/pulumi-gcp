@@ -52,6 +52,7 @@ func GetIamPolicy(ctx *pulumi.Context, args *GetIamPolicyArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getIamPolicy.
 type GetIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DataPolicyId string `pulumi:"dataPolicyId"`
 	// The name of the location of the data policy.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -88,6 +89,7 @@ func GetIamPolicyOutput(ctx *pulumi.Context, args GetIamPolicyOutputArgs, opts .
 
 // A collection of arguments for invoking getIamPolicy.
 type GetIamPolicyOutputArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DataPolicyId pulumi.StringInput `pulumi:"dataPolicyId"`
 	// The name of the location of the data policy.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,

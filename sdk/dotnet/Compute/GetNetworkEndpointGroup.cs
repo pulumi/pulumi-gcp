@@ -189,6 +189,7 @@ namespace Pulumi.Gcp.Compute
         /// The NEG description.
         /// </summary>
         public readonly string Description;
+        public readonly int GeneratedId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -220,6 +221,8 @@ namespace Pulumi.Gcp.Compute
 
             string description,
 
+            int generatedId,
+
             string id,
 
             string? name,
@@ -240,6 +243,7 @@ namespace Pulumi.Gcp.Compute
         {
             DefaultPort = defaultPort;
             Description = description;
+            GeneratedId = generatedId;
             Id = id;
             Name = name;
             Network = network;

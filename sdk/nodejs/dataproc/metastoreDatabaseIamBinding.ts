@@ -221,6 +221,11 @@ export class MetastoreDatabaseIamBinding extends pulumi.CustomResource {
      * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     public readonly location!: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -247,6 +252,9 @@ export class MetastoreDatabaseIamBinding extends pulumi.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly serviceId!: pulumi.Output<string>;
 
     /**
@@ -311,6 +319,11 @@ export interface MetastoreDatabaseIamBindingState {
      * (Computed) The etag of the IAM policy.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -337,6 +350,9 @@ export interface MetastoreDatabaseIamBindingState {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceId?: pulumi.Input<string>;
 }
 
@@ -349,6 +365,11 @@ export interface MetastoreDatabaseIamBindingArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     database: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -375,5 +396,8 @@ export interface MetastoreDatabaseIamBindingArgs {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceId: pulumi.Input<string>;
 }

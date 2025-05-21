@@ -55,6 +55,7 @@ class ClusterArgs:
                  fleet: Optional[pulumi.Input['ClusterFleetArgs']] = None,
                  gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
+                 in_transit_encryption_config: Optional[pulumi.Input[builtins.str]] = None,
                  initial_node_count: Optional[pulumi.Input[builtins.int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
@@ -165,6 +166,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
+        :param pulumi.Input[builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
                number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -381,6 +383,8 @@ class ClusterArgs:
             pulumi.set(__self__, "gateway_api_config", gateway_api_config)
         if identity_service_config is not None:
             pulumi.set(__self__, "identity_service_config", identity_service_config)
+        if in_transit_encryption_config is not None:
+            pulumi.set(__self__, "in_transit_encryption_config", in_transit_encryption_config)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if ip_allocation_policy is not None:
@@ -892,6 +896,18 @@ class ClusterArgs:
     @identity_service_config.setter
     def identity_service_config(self, value: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']]):
         pulumi.set(self, "identity_service_config", value)
+
+    @property
+    @pulumi.getter(name="inTransitEncryptionConfig")
+    def in_transit_encryption_config(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+        """
+        return pulumi.get(self, "in_transit_encryption_config")
+
+    @in_transit_encryption_config.setter
+    def in_transit_encryption_config(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "in_transit_encryption_config", value)
 
     @property
     @pulumi.getter(name="initialNodeCount")
@@ -1543,6 +1559,7 @@ class _ClusterState:
                  fleet: Optional[pulumi.Input['ClusterFleetArgs']] = None,
                  gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
+                 in_transit_encryption_config: Optional[pulumi.Input[builtins.str]] = None,
                  initial_node_count: Optional[pulumi.Input[builtins.int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']] = None,
                  label_fingerprint: Optional[pulumi.Input[builtins.str]] = None,
@@ -1662,6 +1679,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
+        :param pulumi.Input[builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
                number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -1895,6 +1913,8 @@ class _ClusterState:
             pulumi.set(__self__, "gateway_api_config", gateway_api_config)
         if identity_service_config is not None:
             pulumi.set(__self__, "identity_service_config", identity_service_config)
+        if in_transit_encryption_config is not None:
+            pulumi.set(__self__, "in_transit_encryption_config", in_transit_encryption_config)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if ip_allocation_policy is not None:
@@ -2444,6 +2464,18 @@ class _ClusterState:
     @identity_service_config.setter
     def identity_service_config(self, value: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']]):
         pulumi.set(self, "identity_service_config", value)
+
+    @property
+    @pulumi.getter(name="inTransitEncryptionConfig")
+    def in_transit_encryption_config(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+        """
+        return pulumi.get(self, "in_transit_encryption_config")
+
+    @in_transit_encryption_config.setter
+    def in_transit_encryption_config(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "in_transit_encryption_config", value)
 
     @property
     @pulumi.getter(name="initialNodeCount")
@@ -3184,6 +3216,7 @@ class Cluster(pulumi.CustomResource):
                  fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
                  gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
                  identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+                 in_transit_encryption_config: Optional[pulumi.Input[builtins.str]] = None,
                  initial_node_count: Optional[pulumi.Input[builtins.int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
@@ -3416,6 +3449,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']] identity_service_config: . Structure is documented below.
+        :param pulumi.Input[builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
                number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -3741,6 +3775,7 @@ class Cluster(pulumi.CustomResource):
                  fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
                  gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
                  identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+                 in_transit_encryption_config: Optional[pulumi.Input[builtins.str]] = None,
                  initial_node_count: Optional[pulumi.Input[builtins.int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
@@ -3825,6 +3860,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["fleet"] = fleet
             __props__.__dict__["gateway_api_config"] = gateway_api_config
             __props__.__dict__["identity_service_config"] = identity_service_config
+            __props__.__dict__["in_transit_encryption_config"] = in_transit_encryption_config
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
             __props__.__dict__["location"] = location
@@ -3923,6 +3959,7 @@ class Cluster(pulumi.CustomResource):
             fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
             gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
             identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+            in_transit_encryption_config: Optional[pulumi.Input[builtins.str]] = None,
             initial_node_count: Optional[pulumi.Input[builtins.int]] = None,
             ip_allocation_policy: Optional[pulumi.Input[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
             label_fingerprint: Optional[pulumi.Input[builtins.str]] = None,
@@ -4047,6 +4084,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']] identity_service_config: . Structure is documented below.
+        :param pulumi.Input[builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
                number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -4249,6 +4287,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["fleet"] = fleet
         __props__.__dict__["gateway_api_config"] = gateway_api_config
         __props__.__dict__["identity_service_config"] = identity_service_config
+        __props__.__dict__["in_transit_encryption_config"] = in_transit_encryption_config
         __props__.__dict__["initial_node_count"] = initial_node_count
         __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
         __props__.__dict__["label_fingerprint"] = label_fingerprint
@@ -4610,6 +4649,14 @@ class Cluster(pulumi.CustomResource):
         . Structure is documented below.
         """
         return pulumi.get(self, "identity_service_config")
+
+    @property
+    @pulumi.getter(name="inTransitEncryptionConfig")
+    def in_transit_encryption_config(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+        """
+        return pulumi.get(self, "in_transit_encryption_config")
 
     @property
     @pulumi.getter(name="initialNodeCount")

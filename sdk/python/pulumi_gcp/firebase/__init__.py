@@ -16,6 +16,9 @@ from .app_check_recaptcha_v3_config import *
 from .app_check_service_config import *
 from .app_hosting_backend import *
 from .app_hosting_build import *
+from .app_hosting_default_domain import *
+from .app_hosting_domain import *
+from .app_hosting_traffic import *
 from .apple_app import *
 from .data_connect_service import *
 from .database_instance import *

@@ -80,9 +80,16 @@ namespace Pulumi.Gcp.Workstations
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the parent workstation cluster.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("workstationClusterId")]
         public Output<string> WorkstationClusterId { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("workstationConfigId")]
         public Output<string> WorkstationConfigId { get; private set; } = null!;
 
@@ -155,9 +162,16 @@ namespace Pulumi.Gcp.Workstations
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The ID of the parent workstation cluster.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("workstationClusterId", required: true)]
         public Input<string> WorkstationClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("workstationConfigId", required: true)]
         public Input<string> WorkstationConfigId { get; set; } = null!;
 
@@ -198,9 +212,16 @@ namespace Pulumi.Gcp.Workstations
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The ID of the parent workstation cluster.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("workstationClusterId")]
         public Input<string>? WorkstationClusterId { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("workstationConfigId")]
         public Input<string>? WorkstationConfigId { get; set; }
 

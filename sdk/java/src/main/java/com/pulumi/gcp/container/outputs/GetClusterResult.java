@@ -99,6 +99,7 @@ public final class GetClusterResult {
      */
     private String id;
     private List<GetClusterIdentityServiceConfig> identityServiceConfigs;
+    private String inTransitEncryptionConfig;
     private Integer initialNodeCount;
     private List<GetClusterIpAllocationPolicy> ipAllocationPolicies;
     private String labelFingerprint;
@@ -261,6 +262,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterIdentityServiceConfig> identityServiceConfigs() {
         return this.identityServiceConfigs;
+    }
+    public String inTransitEncryptionConfig() {
+        return this.inTransitEncryptionConfig;
     }
     public Integer initialNodeCount() {
         return this.initialNodeCount;
@@ -455,6 +459,7 @@ public final class GetClusterResult {
         private List<GetClusterGatewayApiConfig> gatewayApiConfigs;
         private String id;
         private List<GetClusterIdentityServiceConfig> identityServiceConfigs;
+        private String inTransitEncryptionConfig;
         private Integer initialNodeCount;
         private List<GetClusterIpAllocationPolicy> ipAllocationPolicies;
         private String labelFingerprint;
@@ -543,6 +548,7 @@ public final class GetClusterResult {
     	      this.gatewayApiConfigs = defaults.gatewayApiConfigs;
     	      this.id = defaults.id;
     	      this.identityServiceConfigs = defaults.identityServiceConfigs;
+    	      this.inTransitEncryptionConfig = defaults.inTransitEncryptionConfig;
     	      this.initialNodeCount = defaults.initialNodeCount;
     	      this.ipAllocationPolicies = defaults.ipAllocationPolicies;
     	      this.labelFingerprint = defaults.labelFingerprint;
@@ -929,6 +935,14 @@ public final class GetClusterResult {
         }
         public Builder identityServiceConfigs(GetClusterIdentityServiceConfig... identityServiceConfigs) {
             return identityServiceConfigs(List.of(identityServiceConfigs));
+        }
+        @CustomType.Setter
+        public Builder inTransitEncryptionConfig(String inTransitEncryptionConfig) {
+            if (inTransitEncryptionConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "inTransitEncryptionConfig");
+            }
+            this.inTransitEncryptionConfig = inTransitEncryptionConfig;
+            return this;
         }
         @CustomType.Setter
         public Builder initialNodeCount(Integer initialNodeCount) {
@@ -1440,6 +1454,7 @@ public final class GetClusterResult {
             _resultValue.gatewayApiConfigs = gatewayApiConfigs;
             _resultValue.id = id;
             _resultValue.identityServiceConfigs = identityServiceConfigs;
+            _resultValue.inTransitEncryptionConfig = inTransitEncryptionConfig;
             _resultValue.initialNodeCount = initialNodeCount;
             _resultValue.ipAllocationPolicies = ipAllocationPolicies;
             _resultValue.labelFingerprint = labelFingerprint;

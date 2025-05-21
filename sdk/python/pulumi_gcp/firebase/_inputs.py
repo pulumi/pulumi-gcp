@@ -32,6 +32,38 @@ __all__ = [
     'AppHostingBuildSourceCodebaseAuthorArgsDict',
     'AppHostingBuildSourceContainerArgs',
     'AppHostingBuildSourceContainerArgsDict',
+    'AppHostingDomainCustomDomainStatusArgs',
+    'AppHostingDomainCustomDomainStatusArgsDict',
+    'AppHostingDomainCustomDomainStatusIssueArgs',
+    'AppHostingDomainCustomDomainStatusIssueArgsDict',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgsDict',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgsDict',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgsDict',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgsDict',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgsDict',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgsDict',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs',
+    'AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgsDict',
+    'AppHostingDomainServeArgs',
+    'AppHostingDomainServeArgsDict',
+    'AppHostingDomainServeRedirectArgs',
+    'AppHostingDomainServeRedirectArgsDict',
+    'AppHostingTrafficCurrentArgs',
+    'AppHostingTrafficCurrentArgsDict',
+    'AppHostingTrafficCurrentSplitArgs',
+    'AppHostingTrafficCurrentSplitArgsDict',
+    'AppHostingTrafficRolloutPolicyArgs',
+    'AppHostingTrafficRolloutPolicyArgsDict',
+    'AppHostingTrafficTargetArgs',
+    'AppHostingTrafficTargetArgsDict',
+    'AppHostingTrafficTargetSplitArgs',
+    'AppHostingTrafficTargetSplitArgsDict',
     'ExtensionsInstanceConfigArgs',
     'ExtensionsInstanceConfigArgsDict',
     'ExtensionsInstanceErrorStatusArgs',
@@ -704,6 +736,1501 @@ class AppHostingBuildSourceContainerArgs:
     @image.setter
     def image(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "image", value)
+
+
+if not MYPY:
+    class AppHostingDomainCustomDomainStatusArgsDict(TypedDict):
+        cert_state: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Possible values:
+        CERT_PREPARING
+        CERT_VALIDATING
+        CERT_PROPAGATING
+        CERT_ACTIVE
+        CERT_EXPIRING_SOON
+        CERT_EXPIRED
+        """
+        host_state: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Possible values:
+        HOST_UNHOSTED
+        HOST_UNREACHABLE
+        HOST_NON_FAH
+        HOST_CONFLICT
+        HOST_WRONG_SHARD
+        HOST_ACTIVE
+        """
+        issues: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgsDict']]]]
+        """
+        (Output)
+        A list of issues with domain configuration. Allows users to self-correct
+        problems with DNS records.
+        Structure is documented below.
+        """
+        ownership_state: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Possible values:
+        OWNERSHIP_MISSING
+        OWNERSHIP_UNREACHABLE
+        OWNERSHIP_MISMATCH
+        OWNERSHIP_CONFLICT
+        OWNERSHIP_PENDING
+        OWNERSHIP_ACTIVE
+        """
+        required_dns_updates: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgsDict']]]]
+        """
+        (Output)
+        Lists the records that must added or removed to a custom domain's DNS
+        in order to finish setup and start serving content.
+        Field is present during onboarding. Also present after onboarding if one
+        or more of the above states is not *_ACTIVE, indicating the domain's DNS
+        records are in a bad state.
+        Structure is documented below.
+        """
+elif False:
+    AppHostingDomainCustomDomainStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingDomainCustomDomainStatusArgs:
+    def __init__(__self__, *,
+                 cert_state: Optional[pulumi.Input[builtins.str]] = None,
+                 host_state: Optional[pulumi.Input[builtins.str]] = None,
+                 issues: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]]] = None,
+                 ownership_state: Optional[pulumi.Input[builtins.str]] = None,
+                 required_dns_updates: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]]] = None):
+        """
+        :param pulumi.Input[builtins.str] cert_state: (Output)
+               Possible values:
+               CERT_PREPARING
+               CERT_VALIDATING
+               CERT_PROPAGATING
+               CERT_ACTIVE
+               CERT_EXPIRING_SOON
+               CERT_EXPIRED
+        :param pulumi.Input[builtins.str] host_state: (Output)
+               Possible values:
+               HOST_UNHOSTED
+               HOST_UNREACHABLE
+               HOST_NON_FAH
+               HOST_CONFLICT
+               HOST_WRONG_SHARD
+               HOST_ACTIVE
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]] issues: (Output)
+               A list of issues with domain configuration. Allows users to self-correct
+               problems with DNS records.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] ownership_state: (Output)
+               Possible values:
+               OWNERSHIP_MISSING
+               OWNERSHIP_UNREACHABLE
+               OWNERSHIP_MISMATCH
+               OWNERSHIP_CONFLICT
+               OWNERSHIP_PENDING
+               OWNERSHIP_ACTIVE
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]] required_dns_updates: (Output)
+               Lists the records that must added or removed to a custom domain's DNS
+               in order to finish setup and start serving content.
+               Field is present during onboarding. Also present after onboarding if one
+               or more of the above states is not *_ACTIVE, indicating the domain's DNS
+               records are in a bad state.
+               Structure is documented below.
+        """
+        if cert_state is not None:
+            pulumi.set(__self__, "cert_state", cert_state)
+        if host_state is not None:
+            pulumi.set(__self__, "host_state", host_state)
+        if issues is not None:
+            pulumi.set(__self__, "issues", issues)
+        if ownership_state is not None:
+            pulumi.set(__self__, "ownership_state", ownership_state)
+        if required_dns_updates is not None:
+            pulumi.set(__self__, "required_dns_updates", required_dns_updates)
+
+    @property
+    @pulumi.getter(name="certState")
+    def cert_state(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Possible values:
+        CERT_PREPARING
+        CERT_VALIDATING
+        CERT_PROPAGATING
+        CERT_ACTIVE
+        CERT_EXPIRING_SOON
+        CERT_EXPIRED
+        """
+        return pulumi.get(self, "cert_state")
+
+    @cert_state.setter
+    def cert_state(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cert_state", value)
+
+    @property
+    @pulumi.getter(name="hostState")
+    def host_state(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Possible values:
+        HOST_UNHOSTED
+        HOST_UNREACHABLE
+        HOST_NON_FAH
+        HOST_CONFLICT
+        HOST_WRONG_SHARD
+        HOST_ACTIVE
+        """
+        return pulumi.get(self, "host_state")
+
+    @host_state.setter
+    def host_state(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "host_state", value)
+
+    @property
+    @pulumi.getter
+    def issues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]]]:
+        """
+        (Output)
+        A list of issues with domain configuration. Allows users to self-correct
+        problems with DNS records.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "issues")
+
+    @issues.setter
+    def issues(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]]]):
+        pulumi.set(self, "issues", value)
+
+    @property
+    @pulumi.getter(name="ownershipState")
+    def ownership_state(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Possible values:
+        OWNERSHIP_MISSING
+        OWNERSHIP_UNREACHABLE
+        OWNERSHIP_MISMATCH
+        OWNERSHIP_CONFLICT
+        OWNERSHIP_PENDING
+        OWNERSHIP_ACTIVE
+        """
+        return pulumi.get(self, "ownership_state")
+
+    @ownership_state.setter
+    def ownership_state(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "ownership_state", value)
+
+    @property
+    @pulumi.getter(name="requiredDnsUpdates")
+    def required_dns_updates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]]]:
+        """
+        (Output)
+        Lists the records that must added or removed to a custom domain's DNS
+        in order to finish setup and start serving content.
+        Field is present during onboarding. Also present after onboarding if one
+        or more of the above states is not *_ACTIVE, indicating the domain's DNS
+        records are in a bad state.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "required_dns_updates")
+
+    @required_dns_updates.setter
+    def required_dns_updates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]]]):
+        pulumi.set(self, "required_dns_updates", value)
+
+
+if not MYPY:
+    class AppHostingDomainCustomDomainStatusIssueArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[builtins.int]]
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        details: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+elif False:
+    AppHostingDomainCustomDomainStatusIssueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingDomainCustomDomainStatusIssueArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[builtins.int]] = None,
+                 details: Optional[pulumi.Input[builtins.str]] = None,
+                 message: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[builtins.str] details: (Output)
+               A list of messages that carry the error details.
+        :param pulumi.Input[builtins.str] message: (Output)
+               A developer-facing error message, which should be in English. Any
+               user-facing error message should be localized and sent in the
+               google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgsDict(TypedDict):
+        check_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The last time App Hosting checked your custom domain's DNS records.
+        """
+        desireds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgsDict']]]]
+        """
+        (Output)
+        The set of DNS records App Hosting needs in order to be able to serve
+        secure content on the domain.
+        Structure is documented below.
+        """
+        discovereds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgsDict']]]]
+        """
+        (Output)
+        The set of DNS records App Hosting discovered when inspecting a domain.
+        Structure is documented below.
+        """
+        domain_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The domain the record pertains to, e.g. `foo.bar.com.`.
+        """
+elif False:
+    AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs:
+    def __init__(__self__, *,
+                 check_time: Optional[pulumi.Input[builtins.str]] = None,
+                 desireds: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]]] = None,
+                 discovereds: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]]] = None,
+                 domain_name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] check_time: (Output)
+               The last time App Hosting checked your custom domain's DNS records.
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]] desireds: (Output)
+               The set of DNS records App Hosting needs in order to be able to serve
+               secure content on the domain.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]] discovereds: (Output)
+               The set of DNS records App Hosting discovered when inspecting a domain.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] domain_name: (Output)
+               The domain the record pertains to, e.g. `foo.bar.com.`.
+        """
+        if check_time is not None:
+            pulumi.set(__self__, "check_time", check_time)
+        if desireds is not None:
+            pulumi.set(__self__, "desireds", desireds)
+        if discovereds is not None:
+            pulumi.set(__self__, "discovereds", discovereds)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+
+    @property
+    @pulumi.getter(name="checkTime")
+    def check_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The last time App Hosting checked your custom domain's DNS records.
+        """
+        return pulumi.get(self, "check_time")
+
+    @check_time.setter
+    def check_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "check_time", value)
+
+    @property
+    @pulumi.getter
+    def desireds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]]]:
+        """
+        (Output)
+        The set of DNS records App Hosting needs in order to be able to serve
+        secure content on the domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "desireds")
+
+    @desireds.setter
+    def desireds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]]]):
+        pulumi.set(self, "desireds", value)
+
+    @property
+    @pulumi.getter
+    def discovereds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]]]:
+        """
+        (Output)
+        The set of DNS records App Hosting discovered when inspecting a domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "discovereds")
+
+    @discovereds.setter
+    def discovereds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]]]):
+        pulumi.set(self, "discovereds", value)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The domain the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "domain_name", value)
+
+
+if not MYPY:
+    class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgsDict(TypedDict):
+        check_errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgsDict']]]]
+        """
+        (Output)
+        The `Status` type defines a logical error model that is suitable for
+        different programming environments, including REST APIs and RPC APIs. It is
+        used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        three pieces of data: error code, error message, and error details.
+        You can find out more about this error model and how to work with it in the
+        [API Design Guide](https://cloud.google.com/apis/design/errors).
+        Structure is documented below.
+        """
+        domain_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The domain the record pertains to, e.g. `foo.bar.com.`.
+        """
+        records: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgsDict']]]]
+        """
+        (Output)
+        Records on the domain.
+        Structure is documented below.
+        """
+elif False:
+    AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs:
+    def __init__(__self__, *,
+                 check_errors: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]]] = None,
+                 domain_name: Optional[pulumi.Input[builtins.str]] = None,
+                 records: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]] check_errors: (Output)
+               The `Status` type defines a logical error model that is suitable for
+               different programming environments, including REST APIs and RPC APIs. It is
+               used by [gRPC](https://github.com/grpc). Each `Status` message contains
+               three pieces of data: error code, error message, and error details.
+               You can find out more about this error model and how to work with it in the
+               [API Design Guide](https://cloud.google.com/apis/design/errors).
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] domain_name: (Output)
+               The domain the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]] records: (Output)
+               Records on the domain.
+               Structure is documented below.
+        """
+        if check_errors is not None:
+            pulumi.set(__self__, "check_errors", check_errors)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if records is not None:
+            pulumi.set(__self__, "records", records)
+
+    @property
+    @pulumi.getter(name="checkErrors")
+    def check_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]]]:
+        """
+        (Output)
+        The `Status` type defines a logical error model that is suitable for
+        different programming environments, including REST APIs and RPC APIs. It is
+        used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        three pieces of data: error code, error message, and error details.
+        You can find out more about this error model and how to work with it in the
+        [API Design Guide](https://cloud.google.com/apis/design/errors).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "check_errors")
+
+    @check_errors.setter
+    def check_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]]]):
+        pulumi.set(self, "check_errors", value)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The domain the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]]]:
+        """
+        (Output)
+        Records on the domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "records")
+
+    @records.setter
+    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]]]):
+        pulumi.set(self, "records", value)
+
+
+if not MYPY:
+    class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[builtins.int]]
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        details: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+elif False:
+    AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[builtins.int]] = None,
+                 details: Optional[pulumi.Input[builtins.str]] = None,
+                 message: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[builtins.str] details: (Output)
+               A list of messages that carry the error details.
+        :param pulumi.Input[builtins.str] message: (Output)
+               A developer-facing error message, which should be in English. Any
+               user-facing error message should be localized and sent in the
+               google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgsDict(TypedDict):
+        domain_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The domain the record pertains to, e.g. `foo.bar.com.`.
+        """
+        rdata: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain. App Hosting
+        uses TXT records to determine which Firebase projects have
+        permission to act on the domain's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        relevant_states: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        An enum that indicates which state(s) this DNS record applies to. Populated
+        for all records with an `ADD` or `REMOVE` required action.
+        """
+        required_action: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        An enum that indicates the a required action for this record. Populated
+        when the record is part of a required change in a  `DnsUpdates`
+        `discovered` or `desired` record set.
+        Possible values:
+        NONE
+        ADD
+        REMOVE
+        """
+        type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The record's type, which determines what data the record contains.
+        Possible values:
+        A
+        CNAME
+        TXT
+        AAAA
+        CAA
+        """
+elif False:
+    AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs:
+    def __init__(__self__, *,
+                 domain_name: Optional[pulumi.Input[builtins.str]] = None,
+                 rdata: Optional[pulumi.Input[builtins.str]] = None,
+                 relevant_states: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 required_action: Optional[pulumi.Input[builtins.str]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] domain_name: (Output)
+               The domain the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[builtins.str] rdata: (Output)
+               The data of the record. The meaning of the value depends on record type:
+               - A and AAAA: IP addresses for the domain.
+               - CNAME: Another domain to check for records.
+               - TXT: Arbitrary text strings associated with the domain. App Hosting
+               uses TXT records to determine which Firebase projects have
+               permission to act on the domain's behalf.
+               - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] relevant_states: (Output)
+               An enum that indicates which state(s) this DNS record applies to. Populated
+               for all records with an `ADD` or `REMOVE` required action.
+        :param pulumi.Input[builtins.str] required_action: (Output)
+               An enum that indicates the a required action for this record. Populated
+               when the record is part of a required change in a  `DnsUpdates`
+               `discovered` or `desired` record set.
+               Possible values:
+               NONE
+               ADD
+               REMOVE
+        :param pulumi.Input[builtins.str] type: (Output)
+               The record's type, which determines what data the record contains.
+               Possible values:
+               A
+               CNAME
+               TXT
+               AAAA
+               CAA
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if rdata is not None:
+            pulumi.set(__self__, "rdata", rdata)
+        if relevant_states is not None:
+            pulumi.set(__self__, "relevant_states", relevant_states)
+        if required_action is not None:
+            pulumi.set(__self__, "required_action", required_action)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The domain the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def rdata(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain. App Hosting
+        uses TXT records to determine which Firebase projects have
+        permission to act on the domain's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        return pulumi.get(self, "rdata")
+
+    @rdata.setter
+    def rdata(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "rdata", value)
+
+    @property
+    @pulumi.getter(name="relevantStates")
+    def relevant_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        An enum that indicates which state(s) this DNS record applies to. Populated
+        for all records with an `ADD` or `REMOVE` required action.
+        """
+        return pulumi.get(self, "relevant_states")
+
+    @relevant_states.setter
+    def relevant_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "relevant_states", value)
+
+    @property
+    @pulumi.getter(name="requiredAction")
+    def required_action(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        An enum that indicates the a required action for this record. Populated
+        when the record is part of a required change in a  `DnsUpdates`
+        `discovered` or `desired` record set.
+        Possible values:
+        NONE
+        ADD
+        REMOVE
+        """
+        return pulumi.get(self, "required_action")
+
+    @required_action.setter
+    def required_action(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "required_action", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The record's type, which determines what data the record contains.
+        Possible values:
+        A
+        CNAME
+        TXT
+        AAAA
+        CAA
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgsDict(TypedDict):
+        check_errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgsDict']]]]
+        """
+        (Output)
+        The `Status` type defines a logical error model that is suitable for
+        different programming environments, including REST APIs and RPC APIs. It is
+        used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        three pieces of data: error code, error message, and error details.
+        You can find out more about this error model and how to work with it in the
+        [API Design Guide](https://cloud.google.com/apis/design/errors).
+        Structure is documented below.
+        """
+        domain_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The domain the record pertains to, e.g. `foo.bar.com.`.
+        """
+        records: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgsDict']]]]
+        """
+        (Output)
+        Records on the domain.
+        Structure is documented below.
+        """
+elif False:
+    AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs:
+    def __init__(__self__, *,
+                 check_errors: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]]] = None,
+                 domain_name: Optional[pulumi.Input[builtins.str]] = None,
+                 records: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]] check_errors: (Output)
+               The `Status` type defines a logical error model that is suitable for
+               different programming environments, including REST APIs and RPC APIs. It is
+               used by [gRPC](https://github.com/grpc). Each `Status` message contains
+               three pieces of data: error code, error message, and error details.
+               You can find out more about this error model and how to work with it in the
+               [API Design Guide](https://cloud.google.com/apis/design/errors).
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] domain_name: (Output)
+               The domain the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]] records: (Output)
+               Records on the domain.
+               Structure is documented below.
+        """
+        if check_errors is not None:
+            pulumi.set(__self__, "check_errors", check_errors)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if records is not None:
+            pulumi.set(__self__, "records", records)
+
+    @property
+    @pulumi.getter(name="checkErrors")
+    def check_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]]]:
+        """
+        (Output)
+        The `Status` type defines a logical error model that is suitable for
+        different programming environments, including REST APIs and RPC APIs. It is
+        used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        three pieces of data: error code, error message, and error details.
+        You can find out more about this error model and how to work with it in the
+        [API Design Guide](https://cloud.google.com/apis/design/errors).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "check_errors")
+
+    @check_errors.setter
+    def check_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]]]):
+        pulumi.set(self, "check_errors", value)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The domain the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]]]:
+        """
+        (Output)
+        Records on the domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "records")
+
+    @records.setter
+    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]]]):
+        pulumi.set(self, "records", value)
+
+
+if not MYPY:
+    class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[builtins.int]]
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        details: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+elif False:
+    AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[builtins.int]] = None,
+                 details: Optional[pulumi.Input[builtins.str]] = None,
+                 message: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[builtins.str] details: (Output)
+               A list of messages that carry the error details.
+        :param pulumi.Input[builtins.str] message: (Output)
+               A developer-facing error message, which should be in English. Any
+               user-facing error message should be localized and sent in the
+               google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgsDict(TypedDict):
+        domain_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The domain the record pertains to, e.g. `foo.bar.com.`.
+        """
+        rdata: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain. App Hosting
+        uses TXT records to determine which Firebase projects have
+        permission to act on the domain's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        relevant_states: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        An enum that indicates which state(s) this DNS record applies to. Populated
+        for all records with an `ADD` or `REMOVE` required action.
+        """
+        required_action: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        An enum that indicates the a required action for this record. Populated
+        when the record is part of a required change in a  `DnsUpdates`
+        `discovered` or `desired` record set.
+        Possible values:
+        NONE
+        ADD
+        REMOVE
+        """
+        type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The record's type, which determines what data the record contains.
+        Possible values:
+        A
+        CNAME
+        TXT
+        AAAA
+        CAA
+        """
+elif False:
+    AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs:
+    def __init__(__self__, *,
+                 domain_name: Optional[pulumi.Input[builtins.str]] = None,
+                 rdata: Optional[pulumi.Input[builtins.str]] = None,
+                 relevant_states: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 required_action: Optional[pulumi.Input[builtins.str]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] domain_name: (Output)
+               The domain the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[builtins.str] rdata: (Output)
+               The data of the record. The meaning of the value depends on record type:
+               - A and AAAA: IP addresses for the domain.
+               - CNAME: Another domain to check for records.
+               - TXT: Arbitrary text strings associated with the domain. App Hosting
+               uses TXT records to determine which Firebase projects have
+               permission to act on the domain's behalf.
+               - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] relevant_states: (Output)
+               An enum that indicates which state(s) this DNS record applies to. Populated
+               for all records with an `ADD` or `REMOVE` required action.
+        :param pulumi.Input[builtins.str] required_action: (Output)
+               An enum that indicates the a required action for this record. Populated
+               when the record is part of a required change in a  `DnsUpdates`
+               `discovered` or `desired` record set.
+               Possible values:
+               NONE
+               ADD
+               REMOVE
+        :param pulumi.Input[builtins.str] type: (Output)
+               The record's type, which determines what data the record contains.
+               Possible values:
+               A
+               CNAME
+               TXT
+               AAAA
+               CAA
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if rdata is not None:
+            pulumi.set(__self__, "rdata", rdata)
+        if relevant_states is not None:
+            pulumi.set(__self__, "relevant_states", relevant_states)
+        if required_action is not None:
+            pulumi.set(__self__, "required_action", required_action)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The domain the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def rdata(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain. App Hosting
+        uses TXT records to determine which Firebase projects have
+        permission to act on the domain's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        return pulumi.get(self, "rdata")
+
+    @rdata.setter
+    def rdata(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "rdata", value)
+
+    @property
+    @pulumi.getter(name="relevantStates")
+    def relevant_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        An enum that indicates which state(s) this DNS record applies to. Populated
+        for all records with an `ADD` or `REMOVE` required action.
+        """
+        return pulumi.get(self, "relevant_states")
+
+    @relevant_states.setter
+    def relevant_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "relevant_states", value)
+
+    @property
+    @pulumi.getter(name="requiredAction")
+    def required_action(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        An enum that indicates the a required action for this record. Populated
+        when the record is part of a required change in a  `DnsUpdates`
+        `discovered` or `desired` record set.
+        Possible values:
+        NONE
+        ADD
+        REMOVE
+        """
+        return pulumi.get(self, "required_action")
+
+    @required_action.setter
+    def required_action(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "required_action", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The record's type, which determines what data the record contains.
+        Possible values:
+        A
+        CNAME
+        TXT
+        AAAA
+        CAA
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class AppHostingDomainServeArgsDict(TypedDict):
+        redirect: NotRequired[pulumi.Input['AppHostingDomainServeRedirectArgsDict']]
+        """
+        Specifies redirect behavior for a domain.
+        Structure is documented below.
+        """
+elif False:
+    AppHostingDomainServeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingDomainServeArgs:
+    def __init__(__self__, *,
+                 redirect: Optional[pulumi.Input['AppHostingDomainServeRedirectArgs']] = None):
+        """
+        :param pulumi.Input['AppHostingDomainServeRedirectArgs'] redirect: Specifies redirect behavior for a domain.
+               Structure is documented below.
+        """
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional[pulumi.Input['AppHostingDomainServeRedirectArgs']]:
+        """
+        Specifies redirect behavior for a domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "redirect")
+
+    @redirect.setter
+    def redirect(self, value: Optional[pulumi.Input['AppHostingDomainServeRedirectArgs']]):
+        pulumi.set(self, "redirect", value)
+
+
+if not MYPY:
+    class AppHostingDomainServeRedirectArgsDict(TypedDict):
+        uri: pulumi.Input[builtins.str]
+        """
+        The URI of the redirect's intended destination. This URI will be
+        prepended to the original request path. URI without a scheme are
+        assumed to be HTTPS.
+        """
+        status: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The status code to use in a redirect response. Must be a valid HTTP 3XX
+        status code. Defaults to 302 if not present.
+        """
+elif False:
+    AppHostingDomainServeRedirectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingDomainServeRedirectArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[builtins.str],
+                 status: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] uri: The URI of the redirect's intended destination. This URI will be
+               prepended to the original request path. URI without a scheme are
+               assumed to be HTTPS.
+        :param pulumi.Input[builtins.str] status: The status code to use in a redirect response. Must be a valid HTTP 3XX
+               status code. Defaults to 302 if not present.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[builtins.str]:
+        """
+        The URI of the redirect's intended destination. This URI will be
+        prepended to the original request path. URI without a scheme are
+        assumed to be HTTPS.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The status code to use in a redirect response. Must be a valid HTTP 3XX
+        status code. Defaults to 302 if not present.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class AppHostingTrafficCurrentArgsDict(TypedDict):
+        splits: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgsDict']]]]
+        """
+        (Output)
+        A list of traffic splits that together represent where traffic is being routed.
+        Structure is documented below.
+        """
+elif False:
+    AppHostingTrafficCurrentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingTrafficCurrentArgs:
+    def __init__(__self__, *,
+                 splits: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]] splits: (Output)
+               A list of traffic splits that together represent where traffic is being routed.
+               Structure is documented below.
+        """
+        if splits is not None:
+            pulumi.set(__self__, "splits", splits)
+
+    @property
+    @pulumi.getter
+    def splits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]]]:
+        """
+        (Output)
+        A list of traffic splits that together represent where traffic is being routed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "splits")
+
+    @splits.setter
+    def splits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]]]):
+        pulumi.set(self, "splits", value)
+
+
+if not MYPY:
+    class AppHostingTrafficCurrentSplitArgsDict(TypedDict):
+        build: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The build that traffic is being routed to.
+        """
+        percent: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The percentage of traffic to send to the build. Currently must be 100 or 0.
+        """
+elif False:
+    AppHostingTrafficCurrentSplitArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingTrafficCurrentSplitArgs:
+    def __init__(__self__, *,
+                 build: Optional[pulumi.Input[builtins.str]] = None,
+                 percent: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.str] build: The build that traffic is being routed to.
+        :param pulumi.Input[builtins.int] percent: The percentage of traffic to send to the build. Currently must be 100 or 0.
+        """
+        if build is not None:
+            pulumi.set(__self__, "build", build)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def build(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The build that traffic is being routed to.
+        """
+        return pulumi.get(self, "build")
+
+    @build.setter
+    def build(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "build", value)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The percentage of traffic to send to the build. Currently must be 100 or 0.
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "percent", value)
+
+
+if not MYPY:
+    class AppHostingTrafficRolloutPolicyArgsDict(TypedDict):
+        codebase_branch: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies a branch that triggers a new build to be started with this
+        policy. If not set, no automatic rollouts will happen.
+        """
+        disabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
+        """
+        disabled_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        If disabled is set, the time at which the rollouts were disabled.
+        """
+elif False:
+    AppHostingTrafficRolloutPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingTrafficRolloutPolicyArgs:
+    def __init__(__self__, *,
+                 codebase_branch: Optional[pulumi.Input[builtins.str]] = None,
+                 disabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 disabled_time: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] codebase_branch: Specifies a branch that triggers a new build to be started with this
+               policy. If not set, no automatic rollouts will happen.
+        :param pulumi.Input[builtins.bool] disabled: A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
+        :param pulumi.Input[builtins.str] disabled_time: (Output)
+               If disabled is set, the time at which the rollouts were disabled.
+        """
+        if codebase_branch is not None:
+            pulumi.set(__self__, "codebase_branch", codebase_branch)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_time is not None:
+            pulumi.set(__self__, "disabled_time", disabled_time)
+
+    @property
+    @pulumi.getter(name="codebaseBranch")
+    def codebase_branch(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies a branch that triggers a new build to be started with this
+        policy. If not set, no automatic rollouts will happen.
+        """
+        return pulumi.get(self, "codebase_branch")
+
+    @codebase_branch.setter
+    def codebase_branch(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "codebase_branch", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledTime")
+    def disabled_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        If disabled is set, the time at which the rollouts were disabled.
+        """
+        return pulumi.get(self, "disabled_time")
+
+    @disabled_time.setter
+    def disabled_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "disabled_time", value)
+
+
+if not MYPY:
+    class AppHostingTrafficTargetArgsDict(TypedDict):
+        splits: pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficTargetSplitArgsDict']]]
+        """
+        A list of traffic splits that together represent where traffic is being routed.
+        Structure is documented below.
+        """
+elif False:
+    AppHostingTrafficTargetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingTrafficTargetArgs:
+    def __init__(__self__, *,
+                 splits: pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficTargetSplitArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficTargetSplitArgs']]] splits: A list of traffic splits that together represent where traffic is being routed.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "splits", splits)
+
+    @property
+    @pulumi.getter
+    def splits(self) -> pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficTargetSplitArgs']]]:
+        """
+        A list of traffic splits that together represent where traffic is being routed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "splits")
+
+    @splits.setter
+    def splits(self, value: pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficTargetSplitArgs']]]):
+        pulumi.set(self, "splits", value)
+
+
+if not MYPY:
+    class AppHostingTrafficTargetSplitArgsDict(TypedDict):
+        build: pulumi.Input[builtins.str]
+        """
+        The build that traffic is being routed to.
+        """
+        percent: pulumi.Input[builtins.int]
+        """
+        The percentage of traffic to send to the build. Currently must be 100 or 0.
+        """
+elif False:
+    AppHostingTrafficTargetSplitArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppHostingTrafficTargetSplitArgs:
+    def __init__(__self__, *,
+                 build: pulumi.Input[builtins.str],
+                 percent: pulumi.Input[builtins.int]):
+        """
+        :param pulumi.Input[builtins.str] build: The build that traffic is being routed to.
+        :param pulumi.Input[builtins.int] percent: The percentage of traffic to send to the build. Currently must be 100 or 0.
+        """
+        pulumi.set(__self__, "build", build)
+        pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def build(self) -> pulumi.Input[builtins.str]:
+        """
+        The build that traffic is being routed to.
+        """
+        return pulumi.get(self, "build")
+
+    @build.setter
+    def build(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "build", value)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> pulumi.Input[builtins.int]:
+        """
+        The percentage of traffic to send to the build. Currently must be 100 or 0.
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "percent", value)
 
 
 if not MYPY:

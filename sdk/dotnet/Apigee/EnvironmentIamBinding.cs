@@ -272,6 +272,11 @@ namespace Pulumi.Gcp.Apigee
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
+        /// <summary>
+        /// The Apigee Organization associated with the Apigee environment,
+        /// in the format `organizations/{{org_name}}`.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -360,6 +365,11 @@ namespace Pulumi.Gcp.Apigee
             set => _members = value;
         }
 
+        /// <summary>
+        /// The Apigee Organization associated with the Apigee environment,
+        /// in the format `organizations/{{org_name}}`.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -416,6 +426,11 @@ namespace Pulumi.Gcp.Apigee
             set => _members = value;
         }
 
+        /// <summary>
+        /// The Apigee Organization associated with the Apigee environment,
+        /// in the format `organizations/{{org_name}}`.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 

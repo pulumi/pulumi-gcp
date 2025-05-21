@@ -208,7 +208,6 @@ export class ConnectionIamMember extends pulumi.CustomResource {
 
     public readonly condition!: pulumi.Output<outputs.bigquery.ConnectionIamMemberCondition | undefined>;
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      */
     public readonly connectionId!: pulumi.Output<string>;
@@ -304,7 +303,6 @@ export class ConnectionIamMember extends pulumi.CustomResource {
 export interface ConnectionIamMemberState {
     condition?: pulumi.Input<inputs.bigquery.ConnectionIamMemberCondition>;
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      */
     connectionId?: pulumi.Input<string>;
@@ -357,7 +355,6 @@ export interface ConnectionIamMemberState {
 export interface ConnectionIamMemberArgs {
     condition?: pulumi.Input<inputs.bigquery.ConnectionIamMemberCondition>;
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      */
     connectionId: pulumi.Input<string>;

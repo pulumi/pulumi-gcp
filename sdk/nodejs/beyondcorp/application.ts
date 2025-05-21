@@ -7,11 +7,13 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.beyondcorp.Application` is deprecated. Use `googleBeyondcorpSecurityGatewayApplication` instead.
+ *
  * Specifies application endpoint(s) to protect behind a Security Gateway.
  *
  * ## Example Usage
  *
- * ### Beyondcorp Security Gateway Application Basic
+ * ### Beyondcorp Application Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +34,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Beyondcorp Security Gateway Application Vpc
+ * ### Beyondcorp Application Vpc
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

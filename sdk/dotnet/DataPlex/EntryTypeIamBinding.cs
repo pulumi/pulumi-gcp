@@ -253,6 +253,9 @@ namespace Pulumi.Gcp.DataPlex
         [Output("condition")]
         public Output<Outputs.EntryTypeIamBindingCondition?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("entryTypeId")]
         public Output<string> EntryTypeId { get; private set; } = null!;
 
@@ -351,6 +354,9 @@ namespace Pulumi.Gcp.DataPlex
         [Input("condition")]
         public Input<Inputs.EntryTypeIamBindingConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("entryTypeId", required: true)]
         public Input<string> EntryTypeId { get; set; } = null!;
 
@@ -411,6 +417,9 @@ namespace Pulumi.Gcp.DataPlex
         [Input("condition")]
         public Input<Inputs.EntryTypeIamBindingConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("entryTypeId")]
         public Input<string>? EntryTypeId { get; set; }
 

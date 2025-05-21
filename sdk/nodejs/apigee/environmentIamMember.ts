@@ -220,6 +220,11 @@ export class EnvironmentIamMember extends pulumi.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
     public readonly member!: pulumi.Output<string>;
+    /**
+     * The Apigee Organization associated with the Apigee environment,
+     * in the format `organizations/{{org_name}}`.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly orgId!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -300,6 +305,11 @@ export interface EnvironmentIamMemberState {
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
     member?: pulumi.Input<string>;
+    /**
+     * The Apigee Organization associated with the Apigee environment,
+     * in the format `organizations/{{org_name}}`.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     orgId?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -332,6 +342,11 @@ export interface EnvironmentIamMemberArgs {
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
     member: pulumi.Input<string>;
+    /**
+     * The Apigee Organization associated with the Apigee environment,
+     * in the format `organizations/{{org_name}}`.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     orgId: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

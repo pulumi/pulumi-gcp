@@ -52,6 +52,7 @@ func LookupAspectTypeIamPolicy(ctx *pulumi.Context, args *LookupAspectTypeIamPol
 
 // A collection of arguments for invoking getAspectTypeIamPolicy.
 type LookupAspectTypeIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	AspectTypeId string `pulumi:"aspectTypeId"`
 	// The location where aspect type will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -88,6 +89,7 @@ func LookupAspectTypeIamPolicyOutput(ctx *pulumi.Context, args LookupAspectTypeI
 
 // A collection of arguments for invoking getAspectTypeIamPolicy.
 type LookupAspectTypeIamPolicyOutputArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	AspectTypeId pulumi.StringInput `pulumi:"aspectTypeId"`
 	// The location where aspect type will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,

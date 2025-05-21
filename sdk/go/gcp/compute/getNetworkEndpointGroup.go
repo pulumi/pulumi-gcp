@@ -77,6 +77,7 @@ type LookupNetworkEndpointGroupResult struct {
 	DefaultPort int `pulumi:"defaultPort"`
 	// The NEG description.
 	Description string `pulumi:"description"`
+	GeneratedId int    `pulumi:"generatedId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
@@ -143,6 +144,10 @@ func (o LookupNetworkEndpointGroupResultOutput) DefaultPort() pulumi.IntOutput {
 // The NEG description.
 func (o LookupNetworkEndpointGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkEndpointGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkEndpointGroupResultOutput) GeneratedId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNetworkEndpointGroupResult) int { return v.GeneratedId }).(pulumi.IntOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

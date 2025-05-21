@@ -253,6 +253,11 @@ namespace Pulumi.Gcp.Apigee
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// The Apigee Organization associated with the Apigee environment,
+        /// in the format `organizations/{{org_name}}`.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -315,6 +320,11 @@ namespace Pulumi.Gcp.Apigee
         [Input("envId", required: true)]
         public Input<string> EnvId { get; set; } = null!;
 
+        /// <summary>
+        /// The Apigee Organization associated with the Apigee environment,
+        /// in the format `organizations/{{org_name}}`.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -345,6 +355,11 @@ namespace Pulumi.Gcp.Apigee
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The Apigee Organization associated with the Apigee environment,
+        /// in the format `organizations/{{org_name}}`.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 

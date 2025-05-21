@@ -585,7 +585,7 @@ class NodePool(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         default = gcp.edgecontainer.Cluster("default",
-            name="",
+            name="default",
             location="us-central1",
             authorization={
                 "admin_users": {
@@ -764,7 +764,7 @@ class NodePool(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         default = gcp.edgecontainer.Cluster("default",
-            name="",
+            name="default",
             location="us-central1",
             authorization={
                 "admin_users": {

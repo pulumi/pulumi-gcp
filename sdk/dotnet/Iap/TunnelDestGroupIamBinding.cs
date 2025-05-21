@@ -461,6 +461,9 @@ namespace Pulumi.Gcp.Iap
         [Output("condition")]
         public Output<Outputs.TunnelDestGroupIamBindingCondition?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("destGroup")]
         public Output<string> DestGroup { get; private set; } = null!;
 
@@ -563,6 +566,9 @@ namespace Pulumi.Gcp.Iap
         [Input("condition")]
         public Input<Inputs.TunnelDestGroupIamBindingConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("destGroup", required: true)]
         public Input<string> DestGroup { get; set; } = null!;
 
@@ -627,6 +633,9 @@ namespace Pulumi.Gcp.Iap
         [Input("condition")]
         public Input<Inputs.TunnelDestGroupIamBindingConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("destGroup")]
         public Input<string>? DestGroup { get; set; }
 

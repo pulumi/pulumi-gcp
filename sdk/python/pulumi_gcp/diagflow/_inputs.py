@@ -26,6 +26,8 @@ __all__ = [
     'CxAgentAdvancedSettingsLoggingSettingsArgsDict',
     'CxAgentAdvancedSettingsSpeechSettingsArgs',
     'CxAgentAdvancedSettingsSpeechSettingsArgsDict',
+    'CxAgentGenAppBuilderSettingsArgs',
+    'CxAgentGenAppBuilderSettingsArgsDict',
     'CxAgentGitIntegrationSettingsArgs',
     'CxAgentGitIntegrationSettingsArgsDict',
     'CxAgentGitIntegrationSettingsGithubSettingsArgs',
@@ -786,6 +788,40 @@ class CxAgentAdvancedSettingsSpeechSettingsArgs:
     @use_timeout_based_endpointing.setter
     def use_timeout_based_endpointing(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "use_timeout_based_endpointing", value)
+
+
+if not MYPY:
+    class CxAgentGenAppBuilderSettingsArgsDict(TypedDict):
+        engine: pulumi.Input[builtins.str]
+        """
+        The full name of the Gen App Builder engine related to this agent if there is one.
+        Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
+        """
+elif False:
+    CxAgentGenAppBuilderSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxAgentGenAppBuilderSettingsArgs:
+    def __init__(__self__, *,
+                 engine: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] engine: The full name of the Gen App Builder engine related to this agent if there is one.
+               Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
+        """
+        pulumi.set(__self__, "engine", engine)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> pulumi.Input[builtins.str]:
+        """
+        The full name of the Gen App Builder engine related to this agent if there is one.
+        Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
+        """
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "engine", value)
 
 
 if not MYPY:
@@ -1692,6 +1728,10 @@ if not MYPY:
         Conditional cases for this fulfillment.
         Structure is documented below.
         """
+        enable_generative_fallback: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        """
         messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgsDict']]]]
         """
         The list of rich message responses to present to the user.
@@ -1721,6 +1761,7 @@ elif False:
 class CxFlowEventHandlerTriggerFulfillmentArgs:
     def __init__(__self__, *,
                  conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs']]]] = None,
+                 enable_generative_fallback: Optional[pulumi.Input[builtins.bool]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[builtins.bool]] = None,
                  set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs']]]] = None,
@@ -1729,6 +1770,7 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
+        :param pulumi.Input[builtins.bool] enable_generative_fallback: If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
         :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
@@ -1739,6 +1781,8 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
         """
         if conditional_cases is not None:
             pulumi.set(__self__, "conditional_cases", conditional_cases)
+        if enable_generative_fallback is not None:
+            pulumi.set(__self__, "enable_generative_fallback", enable_generative_fallback)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if return_partial_responses is not None:
@@ -1762,6 +1806,18 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
     @conditional_cases.setter
     def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]):
         pulumi.set(self, "conditional_cases", value)
+
+    @property
+    @pulumi.getter(name="enableGenerativeFallback")
+    def enable_generative_fallback(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        """
+        return pulumi.get(self, "enable_generative_fallback")
+
+    @enable_generative_fallback.setter
+    def enable_generative_fallback(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_generative_fallback", value)
 
     @property
     @pulumi.getter

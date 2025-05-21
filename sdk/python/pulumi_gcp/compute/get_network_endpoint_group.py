@@ -27,13 +27,16 @@ class GetNetworkEndpointGroupResult:
     """
     A collection of values returned by getNetworkEndpointGroup.
     """
-    def __init__(__self__, default_port=None, description=None, id=None, name=None, network=None, network_endpoint_type=None, project=None, self_link=None, size=None, subnetwork=None, zone=None):
+    def __init__(__self__, default_port=None, description=None, generated_id=None, id=None, name=None, network=None, network_endpoint_type=None, project=None, self_link=None, size=None, subnetwork=None, zone=None):
         if default_port and not isinstance(default_port, int):
             raise TypeError("Expected argument 'default_port' to be a int")
         pulumi.set(__self__, "default_port", default_port)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if generated_id and not isinstance(generated_id, int):
+            raise TypeError("Expected argument 'generated_id' to be a int")
+        pulumi.set(__self__, "generated_id", generated_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -77,6 +80,11 @@ class GetNetworkEndpointGroupResult:
         The NEG description.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="generatedId")
+    def generated_id(self) -> builtins.int:
+        return pulumi.get(self, "generated_id")
 
     @property
     @pulumi.getter
@@ -147,6 +155,7 @@ class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
         return GetNetworkEndpointGroupResult(
             default_port=self.default_port,
             description=self.description,
+            generated_id=self.generated_id,
             id=self.id,
             name=self.name,
             network=self.network,
@@ -198,6 +207,7 @@ def get_network_endpoint_group(name: Optional[builtins.str] = None,
     return AwaitableGetNetworkEndpointGroupResult(
         default_port=pulumi.get(__ret__, 'default_port'),
         description=pulumi.get(__ret__, 'description'),
+        generated_id=pulumi.get(__ret__, 'generated_id'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
@@ -246,6 +256,7 @@ def get_network_endpoint_group_output(name: Optional[pulumi.Input[Optional[built
     return __ret__.apply(lambda __response__: GetNetworkEndpointGroupResult(
         default_port=pulumi.get(__response__, 'default_port'),
         description=pulumi.get(__response__, 'description'),
+        generated_id=pulumi.get(__response__, 'generated_id'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),

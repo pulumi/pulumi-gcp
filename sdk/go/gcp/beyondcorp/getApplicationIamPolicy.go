@@ -52,11 +52,13 @@ func LookupApplicationIamPolicy(ctx *pulumi.Context, args *LookupApplicationIamP
 
 // A collection of arguments for invoking getApplicationIamPolicy.
 type LookupApplicationIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	ApplicationId string `pulumi:"applicationId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project            *string `pulumi:"project"`
-	SecurityGatewaysId string  `pulumi:"securityGatewaysId"`
+	Project *string `pulumi:"project"`
+	// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+	SecurityGatewaysId string `pulumi:"securityGatewaysId"`
 }
 
 // A collection of values returned by getApplicationIamPolicy.
@@ -84,11 +86,13 @@ func LookupApplicationIamPolicyOutput(ctx *pulumi.Context, args LookupApplicatio
 
 // A collection of arguments for invoking getApplicationIamPolicy.
 type LookupApplicationIamPolicyOutputArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project            pulumi.StringPtrInput `pulumi:"project"`
-	SecurityGatewaysId pulumi.StringInput    `pulumi:"securityGatewaysId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+	SecurityGatewaysId pulumi.StringInput `pulumi:"securityGatewaysId"`
 }
 
 func (LookupApplicationIamPolicyOutputArgs) ElementType() reflect.Type {

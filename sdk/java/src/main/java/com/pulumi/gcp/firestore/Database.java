@@ -499,6 +499,12 @@ public class Database extends com.pulumi.resources.CustomResource {
     public Output<String> deleteProtectionState() {
         return this.deleteProtectionState;
     }
+    /**
+     * @deprecated
+     * `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.
+     * 
+     */
+    @Deprecated /* `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead. */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 

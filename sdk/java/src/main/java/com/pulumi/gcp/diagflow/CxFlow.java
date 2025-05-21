@@ -377,6 +377,7 @@ import javax.annotation.Nullable;
  *                                     )
  *                                 )))
  *                             .build())
+ *                         .enableGenerativeFallback(true)
  *                         .build())
  *                     .build())
  *             .transitionRoutes(CxFlowTransitionRouteArgs.builder()

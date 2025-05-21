@@ -110,7 +110,14 @@ export class WorkstationConfigIamBinding extends pulumi.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly workstationClusterId!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly workstationConfigId!: pulumi.Output<string>;
 
     /**
@@ -203,7 +210,14 @@ export interface WorkstationConfigIamBindingState {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
+    /**
+     * The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     workstationClusterId?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     workstationConfigId?: pulumi.Input<string>;
 }
 
@@ -244,6 +258,13 @@ export interface WorkstationConfigIamBindingArgs {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;
+    /**
+     * The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     workstationClusterId: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     workstationConfigId: pulumi.Input<string>;
 }

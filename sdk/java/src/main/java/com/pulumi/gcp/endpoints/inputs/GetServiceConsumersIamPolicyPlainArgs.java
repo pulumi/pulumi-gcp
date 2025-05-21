@@ -13,16 +13,32 @@ public final class GetServiceConsumersIamPolicyPlainArgs extends com.pulumi.reso
 
     public static final GetServiceConsumersIamPolicyPlainArgs Empty = new GetServiceConsumersIamPolicyPlainArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="consumerProject", required=true)
     private String consumerProject;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String consumerProject() {
         return this.consumerProject;
     }
 
+    /**
+     * The name of the service. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
+    /**
+     * @return The name of the service. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
@@ -52,11 +68,23 @@ public final class GetServiceConsumersIamPolicyPlainArgs extends com.pulumi.reso
             $ = new GetServiceConsumersIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param consumerProject Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerProject(String consumerProject) {
             $.consumerProject = consumerProject;
             return this;
         }
 
+        /**
+         * @param serviceName The name of the service. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
             return this;

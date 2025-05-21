@@ -38,6 +38,21 @@ public final class CxFlowEventHandlerTriggerFulfillmentArgs extends com.pulumi.r
     }
 
     /**
+     * If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+     * 
+     */
+    @Import(name="enableGenerativeFallback")
+    private @Nullable Output<Boolean> enableGenerativeFallback;
+
+    /**
+     * @return If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+     * 
+     */
+    public Optional<Output<Boolean>> enableGenerativeFallback() {
+        return Optional.ofNullable(this.enableGenerativeFallback);
+    }
+
+    /**
      * The list of rich message responses to present to the user.
      * Structure is documented below.
      * 
@@ -120,6 +135,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentArgs extends com.pulumi.r
 
     private CxFlowEventHandlerTriggerFulfillmentArgs(CxFlowEventHandlerTriggerFulfillmentArgs $) {
         this.conditionalCases = $.conditionalCases;
+        this.enableGenerativeFallback = $.enableGenerativeFallback;
         this.messages = $.messages;
         this.returnPartialResponses = $.returnPartialResponses;
         this.setParameterActions = $.setParameterActions;
@@ -177,6 +193,27 @@ public final class CxFlowEventHandlerTriggerFulfillmentArgs extends com.pulumi.r
          */
         public Builder conditionalCases(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs... conditionalCases) {
             return conditionalCases(List.of(conditionalCases));
+        }
+
+        /**
+         * @param enableGenerativeFallback If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableGenerativeFallback(@Nullable Output<Boolean> enableGenerativeFallback) {
+            $.enableGenerativeFallback = enableGenerativeFallback;
+            return this;
+        }
+
+        /**
+         * @param enableGenerativeFallback If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableGenerativeFallback(Boolean enableGenerativeFallback) {
+            return enableGenerativeFallback(Output.of(enableGenerativeFallback));
         }
 
         /**

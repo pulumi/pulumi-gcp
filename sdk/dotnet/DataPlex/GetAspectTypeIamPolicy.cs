@@ -96,6 +96,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class GetAspectTypeIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("aspectTypeId", required: true)]
         public string AspectTypeId { get; set; } = null!;
 
@@ -123,6 +126,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class GetAspectTypeIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("aspectTypeId", required: true)]
         public Input<string> AspectTypeId { get; set; } = null!;
 

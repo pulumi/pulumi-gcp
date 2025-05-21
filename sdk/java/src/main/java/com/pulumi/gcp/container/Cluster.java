@@ -824,6 +824,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.identityServiceConfig;
     }
     /**
+     * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+     * 
+     */
+    @Export(name="inTransitEncryptionConfig", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> inTransitEncryptionConfig;
+
+    /**
+     * @return Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+     * 
+     */
+    public Output<Optional<String>> inTransitEncryptionConfig() {
+        return Codegen.optional(this.inTransitEncryptionConfig);
+    }
+    /**
      * The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
      * number of nodes per zone. Must be set if `node_pool` is not set. If you&#39;re using

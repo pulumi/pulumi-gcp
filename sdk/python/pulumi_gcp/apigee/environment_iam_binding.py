@@ -41,6 +41,9 @@ class EnvironmentIamBindingArgs:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee environment,
+               in the format `organizations/{{org_name}}`.
+               Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -89,6 +92,11 @@ class EnvironmentIamBindingArgs:
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[builtins.str]:
+        """
+        The Apigee Organization associated with the Apigee environment,
+        in the format `organizations/{{org_name}}`.
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -143,6 +151,9 @@ class _EnvironmentIamBindingState:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee environment,
+               in the format `organizations/{{org_name}}`.
+               Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -218,6 +229,11 @@ class _EnvironmentIamBindingState:
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The Apigee Organization associated with the Apigee environment,
+        in the format `organizations/{{org_name}}`.
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -418,6 +434,9 @@ class EnvironmentIamBinding(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee environment,
+               in the format `organizations/{{org_name}}`.
+               Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -660,6 +679,9 @@ class EnvironmentIamBinding(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee environment,
+               in the format `organizations/{{org_name}}`.
+               Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -718,6 +740,11 @@ class EnvironmentIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The Apigee Organization associated with the Apigee environment,
+        in the format `organizations/{{org_name}}`.
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "org_id")
 
     @property

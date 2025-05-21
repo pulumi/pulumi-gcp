@@ -30,8 +30,7 @@ class ConnectionIamBindingArgs:
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectionIamBinding resource.
-        :param pulumi.Input[builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
-               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] connection_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -72,7 +71,6 @@ class ConnectionIamBindingArgs:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Input[builtins.str]:
         """
-        Optional connection id that should be assigned to the created connection.
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "connection_id")
@@ -172,8 +170,7 @@ class _ConnectionIamBindingState:
                  role: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionIamBinding resources.
-        :param pulumi.Input[builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
-               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] connection_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[builtins.str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
@@ -229,7 +226,6 @@ class _ConnectionIamBindingState:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional connection id that should be assigned to the created connection.
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "connection_id")
@@ -497,8 +493,7 @@ class ConnectionIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
-               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] connection_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
                with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -760,8 +755,7 @@ class ConnectionIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
-               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] connection_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[builtins.str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
@@ -811,7 +805,6 @@ class ConnectionIamBinding(pulumi.CustomResource):
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[builtins.str]:
         """
-        Optional connection id that should be assigned to the created connection.
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "connection_id")

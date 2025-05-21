@@ -15,9 +15,17 @@ public final class EntryGroupIamPolicyState extends com.pulumi.resources.Resourc
 
     public static final EntryGroupIamPolicyState Empty = new EntryGroupIamPolicyState();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="entryGroupId")
     private @Nullable Output<String> entryGroupId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> entryGroupId() {
         return Optional.ofNullable(this.entryGroupId);
     }
@@ -120,11 +128,23 @@ public final class EntryGroupIamPolicyState extends com.pulumi.resources.Resourc
             $ = new EntryGroupIamPolicyState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entryGroupId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder entryGroupId(@Nullable Output<String> entryGroupId) {
             $.entryGroupId = entryGroupId;
             return this;
         }
 
+        /**
+         * @param entryGroupId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder entryGroupId(String entryGroupId) {
             return entryGroupId(Output.of(entryGroupId));
         }

@@ -30,7 +30,7 @@ class RestoreChannelArgs:
         The set of arguments for constructing a RestoreChannel resource.
         :param pulumi.Input[builtins.str] destination_project: The project where Backups will be restored.
                The format is `projects/{project}`.
-               {project} can only be a project number.
+               {project} can be project number or project id.
         :param pulumi.Input[builtins.str] location: The region of the Restore Channel.
                
                
@@ -63,7 +63,7 @@ class RestoreChannelArgs:
         """
         The project where Backups will be restored.
         The format is `projects/{project}`.
-        {project} can only be a project number.
+        {project} can be project number or project id.
         """
         return pulumi.get(self, "destination_project")
 
@@ -160,7 +160,7 @@ class _RestoreChannelState:
         :param pulumi.Input[builtins.str] description: User specified descriptive string for this RestoreChannel.
         :param pulumi.Input[builtins.str] destination_project: The project where Backups will be restored.
                The format is `projects/{project}`.
-               {project} can only be a project number.
+               {project} can be project number or project id.
         :param pulumi.Input[builtins.str] destination_project_id: The project_id where Backups will be restored.
                Example Project ID: "my-project-id".
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -228,7 +228,7 @@ class _RestoreChannelState:
         """
         The project where Backups will be restored.
         The format is `projects/{project}`.
-        {project} can only be a project number.
+        {project} can be project number or project id.
         """
         return pulumi.get(self, "destination_project")
 
@@ -397,7 +397,7 @@ class RestoreChannel(pulumi.CustomResource):
         basic = gcp.gkebackup.RestoreChannel("basic",
             name="basic-channel",
             location="us-central1",
-            description="",
+            description="Description",
             destination_project="projects/24240755850",
             labels={
                 "key": "some-value",
@@ -433,7 +433,7 @@ class RestoreChannel(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: User specified descriptive string for this RestoreChannel.
         :param pulumi.Input[builtins.str] destination_project: The project where Backups will be restored.
                The format is `projects/{project}`.
-               {project} can only be a project number.
+               {project} can be project number or project id.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -477,7 +477,7 @@ class RestoreChannel(pulumi.CustomResource):
         basic = gcp.gkebackup.RestoreChannel("basic",
             name="basic-channel",
             location="us-central1",
-            description="",
+            description="Description",
             destination_project="projects/24240755850",
             labels={
                 "key": "some-value",
@@ -586,7 +586,7 @@ class RestoreChannel(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: User specified descriptive string for this RestoreChannel.
         :param pulumi.Input[builtins.str] destination_project: The project where Backups will be restored.
                The format is `projects/{project}`.
-               {project} can only be a project number.
+               {project} can be project number or project id.
         :param pulumi.Input[builtins.str] destination_project_id: The project_id where Backups will be restored.
                Example Project ID: "my-project-id".
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -644,7 +644,7 @@ class RestoreChannel(pulumi.CustomResource):
         """
         The project where Backups will be restored.
         The format is `projects/{project}`.
-        {project} can only be a project number.
+        {project} can be project number or project id.
         """
         return pulumi.get(self, "destination_project")
 

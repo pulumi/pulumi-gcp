@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			external_address_pc, err := vmwareengine.NewPrivateCloud(ctx, "external-address-pc", &vmwareengine.PrivateCloudArgs{
-//				Location:    pulumi.String("-a"),
+//				Location:    pulumi.String("us-west1-a"),
 //				Name:        pulumi.String("sample-pc"),
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			external_address_np, err := vmwareengine.NewNetworkPolicy(ctx, "external-address-np", &vmwareengine.NetworkPolicyArgs{
-//				Location:            pulumi.String(""),
+//				Location:            pulumi.String("us-west1"),
 //				Name:                pulumi.String("sample-np"),
 //				EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
 //				VmwareEngineNetwork: external_address_nw.ID(),

@@ -282,6 +282,9 @@ namespace Pulumi.Gcp.GkeHub
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("scopeId")]
         public Output<string> ScopeId { get; private set; } = null!;
 
@@ -371,6 +374,9 @@ namespace Pulumi.Gcp.GkeHub
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("scopeId", required: true)]
         public Input<string> ScopeId { get; set; } = null!;
 
@@ -428,6 +434,9 @@ namespace Pulumi.Gcp.GkeHub
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("scopeId")]
         public Input<string>? ScopeId { get; set; }
 

@@ -32,7 +32,7 @@ export function getWebTypeAppEngineIamPolicy(args: GetWebTypeAppEngineIamPolicyA
  */
 export interface GetWebTypeAppEngineIamPolicyArgs {
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     appId: string;
     /**
@@ -90,7 +90,7 @@ export function getWebTypeAppEngineIamPolicyOutput(args: GetWebTypeAppEngineIamP
  */
 export interface GetWebTypeAppEngineIamPolicyOutputArgs {
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     appId: pulumi.Input<string>;
     /**

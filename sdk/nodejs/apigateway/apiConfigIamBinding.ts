@@ -205,6 +205,9 @@ export class ApiConfigIamBinding extends pulumi.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      */
     public readonly api!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly apiConfig!: pulumi.Output<string>;
     public readonly condition!: pulumi.Output<outputs.apigateway.ApiConfigIamBindingCondition | undefined>;
     /**
@@ -293,6 +296,9 @@ export interface ApiConfigIamBindingState {
      * Used to find the parent resource to bind the IAM policy to
      */
     api?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     apiConfig?: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.apigateway.ApiConfigIamBindingCondition>;
     /**
@@ -335,6 +341,9 @@ export interface ApiConfigIamBindingArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     api: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     apiConfig: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.apigateway.ApiConfigIamBindingCondition>;
     /**

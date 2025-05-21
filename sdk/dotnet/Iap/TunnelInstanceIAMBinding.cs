@@ -504,6 +504,11 @@ namespace Pulumi.Gcp.Iap
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+        /// zone is specified, it is taken from the provider configuration.
+        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -603,6 +608,11 @@ namespace Pulumi.Gcp.Iap
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+        /// zone is specified, it is taken from the provider configuration.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -670,6 +680,11 @@ namespace Pulumi.Gcp.Iap
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+        /// zone is specified, it is taken from the provider configuration.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

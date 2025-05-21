@@ -76,9 +76,17 @@ public class AiFeatureOnlineStoreFeatureviewIamBinding extends com.pulumi.resour
     public Output<String> etag() {
         return this.etag;
     }
+    /**
+     * The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="featureOnlineStore", refs={String.class}, tree="[0]")
     private Output<String> featureOnlineStore;
 
+    /**
+     * @return The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> featureOnlineStore() {
         return this.featureOnlineStore;
     }

@@ -454,6 +454,10 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
+        A deployment group aggregates many zonal intercept backends (deployments)
+        into a single global intercept service. Consumers can connect this service
+        using an endpoint group.
+
         ## Example Usage
 
         ### Network Security Intercept Deployment Group Basic
@@ -525,6 +529,10 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
                  args: InterceptDeploymentGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A deployment group aggregates many zonal intercept backends (deployments)
+        into a single global intercept service. Consumers can connect this service
+        using an endpoint group.
+
         ## Example Usage
 
         ### Network Security Intercept Deployment Group Basic

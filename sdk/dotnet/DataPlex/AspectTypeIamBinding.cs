@@ -250,6 +250,9 @@ namespace Pulumi.Gcp.DataPlex
     [GcpResourceType("gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding")]
     public partial class AspectTypeIamBinding : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("aspectTypeId")]
         public Output<string> AspectTypeId { get; private set; } = null!;
 
@@ -348,6 +351,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class AspectTypeIamBindingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("aspectTypeId", required: true)]
         public Input<string> AspectTypeId { get; set; } = null!;
 
@@ -408,6 +414,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class AspectTypeIamBindingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("aspectTypeId")]
         public Input<string>? AspectTypeId { get; set; }
 

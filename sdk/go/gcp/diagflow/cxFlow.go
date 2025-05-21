@@ -480,6 +480,7 @@ import (
 //									Cases: pulumi.String(json2),
 //								},
 //							},
+//							EnableGenerativeFallback: pulumi.Bool(true),
 //						},
 //					},
 //				},

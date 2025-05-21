@@ -298,7 +298,8 @@ type ServiceIamMember struct {
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role        pulumi.StringOutput `pulumi:"role"`
+	Role pulumi.StringOutput `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -359,7 +360,8 @@ type serviceIamMemberState struct {
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role        *string `pulumi:"role"`
+	Role *string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -382,7 +384,8 @@ type ServiceIamMemberState struct {
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role        pulumi.StringPtrInput
+	Role pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -407,7 +410,8 @@ type serviceIamMemberArgs struct {
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role        string `pulumi:"role"`
+	Role string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -429,7 +433,8 @@ type ServiceIamMemberArgs struct {
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role        pulumi.StringInput
+	Role pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceName pulumi.StringInput
 }
 
@@ -551,6 +556,7 @@ func (o ServiceIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o ServiceIamMemberOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIamMember) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

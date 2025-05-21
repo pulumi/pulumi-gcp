@@ -51,7 +51,7 @@ func GetWebTypeAppEngineIamPolicy(ctx *pulumi.Context, args *GetWebTypeAppEngine
 
 // A collection of arguments for invoking getWebTypeAppEngineIamPolicy.
 type GetWebTypeAppEngineIamPolicyArgs struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId string `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -82,7 +82,7 @@ func GetWebTypeAppEngineIamPolicyOutput(ctx *pulumi.Context, args GetWebTypeAppE
 
 // A collection of arguments for invoking getWebTypeAppEngineIamPolicy.
 type GetWebTypeAppEngineIamPolicyOutputArgs struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

@@ -12,11 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** `beyondcorp.Application` is deprecated. Use `googleBeyondcorpSecurityGatewayApplication` instead.
+//
 // Specifies application endpoint(s) to protect behind a Security Gateway.
 //
 // ## Example Usage
 //
-// ### Beyondcorp Security Gateway Application Basic
+// ### Beyondcorp Application Basic
 //
 // ```go
 // package main
@@ -59,7 +61,7 @@ import (
 //	}
 //
 // ```
-// ### Beyondcorp Security Gateway Application Vpc
+// ### Beyondcorp Application Vpc
 //
 // ```go
 // package main

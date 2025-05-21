@@ -295,8 +295,9 @@ import (
 type EntryTypeIamMember struct {
 	pulumi.CustomResourceState
 
-	Condition   EntryTypeIamMemberConditionPtrOutput `pulumi:"condition"`
-	EntryTypeId pulumi.StringOutput                  `pulumi:"entryTypeId"`
+	Condition EntryTypeIamMemberConditionPtrOutput `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	EntryTypeId pulumi.StringOutput `pulumi:"entryTypeId"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location where entry type will be created in.
@@ -364,8 +365,9 @@ func GetEntryTypeIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EntryTypeIamMember resources.
 type entryTypeIamMemberState struct {
-	Condition   *EntryTypeIamMemberCondition `pulumi:"condition"`
-	EntryTypeId *string                      `pulumi:"entryTypeId"`
+	Condition *EntryTypeIamMemberCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	EntryTypeId *string `pulumi:"entryTypeId"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The location where entry type will be created in.
@@ -395,7 +397,8 @@ type entryTypeIamMemberState struct {
 }
 
 type EntryTypeIamMemberState struct {
-	Condition   EntryTypeIamMemberConditionPtrInput
+	Condition EntryTypeIamMemberConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	EntryTypeId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -430,8 +433,9 @@ func (EntryTypeIamMemberState) ElementType() reflect.Type {
 }
 
 type entryTypeIamMemberArgs struct {
-	Condition   *EntryTypeIamMemberCondition `pulumi:"condition"`
-	EntryTypeId string                       `pulumi:"entryTypeId"`
+	Condition *EntryTypeIamMemberCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	EntryTypeId string `pulumi:"entryTypeId"`
 	// The location where entry type will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -460,7 +464,8 @@ type entryTypeIamMemberArgs struct {
 
 // The set of arguments for constructing a EntryTypeIamMember resource.
 type EntryTypeIamMemberArgs struct {
-	Condition   EntryTypeIamMemberConditionPtrInput
+	Condition EntryTypeIamMemberConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	EntryTypeId pulumi.StringInput
 	// The location where entry type will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -579,6 +584,7 @@ func (o EntryTypeIamMemberOutput) Condition() EntryTypeIamMemberConditionPtrOutp
 	return o.ApplyT(func(v *EntryTypeIamMember) EntryTypeIamMemberConditionPtrOutput { return v.Condition }).(EntryTypeIamMemberConditionPtrOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o EntryTypeIamMemberOutput) EntryTypeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryTypeIamMember) pulumi.StringOutput { return v.EntryTypeId }).(pulumi.StringOutput)
 }

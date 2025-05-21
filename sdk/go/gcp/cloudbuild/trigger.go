@@ -498,7 +498,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudbuild.NewTrigger(ctx, "manual-ghe-trigger", &cloudbuild.TriggerArgs{
-//				Name: pulumi.String(""),
+//				Name: pulumi.String("my-trigger"),
 //				SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
 //					Uri:                    pulumi.String("https://hashicorp/terraform-provider-google-beta"),
 //					Ref:                    pulumi.String("refs/heads/main"),

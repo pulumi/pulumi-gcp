@@ -339,7 +339,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy")
 public class ConnectionIamPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
@@ -347,8 +346,7 @@ public class ConnectionIamPolicy extends com.pulumi.resources.CustomResource {
     private Output<String> connectionId;
 
     /**
-     * @return Optional connection id that should be assigned to the created connection.
-     * Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> connectionId() {

@@ -42,9 +42,6 @@ export interface GetAutoscalingPolicyIamPolicyArgs {
      */
     location?: string;
     /**
-     * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-     * 3 and 50 characters.
      * Used to find the parent resource to bind the IAM policy to
      */
     policyId: string;
@@ -114,9 +111,6 @@ export interface GetAutoscalingPolicyIamPolicyOutputArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-     * 3 and 50 characters.
      * Used to find the parent resource to bind the IAM policy to
      */
     policyId: pulumi.Input<string>;

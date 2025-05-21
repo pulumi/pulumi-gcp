@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -38,6 +39,11 @@ public final class GetInstanceAttachedDisk {
      * 
      */
     private String diskEncryptionServiceAccount;
+    /**
+     * @return Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    private Boolean forceAttach;
     /**
      * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
@@ -94,6 +100,13 @@ public final class GetInstanceAttachedDisk {
         return this.diskEncryptionServiceAccount;
     }
     /**
+     * @return Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    public Boolean forceAttach() {
+        return this.forceAttach;
+    }
+    /**
      * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
@@ -129,6 +142,7 @@ public final class GetInstanceAttachedDisk {
         private String diskEncryptionKeyRsa;
         private String diskEncryptionKeySha256;
         private String diskEncryptionServiceAccount;
+        private Boolean forceAttach;
         private String kmsKeySelfLink;
         private String mode;
         private String source;
@@ -140,6 +154,7 @@ public final class GetInstanceAttachedDisk {
     	      this.diskEncryptionKeyRsa = defaults.diskEncryptionKeyRsa;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
     	      this.diskEncryptionServiceAccount = defaults.diskEncryptionServiceAccount;
+    	      this.forceAttach = defaults.forceAttach;
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.mode = defaults.mode;
     	      this.source = defaults.source;
@@ -186,6 +201,14 @@ public final class GetInstanceAttachedDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder forceAttach(Boolean forceAttach) {
+            if (forceAttach == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachedDisk", "forceAttach");
+            }
+            this.forceAttach = forceAttach;
+            return this;
+        }
+        @CustomType.Setter
         public Builder kmsKeySelfLink(String kmsKeySelfLink) {
             if (kmsKeySelfLink == null) {
               throw new MissingRequiredPropertyException("GetInstanceAttachedDisk", "kmsKeySelfLink");
@@ -216,6 +239,7 @@ public final class GetInstanceAttachedDisk {
             _resultValue.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             _resultValue.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
+            _resultValue.forceAttach = forceAttach;
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.mode = mode;
             _resultValue.source = source;

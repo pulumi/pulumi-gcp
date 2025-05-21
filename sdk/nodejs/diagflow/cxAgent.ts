@@ -93,6 +93,9 @@ import * as utilities from "../utilities";
  *             },
  *         }),
  *     },
+ *     genAppBuilderSettings: {
+ *         engine: "projects/-/locations/-/collections/-/engines/-",
+ *     },
  * });
  * ```
  *
@@ -185,6 +188,11 @@ export class CxAgent extends pulumi.CustomResource {
      */
     public readonly enableStackdriverLogging!: pulumi.Output<boolean | undefined>;
     /**
+     * Gen App Builder-related agent-level settings.
+     * Structure is documented below.
+     */
+    public readonly genAppBuilderSettings!: pulumi.Output<outputs.diagflow.CxAgentGenAppBuilderSettings>;
+    /**
      * Git integration settings for this agent.
      * Structure is documented below.
      */
@@ -256,6 +264,7 @@ export class CxAgent extends pulumi.CustomResource {
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["enableSpellCorrection"] = state ? state.enableSpellCorrection : undefined;
             resourceInputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
+            resourceInputs["genAppBuilderSettings"] = state ? state.genAppBuilderSettings : undefined;
             resourceInputs["gitIntegrationSettings"] = state ? state.gitIntegrationSettings : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -287,6 +296,7 @@ export class CxAgent extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
             resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
+            resourceInputs["genAppBuilderSettings"] = args ? args.genAppBuilderSettings : undefined;
             resourceInputs["gitIntegrationSettings"] = args ? args.gitIntegrationSettings : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -343,6 +353,11 @@ export interface CxAgentState {
      * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
+    /**
+     * Gen App Builder-related agent-level settings.
+     * Structure is documented below.
+     */
+    genAppBuilderSettings?: pulumi.Input<inputs.diagflow.CxAgentGenAppBuilderSettings>;
     /**
      * Git integration settings for this agent.
      * Structure is documented below.
@@ -436,6 +451,11 @@ export interface CxAgentArgs {
      * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
+    /**
+     * Gen App Builder-related agent-level settings.
+     * Structure is documented below.
+     */
+    genAppBuilderSettings?: pulumi.Input<inputs.diagflow.CxAgentGenAppBuilderSettings>;
     /**
      * Git integration settings for this agent.
      * Structure is documented below.

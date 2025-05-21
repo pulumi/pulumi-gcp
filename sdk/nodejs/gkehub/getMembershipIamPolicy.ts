@@ -41,6 +41,9 @@ export interface GetMembershipIamPolicyArgs {
      * location is specified, it is taken from the provider configuration.
      */
     location?: string;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     membershipId: string;
     /**
      * The ID of the project in which the resource belongs.
@@ -107,6 +110,9 @@ export interface GetMembershipIamPolicyOutputArgs {
      * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     membershipId: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

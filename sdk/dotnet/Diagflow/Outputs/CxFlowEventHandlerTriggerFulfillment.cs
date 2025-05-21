@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.CxFlowEventHandlerTriggerFulfillmentConditionalCase> ConditionalCases;
         /// <summary>
+        /// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        /// </summary>
+        public readonly bool? EnableGenerativeFallback;
+        /// <summary>
         /// The list of rich message responses to present to the user.
         /// Structure is documented below.
         /// </summary>
@@ -45,6 +49,8 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         private CxFlowEventHandlerTriggerFulfillment(
             ImmutableArray<Outputs.CxFlowEventHandlerTriggerFulfillmentConditionalCase> conditionalCases,
 
+            bool? enableGenerativeFallback,
+
             ImmutableArray<Outputs.CxFlowEventHandlerTriggerFulfillmentMessage> messages,
 
             bool? returnPartialResponses,
@@ -56,6 +62,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
             string? webhook)
         {
             ConditionalCases = conditionalCases;
+            EnableGenerativeFallback = enableGenerativeFallback;
             Messages = messages;
             ReturnPartialResponses = returnPartialResponses;
             SetParameterActions = setParameterActions;

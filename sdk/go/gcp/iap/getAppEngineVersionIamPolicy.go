@@ -53,14 +53,14 @@ func LookupAppEngineVersionIamPolicy(ctx *pulumi.Context, args *LookupAppEngineV
 
 // A collection of arguments for invoking getAppEngineVersionIamPolicy.
 type LookupAppEngineVersionIamPolicyArgs struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId string `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
 	Service string `pulumi:"service"`
-	// Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	VersionId string `pulumi:"versionId"`
 }
 
@@ -90,14 +90,14 @@ func LookupAppEngineVersionIamPolicyOutput(ctx *pulumi.Context, args LookupAppEn
 
 // A collection of arguments for invoking getAppEngineVersionIamPolicy.
 type LookupAppEngineVersionIamPolicyOutputArgs struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
 	Service pulumi.StringInput `pulumi:"service"`
-	// Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	VersionId pulumi.StringInput `pulumi:"versionId"`
 }
 

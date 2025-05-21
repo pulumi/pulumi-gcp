@@ -254,7 +254,6 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.ConnectionIamBindingCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
-        /// Optional connection id that should be assigned to the created connection.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Output("connectionId")]
@@ -361,7 +360,6 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.ConnectionIamBindingConditionArgs>? Condition { get; set; }
 
         /// <summary>
-        /// Optional connection id that should be assigned to the created connection.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("connectionId", required: true)]
@@ -430,7 +428,6 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.ConnectionIamBindingConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
-        /// Optional connection id that should be assigned to the created connection.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("connectionId")]

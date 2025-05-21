@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolState;
+import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolInlineCertificateIssuanceConfig;
+import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolInlineTrustConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -23,6 +25,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools)
  * * How-to Guides
+ *     * [Configure managed workload identity authentication for Compute Engine](https://cloud.google.com/iam/docs/create-managed-workload-identities)
+ *     * [Configure managed workload identity authentication for GKE](https://cloud.google.com/iam/docs/create-managed-workload-identities-gke)
  *     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
  * 
  * ## Example Usage
@@ -61,7 +65,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Iam Workload Identity Pool Full
+ * ### Iam Workload Identity Pool Full Federation Only Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -88,9 +92,92 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new WorkloadIdentityPool("example", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
- *             .displayName("Name of pool")
- *             .description("Identity pool for automated test")
+ *             .displayName("Name of the pool")
+ *             .description("Identity pool operates in FEDERATION_ONLY mode")
  *             .disabled(true)
+ *             .mode("FEDERATION_ONLY")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Iam Workload Identity Pool Full Trust Domain Mode
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPool;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new WorkloadIdentityPool("example", WorkloadIdentityPoolArgs.builder()
+ *             .workloadIdentityPoolId("example-pool")
+ *             .displayName("Name of the pool")
+ *             .description("Identity pool operates in TRUST_DOMAIN mode")
+ *             .disabled(true)
+ *             .mode("TRUST_DOMAIN")
+ *             .inlineCertificateIssuanceConfig(WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs.builder()
+ *                 .caPools(Map.ofEntries(
+ *                     Map.entry("us-central1", "projects/project-bar/locations/us-central1/caPools/ca-pool-bar"),
+ *                     Map.entry("asia-east2", "projects/project-foo/locations/asia-east2/caPools/ca-pool-foo")
+ *                 ))
+ *                 .lifetime("86400s")
+ *                 .rotationWindowPercentage(50)
+ *                 .keyAlgorithm("ECDSA_P256")
+ *                 .build())
+ *             .inlineTrustConfig(WorkloadIdentityPoolInlineTrustConfigArgs.builder()
+ *                 .additionalTrustBundles(                
+ *                     WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs.builder()
+ *                         .trustDomain("example.com")
+ *                         .trustAnchors(                        
+ *                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
+ *                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                                     .input("test-fixtures/trust_anchor_1.pem")
+ *                                     .build()).result())
+ *                                 .build(),
+ *                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
+ *                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                                     .input("test-fixtures/trust_anchor_2.pem")
+ *                                     .build()).result())
+ *                                 .build())
+ *                         .build(),
+ *                     WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs.builder()
+ *                         .trustDomain("example.net")
+ *                         .trustAnchors(                        
+ *                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
+ *                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                                     .input("test-fixtures/trust_anchor_3.pem")
+ *                                     .build()).result())
+ *                                 .build(),
+ *                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
+ *                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                                     .input("test-fixtures/trust_anchor_4.pem")
+ *                                     .build()).result())
+ *                                 .build())
+ *                         .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -173,6 +260,98 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+     * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
+     * required for issuance and rotation of mTLS workload certificates.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="inlineCertificateIssuanceConfig", refs={WorkloadIdentityPoolInlineCertificateIssuanceConfig.class}, tree="[0]")
+    private Output</* @Nullable */ WorkloadIdentityPoolInlineCertificateIssuanceConfig> inlineCertificateIssuanceConfig;
+
+    /**
+     * @return Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+     * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
+     * required for issuance and rotation of mTLS workload certificates.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<WorkloadIdentityPoolInlineCertificateIssuanceConfig>> inlineCertificateIssuanceConfig() {
+        return Codegen.optional(this.inlineCertificateIssuanceConfig);
+    }
+    /**
+     * Represents config to add additional trusted trust domains. Defines configuration for extending
+     * trust to additional trust domains. By establishing trust with another domain, the current
+     * domain will recognize and accept certificates issued by entities within the trusted domains.
+     * Note that a trust domain automatically trusts itself, eliminating the need for explicit
+     * configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="inlineTrustConfig", refs={WorkloadIdentityPoolInlineTrustConfig.class}, tree="[0]")
+    private Output</* @Nullable */ WorkloadIdentityPoolInlineTrustConfig> inlineTrustConfig;
+
+    /**
+     * @return Represents config to add additional trusted trust domains. Defines configuration for extending
+     * trust to additional trust domains. By establishing trust with another domain, the current
+     * domain will recognize and accept certificates issued by entities within the trusted domains.
+     * Note that a trust domain automatically trusts itself, eliminating the need for explicit
+     * configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<WorkloadIdentityPoolInlineTrustConfig>> inlineTrustConfig() {
+        return Codegen.optional(this.inlineTrustConfig);
+    }
+    /**
+     * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+     * are in `FEDERATION_ONLY` mode.
+     * 
+     * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
+     * `pulumi preview` may show an update if you change this field&#39;s value, `pulumi up`
+     * **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
+     * To specify a different `mode`, please create a new Workload Identity Pool resource.
+     * * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
+     *   Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+     *   workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+     *   within the pool besides providers.
+     * * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
+     *   identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+     *   workload identifier. The subject identifier for all identities must conform to the following
+     *   format: `ns/&lt;namespace&gt;/sa/&lt;workload_identifier&gt;`.
+     *   `gcp.iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+     *   mode pools.
+     *   Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+     * 
+     */
+    @Export(name="mode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> mode;
+
+    /**
+     * @return The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+     * are in `FEDERATION_ONLY` mode.
+     * 
+     * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
+     * `pulumi preview` may show an update if you change this field&#39;s value, `pulumi up`
+     * **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
+     * To specify a different `mode`, please create a new Workload Identity Pool resource.
+     * * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
+     *   Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+     *   workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+     *   within the pool besides providers.
+     * * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
+     *   identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+     *   workload identifier. The subject identifier for all identities must conform to the following
+     *   format: `ns/&lt;namespace&gt;/sa/&lt;workload_identifier&gt;`.
+     *   `gcp.iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+     *   mode pools.
+     *   Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+     * 
+     */
+    public Output<Optional<String>> mode() {
+        return Codegen.optional(this.mode);
+    }
+    /**
      * The resource name of the pool as
      * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
      * 
@@ -206,11 +385,11 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The state of the pool.
-     * * STATE_UNSPECIFIED: State unspecified.
-     * * ACTIVE: The pool is active, and may be used in Google Cloud policies.
-     * * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
+     * * `STATE_UNSPECIFIED`: State unspecified.
+     * * `ACTIVE`: The pool is active, and may be used in Google Cloud policies.
+     * * `DELETED`: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
      *   approximately 30 days. You can restore a soft-deleted pool using
-     *   UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until it is
+     *   `UndeleteWorkloadIdentityPool`. You cannot reuse the ID of a soft-deleted pool until it is
      *   permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
      *   use existing tokens to access resources. If the pool is undeleted, existing tokens grant
      *   access again.
@@ -221,11 +400,11 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The state of the pool.
-     * * STATE_UNSPECIFIED: State unspecified.
-     * * ACTIVE: The pool is active, and may be used in Google Cloud policies.
-     * * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
+     * * `STATE_UNSPECIFIED`: State unspecified.
+     * * `ACTIVE`: The pool is active, and may be used in Google Cloud policies.
+     * * `DELETED`: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
      *   approximately 30 days. You can restore a soft-deleted pool using
-     *   UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until it is
+     *   `UndeleteWorkloadIdentityPool`. You cannot reuse the ID of a soft-deleted pool until it is
      *   permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
      *   use existing tokens to access resources. If the pool is undeleted, existing tokens grant
      *   access again.

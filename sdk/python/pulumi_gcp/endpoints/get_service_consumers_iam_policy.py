@@ -98,6 +98,10 @@ def get_service_consumers_iam_policy(consumer_project: Optional[builtins.str] = 
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceConsumersIamPolicyResult:
     """
     Retrieves the current IAM policy data for serviceconsumers
+
+
+    :param builtins.str consumer_project: Used to find the parent resource to bind the IAM policy to
+    :param builtins.str service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['consumerProject'] = consumer_project
@@ -116,6 +120,10 @@ def get_service_consumers_iam_policy_output(consumer_project: Optional[pulumi.In
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceConsumersIamPolicyResult]:
     """
     Retrieves the current IAM policy data for serviceconsumers
+
+
+    :param builtins.str consumer_project: Used to find the parent resource to bind the IAM policy to
+    :param builtins.str service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['consumerProject'] = consumer_project

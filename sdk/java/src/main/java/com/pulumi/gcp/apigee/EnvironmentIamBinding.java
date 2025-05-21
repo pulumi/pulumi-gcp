@@ -400,9 +400,21 @@ public class EnvironmentIamBinding extends com.pulumi.resources.CustomResource {
     public Output<List<String>> members() {
         return this.members;
     }
+    /**
+     * The Apigee Organization associated with the Apigee environment,
+     * in the format `organizations/{{org_name}}`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return The Apigee Organization associated with the Apigee environment,
+     * in the format `organizations/{{org_name}}`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }

@@ -28,7 +28,7 @@ class GetGlobalForwardingRuleResult:
     """
     A collection of values returned by getGlobalForwardingRule.
     """
-    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, effective_labels=None, forwarding_rule_id=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, self_link=None, service_directory_registrations=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, effective_labels=None, external_managed_backend_bucket_migration_state=None, external_managed_backend_bucket_migration_testing_percentage=None, forwarding_rule_id=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, self_link=None, service_directory_registrations=None, source_ip_ranges=None, subnetwork=None, target=None):
         if allow_psc_global_access and not isinstance(allow_psc_global_access, bool):
             raise TypeError("Expected argument 'allow_psc_global_access' to be a bool")
         pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
@@ -41,6 +41,12 @@ class GetGlobalForwardingRuleResult:
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
+        if external_managed_backend_bucket_migration_state and not isinstance(external_managed_backend_bucket_migration_state, str):
+            raise TypeError("Expected argument 'external_managed_backend_bucket_migration_state' to be a str")
+        pulumi.set(__self__, "external_managed_backend_bucket_migration_state", external_managed_backend_bucket_migration_state)
+        if external_managed_backend_bucket_migration_testing_percentage and not isinstance(external_managed_backend_bucket_migration_testing_percentage, float):
+            raise TypeError("Expected argument 'external_managed_backend_bucket_migration_testing_percentage' to be a float")
+        pulumi.set(__self__, "external_managed_backend_bucket_migration_testing_percentage", external_managed_backend_bucket_migration_testing_percentage)
         if forwarding_rule_id and not isinstance(forwarding_rule_id, int):
             raise TypeError("Expected argument 'forwarding_rule_id' to be a int")
         pulumi.set(__self__, "forwarding_rule_id", forwarding_rule_id)
@@ -130,6 +136,16 @@ class GetGlobalForwardingRuleResult:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, builtins.str]:
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="externalManagedBackendBucketMigrationState")
+    def external_managed_backend_bucket_migration_state(self) -> builtins.str:
+        return pulumi.get(self, "external_managed_backend_bucket_migration_state")
+
+    @property
+    @pulumi.getter(name="externalManagedBackendBucketMigrationTestingPercentage")
+    def external_managed_backend_bucket_migration_testing_percentage(self) -> builtins.float:
+        return pulumi.get(self, "external_managed_backend_bucket_migration_testing_percentage")
 
     @property
     @pulumi.getter(name="forwardingRuleId")
@@ -260,6 +276,8 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
             base_forwarding_rule=self.base_forwarding_rule,
             description=self.description,
             effective_labels=self.effective_labels,
+            external_managed_backend_bucket_migration_state=self.external_managed_backend_bucket_migration_state,
+            external_managed_backend_bucket_migration_testing_percentage=self.external_managed_backend_bucket_migration_testing_percentage,
             forwarding_rule_id=self.forwarding_rule_id,
             id=self.id,
             ip_address=self.ip_address,
@@ -318,6 +336,8 @@ def get_global_forwarding_rule(name: Optional[builtins.str] = None,
         base_forwarding_rule=pulumi.get(__ret__, 'base_forwarding_rule'),
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
+        external_managed_backend_bucket_migration_state=pulumi.get(__ret__, 'external_managed_backend_bucket_migration_state'),
+        external_managed_backend_bucket_migration_testing_percentage=pulumi.get(__ret__, 'external_managed_backend_bucket_migration_testing_percentage'),
         forwarding_rule_id=pulumi.get(__ret__, 'forwarding_rule_id'),
         id=pulumi.get(__ret__, 'id'),
         ip_address=pulumi.get(__ret__, 'ip_address'),
@@ -373,6 +393,8 @@ def get_global_forwarding_rule_output(name: Optional[pulumi.Input[builtins.str]]
         base_forwarding_rule=pulumi.get(__response__, 'base_forwarding_rule'),
         description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
+        external_managed_backend_bucket_migration_state=pulumi.get(__response__, 'external_managed_backend_bucket_migration_state'),
+        external_managed_backend_bucket_migration_testing_percentage=pulumi.get(__response__, 'external_managed_backend_bucket_migration_testing_percentage'),
         forwarding_rule_id=pulumi.get(__response__, 'forwarding_rule_id'),
         id=pulumi.get(__response__, 'id'),
         ip_address=pulumi.get(__response__, 'ip_address'),

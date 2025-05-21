@@ -439,7 +439,7 @@ namespace Pulumi.Gcp.Iap
     public partial class WebTypeAppEngingIamBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -535,7 +535,7 @@ namespace Pulumi.Gcp.Iap
     public sealed class WebTypeAppEngingIamBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -593,7 +593,7 @@ namespace Pulumi.Gcp.Iap
     public sealed class WebTypeAppEngingIamBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }

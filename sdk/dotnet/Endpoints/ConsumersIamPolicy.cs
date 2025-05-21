@@ -63,6 +63,9 @@ namespace Pulumi.Gcp.Endpoints
     [GcpResourceType("gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy")]
     public partial class ConsumersIamPolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("consumerProject")]
         public Output<string> ConsumerProject { get; private set; } = null!;
 
@@ -79,6 +82,9 @@ namespace Pulumi.Gcp.Endpoints
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the service. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -128,6 +134,9 @@ namespace Pulumi.Gcp.Endpoints
 
     public sealed class ConsumersIamPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("consumerProject", required: true)]
         public Input<string> ConsumerProject { get; set; } = null!;
 
@@ -138,6 +147,9 @@ namespace Pulumi.Gcp.Endpoints
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the service. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -149,6 +161,9 @@ namespace Pulumi.Gcp.Endpoints
 
     public sealed class ConsumersIamPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("consumerProject")]
         public Input<string>? ConsumerProject { get; set; }
 
@@ -165,6 +180,9 @@ namespace Pulumi.Gcp.Endpoints
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
 
+        /// <summary>
+        /// The name of the service. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.Lustre
     /// <summary>
     /// A Managed Lustre instance
     /// 
+    /// To get more information about Instance, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/managed-lustre/docs/create-instance)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Lustre Instance Basic

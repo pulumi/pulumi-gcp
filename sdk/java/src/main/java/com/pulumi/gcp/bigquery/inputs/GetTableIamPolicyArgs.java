@@ -16,9 +16,17 @@ public final class GetTableIamPolicyArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetTableIamPolicyArgs Empty = new GetTableIamPolicyArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="datasetId", required=true)
     private Output<String> datasetId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> datasetId() {
         return this.datasetId;
     }
@@ -40,9 +48,17 @@ public final class GetTableIamPolicyArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="tableId", required=true)
     private Output<String> tableId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> tableId() {
         return this.tableId;
     }
@@ -73,11 +89,23 @@ public final class GetTableIamPolicyArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetTableIamPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param datasetId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder datasetId(Output<String> datasetId) {
             $.datasetId = datasetId;
             return this;
         }
 
+        /**
+         * @param datasetId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder datasetId(String datasetId) {
             return datasetId(Output.of(datasetId));
         }
@@ -105,11 +133,23 @@ public final class GetTableIamPolicyArgs extends com.pulumi.resources.InvokeArgs
             return project(Output.of(project));
         }
 
+        /**
+         * @param tableId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableId(Output<String> tableId) {
             $.tableId = tableId;
             return this;
         }
 
+        /**
+         * @param tableId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableId(String tableId) {
             return tableId(Output.of(tableId));
         }

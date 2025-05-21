@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.Diagflow.Inputs
             set => _conditionalCases = value;
         }
 
+        /// <summary>
+        /// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        /// </summary>
+        [Input("enableGenerativeFallback")]
+        public Input<bool>? EnableGenerativeFallback { get; set; }
+
         [Input("messages")]
         private InputList<Inputs.CxFlowEventHandlerTriggerFulfillmentMessageGetArgs>? _messages;
 

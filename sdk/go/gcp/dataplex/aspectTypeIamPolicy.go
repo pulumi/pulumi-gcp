@@ -295,6 +295,7 @@ import (
 type AspectTypeIamPolicy struct {
 	pulumi.CustomResourceState
 
+	// Used to find the parent resource to bind the IAM policy to
 	AspectTypeId pulumi.StringOutput `pulumi:"aspectTypeId"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -347,6 +348,7 @@ func GetAspectTypeIamPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AspectTypeIamPolicy resources.
 type aspectTypeIamPolicyState struct {
+	// Used to find the parent resource to bind the IAM policy to
 	AspectTypeId *string `pulumi:"aspectTypeId"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
@@ -364,6 +366,7 @@ type aspectTypeIamPolicyState struct {
 }
 
 type AspectTypeIamPolicyState struct {
+	// Used to find the parent resource to bind the IAM policy to
 	AspectTypeId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -385,6 +388,7 @@ func (AspectTypeIamPolicyState) ElementType() reflect.Type {
 }
 
 type aspectTypeIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	AspectTypeId string `pulumi:"aspectTypeId"`
 	// The location where aspect type will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -401,6 +405,7 @@ type aspectTypeIamPolicyArgs struct {
 
 // The set of arguments for constructing a AspectTypeIamPolicy resource.
 type AspectTypeIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	AspectTypeId pulumi.StringInput
 	// The location where aspect type will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -502,6 +507,7 @@ func (o AspectTypeIamPolicyOutput) ToAspectTypeIamPolicyOutputWithContext(ctx co
 	return o
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o AspectTypeIamPolicyOutput) AspectTypeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AspectTypeIamPolicy) pulumi.StringOutput { return v.AspectTypeId }).(pulumi.StringOutput)
 }

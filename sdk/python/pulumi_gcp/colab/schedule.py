@@ -681,7 +681,7 @@ class Schedule(pulumi.CustomResource):
             name="dataform-repository",
             display_name="dataform_repository",
             npmrc_environment_variables_secret_version=secret_version.id,
-            kms_key_name="",
+            kms_key_name="my-key",
             labels={
                 "label_foo1": "label-bar1",
             },
@@ -1007,7 +1007,7 @@ class Schedule(pulumi.CustomResource):
             name="dataform-repository",
             display_name="dataform_repository",
             npmrc_environment_variables_secret_version=secret_version.id,
-            kms_key_name="",
+            kms_key_name="my-key",
             labels={
                 "label_foo1": "label-bar1",
             },

@@ -307,10 +307,14 @@ import (
 type MetastoreTableIamBinding struct {
 	pulumi.CustomResourceState
 
-	Condition  MetastoreTableIamBindingConditionPtrOutput `pulumi:"condition"`
-	DatabaseId pulumi.StringOutput                        `pulumi:"databaseId"`
+	Condition MetastoreTableIamBindingConditionPtrOutput `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	DatabaseId pulumi.StringOutput `pulumi:"databaseId"`
 	// (Computed) The etag of the IAM policy.
-	Etag     pulumi.StringOutput `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -330,7 +334,8 @@ type MetastoreTableIamBinding struct {
 	// The role that should be applied. Only one
 	// `dataproc.MetastoreTableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role      pulumi.StringOutput `pulumi:"role"`
+	Role pulumi.StringOutput `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// Used to find the parent resource to bind the IAM policy to
 	Table pulumi.StringOutput `pulumi:"table"`
@@ -381,10 +386,14 @@ func GetMetastoreTableIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MetastoreTableIamBinding resources.
 type metastoreTableIamBindingState struct {
-	Condition  *MetastoreTableIamBindingCondition `pulumi:"condition"`
-	DatabaseId *string                            `pulumi:"databaseId"`
+	Condition *MetastoreTableIamBindingCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	DatabaseId *string `pulumi:"databaseId"`
 	// (Computed) The etag of the IAM policy.
-	Etag     *string `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -404,17 +413,22 @@ type metastoreTableIamBindingState struct {
 	// The role that should be applied. Only one
 	// `dataproc.MetastoreTableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role      *string `pulumi:"role"`
+	Role *string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId *string `pulumi:"serviceId"`
 	// Used to find the parent resource to bind the IAM policy to
 	Table *string `pulumi:"table"`
 }
 
 type MetastoreTableIamBindingState struct {
-	Condition  MetastoreTableIamBindingConditionPtrInput
+	Condition MetastoreTableIamBindingConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	DatabaseId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag     pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -434,7 +448,8 @@ type MetastoreTableIamBindingState struct {
 	// The role that should be applied. Only one
 	// `dataproc.MetastoreTableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role      pulumi.StringPtrInput
+	Role pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Table pulumi.StringPtrInput
@@ -445,9 +460,13 @@ func (MetastoreTableIamBindingState) ElementType() reflect.Type {
 }
 
 type metastoreTableIamBindingArgs struct {
-	Condition  *MetastoreTableIamBindingCondition `pulumi:"condition"`
-	DatabaseId string                             `pulumi:"databaseId"`
-	Location   *string                            `pulumi:"location"`
+	Condition *MetastoreTableIamBindingCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	DatabaseId string `pulumi:"databaseId"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
+	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -466,7 +485,8 @@ type metastoreTableIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `dataproc.MetastoreTableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role      string `pulumi:"role"`
+	Role string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId string `pulumi:"serviceId"`
 	// Used to find the parent resource to bind the IAM policy to
 	Table string `pulumi:"table"`
@@ -474,9 +494,13 @@ type metastoreTableIamBindingArgs struct {
 
 // The set of arguments for constructing a MetastoreTableIamBinding resource.
 type MetastoreTableIamBindingArgs struct {
-	Condition  MetastoreTableIamBindingConditionPtrInput
+	Condition MetastoreTableIamBindingConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	DatabaseId pulumi.StringInput
-	Location   pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
+	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -495,7 +519,8 @@ type MetastoreTableIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `dataproc.MetastoreTableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role      pulumi.StringInput
+	Role pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId pulumi.StringInput
 	// Used to find the parent resource to bind the IAM policy to
 	Table pulumi.StringInput
@@ -592,6 +617,7 @@ func (o MetastoreTableIamBindingOutput) Condition() MetastoreTableIamBindingCond
 	return o.ApplyT(func(v *MetastoreTableIamBinding) MetastoreTableIamBindingConditionPtrOutput { return v.Condition }).(MetastoreTableIamBindingConditionPtrOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o MetastoreTableIamBindingOutput) DatabaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreTableIamBinding) pulumi.StringOutput { return v.DatabaseId }).(pulumi.StringOutput)
 }
@@ -601,6 +627,9 @@ func (o MetastoreTableIamBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreTableIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o MetastoreTableIamBindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreTableIamBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -633,6 +662,7 @@ func (o MetastoreTableIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreTableIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o MetastoreTableIamBindingOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreTableIamBinding) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

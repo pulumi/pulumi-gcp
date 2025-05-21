@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigtable.LogicalViewArgs;
 import com.pulumi.gcp.bigtable.inputs.LogicalViewState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -77,6 +78,7 @@ import javax.annotation.Nullable;
  *         var logicalView = new LogicalView("logicalView", LogicalViewArgs.builder()
  *             .logicalViewId("bt-logical-view")
  *             .instance(instance.name())
+ *             .deletionProtection(false)
  *             .query("""
  * SELECT _key, CF
  * FROM ` + "`bt-table`" + `
@@ -118,6 +120,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigtable/logicalView:LogicalView")
 public class LogicalView extends com.pulumi.resources.CustomResource {
+    /**
+     * Set to true to make the logical view protected against deletion.
+     * 
+     */
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    /**
+     * @return Set to true to make the logical view protected against deletion.
+     * 
+     */
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
+    }
     /**
      * The name of the instance to create the logical view within.
      * 

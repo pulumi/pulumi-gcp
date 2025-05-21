@@ -96,6 +96,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class GetTunnelDestGroupIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("destGroup", required: true)]
         public string DestGroup { get; set; } = null!;
 
@@ -123,6 +126,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class GetTunnelDestGroupIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("destGroup", required: true)]
         public Input<string> DestGroup { get; set; } = null!;
 

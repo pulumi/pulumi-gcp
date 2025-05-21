@@ -12,6 +12,7 @@ import com.pulumi.gcp.iam.OauthClientCredentialArgs;
 import com.pulumi.gcp.iam.inputs.OauthClientCredentialState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -111,6 +112,7 @@ public class OauthClientCredential extends com.pulumi.resources.CustomResource {
      * leaked, you must delete and re-create the client credential. To learn
      * more, see [OAuth client and credential security risks and
      * mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Export(name="clientSecret", refs={String.class}, tree="[0]")
@@ -122,6 +124,7 @@ public class OauthClientCredential extends com.pulumi.resources.CustomResource {
      * leaked, you must delete and re-create the client credential. To learn
      * more, see [OAuth client and credential security risks and
      * mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Output<String> clientSecret() {
@@ -285,6 +288,9 @@ public class OauthClientCredential extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "clientSecret"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

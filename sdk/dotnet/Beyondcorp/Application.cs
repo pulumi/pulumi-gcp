@@ -10,11 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Beyondcorp
 {
     /// <summary>
+    /// &gt; **Warning:** `gcp.beyondcorp.Application` is deprecated. Use `google_beyondcorp_security_gateway_application` instead.
+    /// 
     /// Specifies application endpoint(s) to protect behind a Security Gateway.
     /// 
     /// ## Example Usage
     /// 
-    /// ### Beyondcorp Security Gateway Application Basic
+    /// ### Beyondcorp Application Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -52,7 +54,7 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
-    /// ### Beyondcorp Security Gateway Application Vpc
+    /// ### Beyondcorp Application Vpc
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

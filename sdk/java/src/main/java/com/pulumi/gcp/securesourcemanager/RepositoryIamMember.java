@@ -431,7 +431,6 @@ public class RepositoryIamMember extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The ID for the Repository.
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
@@ -439,8 +438,7 @@ public class RepositoryIamMember extends com.pulumi.resources.CustomResource {
     private Output<String> repositoryId;
 
     /**
-     * @return The ID for the Repository.
-     * Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> repositoryId() {

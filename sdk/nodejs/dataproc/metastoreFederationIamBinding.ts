@@ -211,6 +211,9 @@ export class MetastoreFederationIamBinding extends pulumi.CustomResource {
      * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly federationId!: pulumi.Output<string>;
     /**
      * The location where the metastore federation should reside.
@@ -298,6 +301,9 @@ export interface MetastoreFederationIamBindingState {
      * (Computed) The etag of the IAM policy.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     federationId?: pulumi.Input<string>;
     /**
      * The location where the metastore federation should reside.
@@ -338,6 +344,9 @@ export interface MetastoreFederationIamBindingState {
  */
 export interface MetastoreFederationIamBindingArgs {
     condition?: pulumi.Input<inputs.dataproc.MetastoreFederationIamBindingCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     federationId: pulumi.Input<string>;
     /**
      * The location where the metastore federation should reside.

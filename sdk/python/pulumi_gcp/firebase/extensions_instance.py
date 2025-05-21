@@ -345,13 +345,13 @@ class ExtensionsInstance(pulumi.CustomResource):
                     "IMG_BUCKET": images.name,
                 },
                 "system_params": {
-                    "firebaseextensions.v1beta.function/location": "",
+                    "firebaseextensions.v1beta.function/location": "us-central1",
                     "firebaseextensions.v1beta.function/maxInstances": "3000",
                     "firebaseextensions.v1beta.function/minInstances": "0",
                     "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
                 },
                 "allowed_event_types": ["firebase.extensions.storage-resize-images.v1.onCompletion"],
-                "eventarc_channel": "projects/my-project-name/locations//channels/firebase",
+                "eventarc_channel": "projects/my-project-name/locations/us-central1/channels/firebase",
             })
         ```
 
@@ -424,13 +424,13 @@ class ExtensionsInstance(pulumi.CustomResource):
                     "IMG_BUCKET": images.name,
                 },
                 "system_params": {
-                    "firebaseextensions.v1beta.function/location": "",
+                    "firebaseextensions.v1beta.function/location": "us-central1",
                     "firebaseextensions.v1beta.function/maxInstances": "3000",
                     "firebaseextensions.v1beta.function/minInstances": "0",
                     "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
                 },
                 "allowed_event_types": ["firebase.extensions.storage-resize-images.v1.onCompletion"],
-                "eventarc_channel": "projects/my-project-name/locations//channels/firebase",
+                "eventarc_channel": "projects/my-project-name/locations/us-central1/channels/firebase",
             })
         ```
 

@@ -54,6 +54,13 @@ public final class InstanceBootDisk {
      */
     private @Nullable String diskEncryptionServiceAccount;
     /**
+     * @return boolean field that determines whether to force attach the regional
+     * disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal
+     * disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    private @Nullable Boolean forceAttach;
+    /**
      * @return A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
      * 
      */
@@ -145,6 +152,15 @@ public final class InstanceBootDisk {
         return Optional.ofNullable(this.diskEncryptionServiceAccount);
     }
     /**
+     * @return boolean field that determines whether to force attach the regional
+     * disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal
+     * disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    public Optional<Boolean> forceAttach() {
+        return Optional.ofNullable(this.forceAttach);
+    }
+    /**
      * @return A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
      * 
      */
@@ -210,6 +226,7 @@ public final class InstanceBootDisk {
         private @Nullable String diskEncryptionKeyRsa;
         private @Nullable String diskEncryptionKeySha256;
         private @Nullable String diskEncryptionServiceAccount;
+        private @Nullable Boolean forceAttach;
         private @Nullable List<String> guestOsFeatures;
         private @Nullable InstanceBootDiskInitializeParams initializeParams;
         private @Nullable String interface_;
@@ -225,6 +242,7 @@ public final class InstanceBootDisk {
     	      this.diskEncryptionKeyRsa = defaults.diskEncryptionKeyRsa;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
     	      this.diskEncryptionServiceAccount = defaults.diskEncryptionServiceAccount;
+    	      this.forceAttach = defaults.forceAttach;
     	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.initializeParams = defaults.initializeParams;
     	      this.interface_ = defaults.interface_;
@@ -267,6 +285,12 @@ public final class InstanceBootDisk {
         public Builder diskEncryptionServiceAccount(@Nullable String diskEncryptionServiceAccount) {
 
             this.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forceAttach(@Nullable Boolean forceAttach) {
+
+            this.forceAttach = forceAttach;
             return this;
         }
         @CustomType.Setter
@@ -316,6 +340,7 @@ public final class InstanceBootDisk {
             _resultValue.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             _resultValue.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
+            _resultValue.forceAttach = forceAttach;
             _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.initializeParams = initializeParams;
             _resultValue.interface_ = interface_;

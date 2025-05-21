@@ -121,6 +121,7 @@ def get_entry_type_iam_policy(entry_type_id: Optional[builtins.str] = None,
     ```
 
 
+    :param builtins.str entry_type_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The location where entry type will be created in.
            Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -161,6 +162,7 @@ def get_entry_type_iam_policy_output(entry_type_id: Optional[pulumi.Input[builti
     ```
 
 
+    :param builtins.str entry_type_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The location where entry type will be created in.
            Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

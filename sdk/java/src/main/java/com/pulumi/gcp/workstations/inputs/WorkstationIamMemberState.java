@@ -130,23 +130,51 @@ public final class WorkstationIamMemberState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="workstationClusterId")
     private @Nullable Output<String> workstationClusterId;
 
+    /**
+     * @return The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> workstationClusterId() {
         return Optional.ofNullable(this.workstationClusterId);
     }
 
+    /**
+     * The ID of the parent workstation cluster config.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="workstationConfigId")
     private @Nullable Output<String> workstationConfigId;
 
+    /**
+     * @return The ID of the parent workstation cluster config.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> workstationConfigId() {
         return Optional.ofNullable(this.workstationConfigId);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="workstationId")
     private @Nullable Output<String> workstationId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> workstationId() {
         return Optional.ofNullable(this.workstationId);
     }
@@ -329,29 +357,69 @@ public final class WorkstationIamMemberState extends com.pulumi.resources.Resour
             return role(Output.of(role));
         }
 
+        /**
+         * @param workstationClusterId The ID of the parent workstation cluster.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder workstationClusterId(@Nullable Output<String> workstationClusterId) {
             $.workstationClusterId = workstationClusterId;
             return this;
         }
 
+        /**
+         * @param workstationClusterId The ID of the parent workstation cluster.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder workstationClusterId(String workstationClusterId) {
             return workstationClusterId(Output.of(workstationClusterId));
         }
 
+        /**
+         * @param workstationConfigId The ID of the parent workstation cluster config.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder workstationConfigId(@Nullable Output<String> workstationConfigId) {
             $.workstationConfigId = workstationConfigId;
             return this;
         }
 
+        /**
+         * @param workstationConfigId The ID of the parent workstation cluster config.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder workstationConfigId(String workstationConfigId) {
             return workstationConfigId(Output.of(workstationConfigId));
         }
 
+        /**
+         * @param workstationId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder workstationId(@Nullable Output<String> workstationId) {
             $.workstationId = workstationId;
             return this;
         }
 
+        /**
+         * @param workstationId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder workstationId(String workstationId) {
             return workstationId(Output.of(workstationId));
         }

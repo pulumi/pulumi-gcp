@@ -16,14 +16,14 @@ public final class GetDataExchangeIamPolicyPlainArgs extends com.pulumi.resource
     public static final GetDataExchangeIamPolicyPlainArgs Empty = new GetDataExchangeIamPolicyPlainArgs();
 
     /**
-     * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="dataExchangeId", required=true)
     private String dataExchangeId;
 
     /**
-     * @return The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public String dataExchangeId() {
@@ -95,7 +95,7 @@ public final class GetDataExchangeIamPolicyPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param dataExchangeId The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+         * @param dataExchangeId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

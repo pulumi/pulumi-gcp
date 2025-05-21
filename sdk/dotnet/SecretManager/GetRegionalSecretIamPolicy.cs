@@ -112,6 +112,9 @@ namespace Pulumi.Gcp.SecretManager
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("secretId", required: true)]
         public string SecretId { get; set; } = null!;
 
@@ -139,6 +142,9 @@ namespace Pulumi.Gcp.SecretManager
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("secretId", required: true)]
         public Input<string> SecretId { get; set; } = null!;
 

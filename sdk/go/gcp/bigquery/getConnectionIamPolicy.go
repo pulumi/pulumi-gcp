@@ -52,7 +52,6 @@ func LookupConnectionIamPolicy(ctx *pulumi.Context, args *LookupConnectionIamPol
 
 // A collection of arguments for invoking getConnectionIamPolicy.
 type LookupConnectionIamPolicyArgs struct {
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId string `pulumi:"connectionId"`
 	// The geographic location where the connection should reside.
@@ -95,7 +94,6 @@ func LookupConnectionIamPolicyOutput(ctx *pulumi.Context, args LookupConnectionI
 
 // A collection of arguments for invoking getConnectionIamPolicy.
 type LookupConnectionIamPolicyOutputArgs struct {
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
 	// The geographic location where the connection should reside.

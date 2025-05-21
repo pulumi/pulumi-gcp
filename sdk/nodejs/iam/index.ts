@@ -35,6 +35,11 @@ export const getWorkloadIdentityPool: typeof import("./getWorkloadIdentityPool")
 export const getWorkloadIdentityPoolOutput: typeof import("./getWorkloadIdentityPool").getWorkloadIdentityPoolOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkloadIdentityPool","getWorkloadIdentityPoolOutput"], () => require("./getWorkloadIdentityPool"));
 
+export { GetWorkloadIdentityPoolIamPolicyArgs, GetWorkloadIdentityPoolIamPolicyResult, GetWorkloadIdentityPoolIamPolicyOutputArgs } from "./getWorkloadIdentityPoolIamPolicy";
+export const getWorkloadIdentityPoolIamPolicy: typeof import("./getWorkloadIdentityPoolIamPolicy").getWorkloadIdentityPoolIamPolicy = null as any;
+export const getWorkloadIdentityPoolIamPolicyOutput: typeof import("./getWorkloadIdentityPoolIamPolicy").getWorkloadIdentityPoolIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkloadIdentityPoolIamPolicy","getWorkloadIdentityPoolIamPolicyOutput"], () => require("./getWorkloadIdentityPoolIamPolicy"));
+
 export { GetWorkloadIdentityPoolProviderArgs, GetWorkloadIdentityPoolProviderResult, GetWorkloadIdentityPoolProviderOutputArgs } from "./getWorkloadIdentityPoolProvider";
 export const getWorkloadIdentityPoolProvider: typeof import("./getWorkloadIdentityPoolProvider").getWorkloadIdentityPoolProvider = null as any;
 export const getWorkloadIdentityPoolProviderOutput: typeof import("./getWorkloadIdentityPoolProvider").getWorkloadIdentityPoolProviderOutput = null as any;
@@ -80,6 +85,21 @@ export type WorkloadIdentityPool = import("./workloadIdentityPool").WorkloadIden
 export const WorkloadIdentityPool: typeof import("./workloadIdentityPool").WorkloadIdentityPool = null as any;
 utilities.lazyLoad(exports, ["WorkloadIdentityPool"], () => require("./workloadIdentityPool"));
 
+export { WorkloadIdentityPoolIamBindingArgs, WorkloadIdentityPoolIamBindingState } from "./workloadIdentityPoolIamBinding";
+export type WorkloadIdentityPoolIamBinding = import("./workloadIdentityPoolIamBinding").WorkloadIdentityPoolIamBinding;
+export const WorkloadIdentityPoolIamBinding: typeof import("./workloadIdentityPoolIamBinding").WorkloadIdentityPoolIamBinding = null as any;
+utilities.lazyLoad(exports, ["WorkloadIdentityPoolIamBinding"], () => require("./workloadIdentityPoolIamBinding"));
+
+export { WorkloadIdentityPoolIamMemberArgs, WorkloadIdentityPoolIamMemberState } from "./workloadIdentityPoolIamMember";
+export type WorkloadIdentityPoolIamMember = import("./workloadIdentityPoolIamMember").WorkloadIdentityPoolIamMember;
+export const WorkloadIdentityPoolIamMember: typeof import("./workloadIdentityPoolIamMember").WorkloadIdentityPoolIamMember = null as any;
+utilities.lazyLoad(exports, ["WorkloadIdentityPoolIamMember"], () => require("./workloadIdentityPoolIamMember"));
+
+export { WorkloadIdentityPoolIamPolicyArgs, WorkloadIdentityPoolIamPolicyState } from "./workloadIdentityPoolIamPolicy";
+export type WorkloadIdentityPoolIamPolicy = import("./workloadIdentityPoolIamPolicy").WorkloadIdentityPoolIamPolicy;
+export const WorkloadIdentityPoolIamPolicy: typeof import("./workloadIdentityPoolIamPolicy").WorkloadIdentityPoolIamPolicy = null as any;
+utilities.lazyLoad(exports, ["WorkloadIdentityPoolIamPolicy"], () => require("./workloadIdentityPoolIamPolicy"));
+
 export { WorkloadIdentityPoolProviderArgs, WorkloadIdentityPoolProviderState } from "./workloadIdentityPoolProvider";
 export type WorkloadIdentityPoolProvider = import("./workloadIdentityPoolProvider").WorkloadIdentityPoolProvider;
 export const WorkloadIdentityPoolProvider: typeof import("./workloadIdentityPoolProvider").WorkloadIdentityPoolProvider = null as any;
@@ -112,6 +132,12 @@ const _module = {
                 return new WorkforcePoolProvider(name, <any>undefined, { urn })
             case "gcp:iam/workloadIdentityPool:WorkloadIdentityPool":
                 return new WorkloadIdentityPool(name, <any>undefined, { urn })
+            case "gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding":
+                return new WorkloadIdentityPoolIamBinding(name, <any>undefined, { urn })
+            case "gcp:iam/workloadIdentityPoolIamMember:WorkloadIdentityPoolIamMember":
+                return new WorkloadIdentityPoolIamMember(name, <any>undefined, { urn })
+            case "gcp:iam/workloadIdentityPoolIamPolicy:WorkloadIdentityPoolIamPolicy":
+                return new WorkloadIdentityPoolIamPolicy(name, <any>undefined, { urn })
             case "gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider":
                 return new WorkloadIdentityPoolProvider(name, <any>undefined, { urn })
             default:
@@ -130,4 +156,7 @@ pulumi.runtime.registerResourceModule("gcp", "iam/projectsPolicyBinding", _modul
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolProvider", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPool", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPoolIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPoolIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPoolIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPoolProvider", _module)

@@ -126,9 +126,17 @@ public final class RegionalSecretIamMemberArgs extends com.pulumi.resources.Reso
         return this.role;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="secretId", required=true)
     private Output<String> secretId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> secretId() {
         return this.secretId;
     }
@@ -301,11 +309,23 @@ public final class RegionalSecretIamMemberArgs extends com.pulumi.resources.Reso
             return role(Output.of(role));
         }
 
+        /**
+         * @param secretId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretId(Output<String> secretId) {
             $.secretId = secretId;
             return this;
         }
 
+        /**
+         * @param secretId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretId(String secretId) {
             return secretId(Output.of(secretId));
         }

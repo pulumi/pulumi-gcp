@@ -47,6 +47,7 @@ class TaskIamMemberArgs:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] task_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] location: The location in which the task will be created in.
                Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -117,6 +118,9 @@ class TaskIamMemberArgs:
     @property
     @pulumi.getter(name="taskId")
     def task_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "task_id")
 
     @task_id.setter
@@ -197,6 +201,7 @@ class _TaskIamMemberState:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] task_id: Used to find the parent resource to bind the IAM policy to
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -316,6 +321,9 @@ class _TaskIamMemberState:
     @property
     @pulumi.getter(name="taskId")
     def task_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "task_id")
 
     @task_id.setter
@@ -529,6 +537,7 @@ class TaskIamMember(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] task_id: Used to find the parent resource to bind the IAM policy to
         """
         ...
     @overload
@@ -799,6 +808,7 @@ class TaskIamMember(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] task_id: Used to find the parent resource to bind the IAM policy to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -887,5 +897,8 @@ class TaskIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter(name="taskId")
     def task_id(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "task_id")
 

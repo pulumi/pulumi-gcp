@@ -17,9 +17,17 @@ public final class RepositoryGroupIamBindingState extends com.pulumi.resources.R
 
     public static final RepositoryGroupIamBindingState Empty = new RepositoryGroupIamBindingState();
 
+    /**
+     * Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="codeRepositoryIndex")
     private @Nullable Output<String> codeRepositoryIndex;
 
+    /**
+     * @return Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> codeRepositoryIndex() {
         return Optional.ofNullable(this.codeRepositoryIndex);
     }
@@ -117,9 +125,17 @@ public final class RepositoryGroupIamBindingState extends com.pulumi.resources.R
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="repositoryGroupId")
     private @Nullable Output<String> repositoryGroupId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> repositoryGroupId() {
         return Optional.ofNullable(this.repositoryGroupId);
     }
@@ -174,11 +190,23 @@ public final class RepositoryGroupIamBindingState extends com.pulumi.resources.R
             $ = new RepositoryGroupIamBindingState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param codeRepositoryIndex Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder codeRepositoryIndex(@Nullable Output<String> codeRepositoryIndex) {
             $.codeRepositoryIndex = codeRepositoryIndex;
             return this;
         }
 
+        /**
+         * @param codeRepositoryIndex Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder codeRepositoryIndex(String codeRepositoryIndex) {
             return codeRepositoryIndex(Output.of(codeRepositoryIndex));
         }
@@ -322,11 +350,23 @@ public final class RepositoryGroupIamBindingState extends com.pulumi.resources.R
             return project(Output.of(project));
         }
 
+        /**
+         * @param repositoryGroupId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder repositoryGroupId(@Nullable Output<String> repositoryGroupId) {
             $.repositoryGroupId = repositoryGroupId;
             return this;
         }
 
+        /**
+         * @param repositoryGroupId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder repositoryGroupId(String repositoryGroupId) {
             return repositoryGroupId(Output.of(repositoryGroupId));
         }

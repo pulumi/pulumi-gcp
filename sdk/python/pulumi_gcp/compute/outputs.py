@@ -8662,6 +8662,8 @@ class InstanceAttachedDisk(dict):
             suggest = "disk_encryption_key_sha256"
         elif key == "diskEncryptionServiceAccount":
             suggest = "disk_encryption_service_account"
+        elif key == "forceAttach":
+            suggest = "force_attach"
         elif key == "kmsKeySelfLink":
             suggest = "kms_key_self_link"
 
@@ -8683,6 +8685,7 @@ class InstanceAttachedDisk(dict):
                  disk_encryption_key_rsa: Optional[builtins.str] = None,
                  disk_encryption_key_sha256: Optional[builtins.str] = None,
                  disk_encryption_service_account: Optional[builtins.str] = None,
+                 force_attach: Optional[builtins.bool] = None,
                  kms_key_self_link: Optional[builtins.str] = None,
                  mode: Optional[builtins.str] = None):
         """
@@ -8701,6 +8704,7 @@ class InstanceAttachedDisk(dict):
                encoded SHA-256 hash of the [customer-supplied encryption key]
                (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         :param builtins.str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param builtins.bool force_attach: Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         :param builtins.str kms_key_self_link: The self_link of the encryption key that is
                stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
                may be set.
@@ -8720,6 +8724,8 @@ class InstanceAttachedDisk(dict):
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
         if disk_encryption_service_account is not None:
             pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
+        if force_attach is not None:
+            pulumi.set(__self__, "force_attach", force_attach)
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if mode is not None:
@@ -8783,6 +8789,14 @@ class InstanceAttachedDisk(dict):
         return pulumi.get(self, "disk_encryption_service_account")
 
     @property
+    @pulumi.getter(name="forceAttach")
+    def force_attach(self) -> Optional[builtins.bool]:
+        """
+        Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        """
+        return pulumi.get(self, "force_attach")
+
+    @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[builtins.str]:
         """
@@ -8821,6 +8835,8 @@ class InstanceBootDisk(dict):
             suggest = "disk_encryption_key_sha256"
         elif key == "diskEncryptionServiceAccount":
             suggest = "disk_encryption_service_account"
+        elif key == "forceAttach":
+            suggest = "force_attach"
         elif key == "guestOsFeatures":
             suggest = "guest_os_features"
         elif key == "initializeParams":
@@ -8846,6 +8862,7 @@ class InstanceBootDisk(dict):
                  disk_encryption_key_rsa: Optional[builtins.str] = None,
                  disk_encryption_key_sha256: Optional[builtins.str] = None,
                  disk_encryption_service_account: Optional[builtins.str] = None,
+                 force_attach: Optional[builtins.bool] = None,
                  guest_os_features: Optional[Sequence[builtins.str]] = None,
                  initialize_params: Optional['outputs.InstanceBootDiskInitializeParams'] = None,
                  interface: Optional[builtins.str] = None,
@@ -8868,6 +8885,9 @@ class InstanceBootDisk(dict):
                encoded SHA-256 hash of the [customer-supplied encryption key]
                (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         :param builtins.str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param builtins.bool force_attach: boolean field that determines whether to force attach the regional
+               disk even if it's currently attached to another instance. If you try to force attach a zonal
+               disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         :param Sequence[builtins.str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
         :param 'InstanceBootDiskInitializeParamsArgs' initialize_params: Parameters for a new disk that will be created
                alongside the new instance. Either `initialize_params` or `source` must be set.
@@ -8895,6 +8915,8 @@ class InstanceBootDisk(dict):
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
         if disk_encryption_service_account is not None:
             pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
+        if force_attach is not None:
+            pulumi.set(__self__, "force_attach", force_attach)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if initialize_params is not None:
@@ -8964,6 +8986,16 @@ class InstanceBootDisk(dict):
         The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
         """
         return pulumi.get(self, "disk_encryption_service_account")
+
+    @property
+    @pulumi.getter(name="forceAttach")
+    def force_attach(self) -> Optional[builtins.bool]:
+        """
+        boolean field that determines whether to force attach the regional
+        disk even if it's currently attached to another instance. If you try to force attach a zonal
+        disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        """
+        return pulumi.get(self, "force_attach")
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -9659,6 +9691,8 @@ class InstanceFromMachineImageAttachedDisk(dict):
             suggest = "disk_encryption_key_sha256"
         elif key == "diskEncryptionServiceAccount":
             suggest = "disk_encryption_service_account"
+        elif key == "forceAttach":
+            suggest = "force_attach"
         elif key == "kmsKeySelfLink":
             suggest = "kms_key_self_link"
 
@@ -9680,6 +9714,7 @@ class InstanceFromMachineImageAttachedDisk(dict):
                  disk_encryption_key_rsa: Optional[builtins.str] = None,
                  disk_encryption_key_sha256: Optional[builtins.str] = None,
                  disk_encryption_service_account: Optional[builtins.str] = None,
+                 force_attach: Optional[builtins.bool] = None,
                  kms_key_self_link: Optional[builtins.str] = None,
                  mode: Optional[builtins.str] = None):
         """
@@ -9689,6 +9724,7 @@ class InstanceFromMachineImageAttachedDisk(dict):
         :param builtins.str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param builtins.str disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         :param builtins.str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        :param builtins.bool force_attach: Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         :param builtins.str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param builtins.str mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
         """
@@ -9703,6 +9739,8 @@ class InstanceFromMachineImageAttachedDisk(dict):
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
         if disk_encryption_service_account is not None:
             pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
+        if force_attach is not None:
+            pulumi.set(__self__, "force_attach", force_attach)
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if mode is not None:
@@ -9757,6 +9795,14 @@ class InstanceFromMachineImageAttachedDisk(dict):
         return pulumi.get(self, "disk_encryption_service_account")
 
     @property
+    @pulumi.getter(name="forceAttach")
+    def force_attach(self) -> Optional[builtins.bool]:
+        """
+        Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        """
+        return pulumi.get(self, "force_attach")
+
+    @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[builtins.str]:
         """
@@ -9790,6 +9836,8 @@ class InstanceFromMachineImageBootDisk(dict):
             suggest = "disk_encryption_key_sha256"
         elif key == "diskEncryptionServiceAccount":
             suggest = "disk_encryption_service_account"
+        elif key == "forceAttach":
+            suggest = "force_attach"
         elif key == "guestOsFeatures":
             suggest = "guest_os_features"
         elif key == "initializeParams":
@@ -9815,6 +9863,7 @@ class InstanceFromMachineImageBootDisk(dict):
                  disk_encryption_key_rsa: Optional[builtins.str] = None,
                  disk_encryption_key_sha256: Optional[builtins.str] = None,
                  disk_encryption_service_account: Optional[builtins.str] = None,
+                 force_attach: Optional[builtins.bool] = None,
                  guest_os_features: Optional[Sequence[builtins.str]] = None,
                  initialize_params: Optional['outputs.InstanceFromMachineImageBootDiskInitializeParams'] = None,
                  interface: Optional[builtins.str] = None,
@@ -9828,6 +9877,7 @@ class InstanceFromMachineImageBootDisk(dict):
         :param builtins.str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         :param builtins.str disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         :param builtins.str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        :param builtins.bool force_attach: Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         :param Sequence[builtins.str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
         :param 'InstanceFromMachineImageBootDiskInitializeParamsArgs' initialize_params: Parameters with which a disk was created alongside the instance.
         :param builtins.str interface: The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
@@ -9847,6 +9897,8 @@ class InstanceFromMachineImageBootDisk(dict):
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
         if disk_encryption_service_account is not None:
             pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
+        if force_attach is not None:
+            pulumi.set(__self__, "force_attach", force_attach)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if initialize_params is not None:
@@ -9907,6 +9959,14 @@ class InstanceFromMachineImageBootDisk(dict):
         The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
         """
         return pulumi.get(self, "disk_encryption_service_account")
+
+    @property
+    @pulumi.getter(name="forceAttach")
+    def force_attach(self) -> Optional[builtins.bool]:
+        """
+        Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        """
+        return pulumi.get(self, "force_attach")
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -11916,6 +11976,8 @@ class InstanceFromTemplateAttachedDisk(dict):
             suggest = "disk_encryption_key_sha256"
         elif key == "diskEncryptionServiceAccount":
             suggest = "disk_encryption_service_account"
+        elif key == "forceAttach":
+            suggest = "force_attach"
         elif key == "kmsKeySelfLink":
             suggest = "kms_key_self_link"
 
@@ -11937,6 +11999,7 @@ class InstanceFromTemplateAttachedDisk(dict):
                  disk_encryption_key_rsa: Optional[builtins.str] = None,
                  disk_encryption_key_sha256: Optional[builtins.str] = None,
                  disk_encryption_service_account: Optional[builtins.str] = None,
+                 force_attach: Optional[builtins.bool] = None,
                  kms_key_self_link: Optional[builtins.str] = None,
                  mode: Optional[builtins.str] = None):
         """
@@ -11946,6 +12009,7 @@ class InstanceFromTemplateAttachedDisk(dict):
         :param builtins.str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param builtins.str disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         :param builtins.str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        :param builtins.bool force_attach: Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         :param builtins.str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param builtins.str mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
         """
@@ -11960,6 +12024,8 @@ class InstanceFromTemplateAttachedDisk(dict):
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
         if disk_encryption_service_account is not None:
             pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
+        if force_attach is not None:
+            pulumi.set(__self__, "force_attach", force_attach)
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if mode is not None:
@@ -12014,6 +12080,14 @@ class InstanceFromTemplateAttachedDisk(dict):
         return pulumi.get(self, "disk_encryption_service_account")
 
     @property
+    @pulumi.getter(name="forceAttach")
+    def force_attach(self) -> Optional[builtins.bool]:
+        """
+        Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        """
+        return pulumi.get(self, "force_attach")
+
+    @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[builtins.str]:
         """
@@ -12047,6 +12121,8 @@ class InstanceFromTemplateBootDisk(dict):
             suggest = "disk_encryption_key_sha256"
         elif key == "diskEncryptionServiceAccount":
             suggest = "disk_encryption_service_account"
+        elif key == "forceAttach":
+            suggest = "force_attach"
         elif key == "guestOsFeatures":
             suggest = "guest_os_features"
         elif key == "initializeParams":
@@ -12072,6 +12148,7 @@ class InstanceFromTemplateBootDisk(dict):
                  disk_encryption_key_rsa: Optional[builtins.str] = None,
                  disk_encryption_key_sha256: Optional[builtins.str] = None,
                  disk_encryption_service_account: Optional[builtins.str] = None,
+                 force_attach: Optional[builtins.bool] = None,
                  guest_os_features: Optional[Sequence[builtins.str]] = None,
                  initialize_params: Optional['outputs.InstanceFromTemplateBootDiskInitializeParams'] = None,
                  interface: Optional[builtins.str] = None,
@@ -12085,6 +12162,7 @@ class InstanceFromTemplateBootDisk(dict):
         :param builtins.str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         :param builtins.str disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         :param builtins.str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        :param builtins.bool force_attach: Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         :param Sequence[builtins.str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
         :param 'InstanceFromTemplateBootDiskInitializeParamsArgs' initialize_params: Parameters with which a disk was created alongside the instance.
         :param builtins.str interface: The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
@@ -12104,6 +12182,8 @@ class InstanceFromTemplateBootDisk(dict):
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
         if disk_encryption_service_account is not None:
             pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
+        if force_attach is not None:
+            pulumi.set(__self__, "force_attach", force_attach)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if initialize_params is not None:
@@ -12164,6 +12244,14 @@ class InstanceFromTemplateBootDisk(dict):
         The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
         """
         return pulumi.get(self, "disk_encryption_service_account")
+
+    @property
+    @pulumi.getter(name="forceAttach")
+    def force_attach(self) -> Optional[builtins.bool]:
+        """
+        Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        """
+        return pulumi.get(self, "force_attach")
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -58387,6 +58475,7 @@ class GetInstanceAttachedDiskResult(dict):
                  disk_encryption_key_rsa: builtins.str,
                  disk_encryption_key_sha256: builtins.str,
                  disk_encryption_service_account: builtins.str,
+                 force_attach: builtins.bool,
                  kms_key_self_link: builtins.str,
                  mode: builtins.str,
                  source: builtins.str):
@@ -58399,6 +58488,7 @@ class GetInstanceAttachedDiskResult(dict):
                encoded SHA-256 hash of the [customer-supplied encryption key]
                (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
         :param builtins.str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        :param builtins.bool force_attach: Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         :param builtins.str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param builtins.str mode: Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
         :param builtins.str source: The self_link of the disk attached to this instance.
@@ -58408,6 +58498,7 @@ class GetInstanceAttachedDiskResult(dict):
         pulumi.set(__self__, "disk_encryption_key_rsa", disk_encryption_key_rsa)
         pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
         pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
+        pulumi.set(__self__, "force_attach", force_attach)
         pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "source", source)
@@ -58456,6 +58547,14 @@ class GetInstanceAttachedDiskResult(dict):
         return pulumi.get(self, "disk_encryption_service_account")
 
     @property
+    @pulumi.getter(name="forceAttach")
+    def force_attach(self) -> builtins.bool:
+        """
+        Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        """
+        return pulumi.get(self, "force_attach")
+
+    @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> builtins.str:
         """
@@ -58489,6 +58588,7 @@ class GetInstanceBootDiskResult(dict):
                  disk_encryption_key_rsa: builtins.str,
                  disk_encryption_key_sha256: builtins.str,
                  disk_encryption_service_account: builtins.str,
+                 force_attach: builtins.bool,
                  guest_os_features: Sequence[builtins.str],
                  initialize_params: Sequence['outputs.GetInstanceBootDiskInitializeParamResult'],
                  interface: builtins.str,
@@ -58505,6 +58605,7 @@ class GetInstanceBootDiskResult(dict):
                encoded SHA-256 hash of the [customer-supplied encryption key]
                (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
         :param builtins.str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        :param builtins.bool force_attach: Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         :param Sequence[builtins.str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
         :param Sequence['GetInstanceBootDiskInitializeParamArgs'] initialize_params: Parameters with which a disk was created alongside the instance.
                Structure is documented below.
@@ -58519,6 +58620,7 @@ class GetInstanceBootDiskResult(dict):
         pulumi.set(__self__, "disk_encryption_key_rsa", disk_encryption_key_rsa)
         pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
         pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
+        pulumi.set(__self__, "force_attach", force_attach)
         pulumi.set(__self__, "guest_os_features", guest_os_features)
         pulumi.set(__self__, "initialize_params", initialize_params)
         pulumi.set(__self__, "interface", interface)
@@ -58576,6 +58678,14 @@ class GetInstanceBootDiskResult(dict):
         The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
         """
         return pulumi.get(self, "disk_encryption_service_account")
+
+    @property
+    @pulumi.getter(name="forceAttach")
+    def force_attach(self) -> builtins.bool:
+        """
+        Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        """
+        return pulumi.get(self, "force_attach")
 
     @property
     @pulumi.getter(name="guestOsFeatures")

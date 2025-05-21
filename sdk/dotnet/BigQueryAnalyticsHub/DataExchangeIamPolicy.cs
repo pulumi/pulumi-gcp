@@ -251,7 +251,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     public partial class DataExchangeIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Output("dataExchangeId")]
         public Output<string> DataExchangeId { get; private set; } = null!;
@@ -332,7 +332,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     public sealed class DataExchangeIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("dataExchangeId", required: true)]
         public Input<string> DataExchangeId { get; set; } = null!;
@@ -369,7 +369,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     public sealed class DataExchangeIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("dataExchangeId")]
         public Input<string>? DataExchangeId { get; set; }

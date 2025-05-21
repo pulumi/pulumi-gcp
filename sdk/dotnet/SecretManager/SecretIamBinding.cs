@@ -482,6 +482,9 @@ namespace Pulumi.Gcp.SecretManager
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("secretId")]
         public Output<string> SecretId { get; private set; } = null!;
 
@@ -575,6 +578,9 @@ namespace Pulumi.Gcp.SecretManager
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("secretId", required: true)]
         public Input<string> SecretId { get; set; } = null!;
 
@@ -636,6 +642,9 @@ namespace Pulumi.Gcp.SecretManager
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("secretId")]
         public Input<string>? SecretId { get; set; }
 

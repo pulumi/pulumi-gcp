@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  * const logicalView = new gcp.bigtable.LogicalView("logical_view", {
  *     logicalViewId: "bt-logical-view",
  *     instance: instance.name,
+ *     deletionProtection: false,
  *     query: `SELECT _key, CF
  * FROM \` + "\`bt-table\`" + \`
  * `,
@@ -100,6 +101,10 @@ export class LogicalView extends pulumi.CustomResource {
     }
 
     /**
+     * Set to true to make the logical view protected against deletion.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * The name of the instance to create the logical view within.
      */
     public readonly instance!: pulumi.Output<string | undefined>;
@@ -137,6 +142,7 @@ export class LogicalView extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogicalViewState | undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["instance"] = state ? state.instance : undefined;
             resourceInputs["logicalViewId"] = state ? state.logicalViewId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -150,6 +156,7 @@ export class LogicalView extends pulumi.CustomResource {
             if ((!args || args.query === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'query'");
             }
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["instance"] = args ? args.instance : undefined;
             resourceInputs["logicalViewId"] = args ? args.logicalViewId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -165,6 +172,10 @@ export class LogicalView extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LogicalView resources.
  */
 export interface LogicalViewState {
+    /**
+     * Set to true to make the logical view protected against deletion.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The name of the instance to create the logical view within.
      */
@@ -195,6 +206,10 @@ export interface LogicalViewState {
  * The set of arguments for constructing a LogicalView resource.
  */
 export interface LogicalViewArgs {
+    /**
+     * Set to true to make the logical view protected against deletion.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The name of the instance to create the logical view within.
      */

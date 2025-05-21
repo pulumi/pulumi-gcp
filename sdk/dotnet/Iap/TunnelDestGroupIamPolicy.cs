@@ -454,6 +454,9 @@ namespace Pulumi.Gcp.Iap
     [GcpResourceType("gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy")]
     public partial class TunnelDestGroupIamPolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("destGroup")]
         public Output<string> DestGroup { get; private set; } = null!;
 
@@ -532,6 +535,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class TunnelDestGroupIamPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("destGroup", required: true)]
         public Input<string> DestGroup { get; set; } = null!;
 
@@ -566,6 +572,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class TunnelDestGroupIamPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("destGroup")]
         public Input<string>? DestGroup { get; set; }
 

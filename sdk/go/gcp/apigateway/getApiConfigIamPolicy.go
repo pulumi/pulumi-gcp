@@ -51,7 +51,8 @@ func LookupApiConfigIamPolicy(ctx *pulumi.Context, args *LookupApiConfigIamPolic
 type LookupApiConfigIamPolicyArgs struct {
 	// The API to attach the config to.
 	// Used to find the parent resource to bind the IAM policy to
-	Api       string `pulumi:"api"`
+	Api string `pulumi:"api"`
+	// Used to find the parent resource to bind the IAM policy to
 	ApiConfig string `pulumi:"apiConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -85,7 +86,8 @@ func LookupApiConfigIamPolicyOutput(ctx *pulumi.Context, args LookupApiConfigIam
 type LookupApiConfigIamPolicyOutputArgs struct {
 	// The API to attach the config to.
 	// Used to find the parent resource to bind the IAM policy to
-	Api       pulumi.StringInput `pulumi:"api"`
+	Api pulumi.StringInput `pulumi:"api"`
+	// Used to find the parent resource to bind the IAM policy to
 	ApiConfig pulumi.StringInput `pulumi:"apiConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

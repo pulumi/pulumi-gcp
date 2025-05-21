@@ -546,7 +546,8 @@ type SecurityGatewayIamPolicy struct {
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
 	SecurityGatewayId pulumi.StringOutput `pulumi:"securityGatewayId"`
 }
 
@@ -597,7 +598,8 @@ type securityGatewayIamPolicyState struct {
 	PolicyData *string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
 	SecurityGatewayId *string `pulumi:"securityGatewayId"`
 }
 
@@ -613,7 +615,8 @@ type SecurityGatewayIamPolicyState struct {
 	PolicyData pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	SecurityGatewayId pulumi.StringPtrInput
 }
 
@@ -631,8 +634,9 @@ type securityGatewayIamPolicyArgs struct {
 	PolicyData string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           *string `pulumi:"project"`
-	SecurityGatewayId string  `pulumi:"securityGatewayId"`
+	Project *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
+	SecurityGatewayId string `pulumi:"securityGatewayId"`
 }
 
 // The set of arguments for constructing a SecurityGatewayIamPolicy resource.
@@ -646,7 +650,8 @@ type SecurityGatewayIamPolicyArgs struct {
 	PolicyData pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	SecurityGatewayId pulumi.StringInput
 }
 
@@ -761,6 +766,7 @@ func (o SecurityGatewayIamPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGatewayIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o SecurityGatewayIamPolicyOutput) SecurityGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGatewayIamPolicy) pulumi.StringOutput { return v.SecurityGatewayId }).(pulumi.StringOutput)
 }

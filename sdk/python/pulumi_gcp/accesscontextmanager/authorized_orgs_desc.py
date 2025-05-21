@@ -405,7 +405,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_access = gcp.accesscontextmanager.AccessPolicy("test-access",
-            parent="organizations/",
+            parent="organizations/123456789",
             title="my policy")
         authorized_orgs_desc = gcp.accesscontextmanager.AuthorizedOrgsDesc("authorized-orgs-desc",
             parent=test_access.name.apply(lambda name: f"accessPolicies/{name}"),
@@ -501,7 +501,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_access = gcp.accesscontextmanager.AccessPolicy("test-access",
-            parent="organizations/",
+            parent="organizations/123456789",
             title="my policy")
         authorized_orgs_desc = gcp.accesscontextmanager.AuthorizedOrgsDesc("authorized-orgs-desc",
             parent=test_access.name.apply(lambda name: f"accessPolicies/{name}"),

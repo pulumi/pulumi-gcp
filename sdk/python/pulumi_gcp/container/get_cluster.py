@@ -28,7 +28,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, allow_net_admin=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_protection=None, description=None, disable_l4_lb_firewall_reconciliation=None, dns_configs=None, effective_labels=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_autoscalings=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, allow_net_admin=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_protection=None, description=None, disable_l4_lb_firewall_reconciliation=None, dns_configs=None, effective_labels=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, id=None, identity_service_configs=None, in_transit_encryption_config=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_autoscalings=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -137,6 +137,9 @@ class GetClusterResult:
         if identity_service_configs and not isinstance(identity_service_configs, list):
             raise TypeError("Expected argument 'identity_service_configs' to be a list")
         pulumi.set(__self__, "identity_service_configs", identity_service_configs)
+        if in_transit_encryption_config and not isinstance(in_transit_encryption_config, str):
+            raise TypeError("Expected argument 'in_transit_encryption_config' to be a str")
+        pulumi.set(__self__, "in_transit_encryption_config", in_transit_encryption_config)
         if initial_node_count and not isinstance(initial_node_count, int):
             raise TypeError("Expected argument 'initial_node_count' to be a int")
         pulumi.set(__self__, "initial_node_count", initial_node_count)
@@ -469,6 +472,11 @@ class GetClusterResult:
         return pulumi.get(self, "identity_service_configs")
 
     @property
+    @pulumi.getter(name="inTransitEncryptionConfig")
+    def in_transit_encryption_config(self) -> builtins.str:
+        return pulumi.get(self, "in_transit_encryption_config")
+
+    @property
     @pulumi.getter(name="initialNodeCount")
     def initial_node_count(self) -> builtins.int:
         return pulumi.get(self, "initial_node_count")
@@ -756,6 +764,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             gateway_api_configs=self.gateway_api_configs,
             id=self.id,
             identity_service_configs=self.identity_service_configs,
+            in_transit_encryption_config=self.in_transit_encryption_config,
             initial_node_count=self.initial_node_count,
             ip_allocation_policies=self.ip_allocation_policies,
             label_fingerprint=self.label_fingerprint,
@@ -880,6 +889,7 @@ def get_cluster(location: Optional[builtins.str] = None,
         gateway_api_configs=pulumi.get(__ret__, 'gateway_api_configs'),
         id=pulumi.get(__ret__, 'id'),
         identity_service_configs=pulumi.get(__ret__, 'identity_service_configs'),
+        in_transit_encryption_config=pulumi.get(__ret__, 'in_transit_encryption_config'),
         initial_node_count=pulumi.get(__ret__, 'initial_node_count'),
         ip_allocation_policies=pulumi.get(__ret__, 'ip_allocation_policies'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
@@ -1001,6 +1011,7 @@ def get_cluster_output(location: Optional[pulumi.Input[Optional[builtins.str]]] 
         gateway_api_configs=pulumi.get(__response__, 'gateway_api_configs'),
         id=pulumi.get(__response__, 'id'),
         identity_service_configs=pulumi.get(__response__, 'identity_service_configs'),
+        in_transit_encryption_config=pulumi.get(__response__, 'in_transit_encryption_config'),
         initial_node_count=pulumi.get(__response__, 'initial_node_count'),
         ip_allocation_policies=pulumi.get(__response__, 'ip_allocation_policies'),
         label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),

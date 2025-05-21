@@ -41,6 +41,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string DiskEncryptionServiceAccount;
         /// <summary>
+        /// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        /// </summary>
+        public readonly bool ForceAttach;
+        /// <summary>
         /// A list of features to enable on the guest operating system. Applicable only for bootable images.
         /// </summary>
         public readonly ImmutableArray<string> GuestOsFeatures;
@@ -80,6 +84,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string diskEncryptionServiceAccount,
 
+            bool forceAttach,
+
             ImmutableArray<string> guestOsFeatures,
 
             ImmutableArray<Outputs.GetInstanceBootDiskInitializeParamResult> initializeParams,
@@ -98,6 +104,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             DiskEncryptionKeyRsa = diskEncryptionKeyRsa;
             DiskEncryptionKeySha256 = diskEncryptionKeySha256;
             DiskEncryptionServiceAccount = diskEncryptionServiceAccount;
+            ForceAttach = forceAttach;
             GuestOsFeatures = guestOsFeatures;
             InitializeParams = initializeParams;
             Interface = @interface;

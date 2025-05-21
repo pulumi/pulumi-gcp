@@ -626,14 +626,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding")
 public class AppEngineServiceIamBinding extends com.pulumi.resources.CustomResource {
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
-     * @return Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> appId() {
@@ -738,14 +738,14 @@ public class AppEngineServiceIamBinding extends com.pulumi.resources.CustomResou
         return this.role;
     }
     /**
-     * Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
-     * @return Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> service() {

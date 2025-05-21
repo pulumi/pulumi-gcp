@@ -50,6 +50,7 @@ func LookupAiFeatureOnlineStoreFeatureviewIamPolicy(ctx *pulumi.Context, args *L
 
 // A collection of arguments for invoking getAiFeatureOnlineStoreFeatureviewIamPolicy.
 type LookupAiFeatureOnlineStoreFeatureviewIamPolicyArgs struct {
+	// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
 	FeatureOnlineStore string `pulumi:"featureOnlineStore"`
 	// Used to find the parent resource to bind the IAM policy to
 	FeatureView string `pulumi:"featureView"`
@@ -88,6 +89,7 @@ func LookupAiFeatureOnlineStoreFeatureviewIamPolicyOutput(ctx *pulumi.Context, a
 
 // A collection of arguments for invoking getAiFeatureOnlineStoreFeatureviewIamPolicy.
 type LookupAiFeatureOnlineStoreFeatureviewIamPolicyOutputArgs struct {
+	// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
 	FeatureOnlineStore pulumi.StringInput `pulumi:"featureOnlineStore"`
 	// Used to find the parent resource to bind the IAM policy to
 	FeatureView pulumi.StringInput `pulumi:"featureView"`

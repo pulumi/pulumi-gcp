@@ -23,9 +23,17 @@ public final class ConsumersIamMemberState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="consumerProject")
     private @Nullable Output<String> consumerProject;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> consumerProject() {
         return Optional.ofNullable(this.consumerProject);
     }
@@ -99,9 +107,17 @@ public final class ConsumersIamMemberState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * The name of the service. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
+    /**
+     * @return The name of the service. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> serviceName() {
         return Optional.ofNullable(this.serviceName);
     }
@@ -144,11 +160,23 @@ public final class ConsumersIamMemberState extends com.pulumi.resources.Resource
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param consumerProject Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerProject(@Nullable Output<String> consumerProject) {
             $.consumerProject = consumerProject;
             return this;
         }
 
+        /**
+         * @param consumerProject Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerProject(String consumerProject) {
             return consumerProject(Output.of(consumerProject));
         }
@@ -240,11 +268,23 @@ public final class ConsumersIamMemberState extends com.pulumi.resources.Resource
             return role(Output.of(role));
         }
 
+        /**
+         * @param serviceName The name of the service. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param serviceName The name of the service. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
         }

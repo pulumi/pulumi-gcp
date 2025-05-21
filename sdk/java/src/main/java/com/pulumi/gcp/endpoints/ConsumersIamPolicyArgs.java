@@ -14,9 +14,17 @@ public final class ConsumersIamPolicyArgs extends com.pulumi.resources.ResourceA
 
     public static final ConsumersIamPolicyArgs Empty = new ConsumersIamPolicyArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="consumerProject", required=true)
     private Output<String> consumerProject;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> consumerProject() {
         return this.consumerProject;
     }
@@ -38,9 +46,17 @@ public final class ConsumersIamPolicyArgs extends com.pulumi.resources.ResourceA
         return this.policyData;
     }
 
+    /**
+     * The name of the service. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
+    /**
+     * @return The name of the service. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> serviceName() {
         return this.serviceName;
     }
@@ -71,11 +87,23 @@ public final class ConsumersIamPolicyArgs extends com.pulumi.resources.ResourceA
             $ = new ConsumersIamPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param consumerProject Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerProject(Output<String> consumerProject) {
             $.consumerProject = consumerProject;
             return this;
         }
 
+        /**
+         * @param consumerProject Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumerProject(String consumerProject) {
             return consumerProject(Output.of(consumerProject));
         }
@@ -103,11 +131,23 @@ public final class ConsumersIamPolicyArgs extends com.pulumi.resources.ResourceA
             return policyData(Output.of(policyData));
         }
 
+        /**
+         * @param serviceName The name of the service. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param serviceName The name of the service. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
         }

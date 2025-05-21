@@ -256,6 +256,9 @@ namespace Pulumi.Gcp.Gemini
     [GcpResourceType("gcp:gemini/repositoryGroupIamMember:RepositoryGroupIamMember")]
     public partial class RepositoryGroupIamMember : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("codeRepositoryIndex")]
         public Output<string> CodeRepositoryIndex { get; private set; } = null!;
 
@@ -299,6 +302,9 @@ namespace Pulumi.Gcp.Gemini
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("repositoryGroupId")]
         public Output<string> RepositoryGroupId { get; private set; } = null!;
 
@@ -356,6 +362,9 @@ namespace Pulumi.Gcp.Gemini
 
     public sealed class RepositoryGroupIamMemberArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("codeRepositoryIndex", required: true)]
         public Input<string> CodeRepositoryIndex { get; set; } = null!;
 
@@ -393,6 +402,9 @@ namespace Pulumi.Gcp.Gemini
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("repositoryGroupId", required: true)]
         public Input<string> RepositoryGroupId { get; set; } = null!;
 
@@ -412,6 +424,9 @@ namespace Pulumi.Gcp.Gemini
 
     public sealed class RepositoryGroupIamMemberState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("codeRepositoryIndex")]
         public Input<string>? CodeRepositoryIndex { get; set; }
 
@@ -455,6 +470,9 @@ namespace Pulumi.Gcp.Gemini
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("repositoryGroupId")]
         public Input<string>? RepositoryGroupId { get; set; }
 

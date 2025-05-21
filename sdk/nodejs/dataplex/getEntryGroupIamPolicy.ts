@@ -33,6 +33,9 @@ export function getEntryGroupIamPolicy(args: GetEntryGroupIamPolicyArgs, opts?: 
  * A collection of arguments for invoking getEntryGroupIamPolicy.
  */
 export interface GetEntryGroupIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     entryGroupId: string;
     /**
      * The location where entry group will be created in.
@@ -98,6 +101,9 @@ export function getEntryGroupIamPolicyOutput(args: GetEntryGroupIamPolicyOutputA
  * A collection of arguments for invoking getEntryGroupIamPolicy.
  */
 export interface GetEntryGroupIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     entryGroupId: pulumi.Input<string>;
     /**
      * The location where entry group will be created in.

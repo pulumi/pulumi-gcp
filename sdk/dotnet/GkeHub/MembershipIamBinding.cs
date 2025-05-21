@@ -285,6 +285,9 @@ namespace Pulumi.Gcp.GkeHub
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("membershipId")]
         public Output<string> MembershipId { get; private set; } = null!;
 
@@ -384,6 +387,9 @@ namespace Pulumi.Gcp.GkeHub
             set => _members = value;
         }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("membershipId", required: true)]
         public Input<string> MembershipId { get; set; } = null!;
 
@@ -451,6 +457,9 @@ namespace Pulumi.Gcp.GkeHub
             set => _members = value;
         }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("membershipId")]
         public Input<string>? MembershipId { get; set; }
 

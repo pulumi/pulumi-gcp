@@ -295,7 +295,7 @@ import (
 type DataExchangeIamPolicy struct {
 	pulumi.CustomResourceState
 
-	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	DataExchangeId pulumi.StringOutput `pulumi:"dataExchangeId"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -348,7 +348,7 @@ func GetDataExchangeIamPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataExchangeIamPolicy resources.
 type dataExchangeIamPolicyState struct {
-	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	DataExchangeId *string `pulumi:"dataExchangeId"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
@@ -366,7 +366,7 @@ type dataExchangeIamPolicyState struct {
 }
 
 type DataExchangeIamPolicyState struct {
-	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	DataExchangeId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -388,7 +388,7 @@ func (DataExchangeIamPolicyState) ElementType() reflect.Type {
 }
 
 type dataExchangeIamPolicyArgs struct {
-	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	DataExchangeId string `pulumi:"dataExchangeId"`
 	// The name of the location this data exchange.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -405,7 +405,7 @@ type dataExchangeIamPolicyArgs struct {
 
 // The set of arguments for constructing a DataExchangeIamPolicy resource.
 type DataExchangeIamPolicyArgs struct {
-	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	DataExchangeId pulumi.StringInput
 	// The name of the location this data exchange.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -507,7 +507,7 @@ func (o DataExchangeIamPolicyOutput) ToDataExchangeIamPolicyOutputWithContext(ct
 	return o
 }
 
-// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to
 func (o DataExchangeIamPolicyOutput) DataExchangeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchangeIamPolicy) pulumi.StringOutput { return v.DataExchangeId }).(pulumi.StringOutput)
 }

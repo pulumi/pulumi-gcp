@@ -33,6 +33,9 @@ export function getMetastoreFederationIamPolicy(args: GetMetastoreFederationIamP
  * A collection of arguments for invoking getMetastoreFederationIamPolicy.
  */
 export interface GetMetastoreFederationIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     federationId: string;
     /**
      * The location where the metastore federation should reside.
@@ -98,6 +101,9 @@ export function getMetastoreFederationIamPolicyOutput(args: GetMetastoreFederati
  * A collection of arguments for invoking getMetastoreFederationIamPolicy.
  */
 export interface GetMetastoreFederationIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     federationId: pulumi.Input<string>;
     /**
      * The location where the metastore federation should reside.

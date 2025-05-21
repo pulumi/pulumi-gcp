@@ -338,9 +338,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataplex/entryTypeIamPolicy:EntryTypeIamPolicy")
 public class EntryTypeIamPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="entryTypeId", refs={String.class}, tree="[0]")
     private Output<String> entryTypeId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> entryTypeId() {
         return this.entryTypeId;
     }

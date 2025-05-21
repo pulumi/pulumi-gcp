@@ -250,6 +250,9 @@ namespace Pulumi.Gcp.DataPlex
     [GcpResourceType("gcp:dataplex/datascanIamPolicy:DatascanIamPolicy")]
     public partial class DatascanIamPolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("dataScanId")]
         public Output<string> DataScanId { get; private set; } = null!;
 
@@ -328,6 +331,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class DatascanIamPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("dataScanId", required: true)]
         public Input<string> DataScanId { get; set; } = null!;
 
@@ -362,6 +368,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class DatascanIamPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("dataScanId")]
         public Input<string>? DataScanId { get; set; }
 

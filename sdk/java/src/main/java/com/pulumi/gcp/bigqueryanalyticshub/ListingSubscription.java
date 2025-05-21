@@ -68,13 +68,13 @@ import javax.annotation.Nullable;
  *             .location("US")
  *             .dataExchangeId("my_data_exchange")
  *             .displayName("my_data_exchange")
- *             .description("")
+ *             .description("Test Description")
  *             .build());
  * 
  *         var subscriptionDataset = new Dataset("subscriptionDataset", DatasetArgs.builder()
  *             .datasetId("my_listing")
  *             .friendlyName("my_listing")
- *             .description("")
+ *             .description("Test Description")
  *             .location("US")
  *             .build());
  * 
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .dataExchangeId(subscription.dataExchangeId())
  *             .listingId("my_listing")
  *             .displayName("my_listing")
- *             .description("")
+ *             .description("Test Description")
  *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
  *                 .dataset(subscriptionDataset.id())
  *                 .build())

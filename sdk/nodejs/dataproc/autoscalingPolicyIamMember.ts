@@ -234,9 +234,6 @@ export class AutoscalingPolicyIamMember extends pulumi.CustomResource {
      */
     public readonly member!: pulumi.Output<string>;
     /**
-     * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-     * 3 and 50 characters.
      * Used to find the parent resource to bind the IAM policy to
      */
     public readonly policyId!: pulumi.Output<string>;
@@ -328,9 +325,6 @@ export interface AutoscalingPolicyIamMemberState {
      */
     member?: pulumi.Input<string>;
     /**
-     * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-     * 3 and 50 characters.
      * Used to find the parent resource to bind the IAM policy to
      */
     policyId?: pulumi.Input<string>;
@@ -375,9 +369,6 @@ export interface AutoscalingPolicyIamMemberArgs {
      */
     member: pulumi.Input<string>;
     /**
-     * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-     * 3 and 50 characters.
      * Used to find the parent resource to bind the IAM policy to
      */
     policyId: pulumi.Input<string>;

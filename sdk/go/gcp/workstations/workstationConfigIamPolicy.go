@@ -64,9 +64,12 @@ type WorkstationConfigIamPolicy struct {
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project              pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The ID of the parent workstation cluster.
+	// Used to find the parent resource to bind the IAM policy to
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
-	WorkstationConfigId  pulumi.StringOutput `pulumi:"workstationConfigId"`
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationConfigId pulumi.StringOutput `pulumi:"workstationConfigId"`
 }
 
 // NewWorkstationConfigIamPolicy registers a new resource with the given unique name, arguments, and options.
@@ -120,9 +123,12 @@ type workstationConfigIamPolicyState struct {
 	PolicyData *string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project              *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// The ID of the parent workstation cluster.
+	// Used to find the parent resource to bind the IAM policy to
 	WorkstationClusterId *string `pulumi:"workstationClusterId"`
-	WorkstationConfigId  *string `pulumi:"workstationConfigId"`
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationConfigId *string `pulumi:"workstationConfigId"`
 }
 
 type WorkstationConfigIamPolicyState struct {
@@ -138,9 +144,12 @@ type WorkstationConfigIamPolicyState struct {
 	PolicyData pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project              pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// The ID of the parent workstation cluster.
+	// Used to find the parent resource to bind the IAM policy to
 	WorkstationClusterId pulumi.StringPtrInput
-	WorkstationConfigId  pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationConfigId pulumi.StringPtrInput
 }
 
 func (WorkstationConfigIamPolicyState) ElementType() reflect.Type {
@@ -158,9 +167,12 @@ type workstationConfigIamPolicyArgs struct {
 	PolicyData string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project              *string `pulumi:"project"`
-	WorkstationClusterId string  `pulumi:"workstationClusterId"`
-	WorkstationConfigId  string  `pulumi:"workstationConfigId"`
+	Project *string `pulumi:"project"`
+	// The ID of the parent workstation cluster.
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationClusterId string `pulumi:"workstationClusterId"`
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationConfigId string `pulumi:"workstationConfigId"`
 }
 
 // The set of arguments for constructing a WorkstationConfigIamPolicy resource.
@@ -175,9 +187,12 @@ type WorkstationConfigIamPolicyArgs struct {
 	PolicyData pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project              pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// The ID of the parent workstation cluster.
+	// Used to find the parent resource to bind the IAM policy to
 	WorkstationClusterId pulumi.StringInput
-	WorkstationConfigId  pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationConfigId pulumi.StringInput
 }
 
 func (WorkstationConfigIamPolicyArgs) ElementType() reflect.Type {
@@ -292,10 +307,13 @@ func (o WorkstationConfigIamPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfigIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The ID of the parent workstation cluster.
+// Used to find the parent resource to bind the IAM policy to
 func (o WorkstationConfigIamPolicyOutput) WorkstationClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfigIamPolicy) pulumi.StringOutput { return v.WorkstationClusterId }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o WorkstationConfigIamPolicyOutput) WorkstationConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfigIamPolicy) pulumi.StringOutput { return v.WorkstationConfigId }).(pulumi.StringOutput)
 }

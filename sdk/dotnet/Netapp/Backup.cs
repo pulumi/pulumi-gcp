@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Netapp
     /// {
     ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
-    ///         Name = "",
+    ///         Name = "network",
     ///     });
     /// 
     ///     var defaultStoragePool = new Gcp.Netapp.StoragePool("default", new()

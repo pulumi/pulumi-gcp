@@ -50,6 +50,7 @@ func LookupServiceIamPolicy(ctx *pulumi.Context, args *LookupServiceIamPolicyArg
 
 // A collection of arguments for invoking getServiceIamPolicy.
 type LookupServiceIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -76,6 +77,7 @@ func LookupServiceIamPolicyOutput(ctx *pulumi.Context, args LookupServiceIamPoli
 
 // A collection of arguments for invoking getServiceIamPolicy.
 type LookupServiceIamPolicyOutputArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

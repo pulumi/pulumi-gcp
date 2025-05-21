@@ -31,6 +31,9 @@ class TunnelInstanceIAMPolicyArgs:
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] zone: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+               zone is specified, it is taken from the provider configuration.
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "policy_data", policy_data)
@@ -80,6 +83,11 @@ class TunnelInstanceIAMPolicyArgs:
     @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+        zone is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -103,6 +111,9 @@ class _TunnelInstanceIAMPolicyState:
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] zone: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+               zone is specified, it is taken from the provider configuration.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -168,6 +179,11 @@ class _TunnelInstanceIAMPolicyState:
     @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+        zone is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -477,6 +493,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] zone: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+               zone is specified, it is taken from the provider configuration.
         """
         ...
     @overload
@@ -833,6 +852,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] zone: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+               zone is specified, it is taken from the provider configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -882,5 +904,10 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+        zone is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "zone")
 

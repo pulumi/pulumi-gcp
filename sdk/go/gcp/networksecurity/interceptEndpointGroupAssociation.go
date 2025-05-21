@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An endpoint group association represents a link between a network and an
+// endpoint group in the organization.
+//
+// Creating an association creates the networking infrastructure linking the
+// network to the endpoint group, but does not enable intercept by itself.
+// To enable intercept, the user must also create a network firewall policy
+// containing intercept rules and associate it with the network.
+//
 // ## Example Usage
 //
 // ### Network Security Intercept Endpoint Group Association Basic

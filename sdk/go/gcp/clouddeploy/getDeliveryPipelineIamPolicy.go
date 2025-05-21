@@ -52,6 +52,9 @@ func LookupDeliveryPipelineIamPolicy(ctx *pulumi.Context, args *LookupDeliveryPi
 
 // A collection of arguments for invoking getDeliveryPipelineIamPolicy.
 type LookupDeliveryPipelineIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name string `pulumi:"name"`
@@ -85,6 +88,9 @@ func LookupDeliveryPipelineIamPolicyOutput(ctx *pulumi.Context, args LookupDeliv
 
 // A collection of arguments for invoking getDeliveryPipelineIamPolicy.
 type LookupDeliveryPipelineIamPolicyOutputArgs struct {
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringInput `pulumi:"name"`

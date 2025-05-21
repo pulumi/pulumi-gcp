@@ -206,6 +206,9 @@ export class AspectTypeIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === AspectTypeIamMember.__pulumiType;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly aspectTypeId!: pulumi.Output<string>;
     public readonly condition!: pulumi.Output<outputs.dataplex.AspectTypeIamMemberCondition | undefined>;
     /**
@@ -293,6 +296,9 @@ export class AspectTypeIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AspectTypeIamMember resources.
  */
 export interface AspectTypeIamMemberState {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     aspectTypeId?: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.dataplex.AspectTypeIamMemberCondition>;
     /**
@@ -337,6 +343,9 @@ export interface AspectTypeIamMemberState {
  * The set of arguments for constructing a AspectTypeIamMember resource.
  */
 export interface AspectTypeIamMemberArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     aspectTypeId: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.dataplex.AspectTypeIamMemberCondition>;
     /**

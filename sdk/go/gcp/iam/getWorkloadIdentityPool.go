@@ -66,11 +66,14 @@ type LookupWorkloadIdentityPoolResult struct {
 	Disabled    bool   `pulumi:"disabled"`
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string  `pulumi:"id"`
-	Name                   string  `pulumi:"name"`
-	Project                *string `pulumi:"project"`
-	State                  string  `pulumi:"state"`
-	WorkloadIdentityPoolId string  `pulumi:"workloadIdentityPoolId"`
+	Id                               string                                                   `pulumi:"id"`
+	InlineCertificateIssuanceConfigs []GetWorkloadIdentityPoolInlineCertificateIssuanceConfig `pulumi:"inlineCertificateIssuanceConfigs"`
+	InlineTrustConfigs               []GetWorkloadIdentityPoolInlineTrustConfig               `pulumi:"inlineTrustConfigs"`
+	Mode                             string                                                   `pulumi:"mode"`
+	Name                             string                                                   `pulumi:"name"`
+	Project                          *string                                                  `pulumi:"project"`
+	State                            string                                                   `pulumi:"state"`
+	WorkloadIdentityPoolId           string                                                   `pulumi:"workloadIdentityPoolId"`
 }
 
 func LookupWorkloadIdentityPoolOutput(ctx *pulumi.Context, args LookupWorkloadIdentityPoolOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadIdentityPoolResultOutput {
@@ -128,6 +131,22 @@ func (o LookupWorkloadIdentityPoolResultOutput) DisplayName() pulumi.StringOutpu
 // The provider-assigned unique ID for this managed resource.
 func (o LookupWorkloadIdentityPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) InlineCertificateIssuanceConfigs() GetWorkloadIdentityPoolInlineCertificateIssuanceConfigArrayOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) []GetWorkloadIdentityPoolInlineCertificateIssuanceConfig {
+		return v.InlineCertificateIssuanceConfigs
+	}).(GetWorkloadIdentityPoolInlineCertificateIssuanceConfigArrayOutput)
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) InlineTrustConfigs() GetWorkloadIdentityPoolInlineTrustConfigArrayOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) []GetWorkloadIdentityPoolInlineTrustConfig {
+		return v.InlineTrustConfigs
+	}).(GetWorkloadIdentityPoolInlineTrustConfigArrayOutput)
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkloadIdentityPoolResultOutput) Name() pulumi.StringOutput {

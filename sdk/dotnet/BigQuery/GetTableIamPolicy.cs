@@ -96,6 +96,9 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class GetTableIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
 
@@ -106,6 +109,9 @@ namespace Pulumi.Gcp.BigQuery
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("tableId", required: true)]
         public string TableId { get; set; } = null!;
 
@@ -117,6 +123,9 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class GetTableIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
@@ -127,6 +136,9 @@ namespace Pulumi.Gcp.BigQuery
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("tableId", required: true)]
         public Input<string> TableId { get; set; } = null!;
 

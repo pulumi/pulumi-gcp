@@ -207,6 +207,9 @@ export class DataPolicyIamBinding extends pulumi.CustomResource {
     }
 
     public readonly condition!: pulumi.Output<outputs.bigquerydatapolicy.DataPolicyIamBindingCondition | undefined>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly dataPolicyId!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -294,6 +297,9 @@ export class DataPolicyIamBinding extends pulumi.CustomResource {
  */
 export interface DataPolicyIamBindingState {
     condition?: pulumi.Input<inputs.bigquerydatapolicy.DataPolicyIamBindingCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     dataPolicyId?: pulumi.Input<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -338,6 +344,9 @@ export interface DataPolicyIamBindingState {
  */
 export interface DataPolicyIamBindingArgs {
     condition?: pulumi.Input<inputs.bigquerydatapolicy.DataPolicyIamBindingCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     dataPolicyId: pulumi.Input<string>;
     /**
      * The name of the location of the data policy.

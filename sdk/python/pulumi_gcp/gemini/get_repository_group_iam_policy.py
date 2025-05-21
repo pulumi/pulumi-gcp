@@ -132,11 +132,13 @@ def get_repository_group_iam_policy(code_repository_index: Optional[builtins.str
     ```
 
 
+    :param builtins.str code_repository_index: Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
            location is specified, it is taken from the provider configuration.
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+    :param builtins.str repository_group_id: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['codeRepositoryIndex'] = code_repository_index
@@ -175,11 +177,13 @@ def get_repository_group_iam_policy_output(code_repository_index: Optional[pulum
     ```
 
 
+    :param builtins.str code_repository_index: Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
            location is specified, it is taken from the provider configuration.
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+    :param builtins.str repository_group_id: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['codeRepositoryIndex'] = code_repository_index

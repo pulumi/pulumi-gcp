@@ -34,7 +34,6 @@ export function getInstanceIamPolicy(args: GetInstanceIamPolicyArgs, opts?: pulu
  */
 export interface GetInstanceIamPolicyArgs {
     /**
-     * The name for the Instance.
      * Used to find the parent resource to bind the IAM policy to
      */
     instanceId: string;
@@ -103,7 +102,6 @@ export function getInstanceIamPolicyOutput(args: GetInstanceIamPolicyOutputArgs,
  */
 export interface GetInstanceIamPolicyOutputArgs {
     /**
-     * The name for the Instance.
      * Used to find the parent resource to bind the IAM policy to
      */
     instanceId: pulumi.Input<string>;

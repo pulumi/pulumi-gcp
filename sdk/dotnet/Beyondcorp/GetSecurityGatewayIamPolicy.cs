@@ -111,6 +111,9 @@ namespace Pulumi.Gcp.Beyondcorp
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("securityGatewayId", required: true)]
         public string SecurityGatewayId { get; set; } = null!;
 
@@ -137,6 +140,9 @@ namespace Pulumi.Gcp.Beyondcorp
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("securityGatewayId", required: true)]
         public Input<string> SecurityGatewayId { get; set; } = null!;
 

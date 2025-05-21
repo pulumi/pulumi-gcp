@@ -37,6 +37,11 @@ export interface GetLakeIamPolicyArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     lake: string;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: string;
     /**
      * The ID of the project in which the resource belongs.
@@ -99,6 +104,11 @@ export interface GetLakeIamPolicyOutputArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     lake: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

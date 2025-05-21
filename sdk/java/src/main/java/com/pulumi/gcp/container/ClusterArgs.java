@@ -616,6 +616,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+     * 
+     */
+    @Import(name="inTransitEncryptionConfig")
+    private @Nullable Output<String> inTransitEncryptionConfig;
+
+    /**
+     * @return Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+     * 
+     */
+    public Optional<Output<String>> inTransitEncryptionConfig() {
+        return Optional.ofNullable(this.inTransitEncryptionConfig);
+    }
+
+    /**
      * The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
      * number of nodes per zone. Must be set if `node_pool` is not set. If you&#39;re using
@@ -1495,6 +1510,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.fleet = $.fleet;
         this.gatewayApiConfig = $.gatewayApiConfig;
         this.identityServiceConfig = $.identityServiceConfig;
+        this.inTransitEncryptionConfig = $.inTransitEncryptionConfig;
         this.initialNodeCount = $.initialNodeCount;
         this.ipAllocationPolicy = $.ipAllocationPolicy;
         this.location = $.location;
@@ -2302,6 +2318,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder identityServiceConfig(ClusterIdentityServiceConfigArgs identityServiceConfig) {
             return identityServiceConfig(Output.of(identityServiceConfig));
+        }
+
+        /**
+         * @param inTransitEncryptionConfig Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inTransitEncryptionConfig(@Nullable Output<String> inTransitEncryptionConfig) {
+            $.inTransitEncryptionConfig = inTransitEncryptionConfig;
+            return this;
+        }
+
+        /**
+         * @param inTransitEncryptionConfig Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inTransitEncryptionConfig(String inTransitEncryptionConfig) {
+            return inTransitEncryptionConfig(Output.of(inTransitEncryptionConfig));
         }
 
         /**

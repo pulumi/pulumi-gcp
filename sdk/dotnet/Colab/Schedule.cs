@@ -308,7 +308,7 @@ namespace Pulumi.Gcp.Colab
     ///         Name = "dataform-repository",
     ///         DisplayName = "dataform_repository",
     ///         NpmrcEnvironmentVariablesSecretVersion = secretVersion.Id,
-    ///         KmsKeyName = "",
+    ///         KmsKeyName = "my-key",
     ///         Labels = 
     ///         {
     ///             { "label_foo1", "label-bar1" },

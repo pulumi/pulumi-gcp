@@ -120,6 +120,7 @@ def get_api_config_iam_policy(api: Optional[builtins.str] = None,
 
     :param builtins.str api: The API to attach the config to.
            Used to find the parent resource to bind the IAM policy to
+    :param builtins.str api_config: Used to find the parent resource to bind the IAM policy to
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
@@ -155,6 +156,7 @@ def get_api_config_iam_policy_output(api: Optional[pulumi.Input[builtins.str]] =
 
     :param builtins.str api: The API to attach the config to.
            Used to find the parent resource to bind the IAM policy to
+    :param builtins.str api_config: Used to find the parent resource to bind the IAM policy to
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """

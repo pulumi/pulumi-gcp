@@ -43,7 +43,7 @@ import (
 //				Location:       pulumi.String("US"),
 //				DataExchangeId: pulumi.String("my_data_exchange"),
 //				DisplayName:    pulumi.String("my_data_exchange"),
-//				Description:    pulumi.String(""),
+//				Description:    pulumi.String("Test Description"),
 //			})
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ import (
 //			subscriptionDataset, err := bigquery.NewDataset(ctx, "subscription", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("my_listing"),
 //				FriendlyName: pulumi.String("my_listing"),
-//				Description:  pulumi.String(""),
+//				Description:  pulumi.String("Test Description"),
 //				Location:     pulumi.String("US"),
 //			})
 //			if err != nil {
@@ -62,7 +62,7 @@ import (
 //				DataExchangeId: subscription.DataExchangeId,
 //				ListingId:      pulumi.String("my_listing"),
 //				DisplayName:    pulumi.String("my_listing"),
-//				Description:    pulumi.String(""),
+//				Description:    pulumi.String("Test Description"),
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
 //					Dataset: subscriptionDataset.ID(),
 //				},

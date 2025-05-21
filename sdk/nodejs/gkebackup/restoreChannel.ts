@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.gkebackup.RestoreChannel("basic", {
  *     name: "basic-channel",
  *     location: "us-central1",
- *     description: "",
+ *     description: "Description",
  *     destinationProject: "projects/24240755850",
  *     labels: {
  *         key: "some-value",
@@ -94,7 +94,7 @@ export class RestoreChannel extends pulumi.CustomResource {
     /**
      * The project where Backups will be restored.
      * The format is `projects/{project}`.
-     * {project} can only be a project number.
+     * {project} can be project number or project id.
      */
     public readonly destinationProject!: pulumi.Output<string>;
     /**
@@ -212,7 +212,7 @@ export interface RestoreChannelState {
     /**
      * The project where Backups will be restored.
      * The format is `projects/{project}`.
-     * {project} can only be a project number.
+     * {project} can be project number or project id.
      */
     destinationProject?: pulumi.Input<string>;
     /**
@@ -280,7 +280,7 @@ export interface RestoreChannelArgs {
     /**
      * The project where Backups will be restored.
      * The format is `projects/{project}`.
-     * {project} can only be a project number.
+     * {project} can be project number or project id.
      */
     destinationProject: pulumi.Input<string>;
     /**

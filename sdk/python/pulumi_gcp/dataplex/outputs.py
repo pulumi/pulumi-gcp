@@ -65,6 +65,8 @@ __all__ = [
     'EntryTypeIamBindingCondition',
     'EntryTypeIamMemberCondition',
     'EntryTypeRequiredAspect',
+    'GlossaryIamBindingCondition',
+    'GlossaryIamMemberCondition',
     'LakeAssetStatus',
     'LakeIamBindingCondition',
     'LakeIamMemberCondition',
@@ -2322,6 +2324,60 @@ class EntryTypeRequiredAspect(dict):
         Required aspect type for the entry type.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GlossaryIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GlossaryIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

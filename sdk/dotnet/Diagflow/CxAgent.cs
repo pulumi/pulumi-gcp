@@ -123,6 +123,10 @@ namespace Pulumi.Gcp.Diagflow
     ///                 },
     ///             }),
     ///         },
+    ///         GenAppBuilderSettings = new Gcp.Diagflow.Inputs.CxAgentGenAppBuilderSettingsArgs
+    ///         {
+    ///             Engine = "projects/-/locations/-/collections/-/engines/-",
+    ///         },
     ///     });
     /// 
     /// });
@@ -202,6 +206,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("enableStackdriverLogging")]
         public Output<bool?> EnableStackdriverLogging { get; private set; } = null!;
+
+        /// <summary>
+        /// Gen App Builder-related agent-level settings.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("genAppBuilderSettings")]
+        public Output<Outputs.CxAgentGenAppBuilderSettings> GenAppBuilderSettings { get; private set; } = null!;
 
         /// <summary>
         /// Git integration settings for this agent.
@@ -369,6 +380,13 @@ namespace Pulumi.Gcp.Diagflow
         public Input<bool>? EnableStackdriverLogging { get; set; }
 
         /// <summary>
+        /// Gen App Builder-related agent-level settings.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("genAppBuilderSettings")]
+        public Input<Inputs.CxAgentGenAppBuilderSettingsArgs>? GenAppBuilderSettings { get; set; }
+
+        /// <summary>
         /// Git integration settings for this agent.
         /// Structure is documented below.
         /// </summary>
@@ -488,6 +506,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
+
+        /// <summary>
+        /// Gen App Builder-related agent-level settings.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("genAppBuilderSettings")]
+        public Input<Inputs.CxAgentGenAppBuilderSettingsGetArgs>? GenAppBuilderSettings { get; set; }
 
         /// <summary>
         /// Git integration settings for this agent.

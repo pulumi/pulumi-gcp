@@ -207,6 +207,9 @@ export class EntryGroupIamBinding extends pulumi.CustomResource {
     }
 
     public readonly condition!: pulumi.Output<outputs.dataplex.EntryGroupIamBindingCondition | undefined>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly entryGroupId!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -294,6 +297,9 @@ export class EntryGroupIamBinding extends pulumi.CustomResource {
  */
 export interface EntryGroupIamBindingState {
     condition?: pulumi.Input<inputs.dataplex.EntryGroupIamBindingCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     entryGroupId?: pulumi.Input<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -338,6 +344,9 @@ export interface EntryGroupIamBindingState {
  */
 export interface EntryGroupIamBindingArgs {
     condition?: pulumi.Input<inputs.dataplex.EntryGroupIamBindingCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     entryGroupId: pulumi.Input<string>;
     /**
      * The location where entry group will be created in.

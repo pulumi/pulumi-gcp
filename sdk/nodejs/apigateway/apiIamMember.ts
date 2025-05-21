@@ -198,6 +198,9 @@ export class ApiIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiIamMember.__pulumiType;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly api!: pulumi.Output<string>;
     public readonly condition!: pulumi.Output<outputs.apigateway.ApiIamMemberCondition | undefined>;
     /**
@@ -276,6 +279,9 @@ export class ApiIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiIamMember resources.
  */
 export interface ApiIamMemberState {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     api?: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.apigateway.ApiIamMemberCondition>;
     /**
@@ -313,6 +319,9 @@ export interface ApiIamMemberState {
  * The set of arguments for constructing a ApiIamMember resource.
  */
 export interface ApiIamMemberArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     api: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.apigateway.ApiIamMemberCondition>;
     /**

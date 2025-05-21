@@ -15,9 +15,17 @@ public final class ApplicationIamPolicyState extends com.pulumi.resources.Resour
 
     public static final ApplicationIamPolicyState Empty = new ApplicationIamPolicyState();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> applicationId() {
         return Optional.ofNullable(this.applicationId);
     }
@@ -71,9 +79,17 @@ public final class ApplicationIamPolicyState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="securityGatewaysId")
     private @Nullable Output<String> securityGatewaysId;
 
+    /**
+     * @return Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> securityGatewaysId() {
         return Optional.ofNullable(this.securityGatewaysId);
     }
@@ -106,11 +122,23 @@ public final class ApplicationIamPolicyState extends com.pulumi.resources.Resour
             $ = new ApplicationIamPolicyState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param applicationId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationId(@Nullable Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
 
+        /**
+         * @param applicationId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
         }
@@ -182,11 +210,23 @@ public final class ApplicationIamPolicyState extends com.pulumi.resources.Resour
             return project(Output.of(project));
         }
 
+        /**
+         * @param securityGatewaysId Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGatewaysId(@Nullable Output<String> securityGatewaysId) {
             $.securityGatewaysId = securityGatewaysId;
             return this;
         }
 
+        /**
+         * @param securityGatewaysId Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGatewaysId(String securityGatewaysId) {
             return securityGatewaysId(Output.of(securityGatewaysId));
         }

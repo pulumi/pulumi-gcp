@@ -52,6 +52,7 @@ func LookupMetastoreFederationIamPolicy(ctx *pulumi.Context, args *LookupMetasto
 
 // A collection of arguments for invoking getMetastoreFederationIamPolicy.
 type LookupMetastoreFederationIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	FederationId string `pulumi:"federationId"`
 	// The location where the metastore federation should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -88,6 +89,7 @@ func LookupMetastoreFederationIamPolicyOutput(ctx *pulumi.Context, args LookupMe
 
 // A collection of arguments for invoking getMetastoreFederationIamPolicy.
 type LookupMetastoreFederationIamPolicyOutputArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	FederationId pulumi.StringInput `pulumi:"federationId"`
 	// The location where the metastore federation should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,

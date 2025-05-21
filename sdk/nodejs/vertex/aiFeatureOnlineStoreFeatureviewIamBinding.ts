@@ -76,6 +76,9 @@ export class AiFeatureOnlineStoreFeatureviewIamBinding extends pulumi.CustomReso
      * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+     */
     public readonly featureOnlineStore!: pulumi.Output<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
@@ -171,6 +174,9 @@ export interface AiFeatureOnlineStoreFeatureviewIamBindingState {
      * (Computed) The etag of the IAM policy.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+     */
     featureOnlineStore?: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
@@ -214,6 +220,9 @@ export interface AiFeatureOnlineStoreFeatureviewIamBindingState {
  */
 export interface AiFeatureOnlineStoreFeatureviewIamBindingArgs {
     condition?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewIamBindingCondition>;
+    /**
+     * The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+     */
     featureOnlineStore: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to

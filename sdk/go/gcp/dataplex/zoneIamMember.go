@@ -305,8 +305,12 @@ type ZoneIamMember struct {
 	// Used to find the parent resource to bind the IAM policy to
 	DataplexZone pulumi.StringOutput `pulumi:"dataplexZone"`
 	// (Computed) The etag of the IAM policy.
-	Etag     pulumi.StringOutput `pulumi:"etag"`
-	Lake     pulumi.StringOutput `pulumi:"lake"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
+	Lake pulumi.StringOutput `pulumi:"lake"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -375,8 +379,12 @@ type zoneIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	DataplexZone *string `pulumi:"dataplexZone"`
 	// (Computed) The etag of the IAM policy.
-	Etag     *string `pulumi:"etag"`
-	Lake     *string `pulumi:"lake"`
+	Etag *string `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
+	Lake *string `pulumi:"lake"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -404,8 +412,12 @@ type ZoneIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	DataplexZone pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag     pulumi.StringPtrInput
-	Lake     pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
+	Lake pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -435,9 +447,13 @@ func (ZoneIamMemberState) ElementType() reflect.Type {
 type zoneIamMemberArgs struct {
 	Condition *ZoneIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to
-	DataplexZone string  `pulumi:"dataplexZone"`
-	Lake         string  `pulumi:"lake"`
-	Location     *string `pulumi:"location"`
+	DataplexZone string `pulumi:"dataplexZone"`
+	// Used to find the parent resource to bind the IAM policy to
+	Lake string `pulumi:"lake"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
+	Location *string `pulumi:"location"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -464,8 +480,12 @@ type ZoneIamMemberArgs struct {
 	Condition ZoneIamMemberConditionPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	DataplexZone pulumi.StringInput
-	Lake         pulumi.StringInput
-	Location     pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
+	Lake pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
+	Location pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -588,10 +608,14 @@ func (o ZoneIamMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o ZoneIamMemberOutput) Lake() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneIamMember) pulumi.StringOutput { return v.Lake }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o ZoneIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

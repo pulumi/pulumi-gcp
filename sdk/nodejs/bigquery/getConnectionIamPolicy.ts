@@ -34,7 +34,6 @@ export function getConnectionIamPolicy(args: GetConnectionIamPolicyArgs, opts?: 
  */
 export interface GetConnectionIamPolicyArgs {
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      */
     connectionId: string;
@@ -108,7 +107,6 @@ export function getConnectionIamPolicyOutput(args: GetConnectionIamPolicyOutputA
  */
 export interface GetConnectionIamPolicyOutputArgs {
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      */
     connectionId: pulumi.Input<string>;

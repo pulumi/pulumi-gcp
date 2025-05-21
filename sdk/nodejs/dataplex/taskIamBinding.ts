@@ -254,6 +254,9 @@ export class TaskIamBinding extends pulumi.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly taskId!: pulumi.Output<string>;
 
     /**
@@ -351,6 +354,9 @@ export interface TaskIamBindingState {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     taskId?: pulumi.Input<string>;
 }
 
@@ -396,5 +402,8 @@ export interface TaskIamBindingArgs {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     taskId: pulumi.Input<string>;
 }

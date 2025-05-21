@@ -32,6 +32,7 @@ class MetastoreTableIamBindingArgs:
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a MetastoreTableIamBinding resource.
+        :param pulumi.Input[builtins.str] database_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -46,7 +47,11 @@ class MetastoreTableIamBindingArgs:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `dataproc.MetastoreTableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] table: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] location: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
@@ -65,6 +70,9 @@ class MetastoreTableIamBindingArgs:
     @property
     @pulumi.getter(name="databaseId")
     def database_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "database_id")
 
     @database_id.setter
@@ -110,6 +118,9 @@ class MetastoreTableIamBindingArgs:
     @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
@@ -140,6 +151,11 @@ class MetastoreTableIamBindingArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -174,7 +190,11 @@ class _MetastoreTableIamBindingState:
                  table: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetastoreTableIamBinding resources.
+        :param pulumi.Input[builtins.str] database_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[builtins.str] location: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -191,6 +211,7 @@ class _MetastoreTableIamBindingState:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `dataproc.MetastoreTableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] table: Used to find the parent resource to bind the IAM policy to
         """
         if condition is not None:
@@ -224,6 +245,9 @@ class _MetastoreTableIamBindingState:
     @property
     @pulumi.getter(name="databaseId")
     def database_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "database_id")
 
     @database_id.setter
@@ -245,6 +269,11 @@ class _MetastoreTableIamBindingState:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -303,6 +332,9 @@ class _MetastoreTableIamBindingState:
     @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
@@ -513,6 +545,10 @@ class MetastoreTableIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] database_id: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] location: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -529,6 +565,7 @@ class MetastoreTableIamBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `dataproc.MetastoreTableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] table: Used to find the parent resource to bind the IAM policy to
         """
         ...
@@ -788,7 +825,11 @@ class MetastoreTableIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] database_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[builtins.str] location: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -805,6 +846,7 @@ class MetastoreTableIamBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `dataproc.MetastoreTableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] table: Used to find the parent resource to bind the IAM policy to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -830,6 +872,9 @@ class MetastoreTableIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="databaseId")
     def database_id(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "database_id")
 
     @property
@@ -843,6 +888,11 @@ class MetastoreTableIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def location(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "location")
 
     @property
@@ -885,6 +935,9 @@ class MetastoreTableIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "service_id")
 
     @property

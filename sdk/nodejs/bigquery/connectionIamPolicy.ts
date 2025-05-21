@@ -205,7 +205,6 @@ export class ConnectionIamPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      */
     public readonly connectionId!: pulumi.Output<string>;
@@ -278,7 +277,6 @@ export class ConnectionIamPolicy extends pulumi.CustomResource {
  */
 export interface ConnectionIamPolicyState {
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      */
     connectionId?: pulumi.Input<string>;
@@ -315,7 +313,6 @@ export interface ConnectionIamPolicyState {
  */
 export interface ConnectionIamPolicyArgs {
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      */
     connectionId: pulumi.Input<string>;

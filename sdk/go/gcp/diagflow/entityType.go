@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewEntityType(ctx, "basic_entity_type", &diagflow.EntityTypeArgs{
-//				DisplayName: pulumi.String(""),
+//				DisplayName: pulumi.String("basic-entity-type"),
 //				Kind:        pulumi.String("KIND_MAP"),
 //				Entities: diagflow.EntityTypeEntityArray{
 //					&diagflow.EntityTypeEntityArgs{

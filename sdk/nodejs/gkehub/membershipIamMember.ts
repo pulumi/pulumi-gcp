@@ -233,6 +233,9 @@ export class MembershipIamMember extends pulumi.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
     public readonly member!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly membershipId!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -321,6 +324,9 @@ export interface MembershipIamMemberState {
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
     member?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     membershipId?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -362,6 +368,9 @@ export interface MembershipIamMemberArgs {
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
     member: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     membershipId: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

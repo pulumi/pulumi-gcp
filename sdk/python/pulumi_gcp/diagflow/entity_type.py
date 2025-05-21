@@ -285,7 +285,7 @@ class EntityType(pulumi.CustomResource):
             default_language_code="en",
             time_zone="America/New_York")
         basic_entity_type = gcp.diagflow.EntityType("basic_entity_type",
-            display_name="",
+            display_name="basic-entity-type",
             kind="KIND_MAP",
             entities=[
                 {
@@ -364,7 +364,7 @@ class EntityType(pulumi.CustomResource):
             default_language_code="en",
             time_zone="America/New_York")
         basic_entity_type = gcp.diagflow.EntityType("basic_entity_type",
-            display_name="",
+            display_name="basic-entity-type",
             kind="KIND_MAP",
             entities=[
                 {

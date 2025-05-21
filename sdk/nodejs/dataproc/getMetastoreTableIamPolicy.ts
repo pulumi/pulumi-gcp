@@ -37,13 +37,24 @@ export function getMetastoreTableIamPolicy(args: GetMetastoreTableIamPolicyArgs,
  * A collection of arguments for invoking getMetastoreTableIamPolicy.
  */
 export interface GetMetastoreTableIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     databaseId: string;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: string;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: string;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceId: string;
     /**
      * Used to find the parent resource to bind the IAM policy to
@@ -107,13 +118,24 @@ export function getMetastoreTableIamPolicyOutput(args: GetMetastoreTableIamPolic
  * A collection of arguments for invoking getMetastoreTableIamPolicy.
  */
 export interface GetMetastoreTableIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     databaseId: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceId: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to

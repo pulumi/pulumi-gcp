@@ -16,14 +16,14 @@ public final class DataExchangeIamPolicyState extends com.pulumi.resources.Resou
     public static final DataExchangeIamPolicyState Empty = new DataExchangeIamPolicyState();
 
     /**
-     * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="dataExchangeId")
     private @Nullable Output<String> dataExchangeId;
 
     /**
-     * @return The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Optional<Output<String>> dataExchangeId() {
@@ -129,7 +129,7 @@ public final class DataExchangeIamPolicyState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dataExchangeId The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+         * @param dataExchangeId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class DataExchangeIamPolicyState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dataExchangeId The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+         * @param dataExchangeId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

@@ -205,7 +205,7 @@ export class DataExchangeIamPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     public readonly dataExchangeId!: pulumi.Output<string>;
     /**
@@ -272,7 +272,7 @@ export class DataExchangeIamPolicy extends pulumi.CustomResource {
  */
 export interface DataExchangeIamPolicyState {
     /**
-     * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     dataExchangeId?: pulumi.Input<string>;
     /**
@@ -303,7 +303,7 @@ export interface DataExchangeIamPolicyState {
  */
 export interface DataExchangeIamPolicyArgs {
     /**
-     * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     dataExchangeId: pulumi.Input<string>;
     /**

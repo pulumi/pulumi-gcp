@@ -31,6 +31,7 @@ class CxAgentArgs:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[builtins.bool]] = None,
+                 gen_app_builder_settings: Optional[pulumi.Input['CxAgentGenAppBuilderSettingsArgs']] = None,
                  git_integration_settings: Optional[pulumi.Input['CxAgentGitIntegrationSettingsArgs']] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  security_settings: Optional[pulumi.Input[builtins.str]] = None,
@@ -61,6 +62,8 @@ class CxAgentArgs:
                Determines whether this agent should log conversation queries.
                
                > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+        :param pulumi.Input['CxAgentGenAppBuilderSettingsArgs'] gen_app_builder_settings: Gen App Builder-related agent-level settings.
+               Structure is documented below.
         :param pulumi.Input['CxAgentGitIntegrationSettingsArgs'] git_integration_settings: Git integration settings for this agent.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -89,6 +92,8 @@ class CxAgentArgs:
             pulumi.log.warn("""enable_stackdriver_logging is deprecated: `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.""")
         if enable_stackdriver_logging is not None:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+        if gen_app_builder_settings is not None:
+            pulumi.set(__self__, "gen_app_builder_settings", gen_app_builder_settings)
         if git_integration_settings is not None:
             pulumi.set(__self__, "git_integration_settings", git_integration_settings)
         if project is not None:
@@ -225,6 +230,19 @@ class CxAgentArgs:
         pulumi.set(self, "enable_stackdriver_logging", value)
 
     @property
+    @pulumi.getter(name="genAppBuilderSettings")
+    def gen_app_builder_settings(self) -> Optional[pulumi.Input['CxAgentGenAppBuilderSettingsArgs']]:
+        """
+        Gen App Builder-related agent-level settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gen_app_builder_settings")
+
+    @gen_app_builder_settings.setter
+    def gen_app_builder_settings(self, value: Optional[pulumi.Input['CxAgentGenAppBuilderSettingsArgs']]):
+        pulumi.set(self, "gen_app_builder_settings", value)
+
+    @property
     @pulumi.getter(name="gitIntegrationSettings")
     def git_integration_settings(self) -> Optional[pulumi.Input['CxAgentGitIntegrationSettingsArgs']]:
         """
@@ -311,6 +329,7 @@ class _CxAgentState:
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[builtins.bool]] = None,
+                 gen_app_builder_settings: Optional[pulumi.Input['CxAgentGenAppBuilderSettingsArgs']] = None,
                  git_integration_settings: Optional[pulumi.Input['CxAgentGitIntegrationSettingsArgs']] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -336,6 +355,8 @@ class _CxAgentState:
                Determines whether this agent should log conversation queries.
                
                > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+        :param pulumi.Input['CxAgentGenAppBuilderSettingsArgs'] gen_app_builder_settings: Gen App Builder-related agent-level settings.
+               Structure is documented below.
         :param pulumi.Input['CxAgentGitIntegrationSettingsArgs'] git_integration_settings: Git integration settings for this agent.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The name of the location this agent is located in.
@@ -375,6 +396,8 @@ class _CxAgentState:
             pulumi.log.warn("""enable_stackdriver_logging is deprecated: `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.""")
         if enable_stackdriver_logging is not None:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+        if gen_app_builder_settings is not None:
+            pulumi.set(__self__, "gen_app_builder_settings", gen_app_builder_settings)
         if git_integration_settings is not None:
             pulumi.set(__self__, "git_integration_settings", git_integration_settings)
         if location is not None:
@@ -486,6 +509,19 @@ class _CxAgentState:
     @enable_stackdriver_logging.setter
     def enable_stackdriver_logging(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enable_stackdriver_logging", value)
+
+    @property
+    @pulumi.getter(name="genAppBuilderSettings")
+    def gen_app_builder_settings(self) -> Optional[pulumi.Input['CxAgentGenAppBuilderSettingsArgs']]:
+        """
+        Gen App Builder-related agent-level settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gen_app_builder_settings")
+
+    @gen_app_builder_settings.setter
+    def gen_app_builder_settings(self, value: Optional[pulumi.Input['CxAgentGenAppBuilderSettingsArgs']]):
+        pulumi.set(self, "gen_app_builder_settings", value)
 
     @property
     @pulumi.getter(name="gitIntegrationSettings")
@@ -632,6 +668,7 @@ class CxAgent(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[builtins.bool]] = None,
+                 gen_app_builder_settings: Optional[pulumi.Input[Union['CxAgentGenAppBuilderSettingsArgs', 'CxAgentGenAppBuilderSettingsArgsDict']]] = None,
                  git_integration_settings: Optional[pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -727,6 +764,9 @@ class CxAgent(pulumi.CustomResource):
                         },
                     },
                 }),
+            },
+            gen_app_builder_settings={
+                "engine": "projects/-/locations/-/collections/-/engines/-",
             })
         ```
 
@@ -769,6 +809,8 @@ class CxAgent(pulumi.CustomResource):
                Determines whether this agent should log conversation queries.
                
                > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+        :param pulumi.Input[Union['CxAgentGenAppBuilderSettingsArgs', 'CxAgentGenAppBuilderSettingsArgsDict']] gen_app_builder_settings: Gen App Builder-related agent-level settings.
+               Structure is documented below.
         :param pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']] git_integration_settings: Git integration settings for this agent.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The name of the location this agent is located in.
@@ -881,6 +923,9 @@ class CxAgent(pulumi.CustomResource):
                         },
                     },
                 }),
+            },
+            gen_app_builder_settings={
+                "engine": "projects/-/locations/-/collections/-/engines/-",
             })
         ```
 
@@ -930,6 +975,7 @@ class CxAgent(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[builtins.bool]] = None,
+                 gen_app_builder_settings: Optional[pulumi.Input[Union['CxAgentGenAppBuilderSettingsArgs', 'CxAgentGenAppBuilderSettingsArgsDict']]] = None,
                  git_integration_settings: Optional[pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -958,6 +1004,7 @@ class CxAgent(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_spell_correction"] = enable_spell_correction
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
+            __props__.__dict__["gen_app_builder_settings"] = gen_app_builder_settings
             __props__.__dict__["git_integration_settings"] = git_integration_settings
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -989,6 +1036,7 @@ class CxAgent(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[builtins.str]] = None,
             enable_spell_correction: Optional[pulumi.Input[builtins.bool]] = None,
             enable_stackdriver_logging: Optional[pulumi.Input[builtins.bool]] = None,
+            gen_app_builder_settings: Optional[pulumi.Input[Union['CxAgentGenAppBuilderSettingsArgs', 'CxAgentGenAppBuilderSettingsArgsDict']]] = None,
             git_integration_settings: Optional[pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']]] = None,
             location: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
@@ -1019,6 +1067,8 @@ class CxAgent(pulumi.CustomResource):
                Determines whether this agent should log conversation queries.
                
                > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+        :param pulumi.Input[Union['CxAgentGenAppBuilderSettingsArgs', 'CxAgentGenAppBuilderSettingsArgsDict']] gen_app_builder_settings: Gen App Builder-related agent-level settings.
+               Structure is documented below.
         :param pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']] git_integration_settings: Git integration settings for this agent.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The name of the location this agent is located in.
@@ -1052,6 +1102,7 @@ class CxAgent(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enable_spell_correction"] = enable_spell_correction
         __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
+        __props__.__dict__["gen_app_builder_settings"] = gen_app_builder_settings
         __props__.__dict__["git_integration_settings"] = git_integration_settings
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -1126,6 +1177,15 @@ class CxAgent(pulumi.CustomResource):
         > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
+
+    @property
+    @pulumi.getter(name="genAppBuilderSettings")
+    def gen_app_builder_settings(self) -> pulumi.Output['outputs.CxAgentGenAppBuilderSettings']:
+        """
+        Gen App Builder-related agent-level settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gen_app_builder_settings")
 
     @property
     @pulumi.getter(name="gitIntegrationSettings")

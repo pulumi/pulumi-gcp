@@ -109,7 +109,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const _default = new gcp.edgecontainer.Cluster("default", {
- *     name: "",
+ *     name: "default",
  *     location: "us-central1",
  *     authorization: {
  *         adminUsers: {

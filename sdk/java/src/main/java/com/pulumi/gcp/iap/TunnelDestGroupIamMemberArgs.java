@@ -34,9 +34,17 @@ public final class TunnelDestGroupIamMemberArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="destGroup", required=true)
     private Output<String> destGroup;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> destGroup() {
         return this.destGroup;
     }
@@ -185,11 +193,23 @@ public final class TunnelDestGroupIamMemberArgs extends com.pulumi.resources.Res
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param destGroup Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder destGroup(Output<String> destGroup) {
             $.destGroup = destGroup;
             return this;
         }
 
+        /**
+         * @param destGroup Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder destGroup(String destGroup) {
             return destGroup(Output.of(destGroup));
         }

@@ -37,6 +37,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string DiskEncryptionServiceAccount;
         /// <summary>
+        /// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        /// </summary>
+        public readonly bool ForceAttach;
+        /// <summary>
         /// The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         /// </summary>
         public readonly string KmsKeySelfLink;
@@ -61,6 +65,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string diskEncryptionServiceAccount,
 
+            bool forceAttach,
+
             string kmsKeySelfLink,
 
             string mode,
@@ -72,6 +78,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             DiskEncryptionKeyRsa = diskEncryptionKeyRsa;
             DiskEncryptionKeySha256 = diskEncryptionKeySha256;
             DiskEncryptionServiceAccount = diskEncryptionServiceAccount;
+            ForceAttach = forceAttach;
             KmsKeySelfLink = kmsKeySelfLink;
             Mode = mode;
             Source = source;

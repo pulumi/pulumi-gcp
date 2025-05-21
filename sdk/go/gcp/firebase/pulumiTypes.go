@@ -1284,6 +1284,2440 @@ func (o AppHostingBuildSourceContainerPtrOutput) Image() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type AppHostingDomainCustomDomainStatus struct {
+	// (Output)
+	// Possible values:
+	// CERT_PREPARING
+	// CERT_VALIDATING
+	// CERT_PROPAGATING
+	// CERT_ACTIVE
+	// CERT_EXPIRING_SOON
+	// CERT_EXPIRED
+	CertState *string `pulumi:"certState"`
+	// (Output)
+	// Possible values:
+	// HOST_UNHOSTED
+	// HOST_UNREACHABLE
+	// HOST_NON_FAH
+	// HOST_CONFLICT
+	// HOST_WRONG_SHARD
+	// HOST_ACTIVE
+	HostState *string `pulumi:"hostState"`
+	// (Output)
+	// A list of issues with domain configuration. Allows users to self-correct
+	// problems with DNS records.
+	// Structure is documented below.
+	Issues []AppHostingDomainCustomDomainStatusIssue `pulumi:"issues"`
+	// (Output)
+	// Possible values:
+	// OWNERSHIP_MISSING
+	// OWNERSHIP_UNREACHABLE
+	// OWNERSHIP_MISMATCH
+	// OWNERSHIP_CONFLICT
+	// OWNERSHIP_PENDING
+	// OWNERSHIP_ACTIVE
+	OwnershipState *string `pulumi:"ownershipState"`
+	// (Output)
+	// Lists the records that must added or removed to a custom domain's DNS
+	// in order to finish setup and start serving content.
+	// Field is present during onboarding. Also present after onboarding if one
+	// or more of the above states is not *_ACTIVE, indicating the domain's DNS
+	// records are in a bad state.
+	// Structure is documented below.
+	RequiredDnsUpdates []AppHostingDomainCustomDomainStatusRequiredDnsUpdate `pulumi:"requiredDnsUpdates"`
+}
+
+// AppHostingDomainCustomDomainStatusInput is an input type that accepts AppHostingDomainCustomDomainStatusArgs and AppHostingDomainCustomDomainStatusOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusInput` via:
+//
+//	AppHostingDomainCustomDomainStatusArgs{...}
+type AppHostingDomainCustomDomainStatusInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusOutput() AppHostingDomainCustomDomainStatusOutput
+	ToAppHostingDomainCustomDomainStatusOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusOutput
+}
+
+type AppHostingDomainCustomDomainStatusArgs struct {
+	// (Output)
+	// Possible values:
+	// CERT_PREPARING
+	// CERT_VALIDATING
+	// CERT_PROPAGATING
+	// CERT_ACTIVE
+	// CERT_EXPIRING_SOON
+	// CERT_EXPIRED
+	CertState pulumi.StringPtrInput `pulumi:"certState"`
+	// (Output)
+	// Possible values:
+	// HOST_UNHOSTED
+	// HOST_UNREACHABLE
+	// HOST_NON_FAH
+	// HOST_CONFLICT
+	// HOST_WRONG_SHARD
+	// HOST_ACTIVE
+	HostState pulumi.StringPtrInput `pulumi:"hostState"`
+	// (Output)
+	// A list of issues with domain configuration. Allows users to self-correct
+	// problems with DNS records.
+	// Structure is documented below.
+	Issues AppHostingDomainCustomDomainStatusIssueArrayInput `pulumi:"issues"`
+	// (Output)
+	// Possible values:
+	// OWNERSHIP_MISSING
+	// OWNERSHIP_UNREACHABLE
+	// OWNERSHIP_MISMATCH
+	// OWNERSHIP_CONFLICT
+	// OWNERSHIP_PENDING
+	// OWNERSHIP_ACTIVE
+	OwnershipState pulumi.StringPtrInput `pulumi:"ownershipState"`
+	// (Output)
+	// Lists the records that must added or removed to a custom domain's DNS
+	// in order to finish setup and start serving content.
+	// Field is present during onboarding. Also present after onboarding if one
+	// or more of the above states is not *_ACTIVE, indicating the domain's DNS
+	// records are in a bad state.
+	// Structure is documented below.
+	RequiredDnsUpdates AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayInput `pulumi:"requiredDnsUpdates"`
+}
+
+func (AppHostingDomainCustomDomainStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatus)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusArgs) ToAppHostingDomainCustomDomainStatusOutput() AppHostingDomainCustomDomainStatusOutput {
+	return i.ToAppHostingDomainCustomDomainStatusOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusArgs) ToAppHostingDomainCustomDomainStatusOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusOutput)
+}
+
+// AppHostingDomainCustomDomainStatusArrayInput is an input type that accepts AppHostingDomainCustomDomainStatusArray and AppHostingDomainCustomDomainStatusArrayOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusArrayInput` via:
+//
+//	AppHostingDomainCustomDomainStatusArray{ AppHostingDomainCustomDomainStatusArgs{...} }
+type AppHostingDomainCustomDomainStatusArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusArrayOutput() AppHostingDomainCustomDomainStatusArrayOutput
+	ToAppHostingDomainCustomDomainStatusArrayOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusArrayOutput
+}
+
+type AppHostingDomainCustomDomainStatusArray []AppHostingDomainCustomDomainStatusInput
+
+func (AppHostingDomainCustomDomainStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatus)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusArray) ToAppHostingDomainCustomDomainStatusArrayOutput() AppHostingDomainCustomDomainStatusArrayOutput {
+	return i.ToAppHostingDomainCustomDomainStatusArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusArray) ToAppHostingDomainCustomDomainStatusArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatus)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusOutput) ToAppHostingDomainCustomDomainStatusOutput() AppHostingDomainCustomDomainStatusOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusOutput) ToAppHostingDomainCustomDomainStatusOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusOutput {
+	return o
+}
+
+// (Output)
+// Possible values:
+// CERT_PREPARING
+// CERT_VALIDATING
+// CERT_PROPAGATING
+// CERT_ACTIVE
+// CERT_EXPIRING_SOON
+// CERT_EXPIRED
+func (o AppHostingDomainCustomDomainStatusOutput) CertState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatus) *string { return v.CertState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Possible values:
+// HOST_UNHOSTED
+// HOST_UNREACHABLE
+// HOST_NON_FAH
+// HOST_CONFLICT
+// HOST_WRONG_SHARD
+// HOST_ACTIVE
+func (o AppHostingDomainCustomDomainStatusOutput) HostState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatus) *string { return v.HostState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A list of issues with domain configuration. Allows users to self-correct
+// problems with DNS records.
+// Structure is documented below.
+func (o AppHostingDomainCustomDomainStatusOutput) Issues() AppHostingDomainCustomDomainStatusIssueArrayOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatus) []AppHostingDomainCustomDomainStatusIssue { return v.Issues }).(AppHostingDomainCustomDomainStatusIssueArrayOutput)
+}
+
+// (Output)
+// Possible values:
+// OWNERSHIP_MISSING
+// OWNERSHIP_UNREACHABLE
+// OWNERSHIP_MISMATCH
+// OWNERSHIP_CONFLICT
+// OWNERSHIP_PENDING
+// OWNERSHIP_ACTIVE
+func (o AppHostingDomainCustomDomainStatusOutput) OwnershipState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatus) *string { return v.OwnershipState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Lists the records that must added or removed to a custom domain's DNS
+// in order to finish setup and start serving content.
+// Field is present during onboarding. Also present after onboarding if one
+// or more of the above states is not *_ACTIVE, indicating the domain's DNS
+// records are in a bad state.
+// Structure is documented below.
+func (o AppHostingDomainCustomDomainStatusOutput) RequiredDnsUpdates() AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatus) []AppHostingDomainCustomDomainStatusRequiredDnsUpdate {
+		return v.RequiredDnsUpdates
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatus)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusArrayOutput) ToAppHostingDomainCustomDomainStatusArrayOutput() AppHostingDomainCustomDomainStatusArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusArrayOutput) ToAppHostingDomainCustomDomainStatusArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusArrayOutput) Index(i pulumi.IntInput) AppHostingDomainCustomDomainStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingDomainCustomDomainStatus {
+		return vs[0].([]AppHostingDomainCustomDomainStatus)[vs[1].(int)]
+	}).(AppHostingDomainCustomDomainStatusOutput)
+}
+
+type AppHostingDomainCustomDomainStatusIssue struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details *string `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// AppHostingDomainCustomDomainStatusIssueInput is an input type that accepts AppHostingDomainCustomDomainStatusIssueArgs and AppHostingDomainCustomDomainStatusIssueOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusIssueInput` via:
+//
+//	AppHostingDomainCustomDomainStatusIssueArgs{...}
+type AppHostingDomainCustomDomainStatusIssueInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusIssueOutput() AppHostingDomainCustomDomainStatusIssueOutput
+	ToAppHostingDomainCustomDomainStatusIssueOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusIssueOutput
+}
+
+type AppHostingDomainCustomDomainStatusIssueArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details pulumi.StringPtrInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AppHostingDomainCustomDomainStatusIssueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusIssue)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusIssueArgs) ToAppHostingDomainCustomDomainStatusIssueOutput() AppHostingDomainCustomDomainStatusIssueOutput {
+	return i.ToAppHostingDomainCustomDomainStatusIssueOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusIssueArgs) ToAppHostingDomainCustomDomainStatusIssueOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusIssueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusIssueOutput)
+}
+
+// AppHostingDomainCustomDomainStatusIssueArrayInput is an input type that accepts AppHostingDomainCustomDomainStatusIssueArray and AppHostingDomainCustomDomainStatusIssueArrayOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusIssueArrayInput` via:
+//
+//	AppHostingDomainCustomDomainStatusIssueArray{ AppHostingDomainCustomDomainStatusIssueArgs{...} }
+type AppHostingDomainCustomDomainStatusIssueArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusIssueArrayOutput() AppHostingDomainCustomDomainStatusIssueArrayOutput
+	ToAppHostingDomainCustomDomainStatusIssueArrayOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusIssueArrayOutput
+}
+
+type AppHostingDomainCustomDomainStatusIssueArray []AppHostingDomainCustomDomainStatusIssueInput
+
+func (AppHostingDomainCustomDomainStatusIssueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusIssue)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusIssueArray) ToAppHostingDomainCustomDomainStatusIssueArrayOutput() AppHostingDomainCustomDomainStatusIssueArrayOutput {
+	return i.ToAppHostingDomainCustomDomainStatusIssueArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusIssueArray) ToAppHostingDomainCustomDomainStatusIssueArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusIssueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusIssueArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusIssueOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusIssueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusIssue)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusIssueOutput) ToAppHostingDomainCustomDomainStatusIssueOutput() AppHostingDomainCustomDomainStatusIssueOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusIssueOutput) ToAppHostingDomainCustomDomainStatusIssueOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusIssueOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AppHostingDomainCustomDomainStatusIssueOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusIssue) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.
+func (o AppHostingDomainCustomDomainStatusIssueOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusIssue) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o AppHostingDomainCustomDomainStatusIssueOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusIssue) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AppHostingDomainCustomDomainStatusIssueArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusIssueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusIssue)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusIssueArrayOutput) ToAppHostingDomainCustomDomainStatusIssueArrayOutput() AppHostingDomainCustomDomainStatusIssueArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusIssueArrayOutput) ToAppHostingDomainCustomDomainStatusIssueArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusIssueArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusIssueArrayOutput) Index(i pulumi.IntInput) AppHostingDomainCustomDomainStatusIssueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingDomainCustomDomainStatusIssue {
+		return vs[0].([]AppHostingDomainCustomDomainStatusIssue)[vs[1].(int)]
+	}).(AppHostingDomainCustomDomainStatusIssueOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdate struct {
+	// (Output)
+	// The last time App Hosting checked your custom domain's DNS records.
+	CheckTime *string `pulumi:"checkTime"`
+	// (Output)
+	// The set of DNS records App Hosting needs in order to be able to serve
+	// secure content on the domain.
+	// Structure is documented below.
+	Desireds []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired `pulumi:"desireds"`
+	// (Output)
+	// The set of DNS records App Hosting discovered when inspecting a domain.
+	// Structure is documented below.
+	Discovereds []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered `pulumi:"discovereds"`
+	// (Output)
+	// The domain the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs and AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs{...}
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs struct {
+	// (Output)
+	// The last time App Hosting checked your custom domain's DNS records.
+	CheckTime pulumi.StringPtrInput `pulumi:"checkTime"`
+	// (Output)
+	// The set of DNS records App Hosting needs in order to be able to serve
+	// secure content on the domain.
+	// Structure is documented below.
+	Desireds AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayInput `pulumi:"desireds"`
+	// (Output)
+	// The set of DNS records App Hosting discovered when inspecting a domain.
+	// Structure is documented below.
+	Discovereds AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayInput `pulumi:"discovereds"`
+	// (Output)
+	// The domain the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+}
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdate)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput)
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateArray and AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateArray{ AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs{...} }
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateArray []AppHostingDomainCustomDomainStatusRequiredDnsUpdateInput
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdate)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdate)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput {
+	return o
+}
+
+// (Output)
+// The last time App Hosting checked your custom domain's DNS records.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput) CheckTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdate) *string { return v.CheckTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The set of DNS records App Hosting needs in order to be able to serve
+// secure content on the domain.
+// Structure is documented below.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput) Desireds() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdate) []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired {
+		return v.Desireds
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput)
+}
+
+// (Output)
+// The set of DNS records App Hosting discovered when inspecting a domain.
+// Structure is documented below.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput) Discovereds() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdate) []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered {
+		return v.Discovereds
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput)
+}
+
+// (Output)
+// The domain the record pertains to, e.g. `foo.bar.com.`.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdate) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdate)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput) Index(i pulumi.IntInput) AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingDomainCustomDomainStatusRequiredDnsUpdate {
+		return vs[0].([]AppHostingDomainCustomDomainStatusRequiredDnsUpdate)[vs[1].(int)]
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired struct {
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	CheckErrors []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError `pulumi:"checkErrors"`
+	// (Output)
+	// The domain the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// (Output)
+	// Records on the domain.
+	// Structure is documented below.
+	Records []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord `pulumi:"records"`
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs{...}
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs struct {
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	CheckErrors AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayInput `pulumi:"checkErrors"`
+	// (Output)
+	// The domain the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// (Output)
+	// Records on the domain.
+	// Structure is documented below.
+	Records AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayInput `pulumi:"records"`
+}
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput)
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArray and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArray{ AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs{...} }
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArray []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredInput
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput {
+	return o
+}
+
+// (Output)
+// The `Status` type defines a logical error model that is suitable for
+// different programming environments, including REST APIs and RPC APIs. It is
+// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+// three pieces of data: error code, error message, and error details.
+// You can find out more about this error model and how to work with it in the
+// [API Design Guide](https://cloud.google.com/apis/design/errors).
+// Structure is documented below.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput) CheckErrors() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired) []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError {
+		return v.CheckErrors
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput)
+}
+
+// (Output)
+// The domain the record pertains to, e.g. `foo.bar.com.`.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Records on the domain.
+// Structure is documented below.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput) Records() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired) []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord {
+		return v.Records
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput) Index(i pulumi.IntInput) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired {
+		return vs[0].([]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired)[vs[1].(int)]
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details *string `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs{...}
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details pulumi.StringPtrInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput)
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArray and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArray{ AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs{...} }
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArray []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorInput
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput) Index(i pulumi.IntInput) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError {
+		return vs[0].([]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError)[vs[1].(int)]
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord struct {
+	// (Output)
+	// The domain the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// (Output)
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain. App Hosting
+	//   uses TXT records to determine which Firebase projects have
+	//   permission to act on the domain's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata *string `pulumi:"rdata"`
+	// (Output)
+	// An enum that indicates which state(s) this DNS record applies to. Populated
+	// for all records with an `ADD` or `REMOVE` required action.
+	RelevantStates []string `pulumi:"relevantStates"`
+	// (Output)
+	// An enum that indicates the a required action for this record. Populated
+	// when the record is part of a required change in a  `DnsUpdates`
+	// `discovered` or `desired` record set.
+	// Possible values:
+	// NONE
+	// ADD
+	// REMOVE
+	RequiredAction *string `pulumi:"requiredAction"`
+	// (Output)
+	// The record's type, which determines what data the record contains.
+	// Possible values:
+	// A
+	// CNAME
+	// TXT
+	// AAAA
+	// CAA
+	Type *string `pulumi:"type"`
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs{...}
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs struct {
+	// (Output)
+	// The domain the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// (Output)
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain. App Hosting
+	//   uses TXT records to determine which Firebase projects have
+	//   permission to act on the domain's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata pulumi.StringPtrInput `pulumi:"rdata"`
+	// (Output)
+	// An enum that indicates which state(s) this DNS record applies to. Populated
+	// for all records with an `ADD` or `REMOVE` required action.
+	RelevantStates pulumi.StringArrayInput `pulumi:"relevantStates"`
+	// (Output)
+	// An enum that indicates the a required action for this record. Populated
+	// when the record is part of a required change in a  `DnsUpdates`
+	// `discovered` or `desired` record set.
+	// Possible values:
+	// NONE
+	// ADD
+	// REMOVE
+	RequiredAction pulumi.StringPtrInput `pulumi:"requiredAction"`
+	// (Output)
+	// The record's type, which determines what data the record contains.
+	// Possible values:
+	// A
+	// CNAME
+	// TXT
+	// AAAA
+	// CAA
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput)
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArray and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArray{ AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs{...} }
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArray []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordInput
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput {
+	return o
+}
+
+// (Output)
+// The domain the record pertains to, e.g. `foo.bar.com.`.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The data of the record. The meaning of the value depends on record type:
+//   - A and AAAA: IP addresses for the domain.
+//   - CNAME: Another domain to check for records.
+//   - TXT: Arbitrary text strings associated with the domain. App Hosting
+//     uses TXT records to determine which Firebase projects have
+//     permission to act on the domain's behalf.
+//   - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput) Rdata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord) *string { return v.Rdata }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An enum that indicates which state(s) this DNS record applies to. Populated
+// for all records with an `ADD` or `REMOVE` required action.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput) RelevantStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord) []string {
+		return v.RelevantStates
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// An enum that indicates the a required action for this record. Populated
+// when the record is part of a required change in a  `DnsUpdates`
+// `discovered` or `desired` record set.
+// Possible values:
+// NONE
+// ADD
+// REMOVE
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput) RequiredAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord) *string {
+		return v.RequiredAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The record's type, which determines what data the record contains.
+// Possible values:
+// A
+// CNAME
+// TXT
+// AAAA
+// CAA
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput) Index(i pulumi.IntInput) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord {
+		return vs[0].([]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord)[vs[1].(int)]
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered struct {
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	CheckErrors []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError `pulumi:"checkErrors"`
+	// (Output)
+	// The domain the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// (Output)
+	// Records on the domain.
+	// Structure is documented below.
+	Records []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord `pulumi:"records"`
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs{...}
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs struct {
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	CheckErrors AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayInput `pulumi:"checkErrors"`
+	// (Output)
+	// The domain the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// (Output)
+	// Records on the domain.
+	// Structure is documented below.
+	Records AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayInput `pulumi:"records"`
+}
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput)
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArray and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArray{ AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs{...} }
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArray []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredInput
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput {
+	return o
+}
+
+// (Output)
+// The `Status` type defines a logical error model that is suitable for
+// different programming environments, including REST APIs and RPC APIs. It is
+// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+// three pieces of data: error code, error message, and error details.
+// You can find out more about this error model and how to work with it in the
+// [API Design Guide](https://cloud.google.com/apis/design/errors).
+// Structure is documented below.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput) CheckErrors() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered) []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError {
+		return v.CheckErrors
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput)
+}
+
+// (Output)
+// The domain the record pertains to, e.g. `foo.bar.com.`.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Records on the domain.
+// Structure is documented below.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput) Records() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered) []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord {
+		return v.Records
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput) Index(i pulumi.IntInput) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered {
+		return vs[0].([]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered)[vs[1].(int)]
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details *string `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs{...}
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details pulumi.StringPtrInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput)
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArray and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArray{ AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs{...} }
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArray []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorInput
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError) *string {
+		return v.Details
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError) *string {
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput) Index(i pulumi.IntInput) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError {
+		return vs[0].([]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError)[vs[1].(int)]
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord struct {
+	// (Output)
+	// The domain the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// (Output)
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain. App Hosting
+	//   uses TXT records to determine which Firebase projects have
+	//   permission to act on the domain's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata *string `pulumi:"rdata"`
+	// (Output)
+	// An enum that indicates which state(s) this DNS record applies to. Populated
+	// for all records with an `ADD` or `REMOVE` required action.
+	RelevantStates []string `pulumi:"relevantStates"`
+	// (Output)
+	// An enum that indicates the a required action for this record. Populated
+	// when the record is part of a required change in a  `DnsUpdates`
+	// `discovered` or `desired` record set.
+	// Possible values:
+	// NONE
+	// ADD
+	// REMOVE
+	RequiredAction *string `pulumi:"requiredAction"`
+	// (Output)
+	// The record's type, which determines what data the record contains.
+	// Possible values:
+	// A
+	// CNAME
+	// TXT
+	// AAAA
+	// CAA
+	Type *string `pulumi:"type"`
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs{...}
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs struct {
+	// (Output)
+	// The domain the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// (Output)
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain. App Hosting
+	//   uses TXT records to determine which Firebase projects have
+	//   permission to act on the domain's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata pulumi.StringPtrInput `pulumi:"rdata"`
+	// (Output)
+	// An enum that indicates which state(s) this DNS record applies to. Populated
+	// for all records with an `ADD` or `REMOVE` required action.
+	RelevantStates pulumi.StringArrayInput `pulumi:"relevantStates"`
+	// (Output)
+	// An enum that indicates the a required action for this record. Populated
+	// when the record is part of a required change in a  `DnsUpdates`
+	// `discovered` or `desired` record set.
+	// Possible values:
+	// NONE
+	// ADD
+	// REMOVE
+	RequiredAction pulumi.StringPtrInput `pulumi:"requiredAction"`
+	// (Output)
+	// The record's type, which determines what data the record contains.
+	// Possible values:
+	// A
+	// CNAME
+	// TXT
+	// AAAA
+	// CAA
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput)
+}
+
+// AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayInput is an input type that accepts AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArray and AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput values.
+// You can construct a concrete instance of `AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayInput` via:
+//
+//	AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArray{ AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs{...} }
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput
+	ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutputWithContext(context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArray []AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordInput
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord)(nil)).Elem()
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput {
+	return i.ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArray) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput {
+	return o
+}
+
+// (Output)
+// The domain the record pertains to, e.g. `foo.bar.com.`.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord) *string {
+		return v.DomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The data of the record. The meaning of the value depends on record type:
+//   - A and AAAA: IP addresses for the domain.
+//   - CNAME: Another domain to check for records.
+//   - TXT: Arbitrary text strings associated with the domain. App Hosting
+//     uses TXT records to determine which Firebase projects have
+//     permission to act on the domain's behalf.
+//   - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput) Rdata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord) *string { return v.Rdata }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An enum that indicates which state(s) this DNS record applies to. Populated
+// for all records with an `ADD` or `REMOVE` required action.
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput) RelevantStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord) []string {
+		return v.RelevantStates
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// An enum that indicates the a required action for this record. Populated
+// when the record is part of a required change in a  `DnsUpdates`
+// `discovered` or `desired` record set.
+// Possible values:
+// NONE
+// ADD
+// REMOVE
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput) RequiredAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord) *string {
+		return v.RequiredAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The record's type, which determines what data the record contains.
+// Possible values:
+// A
+// CNAME
+// TXT
+// AAAA
+// CAA
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord)(nil)).Elem()
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput() AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput) ToAppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutputWithContext(ctx context.Context) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput {
+	return o
+}
+
+func (o AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput) Index(i pulumi.IntInput) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord {
+		return vs[0].([]AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord)[vs[1].(int)]
+	}).(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput)
+}
+
+type AppHostingDomainServe struct {
+	// Specifies redirect behavior for a domain.
+	// Structure is documented below.
+	Redirect *AppHostingDomainServeRedirect `pulumi:"redirect"`
+}
+
+// AppHostingDomainServeInput is an input type that accepts AppHostingDomainServeArgs and AppHostingDomainServeOutput values.
+// You can construct a concrete instance of `AppHostingDomainServeInput` via:
+//
+//	AppHostingDomainServeArgs{...}
+type AppHostingDomainServeInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainServeOutput() AppHostingDomainServeOutput
+	ToAppHostingDomainServeOutputWithContext(context.Context) AppHostingDomainServeOutput
+}
+
+type AppHostingDomainServeArgs struct {
+	// Specifies redirect behavior for a domain.
+	// Structure is documented below.
+	Redirect AppHostingDomainServeRedirectPtrInput `pulumi:"redirect"`
+}
+
+func (AppHostingDomainServeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainServe)(nil)).Elem()
+}
+
+func (i AppHostingDomainServeArgs) ToAppHostingDomainServeOutput() AppHostingDomainServeOutput {
+	return i.ToAppHostingDomainServeOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainServeArgs) ToAppHostingDomainServeOutputWithContext(ctx context.Context) AppHostingDomainServeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainServeOutput)
+}
+
+func (i AppHostingDomainServeArgs) ToAppHostingDomainServePtrOutput() AppHostingDomainServePtrOutput {
+	return i.ToAppHostingDomainServePtrOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainServeArgs) ToAppHostingDomainServePtrOutputWithContext(ctx context.Context) AppHostingDomainServePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainServeOutput).ToAppHostingDomainServePtrOutputWithContext(ctx)
+}
+
+// AppHostingDomainServePtrInput is an input type that accepts AppHostingDomainServeArgs, AppHostingDomainServePtr and AppHostingDomainServePtrOutput values.
+// You can construct a concrete instance of `AppHostingDomainServePtrInput` via:
+//
+//	        AppHostingDomainServeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppHostingDomainServePtrInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainServePtrOutput() AppHostingDomainServePtrOutput
+	ToAppHostingDomainServePtrOutputWithContext(context.Context) AppHostingDomainServePtrOutput
+}
+
+type appHostingDomainServePtrType AppHostingDomainServeArgs
+
+func AppHostingDomainServePtr(v *AppHostingDomainServeArgs) AppHostingDomainServePtrInput {
+	return (*appHostingDomainServePtrType)(v)
+}
+
+func (*appHostingDomainServePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingDomainServe)(nil)).Elem()
+}
+
+func (i *appHostingDomainServePtrType) ToAppHostingDomainServePtrOutput() AppHostingDomainServePtrOutput {
+	return i.ToAppHostingDomainServePtrOutputWithContext(context.Background())
+}
+
+func (i *appHostingDomainServePtrType) ToAppHostingDomainServePtrOutputWithContext(ctx context.Context) AppHostingDomainServePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainServePtrOutput)
+}
+
+type AppHostingDomainServeOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainServeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainServe)(nil)).Elem()
+}
+
+func (o AppHostingDomainServeOutput) ToAppHostingDomainServeOutput() AppHostingDomainServeOutput {
+	return o
+}
+
+func (o AppHostingDomainServeOutput) ToAppHostingDomainServeOutputWithContext(ctx context.Context) AppHostingDomainServeOutput {
+	return o
+}
+
+func (o AppHostingDomainServeOutput) ToAppHostingDomainServePtrOutput() AppHostingDomainServePtrOutput {
+	return o.ToAppHostingDomainServePtrOutputWithContext(context.Background())
+}
+
+func (o AppHostingDomainServeOutput) ToAppHostingDomainServePtrOutputWithContext(ctx context.Context) AppHostingDomainServePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppHostingDomainServe) *AppHostingDomainServe {
+		return &v
+	}).(AppHostingDomainServePtrOutput)
+}
+
+// Specifies redirect behavior for a domain.
+// Structure is documented below.
+func (o AppHostingDomainServeOutput) Redirect() AppHostingDomainServeRedirectPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainServe) *AppHostingDomainServeRedirect { return v.Redirect }).(AppHostingDomainServeRedirectPtrOutput)
+}
+
+type AppHostingDomainServePtrOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainServePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingDomainServe)(nil)).Elem()
+}
+
+func (o AppHostingDomainServePtrOutput) ToAppHostingDomainServePtrOutput() AppHostingDomainServePtrOutput {
+	return o
+}
+
+func (o AppHostingDomainServePtrOutput) ToAppHostingDomainServePtrOutputWithContext(ctx context.Context) AppHostingDomainServePtrOutput {
+	return o
+}
+
+func (o AppHostingDomainServePtrOutput) Elem() AppHostingDomainServeOutput {
+	return o.ApplyT(func(v *AppHostingDomainServe) AppHostingDomainServe {
+		if v != nil {
+			return *v
+		}
+		var ret AppHostingDomainServe
+		return ret
+	}).(AppHostingDomainServeOutput)
+}
+
+// Specifies redirect behavior for a domain.
+// Structure is documented below.
+func (o AppHostingDomainServePtrOutput) Redirect() AppHostingDomainServeRedirectPtrOutput {
+	return o.ApplyT(func(v *AppHostingDomainServe) *AppHostingDomainServeRedirect {
+		if v == nil {
+			return nil
+		}
+		return v.Redirect
+	}).(AppHostingDomainServeRedirectPtrOutput)
+}
+
+type AppHostingDomainServeRedirect struct {
+	// The status code to use in a redirect response. Must be a valid HTTP 3XX
+	// status code. Defaults to 302 if not present.
+	Status *string `pulumi:"status"`
+	// The URI of the redirect's intended destination. This URI will be
+	// prepended to the original request path. URI without a scheme are
+	// assumed to be HTTPS.
+	Uri string `pulumi:"uri"`
+}
+
+// AppHostingDomainServeRedirectInput is an input type that accepts AppHostingDomainServeRedirectArgs and AppHostingDomainServeRedirectOutput values.
+// You can construct a concrete instance of `AppHostingDomainServeRedirectInput` via:
+//
+//	AppHostingDomainServeRedirectArgs{...}
+type AppHostingDomainServeRedirectInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainServeRedirectOutput() AppHostingDomainServeRedirectOutput
+	ToAppHostingDomainServeRedirectOutputWithContext(context.Context) AppHostingDomainServeRedirectOutput
+}
+
+type AppHostingDomainServeRedirectArgs struct {
+	// The status code to use in a redirect response. Must be a valid HTTP 3XX
+	// status code. Defaults to 302 if not present.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The URI of the redirect's intended destination. This URI will be
+	// prepended to the original request path. URI without a scheme are
+	// assumed to be HTTPS.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (AppHostingDomainServeRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainServeRedirect)(nil)).Elem()
+}
+
+func (i AppHostingDomainServeRedirectArgs) ToAppHostingDomainServeRedirectOutput() AppHostingDomainServeRedirectOutput {
+	return i.ToAppHostingDomainServeRedirectOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainServeRedirectArgs) ToAppHostingDomainServeRedirectOutputWithContext(ctx context.Context) AppHostingDomainServeRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainServeRedirectOutput)
+}
+
+func (i AppHostingDomainServeRedirectArgs) ToAppHostingDomainServeRedirectPtrOutput() AppHostingDomainServeRedirectPtrOutput {
+	return i.ToAppHostingDomainServeRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i AppHostingDomainServeRedirectArgs) ToAppHostingDomainServeRedirectPtrOutputWithContext(ctx context.Context) AppHostingDomainServeRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainServeRedirectOutput).ToAppHostingDomainServeRedirectPtrOutputWithContext(ctx)
+}
+
+// AppHostingDomainServeRedirectPtrInput is an input type that accepts AppHostingDomainServeRedirectArgs, AppHostingDomainServeRedirectPtr and AppHostingDomainServeRedirectPtrOutput values.
+// You can construct a concrete instance of `AppHostingDomainServeRedirectPtrInput` via:
+//
+//	        AppHostingDomainServeRedirectArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppHostingDomainServeRedirectPtrInput interface {
+	pulumi.Input
+
+	ToAppHostingDomainServeRedirectPtrOutput() AppHostingDomainServeRedirectPtrOutput
+	ToAppHostingDomainServeRedirectPtrOutputWithContext(context.Context) AppHostingDomainServeRedirectPtrOutput
+}
+
+type appHostingDomainServeRedirectPtrType AppHostingDomainServeRedirectArgs
+
+func AppHostingDomainServeRedirectPtr(v *AppHostingDomainServeRedirectArgs) AppHostingDomainServeRedirectPtrInput {
+	return (*appHostingDomainServeRedirectPtrType)(v)
+}
+
+func (*appHostingDomainServeRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingDomainServeRedirect)(nil)).Elem()
+}
+
+func (i *appHostingDomainServeRedirectPtrType) ToAppHostingDomainServeRedirectPtrOutput() AppHostingDomainServeRedirectPtrOutput {
+	return i.ToAppHostingDomainServeRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *appHostingDomainServeRedirectPtrType) ToAppHostingDomainServeRedirectPtrOutputWithContext(ctx context.Context) AppHostingDomainServeRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingDomainServeRedirectPtrOutput)
+}
+
+type AppHostingDomainServeRedirectOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainServeRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingDomainServeRedirect)(nil)).Elem()
+}
+
+func (o AppHostingDomainServeRedirectOutput) ToAppHostingDomainServeRedirectOutput() AppHostingDomainServeRedirectOutput {
+	return o
+}
+
+func (o AppHostingDomainServeRedirectOutput) ToAppHostingDomainServeRedirectOutputWithContext(ctx context.Context) AppHostingDomainServeRedirectOutput {
+	return o
+}
+
+func (o AppHostingDomainServeRedirectOutput) ToAppHostingDomainServeRedirectPtrOutput() AppHostingDomainServeRedirectPtrOutput {
+	return o.ToAppHostingDomainServeRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o AppHostingDomainServeRedirectOutput) ToAppHostingDomainServeRedirectPtrOutputWithContext(ctx context.Context) AppHostingDomainServeRedirectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppHostingDomainServeRedirect) *AppHostingDomainServeRedirect {
+		return &v
+	}).(AppHostingDomainServeRedirectPtrOutput)
+}
+
+// The status code to use in a redirect response. Must be a valid HTTP 3XX
+// status code. Defaults to 302 if not present.
+func (o AppHostingDomainServeRedirectOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingDomainServeRedirect) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the redirect's intended destination. This URI will be
+// prepended to the original request path. URI without a scheme are
+// assumed to be HTTPS.
+func (o AppHostingDomainServeRedirectOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v AppHostingDomainServeRedirect) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type AppHostingDomainServeRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (AppHostingDomainServeRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingDomainServeRedirect)(nil)).Elem()
+}
+
+func (o AppHostingDomainServeRedirectPtrOutput) ToAppHostingDomainServeRedirectPtrOutput() AppHostingDomainServeRedirectPtrOutput {
+	return o
+}
+
+func (o AppHostingDomainServeRedirectPtrOutput) ToAppHostingDomainServeRedirectPtrOutputWithContext(ctx context.Context) AppHostingDomainServeRedirectPtrOutput {
+	return o
+}
+
+func (o AppHostingDomainServeRedirectPtrOutput) Elem() AppHostingDomainServeRedirectOutput {
+	return o.ApplyT(func(v *AppHostingDomainServeRedirect) AppHostingDomainServeRedirect {
+		if v != nil {
+			return *v
+		}
+		var ret AppHostingDomainServeRedirect
+		return ret
+	}).(AppHostingDomainServeRedirectOutput)
+}
+
+// The status code to use in a redirect response. Must be a valid HTTP 3XX
+// status code. Defaults to 302 if not present.
+func (o AppHostingDomainServeRedirectPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingDomainServeRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the redirect's intended destination. This URI will be
+// prepended to the original request path. URI without a scheme are
+// assumed to be HTTPS.
+func (o AppHostingDomainServeRedirectPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingDomainServeRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppHostingTrafficCurrent struct {
+	// (Output)
+	// A list of traffic splits that together represent where traffic is being routed.
+	// Structure is documented below.
+	Splits []AppHostingTrafficCurrentSplit `pulumi:"splits"`
+}
+
+// AppHostingTrafficCurrentInput is an input type that accepts AppHostingTrafficCurrentArgs and AppHostingTrafficCurrentOutput values.
+// You can construct a concrete instance of `AppHostingTrafficCurrentInput` via:
+//
+//	AppHostingTrafficCurrentArgs{...}
+type AppHostingTrafficCurrentInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficCurrentOutput() AppHostingTrafficCurrentOutput
+	ToAppHostingTrafficCurrentOutputWithContext(context.Context) AppHostingTrafficCurrentOutput
+}
+
+type AppHostingTrafficCurrentArgs struct {
+	// (Output)
+	// A list of traffic splits that together represent where traffic is being routed.
+	// Structure is documented below.
+	Splits AppHostingTrafficCurrentSplitArrayInput `pulumi:"splits"`
+}
+
+func (AppHostingTrafficCurrentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficCurrent)(nil)).Elem()
+}
+
+func (i AppHostingTrafficCurrentArgs) ToAppHostingTrafficCurrentOutput() AppHostingTrafficCurrentOutput {
+	return i.ToAppHostingTrafficCurrentOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficCurrentArgs) ToAppHostingTrafficCurrentOutputWithContext(ctx context.Context) AppHostingTrafficCurrentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficCurrentOutput)
+}
+
+// AppHostingTrafficCurrentArrayInput is an input type that accepts AppHostingTrafficCurrentArray and AppHostingTrafficCurrentArrayOutput values.
+// You can construct a concrete instance of `AppHostingTrafficCurrentArrayInput` via:
+//
+//	AppHostingTrafficCurrentArray{ AppHostingTrafficCurrentArgs{...} }
+type AppHostingTrafficCurrentArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficCurrentArrayOutput() AppHostingTrafficCurrentArrayOutput
+	ToAppHostingTrafficCurrentArrayOutputWithContext(context.Context) AppHostingTrafficCurrentArrayOutput
+}
+
+type AppHostingTrafficCurrentArray []AppHostingTrafficCurrentInput
+
+func (AppHostingTrafficCurrentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingTrafficCurrent)(nil)).Elem()
+}
+
+func (i AppHostingTrafficCurrentArray) ToAppHostingTrafficCurrentArrayOutput() AppHostingTrafficCurrentArrayOutput {
+	return i.ToAppHostingTrafficCurrentArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficCurrentArray) ToAppHostingTrafficCurrentArrayOutputWithContext(ctx context.Context) AppHostingTrafficCurrentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficCurrentArrayOutput)
+}
+
+type AppHostingTrafficCurrentOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficCurrentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficCurrent)(nil)).Elem()
+}
+
+func (o AppHostingTrafficCurrentOutput) ToAppHostingTrafficCurrentOutput() AppHostingTrafficCurrentOutput {
+	return o
+}
+
+func (o AppHostingTrafficCurrentOutput) ToAppHostingTrafficCurrentOutputWithContext(ctx context.Context) AppHostingTrafficCurrentOutput {
+	return o
+}
+
+// (Output)
+// A list of traffic splits that together represent where traffic is being routed.
+// Structure is documented below.
+func (o AppHostingTrafficCurrentOutput) Splits() AppHostingTrafficCurrentSplitArrayOutput {
+	return o.ApplyT(func(v AppHostingTrafficCurrent) []AppHostingTrafficCurrentSplit { return v.Splits }).(AppHostingTrafficCurrentSplitArrayOutput)
+}
+
+type AppHostingTrafficCurrentArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficCurrentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingTrafficCurrent)(nil)).Elem()
+}
+
+func (o AppHostingTrafficCurrentArrayOutput) ToAppHostingTrafficCurrentArrayOutput() AppHostingTrafficCurrentArrayOutput {
+	return o
+}
+
+func (o AppHostingTrafficCurrentArrayOutput) ToAppHostingTrafficCurrentArrayOutputWithContext(ctx context.Context) AppHostingTrafficCurrentArrayOutput {
+	return o
+}
+
+func (o AppHostingTrafficCurrentArrayOutput) Index(i pulumi.IntInput) AppHostingTrafficCurrentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingTrafficCurrent {
+		return vs[0].([]AppHostingTrafficCurrent)[vs[1].(int)]
+	}).(AppHostingTrafficCurrentOutput)
+}
+
+type AppHostingTrafficCurrentSplit struct {
+	// The build that traffic is being routed to.
+	Build *string `pulumi:"build"`
+	// The percentage of traffic to send to the build. Currently must be 100 or 0.
+	Percent *int `pulumi:"percent"`
+}
+
+// AppHostingTrafficCurrentSplitInput is an input type that accepts AppHostingTrafficCurrentSplitArgs and AppHostingTrafficCurrentSplitOutput values.
+// You can construct a concrete instance of `AppHostingTrafficCurrentSplitInput` via:
+//
+//	AppHostingTrafficCurrentSplitArgs{...}
+type AppHostingTrafficCurrentSplitInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficCurrentSplitOutput() AppHostingTrafficCurrentSplitOutput
+	ToAppHostingTrafficCurrentSplitOutputWithContext(context.Context) AppHostingTrafficCurrentSplitOutput
+}
+
+type AppHostingTrafficCurrentSplitArgs struct {
+	// The build that traffic is being routed to.
+	Build pulumi.StringPtrInput `pulumi:"build"`
+	// The percentage of traffic to send to the build. Currently must be 100 or 0.
+	Percent pulumi.IntPtrInput `pulumi:"percent"`
+}
+
+func (AppHostingTrafficCurrentSplitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficCurrentSplit)(nil)).Elem()
+}
+
+func (i AppHostingTrafficCurrentSplitArgs) ToAppHostingTrafficCurrentSplitOutput() AppHostingTrafficCurrentSplitOutput {
+	return i.ToAppHostingTrafficCurrentSplitOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficCurrentSplitArgs) ToAppHostingTrafficCurrentSplitOutputWithContext(ctx context.Context) AppHostingTrafficCurrentSplitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficCurrentSplitOutput)
+}
+
+// AppHostingTrafficCurrentSplitArrayInput is an input type that accepts AppHostingTrafficCurrentSplitArray and AppHostingTrafficCurrentSplitArrayOutput values.
+// You can construct a concrete instance of `AppHostingTrafficCurrentSplitArrayInput` via:
+//
+//	AppHostingTrafficCurrentSplitArray{ AppHostingTrafficCurrentSplitArgs{...} }
+type AppHostingTrafficCurrentSplitArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficCurrentSplitArrayOutput() AppHostingTrafficCurrentSplitArrayOutput
+	ToAppHostingTrafficCurrentSplitArrayOutputWithContext(context.Context) AppHostingTrafficCurrentSplitArrayOutput
+}
+
+type AppHostingTrafficCurrentSplitArray []AppHostingTrafficCurrentSplitInput
+
+func (AppHostingTrafficCurrentSplitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingTrafficCurrentSplit)(nil)).Elem()
+}
+
+func (i AppHostingTrafficCurrentSplitArray) ToAppHostingTrafficCurrentSplitArrayOutput() AppHostingTrafficCurrentSplitArrayOutput {
+	return i.ToAppHostingTrafficCurrentSplitArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficCurrentSplitArray) ToAppHostingTrafficCurrentSplitArrayOutputWithContext(ctx context.Context) AppHostingTrafficCurrentSplitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficCurrentSplitArrayOutput)
+}
+
+type AppHostingTrafficCurrentSplitOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficCurrentSplitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficCurrentSplit)(nil)).Elem()
+}
+
+func (o AppHostingTrafficCurrentSplitOutput) ToAppHostingTrafficCurrentSplitOutput() AppHostingTrafficCurrentSplitOutput {
+	return o
+}
+
+func (o AppHostingTrafficCurrentSplitOutput) ToAppHostingTrafficCurrentSplitOutputWithContext(ctx context.Context) AppHostingTrafficCurrentSplitOutput {
+	return o
+}
+
+// The build that traffic is being routed to.
+func (o AppHostingTrafficCurrentSplitOutput) Build() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingTrafficCurrentSplit) *string { return v.Build }).(pulumi.StringPtrOutput)
+}
+
+// The percentage of traffic to send to the build. Currently must be 100 or 0.
+func (o AppHostingTrafficCurrentSplitOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppHostingTrafficCurrentSplit) *int { return v.Percent }).(pulumi.IntPtrOutput)
+}
+
+type AppHostingTrafficCurrentSplitArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficCurrentSplitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingTrafficCurrentSplit)(nil)).Elem()
+}
+
+func (o AppHostingTrafficCurrentSplitArrayOutput) ToAppHostingTrafficCurrentSplitArrayOutput() AppHostingTrafficCurrentSplitArrayOutput {
+	return o
+}
+
+func (o AppHostingTrafficCurrentSplitArrayOutput) ToAppHostingTrafficCurrentSplitArrayOutputWithContext(ctx context.Context) AppHostingTrafficCurrentSplitArrayOutput {
+	return o
+}
+
+func (o AppHostingTrafficCurrentSplitArrayOutput) Index(i pulumi.IntInput) AppHostingTrafficCurrentSplitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingTrafficCurrentSplit {
+		return vs[0].([]AppHostingTrafficCurrentSplit)[vs[1].(int)]
+	}).(AppHostingTrafficCurrentSplitOutput)
+}
+
+type AppHostingTrafficRolloutPolicy struct {
+	// Specifies a branch that triggers a new build to be started with this
+	// policy. If not set, no automatic rollouts will happen.
+	CodebaseBranch *string `pulumi:"codebaseBranch"`
+	// A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
+	Disabled *bool `pulumi:"disabled"`
+	// (Output)
+	// If disabled is set, the time at which the rollouts were disabled.
+	DisabledTime *string `pulumi:"disabledTime"`
+}
+
+// AppHostingTrafficRolloutPolicyInput is an input type that accepts AppHostingTrafficRolloutPolicyArgs and AppHostingTrafficRolloutPolicyOutput values.
+// You can construct a concrete instance of `AppHostingTrafficRolloutPolicyInput` via:
+//
+//	AppHostingTrafficRolloutPolicyArgs{...}
+type AppHostingTrafficRolloutPolicyInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficRolloutPolicyOutput() AppHostingTrafficRolloutPolicyOutput
+	ToAppHostingTrafficRolloutPolicyOutputWithContext(context.Context) AppHostingTrafficRolloutPolicyOutput
+}
+
+type AppHostingTrafficRolloutPolicyArgs struct {
+	// Specifies a branch that triggers a new build to be started with this
+	// policy. If not set, no automatic rollouts will happen.
+	CodebaseBranch pulumi.StringPtrInput `pulumi:"codebaseBranch"`
+	// A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// (Output)
+	// If disabled is set, the time at which the rollouts were disabled.
+	DisabledTime pulumi.StringPtrInput `pulumi:"disabledTime"`
+}
+
+func (AppHostingTrafficRolloutPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficRolloutPolicy)(nil)).Elem()
+}
+
+func (i AppHostingTrafficRolloutPolicyArgs) ToAppHostingTrafficRolloutPolicyOutput() AppHostingTrafficRolloutPolicyOutput {
+	return i.ToAppHostingTrafficRolloutPolicyOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficRolloutPolicyArgs) ToAppHostingTrafficRolloutPolicyOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficRolloutPolicyOutput)
+}
+
+func (i AppHostingTrafficRolloutPolicyArgs) ToAppHostingTrafficRolloutPolicyPtrOutput() AppHostingTrafficRolloutPolicyPtrOutput {
+	return i.ToAppHostingTrafficRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficRolloutPolicyArgs) ToAppHostingTrafficRolloutPolicyPtrOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficRolloutPolicyOutput).ToAppHostingTrafficRolloutPolicyPtrOutputWithContext(ctx)
+}
+
+// AppHostingTrafficRolloutPolicyPtrInput is an input type that accepts AppHostingTrafficRolloutPolicyArgs, AppHostingTrafficRolloutPolicyPtr and AppHostingTrafficRolloutPolicyPtrOutput values.
+// You can construct a concrete instance of `AppHostingTrafficRolloutPolicyPtrInput` via:
+//
+//	        AppHostingTrafficRolloutPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppHostingTrafficRolloutPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficRolloutPolicyPtrOutput() AppHostingTrafficRolloutPolicyPtrOutput
+	ToAppHostingTrafficRolloutPolicyPtrOutputWithContext(context.Context) AppHostingTrafficRolloutPolicyPtrOutput
+}
+
+type appHostingTrafficRolloutPolicyPtrType AppHostingTrafficRolloutPolicyArgs
+
+func AppHostingTrafficRolloutPolicyPtr(v *AppHostingTrafficRolloutPolicyArgs) AppHostingTrafficRolloutPolicyPtrInput {
+	return (*appHostingTrafficRolloutPolicyPtrType)(v)
+}
+
+func (*appHostingTrafficRolloutPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingTrafficRolloutPolicy)(nil)).Elem()
+}
+
+func (i *appHostingTrafficRolloutPolicyPtrType) ToAppHostingTrafficRolloutPolicyPtrOutput() AppHostingTrafficRolloutPolicyPtrOutput {
+	return i.ToAppHostingTrafficRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *appHostingTrafficRolloutPolicyPtrType) ToAppHostingTrafficRolloutPolicyPtrOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficRolloutPolicyPtrOutput)
+}
+
+type AppHostingTrafficRolloutPolicyOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficRolloutPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficRolloutPolicy)(nil)).Elem()
+}
+
+func (o AppHostingTrafficRolloutPolicyOutput) ToAppHostingTrafficRolloutPolicyOutput() AppHostingTrafficRolloutPolicyOutput {
+	return o
+}
+
+func (o AppHostingTrafficRolloutPolicyOutput) ToAppHostingTrafficRolloutPolicyOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyOutput {
+	return o
+}
+
+func (o AppHostingTrafficRolloutPolicyOutput) ToAppHostingTrafficRolloutPolicyPtrOutput() AppHostingTrafficRolloutPolicyPtrOutput {
+	return o.ToAppHostingTrafficRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AppHostingTrafficRolloutPolicyOutput) ToAppHostingTrafficRolloutPolicyPtrOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppHostingTrafficRolloutPolicy) *AppHostingTrafficRolloutPolicy {
+		return &v
+	}).(AppHostingTrafficRolloutPolicyPtrOutput)
+}
+
+// Specifies a branch that triggers a new build to be started with this
+// policy. If not set, no automatic rollouts will happen.
+func (o AppHostingTrafficRolloutPolicyOutput) CodebaseBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingTrafficRolloutPolicy) *string { return v.CodebaseBranch }).(pulumi.StringPtrOutput)
+}
+
+// A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
+func (o AppHostingTrafficRolloutPolicyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppHostingTrafficRolloutPolicy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// If disabled is set, the time at which the rollouts were disabled.
+func (o AppHostingTrafficRolloutPolicyOutput) DisabledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingTrafficRolloutPolicy) *string { return v.DisabledTime }).(pulumi.StringPtrOutput)
+}
+
+type AppHostingTrafficRolloutPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficRolloutPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingTrafficRolloutPolicy)(nil)).Elem()
+}
+
+func (o AppHostingTrafficRolloutPolicyPtrOutput) ToAppHostingTrafficRolloutPolicyPtrOutput() AppHostingTrafficRolloutPolicyPtrOutput {
+	return o
+}
+
+func (o AppHostingTrafficRolloutPolicyPtrOutput) ToAppHostingTrafficRolloutPolicyPtrOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyPtrOutput {
+	return o
+}
+
+func (o AppHostingTrafficRolloutPolicyPtrOutput) Elem() AppHostingTrafficRolloutPolicyOutput {
+	return o.ApplyT(func(v *AppHostingTrafficRolloutPolicy) AppHostingTrafficRolloutPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AppHostingTrafficRolloutPolicy
+		return ret
+	}).(AppHostingTrafficRolloutPolicyOutput)
+}
+
+// Specifies a branch that triggers a new build to be started with this
+// policy. If not set, no automatic rollouts will happen.
+func (o AppHostingTrafficRolloutPolicyPtrOutput) CodebaseBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingTrafficRolloutPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodebaseBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+// A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
+func (o AppHostingTrafficRolloutPolicyPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppHostingTrafficRolloutPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// If disabled is set, the time at which the rollouts were disabled.
+func (o AppHostingTrafficRolloutPolicyPtrOutput) DisabledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingTrafficRolloutPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisabledTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppHostingTrafficTarget struct {
+	// A list of traffic splits that together represent where traffic is being routed.
+	// Structure is documented below.
+	Splits []AppHostingTrafficTargetSplit `pulumi:"splits"`
+}
+
+// AppHostingTrafficTargetInput is an input type that accepts AppHostingTrafficTargetArgs and AppHostingTrafficTargetOutput values.
+// You can construct a concrete instance of `AppHostingTrafficTargetInput` via:
+//
+//	AppHostingTrafficTargetArgs{...}
+type AppHostingTrafficTargetInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficTargetOutput() AppHostingTrafficTargetOutput
+	ToAppHostingTrafficTargetOutputWithContext(context.Context) AppHostingTrafficTargetOutput
+}
+
+type AppHostingTrafficTargetArgs struct {
+	// A list of traffic splits that together represent where traffic is being routed.
+	// Structure is documented below.
+	Splits AppHostingTrafficTargetSplitArrayInput `pulumi:"splits"`
+}
+
+func (AppHostingTrafficTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficTarget)(nil)).Elem()
+}
+
+func (i AppHostingTrafficTargetArgs) ToAppHostingTrafficTargetOutput() AppHostingTrafficTargetOutput {
+	return i.ToAppHostingTrafficTargetOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficTargetArgs) ToAppHostingTrafficTargetOutputWithContext(ctx context.Context) AppHostingTrafficTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficTargetOutput)
+}
+
+func (i AppHostingTrafficTargetArgs) ToAppHostingTrafficTargetPtrOutput() AppHostingTrafficTargetPtrOutput {
+	return i.ToAppHostingTrafficTargetPtrOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficTargetArgs) ToAppHostingTrafficTargetPtrOutputWithContext(ctx context.Context) AppHostingTrafficTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficTargetOutput).ToAppHostingTrafficTargetPtrOutputWithContext(ctx)
+}
+
+// AppHostingTrafficTargetPtrInput is an input type that accepts AppHostingTrafficTargetArgs, AppHostingTrafficTargetPtr and AppHostingTrafficTargetPtrOutput values.
+// You can construct a concrete instance of `AppHostingTrafficTargetPtrInput` via:
+//
+//	        AppHostingTrafficTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppHostingTrafficTargetPtrInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficTargetPtrOutput() AppHostingTrafficTargetPtrOutput
+	ToAppHostingTrafficTargetPtrOutputWithContext(context.Context) AppHostingTrafficTargetPtrOutput
+}
+
+type appHostingTrafficTargetPtrType AppHostingTrafficTargetArgs
+
+func AppHostingTrafficTargetPtr(v *AppHostingTrafficTargetArgs) AppHostingTrafficTargetPtrInput {
+	return (*appHostingTrafficTargetPtrType)(v)
+}
+
+func (*appHostingTrafficTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingTrafficTarget)(nil)).Elem()
+}
+
+func (i *appHostingTrafficTargetPtrType) ToAppHostingTrafficTargetPtrOutput() AppHostingTrafficTargetPtrOutput {
+	return i.ToAppHostingTrafficTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *appHostingTrafficTargetPtrType) ToAppHostingTrafficTargetPtrOutputWithContext(ctx context.Context) AppHostingTrafficTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficTargetPtrOutput)
+}
+
+type AppHostingTrafficTargetOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficTarget)(nil)).Elem()
+}
+
+func (o AppHostingTrafficTargetOutput) ToAppHostingTrafficTargetOutput() AppHostingTrafficTargetOutput {
+	return o
+}
+
+func (o AppHostingTrafficTargetOutput) ToAppHostingTrafficTargetOutputWithContext(ctx context.Context) AppHostingTrafficTargetOutput {
+	return o
+}
+
+func (o AppHostingTrafficTargetOutput) ToAppHostingTrafficTargetPtrOutput() AppHostingTrafficTargetPtrOutput {
+	return o.ToAppHostingTrafficTargetPtrOutputWithContext(context.Background())
+}
+
+func (o AppHostingTrafficTargetOutput) ToAppHostingTrafficTargetPtrOutputWithContext(ctx context.Context) AppHostingTrafficTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppHostingTrafficTarget) *AppHostingTrafficTarget {
+		return &v
+	}).(AppHostingTrafficTargetPtrOutput)
+}
+
+// A list of traffic splits that together represent where traffic is being routed.
+// Structure is documented below.
+func (o AppHostingTrafficTargetOutput) Splits() AppHostingTrafficTargetSplitArrayOutput {
+	return o.ApplyT(func(v AppHostingTrafficTarget) []AppHostingTrafficTargetSplit { return v.Splits }).(AppHostingTrafficTargetSplitArrayOutput)
+}
+
+type AppHostingTrafficTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingTrafficTarget)(nil)).Elem()
+}
+
+func (o AppHostingTrafficTargetPtrOutput) ToAppHostingTrafficTargetPtrOutput() AppHostingTrafficTargetPtrOutput {
+	return o
+}
+
+func (o AppHostingTrafficTargetPtrOutput) ToAppHostingTrafficTargetPtrOutputWithContext(ctx context.Context) AppHostingTrafficTargetPtrOutput {
+	return o
+}
+
+func (o AppHostingTrafficTargetPtrOutput) Elem() AppHostingTrafficTargetOutput {
+	return o.ApplyT(func(v *AppHostingTrafficTarget) AppHostingTrafficTarget {
+		if v != nil {
+			return *v
+		}
+		var ret AppHostingTrafficTarget
+		return ret
+	}).(AppHostingTrafficTargetOutput)
+}
+
+// A list of traffic splits that together represent where traffic is being routed.
+// Structure is documented below.
+func (o AppHostingTrafficTargetPtrOutput) Splits() AppHostingTrafficTargetSplitArrayOutput {
+	return o.ApplyT(func(v *AppHostingTrafficTarget) []AppHostingTrafficTargetSplit {
+		if v == nil {
+			return nil
+		}
+		return v.Splits
+	}).(AppHostingTrafficTargetSplitArrayOutput)
+}
+
+type AppHostingTrafficTargetSplit struct {
+	// The build that traffic is being routed to.
+	Build string `pulumi:"build"`
+	// The percentage of traffic to send to the build. Currently must be 100 or 0.
+	Percent int `pulumi:"percent"`
+}
+
+// AppHostingTrafficTargetSplitInput is an input type that accepts AppHostingTrafficTargetSplitArgs and AppHostingTrafficTargetSplitOutput values.
+// You can construct a concrete instance of `AppHostingTrafficTargetSplitInput` via:
+//
+//	AppHostingTrafficTargetSplitArgs{...}
+type AppHostingTrafficTargetSplitInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficTargetSplitOutput() AppHostingTrafficTargetSplitOutput
+	ToAppHostingTrafficTargetSplitOutputWithContext(context.Context) AppHostingTrafficTargetSplitOutput
+}
+
+type AppHostingTrafficTargetSplitArgs struct {
+	// The build that traffic is being routed to.
+	Build pulumi.StringInput `pulumi:"build"`
+	// The percentage of traffic to send to the build. Currently must be 100 or 0.
+	Percent pulumi.IntInput `pulumi:"percent"`
+}
+
+func (AppHostingTrafficTargetSplitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficTargetSplit)(nil)).Elem()
+}
+
+func (i AppHostingTrafficTargetSplitArgs) ToAppHostingTrafficTargetSplitOutput() AppHostingTrafficTargetSplitOutput {
+	return i.ToAppHostingTrafficTargetSplitOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficTargetSplitArgs) ToAppHostingTrafficTargetSplitOutputWithContext(ctx context.Context) AppHostingTrafficTargetSplitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficTargetSplitOutput)
+}
+
+// AppHostingTrafficTargetSplitArrayInput is an input type that accepts AppHostingTrafficTargetSplitArray and AppHostingTrafficTargetSplitArrayOutput values.
+// You can construct a concrete instance of `AppHostingTrafficTargetSplitArrayInput` via:
+//
+//	AppHostingTrafficTargetSplitArray{ AppHostingTrafficTargetSplitArgs{...} }
+type AppHostingTrafficTargetSplitArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficTargetSplitArrayOutput() AppHostingTrafficTargetSplitArrayOutput
+	ToAppHostingTrafficTargetSplitArrayOutputWithContext(context.Context) AppHostingTrafficTargetSplitArrayOutput
+}
+
+type AppHostingTrafficTargetSplitArray []AppHostingTrafficTargetSplitInput
+
+func (AppHostingTrafficTargetSplitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingTrafficTargetSplit)(nil)).Elem()
+}
+
+func (i AppHostingTrafficTargetSplitArray) ToAppHostingTrafficTargetSplitArrayOutput() AppHostingTrafficTargetSplitArrayOutput {
+	return i.ToAppHostingTrafficTargetSplitArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficTargetSplitArray) ToAppHostingTrafficTargetSplitArrayOutputWithContext(ctx context.Context) AppHostingTrafficTargetSplitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficTargetSplitArrayOutput)
+}
+
+type AppHostingTrafficTargetSplitOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficTargetSplitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficTargetSplit)(nil)).Elem()
+}
+
+func (o AppHostingTrafficTargetSplitOutput) ToAppHostingTrafficTargetSplitOutput() AppHostingTrafficTargetSplitOutput {
+	return o
+}
+
+func (o AppHostingTrafficTargetSplitOutput) ToAppHostingTrafficTargetSplitOutputWithContext(ctx context.Context) AppHostingTrafficTargetSplitOutput {
+	return o
+}
+
+// The build that traffic is being routed to.
+func (o AppHostingTrafficTargetSplitOutput) Build() pulumi.StringOutput {
+	return o.ApplyT(func(v AppHostingTrafficTargetSplit) string { return v.Build }).(pulumi.StringOutput)
+}
+
+// The percentage of traffic to send to the build. Currently must be 100 or 0.
+func (o AppHostingTrafficTargetSplitOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v AppHostingTrafficTargetSplit) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+type AppHostingTrafficTargetSplitArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficTargetSplitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingTrafficTargetSplit)(nil)).Elem()
+}
+
+func (o AppHostingTrafficTargetSplitArrayOutput) ToAppHostingTrafficTargetSplitArrayOutput() AppHostingTrafficTargetSplitArrayOutput {
+	return o
+}
+
+func (o AppHostingTrafficTargetSplitArrayOutput) ToAppHostingTrafficTargetSplitArrayOutputWithContext(ctx context.Context) AppHostingTrafficTargetSplitArrayOutput {
+	return o
+}
+
+func (o AppHostingTrafficTargetSplitArrayOutput) Index(i pulumi.IntInput) AppHostingTrafficTargetSplitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingTrafficTargetSplit {
+		return vs[0].([]AppHostingTrafficTargetSplit)[vs[1].(int)]
+	}).(AppHostingTrafficTargetSplitOutput)
+}
+
 type ExtensionsInstanceConfig struct {
 	// List of extension events selected by consumer that extension is allowed to
 	// emit, identified by their types.
@@ -4884,6 +7318,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildSourceCodebaseAuthorArrayInput)(nil)).Elem(), AppHostingBuildSourceCodebaseAuthorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildSourceContainerInput)(nil)).Elem(), AppHostingBuildSourceContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildSourceContainerPtrInput)(nil)).Elem(), AppHostingBuildSourceContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusArrayInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusIssueInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusIssueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusIssueArrayInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusIssueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayInput)(nil)).Elem(), AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainServeInput)(nil)).Elem(), AppHostingDomainServeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainServePtrInput)(nil)).Elem(), AppHostingDomainServeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainServeRedirectInput)(nil)).Elem(), AppHostingDomainServeRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingDomainServeRedirectPtrInput)(nil)).Elem(), AppHostingDomainServeRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficCurrentInput)(nil)).Elem(), AppHostingTrafficCurrentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficCurrentArrayInput)(nil)).Elem(), AppHostingTrafficCurrentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficCurrentSplitInput)(nil)).Elem(), AppHostingTrafficCurrentSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficCurrentSplitArrayInput)(nil)).Elem(), AppHostingTrafficCurrentSplitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficRolloutPolicyInput)(nil)).Elem(), AppHostingTrafficRolloutPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficRolloutPolicyPtrInput)(nil)).Elem(), AppHostingTrafficRolloutPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficTargetInput)(nil)).Elem(), AppHostingTrafficTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficTargetPtrInput)(nil)).Elem(), AppHostingTrafficTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficTargetSplitInput)(nil)).Elem(), AppHostingTrafficTargetSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficTargetSplitArrayInput)(nil)).Elem(), AppHostingTrafficTargetSplitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceConfigInput)(nil)).Elem(), ExtensionsInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceConfigPtrInput)(nil)).Elem(), ExtensionsInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceErrorStatusInput)(nil)).Elem(), ExtensionsInstanceErrorStatusArgs{})
@@ -4948,6 +7414,38 @@ func init() {
 	pulumi.RegisterOutputType(AppHostingBuildSourceCodebaseAuthorArrayOutput{})
 	pulumi.RegisterOutputType(AppHostingBuildSourceContainerOutput{})
 	pulumi.RegisterOutputType(AppHostingBuildSourceContainerPtrOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusIssueOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusIssueArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainServeOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainServePtrOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainServeRedirectOutput{})
+	pulumi.RegisterOutputType(AppHostingDomainServeRedirectPtrOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficCurrentOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficCurrentArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficCurrentSplitOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficCurrentSplitArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficRolloutPolicyOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficRolloutPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficTargetOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficTargetPtrOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficTargetSplitOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficTargetSplitArrayOutput{})
 	pulumi.RegisterOutputType(ExtensionsInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ExtensionsInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ExtensionsInstanceErrorStatusOutput{})

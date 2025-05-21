@@ -52,7 +52,8 @@ type AiFeatureOnlineStoreFeatureviewIamBinding struct {
 
 	Condition AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag               pulumi.StringOutput `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
 	FeatureOnlineStore pulumi.StringOutput `pulumi:"featureOnlineStore"`
 	// Used to find the parent resource to bind the IAM policy to
 	FeatureView pulumi.StringOutput `pulumi:"featureView"`
@@ -125,7 +126,8 @@ func GetAiFeatureOnlineStoreFeatureviewIamBinding(ctx *pulumi.Context,
 type aiFeatureOnlineStoreFeatureviewIamBindingState struct {
 	Condition *AiFeatureOnlineStoreFeatureviewIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag               *string `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
 	FeatureOnlineStore *string `pulumi:"featureOnlineStore"`
 	// Used to find the parent resource to bind the IAM policy to
 	FeatureView *string `pulumi:"featureView"`
@@ -157,7 +159,8 @@ type aiFeatureOnlineStoreFeatureviewIamBindingState struct {
 type AiFeatureOnlineStoreFeatureviewIamBindingState struct {
 	Condition AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag               pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
 	FeatureOnlineStore pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	FeatureView pulumi.StringPtrInput
@@ -191,8 +194,9 @@ func (AiFeatureOnlineStoreFeatureviewIamBindingState) ElementType() reflect.Type
 }
 
 type aiFeatureOnlineStoreFeatureviewIamBindingArgs struct {
-	Condition          *AiFeatureOnlineStoreFeatureviewIamBindingCondition `pulumi:"condition"`
-	FeatureOnlineStore string                                              `pulumi:"featureOnlineStore"`
+	Condition *AiFeatureOnlineStoreFeatureviewIamBindingCondition `pulumi:"condition"`
+	// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+	FeatureOnlineStore string `pulumi:"featureOnlineStore"`
 	// Used to find the parent resource to bind the IAM policy to
 	FeatureView string `pulumi:"featureView"`
 	// Identities that will be granted the privilege in `role`.
@@ -222,7 +226,8 @@ type aiFeatureOnlineStoreFeatureviewIamBindingArgs struct {
 
 // The set of arguments for constructing a AiFeatureOnlineStoreFeatureviewIamBinding resource.
 type AiFeatureOnlineStoreFeatureviewIamBindingArgs struct {
-	Condition          AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrInput
+	Condition AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrInput
+	// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
 	FeatureOnlineStore pulumi.StringInput
 	// Used to find the parent resource to bind the IAM policy to
 	FeatureView pulumi.StringInput
@@ -349,6 +354,7 @@ func (o AiFeatureOnlineStoreFeatureviewIamBindingOutput) Etag() pulumi.StringOut
 	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
 func (o AiFeatureOnlineStoreFeatureviewIamBindingOutput) FeatureOnlineStore() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewIamBinding) pulumi.StringOutput { return v.FeatureOnlineStore }).(pulumi.StringOutput)
 }

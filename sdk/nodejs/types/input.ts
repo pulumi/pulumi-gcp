@@ -19930,6 +19930,10 @@ export namespace compute {
          */
         diskEncryptionServiceAccount?: pulumi.Input<string>;
         /**
+         * Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         */
+        forceAttach?: pulumi.Input<boolean>;
+        /**
          * The selfLink of the encryption key that is
          * stored in Google Cloud KMS to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
          * may be set.
@@ -19982,6 +19986,12 @@ export namespace compute {
          * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
          */
         diskEncryptionServiceAccount?: pulumi.Input<string>;
+        /**
+         * boolean field that determines whether to force attach the regional
+         * disk even if it's currently attached to another instance. If you try to force attach a zonal
+         * disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         */
+        forceAttach?: pulumi.Input<boolean>;
         /**
          * A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
          */
@@ -20221,6 +20231,10 @@ export namespace compute {
          */
         diskEncryptionServiceAccount?: pulumi.Input<string>;
         /**
+         * Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         */
+        forceAttach?: pulumi.Input<boolean>;
+        /**
          * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          */
         kmsKeySelfLink?: pulumi.Input<string>;
@@ -20259,6 +20273,10 @@ export namespace compute {
          * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
          */
         diskEncryptionServiceAccount?: pulumi.Input<string>;
+        /**
+         * Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         */
+        forceAttach?: pulumi.Input<boolean>;
         /**
          * A list of features to enable on the guest operating system. Applicable only for bootable images.
          */
@@ -20826,6 +20844,10 @@ export namespace compute {
          */
         diskEncryptionServiceAccount?: pulumi.Input<string>;
         /**
+         * Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         */
+        forceAttach?: pulumi.Input<boolean>;
+        /**
          * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          */
         kmsKeySelfLink?: pulumi.Input<string>;
@@ -20864,6 +20886,10 @@ export namespace compute {
          * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
          */
         diskEncryptionServiceAccount?: pulumi.Input<string>;
+        /**
+         * Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         */
+        forceAttach?: pulumi.Input<boolean>;
         /**
          * A list of features to enable on the guest operating system. Applicable only for bootable images.
          */
@@ -45419,6 +45445,18 @@ export namespace dataplex {
         type?: pulumi.Input<string>;
     }
 
+    export interface GlossaryIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface GlossaryIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface LakeAssetStatus {
         /**
          * Number of active assets.
@@ -51273,6 +51311,14 @@ export namespace diagflow {
         useTimeoutBasedEndpointing?: pulumi.Input<boolean>;
     }
 
+    export interface CxAgentGenAppBuilderSettings {
+        /**
+         * The full name of the Gen App Builder engine related to this agent if there is one.
+         * Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
+         */
+        engine: pulumi.Input<string>;
+    }
+
     export interface CxAgentGitIntegrationSettings {
         /**
          * Settings of integration with GitHub.
@@ -51480,6 +51526,10 @@ export namespace diagflow {
          * Structure is documented below.
          */
         conditionalCases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentConditionalCase>[]>;
+        /**
+         * If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+         */
+        enableGenerativeFallback?: pulumi.Input<boolean>;
         /**
          * The list of rich message responses to present to the user.
          * Structure is documented below.
@@ -56667,6 +56717,367 @@ export namespace firebase {
          * A URI representing a container for the backend to use.
          */
         image: pulumi.Input<string>;
+    }
+
+    export interface AppHostingDomainCustomDomainStatus {
+        /**
+         * (Output)
+         * Possible values:
+         * CERT_PREPARING
+         * CERT_VALIDATING
+         * CERT_PROPAGATING
+         * CERT_ACTIVE
+         * CERT_EXPIRING_SOON
+         * CERT_EXPIRED
+         */
+        certState?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Possible values:
+         * HOST_UNHOSTED
+         * HOST_UNREACHABLE
+         * HOST_NON_FAH
+         * HOST_CONFLICT
+         * HOST_WRONG_SHARD
+         * HOST_ACTIVE
+         */
+        hostState?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A list of issues with domain configuration. Allows users to self-correct
+         * problems with DNS records.
+         * Structure is documented below.
+         */
+        issues?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingDomainCustomDomainStatusIssue>[]>;
+        /**
+         * (Output)
+         * Possible values:
+         * OWNERSHIP_MISSING
+         * OWNERSHIP_UNREACHABLE
+         * OWNERSHIP_MISMATCH
+         * OWNERSHIP_CONFLICT
+         * OWNERSHIP_PENDING
+         * OWNERSHIP_ACTIVE
+         */
+        ownershipState?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Lists the records that must added or removed to a custom domain's DNS
+         * in order to finish setup and start serving content.
+         * Field is present during onboarding. Also present after onboarding if one
+         * or more of the above states is not *_ACTIVE, indicating the domain's DNS
+         * records are in a bad state.
+         * Structure is documented below.
+         */
+        requiredDnsUpdates?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingDomainCustomDomainStatusRequiredDnsUpdate>[]>;
+    }
+
+    export interface AppHostingDomainCustomDomainStatusIssue {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.
+         */
+        details?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingDomainCustomDomainStatusRequiredDnsUpdate {
+        /**
+         * (Output)
+         * The last time App Hosting checked your custom domain's DNS records.
+         */
+        checkTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The set of DNS records App Hosting needs in order to be able to serve
+         * secure content on the domain.
+         * Structure is documented below.
+         */
+        desireds?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired>[]>;
+        /**
+         * (Output)
+         * The set of DNS records App Hosting discovered when inspecting a domain.
+         * Structure is documented below.
+         */
+        discovereds?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered>[]>;
+        /**
+         * (Output)
+         * The domain the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired {
+        /**
+         * (Output)
+         * The `Status` type defines a logical error model that is suitable for
+         * different programming environments, including REST APIs and RPC APIs. It is
+         * used by [gRPC](https://github.com/grpc). Each `Status` message contains
+         * three pieces of data: error code, error message, and error details.
+         * You can find out more about this error model and how to work with it in the
+         * [API Design Guide](https://cloud.google.com/apis/design/errors).
+         * Structure is documented below.
+         */
+        checkErrors?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError>[]>;
+        /**
+         * (Output)
+         * The domain the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Records on the domain.
+         * Structure is documented below.
+         */
+        records?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord>[]>;
+    }
+
+    export interface AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.
+         */
+        details?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord {
+        /**
+         * (Output)
+         * The domain the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The data of the record. The meaning of the value depends on record type:
+         * - A and AAAA: IP addresses for the domain.
+         * - CNAME: Another domain to check for records.
+         * - TXT: Arbitrary text strings associated with the domain. App Hosting
+         * uses TXT records to determine which Firebase projects have
+         * permission to act on the domain's behalf.
+         * - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+         */
+        rdata?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * An enum that indicates which state(s) this DNS record applies to. Populated
+         * for all records with an `ADD` or `REMOVE` required action.
+         */
+        relevantStates?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * An enum that indicates the a required action for this record. Populated
+         * when the record is part of a required change in a  `DnsUpdates`
+         * `discovered` or `desired` record set.
+         * Possible values:
+         * NONE
+         * ADD
+         * REMOVE
+         */
+        requiredAction?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The record's type, which determines what data the record contains.
+         * Possible values:
+         * A
+         * CNAME
+         * TXT
+         * AAAA
+         * CAA
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered {
+        /**
+         * (Output)
+         * The `Status` type defines a logical error model that is suitable for
+         * different programming environments, including REST APIs and RPC APIs. It is
+         * used by [gRPC](https://github.com/grpc). Each `Status` message contains
+         * three pieces of data: error code, error message, and error details.
+         * You can find out more about this error model and how to work with it in the
+         * [API Design Guide](https://cloud.google.com/apis/design/errors).
+         * Structure is documented below.
+         */
+        checkErrors?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError>[]>;
+        /**
+         * (Output)
+         * The domain the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Records on the domain.
+         * Structure is documented below.
+         */
+        records?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord>[]>;
+    }
+
+    export interface AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.
+         */
+        details?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord {
+        /**
+         * (Output)
+         * The domain the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The data of the record. The meaning of the value depends on record type:
+         * - A and AAAA: IP addresses for the domain.
+         * - CNAME: Another domain to check for records.
+         * - TXT: Arbitrary text strings associated with the domain. App Hosting
+         * uses TXT records to determine which Firebase projects have
+         * permission to act on the domain's behalf.
+         * - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+         */
+        rdata?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * An enum that indicates which state(s) this DNS record applies to. Populated
+         * for all records with an `ADD` or `REMOVE` required action.
+         */
+        relevantStates?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * An enum that indicates the a required action for this record. Populated
+         * when the record is part of a required change in a  `DnsUpdates`
+         * `discovered` or `desired` record set.
+         * Possible values:
+         * NONE
+         * ADD
+         * REMOVE
+         */
+        requiredAction?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The record's type, which determines what data the record contains.
+         * Possible values:
+         * A
+         * CNAME
+         * TXT
+         * AAAA
+         * CAA
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingDomainServe {
+        /**
+         * Specifies redirect behavior for a domain.
+         * Structure is documented below.
+         */
+        redirect?: pulumi.Input<inputs.firebase.AppHostingDomainServeRedirect>;
+    }
+
+    export interface AppHostingDomainServeRedirect {
+        /**
+         * The status code to use in a redirect response. Must be a valid HTTP 3XX
+         * status code. Defaults to 302 if not present.
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * The URI of the redirect's intended destination. This URI will be
+         * prepended to the original request path. URI without a scheme are
+         * assumed to be HTTPS.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface AppHostingTrafficCurrent {
+        /**
+         * (Output)
+         * A list of traffic splits that together represent where traffic is being routed.
+         * Structure is documented below.
+         */
+        splits?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingTrafficCurrentSplit>[]>;
+    }
+
+    export interface AppHostingTrafficCurrentSplit {
+        /**
+         * The build that traffic is being routed to.
+         */
+        build?: pulumi.Input<string>;
+        /**
+         * The percentage of traffic to send to the build. Currently must be 100 or 0.
+         */
+        percent?: pulumi.Input<number>;
+    }
+
+    export interface AppHostingTrafficRolloutPolicy {
+        /**
+         * Specifies a branch that triggers a new build to be started with this
+         * policy. If not set, no automatic rollouts will happen.
+         */
+        codebaseBranch?: pulumi.Input<string>;
+        /**
+         * A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * If disabled is set, the time at which the rollouts were disabled.
+         */
+        disabledTime?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingTrafficTarget {
+        /**
+         * A list of traffic splits that together represent where traffic is being routed.
+         * Structure is documented below.
+         */
+        splits: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingTrafficTargetSplit>[]>;
+    }
+
+    export interface AppHostingTrafficTargetSplit {
+        /**
+         * The build that traffic is being routed to.
+         */
+        build: pulumi.Input<string>;
+        /**
+         * The percentage of traffic to send to the build. Currently must be 100 or 0.
+         */
+        percent: pulumi.Input<number>;
     }
 
     export interface ExtensionsInstanceConfig {
@@ -62409,6 +62820,104 @@ export namespace iam {
          * no non-expired signing keys present in the existing metadata.
          */
         idpMetadataXml: pulumi.Input<string>;
+    }
+
+    export interface WorkloadIdentityPoolIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface WorkloadIdentityPoolIamMemberCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface WorkloadIdentityPoolInlineCertificateIssuanceConfig {
+        /**
+         * A required mapping of a cloud region to the CA pool resource located in that region used
+         * for certificate issuance, adhering to these constraints:
+         * * **Key format:** A supported cloud region name equivalent to the location identifier in
+         * the corresponding map entry's value.
+         * * **Value format:** A valid CA pool resource path format like:
+         * `projects/{project}/locations/{location}/caPools/{ca_pool}`
+         * * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
+         * same region. Also the CA pool region (in value) must match the workload's region (key).
+         */
+        caPools: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Key algorithm to use when generating the key pair. This key pair will be used to create
+         * the certificate. If unspecified, this will default to `ECDSA_P256`.
+         * * `RSA_2048`: Specifies RSA with a 2048-bit modulus.
+         * * `RSA_3072`: Specifies RSA with a 3072-bit modulus.
+         * * `RSA_4096`: Specifies RSA with a 4096-bit modulus.
+         * * `ECDSA_P256`: Specifies ECDSA with curve P256.
+         * * `ECDSA_P384`: Specifies ECDSA with curve P384.
+         * Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
+         */
+        keyAlgorithm?: pulumi.Input<string>;
+        /**
+         * Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
+         * `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
+         * and is preceded by the number of seconds. If unspecified, this will be defaulted to
+         * `86400s` (24 hours).
+         */
+        lifetime?: pulumi.Input<string>;
+        /**
+         * Rotation window percentage indicating when certificate rotation should be initiated based
+         * on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
+         * to `50`.
+         */
+        rotationWindowPercentage?: pulumi.Input<number>;
+    }
+
+    export interface WorkloadIdentityPoolInlineTrustConfig {
+        /**
+         * Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
+         * objects, which contain the trusted root certificates for that domain. There can be a
+         * maximum of `10` trust domain entries in this map.
+         * Note that a trust domain automatically trusts itself and don't need to be specified here.
+         * If however, this `WorkloadIdentityPool`'s trust domain contains any trust anchors in the
+         * `additionalTrustBundles` map, those trust anchors will be *appended to* the Trust Bundle
+         * automatically derived from your `InlineCertificateIssuanceConfig`'s `caPools`.
+         * Structure is documented below.
+         */
+        additionalTrustBundles?: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>[]>;
+    }
+
+    export interface WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
+        /**
+         * List of Trust Anchors to be used while performing validation against a given
+         * `TrustStore`. The incoming end entity's certificate must be chained up to one of the
+         * trust anchors here.
+         * Structure is documented below.
+         */
+        trustAnchors: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor>[]>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        trustDomain: pulumi.Input<string>;
+    }
+
+    export interface WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor {
+        /**
+         * PEM certificate of the PKI used for validation. Must only contain one ca
+         * certificate(either root or intermediate cert).
+         */
+        pemCertificate: pulumi.Input<string>;
     }
 
     export interface WorkloadIdentityPoolProviderAws {

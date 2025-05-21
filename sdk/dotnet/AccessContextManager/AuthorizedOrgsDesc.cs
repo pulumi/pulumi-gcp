@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// {
     ///     var test_access = new Gcp.AccessContextManager.AccessPolicy("test-access", new()
     ///     {
-    ///         Parent = "organizations/",
+    ///         Parent = "organizations/123456789",
     ///         Title = "my policy",
     ///     });
     /// 

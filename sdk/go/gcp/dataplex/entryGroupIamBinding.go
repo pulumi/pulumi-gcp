@@ -295,8 +295,9 @@ import (
 type EntryGroupIamBinding struct {
 	pulumi.CustomResourceState
 
-	Condition    EntryGroupIamBindingConditionPtrOutput `pulumi:"condition"`
-	EntryGroupId pulumi.StringOutput                    `pulumi:"entryGroupId"`
+	Condition EntryGroupIamBindingConditionPtrOutput `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	EntryGroupId pulumi.StringOutput `pulumi:"entryGroupId"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location where entry group will be created in.
@@ -364,8 +365,9 @@ func GetEntryGroupIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EntryGroupIamBinding resources.
 type entryGroupIamBindingState struct {
-	Condition    *EntryGroupIamBindingCondition `pulumi:"condition"`
-	EntryGroupId *string                        `pulumi:"entryGroupId"`
+	Condition *EntryGroupIamBindingCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	EntryGroupId *string `pulumi:"entryGroupId"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The location where entry group will be created in.
@@ -395,7 +397,8 @@ type entryGroupIamBindingState struct {
 }
 
 type EntryGroupIamBindingState struct {
-	Condition    EntryGroupIamBindingConditionPtrInput
+	Condition EntryGroupIamBindingConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	EntryGroupId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -430,8 +433,9 @@ func (EntryGroupIamBindingState) ElementType() reflect.Type {
 }
 
 type entryGroupIamBindingArgs struct {
-	Condition    *EntryGroupIamBindingCondition `pulumi:"condition"`
-	EntryGroupId string                         `pulumi:"entryGroupId"`
+	Condition *EntryGroupIamBindingCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	EntryGroupId string `pulumi:"entryGroupId"`
 	// The location where entry group will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -460,7 +464,8 @@ type entryGroupIamBindingArgs struct {
 
 // The set of arguments for constructing a EntryGroupIamBinding resource.
 type EntryGroupIamBindingArgs struct {
-	Condition    EntryGroupIamBindingConditionPtrInput
+	Condition EntryGroupIamBindingConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	EntryGroupId pulumi.StringInput
 	// The location where entry group will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -579,6 +584,7 @@ func (o EntryGroupIamBindingOutput) Condition() EntryGroupIamBindingConditionPtr
 	return o.ApplyT(func(v *EntryGroupIamBinding) EntryGroupIamBindingConditionPtrOutput { return v.Condition }).(EntryGroupIamBindingConditionPtrOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o EntryGroupIamBindingOutput) EntryGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryGroupIamBinding) pulumi.StringOutput { return v.EntryGroupId }).(pulumi.StringOutput)
 }

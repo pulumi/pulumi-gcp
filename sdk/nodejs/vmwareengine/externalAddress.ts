@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     description: "PC network description.",
  * });
  * const external_address_pc = new gcp.vmwareengine.PrivateCloud("external-address-pc", {
- *     location: "-a",
+ *     location: "us-west1-a",
  *     name: "sample-pc",
  *     description: "Sample test PC.",
  *     networkConfig: {
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const external_address_np = new gcp.vmwareengine.NetworkPolicy("external-address-np", {
- *     location: "",
+ *     location: "us-west1",
  *     name: "sample-np",
  *     edgeServicesCidr: "192.168.30.0/26",
  *     vmwareEngineNetwork: external_address_nw.id,

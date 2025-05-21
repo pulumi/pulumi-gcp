@@ -31,6 +31,7 @@ class RepositoryGroupIamBindingArgs:
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a RepositoryGroupIamBinding resource.
+        :param pulumi.Input[builtins.str] code_repository_index: Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -42,6 +43,7 @@ class RepositoryGroupIamBindingArgs:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[builtins.str] repository_group_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `gemini.RepositoryGroupIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -65,6 +67,9 @@ class RepositoryGroupIamBindingArgs:
     @property
     @pulumi.getter(name="codeRepositoryIndex")
     def code_repository_index(self) -> pulumi.Input[builtins.str]:
+        """
+        Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "code_repository_index")
 
     @code_repository_index.setter
@@ -96,6 +101,9 @@ class RepositoryGroupIamBindingArgs:
     @property
     @pulumi.getter(name="repositoryGroupId")
     def repository_group_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "repository_group_id")
 
     @repository_group_id.setter
@@ -166,6 +174,7 @@ class _RepositoryGroupIamBindingState:
                  role: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering RepositoryGroupIamBinding resources.
+        :param pulumi.Input[builtins.str] code_repository_index: Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[builtins.str] location: The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -183,6 +192,7 @@ class _RepositoryGroupIamBindingState:
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] repository_group_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `gemini.RepositoryGroupIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -207,6 +217,9 @@ class _RepositoryGroupIamBindingState:
     @property
     @pulumi.getter(name="codeRepositoryIndex")
     def code_repository_index(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "code_repository_index")
 
     @code_repository_index.setter
@@ -286,6 +299,9 @@ class _RepositoryGroupIamBindingState:
     @property
     @pulumi.getter(name="repositoryGroupId")
     def repository_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "repository_group_id")
 
     @repository_group_id.setter
@@ -491,6 +507,7 @@ class RepositoryGroupIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] code_repository_index: Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] location: The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
                location is specified, it is taken from the provider configuration.
@@ -507,6 +524,7 @@ class RepositoryGroupIamBinding(pulumi.CustomResource):
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] repository_group_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `gemini.RepositoryGroupIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -757,6 +775,7 @@ class RepositoryGroupIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] code_repository_index: Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[builtins.str] location: The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -774,6 +793,7 @@ class RepositoryGroupIamBinding(pulumi.CustomResource):
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] repository_group_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `gemini.RepositoryGroupIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -795,6 +815,9 @@ class RepositoryGroupIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="codeRepositoryIndex")
     def code_repository_index(self) -> pulumi.Output[builtins.str]:
+        """
+        Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "code_repository_index")
 
     @property
@@ -850,6 +873,9 @@ class RepositoryGroupIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="repositoryGroupId")
     def repository_group_id(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "repository_group_id")
 
     @property

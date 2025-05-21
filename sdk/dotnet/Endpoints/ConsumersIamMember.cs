@@ -66,6 +66,9 @@ namespace Pulumi.Gcp.Endpoints
         [Output("condition")]
         public Output<Outputs.ConsumersIamMemberCondition?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("consumerProject")]
         public Output<string> ConsumerProject { get; private set; } = null!;
 
@@ -99,6 +102,9 @@ namespace Pulumi.Gcp.Endpoints
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the service. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -151,6 +157,9 @@ namespace Pulumi.Gcp.Endpoints
         [Input("condition")]
         public Input<Inputs.ConsumersIamMemberConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("consumerProject", required: true)]
         public Input<string> ConsumerProject { get; set; } = null!;
 
@@ -178,6 +187,9 @@ namespace Pulumi.Gcp.Endpoints
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the service. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -192,6 +204,9 @@ namespace Pulumi.Gcp.Endpoints
         [Input("condition")]
         public Input<Inputs.ConsumersIamMemberConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("consumerProject")]
         public Input<string>? ConsumerProject { get; set; }
 
@@ -225,6 +240,9 @@ namespace Pulumi.Gcp.Endpoints
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// The name of the service. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

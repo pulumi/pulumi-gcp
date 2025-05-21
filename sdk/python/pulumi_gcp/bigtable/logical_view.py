@@ -22,6 +22,7 @@ class LogicalViewArgs:
     def __init__(__self__, *,
                  logical_view_id: pulumi.Input[builtins.str],
                  query: pulumi.Input[builtins.str],
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  instance: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -31,12 +32,15 @@ class LogicalViewArgs:
                
                - - -
         :param pulumi.Input[builtins.str] query: The logical view's select query.
+        :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the logical view protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the logical view within.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "logical_view_id", logical_view_id)
         pulumi.set(__self__, "query", query)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
         if project is not None:
@@ -70,6 +74,18 @@ class LogicalViewArgs:
         pulumi.set(self, "query", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Set to true to make the logical view protected against deletion.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter
     def instance(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -98,6 +114,7 @@ class LogicalViewArgs:
 @pulumi.input_type
 class _LogicalViewState:
     def __init__(__self__, *,
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  instance: Optional[pulumi.Input[builtins.str]] = None,
                  logical_view_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -105,6 +122,7 @@ class _LogicalViewState:
                  query: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogicalView resources.
+        :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the logical view protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the logical view within.
         :param pulumi.Input[builtins.str] logical_view_id: The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
                
@@ -115,6 +133,8 @@ class _LogicalViewState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] query: The logical view's select query.
         """
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
         if logical_view_id is not None:
@@ -125,6 +145,18 @@ class _LogicalViewState:
             pulumi.set(__self__, "project", project)
         if query is not None:
             pulumi.set(__self__, "query", query)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Set to true to make the logical view protected against deletion.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -197,6 +229,7 @@ class LogicalView(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  instance: Optional[pulumi.Input[builtins.str]] = None,
                  logical_view_id: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -235,6 +268,7 @@ class LogicalView(pulumi.CustomResource):
         logical_view = gcp.bigtable.LogicalView("logical_view",
             logical_view_id="bt-logical-view",
             instance=instance.name,
+            deletion_protection=False,
             query=\"\"\"SELECT _key, CF
         FROM ` + "`bt-table`" + `
         \"\"\",
@@ -267,6 +301,7 @@ class LogicalView(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the logical view protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the logical view within.
         :param pulumi.Input[builtins.str] logical_view_id: The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
                
@@ -315,6 +350,7 @@ class LogicalView(pulumi.CustomResource):
         logical_view = gcp.bigtable.LogicalView("logical_view",
             logical_view_id="bt-logical-view",
             instance=instance.name,
+            deletion_protection=False,
             query=\"\"\"SELECT _key, CF
         FROM ` + "`bt-table`" + `
         \"\"\",
@@ -360,6 +396,7 @@ class LogicalView(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  instance: Optional[pulumi.Input[builtins.str]] = None,
                  logical_view_id: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -373,6 +410,7 @@ class LogicalView(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LogicalViewArgs.__new__(LogicalViewArgs)
 
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["instance"] = instance
             if logical_view_id is None and not opts.urn:
                 raise TypeError("Missing required property 'logical_view_id'")
@@ -392,6 +430,7 @@ class LogicalView(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
             instance: Optional[pulumi.Input[builtins.str]] = None,
             logical_view_id: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
@@ -404,6 +443,7 @@ class LogicalView(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the logical view protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the logical view within.
         :param pulumi.Input[builtins.str] logical_view_id: The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
                
@@ -418,12 +458,21 @@ class LogicalView(pulumi.CustomResource):
 
         __props__ = _LogicalViewState.__new__(_LogicalViewState)
 
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["instance"] = instance
         __props__.__dict__["logical_view_id"] = logical_view_id
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["query"] = query
         return LogicalView(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Set to true to make the logical view protected against deletion.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

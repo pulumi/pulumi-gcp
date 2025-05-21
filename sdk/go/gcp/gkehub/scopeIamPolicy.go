@@ -295,6 +295,7 @@ type ScopeIamPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
 	ScopeId pulumi.StringOutput `pulumi:"scopeId"`
 }
 
@@ -342,6 +343,7 @@ type scopeIamPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
 	ScopeId *string `pulumi:"scopeId"`
 }
 
@@ -354,6 +356,7 @@ type ScopeIamPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	ScopeId pulumi.StringPtrInput
 }
 
@@ -368,7 +371,8 @@ type scopeIamPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	ScopeId string  `pulumi:"scopeId"`
+	// Used to find the parent resource to bind the IAM policy to
+	ScopeId string `pulumi:"scopeId"`
 }
 
 // The set of arguments for constructing a ScopeIamPolicy resource.
@@ -379,6 +383,7 @@ type ScopeIamPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	ScopeId pulumi.StringInput
 }
 
@@ -486,6 +491,7 @@ func (o ScopeIamPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScopeIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o ScopeIamPolicyOutput) ScopeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScopeIamPolicy) pulumi.StringOutput { return v.ScopeId }).(pulumi.StringOutput)
 }

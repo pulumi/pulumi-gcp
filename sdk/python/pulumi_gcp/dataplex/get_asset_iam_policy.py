@@ -144,6 +144,11 @@ def get_asset_iam_policy(asset: Optional[builtins.str] = None,
 
 
     :param builtins.str asset: Used to find the parent resource to bind the IAM policy to
+    :param builtins.str dataplex_zone: Used to find the parent resource to bind the IAM policy to
+    :param builtins.str lake: Used to find the parent resource to bind the IAM policy to
+    :param builtins.str location: Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
@@ -189,6 +194,11 @@ def get_asset_iam_policy_output(asset: Optional[pulumi.Input[builtins.str]] = No
 
 
     :param builtins.str asset: Used to find the parent resource to bind the IAM policy to
+    :param builtins.str dataplex_zone: Used to find the parent resource to bind the IAM policy to
+    :param builtins.str lake: Used to find the parent resource to bind the IAM policy to
+    :param builtins.str location: Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+           location is specified, it is taken from the provider configuration.
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """

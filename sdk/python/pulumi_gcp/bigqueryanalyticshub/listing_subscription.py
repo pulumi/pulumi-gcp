@@ -404,18 +404,18 @@ class ListingSubscription(pulumi.CustomResource):
             location="US",
             data_exchange_id="my_data_exchange",
             display_name="my_data_exchange",
-            description="")
+            description="Test Description")
         subscription_dataset = gcp.bigquery.Dataset("subscription",
             dataset_id="my_listing",
             friendly_name="my_listing",
-            description="",
+            description="Test Description",
             location="US")
         subscription_listing = gcp.bigqueryanalyticshub.Listing("subscription",
             location="US",
             data_exchange_id=subscription.data_exchange_id,
             listing_id="my_listing",
             display_name="my_listing",
-            description="",
+            description="Test Description",
             bigquery_dataset={
                 "dataset": subscription_dataset.id,
             })
@@ -498,18 +498,18 @@ class ListingSubscription(pulumi.CustomResource):
             location="US",
             data_exchange_id="my_data_exchange",
             display_name="my_data_exchange",
-            description="")
+            description="Test Description")
         subscription_dataset = gcp.bigquery.Dataset("subscription",
             dataset_id="my_listing",
             friendly_name="my_listing",
-            description="",
+            description="Test Description",
             location="US")
         subscription_listing = gcp.bigqueryanalyticshub.Listing("subscription",
             location="US",
             data_exchange_id=subscription.data_exchange_id,
             listing_id="my_listing",
             display_name="my_listing",
-            description="",
+            description="Test Description",
             bigquery_dataset={
                 "dataset": subscription_dataset.id,
             })

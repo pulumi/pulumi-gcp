@@ -56,7 +56,7 @@ import (
 //						"IMG_BUCKET":           images.Name,
 //					},
 //					SystemParams: pulumi.StringMap{
-//						"firebaseextensions.v1beta.function/location":                   pulumi.String(""),
+//						"firebaseextensions.v1beta.function/location":                   pulumi.String("us-central1"),
 //						"firebaseextensions.v1beta.function/maxInstances":               pulumi.String("3000"),
 //						"firebaseextensions.v1beta.function/minInstances":               pulumi.String("0"),
 //						"firebaseextensions.v1beta.function/vpcConnectorEgressSettings": pulumi.String("VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"),
@@ -64,7 +64,7 @@ import (
 //					AllowedEventTypes: pulumi.StringArray{
 //						pulumi.String("firebase.extensions.storage-resize-images.v1.onCompletion"),
 //					},
-//					EventarcChannel: pulumi.String("projects/my-project-name/locations//channels/firebase"),
+//					EventarcChannel: pulumi.String("projects/my-project-name/locations/us-central1/channels/firebase"),
 //				},
 //			})
 //			if err != nil {

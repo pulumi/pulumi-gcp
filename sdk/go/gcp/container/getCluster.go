@@ -105,6 +105,7 @@ type LookupClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                              string                                     `pulumi:"id"`
 	IdentityServiceConfigs          []GetClusterIdentityServiceConfig          `pulumi:"identityServiceConfigs"`
+	InTransitEncryptionConfig       string                                     `pulumi:"inTransitEncryptionConfig"`
 	InitialNodeCount                int                                        `pulumi:"initialNodeCount"`
 	IpAllocationPolicies            []GetClusterIpAllocationPolicy             `pulumi:"ipAllocationPolicies"`
 	LabelFingerprint                string                                     `pulumi:"labelFingerprint"`
@@ -342,6 +343,10 @@ func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) IdentityServiceConfigs() GetClusterIdentityServiceConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterIdentityServiceConfig { return v.IdentityServiceConfigs }).(GetClusterIdentityServiceConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) InTransitEncryptionConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.InTransitEncryptionConfig }).(pulumi.StringOutput)
 }
 
 func (o LookupClusterResultOutput) InitialNodeCount() pulumi.IntOutput {

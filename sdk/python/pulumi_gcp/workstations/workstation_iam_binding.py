@@ -46,6 +46,11 @@ class WorkstationIamBindingArgs:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] workstation_cluster_id: The ID of the parent workstation cluster.
+               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] workstation_config_id: The ID of the parent workstation cluster config.
+               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] workstation_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] location: The location where the workstation parent resources reside.
                Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -104,6 +109,10 @@ class WorkstationIamBindingArgs:
     @property
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> pulumi.Input[builtins.str]:
+        """
+        The ID of the parent workstation cluster.
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "workstation_cluster_id")
 
     @workstation_cluster_id.setter
@@ -113,6 +122,10 @@ class WorkstationIamBindingArgs:
     @property
     @pulumi.getter(name="workstationConfigId")
     def workstation_config_id(self) -> pulumi.Input[builtins.str]:
+        """
+        The ID of the parent workstation cluster config.
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "workstation_config_id")
 
     @workstation_config_id.setter
@@ -122,6 +135,9 @@ class WorkstationIamBindingArgs:
     @property
     @pulumi.getter(name="workstationId")
     def workstation_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "workstation_id")
 
     @workstation_id.setter
@@ -201,6 +217,11 @@ class _WorkstationIamBindingState:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] workstation_cluster_id: The ID of the parent workstation cluster.
+               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] workstation_config_id: The ID of the parent workstation cluster config.
+               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] workstation_id: Used to find the parent resource to bind the IAM policy to
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -309,6 +330,10 @@ class _WorkstationIamBindingState:
     @property
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the parent workstation cluster.
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "workstation_cluster_id")
 
     @workstation_cluster_id.setter
@@ -318,6 +343,10 @@ class _WorkstationIamBindingState:
     @property
     @pulumi.getter(name="workstationConfigId")
     def workstation_config_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the parent workstation cluster config.
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "workstation_config_id")
 
     @workstation_config_id.setter
@@ -327,6 +356,9 @@ class _WorkstationIamBindingState:
     @property
     @pulumi.getter(name="workstationId")
     def workstation_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "workstation_id")
 
     @workstation_id.setter
@@ -410,6 +442,11 @@ class WorkstationIamBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] workstation_cluster_id: The ID of the parent workstation cluster.
+               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] workstation_config_id: The ID of the parent workstation cluster config.
+               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] workstation_id: Used to find the parent resource to bind the IAM policy to
         """
         ...
     @overload
@@ -554,6 +591,11 @@ class WorkstationIamBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] workstation_cluster_id: The ID of the parent workstation cluster.
+               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] workstation_config_id: The ID of the parent workstation cluster config.
+               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] workstation_id: Used to find the parent resource to bind the IAM policy to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -634,15 +676,26 @@ class WorkstationIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the parent workstation cluster.
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "workstation_cluster_id")
 
     @property
     @pulumi.getter(name="workstationConfigId")
     def workstation_config_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the parent workstation cluster config.
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "workstation_config_id")
 
     @property
     @pulumi.getter(name="workstationId")
     def workstation_id(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "workstation_id")
 

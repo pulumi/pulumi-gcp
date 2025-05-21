@@ -266,6 +266,9 @@ namespace Pulumi.Gcp.GkeHub
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("membershipId")]
         public Output<string> MembershipId { get; private set; } = null!;
 
@@ -339,6 +342,9 @@ namespace Pulumi.Gcp.GkeHub
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("membershipId", required: true)]
         public Input<string> MembershipId { get; set; } = null!;
 
@@ -380,6 +386,9 @@ namespace Pulumi.Gcp.GkeHub
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("membershipId")]
         public Input<string>? MembershipId { get; set; }
 

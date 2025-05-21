@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Dataset("default", DatasetArgs.builder()
- *             .datasetId("")
+ *             .datasetId("my-dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")

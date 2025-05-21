@@ -295,8 +295,9 @@ import (
 type DataPolicyIamMember struct {
 	pulumi.CustomResourceState
 
-	Condition    DataPolicyIamMemberConditionPtrOutput `pulumi:"condition"`
-	DataPolicyId pulumi.StringOutput                   `pulumi:"dataPolicyId"`
+	Condition DataPolicyIamMemberConditionPtrOutput `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	DataPolicyId pulumi.StringOutput `pulumi:"dataPolicyId"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the location of the data policy.
@@ -364,8 +365,9 @@ func GetDataPolicyIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataPolicyIamMember resources.
 type dataPolicyIamMemberState struct {
-	Condition    *DataPolicyIamMemberCondition `pulumi:"condition"`
-	DataPolicyId *string                       `pulumi:"dataPolicyId"`
+	Condition *DataPolicyIamMemberCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	DataPolicyId *string `pulumi:"dataPolicyId"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name of the location of the data policy.
@@ -395,7 +397,8 @@ type dataPolicyIamMemberState struct {
 }
 
 type DataPolicyIamMemberState struct {
-	Condition    DataPolicyIamMemberConditionPtrInput
+	Condition DataPolicyIamMemberConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	DataPolicyId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -430,8 +433,9 @@ func (DataPolicyIamMemberState) ElementType() reflect.Type {
 }
 
 type dataPolicyIamMemberArgs struct {
-	Condition    *DataPolicyIamMemberCondition `pulumi:"condition"`
-	DataPolicyId string                        `pulumi:"dataPolicyId"`
+	Condition *DataPolicyIamMemberCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	DataPolicyId string `pulumi:"dataPolicyId"`
 	// The name of the location of the data policy.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -460,7 +464,8 @@ type dataPolicyIamMemberArgs struct {
 
 // The set of arguments for constructing a DataPolicyIamMember resource.
 type DataPolicyIamMemberArgs struct {
-	Condition    DataPolicyIamMemberConditionPtrInput
+	Condition DataPolicyIamMemberConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	DataPolicyId pulumi.StringInput
 	// The name of the location of the data policy.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -579,6 +584,7 @@ func (o DataPolicyIamMemberOutput) Condition() DataPolicyIamMemberConditionPtrOu
 	return o.ApplyT(func(v *DataPolicyIamMember) DataPolicyIamMemberConditionPtrOutput { return v.Condition }).(DataPolicyIamMemberConditionPtrOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o DataPolicyIamMemberOutput) DataPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataPolicyIamMember) pulumi.StringOutput { return v.DataPolicyId }).(pulumi.StringOutput)
 }

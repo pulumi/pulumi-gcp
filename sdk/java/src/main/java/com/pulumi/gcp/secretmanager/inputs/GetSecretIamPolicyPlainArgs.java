@@ -32,9 +32,17 @@ public final class GetSecretIamPolicyPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="secretId", required=true)
     private String secretId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String secretId() {
         return this.secretId;
     }
@@ -76,6 +84,12 @@ public final class GetSecretIamPolicyPlainArgs extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param secretId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretId(String secretId) {
             $.secretId = secretId;
             return this;

@@ -562,7 +562,8 @@ type SecurityGatewayIamBinding struct {
 	// The role that should be applied. Only one
 	// `beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role              pulumi.StringOutput `pulumi:"role"`
+	Role pulumi.StringOutput `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	SecurityGatewayId pulumi.StringOutput `pulumi:"securityGatewayId"`
 }
 
@@ -632,7 +633,8 @@ type securityGatewayIamBindingState struct {
 	// The role that should be applied. Only one
 	// `beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role              *string `pulumi:"role"`
+	Role *string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	SecurityGatewayId *string `pulumi:"securityGatewayId"`
 }
 
@@ -664,7 +666,8 @@ type SecurityGatewayIamBindingState struct {
 	// The role that should be applied. Only one
 	// `beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role              pulumi.StringPtrInput
+	Role pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	SecurityGatewayId pulumi.StringPtrInput
 }
 
@@ -698,7 +701,8 @@ type securityGatewayIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role              string `pulumi:"role"`
+	Role string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	SecurityGatewayId string `pulumi:"securityGatewayId"`
 }
 
@@ -729,7 +733,8 @@ type SecurityGatewayIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role              pulumi.StringInput
+	Role pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
 	SecurityGatewayId pulumi.StringInput
 }
 
@@ -866,6 +871,7 @@ func (o SecurityGatewayIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGatewayIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o SecurityGatewayIamBindingOutput) SecurityGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGatewayIamBinding) pulumi.StringOutput { return v.SecurityGatewayId }).(pulumi.StringOutput)
 }

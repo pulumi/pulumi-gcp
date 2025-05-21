@@ -53,6 +53,8 @@ export interface GetGlobalForwardingRuleResult {
     readonly baseForwardingRule: string;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
+    readonly externalManagedBackendBucketMigrationState: string;
+    readonly externalManagedBackendBucketMigrationTestingPercentage: number;
     readonly forwardingRuleId: number;
     /**
      * The provider-assigned unique ID for this managed resource.

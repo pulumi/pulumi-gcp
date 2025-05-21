@@ -462,6 +462,29 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Specifies the canary migration state for the backend buckets attached to this forwarding rule.
+     * Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
+     * To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+     * PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+     * changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+     * traffic to backend buckets attached to this forwarding rule by percentage using
+     * externalManagedBackendBucketMigrationTestingPercentage.
+     * Rolling back a migration requires the states to be set in reverse order. So changing the
+     * scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+     * the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+     * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+     * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+     */
+    public readonly externalManagedBackendBucketMigrationState!: pulumi.Output<string | undefined>;
+    /**
+     * Determines the fraction of requests to backend buckets that should be processed by the Global
+     * external Application Load Balancer.
+     * The value of this field must be in the range [0, 100].
+     * This value can only be set if the loadBalancingScheme in the forwarding rule is set to
+     * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+     */
+    public readonly externalManagedBackendBucketMigrationTestingPercentage!: pulumi.Output<number | undefined>;
+    /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
     public /*out*/ readonly forwardingRuleId!: pulumi.Output<number>;
@@ -691,6 +714,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["baseForwardingRule"] = state ? state.baseForwardingRule : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["externalManagedBackendBucketMigrationState"] = state ? state.externalManagedBackendBucketMigrationState : undefined;
+            resourceInputs["externalManagedBackendBucketMigrationTestingPercentage"] = state ? state.externalManagedBackendBucketMigrationTestingPercentage : undefined;
             resourceInputs["forwardingRuleId"] = state ? state.forwardingRuleId : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
@@ -720,6 +745,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             }
             resourceInputs["allowPscGlobalAccess"] = args ? args.allowPscGlobalAccess : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["externalManagedBackendBucketMigrationState"] = args ? args.externalManagedBackendBucketMigrationState : undefined;
+            resourceInputs["externalManagedBackendBucketMigrationTestingPercentage"] = args ? args.externalManagedBackendBucketMigrationTestingPercentage : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
             resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
             resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
@@ -773,6 +800,29 @@ export interface GlobalForwardingRuleState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Specifies the canary migration state for the backend buckets attached to this forwarding rule.
+     * Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
+     * To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+     * PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+     * changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+     * traffic to backend buckets attached to this forwarding rule by percentage using
+     * externalManagedBackendBucketMigrationTestingPercentage.
+     * Rolling back a migration requires the states to be set in reverse order. So changing the
+     * scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+     * the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+     * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+     * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+     */
+    externalManagedBackendBucketMigrationState?: pulumi.Input<string>;
+    /**
+     * Determines the fraction of requests to backend buckets that should be processed by the Global
+     * external Application Load Balancer.
+     * The value of this field must be in the range [0, 100].
+     * This value can only be set if the loadBalancingScheme in the forwarding rule is set to
+     * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+     */
+    externalManagedBackendBucketMigrationTestingPercentage?: pulumi.Input<number>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
@@ -1000,6 +1050,29 @@ export interface GlobalForwardingRuleArgs {
      * you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies the canary migration state for the backend buckets attached to this forwarding rule.
+     * Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
+     * To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+     * PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+     * changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+     * traffic to backend buckets attached to this forwarding rule by percentage using
+     * externalManagedBackendBucketMigrationTestingPercentage.
+     * Rolling back a migration requires the states to be set in reverse order. So changing the
+     * scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+     * the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+     * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+     * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+     */
+    externalManagedBackendBucketMigrationState?: pulumi.Input<string>;
+    /**
+     * Determines the fraction of requests to backend buckets that should be processed by the Global
+     * external Application Load Balancer.
+     * The value of this field must be in the range [0, 100].
+     * This value can only be set if the loadBalancingScheme in the forwarding rule is set to
+     * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+     */
+    externalManagedBackendBucketMigrationTestingPercentage?: pulumi.Input<number>;
     /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic

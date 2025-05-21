@@ -234,7 +234,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new Cluster("default", ClusterArgs.builder()
- *             .name("")
+ *             .name("default")
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()

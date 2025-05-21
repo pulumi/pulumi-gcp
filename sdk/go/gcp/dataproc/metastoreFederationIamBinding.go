@@ -297,7 +297,8 @@ type MetastoreFederationIamBinding struct {
 
 	Condition MetastoreFederationIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag         pulumi.StringOutput `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
 	FederationId pulumi.StringOutput `pulumi:"federationId"`
 	// The location where the metastore federation should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -366,7 +367,8 @@ func GetMetastoreFederationIamBinding(ctx *pulumi.Context,
 type metastoreFederationIamBindingState struct {
 	Condition *MetastoreFederationIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag         *string `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
 	FederationId *string `pulumi:"federationId"`
 	// The location where the metastore federation should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -397,7 +399,8 @@ type metastoreFederationIamBindingState struct {
 type MetastoreFederationIamBindingState struct {
 	Condition MetastoreFederationIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag         pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	FederationId pulumi.StringPtrInput
 	// The location where the metastore federation should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -430,8 +433,9 @@ func (MetastoreFederationIamBindingState) ElementType() reflect.Type {
 }
 
 type metastoreFederationIamBindingArgs struct {
-	Condition    *MetastoreFederationIamBindingCondition `pulumi:"condition"`
-	FederationId string                                  `pulumi:"federationId"`
+	Condition *MetastoreFederationIamBindingCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	FederationId string `pulumi:"federationId"`
 	// The location where the metastore federation should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -460,7 +464,8 @@ type metastoreFederationIamBindingArgs struct {
 
 // The set of arguments for constructing a MetastoreFederationIamBinding resource.
 type MetastoreFederationIamBindingArgs struct {
-	Condition    MetastoreFederationIamBindingConditionPtrInput
+	Condition MetastoreFederationIamBindingConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	FederationId pulumi.StringInput
 	// The location where the metastore federation should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -586,6 +591,7 @@ func (o MetastoreFederationIamBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederationIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o MetastoreFederationIamBindingOutput) FederationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederationIamBinding) pulumi.StringOutput { return v.FederationId }).(pulumi.StringOutput)
 }

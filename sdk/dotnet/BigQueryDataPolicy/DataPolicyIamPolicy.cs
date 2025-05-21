@@ -250,6 +250,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     [GcpResourceType("gcp:bigquerydatapolicy/dataPolicyIamPolicy:DataPolicyIamPolicy")]
     public partial class DataPolicyIamPolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("dataPolicyId")]
         public Output<string> DataPolicyId { get; private set; } = null!;
 
@@ -328,6 +331,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
 
     public sealed class DataPolicyIamPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("dataPolicyId", required: true)]
         public Input<string> DataPolicyId { get; set; } = null!;
 
@@ -362,6 +368,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
 
     public sealed class DataPolicyIamPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("dataPolicyId")]
         public Input<string>? DataPolicyId { get; set; }
 

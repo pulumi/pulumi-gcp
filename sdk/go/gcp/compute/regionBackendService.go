@@ -464,7 +464,7 @@ import (
 //				},
 //				Region:       pulumi.String("us-central1"),
 //				Name:         pulumi.String("region-service"),
-//				Protocol:     pulumi.String("HTTP"),
+//				Protocol:     pulumi.String("H2C"),
 //				TimeoutSec:   pulumi.Int(10),
 //				HealthChecks: defaultRegionHealthCheck.ID(),
 //			})
@@ -687,7 +687,7 @@ type RegionBackendService struct {
 	CdnPolicy RegionBackendServiceCdnPolicyOutput `pulumi:"cdnPolicy"`
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	CircuitBreakers RegionBackendServiceCircuitBreakersPtrOutput `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
@@ -783,7 +783,7 @@ type RegionBackendService struct {
 	//   to use for computing the weights are specified via the
 	//   backends[].customMetrics fields.
 	//   localityLbPolicy is applicable to either:
-	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
 	//   and loadBalancingScheme set to INTERNAL_MANAGED.
 	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -815,7 +815,7 @@ type RegionBackendService struct {
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrOutput `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
@@ -829,10 +829,11 @@ type RegionBackendService struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The protocol this RegionBackendService uses to communicate with backends.
-	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-	// types and may result in errors if used with the GA API.
-	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+	// The protocol this BackendService uses to communicate with backends.
+	// The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+	// or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+	// for more information.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -902,7 +903,7 @@ type regionBackendServiceState struct {
 	CdnPolicy *RegionBackendServiceCdnPolicy `pulumi:"cdnPolicy"`
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	CircuitBreakers *RegionBackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
@@ -998,7 +999,7 @@ type regionBackendServiceState struct {
 	//   to use for computing the weights are specified via the
 	//   backends[].customMetrics fields.
 	//   localityLbPolicy is applicable to either:
-	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
 	//   and loadBalancingScheme set to INTERNAL_MANAGED.
 	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1030,7 +1031,7 @@ type regionBackendServiceState struct {
 	Network *string `pulumi:"network"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	OutlierDetection *RegionBackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
@@ -1044,10 +1045,11 @@ type regionBackendServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The protocol this RegionBackendService uses to communicate with backends.
-	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-	// types and may result in errors if used with the GA API.
-	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+	// The protocol this BackendService uses to communicate with backends.
+	// The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+	// or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+	// for more information.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
 	Protocol *string `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -1088,7 +1090,7 @@ type RegionBackendServiceState struct {
 	CdnPolicy RegionBackendServiceCdnPolicyPtrInput
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	CircuitBreakers RegionBackendServiceCircuitBreakersPtrInput
 	// Time for which instance will be drained (not accept new
@@ -1184,7 +1186,7 @@ type RegionBackendServiceState struct {
 	//   to use for computing the weights are specified via the
 	//   backends[].customMetrics fields.
 	//   localityLbPolicy is applicable to either:
-	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
 	//   and loadBalancingScheme set to INTERNAL_MANAGED.
 	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1216,7 +1218,7 @@ type RegionBackendServiceState struct {
 	Network pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrInput
 	// A named port on a backend instance group representing the port for
@@ -1230,10 +1232,11 @@ type RegionBackendServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The protocol this RegionBackendService uses to communicate with backends.
-	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-	// types and may result in errors if used with the GA API.
-	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+	// The protocol this BackendService uses to communicate with backends.
+	// The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+	// or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+	// for more information.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
 	Protocol pulumi.StringPtrInput
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -1278,7 +1281,7 @@ type regionBackendServiceArgs struct {
 	CdnPolicy *RegionBackendServiceCdnPolicy `pulumi:"cdnPolicy"`
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	CircuitBreakers *RegionBackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
@@ -1367,7 +1370,7 @@ type regionBackendServiceArgs struct {
 	//   to use for computing the weights are specified via the
 	//   backends[].customMetrics fields.
 	//   localityLbPolicy is applicable to either:
-	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
 	//   and loadBalancingScheme set to INTERNAL_MANAGED.
 	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1399,7 +1402,7 @@ type regionBackendServiceArgs struct {
 	Network *string `pulumi:"network"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	OutlierDetection *RegionBackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
@@ -1413,10 +1416,11 @@ type regionBackendServiceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The protocol this RegionBackendService uses to communicate with backends.
-	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-	// types and may result in errors if used with the GA API.
-	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+	// The protocol this BackendService uses to communicate with backends.
+	// The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+	// or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+	// for more information.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
 	Protocol *string `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -1456,7 +1460,7 @@ type RegionBackendServiceArgs struct {
 	CdnPolicy RegionBackendServiceCdnPolicyPtrInput
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	CircuitBreakers RegionBackendServiceCircuitBreakersPtrInput
 	// Time for which instance will be drained (not accept new
@@ -1545,7 +1549,7 @@ type RegionBackendServiceArgs struct {
 	//   to use for computing the weights are specified via the
 	//   backends[].customMetrics fields.
 	//   localityLbPolicy is applicable to either:
-	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
 	//   and loadBalancingScheme set to INTERNAL_MANAGED.
 	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1577,7 +1581,7 @@ type RegionBackendServiceArgs struct {
 	Network pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrInput
 	// A named port on a backend instance group representing the port for
@@ -1591,10 +1595,11 @@ type RegionBackendServiceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The protocol this RegionBackendService uses to communicate with backends.
-	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-	// types and may result in errors if used with the GA API.
-	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+	// The protocol this BackendService uses to communicate with backends.
+	// The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+	// or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+	// for more information.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
 	Protocol pulumi.StringPtrInput
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -1728,7 +1733,7 @@ func (o RegionBackendServiceOutput) CdnPolicy() RegionBackendServiceCdnPolicyOut
 
 // Settings controlling the volume of connections to a backend service. This field
 // is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+// and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 // Structure is documented below.
 func (o RegionBackendServiceOutput) CircuitBreakers() RegionBackendServiceCircuitBreakersPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceCircuitBreakersPtrOutput { return v.CircuitBreakers }).(RegionBackendServiceCircuitBreakersPtrOutput)
@@ -1871,7 +1876,7 @@ func (o RegionBackendServiceOutput) LoadBalancingScheme() pulumi.StringPtrOutput
 //     to use for computing the weights are specified via the
 //     backends[].customMetrics fields.
 //     localityLbPolicy is applicable to either:
-//   - A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
+//   - A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
 //     and loadBalancingScheme set to INTERNAL_MANAGED.
 //   - A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 //   - A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1915,7 +1920,7 @@ func (o RegionBackendServiceOutput) Network() pulumi.StringPtrOutput {
 
 // Settings controlling eviction of unhealthy hosts from the load balancing pool.
 // This field is applicable only when the `loadBalancingScheme` is set
-// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 // Structure is documented below.
 func (o RegionBackendServiceOutput) OutlierDetection() RegionBackendServiceOutlierDetectionPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceOutlierDetectionPtrOutput { return v.OutlierDetection }).(RegionBackendServiceOutlierDetectionPtrOutput)
@@ -1938,10 +1943,11 @@ func (o RegionBackendServiceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The protocol this RegionBackendService uses to communicate with backends.
-// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-// types and may result in errors if used with the GA API.
-// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+// The protocol this BackendService uses to communicate with backends.
+// The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+// or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+// for more information.
+// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
 func (o RegionBackendServiceOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }

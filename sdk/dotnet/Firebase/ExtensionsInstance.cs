@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Firebase
     ///             },
     ///             SystemParams = 
     ///             {
-    ///                 { "firebaseextensions.v1beta.function/location", "" },
+    ///                 { "firebaseextensions.v1beta.function/location", "us-central1" },
     ///                 { "firebaseextensions.v1beta.function/maxInstances", "3000" },
     ///                 { "firebaseextensions.v1beta.function/minInstances", "0" },
     ///                 { "firebaseextensions.v1beta.function/vpcConnectorEgressSettings", "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED" },
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Firebase
     ///             {
     ///                 "firebase.extensions.storage-resize-images.v1.onCompletion",
     ///             },
-    ///             EventarcChannel = "projects/my-project-name/locations//channels/firebase",
+    ///             EventarcChannel = "projects/my-project-name/locations/us-central1/channels/firebase",
     ///         },
     ///     });
     /// 

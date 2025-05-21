@@ -453,7 +453,7 @@ namespace Pulumi.Gcp.Iap
     public partial class AppEngineServiceIamMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -503,7 +503,7 @@ namespace Pulumi.Gcp.Iap
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
@@ -555,7 +555,7 @@ namespace Pulumi.Gcp.Iap
     public sealed class AppEngineServiceIamMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -599,7 +599,7 @@ namespace Pulumi.Gcp.Iap
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
@@ -613,7 +613,7 @@ namespace Pulumi.Gcp.Iap
     public sealed class AppEngineServiceIamMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
@@ -663,7 +663,7 @@ namespace Pulumi.Gcp.Iap
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }

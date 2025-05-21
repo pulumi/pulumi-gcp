@@ -22,6 +22,7 @@ public final class OauthClientCredentialState extends com.pulumi.resources.Resou
      * leaked, you must delete and re-create the client credential. To learn
      * more, see [OAuth client and credential security risks and
      * mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="clientSecret")
@@ -33,6 +34,7 @@ public final class OauthClientCredentialState extends com.pulumi.resources.Resou
      * leaked, you must delete and re-create the client credential. To learn
      * more, see [OAuth client and credential security risks and
      * mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -201,6 +203,7 @@ public final class OauthClientCredentialState extends com.pulumi.resources.Resou
          * leaked, you must delete and re-create the client credential. To learn
          * more, see [OAuth client and credential security risks and
          * mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -216,6 +219,7 @@ public final class OauthClientCredentialState extends com.pulumi.resources.Resou
          * leaked, you must delete and re-create the client credential. To learn
          * more, see [OAuth client and credential security risks and
          * mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 

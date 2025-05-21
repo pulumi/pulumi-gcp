@@ -204,6 +204,9 @@ export class DatascanIamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatascanIamPolicy.__pulumiType;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly dataScanId!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -268,6 +271,9 @@ export class DatascanIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatascanIamPolicy resources.
  */
 export interface DatascanIamPolicyState {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     dataScanId?: pulumi.Input<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -296,6 +302,9 @@ export interface DatascanIamPolicyState {
  * The set of arguments for constructing a DatascanIamPolicy resource.
  */
 export interface DatascanIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     dataScanId: pulumi.Input<string>;
     /**
      * The location where the data scan should reside.

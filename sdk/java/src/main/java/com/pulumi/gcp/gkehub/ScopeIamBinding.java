@@ -421,9 +421,17 @@ public class ScopeIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> role() {
         return this.role;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="scopeId", refs={String.class}, tree="[0]")
     private Output<String> scopeId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> scopeId() {
         return this.scopeId;
     }

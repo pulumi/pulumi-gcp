@@ -87,6 +87,9 @@ namespace Pulumi.Gcp.Vertex
 
     public sealed class GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("featureOnlineStore", required: true)]
         public string FeatureOnlineStore { get; set; } = null!;
 
@@ -119,6 +122,9 @@ namespace Pulumi.Gcp.Vertex
 
     public sealed class GetAiFeatureOnlineStoreFeatureviewIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("featureOnlineStore", required: true)]
         public Input<string> FeatureOnlineStore { get; set; } = null!;
 

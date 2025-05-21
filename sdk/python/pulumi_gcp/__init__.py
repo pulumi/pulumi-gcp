@@ -1440,6 +1440,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigquery/rowAccessPolicy",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/rowAccessPolicy:RowAccessPolicy": "RowAccessPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigquery/table",
   "fqn": "pulumi_gcp.bigquery",
   "classes": {
@@ -4336,6 +4344,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/glossary",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/glossary:Glossary": "Glossary"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/glossaryIamBinding",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/glossaryIamBinding:GlossaryIamBinding": "GlossaryIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/glossaryIamMember",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/glossaryIamMember:GlossaryIamMember": "GlossaryIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/glossaryIamPolicy",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/glossaryIamPolicy:GlossaryIamPolicy": "GlossaryIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/lake",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
@@ -5264,6 +5304,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "firebase/appHostingDefaultDomain",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain": "AppHostingDefaultDomain"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/appHostingDomain",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appHostingDomain:AppHostingDomain": "AppHostingDomain"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/appHostingTraffic",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appHostingTraffic:AppHostingTraffic": "AppHostingTraffic"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "firebase/appleApp",
   "fqn": "pulumi_gcp.firebase",
   "classes": {
@@ -6124,6 +6188,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.iam",
   "classes": {
    "gcp:iam/workloadIdentityPool:WorkloadIdentityPool": "WorkloadIdentityPool"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/workloadIdentityPoolIamBinding",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding": "WorkloadIdentityPoolIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/workloadIdentityPoolIamMember",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workloadIdentityPoolIamMember:WorkloadIdentityPoolIamMember": "WorkloadIdentityPoolIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/workloadIdentityPoolIamPolicy",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workloadIdentityPoolIamPolicy:WorkloadIdentityPoolIamPolicy": "WorkloadIdentityPoolIamPolicy"
   }
  },
  {

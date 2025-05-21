@@ -31,9 +31,14 @@ from .get_asset_iam_policy import *
 from .get_datascan_iam_policy import *
 from .get_entry_group_iam_policy import *
 from .get_entry_type_iam_policy import *
+from .get_glossary_iam_policy import *
 from .get_lake_iam_policy import *
 from .get_task_iam_policy import *
 from .get_zone_iam_policy import *
+from .glossary import *
+from .glossary_iam_binding import *
+from .glossary_iam_member import *
+from .glossary_iam_policy import *
 from .lake import *
 from .lake_iam_binding import *
 from .lake_iam_member import *

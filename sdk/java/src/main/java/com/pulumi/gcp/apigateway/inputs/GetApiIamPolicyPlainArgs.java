@@ -15,9 +15,17 @@ public final class GetApiIamPolicyPlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetApiIamPolicyPlainArgs Empty = new GetApiIamPolicyPlainArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="api", required=true)
     private String api;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String api() {
         return this.api;
     }
@@ -64,6 +72,12 @@ public final class GetApiIamPolicyPlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetApiIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param api Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder api(String api) {
             $.api = api;
             return this;

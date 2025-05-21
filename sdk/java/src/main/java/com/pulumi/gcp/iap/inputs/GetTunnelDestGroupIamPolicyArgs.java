@@ -16,9 +16,17 @@ public final class GetTunnelDestGroupIamPolicyArgs extends com.pulumi.resources.
 
     public static final GetTunnelDestGroupIamPolicyArgs Empty = new GetTunnelDestGroupIamPolicyArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="destGroup", required=true)
     private Output<String> destGroup;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> destGroup() {
         return this.destGroup;
     }
@@ -87,11 +95,23 @@ public final class GetTunnelDestGroupIamPolicyArgs extends com.pulumi.resources.
             $ = new GetTunnelDestGroupIamPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destGroup Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder destGroup(Output<String> destGroup) {
             $.destGroup = destGroup;
             return this;
         }
 
+        /**
+         * @param destGroup Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder destGroup(String destGroup) {
             return destGroup(Output.of(destGroup));
         }

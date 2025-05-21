@@ -17,7 +17,6 @@ public final class GetInstanceIamPolicyArgs extends com.pulumi.resources.InvokeA
     public static final GetInstanceIamPolicyArgs Empty = new GetInstanceIamPolicyArgs();
 
     /**
-     * The name for the Instance.
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
@@ -25,8 +24,7 @@ public final class GetInstanceIamPolicyArgs extends com.pulumi.resources.InvokeA
     private Output<String> instanceId;
 
     /**
-     * @return The name for the Instance.
-     * Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> instanceId() {
@@ -98,8 +96,7 @@ public final class GetInstanceIamPolicyArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param instanceId The name for the Instance.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param instanceId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -110,8 +107,7 @@ public final class GetInstanceIamPolicyArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param instanceId The name for the Instance.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param instanceId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

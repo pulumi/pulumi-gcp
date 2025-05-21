@@ -113,7 +113,6 @@ namespace Pulumi.Gcp.SecureSourceManager
         public string? Project { get; set; }
 
         /// <summary>
-        /// The ID for the Repository.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("repositoryId", required: true)]
@@ -144,7 +143,6 @@ namespace Pulumi.Gcp.SecureSourceManager
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The ID for the Repository.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("repositoryId", required: true)]

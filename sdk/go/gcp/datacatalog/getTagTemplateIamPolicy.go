@@ -53,7 +53,11 @@ type LookupTagTemplateIamPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// Template location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region *string `pulumi:"region"`
 	// Used to find the parent resource to bind the IAM policy to
 	TagTemplate string `pulumi:"tagTemplate"`
 }
@@ -86,7 +90,11 @@ type LookupTagTemplateIamPolicyOutputArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	Region  pulumi.StringPtrInput `pulumi:"region"`
+	// Template location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Used to find the parent resource to bind the IAM policy to
 	TagTemplate pulumi.StringInput `pulumi:"tagTemplate"`
 }

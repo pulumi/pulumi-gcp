@@ -244,6 +244,9 @@ export class MetastoreServiceIamBinding extends pulumi.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly serviceId!: pulumi.Output<string>;
 
     /**
@@ -332,6 +335,9 @@ export interface MetastoreServiceIamBindingState {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceId?: pulumi.Input<string>;
 }
 
@@ -373,5 +379,8 @@ export interface MetastoreServiceIamBindingArgs {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceId: pulumi.Input<string>;
 }

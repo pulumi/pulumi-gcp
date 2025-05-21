@@ -42,7 +42,7 @@ import (
 //			_, err := gkebackup.NewBackupChannel(ctx, "basic", &gkebackup.BackupChannelArgs{
 //				Name:               pulumi.String("basic-channel"),
 //				Location:           pulumi.String("us-central1"),
-//				Description:        pulumi.String(""),
+//				Description:        pulumi.String("Description"),
 //				DestinationProject: pulumi.String("projects/24240755850"),
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("some-value"),
@@ -87,7 +87,7 @@ type BackupChannel struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The project where Backups are allowed to be stored.
 	// The format is `projects/{project}`.
-	// {project} can only be a project number.
+	// {project} can be project number or project id.
 	DestinationProject pulumi.StringOutput `pulumi:"destinationProject"`
 	// The projectId where Backups are allowed to be stored.
 	// Example Project ID: "my-project-id".
@@ -169,7 +169,7 @@ type backupChannelState struct {
 	Description *string `pulumi:"description"`
 	// The project where Backups are allowed to be stored.
 	// The format is `projects/{project}`.
-	// {project} can only be a project number.
+	// {project} can be project number or project id.
 	DestinationProject *string `pulumi:"destinationProject"`
 	// The projectId where Backups are allowed to be stored.
 	// Example Project ID: "my-project-id".
@@ -211,7 +211,7 @@ type BackupChannelState struct {
 	Description pulumi.StringPtrInput
 	// The project where Backups are allowed to be stored.
 	// The format is `projects/{project}`.
-	// {project} can only be a project number.
+	// {project} can be project number or project id.
 	DestinationProject pulumi.StringPtrInput
 	// The projectId where Backups are allowed to be stored.
 	// Example Project ID: "my-project-id".
@@ -257,7 +257,7 @@ type backupChannelArgs struct {
 	Description *string `pulumi:"description"`
 	// The project where Backups are allowed to be stored.
 	// The format is `projects/{project}`.
-	// {project} can only be a project number.
+	// {project} can be project number or project id.
 	DestinationProject string `pulumi:"destinationProject"`
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
@@ -283,7 +283,7 @@ type BackupChannelArgs struct {
 	Description pulumi.StringPtrInput
 	// The project where Backups are allowed to be stored.
 	// The format is `projects/{project}`.
-	// {project} can only be a project number.
+	// {project} can be project number or project id.
 	DestinationProject pulumi.StringInput
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
@@ -397,7 +397,7 @@ func (o BackupChannelOutput) Description() pulumi.StringPtrOutput {
 
 // The project where Backups are allowed to be stored.
 // The format is `projects/{project}`.
-// {project} can only be a project number.
+// {project} can be project number or project id.
 func (o BackupChannelOutput) DestinationProject() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupChannel) pulumi.StringOutput { return v.DestinationProject }).(pulumi.StringOutput)
 }

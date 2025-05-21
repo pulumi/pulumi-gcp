@@ -30,6 +30,7 @@ class MetastoreFederationIamBindingArgs:
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a MetastoreFederationIamBinding resource.
+        :param pulumi.Input[builtins.str] federation_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -64,6 +65,9 @@ class MetastoreFederationIamBindingArgs:
     @property
     @pulumi.getter(name="federationId")
     def federation_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "federation_id")
 
     @federation_id.setter
@@ -157,6 +161,7 @@ class _MetastoreFederationIamBindingState:
         """
         Input properties used for looking up and filtering MetastoreFederationIamBinding resources.
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[builtins.str] federation_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] location: The location where the metastore federation should reside.
                Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -217,6 +222,9 @@ class _MetastoreFederationIamBindingState:
     @property
     @pulumi.getter(name="federationId")
     def federation_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "federation_id")
 
     @federation_id.setter
@@ -465,6 +473,7 @@ class MetastoreFederationIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] federation_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] location: The location where the metastore federation should reside.
                Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -722,6 +731,7 @@ class MetastoreFederationIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[builtins.str] federation_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] location: The location where the metastore federation should reside.
                Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -772,6 +782,9 @@ class MetastoreFederationIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="federationId")
     def federation_id(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "federation_id")
 
     @property

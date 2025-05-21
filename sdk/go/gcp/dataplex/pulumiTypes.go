@@ -7543,6 +7543,332 @@ func (o EntryTypeRequiredAspectArrayOutput) Index(i pulumi.IntInput) EntryTypeRe
 	}).(EntryTypeRequiredAspectOutput)
 }
 
+type GlossaryIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// GlossaryIamBindingConditionInput is an input type that accepts GlossaryIamBindingConditionArgs and GlossaryIamBindingConditionOutput values.
+// You can construct a concrete instance of `GlossaryIamBindingConditionInput` via:
+//
+//	GlossaryIamBindingConditionArgs{...}
+type GlossaryIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToGlossaryIamBindingConditionOutput() GlossaryIamBindingConditionOutput
+	ToGlossaryIamBindingConditionOutputWithContext(context.Context) GlossaryIamBindingConditionOutput
+}
+
+type GlossaryIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (GlossaryIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryIamBindingCondition)(nil)).Elem()
+}
+
+func (i GlossaryIamBindingConditionArgs) ToGlossaryIamBindingConditionOutput() GlossaryIamBindingConditionOutput {
+	return i.ToGlossaryIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i GlossaryIamBindingConditionArgs) ToGlossaryIamBindingConditionOutputWithContext(ctx context.Context) GlossaryIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryIamBindingConditionOutput)
+}
+
+func (i GlossaryIamBindingConditionArgs) ToGlossaryIamBindingConditionPtrOutput() GlossaryIamBindingConditionPtrOutput {
+	return i.ToGlossaryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i GlossaryIamBindingConditionArgs) ToGlossaryIamBindingConditionPtrOutputWithContext(ctx context.Context) GlossaryIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryIamBindingConditionOutput).ToGlossaryIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// GlossaryIamBindingConditionPtrInput is an input type that accepts GlossaryIamBindingConditionArgs, GlossaryIamBindingConditionPtr and GlossaryIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `GlossaryIamBindingConditionPtrInput` via:
+//
+//	        GlossaryIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GlossaryIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToGlossaryIamBindingConditionPtrOutput() GlossaryIamBindingConditionPtrOutput
+	ToGlossaryIamBindingConditionPtrOutputWithContext(context.Context) GlossaryIamBindingConditionPtrOutput
+}
+
+type glossaryIamBindingConditionPtrType GlossaryIamBindingConditionArgs
+
+func GlossaryIamBindingConditionPtr(v *GlossaryIamBindingConditionArgs) GlossaryIamBindingConditionPtrInput {
+	return (*glossaryIamBindingConditionPtrType)(v)
+}
+
+func (*glossaryIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlossaryIamBindingCondition)(nil)).Elem()
+}
+
+func (i *glossaryIamBindingConditionPtrType) ToGlossaryIamBindingConditionPtrOutput() GlossaryIamBindingConditionPtrOutput {
+	return i.ToGlossaryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *glossaryIamBindingConditionPtrType) ToGlossaryIamBindingConditionPtrOutputWithContext(ctx context.Context) GlossaryIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryIamBindingConditionPtrOutput)
+}
+
+type GlossaryIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (GlossaryIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryIamBindingCondition)(nil)).Elem()
+}
+
+func (o GlossaryIamBindingConditionOutput) ToGlossaryIamBindingConditionOutput() GlossaryIamBindingConditionOutput {
+	return o
+}
+
+func (o GlossaryIamBindingConditionOutput) ToGlossaryIamBindingConditionOutputWithContext(ctx context.Context) GlossaryIamBindingConditionOutput {
+	return o
+}
+
+func (o GlossaryIamBindingConditionOutput) ToGlossaryIamBindingConditionPtrOutput() GlossaryIamBindingConditionPtrOutput {
+	return o.ToGlossaryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o GlossaryIamBindingConditionOutput) ToGlossaryIamBindingConditionPtrOutputWithContext(ctx context.Context) GlossaryIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlossaryIamBindingCondition) *GlossaryIamBindingCondition {
+		return &v
+	}).(GlossaryIamBindingConditionPtrOutput)
+}
+
+func (o GlossaryIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GlossaryIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GlossaryIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GlossaryIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o GlossaryIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GlossaryIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GlossaryIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (GlossaryIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlossaryIamBindingCondition)(nil)).Elem()
+}
+
+func (o GlossaryIamBindingConditionPtrOutput) ToGlossaryIamBindingConditionPtrOutput() GlossaryIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o GlossaryIamBindingConditionPtrOutput) ToGlossaryIamBindingConditionPtrOutputWithContext(ctx context.Context) GlossaryIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o GlossaryIamBindingConditionPtrOutput) Elem() GlossaryIamBindingConditionOutput {
+	return o.ApplyT(func(v *GlossaryIamBindingCondition) GlossaryIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret GlossaryIamBindingCondition
+		return ret
+	}).(GlossaryIamBindingConditionOutput)
+}
+
+func (o GlossaryIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlossaryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GlossaryIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlossaryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GlossaryIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlossaryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type GlossaryIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// GlossaryIamMemberConditionInput is an input type that accepts GlossaryIamMemberConditionArgs and GlossaryIamMemberConditionOutput values.
+// You can construct a concrete instance of `GlossaryIamMemberConditionInput` via:
+//
+//	GlossaryIamMemberConditionArgs{...}
+type GlossaryIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToGlossaryIamMemberConditionOutput() GlossaryIamMemberConditionOutput
+	ToGlossaryIamMemberConditionOutputWithContext(context.Context) GlossaryIamMemberConditionOutput
+}
+
+type GlossaryIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (GlossaryIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryIamMemberCondition)(nil)).Elem()
+}
+
+func (i GlossaryIamMemberConditionArgs) ToGlossaryIamMemberConditionOutput() GlossaryIamMemberConditionOutput {
+	return i.ToGlossaryIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i GlossaryIamMemberConditionArgs) ToGlossaryIamMemberConditionOutputWithContext(ctx context.Context) GlossaryIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryIamMemberConditionOutput)
+}
+
+func (i GlossaryIamMemberConditionArgs) ToGlossaryIamMemberConditionPtrOutput() GlossaryIamMemberConditionPtrOutput {
+	return i.ToGlossaryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i GlossaryIamMemberConditionArgs) ToGlossaryIamMemberConditionPtrOutputWithContext(ctx context.Context) GlossaryIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryIamMemberConditionOutput).ToGlossaryIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// GlossaryIamMemberConditionPtrInput is an input type that accepts GlossaryIamMemberConditionArgs, GlossaryIamMemberConditionPtr and GlossaryIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `GlossaryIamMemberConditionPtrInput` via:
+//
+//	        GlossaryIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GlossaryIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToGlossaryIamMemberConditionPtrOutput() GlossaryIamMemberConditionPtrOutput
+	ToGlossaryIamMemberConditionPtrOutputWithContext(context.Context) GlossaryIamMemberConditionPtrOutput
+}
+
+type glossaryIamMemberConditionPtrType GlossaryIamMemberConditionArgs
+
+func GlossaryIamMemberConditionPtr(v *GlossaryIamMemberConditionArgs) GlossaryIamMemberConditionPtrInput {
+	return (*glossaryIamMemberConditionPtrType)(v)
+}
+
+func (*glossaryIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlossaryIamMemberCondition)(nil)).Elem()
+}
+
+func (i *glossaryIamMemberConditionPtrType) ToGlossaryIamMemberConditionPtrOutput() GlossaryIamMemberConditionPtrOutput {
+	return i.ToGlossaryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *glossaryIamMemberConditionPtrType) ToGlossaryIamMemberConditionPtrOutputWithContext(ctx context.Context) GlossaryIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryIamMemberConditionPtrOutput)
+}
+
+type GlossaryIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (GlossaryIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryIamMemberCondition)(nil)).Elem()
+}
+
+func (o GlossaryIamMemberConditionOutput) ToGlossaryIamMemberConditionOutput() GlossaryIamMemberConditionOutput {
+	return o
+}
+
+func (o GlossaryIamMemberConditionOutput) ToGlossaryIamMemberConditionOutputWithContext(ctx context.Context) GlossaryIamMemberConditionOutput {
+	return o
+}
+
+func (o GlossaryIamMemberConditionOutput) ToGlossaryIamMemberConditionPtrOutput() GlossaryIamMemberConditionPtrOutput {
+	return o.ToGlossaryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o GlossaryIamMemberConditionOutput) ToGlossaryIamMemberConditionPtrOutputWithContext(ctx context.Context) GlossaryIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlossaryIamMemberCondition) *GlossaryIamMemberCondition {
+		return &v
+	}).(GlossaryIamMemberConditionPtrOutput)
+}
+
+func (o GlossaryIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GlossaryIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GlossaryIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GlossaryIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o GlossaryIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GlossaryIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GlossaryIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (GlossaryIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlossaryIamMemberCondition)(nil)).Elem()
+}
+
+func (o GlossaryIamMemberConditionPtrOutput) ToGlossaryIamMemberConditionPtrOutput() GlossaryIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o GlossaryIamMemberConditionPtrOutput) ToGlossaryIamMemberConditionPtrOutputWithContext(ctx context.Context) GlossaryIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o GlossaryIamMemberConditionPtrOutput) Elem() GlossaryIamMemberConditionOutput {
+	return o.ApplyT(func(v *GlossaryIamMemberCondition) GlossaryIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret GlossaryIamMemberCondition
+		return ret
+	}).(GlossaryIamMemberConditionOutput)
+}
+
+func (o GlossaryIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlossaryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GlossaryIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlossaryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GlossaryIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlossaryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type LakeAssetStatus struct {
 	// Number of active assets.
 	ActiveAssets *int `pulumi:"activeAssets"`
@@ -12489,6 +12815,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypeIamMemberConditionPtrInput)(nil)).Elem(), EntryTypeIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypeRequiredAspectInput)(nil)).Elem(), EntryTypeRequiredAspectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypeRequiredAspectArrayInput)(nil)).Elem(), EntryTypeRequiredAspectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryIamBindingConditionInput)(nil)).Elem(), GlossaryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryIamBindingConditionPtrInput)(nil)).Elem(), GlossaryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryIamMemberConditionInput)(nil)).Elem(), GlossaryIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryIamMemberConditionPtrInput)(nil)).Elem(), GlossaryIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeAssetStatusInput)(nil)).Elem(), LakeAssetStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeAssetStatusArrayInput)(nil)).Elem(), LakeAssetStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeIamBindingConditionInput)(nil)).Elem(), LakeIamBindingConditionArgs{})
@@ -12641,6 +12971,10 @@ func init() {
 	pulumi.RegisterOutputType(EntryTypeIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(EntryTypeRequiredAspectOutput{})
 	pulumi.RegisterOutputType(EntryTypeRequiredAspectArrayOutput{})
+	pulumi.RegisterOutputType(GlossaryIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(GlossaryIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(GlossaryIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(GlossaryIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(LakeAssetStatusOutput{})
 	pulumi.RegisterOutputType(LakeAssetStatusArrayOutput{})
 	pulumi.RegisterOutputType(LakeIamBindingConditionOutput{})

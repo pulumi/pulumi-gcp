@@ -15,9 +15,17 @@ public final class GetRepositoryGroupIamPolicyPlainArgs extends com.pulumi.resou
 
     public static final GetRepositoryGroupIamPolicyPlainArgs Empty = new GetRepositoryGroupIamPolicyPlainArgs();
 
+    /**
+     * Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="codeRepositoryIndex", required=true)
     private String codeRepositoryIndex;
 
+    /**
+     * @return Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String codeRepositoryIndex() {
         return this.codeRepositoryIndex;
     }
@@ -58,9 +66,17 @@ public final class GetRepositoryGroupIamPolicyPlainArgs extends com.pulumi.resou
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="repositoryGroupId", required=true)
     private String repositoryGroupId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String repositoryGroupId() {
         return this.repositoryGroupId;
     }
@@ -92,6 +108,12 @@ public final class GetRepositoryGroupIamPolicyPlainArgs extends com.pulumi.resou
             $ = new GetRepositoryGroupIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param codeRepositoryIndex Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder codeRepositoryIndex(String codeRepositoryIndex) {
             $.codeRepositoryIndex = codeRepositoryIndex;
             return this;
@@ -122,6 +144,12 @@ public final class GetRepositoryGroupIamPolicyPlainArgs extends com.pulumi.resou
             return this;
         }
 
+        /**
+         * @param repositoryGroupId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder repositoryGroupId(String repositoryGroupId) {
             $.repositoryGroupId = repositoryGroupId;
             return this;

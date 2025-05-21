@@ -96,6 +96,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
 
     public sealed class GetIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("dataPolicyId", required: true)]
         public string DataPolicyId { get; set; } = null!;
 
@@ -123,6 +126,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
 
     public sealed class GetIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("dataPolicyId", required: true)]
         public Input<string> DataPolicyId { get; set; } = null!;
 

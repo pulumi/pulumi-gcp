@@ -31,6 +31,7 @@ class AiFeatureOnlineStoreFeatureviewIamMemberArgs:
                  region: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AiFeatureOnlineStoreFeatureviewIamMember resource.
+        :param pulumi.Input[builtins.str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] feature_view: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -66,6 +67,9 @@ class AiFeatureOnlineStoreFeatureviewIamMemberArgs:
     @property
     @pulumi.getter(name="featureOnlineStore")
     def feature_online_store(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "feature_online_store")
 
     @feature_online_store.setter
@@ -171,6 +175,7 @@ class _AiFeatureOnlineStoreFeatureviewIamMemberState:
         """
         Input properties used for looking up and filtering AiFeatureOnlineStoreFeatureviewIamMember resources.
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[builtins.str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] feature_view: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -233,6 +238,9 @@ class _AiFeatureOnlineStoreFeatureviewIamMemberState:
     @property
     @pulumi.getter(name="featureOnlineStore")
     def feature_online_store(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "feature_online_store")
 
     @feature_online_store.setter
@@ -368,6 +376,7 @@ class AiFeatureOnlineStoreFeatureviewIamMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] feature_view: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -505,6 +514,7 @@ class AiFeatureOnlineStoreFeatureviewIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[builtins.str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] feature_view: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -556,6 +566,9 @@ class AiFeatureOnlineStoreFeatureviewIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter(name="featureOnlineStore")
     def feature_online_store(self) -> pulumi.Output[builtins.str]:
+        """
+        The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "feature_online_store")
 
     @property

@@ -23,6 +23,7 @@ public final class GetNetworkEndpointGroupResult {
      * 
      */
     private String description;
+    private Integer generatedId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -67,6 +68,9 @@ public final class GetNetworkEndpointGroupResult {
      */
     public String description() {
         return this.description;
+    }
+    public Integer generatedId() {
+        return this.generatedId;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -127,6 +131,7 @@ public final class GetNetworkEndpointGroupResult {
     public static final class Builder {
         private Integer defaultPort;
         private String description;
+        private Integer generatedId;
         private String id;
         private @Nullable String name;
         private String network;
@@ -141,6 +146,7 @@ public final class GetNetworkEndpointGroupResult {
     	      Objects.requireNonNull(defaults);
     	      this.defaultPort = defaults.defaultPort;
     	      this.description = defaults.description;
+    	      this.generatedId = defaults.generatedId;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
@@ -166,6 +172,14 @@ public final class GetNetworkEndpointGroupResult {
               throw new MissingRequiredPropertyException("GetNetworkEndpointGroupResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder generatedId(Integer generatedId) {
+            if (generatedId == null) {
+              throw new MissingRequiredPropertyException("GetNetworkEndpointGroupResult", "generatedId");
+            }
+            this.generatedId = generatedId;
             return this;
         }
         @CustomType.Setter
@@ -236,6 +250,7 @@ public final class GetNetworkEndpointGroupResult {
             final var _resultValue = new GetNetworkEndpointGroupResult();
             _resultValue.defaultPort = defaultPort;
             _resultValue.description = description;
+            _resultValue.generatedId = generatedId;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.network = network;

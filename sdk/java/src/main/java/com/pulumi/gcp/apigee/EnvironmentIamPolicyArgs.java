@@ -29,9 +29,21 @@ public final class EnvironmentIamPolicyArgs extends com.pulumi.resources.Resourc
         return this.envId;
     }
 
+    /**
+     * The Apigee Organization associated with the Apigee environment,
+     * in the format `organizations/{{org_name}}`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
+    /**
+     * @return The Apigee Organization associated with the Apigee environment,
+     * in the format `organizations/{{org_name}}`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -100,11 +112,27 @@ public final class EnvironmentIamPolicyArgs extends com.pulumi.resources.Resourc
             return envId(Output.of(envId));
         }
 
+        /**
+         * @param orgId The Apigee Organization associated with the Apigee environment,
+         * in the format `organizations/{{org_name}}`.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId The Apigee Organization associated with the Apigee environment,
+         * in the format `organizations/{{org_name}}`.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }

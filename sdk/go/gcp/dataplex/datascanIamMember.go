@@ -295,8 +295,9 @@ import (
 type DatascanIamMember struct {
 	pulumi.CustomResourceState
 
-	Condition  DatascanIamMemberConditionPtrOutput `pulumi:"condition"`
-	DataScanId pulumi.StringOutput                 `pulumi:"dataScanId"`
+	Condition DatascanIamMemberConditionPtrOutput `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	DataScanId pulumi.StringOutput `pulumi:"dataScanId"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location where the data scan should reside.
@@ -364,8 +365,9 @@ func GetDatascanIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatascanIamMember resources.
 type datascanIamMemberState struct {
-	Condition  *DatascanIamMemberCondition `pulumi:"condition"`
-	DataScanId *string                     `pulumi:"dataScanId"`
+	Condition *DatascanIamMemberCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	DataScanId *string `pulumi:"dataScanId"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The location where the data scan should reside.
@@ -395,7 +397,8 @@ type datascanIamMemberState struct {
 }
 
 type DatascanIamMemberState struct {
-	Condition  DatascanIamMemberConditionPtrInput
+	Condition DatascanIamMemberConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	DataScanId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -430,8 +433,9 @@ func (DatascanIamMemberState) ElementType() reflect.Type {
 }
 
 type datascanIamMemberArgs struct {
-	Condition  *DatascanIamMemberCondition `pulumi:"condition"`
-	DataScanId string                      `pulumi:"dataScanId"`
+	Condition *DatascanIamMemberCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	DataScanId string `pulumi:"dataScanId"`
 	// The location where the data scan should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -460,7 +464,8 @@ type datascanIamMemberArgs struct {
 
 // The set of arguments for constructing a DatascanIamMember resource.
 type DatascanIamMemberArgs struct {
-	Condition  DatascanIamMemberConditionPtrInput
+	Condition DatascanIamMemberConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	DataScanId pulumi.StringInput
 	// The location where the data scan should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -579,6 +584,7 @@ func (o DatascanIamMemberOutput) Condition() DatascanIamMemberConditionPtrOutput
 	return o.ApplyT(func(v *DatascanIamMember) DatascanIamMemberConditionPtrOutput { return v.Condition }).(DatascanIamMemberConditionPtrOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o DatascanIamMemberOutput) DataScanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatascanIamMember) pulumi.StringOutput { return v.DataScanId }).(pulumi.StringOutput)
 }

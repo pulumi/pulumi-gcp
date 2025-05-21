@@ -15,9 +15,17 @@ public final class GetAspectTypeIamPolicyPlainArgs extends com.pulumi.resources.
 
     public static final GetAspectTypeIamPolicyPlainArgs Empty = new GetAspectTypeIamPolicyPlainArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="aspectTypeId", required=true)
     private String aspectTypeId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String aspectTypeId() {
         return this.aspectTypeId;
     }
@@ -86,6 +94,12 @@ public final class GetAspectTypeIamPolicyPlainArgs extends com.pulumi.resources.
             $ = new GetAspectTypeIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aspectTypeId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder aspectTypeId(String aspectTypeId) {
             $.aspectTypeId = aspectTypeId;
             return this;

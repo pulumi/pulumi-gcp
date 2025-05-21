@@ -15,9 +15,17 @@ public final class GetEntryGroupIamPolicyPlainArgs extends com.pulumi.resources.
 
     public static final GetEntryGroupIamPolicyPlainArgs Empty = new GetEntryGroupIamPolicyPlainArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="entryGroupId", required=true)
     private String entryGroupId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String entryGroupId() {
         return this.entryGroupId;
     }
@@ -86,6 +94,12 @@ public final class GetEntryGroupIamPolicyPlainArgs extends com.pulumi.resources.
             $ = new GetEntryGroupIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entryGroupId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder entryGroupId(String entryGroupId) {
             $.entryGroupId = entryGroupId;
             return this;

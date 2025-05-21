@@ -71,9 +71,6 @@ public final class AutoscalingPolicyIamPolicyState extends com.pulumi.resources.
     }
 
     /**
-     * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-     * 3 and 50 characters.
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
@@ -81,10 +78,7 @@ public final class AutoscalingPolicyIamPolicyState extends com.pulumi.resources.
     private @Nullable Output<String> policyId;
 
     /**
-     * @return The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-     * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-     * 3 and 50 characters.
-     * Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Optional<Output<String>> policyId() {
@@ -210,10 +204,7 @@ public final class AutoscalingPolicyIamPolicyState extends com.pulumi.resources.
         }
 
         /**
-         * @param policyId The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-         * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-         * 3 and 50 characters.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param policyId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -224,10 +215,7 @@ public final class AutoscalingPolicyIamPolicyState extends com.pulumi.resources.
         }
 
         /**
-         * @param policyId The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-         * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-         * 3 and 50 characters.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param policyId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

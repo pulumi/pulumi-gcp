@@ -96,6 +96,9 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class GetMetastoreFederationIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("federationId", required: true)]
         public string FederationId { get; set; } = null!;
 
@@ -123,6 +126,9 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class GetMetastoreFederationIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("federationId", required: true)]
         public Input<string> FederationId { get; set; } = null!;
 

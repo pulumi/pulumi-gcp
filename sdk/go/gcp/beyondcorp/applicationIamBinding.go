@@ -535,6 +535,7 @@ import (
 type ApplicationIamBinding struct {
 	pulumi.CustomResourceState
 
+	// Used to find the parent resource to bind the IAM policy to
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -559,7 +560,8 @@ type ApplicationIamBinding struct {
 	// The role that should be applied. Only one
 	// `beyondcorp.ApplicationIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role               pulumi.StringOutput `pulumi:"role"`
+	Role pulumi.StringOutput `pulumi:"role"`
+	// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
 	SecurityGatewaysId pulumi.StringOutput `pulumi:"securityGatewaysId"`
 }
 
@@ -605,6 +607,7 @@ func GetApplicationIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationIamBinding resources.
 type applicationIamBindingState struct {
+	// Used to find the parent resource to bind the IAM policy to
 	ApplicationId *string `pulumi:"applicationId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -629,11 +632,13 @@ type applicationIamBindingState struct {
 	// The role that should be applied. Only one
 	// `beyondcorp.ApplicationIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role               *string `pulumi:"role"`
+	Role *string `pulumi:"role"`
+	// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
 	SecurityGatewaysId *string `pulumi:"securityGatewaysId"`
 }
 
 type ApplicationIamBindingState struct {
+	// Used to find the parent resource to bind the IAM policy to
 	ApplicationId pulumi.StringPtrInput
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -658,7 +663,8 @@ type ApplicationIamBindingState struct {
 	// The role that should be applied. Only one
 	// `beyondcorp.ApplicationIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role               pulumi.StringPtrInput
+	Role pulumi.StringPtrInput
+	// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
 	SecurityGatewaysId pulumi.StringPtrInput
 }
 
@@ -667,6 +673,7 @@ func (ApplicationIamBindingState) ElementType() reflect.Type {
 }
 
 type applicationIamBindingArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	ApplicationId string `pulumi:"applicationId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -689,12 +696,14 @@ type applicationIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `beyondcorp.ApplicationIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role               string `pulumi:"role"`
+	Role string `pulumi:"role"`
+	// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
 	SecurityGatewaysId string `pulumi:"securityGatewaysId"`
 }
 
 // The set of arguments for constructing a ApplicationIamBinding resource.
 type ApplicationIamBindingArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	ApplicationId pulumi.StringInput
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -717,7 +726,8 @@ type ApplicationIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `beyondcorp.ApplicationIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role               pulumi.StringInput
+	Role pulumi.StringInput
+	// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
 	SecurityGatewaysId pulumi.StringInput
 }
 
@@ -808,6 +818,7 @@ func (o ApplicationIamBindingOutput) ToApplicationIamBindingOutputWithContext(ct
 	return o
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o ApplicationIamBindingOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationIamBinding) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
@@ -851,6 +862,7 @@ func (o ApplicationIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
 func (o ApplicationIamBindingOutput) SecurityGatewaysId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationIamBinding) pulumi.StringOutput { return v.SecurityGatewaysId }).(pulumi.StringOutput)
 }

@@ -360,9 +360,17 @@ public class MetastoreFederationIamMember extends com.pulumi.resources.CustomRes
     public Output<String> etag() {
         return this.etag;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="federationId", refs={String.class}, tree="[0]")
     private Output<String> federationId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> federationId() {
         return this.federationId;
     }

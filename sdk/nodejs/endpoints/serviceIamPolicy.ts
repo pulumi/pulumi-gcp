@@ -198,6 +198,9 @@ export class ServiceIamPolicy extends pulumi.CustomResource {
      * a `gcp.organizations.getIAMPolicy` data source.
      */
     public readonly policyData!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly serviceName!: pulumi.Output<string>;
 
     /**
@@ -246,6 +249,9 @@ export interface ServiceIamPolicyState {
      * a `gcp.organizations.getIAMPolicy` data source.
      */
     policyData?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceName?: pulumi.Input<string>;
 }
 
@@ -258,5 +264,8 @@ export interface ServiceIamPolicyArgs {
      * a `gcp.organizations.getIAMPolicy` data source.
      */
     policyData: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceName: pulumi.Input<string>;
 }

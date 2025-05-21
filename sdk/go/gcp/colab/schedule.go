@@ -333,7 +333,7 @@ import (
 //				Name:                                   pulumi.String("dataform-repository"),
 //				DisplayName:                            pulumi.String("dataform_repository"),
 //				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
-//				KmsKeyName:                             pulumi.String(""),
+//				KmsKeyName:                             pulumi.String("my-key"),
 //				Labels: pulumi.StringMap{
 //					"label_foo1": pulumi.String("label-bar1"),
 //				},

@@ -295,7 +295,6 @@ import (
 type ConnectionIamPolicy struct {
 	pulumi.CustomResourceState
 
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
 	// (Computed) The etag of the IAM policy.
@@ -354,7 +353,6 @@ func GetConnectionIamPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConnectionIamPolicy resources.
 type connectionIamPolicyState struct {
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId *string `pulumi:"connectionId"`
 	// (Computed) The etag of the IAM policy.
@@ -378,7 +376,6 @@ type connectionIamPolicyState struct {
 }
 
 type ConnectionIamPolicyState struct {
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -406,7 +403,6 @@ func (ConnectionIamPolicyState) ElementType() reflect.Type {
 }
 
 type connectionIamPolicyArgs struct {
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId string `pulumi:"connectionId"`
 	// The geographic location where the connection should reside.
@@ -429,7 +425,6 @@ type connectionIamPolicyArgs struct {
 
 // The set of arguments for constructing a ConnectionIamPolicy resource.
 type ConnectionIamPolicyArgs struct {
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId pulumi.StringInput
 	// The geographic location where the connection should reside.
@@ -537,7 +532,6 @@ func (o ConnectionIamPolicyOutput) ToConnectionIamPolicyOutputWithContext(ctx co
 	return o
 }
 
-// Optional connection id that should be assigned to the created connection.
 // Used to find the parent resource to bind the IAM policy to
 func (o ConnectionIamPolicyOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionIamPolicy) pulumi.StringOutput { return v.ConnectionId }).(pulumi.StringOutput)

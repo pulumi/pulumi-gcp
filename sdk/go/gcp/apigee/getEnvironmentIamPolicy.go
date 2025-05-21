@@ -53,6 +53,9 @@ func LookupEnvironmentIamPolicy(ctx *pulumi.Context, args *LookupEnvironmentIamP
 type LookupEnvironmentIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	EnvId string `pulumi:"envId"`
+	// The Apigee Organization associated with the Apigee environment,
+	// in the format `organizations/{{org_name}}`.
+	// Used to find the parent resource to bind the IAM policy to
 	OrgId string `pulumi:"orgId"`
 }
 
@@ -82,6 +85,9 @@ func LookupEnvironmentIamPolicyOutput(ctx *pulumi.Context, args LookupEnvironmen
 type LookupEnvironmentIamPolicyOutputArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	EnvId pulumi.StringInput `pulumi:"envId"`
+	// The Apigee Organization associated with the Apigee environment,
+	// in the format `organizations/{{org_name}}`.
+	// Used to find the parent resource to bind the IAM policy to
 	OrgId pulumi.StringInput `pulumi:"orgId"`
 }
 

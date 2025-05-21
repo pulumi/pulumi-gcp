@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// {
     ///     var @default = new Gcp.BigQuery.Dataset("default", new()
     ///     {
-    ///         DatasetId = "",
+    ///         DatasetId = "my-dataset",
     ///         FriendlyName = "test",
     ///         Description = "This is a test description",
     ///         Location = "US",

@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.BigTable
     ///     {
     ///         LogicalViewId = "bt-logical-view",
     ///         Instance = instance.Name,
+    ///         DeletionProtection = false,
     ///         Query = @"SELECT _key, CF
     /// FROM ` + ""`bt-table`"" + `
     /// ",
@@ -102,6 +103,12 @@ namespace Pulumi.Gcp.BigTable
     [GcpResourceType("gcp:bigtable/logicalView:LogicalView")]
     public partial class LogicalView : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Set to true to make the logical view protected against deletion.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
         /// <summary>
         /// The name of the instance to create the logical view within.
         /// </summary>
@@ -183,6 +190,12 @@ namespace Pulumi.Gcp.BigTable
     public sealed class LogicalViewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Set to true to make the logical view protected against deletion.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// The name of the instance to create the logical view within.
         /// </summary>
         [Input("instance")]
@@ -218,6 +231,12 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class LogicalViewState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Set to true to make the logical view protected against deletion.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// The name of the instance to create the logical view within.
         /// </summary>

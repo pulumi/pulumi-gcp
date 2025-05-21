@@ -35,6 +35,11 @@ export interface GetEnvironmentIamPolicyArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     envId: string;
+    /**
+     * The Apigee Organization associated with the Apigee environment,
+     * in the format `organizations/{{org_name}}`.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     orgId: string;
 }
 
@@ -89,5 +94,10 @@ export interface GetEnvironmentIamPolicyOutputArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     envId: pulumi.Input<string>;
+    /**
+     * The Apigee Organization associated with the Apigee environment,
+     * in the format `organizations/{{org_name}}`.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     orgId: pulumi.Input<string>;
 }

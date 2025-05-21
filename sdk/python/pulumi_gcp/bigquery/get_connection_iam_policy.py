@@ -121,8 +121,7 @@ def get_connection_iam_policy(connection_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str connection_id: Optional connection id that should be assigned to the created connection.
-           Used to find the parent resource to bind the IAM policy to
+    :param builtins.str connection_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The geographic location where the connection should reside.
            Cloud SQL instance must be in the same location as the connection
            with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -168,8 +167,7 @@ def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[builti
     ```
 
 
-    :param builtins.str connection_id: Optional connection id that should be assigned to the created connection.
-           Used to find the parent resource to bind the IAM policy to
+    :param builtins.str connection_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The geographic location where the connection should reside.
            Cloud SQL instance must be in the same location as the connection
            with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.

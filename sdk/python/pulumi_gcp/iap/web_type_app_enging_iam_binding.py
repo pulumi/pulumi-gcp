@@ -29,7 +29,7 @@ class WebTypeAppEngingIamBindingArgs:
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a WebTypeAppEngingIamBinding resource.
-        :param pulumi.Input[builtins.str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] app_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -61,7 +61,7 @@ class WebTypeAppEngingIamBindingArgs:
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Input[builtins.str]:
         """
-        Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "app_id")
 
@@ -143,7 +143,7 @@ class _WebTypeAppEngingIamBindingState:
                  role: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebTypeAppEngingIamBinding resources.
-        :param pulumi.Input[builtins.str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] app_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input['WebTypeAppEngingIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
@@ -181,7 +181,7 @@ class _WebTypeAppEngingIamBindingState:
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "app_id")
 
@@ -546,7 +546,7 @@ class WebTypeAppEngingIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] app_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[Union['WebTypeAppEngingIamBindingConditionArgs', 'WebTypeAppEngingIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] members: Identities that will be granted the privilege in `role`.
@@ -904,7 +904,7 @@ class WebTypeAppEngingIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] app_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[Union['WebTypeAppEngingIamBindingConditionArgs', 'WebTypeAppEngingIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
@@ -941,7 +941,7 @@ class WebTypeAppEngingIamBinding(pulumi.CustomResource):
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[builtins.str]:
         """
-        Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "app_id")
 
