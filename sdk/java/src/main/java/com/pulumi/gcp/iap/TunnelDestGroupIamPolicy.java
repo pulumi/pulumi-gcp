@@ -624,9 +624,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy")
 public class TunnelDestGroupIamPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="destGroup", refs={String.class}, tree="[0]")
     private Output<String> destGroup;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> destGroup() {
         return this.destGroup;
     }

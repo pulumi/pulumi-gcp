@@ -210,6 +210,7 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetClusterIdentityServiceConfigResult> IdentityServiceConfigs;
+        public readonly string InTransitEncryptionConfig;
         public readonly int InitialNodeCount;
         public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyResult> IpAllocationPolicies;
         public readonly string LabelFingerprint;
@@ -333,6 +334,8 @@ namespace Pulumi.Gcp.Container
             string id,
 
             ImmutableArray<Outputs.GetClusterIdentityServiceConfigResult> identityServiceConfigs,
+
+            string inTransitEncryptionConfig,
 
             int initialNodeCount,
 
@@ -468,6 +471,7 @@ namespace Pulumi.Gcp.Container
             GatewayApiConfigs = gatewayApiConfigs;
             Id = id;
             IdentityServiceConfigs = identityServiceConfigs;
+            InTransitEncryptionConfig = inTransitEncryptionConfig;
             InitialNodeCount = initialNodeCount;
             IpAllocationPolicies = ipAllocationPolicies;
             LabelFingerprint = labelFingerprint;

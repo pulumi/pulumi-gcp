@@ -47,6 +47,10 @@ class EntryGroupIamBindingArgs:
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: EntryGroup location region.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         """
         pulumi.set(__self__, "entry_group", entry_group)
         pulumi.set(__self__, "members", members)
@@ -131,6 +135,12 @@ class EntryGroupIamBindingArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        EntryGroup location region.
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        region is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -165,6 +175,10 @@ class _EntryGroupIamBindingState:
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: EntryGroup location region.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `datacatalog.EntryGroupIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -255,6 +269,12 @@ class _EntryGroupIamBindingState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        EntryGroup location region.
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        region is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -455,6 +475,10 @@ class EntryGroupIamBinding(pulumi.CustomResource):
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: EntryGroup location region.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `datacatalog.EntryGroupIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -697,6 +721,10 @@ class EntryGroupIamBinding(pulumi.CustomResource):
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: EntryGroup location region.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `datacatalog.EntryGroupIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -765,6 +793,12 @@ class EntryGroupIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
+        """
+        EntryGroup location region.
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        region is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "region")
 
     @property

@@ -292,6 +292,9 @@ namespace Pulumi.Gcp.DataPlex
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("taskId")]
         public Output<string> TaskId { get; private set; } = null!;
 
@@ -371,6 +374,9 @@ namespace Pulumi.Gcp.DataPlex
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("taskId", required: true)]
         public Input<string> TaskId { get; set; } = null!;
 
@@ -418,6 +424,9 @@ namespace Pulumi.Gcp.DataPlex
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("taskId")]
         public Input<string>? TaskId { get; set; }
 

@@ -2753,6 +2753,206 @@ func (o GetAppGatewayAllocatedConnectionArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetAppGatewayAllocatedConnectionOutput)
 }
 
+type GetSecurityGatewayHub struct {
+	// Internet Gateway configuration.
+	InternetGateways []GetSecurityGatewayHubInternetGateway `pulumi:"internetGateways"`
+	Region           string                                 `pulumi:"region"`
+}
+
+// GetSecurityGatewayHubInput is an input type that accepts GetSecurityGatewayHubArgs and GetSecurityGatewayHubOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayHubInput` via:
+//
+//	GetSecurityGatewayHubArgs{...}
+type GetSecurityGatewayHubInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayHubOutput() GetSecurityGatewayHubOutput
+	ToGetSecurityGatewayHubOutputWithContext(context.Context) GetSecurityGatewayHubOutput
+}
+
+type GetSecurityGatewayHubArgs struct {
+	// Internet Gateway configuration.
+	InternetGateways GetSecurityGatewayHubInternetGatewayArrayInput `pulumi:"internetGateways"`
+	Region           pulumi.StringInput                             `pulumi:"region"`
+}
+
+func (GetSecurityGatewayHubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayHub)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayHubArgs) ToGetSecurityGatewayHubOutput() GetSecurityGatewayHubOutput {
+	return i.ToGetSecurityGatewayHubOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayHubArgs) ToGetSecurityGatewayHubOutputWithContext(ctx context.Context) GetSecurityGatewayHubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayHubOutput)
+}
+
+// GetSecurityGatewayHubArrayInput is an input type that accepts GetSecurityGatewayHubArray and GetSecurityGatewayHubArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayHubArrayInput` via:
+//
+//	GetSecurityGatewayHubArray{ GetSecurityGatewayHubArgs{...} }
+type GetSecurityGatewayHubArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayHubArrayOutput() GetSecurityGatewayHubArrayOutput
+	ToGetSecurityGatewayHubArrayOutputWithContext(context.Context) GetSecurityGatewayHubArrayOutput
+}
+
+type GetSecurityGatewayHubArray []GetSecurityGatewayHubInput
+
+func (GetSecurityGatewayHubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayHub)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayHubArray) ToGetSecurityGatewayHubArrayOutput() GetSecurityGatewayHubArrayOutput {
+	return i.ToGetSecurityGatewayHubArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayHubArray) ToGetSecurityGatewayHubArrayOutputWithContext(ctx context.Context) GetSecurityGatewayHubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayHubArrayOutput)
+}
+
+type GetSecurityGatewayHubOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayHubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayHub)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayHubOutput) ToGetSecurityGatewayHubOutput() GetSecurityGatewayHubOutput {
+	return o
+}
+
+func (o GetSecurityGatewayHubOutput) ToGetSecurityGatewayHubOutputWithContext(ctx context.Context) GetSecurityGatewayHubOutput {
+	return o
+}
+
+// Internet Gateway configuration.
+func (o GetSecurityGatewayHubOutput) InternetGateways() GetSecurityGatewayHubInternetGatewayArrayOutput {
+	return o.ApplyT(func(v GetSecurityGatewayHub) []GetSecurityGatewayHubInternetGateway { return v.InternetGateways }).(GetSecurityGatewayHubInternetGatewayArrayOutput)
+}
+
+func (o GetSecurityGatewayHubOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGatewayHub) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetSecurityGatewayHubArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayHubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayHub)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayHubArrayOutput) ToGetSecurityGatewayHubArrayOutput() GetSecurityGatewayHubArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayHubArrayOutput) ToGetSecurityGatewayHubArrayOutputWithContext(ctx context.Context) GetSecurityGatewayHubArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayHubArrayOutput) Index(i pulumi.IntInput) GetSecurityGatewayHubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGatewayHub {
+		return vs[0].([]GetSecurityGatewayHub)[vs[1].(int)]
+	}).(GetSecurityGatewayHubOutput)
+}
+
+type GetSecurityGatewayHubInternetGateway struct {
+	// Output only. List of IP addresses assigned to the Cloud NAT.
+	AssignedIps []string `pulumi:"assignedIps"`
+}
+
+// GetSecurityGatewayHubInternetGatewayInput is an input type that accepts GetSecurityGatewayHubInternetGatewayArgs and GetSecurityGatewayHubInternetGatewayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayHubInternetGatewayInput` via:
+//
+//	GetSecurityGatewayHubInternetGatewayArgs{...}
+type GetSecurityGatewayHubInternetGatewayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayHubInternetGatewayOutput() GetSecurityGatewayHubInternetGatewayOutput
+	ToGetSecurityGatewayHubInternetGatewayOutputWithContext(context.Context) GetSecurityGatewayHubInternetGatewayOutput
+}
+
+type GetSecurityGatewayHubInternetGatewayArgs struct {
+	// Output only. List of IP addresses assigned to the Cloud NAT.
+	AssignedIps pulumi.StringArrayInput `pulumi:"assignedIps"`
+}
+
+func (GetSecurityGatewayHubInternetGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayHubInternetGateway)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayHubInternetGatewayArgs) ToGetSecurityGatewayHubInternetGatewayOutput() GetSecurityGatewayHubInternetGatewayOutput {
+	return i.ToGetSecurityGatewayHubInternetGatewayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayHubInternetGatewayArgs) ToGetSecurityGatewayHubInternetGatewayOutputWithContext(ctx context.Context) GetSecurityGatewayHubInternetGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayHubInternetGatewayOutput)
+}
+
+// GetSecurityGatewayHubInternetGatewayArrayInput is an input type that accepts GetSecurityGatewayHubInternetGatewayArray and GetSecurityGatewayHubInternetGatewayArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayHubInternetGatewayArrayInput` via:
+//
+//	GetSecurityGatewayHubInternetGatewayArray{ GetSecurityGatewayHubInternetGatewayArgs{...} }
+type GetSecurityGatewayHubInternetGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayHubInternetGatewayArrayOutput() GetSecurityGatewayHubInternetGatewayArrayOutput
+	ToGetSecurityGatewayHubInternetGatewayArrayOutputWithContext(context.Context) GetSecurityGatewayHubInternetGatewayArrayOutput
+}
+
+type GetSecurityGatewayHubInternetGatewayArray []GetSecurityGatewayHubInternetGatewayInput
+
+func (GetSecurityGatewayHubInternetGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayHubInternetGateway)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayHubInternetGatewayArray) ToGetSecurityGatewayHubInternetGatewayArrayOutput() GetSecurityGatewayHubInternetGatewayArrayOutput {
+	return i.ToGetSecurityGatewayHubInternetGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayHubInternetGatewayArray) ToGetSecurityGatewayHubInternetGatewayArrayOutputWithContext(ctx context.Context) GetSecurityGatewayHubInternetGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayHubInternetGatewayArrayOutput)
+}
+
+type GetSecurityGatewayHubInternetGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayHubInternetGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayHubInternetGateway)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayHubInternetGatewayOutput) ToGetSecurityGatewayHubInternetGatewayOutput() GetSecurityGatewayHubInternetGatewayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayHubInternetGatewayOutput) ToGetSecurityGatewayHubInternetGatewayOutputWithContext(ctx context.Context) GetSecurityGatewayHubInternetGatewayOutput {
+	return o
+}
+
+// Output only. List of IP addresses assigned to the Cloud NAT.
+func (o GetSecurityGatewayHubInternetGatewayOutput) AssignedIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityGatewayHubInternetGateway) []string { return v.AssignedIps }).(pulumi.StringArrayOutput)
+}
+
+type GetSecurityGatewayHubInternetGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayHubInternetGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayHubInternetGateway)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayHubInternetGatewayArrayOutput) ToGetSecurityGatewayHubInternetGatewayArrayOutput() GetSecurityGatewayHubInternetGatewayArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayHubInternetGatewayArrayOutput) ToGetSecurityGatewayHubInternetGatewayArrayOutputWithContext(ctx context.Context) GetSecurityGatewayHubInternetGatewayArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayHubInternetGatewayArrayOutput) Index(i pulumi.IntInput) GetSecurityGatewayHubInternetGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGatewayHubInternetGateway {
+		return vs[0].([]GetSecurityGatewayHubInternetGateway)[vs[1].(int)]
+	}).(GetSecurityGatewayHubInternetGatewayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectionApplicationEndpointInput)(nil)).Elem(), AppConnectionApplicationEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectionApplicationEndpointPtrInput)(nil)).Elem(), AppConnectionApplicationEndpointArgs{})
@@ -2794,6 +2994,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectorPrincipalInfoServiceAccountArrayInput)(nil)).Elem(), GetAppConnectorPrincipalInfoServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppGatewayAllocatedConnectionInput)(nil)).Elem(), GetAppGatewayAllocatedConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppGatewayAllocatedConnectionArrayInput)(nil)).Elem(), GetAppGatewayAllocatedConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayHubInput)(nil)).Elem(), GetSecurityGatewayHubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayHubArrayInput)(nil)).Elem(), GetSecurityGatewayHubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayHubInternetGatewayInput)(nil)).Elem(), GetSecurityGatewayHubInternetGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayHubInternetGatewayArrayInput)(nil)).Elem(), GetSecurityGatewayHubInternetGatewayArray{})
 	pulumi.RegisterOutputType(AppConnectionApplicationEndpointOutput{})
 	pulumi.RegisterOutputType(AppConnectionApplicationEndpointPtrOutput{})
 	pulumi.RegisterOutputType(AppConnectionGatewayOutput{})
@@ -2834,4 +3038,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppConnectorPrincipalInfoServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetAppGatewayAllocatedConnectionOutput{})
 	pulumi.RegisterOutputType(GetAppGatewayAllocatedConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayHubOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayHubArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayHubInternetGatewayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayHubInternetGatewayArrayOutput{})
 }

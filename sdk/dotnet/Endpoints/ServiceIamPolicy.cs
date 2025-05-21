@@ -248,6 +248,9 @@ namespace Pulumi.Gcp.Endpoints
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -304,6 +307,9 @@ namespace Pulumi.Gcp.Endpoints
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -328,6 +334,9 @@ namespace Pulumi.Gcp.Endpoints
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

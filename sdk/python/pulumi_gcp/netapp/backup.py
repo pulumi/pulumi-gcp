@@ -516,7 +516,7 @@ class Backup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.get_network(name="")
+        default = gcp.compute.get_network(name="network")
         default_storage_pool = gcp.netapp.StoragePool("default",
             name="backup-pool",
             location="us-central1",
@@ -624,7 +624,7 @@ class Backup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.get_network(name="")
+        default = gcp.compute.get_network(name="network")
         default_storage_pool = gcp.netapp.StoragePool("default",
             name="backup-pool",
             location="us-central1",

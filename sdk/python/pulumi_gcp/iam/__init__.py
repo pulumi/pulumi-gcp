@@ -12,6 +12,7 @@ from .folders_policy_binding import *
 from .get_rule import *
 from .get_testable_permissions import *
 from .get_workload_identity_pool import *
+from .get_workload_identity_pool_iam_policy import *
 from .get_workload_identity_pool_provider import *
 from .oauth_client import *
 from .oauth_client_credential import *
@@ -21,6 +22,9 @@ from .projects_policy_binding import *
 from .workforce_pool import *
 from .workforce_pool_provider import *
 from .workload_identity_pool import *
+from .workload_identity_pool_iam_binding import *
+from .workload_identity_pool_iam_member import *
+from .workload_identity_pool_iam_policy import *
 from .workload_identity_pool_provider import *
 from ._inputs import *
 from . import outputs

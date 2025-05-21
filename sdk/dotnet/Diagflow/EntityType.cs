@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     ///     var basicEntityType = new Gcp.Diagflow.EntityType("basic_entity_type", new()
     ///     {
-    ///         DisplayName = "",
+    ///         DisplayName = "basic-entity-type",
     ///         Kind = "KIND_MAP",
     ///         Entities = new[]
     ///         {

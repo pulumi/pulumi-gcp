@@ -78,10 +78,15 @@ type WorkstationIamBinding struct {
 	// The role that should be applied. Only one
 	// `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role                 pulumi.StringOutput `pulumi:"role"`
+	Role pulumi.StringOutput `pulumi:"role"`
+	// The ID of the parent workstation cluster.
+	// Used to find the parent resource to bind the IAM policy to
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
-	WorkstationConfigId  pulumi.StringOutput `pulumi:"workstationConfigId"`
-	WorkstationId        pulumi.StringOutput `pulumi:"workstationId"`
+	// The ID of the parent workstation cluster config.
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationConfigId pulumi.StringOutput `pulumi:"workstationConfigId"`
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationId pulumi.StringOutput `pulumi:"workstationId"`
 }
 
 // NewWorkstationIamBinding registers a new resource with the given unique name, arguments, and options.
@@ -155,10 +160,15 @@ type workstationIamBindingState struct {
 	// The role that should be applied. Only one
 	// `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role                 *string `pulumi:"role"`
+	Role *string `pulumi:"role"`
+	// The ID of the parent workstation cluster.
+	// Used to find the parent resource to bind the IAM policy to
 	WorkstationClusterId *string `pulumi:"workstationClusterId"`
-	WorkstationConfigId  *string `pulumi:"workstationConfigId"`
-	WorkstationId        *string `pulumi:"workstationId"`
+	// The ID of the parent workstation cluster config.
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationConfigId *string `pulumi:"workstationConfigId"`
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationId *string `pulumi:"workstationId"`
 }
 
 type WorkstationIamBindingState struct {
@@ -188,10 +198,15 @@ type WorkstationIamBindingState struct {
 	// The role that should be applied. Only one
 	// `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role                 pulumi.StringPtrInput
+	Role pulumi.StringPtrInput
+	// The ID of the parent workstation cluster.
+	// Used to find the parent resource to bind the IAM policy to
 	WorkstationClusterId pulumi.StringPtrInput
-	WorkstationConfigId  pulumi.StringPtrInput
-	WorkstationId        pulumi.StringPtrInput
+	// The ID of the parent workstation cluster config.
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationConfigId pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationId pulumi.StringPtrInput
 }
 
 func (WorkstationIamBindingState) ElementType() reflect.Type {
@@ -223,10 +238,15 @@ type workstationIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role                 string `pulumi:"role"`
+	Role string `pulumi:"role"`
+	// The ID of the parent workstation cluster.
+	// Used to find the parent resource to bind the IAM policy to
 	WorkstationClusterId string `pulumi:"workstationClusterId"`
-	WorkstationConfigId  string `pulumi:"workstationConfigId"`
-	WorkstationId        string `pulumi:"workstationId"`
+	// The ID of the parent workstation cluster config.
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationConfigId string `pulumi:"workstationConfigId"`
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationId string `pulumi:"workstationId"`
 }
 
 // The set of arguments for constructing a WorkstationIamBinding resource.
@@ -255,10 +275,15 @@ type WorkstationIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role                 pulumi.StringInput
+	Role pulumi.StringInput
+	// The ID of the parent workstation cluster.
+	// Used to find the parent resource to bind the IAM policy to
 	WorkstationClusterId pulumi.StringInput
-	WorkstationConfigId  pulumi.StringInput
-	WorkstationId        pulumi.StringInput
+	// The ID of the parent workstation cluster config.
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationConfigId pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
+	WorkstationId pulumi.StringInput
 }
 
 func (WorkstationIamBindingArgs) ElementType() reflect.Type {
@@ -393,14 +418,19 @@ func (o WorkstationIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// The ID of the parent workstation cluster.
+// Used to find the parent resource to bind the IAM policy to
 func (o WorkstationIamBindingOutput) WorkstationClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationIamBinding) pulumi.StringOutput { return v.WorkstationClusterId }).(pulumi.StringOutput)
 }
 
+// The ID of the parent workstation cluster config.
+// Used to find the parent resource to bind the IAM policy to
 func (o WorkstationIamBindingOutput) WorkstationConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationIamBinding) pulumi.StringOutput { return v.WorkstationConfigId }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o WorkstationIamBindingOutput) WorkstationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationIamBinding) pulumi.StringOutput { return v.WorkstationId }).(pulumi.StringOutput)
 }

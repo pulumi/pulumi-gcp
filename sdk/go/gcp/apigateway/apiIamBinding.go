@@ -287,6 +287,7 @@ import (
 type ApiIamBinding struct {
 	pulumi.CustomResourceState
 
+	// Used to find the parent resource to bind the IAM policy to
 	Api       pulumi.StringOutput             `pulumi:"api"`
 	Condition ApiIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -351,6 +352,7 @@ func GetApiIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiIamBinding resources.
 type apiIamBindingState struct {
+	// Used to find the parent resource to bind the IAM policy to
 	Api       *string                 `pulumi:"api"`
 	Condition *ApiIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -377,6 +379,7 @@ type apiIamBindingState struct {
 }
 
 type ApiIamBindingState struct {
+	// Used to find the parent resource to bind the IAM policy to
 	Api       pulumi.StringPtrInput
 	Condition ApiIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -407,6 +410,7 @@ func (ApiIamBindingState) ElementType() reflect.Type {
 }
 
 type apiIamBindingArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	Api       string                  `pulumi:"api"`
 	Condition *ApiIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.
@@ -432,6 +436,7 @@ type apiIamBindingArgs struct {
 
 // The set of arguments for constructing a ApiIamBinding resource.
 type ApiIamBindingArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	Api       pulumi.StringInput
 	Condition ApiIamBindingConditionPtrInput
 	// Identities that will be granted the privilege in `role`.
@@ -542,6 +547,7 @@ func (o ApiIamBindingOutput) ToApiIamBindingOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o ApiIamBindingOutput) Api() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiIamBinding) pulumi.StringOutput { return v.Api }).(pulumi.StringOutput)
 }

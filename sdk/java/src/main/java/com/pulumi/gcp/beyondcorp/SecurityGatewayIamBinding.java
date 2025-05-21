@@ -741,9 +741,17 @@ public class SecurityGatewayIamBinding extends com.pulumi.resources.CustomResour
     public Output<String> role() {
         return this.role;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="securityGatewayId", refs={String.class}, tree="[0]")
     private Output<String> securityGatewayId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> securityGatewayId() {
         return this.securityGatewayId;
     }

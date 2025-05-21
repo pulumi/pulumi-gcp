@@ -222,7 +222,7 @@ export class ListingIamBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     public readonly listingId!: pulumi.Output<string>;
     /**
@@ -321,7 +321,7 @@ export interface ListingIamBindingState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     listingId?: pulumi.Input<string>;
     /**
@@ -368,7 +368,7 @@ export interface ListingIamBindingArgs {
      */
     dataExchangeId: pulumi.Input<string>;
     /**
-     * The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     listingId: pulumi.Input<string>;
     /**

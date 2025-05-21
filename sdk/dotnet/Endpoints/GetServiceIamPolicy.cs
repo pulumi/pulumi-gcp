@@ -90,6 +90,9 @@ namespace Pulumi.Gcp.Endpoints
 
     public sealed class GetServiceIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -101,6 +104,9 @@ namespace Pulumi.Gcp.Endpoints
 
     public sealed class GetServiceIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 

@@ -35,6 +35,9 @@ export interface GetApiConfigIamPolicyArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     api: string;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     apiConfig: string;
     /**
      * The ID of the project in which the resource belongs.
@@ -95,6 +98,9 @@ export interface GetApiConfigIamPolicyOutputArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     api: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     apiConfig: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

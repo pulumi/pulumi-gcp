@@ -684,9 +684,21 @@ public class TunnelInstanceIAMPolicy extends com.pulumi.resources.CustomResource
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+     * zone is specified, it is taken from the provider configuration.
+     * 
+     */
     @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+     * zone is specified, it is taken from the provider configuration.
+     * 
+     */
     public Output<String> zone() {
         return this.zone;
     }

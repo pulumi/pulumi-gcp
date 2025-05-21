@@ -170,7 +170,7 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     ///     var @default = new Gcp.EdgeContainer.Cluster("default", new()
     ///     {
-    ///         Name = "",
+    ///         Name = "default",
     ///         Location = "us-central1",
     ///         Authorization = new Gcp.EdgeContainer.Inputs.ClusterAuthorizationArgs
     ///         {

@@ -212,6 +212,9 @@ export class RepositoryGroupIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === RepositoryGroupIamMember.__pulumiType;
     }
 
+    /**
+     * Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+     */
     public readonly codeRepositoryIndex!: pulumi.Output<string>;
     public readonly condition!: pulumi.Output<outputs.gemini.RepositoryGroupIamMemberCondition | undefined>;
     /**
@@ -243,6 +246,9 @@ export class RepositoryGroupIamMember extends pulumi.CustomResource {
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly repositoryGroupId!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -304,6 +310,9 @@ export class RepositoryGroupIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RepositoryGroupIamMember resources.
  */
 export interface RepositoryGroupIamMemberState {
+    /**
+     * Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+     */
     codeRepositoryIndex?: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.gemini.RepositoryGroupIamMemberCondition>;
     /**
@@ -335,6 +344,9 @@ export interface RepositoryGroupIamMemberState {
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     repositoryGroupId?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -348,6 +360,9 @@ export interface RepositoryGroupIamMemberState {
  * The set of arguments for constructing a RepositoryGroupIamMember resource.
  */
 export interface RepositoryGroupIamMemberArgs {
+    /**
+     * Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+     */
     codeRepositoryIndex: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.gemini.RepositoryGroupIamMemberCondition>;
     /**
@@ -375,6 +390,9 @@ export interface RepositoryGroupIamMemberArgs {
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     repositoryGroupId: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

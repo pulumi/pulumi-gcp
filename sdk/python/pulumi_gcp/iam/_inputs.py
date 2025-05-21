@@ -66,6 +66,18 @@ __all__ = [
     'WorkforcePoolProviderOidcWebSsoConfigArgsDict',
     'WorkforcePoolProviderSamlArgs',
     'WorkforcePoolProviderSamlArgsDict',
+    'WorkloadIdentityPoolIamBindingConditionArgs',
+    'WorkloadIdentityPoolIamBindingConditionArgsDict',
+    'WorkloadIdentityPoolIamMemberConditionArgs',
+    'WorkloadIdentityPoolIamMemberConditionArgsDict',
+    'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs',
+    'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict',
+    'WorkloadIdentityPoolInlineTrustConfigArgs',
+    'WorkloadIdentityPoolInlineTrustConfigArgsDict',
+    'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs',
+    'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict',
+    'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs',
+    'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict',
     'WorkloadIdentityPoolProviderAwsArgs',
     'WorkloadIdentityPoolProviderAwsArgsDict',
     'WorkloadIdentityPoolProviderOidcArgs',
@@ -2000,6 +2012,426 @@ class WorkforcePoolProviderSamlArgs:
     @idp_metadata_xml.setter
     def idp_metadata_xml(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "idp_metadata_xml", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[builtins.str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    WorkloadIdentityPoolIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[builtins.str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    WorkloadIdentityPoolIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict(TypedDict):
+        ca_pools: pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]
+        """
+        A required mapping of a cloud region to the CA pool resource located in that region used
+        for certificate issuance, adhering to these constraints:
+        * **Key format:** A supported cloud region name equivalent to the location identifier in
+        the corresponding map entry's value.
+        * **Value format:** A valid CA pool resource path format like:
+        `projects/{project}/locations/{location}/caPools/{ca_pool}`
+        * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
+        same region. Also the CA pool region (in value) must match the workload's region (key).
+        """
+        key_algorithm: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Key algorithm to use when generating the key pair. This key pair will be used to create
+        the certificate. If unspecified, this will default to `ECDSA_P256`.
+        * `RSA_2048`: Specifies RSA with a 2048-bit modulus.
+        * `RSA_3072`: Specifies RSA with a 3072-bit modulus.
+        * `RSA_4096`: Specifies RSA with a 4096-bit modulus.
+        * `ECDSA_P256`: Specifies ECDSA with curve P256.
+        * `ECDSA_P384`: Specifies ECDSA with curve P384.
+        Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
+        """
+        lifetime: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
+        `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
+        and is preceded by the number of seconds. If unspecified, this will be defaulted to
+        `86400s` (24 hours).
+        """
+        rotation_window_percentage: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Rotation window percentage indicating when certificate rotation should be initiated based
+        on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
+        to `50`.
+        """
+elif False:
+    WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
+    def __init__(__self__, *,
+                 ca_pools: pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]],
+                 key_algorithm: Optional[pulumi.Input[builtins.str]] = None,
+                 lifetime: Optional[pulumi.Input[builtins.str]] = None,
+                 rotation_window_percentage: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] ca_pools: A required mapping of a cloud region to the CA pool resource located in that region used
+               for certificate issuance, adhering to these constraints:
+               * **Key format:** A supported cloud region name equivalent to the location identifier in
+               the corresponding map entry's value.
+               * **Value format:** A valid CA pool resource path format like:
+               `projects/{project}/locations/{location}/caPools/{ca_pool}`
+               * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
+               same region. Also the CA pool region (in value) must match the workload's region (key).
+        :param pulumi.Input[builtins.str] key_algorithm: Key algorithm to use when generating the key pair. This key pair will be used to create
+               the certificate. If unspecified, this will default to `ECDSA_P256`.
+               * `RSA_2048`: Specifies RSA with a 2048-bit modulus.
+               * `RSA_3072`: Specifies RSA with a 3072-bit modulus.
+               * `RSA_4096`: Specifies RSA with a 4096-bit modulus.
+               * `ECDSA_P256`: Specifies ECDSA with curve P256.
+               * `ECDSA_P384`: Specifies ECDSA with curve P384.
+               Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
+        :param pulumi.Input[builtins.str] lifetime: Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
+               `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
+               and is preceded by the number of seconds. If unspecified, this will be defaulted to
+               `86400s` (24 hours).
+        :param pulumi.Input[builtins.int] rotation_window_percentage: Rotation window percentage indicating when certificate rotation should be initiated based
+               on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
+               to `50`.
+        """
+        pulumi.set(__self__, "ca_pools", ca_pools)
+        if key_algorithm is not None:
+            pulumi.set(__self__, "key_algorithm", key_algorithm)
+        if lifetime is not None:
+            pulumi.set(__self__, "lifetime", lifetime)
+        if rotation_window_percentage is not None:
+            pulumi.set(__self__, "rotation_window_percentage", rotation_window_percentage)
+
+    @property
+    @pulumi.getter(name="caPools")
+    def ca_pools(self) -> pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]:
+        """
+        A required mapping of a cloud region to the CA pool resource located in that region used
+        for certificate issuance, adhering to these constraints:
+        * **Key format:** A supported cloud region name equivalent to the location identifier in
+        the corresponding map entry's value.
+        * **Value format:** A valid CA pool resource path format like:
+        `projects/{project}/locations/{location}/caPools/{ca_pool}`
+        * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
+        same region. Also the CA pool region (in value) must match the workload's region (key).
+        """
+        return pulumi.get(self, "ca_pools")
+
+    @ca_pools.setter
+    def ca_pools(self, value: pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]):
+        pulumi.set(self, "ca_pools", value)
+
+    @property
+    @pulumi.getter(name="keyAlgorithm")
+    def key_algorithm(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Key algorithm to use when generating the key pair. This key pair will be used to create
+        the certificate. If unspecified, this will default to `ECDSA_P256`.
+        * `RSA_2048`: Specifies RSA with a 2048-bit modulus.
+        * `RSA_3072`: Specifies RSA with a 3072-bit modulus.
+        * `RSA_4096`: Specifies RSA with a 4096-bit modulus.
+        * `ECDSA_P256`: Specifies ECDSA with curve P256.
+        * `ECDSA_P384`: Specifies ECDSA with curve P384.
+        Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
+        """
+        return pulumi.get(self, "key_algorithm")
+
+    @key_algorithm.setter
+    def key_algorithm(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key_algorithm", value)
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
+        `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
+        and is preceded by the number of seconds. If unspecified, this will be defaulted to
+        `86400s` (24 hours).
+        """
+        return pulumi.get(self, "lifetime")
+
+    @lifetime.setter
+    def lifetime(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "lifetime", value)
+
+    @property
+    @pulumi.getter(name="rotationWindowPercentage")
+    def rotation_window_percentage(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Rotation window percentage indicating when certificate rotation should be initiated based
+        on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
+        to `50`.
+        """
+        return pulumi.get(self, "rotation_window_percentage")
+
+    @rotation_window_percentage.setter
+    def rotation_window_percentage(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "rotation_window_percentage", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolInlineTrustConfigArgsDict(TypedDict):
+        additional_trust_bundles: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict']]]]
+        """
+        Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
+        objects, which contain the trusted root certificates for that domain. There can be a
+        maximum of `10` trust domain entries in this map.
+        Note that a trust domain automatically trusts itself and don't need to be specified here.
+        If however, this `WorkloadIdentityPool`'s trust domain contains any trust anchors in the
+        `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
+        automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
+        Structure is documented below.
+        """
+elif False:
+    WorkloadIdentityPoolInlineTrustConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolInlineTrustConfigArgs:
+    def __init__(__self__, *,
+                 additional_trust_bundles: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]] additional_trust_bundles: Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
+               objects, which contain the trusted root certificates for that domain. There can be a
+               maximum of `10` trust domain entries in this map.
+               Note that a trust domain automatically trusts itself and don't need to be specified here.
+               If however, this `WorkloadIdentityPool`'s trust domain contains any trust anchors in the
+               `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
+               automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
+               Structure is documented below.
+        """
+        if additional_trust_bundles is not None:
+            pulumi.set(__self__, "additional_trust_bundles", additional_trust_bundles)
+
+    @property
+    @pulumi.getter(name="additionalTrustBundles")
+    def additional_trust_bundles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]]]:
+        """
+        Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
+        objects, which contain the trusted root certificates for that domain. There can be a
+        maximum of `10` trust domain entries in this map.
+        Note that a trust domain automatically trusts itself and don't need to be specified here.
+        If however, this `WorkloadIdentityPool`'s trust domain contains any trust anchors in the
+        `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
+        automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_trust_bundles")
+
+    @additional_trust_bundles.setter
+    def additional_trust_bundles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]]]):
+        pulumi.set(self, "additional_trust_bundles", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict(TypedDict):
+        trust_anchors: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict']]]
+        """
+        List of Trust Anchors to be used while performing validation against a given
+        `TrustStore`. The incoming end entity's certificate must be chained up to one of the
+        trust anchors here.
+        Structure is documented below.
+        """
+        trust_domain: pulumi.Input[builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+elif False:
+    WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs:
+    def __init__(__self__, *,
+                 trust_anchors: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs']]],
+                 trust_domain: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs']]] trust_anchors: List of Trust Anchors to be used while performing validation against a given
+               `TrustStore`. The incoming end entity's certificate must be chained up to one of the
+               trust anchors here.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] trust_domain: The identifier for this object. Format specified above.
+        """
+        pulumi.set(__self__, "trust_anchors", trust_anchors)
+        pulumi.set(__self__, "trust_domain", trust_domain)
+
+    @property
+    @pulumi.getter(name="trustAnchors")
+    def trust_anchors(self) -> pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs']]]:
+        """
+        List of Trust Anchors to be used while performing validation against a given
+        `TrustStore`. The incoming end entity's certificate must be chained up to one of the
+        trust anchors here.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trust_anchors")
+
+    @trust_anchors.setter
+    def trust_anchors(self, value: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs']]]):
+        pulumi.set(self, "trust_anchors", value)
+
+    @property
+    @pulumi.getter(name="trustDomain")
+    def trust_domain(self) -> pulumi.Input[builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "trust_domain")
+
+    @trust_domain.setter
+    def trust_domain(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "trust_domain", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict(TypedDict):
+        pem_certificate: pulumi.Input[builtins.str]
+        """
+        PEM certificate of the PKI used for validation. Must only contain one ca
+        certificate(either root or intermediate cert).
+        """
+elif False:
+    WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs:
+    def __init__(__self__, *,
+                 pem_certificate: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] pem_certificate: PEM certificate of the PKI used for validation. Must only contain one ca
+               certificate(either root or intermediate cert).
+        """
+        pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> pulumi.Input[builtins.str]:
+        """
+        PEM certificate of the PKI used for validation. Must only contain one ca
+        certificate(either root or intermediate cert).
+        """
+        return pulumi.get(self, "pem_certificate")
+
+    @pem_certificate.setter
+    def pem_certificate(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "pem_certificate", value)
 
 
 if not MYPY:

@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkSecurity
 {
     /// <summary>
+    /// An endpoint group is a consumer frontend for a deployment group (backend).
+    /// In order to configure intercept for a network, consumers must create:
+    /// - An association between their network and the endpoint group.
+    /// - A security profile that points to the endpoint group.
+    /// - A firewall rule that references the security profile (group).
+    /// 
     /// ## Example Usage
     /// 
     /// ### Network Security Intercept Endpoint Group Basic

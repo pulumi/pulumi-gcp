@@ -52,6 +52,7 @@ func LookupDatascanIamPolicy(ctx *pulumi.Context, args *LookupDatascanIamPolicyA
 
 // A collection of arguments for invoking getDatascanIamPolicy.
 type LookupDatascanIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DataScanId string `pulumi:"dataScanId"`
 	// The location where the data scan should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -88,6 +89,7 @@ func LookupDatascanIamPolicyOutput(ctx *pulumi.Context, args LookupDatascanIamPo
 
 // A collection of arguments for invoking getDatascanIamPolicy.
 type LookupDatascanIamPolicyOutputArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DataScanId pulumi.StringInput `pulumi:"dataScanId"`
 	// The location where the data scan should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,

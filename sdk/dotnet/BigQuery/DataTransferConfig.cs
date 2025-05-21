@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var queryConfigCmek = new Gcp.BigQuery.DataTransferConfig("query_config_cmek", new()
     ///     {
-    ///         DisplayName = "",
+    ///         DisplayName = "display-name",
     ///         Location = "asia-northeast1",
     ///         DataSourceId = "scheduled_query",
     ///         Schedule = "first sunday of quarter 00:00",

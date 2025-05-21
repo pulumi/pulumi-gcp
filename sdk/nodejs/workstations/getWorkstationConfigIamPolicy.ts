@@ -45,7 +45,14 @@ export interface GetWorkstationConfigIamPolicyArgs {
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: string;
+    /**
+     * The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     workstationClusterId: string;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     workstationConfigId: string;
 }
 
@@ -112,6 +119,13 @@ export interface GetWorkstationConfigIamPolicyOutputArgs {
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     workstationClusterId: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     workstationConfigId: pulumi.Input<string>;
 }

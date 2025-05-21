@@ -316,9 +316,6 @@ type AutoscalingPolicyIamMember struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Member pulumi.StringOutput `pulumi:"member"`
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-	// 3 and 50 characters.
 	// Used to find the parent resource to bind the IAM policy to
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
 	// The ID of the project in which the resource belongs.
@@ -390,9 +387,6 @@ type autoscalingPolicyIamMemberState struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Member *string `pulumi:"member"`
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-	// 3 and 50 characters.
 	// Used to find the parent resource to bind the IAM policy to
 	PolicyId *string `pulumi:"policyId"`
 	// The ID of the project in which the resource belongs.
@@ -426,9 +420,6 @@ type AutoscalingPolicyIamMemberState struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Member pulumi.StringPtrInput
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-	// 3 and 50 characters.
 	// Used to find the parent resource to bind the IAM policy to
 	PolicyId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -464,9 +455,6 @@ type autoscalingPolicyIamMemberArgs struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Member string `pulumi:"member"`
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-	// 3 and 50 characters.
 	// Used to find the parent resource to bind the IAM policy to
 	PolicyId string `pulumi:"policyId"`
 	// The ID of the project in which the resource belongs.
@@ -499,9 +487,6 @@ type AutoscalingPolicyIamMemberArgs struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Member pulumi.StringInput
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-	// 3 and 50 characters.
 	// Used to find the parent resource to bind the IAM policy to
 	PolicyId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -633,9 +618,6 @@ func (o AutoscalingPolicyIamMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoscalingPolicyIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
-// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-// 3 and 50 characters.
 // Used to find the parent resource to bind the IAM policy to
 func (o AutoscalingPolicyIamMemberOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoscalingPolicyIamMember) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)

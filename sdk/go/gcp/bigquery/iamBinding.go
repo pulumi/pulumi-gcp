@@ -296,7 +296,8 @@ type IamBinding struct {
 	pulumi.CustomResourceState
 
 	Condition IamBindingConditionPtrOutput `pulumi:"condition"`
-	DatasetId pulumi.StringOutput          `pulumi:"datasetId"`
+	// Used to find the parent resource to bind the IAM policy to
+	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Identities that will be granted the privilege in `role`.
@@ -317,7 +318,8 @@ type IamBinding struct {
 	// The role that should be applied. Only one
 	// `bigquery.IamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role    pulumi.StringOutput `pulumi:"role"`
+	Role pulumi.StringOutput `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	TableId pulumi.StringOutput `pulumi:"tableId"`
 }
 
@@ -364,7 +366,8 @@ func GetIamBinding(ctx *pulumi.Context,
 // Input properties used for looking up and filtering IamBinding resources.
 type iamBindingState struct {
 	Condition *IamBindingCondition `pulumi:"condition"`
-	DatasetId *string              `pulumi:"datasetId"`
+	// Used to find the parent resource to bind the IAM policy to
+	DatasetId *string `pulumi:"datasetId"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// Identities that will be granted the privilege in `role`.
@@ -385,12 +388,14 @@ type iamBindingState struct {
 	// The role that should be applied. Only one
 	// `bigquery.IamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role    *string `pulumi:"role"`
+	Role *string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	TableId *string `pulumi:"tableId"`
 }
 
 type IamBindingState struct {
 	Condition IamBindingConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	DatasetId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -412,7 +417,8 @@ type IamBindingState struct {
 	// The role that should be applied. Only one
 	// `bigquery.IamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role    pulumi.StringPtrInput
+	Role pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	TableId pulumi.StringPtrInput
 }
 
@@ -422,7 +428,8 @@ func (IamBindingState) ElementType() reflect.Type {
 
 type iamBindingArgs struct {
 	Condition *IamBindingCondition `pulumi:"condition"`
-	DatasetId string               `pulumi:"datasetId"`
+	// Used to find the parent resource to bind the IAM policy to
+	DatasetId string `pulumi:"datasetId"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -441,13 +448,15 @@ type iamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `bigquery.IamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role    string `pulumi:"role"`
+	Role string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	TableId string `pulumi:"tableId"`
 }
 
 // The set of arguments for constructing a IamBinding resource.
 type IamBindingArgs struct {
 	Condition IamBindingConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	DatasetId pulumi.StringInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -467,7 +476,8 @@ type IamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `bigquery.IamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role    pulumi.StringInput
+	Role pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
 	TableId pulumi.StringInput
 }
 
@@ -562,6 +572,7 @@ func (o IamBindingOutput) Condition() IamBindingConditionPtrOutput {
 	return o.ApplyT(func(v *IamBinding) IamBindingConditionPtrOutput { return v.Condition }).(IamBindingConditionPtrOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o IamBindingOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamBinding) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }
@@ -599,6 +610,7 @@ func (o IamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o IamBindingOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamBinding) pulumi.StringOutput { return v.TableId }).(pulumi.StringOutput)
 }

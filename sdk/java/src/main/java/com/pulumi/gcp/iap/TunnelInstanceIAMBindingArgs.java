@@ -121,9 +121,21 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
         return this.role;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+     * zone is specified, it is taken from the provider configuration.
+     * 
+     */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+     * zone is specified, it is taken from the provider configuration.
+     * 
+     */
     public Optional<Output<String>> zone() {
         return Optional.ofNullable(this.zone);
     }
@@ -310,11 +322,27 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
             return role(Output.of(role));
         }
 
+        /**
+         * @param zone Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+         * zone is specified, it is taken from the provider configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zone(@Nullable Output<String> zone) {
             $.zone = zone;
             return this;
         }
 
+        /**
+         * @param zone Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+         * zone is specified, it is taken from the provider configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zone(String zone) {
             return zone(Output.of(zone));
         }

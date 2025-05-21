@@ -535,7 +535,7 @@ import (
 type AppEngineServiceIamMember struct {
 	pulumi.CustomResourceState
 
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -561,7 +561,7 @@ type AppEngineServiceIamMember struct {
 	// `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
-	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	Service pulumi.StringOutput `pulumi:"service"`
 }
 
@@ -607,7 +607,7 @@ func GetAppEngineServiceIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppEngineServiceIamMember resources.
 type appEngineServiceIamMemberState struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId *string `pulumi:"appId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -633,12 +633,12 @@ type appEngineServiceIamMemberState struct {
 	// `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
-	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	Service *string `pulumi:"service"`
 }
 
 type AppEngineServiceIamMemberState struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringPtrInput
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -664,7 +664,7 @@ type AppEngineServiceIamMemberState struct {
 	// `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
-	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	Service pulumi.StringPtrInput
 }
 
@@ -673,7 +673,7 @@ func (AppEngineServiceIamMemberState) ElementType() reflect.Type {
 }
 
 type appEngineServiceIamMemberArgs struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId string `pulumi:"appId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -697,13 +697,13 @@ type appEngineServiceIamMemberArgs struct {
 	// `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
-	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	Service string `pulumi:"service"`
 }
 
 // The set of arguments for constructing a AppEngineServiceIamMember resource.
 type AppEngineServiceIamMemberArgs struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringInput
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -727,7 +727,7 @@ type AppEngineServiceIamMemberArgs struct {
 	// `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
-	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	Service pulumi.StringInput
 }
 
@@ -818,7 +818,7 @@ func (o AppEngineServiceIamMemberOutput) ToAppEngineServiceIamMemberOutputWithCo
 	return o
 }
 
-// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to
 func (o AppEngineServiceIamMemberOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppEngineServiceIamMember) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
@@ -862,7 +862,7 @@ func (o AppEngineServiceIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppEngineServiceIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to
 func (o AppEngineServiceIamMemberOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppEngineServiceIamMember) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }

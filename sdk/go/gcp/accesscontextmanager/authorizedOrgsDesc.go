@@ -49,7 +49,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			test_access, err := accesscontextmanager.NewAccessPolicy(ctx, "test-access", &accesscontextmanager.AccessPolicyArgs{
-//				Parent: pulumi.String("organizations/"),
+//				Parent: pulumi.String("organizations/123456789"),
 //				Title:  pulumi.String("my policy"),
 //			})
 //			if err != nil {

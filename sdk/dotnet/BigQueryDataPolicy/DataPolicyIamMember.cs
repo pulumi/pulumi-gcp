@@ -253,6 +253,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         [Output("condition")]
         public Output<Outputs.DataPolicyIamMemberCondition?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("dataPolicyId")]
         public Output<string> DataPolicyId { get; private set; } = null!;
 
@@ -351,6 +354,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         [Input("condition")]
         public Input<Inputs.DataPolicyIamMemberConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("dataPolicyId", required: true)]
         public Input<string> DataPolicyId { get; set; } = null!;
 
@@ -405,6 +411,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         [Input("condition")]
         public Input<Inputs.DataPolicyIamMemberConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("dataPolicyId")]
         public Input<string>? DataPolicyId { get; set; }
 

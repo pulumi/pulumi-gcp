@@ -96,6 +96,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class GetEntryGroupIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("entryGroupId", required: true)]
         public string EntryGroupId { get; set; } = null!;
 
@@ -123,6 +126,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class GetEntryGroupIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("entryGroupId", required: true)]
         public Input<string> EntryGroupId { get; set; } = null!;
 

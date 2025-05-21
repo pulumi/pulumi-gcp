@@ -529,6 +529,12 @@ class Instance(pulumi.CustomResource):
         """
         A Managed Lustre instance
 
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/managed-lustre/docs/create-instance)
+
         ## Example Usage
 
         ### Lustre Instance Basic
@@ -618,6 +624,12 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Managed Lustre instance
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/managed-lustre/docs/create-instance)
 
         ## Example Usage
 

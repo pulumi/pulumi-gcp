@@ -23,6 +23,11 @@ public final class CxFlowEventHandlerTriggerFulfillment {
      */
     private @Nullable List<CxFlowEventHandlerTriggerFulfillmentConditionalCase> conditionalCases;
     /**
+     * @return If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+     * 
+     */
+    private @Nullable Boolean enableGenerativeFallback;
+    /**
      * @return The list of rich message responses to present to the user.
      * Structure is documented below.
      * 
@@ -58,6 +63,13 @@ public final class CxFlowEventHandlerTriggerFulfillment {
      */
     public List<CxFlowEventHandlerTriggerFulfillmentConditionalCase> conditionalCases() {
         return this.conditionalCases == null ? List.of() : this.conditionalCases;
+    }
+    /**
+     * @return If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+     * 
+     */
+    public Optional<Boolean> enableGenerativeFallback() {
+        return Optional.ofNullable(this.enableGenerativeFallback);
     }
     /**
      * @return The list of rich message responses to present to the user.
@@ -107,6 +119,7 @@ public final class CxFlowEventHandlerTriggerFulfillment {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CxFlowEventHandlerTriggerFulfillmentConditionalCase> conditionalCases;
+        private @Nullable Boolean enableGenerativeFallback;
         private @Nullable List<CxFlowEventHandlerTriggerFulfillmentMessage> messages;
         private @Nullable Boolean returnPartialResponses;
         private @Nullable List<CxFlowEventHandlerTriggerFulfillmentSetParameterAction> setParameterActions;
@@ -116,6 +129,7 @@ public final class CxFlowEventHandlerTriggerFulfillment {
         public Builder(CxFlowEventHandlerTriggerFulfillment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.conditionalCases = defaults.conditionalCases;
+    	      this.enableGenerativeFallback = defaults.enableGenerativeFallback;
     	      this.messages = defaults.messages;
     	      this.returnPartialResponses = defaults.returnPartialResponses;
     	      this.setParameterActions = defaults.setParameterActions;
@@ -131,6 +145,12 @@ public final class CxFlowEventHandlerTriggerFulfillment {
         }
         public Builder conditionalCases(CxFlowEventHandlerTriggerFulfillmentConditionalCase... conditionalCases) {
             return conditionalCases(List.of(conditionalCases));
+        }
+        @CustomType.Setter
+        public Builder enableGenerativeFallback(@Nullable Boolean enableGenerativeFallback) {
+
+            this.enableGenerativeFallback = enableGenerativeFallback;
+            return this;
         }
         @CustomType.Setter
         public Builder messages(@Nullable List<CxFlowEventHandlerTriggerFulfillmentMessage> messages) {
@@ -171,6 +191,7 @@ public final class CxFlowEventHandlerTriggerFulfillment {
         public CxFlowEventHandlerTriggerFulfillment build() {
             final var _resultValue = new CxFlowEventHandlerTriggerFulfillment();
             _resultValue.conditionalCases = conditionalCases;
+            _resultValue.enableGenerativeFallback = enableGenerativeFallback;
             _resultValue.messages = messages;
             _resultValue.returnPartialResponses = returnPartialResponses;
             _resultValue.setParameterActions = setParameterActions;

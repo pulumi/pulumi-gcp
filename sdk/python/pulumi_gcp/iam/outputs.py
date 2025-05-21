@@ -42,6 +42,12 @@ __all__ = [
     'WorkforcePoolProviderOidcClientSecretValue',
     'WorkforcePoolProviderOidcWebSsoConfig',
     'WorkforcePoolProviderSaml',
+    'WorkloadIdentityPoolIamBindingCondition',
+    'WorkloadIdentityPoolIamMemberCondition',
+    'WorkloadIdentityPoolInlineCertificateIssuanceConfig',
+    'WorkloadIdentityPoolInlineTrustConfig',
+    'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle',
+    'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor',
     'WorkloadIdentityPoolProviderAws',
     'WorkloadIdentityPoolProviderOidc',
     'WorkloadIdentityPoolProviderSaml',
@@ -50,6 +56,10 @@ __all__ = [
     'WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa',
     'WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor',
     'GetTestablePermissionsPermissionResult',
+    'GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult',
+    'GetWorkloadIdentityPoolInlineTrustConfigResult',
+    'GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleResult',
+    'GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorResult',
     'GetWorkloadIdentityPoolProviderAwResult',
     'GetWorkloadIdentityPoolProviderOidcResult',
     'GetWorkloadIdentityPoolProviderSamlResult',
@@ -1512,6 +1522,334 @@ class WorkforcePoolProviderSaml(dict):
 
 
 @pulumi.output_type
+class WorkloadIdentityPoolIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        """
+        :param builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class WorkloadIdentityPoolIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        """
+        :param builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class WorkloadIdentityPoolInlineCertificateIssuanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caPools":
+            suggest = "ca_pools"
+        elif key == "keyAlgorithm":
+            suggest = "key_algorithm"
+        elif key == "rotationWindowPercentage":
+            suggest = "rotation_window_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolInlineCertificateIssuanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolInlineCertificateIssuanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolInlineCertificateIssuanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_pools: Mapping[str, builtins.str],
+                 key_algorithm: Optional[builtins.str] = None,
+                 lifetime: Optional[builtins.str] = None,
+                 rotation_window_percentage: Optional[builtins.int] = None):
+        """
+        :param Mapping[str, builtins.str] ca_pools: A required mapping of a cloud region to the CA pool resource located in that region used
+               for certificate issuance, adhering to these constraints:
+               * **Key format:** A supported cloud region name equivalent to the location identifier in
+               the corresponding map entry's value.
+               * **Value format:** A valid CA pool resource path format like:
+               `projects/{project}/locations/{location}/caPools/{ca_pool}`
+               * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
+               same region. Also the CA pool region (in value) must match the workload's region (key).
+        :param builtins.str key_algorithm: Key algorithm to use when generating the key pair. This key pair will be used to create
+               the certificate. If unspecified, this will default to `ECDSA_P256`.
+               * `RSA_2048`: Specifies RSA with a 2048-bit modulus.
+               * `RSA_3072`: Specifies RSA with a 3072-bit modulus.
+               * `RSA_4096`: Specifies RSA with a 4096-bit modulus.
+               * `ECDSA_P256`: Specifies ECDSA with curve P256.
+               * `ECDSA_P384`: Specifies ECDSA with curve P384.
+               Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
+        :param builtins.str lifetime: Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
+               `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
+               and is preceded by the number of seconds. If unspecified, this will be defaulted to
+               `86400s` (24 hours).
+        :param builtins.int rotation_window_percentage: Rotation window percentage indicating when certificate rotation should be initiated based
+               on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
+               to `50`.
+        """
+        pulumi.set(__self__, "ca_pools", ca_pools)
+        if key_algorithm is not None:
+            pulumi.set(__self__, "key_algorithm", key_algorithm)
+        if lifetime is not None:
+            pulumi.set(__self__, "lifetime", lifetime)
+        if rotation_window_percentage is not None:
+            pulumi.set(__self__, "rotation_window_percentage", rotation_window_percentage)
+
+    @property
+    @pulumi.getter(name="caPools")
+    def ca_pools(self) -> Mapping[str, builtins.str]:
+        """
+        A required mapping of a cloud region to the CA pool resource located in that region used
+        for certificate issuance, adhering to these constraints:
+        * **Key format:** A supported cloud region name equivalent to the location identifier in
+        the corresponding map entry's value.
+        * **Value format:** A valid CA pool resource path format like:
+        `projects/{project}/locations/{location}/caPools/{ca_pool}`
+        * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
+        same region. Also the CA pool region (in value) must match the workload's region (key).
+        """
+        return pulumi.get(self, "ca_pools")
+
+    @property
+    @pulumi.getter(name="keyAlgorithm")
+    def key_algorithm(self) -> Optional[builtins.str]:
+        """
+        Key algorithm to use when generating the key pair. This key pair will be used to create
+        the certificate. If unspecified, this will default to `ECDSA_P256`.
+        * `RSA_2048`: Specifies RSA with a 2048-bit modulus.
+        * `RSA_3072`: Specifies RSA with a 3072-bit modulus.
+        * `RSA_4096`: Specifies RSA with a 4096-bit modulus.
+        * `ECDSA_P256`: Specifies ECDSA with curve P256.
+        * `ECDSA_P384`: Specifies ECDSA with curve P384.
+        Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
+        """
+        return pulumi.get(self, "key_algorithm")
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[builtins.str]:
+        """
+        Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
+        `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
+        and is preceded by the number of seconds. If unspecified, this will be defaulted to
+        `86400s` (24 hours).
+        """
+        return pulumi.get(self, "lifetime")
+
+    @property
+    @pulumi.getter(name="rotationWindowPercentage")
+    def rotation_window_percentage(self) -> Optional[builtins.int]:
+        """
+        Rotation window percentage indicating when certificate rotation should be initiated based
+        on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
+        to `50`.
+        """
+        return pulumi.get(self, "rotation_window_percentage")
+
+
+@pulumi.output_type
+class WorkloadIdentityPoolInlineTrustConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalTrustBundles":
+            suggest = "additional_trust_bundles"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolInlineTrustConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolInlineTrustConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolInlineTrustConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_trust_bundles: Optional[Sequence['outputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle']] = None):
+        """
+        :param Sequence['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs'] additional_trust_bundles: Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
+               objects, which contain the trusted root certificates for that domain. There can be a
+               maximum of `10` trust domain entries in this map.
+               Note that a trust domain automatically trusts itself and don't need to be specified here.
+               If however, this `WorkloadIdentityPool`'s trust domain contains any trust anchors in the
+               `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
+               automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
+               Structure is documented below.
+        """
+        if additional_trust_bundles is not None:
+            pulumi.set(__self__, "additional_trust_bundles", additional_trust_bundles)
+
+    @property
+    @pulumi.getter(name="additionalTrustBundles")
+    def additional_trust_bundles(self) -> Optional[Sequence['outputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle']]:
+        """
+        Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
+        objects, which contain the trusted root certificates for that domain. There can be a
+        maximum of `10` trust domain entries in this map.
+        Note that a trust domain automatically trusts itself and don't need to be specified here.
+        If however, this `WorkloadIdentityPool`'s trust domain contains any trust anchors in the
+        `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
+        automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_trust_bundles")
+
+
+@pulumi.output_type
+class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trustAnchors":
+            suggest = "trust_anchors"
+        elif key == "trustDomain":
+            suggest = "trust_domain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 trust_anchors: Sequence['outputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor'],
+                 trust_domain: builtins.str):
+        """
+        :param Sequence['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs'] trust_anchors: List of Trust Anchors to be used while performing validation against a given
+               `TrustStore`. The incoming end entity's certificate must be chained up to one of the
+               trust anchors here.
+               Structure is documented below.
+        :param builtins.str trust_domain: The identifier for this object. Format specified above.
+        """
+        pulumi.set(__self__, "trust_anchors", trust_anchors)
+        pulumi.set(__self__, "trust_domain", trust_domain)
+
+    @property
+    @pulumi.getter(name="trustAnchors")
+    def trust_anchors(self) -> Sequence['outputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor']:
+        """
+        List of Trust Anchors to be used while performing validation against a given
+        `TrustStore`. The incoming end entity's certificate must be chained up to one of the
+        trust anchors here.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trust_anchors")
+
+    @property
+    @pulumi.getter(name="trustDomain")
+    def trust_domain(self) -> builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "trust_domain")
+
+
+@pulumi.output_type
+class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pemCertificate":
+            suggest = "pem_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pem_certificate: builtins.str):
+        """
+        :param builtins.str pem_certificate: PEM certificate of the PKI used for validation. Must only contain one ca
+               certificate(either root or intermediate cert).
+        """
+        pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> builtins.str:
+        """
+        PEM certificate of the PKI used for validation. Must only contain one ca
+        certificate(either root or intermediate cert).
+        """
+        return pulumi.get(self, "pem_certificate")
+
+
+@pulumi.output_type
 class WorkloadIdentityPoolProviderAws(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1952,6 +2290,178 @@ class GetTestablePermissionsPermissionResult(dict):
         Human readable title of the permission.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult(dict):
+    def __init__(__self__, *,
+                 ca_pools: Mapping[str, builtins.str],
+                 key_algorithm: builtins.str,
+                 lifetime: builtins.str,
+                 rotation_window_percentage: builtins.int):
+        """
+        :param Mapping[str, builtins.str] ca_pools: A required mapping of a cloud region to the CA pool resource located in that region used
+               for certificate issuance, adhering to these constraints:
+               
+               * **Key format:** A supported cloud region name equivalent to the location identifier in
+               the corresponding map entry's value.
+               * **Value format:** A valid CA pool resource path format like:
+               'projects/{project}/locations/{location}/caPools/{ca_pool}'
+               * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
+               same region. Also the CA pool region (in value) must match the workload's region (key).
+        :param builtins.str key_algorithm: Key algorithm to use when generating the key pair. This key pair will be used to create
+               the certificate. If unspecified, this will default to 'ECDSA_P256'.
+               
+               * 'RSA_2048': Specifies RSA with a 2048-bit modulus.
+               * 'RSA_3072': Specifies RSA with a 3072-bit modulus.
+               * 'RSA_4096': Specifies RSA with a 4096-bit modulus.
+               * 'ECDSA_P256': Specifies ECDSA with curve P256.
+               * 'ECDSA_P384': Specifies ECDSA with curve P384. Possible values: ["RSA_2048", "RSA_3072", "RSA_4096", "ECDSA_P256", "ECDSA_P384"]
+        :param builtins.str lifetime: Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
+               '86400s' (24 hours) to '2592000s' (30 days), ends in the suffix "'s'" (indicating seconds)
+               and is preceded by the number of seconds. If unspecified, this will be defaulted to
+               '86400s' (24 hours).
+        :param builtins.int rotation_window_percentage: Rotation window percentage indicating when certificate rotation should be initiated based
+               on remaining lifetime. Must be between '50' - '80'. If unspecified, this will be defaulted
+               to '50'.
+        """
+        pulumi.set(__self__, "ca_pools", ca_pools)
+        pulumi.set(__self__, "key_algorithm", key_algorithm)
+        pulumi.set(__self__, "lifetime", lifetime)
+        pulumi.set(__self__, "rotation_window_percentage", rotation_window_percentage)
+
+    @property
+    @pulumi.getter(name="caPools")
+    def ca_pools(self) -> Mapping[str, builtins.str]:
+        """
+        A required mapping of a cloud region to the CA pool resource located in that region used
+        for certificate issuance, adhering to these constraints:
+
+        * **Key format:** A supported cloud region name equivalent to the location identifier in
+        the corresponding map entry's value.
+        * **Value format:** A valid CA pool resource path format like:
+        'projects/{project}/locations/{location}/caPools/{ca_pool}'
+        * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
+        same region. Also the CA pool region (in value) must match the workload's region (key).
+        """
+        return pulumi.get(self, "ca_pools")
+
+    @property
+    @pulumi.getter(name="keyAlgorithm")
+    def key_algorithm(self) -> builtins.str:
+        """
+        Key algorithm to use when generating the key pair. This key pair will be used to create
+        the certificate. If unspecified, this will default to 'ECDSA_P256'.
+
+        * 'RSA_2048': Specifies RSA with a 2048-bit modulus.
+        * 'RSA_3072': Specifies RSA with a 3072-bit modulus.
+        * 'RSA_4096': Specifies RSA with a 4096-bit modulus.
+        * 'ECDSA_P256': Specifies ECDSA with curve P256.
+        * 'ECDSA_P384': Specifies ECDSA with curve P384. Possible values: ["RSA_2048", "RSA_3072", "RSA_4096", "ECDSA_P256", "ECDSA_P384"]
+        """
+        return pulumi.get(self, "key_algorithm")
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> builtins.str:
+        """
+        Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
+        '86400s' (24 hours) to '2592000s' (30 days), ends in the suffix "'s'" (indicating seconds)
+        and is preceded by the number of seconds. If unspecified, this will be defaulted to
+        '86400s' (24 hours).
+        """
+        return pulumi.get(self, "lifetime")
+
+    @property
+    @pulumi.getter(name="rotationWindowPercentage")
+    def rotation_window_percentage(self) -> builtins.int:
+        """
+        Rotation window percentage indicating when certificate rotation should be initiated based
+        on remaining lifetime. Must be between '50' - '80'. If unspecified, this will be defaulted
+        to '50'.
+        """
+        return pulumi.get(self, "rotation_window_percentage")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolInlineTrustConfigResult(dict):
+    def __init__(__self__, *,
+                 additional_trust_bundles: Sequence['outputs.GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleResult']):
+        """
+        :param Sequence['GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs'] additional_trust_bundles: Maps specific trust domains (e.g., "example.com") to their corresponding 'TrustStore'
+               objects, which contain the trusted root certificates for that domain. There can be a
+               maximum of '10' trust domain entries in this map.
+               
+               Note that a trust domain automatically trusts itself and don't need to be specified here.
+               If however, this 'WorkloadIdentityPool''s trust domain contains any trust anchors in the
+               'additional_trust_bundles' map, those trust anchors will be *appended to* the Trust Bundle
+               automatically derived from your 'InlineCertificateIssuanceConfig''s 'ca_pools'.
+        """
+        pulumi.set(__self__, "additional_trust_bundles", additional_trust_bundles)
+
+    @property
+    @pulumi.getter(name="additionalTrustBundles")
+    def additional_trust_bundles(self) -> Sequence['outputs.GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleResult']:
+        """
+        Maps specific trust domains (e.g., "example.com") to their corresponding 'TrustStore'
+        objects, which contain the trusted root certificates for that domain. There can be a
+        maximum of '10' trust domain entries in this map.
+
+        Note that a trust domain automatically trusts itself and don't need to be specified here.
+        If however, this 'WorkloadIdentityPool''s trust domain contains any trust anchors in the
+        'additional_trust_bundles' map, those trust anchors will be *appended to* the Trust Bundle
+        automatically derived from your 'InlineCertificateIssuanceConfig''s 'ca_pools'.
+        """
+        return pulumi.get(self, "additional_trust_bundles")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleResult(dict):
+    def __init__(__self__, *,
+                 trust_anchors: Sequence['outputs.GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorResult'],
+                 trust_domain: builtins.str):
+        """
+        :param Sequence['GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs'] trust_anchors: List of Trust Anchors to be used while performing validation against a given
+               'TrustStore'. The incoming end entity's certificate must be chained up to one of the
+               trust anchors here.
+        """
+        pulumi.set(__self__, "trust_anchors", trust_anchors)
+        pulumi.set(__self__, "trust_domain", trust_domain)
+
+    @property
+    @pulumi.getter(name="trustAnchors")
+    def trust_anchors(self) -> Sequence['outputs.GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorResult']:
+        """
+        List of Trust Anchors to be used while performing validation against a given
+        'TrustStore'. The incoming end entity's certificate must be chained up to one of the
+        trust anchors here.
+        """
+        return pulumi.get(self, "trust_anchors")
+
+    @property
+    @pulumi.getter(name="trustDomain")
+    def trust_domain(self) -> builtins.str:
+        return pulumi.get(self, "trust_domain")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorResult(dict):
+    def __init__(__self__, *,
+                 pem_certificate: builtins.str):
+        """
+        :param builtins.str pem_certificate: PEM certificate of the PKI used for validation. Must only contain one ca
+               certificate(either root or intermediate cert).
+        """
+        pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> builtins.str:
+        """
+        PEM certificate of the PKI used for validation. Must only contain one ca
+        certificate(either root or intermediate cert).
+        """
+        return pulumi.get(self, "pem_certificate")
 
 
 @pulumi.output_type

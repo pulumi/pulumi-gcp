@@ -34,7 +34,7 @@ export function getAppEngineServiceIamPolicy(args: GetAppEngineServiceIamPolicyA
  */
 export interface GetAppEngineServiceIamPolicyArgs {
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     appId: string;
     /**
@@ -43,7 +43,7 @@ export interface GetAppEngineServiceIamPolicyArgs {
      */
     project?: string;
     /**
-     * Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     service: string;
 }
@@ -99,7 +99,7 @@ export function getAppEngineServiceIamPolicyOutput(args: GetAppEngineServiceIamP
  */
 export interface GetAppEngineServiceIamPolicyOutputArgs {
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     appId: pulumi.Input<string>;
     /**
@@ -108,7 +108,7 @@ export interface GetAppEngineServiceIamPolicyOutputArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     service: pulumi.Input<string>;
 }

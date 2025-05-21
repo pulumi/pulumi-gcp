@@ -315,7 +315,8 @@ type MembershipIamMember struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-	Member       pulumi.StringOutput `pulumi:"member"`
+	Member pulumi.StringOutput `pulumi:"member"`
+	// Used to find the parent resource to bind the IAM policy to
 	MembershipId pulumi.StringOutput `pulumi:"membershipId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -385,7 +386,8 @@ type membershipIamMemberState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-	Member       *string `pulumi:"member"`
+	Member *string `pulumi:"member"`
+	// Used to find the parent resource to bind the IAM policy to
 	MembershipId *string `pulumi:"membershipId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -417,7 +419,8 @@ type MembershipIamMemberState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-	Member       pulumi.StringPtrInput
+	Member pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	MembershipId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -451,7 +454,8 @@ type membershipIamMemberArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-	Member       string `pulumi:"member"`
+	Member string `pulumi:"member"`
+	// Used to find the parent resource to bind the IAM policy to
 	MembershipId string `pulumi:"membershipId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -482,7 +486,8 @@ type MembershipIamMemberArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-	Member       pulumi.StringInput
+	Member pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
 	MembershipId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -613,6 +618,7 @@ func (o MembershipIamMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *MembershipIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o MembershipIamMemberOutput) MembershipId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MembershipIamMember) pulumi.StringOutput { return v.MembershipId }).(pulumi.StringOutput)
 }

@@ -42,6 +42,7 @@ class ServiceIamBindingArgs:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_name: Used to find the parent resource to bind the IAM policy to
         """
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "role", role)
@@ -88,6 +89,9 @@ class ServiceIamBindingArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -129,6 +133,7 @@ class _ServiceIamBindingState:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_name: Used to find the parent resource to bind the IAM policy to
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -201,6 +206,9 @@ class _ServiceIamBindingState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -382,6 +390,7 @@ class ServiceIamBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_name: Used to find the parent resource to bind the IAM policy to
         """
         ...
     @overload
@@ -612,6 +621,7 @@ class ServiceIamBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_name: Used to find the parent resource to bind the IAM policy to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -668,5 +678,8 @@ class ServiceIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "service_name")
 

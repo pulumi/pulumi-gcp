@@ -577,6 +577,7 @@ class _InstanceTemplateState:
                  name_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']] = None,
+                 numeric_id: Optional[pulumi.Input[builtins.str]] = None,
                  partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -645,6 +646,7 @@ class _InstanceTemplateState:
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
+        :param pulumi.Input[builtins.str] numeric_id: numeric identifier of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] partner_metadata: Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -712,6 +714,8 @@ class _InstanceTemplateState:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if network_performance_config is not None:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
+        if numeric_id is not None:
+            pulumi.set(__self__, "numeric_id", numeric_id)
         if partner_metadata is not None:
             pulumi.set(__self__, "partner_metadata", partner_metadata)
         if project is not None:
@@ -1023,6 +1027,18 @@ class _InstanceTemplateState:
     @network_performance_config.setter
     def network_performance_config(self, value: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']]):
         pulumi.set(self, "network_performance_config", value)
+
+    @property
+    @pulumi.getter(name="numericId")
+    def numeric_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        numeric identifier of the resource.
+        """
+        return pulumi.get(self, "numeric_id")
+
+    @numeric_id.setter
+    def numeric_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "numeric_id", value)
 
     @property
     @pulumi.getter(name="partnerMetadata")
@@ -1912,6 +1928,7 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["metadata_fingerprint"] = None
+            __props__.__dict__["numeric_id"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_unique"] = None
@@ -1949,6 +1966,7 @@ class InstanceTemplate(pulumi.CustomResource):
             name_prefix: Optional[pulumi.Input[builtins.str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateNetworkInterfaceArgs', 'InstanceTemplateNetworkInterfaceArgsDict']]]]] = None,
             network_performance_config: Optional[pulumi.Input[Union['InstanceTemplateNetworkPerformanceConfigArgs', 'InstanceTemplateNetworkPerformanceConfigArgsDict']]] = None,
+            numeric_id: Optional[pulumi.Input[builtins.str]] = None,
             partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -2022,6 +2040,7 @@ class InstanceTemplate(pulumi.CustomResource):
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
+        :param pulumi.Input[builtins.str] numeric_id: numeric identifier of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] partner_metadata: Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -2072,6 +2091,7 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["name_prefix"] = name_prefix
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["network_performance_config"] = network_performance_config
+        __props__.__dict__["numeric_id"] = numeric_id
         __props__.__dict__["partner_metadata"] = partner_metadata
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -2286,6 +2306,14 @@ class InstanceTemplate(pulumi.CustomResource):
         in order for this setting to take effect.
         """
         return pulumi.get(self, "network_performance_config")
+
+    @property
+    @pulumi.getter(name="numericId")
+    def numeric_id(self) -> pulumi.Output[builtins.str]:
+        """
+        numeric identifier of the resource.
+        """
+        return pulumi.get(self, "numeric_id")
 
     @property
     @pulumi.getter(name="partnerMetadata")

@@ -47,6 +47,11 @@ public final class GetInstanceBootDisk {
      */
     private String diskEncryptionServiceAccount;
     /**
+     * @return Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    private Boolean forceAttach;
+    /**
      * @return A list of features to enable on the guest operating system. Applicable only for bootable images.
      * 
      */
@@ -125,6 +130,13 @@ public final class GetInstanceBootDisk {
         return this.diskEncryptionServiceAccount;
     }
     /**
+     * @return Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    public Boolean forceAttach() {
+        return this.forceAttach;
+    }
+    /**
      * @return A list of features to enable on the guest operating system. Applicable only for bootable images.
      * 
      */
@@ -183,6 +195,7 @@ public final class GetInstanceBootDisk {
         private String diskEncryptionKeyRsa;
         private String diskEncryptionKeySha256;
         private String diskEncryptionServiceAccount;
+        private Boolean forceAttach;
         private List<String> guestOsFeatures;
         private List<GetInstanceBootDiskInitializeParam> initializeParams;
         private String interface_;
@@ -198,6 +211,7 @@ public final class GetInstanceBootDisk {
     	      this.diskEncryptionKeyRsa = defaults.diskEncryptionKeyRsa;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
     	      this.diskEncryptionServiceAccount = defaults.diskEncryptionServiceAccount;
+    	      this.forceAttach = defaults.forceAttach;
     	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.initializeParams = defaults.initializeParams;
     	      this.interface_ = defaults.interface_;
@@ -252,6 +266,14 @@ public final class GetInstanceBootDisk {
               throw new MissingRequiredPropertyException("GetInstanceBootDisk", "diskEncryptionServiceAccount");
             }
             this.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forceAttach(Boolean forceAttach) {
+            if (forceAttach == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "forceAttach");
+            }
+            this.forceAttach = forceAttach;
             return this;
         }
         @CustomType.Setter
@@ -316,6 +338,7 @@ public final class GetInstanceBootDisk {
             _resultValue.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             _resultValue.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
+            _resultValue.forceAttach = forceAttach;
             _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.initializeParams = initializeParams;
             _resultValue.interface_ = interface_;

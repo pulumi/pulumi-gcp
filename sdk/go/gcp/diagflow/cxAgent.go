@@ -122,6 +122,9 @@ import (
 //				TextToSpeechSettings: &diagflow.CxAgentTextToSpeechSettingsArgs{
 //					SynthesizeSpeechConfigs: pulumi.String(json0),
 //				},
+//				GenAppBuilderSettings: &diagflow.CxAgentGenAppBuilderSettingsArgs{
+//					Engine: pulumi.String("projects/-/locations/-/collections/-/engines/-"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -180,6 +183,9 @@ type CxAgent struct {
 	//
 	// Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 	EnableStackdriverLogging pulumi.BoolPtrOutput `pulumi:"enableStackdriverLogging"`
+	// Gen App Builder-related agent-level settings.
+	// Structure is documented below.
+	GenAppBuilderSettings CxAgentGenAppBuilderSettingsOutput `pulumi:"genAppBuilderSettings"`
 	// Git integration settings for this agent.
 	// Structure is documented below.
 	GitIntegrationSettings CxAgentGitIntegrationSettingsPtrOutput `pulumi:"gitIntegrationSettings"`
@@ -276,6 +282,9 @@ type cxAgentState struct {
 	//
 	// Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+	// Gen App Builder-related agent-level settings.
+	// Structure is documented below.
+	GenAppBuilderSettings *CxAgentGenAppBuilderSettings `pulumi:"genAppBuilderSettings"`
 	// Git integration settings for this agent.
 	// Structure is documented below.
 	GitIntegrationSettings *CxAgentGitIntegrationSettings `pulumi:"gitIntegrationSettings"`
@@ -331,6 +340,9 @@ type CxAgentState struct {
 	//
 	// Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 	EnableStackdriverLogging pulumi.BoolPtrInput
+	// Gen App Builder-related agent-level settings.
+	// Structure is documented below.
+	GenAppBuilderSettings CxAgentGenAppBuilderSettingsPtrInput
 	// Git integration settings for this agent.
 	// Structure is documented below.
 	GitIntegrationSettings CxAgentGitIntegrationSettingsPtrInput
@@ -390,6 +402,9 @@ type cxAgentArgs struct {
 	//
 	// Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+	// Gen App Builder-related agent-level settings.
+	// Structure is documented below.
+	GenAppBuilderSettings *CxAgentGenAppBuilderSettings `pulumi:"genAppBuilderSettings"`
 	// Git integration settings for this agent.
 	// Structure is documented below.
 	GitIntegrationSettings *CxAgentGitIntegrationSettings `pulumi:"gitIntegrationSettings"`
@@ -442,6 +457,9 @@ type CxAgentArgs struct {
 	//
 	// Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 	EnableStackdriverLogging pulumi.BoolPtrInput
+	// Gen App Builder-related agent-level settings.
+	// Structure is documented below.
+	GenAppBuilderSettings CxAgentGenAppBuilderSettingsPtrInput
 	// Git integration settings for this agent.
 	// Structure is documented below.
 	GitIntegrationSettings CxAgentGitIntegrationSettingsPtrInput
@@ -598,6 +616,12 @@ func (o CxAgentOutput) EnableSpellCorrection() pulumi.BoolPtrOutput {
 // Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 func (o CxAgentOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxAgent) pulumi.BoolPtrOutput { return v.EnableStackdriverLogging }).(pulumi.BoolPtrOutput)
+}
+
+// Gen App Builder-related agent-level settings.
+// Structure is documented below.
+func (o CxAgentOutput) GenAppBuilderSettings() CxAgentGenAppBuilderSettingsOutput {
+	return o.ApplyT(func(v *CxAgent) CxAgentGenAppBuilderSettingsOutput { return v.GenAppBuilderSettings }).(CxAgentGenAppBuilderSettingsOutput)
 }
 
 // Git integration settings for this agent.

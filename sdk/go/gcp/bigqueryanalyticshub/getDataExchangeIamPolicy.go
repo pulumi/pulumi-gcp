@@ -52,7 +52,7 @@ func LookupDataExchangeIamPolicy(ctx *pulumi.Context, args *LookupDataExchangeIa
 
 // A collection of arguments for invoking getDataExchangeIamPolicy.
 type LookupDataExchangeIamPolicyArgs struct {
-	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	DataExchangeId string `pulumi:"dataExchangeId"`
 	// The name of the location this data exchange.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -89,7 +89,7 @@ func LookupDataExchangeIamPolicyOutput(ctx *pulumi.Context, args LookupDataExcha
 
 // A collection of arguments for invoking getDataExchangeIamPolicy.
 type LookupDataExchangeIamPolicyOutputArgs struct {
-	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	DataExchangeId pulumi.StringInput `pulumi:"dataExchangeId"`
 	// The name of the location this data exchange.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,

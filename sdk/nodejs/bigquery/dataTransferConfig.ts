@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  *     keyRing: keyRing.id,
  * });
  * const queryConfigCmek = new gcp.bigquery.DataTransferConfig("query_config_cmek", {
- *     displayName: "",
+ *     displayName: "display-name",
  *     location: "asia-northeast1",
  *     dataSourceId: "scheduled_query",
  *     schedule: "first sunday of quarter 00:00",

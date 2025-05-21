@@ -61,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReservationAssignment{}
 	case "gcp:bigquery/routine:Routine":
 		r = &Routine{}
+	case "gcp:bigquery/rowAccessPolicy:RowAccessPolicy":
+		r = &RowAccessPolicy{}
 	case "gcp:bigquery/table:Table":
 		r = &Table{}
 	default:
@@ -174,6 +176,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"bigquery/routine",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/rowAccessPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

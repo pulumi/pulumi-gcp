@@ -207,6 +207,9 @@ export class EntryTypeIamMember extends pulumi.CustomResource {
     }
 
     public readonly condition!: pulumi.Output<outputs.dataplex.EntryTypeIamMemberCondition | undefined>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly entryTypeId!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -294,6 +297,9 @@ export class EntryTypeIamMember extends pulumi.CustomResource {
  */
 export interface EntryTypeIamMemberState {
     condition?: pulumi.Input<inputs.dataplex.EntryTypeIamMemberCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     entryTypeId?: pulumi.Input<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -338,6 +344,9 @@ export interface EntryTypeIamMemberState {
  */
 export interface EntryTypeIamMemberArgs {
     condition?: pulumi.Input<inputs.dataplex.EntryTypeIamMemberCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     entryTypeId: pulumi.Input<string>;
     /**
      * The location where entry type will be created in.

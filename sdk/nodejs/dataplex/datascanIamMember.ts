@@ -207,6 +207,9 @@ export class DatascanIamMember extends pulumi.CustomResource {
     }
 
     public readonly condition!: pulumi.Output<outputs.dataplex.DatascanIamMemberCondition | undefined>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly dataScanId!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -294,6 +297,9 @@ export class DatascanIamMember extends pulumi.CustomResource {
  */
 export interface DatascanIamMemberState {
     condition?: pulumi.Input<inputs.dataplex.DatascanIamMemberCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     dataScanId?: pulumi.Input<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -338,6 +344,9 @@ export interface DatascanIamMemberState {
  */
 export interface DatascanIamMemberArgs {
     condition?: pulumi.Input<inputs.dataplex.DatascanIamMemberCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     dataScanId: pulumi.Input<string>;
     /**
      * The location where the data scan should reside.

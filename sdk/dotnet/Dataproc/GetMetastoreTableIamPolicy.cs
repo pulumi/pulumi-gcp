@@ -102,9 +102,17 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class GetMetastoreTableIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("databaseId", required: true)]
         public string DatabaseId { get; set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
+        /// </summary>
         [Input("location")]
         public string? Location { get; set; }
 
@@ -115,6 +123,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceId", required: true)]
         public string ServiceId { get; set; } = null!;
 
@@ -132,9 +143,17 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class GetMetastoreTableIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("databaseId", required: true)]
         public Input<string> DatabaseId { get; set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
@@ -145,6 +164,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
 

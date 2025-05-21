@@ -32,7 +32,7 @@ class ListingIamMemberArgs:
         """
         The set of arguments for constructing a ListingIamMember resource.
         :param pulumi.Input[builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] listing_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -81,7 +81,7 @@ class ListingIamMemberArgs:
     @pulumi.getter(name="listingId")
     def listing_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "listing_id")
 
@@ -178,7 +178,7 @@ class _ListingIamMemberState:
         Input properties used for looking up and filtering ListingIamMember resources.
         :param pulumi.Input[builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] listing_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange listing.
                Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -254,7 +254,7 @@ class _ListingIamMemberState:
     @pulumi.getter(name="listingId")
     def listing_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "listing_id")
 
@@ -512,7 +512,7 @@ class ListingIamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] listing_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange listing.
                Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -782,7 +782,7 @@ class ListingIamMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] listing_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange listing.
                Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -843,7 +843,7 @@ class ListingIamMember(pulumi.CustomResource):
     @pulumi.getter(name="listingId")
     def listing_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+        Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "listing_id")
 

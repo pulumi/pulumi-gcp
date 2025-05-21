@@ -51,6 +51,21 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The uniquely generated identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="generatedId")
+    private @Nullable Output<Integer> generatedId;
+
+    /**
+     * @return The uniquely generated identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<Integer>> generatedId() {
+        return Optional.ofNullable(this.generatedId);
+    }
+
+    /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -213,6 +228,7 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
     private NetworkEndpointGroupState(NetworkEndpointGroupState $) {
         this.defaultPort = $.defaultPort;
         this.description = $.description;
+        this.generatedId = $.generatedId;
         this.name = $.name;
         this.network = $.network;
         this.networkEndpointType = $.networkEndpointType;
@@ -285,6 +301,27 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param generatedId The uniquely generated identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generatedId(@Nullable Output<Integer> generatedId) {
+            $.generatedId = generatedId;
+            return this;
+        }
+
+        /**
+         * @param generatedId The uniquely generated identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generatedId(Integer generatedId) {
+            return generatedId(Output.of(generatedId));
         }
 
         /**

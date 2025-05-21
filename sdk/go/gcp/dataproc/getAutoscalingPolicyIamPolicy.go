@@ -58,9 +58,6 @@ type LookupAutoscalingPolicyIamPolicyArgs struct {
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
 	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-	// 3 and 50 characters.
 	// Used to find the parent resource to bind the IAM policy to
 	PolicyId string `pulumi:"policyId"`
 	// The ID of the project in which the resource belongs.
@@ -99,9 +96,6 @@ type LookupAutoscalingPolicyIamPolicyOutputArgs struct {
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
 	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
-	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
-	// 3 and 50 characters.
 	// Used to find the parent resource to bind the IAM policy to
 	PolicyId pulumi.StringInput `pulumi:"policyId"`
 	// The ID of the project in which the resource belongs.

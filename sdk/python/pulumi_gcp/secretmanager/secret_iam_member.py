@@ -43,6 +43,7 @@ class SecretIamMemberArgs:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] secret_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input['SecretIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -95,6 +96,9 @@ class SecretIamMemberArgs:
     @property
     @pulumi.getter(name="secretId")
     def secret_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "secret_id")
 
     @secret_id.setter
@@ -158,6 +162,7 @@ class _SecretIamMemberState:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] secret_id: Used to find the parent resource to bind the IAM policy to
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -249,6 +254,9 @@ class _SecretIamMemberState:
     @property
     @pulumi.getter(name="secretId")
     def secret_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "secret_id")
 
     @secret_id.setter
@@ -556,6 +564,7 @@ class SecretIamMember(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] secret_id: Used to find the parent resource to bind the IAM policy to
         """
         ...
     @overload
@@ -914,6 +923,7 @@ class SecretIamMember(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] secret_id: Used to find the parent resource to bind the IAM policy to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -984,5 +994,8 @@ class SecretIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter(name="secretId")
     def secret_id(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "secret_id")
 

@@ -194,7 +194,7 @@ import (
 //				return err
 //			}
 //			_, err = edgecontainer.NewCluster(ctx, "default", &edgecontainer.ClusterArgs{
-//				Name:     pulumi.String(""),
+//				Name:     pulumi.String("default"),
 //				Location: pulumi.String("us-central1"),
 //				Authorization: &edgecontainer.ClusterAuthorizationArgs{
 //					AdminUsers: &edgecontainer.ClusterAuthorizationAdminUsersArgs{

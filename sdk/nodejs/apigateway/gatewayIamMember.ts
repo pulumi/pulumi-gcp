@@ -211,6 +211,9 @@ export class GatewayIamMember extends pulumi.CustomResource {
      * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly gateway!: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -298,6 +301,9 @@ export interface GatewayIamMemberState {
      * (Computed) The etag of the IAM policy.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     gateway?: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -338,6 +344,9 @@ export interface GatewayIamMemberState {
  */
 export interface GatewayIamMemberArgs {
     condition?: pulumi.Input<inputs.apigateway.GatewayIamMemberCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     gateway: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.

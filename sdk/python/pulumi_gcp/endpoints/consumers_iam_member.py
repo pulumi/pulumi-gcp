@@ -29,6 +29,7 @@ class ConsumersIamMemberArgs:
                  condition: Optional[pulumi.Input['ConsumersIamMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a ConsumersIamMember resource.
+        :param pulumi.Input[builtins.str] consumer_project: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -43,6 +44,7 @@ class ConsumersIamMemberArgs:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
         """
         pulumi.set(__self__, "consumer_project", consumer_project)
         pulumi.set(__self__, "member", member)
@@ -54,6 +56,9 @@ class ConsumersIamMemberArgs:
     @property
     @pulumi.getter(name="consumerProject")
     def consumer_project(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "consumer_project")
 
     @consumer_project.setter
@@ -99,6 +104,9 @@ class ConsumersIamMemberArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of the service. Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -126,6 +134,7 @@ class _ConsumersIamMemberState:
                  service_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConsumersIamMember resources.
+        :param pulumi.Input[builtins.str] consumer_project: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -141,6 +150,7 @@ class _ConsumersIamMemberState:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -167,6 +177,9 @@ class _ConsumersIamMemberState:
     @property
     @pulumi.getter(name="consumerProject")
     def consumer_project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "consumer_project")
 
     @consumer_project.setter
@@ -224,6 +237,9 @@ class _ConsumersIamMemberState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the service. Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -296,6 +312,7 @@ class ConsumersIamMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] consumer_project: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -310,6 +327,7 @@ class ConsumersIamMember(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
         """
         ...
     @overload
@@ -434,6 +452,7 @@ class ConsumersIamMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] consumer_project: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -449,6 +468,7 @@ class ConsumersIamMember(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -470,6 +490,9 @@ class ConsumersIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter(name="consumerProject")
     def consumer_project(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "consumer_project")
 
     @property
@@ -511,5 +534,8 @@ class ConsumersIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[builtins.str]:
+        """
+        The name of the service. Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "service_name")
 

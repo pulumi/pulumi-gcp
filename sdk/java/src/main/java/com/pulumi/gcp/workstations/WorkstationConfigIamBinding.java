@@ -166,15 +166,33 @@ public class WorkstationConfigIamBinding extends com.pulumi.resources.CustomReso
     public Output<String> role() {
         return this.role;
     }
+    /**
+     * The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="workstationClusterId", refs={String.class}, tree="[0]")
     private Output<String> workstationClusterId;
 
+    /**
+     * @return The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> workstationClusterId() {
         return this.workstationClusterId;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="workstationConfigId", refs={String.class}, tree="[0]")
     private Output<String> workstationConfigId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> workstationConfigId() {
         return this.workstationConfigId;
     }

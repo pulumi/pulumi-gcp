@@ -228,6 +228,9 @@ export class ScopeIamMember extends pulumi.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly scopeId!: pulumi.Output<string>;
 
     /**
@@ -306,6 +309,9 @@ export interface ScopeIamMemberState {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     scopeId?: pulumi.Input<string>;
 }
 
@@ -339,5 +345,8 @@ export interface ScopeIamMemberArgs {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     scopeId: pulumi.Input<string>;
 }

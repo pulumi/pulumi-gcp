@@ -306,6 +306,8 @@ type Cluster struct {
 	GatewayApiConfig ClusterGatewayApiConfigOutput `pulumi:"gatewayApiConfig"`
 	// . Structure is documented below.
 	IdentityServiceConfig ClusterIdentityServiceConfigOutput `pulumi:"identityServiceConfig"`
+	// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+	InTransitEncryptionConfig pulumi.StringPtrOutput `pulumi:"inTransitEncryptionConfig"`
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
 	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
@@ -656,6 +658,8 @@ type clusterState struct {
 	GatewayApiConfig *ClusterGatewayApiConfig `pulumi:"gatewayApiConfig"`
 	// . Structure is documented below.
 	IdentityServiceConfig *ClusterIdentityServiceConfig `pulumi:"identityServiceConfig"`
+	// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+	InTransitEncryptionConfig *string `pulumi:"inTransitEncryptionConfig"`
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
 	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
@@ -972,6 +976,8 @@ type ClusterState struct {
 	GatewayApiConfig ClusterGatewayApiConfigPtrInput
 	// . Structure is documented below.
 	IdentityServiceConfig ClusterIdentityServiceConfigPtrInput
+	// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+	InTransitEncryptionConfig pulumi.StringPtrInput
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
 	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
@@ -1288,6 +1294,8 @@ type clusterArgs struct {
 	GatewayApiConfig *ClusterGatewayApiConfig `pulumi:"gatewayApiConfig"`
 	// . Structure is documented below.
 	IdentityServiceConfig *ClusterIdentityServiceConfig `pulumi:"identityServiceConfig"`
+	// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+	InTransitEncryptionConfig *string `pulumi:"inTransitEncryptionConfig"`
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
 	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
@@ -1581,6 +1589,8 @@ type ClusterArgs struct {
 	GatewayApiConfig ClusterGatewayApiConfigPtrInput
 	// . Structure is documented below.
 	IdentityServiceConfig ClusterIdentityServiceConfigPtrInput
+	// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+	InTransitEncryptionConfig pulumi.StringPtrInput
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
 	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
@@ -2066,6 +2076,11 @@ func (o ClusterOutput) GatewayApiConfig() ClusterGatewayApiConfigOutput {
 // . Structure is documented below.
 func (o ClusterOutput) IdentityServiceConfig() ClusterIdentityServiceConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterIdentityServiceConfigOutput { return v.IdentityServiceConfig }).(ClusterIdentityServiceConfigOutput)
+}
+
+// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+func (o ClusterOutput) InTransitEncryptionConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.InTransitEncryptionConfig }).(pulumi.StringPtrOutput)
 }
 
 // The number of nodes to create in this

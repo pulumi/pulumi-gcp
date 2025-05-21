@@ -56,9 +56,17 @@ public final class GetMetastoreServiceIamPolicyArgs extends com.pulumi.resources
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="serviceId", required=true)
     private Output<String> serviceId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> serviceId() {
         return this.serviceId;
     }
@@ -141,11 +149,23 @@ public final class GetMetastoreServiceIamPolicyArgs extends com.pulumi.resources
             return project(Output.of(project));
         }
 
+        /**
+         * @param serviceId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceId(Output<String> serviceId) {
             $.serviceId = serviceId;
             return this;
         }
 
+        /**
+         * @param serviceId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceId(String serviceId) {
             return serviceId(Output.of(serviceId));
         }

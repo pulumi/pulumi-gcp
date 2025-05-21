@@ -32,6 +32,9 @@ export function getAiFeatureOnlineStoreFeatureviewIamPolicy(args: GetAiFeatureOn
  * A collection of arguments for invoking getAiFeatureOnlineStoreFeatureviewIamPolicy.
  */
 export interface GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs {
+    /**
+     * The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+     */
     featureOnlineStore: string;
     /**
      * Used to find the parent resource to bind the IAM policy to
@@ -100,6 +103,9 @@ export function getAiFeatureOnlineStoreFeatureviewIamPolicyOutput(args: GetAiFea
  * A collection of arguments for invoking getAiFeatureOnlineStoreFeatureviewIamPolicy.
  */
 export interface GetAiFeatureOnlineStoreFeatureviewIamPolicyOutputArgs {
+    /**
+     * The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+     */
     featureOnlineStore: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to

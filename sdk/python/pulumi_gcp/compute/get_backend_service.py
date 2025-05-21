@@ -28,7 +28,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, max_stream_durations=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None, tls_settings=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, external_managed_migration_state=None, external_managed_migration_testing_percentage=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, max_stream_durations=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None, tls_settings=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -71,6 +71,12 @@ class GetBackendServiceResult:
         if enable_cdn and not isinstance(enable_cdn, bool):
             raise TypeError("Expected argument 'enable_cdn' to be a bool")
         pulumi.set(__self__, "enable_cdn", enable_cdn)
+        if external_managed_migration_state and not isinstance(external_managed_migration_state, str):
+            raise TypeError("Expected argument 'external_managed_migration_state' to be a str")
+        pulumi.set(__self__, "external_managed_migration_state", external_managed_migration_state)
+        if external_managed_migration_testing_percentage and not isinstance(external_managed_migration_testing_percentage, float):
+            raise TypeError("Expected argument 'external_managed_migration_testing_percentage' to be a float")
+        pulumi.set(__self__, "external_managed_migration_testing_percentage", external_managed_migration_testing_percentage)
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
@@ -225,6 +231,16 @@ class GetBackendServiceResult:
         Whether or not Cloud CDN is enabled on the Backend Service.
         """
         return pulumi.get(self, "enable_cdn")
+
+    @property
+    @pulumi.getter(name="externalManagedMigrationState")
+    def external_managed_migration_state(self) -> builtins.str:
+        return pulumi.get(self, "external_managed_migration_state")
+
+    @property
+    @pulumi.getter(name="externalManagedMigrationTestingPercentage")
+    def external_managed_migration_testing_percentage(self) -> builtins.float:
+        return pulumi.get(self, "external_managed_migration_testing_percentage")
 
     @property
     @pulumi.getter
@@ -394,6 +410,8 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             description=self.description,
             edge_security_policy=self.edge_security_policy,
             enable_cdn=self.enable_cdn,
+            external_managed_migration_state=self.external_managed_migration_state,
+            external_managed_migration_testing_percentage=self.external_managed_migration_testing_percentage,
             fingerprint=self.fingerprint,
             generated_id=self.generated_id,
             health_checks=self.health_checks,
@@ -467,6 +485,8 @@ def get_backend_service(name: Optional[builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         edge_security_policy=pulumi.get(__ret__, 'edge_security_policy'),
         enable_cdn=pulumi.get(__ret__, 'enable_cdn'),
+        external_managed_migration_state=pulumi.get(__ret__, 'external_managed_migration_state'),
+        external_managed_migration_testing_percentage=pulumi.get(__ret__, 'external_managed_migration_testing_percentage'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         generated_id=pulumi.get(__ret__, 'generated_id'),
         health_checks=pulumi.get(__ret__, 'health_checks'),
@@ -537,6 +557,8 @@ def get_backend_service_output(name: Optional[pulumi.Input[builtins.str]] = None
         description=pulumi.get(__response__, 'description'),
         edge_security_policy=pulumi.get(__response__, 'edge_security_policy'),
         enable_cdn=pulumi.get(__response__, 'enable_cdn'),
+        external_managed_migration_state=pulumi.get(__response__, 'external_managed_migration_state'),
+        external_managed_migration_testing_percentage=pulumi.get(__response__, 'external_managed_migration_testing_percentage'),
         fingerprint=pulumi.get(__response__, 'fingerprint'),
         generated_id=pulumi.get(__response__, 'generated_id'),
         health_checks=pulumi.get(__response__, 'health_checks'),

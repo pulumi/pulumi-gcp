@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name("")
+ *             .name("network")
  *             .build());
  * 
  *         var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()

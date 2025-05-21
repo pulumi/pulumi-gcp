@@ -51,9 +51,17 @@ public final class GetSecurityGatewayIamPolicyPlainArgs extends com.pulumi.resou
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="securityGatewayId", required=true)
     private String securityGatewayId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String securityGatewayId() {
         return this.securityGatewayId;
     }
@@ -109,6 +117,12 @@ public final class GetSecurityGatewayIamPolicyPlainArgs extends com.pulumi.resou
             return this;
         }
 
+        /**
+         * @param securityGatewayId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGatewayId(String securityGatewayId) {
             $.securityGatewayId = securityGatewayId;
             return this;

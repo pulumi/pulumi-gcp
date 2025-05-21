@@ -32,6 +32,7 @@ from .job import *
 from .reservation import *
 from .reservation_assignment import *
 from .routine import *
+from .row_access_policy import *
 from .table import *
 from ._inputs import *
 from . import outputs

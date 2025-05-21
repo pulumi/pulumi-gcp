@@ -215,6 +215,11 @@ export class LakeIamBinding extends pulumi.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      */
     public readonly lake!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     public readonly location!: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -299,6 +304,11 @@ export interface LakeIamBindingState {
      * Used to find the parent resource to bind the IAM policy to
      */
     lake?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -336,6 +346,11 @@ export interface LakeIamBindingArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     lake: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.

@@ -253,6 +253,9 @@ namespace Pulumi.Gcp.BigQuery
         [Output("condition")]
         public Output<Outputs.IamBindingCondition?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
 
@@ -293,6 +296,9 @@ namespace Pulumi.Gcp.BigQuery
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("tableId")]
         public Output<string> TableId { get; private set; } = null!;
 
@@ -345,6 +351,9 @@ namespace Pulumi.Gcp.BigQuery
         [Input("condition")]
         public Input<Inputs.IamBindingConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
@@ -385,6 +394,9 @@ namespace Pulumi.Gcp.BigQuery
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("tableId", required: true)]
         public Input<string> TableId { get; set; } = null!;
 
@@ -399,6 +411,9 @@ namespace Pulumi.Gcp.BigQuery
         [Input("condition")]
         public Input<Inputs.IamBindingConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
 
@@ -445,6 +460,9 @@ namespace Pulumi.Gcp.BigQuery
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("tableId")]
         public Input<string>? TableId { get; set; }
 

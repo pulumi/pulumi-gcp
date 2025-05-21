@@ -111,6 +111,9 @@ def get_environment_iam_policy(env_id: Optional[builtins.str] = None,
 
 
     :param builtins.str env_id: Used to find the parent resource to bind the IAM policy to
+    :param builtins.str org_id: The Apigee Organization associated with the Apigee environment,
+           in the format `organizations/{{org_name}}`.
+           Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['envId'] = env_id
@@ -142,6 +145,9 @@ def get_environment_iam_policy_output(env_id: Optional[pulumi.Input[builtins.str
 
 
     :param builtins.str env_id: Used to find the parent resource to bind the IAM policy to
+    :param builtins.str org_id: The Apigee Organization associated with the Apigee environment,
+           in the format `organizations/{{org_name}}`.
+           Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['envId'] = env_id

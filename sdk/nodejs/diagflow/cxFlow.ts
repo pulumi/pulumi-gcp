@@ -271,6 +271,7 @@ import * as utilities from "../utilities";
  *                         },
  *                     ]),
  *                 }],
+ *                 enableGenerativeFallback: true,
  *             },
  *         },
  *     ],

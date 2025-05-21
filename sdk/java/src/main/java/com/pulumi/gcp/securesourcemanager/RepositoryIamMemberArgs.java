@@ -98,7 +98,6 @@ public final class RepositoryIamMemberArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The ID for the Repository.
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
@@ -106,8 +105,7 @@ public final class RepositoryIamMemberArgs extends com.pulumi.resources.Resource
     private Output<String> repositoryId;
 
     /**
-     * @return The ID for the Repository.
-     * Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> repositoryId() {
@@ -263,8 +261,7 @@ public final class RepositoryIamMemberArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param repositoryId The ID for the Repository.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param repositoryId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -275,8 +272,7 @@ public final class RepositoryIamMemberArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param repositoryId The ID for the Repository.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param repositoryId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

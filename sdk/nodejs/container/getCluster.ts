@@ -98,6 +98,7 @@ export interface GetClusterResult {
      */
     readonly id: string;
     readonly identityServiceConfigs: outputs.container.GetClusterIdentityServiceConfig[];
+    readonly inTransitEncryptionConfig: string;
     readonly initialNodeCount: number;
     readonly ipAllocationPolicies: outputs.container.GetClusterIpAllocationPolicy[];
     readonly labelFingerprint: string;

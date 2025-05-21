@@ -17,13 +17,16 @@ import com.pulumi.gcp.beyondcorp.inputs.GetAppGatewayArgs;
 import com.pulumi.gcp.beyondcorp.inputs.GetAppGatewayPlainArgs;
 import com.pulumi.gcp.beyondcorp.inputs.GetApplicationIamPolicyArgs;
 import com.pulumi.gcp.beyondcorp.inputs.GetApplicationIamPolicyPlainArgs;
+import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
 import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayIamPolicyArgs;
 import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayIamPolicyPlainArgs;
+import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayPlainArgs;
 import com.pulumi.gcp.beyondcorp.outputs.GetAppConnectionResult;
 import com.pulumi.gcp.beyondcorp.outputs.GetAppConnectorResult;
 import com.pulumi.gcp.beyondcorp.outputs.GetAppGatewayResult;
 import com.pulumi.gcp.beyondcorp.outputs.GetApplicationIamPolicyResult;
 import com.pulumi.gcp.beyondcorp.outputs.GetSecurityGatewayIamPolicyResult;
+import com.pulumi.gcp.beyondcorp.outputs.GetSecurityGatewayResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class BeyondcorpFunctions {
@@ -876,6 +879,216 @@ public final class BeyondcorpFunctions {
      */
     public static CompletableFuture<GetApplicationIamPolicyResult> getApplicationIamPolicyPlain(GetApplicationIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:beyondcorp/getApplicationIamPolicy:getApplicationIamPolicy", TypeShape.of(GetApplicationIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google BeyondCorp Security Gateway.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-beyondcorp-security-gateway = BeyondcorpFunctions.getSecurityGateway(GetSecurityGatewayArgs.builder()
+     *             .securityGatewayId("my-beyondcorp-security-gateway")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSecurityGatewayResult> getSecurityGateway(GetSecurityGatewayArgs args) {
+        return getSecurityGateway(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google BeyondCorp Security Gateway.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-beyondcorp-security-gateway = BeyondcorpFunctions.getSecurityGateway(GetSecurityGatewayArgs.builder()
+     *             .securityGatewayId("my-beyondcorp-security-gateway")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSecurityGatewayResult> getSecurityGatewayPlain(GetSecurityGatewayPlainArgs args) {
+        return getSecurityGatewayPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google BeyondCorp Security Gateway.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-beyondcorp-security-gateway = BeyondcorpFunctions.getSecurityGateway(GetSecurityGatewayArgs.builder()
+     *             .securityGatewayId("my-beyondcorp-security-gateway")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSecurityGatewayResult> getSecurityGateway(GetSecurityGatewayArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:beyondcorp/getSecurityGateway:getSecurityGateway", TypeShape.of(GetSecurityGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google BeyondCorp Security Gateway.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-beyondcorp-security-gateway = BeyondcorpFunctions.getSecurityGateway(GetSecurityGatewayArgs.builder()
+     *             .securityGatewayId("my-beyondcorp-security-gateway")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSecurityGatewayResult> getSecurityGateway(GetSecurityGatewayArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:beyondcorp/getSecurityGateway:getSecurityGateway", TypeShape.of(GetSecurityGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google BeyondCorp Security Gateway.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-beyondcorp-security-gateway = BeyondcorpFunctions.getSecurityGateway(GetSecurityGatewayArgs.builder()
+     *             .securityGatewayId("my-beyondcorp-security-gateway")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSecurityGatewayResult> getSecurityGatewayPlain(GetSecurityGatewayPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:beyondcorp/getSecurityGateway:getSecurityGateway", TypeShape.of(GetSecurityGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for securitygateway

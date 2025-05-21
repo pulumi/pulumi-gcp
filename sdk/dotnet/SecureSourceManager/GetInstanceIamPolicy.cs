@@ -97,7 +97,6 @@ namespace Pulumi.Gcp.SecureSourceManager
     public sealed class GetInstanceIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name for the Instance.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("instanceId", required: true)]
@@ -128,7 +127,6 @@ namespace Pulumi.Gcp.SecureSourceManager
     public sealed class GetInstanceIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name for the Instance.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("instanceId", required: true)]

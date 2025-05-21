@@ -377,7 +377,7 @@ import javax.annotation.Nullable;
  *             .name("dataform-repository")
  *             .displayName("dataform_repository")
  *             .npmrcEnvironmentVariablesSecretVersion(secretVersion.id())
- *             .kmsKeyName("")
+ *             .kmsKeyName("my-key")
  *             .labels(Map.of("label_foo1", "label-bar1"))
  *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
  *                 .url("https://github.com/OWNER/REPOSITORY.git")

@@ -19,6 +19,8 @@ import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyPlainArgs;
 import com.pulumi.gcp.dataplex.inputs.GetEntryTypeIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetEntryTypeIamPolicyPlainArgs;
+import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
+import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyPlainArgs;
 import com.pulumi.gcp.dataplex.inputs.GetLakeIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetLakeIamPolicyPlainArgs;
 import com.pulumi.gcp.dataplex.inputs.GetTaskIamPolicyArgs;
@@ -30,6 +32,7 @@ import com.pulumi.gcp.dataplex.outputs.GetAssetIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetDatascanIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetEntryGroupIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetEntryTypeIamPolicyResult;
+import com.pulumi.gcp.dataplex.outputs.GetGlossaryIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetLakeIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetTaskIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetZoneIamPolicyResult;
@@ -1145,6 +1148,226 @@ public final class DataplexFunctions {
      */
     public static CompletableFuture<GetEntryTypeIamPolicyResult> getEntryTypeIamPolicyPlain(GetEntryTypeIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy", TypeShape.of(GetEntryTypeIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for glossary
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getGlossaryIamPolicy(GetGlossaryIamPolicyArgs.builder()
+     *             .project(glossaryTestId.project())
+     *             .location(glossaryTestId.location())
+     *             .glossaryId(glossaryTestId.glossaryId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGlossaryIamPolicyResult> getGlossaryIamPolicy(GetGlossaryIamPolicyArgs args) {
+        return getGlossaryIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for glossary
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getGlossaryIamPolicy(GetGlossaryIamPolicyArgs.builder()
+     *             .project(glossaryTestId.project())
+     *             .location(glossaryTestId.location())
+     *             .glossaryId(glossaryTestId.glossaryId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGlossaryIamPolicyResult> getGlossaryIamPolicyPlain(GetGlossaryIamPolicyPlainArgs args) {
+        return getGlossaryIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for glossary
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getGlossaryIamPolicy(GetGlossaryIamPolicyArgs.builder()
+     *             .project(glossaryTestId.project())
+     *             .location(glossaryTestId.location())
+     *             .glossaryId(glossaryTestId.glossaryId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGlossaryIamPolicyResult> getGlossaryIamPolicy(GetGlossaryIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataplex/getGlossaryIamPolicy:getGlossaryIamPolicy", TypeShape.of(GetGlossaryIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for glossary
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getGlossaryIamPolicy(GetGlossaryIamPolicyArgs.builder()
+     *             .project(glossaryTestId.project())
+     *             .location(glossaryTestId.location())
+     *             .glossaryId(glossaryTestId.glossaryId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGlossaryIamPolicyResult> getGlossaryIamPolicy(GetGlossaryIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataplex/getGlossaryIamPolicy:getGlossaryIamPolicy", TypeShape.of(GetGlossaryIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for glossary
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataplexFunctions.getGlossaryIamPolicy(GetGlossaryIamPolicyArgs.builder()
+     *             .project(glossaryTestId.project())
+     *             .location(glossaryTestId.location())
+     *             .glossaryId(glossaryTestId.glossaryId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGlossaryIamPolicyResult> getGlossaryIamPolicyPlain(GetGlossaryIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:dataplex/getGlossaryIamPolicy:getGlossaryIamPolicy", TypeShape.of(GetGlossaryIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for lake

@@ -162,6 +162,8 @@ type NetworkEndpointGroup struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The uniquely generated identifier for the resource. This identifier is defined by the server.
+	GeneratedId pulumi.IntOutput `pulumi:"generatedId"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -238,6 +240,8 @@ type networkEndpointGroupState struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
+	// The uniquely generated identifier for the resource. This identifier is defined by the server.
+	GeneratedId *int `pulumi:"generatedId"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -282,6 +286,8 @@ type NetworkEndpointGroupState struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
+	// The uniquely generated identifier for the resource. This identifier is defined by the server.
+	GeneratedId pulumi.IntPtrInput
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -501,6 +507,11 @@ func (o NetworkEndpointGroupOutput) DefaultPort() pulumi.IntPtrOutput {
 // you create the resource.
 func (o NetworkEndpointGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The uniquely generated identifier for the resource. This identifier is defined by the server.
+func (o NetworkEndpointGroupOutput) GeneratedId() pulumi.IntOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.IntOutput { return v.GeneratedId }).(pulumi.IntOutput)
 }
 
 // Name of the resource; provided by the client when the resource is

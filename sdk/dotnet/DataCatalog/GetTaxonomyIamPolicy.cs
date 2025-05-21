@@ -97,6 +97,12 @@ namespace Pulumi.Gcp.DataCatalog
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// Taxonomy location region.
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        /// region is specified, it is taken from the provider configuration.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
@@ -121,6 +127,12 @@ namespace Pulumi.Gcp.DataCatalog
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Taxonomy location region.
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        /// region is specified, it is taken from the provider configuration.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

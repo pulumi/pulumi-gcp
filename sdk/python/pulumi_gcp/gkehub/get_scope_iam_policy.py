@@ -112,6 +112,7 @@ def get_scope_iam_policy(project: Optional[builtins.str] = None,
 
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+    :param builtins.str scope_id: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['project'] = project
@@ -144,6 +145,7 @@ def get_scope_iam_policy_output(project: Optional[pulumi.Input[Optional[builtins
 
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+    :param builtins.str scope_id: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['project'] = project

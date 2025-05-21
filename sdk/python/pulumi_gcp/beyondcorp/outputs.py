@@ -37,6 +37,8 @@ __all__ = [
     'GetAppConnectorPrincipalInfoResult',
     'GetAppConnectorPrincipalInfoServiceAccountResult',
     'GetAppGatewayAllocatedConnectionResult',
+    'GetSecurityGatewayHubResult',
+    'GetSecurityGatewayHubInternetGatewayResult',
 ]
 
 @pulumi.output_type
@@ -768,5 +770,48 @@ class GetAppGatewayAllocatedConnectionResult(dict):
         The PSC uri of an allocated connection.
         """
         return pulumi.get(self, "psc_uri")
+
+
+@pulumi.output_type
+class GetSecurityGatewayHubResult(dict):
+    def __init__(__self__, *,
+                 internet_gateways: Sequence['outputs.GetSecurityGatewayHubInternetGatewayResult'],
+                 region: builtins.str):
+        """
+        :param Sequence['GetSecurityGatewayHubInternetGatewayArgs'] internet_gateways: Internet Gateway configuration.
+        """
+        pulumi.set(__self__, "internet_gateways", internet_gateways)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="internetGateways")
+    def internet_gateways(self) -> Sequence['outputs.GetSecurityGatewayHubInternetGatewayResult']:
+        """
+        Internet Gateway configuration.
+        """
+        return pulumi.get(self, "internet_gateways")
+
+    @property
+    @pulumi.getter
+    def region(self) -> builtins.str:
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetSecurityGatewayHubInternetGatewayResult(dict):
+    def __init__(__self__, *,
+                 assigned_ips: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] assigned_ips: Output only. List of IP addresses assigned to the Cloud NAT.
+        """
+        pulumi.set(__self__, "assigned_ips", assigned_ips)
+
+    @property
+    @pulumi.getter(name="assignedIps")
+    def assigned_ips(self) -> Sequence[builtins.str]:
+        """
+        Output only. List of IP addresses assigned to the Cloud NAT.
+        """
+        return pulumi.get(self, "assigned_ips")
 
 

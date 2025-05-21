@@ -303,7 +303,11 @@ type EntryGroupIamMember struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	Region  pulumi.StringOutput `pulumi:"region"`
+	// EntryGroup location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `datacatalog.EntryGroupIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -369,7 +373,11 @@ type entryGroupIamMemberState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// EntryGroup location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `datacatalog.EntryGroupIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -397,7 +405,11 @@ type EntryGroupIamMemberState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// EntryGroup location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `datacatalog.EntryGroupIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -427,7 +439,11 @@ type entryGroupIamMemberArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// EntryGroup location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `datacatalog.EntryGroupIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -454,7 +470,11 @@ type EntryGroupIamMemberArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// EntryGroup location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `datacatalog.EntryGroupIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -583,6 +603,10 @@ func (o EntryGroupIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryGroupIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// EntryGroup location region.
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+// region is specified, it is taken from the provider configuration.
 func (o EntryGroupIamMemberOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryGroupIamMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

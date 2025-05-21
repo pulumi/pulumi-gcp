@@ -547,7 +547,10 @@ type TunnelInstanceIAMPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	Zone    pulumi.StringOutput `pulumi:"zone"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+	// zone is specified, it is taken from the provider configuration.
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewTunnelInstanceIAMPolicy registers a new resource with the given unique name, arguments, and options.
@@ -596,7 +599,10 @@ type tunnelInstanceIAMPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	Zone    *string `pulumi:"zone"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+	// zone is specified, it is taken from the provider configuration.
+	Zone *string `pulumi:"zone"`
 }
 
 type TunnelInstanceIAMPolicyState struct {
@@ -610,7 +616,10 @@ type TunnelInstanceIAMPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	Zone    pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+	// zone is specified, it is taken from the provider configuration.
+	Zone pulumi.StringPtrInput
 }
 
 func (TunnelInstanceIAMPolicyState) ElementType() reflect.Type {
@@ -626,7 +635,10 @@ type tunnelInstanceIAMPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	Zone    *string `pulumi:"zone"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+	// zone is specified, it is taken from the provider configuration.
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a TunnelInstanceIAMPolicy resource.
@@ -639,7 +651,10 @@ type TunnelInstanceIAMPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	Zone    pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+	// zone is specified, it is taken from the provider configuration.
+	Zone pulumi.StringPtrInput
 }
 
 func (TunnelInstanceIAMPolicyArgs) ElementType() reflect.Type {
@@ -751,6 +766,9 @@ func (o TunnelInstanceIAMPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelInstanceIAMPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+// zone is specified, it is taken from the provider configuration.
 func (o TunnelInstanceIAMPolicyOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelInstanceIAMPolicy) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

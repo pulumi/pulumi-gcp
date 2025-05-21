@@ -86,7 +86,9 @@ type LookupBackendServiceResult struct {
 	Description        string `pulumi:"description"`
 	EdgeSecurityPolicy string `pulumi:"edgeSecurityPolicy"`
 	// Whether or not Cloud CDN is enabled on the Backend Service.
-	EnableCdn bool `pulumi:"enableCdn"`
+	EnableCdn                                 bool    `pulumi:"enableCdn"`
+	ExternalManagedMigrationState             string  `pulumi:"externalManagedMigrationState"`
+	ExternalManagedMigrationTestingPercentage float64 `pulumi:"externalManagedMigrationTestingPercentage"`
 	// The fingerprint of the Backend Service.
 	Fingerprint string `pulumi:"fingerprint"`
 	// The unique identifier for the resource. This identifier is defined by the server.
@@ -218,6 +220,14 @@ func (o LookupBackendServiceResultOutput) EdgeSecurityPolicy() pulumi.StringOutp
 // Whether or not Cloud CDN is enabled on the Backend Service.
 func (o LookupBackendServiceResultOutput) EnableCdn() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) bool { return v.EnableCdn }).(pulumi.BoolOutput)
+}
+
+func (o LookupBackendServiceResultOutput) ExternalManagedMigrationState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.ExternalManagedMigrationState }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) ExternalManagedMigrationTestingPercentage() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupBackendServiceResult) float64 { return v.ExternalManagedMigrationTestingPercentage }).(pulumi.Float64Output)
 }
 
 // The fingerprint of the Backend Service.

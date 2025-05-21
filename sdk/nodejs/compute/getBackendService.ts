@@ -80,6 +80,8 @@ export interface GetBackendServiceResult {
      * Whether or not Cloud CDN is enabled on the Backend Service.
      */
     readonly enableCdn: boolean;
+    readonly externalManagedMigrationState: string;
+    readonly externalManagedMigrationTestingPercentage: number;
     /**
      * The fingerprint of the Backend Service.
      */

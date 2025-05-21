@@ -29,6 +29,9 @@ export function getApiIamPolicy(args: GetApiIamPolicyArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getApiIamPolicy.
  */
 export interface GetApiIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     api: string;
     /**
      * The ID of the project in which the resource belongs.
@@ -82,6 +85,9 @@ export function getApiIamPolicyOutput(args: GetApiIamPolicyOutputArgs, opts?: pu
  * A collection of arguments for invoking getApiIamPolicy.
  */
 export interface GetApiIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     api: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

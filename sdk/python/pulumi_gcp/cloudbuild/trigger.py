@@ -1315,7 +1315,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         manual_ghe_trigger = gcp.cloudbuild.Trigger("manual-ghe-trigger",
-            name="",
+            name="my-trigger",
             source_to_build={
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "ref": "refs/heads/main",
@@ -2029,7 +2029,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         manual_ghe_trigger = gcp.cloudbuild.Trigger("manual-ghe-trigger",
-            name="",
+            name="my-trigger",
             source_to_build={
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "ref": "refs/heads/main",

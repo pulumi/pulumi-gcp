@@ -17,7 +17,6 @@ public final class GetConnectionIamPolicyArgs extends com.pulumi.resources.Invok
     public static final GetConnectionIamPolicyArgs Empty = new GetConnectionIamPolicyArgs();
 
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
@@ -25,8 +24,7 @@ public final class GetConnectionIamPolicyArgs extends com.pulumi.resources.Invok
     private Output<String> connectionId;
 
     /**
-     * @return Optional connection id that should be assigned to the created connection.
-     * Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> connectionId() {
@@ -108,8 +106,7 @@ public final class GetConnectionIamPolicyArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param connectionId Optional connection id that should be assigned to the created connection.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param connectionId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -120,8 +117,7 @@ public final class GetConnectionIamPolicyArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param connectionId Optional connection id that should be assigned to the created connection.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param connectionId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

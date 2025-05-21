@@ -308,7 +308,6 @@ type RepositoryIamPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The ID for the Repository.
 	// Used to find the parent resource to bind the IAM policy to
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
 }
@@ -362,7 +361,6 @@ type repositoryIamPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The ID for the Repository.
 	// Used to find the parent resource to bind the IAM policy to
 	RepositoryId *string `pulumi:"repositoryId"`
 }
@@ -381,7 +379,6 @@ type RepositoryIamPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The ID for the Repository.
 	// Used to find the parent resource to bind the IAM policy to
 	RepositoryId pulumi.StringPtrInput
 }
@@ -402,7 +399,6 @@ type repositoryIamPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The ID for the Repository.
 	// Used to find the parent resource to bind the IAM policy to
 	RepositoryId string `pulumi:"repositoryId"`
 }
@@ -420,7 +416,6 @@ type RepositoryIamPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The ID for the Repository.
 	// Used to find the parent resource to bind the IAM policy to
 	RepositoryId pulumi.StringInput
 }
@@ -537,7 +532,6 @@ func (o RepositoryIamPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The ID for the Repository.
 // Used to find the parent resource to bind the IAM policy to
 func (o RepositoryIamPolicyOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryIamPolicy) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)

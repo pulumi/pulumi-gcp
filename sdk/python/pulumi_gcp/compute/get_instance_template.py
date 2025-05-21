@@ -28,7 +28,7 @@ class GetInstanceTemplateResult:
     """
     A collection of values returned by getInstanceTemplate.
     """
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, creation_timestamp=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, key_revocation_action_type=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, partner_metadata=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_manager_tags=None, resource_policies=None, schedulings=None, self_link=None, self_link_unique=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, creation_timestamp=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, key_revocation_action_type=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, numeric_id=None, partner_metadata=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_manager_tags=None, resource_policies=None, schedulings=None, self_link=None, self_link_unique=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -101,6 +101,9 @@ class GetInstanceTemplateResult:
         if network_performance_configs and not isinstance(network_performance_configs, list):
             raise TypeError("Expected argument 'network_performance_configs' to be a list")
         pulumi.set(__self__, "network_performance_configs", network_performance_configs)
+        if numeric_id and not isinstance(numeric_id, str):
+            raise TypeError("Expected argument 'numeric_id' to be a str")
+        pulumi.set(__self__, "numeric_id", numeric_id)
         if partner_metadata and not isinstance(partner_metadata, dict):
             raise TypeError("Expected argument 'partner_metadata' to be a dict")
         pulumi.set(__self__, "partner_metadata", partner_metadata)
@@ -339,6 +342,11 @@ class GetInstanceTemplateResult:
         return pulumi.get(self, "network_performance_configs")
 
     @property
+    @pulumi.getter(name="numericId")
+    def numeric_id(self) -> builtins.str:
+        return pulumi.get(self, "numeric_id")
+
+    @property
     @pulumi.getter(name="partnerMetadata")
     def partner_metadata(self) -> Mapping[str, builtins.str]:
         return pulumi.get(self, "partner_metadata")
@@ -478,6 +486,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
             name_prefix=self.name_prefix,
             network_interfaces=self.network_interfaces,
             network_performance_configs=self.network_performance_configs,
+            numeric_id=self.numeric_id,
             partner_metadata=self.partner_metadata,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
@@ -553,6 +562,7 @@ def get_instance_template(filter: Optional[builtins.str] = None,
         name_prefix=pulumi.get(__ret__, 'name_prefix'),
         network_interfaces=pulumi.get(__ret__, 'network_interfaces'),
         network_performance_configs=pulumi.get(__ret__, 'network_performance_configs'),
+        numeric_id=pulumi.get(__ret__, 'numeric_id'),
         partner_metadata=pulumi.get(__ret__, 'partner_metadata'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
@@ -625,6 +635,7 @@ def get_instance_template_output(filter: Optional[pulumi.Input[Optional[builtins
         name_prefix=pulumi.get(__response__, 'name_prefix'),
         network_interfaces=pulumi.get(__response__, 'network_interfaces'),
         network_performance_configs=pulumi.get(__response__, 'network_performance_configs'),
+        numeric_id=pulumi.get(__response__, 'numeric_id'),
         partner_metadata=pulumi.get(__response__, 'partner_metadata'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),

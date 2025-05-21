@@ -452,6 +452,9 @@ namespace Pulumi.Gcp.Beyondcorp
     [GcpResourceType("gcp:beyondcorp/applicationIamPolicy:ApplicationIamPolicy")]
     public partial class ApplicationIamPolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
@@ -475,6 +478,9 @@ namespace Pulumi.Gcp.Beyondcorp
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("securityGatewaysId")]
         public Output<string> SecurityGatewaysId { get; private set; } = null!;
 
@@ -524,6 +530,9 @@ namespace Pulumi.Gcp.Beyondcorp
 
     public sealed class ApplicationIamPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
 
@@ -541,6 +550,9 @@ namespace Pulumi.Gcp.Beyondcorp
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("securityGatewaysId", required: true)]
         public Input<string> SecurityGatewaysId { get; set; } = null!;
 
@@ -552,6 +564,9 @@ namespace Pulumi.Gcp.Beyondcorp
 
     public sealed class ApplicationIamPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
@@ -575,6 +590,9 @@ namespace Pulumi.Gcp.Beyondcorp
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("securityGatewaysId")]
         public Input<string>? SecurityGatewaysId { get; set; }
 

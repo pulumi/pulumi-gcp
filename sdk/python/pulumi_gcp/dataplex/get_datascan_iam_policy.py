@@ -121,6 +121,7 @@ def get_datascan_iam_policy(data_scan_id: Optional[builtins.str] = None,
     ```
 
 
+    :param builtins.str data_scan_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The location where the data scan should reside.
            Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -161,6 +162,7 @@ def get_datascan_iam_policy_output(data_scan_id: Optional[pulumi.Input[builtins.
     ```
 
 
+    :param builtins.str data_scan_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The location where the data scan should reside.
            Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

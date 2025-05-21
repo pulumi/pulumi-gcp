@@ -71,6 +71,7 @@ export interface GetNetworkEndpointGroupResult {
      * The NEG description.
      */
     readonly description: string;
+    readonly generatedId: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

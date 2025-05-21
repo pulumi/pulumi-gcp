@@ -117,16 +117,34 @@ public final class WorkstationConfigIamBindingArgs extends com.pulumi.resources.
         return this.role;
     }
 
+    /**
+     * The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="workstationClusterId", required=true)
     private Output<String> workstationClusterId;
 
+    /**
+     * @return The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> workstationClusterId() {
         return this.workstationClusterId;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="workstationConfigId", required=true)
     private Output<String> workstationConfigId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> workstationConfigId() {
         return this.workstationConfigId;
     }
@@ -306,20 +324,46 @@ public final class WorkstationConfigIamBindingArgs extends com.pulumi.resources.
             return role(Output.of(role));
         }
 
+        /**
+         * @param workstationClusterId The ID of the parent workstation cluster.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder workstationClusterId(Output<String> workstationClusterId) {
             $.workstationClusterId = workstationClusterId;
             return this;
         }
 
+        /**
+         * @param workstationClusterId The ID of the parent workstation cluster.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder workstationClusterId(String workstationClusterId) {
             return workstationClusterId(Output.of(workstationClusterId));
         }
 
+        /**
+         * @param workstationConfigId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder workstationConfigId(Output<String> workstationConfigId) {
             $.workstationConfigId = workstationConfigId;
             return this;
         }
 
+        /**
+         * @param workstationConfigId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder workstationConfigId(String workstationConfigId) {
             return workstationConfigId(Output.of(workstationConfigId));
         }

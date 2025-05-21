@@ -308,7 +308,8 @@ type MetastoreServiceIamPolicy struct {
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project   pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 }
 
@@ -361,7 +362,8 @@ type metastoreServiceIamPolicyState struct {
 	PolicyData *string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project   *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId *string `pulumi:"serviceId"`
 }
 
@@ -379,7 +381,8 @@ type MetastoreServiceIamPolicyState struct {
 	PolicyData pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project   pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId pulumi.StringPtrInput
 }
 
@@ -399,8 +402,9 @@ type metastoreServiceIamPolicyArgs struct {
 	PolicyData string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project   *string `pulumi:"project"`
-	ServiceId string  `pulumi:"serviceId"`
+	Project *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
+	ServiceId string `pulumi:"serviceId"`
 }
 
 // The set of arguments for constructing a MetastoreServiceIamPolicy resource.
@@ -416,7 +420,8 @@ type MetastoreServiceIamPolicyArgs struct {
 	PolicyData pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project   pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId pulumi.StringInput
 }
 
@@ -533,6 +538,7 @@ func (o MetastoreServiceIamPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreServiceIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o MetastoreServiceIamPolicyOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreServiceIamPolicy) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

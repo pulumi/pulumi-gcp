@@ -33,6 +33,11 @@ export function getDeliveryPipelineIamPolicy(args: GetDeliveryPipelineIamPolicyA
  * A collection of arguments for invoking getDeliveryPipelineIamPolicy.
  */
 export interface GetDeliveryPipelineIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: string;
     /**
      * Used to find the parent resource to bind the IAM policy to
@@ -95,6 +100,11 @@ export function getDeliveryPipelineIamPolicyOutput(args: GetDeliveryPipelineIamP
  * A collection of arguments for invoking getDeliveryPipelineIamPolicy.
  */
 export interface GetDeliveryPipelineIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     */
     location?: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to

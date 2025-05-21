@@ -16,7 +16,6 @@ public final class ConnectionIamPolicyState extends com.pulumi.resources.Resourc
     public static final ConnectionIamPolicyState Empty = new ConnectionIamPolicyState();
 
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
@@ -24,8 +23,7 @@ public final class ConnectionIamPolicyState extends com.pulumi.resources.Resourc
     private @Nullable Output<String> connectionId;
 
     /**
-     * @return Optional connection id that should be assigned to the created connection.
-     * Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Optional<Output<String>> connectionId() {
@@ -141,8 +139,7 @@ public final class ConnectionIamPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionId Optional connection id that should be assigned to the created connection.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param connectionId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -153,8 +150,7 @@ public final class ConnectionIamPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionId Optional connection id that should be assigned to the created connection.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param connectionId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

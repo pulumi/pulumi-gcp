@@ -759,7 +759,7 @@ class DataTransferConfig(pulumi.CustomResource):
             name="example-key",
             key_ring=key_ring.id)
         query_config_cmek = gcp.bigquery.DataTransferConfig("query_config_cmek",
-            display_name="",
+            display_name="display-name",
             location="asia-northeast1",
             data_source_id="scheduled_query",
             schedule="first sunday of quarter 00:00",
@@ -960,7 +960,7 @@ class DataTransferConfig(pulumi.CustomResource):
             name="example-key",
             key_ring=key_ring.id)
         query_config_cmek = gcp.bigquery.DataTransferConfig("query_config_cmek",
-            display_name="",
+            display_name="display-name",
             location="asia-northeast1",
             data_source_id="scheduled_query",
             schedule="first sunday of quarter 00:00",

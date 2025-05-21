@@ -41,6 +41,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppHostingBackend{}
 	case "gcp:firebase/appHostingBuild:AppHostingBuild":
 		r = &AppHostingBuild{}
+	case "gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain":
+		r = &AppHostingDefaultDomain{}
+	case "gcp:firebase/appHostingDomain:AppHostingDomain":
+		r = &AppHostingDomain{}
+	case "gcp:firebase/appHostingTraffic:AppHostingTraffic":
+		r = &AppHostingTraffic{}
 	case "gcp:firebase/appleApp:AppleApp":
 		r = &AppleApp{}
 	case "gcp:firebase/dataConnectService:DataConnectService":
@@ -126,6 +132,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firebase/appHostingBuild",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/appHostingDefaultDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/appHostingDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/appHostingTraffic",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

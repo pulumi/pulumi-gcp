@@ -34,7 +34,7 @@ export function getDataExchangeIamPolicy(args: GetDataExchangeIamPolicyArgs, opt
  */
 export interface GetDataExchangeIamPolicyArgs {
     /**
-     * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     dataExchangeId: string;
     /**
@@ -102,7 +102,7 @@ export function getDataExchangeIamPolicyOutput(args: GetDataExchangeIamPolicyOut
  */
 export interface GetDataExchangeIamPolicyOutputArgs {
     /**
-     * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     dataExchangeId: pulumi.Input<string>;
     /**

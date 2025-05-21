@@ -336,6 +336,9 @@ export class ApplicationIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApplicationIamBinding.__pulumiType;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly applicationId!: pulumi.Output<string>;
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -371,6 +374,9 @@ export class ApplicationIamBinding extends pulumi.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     */
     public readonly securityGatewaysId!: pulumi.Output<string>;
 
     /**
@@ -424,6 +430,9 @@ export class ApplicationIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApplicationIamBinding resources.
  */
 export interface ApplicationIamBindingState {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     applicationId?: pulumi.Input<string>;
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -459,6 +468,9 @@ export interface ApplicationIamBindingState {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
+    /**
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     */
     securityGatewaysId?: pulumi.Input<string>;
 }
 
@@ -466,6 +478,9 @@ export interface ApplicationIamBindingState {
  * The set of arguments for constructing a ApplicationIamBinding resource.
  */
 export interface ApplicationIamBindingArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     applicationId: pulumi.Input<string>;
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -497,5 +512,8 @@ export interface ApplicationIamBindingArgs {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;
+    /**
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     */
     securityGatewaysId: pulumi.Input<string>;
 }

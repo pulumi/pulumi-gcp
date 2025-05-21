@@ -322,7 +322,8 @@ type MetastoreServiceIamBinding struct {
 	// The role that should be applied. Only one
 	// `dataproc.MetastoreServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role      pulumi.StringOutput `pulumi:"role"`
+	Role pulumi.StringOutput `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 }
 
@@ -392,7 +393,8 @@ type metastoreServiceIamBindingState struct {
 	// The role that should be applied. Only one
 	// `dataproc.MetastoreServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role      *string `pulumi:"role"`
+	Role *string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId *string `pulumi:"serviceId"`
 }
 
@@ -424,7 +426,8 @@ type MetastoreServiceIamBindingState struct {
 	// The role that should be applied. Only one
 	// `dataproc.MetastoreServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role      pulumi.StringPtrInput
+	Role pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId pulumi.StringPtrInput
 }
 
@@ -458,7 +461,8 @@ type metastoreServiceIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `dataproc.MetastoreServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role      string `pulumi:"role"`
+	Role string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId string `pulumi:"serviceId"`
 }
 
@@ -489,7 +493,8 @@ type MetastoreServiceIamBindingArgs struct {
 	// The role that should be applied. Only one
 	// `dataproc.MetastoreServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role      pulumi.StringInput
+	Role pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
 	ServiceId pulumi.StringInput
 }
 
@@ -626,6 +631,7 @@ func (o MetastoreServiceIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreServiceIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o MetastoreServiceIamBindingOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreServiceIamBinding) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

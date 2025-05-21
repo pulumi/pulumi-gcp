@@ -349,7 +349,7 @@ export class AppEngineVersionIamMember extends pulumi.CustomResource {
     }
 
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     public readonly appId!: pulumi.Output<string>;
     /**
@@ -391,7 +391,7 @@ export class AppEngineVersionIamMember extends pulumi.CustomResource {
      */
     public readonly service!: pulumi.Output<string>;
     /**
-     * Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     public readonly versionId!: pulumi.Output<string>;
 
@@ -452,7 +452,7 @@ export class AppEngineVersionIamMember extends pulumi.CustomResource {
  */
 export interface AppEngineVersionIamMemberState {
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     appId?: pulumi.Input<string>;
     /**
@@ -494,7 +494,7 @@ export interface AppEngineVersionIamMemberState {
      */
     service?: pulumi.Input<string>;
     /**
-     * Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     versionId?: pulumi.Input<string>;
 }
@@ -504,7 +504,7 @@ export interface AppEngineVersionIamMemberState {
  */
 export interface AppEngineVersionIamMemberArgs {
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     appId: pulumi.Input<string>;
     /**
@@ -542,7 +542,7 @@ export interface AppEngineVersionIamMemberArgs {
      */
     service: pulumi.Input<string>;
     /**
-     * Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     versionId: pulumi.Input<string>;
 }

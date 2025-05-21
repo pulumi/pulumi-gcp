@@ -31,6 +31,9 @@ export function getGatewayIamPolicy(args: GetGatewayIamPolicyArgs, opts?: pulumi
  * A collection of arguments for invoking getGatewayIamPolicy.
  */
 export interface GetGatewayIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     gateway: string;
     /**
      * The ID of the project in which the resource belongs.
@@ -94,6 +97,9 @@ export function getGatewayIamPolicyOutput(args: GetGatewayIamPolicyOutputArgs, o
  * A collection of arguments for invoking getGatewayIamPolicy.
  */
 export interface GetGatewayIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     gateway: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

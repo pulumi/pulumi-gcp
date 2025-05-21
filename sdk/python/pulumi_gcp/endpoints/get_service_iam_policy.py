@@ -97,6 +97,9 @@ def get_service_iam_policy(service_name: Optional[builtins.str] = None,
 
     policy = gcp.endpoints.get_service_iam_policy(service_name=endpoints_service["serviceName"])
     ```
+
+
+    :param builtins.str service_name: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -121,6 +124,9 @@ def get_service_iam_policy_output(service_name: Optional[pulumi.Input[builtins.s
 
     policy = gcp.endpoints.get_service_iam_policy(service_name=endpoints_service["serviceName"])
     ```
+
+
+    :param builtins.str service_name: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

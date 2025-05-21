@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *         var basic = new BackupChannel("basic", BackupChannelArgs.builder()
  *             .name("basic-channel")
  *             .location("us-central1")
- *             .description("")
+ *             .description("Description")
  *             .destinationProject("projects/24240755850")
  *             .labels(Map.of("key", "some-value"))
  *             .build());
@@ -113,7 +113,7 @@ public class BackupChannel extends com.pulumi.resources.CustomResource {
     /**
      * The project where Backups are allowed to be stored.
      * The format is `projects/{project}`.
-     * {project} can only be a project number.
+     * {project} can be project number or project id.
      * 
      */
     @Export(name="destinationProject", refs={String.class}, tree="[0]")
@@ -122,7 +122,7 @@ public class BackupChannel extends com.pulumi.resources.CustomResource {
     /**
      * @return The project where Backups are allowed to be stored.
      * The format is `projects/{project}`.
-     * {project} can only be a project number.
+     * {project} can be project number or project id.
      * 
      */
     public Output<String> destinationProject() {

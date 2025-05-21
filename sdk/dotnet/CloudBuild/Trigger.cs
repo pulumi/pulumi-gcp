@@ -472,7 +472,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// {
     ///     var manual_ghe_trigger = new Gcp.CloudBuild.Trigger("manual-ghe-trigger", new()
     ///     {
-    ///         Name = "",
+    ///         Name = "my-trigger",
     ///         SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
     ///         {
     ///             Uri = "https://hashicorp/terraform-provider-google-beta",

@@ -33,6 +33,9 @@ export function getTunnelDestGroupIamPolicy(args: GetTunnelDestGroupIamPolicyArg
  * A collection of arguments for invoking getTunnelDestGroupIamPolicy.
  */
 export interface GetTunnelDestGroupIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     destGroup: string;
     /**
      * The ID of the project in which the resource belongs.
@@ -98,6 +101,9 @@ export function getTunnelDestGroupIamPolicyOutput(args: GetTunnelDestGroupIamPol
  * A collection of arguments for invoking getTunnelDestGroupIamPolicy.
  */
 export interface GetTunnelDestGroupIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     destGroup: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

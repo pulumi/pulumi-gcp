@@ -417,9 +417,17 @@ public class MembershipIamBinding extends com.pulumi.resources.CustomResource {
     public Output<List<String>> members() {
         return this.members;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="membershipId", refs={String.class}, tree="[0]")
     private Output<String> membershipId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> membershipId() {
         return this.membershipId;
     }

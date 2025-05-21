@@ -330,7 +330,8 @@ type TaskIamMember struct {
 	// The role that should be applied. Only one
 	// `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role   pulumi.StringOutput `pulumi:"role"`
+	Role pulumi.StringOutput `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	TaskId pulumi.StringOutput `pulumi:"taskId"`
 }
 
@@ -405,7 +406,8 @@ type taskIamMemberState struct {
 	// The role that should be applied. Only one
 	// `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role   *string `pulumi:"role"`
+	Role *string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	TaskId *string `pulumi:"taskId"`
 }
 
@@ -439,7 +441,8 @@ type TaskIamMemberState struct {
 	// The role that should be applied. Only one
 	// `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role   pulumi.StringPtrInput
+	Role pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	TaskId pulumi.StringPtrInput
 }
 
@@ -475,7 +478,8 @@ type taskIamMemberArgs struct {
 	// The role that should be applied. Only one
 	// `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role   string `pulumi:"role"`
+	Role string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	TaskId string `pulumi:"taskId"`
 }
 
@@ -508,7 +512,8 @@ type TaskIamMemberArgs struct {
 	// The role that should be applied. Only one
 	// `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role   pulumi.StringInput
+	Role pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
 	TaskId pulumi.StringInput
 }
 
@@ -650,6 +655,7 @@ func (o TaskIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *TaskIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o TaskIamMemberOutput) TaskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TaskIamMember) pulumi.StringOutput { return v.TaskId }).(pulumi.StringOutput)
 }

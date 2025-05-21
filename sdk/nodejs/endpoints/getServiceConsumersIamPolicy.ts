@@ -19,7 +19,13 @@ export function getServiceConsumersIamPolicy(args: GetServiceConsumersIamPolicyA
  * A collection of arguments for invoking getServiceConsumersIamPolicy.
  */
 export interface GetServiceConsumersIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     consumerProject: string;
+    /**
+     * The name of the service. Used to find the parent resource to bind the IAM policy to
+     */
     serviceName: string;
 }
 
@@ -58,6 +64,12 @@ export function getServiceConsumersIamPolicyOutput(args: GetServiceConsumersIamP
  * A collection of arguments for invoking getServiceConsumersIamPolicy.
  */
 export interface GetServiceConsumersIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     consumerProject: pulumi.Input<string>;
+    /**
+     * The name of the service. Used to find the parent resource to bind the IAM policy to
+     */
     serviceName: pulumi.Input<string>;
 }

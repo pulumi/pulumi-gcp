@@ -33,6 +33,9 @@ export function getAspectTypeIamPolicy(args: GetAspectTypeIamPolicyArgs, opts?: 
  * A collection of arguments for invoking getAspectTypeIamPolicy.
  */
 export interface GetAspectTypeIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     aspectTypeId: string;
     /**
      * The location where aspect type will be created in.
@@ -98,6 +101,9 @@ export function getAspectTypeIamPolicyOutput(args: GetAspectTypeIamPolicyOutputA
  * A collection of arguments for invoking getAspectTypeIamPolicy.
  */
 export interface GetAspectTypeIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     aspectTypeId: pulumi.Input<string>;
     /**
      * The location where aspect type will be created in.

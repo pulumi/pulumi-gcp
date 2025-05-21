@@ -303,7 +303,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const manual_ghe_trigger = new gcp.cloudbuild.Trigger("manual-ghe-trigger", {
- *     name: "",
+ *     name: "my-trigger",
  *     sourceToBuild: {
  *         uri: "https://hashicorp/terraform-provider-google-beta",
  *         ref: "refs/heads/main",

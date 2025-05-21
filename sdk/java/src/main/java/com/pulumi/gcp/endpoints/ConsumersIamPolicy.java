@@ -67,9 +67,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy")
 public class ConsumersIamPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="consumerProject", refs={String.class}, tree="[0]")
     private Output<String> consumerProject;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> consumerProject() {
         return this.consumerProject;
     }
@@ -103,9 +111,17 @@ public class ConsumersIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> policyData() {
         return this.policyData;
     }
+    /**
+     * The name of the service. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
+    /**
+     * @return The name of the service. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> serviceName() {
         return this.serviceName;
     }

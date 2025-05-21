@@ -962,6 +962,147 @@ func (o CxAgentAdvancedSettingsSpeechSettingsPtrOutput) UseTimeoutBasedEndpointi
 	}).(pulumi.BoolPtrOutput)
 }
 
+type CxAgentGenAppBuilderSettings struct {
+	// The full name of the Gen App Builder engine related to this agent if there is one.
+	// Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
+	Engine string `pulumi:"engine"`
+}
+
+// CxAgentGenAppBuilderSettingsInput is an input type that accepts CxAgentGenAppBuilderSettingsArgs and CxAgentGenAppBuilderSettingsOutput values.
+// You can construct a concrete instance of `CxAgentGenAppBuilderSettingsInput` via:
+//
+//	CxAgentGenAppBuilderSettingsArgs{...}
+type CxAgentGenAppBuilderSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentGenAppBuilderSettingsOutput() CxAgentGenAppBuilderSettingsOutput
+	ToCxAgentGenAppBuilderSettingsOutputWithContext(context.Context) CxAgentGenAppBuilderSettingsOutput
+}
+
+type CxAgentGenAppBuilderSettingsArgs struct {
+	// The full name of the Gen App Builder engine related to this agent if there is one.
+	// Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
+	Engine pulumi.StringInput `pulumi:"engine"`
+}
+
+func (CxAgentGenAppBuilderSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentGenAppBuilderSettings)(nil)).Elem()
+}
+
+func (i CxAgentGenAppBuilderSettingsArgs) ToCxAgentGenAppBuilderSettingsOutput() CxAgentGenAppBuilderSettingsOutput {
+	return i.ToCxAgentGenAppBuilderSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentGenAppBuilderSettingsArgs) ToCxAgentGenAppBuilderSettingsOutputWithContext(ctx context.Context) CxAgentGenAppBuilderSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentGenAppBuilderSettingsOutput)
+}
+
+func (i CxAgentGenAppBuilderSettingsArgs) ToCxAgentGenAppBuilderSettingsPtrOutput() CxAgentGenAppBuilderSettingsPtrOutput {
+	return i.ToCxAgentGenAppBuilderSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentGenAppBuilderSettingsArgs) ToCxAgentGenAppBuilderSettingsPtrOutputWithContext(ctx context.Context) CxAgentGenAppBuilderSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentGenAppBuilderSettingsOutput).ToCxAgentGenAppBuilderSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentGenAppBuilderSettingsPtrInput is an input type that accepts CxAgentGenAppBuilderSettingsArgs, CxAgentGenAppBuilderSettingsPtr and CxAgentGenAppBuilderSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentGenAppBuilderSettingsPtrInput` via:
+//
+//	        CxAgentGenAppBuilderSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentGenAppBuilderSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentGenAppBuilderSettingsPtrOutput() CxAgentGenAppBuilderSettingsPtrOutput
+	ToCxAgentGenAppBuilderSettingsPtrOutputWithContext(context.Context) CxAgentGenAppBuilderSettingsPtrOutput
+}
+
+type cxAgentGenAppBuilderSettingsPtrType CxAgentGenAppBuilderSettingsArgs
+
+func CxAgentGenAppBuilderSettingsPtr(v *CxAgentGenAppBuilderSettingsArgs) CxAgentGenAppBuilderSettingsPtrInput {
+	return (*cxAgentGenAppBuilderSettingsPtrType)(v)
+}
+
+func (*cxAgentGenAppBuilderSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentGenAppBuilderSettings)(nil)).Elem()
+}
+
+func (i *cxAgentGenAppBuilderSettingsPtrType) ToCxAgentGenAppBuilderSettingsPtrOutput() CxAgentGenAppBuilderSettingsPtrOutput {
+	return i.ToCxAgentGenAppBuilderSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentGenAppBuilderSettingsPtrType) ToCxAgentGenAppBuilderSettingsPtrOutputWithContext(ctx context.Context) CxAgentGenAppBuilderSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentGenAppBuilderSettingsPtrOutput)
+}
+
+type CxAgentGenAppBuilderSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentGenAppBuilderSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentGenAppBuilderSettings)(nil)).Elem()
+}
+
+func (o CxAgentGenAppBuilderSettingsOutput) ToCxAgentGenAppBuilderSettingsOutput() CxAgentGenAppBuilderSettingsOutput {
+	return o
+}
+
+func (o CxAgentGenAppBuilderSettingsOutput) ToCxAgentGenAppBuilderSettingsOutputWithContext(ctx context.Context) CxAgentGenAppBuilderSettingsOutput {
+	return o
+}
+
+func (o CxAgentGenAppBuilderSettingsOutput) ToCxAgentGenAppBuilderSettingsPtrOutput() CxAgentGenAppBuilderSettingsPtrOutput {
+	return o.ToCxAgentGenAppBuilderSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentGenAppBuilderSettingsOutput) ToCxAgentGenAppBuilderSettingsPtrOutputWithContext(ctx context.Context) CxAgentGenAppBuilderSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentGenAppBuilderSettings) *CxAgentGenAppBuilderSettings {
+		return &v
+	}).(CxAgentGenAppBuilderSettingsPtrOutput)
+}
+
+// The full name of the Gen App Builder engine related to this agent if there is one.
+// Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
+func (o CxAgentGenAppBuilderSettingsOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v CxAgentGenAppBuilderSettings) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+type CxAgentGenAppBuilderSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentGenAppBuilderSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentGenAppBuilderSettings)(nil)).Elem()
+}
+
+func (o CxAgentGenAppBuilderSettingsPtrOutput) ToCxAgentGenAppBuilderSettingsPtrOutput() CxAgentGenAppBuilderSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentGenAppBuilderSettingsPtrOutput) ToCxAgentGenAppBuilderSettingsPtrOutputWithContext(ctx context.Context) CxAgentGenAppBuilderSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentGenAppBuilderSettingsPtrOutput) Elem() CxAgentGenAppBuilderSettingsOutput {
+	return o.ApplyT(func(v *CxAgentGenAppBuilderSettings) CxAgentGenAppBuilderSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentGenAppBuilderSettings
+		return ret
+	}).(CxAgentGenAppBuilderSettingsOutput)
+}
+
+// The full name of the Gen App Builder engine related to this agent if there is one.
+// Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
+func (o CxAgentGenAppBuilderSettingsPtrOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentGenAppBuilderSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Engine
+	}).(pulumi.StringPtrOutput)
+}
+
 type CxAgentGitIntegrationSettings struct {
 	// Settings of integration with GitHub.
 	// Structure is documented below.
@@ -3027,6 +3168,8 @@ type CxFlowEventHandlerTriggerFulfillment struct {
 	// Conditional cases for this fulfillment.
 	// Structure is documented below.
 	ConditionalCases []CxFlowEventHandlerTriggerFulfillmentConditionalCase `pulumi:"conditionalCases"`
+	// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+	EnableGenerativeFallback *bool `pulumi:"enableGenerativeFallback"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages []CxFlowEventHandlerTriggerFulfillmentMessage `pulumi:"messages"`
@@ -3056,6 +3199,8 @@ type CxFlowEventHandlerTriggerFulfillmentArgs struct {
 	// Conditional cases for this fulfillment.
 	// Structure is documented below.
 	ConditionalCases CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayInput `pulumi:"conditionalCases"`
+	// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+	EnableGenerativeFallback pulumi.BoolPtrInput `pulumi:"enableGenerativeFallback"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages CxFlowEventHandlerTriggerFulfillmentMessageArrayInput `pulumi:"messages"`
@@ -3155,6 +3300,11 @@ func (o CxFlowEventHandlerTriggerFulfillmentOutput) ConditionalCases() CxFlowEve
 	}).(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
 }
 
+// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) EnableGenerativeFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillment) *bool { return v.EnableGenerativeFallback }).(pulumi.BoolPtrOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxFlowEventHandlerTriggerFulfillmentOutput) Messages() CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput {
@@ -3219,6 +3369,16 @@ func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ConditionalCases() CxFlow
 		}
 		return v.ConditionalCases
 	}).(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) EnableGenerativeFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGenerativeFallback
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The list of rich message responses to present to the user.
@@ -29096,6 +29256,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsLoggingSettingsPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsLoggingSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsSpeechSettingsInput)(nil)).Elem(), CxAgentAdvancedSettingsSpeechSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsSpeechSettingsPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGenAppBuilderSettingsInput)(nil)).Elem(), CxAgentGenAppBuilderSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGenAppBuilderSettingsPtrInput)(nil)).Elem(), CxAgentGenAppBuilderSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsInput)(nil)).Elem(), CxAgentGitIntegrationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsPtrInput)(nil)).Elem(), CxAgentGitIntegrationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsGithubSettingsInput)(nil)).Elem(), CxAgentGitIntegrationSettingsGithubSettingsArgs{})
@@ -29450,6 +29612,8 @@ func init() {
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsLoggingSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsSpeechSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsSpeechSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxAgentGenAppBuilderSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentGenAppBuilderSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsGithubSettingsOutput{})

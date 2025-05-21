@@ -227,7 +227,7 @@ import * as utilities from "../utilities";
  *     name: "dataform-repository",
  *     displayName: "dataform_repository",
  *     npmrcEnvironmentVariablesSecretVersion: secretVersion.id,
- *     kmsKeyName: "",
+ *     kmsKeyName: "my-key",
  *     labels: {
  *         label_foo1: "label-bar1",
  *     },

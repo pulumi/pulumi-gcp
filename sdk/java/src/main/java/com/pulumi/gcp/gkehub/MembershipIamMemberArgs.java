@@ -82,9 +82,17 @@ public final class MembershipIamMemberArgs extends com.pulumi.resources.Resource
         return this.member;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="membershipId", required=true)
     private Output<String> membershipId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> membershipId() {
         return this.membershipId;
     }
@@ -233,11 +241,23 @@ public final class MembershipIamMemberArgs extends com.pulumi.resources.Resource
             return member(Output.of(member));
         }
 
+        /**
+         * @param membershipId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder membershipId(Output<String> membershipId) {
             $.membershipId = membershipId;
             return this;
         }
 
+        /**
+         * @param membershipId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder membershipId(String membershipId) {
             return membershipId(Output.of(membershipId));
         }

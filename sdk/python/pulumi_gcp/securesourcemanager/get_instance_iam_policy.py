@@ -121,8 +121,7 @@ def get_instance_iam_policy(instance_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str instance_id: The name for the Instance.
-           Used to find the parent resource to bind the IAM policy to
+    :param builtins.str instance_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The location for the Instance.
            Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -163,8 +162,7 @@ def get_instance_iam_policy_output(instance_id: Optional[pulumi.Input[builtins.s
     ```
 
 
-    :param builtins.str instance_id: The name for the Instance.
-           Used to find the parent resource to bind the IAM policy to
+    :param builtins.str instance_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The location for the Instance.
            Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

@@ -216,6 +216,9 @@ export class ServiceIamMember extends pulumi.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly serviceName!: pulumi.Output<string>;
 
     /**
@@ -287,6 +290,9 @@ export interface ServiceIamMemberState {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceName?: pulumi.Input<string>;
 }
 
@@ -315,5 +321,8 @@ export interface ServiceIamMemberArgs {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceName: pulumi.Input<string>;
 }

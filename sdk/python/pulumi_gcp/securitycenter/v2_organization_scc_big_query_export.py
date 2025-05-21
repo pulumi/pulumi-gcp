@@ -470,7 +470,7 @@ class V2OrganizationSccBigQueryExport(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.bigquery.Dataset("default",
-            dataset_id="",
+            dataset_id="my-dataset",
             friendly_name="test",
             description="This is a test description",
             location="US",
@@ -572,7 +572,7 @@ class V2OrganizationSccBigQueryExport(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.bigquery.Dataset("default",
-            dataset_id="",
+            dataset_id="my-dataset",
             friendly_name="test",
             description="This is a test description",
             location="US",

@@ -31,6 +31,9 @@ class WebRegionBackendServiceIamPolicyArgs:
         :param pulumi.Input[builtins.str] web_region_backend_service: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         """
         pulumi.set(__self__, "policy_data", policy_data)
         pulumi.set(__self__, "web_region_backend_service", web_region_backend_service)
@@ -80,6 +83,11 @@ class WebRegionBackendServiceIamPolicyArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        region is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -102,6 +110,9 @@ class _WebRegionBackendServiceIamPolicyState:
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] web_region_backend_service: Used to find the parent resource to bind the IAM policy to
         """
         if etag is not None:
@@ -156,6 +167,11 @@ class _WebRegionBackendServiceIamPolicyState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        region is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -474,6 +490,9 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] web_region_backend_service: Used to find the parent resource to bind the IAM policy to
         """
         ...
@@ -828,6 +847,9 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] web_region_backend_service: Used to find the parent resource to bind the IAM policy to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -870,6 +892,11 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        region is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "region")
 
     @property

@@ -295,6 +295,7 @@ import (
 type EntryTypeIamPolicy struct {
 	pulumi.CustomResourceState
 
+	// Used to find the parent resource to bind the IAM policy to
 	EntryTypeId pulumi.StringOutput `pulumi:"entryTypeId"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -347,6 +348,7 @@ func GetEntryTypeIamPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EntryTypeIamPolicy resources.
 type entryTypeIamPolicyState struct {
+	// Used to find the parent resource to bind the IAM policy to
 	EntryTypeId *string `pulumi:"entryTypeId"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
@@ -364,6 +366,7 @@ type entryTypeIamPolicyState struct {
 }
 
 type EntryTypeIamPolicyState struct {
+	// Used to find the parent resource to bind the IAM policy to
 	EntryTypeId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -385,6 +388,7 @@ func (EntryTypeIamPolicyState) ElementType() reflect.Type {
 }
 
 type entryTypeIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	EntryTypeId string `pulumi:"entryTypeId"`
 	// The location where entry type will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -401,6 +405,7 @@ type entryTypeIamPolicyArgs struct {
 
 // The set of arguments for constructing a EntryTypeIamPolicy resource.
 type EntryTypeIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	EntryTypeId pulumi.StringInput
 	// The location where entry type will be created in.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -502,6 +507,7 @@ func (o EntryTypeIamPolicyOutput) ToEntryTypeIamPolicyOutputWithContext(ctx cont
 	return o
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o EntryTypeIamPolicyOutput) EntryTypeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryTypeIamPolicy) pulumi.StringOutput { return v.EntryTypeId }).(pulumi.StringOutput)
 }

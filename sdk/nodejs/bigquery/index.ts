@@ -135,6 +135,11 @@ export type Routine = import("./routine").Routine;
 export const Routine: typeof import("./routine").Routine = null as any;
 utilities.lazyLoad(exports, ["Routine"], () => require("./routine"));
 
+export { RowAccessPolicyArgs, RowAccessPolicyState } from "./rowAccessPolicy";
+export type RowAccessPolicy = import("./rowAccessPolicy").RowAccessPolicy;
+export const RowAccessPolicy: typeof import("./rowAccessPolicy").RowAccessPolicy = null as any;
+utilities.lazyLoad(exports, ["RowAccessPolicy"], () => require("./rowAccessPolicy"));
+
 export { TableArgs, TableState } from "./table";
 export type Table = import("./table").Table;
 export const Table: typeof import("./table").Table = null as any;
@@ -185,6 +190,8 @@ const _module = {
                 return new ReservationAssignment(name, <any>undefined, { urn })
             case "gcp:bigquery/routine:Routine":
                 return new Routine(name, <any>undefined, { urn })
+            case "gcp:bigquery/rowAccessPolicy:RowAccessPolicy":
+                return new RowAccessPolicy(name, <any>undefined, { urn })
             case "gcp:bigquery/table:Table":
                 return new Table(name, <any>undefined, { urn })
             default:
@@ -212,4 +219,5 @@ pulumi.runtime.registerResourceModule("gcp", "bigquery/job", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/reservation", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/reservationAssignment", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/routine", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/rowAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/table", _module)

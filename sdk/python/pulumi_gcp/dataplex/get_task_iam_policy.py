@@ -140,6 +140,7 @@ def get_task_iam_policy(lake: Optional[builtins.str] = None,
            location is specified, it is taken from the provider configuration.
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+    :param builtins.str task_id: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['lake'] = lake
@@ -186,6 +187,7 @@ def get_task_iam_policy_output(lake: Optional[pulumi.Input[builtins.str]] = None
            location is specified, it is taken from the provider configuration.
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+    :param builtins.str task_id: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['lake'] = lake

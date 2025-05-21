@@ -812,6 +812,20 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkPerformanceConfig);
     }
     /**
+     * numeric identifier of the resource.
+     * 
+     */
+    @Export(name="numericId", refs={String.class}, tree="[0]")
+    private Output<String> numericId;
+
+    /**
+     * @return numeric identifier of the resource.
+     * 
+     */
+    public Output<String> numericId() {
+        return this.numericId;
+    }
+    /**
      * Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
      * 
      */

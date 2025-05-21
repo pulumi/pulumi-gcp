@@ -238,7 +238,6 @@ export class RepositoryIamBinding extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The ID for the Repository.
      * Used to find the parent resource to bind the IAM policy to
      */
     public readonly repositoryId!: pulumi.Output<string>;
@@ -329,7 +328,6 @@ export interface RepositoryIamBindingState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The ID for the Repository.
      * Used to find the parent resource to bind the IAM policy to
      */
     repositoryId?: pulumi.Input<string>;
@@ -373,7 +371,6 @@ export interface RepositoryIamBindingArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The ID for the Repository.
      * Used to find the parent resource to bind the IAM policy to
      */
     repositoryId: pulumi.Input<string>;

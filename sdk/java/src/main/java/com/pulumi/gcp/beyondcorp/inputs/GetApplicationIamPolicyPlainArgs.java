@@ -15,9 +15,17 @@ public final class GetApplicationIamPolicyPlainArgs extends com.pulumi.resources
 
     public static final GetApplicationIamPolicyPlainArgs Empty = new GetApplicationIamPolicyPlainArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="applicationId", required=true)
     private String applicationId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String applicationId() {
         return this.applicationId;
     }
@@ -39,9 +47,17 @@ public final class GetApplicationIamPolicyPlainArgs extends com.pulumi.resources
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="securityGatewaysId", required=true)
     private String securityGatewaysId;
 
+    /**
+     * @return Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String securityGatewaysId() {
         return this.securityGatewaysId;
     }
@@ -72,6 +88,12 @@ public final class GetApplicationIamPolicyPlainArgs extends com.pulumi.resources
             $ = new GetApplicationIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param applicationId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationId(String applicationId) {
             $.applicationId = applicationId;
             return this;
@@ -89,6 +111,12 @@ public final class GetApplicationIamPolicyPlainArgs extends com.pulumi.resources
             return this;
         }
 
+        /**
+         * @param securityGatewaysId Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGatewaysId(String securityGatewaysId) {
             $.securityGatewaysId = securityGatewaysId;
             return this;

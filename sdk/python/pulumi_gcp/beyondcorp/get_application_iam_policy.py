@@ -121,8 +121,10 @@ def get_application_iam_policy(application_id: Optional[builtins.str] = None,
     ```
 
 
+    :param builtins.str application_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+    :param builtins.str security_gateways_id: Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
@@ -157,8 +159,10 @@ def get_application_iam_policy_output(application_id: Optional[pulumi.Input[buil
     ```
 
 
+    :param builtins.str application_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+    :param builtins.str security_gateways_id: Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
     __args__['applicationId'] = application_id

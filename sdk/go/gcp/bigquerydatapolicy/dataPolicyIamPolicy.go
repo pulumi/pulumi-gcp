@@ -295,6 +295,7 @@ import (
 type DataPolicyIamPolicy struct {
 	pulumi.CustomResourceState
 
+	// Used to find the parent resource to bind the IAM policy to
 	DataPolicyId pulumi.StringOutput `pulumi:"dataPolicyId"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -347,6 +348,7 @@ func GetDataPolicyIamPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataPolicyIamPolicy resources.
 type dataPolicyIamPolicyState struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DataPolicyId *string `pulumi:"dataPolicyId"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
@@ -364,6 +366,7 @@ type dataPolicyIamPolicyState struct {
 }
 
 type DataPolicyIamPolicyState struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DataPolicyId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -385,6 +388,7 @@ func (DataPolicyIamPolicyState) ElementType() reflect.Type {
 }
 
 type dataPolicyIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DataPolicyId string `pulumi:"dataPolicyId"`
 	// The name of the location of the data policy.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -401,6 +405,7 @@ type dataPolicyIamPolicyArgs struct {
 
 // The set of arguments for constructing a DataPolicyIamPolicy resource.
 type DataPolicyIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DataPolicyId pulumi.StringInput
 	// The name of the location of the data policy.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -502,6 +507,7 @@ func (o DataPolicyIamPolicyOutput) ToDataPolicyIamPolicyOutputWithContext(ctx co
 	return o
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o DataPolicyIamPolicyOutput) DataPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataPolicyIamPolicy) pulumi.StringOutput { return v.DataPolicyId }).(pulumi.StringOutput)
 }

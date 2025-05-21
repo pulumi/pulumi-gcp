@@ -47,6 +47,10 @@ class TaxonomyIamMemberArgs:
         :param pulumi.Input[builtins.str] taxonomy: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: Taxonomy location region.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         """
         pulumi.set(__self__, "member", member)
         pulumi.set(__self__, "role", role)
@@ -131,6 +135,12 @@ class TaxonomyIamMemberArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Taxonomy location region.
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        region is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -164,6 +174,10 @@ class _TaxonomyIamMemberState:
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: Taxonomy location region.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `datacatalog.TaxonomyIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -243,6 +257,12 @@ class _TaxonomyIamMemberState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Taxonomy location region.
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        region is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -454,6 +474,10 @@ class TaxonomyIamMember(pulumi.CustomResource):
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: Taxonomy location region.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `datacatalog.TaxonomyIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -696,6 +720,10 @@ class TaxonomyIamMember(pulumi.CustomResource):
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[builtins.str] region: Taxonomy location region.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `datacatalog.TaxonomyIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -757,6 +785,12 @@ class TaxonomyIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
+        """
+        Taxonomy location region.
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        region is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "region")
 
     @property

@@ -334,6 +334,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly identityServiceConfig!: pulumi.Output<outputs.container.ClusterIdentityServiceConfig>;
     /**
+     * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+     */
+    public readonly inTransitEncryptionConfig!: pulumi.Output<string | undefined>;
+    /**
      * The number of nodes to create in this
      * cluster's default node pool. In regional or multi-zonal clusters, this is the
      * number of nodes per zone. Must be set if `nodePool` is not set. If you're using
@@ -689,6 +693,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["fleet"] = state ? state.fleet : undefined;
             resourceInputs["gatewayApiConfig"] = state ? state.gatewayApiConfig : undefined;
             resourceInputs["identityServiceConfig"] = state ? state.identityServiceConfig : undefined;
+            resourceInputs["inTransitEncryptionConfig"] = state ? state.inTransitEncryptionConfig : undefined;
             resourceInputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
             resourceInputs["ipAllocationPolicy"] = state ? state.ipAllocationPolicy : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
@@ -773,6 +778,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["fleet"] = args ? args.fleet : undefined;
             resourceInputs["gatewayApiConfig"] = args ? args.gatewayApiConfig : undefined;
             resourceInputs["identityServiceConfig"] = args ? args.identityServiceConfig : undefined;
+            resourceInputs["inTransitEncryptionConfig"] = args ? args.inTransitEncryptionConfig : undefined;
             resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             resourceInputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -1007,6 +1013,10 @@ export interface ClusterState {
      * . Structure is documented below.
      */
     identityServiceConfig?: pulumi.Input<inputs.container.ClusterIdentityServiceConfig>;
+    /**
+     * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+     */
+    inTransitEncryptionConfig?: pulumi.Input<string>;
     /**
      * The number of nodes to create in this
      * cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -1483,6 +1493,10 @@ export interface ClusterArgs {
      * . Structure is documented below.
      */
     identityServiceConfig?: pulumi.Input<inputs.container.ClusterIdentityServiceConfig>;
+    /**
+     * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+     */
+    inTransitEncryptionConfig?: pulumi.Input<string>;
     /**
      * The number of nodes to create in this
      * cluster's default node pool. In regional or multi-zonal clusters, this is the

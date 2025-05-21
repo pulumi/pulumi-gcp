@@ -41,8 +41,7 @@ class RepositoryIamMemberArgs:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-        :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] repository_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `securesourcemanager.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -89,7 +88,6 @@ class RepositoryIamMemberArgs:
     @pulumi.getter(name="repositoryId")
     def repository_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID for the Repository.
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "repository_id")
@@ -180,8 +178,7 @@ class _RepositoryIamMemberState:
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] repository_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `securesourcemanager.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -276,7 +273,6 @@ class _RepositoryIamMemberState:
     @pulumi.getter(name="repositoryId")
     def repository_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID for the Repository.
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "repository_id")
@@ -494,8 +490,7 @@ class RepositoryIamMember(pulumi.CustomResource):
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] repository_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `securesourcemanager.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -753,8 +748,7 @@ class RepositoryIamMember(pulumi.CustomResource):
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] repository_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `securesourcemanager.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -827,7 +821,6 @@ class RepositoryIamMember(pulumi.CustomResource):
     @pulumi.getter(name="repositoryId")
     def repository_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID for the Repository.
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "repository_id")

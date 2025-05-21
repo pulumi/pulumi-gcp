@@ -86,6 +86,9 @@ export class ConsumersIamMember extends pulumi.CustomResource {
     }
 
     public readonly condition!: pulumi.Output<outputs.endpoints.ConsumersIamMemberCondition | undefined>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly consumerProject!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -111,6 +114,9 @@ export class ConsumersIamMember extends pulumi.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * The name of the service. Used to find the parent resource to bind the IAM policy to
+     */
     public readonly serviceName!: pulumi.Output<string>;
 
     /**
@@ -163,6 +169,9 @@ export class ConsumersIamMember extends pulumi.CustomResource {
  */
 export interface ConsumersIamMemberState {
     condition?: pulumi.Input<inputs.endpoints.ConsumersIamMemberCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     consumerProject?: pulumi.Input<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -188,6 +197,9 @@ export interface ConsumersIamMemberState {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
+    /**
+     * The name of the service. Used to find the parent resource to bind the IAM policy to
+     */
     serviceName?: pulumi.Input<string>;
 }
 
@@ -196,6 +208,9 @@ export interface ConsumersIamMemberState {
  */
 export interface ConsumersIamMemberArgs {
     condition?: pulumi.Input<inputs.endpoints.ConsumersIamMemberCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     consumerProject: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -217,5 +232,8 @@ export interface ConsumersIamMemberArgs {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;
+    /**
+     * The name of the service. Used to find the parent resource to bind the IAM policy to
+     */
     serviceName: pulumi.Input<string>;
 }

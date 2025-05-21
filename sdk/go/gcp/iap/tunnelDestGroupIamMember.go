@@ -540,7 +540,8 @@ type TunnelDestGroupIamMember struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition TunnelDestGroupIamMemberConditionPtrOutput `pulumi:"condition"`
-	DestGroup pulumi.StringOutput                        `pulumi:"destGroup"`
+	// Used to find the parent resource to bind the IAM policy to
+	DestGroup pulumi.StringOutput `pulumi:"destGroup"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Identities that will be granted the privilege in `role`.
@@ -611,7 +612,8 @@ type tunnelDestGroupIamMemberState struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *TunnelDestGroupIamMemberCondition `pulumi:"condition"`
-	DestGroup *string                            `pulumi:"destGroup"`
+	// Used to find the parent resource to bind the IAM policy to
+	DestGroup *string `pulumi:"destGroup"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// Identities that will be granted the privilege in `role`.
@@ -644,6 +646,7 @@ type TunnelDestGroupIamMemberState struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition TunnelDestGroupIamMemberConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	DestGroup pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -681,7 +684,8 @@ type tunnelDestGroupIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *TunnelDestGroupIamMemberCondition `pulumi:"condition"`
-	DestGroup string                             `pulumi:"destGroup"`
+	// Used to find the parent resource to bind the IAM policy to
+	DestGroup string `pulumi:"destGroup"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -713,6 +717,7 @@ type TunnelDestGroupIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition TunnelDestGroupIamMemberConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	DestGroup pulumi.StringInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -833,6 +838,7 @@ func (o TunnelDestGroupIamMemberOutput) Condition() TunnelDestGroupIamMemberCond
 	return o.ApplyT(func(v *TunnelDestGroupIamMember) TunnelDestGroupIamMemberConditionPtrOutput { return v.Condition }).(TunnelDestGroupIamMemberConditionPtrOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o TunnelDestGroupIamMemberOutput) DestGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelDestGroupIamMember) pulumi.StringOutput { return v.DestGroup }).(pulumi.StringOutput)
 }

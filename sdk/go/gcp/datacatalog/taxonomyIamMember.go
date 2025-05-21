@@ -301,7 +301,11 @@ type TaxonomyIamMember struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	Region  pulumi.StringOutput `pulumi:"region"`
+	// Taxonomy location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `datacatalog.TaxonomyIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -367,7 +371,11 @@ type taxonomyIamMemberState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// Taxonomy location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `datacatalog.TaxonomyIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -395,7 +403,11 @@ type TaxonomyIamMemberState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// Taxonomy location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `datacatalog.TaxonomyIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -425,7 +437,11 @@ type taxonomyIamMemberArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// Taxonomy location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `datacatalog.TaxonomyIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -452,7 +468,11 @@ type TaxonomyIamMemberArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// Taxonomy location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `datacatalog.TaxonomyIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -578,6 +598,10 @@ func (o TaxonomyIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TaxonomyIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Taxonomy location region.
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+// region is specified, it is taken from the provider configuration.
 func (o TaxonomyIamMemberOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *TaxonomyIamMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

@@ -323,7 +323,7 @@ export class WebTypeAppEngingIamMember extends pulumi.CustomResource {
     }
 
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     public readonly appId!: pulumi.Output<string>;
     /**
@@ -408,7 +408,7 @@ export class WebTypeAppEngingIamMember extends pulumi.CustomResource {
  */
 export interface WebTypeAppEngingIamMemberState {
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     appId?: pulumi.Input<string>;
     /**
@@ -452,7 +452,7 @@ export interface WebTypeAppEngingIamMemberState {
  */
 export interface WebTypeAppEngingIamMemberArgs {
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      */
     appId: pulumi.Input<string>;
     /**

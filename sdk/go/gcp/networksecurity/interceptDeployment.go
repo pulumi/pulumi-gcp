@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A deployment represents a zonal intercept backend ready to accept
+// GENEVE-encapsulated traffic, e.g. a zonal instance group fronted by an
+// internal passthrough load balancer. Deployments are always part of a
+// global deployment group which represents a global intercept service.
+//
 // ## Example Usage
 //
 // ### Network Security Intercept Deployment Basic

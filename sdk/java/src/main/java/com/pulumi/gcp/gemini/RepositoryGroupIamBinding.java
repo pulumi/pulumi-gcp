@@ -347,9 +347,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:gemini/repositoryGroupIamBinding:RepositoryGroupIamBinding")
 public class RepositoryGroupIamBinding extends com.pulumi.resources.CustomResource {
+    /**
+     * Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="codeRepositoryIndex", refs={String.class}, tree="[0]")
     private Output<String> codeRepositoryIndex;
 
+    /**
+     * @return Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> codeRepositoryIndex() {
         return this.codeRepositoryIndex;
     }
@@ -441,9 +449,17 @@ public class RepositoryGroupIamBinding extends com.pulumi.resources.CustomResour
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="repositoryGroupId", refs={String.class}, tree="[0]")
     private Output<String> repositoryGroupId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> repositoryGroupId() {
         return this.repositoryGroupId;
     }

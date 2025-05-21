@@ -96,6 +96,7 @@ namespace Pulumi.Gcp.Iam
         /// leaked, you must delete and re-create the client credential. To learn
         /// more, see [OAuth client and credential security risks and
         /// mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
@@ -176,6 +177,10 @@ namespace Pulumi.Gcp.Iam
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "clientSecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -252,15 +257,26 @@ namespace Pulumi.Gcp.Iam
 
     public sealed class OauthClientCredentialState : global::Pulumi.ResourceArgs
     {
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
         /// <summary>
         /// The system-generated OAuth client secret.
         /// The client secret must be stored securely. If the client secret is
         /// leaked, you must delete and re-create the client credential. To learn
         /// more, see [OAuth client and credential security risks and
         /// mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether the OauthClientCredential is disabled. You cannot use a

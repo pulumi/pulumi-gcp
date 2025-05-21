@@ -259,6 +259,9 @@ namespace Pulumi.Gcp.Dataproc
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("federationId")]
         public Output<string> FederationId { get; private set; } = null!;
 
@@ -351,6 +354,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("condition")]
         public Input<Inputs.MetastoreFederationIamMemberConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("federationId", required: true)]
         public Input<string> FederationId { get; set; } = null!;
 
@@ -411,6 +417,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("federationId")]
         public Input<string>? FederationId { get; set; }
 

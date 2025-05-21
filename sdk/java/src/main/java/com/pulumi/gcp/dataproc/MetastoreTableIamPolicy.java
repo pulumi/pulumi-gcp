@@ -350,9 +350,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataproc/metastoreTableIamPolicy:MetastoreTableIamPolicy")
 public class MetastoreTableIamPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="databaseId", refs={String.class}, tree="[0]")
     private Output<String> databaseId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> databaseId() {
         return this.databaseId;
     }
@@ -370,9 +378,21 @@ public class MetastoreTableIamPolicy extends com.pulumi.resources.CustomResource
     public Output<String> etag() {
         return this.etag;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     * 
+     */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     * 
+     */
     public Output<String> location() {
         return this.location;
     }
@@ -408,9 +428,17 @@ public class MetastoreTableIamPolicy extends com.pulumi.resources.CustomResource
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> serviceId() {
         return this.serviceId;
     }

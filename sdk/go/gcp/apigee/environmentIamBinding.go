@@ -303,7 +303,10 @@ type EnvironmentIamBinding struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	OrgId   pulumi.StringOutput      `pulumi:"orgId"`
+	// The Apigee Organization associated with the Apigee environment,
+	// in the format `organizations/{{org_name}}`.
+	// Used to find the parent resource to bind the IAM policy to
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// The role that should be applied. Only one
 	// `apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -369,7 +372,10 @@ type environmentIamBindingState struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Members []string `pulumi:"members"`
-	OrgId   *string  `pulumi:"orgId"`
+	// The Apigee Organization associated with the Apigee environment,
+	// in the format `organizations/{{org_name}}`.
+	// Used to find the parent resource to bind the IAM policy to
+	OrgId *string `pulumi:"orgId"`
 	// The role that should be applied. Only one
 	// `apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -394,7 +400,10 @@ type EnvironmentIamBindingState struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Members pulumi.StringArrayInput
-	OrgId   pulumi.StringPtrInput
+	// The Apigee Organization associated with the Apigee environment,
+	// in the format `organizations/{{org_name}}`.
+	// Used to find the parent resource to bind the IAM policy to
+	OrgId pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -421,7 +430,10 @@ type environmentIamBindingArgs struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Members []string `pulumi:"members"`
-	OrgId   string   `pulumi:"orgId"`
+	// The Apigee Organization associated with the Apigee environment,
+	// in the format `organizations/{{org_name}}`.
+	// Used to find the parent resource to bind the IAM policy to
+	OrgId string `pulumi:"orgId"`
 	// The role that should be applied. Only one
 	// `apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -445,7 +457,10 @@ type EnvironmentIamBindingArgs struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Members pulumi.StringArrayInput
-	OrgId   pulumi.StringInput
+	// The Apigee Organization associated with the Apigee environment,
+	// in the format `organizations/{{org_name}}`.
+	// Used to find the parent resource to bind the IAM policy to
+	OrgId pulumi.StringInput
 	// The role that should be applied. Only one
 	// `apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -568,6 +583,9 @@ func (o EnvironmentIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EnvironmentIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
+// The Apigee Organization associated with the Apigee environment,
+// in the format `organizations/{{org_name}}`.
+// Used to find the parent resource to bind the IAM policy to
 func (o EnvironmentIamBindingOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentIamBinding) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

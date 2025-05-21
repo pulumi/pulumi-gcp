@@ -18,9 +18,17 @@ public final class AspectTypeIamBindingArgs extends com.pulumi.resources.Resourc
 
     public static final AspectTypeIamBindingArgs Empty = new AspectTypeIamBindingArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="aspectTypeId", required=true)
     private Output<String> aspectTypeId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> aspectTypeId() {
         return this.aspectTypeId;
     }
@@ -153,11 +161,23 @@ public final class AspectTypeIamBindingArgs extends com.pulumi.resources.Resourc
             $ = new AspectTypeIamBindingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aspectTypeId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder aspectTypeId(Output<String> aspectTypeId) {
             $.aspectTypeId = aspectTypeId;
             return this;
         }
 
+        /**
+         * @param aspectTypeId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder aspectTypeId(String aspectTypeId) {
             return aspectTypeId(Output.of(aspectTypeId));
         }

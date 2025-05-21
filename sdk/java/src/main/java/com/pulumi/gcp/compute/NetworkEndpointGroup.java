@@ -212,6 +212,20 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The uniquely generated identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="generatedId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> generatedId;
+
+    /**
+     * @return The uniquely generated identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<Integer> generatedId() {
+        return this.generatedId;
+    }
+    /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match

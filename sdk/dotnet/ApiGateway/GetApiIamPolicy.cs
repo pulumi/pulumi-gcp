@@ -84,6 +84,9 @@ namespace Pulumi.Gcp.ApiGateway
 
     public sealed class GetApiIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("api", required: true)]
         public string Api { get; set; } = null!;
 
@@ -102,6 +105,9 @@ namespace Pulumi.Gcp.ApiGateway
 
     public sealed class GetApiIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("api", required: true)]
         public Input<string> Api { get; set; } = null!;
 

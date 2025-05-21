@@ -33,6 +33,9 @@ export function getIamPolicy(args: GetIamPolicyArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getIamPolicy.
  */
 export interface GetIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     dataPolicyId: string;
     /**
      * The name of the location of the data policy.
@@ -98,6 +101,9 @@ export function getIamPolicyOutput(args: GetIamPolicyOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getIamPolicy.
  */
 export interface GetIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     dataPolicyId: pulumi.Input<string>;
     /**
      * The name of the location of the data policy.

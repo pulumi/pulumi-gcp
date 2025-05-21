@@ -32,6 +32,7 @@ class ZoneIamMemberArgs:
         """
         The set of arguments for constructing a ZoneIamMember resource.
         :param pulumi.Input[builtins.str] dataplex_zone: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] lake: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -46,6 +47,9 @@ class ZoneIamMemberArgs:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `dataplex.ZoneIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] location: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
@@ -75,6 +79,9 @@ class ZoneIamMemberArgs:
     @property
     @pulumi.getter
     def lake(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "lake")
 
     @lake.setter
@@ -129,6 +136,11 @@ class ZoneIamMemberArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -164,6 +176,10 @@ class _ZoneIamMemberState:
         Input properties used for looking up and filtering ZoneIamMember resources.
         :param pulumi.Input[builtins.str] dataplex_zone: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[builtins.str] lake: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] location: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -234,6 +250,9 @@ class _ZoneIamMemberState:
     @property
     @pulumi.getter
     def lake(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "lake")
 
     @lake.setter
@@ -243,6 +262,11 @@ class _ZoneIamMemberState:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -484,6 +508,10 @@ class ZoneIamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] dataplex_zone: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] lake: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] location: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -749,6 +777,10 @@ class ZoneIamMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] dataplex_zone: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[builtins.str] lake: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[builtins.str] location: Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -804,11 +836,19 @@ class ZoneIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def lake(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "lake")
 
     @property
     @pulumi.getter
     def location(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
+        """
         return pulumi.get(self, "location")
 
     @property

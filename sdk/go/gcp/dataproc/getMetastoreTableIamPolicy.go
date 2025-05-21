@@ -54,12 +54,17 @@ func LookupMetastoreTableIamPolicy(ctx *pulumi.Context, args *LookupMetastoreTab
 
 // A collection of arguments for invoking getMetastoreTableIamPolicy.
 type LookupMetastoreTableIamPolicyArgs struct {
-	DatabaseId string  `pulumi:"databaseId"`
-	Location   *string `pulumi:"location"`
+	// Used to find the parent resource to bind the IAM policy to
+	DatabaseId string `pulumi:"databaseId"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
+	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project   *string `pulumi:"project"`
-	ServiceId string  `pulumi:"serviceId"`
+	Project *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
+	ServiceId string `pulumi:"serviceId"`
 	// Used to find the parent resource to bind the IAM policy to
 	Table string `pulumi:"table"`
 }
@@ -91,12 +96,17 @@ func LookupMetastoreTableIamPolicyOutput(ctx *pulumi.Context, args LookupMetasto
 
 // A collection of arguments for invoking getMetastoreTableIamPolicy.
 type LookupMetastoreTableIamPolicyOutputArgs struct {
-	DatabaseId pulumi.StringInput    `pulumi:"databaseId"`
-	Location   pulumi.StringPtrInput `pulumi:"location"`
+	// Used to find the parent resource to bind the IAM policy to
+	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
+	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project   pulumi.StringPtrInput `pulumi:"project"`
-	ServiceId pulumi.StringInput    `pulumi:"serviceId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
+	ServiceId pulumi.StringInput `pulumi:"serviceId"`
 	// Used to find the parent resource to bind the IAM policy to
 	Table pulumi.StringInput `pulumi:"table"`
 }

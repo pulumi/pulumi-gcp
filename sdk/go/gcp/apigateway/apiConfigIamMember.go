@@ -291,7 +291,8 @@ type ApiConfigIamMember struct {
 
 	// The API to attach the config to.
 	// Used to find the parent resource to bind the IAM policy to
-	Api       pulumi.StringOutput                  `pulumi:"api"`
+	Api pulumi.StringOutput `pulumi:"api"`
+	// Used to find the parent resource to bind the IAM policy to
 	ApiConfig pulumi.StringOutput                  `pulumi:"apiConfig"`
 	Condition ApiConfigIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -361,7 +362,8 @@ func GetApiConfigIamMember(ctx *pulumi.Context,
 type apiConfigIamMemberState struct {
 	// The API to attach the config to.
 	// Used to find the parent resource to bind the IAM policy to
-	Api       *string                      `pulumi:"api"`
+	Api *string `pulumi:"api"`
+	// Used to find the parent resource to bind the IAM policy to
 	ApiConfig *string                      `pulumi:"apiConfig"`
 	Condition *ApiConfigIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -390,7 +392,8 @@ type apiConfigIamMemberState struct {
 type ApiConfigIamMemberState struct {
 	// The API to attach the config to.
 	// Used to find the parent resource to bind the IAM policy to
-	Api       pulumi.StringPtrInput
+	Api pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	ApiConfig pulumi.StringPtrInput
 	Condition ApiConfigIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -423,7 +426,8 @@ func (ApiConfigIamMemberState) ElementType() reflect.Type {
 type apiConfigIamMemberArgs struct {
 	// The API to attach the config to.
 	// Used to find the parent resource to bind the IAM policy to
-	Api       string                       `pulumi:"api"`
+	Api string `pulumi:"api"`
+	// Used to find the parent resource to bind the IAM policy to
 	ApiConfig string                       `pulumi:"apiConfig"`
 	Condition *ApiConfigIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.
@@ -451,7 +455,8 @@ type apiConfigIamMemberArgs struct {
 type ApiConfigIamMemberArgs struct {
 	// The API to attach the config to.
 	// Used to find the parent resource to bind the IAM policy to
-	Api       pulumi.StringInput
+	Api pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
 	ApiConfig pulumi.StringInput
 	Condition ApiConfigIamMemberConditionPtrInput
 	// Identities that will be granted the privilege in `role`.
@@ -568,6 +573,7 @@ func (o ApiConfigIamMemberOutput) Api() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfigIamMember) pulumi.StringOutput { return v.Api }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o ApiConfigIamMemberOutput) ApiConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfigIamMember) pulumi.StringOutput { return v.ApiConfig }).(pulumi.StringOutput)
 }

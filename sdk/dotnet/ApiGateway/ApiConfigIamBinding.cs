@@ -251,6 +251,9 @@ namespace Pulumi.Gcp.ApiGateway
         [Output("api")]
         public Output<string> Api { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("apiConfig")]
         public Output<string> ApiConfig { get; private set; } = null!;
 
@@ -347,6 +350,9 @@ namespace Pulumi.Gcp.ApiGateway
         [Input("api", required: true)]
         public Input<string> Api { get; set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("apiConfig", required: true)]
         public Input<string> ApiConfig { get; set; } = null!;
 
@@ -405,6 +411,9 @@ namespace Pulumi.Gcp.ApiGateway
         [Input("api")]
         public Input<string>? Api { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("apiConfig")]
         public Input<string>? ApiConfig { get; set; }
 

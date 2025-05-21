@@ -347,9 +347,17 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
     public Output<Optional<IamBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="datasetId", refs={String.class}, tree="[0]")
     private Output<String> datasetId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> datasetId() {
         return this.datasetId;
     }
@@ -435,9 +443,17 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> role() {
         return this.role;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="tableId", refs={String.class}, tree="[0]")
     private Output<String> tableId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> tableId() {
         return this.tableId;
     }

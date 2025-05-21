@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A deployment group aggregates many zonal intercept backends (deployments)
+// into a single global intercept service. Consumers can connect this service
+// using an endpoint group.
+//
 // ## Example Usage
 //
 // ### Network Security Intercept Deployment Group Basic

@@ -150,6 +150,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The uniquely generated identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("generatedId")]
+        public Output<int> GeneratedId { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource; provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -354,6 +360,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The uniquely generated identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("generatedId")]
+        public Input<int>? GeneratedId { get; set; }
 
         /// <summary>
         /// Name of the resource; provided by the client when the resource is

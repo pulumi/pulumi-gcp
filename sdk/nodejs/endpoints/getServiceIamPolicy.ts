@@ -29,6 +29,9 @@ export function getServiceIamPolicy(args: GetServiceIamPolicyArgs, opts?: pulumi
  * A collection of arguments for invoking getServiceIamPolicy.
  */
 export interface GetServiceIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceName: string;
 }
 
@@ -76,5 +79,8 @@ export function getServiceIamPolicyOutput(args: GetServiceIamPolicyOutputArgs, o
  * A collection of arguments for invoking getServiceIamPolicy.
  */
 export interface GetServiceIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     serviceName: pulumi.Input<string>;
 }

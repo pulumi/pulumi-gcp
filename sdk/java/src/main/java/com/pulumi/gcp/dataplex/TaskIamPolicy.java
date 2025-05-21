@@ -426,9 +426,17 @@ public class TaskIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="taskId", refs={String.class}, tree="[0]")
     private Output<String> taskId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> taskId() {
         return this.taskId;
     }

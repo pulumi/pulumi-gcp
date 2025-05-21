@@ -30,6 +30,7 @@ class TunnelDestGroupIamMemberArgs:
                  region: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a TunnelDestGroupIamMember resource.
+        :param pulumi.Input[builtins.str] dest_group: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -66,6 +67,9 @@ class TunnelDestGroupIamMemberArgs:
     @property
     @pulumi.getter(name="destGroup")
     def dest_group(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "dest_group")
 
     @dest_group.setter
@@ -164,6 +168,7 @@ class _TunnelDestGroupIamMemberState:
         Input properties used for looking up and filtering TunnelDestGroupIamMember resources.
         :param pulumi.Input['TunnelDestGroupIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] dest_group: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -217,6 +222,9 @@ class _TunnelDestGroupIamMemberState:
     @property
     @pulumi.getter(name="destGroup")
     def dest_group(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "dest_group")
 
     @dest_group.setter
@@ -601,6 +609,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TunnelDestGroupIamMemberConditionArgs', 'TunnelDestGroupIamMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] dest_group: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -981,6 +990,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TunnelDestGroupIamMemberConditionArgs', 'TunnelDestGroupIamMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] dest_group: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -1028,6 +1038,9 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter(name="destGroup")
     def dest_group(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "dest_group")
 
     @property

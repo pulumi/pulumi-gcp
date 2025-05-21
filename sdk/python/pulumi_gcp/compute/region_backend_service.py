@@ -64,7 +64,7 @@ class RegionBackendServiceArgs:
                Structure is documented below.
         :param pulumi.Input['RegionBackendServiceCircuitBreakersArgs'] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-               and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
         :param pulumi.Input[builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
@@ -141,7 +141,7 @@ class RegionBackendServiceArgs:
                to use for computing the weights are specified via the
                backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
-               * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+               * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
                and loadBalancingScheme set to INTERNAL_MANAGED.
                * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -170,7 +170,7 @@ class RegionBackendServiceArgs:
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
-               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
         :param pulumi.Input[builtins.str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
@@ -181,10 +181,11 @@ class RegionBackendServiceArgs:
                Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[builtins.str] protocol: The protocol this RegionBackendService uses to communicate with backends.
-               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+        :param pulumi.Input[builtins.str] protocol: The protocol this BackendService uses to communicate with backends.
+               The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+               or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+               for more information.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         :param pulumi.Input[builtins.str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[builtins.str] security_policy: The security policy associated with this backend service.
@@ -307,7 +308,7 @@ class RegionBackendServiceArgs:
         """
         Settings controlling the volume of connections to a backend service. This field
         is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-        and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
         Structure is documented below.
         """
         return pulumi.get(self, "circuit_breakers")
@@ -516,7 +517,7 @@ class RegionBackendServiceArgs:
         to use for computing the weights are specified via the
         backends[].customMetrics fields.
         locality_lb_policy is applicable to either:
-        * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+        * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
         and loadBalancingScheme set to INTERNAL_MANAGED.
         * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -589,7 +590,7 @@ class RegionBackendServiceArgs:
         """
         Settings controlling eviction of unhealthy hosts from the load balancing pool.
         This field is applicable only when the `load_balancing_scheme` is set
-        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
         Structure is documented below.
         """
         return pulumi.get(self, "outlier_detection")
@@ -633,10 +634,11 @@ class RegionBackendServiceArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The protocol this RegionBackendService uses to communicate with backends.
-        The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        types and may result in errors if used with the GA API.
-        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+        The protocol this BackendService uses to communicate with backends.
+        The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+        or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+        for more information.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         """
         return pulumi.get(self, "protocol")
 
@@ -774,7 +776,7 @@ class _RegionBackendServiceState:
                Structure is documented below.
         :param pulumi.Input['RegionBackendServiceCircuitBreakersArgs'] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-               and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
         :param pulumi.Input[builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
@@ -855,7 +857,7 @@ class _RegionBackendServiceState:
                to use for computing the weights are specified via the
                backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
-               * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+               * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
                and loadBalancingScheme set to INTERNAL_MANAGED.
                * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -884,7 +886,7 @@ class _RegionBackendServiceState:
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
-               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
         :param pulumi.Input[builtins.str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
@@ -895,10 +897,11 @@ class _RegionBackendServiceState:
                Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[builtins.str] protocol: The protocol this RegionBackendService uses to communicate with backends.
-               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+        :param pulumi.Input[builtins.str] protocol: The protocol this BackendService uses to communicate with backends.
+               The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+               or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+               for more information.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         :param pulumi.Input[builtins.str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[builtins.str] security_policy: The security policy associated with this backend service.
@@ -1030,7 +1033,7 @@ class _RegionBackendServiceState:
         """
         Settings controlling the volume of connections to a backend service. This field
         is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-        and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
         Structure is documented below.
         """
         return pulumi.get(self, "circuit_breakers")
@@ -1276,7 +1279,7 @@ class _RegionBackendServiceState:
         to use for computing the weights are specified via the
         backends[].customMetrics fields.
         locality_lb_policy is applicable to either:
-        * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+        * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
         and loadBalancingScheme set to INTERNAL_MANAGED.
         * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1349,7 +1352,7 @@ class _RegionBackendServiceState:
         """
         Settings controlling eviction of unhealthy hosts from the load balancing pool.
         This field is applicable only when the `load_balancing_scheme` is set
-        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
         Structure is documented below.
         """
         return pulumi.get(self, "outlier_detection")
@@ -1393,10 +1396,11 @@ class _RegionBackendServiceState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The protocol this RegionBackendService uses to communicate with backends.
-        The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        types and may result in errors if used with the GA API.
-        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+        The protocol this BackendService uses to communicate with backends.
+        The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+        or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+        for more information.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         """
         return pulumi.get(self, "protocol")
 
@@ -1790,7 +1794,7 @@ class RegionBackendService(pulumi.CustomResource):
             }],
             region="us-central1",
             name="region-service",
-            protocol="HTTP",
+            protocol="H2C",
             timeout_sec=10,
             health_checks=default_region_health_check.id)
         ```
@@ -1929,7 +1933,7 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-               and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
         :param pulumi.Input[builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
@@ -2006,7 +2010,7 @@ class RegionBackendService(pulumi.CustomResource):
                to use for computing the weights are specified via the
                backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
-               * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+               * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
                and loadBalancingScheme set to INTERNAL_MANAGED.
                * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -2035,7 +2039,7 @@ class RegionBackendService(pulumi.CustomResource):
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
-               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
         :param pulumi.Input[builtins.str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
@@ -2046,10 +2050,11 @@ class RegionBackendService(pulumi.CustomResource):
                Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[builtins.str] protocol: The protocol this RegionBackendService uses to communicate with backends.
-               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+        :param pulumi.Input[builtins.str] protocol: The protocol this BackendService uses to communicate with backends.
+               The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+               or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+               for more information.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         :param pulumi.Input[builtins.str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[builtins.str] security_policy: The security policy associated with this backend service.
@@ -2328,7 +2333,7 @@ class RegionBackendService(pulumi.CustomResource):
             }],
             region="us-central1",
             name="region-service",
-            protocol="HTTP",
+            protocol="H2C",
             timeout_sec=10,
             health_checks=default_region_health_check.id)
         ```
@@ -2601,7 +2606,7 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-               and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
         :param pulumi.Input[builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
@@ -2682,7 +2687,7 @@ class RegionBackendService(pulumi.CustomResource):
                to use for computing the weights are specified via the
                backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
-               * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+               * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
                and loadBalancingScheme set to INTERNAL_MANAGED.
                * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -2711,7 +2716,7 @@ class RegionBackendService(pulumi.CustomResource):
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
-               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
         :param pulumi.Input[builtins.str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
@@ -2722,10 +2727,11 @@ class RegionBackendService(pulumi.CustomResource):
                Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[builtins.str] protocol: The protocol this RegionBackendService uses to communicate with backends.
-               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+        :param pulumi.Input[builtins.str] protocol: The protocol this BackendService uses to communicate with backends.
+               The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+               or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+               for more information.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         :param pulumi.Input[builtins.str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[builtins.str] security_policy: The security policy associated with this backend service.
@@ -2817,7 +2823,7 @@ class RegionBackendService(pulumi.CustomResource):
         """
         Settings controlling the volume of connections to a backend service. This field
         is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-        and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
         Structure is documented below.
         """
         return pulumi.get(self, "circuit_breakers")
@@ -3003,7 +3009,7 @@ class RegionBackendService(pulumi.CustomResource):
         to use for computing the weights are specified via the
         backends[].customMetrics fields.
         locality_lb_policy is applicable to either:
-        * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+        * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
         and loadBalancingScheme set to INTERNAL_MANAGED.
         * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -3060,7 +3066,7 @@ class RegionBackendService(pulumi.CustomResource):
         """
         Settings controlling eviction of unhealthy hosts from the load balancing pool.
         This field is applicable only when the `load_balancing_scheme` is set
-        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
         Structure is documented below.
         """
         return pulumi.get(self, "outlier_detection")
@@ -3092,10 +3098,11 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[builtins.str]:
         """
-        The protocol this RegionBackendService uses to communicate with backends.
-        The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        types and may result in errors if used with the GA API.
-        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+        The protocol this BackendService uses to communicate with backends.
+        The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+        or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+        for more information.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         """
         return pulumi.get(self, "protocol")
 

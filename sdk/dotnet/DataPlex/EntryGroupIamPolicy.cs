@@ -250,6 +250,9 @@ namespace Pulumi.Gcp.DataPlex
     [GcpResourceType("gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy")]
     public partial class EntryGroupIamPolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("entryGroupId")]
         public Output<string> EntryGroupId { get; private set; } = null!;
 
@@ -328,6 +331,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class EntryGroupIamPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("entryGroupId", required: true)]
         public Input<string> EntryGroupId { get; set; } = null!;
 
@@ -362,6 +368,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class EntryGroupIamPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("entryGroupId")]
         public Input<string>? EntryGroupId { get; set; }
 

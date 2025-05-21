@@ -146,7 +146,7 @@ import (
 //				return err
 //			}
 //			_, err = bigquery.NewDataTransferConfig(ctx, "query_config_cmek", &bigquery.DataTransferConfigArgs{
-//				DisplayName:          pulumi.String(""),
+//				DisplayName:          pulumi.String("display-name"),
 //				Location:             pulumi.String("asia-northeast1"),
 //				DataSourceId:         pulumi.String("scheduled_query"),
 //				Schedule:             pulumi.String("first sunday of quarter 00:00"),

@@ -296,7 +296,6 @@ type ConnectionIamBinding struct {
 	pulumi.CustomResourceState
 
 	Condition ConnectionIamBindingConditionPtrOutput `pulumi:"condition"`
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
 	// (Computed) The etag of the IAM policy.
@@ -372,7 +371,6 @@ func GetConnectionIamBinding(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ConnectionIamBinding resources.
 type connectionIamBindingState struct {
 	Condition *ConnectionIamBindingCondition `pulumi:"condition"`
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId *string `pulumi:"connectionId"`
 	// (Computed) The etag of the IAM policy.
@@ -410,7 +408,6 @@ type connectionIamBindingState struct {
 
 type ConnectionIamBindingState struct {
 	Condition ConnectionIamBindingConditionPtrInput
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -452,7 +449,6 @@ func (ConnectionIamBindingState) ElementType() reflect.Type {
 
 type connectionIamBindingArgs struct {
 	Condition *ConnectionIamBindingCondition `pulumi:"condition"`
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId string `pulumi:"connectionId"`
 	// The geographic location where the connection should reside.
@@ -489,7 +485,6 @@ type connectionIamBindingArgs struct {
 // The set of arguments for constructing a ConnectionIamBinding resource.
 type ConnectionIamBindingArgs struct {
 	Condition ConnectionIamBindingConditionPtrInput
-	// Optional connection id that should be assigned to the created connection.
 	// Used to find the parent resource to bind the IAM policy to
 	ConnectionId pulumi.StringInput
 	// The geographic location where the connection should reside.
@@ -614,7 +609,6 @@ func (o ConnectionIamBindingOutput) Condition() ConnectionIamBindingConditionPtr
 	return o.ApplyT(func(v *ConnectionIamBinding) ConnectionIamBindingConditionPtrOutput { return v.Condition }).(ConnectionIamBindingConditionPtrOutput)
 }
 
-// Optional connection id that should be assigned to the created connection.
 // Used to find the parent resource to bind the IAM policy to
 func (o ConnectionIamBindingOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionIamBinding) pulumi.StringOutput { return v.ConnectionId }).(pulumi.StringOutput)

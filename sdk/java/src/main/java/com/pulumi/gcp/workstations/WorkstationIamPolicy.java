@@ -121,21 +121,49 @@ public class WorkstationIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="workstationClusterId", refs={String.class}, tree="[0]")
     private Output<String> workstationClusterId;
 
+    /**
+     * @return The ID of the parent workstation cluster.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> workstationClusterId() {
         return this.workstationClusterId;
     }
+    /**
+     * The ID of the parent workstation cluster config.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="workstationConfigId", refs={String.class}, tree="[0]")
     private Output<String> workstationConfigId;
 
+    /**
+     * @return The ID of the parent workstation cluster config.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> workstationConfigId() {
         return this.workstationConfigId;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="workstationId", refs={String.class}, tree="[0]")
     private Output<String> workstationId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> workstationId() {
         return this.workstationId;
     }

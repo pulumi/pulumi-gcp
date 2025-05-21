@@ -118,9 +118,17 @@ public final class MetastoreServiceIamMemberArgs extends com.pulumi.resources.Re
         return this.role;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="serviceId", required=true)
     private Output<String> serviceId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> serviceId() {
         return this.serviceId;
     }
@@ -281,11 +289,23 @@ public final class MetastoreServiceIamMemberArgs extends com.pulumi.resources.Re
             return role(Output.of(role));
         }
 
+        /**
+         * @param serviceId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceId(Output<String> serviceId) {
             $.serviceId = serviceId;
             return this;
         }
 
+        /**
+         * @param serviceId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceId(String serviceId) {
             return serviceId(Output.of(serviceId));
         }

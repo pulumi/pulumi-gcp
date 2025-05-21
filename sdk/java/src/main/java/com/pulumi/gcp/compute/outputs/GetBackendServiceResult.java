@@ -19,6 +19,7 @@ import com.pulumi.gcp.compute.outputs.GetBackendServiceSecuritySetting;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceStrongSessionAffinityCooky;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceTlsSetting;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -58,6 +59,8 @@ public final class GetBackendServiceResult {
      * 
      */
     private Boolean enableCdn;
+    private String externalManagedMigrationState;
+    private Double externalManagedMigrationTestingPercentage;
     /**
      * @return The fingerprint of the Backend Service.
      * 
@@ -177,6 +180,12 @@ public final class GetBackendServiceResult {
      */
     public Boolean enableCdn() {
         return this.enableCdn;
+    }
+    public String externalManagedMigrationState() {
+        return this.externalManagedMigrationState;
+    }
+    public Double externalManagedMigrationTestingPercentage() {
+        return this.externalManagedMigrationTestingPercentage;
     }
     /**
      * @return The fingerprint of the Backend Service.
@@ -310,6 +319,8 @@ public final class GetBackendServiceResult {
         private String description;
         private String edgeSecurityPolicy;
         private Boolean enableCdn;
+        private String externalManagedMigrationState;
+        private Double externalManagedMigrationTestingPercentage;
         private String fingerprint;
         private Integer generatedId;
         private List<String> healthChecks;
@@ -351,6 +362,8 @@ public final class GetBackendServiceResult {
     	      this.description = defaults.description;
     	      this.edgeSecurityPolicy = defaults.edgeSecurityPolicy;
     	      this.enableCdn = defaults.enableCdn;
+    	      this.externalManagedMigrationState = defaults.externalManagedMigrationState;
+    	      this.externalManagedMigrationTestingPercentage = defaults.externalManagedMigrationTestingPercentage;
     	      this.fingerprint = defaults.fingerprint;
     	      this.generatedId = defaults.generatedId;
     	      this.healthChecks = defaults.healthChecks;
@@ -508,6 +521,22 @@ public final class GetBackendServiceResult {
               throw new MissingRequiredPropertyException("GetBackendServiceResult", "enableCdn");
             }
             this.enableCdn = enableCdn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalManagedMigrationState(String externalManagedMigrationState) {
+            if (externalManagedMigrationState == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "externalManagedMigrationState");
+            }
+            this.externalManagedMigrationState = externalManagedMigrationState;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalManagedMigrationTestingPercentage(Double externalManagedMigrationTestingPercentage) {
+            if (externalManagedMigrationTestingPercentage == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "externalManagedMigrationTestingPercentage");
+            }
+            this.externalManagedMigrationTestingPercentage = externalManagedMigrationTestingPercentage;
             return this;
         }
         @CustomType.Setter
@@ -743,6 +772,8 @@ public final class GetBackendServiceResult {
             _resultValue.description = description;
             _resultValue.edgeSecurityPolicy = edgeSecurityPolicy;
             _resultValue.enableCdn = enableCdn;
+            _resultValue.externalManagedMigrationState = externalManagedMigrationState;
+            _resultValue.externalManagedMigrationTestingPercentage = externalManagedMigrationTestingPercentage;
             _resultValue.fingerprint = fingerprint;
             _resultValue.generatedId = generatedId;
             _resultValue.healthChecks = healthChecks;

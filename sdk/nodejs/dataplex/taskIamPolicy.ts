@@ -236,6 +236,9 @@ export class TaskIamPolicy extends pulumi.CustomResource {
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly taskId!: pulumi.Output<string>;
 
     /**
@@ -310,6 +313,9 @@ export interface TaskIamPolicyState {
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     taskId?: pulumi.Input<string>;
 }
 
@@ -339,5 +345,8 @@ export interface TaskIamPolicyArgs {
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     taskId: pulumi.Input<string>;
 }

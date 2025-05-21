@@ -13,9 +13,17 @@ public final class GetServiceIamPolicyPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetServiceIamPolicyPlainArgs Empty = new GetServiceIamPolicyPlainArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
@@ -44,6 +52,12 @@ public final class GetServiceIamPolicyPlainArgs extends com.pulumi.resources.Inv
             $ = new GetServiceIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param serviceName Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
             return this;

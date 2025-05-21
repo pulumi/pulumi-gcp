@@ -46,7 +46,6 @@ export interface GetRepositoryIamPolicyArgs {
      */
     project?: string;
     /**
-     * The ID for the Repository.
      * Used to find the parent resource to bind the IAM policy to
      */
     repositoryId: string;
@@ -115,7 +114,6 @@ export interface GetRepositoryIamPolicyOutputArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The ID for the Repository.
      * Used to find the parent resource to bind the IAM policy to
      */
     repositoryId: pulumi.Input<string>;

@@ -291,7 +291,11 @@ type TaxonomyIamPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	Region  pulumi.StringOutput `pulumi:"region"`
+	// Taxonomy location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// Used to find the parent resource to bind the IAM policy to
 	Taxonomy pulumi.StringOutput `pulumi:"taxonomy"`
 }
@@ -340,7 +344,11 @@ type taxonomyIamPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// Taxonomy location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region *string `pulumi:"region"`
 	// Used to find the parent resource to bind the IAM policy to
 	Taxonomy *string `pulumi:"taxonomy"`
 }
@@ -354,7 +362,11 @@ type TaxonomyIamPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// Taxonomy location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Taxonomy pulumi.StringPtrInput
 }
@@ -370,7 +382,11 @@ type taxonomyIamPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// Taxonomy location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region *string `pulumi:"region"`
 	// Used to find the parent resource to bind the IAM policy to
 	Taxonomy string `pulumi:"taxonomy"`
 }
@@ -383,7 +399,11 @@ type TaxonomyIamPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// Taxonomy location region.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Taxonomy pulumi.StringInput
 }
@@ -492,6 +512,10 @@ func (o TaxonomyIamPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TaxonomyIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Taxonomy location region.
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+// region is specified, it is taken from the provider configuration.
 func (o TaxonomyIamPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *TaxonomyIamPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

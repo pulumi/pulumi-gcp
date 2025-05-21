@@ -121,6 +121,7 @@ def get_iam_policy(data_policy_id: Optional[builtins.str] = None,
     ```
 
 
+    :param builtins.str data_policy_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The name of the location of the data policy.
            Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -161,6 +162,7 @@ def get_iam_policy_output(data_policy_id: Optional[pulumi.Input[builtins.str]] =
     ```
 
 
+    :param builtins.str data_policy_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The name of the location of the data policy.
            Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

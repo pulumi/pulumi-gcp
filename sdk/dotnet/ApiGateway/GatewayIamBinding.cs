@@ -259,6 +259,9 @@ namespace Pulumi.Gcp.ApiGateway
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("gateway")]
         public Output<string> Gateway { get; private set; } = null!;
 
@@ -351,6 +354,9 @@ namespace Pulumi.Gcp.ApiGateway
         [Input("condition")]
         public Input<Inputs.GatewayIamBindingConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("gateway", required: true)]
         public Input<string> Gateway { get; set; } = null!;
 
@@ -417,6 +423,9 @@ namespace Pulumi.Gcp.ApiGateway
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 

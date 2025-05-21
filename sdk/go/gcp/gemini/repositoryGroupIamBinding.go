@@ -301,6 +301,7 @@ import (
 type RepositoryGroupIamBinding struct {
 	pulumi.CustomResourceState
 
+	// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
 	CodeRepositoryIndex pulumi.StringOutput                         `pulumi:"codeRepositoryIndex"`
 	Condition           RepositoryGroupIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -323,7 +324,8 @@ type RepositoryGroupIamBinding struct {
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
 	RepositoryGroupId pulumi.StringOutput `pulumi:"repositoryGroupId"`
 	// The role that should be applied. Only one
 	// `gemini.RepositoryGroupIamBinding` can be used per role. Note that custom roles must be of the format
@@ -373,6 +375,7 @@ func GetRepositoryGroupIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RepositoryGroupIamBinding resources.
 type repositoryGroupIamBindingState struct {
+	// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
 	CodeRepositoryIndex *string                             `pulumi:"codeRepositoryIndex"`
 	Condition           *RepositoryGroupIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -395,7 +398,8 @@ type repositoryGroupIamBindingState struct {
 	Members []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
 	RepositoryGroupId *string `pulumi:"repositoryGroupId"`
 	// The role that should be applied. Only one
 	// `gemini.RepositoryGroupIamBinding` can be used per role. Note that custom roles must be of the format
@@ -404,6 +408,7 @@ type repositoryGroupIamBindingState struct {
 }
 
 type RepositoryGroupIamBindingState struct {
+	// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
 	CodeRepositoryIndex pulumi.StringPtrInput
 	Condition           RepositoryGroupIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -426,7 +431,8 @@ type RepositoryGroupIamBindingState struct {
 	Members pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	RepositoryGroupId pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `gemini.RepositoryGroupIamBinding` can be used per role. Note that custom roles must be of the format
@@ -439,6 +445,7 @@ func (RepositoryGroupIamBindingState) ElementType() reflect.Type {
 }
 
 type repositoryGroupIamBindingArgs struct {
+	// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
 	CodeRepositoryIndex string                              `pulumi:"codeRepositoryIndex"`
 	Condition           *RepositoryGroupIamBindingCondition `pulumi:"condition"`
 	// The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -459,8 +466,9 @@ type repositoryGroupIamBindingArgs struct {
 	Members []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           *string `pulumi:"project"`
-	RepositoryGroupId string  `pulumi:"repositoryGroupId"`
+	Project *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
+	RepositoryGroupId string `pulumi:"repositoryGroupId"`
 	// The role that should be applied. Only one
 	// `gemini.RepositoryGroupIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -469,6 +477,7 @@ type repositoryGroupIamBindingArgs struct {
 
 // The set of arguments for constructing a RepositoryGroupIamBinding resource.
 type RepositoryGroupIamBindingArgs struct {
+	// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
 	CodeRepositoryIndex pulumi.StringInput
 	Condition           RepositoryGroupIamBindingConditionPtrInput
 	// The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -489,7 +498,8 @@ type RepositoryGroupIamBindingArgs struct {
 	Members pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project           pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	RepositoryGroupId pulumi.StringInput
 	// The role that should be applied. Only one
 	// `gemini.RepositoryGroupIamBinding` can be used per role. Note that custom roles must be of the format
@@ -584,6 +594,7 @@ func (o RepositoryGroupIamBindingOutput) ToRepositoryGroupIamBindingOutputWithCo
 	return o
 }
 
+// Required. Id of the Code Repository Index. Used to find the parent resource to bind the IAM policy to
 func (o RepositoryGroupIamBindingOutput) CodeRepositoryIndex() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryGroupIamBinding) pulumi.StringOutput { return v.CodeRepositoryIndex }).(pulumi.StringOutput)
 }
@@ -625,6 +636,7 @@ func (o RepositoryGroupIamBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryGroupIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o RepositoryGroupIamBindingOutput) RepositoryGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryGroupIamBinding) pulumi.StringOutput { return v.RepositoryGroupId }).(pulumi.StringOutput)
 }

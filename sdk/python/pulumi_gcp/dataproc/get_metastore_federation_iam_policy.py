@@ -121,6 +121,7 @@ def get_metastore_federation_iam_policy(federation_id: Optional[builtins.str] = 
     ```
 
 
+    :param builtins.str federation_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The location where the metastore federation should reside.
            Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -161,6 +162,7 @@ def get_metastore_federation_iam_policy_output(federation_id: Optional[pulumi.In
     ```
 
 
+    :param builtins.str federation_id: Used to find the parent resource to bind the IAM policy to
     :param builtins.str location: The location where the metastore federation should reside.
            Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

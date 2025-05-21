@@ -318,7 +318,6 @@ type RepositoryIamBinding struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The ID for the Repository.
 	// Used to find the parent resource to bind the IAM policy to
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
 	// The role that should be applied. Only one
@@ -389,7 +388,6 @@ type repositoryIamBindingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The ID for the Repository.
 	// Used to find the parent resource to bind the IAM policy to
 	RepositoryId *string `pulumi:"repositoryId"`
 	// The role that should be applied. Only one
@@ -422,7 +420,6 @@ type RepositoryIamBindingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The ID for the Repository.
 	// Used to find the parent resource to bind the IAM policy to
 	RepositoryId pulumi.StringPtrInput
 	// The role that should be applied. Only one
@@ -457,7 +454,6 @@ type repositoryIamBindingArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The ID for the Repository.
 	// Used to find the parent resource to bind the IAM policy to
 	RepositoryId string `pulumi:"repositoryId"`
 	// The role that should be applied. Only one
@@ -489,7 +485,6 @@ type RepositoryIamBindingArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The ID for the Repository.
 	// Used to find the parent resource to bind the IAM policy to
 	RepositoryId pulumi.StringInput
 	// The role that should be applied. Only one
@@ -623,7 +618,6 @@ func (o RepositoryIamBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The ID for the Repository.
 // Used to find the parent resource to bind the IAM policy to
 func (o RepositoryIamBindingOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryIamBinding) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)

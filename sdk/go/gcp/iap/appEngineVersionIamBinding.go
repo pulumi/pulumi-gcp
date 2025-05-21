@@ -547,7 +547,7 @@ import (
 type AppEngineVersionIamBinding struct {
 	pulumi.CustomResourceState
 
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -575,7 +575,7 @@ type AppEngineVersionIamBinding struct {
 	Role pulumi.StringOutput `pulumi:"role"`
 	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
 	Service pulumi.StringOutput `pulumi:"service"`
-	// Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	VersionId pulumi.StringOutput `pulumi:"versionId"`
 }
 
@@ -624,7 +624,7 @@ func GetAppEngineVersionIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppEngineVersionIamBinding resources.
 type appEngineVersionIamBindingState struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId *string `pulumi:"appId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -652,12 +652,12 @@ type appEngineVersionIamBindingState struct {
 	Role *string `pulumi:"role"`
 	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
 	Service *string `pulumi:"service"`
-	// Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	VersionId *string `pulumi:"versionId"`
 }
 
 type AppEngineVersionIamBindingState struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringPtrInput
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -685,7 +685,7 @@ type AppEngineVersionIamBindingState struct {
 	Role pulumi.StringPtrInput
 	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
 	Service pulumi.StringPtrInput
-	// Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	VersionId pulumi.StringPtrInput
 }
 
@@ -694,7 +694,7 @@ func (AppEngineVersionIamBindingState) ElementType() reflect.Type {
 }
 
 type appEngineVersionIamBindingArgs struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId string `pulumi:"appId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -720,13 +720,13 @@ type appEngineVersionIamBindingArgs struct {
 	Role string `pulumi:"role"`
 	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
 	Service string `pulumi:"service"`
-	// Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	VersionId string `pulumi:"versionId"`
 }
 
 // The set of arguments for constructing a AppEngineVersionIamBinding resource.
 type AppEngineVersionIamBindingArgs struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringInput
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -752,7 +752,7 @@ type AppEngineVersionIamBindingArgs struct {
 	Role pulumi.StringInput
 	// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
 	Service pulumi.StringInput
-	// Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	VersionId pulumi.StringInput
 }
 
@@ -843,7 +843,7 @@ func (o AppEngineVersionIamBindingOutput) ToAppEngineVersionIamBindingOutputWith
 	return o
 }
 
-// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to
 func (o AppEngineVersionIamBindingOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppEngineVersionIamBinding) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
@@ -892,7 +892,7 @@ func (o AppEngineVersionIamBindingOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppEngineVersionIamBinding) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }
 
-// Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to
 func (o AppEngineVersionIamBindingOutput) VersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppEngineVersionIamBinding) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }

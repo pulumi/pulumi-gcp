@@ -52,6 +52,7 @@ func LookupTunnelDestGroupIamPolicy(ctx *pulumi.Context, args *LookupTunnelDestG
 
 // A collection of arguments for invoking getTunnelDestGroupIamPolicy.
 type LookupTunnelDestGroupIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DestGroup string `pulumi:"destGroup"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -88,6 +89,7 @@ func LookupTunnelDestGroupIamPolicyOutput(ctx *pulumi.Context, args LookupTunnel
 
 // A collection of arguments for invoking getTunnelDestGroupIamPolicy.
 type LookupTunnelDestGroupIamPolicyOutputArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DestGroup pulumi.StringInput `pulumi:"destGroup"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     {
     ///         Name = "basic-channel",
     ///         Location = "us-central1",
-    ///         Description = "",
+    ///         Description = "Description",
     ///         DestinationProject = "projects/24240755850",
     ///         Labels = 
     ///         {
@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.GkeBackup
         /// <summary>
         /// The project where Backups are allowed to be stored.
         /// The format is `projects/{project}`.
-        /// {project} can only be a project number.
+        /// {project} can be project number or project id.
         /// </summary>
         [Output("destinationProject")]
         public Output<string> DestinationProject { get; private set; } = null!;
@@ -219,7 +219,7 @@ namespace Pulumi.Gcp.GkeBackup
         /// <summary>
         /// The project where Backups are allowed to be stored.
         /// The format is `projects/{project}`.
-        /// {project} can only be a project number.
+        /// {project} can be project number or project id.
         /// </summary>
         [Input("destinationProject", required: true)]
         public Input<string> DestinationProject { get; set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.Gcp.GkeBackup
         /// <summary>
         /// The project where Backups are allowed to be stored.
         /// The format is `projects/{project}`.
-        /// {project} can only be a project number.
+        /// {project} can be project number or project id.
         /// </summary>
         [Input("destinationProject")]
         public Input<string>? DestinationProject { get; set; }

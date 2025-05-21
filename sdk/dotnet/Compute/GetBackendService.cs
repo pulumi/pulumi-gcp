@@ -183,6 +183,8 @@ namespace Pulumi.Gcp.Compute
         /// Whether or not Cloud CDN is enabled on the Backend Service.
         /// </summary>
         public readonly bool EnableCdn;
+        public readonly string ExternalManagedMigrationState;
+        public readonly double ExternalManagedMigrationTestingPercentage;
         /// <summary>
         /// The fingerprint of the Backend Service.
         /// </summary>
@@ -265,6 +267,10 @@ namespace Pulumi.Gcp.Compute
 
             bool enableCdn,
 
+            string externalManagedMigrationState,
+
+            double externalManagedMigrationTestingPercentage,
+
             string fingerprint,
 
             int generatedId,
@@ -327,6 +333,8 @@ namespace Pulumi.Gcp.Compute
             Description = description;
             EdgeSecurityPolicy = edgeSecurityPolicy;
             EnableCdn = enableCdn;
+            ExternalManagedMigrationState = externalManagedMigrationState;
+            ExternalManagedMigrationTestingPercentage = externalManagedMigrationTestingPercentage;
             Fingerprint = fingerprint;
             GeneratedId = generatedId;
             HealthChecks = healthChecks;

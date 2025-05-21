@@ -305,7 +305,7 @@ type ListingIamPolicy struct {
 	DataExchangeId pulumi.StringOutput `pulumi:"dataExchangeId"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	ListingId pulumi.StringOutput `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -363,7 +363,7 @@ type listingIamPolicyState struct {
 	DataExchangeId *string `pulumi:"dataExchangeId"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	ListingId *string `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -383,7 +383,7 @@ type ListingIamPolicyState struct {
 	DataExchangeId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
-	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	ListingId pulumi.StringPtrInput
 	// The name of the location this data exchange listing.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -405,7 +405,7 @@ func (ListingIamPolicyState) ElementType() reflect.Type {
 type listingIamPolicyArgs struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
 	DataExchangeId string `pulumi:"dataExchangeId"`
-	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	ListingId string `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -424,7 +424,7 @@ type listingIamPolicyArgs struct {
 type ListingIamPolicyArgs struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
 	DataExchangeId pulumi.StringInput
-	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	ListingId pulumi.StringInput
 	// The name of the location this data exchange listing.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -536,7 +536,7 @@ func (o ListingIamPolicyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListingIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to
 func (o ListingIamPolicyOutput) ListingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListingIamPolicy) pulumi.StringOutput { return v.ListingId }).(pulumi.StringOutput)
 }

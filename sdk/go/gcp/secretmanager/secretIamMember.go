@@ -544,7 +544,8 @@ type SecretIamMember struct {
 	// The role that should be applied. Only one
 	// `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role     pulumi.StringOutput `pulumi:"role"`
+	Role pulumi.StringOutput `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	SecretId pulumi.StringOutput `pulumi:"secretId"`
 }
 
@@ -610,7 +611,8 @@ type secretIamMemberState struct {
 	// The role that should be applied. Only one
 	// `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role     *string `pulumi:"role"`
+	Role *string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	SecretId *string `pulumi:"secretId"`
 }
 
@@ -638,7 +640,8 @@ type SecretIamMemberState struct {
 	// The role that should be applied. Only one
 	// `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role     pulumi.StringPtrInput
+	Role pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	SecretId pulumi.StringPtrInput
 }
 
@@ -668,7 +671,8 @@ type secretIamMemberArgs struct {
 	// The role that should be applied. Only one
 	// `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role     string `pulumi:"role"`
+	Role string `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
 	SecretId string `pulumi:"secretId"`
 }
 
@@ -695,7 +699,8 @@ type SecretIamMemberArgs struct {
 	// The role that should be applied. Only one
 	// `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role     pulumi.StringInput
+	Role pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
 	SecretId pulumi.StringInput
 }
 
@@ -825,6 +830,7 @@ func (o SecretIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o SecretIamMemberOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretIamMember) pulumi.StringOutput { return v.SecretId }).(pulumi.StringOutput)
 }

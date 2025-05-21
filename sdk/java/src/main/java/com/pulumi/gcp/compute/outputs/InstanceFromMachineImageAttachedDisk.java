@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -37,6 +38,11 @@ public final class InstanceFromMachineImageAttachedDisk {
      * 
      */
     private @Nullable String diskEncryptionServiceAccount;
+    /**
+     * @return Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    private @Nullable Boolean forceAttach;
     /**
      * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
@@ -90,6 +96,13 @@ public final class InstanceFromMachineImageAttachedDisk {
         return Optional.ofNullable(this.diskEncryptionServiceAccount);
     }
     /**
+     * @return Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    public Optional<Boolean> forceAttach() {
+        return Optional.ofNullable(this.forceAttach);
+    }
+    /**
      * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
@@ -125,6 +138,7 @@ public final class InstanceFromMachineImageAttachedDisk {
         private @Nullable String diskEncryptionKeyRsa;
         private @Nullable String diskEncryptionKeySha256;
         private @Nullable String diskEncryptionServiceAccount;
+        private @Nullable Boolean forceAttach;
         private @Nullable String kmsKeySelfLink;
         private @Nullable String mode;
         private String source;
@@ -136,6 +150,7 @@ public final class InstanceFromMachineImageAttachedDisk {
     	      this.diskEncryptionKeyRsa = defaults.diskEncryptionKeyRsa;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
     	      this.diskEncryptionServiceAccount = defaults.diskEncryptionServiceAccount;
+    	      this.forceAttach = defaults.forceAttach;
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.mode = defaults.mode;
     	      this.source = defaults.source;
@@ -172,6 +187,12 @@ public final class InstanceFromMachineImageAttachedDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder forceAttach(@Nullable Boolean forceAttach) {
+
+            this.forceAttach = forceAttach;
+            return this;
+        }
+        @CustomType.Setter
         public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
 
             this.kmsKeySelfLink = kmsKeySelfLink;
@@ -198,6 +219,7 @@ public final class InstanceFromMachineImageAttachedDisk {
             _resultValue.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             _resultValue.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
+            _resultValue.forceAttach = forceAttach;
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.mode = mode;
             _resultValue.source = source;

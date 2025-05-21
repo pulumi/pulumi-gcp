@@ -36,6 +36,12 @@ export interface GetTagTemplateIamPolicyArgs {
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: string;
+    /**
+     * Template location region.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
+     */
     region?: string;
     /**
      * Used to find the parent resource to bind the IAM policy to
@@ -96,6 +102,12 @@ export interface GetTagTemplateIamPolicyOutputArgs {
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Template location region.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
+     */
     region?: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to

@@ -29,12 +29,12 @@ import * as utilities from "../utilities";
  *     location: "US",
  *     dataExchangeId: "my_data_exchange",
  *     displayName: "my_data_exchange",
- *     description: "",
+ *     description: "Test Description",
  * });
  * const subscriptionDataset = new gcp.bigquery.Dataset("subscription", {
  *     datasetId: "my_listing",
  *     friendlyName: "my_listing",
- *     description: "",
+ *     description: "Test Description",
  *     location: "US",
  * });
  * const subscriptionListing = new gcp.bigqueryanalyticshub.Listing("subscription", {
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     dataExchangeId: subscription.dataExchangeId,
  *     listingId: "my_listing",
  *     displayName: "my_listing",
- *     description: "",
+ *     description: "Test Description",
  *     bigqueryDataset: {
  *         dataset: subscriptionDataset.id,
  *     },

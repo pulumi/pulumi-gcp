@@ -251,7 +251,6 @@ namespace Pulumi.Gcp.BigQuery
     public partial class ConnectionIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional connection id that should be assigned to the created connection.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Output("connectionId")]
@@ -338,7 +337,6 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class ConnectionIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional connection id that should be assigned to the created connection.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("connectionId", required: true)]
@@ -381,7 +379,6 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class ConnectionIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional connection id that should be assigned to the created connection.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("connectionId")]

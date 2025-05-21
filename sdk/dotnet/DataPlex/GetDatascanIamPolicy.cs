@@ -96,6 +96,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class GetDatascanIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("dataScanId", required: true)]
         public string DataScanId { get; set; } = null!;
 
@@ -123,6 +126,9 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class GetDatascanIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("dataScanId", required: true)]
         public Input<string> DataScanId { get; set; } = null!;
 

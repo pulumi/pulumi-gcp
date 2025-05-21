@@ -348,9 +348,17 @@ public class ApiConfigIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> api() {
         return this.api;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="apiConfig", refs={String.class}, tree="[0]")
     private Output<String> apiConfig;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> apiConfig() {
         return this.apiConfig;
     }

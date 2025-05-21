@@ -242,6 +242,9 @@ namespace Pulumi.Gcp.ApiGateway
     [GcpResourceType("gcp:apigateway/apiIamBinding:ApiIamBinding")]
     public partial class ApiIamBinding : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("api")]
         public Output<string> Api { get; private set; } = null!;
 
@@ -331,6 +334,9 @@ namespace Pulumi.Gcp.ApiGateway
 
     public sealed class ApiIamBindingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("api", required: true)]
         public Input<string> Api { get; set; } = null!;
 
@@ -382,6 +388,9 @@ namespace Pulumi.Gcp.ApiGateway
 
     public sealed class ApiIamBindingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("api")]
         public Input<string>? Api { get; set; }
 

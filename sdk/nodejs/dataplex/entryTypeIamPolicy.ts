@@ -204,6 +204,9 @@ export class EntryTypeIamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === EntryTypeIamPolicy.__pulumiType;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly entryTypeId!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -268,6 +271,9 @@ export class EntryTypeIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EntryTypeIamPolicy resources.
  */
 export interface EntryTypeIamPolicyState {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     entryTypeId?: pulumi.Input<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -296,6 +302,9 @@ export interface EntryTypeIamPolicyState {
  * The set of arguments for constructing a EntryTypeIamPolicy resource.
  */
 export interface EntryTypeIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     entryTypeId: pulumi.Input<string>;
     /**
      * The location where entry type will be created in.

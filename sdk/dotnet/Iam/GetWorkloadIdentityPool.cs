@@ -144,6 +144,9 @@ namespace Pulumi.Gcp.Iam
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult> InlineCertificateIssuanceConfigs;
+        public readonly ImmutableArray<Outputs.GetWorkloadIdentityPoolInlineTrustConfigResult> InlineTrustConfigs;
+        public readonly string Mode;
         public readonly string Name;
         public readonly string? Project;
         public readonly string State;
@@ -159,6 +162,12 @@ namespace Pulumi.Gcp.Iam
 
             string id,
 
+            ImmutableArray<Outputs.GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult> inlineCertificateIssuanceConfigs,
+
+            ImmutableArray<Outputs.GetWorkloadIdentityPoolInlineTrustConfigResult> inlineTrustConfigs,
+
+            string mode,
+
             string name,
 
             string? project,
@@ -171,6 +180,9 @@ namespace Pulumi.Gcp.Iam
             Disabled = disabled;
             DisplayName = displayName;
             Id = id;
+            InlineCertificateIssuanceConfigs = inlineCertificateIssuanceConfigs;
+            InlineTrustConfigs = inlineTrustConfigs;
+            Mode = mode;
             Name = name;
             Project = project;
             State = state;

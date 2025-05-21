@@ -60,6 +60,11 @@ export const getApplicationIamPolicy: typeof import("./getApplicationIamPolicy")
 export const getApplicationIamPolicyOutput: typeof import("./getApplicationIamPolicy").getApplicationIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getApplicationIamPolicy","getApplicationIamPolicyOutput"], () => require("./getApplicationIamPolicy"));
 
+export { GetSecurityGatewayArgs, GetSecurityGatewayResult, GetSecurityGatewayOutputArgs } from "./getSecurityGateway";
+export const getSecurityGateway: typeof import("./getSecurityGateway").getSecurityGateway = null as any;
+export const getSecurityGatewayOutput: typeof import("./getSecurityGateway").getSecurityGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityGateway","getSecurityGatewayOutput"], () => require("./getSecurityGateway"));
+
 export { GetSecurityGatewayIamPolicyArgs, GetSecurityGatewayIamPolicyResult, GetSecurityGatewayIamPolicyOutputArgs } from "./getSecurityGatewayIamPolicy";
 export const getSecurityGatewayIamPolicy: typeof import("./getSecurityGatewayIamPolicy").getSecurityGatewayIamPolicy = null as any;
 export const getSecurityGatewayIamPolicyOutput: typeof import("./getSecurityGatewayIamPolicy").getSecurityGatewayIamPolicyOutput = null as any;

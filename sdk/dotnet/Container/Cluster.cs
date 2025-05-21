@@ -421,6 +421,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterIdentityServiceConfig> IdentityServiceConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+        /// </summary>
+        [Output("inTransitEncryptionConfig")]
+        public Output<string?> InTransitEncryptionConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
         /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -1106,6 +1112,12 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterIdentityServiceConfigArgs>? IdentityServiceConfig { get; set; }
 
         /// <summary>
+        /// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+        /// </summary>
+        [Input("inTransitEncryptionConfig")]
+        public Input<string>? InTransitEncryptionConfig { get; set; }
+
+        /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
         /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -1740,6 +1752,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("identityServiceConfig")]
         public Input<Inputs.ClusterIdentityServiceConfigGetArgs>? IdentityServiceConfig { get; set; }
+
+        /// <summary>
+        /// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+        /// </summary>
+        [Input("inTransitEncryptionConfig")]
+        public Input<string>? InTransitEncryptionConfig { get; set; }
 
         /// <summary>
         /// The number of nodes to create in this

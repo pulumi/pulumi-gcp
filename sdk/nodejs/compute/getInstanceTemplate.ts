@@ -158,6 +158,7 @@ export interface GetInstanceTemplateResult {
      * for the instance, if set. Structure is documented below.
      */
     readonly networkPerformanceConfigs: outputs.compute.GetInstanceTemplateNetworkPerformanceConfig[];
+    readonly numericId: string;
     readonly partnerMetadata: {[key: string]: string};
     /**
      * The ID of the project in which the resource belongs. If it

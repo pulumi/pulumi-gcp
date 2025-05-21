@@ -33,12 +33,18 @@ export function getApplicationIamPolicy(args: GetApplicationIamPolicyArgs, opts?
  * A collection of arguments for invoking getApplicationIamPolicy.
  */
 export interface GetApplicationIamPolicyArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     applicationId: string;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: string;
+    /**
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     */
     securityGatewaysId: string;
 }
 
@@ -92,11 +98,17 @@ export function getApplicationIamPolicyOutput(args: GetApplicationIamPolicyOutpu
  * A collection of arguments for invoking getApplicationIamPolicy.
  */
 export interface GetApplicationIamPolicyOutputArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     applicationId: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     */
     securityGatewaysId: pulumi.Input<string>;
 }

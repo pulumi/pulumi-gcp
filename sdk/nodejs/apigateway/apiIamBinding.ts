@@ -198,6 +198,9 @@ export class ApiIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiIamBinding.__pulumiType;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly api!: pulumi.Output<string>;
     public readonly condition!: pulumi.Output<outputs.apigateway.ApiIamBindingCondition | undefined>;
     /**
@@ -276,6 +279,9 @@ export class ApiIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiIamBinding resources.
  */
 export interface ApiIamBindingState {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     api?: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.apigateway.ApiIamBindingCondition>;
     /**
@@ -313,6 +319,9 @@ export interface ApiIamBindingState {
  * The set of arguments for constructing a ApiIamBinding resource.
  */
 export interface ApiIamBindingArgs {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     api: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.apigateway.ApiIamBindingCondition>;
     /**

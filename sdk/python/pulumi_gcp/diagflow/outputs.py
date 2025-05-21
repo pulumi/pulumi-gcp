@@ -22,6 +22,7 @@ __all__ = [
     'CxAgentAdvancedSettingsDtmfSettings',
     'CxAgentAdvancedSettingsLoggingSettings',
     'CxAgentAdvancedSettingsSpeechSettings',
+    'CxAgentGenAppBuilderSettings',
     'CxAgentGitIntegrationSettings',
     'CxAgentGitIntegrationSettingsGithubSettings',
     'CxAgentSpeechToTextSettings',
@@ -529,6 +530,26 @@ class CxAgentAdvancedSettingsSpeechSettings(dict):
         Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         """
         return pulumi.get(self, "use_timeout_based_endpointing")
+
+
+@pulumi.output_type
+class CxAgentGenAppBuilderSettings(dict):
+    def __init__(__self__, *,
+                 engine: builtins.str):
+        """
+        :param builtins.str engine: The full name of the Gen App Builder engine related to this agent if there is one.
+               Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
+        """
+        pulumi.set(__self__, "engine", engine)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> builtins.str:
+        """
+        The full name of the Gen App Builder engine related to this agent if there is one.
+        Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
+        """
+        return pulumi.get(self, "engine")
 
 
 @pulumi.output_type
@@ -1259,6 +1280,8 @@ class CxFlowEventHandlerTriggerFulfillment(dict):
         suggest = None
         if key == "conditionalCases":
             suggest = "conditional_cases"
+        elif key == "enableGenerativeFallback":
+            suggest = "enable_generative_fallback"
         elif key == "returnPartialResponses":
             suggest = "return_partial_responses"
         elif key == "setParameterActions":
@@ -1277,6 +1300,7 @@ class CxFlowEventHandlerTriggerFulfillment(dict):
 
     def __init__(__self__, *,
                  conditional_cases: Optional[Sequence['outputs.CxFlowEventHandlerTriggerFulfillmentConditionalCase']] = None,
+                 enable_generative_fallback: Optional[builtins.bool] = None,
                  messages: Optional[Sequence['outputs.CxFlowEventHandlerTriggerFulfillmentMessage']] = None,
                  return_partial_responses: Optional[builtins.bool] = None,
                  set_parameter_actions: Optional[Sequence['outputs.CxFlowEventHandlerTriggerFulfillmentSetParameterAction']] = None,
@@ -1285,6 +1309,7 @@ class CxFlowEventHandlerTriggerFulfillment(dict):
         """
         :param Sequence['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs'] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
+        :param builtins.bool enable_generative_fallback: If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
         :param Sequence['CxFlowEventHandlerTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param builtins.bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
@@ -1295,6 +1320,8 @@ class CxFlowEventHandlerTriggerFulfillment(dict):
         """
         if conditional_cases is not None:
             pulumi.set(__self__, "conditional_cases", conditional_cases)
+        if enable_generative_fallback is not None:
+            pulumi.set(__self__, "enable_generative_fallback", enable_generative_fallback)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if return_partial_responses is not None:
@@ -1314,6 +1341,14 @@ class CxFlowEventHandlerTriggerFulfillment(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "conditional_cases")
+
+    @property
+    @pulumi.getter(name="enableGenerativeFallback")
+    def enable_generative_fallback(self) -> Optional[builtins.bool]:
+        """
+        If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        """
+        return pulumi.get(self, "enable_generative_fallback")
 
     @property
     @pulumi.getter

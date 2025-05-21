@@ -175,6 +175,99 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firebase App Hosting Backend Github
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigArgs;
+ * import com.pulumi.gcp.developerconnect.GitRepositoryLink;
+ * import com.pulumi.gcp.developerconnect.GitRepositoryLinkArgs;
+ * import com.pulumi.gcp.firebase.AppHostingBackend;
+ * import com.pulumi.gcp.firebase.AppHostingBackendArgs;
+ * import com.pulumi.gcp.firebase.inputs.AppHostingBackendCodebaseArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         //## Include these blocks only once per project if you are starting from scratch ###
+ *         var devconnect_p4sa = new ServiceIdentity("devconnect-p4sa", ServiceIdentityArgs.builder()
+ *             .project("my-project-name")
+ *             .service("developerconnect.googleapis.com")
+ *             .build());
+ * 
+ *         var devconnect_secret = new IAMMember("devconnect-secret", IAMMemberArgs.builder()
+ *             .project("my-project-name")
+ *             .role("roles/secretmanager.admin")
+ *             .member(devconnect_p4sa.member())
+ *             .build());
+ * 
+ *         //##
+ *         //## Include these blocks only once per Github account ###
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .project("my-project-name")
+ *             .location("us-central1")
+ *             .connectionId("tf-test-connection-new")
+ *             .githubConfig(ConnectionGithubConfigArgs.builder()
+ *                 .githubApp("FIREBASE")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(devconnect_secret)
+ *                 .build());
+ * 
+ *         var my_repository = new GitRepositoryLink("my-repository", GitRepositoryLinkArgs.builder()
+ *             .project("my-project-name")
+ *             .location("us-central1")
+ *             .gitRepositoryLinkId("my-repo")
+ *             .parentConnection(my_connection.connectionId())
+ *             .cloneUri("https://github.com/myuser/myrepo.git")
+ *             .build());
+ * 
+ *         var example = new AppHostingBackend("example", AppHostingBackendArgs.builder()
+ *             .project("my-project-name")
+ *             .location("us-central1")
+ *             .backendId("my-backend-gh")
+ *             .appId("1:0000000000:web:674cde32020e16fbce9dbd")
+ *             .displayName("My Backend")
+ *             .servingLocality("GLOBAL_ACCESS")
+ *             .serviceAccount("firebase-app-hosting-compute}{@literal @}{@code my-project-name.iam.gserviceaccount.com")
+ *             .environment("prod")
+ *             .annotations(Map.of("key", "value"))
+ *             .labels(Map.of("key", "value"))
+ *             .codebase(AppHostingBackendCodebaseArgs.builder()
+ *                 .repository(my_repository.name())
+ *                 .rootDirectory("/")
+ *                 .build())
+ *             .build());
+ * 
+ *         ctx.export("nextSteps", my_connection.installationStates());
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Backend can be imported using any of these accepted formats:

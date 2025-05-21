@@ -50,6 +50,7 @@ func LookupGatewayIamPolicy(ctx *pulumi.Context, args *LookupGatewayIamPolicyArg
 
 // A collection of arguments for invoking getGatewayIamPolicy.
 type LookupGatewayIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	Gateway string `pulumi:"gateway"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -86,6 +87,7 @@ func LookupGatewayIamPolicyOutput(ctx *pulumi.Context, args LookupGatewayIamPoli
 
 // A collection of arguments for invoking getGatewayIamPolicy.
 type LookupGatewayIamPolicyOutputArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	Gateway pulumi.StringInput `pulumi:"gateway"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

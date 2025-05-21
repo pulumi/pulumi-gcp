@@ -52,11 +52,13 @@ func GetTableIamPolicy(ctx *pulumi.Context, args *GetTableIamPolicyArgs, opts ..
 
 // A collection of arguments for invoking getTableIamPolicy.
 type GetTableIamPolicyArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DatasetId string `pulumi:"datasetId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	TableId string  `pulumi:"tableId"`
+	// Used to find the parent resource to bind the IAM policy to
+	TableId string `pulumi:"tableId"`
 }
 
 // A collection of values returned by getTableIamPolicy.
@@ -84,11 +86,13 @@ func GetTableIamPolicyOutput(ctx *pulumi.Context, args GetTableIamPolicyOutputAr
 
 // A collection of arguments for invoking getTableIamPolicy.
 type GetTableIamPolicyOutputArgs struct {
+	// Used to find the parent resource to bind the IAM policy to
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	TableId pulumi.StringInput    `pulumi:"tableId"`
+	// Used to find the parent resource to bind the IAM policy to
+	TableId pulumi.StringInput `pulumi:"tableId"`
 }
 
 func (GetTableIamPolicyOutputArgs) ElementType() reflect.Type {

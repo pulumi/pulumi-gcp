@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     timeZone: "America/New_York",
  * });
  * const basicEntityType = new gcp.diagflow.EntityType("basic_entity_type", {
- *     displayName: "",
+ *     displayName: "basic-entity-type",
  *     kind: "KIND_MAP",
  *     entities: [
  *         {

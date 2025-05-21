@@ -17,9 +17,17 @@ public final class ApiIamMemberArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ApiIamMemberArgs Empty = new ApiIamMemberArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="api", required=true)
     private Output<String> api;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> api() {
         return this.api;
     }
@@ -130,11 +138,23 @@ public final class ApiIamMemberArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ApiIamMemberArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param api Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder api(Output<String> api) {
             $.api = api;
             return this;
         }
 
+        /**
+         * @param api Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder api(String api) {
             return api(Output.of(api));
         }

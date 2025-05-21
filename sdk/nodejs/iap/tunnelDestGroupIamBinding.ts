@@ -343,6 +343,9 @@ export class TunnelDestGroupIamBinding extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.iap.TunnelDestGroupIamBindingCondition | undefined>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly destGroup!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -434,6 +437,9 @@ export interface TunnelDestGroupIamBindingState {
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iap.TunnelDestGroupIamBindingCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     destGroup?: pulumi.Input<string>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -482,6 +488,9 @@ export interface TunnelDestGroupIamBindingArgs {
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iap.TunnelDestGroupIamBindingCondition>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     destGroup: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.

@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.bigquery.Dataset("default", {
- *     datasetId: "",
+ *     datasetId: "my-dataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",

@@ -376,6 +376,11 @@ export class TunnelInstanceIAMBinding extends pulumi.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+     * zone is specified, it is taken from the provider configuration.
+     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -464,6 +469,11 @@ export interface TunnelInstanceIAMBindingState {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+     * zone is specified, it is taken from the provider configuration.
+     */
     zone?: pulumi.Input<string>;
 }
 
@@ -505,5 +515,10 @@ export interface TunnelInstanceIAMBindingArgs {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+     * zone is specified, it is taken from the provider configuration.
+     */
     zone?: pulumi.Input<string>;
 }

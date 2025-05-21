@@ -44,6 +44,7 @@ class SecurityGatewayIamBindingArgs:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] security_gateway_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input['SecurityGatewayIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`. Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -101,6 +102,9 @@ class SecurityGatewayIamBindingArgs:
     @property
     @pulumi.getter(name="securityGatewayId")
     def security_gateway_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "security_gateway_id")
 
     @security_gateway_id.setter
@@ -182,6 +186,7 @@ class _SecurityGatewayIamBindingState:
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] security_gateway_id: Used to find the parent resource to bind the IAM policy to
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -289,6 +294,9 @@ class _SecurityGatewayIamBindingState:
     @property
     @pulumi.getter(name="securityGatewayId")
     def security_gateway_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "security_gateway_id")
 
     @security_gateway_id.setter
@@ -614,6 +622,7 @@ class SecurityGatewayIamBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] security_gateway_id: Used to find the parent resource to bind the IAM policy to
         """
         ...
     @overload
@@ -992,6 +1001,7 @@ class SecurityGatewayIamBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] role: The role that should be applied. Only one
                `beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[builtins.str] security_gateway_id: Used to find the parent resource to bind the IAM policy to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1073,5 +1083,8 @@ class SecurityGatewayIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="securityGatewayId")
     def security_gateway_id(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "security_gateway_id")
 

@@ -30,6 +30,7 @@ class DatascanIamMemberArgs:
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a DatascanIamMember resource.
+        :param pulumi.Input[builtins.str] data_scan_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -64,6 +65,9 @@ class DatascanIamMemberArgs:
     @property
     @pulumi.getter(name="dataScanId")
     def data_scan_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "data_scan_id")
 
     @data_scan_id.setter
@@ -156,6 +160,7 @@ class _DatascanIamMemberState:
                  role: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatascanIamMember resources.
+        :param pulumi.Input[builtins.str] data_scan_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[builtins.str] location: The location where the data scan should reside.
                Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -205,6 +210,9 @@ class _DatascanIamMemberState:
     @property
     @pulumi.getter(name="dataScanId")
     def data_scan_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "data_scan_id")
 
     @data_scan_id.setter
@@ -465,6 +473,7 @@ class DatascanIamMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] data_scan_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] location: The location where the data scan should reside.
                Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -721,6 +730,7 @@ class DatascanIamMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] data_scan_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[builtins.str] location: The location where the data scan should reside.
                Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -764,6 +774,9 @@ class DatascanIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dataScanId")
     def data_scan_id(self) -> pulumi.Output[builtins.str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "data_scan_id")
 
     @property

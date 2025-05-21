@@ -25,9 +25,17 @@ public final class EntryTypeIamBindingArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="entryTypeId", required=true)
     private Output<String> entryTypeId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> entryTypeId() {
         return this.entryTypeId;
     }
@@ -162,11 +170,23 @@ public final class EntryTypeIamBindingArgs extends com.pulumi.resources.Resource
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param entryTypeId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder entryTypeId(Output<String> entryTypeId) {
             $.entryTypeId = entryTypeId;
             return this;
         }
 
+        /**
+         * @param entryTypeId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder entryTypeId(String entryTypeId) {
             return entryTypeId(Output.of(entryTypeId));
         }

@@ -483,6 +483,8 @@ type InstanceTemplate struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig InstanceTemplateNetworkPerformanceConfigPtrOutput `pulumi:"networkPerformanceConfig"`
+	// numeric identifier of the resource.
+	NumericId pulumi.StringOutput `pulumi:"numericId"`
 	// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
 	PartnerMetadata pulumi.StringMapOutput `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If it
@@ -637,6 +639,8 @@ type instanceTemplateState struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig *InstanceTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// numeric identifier of the resource.
+	NumericId *string `pulumi:"numericId"`
 	// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
 	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If it
@@ -751,6 +755,8 @@ type InstanceTemplateState struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig InstanceTemplateNetworkPerformanceConfigPtrInput
+	// numeric identifier of the resource.
+	NumericId pulumi.StringPtrInput
 	// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
 	PartnerMetadata pulumi.StringMapInput
 	// The ID of the project in which the resource belongs. If it
@@ -1221,6 +1227,11 @@ func (o InstanceTemplateOutput) NetworkPerformanceConfig() InstanceTemplateNetwo
 	return o.ApplyT(func(v *InstanceTemplate) InstanceTemplateNetworkPerformanceConfigPtrOutput {
 		return v.NetworkPerformanceConfig
 	}).(InstanceTemplateNetworkPerformanceConfigPtrOutput)
+}
+
+// numeric identifier of the resource.
+func (o InstanceTemplateOutput) NumericId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.NumericId }).(pulumi.StringOutput)
 }
 
 // Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.

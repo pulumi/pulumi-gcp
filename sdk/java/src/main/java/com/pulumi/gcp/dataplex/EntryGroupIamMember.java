@@ -346,9 +346,17 @@ public class EntryGroupIamMember extends com.pulumi.resources.CustomResource {
     public Output<Optional<EntryGroupIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="entryGroupId", refs={String.class}, tree="[0]")
     private Output<String> entryGroupId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> entryGroupId() {
         return this.entryGroupId;
     }

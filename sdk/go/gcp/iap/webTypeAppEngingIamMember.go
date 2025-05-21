@@ -521,7 +521,7 @@ import (
 type WebTypeAppEngingIamMember struct {
 	pulumi.CustomResourceState
 
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -588,7 +588,7 @@ func GetWebTypeAppEngingIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebTypeAppEngingIamMember resources.
 type webTypeAppEngingIamMemberState struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId *string `pulumi:"appId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -617,7 +617,7 @@ type webTypeAppEngingIamMemberState struct {
 }
 
 type WebTypeAppEngingIamMemberState struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringPtrInput
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -650,7 +650,7 @@ func (WebTypeAppEngingIamMemberState) ElementType() reflect.Type {
 }
 
 type webTypeAppEngingIamMemberArgs struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId string `pulumi:"appId"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -678,7 +678,7 @@ type webTypeAppEngingIamMemberArgs struct {
 
 // The set of arguments for constructing a WebTypeAppEngingIamMember resource.
 type WebTypeAppEngingIamMemberArgs struct {
-	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+	// Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringInput
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
@@ -791,7 +791,7 @@ func (o WebTypeAppEngingIamMemberOutput) ToWebTypeAppEngingIamMemberOutputWithCo
 	return o
 }
 
-// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+// Used to find the parent resource to bind the IAM policy to
 func (o WebTypeAppEngingIamMemberOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebTypeAppEngingIamMember) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }

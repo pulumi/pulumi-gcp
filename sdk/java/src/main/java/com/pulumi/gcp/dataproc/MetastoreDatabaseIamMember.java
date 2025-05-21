@@ -380,9 +380,21 @@ public class MetastoreDatabaseIamMember extends com.pulumi.resources.CustomResou
     public Output<String> etag() {
         return this.etag;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     * 
+     */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     * 
+     */
     public Output<String> location() {
         return this.location;
     }
@@ -454,9 +466,17 @@ public class MetastoreDatabaseIamMember extends com.pulumi.resources.CustomResou
     public Output<String> role() {
         return this.role;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> serviceId() {
         return this.serviceId;
     }

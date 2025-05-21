@@ -465,7 +465,7 @@ namespace Pulumi.Gcp.Iap
     public partial class AppEngineVersionIamBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -521,7 +521,7 @@ namespace Pulumi.Gcp.Iap
         public Output<string> Service { get; private set; } = null!;
 
         /// <summary>
-        /// Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Output("versionId")]
         public Output<string> VersionId { get; private set; } = null!;
@@ -573,7 +573,7 @@ namespace Pulumi.Gcp.Iap
     public sealed class AppEngineVersionIamBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -629,7 +629,7 @@ namespace Pulumi.Gcp.Iap
         public Input<string> Service { get; set; } = null!;
 
         /// <summary>
-        /// Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("versionId", required: true)]
         public Input<string> VersionId { get; set; } = null!;
@@ -643,7 +643,7 @@ namespace Pulumi.Gcp.Iap
     public sealed class AppEngineVersionIamBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
@@ -705,7 +705,7 @@ namespace Pulumi.Gcp.Iap
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

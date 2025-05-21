@@ -35,6 +35,8 @@ class BackendServiceArgs:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
+                 external_managed_migration_state: Optional[pulumi.Input[builtins.str]] = None,
+                 external_managed_migration_testing_percentage: Optional[pulumi.Input[builtins.float]] = None,
                  health_checks: Optional[pulumi.Input[builtins.str]] = None,
                  iap: Optional[pulumi.Input['BackendServiceIapArgs']] = None,
                  ip_address_selection_policy: Optional[pulumi.Input[builtins.str]] = None,
@@ -91,6 +93,24 @@ class BackendServiceArgs:
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
+        :param pulumi.Input[builtins.str] external_managed_migration_state: Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+               TEST_ALL_TRAFFIC.
+               To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+               PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+               changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+               traffic by percentage using externalManagedMigrationTestingPercentage.
+               Rolling back a migration requires the states to be set in reverse order. So changing the
+               scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+               the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+               back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+               Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+        :param pulumi.Input[builtins.float] external_managed_migration_testing_percentage: Determines the fraction of requests that should be processed by the Global external
+               Application Load Balancer.
+               The value of this field must be in the range [0, 100].
+               Session affinity options will slightly affect this routing behavior, for more details,
+               see: Session Affinity.
+               This value can only be set if the loadBalancingScheme in the backend service is set to
+               EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
         :param pulumi.Input[builtins.str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
                for health checking this BackendService. Currently at most one health
                check can be specified.
@@ -155,7 +175,7 @@ class BackendServiceArgs:
                to use for computing the weights are specified via the
                backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
-               * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+               * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
                and loadBalancingScheme set to INTERNAL_MANAGED.
                * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -197,14 +217,14 @@ class BackendServiceArgs:
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] protocol: The protocol this BackendService uses to communicate with backends.
-               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
-               the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
-               with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
+               The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+               or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+               for more information. Must be set to GRPC when the backend service is referenced
+               by a URL map that is bound to target gRPC proxy.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         :param pulumi.Input[builtins.str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
-               a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+               a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
                load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
@@ -248,6 +268,10 @@ class BackendServiceArgs:
             pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
+        if external_managed_migration_state is not None:
+            pulumi.set(__self__, "external_managed_migration_state", external_managed_migration_state)
+        if external_managed_migration_testing_percentage is not None:
+            pulumi.set(__self__, "external_managed_migration_testing_percentage", external_managed_migration_testing_percentage)
         if health_checks is not None:
             pulumi.set(__self__, "health_checks", health_checks)
         if iap is not None:
@@ -467,6 +491,46 @@ class BackendServiceArgs:
         pulumi.set(self, "enable_cdn", value)
 
     @property
+    @pulumi.getter(name="externalManagedMigrationState")
+    def external_managed_migration_state(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+        TEST_ALL_TRAFFIC.
+        To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+        PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+        changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+        traffic by percentage using externalManagedMigrationTestingPercentage.
+        Rolling back a migration requires the states to be set in reverse order. So changing the
+        scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+        the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+        back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+        Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+        """
+        return pulumi.get(self, "external_managed_migration_state")
+
+    @external_managed_migration_state.setter
+    def external_managed_migration_state(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "external_managed_migration_state", value)
+
+    @property
+    @pulumi.getter(name="externalManagedMigrationTestingPercentage")
+    def external_managed_migration_testing_percentage(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        Determines the fraction of requests that should be processed by the Global external
+        Application Load Balancer.
+        The value of this field must be in the range [0, 100].
+        Session affinity options will slightly affect this routing behavior, for more details,
+        see: Session Affinity.
+        This value can only be set if the loadBalancingScheme in the backend service is set to
+        EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+        """
+        return pulumi.get(self, "external_managed_migration_testing_percentage")
+
+    @external_managed_migration_testing_percentage.setter
+    def external_managed_migration_testing_percentage(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "external_managed_migration_testing_percentage", value)
+
+    @property
     @pulumi.getter(name="healthChecks")
     def health_checks(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -589,7 +653,7 @@ class BackendServiceArgs:
         to use for computing the weights are specified via the
         backends[].customMetrics fields.
         locality_lb_policy is applicable to either:
-        * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+        * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
         and loadBalancingScheme set to INTERNAL_MANAGED.
         * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -708,11 +772,11 @@ class BackendServiceArgs:
     def protocol(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The protocol this BackendService uses to communicate with backends.
-        The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
-        the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
-        with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
-        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
+        The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+        or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+        for more information. Must be set to GRPC when the backend service is referenced
+        by a URL map that is bound to target gRPC proxy.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         """
         return pulumi.get(self, "protocol")
 
@@ -737,7 +801,7 @@ class BackendServiceArgs:
     def security_settings(self) -> Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]:
         """
         The security settings that apply to this backend service. This field is applicable to either
-        a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+        a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
         load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
         load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         Structure is documented below.
@@ -834,6 +898,8 @@ class _BackendServiceState:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
+                 external_managed_migration_state: Optional[pulumi.Input[builtins.str]] = None,
+                 external_managed_migration_testing_percentage: Optional[pulumi.Input[builtins.float]] = None,
                  fingerprint: Optional[pulumi.Input[builtins.str]] = None,
                  generated_id: Optional[pulumi.Input[builtins.int]] = None,
                  health_checks: Optional[pulumi.Input[builtins.str]] = None,
@@ -894,6 +960,24 @@ class _BackendServiceState:
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
+        :param pulumi.Input[builtins.str] external_managed_migration_state: Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+               TEST_ALL_TRAFFIC.
+               To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+               PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+               changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+               traffic by percentage using externalManagedMigrationTestingPercentage.
+               Rolling back a migration requires the states to be set in reverse order. So changing the
+               scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+               the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+               back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+               Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+        :param pulumi.Input[builtins.float] external_managed_migration_testing_percentage: Determines the fraction of requests that should be processed by the Global external
+               Application Load Balancer.
+               The value of this field must be in the range [0, 100].
+               Session affinity options will slightly affect this routing behavior, for more details,
+               see: Session Affinity.
+               This value can only be set if the loadBalancingScheme in the backend service is set to
+               EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
         :param pulumi.Input[builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
         :param pulumi.Input[builtins.int] generated_id: The unique identifier for the resource. This identifier is defined by the server.
@@ -961,7 +1045,7 @@ class _BackendServiceState:
                to use for computing the weights are specified via the
                backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
-               * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+               * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
                and loadBalancingScheme set to INTERNAL_MANAGED.
                * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1003,14 +1087,14 @@ class _BackendServiceState:
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] protocol: The protocol this BackendService uses to communicate with backends.
-               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
-               the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
-               with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
+               The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+               or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+               for more information. Must be set to GRPC when the backend service is referenced
+               by a URL map that is bound to target gRPC proxy.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         :param pulumi.Input[builtins.str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
-               a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+               a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
                load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
@@ -1057,6 +1141,10 @@ class _BackendServiceState:
             pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
+        if external_managed_migration_state is not None:
+            pulumi.set(__self__, "external_managed_migration_state", external_managed_migration_state)
+        if external_managed_migration_testing_percentage is not None:
+            pulumi.set(__self__, "external_managed_migration_testing_percentage", external_managed_migration_testing_percentage)
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if generated_id is not None:
@@ -1294,6 +1382,46 @@ class _BackendServiceState:
         pulumi.set(self, "enable_cdn", value)
 
     @property
+    @pulumi.getter(name="externalManagedMigrationState")
+    def external_managed_migration_state(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+        TEST_ALL_TRAFFIC.
+        To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+        PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+        changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+        traffic by percentage using externalManagedMigrationTestingPercentage.
+        Rolling back a migration requires the states to be set in reverse order. So changing the
+        scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+        the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+        back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+        Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+        """
+        return pulumi.get(self, "external_managed_migration_state")
+
+    @external_managed_migration_state.setter
+    def external_managed_migration_state(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "external_managed_migration_state", value)
+
+    @property
+    @pulumi.getter(name="externalManagedMigrationTestingPercentage")
+    def external_managed_migration_testing_percentage(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        Determines the fraction of requests that should be processed by the Global external
+        Application Load Balancer.
+        The value of this field must be in the range [0, 100].
+        Session affinity options will slightly affect this routing behavior, for more details,
+        see: Session Affinity.
+        This value can only be set if the loadBalancingScheme in the backend service is set to
+        EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+        """
+        return pulumi.get(self, "external_managed_migration_testing_percentage")
+
+    @external_managed_migration_testing_percentage.setter
+    def external_managed_migration_testing_percentage(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "external_managed_migration_testing_percentage", value)
+
+    @property
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -1441,7 +1569,7 @@ class _BackendServiceState:
         to use for computing the weights are specified via the
         backends[].customMetrics fields.
         locality_lb_policy is applicable to either:
-        * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+        * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
         and loadBalancingScheme set to INTERNAL_MANAGED.
         * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1560,11 +1688,11 @@ class _BackendServiceState:
     def protocol(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The protocol this BackendService uses to communicate with backends.
-        The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
-        the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
-        with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
-        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
+        The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+        or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+        for more information. Must be set to GRPC when the backend service is referenced
+        by a URL map that is bound to target gRPC proxy.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         """
         return pulumi.get(self, "protocol")
 
@@ -1589,7 +1717,7 @@ class _BackendServiceState:
     def security_settings(self) -> Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]:
         """
         The security settings that apply to this backend service. This field is applicable to either
-        a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+        a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
         load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
         load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         Structure is documented below.
@@ -1700,6 +1828,8 @@ class BackendService(pulumi.CustomResource):
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
+                 external_managed_migration_state: Optional[pulumi.Input[builtins.str]] = None,
+                 external_managed_migration_testing_percentage: Optional[pulumi.Input[builtins.float]] = None,
                  health_checks: Optional[pulumi.Input[builtins.str]] = None,
                  iap: Optional[pulumi.Input[Union['BackendServiceIapArgs', 'BackendServiceIapArgsDict']]] = None,
                  ip_address_selection_policy: Optional[pulumi.Input[builtins.str]] = None,
@@ -2015,7 +2145,8 @@ class BackendService(pulumi.CustomResource):
         default = gcp.compute.BackendService("default",
             name="backend-service",
             health_checks=default_health_check.id,
-            load_balancing_scheme="EXTERNAL_MANAGED")
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            protocol="H2C")
         ```
         ### Backend Service Ip Address Selection Policy
 
@@ -2166,6 +2297,24 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
+        :param pulumi.Input[builtins.str] external_managed_migration_state: Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+               TEST_ALL_TRAFFIC.
+               To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+               PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+               changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+               traffic by percentage using externalManagedMigrationTestingPercentage.
+               Rolling back a migration requires the states to be set in reverse order. So changing the
+               scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+               the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+               back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+               Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+        :param pulumi.Input[builtins.float] external_managed_migration_testing_percentage: Determines the fraction of requests that should be processed by the Global external
+               Application Load Balancer.
+               The value of this field must be in the range [0, 100].
+               Session affinity options will slightly affect this routing behavior, for more details,
+               see: Session Affinity.
+               This value can only be set if the loadBalancingScheme in the backend service is set to
+               EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
         :param pulumi.Input[builtins.str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
                for health checking this BackendService. Currently at most one health
                check can be specified.
@@ -2230,7 +2379,7 @@ class BackendService(pulumi.CustomResource):
                to use for computing the weights are specified via the
                backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
-               * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+               * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
                and loadBalancingScheme set to INTERNAL_MANAGED.
                * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -2272,14 +2421,14 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] protocol: The protocol this BackendService uses to communicate with backends.
-               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
-               the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
-               with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
+               The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+               or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+               for more information. Must be set to GRPC when the backend service is referenced
+               by a URL map that is bound to target gRPC proxy.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         :param pulumi.Input[builtins.str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[Union['BackendServiceSecuritySettingsArgs', 'BackendServiceSecuritySettingsArgsDict']] security_settings: The security settings that apply to this backend service. This field is applicable to either
-               a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+               a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
                load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
@@ -2597,7 +2746,8 @@ class BackendService(pulumi.CustomResource):
         default = gcp.compute.BackendService("default",
             name="backend-service",
             health_checks=default_health_check.id,
-            load_balancing_scheme="EXTERNAL_MANAGED")
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            protocol="H2C")
         ```
         ### Backend Service Ip Address Selection Policy
 
@@ -2740,6 +2890,8 @@ class BackendService(pulumi.CustomResource):
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
+                 external_managed_migration_state: Optional[pulumi.Input[builtins.str]] = None,
+                 external_managed_migration_testing_percentage: Optional[pulumi.Input[builtins.float]] = None,
                  health_checks: Optional[pulumi.Input[builtins.str]] = None,
                  iap: Optional[pulumi.Input[Union['BackendServiceIapArgs', 'BackendServiceIapArgsDict']]] = None,
                  ip_address_selection_policy: Optional[pulumi.Input[builtins.str]] = None,
@@ -2782,6 +2934,8 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["edge_security_policy"] = edge_security_policy
             __props__.__dict__["enable_cdn"] = enable_cdn
+            __props__.__dict__["external_managed_migration_state"] = external_managed_migration_state
+            __props__.__dict__["external_managed_migration_testing_percentage"] = external_managed_migration_testing_percentage
             __props__.__dict__["health_checks"] = health_checks
             __props__.__dict__["iap"] = iap
             __props__.__dict__["ip_address_selection_policy"] = ip_address_selection_policy
@@ -2830,6 +2984,8 @@ class BackendService(pulumi.CustomResource):
             description: Optional[pulumi.Input[builtins.str]] = None,
             edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
             enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
+            external_managed_migration_state: Optional[pulumi.Input[builtins.str]] = None,
+            external_managed_migration_testing_percentage: Optional[pulumi.Input[builtins.float]] = None,
             fingerprint: Optional[pulumi.Input[builtins.str]] = None,
             generated_id: Optional[pulumi.Input[builtins.int]] = None,
             health_checks: Optional[pulumi.Input[builtins.str]] = None,
@@ -2895,6 +3051,24 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
+        :param pulumi.Input[builtins.str] external_managed_migration_state: Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+               TEST_ALL_TRAFFIC.
+               To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+               PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+               changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+               traffic by percentage using externalManagedMigrationTestingPercentage.
+               Rolling back a migration requires the states to be set in reverse order. So changing the
+               scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+               the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+               back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+               Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+        :param pulumi.Input[builtins.float] external_managed_migration_testing_percentage: Determines the fraction of requests that should be processed by the Global external
+               Application Load Balancer.
+               The value of this field must be in the range [0, 100].
+               Session affinity options will slightly affect this routing behavior, for more details,
+               see: Session Affinity.
+               This value can only be set if the loadBalancingScheme in the backend service is set to
+               EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
         :param pulumi.Input[builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
         :param pulumi.Input[builtins.int] generated_id: The unique identifier for the resource. This identifier is defined by the server.
@@ -2962,7 +3136,7 @@ class BackendService(pulumi.CustomResource):
                to use for computing the weights are specified via the
                backends[].customMetrics fields.
                locality_lb_policy is applicable to either:
-               * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+               * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
                and loadBalancingScheme set to INTERNAL_MANAGED.
                * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -3004,14 +3178,14 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] protocol: The protocol this BackendService uses to communicate with backends.
-               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
-               the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
-               with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
+               The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+               or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+               for more information. Must be set to GRPC when the backend service is referenced
+               by a URL map that is bound to target gRPC proxy.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         :param pulumi.Input[builtins.str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[Union['BackendServiceSecuritySettingsArgs', 'BackendServiceSecuritySettingsArgsDict']] security_settings: The security settings that apply to this backend service. This field is applicable to either
-               a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+               a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
                load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
@@ -3048,6 +3222,8 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["edge_security_policy"] = edge_security_policy
         __props__.__dict__["enable_cdn"] = enable_cdn
+        __props__.__dict__["external_managed_migration_state"] = external_managed_migration_state
+        __props__.__dict__["external_managed_migration_testing_percentage"] = external_managed_migration_testing_percentage
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["generated_id"] = generated_id
         __props__.__dict__["health_checks"] = health_checks
@@ -3207,6 +3383,38 @@ class BackendService(pulumi.CustomResource):
         return pulumi.get(self, "enable_cdn")
 
     @property
+    @pulumi.getter(name="externalManagedMigrationState")
+    def external_managed_migration_state(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+        TEST_ALL_TRAFFIC.
+        To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+        PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+        changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+        traffic by percentage using externalManagedMigrationTestingPercentage.
+        Rolling back a migration requires the states to be set in reverse order. So changing the
+        scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+        the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+        back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+        Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+        """
+        return pulumi.get(self, "external_managed_migration_state")
+
+    @property
+    @pulumi.getter(name="externalManagedMigrationTestingPercentage")
+    def external_managed_migration_testing_percentage(self) -> pulumi.Output[Optional[builtins.float]]:
+        """
+        Determines the fraction of requests that should be processed by the Global external
+        Application Load Balancer.
+        The value of this field must be in the range [0, 100].
+        Session affinity options will slightly affect this routing behavior, for more details,
+        see: Session Affinity.
+        This value can only be set if the loadBalancingScheme in the backend service is set to
+        EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+        """
+        return pulumi.get(self, "external_managed_migration_testing_percentage")
+
+    @property
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[builtins.str]:
         """
@@ -3326,7 +3534,7 @@ class BackendService(pulumi.CustomResource):
         to use for computing the weights are specified via the
         backends[].customMetrics fields.
         locality_lb_policy is applicable to either:
-        * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+        * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
         and loadBalancingScheme set to INTERNAL_MANAGED.
         * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -3417,11 +3625,11 @@ class BackendService(pulumi.CustomResource):
     def protocol(self) -> pulumi.Output[builtins.str]:
         """
         The protocol this BackendService uses to communicate with backends.
-        The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
-        the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
-        with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
-        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
+        The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+        or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+        for more information. Must be set to GRPC when the backend service is referenced
+        by a URL map that is bound to target gRPC proxy.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
         """
         return pulumi.get(self, "protocol")
 
@@ -3438,7 +3646,7 @@ class BackendService(pulumi.CustomResource):
     def security_settings(self) -> pulumi.Output[Optional['outputs.BackendServiceSecuritySettings']]:
         """
         The security settings that apply to this backend service. This field is applicable to either
-        a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+        a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
         load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
         load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         Structure is documented below.

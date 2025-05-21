@@ -32,9 +32,17 @@ public final class ApiConfigIamPolicyState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.api);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="apiConfig")
     private @Nullable Output<String> apiConfig;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> apiConfig() {
         return Optional.ofNullable(this.apiConfig);
     }
@@ -139,11 +147,23 @@ public final class ApiConfigIamPolicyState extends com.pulumi.resources.Resource
             return api(Output.of(api));
         }
 
+        /**
+         * @param apiConfig Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiConfig(@Nullable Output<String> apiConfig) {
             $.apiConfig = apiConfig;
             return this;
         }
 
+        /**
+         * @param apiConfig Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiConfig(String apiConfig) {
             return apiConfig(Output.of(apiConfig));
         }

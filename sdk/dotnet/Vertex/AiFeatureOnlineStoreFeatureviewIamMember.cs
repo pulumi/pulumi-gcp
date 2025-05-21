@@ -58,6 +58,9 @@ namespace Pulumi.Gcp.Vertex
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("featureOnlineStore")]
         public Output<string> FeatureOnlineStore { get; private set; } = null!;
 
@@ -155,6 +158,9 @@ namespace Pulumi.Gcp.Vertex
         [Input("condition")]
         public Input<Inputs.AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("featureOnlineStore", required: true)]
         public Input<string> FeatureOnlineStore { get; set; } = null!;
 
@@ -220,6 +226,9 @@ namespace Pulumi.Gcp.Vertex
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("featureOnlineStore")]
         public Input<string>? FeatureOnlineStore { get; set; }
 

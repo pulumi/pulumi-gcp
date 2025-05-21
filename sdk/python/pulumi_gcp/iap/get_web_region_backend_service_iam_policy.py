@@ -123,6 +123,9 @@ def get_web_region_backend_service_iam_policy(project: Optional[builtins.str] = 
 
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+    :param builtins.str region: Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+           region is specified, it is taken from the provider configuration.
     :param builtins.str web_region_backend_service: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
@@ -160,6 +163,9 @@ def get_web_region_backend_service_iam_policy_output(project: Optional[pulumi.In
 
     :param builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+    :param builtins.str region: Used to find the parent resource to bind the IAM policy to. If not specified,
+           the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+           region is specified, it is taken from the provider configuration.
     :param builtins.str web_region_backend_service: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()

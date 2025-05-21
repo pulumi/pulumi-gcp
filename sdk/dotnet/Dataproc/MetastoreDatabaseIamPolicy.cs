@@ -268,6 +268,11 @@ namespace Pulumi.Gcp.Dataproc
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
+        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -285,6 +290,9 @@ namespace Pulumi.Gcp.Dataproc
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
 
@@ -340,6 +348,11 @@ namespace Pulumi.Gcp.Dataproc
         [Input("database", required: true)]
         public Input<string> Database { get; set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
@@ -357,6 +370,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
 
@@ -380,6 +396,11 @@ namespace Pulumi.Gcp.Dataproc
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
@@ -397,6 +418,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
