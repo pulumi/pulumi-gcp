@@ -3054,6 +3054,15 @@
                     }
                 }
             },
+            "google_bigquery_row_access_policy": {
+                "current": "gcp:bigquery/rowAccessPolicy:RowAccessPolicy",
+                "majorVersion": 8,
+                "fields": {
+                    "grantees": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_bigquery_table": {
                 "current": "gcp:bigquery/table:Table",
                 "majorVersion": 8,
@@ -15637,6 +15646,35 @@
                 "current": "gcp:dataplex/entryTypeIamPolicy:EntryTypeIamPolicy",
                 "majorVersion": 8
             },
+            "google_dataplex_glossary": {
+                "current": "gcp:dataplex/glossary:Glossary",
+                "majorVersion": 8
+            },
+            "google_dataplex_glossary_iam_binding": {
+                "current": "gcp:dataplex/glossaryIamBinding:GlossaryIamBinding",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_dataplex_glossary_iam_member": {
+                "current": "gcp:dataplex/glossaryIamMember:GlossaryIamMember",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_dataplex_glossary_iam_policy": {
+                "current": "gcp:dataplex/glossaryIamPolicy:GlossaryIamPolicy",
+                "majorVersion": 8
+            },
             "google_dataplex_lake": {
                 "current": "gcp:dataplex/lake:Lake",
                 "majorVersion": 8,
@@ -17889,6 +17927,9 @@
                             }
                         }
                     },
+                    "gen_app_builder_settings": {
+                        "maxItemsOne": true
+                    },
                     "git_integration_settings": {
                         "maxItemsOne": true,
                         "elem": {
@@ -19876,6 +19917,112 @@
                                 },
                                 "container": {
                                     "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_firebase_app_hosting_default_domain": {
+                "current": "gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain",
+                "majorVersion": 8
+            },
+            "google_firebase_app_hosting_domain": {
+                "current": "gcp:firebase/appHostingDomain:AppHostingDomain",
+                "majorVersion": 8,
+                "fields": {
+                    "custom_domain_status": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "issues": {
+                                    "maxItemsOne": false
+                                },
+                                "required_dns_updates": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "desired": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "check_error": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "records": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "relevant_state": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "discovered": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "check_error": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "records": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "relevant_state": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "serve": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "redirect": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_firebase_app_hosting_traffic": {
+                "current": "gcp:firebase/appHostingTraffic:AppHostingTraffic",
+                "majorVersion": 8,
+                "fields": {
+                    "current": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "splits": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "rollout_policy": {
+                        "maxItemsOne": true
+                    },
+                    "target": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "splits": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -22426,6 +22573,53 @@
             },
             "google_iam_workload_identity_pool": {
                 "current": "gcp:iam/workloadIdentityPool:WorkloadIdentityPool",
+                "majorVersion": 8,
+                "fields": {
+                    "inline_certificate_issuance_config": {
+                        "maxItemsOne": true
+                    },
+                    "inline_trust_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_trust_bundles": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "trust_anchors": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_iam_workload_identity_pool_iam_binding": {
+                "current": "gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_iam_workload_identity_pool_iam_member": {
+                "current": "gcp:iam/workloadIdentityPoolIamMember:WorkloadIdentityPoolIamMember",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_iam_workload_identity_pool_iam_policy": {
+                "current": "gcp:iam/workloadIdentityPoolIamPolicy:WorkloadIdentityPoolIamPolicy",
                 "majorVersion": 8
             },
             "google_iam_workload_identity_pool_provider": {
@@ -33817,6 +34011,32 @@
                 "current": "gcp:beyondcorp/getApplicationIamPolicy:getApplicationIamPolicy",
                 "majorVersion": 8
             },
+            "google_beyondcorp_security_gateway": {
+                "current": "gcp:beyondcorp/getSecurityGateway:getSecurityGateway",
+                "majorVersion": 8,
+                "fields": {
+                    "external_ips": {
+                        "maxItemsOne": false
+                    },
+                    "hubs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "internet_gateway": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "assigned_ips": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_beyondcorp_security_gateway_iam_policy": {
                 "current": "gcp:beyondcorp/getSecurityGatewayIamPolicy:getSecurityGatewayIamPolicy",
                 "majorVersion": 8
@@ -37939,6 +38159,10 @@
                 "current": "gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy",
                 "majorVersion": 8
             },
+            "google_dataplex_glossary_iam_policy": {
+                "current": "gcp:dataplex/getGlossaryIamPolicy:getGlossaryIamPolicy",
+                "majorVersion": 8
+            },
             "google_dataplex_lake_iam_policy": {
                 "current": "gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy",
                 "majorVersion": 8
@@ -38612,6 +38836,32 @@
             },
             "google_iam_workload_identity_pool": {
                 "current": "gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool",
+                "majorVersion": 8,
+                "fields": {
+                    "inline_certificate_issuance_config": {
+                        "maxItemsOne": false
+                    },
+                    "inline_trust_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "additional_trust_bundles": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "trust_anchors": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_iam_workload_identity_pool_iam_policy": {
+                "current": "gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy",
                 "majorVersion": 8
             },
             "google_iam_workload_identity_pool_provider": {
@@ -38877,6 +39127,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_lustre_instance": {
+                "current": "gcp:lustre/getInstance:getInstance",
+                "majorVersion": 8
             },
             "google_memcache_instance": {
                 "current": "gcp:memcache/getInstance:getInstance",
@@ -41666,6 +41920,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_dataplex_glossary": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_dataplex_lake": [
                 "effective_labels",
                 "terraform_labels"
@@ -42508,6 +42766,10 @@
                 "keys.$.effective_labels",
                 "keys.$.terraform_labels"
             ],
+            "google_lustre_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_memcache_instance": [
                 "effective_labels",
                 "terraform_labels"
@@ -42752,6 +43014,7 @@
             "gcp:bigquery/reservation:Reservation": 0,
             "gcp:bigquery/reservationAssignment:ReservationAssignment": 0,
             "gcp:bigquery/routine:Routine": 0,
+            "gcp:bigquery/rowAccessPolicy:RowAccessPolicy": 0,
             "gcp:bigquery/table:Table": 0,
             "gcp:bigqueryanalyticshub/dataExchange:DataExchange": 0,
             "gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding": 0,
@@ -43114,6 +43377,10 @@
             "gcp:dataplex/entryTypeIamBinding:EntryTypeIamBinding": 0,
             "gcp:dataplex/entryTypeIamMember:EntryTypeIamMember": 0,
             "gcp:dataplex/entryTypeIamPolicy:EntryTypeIamPolicy": 0,
+            "gcp:dataplex/glossary:Glossary": 0,
+            "gcp:dataplex/glossaryIamBinding:GlossaryIamBinding": 0,
+            "gcp:dataplex/glossaryIamMember:GlossaryIamMember": 0,
+            "gcp:dataplex/glossaryIamPolicy:GlossaryIamPolicy": 0,
             "gcp:dataplex/lake:Lake": 0,
             "gcp:dataplex/lakeIamBinding:LakeIamBinding": 0,
             "gcp:dataplex/lakeIamMember:LakeIamMember": 0,
@@ -43230,6 +43497,9 @@
             "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig": 0,
             "gcp:firebase/appHostingBackend:AppHostingBackend": 0,
             "gcp:firebase/appHostingBuild:AppHostingBuild": 0,
+            "gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain": 0,
+            "gcp:firebase/appHostingDomain:AppHostingDomain": 0,
+            "gcp:firebase/appHostingTraffic:AppHostingTraffic": 0,
             "gcp:firebase/appleApp:AppleApp": 0,
             "gcp:firebase/dataConnectService:DataConnectService": 0,
             "gcp:firebase/databaseInstance:DatabaseInstance": 0,
@@ -43338,6 +43608,9 @@
             "gcp:iam/workforcePool:WorkforcePool": 0,
             "gcp:iam/workforcePoolProvider:WorkforcePoolProvider": 0,
             "gcp:iam/workloadIdentityPool:WorkloadIdentityPool": 0,
+            "gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding": 0,
+            "gcp:iam/workloadIdentityPoolIamMember:WorkloadIdentityPoolIamMember": 0,
+            "gcp:iam/workloadIdentityPoolIamPolicy:WorkloadIdentityPoolIamPolicy": 0,
             "gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider": 0,
             "gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding": 0,
             "gcp:iap/appEngineServiceIamMember:AppEngineServiceIamMember": 0,
@@ -43809,6 +44082,7 @@
             "gcp:beyondcorp/getAppConnector:getAppConnector": 0,
             "gcp:beyondcorp/getAppGateway:getAppGateway": 0,
             "gcp:beyondcorp/getApplicationIamPolicy:getApplicationIamPolicy": 0,
+            "gcp:beyondcorp/getSecurityGateway:getSecurityGateway": 0,
             "gcp:beyondcorp/getSecurityGatewayIamPolicy:getSecurityGatewayIamPolicy": 0,
             "gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy": 0,
             "gcp:bigquery/getDataset:getDataset": 0,
@@ -43943,6 +44217,7 @@
             "gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy": 0,
             "gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy": 0,
             "gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy": 0,
+            "gcp:dataplex/getGlossaryIamPolicy:getGlossaryIamPolicy": 0,
             "gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy": 0,
             "gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy": 0,
             "gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy": 0,
@@ -43988,6 +44263,7 @@
             "gcp:iam/getRule:getRule": 0,
             "gcp:iam/getTestablePermissions:getTestablePermissions": 0,
             "gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool": 0,
+            "gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy": 0,
             "gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider": 0,
             "gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy": 0,
             "gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy": 0,
@@ -44023,6 +44299,7 @@
             "gcp:logging/getProjectCmekSettings:getProjectCmekSettings": 0,
             "gcp:logging/getProjectSettings:getProjectSettings": 0,
             "gcp:logging/getSink:getSink": 0,
+            "gcp:lustre/getInstance:getInstance": 0,
             "gcp:memcache/getInstance:getInstance": 0,
             "gcp:memorystore/getInstance:getInstance": 0,
             "gcp:monitoring/getAppEngineService:getAppEngineService": 0,

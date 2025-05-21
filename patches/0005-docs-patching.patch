@@ -33,7 +33,7 @@ index f91949c53..996af5eef 100644
  
  * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
 diff --git a/website/docs/r/api_gateway_api_config_iam.html.markdown b/website/docs/r/api_gateway_api_config_iam.html.markdown
-index d78fe8b31..0729066a6 100644
+index d09aa8276..b7f7b273d 100644
 --- a/website/docs/r/api_gateway_api_config_iam.html.markdown
 +++ b/website/docs/r/api_gateway_api_config_iam.html.markdown
 @@ -35,10 +35,8 @@ A data source can be used to retrieve policy data in advent you do not need crea
@@ -49,7 +49,7 @@ index d78fe8b31..0729066a6 100644
  ```hcl
  data "google_iam_policy" "admin" {
 diff --git a/website/docs/r/api_gateway_api_iam.html.markdown b/website/docs/r/api_gateway_api_iam.html.markdown
-index d9a755a2c..1a867ef20 100644
+index 2614405f0..72690f6dd 100644
 --- a/website/docs/r/api_gateway_api_iam.html.markdown
 +++ b/website/docs/r/api_gateway_api_iam.html.markdown
 @@ -35,10 +35,8 @@ A data source can be used to retrieve policy data in advent you do not need crea
@@ -79,7 +79,7 @@ index b2f309c1c..0ebe7a4a0 100644
  
  * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
 diff --git a/website/docs/r/api_gateway_gateway_iam.html.markdown b/website/docs/r/api_gateway_gateway_iam.html.markdown
-index bef6f1a69..76ed8a496 100644
+index fef1318af..96841be84 100644
 --- a/website/docs/r/api_gateway_gateway_iam.html.markdown
 +++ b/website/docs/r/api_gateway_gateway_iam.html.markdown
 @@ -35,10 +35,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
@@ -577,7 +577,7 @@ index eea0057a2..726c86dd3 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index 405e1a411..6fb8aad5e 100644
+index 946a64226..48c115430 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -41,7 +41,6 @@ To get more information about BackendService, see:
@@ -669,7 +669,7 @@ index c02f73582..1f47b804b 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index da78b9884..019e4b9a6 100644
+index f334b7988..9c7e8193f 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -140,7 +140,7 @@ The following arguments are supported:
@@ -810,7 +810,7 @@ index 004d9b05b..d09c9d509 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_instance_iam.html.markdown b/website/docs/r/compute_instance_iam.html.markdown
-index 3abfdbb98..c6fade74b 100644
+index 8f8057095..c22f1931c 100644
 --- a/website/docs/r/compute_instance_iam.html.markdown
 +++ b/website/docs/r/compute_instance_iam.html.markdown
 @@ -189,8 +189,8 @@ The `condition` block supports:
@@ -825,7 +825,7 @@ index 3abfdbb98..c6fade74b 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index ff7833af0..146e548d0 100644
+index f9ba186d4..3ff84ed5f 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -1848,7 +1848,7 @@ index 656892092..77d5471b8 100644
  
  * `private_ip_google_access` -
 diff --git a/website/docs/r/compute_subnetwork_iam.html.markdown b/website/docs/r/compute_subnetwork_iam.html.markdown
-index 66dc8088f..0f73b940b 100644
+index f576ba950..6bfb7f02d 100644
 --- a/website/docs/r/compute_subnetwork_iam.html.markdown
 +++ b/website/docs/r/compute_subnetwork_iam.html.markdown
 @@ -190,8 +190,8 @@ The `condition` block supports:
@@ -1892,7 +1892,7 @@ index 85fd0b322..177058967 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 75272bf3e..266c2f807 100644
+index 3c9a97e5c..572d18463 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1983,7 +1983,7 @@ index 75272bf3e..266c2f807 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -915,10 +933,6 @@ gvnic {
+@@ -918,10 +936,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1994,7 +1994,7 @@ index 75272bf3e..266c2f807 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -943,7 +957,7 @@ gvnic {
+@@ -946,7 +960,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -2003,7 +2003,7 @@ index 75272bf3e..266c2f807 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -968,10 +982,7 @@ gvnic {
+@@ -971,10 +985,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -2015,7 +2015,7 @@ index 75272bf3e..266c2f807 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -985,13 +996,14 @@ gvnic {
+@@ -988,13 +999,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -2037,7 +2037,7 @@ index 75272bf3e..266c2f807 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1059,6 +1071,20 @@ sole_tenant_config {
+@@ -1062,6 +1074,20 @@ sole_tenant_config {
  
  * `enable_nested_virtualization`- (Optional) Defines whether the instance should have nested virtualization enabled. Defaults to false.
  
@@ -2058,7 +2058,7 @@ index 75272bf3e..266c2f807 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -1255,7 +1281,7 @@ for more details. This field only applies to private clusters, when
+@@ -1258,7 +1284,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -2067,7 +2067,7 @@ index 75272bf3e..266c2f807 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1357,9 +1383,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1360,9 +1386,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -3205,7 +3205,7 @@ index 0ec070b1b..b011edd3a 100644
  
  * `google_healthcare_hl7_v2_store_iam_policy`: Authoritative. Sets the IAM policy for the HL7v2 store and replaces any existing policy already attached.
 diff --git a/website/docs/r/iap_app_engine_service_iam.html.markdown b/website/docs/r/iap_app_engine_service_iam.html.markdown
-index eaf5c1e4d..6cdf08046 100644
+index 956054871..bfb2f44c0 100644
 --- a/website/docs/r/iap_app_engine_service_iam.html.markdown
 +++ b/website/docs/r/iap_app_engine_service_iam.html.markdown
 @@ -187,8 +187,8 @@ The `condition` block supports:
@@ -3220,7 +3220,7 @@ index eaf5c1e4d..6cdf08046 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_app_engine_version_iam.html.markdown b/website/docs/r/iap_app_engine_version_iam.html.markdown
-index 49b481389..c21dc303e 100644
+index b7435ec3a..940806141 100644
 --- a/website/docs/r/iap_app_engine_version_iam.html.markdown
 +++ b/website/docs/r/iap_app_engine_version_iam.html.markdown
 @@ -194,8 +194,8 @@ The `condition` block supports:
@@ -3263,10 +3263,10 @@ index cd8955563..8002294eb 100644
  ## Example Usage - Iap Client
  
 diff --git a/website/docs/r/iap_tunnel_iam.html.markdown b/website/docs/r/iap_tunnel_iam.html.markdown
-index 0518a6722..8f1d2009f 100644
+index 10cdbfaaa..d09825e1d 100644
 --- a/website/docs/r/iap_tunnel_iam.html.markdown
 +++ b/website/docs/r/iap_tunnel_iam.html.markdown
-@@ -174,9 +174,6 @@ The `condition` block supports:
+@@ -173,9 +173,6 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -3277,10 +3277,10 @@ index 0518a6722..8f1d2009f 100644
  
  In addition to the arguments listed above, the following computed attributes are
 diff --git a/website/docs/r/iap_tunnel_instance_iam.html.markdown b/website/docs/r/iap_tunnel_instance_iam.html.markdown
-index 46a9bf6d2..4640ca4eb 100644
+index c9134b1d9..8d987d894 100644
 --- a/website/docs/r/iap_tunnel_instance_iam.html.markdown
 +++ b/website/docs/r/iap_tunnel_instance_iam.html.markdown
-@@ -186,8 +186,8 @@ The `condition` block supports:
+@@ -189,8 +189,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -3322,7 +3322,7 @@ index 832de469b..5d4b9eebb 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_type_app_engine_iam.html.markdown b/website/docs/r/iap_web_type_app_engine_iam.html.markdown
-index 76a727d6b..ba2aed6b7 100644
+index 4d57e2e74..5e7819e66 100644
 --- a/website/docs/r/iap_web_type_app_engine_iam.html.markdown
 +++ b/website/docs/r/iap_web_type_app_engine_iam.html.markdown
 @@ -180,8 +180,8 @@ The `condition` block supports:
