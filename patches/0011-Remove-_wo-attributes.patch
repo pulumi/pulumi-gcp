@@ -189,10 +189,10 @@ index 15e900dd7..c939dfb55 100644
  func resourceSecretManagerSecretVersionDecoder(d *schema.ResourceData, meta interface{}, res map[string]interface{}) (map[string]interface{}, error) {
  	if v := res["state"]; v == "DESTROYED" {
 diff --git a/google-beta/services/sql/resource_sql_user.go b/google-beta/services/sql/resource_sql_user.go
-index 58e1ecb2a..bd0084f13 100644
+index e96ca93ef..6fa280eb3 100644
 --- a/google-beta/services/sql/resource_sql_user.go
 +++ b/google-beta/services/sql/resource_sql_user.go
-@@ -8,7 +8,6 @@ import (
+@@ -22,7 +22,6 @@ import (
  	"strings"
  	"time"
  
@@ -200,7 +200,7 @@ index 58e1ecb2a..bd0084f13 100644
  	"github.com/hashicorp/terraform-provider-google-beta/google-beta/tpgresource"
  	transport_tpg "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
  
-@@ -64,10 +63,6 @@ func ResourceSqlUser() *schema.Resource {
+@@ -78,10 +77,6 @@ func ResourceSqlUser() *schema.Resource {
  			tpgresource.DefaultProviderProject,
  		),
  
@@ -211,7 +211,7 @@ index 58e1ecb2a..bd0084f13 100644
  		SchemaVersion: 1,
  		MigrateState:  resourceSqlUserMigrateState,
  
-@@ -96,30 +91,13 @@ func ResourceSqlUser() *schema.Resource {
+@@ -110,30 +105,13 @@ func ResourceSqlUser() *schema.Resource {
  			},
  
  			"password": {
@@ -245,7 +245,7 @@ index 58e1ecb2a..bd0084f13 100644
  			"type": {
  				Type:             schema.TypeString,
  				Optional:         true,
-@@ -270,8 +248,6 @@ func resourceSqlUserCreate(d *schema.ResourceData, meta interface{}) error {
+@@ -284,8 +262,6 @@ func resourceSqlUserCreate(d *schema.ResourceData, meta interface{}) error {
  	var password string
  	if pw, ok := d.GetOk("password"); ok {
  		password = pw.(string)
@@ -254,7 +254,7 @@ index 58e1ecb2a..bd0084f13 100644
  	}
  
  	user := &sqladmin.User{
-@@ -490,8 +466,6 @@ func resourceSqlUserUpdate(d *schema.ResourceData, meta interface{}) error {
+@@ -504,8 +480,6 @@ func resourceSqlUserUpdate(d *schema.ResourceData, meta interface{}) error {
  		var password string
  		if pw, ok := d.GetOk("password"); ok {
  			password = pw.(string)
