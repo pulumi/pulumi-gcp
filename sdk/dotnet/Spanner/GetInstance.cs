@@ -158,6 +158,7 @@ namespace Pulumi.Gcp.Spanner
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string InstanceType;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly int NumNodes;
@@ -184,6 +185,8 @@ namespace Pulumi.Gcp.Spanner
 
             string id,
 
+            string instanceType,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -206,6 +209,7 @@ namespace Pulumi.Gcp.Spanner
             EffectiveLabels = effectiveLabels;
             ForceDestroy = forceDestroy;
             Id = id;
+            InstanceType = instanceType;
             Labels = labels;
             Name = name;
             NumNodes = numNodes;

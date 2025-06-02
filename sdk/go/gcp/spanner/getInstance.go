@@ -72,6 +72,7 @@ type LookupInstanceResult struct {
 	ForceDestroy              bool                           `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string            `pulumi:"id"`
+	InstanceType    string            `pulumi:"instanceType"`
 	Labels          map[string]string `pulumi:"labels"`
 	Name            string            `pulumi:"name"`
 	NumNodes        int               `pulumi:"numNodes"`
@@ -153,6 +154,10 @@ func (o LookupInstanceResultOutput) ForceDestroy() pulumi.BoolOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {

@@ -11,6 +11,7 @@ import com.pulumi.gcp.storage.inputs.BucketCorArgs;
 import com.pulumi.gcp.storage.inputs.BucketCustomPlacementConfigArgs;
 import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
 import com.pulumi.gcp.storage.inputs.BucketHierarchicalNamespaceArgs;
+import com.pulumi.gcp.storage.inputs.BucketIpFilterArgs;
 import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleArgs;
 import com.pulumi.gcp.storage.inputs.BucketLoggingArgs;
 import com.pulumi.gcp.storage.inputs.BucketRetentionPolicyArgs;
@@ -152,6 +153,21 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<BucketHierarchicalNamespaceArgs>> hierarchicalNamespace() {
         return Optional.ofNullable(this.hierarchicalNamespace);
+    }
+
+    /**
+     * The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+     * 
+     */
+    @Import(name="ipFilter")
+    private @Nullable Output<BucketIpFilterArgs> ipFilter;
+
+    /**
+     * @return The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+     * 
+     */
+    public Optional<Output<BucketIpFilterArgs>> ipFilter() {
+        return Optional.ofNullable(this.ipFilter);
     }
 
     /**
@@ -398,6 +414,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         this.encryption = $.encryption;
         this.forceDestroy = $.forceDestroy;
         this.hierarchicalNamespace = $.hierarchicalNamespace;
+        this.ipFilter = $.ipFilter;
         this.labels = $.labels;
         this.lifecycleRules = $.lifecycleRules;
         this.location = $.location;
@@ -613,6 +630,27 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder hierarchicalNamespace(BucketHierarchicalNamespaceArgs hierarchicalNamespace) {
             return hierarchicalNamespace(Output.of(hierarchicalNamespace));
+        }
+
+        /**
+         * @param ipFilter The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilter(@Nullable Output<BucketIpFilterArgs> ipFilter) {
+            $.ipFilter = ipFilter;
+            return this;
+        }
+
+        /**
+         * @param ipFilter The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFilter(BucketIpFilterArgs ipFilter) {
+            return ipFilter(Output.of(ipFilter));
         }
 
         /**

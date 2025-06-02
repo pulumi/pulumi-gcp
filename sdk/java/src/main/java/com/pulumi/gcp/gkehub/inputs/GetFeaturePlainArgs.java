@@ -15,23 +15,49 @@ public final class GetFeaturePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetFeaturePlainArgs Empty = new GetFeaturePlainArgs();
 
+    /**
+     * The location for the GKE Hub Feature.
+     * 
+     */
     @Import(name="location", required=true)
     private String location;
 
+    /**
+     * @return The location for the GKE Hub Feature.
+     * 
+     */
     public String location() {
         return this.location;
     }
 
+    /**
+     * The name of the feature you want to know the status of.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the feature you want to know the status of.
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -62,16 +88,35 @@ public final class GetFeaturePlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetFeaturePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param location The location for the GKE Hub Feature.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param name The name of the feature you want to know the status of.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;

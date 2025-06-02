@@ -111,6 +111,10 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public readonly additionalExperiments!: pulumi.Output<string[]>;
     /**
+     * List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+     */
+    public readonly additionalPipelineOptions!: pulumi.Output<string[] | undefined>;
+    /**
      * The algorithm to use for autoscaling.
      */
     public readonly autoscalingAlgorithm!: pulumi.Output<string>;
@@ -244,6 +248,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FlexTemplateJobState | undefined;
             resourceInputs["additionalExperiments"] = state ? state.additionalExperiments : undefined;
+            resourceInputs["additionalPipelineOptions"] = state ? state.additionalPipelineOptions : undefined;
             resourceInputs["autoscalingAlgorithm"] = state ? state.autoscalingAlgorithm : undefined;
             resourceInputs["containerSpecGcsPath"] = state ? state.containerSpecGcsPath : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -278,6 +283,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
                 throw new Error("Missing required property 'containerSpecGcsPath'");
             }
             resourceInputs["additionalExperiments"] = args ? args.additionalExperiments : undefined;
+            resourceInputs["additionalPipelineOptions"] = args ? args.additionalPipelineOptions : undefined;
             resourceInputs["autoscalingAlgorithm"] = args ? args.autoscalingAlgorithm : undefined;
             resourceInputs["containerSpecGcsPath"] = args ? args.containerSpecGcsPath : undefined;
             resourceInputs["enableStreamingEngine"] = args ? args.enableStreamingEngine : undefined;
@@ -322,6 +328,10 @@ export interface FlexTemplateJobState {
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
     additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+     */
+    additionalPipelineOptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The algorithm to use for autoscaling.
      */
@@ -451,6 +461,10 @@ export interface FlexTemplateJobArgs {
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
     additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+     */
+    additionalPipelineOptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The algorithm to use for autoscaling.
      */

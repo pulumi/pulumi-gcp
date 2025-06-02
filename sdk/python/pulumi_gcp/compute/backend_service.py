@@ -33,6 +33,7 @@ class BackendServiceArgs:
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 dynamic_forwarding: Optional[pulumi.Input['BackendServiceDynamicForwardingArgs']] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
                  external_managed_migration_state: Optional[pulumi.Input[builtins.str]] = None,
@@ -46,6 +47,7 @@ class BackendServiceArgs:
                  log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
                  max_stream_duration: Optional[pulumi.Input['BackendServiceMaxStreamDurationArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 network_pass_through_lb_traffic_policy: Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs']] = None,
                  outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']] = None,
                  port_name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -91,6 +93,9 @@ class BackendServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input['BackendServiceDynamicForwardingArgs'] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+               feature which together with Service Extension allows customized and complex routing logic.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[builtins.str] external_managed_migration_state: Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
@@ -207,6 +212,8 @@ class BackendServiceArgs:
                
                
                - - -
+        :param pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+               Structure is documented below.
         :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                Applicable backend service types can be a global backend service with the
                loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -264,6 +271,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_forwarding is not None:
+            pulumi.set(__self__, "dynamic_forwarding", dynamic_forwarding)
         if edge_security_policy is not None:
             pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
@@ -290,6 +299,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_pass_through_lb_traffic_policy is not None:
+            pulumi.set(__self__, "network_pass_through_lb_traffic_policy", network_pass_through_lb_traffic_policy)
         if outlier_detection is not None:
             pulumi.set(__self__, "outlier_detection", outlier_detection)
         if port_name is not None:
@@ -465,6 +476,20 @@ class BackendServiceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dynamicForwarding")
+    def dynamic_forwarding(self) -> Optional[pulumi.Input['BackendServiceDynamicForwardingArgs']]:
+        """
+        Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        feature which together with Service Extension allows customized and complex routing logic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_forwarding")
+
+    @dynamic_forwarding.setter
+    def dynamic_forwarding(self, value: Optional[pulumi.Input['BackendServiceDynamicForwardingArgs']]):
+        pulumi.set(self, "dynamic_forwarding", value)
 
     @property
     @pulumi.getter(name="edgeSecurityPolicy")
@@ -726,6 +751,19 @@ class BackendServiceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
+    def network_pass_through_lb_traffic_policy(self) -> Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs']]:
+        """
+        Configures traffic steering properties of internal passthrough Network Load Balancers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_pass_through_lb_traffic_policy")
+
+    @network_pass_through_lb_traffic_policy.setter
+    def network_pass_through_lb_traffic_policy(self, value: Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs']]):
+        pulumi.set(self, "network_pass_through_lb_traffic_policy", value)
+
+    @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']]:
         """
@@ -896,6 +934,7 @@ class _BackendServiceState:
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 dynamic_forwarding: Optional[pulumi.Input['BackendServiceDynamicForwardingArgs']] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
                  external_managed_migration_state: Optional[pulumi.Input[builtins.str]] = None,
@@ -911,6 +950,7 @@ class _BackendServiceState:
                  log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
                  max_stream_duration: Optional[pulumi.Input['BackendServiceMaxStreamDurationArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 network_pass_through_lb_traffic_policy: Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs']] = None,
                  outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']] = None,
                  port_name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -958,6 +998,9 @@ class _BackendServiceState:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input['BackendServiceDynamicForwardingArgs'] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+               feature which together with Service Extension allows customized and complex routing logic.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[builtins.str] external_managed_migration_state: Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
@@ -1077,6 +1120,8 @@ class _BackendServiceState:
                
                
                - - -
+        :param pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+               Structure is documented below.
         :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                Applicable backend service types can be a global backend service with the
                loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -1137,6 +1182,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_forwarding is not None:
+            pulumi.set(__self__, "dynamic_forwarding", dynamic_forwarding)
         if edge_security_policy is not None:
             pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
@@ -1167,6 +1214,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_pass_through_lb_traffic_policy is not None:
+            pulumi.set(__self__, "network_pass_through_lb_traffic_policy", network_pass_through_lb_traffic_policy)
         if outlier_detection is not None:
             pulumi.set(__self__, "outlier_detection", outlier_detection)
         if port_name is not None:
@@ -1356,6 +1405,20 @@ class _BackendServiceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dynamicForwarding")
+    def dynamic_forwarding(self) -> Optional[pulumi.Input['BackendServiceDynamicForwardingArgs']]:
+        """
+        Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        feature which together with Service Extension allows customized and complex routing logic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_forwarding")
+
+    @dynamic_forwarding.setter
+    def dynamic_forwarding(self, value: Optional[pulumi.Input['BackendServiceDynamicForwardingArgs']]):
+        pulumi.set(self, "dynamic_forwarding", value)
 
     @property
     @pulumi.getter(name="edgeSecurityPolicy")
@@ -1642,6 +1705,19 @@ class _BackendServiceState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
+    def network_pass_through_lb_traffic_policy(self) -> Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs']]:
+        """
+        Configures traffic steering properties of internal passthrough Network Load Balancers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_pass_through_lb_traffic_policy")
+
+    @network_pass_through_lb_traffic_policy.setter
+    def network_pass_through_lb_traffic_policy(self, value: Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs']]):
+        pulumi.set(self, "network_pass_through_lb_traffic_policy", value)
+
+    @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']]:
         """
@@ -1826,6 +1902,7 @@ class BackendService(pulumi.CustomResource):
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 dynamic_forwarding: Optional[pulumi.Input[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']]] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
                  external_managed_migration_state: Optional[pulumi.Input[builtins.str]] = None,
@@ -1839,6 +1916,7 @@ class BackendService(pulumi.CustomResource):
                  log_config: Optional[pulumi.Input[Union['BackendServiceLogConfigArgs', 'BackendServiceLogConfigArgsDict']]] = None,
                  max_stream_duration: Optional[pulumi.Input[Union['BackendServiceMaxStreamDurationArgs', 'BackendServiceMaxStreamDurationArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 network_pass_through_lb_traffic_policy: Optional[pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']]] = None,
                  outlier_detection: Optional[pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']]] = None,
                  port_name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -2237,6 +2315,22 @@ class BackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
+        ### Backend Service Dynamic Forwarding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            dynamic_forwarding={
+                "ip_port_selection": {
+                    "enabled": True,
+                },
+            })
+        ```
+
         ## Import
 
         BackendService can be imported using any of these accepted formats:
@@ -2295,6 +2389,9 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+               feature which together with Service Extension allows customized and complex routing logic.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[builtins.str] external_managed_migration_state: Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
@@ -2411,6 +2508,8 @@ class BackendService(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+               Structure is documented below.
         :param pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                Applicable backend service types can be a global backend service with the
                loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -2838,6 +2937,22 @@ class BackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
+        ### Backend Service Dynamic Forwarding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            dynamic_forwarding={
+                "ip_port_selection": {
+                    "enabled": True,
+                },
+            })
+        ```
+
         ## Import
 
         BackendService can be imported using any of these accepted formats:
@@ -2888,6 +3003,7 @@ class BackendService(pulumi.CustomResource):
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 dynamic_forwarding: Optional[pulumi.Input[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']]] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
                  external_managed_migration_state: Optional[pulumi.Input[builtins.str]] = None,
@@ -2901,6 +3017,7 @@ class BackendService(pulumi.CustomResource):
                  log_config: Optional[pulumi.Input[Union['BackendServiceLogConfigArgs', 'BackendServiceLogConfigArgsDict']]] = None,
                  max_stream_duration: Optional[pulumi.Input[Union['BackendServiceMaxStreamDurationArgs', 'BackendServiceMaxStreamDurationArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 network_pass_through_lb_traffic_policy: Optional[pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']]] = None,
                  outlier_detection: Optional[pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']]] = None,
                  port_name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -2932,6 +3049,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["custom_request_headers"] = custom_request_headers
             __props__.__dict__["custom_response_headers"] = custom_response_headers
             __props__.__dict__["description"] = description
+            __props__.__dict__["dynamic_forwarding"] = dynamic_forwarding
             __props__.__dict__["edge_security_policy"] = edge_security_policy
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["external_managed_migration_state"] = external_managed_migration_state
@@ -2945,6 +3063,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["max_stream_duration"] = max_stream_duration
             __props__.__dict__["name"] = name
+            __props__.__dict__["network_pass_through_lb_traffic_policy"] = network_pass_through_lb_traffic_policy
             __props__.__dict__["outlier_detection"] = outlier_detection
             __props__.__dict__["port_name"] = port_name
             __props__.__dict__["project"] = project
@@ -2982,6 +3101,7 @@ class BackendService(pulumi.CustomResource):
             custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
+            dynamic_forwarding: Optional[pulumi.Input[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']]] = None,
             edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
             enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
             external_managed_migration_state: Optional[pulumi.Input[builtins.str]] = None,
@@ -2997,6 +3117,7 @@ class BackendService(pulumi.CustomResource):
             log_config: Optional[pulumi.Input[Union['BackendServiceLogConfigArgs', 'BackendServiceLogConfigArgsDict']]] = None,
             max_stream_duration: Optional[pulumi.Input[Union['BackendServiceMaxStreamDurationArgs', 'BackendServiceMaxStreamDurationArgsDict']]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
+            network_pass_through_lb_traffic_policy: Optional[pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']]] = None,
             outlier_detection: Optional[pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']]] = None,
             port_name: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
@@ -3049,6 +3170,9 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+               feature which together with Service Extension allows customized and complex routing logic.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[builtins.str] external_managed_migration_state: Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
@@ -3168,6 +3292,8 @@ class BackendService(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+               Structure is documented below.
         :param pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                Applicable backend service types can be a global backend service with the
                loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -3220,6 +3346,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["custom_request_headers"] = custom_request_headers
         __props__.__dict__["custom_response_headers"] = custom_response_headers
         __props__.__dict__["description"] = description
+        __props__.__dict__["dynamic_forwarding"] = dynamic_forwarding
         __props__.__dict__["edge_security_policy"] = edge_security_policy
         __props__.__dict__["enable_cdn"] = enable_cdn
         __props__.__dict__["external_managed_migration_state"] = external_managed_migration_state
@@ -3235,6 +3362,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["log_config"] = log_config
         __props__.__dict__["max_stream_duration"] = max_stream_duration
         __props__.__dict__["name"] = name
+        __props__.__dict__["network_pass_through_lb_traffic_policy"] = network_pass_through_lb_traffic_policy
         __props__.__dict__["outlier_detection"] = outlier_detection
         __props__.__dict__["port_name"] = port_name
         __props__.__dict__["project"] = project
@@ -3365,6 +3493,16 @@ class BackendService(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dynamicForwarding")
+    def dynamic_forwarding(self) -> pulumi.Output[Optional['outputs.BackendServiceDynamicForwarding']]:
+        """
+        Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        feature which together with Service Extension allows customized and complex routing logic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_forwarding")
 
     @property
     @pulumi.getter(name="edgeSecurityPolicy")
@@ -3589,6 +3727,15 @@ class BackendService(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
+    def network_pass_through_lb_traffic_policy(self) -> pulumi.Output[Optional['outputs.BackendServiceNetworkPassThroughLbTrafficPolicy']]:
+        """
+        Configures traffic steering properties of internal passthrough Network Load Balancers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_pass_through_lb_traffic_policy")
 
     @property
     @pulumi.getter(name="outlierDetection")

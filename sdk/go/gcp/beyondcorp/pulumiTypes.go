@@ -1623,6 +1623,854 @@ func (o ApplicationUpstreamNetworkPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SecurityGatewayApplicationEndpointMatcher struct {
+	// Required. Hostname of the application.
+	Hostname string `pulumi:"hostname"`
+	// Optional. Ports of the application.
+	//
+	// ***
+	Ports []int `pulumi:"ports"`
+}
+
+// SecurityGatewayApplicationEndpointMatcherInput is an input type that accepts SecurityGatewayApplicationEndpointMatcherArgs and SecurityGatewayApplicationEndpointMatcherOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationEndpointMatcherInput` via:
+//
+//	SecurityGatewayApplicationEndpointMatcherArgs{...}
+type SecurityGatewayApplicationEndpointMatcherInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationEndpointMatcherOutput() SecurityGatewayApplicationEndpointMatcherOutput
+	ToSecurityGatewayApplicationEndpointMatcherOutputWithContext(context.Context) SecurityGatewayApplicationEndpointMatcherOutput
+}
+
+type SecurityGatewayApplicationEndpointMatcherArgs struct {
+	// Required. Hostname of the application.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Optional. Ports of the application.
+	//
+	// ***
+	Ports pulumi.IntArrayInput `pulumi:"ports"`
+}
+
+func (SecurityGatewayApplicationEndpointMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationEndpointMatcher)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationEndpointMatcherArgs) ToSecurityGatewayApplicationEndpointMatcherOutput() SecurityGatewayApplicationEndpointMatcherOutput {
+	return i.ToSecurityGatewayApplicationEndpointMatcherOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationEndpointMatcherArgs) ToSecurityGatewayApplicationEndpointMatcherOutputWithContext(ctx context.Context) SecurityGatewayApplicationEndpointMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationEndpointMatcherOutput)
+}
+
+// SecurityGatewayApplicationEndpointMatcherArrayInput is an input type that accepts SecurityGatewayApplicationEndpointMatcherArray and SecurityGatewayApplicationEndpointMatcherArrayOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationEndpointMatcherArrayInput` via:
+//
+//	SecurityGatewayApplicationEndpointMatcherArray{ SecurityGatewayApplicationEndpointMatcherArgs{...} }
+type SecurityGatewayApplicationEndpointMatcherArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationEndpointMatcherArrayOutput() SecurityGatewayApplicationEndpointMatcherArrayOutput
+	ToSecurityGatewayApplicationEndpointMatcherArrayOutputWithContext(context.Context) SecurityGatewayApplicationEndpointMatcherArrayOutput
+}
+
+type SecurityGatewayApplicationEndpointMatcherArray []SecurityGatewayApplicationEndpointMatcherInput
+
+func (SecurityGatewayApplicationEndpointMatcherArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGatewayApplicationEndpointMatcher)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationEndpointMatcherArray) ToSecurityGatewayApplicationEndpointMatcherArrayOutput() SecurityGatewayApplicationEndpointMatcherArrayOutput {
+	return i.ToSecurityGatewayApplicationEndpointMatcherArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationEndpointMatcherArray) ToSecurityGatewayApplicationEndpointMatcherArrayOutputWithContext(ctx context.Context) SecurityGatewayApplicationEndpointMatcherArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationEndpointMatcherArrayOutput)
+}
+
+type SecurityGatewayApplicationEndpointMatcherOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationEndpointMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationEndpointMatcher)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationEndpointMatcherOutput) ToSecurityGatewayApplicationEndpointMatcherOutput() SecurityGatewayApplicationEndpointMatcherOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationEndpointMatcherOutput) ToSecurityGatewayApplicationEndpointMatcherOutputWithContext(ctx context.Context) SecurityGatewayApplicationEndpointMatcherOutput {
+	return o
+}
+
+// Required. Hostname of the application.
+func (o SecurityGatewayApplicationEndpointMatcherOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationEndpointMatcher) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Optional. Ports of the application.
+//
+// ***
+func (o SecurityGatewayApplicationEndpointMatcherOutput) Ports() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationEndpointMatcher) []int { return v.Ports }).(pulumi.IntArrayOutput)
+}
+
+type SecurityGatewayApplicationEndpointMatcherArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationEndpointMatcherArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGatewayApplicationEndpointMatcher)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationEndpointMatcherArrayOutput) ToSecurityGatewayApplicationEndpointMatcherArrayOutput() SecurityGatewayApplicationEndpointMatcherArrayOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationEndpointMatcherArrayOutput) ToSecurityGatewayApplicationEndpointMatcherArrayOutputWithContext(ctx context.Context) SecurityGatewayApplicationEndpointMatcherArrayOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationEndpointMatcherArrayOutput) Index(i pulumi.IntInput) SecurityGatewayApplicationEndpointMatcherOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGatewayApplicationEndpointMatcher {
+		return vs[0].([]SecurityGatewayApplicationEndpointMatcher)[vs[1].(int)]
+	}).(SecurityGatewayApplicationEndpointMatcherOutput)
+}
+
+type SecurityGatewayApplicationIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// SecurityGatewayApplicationIamBindingConditionInput is an input type that accepts SecurityGatewayApplicationIamBindingConditionArgs and SecurityGatewayApplicationIamBindingConditionOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationIamBindingConditionInput` via:
+//
+//	SecurityGatewayApplicationIamBindingConditionArgs{...}
+type SecurityGatewayApplicationIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationIamBindingConditionOutput() SecurityGatewayApplicationIamBindingConditionOutput
+	ToSecurityGatewayApplicationIamBindingConditionOutputWithContext(context.Context) SecurityGatewayApplicationIamBindingConditionOutput
+}
+
+type SecurityGatewayApplicationIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (SecurityGatewayApplicationIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationIamBindingCondition)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationIamBindingConditionArgs) ToSecurityGatewayApplicationIamBindingConditionOutput() SecurityGatewayApplicationIamBindingConditionOutput {
+	return i.ToSecurityGatewayApplicationIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationIamBindingConditionArgs) ToSecurityGatewayApplicationIamBindingConditionOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationIamBindingConditionOutput)
+}
+
+func (i SecurityGatewayApplicationIamBindingConditionArgs) ToSecurityGatewayApplicationIamBindingConditionPtrOutput() SecurityGatewayApplicationIamBindingConditionPtrOutput {
+	return i.ToSecurityGatewayApplicationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationIamBindingConditionArgs) ToSecurityGatewayApplicationIamBindingConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationIamBindingConditionOutput).ToSecurityGatewayApplicationIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayApplicationIamBindingConditionPtrInput is an input type that accepts SecurityGatewayApplicationIamBindingConditionArgs, SecurityGatewayApplicationIamBindingConditionPtr and SecurityGatewayApplicationIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationIamBindingConditionPtrInput` via:
+//
+//	        SecurityGatewayApplicationIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayApplicationIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationIamBindingConditionPtrOutput() SecurityGatewayApplicationIamBindingConditionPtrOutput
+	ToSecurityGatewayApplicationIamBindingConditionPtrOutputWithContext(context.Context) SecurityGatewayApplicationIamBindingConditionPtrOutput
+}
+
+type securityGatewayApplicationIamBindingConditionPtrType SecurityGatewayApplicationIamBindingConditionArgs
+
+func SecurityGatewayApplicationIamBindingConditionPtr(v *SecurityGatewayApplicationIamBindingConditionArgs) SecurityGatewayApplicationIamBindingConditionPtrInput {
+	return (*securityGatewayApplicationIamBindingConditionPtrType)(v)
+}
+
+func (*securityGatewayApplicationIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationIamBindingCondition)(nil)).Elem()
+}
+
+func (i *securityGatewayApplicationIamBindingConditionPtrType) ToSecurityGatewayApplicationIamBindingConditionPtrOutput() SecurityGatewayApplicationIamBindingConditionPtrOutput {
+	return i.ToSecurityGatewayApplicationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayApplicationIamBindingConditionPtrType) ToSecurityGatewayApplicationIamBindingConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationIamBindingConditionPtrOutput)
+}
+
+type SecurityGatewayApplicationIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationIamBindingCondition)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationIamBindingConditionOutput) ToSecurityGatewayApplicationIamBindingConditionOutput() SecurityGatewayApplicationIamBindingConditionOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationIamBindingConditionOutput) ToSecurityGatewayApplicationIamBindingConditionOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamBindingConditionOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationIamBindingConditionOutput) ToSecurityGatewayApplicationIamBindingConditionPtrOutput() SecurityGatewayApplicationIamBindingConditionPtrOutput {
+	return o.ToSecurityGatewayApplicationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayApplicationIamBindingConditionOutput) ToSecurityGatewayApplicationIamBindingConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayApplicationIamBindingCondition) *SecurityGatewayApplicationIamBindingCondition {
+		return &v
+	}).(SecurityGatewayApplicationIamBindingConditionPtrOutput)
+}
+
+func (o SecurityGatewayApplicationIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SecurityGatewayApplicationIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SecurityGatewayApplicationIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SecurityGatewayApplicationIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationIamBindingCondition)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationIamBindingConditionPtrOutput) ToSecurityGatewayApplicationIamBindingConditionPtrOutput() SecurityGatewayApplicationIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationIamBindingConditionPtrOutput) ToSecurityGatewayApplicationIamBindingConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationIamBindingConditionPtrOutput) Elem() SecurityGatewayApplicationIamBindingConditionOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationIamBindingCondition) SecurityGatewayApplicationIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayApplicationIamBindingCondition
+		return ret
+	}).(SecurityGatewayApplicationIamBindingConditionOutput)
+}
+
+func (o SecurityGatewayApplicationIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SecurityGatewayApplicationIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SecurityGatewayApplicationIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayApplicationIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// SecurityGatewayApplicationIamMemberConditionInput is an input type that accepts SecurityGatewayApplicationIamMemberConditionArgs and SecurityGatewayApplicationIamMemberConditionOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationIamMemberConditionInput` via:
+//
+//	SecurityGatewayApplicationIamMemberConditionArgs{...}
+type SecurityGatewayApplicationIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationIamMemberConditionOutput() SecurityGatewayApplicationIamMemberConditionOutput
+	ToSecurityGatewayApplicationIamMemberConditionOutputWithContext(context.Context) SecurityGatewayApplicationIamMemberConditionOutput
+}
+
+type SecurityGatewayApplicationIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (SecurityGatewayApplicationIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationIamMemberCondition)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationIamMemberConditionArgs) ToSecurityGatewayApplicationIamMemberConditionOutput() SecurityGatewayApplicationIamMemberConditionOutput {
+	return i.ToSecurityGatewayApplicationIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationIamMemberConditionArgs) ToSecurityGatewayApplicationIamMemberConditionOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationIamMemberConditionOutput)
+}
+
+func (i SecurityGatewayApplicationIamMemberConditionArgs) ToSecurityGatewayApplicationIamMemberConditionPtrOutput() SecurityGatewayApplicationIamMemberConditionPtrOutput {
+	return i.ToSecurityGatewayApplicationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationIamMemberConditionArgs) ToSecurityGatewayApplicationIamMemberConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationIamMemberConditionOutput).ToSecurityGatewayApplicationIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayApplicationIamMemberConditionPtrInput is an input type that accepts SecurityGatewayApplicationIamMemberConditionArgs, SecurityGatewayApplicationIamMemberConditionPtr and SecurityGatewayApplicationIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationIamMemberConditionPtrInput` via:
+//
+//	        SecurityGatewayApplicationIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayApplicationIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationIamMemberConditionPtrOutput() SecurityGatewayApplicationIamMemberConditionPtrOutput
+	ToSecurityGatewayApplicationIamMemberConditionPtrOutputWithContext(context.Context) SecurityGatewayApplicationIamMemberConditionPtrOutput
+}
+
+type securityGatewayApplicationIamMemberConditionPtrType SecurityGatewayApplicationIamMemberConditionArgs
+
+func SecurityGatewayApplicationIamMemberConditionPtr(v *SecurityGatewayApplicationIamMemberConditionArgs) SecurityGatewayApplicationIamMemberConditionPtrInput {
+	return (*securityGatewayApplicationIamMemberConditionPtrType)(v)
+}
+
+func (*securityGatewayApplicationIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationIamMemberCondition)(nil)).Elem()
+}
+
+func (i *securityGatewayApplicationIamMemberConditionPtrType) ToSecurityGatewayApplicationIamMemberConditionPtrOutput() SecurityGatewayApplicationIamMemberConditionPtrOutput {
+	return i.ToSecurityGatewayApplicationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayApplicationIamMemberConditionPtrType) ToSecurityGatewayApplicationIamMemberConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationIamMemberConditionPtrOutput)
+}
+
+type SecurityGatewayApplicationIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationIamMemberCondition)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationIamMemberConditionOutput) ToSecurityGatewayApplicationIamMemberConditionOutput() SecurityGatewayApplicationIamMemberConditionOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationIamMemberConditionOutput) ToSecurityGatewayApplicationIamMemberConditionOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamMemberConditionOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationIamMemberConditionOutput) ToSecurityGatewayApplicationIamMemberConditionPtrOutput() SecurityGatewayApplicationIamMemberConditionPtrOutput {
+	return o.ToSecurityGatewayApplicationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayApplicationIamMemberConditionOutput) ToSecurityGatewayApplicationIamMemberConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayApplicationIamMemberCondition) *SecurityGatewayApplicationIamMemberCondition {
+		return &v
+	}).(SecurityGatewayApplicationIamMemberConditionPtrOutput)
+}
+
+func (o SecurityGatewayApplicationIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SecurityGatewayApplicationIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SecurityGatewayApplicationIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SecurityGatewayApplicationIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationIamMemberCondition)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationIamMemberConditionPtrOutput) ToSecurityGatewayApplicationIamMemberConditionPtrOutput() SecurityGatewayApplicationIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationIamMemberConditionPtrOutput) ToSecurityGatewayApplicationIamMemberConditionPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationIamMemberConditionPtrOutput) Elem() SecurityGatewayApplicationIamMemberConditionOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationIamMemberCondition) SecurityGatewayApplicationIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayApplicationIamMemberCondition
+		return ret
+	}).(SecurityGatewayApplicationIamMemberConditionOutput)
+}
+
+func (o SecurityGatewayApplicationIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SecurityGatewayApplicationIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SecurityGatewayApplicationIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstream struct {
+	// Optional. Routing policy information.
+	// Structure is documented below.
+	EgressPolicy *SecurityGatewayApplicationUpstreamEgressPolicy `pulumi:"egressPolicy"`
+	// Network to forward traffic to.
+	// Structure is documented below.
+	Network *SecurityGatewayApplicationUpstreamNetwork `pulumi:"network"`
+}
+
+// SecurityGatewayApplicationUpstreamInput is an input type that accepts SecurityGatewayApplicationUpstreamArgs and SecurityGatewayApplicationUpstreamOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamInput` via:
+//
+//	SecurityGatewayApplicationUpstreamArgs{...}
+type SecurityGatewayApplicationUpstreamInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamOutput() SecurityGatewayApplicationUpstreamOutput
+	ToSecurityGatewayApplicationUpstreamOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamOutput
+}
+
+type SecurityGatewayApplicationUpstreamArgs struct {
+	// Optional. Routing policy information.
+	// Structure is documented below.
+	EgressPolicy SecurityGatewayApplicationUpstreamEgressPolicyPtrInput `pulumi:"egressPolicy"`
+	// Network to forward traffic to.
+	// Structure is documented below.
+	Network SecurityGatewayApplicationUpstreamNetworkPtrInput `pulumi:"network"`
+}
+
+func (SecurityGatewayApplicationUpstreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstream)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamArgs) ToSecurityGatewayApplicationUpstreamOutput() SecurityGatewayApplicationUpstreamOutput {
+	return i.ToSecurityGatewayApplicationUpstreamOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamArgs) ToSecurityGatewayApplicationUpstreamOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamOutput)
+}
+
+// SecurityGatewayApplicationUpstreamArrayInput is an input type that accepts SecurityGatewayApplicationUpstreamArray and SecurityGatewayApplicationUpstreamArrayOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamArrayInput` via:
+//
+//	SecurityGatewayApplicationUpstreamArray{ SecurityGatewayApplicationUpstreamArgs{...} }
+type SecurityGatewayApplicationUpstreamArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamArrayOutput() SecurityGatewayApplicationUpstreamArrayOutput
+	ToSecurityGatewayApplicationUpstreamArrayOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamArrayOutput
+}
+
+type SecurityGatewayApplicationUpstreamArray []SecurityGatewayApplicationUpstreamInput
+
+func (SecurityGatewayApplicationUpstreamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGatewayApplicationUpstream)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamArray) ToSecurityGatewayApplicationUpstreamArrayOutput() SecurityGatewayApplicationUpstreamArrayOutput {
+	return i.ToSecurityGatewayApplicationUpstreamArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamArray) ToSecurityGatewayApplicationUpstreamArrayOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamArrayOutput)
+}
+
+type SecurityGatewayApplicationUpstreamOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstream)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamOutput) ToSecurityGatewayApplicationUpstreamOutput() SecurityGatewayApplicationUpstreamOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamOutput) ToSecurityGatewayApplicationUpstreamOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamOutput {
+	return o
+}
+
+// Optional. Routing policy information.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamOutput) EgressPolicy() SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstream) *SecurityGatewayApplicationUpstreamEgressPolicy {
+		return v.EgressPolicy
+	}).(SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput)
+}
+
+// Network to forward traffic to.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamOutput) Network() SecurityGatewayApplicationUpstreamNetworkPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstream) *SecurityGatewayApplicationUpstreamNetwork {
+		return v.Network
+	}).(SecurityGatewayApplicationUpstreamNetworkPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGatewayApplicationUpstream)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamArrayOutput) ToSecurityGatewayApplicationUpstreamArrayOutput() SecurityGatewayApplicationUpstreamArrayOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamArrayOutput) ToSecurityGatewayApplicationUpstreamArrayOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamArrayOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamArrayOutput) Index(i pulumi.IntInput) SecurityGatewayApplicationUpstreamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGatewayApplicationUpstream {
+		return vs[0].([]SecurityGatewayApplicationUpstream)[vs[1].(int)]
+	}).(SecurityGatewayApplicationUpstreamOutput)
+}
+
+type SecurityGatewayApplicationUpstreamEgressPolicy struct {
+	// Required. List of regions where the application sends traffic to.
+	Regions []string `pulumi:"regions"`
+}
+
+// SecurityGatewayApplicationUpstreamEgressPolicyInput is an input type that accepts SecurityGatewayApplicationUpstreamEgressPolicyArgs and SecurityGatewayApplicationUpstreamEgressPolicyOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamEgressPolicyInput` via:
+//
+//	SecurityGatewayApplicationUpstreamEgressPolicyArgs{...}
+type SecurityGatewayApplicationUpstreamEgressPolicyInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamEgressPolicyOutput() SecurityGatewayApplicationUpstreamEgressPolicyOutput
+	ToSecurityGatewayApplicationUpstreamEgressPolicyOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamEgressPolicyOutput
+}
+
+type SecurityGatewayApplicationUpstreamEgressPolicyArgs struct {
+	// Required. List of regions where the application sends traffic to.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+}
+
+func (SecurityGatewayApplicationUpstreamEgressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamEgressPolicy)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamEgressPolicyArgs) ToSecurityGatewayApplicationUpstreamEgressPolicyOutput() SecurityGatewayApplicationUpstreamEgressPolicyOutput {
+	return i.ToSecurityGatewayApplicationUpstreamEgressPolicyOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamEgressPolicyArgs) ToSecurityGatewayApplicationUpstreamEgressPolicyOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamEgressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamEgressPolicyOutput)
+}
+
+func (i SecurityGatewayApplicationUpstreamEgressPolicyArgs) ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutput() SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamEgressPolicyArgs) ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamEgressPolicyOutput).ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayApplicationUpstreamEgressPolicyPtrInput is an input type that accepts SecurityGatewayApplicationUpstreamEgressPolicyArgs, SecurityGatewayApplicationUpstreamEgressPolicyPtr and SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamEgressPolicyPtrInput` via:
+//
+//	        SecurityGatewayApplicationUpstreamEgressPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayApplicationUpstreamEgressPolicyPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutput() SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput
+	ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput
+}
+
+type securityGatewayApplicationUpstreamEgressPolicyPtrType SecurityGatewayApplicationUpstreamEgressPolicyArgs
+
+func SecurityGatewayApplicationUpstreamEgressPolicyPtr(v *SecurityGatewayApplicationUpstreamEgressPolicyArgs) SecurityGatewayApplicationUpstreamEgressPolicyPtrInput {
+	return (*securityGatewayApplicationUpstreamEgressPolicyPtrType)(v)
+}
+
+func (*securityGatewayApplicationUpstreamEgressPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamEgressPolicy)(nil)).Elem()
+}
+
+func (i *securityGatewayApplicationUpstreamEgressPolicyPtrType) ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutput() SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayApplicationUpstreamEgressPolicyPtrType) ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamEgressPolicyOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamEgressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamEgressPolicy)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamEgressPolicyOutput) ToSecurityGatewayApplicationUpstreamEgressPolicyOutput() SecurityGatewayApplicationUpstreamEgressPolicyOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamEgressPolicyOutput) ToSecurityGatewayApplicationUpstreamEgressPolicyOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamEgressPolicyOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamEgressPolicyOutput) ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutput() SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput {
+	return o.ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayApplicationUpstreamEgressPolicyOutput) ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayApplicationUpstreamEgressPolicy) *SecurityGatewayApplicationUpstreamEgressPolicy {
+		return &v
+	}).(SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput)
+}
+
+// Required. List of regions where the application sends traffic to.
+func (o SecurityGatewayApplicationUpstreamEgressPolicyOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamEgressPolicy) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+type SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamEgressPolicy)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput) ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutput() SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput) ToSecurityGatewayApplicationUpstreamEgressPolicyPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput) Elem() SecurityGatewayApplicationUpstreamEgressPolicyOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamEgressPolicy) SecurityGatewayApplicationUpstreamEgressPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayApplicationUpstreamEgressPolicy
+		return ret
+	}).(SecurityGatewayApplicationUpstreamEgressPolicyOutput)
+}
+
+// Required. List of regions where the application sends traffic to.
+func (o SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamEgressPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Regions
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityGatewayApplicationUpstreamNetwork struct {
+	// Required. Network name is of the format:
+	// `projects/{project}/global/networks/{network}`
+	Name string `pulumi:"name"`
+}
+
+// SecurityGatewayApplicationUpstreamNetworkInput is an input type that accepts SecurityGatewayApplicationUpstreamNetworkArgs and SecurityGatewayApplicationUpstreamNetworkOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamNetworkInput` via:
+//
+//	SecurityGatewayApplicationUpstreamNetworkArgs{...}
+type SecurityGatewayApplicationUpstreamNetworkInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamNetworkOutput() SecurityGatewayApplicationUpstreamNetworkOutput
+	ToSecurityGatewayApplicationUpstreamNetworkOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamNetworkOutput
+}
+
+type SecurityGatewayApplicationUpstreamNetworkArgs struct {
+	// Required. Network name is of the format:
+	// `projects/{project}/global/networks/{network}`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SecurityGatewayApplicationUpstreamNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamNetwork)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamNetworkArgs) ToSecurityGatewayApplicationUpstreamNetworkOutput() SecurityGatewayApplicationUpstreamNetworkOutput {
+	return i.ToSecurityGatewayApplicationUpstreamNetworkOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamNetworkArgs) ToSecurityGatewayApplicationUpstreamNetworkOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamNetworkOutput)
+}
+
+func (i SecurityGatewayApplicationUpstreamNetworkArgs) ToSecurityGatewayApplicationUpstreamNetworkPtrOutput() SecurityGatewayApplicationUpstreamNetworkPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamNetworkArgs) ToSecurityGatewayApplicationUpstreamNetworkPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamNetworkOutput).ToSecurityGatewayApplicationUpstreamNetworkPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayApplicationUpstreamNetworkPtrInput is an input type that accepts SecurityGatewayApplicationUpstreamNetworkArgs, SecurityGatewayApplicationUpstreamNetworkPtr and SecurityGatewayApplicationUpstreamNetworkPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamNetworkPtrInput` via:
+//
+//	        SecurityGatewayApplicationUpstreamNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayApplicationUpstreamNetworkPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamNetworkPtrOutput() SecurityGatewayApplicationUpstreamNetworkPtrOutput
+	ToSecurityGatewayApplicationUpstreamNetworkPtrOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamNetworkPtrOutput
+}
+
+type securityGatewayApplicationUpstreamNetworkPtrType SecurityGatewayApplicationUpstreamNetworkArgs
+
+func SecurityGatewayApplicationUpstreamNetworkPtr(v *SecurityGatewayApplicationUpstreamNetworkArgs) SecurityGatewayApplicationUpstreamNetworkPtrInput {
+	return (*securityGatewayApplicationUpstreamNetworkPtrType)(v)
+}
+
+func (*securityGatewayApplicationUpstreamNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamNetwork)(nil)).Elem()
+}
+
+func (i *securityGatewayApplicationUpstreamNetworkPtrType) ToSecurityGatewayApplicationUpstreamNetworkPtrOutput() SecurityGatewayApplicationUpstreamNetworkPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayApplicationUpstreamNetworkPtrType) ToSecurityGatewayApplicationUpstreamNetworkPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamNetworkPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamNetworkOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamNetwork)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamNetworkOutput) ToSecurityGatewayApplicationUpstreamNetworkOutput() SecurityGatewayApplicationUpstreamNetworkOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamNetworkOutput) ToSecurityGatewayApplicationUpstreamNetworkOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamNetworkOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamNetworkOutput) ToSecurityGatewayApplicationUpstreamNetworkPtrOutput() SecurityGatewayApplicationUpstreamNetworkPtrOutput {
+	return o.ToSecurityGatewayApplicationUpstreamNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayApplicationUpstreamNetworkOutput) ToSecurityGatewayApplicationUpstreamNetworkPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayApplicationUpstreamNetwork) *SecurityGatewayApplicationUpstreamNetwork {
+		return &v
+	}).(SecurityGatewayApplicationUpstreamNetworkPtrOutput)
+}
+
+// Required. Network name is of the format:
+// `projects/{project}/global/networks/{network}`
+func (o SecurityGatewayApplicationUpstreamNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SecurityGatewayApplicationUpstreamNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamNetwork)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamNetworkPtrOutput) ToSecurityGatewayApplicationUpstreamNetworkPtrOutput() SecurityGatewayApplicationUpstreamNetworkPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamNetworkPtrOutput) ToSecurityGatewayApplicationUpstreamNetworkPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamNetworkPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamNetworkPtrOutput) Elem() SecurityGatewayApplicationUpstreamNetworkOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamNetwork) SecurityGatewayApplicationUpstreamNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayApplicationUpstreamNetwork
+		return ret
+	}).(SecurityGatewayApplicationUpstreamNetworkOutput)
+}
+
+// Required. Network name is of the format:
+// `projects/{project}/global/networks/{network}`
+func (o SecurityGatewayApplicationUpstreamNetworkPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecurityGatewayHub struct {
 	// Internet Gateway configuration.
 	// Structure is documented below.
@@ -2976,6 +3824,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpstreamEgressPolicyPtrInput)(nil)).Elem(), ApplicationUpstreamEgressPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpstreamNetworkInput)(nil)).Elem(), ApplicationUpstreamNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpstreamNetworkPtrInput)(nil)).Elem(), ApplicationUpstreamNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationEndpointMatcherInput)(nil)).Elem(), SecurityGatewayApplicationEndpointMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationEndpointMatcherArrayInput)(nil)).Elem(), SecurityGatewayApplicationEndpointMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationIamBindingConditionInput)(nil)).Elem(), SecurityGatewayApplicationIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationIamBindingConditionPtrInput)(nil)).Elem(), SecurityGatewayApplicationIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationIamMemberConditionInput)(nil)).Elem(), SecurityGatewayApplicationIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationIamMemberConditionPtrInput)(nil)).Elem(), SecurityGatewayApplicationIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamArrayInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamEgressPolicyInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamEgressPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamEgressPolicyPtrInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamEgressPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamNetworkInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamNetworkPtrInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubInput)(nil)).Elem(), SecurityGatewayHubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubArrayInput)(nil)).Elem(), SecurityGatewayHubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubInternetGatewayInput)(nil)).Elem(), SecurityGatewayHubInternetGatewayArgs{})
@@ -3020,6 +3880,18 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationUpstreamEgressPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationUpstreamNetworkOutput{})
 	pulumi.RegisterOutputType(ApplicationUpstreamNetworkPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationEndpointMatcherOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationEndpointMatcherArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamEgressPolicyOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamNetworkOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamNetworkPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubInternetGatewayOutput{})

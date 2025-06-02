@@ -11,6 +11,7 @@ import com.pulumi.gcp.compute.inputs.RegionBackendServiceCircuitBreakersArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceConnectionTrackingPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceConsistentHashArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceCustomMetricArgs;
+import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceFailoverPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceIapArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceLogConfigArgs;
@@ -203,6 +204,25 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dynamicForwarding")
+    private @Nullable Output<RegionBackendServiceDynamicForwardingArgs> dynamicForwarding;
+
+    /**
+     * @return Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionBackendServiceDynamicForwardingArgs>> dynamicForwarding() {
+        return Optional.ofNullable(this.dynamicForwarding);
     }
 
     /**
@@ -711,6 +731,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         this.consistentHash = $.consistentHash;
         this.customMetrics = $.customMetrics;
         this.description = $.description;
+        this.dynamicForwarding = $.dynamicForwarding;
         this.enableCdn = $.enableCdn;
         this.failoverPolicy = $.failoverPolicy;
         this.healthChecks = $.healthChecks;
@@ -1000,6 +1021,31 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * feature which together with Service Extension allows customized and complex routing logic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicForwarding(@Nullable Output<RegionBackendServiceDynamicForwardingArgs> dynamicForwarding) {
+            $.dynamicForwarding = dynamicForwarding;
+            return this;
+        }
+
+        /**
+         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * feature which together with Service Extension allows customized and complex routing logic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicForwarding(RegionBackendServiceDynamicForwardingArgs dynamicForwarding) {
+            return dynamicForwarding(Output.of(dynamicForwarding));
         }
 
         /**

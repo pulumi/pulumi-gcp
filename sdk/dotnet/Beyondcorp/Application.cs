@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Beyondcorp
 {
     /// <summary>
-    /// &gt; **Warning:** `gcp.beyondcorp.Application` is deprecated. Use `google_beyondcorp_security_gateway_application` instead.
+    /// &gt; **Warning:** `gcp.beyondcorp.Application` is deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
     /// 
     /// Specifies application endpoint(s) to protect behind a Security Gateway.
     /// 

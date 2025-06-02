@@ -126,7 +126,7 @@ export class Connector extends pulumi.CustomResource {
     public readonly machineType!: pulumi.Output<string | undefined>;
     /**
      * Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
-     * higher than the value specified by min_instances.
+     * higher than the value specified by min_instances. Required alongside `minInstances` if not using `minThroughput`/`maxThroughput`.
      */
     public readonly maxInstances!: pulumi.Output<number>;
     /**
@@ -137,7 +137,7 @@ export class Connector extends pulumi.CustomResource {
     public readonly maxThroughput!: pulumi.Output<number>;
     /**
      * Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
-     * lower than the value specified by max_instances.
+     * lower than the value specified by max_instances. Required alongside `maxInstances` if not using `minThroughput`/`maxThroughput`.
      */
     public readonly minInstances!: pulumi.Output<number>;
     /**
@@ -247,7 +247,7 @@ export interface ConnectorState {
     machineType?: pulumi.Input<string>;
     /**
      * Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
-     * higher than the value specified by min_instances.
+     * higher than the value specified by min_instances. Required alongside `minInstances` if not using `minThroughput`/`maxThroughput`.
      */
     maxInstances?: pulumi.Input<number>;
     /**
@@ -258,7 +258,7 @@ export interface ConnectorState {
     maxThroughput?: pulumi.Input<number>;
     /**
      * Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
-     * lower than the value specified by max_instances.
+     * lower than the value specified by max_instances. Required alongside `maxInstances` if not using `minThroughput`/`maxThroughput`.
      */
     minInstances?: pulumi.Input<number>;
     /**
@@ -316,7 +316,7 @@ export interface ConnectorArgs {
     machineType?: pulumi.Input<string>;
     /**
      * Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
-     * higher than the value specified by min_instances.
+     * higher than the value specified by min_instances. Required alongside `minInstances` if not using `minThroughput`/`maxThroughput`.
      */
     maxInstances?: pulumi.Input<number>;
     /**
@@ -327,7 +327,7 @@ export interface ConnectorArgs {
     maxThroughput?: pulumi.Input<number>;
     /**
      * Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
-     * lower than the value specified by max_instances.
+     * lower than the value specified by max_instances. Required alongside `maxInstances` if not using `minThroughput`/`maxThroughput`.
      */
     minInstances?: pulumi.Input<number>;
     /**

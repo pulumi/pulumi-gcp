@@ -103,7 +103,7 @@ type LoggingSettingBinding struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Product type of the setting binding.
 	// Possible values are: `GEMINI_CODE_ASSIST`.
-	Product pulumi.StringPtrOutput `pulumi:"product"`
+	Product pulumi.StringOutput `pulumi:"product"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -406,8 +406,8 @@ func (o LoggingSettingBindingOutput) Name() pulumi.StringOutput {
 
 // Product type of the setting binding.
 // Possible values are: `GEMINI_CODE_ASSIST`.
-func (o LoggingSettingBindingOutput) Product() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingSettingBinding) pulumi.StringPtrOutput { return v.Product }).(pulumi.StringPtrOutput)
+func (o LoggingSettingBindingOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoggingSettingBinding) pulumi.StringOutput { return v.Product }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

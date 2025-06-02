@@ -17,14 +17,14 @@ public final class AddonsConfigAddonsConfigApiSecurityConfigArgs extends com.pul
     public static final AddonsConfigAddonsConfigApiSecurityConfigArgs Empty = new AddonsConfigAddonsConfigApiSecurityConfigArgs();
 
     /**
-     * Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * Flag that specifies whether the API security add-on is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * @return Flag that specifies whether the API security add-on is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -33,7 +33,7 @@ public final class AddonsConfigAddonsConfigApiSecurityConfigArgs extends com.pul
 
     /**
      * (Output)
-     * Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
      * 
      */
     @Import(name="expiresAt")
@@ -41,7 +41,7 @@ public final class AddonsConfigAddonsConfigApiSecurityConfigArgs extends com.pul
 
     /**
      * @return (Output)
-     * Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -74,7 +74,7 @@ public final class AddonsConfigAddonsConfigApiSecurityConfigArgs extends com.pul
         }
 
         /**
-         * @param enabled Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * @param enabled Flag that specifies whether the API security add-on is enabled.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class AddonsConfigAddonsConfigApiSecurityConfigArgs extends com.pul
         }
 
         /**
-         * @param enabled Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * @param enabled Flag that specifies whether the API security add-on is enabled.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class AddonsConfigAddonsConfigApiSecurityConfigArgs extends com.pul
 
         /**
          * @param expiresAt (Output)
-         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class AddonsConfigAddonsConfigApiSecurityConfigArgs extends com.pul
 
         /**
          * @param expiresAt (Output)
-         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
          * 
          * @return builder
          * 

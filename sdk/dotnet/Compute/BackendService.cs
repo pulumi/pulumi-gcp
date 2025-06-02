@@ -614,6 +614,32 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Backend Service Dynamic Forwarding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         DynamicForwarding = new Gcp.Compute.Inputs.BackendServiceDynamicForwardingArgs
+    ///         {
+    ///             IpPortSelection = new Gcp.Compute.Inputs.BackendServiceDynamicForwardingIpPortSelectionArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// BackendService can be imported using any of these accepted formats:
@@ -733,6 +759,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        /// feature which together with Service Extension allows customized and complex routing logic.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("dynamicForwarding")]
+        public Output<Outputs.BackendServiceDynamicForwarding?> DynamicForwarding { get; private set; } = null!;
 
         /// <summary>
         /// The resource URL for the edge security policy associated with this backend service.
@@ -927,6 +961,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures traffic steering properties of internal passthrough Network Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("networkPassThroughLbTrafficPolicy")]
+        public Output<Outputs.BackendServiceNetworkPassThroughLbTrafficPolicy?> NetworkPassThroughLbTrafficPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
@@ -1181,6 +1222,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        /// feature which together with Service Extension allows customized and complex routing logic.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dynamicForwarding")]
+        public Input<Inputs.BackendServiceDynamicForwardingArgs>? DynamicForwarding { get; set; }
+
+        /// <summary>
         /// The resource URL for the edge security policy associated with this backend service.
         /// </summary>
         [Input("edgeSecurityPolicy")]
@@ -1366,6 +1415,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configures traffic steering properties of internal passthrough Network Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("networkPassThroughLbTrafficPolicy")]
+        public Input<Inputs.BackendServiceNetworkPassThroughLbTrafficPolicyArgs>? NetworkPassThroughLbTrafficPolicy { get; set; }
 
         /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
@@ -1582,6 +1638,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        /// feature which together with Service Extension allows customized and complex routing logic.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dynamicForwarding")]
+        public Input<Inputs.BackendServiceDynamicForwardingGetArgs>? DynamicForwarding { get; set; }
+
+        /// <summary>
         /// The resource URL for the edge security policy associated with this backend service.
         /// </summary>
         [Input("edgeSecurityPolicy")]
@@ -1780,6 +1844,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configures traffic steering properties of internal passthrough Network Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("networkPassThroughLbTrafficPolicy")]
+        public Input<Inputs.BackendServiceNetworkPassThroughLbTrafficPolicyGetArgs>? NetworkPassThroughLbTrafficPolicy { get; set; }
 
         /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.

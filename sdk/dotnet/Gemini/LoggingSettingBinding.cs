@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.Gemini
         /// Possible values are: `GEMINI_CODE_ASSIST`.
         /// </summary>
         [Output("product")]
-        public Output<string?> Product { get; private set; } = null!;
+        public Output<string> Product { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

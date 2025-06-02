@@ -58,6 +58,7 @@ export interface GetInstanceResult {
     readonly createTime: string;
     readonly crossInstanceReplicationConfigs: outputs.memorystore.GetInstanceCrossInstanceReplicationConfig[];
     readonly deletionProtectionEnabled: boolean;
+    readonly desiredAutoCreatedEndpoints: outputs.memorystore.GetInstanceDesiredAutoCreatedEndpoint[];
     readonly desiredPscAutoConnections: outputs.memorystore.GetInstanceDesiredPscAutoConnection[];
     readonly discoveryEndpoints: outputs.memorystore.GetInstanceDiscoveryEndpoint[];
     readonly effectiveLabels: {[key: string]: string};

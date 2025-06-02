@@ -19,6 +19,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
+        /// <summary>
+        /// The number of backends per backend group assigned to each proxy instance or each service mesh client.
+        /// An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+        /// CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+        /// subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+        /// If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+        /// of proxies/clients visible to each backend and vice versa.
+        /// Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+        /// </summary>
+        [Input("subsetSize")]
+        public Input<int>? SubsetSize { get; set; }
+
         public RegionBackendServiceSubsettingGetArgs()
         {
         }

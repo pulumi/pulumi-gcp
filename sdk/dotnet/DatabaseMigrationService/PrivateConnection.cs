@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///             VpcName = googleComputeNetwork.Default.Id,
     ///             Subnet = "10.0.0.0/29",
     ///         },
+    ///         CreateWithoutValidation = false,
     ///     });
     /// 
     ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
@@ -82,6 +83,12 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     [GcpResourceType("gcp:databasemigrationservice/privateConnection:PrivateConnection")]
     public partial class PrivateConnection : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// If set to true, will skip validations.
+        /// </summary>
+        [Output("createWithoutValidation")]
+        public Output<bool?> CreateWithoutValidation { get; private set; } = null!;
+
         /// <summary>
         /// Display name.
         /// </summary>
@@ -202,6 +209,12 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     public sealed class PrivateConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If set to true, will skip validations.
+        /// </summary>
+        [Input("createWithoutValidation")]
+        public Input<bool>? CreateWithoutValidation { get; set; }
+
+        /// <summary>
         /// Display name.
         /// </summary>
         [Input("displayName")]
@@ -251,6 +264,12 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
     public sealed class PrivateConnectionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If set to true, will skip validations.
+        /// </summary>
+        [Input("createWithoutValidation")]
+        public Input<bool>? CreateWithoutValidation { get; set; }
+
         /// <summary>
         /// Display name.
         /// </summary>

@@ -285,6 +285,12 @@ namespace Pulumi.Gcp.Storage
         public Output<Outputs.BucketHierarchicalNamespace?> HierarchicalNamespace { get; private set; } = null!;
 
         /// <summary>
+        /// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+        /// </summary>
+        [Output("ipFilter")]
+        public Output<Outputs.BucketIpFilter?> IpFilter { get; private set; } = null!;
+
+        /// <summary>
         /// A map of key/value label pairs to assign to the bucket.
         /// </summary>
         [Output("labels")]
@@ -521,6 +527,12 @@ namespace Pulumi.Gcp.Storage
         [Input("hierarchicalNamespace")]
         public Input<Inputs.BucketHierarchicalNamespaceArgs>? HierarchicalNamespace { get; set; }
 
+        /// <summary>
+        /// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+        /// </summary>
+        [Input("ipFilter")]
+        public Input<Inputs.BucketIpFilterArgs>? IpFilter { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -702,6 +714,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("hierarchicalNamespace")]
         public Input<Inputs.BucketHierarchicalNamespaceGetArgs>? HierarchicalNamespace { get; set; }
+
+        /// <summary>
+        /// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+        /// </summary>
+        [Input("ipFilter")]
+        public Input<Inputs.BucketIpFilterGetArgs>? IpFilter { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

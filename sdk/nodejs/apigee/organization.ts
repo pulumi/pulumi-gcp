@@ -70,6 +70,8 @@ import * as utilities from "../utilities";
  * const org = new gcp.apigee.Organization("org", {
  *     description: "Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction.",
  *     projectId: current.then(current => current.project),
+ *     apiConsumerDataLocation: "europe-west1",
+ *     billingType: "PAYG",
  *     disableVpcPeering: true,
  * });
  * ```

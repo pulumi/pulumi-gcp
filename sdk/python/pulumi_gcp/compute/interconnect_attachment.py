@@ -104,8 +104,8 @@ class InterconnectAttachmentArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
-               this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        :param pulumi.Input[builtins.str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+               Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is created. The
                name must be 1-63 characters long, and comply with RFC1035. Specifically, the
                name must be 1-63 characters long and match the regular expression
@@ -347,8 +347,8 @@ class InterconnectAttachmentArgs:
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Maximum Transmission Unit (MTU), in bytes, of packets passing through
-        this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+        Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
         """
         return pulumi.get(self, "mtu")
 
@@ -574,8 +574,8 @@ class _InterconnectAttachmentState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
-               this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        :param pulumi.Input[builtins.str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+               Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is created. The
                name must be 1-63 characters long, and comply with RFC1035. Specifically, the
                name must be 1-63 characters long and match the regular expression
@@ -953,8 +953,8 @@ class _InterconnectAttachmentState:
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Maximum Transmission Unit (MTU), in bytes, of packets passing through
-        this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+        Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
         """
         return pulumi.get(self, "mtu")
 
@@ -1346,8 +1346,8 @@ class InterconnectAttachment(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
-               this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        :param pulumi.Input[builtins.str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+               Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is created. The
                name must be 1-63 characters long, and comply with RFC1035. Specifically, the
                name must be 1-63 characters long and match the regular expression
@@ -1688,8 +1688,8 @@ class InterconnectAttachment(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
-               this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        :param pulumi.Input[builtins.str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+               Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is created. The
                name must be 1-63 characters long, and comply with RFC1035. Specifically, the
                name must be 1-63 characters long and match the regular expression
@@ -1972,8 +1972,8 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter
     def mtu(self) -> pulumi.Output[builtins.str]:
         """
-        Maximum Transmission Unit (MTU), in bytes, of packets passing through
-        this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+        Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
         """
         return pulumi.get(self, "mtu")
 

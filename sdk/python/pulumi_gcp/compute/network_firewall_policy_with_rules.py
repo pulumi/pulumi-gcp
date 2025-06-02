@@ -308,6 +308,8 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyWithRulesRuleArgs', 'NetworkFirewallPolicyWithRulesRuleArgsDict']]]]] = None,
                  __props__=None):
         """
+        The Compute NetworkFirewallPolicy with rules resource
+
         ## Example Usage
 
         ### Compute Network Firewall Policy With Rules Full
@@ -347,9 +349,6 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
             parent="organizations/123456789",
             description="my description",
             threat_prevention_profile=security_profile1.id)
-        network = gcp.compute.Network("network",
-            name="network",
-            auto_create_subnetworks=False)
         primary = gcp.compute.NetworkFirewallPolicyWithRules("primary",
             name="fw-policy",
             description="Terraform test",
@@ -431,39 +430,6 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         "src_ip_ranges": ["0.0.0.0/0"],
                         "layer4_configs": [{
                             "ip_protocol": "tcp",
-                        }],
-                    },
-                },
-                {
-                    "description": "network scope rule 1",
-                    "rule_name": "network scope 1",
-                    "priority": 4000,
-                    "enable_logging": False,
-                    "action": "allow",
-                    "direction": "INGRESS",
-                    "match": {
-                        "src_ip_ranges": ["11.100.0.1/32"],
-                        "src_network_scope": "VPC_NETWORKS",
-                        "src_networks": [network.id],
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": ["8080"],
-                        }],
-                    },
-                },
-                {
-                    "description": "network scope rule 2",
-                    "rule_name": "network scope 2",
-                    "priority": 5000,
-                    "enable_logging": False,
-                    "action": "allow",
-                    "direction": "EGRESS",
-                    "match": {
-                        "dest_ip_ranges": ["0.0.0.0/0"],
-                        "dest_network_scope": "INTERNET",
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": ["8080"],
                         }],
                     },
                 },
@@ -514,6 +480,8 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
                  args: NetworkFirewallPolicyWithRulesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The Compute NetworkFirewallPolicy with rules resource
+
         ## Example Usage
 
         ### Compute Network Firewall Policy With Rules Full
@@ -553,9 +521,6 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
             parent="organizations/123456789",
             description="my description",
             threat_prevention_profile=security_profile1.id)
-        network = gcp.compute.Network("network",
-            name="network",
-            auto_create_subnetworks=False)
         primary = gcp.compute.NetworkFirewallPolicyWithRules("primary",
             name="fw-policy",
             description="Terraform test",
@@ -637,39 +602,6 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         "src_ip_ranges": ["0.0.0.0/0"],
                         "layer4_configs": [{
                             "ip_protocol": "tcp",
-                        }],
-                    },
-                },
-                {
-                    "description": "network scope rule 1",
-                    "rule_name": "network scope 1",
-                    "priority": 4000,
-                    "enable_logging": False,
-                    "action": "allow",
-                    "direction": "INGRESS",
-                    "match": {
-                        "src_ip_ranges": ["11.100.0.1/32"],
-                        "src_network_scope": "VPC_NETWORKS",
-                        "src_networks": [network.id],
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": ["8080"],
-                        }],
-                    },
-                },
-                {
-                    "description": "network scope rule 2",
-                    "rule_name": "network scope 2",
-                    "priority": 5000,
-                    "enable_logging": False,
-                    "action": "allow",
-                    "direction": "EGRESS",
-                    "match": {
-                        "dest_ip_ranges": ["0.0.0.0/0"],
-                        "dest_network_scope": "INTERNET",
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": ["8080"],
                         }],
                     },
                 },

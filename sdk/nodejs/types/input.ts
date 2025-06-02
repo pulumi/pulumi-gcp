@@ -2941,12 +2941,12 @@ export namespace apigateway {
 export namespace apigee {
     export interface AddonsConfigAddonsConfig {
         /**
-         * Configuration for the Monetization add-on.
+         * Configuration for the Advanced API Ops add-on.
          * Structure is documented below.
          */
         advancedApiOpsConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfig>;
         /**
-         * Configuration for the Monetization add-on.
+         * Configuration for the API Security add-on.
          * Structure is documented below.
          */
         apiSecurityConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfigApiSecurityConfig>;
@@ -2956,7 +2956,7 @@ export namespace apigee {
          */
         connectorsPlatformConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfig>;
         /**
-         * Configuration for the Monetization add-on.
+         * Configuration for the Integration add-on.
          * Structure is documented below.
          */
         integrationConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfigIntegrationConfig>;
@@ -2976,38 +2976,38 @@ export namespace apigee {
 
     export interface AddonsConfigAddonsConfigApiSecurityConfig {
         /**
-         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * Flag that specifies whether the API security add-on is enabled.
          */
         enabled?: pulumi.Input<boolean>;
         /**
          * (Output)
-         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
          */
         expiresAt?: pulumi.Input<string>;
     }
 
     export interface AddonsConfigAddonsConfigConnectorsPlatformConfig {
         /**
-         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * Flag that specifies whether the Connectors Platform add-on is enabled.
          */
         enabled?: pulumi.Input<boolean>;
         /**
          * (Output)
-         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
          */
         expiresAt?: pulumi.Input<string>;
     }
 
     export interface AddonsConfigAddonsConfigIntegrationConfig {
         /**
-         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * Flag that specifies whether the Integration add-on is enabled.
          */
         enabled?: pulumi.Input<boolean>;
     }
 
     export interface AddonsConfigAddonsConfigMonetizationConfig {
         /**
-         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * Flag that specifies whether the Monetization add-on is enabled.
          */
         enabled?: pulumi.Input<boolean>;
     }
@@ -3375,6 +3375,9 @@ export namespace apigee {
          * Value of the property.
          */
         value?: pulumi.Input<string>;
+    }
+
+    export interface SecurityMonitoringConditionIncludeAllResources {
     }
 
     export interface SecurityProfileV2ProfileAssessmentConfig {
@@ -5622,6 +5625,71 @@ export namespace beyondcorp {
     }
 
     export interface ApplicationUpstreamNetwork {
+        /**
+         * Required. Network name is of the format:
+         * `projects/{project}/global/networks/{network}`
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface SecurityGatewayApplicationEndpointMatcher {
+        /**
+         * Required. Hostname of the application.
+         */
+        hostname: pulumi.Input<string>;
+        /**
+         * Optional. Ports of the application.
+         *
+         * - - -
+         */
+        ports?: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface SecurityGatewayApplicationIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface SecurityGatewayApplicationIamMemberCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface SecurityGatewayApplicationUpstream {
+        /**
+         * Optional. Routing policy information.
+         * Structure is documented below.
+         */
+        egressPolicy?: pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationUpstreamEgressPolicy>;
+        /**
+         * Network to forward traffic to.
+         * Structure is documented below.
+         */
+        network?: pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationUpstreamNetwork>;
+    }
+
+    export interface SecurityGatewayApplicationUpstreamEgressPolicy {
+        /**
+         * Required. List of regions where the application sends traffic to.
+         */
+        regions: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SecurityGatewayApplicationUpstreamNetwork {
         /**
          * Required. Network name is of the format:
          * `projects/{project}/global/networks/{network}`
@@ -10189,6 +10257,11 @@ export namespace certificateauthority {
          */
         keyUsage?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesKeyUsage>;
         /**
+         * Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         */
+        nameConstraints?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesNameConstraints>;
+        /**
          * Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
          * Structure is documented below.
          */
@@ -10220,13 +10293,26 @@ export namespace certificateauthority {
 
     export interface CertificateTemplatePredefinedValuesCaOptions {
         /**
-         * Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+         * Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is true, the "CA" in Basic Constraints extension will be set to true.
          */
         isCa?: pulumi.Input<boolean>;
         /**
-         * Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+         * Optional. Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
          */
         maxIssuerPathLength?: pulumi.Input<number>;
+        /**
+         * Optional. When true, the "CA" in Basic Constraints extension will be set to null and omitted from the CA certificate.
+         * If both `isCa` and `nullCa` are unset, the "CA" in Basic Constraints extension will be set to false.
+         * Note that the behavior when `isCa = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+         */
+        nullCa?: pulumi.Input<boolean>;
+        /**
+         * Optional. When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+         * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
+         * the max path length will be omitted from the CA certificate.
+         */
+        zeroMaxIssuerPathLength?: pulumi.Input<boolean>;
     }
 
     export interface CertificateTemplatePredefinedValuesKeyUsage {
@@ -10318,6 +10404,69 @@ export namespace certificateauthority {
          * Required. The parts of an OID path. The most significant parts of the path come first.
          */
         objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CertificateTemplatePredefinedValuesNameConstraints {
+        /**
+         * Indicates whether or not the name constraints are marked critical.
+         */
+        critical: pulumi.Input<boolean>;
+        /**
+         * Contains excluded DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, `example.com`, `www.example.com`, `www.sub.example.com`
+         * would satisfy `example.com` while `example1.com` does not.
+         */
+        excludedDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. `.example.com`) to indicate
+         * all email addresses in that domain.
+         */
+        excludedEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
+        excludedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like `.example.com`)
+         */
+        excludedUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains permitted DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, `example.com`, `www.example.com`, `www.sub.example.com`
+         * would satisfy `example.com` while `example1.com` does not.
+         */
+        permittedDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. `.example.com`) to indicate
+         * all email addresses in that domain.
+         */
+        permittedEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
+        permittedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like `.example.com`)
+         */
+        permittedUris?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface CertificateTemplatePredefinedValuesPolicyId {
@@ -16312,6 +16461,488 @@ export namespace cloudrunv2 {
          */
         uri?: pulumi.Input<string>;
     }
+
+    export interface WorkerPoolBinaryAuthorization {
+        /**
+         * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+         */
+        breakglassJustification?: pulumi.Input<string>;
+        /**
+         * The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+         */
+        policy?: pulumi.Input<string>;
+        /**
+         * If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+         */
+        useDefault?: pulumi.Input<boolean>;
+    }
+
+    export interface WorkerPoolCondition {
+        /**
+         * (Output)
+         * A reason for the execution condition.
+         */
+        executionReason?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Last time the condition transitioned from one status to another.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        lastTransitionTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Human readable message indicating details about the current status.
+         */
+        message?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A common (workerPool-level) reason for this condition.
+         */
+        reason?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A reason for the revision condition.
+         */
+        revisionReason?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * How to interpret failures of this condition, one of Error, Warning, Info
+         */
+        severity?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * State of the condition.
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The allocation type for this instance split.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolInstanceSplit {
+        /**
+         * Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
+         */
+        percent?: pulumi.Input<number>;
+        /**
+         * Revision to which to assign this portion of instances, if split allocation is by revision.
+         */
+        revision?: pulumi.Input<string>;
+        /**
+         * The allocation type for this instance split.
+         * Possible values are: `INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST`, `INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION`.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolInstanceSplitStatus {
+        /**
+         * (Output)
+         * Specifies percent of the instance split to this Revision.
+         */
+        percent?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Revision to which this instance split is assigned.
+         */
+        revision?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The allocation type for this instance split.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolScaling {
+        /**
+         * The total number of instances in manual scaling mode.
+         */
+        manualInstanceCount?: pulumi.Input<number>;
+        /**
+         * The maximum count of instances distributed among revisions based on the specified instance split percentages.
+         */
+        maxInstanceCount?: pulumi.Input<number>;
+        /**
+         * The minimum count of instances distributed among revisions based on the specified instance split percentages.
+         */
+        minInstanceCount?: pulumi.Input<number>;
+        /**
+         * The scaling mode for the worker pool. It defaults to MANUAL.
+         * Possible values are: `AUTOMATIC`, `MANUAL`.
+         */
+        scalingMode?: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolTemplate {
+        /**
+         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+         * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system annotations in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
+         * This field follows Kubernetes annotations' namespacing, limits, and rules.
+         */
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Holds the containers that define the unit of execution for this WorkerPool.
+         * Structure is documented below.
+         */
+        containers?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateContainer>[]>;
+        /**
+         * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+         */
+        encryptionKey?: pulumi.Input<string>;
+        /**
+         * The action to take if the encryption key is revoked.
+         * Possible values are: `PREVENT_NEW`, `SHUTDOWN`.
+         */
+        encryptionKeyRevocationAction?: pulumi.Input<string>;
+        /**
+         * If encryptionKeyRevocationAction is SHUTDOWN, the duration before shutting down all instances. The minimum increment is 1 hour.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        encryptionKeyShutdownDuration?: pulumi.Input<string>;
+        /**
+         * True if GPU zonal redundancy is disabled on this revision.
+         */
+        gpuZonalRedundancyDisabled?: pulumi.Input<boolean>;
+        /**
+         * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+         * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+         * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system labels in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Node Selector describes the hardware requirements of the resources.
+         * Structure is documented below.
+         */
+        nodeSelector?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateNodeSelector>;
+        /**
+         * The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
+         */
+        revision?: pulumi.Input<string>;
+        /**
+         * Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+         */
+        serviceAccount?: pulumi.Input<string>;
+        /**
+         * A list of Volumes to make available to containers.
+         * Structure is documented below.
+         */
+        volumes?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateVolume>[]>;
+        /**
+         * VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+         * Structure is documented below.
+         */
+        vpcAccess?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateVpcAccess>;
+    }
+
+    export interface WorkerPoolTemplateContainer {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+         */
+        dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of environment variables to set in the container.
+         * Structure is documented below.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateContainerEnv>[]>;
+        /**
+         * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+         */
+        image: pulumi.Input<string>;
+        /**
+         * Name of the container specified as a DNS_LABEL.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         * Structure is documented below.
+         */
+        resources?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateContainerResources>;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateContainerVolumeMount>[]>;
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolTemplateContainerEnv {
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value?: pulumi.Input<string>;
+        /**
+         * Source for the environment variable's value.
+         * Structure is documented below.
+         */
+        valueSource?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateContainerEnvValueSource>;
+    }
+
+    export interface WorkerPoolTemplateContainerEnvValueSource {
+        /**
+         * Selects a secret and a specific version from Cloud Secret Manager.
+         * Structure is documented below.
+         */
+        secretKeyRef?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateContainerEnvValueSourceSecretKeyRef>;
+    }
+
+    export interface WorkerPoolTemplateContainerEnvValueSourceSecretKeyRef {
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+         */
+        secret: pulumi.Input<string>;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolTemplateContainerResources {
+        /**
+         * Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         */
+        limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface WorkerPoolTemplateContainerVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolTemplateNodeSelector {
+        /**
+         * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+         *
+         * - - -
+         */
+        accelerator: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolTemplateVolume {
+        /**
+         * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+         * Structure is documented below.
+         */
+        cloudSqlInstance?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateVolumeCloudSqlInstance>;
+        /**
+         * Ephemeral storage used as a shared volume.
+         * Structure is documented below.
+         */
+        emptyDir?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateVolumeEmptyDir>;
+        /**
+         * Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
+         * Structure is documented below.
+         */
+        gcs?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateVolumeGcs>;
+        /**
+         * Volume's name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Represents an NFS mount.
+         * Structure is documented below.
+         */
+        nfs?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateVolumeNfs>;
+        /**
+         * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+         * Structure is documented below.
+         */
+        secret?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateVolumeSecret>;
+    }
+
+    export interface WorkerPoolTemplateVolumeCloudSqlInstance {
+        /**
+         * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         */
+        instances?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface WorkerPoolTemplateVolumeEmptyDir {
+        /**
+         * The different types of medium supported for EmptyDir.
+         * Default value is `MEMORY`.
+         * Possible values are: `MEMORY`.
+         */
+        medium?: pulumi.Input<string>;
+        /**
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+         */
+        sizeLimit?: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolTemplateVolumeGcs {
+        /**
+         * GCS Bucket name
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * A list of flags to pass to the gcsfuse command for configuring this volume.
+         * Flags should be passed without leading dashes.
+         */
+        mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * If true, mount the GCS bucket as read-only
+         */
+        readOnly?: pulumi.Input<boolean>;
+    }
+
+    export interface WorkerPoolTemplateVolumeNfs {
+        /**
+         * Path that is exported by the NFS server.
+         */
+        path: pulumi.Input<string>;
+        /**
+         * If true, mount the NFS volume as read only
+         */
+        readOnly?: pulumi.Input<boolean>;
+        /**
+         * Hostname or IP address of the NFS server
+         */
+        server: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolTemplateVolumeSecret {
+        /**
+         * Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+         */
+        defaultMode?: pulumi.Input<number>;
+        /**
+         * If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+         * Structure is documented below.
+         */
+        items?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateVolumeSecretItem>[]>;
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         */
+        secret: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolTemplateVolumeSecretItem {
+        /**
+         * Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+         */
+        mode?: pulumi.Input<number>;
+        /**
+         * The relative path of the secret in the container.
+         */
+        path: pulumi.Input<string>;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolTemplateVpcAccess {
+        /**
+         * Traffic VPC egress settings.
+         * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+         */
+        egress?: pulumi.Input<string>;
+        /**
+         * Direct VPC egress settings. Currently only single network interface is supported.
+         * Structure is documented below.
+         */
+        networkInterfaces?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateVpcAccessNetworkInterface>[]>;
+    }
+
+    export interface WorkerPoolTemplateVpcAccessNetworkInterface {
+        /**
+         * The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+         * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+         * looked up from the subnetwork.
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+         * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+         * subnetwork with the same name with the network will be used.
+         */
+        subnetwork?: pulumi.Input<string>;
+        /**
+         * Network tags applied to this Cloud Run WorkerPool.
+         */
+        tags?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface WorkerPoolTerminalCondition {
+        /**
+         * (Output)
+         * A reason for the execution condition.
+         */
+        executionReason?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Last time the condition transitioned from one status to another.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        lastTransitionTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Human readable message indicating details about the current status.
+         */
+        message?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A common (workerPool-level) reason for this condition.
+         */
+        reason?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A reason for the revision condition.
+         */
+        revisionReason?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * How to interpret failures of this condition, one of Error, Warning, Info
+         */
+        severity?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * State of the condition.
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The allocation type for this instance split.
+         */
+        type?: pulumi.Input<string>;
+    }
 }
 
 export namespace cloudscheduler {
@@ -18224,6 +18855,21 @@ export namespace compute {
         name: pulumi.Input<string>;
     }
 
+    export interface BackendServiceDynamicForwarding {
+        /**
+         * IP:PORT based dynamic forwarding configuration.
+         * Structure is documented below.
+         */
+        ipPortSelection?: pulumi.Input<inputs.compute.BackendServiceDynamicForwardingIpPortSelection>;
+    }
+
+    export interface BackendServiceDynamicForwardingIpPortSelection {
+        /**
+         * A boolean flag enabling IP:PORT based dynamic forwarding.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
     export interface BackendServiceIamBindingCondition {
         description?: pulumi.Input<string>;
         /**
@@ -18372,6 +19018,31 @@ export namespace compute {
          * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)
          */
         seconds: pulumi.Input<string>;
+    }
+
+    export interface BackendServiceNetworkPassThroughLbTrafficPolicy {
+        /**
+         * When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+         * Structure is documented below.
+         */
+        zonalAffinity?: pulumi.Input<inputs.compute.BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity>;
+    }
+
+    export interface BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
+        /**
+         * This field indicates whether zonal affinity is enabled or not.
+         * Default value is `ZONAL_AFFINITY_DISABLED`.
+         * Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
+         */
+        spillover?: pulumi.Input<string>;
+        /**
+         * The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+         * to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+         * distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+         * of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+         * threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+         */
+        spilloverRatio?: pulumi.Input<number>;
     }
 
     export interface BackendServiceOutlierDetection {
@@ -19225,6 +19896,395 @@ export namespace compute {
          * Service Directory service to register the forwarding rule under.
          */
         service?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationAutoCreatedReservationsDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         */
+        seconds?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationCommitmentInfo {
+        /**
+         * name of the commitment where capacity is being delivered to.
+         */
+        commitmentName?: pulumi.Input<string>;
+        /**
+         * Indicates if a Commitment needs to be created as part of FR delivery. If this field is not present, then no commitment needs to be created.
+         * Possible values are: `INVALID`, `THIRTY_SIX_MONTH`, `TWELVE_MONTH`.
+         */
+        commitmentPlan?: pulumi.Input<string>;
+        /**
+         * Only applicable if FR is delivering to the same reservation. If set, all parent commitments will be extended to match the end date of the plan for this commitment.
+         * Possible values are: `EXTEND`.
+         */
+        previousCommitmentTerms?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationShareSettings {
+        /**
+         * A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+         * Structure is documented below.
+         */
+        projectMaps?: pulumi.Input<pulumi.Input<inputs.compute.FutureReservationShareSettingsProjectMap>[]>;
+        /**
+         * list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+         */
+        projects?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Type of sharing for this future reservation.
+         * Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
+         */
+        shareType?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationShareSettingsProjectMap {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * The project ID, should be same as the key of this project config in the parent map.
+         */
+        projectId?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationSpecificSkuProperties {
+        /**
+         * Properties of the SKU instances being reserved.
+         * Structure is documented below.
+         */
+        instanceProperties?: pulumi.Input<inputs.compute.FutureReservationSpecificSkuPropertiesInstanceProperties>;
+        /**
+         * The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+         */
+        sourceInstanceTemplate?: pulumi.Input<string>;
+        /**
+         * Total number of instances for which capacity assurance is requested at a future time period.
+         */
+        totalCount?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationSpecificSkuPropertiesInstanceProperties {
+        /**
+         * Specifies accelerator type and count.
+         * Structure is documented below.
+         */
+        guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAccelerator>[]>;
+        /**
+         * Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
+         * Structure is documented below.
+         */
+        localSsds?: pulumi.Input<pulumi.Input<inputs.compute.FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsd>[]>;
+        /**
+         * An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+         */
+        locationHint?: pulumi.Input<string>;
+        /**
+         * Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
+         */
+        machineType?: pulumi.Input<string>;
+        /**
+         * Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
+         */
+        maintenanceFreezeDurationHours?: pulumi.Input<number>;
+        /**
+         * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         * Possible values are: `PERIODIC`.
+         */
+        maintenanceInterval?: pulumi.Input<string>;
+        /**
+         * Minimum cpu platform the reservation.
+         */
+        minCpuPlatform?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to this instance.
+         */
+        acceleratorCount?: pulumi.Input<number>;
+        /**
+         * Full or partial URL of the accelerator type resource to attach to this instance.
+         */
+        acceleratorType?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsd {
+        /**
+         * Specifies the size of the disk in base-2 GB.
+         */
+        diskSizeGb?: pulumi.Input<string>;
+        /**
+         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * Possible values are: `SCSI`, `NVME`.
+         */
+        interface?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationStatus {
+        /**
+         * The current status of the requested amendment.
+         * Possible values are: .
+         */
+        amendmentStatus?: pulumi.Input<string>;
+        /**
+         * Fully qualified urls of the automatically created reservations at startTime.
+         */
+        autoCreatedReservations?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * This count indicates the fulfilled capacity so far. This is set during "PROVISIONING" state. This count also includes capacity delivered as part of existing matching reservations.
+         */
+        fulfilledCount?: pulumi.Input<string>;
+        /**
+         * This field represents the future reservation before an amendment was requested. If the amendment is declined, the Future Reservation will be reverted to the last known good state. The last known good state is not set when updating a future reservation whose Procurement Status is DRAFTING.
+         * Structure is documented below.
+         */
+        lastKnownGoodState?: pulumi.Input<inputs.compute.FutureReservationStatusLastKnownGoodState>;
+        /**
+         * The lock time of the FutureReservation before an amendment was requested.
+         */
+        lockTime?: pulumi.Input<string>;
+        /**
+         * The status of the last known good state for the Future Reservation
+         * Possible values are: .
+         */
+        procurementStatus?: pulumi.Input<string>;
+        /**
+         * The previous instance related properties of the Future Reservation.
+         * Structure is documented below.
+         */
+        specificSkuProperties?: pulumi.Input<inputs.compute.FutureReservationStatusSpecificSkuProperties>;
+    }
+
+    export interface FutureReservationStatusLastKnownGoodState {
+        /**
+         * The description of the FutureReservation before an amendment was requested.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Represents the matching usage for the future reservation before an amendment was requested.
+         * Structure is documented below.
+         */
+        existingMatchingUsageInfo?: pulumi.Input<inputs.compute.FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo>;
+        /**
+         * The previous instance-related properties of the Future Reservation.
+         * Structure is documented below.
+         */
+        futureReservationSpecs?: pulumi.Input<inputs.compute.FutureReservationStatusLastKnownGoodStateFutureReservationSpecs>;
+        /**
+         * The lock time of the FutureReservation before an amendment was requested.
+         */
+        lockTime?: pulumi.Input<string>;
+        /**
+         * The name prefix of the Future Reservation before an amendment was requested.
+         */
+        namePrefix?: pulumi.Input<string>;
+        /**
+         * The status of the last known good state for the Future Reservation
+         * Possible values are: .
+         */
+        procurementStatus?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo {
+        /**
+         * Count representing minimum(FR totalCount, matching_reserved_capacity+matching_unreserved_instances).
+         */
+        count?: pulumi.Input<string>;
+        /**
+         * Timestamp when the matching usage was calculated.
+         */
+        timeStamp?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationStatusLastKnownGoodStateFutureReservationSpecs {
+        /**
+         * The previous share settings of the Future Reservation.
+         * Structure is documented below.
+         */
+        shareSettings?: pulumi.Input<inputs.compute.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings>;
+        /**
+         * The previous instance related properties of the Future Reservation.
+         * Structure is documented below.
+         */
+        specificSkuProperties?: pulumi.Input<inputs.compute.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties>;
+        /**
+         * Time window for this Future Reservation.
+         * Structure is documented below.
+         */
+        timeWindow?: pulumi.Input<inputs.compute.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow>;
+    }
+
+    export interface FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings {
+        /**
+         * A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+         * Structure is documented below.
+         */
+        projectMaps?: pulumi.Input<pulumi.Input<inputs.compute.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap>[]>;
+        /**
+         * list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+         */
+        projects?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Type of sharing for this future reservation.
+         * Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
+         */
+        shareType?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap {
+        /**
+         * (Required) The identifier for this object. Format specified above.
+         */
+        project: pulumi.Input<string>;
+        /**
+         * The project ID, should be same as the key of this project config in the parent map.
+         */
+        projectId?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties {
+        /**
+         * Properties of the SKU instances being reserved.
+         * Structure is documented below.
+         */
+        instanceProperties?: pulumi.Input<inputs.compute.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstanceProperties>;
+        /**
+         * The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+         */
+        sourceInstanceTemplate?: pulumi.Input<string>;
+        /**
+         * Total number of instances for which capacity assurance is requested at a future time period.
+         */
+        totalCount?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstanceProperties {
+        /**
+         * Specifies accelerator type and count.
+         * Structure is documented below.
+         */
+        guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator>[]>;
+        /**
+         * Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
+         * Structure is documented below.
+         */
+        localSsds?: pulumi.Input<pulumi.Input<inputs.compute.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd>[]>;
+        /**
+         * An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+         */
+        locationHint?: pulumi.Input<string>;
+        /**
+         * Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
+         */
+        machineType?: pulumi.Input<string>;
+        /**
+         * Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
+         */
+        maintenanceFreezeDurationHours?: pulumi.Input<number>;
+        /**
+         * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         * Possible values are: `PERIODIC`.
+         */
+        maintenanceInterval?: pulumi.Input<string>;
+        /**
+         * Minimum cpu platform the reservation.
+         */
+        minCpuPlatform?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to this instance.
+         */
+        acceleratorCount?: pulumi.Input<number>;
+        /**
+         * Full or partial URL of the accelerator type resource to attach to this instance.
+         */
+        acceleratorType?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd {
+        /**
+         * Specifies the size of the disk in base-2 GB.
+         */
+        diskSizeGb?: pulumi.Input<string>;
+        /**
+         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * Possible values are: `SCSI`, `NVME`.
+         */
+        interface?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow {
+        /**
+         * Duration of the future reservation
+         * Structure is documented below.
+         */
+        duration?: pulumi.Input<inputs.compute.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDuration>;
+        /**
+         * End time of the future reservation in RFC3339 format.
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * Start time of the future reservation in RFC3339 format.
+         */
+        startTime?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution.
+         *
+         * - - -
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         */
+        seconds?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationStatusSpecificSkuProperties {
+        /**
+         * ID of the instance template used to populate the Future Reservation properties.
+         */
+        sourceInstanceTemplateId?: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationTimeWindow {
+        /**
+         * Duration of the future reservation
+         * Structure is documented below.
+         */
+        duration?: pulumi.Input<inputs.compute.FutureReservationTimeWindowDuration>;
+        /**
+         * End time of the future reservation in RFC3339 format.
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * Start time of the future reservation in RFC3339 format.
+         */
+        startTime: pulumi.Input<string>;
+    }
+
+    export interface FutureReservationTimeWindowDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution.
+         *
+         * - - -
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         */
+        seconds?: pulumi.Input<string>;
     }
 
     export interface GlobalForwardingRuleMetadataFilter {
@@ -24640,6 +25700,21 @@ export namespace compute {
         name: pulumi.Input<string>;
     }
 
+    export interface RegionBackendServiceDynamicForwarding {
+        /**
+         * IP:PORT based dynamic forwarding configuration.
+         * Structure is documented below.
+         */
+        ipPortSelection?: pulumi.Input<inputs.compute.RegionBackendServiceDynamicForwardingIpPortSelection>;
+    }
+
+    export interface RegionBackendServiceDynamicForwardingIpPortSelection {
+        /**
+         * A boolean flag enabling IP:PORT based dynamic forwarding.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
     export interface RegionBackendServiceFailoverPolicy {
         /**
          * On failover or failback, this field indicates whether connection drain
@@ -24882,6 +25957,16 @@ export namespace compute {
          * Possible values are: `CONSISTENT_HASH_SUBSETTING`.
          */
         policy: pulumi.Input<string>;
+        /**
+         * The number of backends per backend group assigned to each proxy instance or each service mesh client.
+         * An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+         * CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+         * subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+         * If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+         * of proxies/clients visible to each backend and vice versa.
+         * Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+         */
+        subsetSize?: pulumi.Input<number>;
     }
 
     export interface RegionCommitmentLicenseResource {
@@ -31312,6 +32397,11 @@ export namespace compute {
          * The full or partial URL to the BackendService resource being mirrored to.
          */
         backendService: pulumi.Input<string>;
+        /**
+         * The percentage of requests to be mirrored to backendService.
+         * The value must be between 0.0 and 100.0 inclusive.
+         */
+        mirrorPercent?: pulumi.Input<number>;
     }
 
     export interface URLMapDefaultRouteActionRetryPolicy {
@@ -31877,6 +32967,11 @@ export namespace compute {
          * The full or partial URL to the BackendService resource being mirrored to.
          */
         backendService: pulumi.Input<string>;
+        /**
+         * The percentage of requests to be mirrored to backendService.
+         * The value must be between 0.0 and 100.0 inclusive.
+         */
+        mirrorPercent?: pulumi.Input<number>;
     }
 
     export interface URLMapPathMatcherDefaultRouteActionRetryPolicy {
@@ -32400,6 +33495,11 @@ export namespace compute {
          * The full or partial URL to the BackendService resource being mirrored to.
          */
         backendService: pulumi.Input<string>;
+        /**
+         * The percentage of requests to be mirrored to backendService.
+         * The value must be between 0.0 and 100.0 inclusive.
+         */
+        mirrorPercent?: pulumi.Input<number>;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionRetryPolicy {
@@ -33135,6 +34235,11 @@ export namespace compute {
          * The full or partial URL to the BackendService resource being mirrored to.
          */
         backendService: pulumi.Input<string>;
+        /**
+         * The percentage of requests to be mirrored to backendService.
+         * The value must be between 0.0 and 100.0 inclusive.
+         */
+        mirrorPercent?: pulumi.Input<number>;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
@@ -34538,7 +35643,7 @@ export namespace container {
          */
         oauthScopes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+         * The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
          */
         serviceAccount?: pulumi.Input<string>;
         /**
@@ -56475,6 +57580,11 @@ export namespace filestore {
          */
         ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * The source VPC network for `ipRanges`.
+         * Required for instances using Private Service Connect, optional otherwise.
+         */
+        network?: pulumi.Input<string>;
+        /**
          * Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
          * for not allowing root access. The default is NO_ROOT_SQUASH.
          * Default value is `NO_ROOT_SQUASH`.
@@ -56510,9 +57620,7 @@ export namespace filestore {
          * If not provided, the connect mode defaults to
          * DIRECT_PEERING.
          * Default value is `DIRECT_PEERING`.
-         * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-         *
-         * - - -
+         * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
          */
         connectMode?: pulumi.Input<string>;
         /**
@@ -56532,10 +57640,28 @@ export namespace filestore {
          */
         network: pulumi.Input<string>;
         /**
+         * Private Service Connect configuration.
+         * Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
+         * Structure is documented below.
+         */
+        pscConfig?: pulumi.Input<inputs.filestore.InstanceNetworkPscConfig>;
+        /**
          * A /29 CIDR block that identifies the range of IP
          * addresses reserved for this instance.
          */
         reservedIpRange?: pulumi.Input<string>;
+    }
+
+    export interface InstanceNetworkPscConfig {
+        /**
+         * Consumer service project in which the Private Service Connect endpoint
+         * would be set up. This is optional, and only relevant in case the network
+         * is a shared VPC. If this is not specified, the endpoint would be set up
+         * in the VPC host project.
+         *
+         * - - -
+         */
+        endpointProject?: pulumi.Input<string>;
     }
 
     export interface InstancePerformanceConfig {
@@ -62711,6 +63837,44 @@ export namespace iam {
         filter?: pulumi.Input<string>;
     }
 
+    export interface WorkforcePoolProviderKeyKeyData {
+        /**
+         * (Output)
+         * The format of the key.
+         */
+        format?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The key data. The format of the key is represented by the format field.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The specifications for the key.
+         * Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
+         *
+         * - - -
+         */
+        keySpec: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
+         * Only present if the key data represents a X.509 certificate.
+         * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+         * Offsets other than "Z" are also accepted.
+         * Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+         */
+        notAfterTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
+         * Only present if the key data represents a X.509 certificate.
+         * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+         * Offsets other than "Z" are also accepted.
+         * Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+         */
+        notBeforeTime?: pulumi.Input<string>;
+    }
+
     export interface WorkforcePoolProviderOidc {
         /**
          * The client ID. Must match the audience claim of the JWT issued by the identity provider.
@@ -62918,6 +64082,15 @@ export namespace iam {
          * certificate(either root or intermediate cert).
          */
         pemCertificate: pulumi.Input<string>;
+    }
+
+    export interface WorkloadIdentityPoolNamespaceOwnerService {
+        /**
+         * (Output)
+         * The service agent principal subject, e.g.
+         * `serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com`.
+         */
+        principalSubject?: pulumi.Input<string>;
     }
 
     export interface WorkloadIdentityPoolProviderAws {
@@ -65701,6 +66874,30 @@ export namespace looker {
 }
 
 export namespace managedkafka {
+    export interface AclAclEntry {
+        /**
+         * The host. Must be set to "*" for Managed Service for Apache Kafka.
+         *
+         * - - -
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * The operation type. Allowed values are (case insensitive): ALL, READ,
+         * WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
+         * ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols
+         * for valid combinations of resourceType and operation for different Kafka API requests.
+         */
+        operation: pulumi.Input<string>;
+        /**
+         * The permission type. Accepted values are (case insensitive): ALLOW, DENY.
+         */
+        permissionType?: pulumi.Input<string>;
+        /**
+         * The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard "User:*" to refer to all users.
+         */
+        principal: pulumi.Input<string>;
+    }
+
     export interface ClusterCapacityConfig {
         /**
          * The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
@@ -66086,6 +67283,20 @@ export namespace memorystore {
          * The unique id of the secondary instance.
          */
         uid?: pulumi.Input<string>;
+    }
+
+    export interface InstanceDesiredAutoCreatedEndpoint {
+        /**
+         * (Output)
+         * Output only. The consumer network where the IP address resides, in the form of
+         * projects/{project_id}/global/networks/{network_id}.
+         */
+        network: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The consumer projectId where the forwarding rule is created from.
+         */
+        projectId: pulumi.Input<string>;
     }
 
     export interface InstanceDesiredPscAutoConnection {
@@ -68371,6 +69582,42 @@ export namespace netapp {
         nfsv4?: pulumi.Input<boolean>;
     }
 
+    export interface VolumeHybridReplicationParameters {
+        /**
+         * Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+         */
+        clusterLocation?: pulumi.Input<string>;
+        /**
+         * Optional. Description of the replication.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Optional. Labels to be added to the replication as the key value pairs.
+         * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Required. Name of the user's local source cluster to be peered with the destination cluster.
+         */
+        peerClusterName?: pulumi.Input<string>;
+        /**
+         * Required. List of node ip addresses to be peered with.
+         */
+        peerIpAddresses?: pulumi.Input<string>;
+        /**
+         * Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+         */
+        peerSvmName?: pulumi.Input<string>;
+        /**
+         * Required. Name of the user's local source volume to be peered with the destination volume.
+         */
+        peerVolumeName?: pulumi.Input<string>;
+        /**
+         * Required. Desired name for the replication of this volume.
+         */
+        replication?: pulumi.Input<string>;
+    }
+
     export interface VolumeMountOption {
         /**
          * (Output)
@@ -68432,6 +69679,45 @@ export namespace netapp {
          * Possible values are: `ENABLED`, `PAUSED`.
          */
         tierAction?: pulumi.Input<string>;
+    }
+
+    export interface VolumeReplicationHybridPeeringDetail {
+        /**
+         * (Output)
+         * Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
+         */
+        command?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Optional. Expiration time for the peering command to be executed on user's ONTAP.
+         * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
+         */
+        commandExpiryTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Optional. Temporary passphrase generated to accept cluster peering command.
+         */
+        passphrase?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Optional. Name of the user's local source cluster to be peered with the destination cluster.
+         */
+        peerClusterName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Optional. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+         */
+        peerSvmName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Optional. Name of the user's local source volume to be peered with the destination volume.
+         */
+        peerVolumeName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Optional. IP address of the subnet.
+         */
+        subnetIp?: pulumi.Input<string>;
     }
 
     export interface VolumeReplicationTransferStat {
@@ -83705,6 +84991,39 @@ export namespace storage {
          * A title for the expression, i.e. a short string describing its purpose.
          */
         title: pulumi.Input<string>;
+    }
+
+    export interface BucketIpFilter {
+        /**
+         * The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+         */
+        mode: pulumi.Input<string>;
+        /**
+         * The public network IP address ranges that can access the bucket and its data. Structure is documented below.
+         */
+        publicNetworkSource?: pulumi.Input<inputs.storage.BucketIpFilterPublicNetworkSource>;
+        /**
+         * The list of VPC networks that can access the bucket. Structure is documented below.
+         */
+        vpcNetworkSources?: pulumi.Input<pulumi.Input<inputs.storage.BucketIpFilterVpcNetworkSource>[]>;
+    }
+
+    export interface BucketIpFilterPublicNetworkSource {
+        /**
+         * The list of public IPv4 and IPv6 CIDR ranges that can access the bucket and its data.
+         */
+        allowedIpCidrRanges: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface BucketIpFilterVpcNetworkSource {
+        /**
+         * The list of public or private IPv4 and IPv6 CIDR ranges that can access the bucket.
+         */
+        allowedIpCidrRanges: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Name of the network. Format: `projects/PROJECT_ID/global/networks/NETWORK_NAME`
+         */
+        network: pulumi.Input<string>;
     }
 
     export interface BucketLifecycleRule {

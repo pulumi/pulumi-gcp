@@ -156,6 +156,20 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.additionalExperiments;
     }
     /**
+     * List of pipeline options that should be used by the job. An example value is `[&#34;numberOfWorkerHarnessThreads=20&#34;]`.
+     * 
+     */
+    @Export(name="additionalPipelineOptions", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> additionalPipelineOptions;
+
+    /**
+     * @return List of pipeline options that should be used by the job. An example value is `[&#34;numberOfWorkerHarnessThreads=20&#34;]`.
+     * 
+     */
+    public Output<Optional<List<String>>> additionalPipelineOptions() {
+        return Codegen.optional(this.additionalPipelineOptions);
+    }
+    /**
      * The algorithm to use for autoscaling.
      * 
      */

@@ -920,6 +920,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/securityMonitoringCondition",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition": "SecurityMonitoringCondition"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/securityProfileV2",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -1228,6 +1236,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.beyondcorp",
   "classes": {
    "gcp:beyondcorp/securityGateway:SecurityGateway": "SecurityGateway"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/securityGatewayApplication",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication": "SecurityGatewayApplication"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/securityGatewayApplicationIamBinding",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/securityGatewayApplicationIamBinding:SecurityGatewayApplicationIamBinding": "SecurityGatewayApplicationIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/securityGatewayApplicationIamMember",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/securityGatewayApplicationIamMember:SecurityGatewayApplicationIamMember": "SecurityGatewayApplicationIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/securityGatewayApplicationIamPolicy",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/securityGatewayApplicationIamPolicy:SecurityGatewayApplicationIamPolicy": "SecurityGatewayApplicationIamPolicy"
   }
  },
  {
@@ -2352,6 +2392,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "cloudrunv2/workerPool",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/workerPool:WorkerPool": "WorkerPool"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/workerPoolIamBinding",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/workerPoolIamBinding:WorkerPoolIamBinding": "WorkerPoolIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/workerPoolIamMember",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/workerPoolIamMember:WorkerPoolIamMember": "WorkerPoolIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/workerPoolIamPolicy",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/workerPoolIamPolicy:WorkerPoolIamPolicy": "WorkerPoolIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "cloudscheduler/job",
   "fqn": "pulumi_gcp.cloudscheduler",
   "classes": {
@@ -2692,6 +2764,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/forwardingRule:ForwardingRule": "ForwardingRule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/futureReservation",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/futureReservation:FutureReservation": "FutureReservation"
   }
  },
  {
@@ -4352,6 +4432,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/glossaryCategory",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/glossaryCategory:GlossaryCategory": "GlossaryCategory"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/glossaryIamBinding",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
@@ -4372,6 +4460,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
    "gcp:dataplex/glossaryIamPolicy:GlossaryIamPolicy": "GlossaryIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/glossaryTerm",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/glossaryTerm:GlossaryTerm": "GlossaryTerm"
   }
  },
  {
@@ -6184,6 +6280,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iam/workforcePoolProviderKey",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey": "WorkforcePoolProviderKey"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iam/workloadIdentityPool",
   "fqn": "pulumi_gcp.iam",
   "classes": {
@@ -6212,6 +6316,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.iam",
   "classes": {
    "gcp:iam/workloadIdentityPoolIamPolicy:WorkloadIdentityPoolIamPolicy": "WorkloadIdentityPoolIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/workloadIdentityPoolManagedIdentity",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity": "WorkloadIdentityPoolManagedIdentity"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/workloadIdentityPoolNamespace",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace": "WorkloadIdentityPoolNamespace"
   }
  },
  {
@@ -6924,6 +7044,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.lustre",
   "classes": {
    "gcp:lustre/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "managedkafka/acl",
+  "fqn": "pulumi_gcp.managedkafka",
+  "classes": {
+   "gcp:managedkafka/acl:Acl": "Acl"
   }
  },
  {

@@ -26,6 +26,7 @@ __all__ = [
     'InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance',
     'InstanceCrossInstanceReplicationConfigPrimaryInstance',
     'InstanceCrossInstanceReplicationConfigSecondaryInstance',
+    'InstanceDesiredAutoCreatedEndpoint',
     'InstanceDesiredPscAutoConnection',
     'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint',
     'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection',
@@ -58,6 +59,7 @@ __all__ = [
     'GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceResult',
     'GetInstanceCrossInstanceReplicationConfigPrimaryInstanceResult',
     'GetInstanceCrossInstanceReplicationConfigSecondaryInstanceResult',
+    'GetInstanceDesiredAutoCreatedEndpointResult',
     'GetInstanceDesiredPscAutoConnectionResult',
     'GetInstanceDiscoveryEndpointResult',
     'GetInstanceEndpointResult',
@@ -481,6 +483,58 @@ class InstanceCrossInstanceReplicationConfigSecondaryInstance(dict):
         The unique id of the secondary instance.
         """
         return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class InstanceDesiredAutoCreatedEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceDesiredAutoCreatedEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceDesiredAutoCreatedEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceDesiredAutoCreatedEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network: builtins.str,
+                 project_id: builtins.str):
+        """
+        :param builtins.str network: (Output)
+               Output only. The consumer network where the IP address resides, in the form of
+               projects/{project_id}/global/networks/{network_id}.
+        :param builtins.str project_id: (Output)
+               Output only. The consumer project_id where the forwarding rule is created from.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def network(self) -> builtins.str:
+        """
+        (Output)
+        Output only. The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> builtins.str:
+        """
+        (Output)
+        Output only. The consumer project_id where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project_id")
 
 
 @pulumi.output_type
@@ -2289,6 +2343,37 @@ class GetInstanceCrossInstanceReplicationConfigSecondaryInstanceResult(dict):
         The unique id of the Nth instance.
         """
         return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class GetInstanceDesiredAutoCreatedEndpointResult(dict):
+    def __init__(__self__, *,
+                 network: builtins.str,
+                 project_id: builtins.str):
+        """
+        :param builtins.str network: Required. The consumer network where the IP address resides, in the form of
+               projects/{project_id}/global/networks/{network_id}.
+        :param builtins.str project_id: Required. The consumer project_id where the forwarding rule is created from.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def network(self) -> builtins.str:
+        """
+        Required. The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> builtins.str:
+        """
+        Required. The consumer project_id where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project_id")
 
 
 @pulumi.output_type

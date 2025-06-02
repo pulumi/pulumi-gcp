@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AddonsConfigAddonsConfigMonetizationConfig {
     /**
-     * @return Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * @return Flag that specifies whether the Monetization add-on is enabled.
      * 
      */
     private @Nullable Boolean enabled;
 
     private AddonsConfigAddonsConfigMonetizationConfig() {}
     /**
-     * @return Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * @return Flag that specifies whether the Monetization add-on is enabled.
      * 
      */
     public Optional<Boolean> enabled() {

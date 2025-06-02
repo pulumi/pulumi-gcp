@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Iap
     ///     var destGroup = new Gcp.Iap.TunnelDestGroup("dest_group", new()
     ///     {
     ///         Region = "us-central1",
-    ///         GroupName = "testgroup_79169",
+    ///         GroupName = "testgroup_13293",
     ///         Cidrs = new[]
     ///         {
     ///             "10.1.0.0/16",

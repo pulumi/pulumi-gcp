@@ -75,6 +75,7 @@ export interface GetBackendServiceResult {
      * Textual description for the Backend Service.
      */
     readonly description: string;
+    readonly dynamicForwardings: outputs.compute.GetBackendServiceDynamicForwarding[];
     readonly edgeSecurityPolicy: string;
     /**
      * Whether or not Cloud CDN is enabled on the Backend Service.
@@ -106,6 +107,7 @@ export interface GetBackendServiceResult {
     readonly logConfigs: outputs.compute.GetBackendServiceLogConfig[];
     readonly maxStreamDurations: outputs.compute.GetBackendServiceMaxStreamDuration[];
     readonly name: string;
+    readonly networkPassThroughLbTrafficPolicies: outputs.compute.GetBackendServiceNetworkPassThroughLbTrafficPolicy[];
     readonly outlierDetections: outputs.compute.GetBackendServiceOutlierDetection[];
     /**
      * The name of a service that has been added to an instance group in this backend.

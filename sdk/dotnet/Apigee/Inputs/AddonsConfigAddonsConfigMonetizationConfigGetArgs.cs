@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Apigee.Inputs
     public sealed class AddonsConfigAddonsConfigMonetizationConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flag that specifies whether the Advanced API Ops add-on is enabled.
+        /// Flag that specifies whether the Monetization add-on is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

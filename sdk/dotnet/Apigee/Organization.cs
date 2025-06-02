@@ -110,6 +110,8 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         Description = "Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction.",
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///         ApiConsumerDataLocation = "europe-west1",
+    ///         BillingType = "PAYG",
     ///         DisableVpcPeering = true,
     ///     });
     /// 

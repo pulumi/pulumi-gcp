@@ -6,6 +6,7 @@ package com.pulumi.gcp.filestore.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.filestore.inputs.InstanceNetworkPscConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,9 +23,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
      * If not provided, the connect mode defaults to
      * DIRECT_PEERING.
      * Default value is `DIRECT_PEERING`.
-     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-     * 
-     * ***
+     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     @Import(name="connectMode")
@@ -35,9 +34,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
      * If not provided, the connect mode defaults to
      * DIRECT_PEERING.
      * Default value is `DIRECT_PEERING`.
-     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-     * 
-     * ***
+     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     public Optional<Output<String>> connectMode() {
@@ -98,6 +95,25 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Private Service Connect configuration.
+     * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscConfig")
+    private @Nullable Output<InstanceNetworkPscConfigArgs> pscConfig;
+
+    /**
+     * @return Private Service Connect configuration.
+     * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceNetworkPscConfigArgs>> pscConfig() {
+        return Optional.ofNullable(this.pscConfig);
+    }
+
+    /**
      * A /29 CIDR block that identifies the range of IP
      * addresses reserved for this instance.
      * 
@@ -121,6 +137,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         this.ipAddresses = $.ipAddresses;
         this.modes = $.modes;
         this.network = $.network;
+        this.pscConfig = $.pscConfig;
         this.reservedIpRange = $.reservedIpRange;
     }
 
@@ -147,9 +164,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
          * If not provided, the connect mode defaults to
          * DIRECT_PEERING.
          * Default value is `DIRECT_PEERING`.
-         * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-         * 
-         * ***
+         * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
          * 
          * @return builder
          * 
@@ -164,9 +179,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
          * If not provided, the connect mode defaults to
          * DIRECT_PEERING.
          * Default value is `DIRECT_PEERING`.
-         * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-         * 
-         * ***
+         * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
          * 
          * @return builder
          * 
@@ -267,6 +280,31 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param pscConfig Private Service Connect configuration.
+         * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConfig(@Nullable Output<InstanceNetworkPscConfigArgs> pscConfig) {
+            $.pscConfig = pscConfig;
+            return this;
+        }
+
+        /**
+         * @param pscConfig Private Service Connect configuration.
+         * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConfig(InstanceNetworkPscConfigArgs pscConfig) {
+            return pscConfig(Output.of(pscConfig));
         }
 
         /**

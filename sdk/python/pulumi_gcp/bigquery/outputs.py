@@ -115,6 +115,33 @@ __all__ = [
     'GetDatasetDefaultEncryptionConfigurationResult',
     'GetDatasetExternalCatalogDatasetOptionResult',
     'GetDatasetExternalDatasetReferenceResult',
+    'GetTableBiglakeConfigurationResult',
+    'GetTableEncryptionConfigurationResult',
+    'GetTableExternalCatalogTableOptionResult',
+    'GetTableExternalCatalogTableOptionStorageDescriptorResult',
+    'GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfoResult',
+    'GetTableExternalDataConfigurationResult',
+    'GetTableExternalDataConfigurationAvroOptionResult',
+    'GetTableExternalDataConfigurationBigtableOptionResult',
+    'GetTableExternalDataConfigurationBigtableOptionColumnFamilyResult',
+    'GetTableExternalDataConfigurationBigtableOptionColumnFamilyColumnResult',
+    'GetTableExternalDataConfigurationCsvOptionResult',
+    'GetTableExternalDataConfigurationGoogleSheetsOptionResult',
+    'GetTableExternalDataConfigurationHivePartitioningOptionResult',
+    'GetTableExternalDataConfigurationJsonOptionResult',
+    'GetTableExternalDataConfigurationParquetOptionResult',
+    'GetTableMaterializedViewResult',
+    'GetTableRangePartitioningResult',
+    'GetTableRangePartitioningRangeResult',
+    'GetTableSchemaForeignTypeInfoResult',
+    'GetTableTableConstraintResult',
+    'GetTableTableConstraintForeignKeyResult',
+    'GetTableTableConstraintForeignKeyColumnReferenceResult',
+    'GetTableTableConstraintForeignKeyReferencedTableResult',
+    'GetTableTableConstraintPrimaryKeyResult',
+    'GetTableTableReplicationInfoResult',
+    'GetTableTimePartitioningResult',
+    'GetTableViewResult',
     'GetTablesTableResult',
 ]
 
@@ -7055,6 +7082,1258 @@ class GetDatasetExternalDatasetReferenceResult(dict):
         External source that backs this dataset.
         """
         return pulumi.get(self, "external_source")
+
+
+@pulumi.output_type
+class GetTableBiglakeConfigurationResult(dict):
+    def __init__(__self__, *,
+                 connection_id: builtins.str,
+                 file_format: builtins.str,
+                 storage_uri: builtins.str,
+                 table_format: builtins.str):
+        """
+        :param builtins.str connection_id: The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form "&lt;project\\_id&gt;.&lt;location\\_id&gt;.&lt;connection\\_id&gt;" or "projects/&lt;project\\_id&gt;/locations/&lt;location\\_id&gt;/connections/&lt;connection\\_id&gt;".
+        :param builtins.str file_format: The file format the data is stored in.
+        :param builtins.str storage_uri: The fully qualified location prefix of the external folder where table data is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+        :param builtins.str table_format: The table format the metadata only snapshots are stored in.
+        """
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "file_format", file_format)
+        pulumi.set(__self__, "storage_uri", storage_uri)
+        pulumi.set(__self__, "table_format", table_format)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> builtins.str:
+        """
+        The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form "&lt;project\\_id&gt;.&lt;location\\_id&gt;.&lt;connection\\_id&gt;" or "projects/&lt;project\\_id&gt;/locations/&lt;location\\_id&gt;/connections/&lt;connection\\_id&gt;".
+        """
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> builtins.str:
+        """
+        The file format the data is stored in.
+        """
+        return pulumi.get(self, "file_format")
+
+    @property
+    @pulumi.getter(name="storageUri")
+    def storage_uri(self) -> builtins.str:
+        """
+        The fully qualified location prefix of the external folder where table data is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+        """
+        return pulumi.get(self, "storage_uri")
+
+    @property
+    @pulumi.getter(name="tableFormat")
+    def table_format(self) -> builtins.str:
+        """
+        The table format the metadata only snapshots are stored in.
+        """
+        return pulumi.get(self, "table_format")
+
+
+@pulumi.output_type
+class GetTableEncryptionConfigurationResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: builtins.str,
+                 kms_key_version: builtins.str):
+        """
+        :param builtins.str kms_key_name: The self link or full name of a key which should be used to encrypt this table. Note that the default bigquery service account will need to have encrypt/decrypt permissions on this key - you may want to see the bigquery_get_default_service_account datasource and the kms.CryptoKeyIAMBinding resource.
+        :param builtins.str kms_key_version: The self link or full name of the kms key version used to encrypt this table.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_version", kms_key_version)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> builtins.str:
+        """
+        The self link or full name of a key which should be used to encrypt this table. Note that the default bigquery service account will need to have encrypt/decrypt permissions on this key - you may want to see the bigquery_get_default_service_account datasource and the kms.CryptoKeyIAMBinding resource.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> builtins.str:
+        """
+        The self link or full name of the kms key version used to encrypt this table.
+        """
+        return pulumi.get(self, "kms_key_version")
+
+
+@pulumi.output_type
+class GetTableExternalCatalogTableOptionResult(dict):
+    def __init__(__self__, *,
+                 connection_id: builtins.str,
+                 parameters: Mapping[str, builtins.str],
+                 storage_descriptors: Sequence['outputs.GetTableExternalCatalogTableOptionStorageDescriptorResult']):
+        """
+        :param builtins.str connection_id: The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+        :param Mapping[str, builtins.str] parameters: A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+        :param Sequence['GetTableExternalCatalogTableOptionStorageDescriptorArgs'] storage_descriptors: A storage descriptor containing information about the physical storage of this table.
+        """
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "storage_descriptors", storage_descriptors)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> builtins.str:
+        """
+        The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Mapping[str, builtins.str]:
+        """
+        A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter(name="storageDescriptors")
+    def storage_descriptors(self) -> Sequence['outputs.GetTableExternalCatalogTableOptionStorageDescriptorResult']:
+        """
+        A storage descriptor containing information about the physical storage of this table.
+        """
+        return pulumi.get(self, "storage_descriptors")
+
+
+@pulumi.output_type
+class GetTableExternalCatalogTableOptionStorageDescriptorResult(dict):
+    def __init__(__self__, *,
+                 input_format: builtins.str,
+                 location_uri: builtins.str,
+                 output_format: builtins.str,
+                 serde_infos: Sequence['outputs.GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfoResult']):
+        """
+        :param builtins.str input_format: Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+        :param builtins.str location_uri: The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+        :param builtins.str output_format: Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+        :param Sequence['GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfoArgs'] serde_infos: Serializer and deserializer information.
+        """
+        pulumi.set(__self__, "input_format", input_format)
+        pulumi.set(__self__, "location_uri", location_uri)
+        pulumi.set(__self__, "output_format", output_format)
+        pulumi.set(__self__, "serde_infos", serde_infos)
+
+    @property
+    @pulumi.getter(name="inputFormat")
+    def input_format(self) -> builtins.str:
+        """
+        Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+        """
+        return pulumi.get(self, "input_format")
+
+    @property
+    @pulumi.getter(name="locationUri")
+    def location_uri(self) -> builtins.str:
+        """
+        The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+        """
+        return pulumi.get(self, "location_uri")
+
+    @property
+    @pulumi.getter(name="outputFormat")
+    def output_format(self) -> builtins.str:
+        """
+        Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+        """
+        return pulumi.get(self, "output_format")
+
+    @property
+    @pulumi.getter(name="serdeInfos")
+    def serde_infos(self) -> Sequence['outputs.GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfoResult']:
+        """
+        Serializer and deserializer information.
+        """
+        return pulumi.get(self, "serde_infos")
+
+
+@pulumi.output_type
+class GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfoResult(dict):
+    def __init__(__self__, *,
+                 name: builtins.str,
+                 parameters: Mapping[str, builtins.str],
+                 serialization_library: builtins.str):
+        """
+        :param builtins.str name: Name of the SerDe. The maximum length is 256 characters.
+        :param Mapping[str, builtins.str] parameters: Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+        :param builtins.str serialization_library: Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "serialization_library", serialization_library)
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        Name of the SerDe. The maximum length is 256 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Mapping[str, builtins.str]:
+        """
+        Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter(name="serializationLibrary")
+    def serialization_library(self) -> builtins.str:
+        """
+        Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+        """
+        return pulumi.get(self, "serialization_library")
+
+
+@pulumi.output_type
+class GetTableExternalDataConfigurationResult(dict):
+    def __init__(__self__, *,
+                 autodetect: builtins.bool,
+                 avro_options: Sequence['outputs.GetTableExternalDataConfigurationAvroOptionResult'],
+                 bigtable_options: Sequence['outputs.GetTableExternalDataConfigurationBigtableOptionResult'],
+                 compression: builtins.str,
+                 connection_id: builtins.str,
+                 csv_options: Sequence['outputs.GetTableExternalDataConfigurationCsvOptionResult'],
+                 file_set_spec_type: builtins.str,
+                 google_sheets_options: Sequence['outputs.GetTableExternalDataConfigurationGoogleSheetsOptionResult'],
+                 hive_partitioning_options: Sequence['outputs.GetTableExternalDataConfigurationHivePartitioningOptionResult'],
+                 ignore_unknown_values: builtins.bool,
+                 json_extension: builtins.str,
+                 json_options: Sequence['outputs.GetTableExternalDataConfigurationJsonOptionResult'],
+                 max_bad_records: builtins.int,
+                 metadata_cache_mode: builtins.str,
+                 object_metadata: builtins.str,
+                 parquet_options: Sequence['outputs.GetTableExternalDataConfigurationParquetOptionResult'],
+                 reference_file_schema_uri: builtins.str,
+                 schema: builtins.str,
+                 source_format: builtins.str,
+                 source_uris: Sequence[builtins.str]):
+        """
+        :param builtins.bool autodetect: Let BigQuery try to autodetect the schema and format of the table.
+        :param Sequence['GetTableExternalDataConfigurationAvroOptionArgs'] avro_options: Additional options if source_format is set to "AVRO"
+        :param Sequence['GetTableExternalDataConfigurationBigtableOptionArgs'] bigtable_options: Additional options if sourceFormat is set to BIGTABLE.
+        :param builtins.str compression: The compression type of the data source. Valid values are "NONE" or "GZIP".
+        :param builtins.str connection_id: The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connectionId can have the form "<project>.<location>.<connection_id>" or "projects/<project>/locations/<location>/connections/<connection_id>".
+        :param Sequence['GetTableExternalDataConfigurationCsvOptionArgs'] csv_options: Additional properties to set if source_format is set to "CSV".
+        :param builtins.str file_set_spec_type: Specifies how source URIs are interpreted for constructing the file set to load.  By default source URIs are expanded against the underlying storage.  Other options include specifying manifest files. Only applicable to object storage systems.
+        :param Sequence['GetTableExternalDataConfigurationGoogleSheetsOptionArgs'] google_sheets_options: Additional options if source_format is set to "GOOGLE_SHEETS".
+        :param Sequence['GetTableExternalDataConfigurationHivePartitioningOptionArgs'] hive_partitioning_options: When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
+        :param builtins.bool ignore_unknown_values: Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
+        :param builtins.str json_extension: Load option to be used together with sourceFormat newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and sourceFormat must be set to NEWLINE_DELIMITED_JSON).
+        :param Sequence['GetTableExternalDataConfigurationJsonOptionArgs'] json_options: Additional properties to set if sourceFormat is set to JSON.
+        :param builtins.int max_bad_records: The maximum number of bad records that BigQuery can ignore when reading data.
+        :param builtins.str metadata_cache_mode: Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+        :param builtins.str object_metadata: Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If ObjectMetadata is set, sourceFormat should be omitted.
+        :param Sequence['GetTableExternalDataConfigurationParquetOptionArgs'] parquet_options: Additional properties to set if sourceFormat is set to PARQUET.
+        :param builtins.str reference_file_schema_uri: When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+        :param builtins.str schema: A JSON schema for the external table. Schema is required for CSV and JSON formats and is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats when using external tables.
+        :param builtins.str source_format: Please see sourceFormat under ExternalDataConfiguration in Bigquery's public API documentation (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration) for supported formats. To use "GOOGLE_SHEETS" the scopes must include "googleapis.com/auth/drive.readonly".
+        :param Sequence[builtins.str] source_uris: A list of the fully-qualified URIs that point to your data in Google Cloud.
+        """
+        pulumi.set(__self__, "autodetect", autodetect)
+        pulumi.set(__self__, "avro_options", avro_options)
+        pulumi.set(__self__, "bigtable_options", bigtable_options)
+        pulumi.set(__self__, "compression", compression)
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "csv_options", csv_options)
+        pulumi.set(__self__, "file_set_spec_type", file_set_spec_type)
+        pulumi.set(__self__, "google_sheets_options", google_sheets_options)
+        pulumi.set(__self__, "hive_partitioning_options", hive_partitioning_options)
+        pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
+        pulumi.set(__self__, "json_extension", json_extension)
+        pulumi.set(__self__, "json_options", json_options)
+        pulumi.set(__self__, "max_bad_records", max_bad_records)
+        pulumi.set(__self__, "metadata_cache_mode", metadata_cache_mode)
+        pulumi.set(__self__, "object_metadata", object_metadata)
+        pulumi.set(__self__, "parquet_options", parquet_options)
+        pulumi.set(__self__, "reference_file_schema_uri", reference_file_schema_uri)
+        pulumi.set(__self__, "schema", schema)
+        pulumi.set(__self__, "source_format", source_format)
+        pulumi.set(__self__, "source_uris", source_uris)
+
+    @property
+    @pulumi.getter
+    def autodetect(self) -> builtins.bool:
+        """
+        Let BigQuery try to autodetect the schema and format of the table.
+        """
+        return pulumi.get(self, "autodetect")
+
+    @property
+    @pulumi.getter(name="avroOptions")
+    def avro_options(self) -> Sequence['outputs.GetTableExternalDataConfigurationAvroOptionResult']:
+        """
+        Additional options if source_format is set to "AVRO"
+        """
+        return pulumi.get(self, "avro_options")
+
+    @property
+    @pulumi.getter(name="bigtableOptions")
+    def bigtable_options(self) -> Sequence['outputs.GetTableExternalDataConfigurationBigtableOptionResult']:
+        """
+        Additional options if sourceFormat is set to BIGTABLE.
+        """
+        return pulumi.get(self, "bigtable_options")
+
+    @property
+    @pulumi.getter
+    def compression(self) -> builtins.str:
+        """
+        The compression type of the data source. Valid values are "NONE" or "GZIP".
+        """
+        return pulumi.get(self, "compression")
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> builtins.str:
+        """
+        The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connectionId can have the form "<project>.<location>.<connection_id>" or "projects/<project>/locations/<location>/connections/<connection_id>".
+        """
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter(name="csvOptions")
+    def csv_options(self) -> Sequence['outputs.GetTableExternalDataConfigurationCsvOptionResult']:
+        """
+        Additional properties to set if source_format is set to "CSV".
+        """
+        return pulumi.get(self, "csv_options")
+
+    @property
+    @pulumi.getter(name="fileSetSpecType")
+    def file_set_spec_type(self) -> builtins.str:
+        """
+        Specifies how source URIs are interpreted for constructing the file set to load.  By default source URIs are expanded against the underlying storage.  Other options include specifying manifest files. Only applicable to object storage systems.
+        """
+        return pulumi.get(self, "file_set_spec_type")
+
+    @property
+    @pulumi.getter(name="googleSheetsOptions")
+    def google_sheets_options(self) -> Sequence['outputs.GetTableExternalDataConfigurationGoogleSheetsOptionResult']:
+        """
+        Additional options if source_format is set to "GOOGLE_SHEETS".
+        """
+        return pulumi.get(self, "google_sheets_options")
+
+    @property
+    @pulumi.getter(name="hivePartitioningOptions")
+    def hive_partitioning_options(self) -> Sequence['outputs.GetTableExternalDataConfigurationHivePartitioningOptionResult']:
+        """
+        When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
+        """
+        return pulumi.get(self, "hive_partitioning_options")
+
+    @property
+    @pulumi.getter(name="ignoreUnknownValues")
+    def ignore_unknown_values(self) -> builtins.bool:
+        """
+        Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
+        """
+        return pulumi.get(self, "ignore_unknown_values")
+
+    @property
+    @pulumi.getter(name="jsonExtension")
+    def json_extension(self) -> builtins.str:
+        """
+        Load option to be used together with sourceFormat newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and sourceFormat must be set to NEWLINE_DELIMITED_JSON).
+        """
+        return pulumi.get(self, "json_extension")
+
+    @property
+    @pulumi.getter(name="jsonOptions")
+    def json_options(self) -> Sequence['outputs.GetTableExternalDataConfigurationJsonOptionResult']:
+        """
+        Additional properties to set if sourceFormat is set to JSON.
+        """
+        return pulumi.get(self, "json_options")
+
+    @property
+    @pulumi.getter(name="maxBadRecords")
+    def max_bad_records(self) -> builtins.int:
+        """
+        The maximum number of bad records that BigQuery can ignore when reading data.
+        """
+        return pulumi.get(self, "max_bad_records")
+
+    @property
+    @pulumi.getter(name="metadataCacheMode")
+    def metadata_cache_mode(self) -> builtins.str:
+        """
+        Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+        """
+        return pulumi.get(self, "metadata_cache_mode")
+
+    @property
+    @pulumi.getter(name="objectMetadata")
+    def object_metadata(self) -> builtins.str:
+        """
+        Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If ObjectMetadata is set, sourceFormat should be omitted.
+        """
+        return pulumi.get(self, "object_metadata")
+
+    @property
+    @pulumi.getter(name="parquetOptions")
+    def parquet_options(self) -> Sequence['outputs.GetTableExternalDataConfigurationParquetOptionResult']:
+        """
+        Additional properties to set if sourceFormat is set to PARQUET.
+        """
+        return pulumi.get(self, "parquet_options")
+
+    @property
+    @pulumi.getter(name="referenceFileSchemaUri")
+    def reference_file_schema_uri(self) -> builtins.str:
+        """
+        When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+        """
+        return pulumi.get(self, "reference_file_schema_uri")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> builtins.str:
+        """
+        A JSON schema for the external table. Schema is required for CSV and JSON formats and is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats when using external tables.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="sourceFormat")
+    def source_format(self) -> builtins.str:
+        """
+        Please see sourceFormat under ExternalDataConfiguration in Bigquery's public API documentation (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration) for supported formats. To use "GOOGLE_SHEETS" the scopes must include "googleapis.com/auth/drive.readonly".
+        """
+        return pulumi.get(self, "source_format")
+
+    @property
+    @pulumi.getter(name="sourceUris")
+    def source_uris(self) -> Sequence[builtins.str]:
+        """
+        A list of the fully-qualified URIs that point to your data in Google Cloud.
+        """
+        return pulumi.get(self, "source_uris")
+
+
+@pulumi.output_type
+class GetTableExternalDataConfigurationAvroOptionResult(dict):
+    def __init__(__self__, *,
+                 use_avro_logical_types: builtins.bool):
+        """
+        :param builtins.bool use_avro_logical_types: If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        """
+        pulumi.set(__self__, "use_avro_logical_types", use_avro_logical_types)
+
+    @property
+    @pulumi.getter(name="useAvroLogicalTypes")
+    def use_avro_logical_types(self) -> builtins.bool:
+        """
+        If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        """
+        return pulumi.get(self, "use_avro_logical_types")
+
+
+@pulumi.output_type
+class GetTableExternalDataConfigurationBigtableOptionResult(dict):
+    def __init__(__self__, *,
+                 column_families: Sequence['outputs.GetTableExternalDataConfigurationBigtableOptionColumnFamilyResult'],
+                 ignore_unspecified_column_families: builtins.bool,
+                 output_column_families_as_json: builtins.bool,
+                 read_rowkey_as_string: builtins.bool):
+        """
+        :param Sequence['GetTableExternalDataConfigurationBigtableOptionColumnFamilyArgs'] column_families: A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
+        :param builtins.bool ignore_unspecified_column_families: If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+        :param builtins.bool output_column_families_as_json: If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+        :param builtins.bool read_rowkey_as_string: If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+        """
+        pulumi.set(__self__, "column_families", column_families)
+        pulumi.set(__self__, "ignore_unspecified_column_families", ignore_unspecified_column_families)
+        pulumi.set(__self__, "output_column_families_as_json", output_column_families_as_json)
+        pulumi.set(__self__, "read_rowkey_as_string", read_rowkey_as_string)
+
+    @property
+    @pulumi.getter(name="columnFamilies")
+    def column_families(self) -> Sequence['outputs.GetTableExternalDataConfigurationBigtableOptionColumnFamilyResult']:
+        """
+        A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
+        """
+        return pulumi.get(self, "column_families")
+
+    @property
+    @pulumi.getter(name="ignoreUnspecifiedColumnFamilies")
+    def ignore_unspecified_column_families(self) -> builtins.bool:
+        """
+        If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+        """
+        return pulumi.get(self, "ignore_unspecified_column_families")
+
+    @property
+    @pulumi.getter(name="outputColumnFamiliesAsJson")
+    def output_column_families_as_json(self) -> builtins.bool:
+        """
+        If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+        """
+        return pulumi.get(self, "output_column_families_as_json")
+
+    @property
+    @pulumi.getter(name="readRowkeyAsString")
+    def read_rowkey_as_string(self) -> builtins.bool:
+        """
+        If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+        """
+        return pulumi.get(self, "read_rowkey_as_string")
+
+
+@pulumi.output_type
+class GetTableExternalDataConfigurationBigtableOptionColumnFamilyResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetTableExternalDataConfigurationBigtableOptionColumnFamilyColumnResult'],
+                 encoding: builtins.str,
+                 family_id: builtins.str,
+                 only_read_latest: builtins.bool,
+                 type: builtins.str):
+        """
+        :param Sequence['GetTableExternalDataConfigurationBigtableOptionColumnFamilyColumnArgs'] columns: A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field
+        :param builtins.str encoding: The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+        :param builtins.str family_id: Identifier of the column family.
+        :param builtins.bool only_read_latest: If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+        :param builtins.str type: The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+        """
+        pulumi.set(__self__, "columns", columns)
+        pulumi.set(__self__, "encoding", encoding)
+        pulumi.set(__self__, "family_id", family_id)
+        pulumi.set(__self__, "only_read_latest", only_read_latest)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetTableExternalDataConfigurationBigtableOptionColumnFamilyColumnResult']:
+        """
+        A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field
+        """
+        return pulumi.get(self, "columns")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> builtins.str:
+        """
+        The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="familyId")
+    def family_id(self) -> builtins.str:
+        """
+        Identifier of the column family.
+        """
+        return pulumi.get(self, "family_id")
+
+    @property
+    @pulumi.getter(name="onlyReadLatest")
+    def only_read_latest(self) -> builtins.bool:
+        """
+        If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+        """
+        return pulumi.get(self, "only_read_latest")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetTableExternalDataConfigurationBigtableOptionColumnFamilyColumnResult(dict):
+    def __init__(__self__, *,
+                 encoding: builtins.str,
+                 field_name: builtins.str,
+                 only_read_latest: builtins.bool,
+                 qualifier_encoded: builtins.str,
+                 qualifier_string: builtins.str,
+                 type: builtins.str):
+        """
+        :param builtins.str encoding: The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+        :param builtins.str field_name: If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+        :param builtins.bool only_read_latest: If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+        :param builtins.str qualifier_encoded: Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
+        :param builtins.str qualifier_string: Qualifier string.
+        :param builtins.str type: The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+        """
+        pulumi.set(__self__, "encoding", encoding)
+        pulumi.set(__self__, "field_name", field_name)
+        pulumi.set(__self__, "only_read_latest", only_read_latest)
+        pulumi.set(__self__, "qualifier_encoded", qualifier_encoded)
+        pulumi.set(__self__, "qualifier_string", qualifier_string)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> builtins.str:
+        """
+        The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="fieldName")
+    def field_name(self) -> builtins.str:
+        """
+        If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+        """
+        return pulumi.get(self, "field_name")
+
+    @property
+    @pulumi.getter(name="onlyReadLatest")
+    def only_read_latest(self) -> builtins.bool:
+        """
+        If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+        """
+        return pulumi.get(self, "only_read_latest")
+
+    @property
+    @pulumi.getter(name="qualifierEncoded")
+    def qualifier_encoded(self) -> builtins.str:
+        """
+        Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
+        """
+        return pulumi.get(self, "qualifier_encoded")
+
+    @property
+    @pulumi.getter(name="qualifierString")
+    def qualifier_string(self) -> builtins.str:
+        """
+        Qualifier string.
+        """
+        return pulumi.get(self, "qualifier_string")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetTableExternalDataConfigurationCsvOptionResult(dict):
+    def __init__(__self__, *,
+                 allow_jagged_rows: builtins.bool,
+                 allow_quoted_newlines: builtins.bool,
+                 encoding: builtins.str,
+                 field_delimiter: builtins.str,
+                 quote: builtins.str,
+                 skip_leading_rows: builtins.int):
+        """
+        :param builtins.bool allow_jagged_rows: Indicates if BigQuery should accept rows that are missing trailing optional columns.
+        :param builtins.bool allow_quoted_newlines: Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
+        :param builtins.str encoding: The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
+        :param builtins.str field_delimiter: The separator for fields in a CSV file.
+        :param builtins.int skip_leading_rows: The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
+        """
+        pulumi.set(__self__, "allow_jagged_rows", allow_jagged_rows)
+        pulumi.set(__self__, "allow_quoted_newlines", allow_quoted_newlines)
+        pulumi.set(__self__, "encoding", encoding)
+        pulumi.set(__self__, "field_delimiter", field_delimiter)
+        pulumi.set(__self__, "quote", quote)
+        pulumi.set(__self__, "skip_leading_rows", skip_leading_rows)
+
+    @property
+    @pulumi.getter(name="allowJaggedRows")
+    def allow_jagged_rows(self) -> builtins.bool:
+        """
+        Indicates if BigQuery should accept rows that are missing trailing optional columns.
+        """
+        return pulumi.get(self, "allow_jagged_rows")
+
+    @property
+    @pulumi.getter(name="allowQuotedNewlines")
+    def allow_quoted_newlines(self) -> builtins.bool:
+        """
+        Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
+        """
+        return pulumi.get(self, "allow_quoted_newlines")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> builtins.str:
+        """
+        The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="fieldDelimiter")
+    def field_delimiter(self) -> builtins.str:
+        """
+        The separator for fields in a CSV file.
+        """
+        return pulumi.get(self, "field_delimiter")
+
+    @property
+    @pulumi.getter
+    def quote(self) -> builtins.str:
+        return pulumi.get(self, "quote")
+
+    @property
+    @pulumi.getter(name="skipLeadingRows")
+    def skip_leading_rows(self) -> builtins.int:
+        """
+        The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
+        """
+        return pulumi.get(self, "skip_leading_rows")
+
+
+@pulumi.output_type
+class GetTableExternalDataConfigurationGoogleSheetsOptionResult(dict):
+    def __init__(__self__, *,
+                 range: builtins.str,
+                 skip_leading_rows: builtins.int):
+        """
+        :param builtins.str range: Range of a sheet to query from. Only used when non-empty. At least one of range or skip_leading_rows must be set. Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id" For example: "sheet1!A1:B20
+        :param builtins.int skip_leading_rows: The number of rows at the top of the sheet that BigQuery will skip when reading the data. At least one of range or skip_leading_rows must be set.
+        """
+        pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "skip_leading_rows", skip_leading_rows)
+
+    @property
+    @pulumi.getter
+    def range(self) -> builtins.str:
+        """
+        Range of a sheet to query from. Only used when non-empty. At least one of range or skip_leading_rows must be set. Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id" For example: "sheet1!A1:B20
+        """
+        return pulumi.get(self, "range")
+
+    @property
+    @pulumi.getter(name="skipLeadingRows")
+    def skip_leading_rows(self) -> builtins.int:
+        """
+        The number of rows at the top of the sheet that BigQuery will skip when reading the data. At least one of range or skip_leading_rows must be set.
+        """
+        return pulumi.get(self, "skip_leading_rows")
+
+
+@pulumi.output_type
+class GetTableExternalDataConfigurationHivePartitioningOptionResult(dict):
+    def __init__(__self__, *,
+                 mode: builtins.str,
+                 require_partition_filter: builtins.bool,
+                 source_uri_prefix: builtins.str):
+        """
+        :param builtins.str mode: When set, what mode of hive partitioning to use when reading data.
+        :param builtins.bool require_partition_filter: If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        :param builtins.str source_uri_prefix: When hive partition detection is requested, a common for all source uris must be required. The prefix must end immediately before the partition key encoding begins.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "require_partition_filter", require_partition_filter)
+        pulumi.set(__self__, "source_uri_prefix", source_uri_prefix)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> builtins.str:
+        """
+        When set, what mode of hive partitioning to use when reading data.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="requirePartitionFilter")
+    def require_partition_filter(self) -> builtins.bool:
+        """
+        If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        """
+        return pulumi.get(self, "require_partition_filter")
+
+    @property
+    @pulumi.getter(name="sourceUriPrefix")
+    def source_uri_prefix(self) -> builtins.str:
+        """
+        When hive partition detection is requested, a common for all source uris must be required. The prefix must end immediately before the partition key encoding begins.
+        """
+        return pulumi.get(self, "source_uri_prefix")
+
+
+@pulumi.output_type
+class GetTableExternalDataConfigurationJsonOptionResult(dict):
+    def __init__(__self__, *,
+                 encoding: builtins.str):
+        """
+        :param builtins.str encoding: The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+        """
+        pulumi.set(__self__, "encoding", encoding)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> builtins.str:
+        """
+        The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+        """
+        return pulumi.get(self, "encoding")
+
+
+@pulumi.output_type
+class GetTableExternalDataConfigurationParquetOptionResult(dict):
+    def __init__(__self__, *,
+                 enable_list_inference: builtins.bool,
+                 enum_as_string: builtins.bool):
+        """
+        :param builtins.bool enable_list_inference: Indicates whether to use schema inference specifically for Parquet LIST logical type.
+        :param builtins.bool enum_as_string: Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+        """
+        pulumi.set(__self__, "enable_list_inference", enable_list_inference)
+        pulumi.set(__self__, "enum_as_string", enum_as_string)
+
+    @property
+    @pulumi.getter(name="enableListInference")
+    def enable_list_inference(self) -> builtins.bool:
+        """
+        Indicates whether to use schema inference specifically for Parquet LIST logical type.
+        """
+        return pulumi.get(self, "enable_list_inference")
+
+    @property
+    @pulumi.getter(name="enumAsString")
+    def enum_as_string(self) -> builtins.bool:
+        """
+        Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+        """
+        return pulumi.get(self, "enum_as_string")
+
+
+@pulumi.output_type
+class GetTableMaterializedViewResult(dict):
+    def __init__(__self__, *,
+                 allow_non_incremental_definition: builtins.bool,
+                 enable_refresh: builtins.bool,
+                 query: builtins.str,
+                 refresh_interval_ms: builtins.int):
+        """
+        :param builtins.bool allow_non_incremental_definition: Allow non incremental materialized view definition. The default value is false.
+        :param builtins.bool enable_refresh: Specifies if BigQuery should automatically refresh materialized view when the base table is updated. The default is true.
+        :param builtins.str query: A query whose result is persisted.
+        :param builtins.int refresh_interval_ms: Specifies maximum frequency at which this materialized view will be refreshed. The default is 1800000.
+        """
+        pulumi.set(__self__, "allow_non_incremental_definition", allow_non_incremental_definition)
+        pulumi.set(__self__, "enable_refresh", enable_refresh)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "refresh_interval_ms", refresh_interval_ms)
+
+    @property
+    @pulumi.getter(name="allowNonIncrementalDefinition")
+    def allow_non_incremental_definition(self) -> builtins.bool:
+        """
+        Allow non incremental materialized view definition. The default value is false.
+        """
+        return pulumi.get(self, "allow_non_incremental_definition")
+
+    @property
+    @pulumi.getter(name="enableRefresh")
+    def enable_refresh(self) -> builtins.bool:
+        """
+        Specifies if BigQuery should automatically refresh materialized view when the base table is updated. The default is true.
+        """
+        return pulumi.get(self, "enable_refresh")
+
+    @property
+    @pulumi.getter
+    def query(self) -> builtins.str:
+        """
+        A query whose result is persisted.
+        """
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter(name="refreshIntervalMs")
+    def refresh_interval_ms(self) -> builtins.int:
+        """
+        Specifies maximum frequency at which this materialized view will be refreshed. The default is 1800000.
+        """
+        return pulumi.get(self, "refresh_interval_ms")
+
+
+@pulumi.output_type
+class GetTableRangePartitioningResult(dict):
+    def __init__(__self__, *,
+                 field: builtins.str,
+                 ranges: Sequence['outputs.GetTableRangePartitioningRangeResult']):
+        """
+        :param builtins.str field: The field used to determine how to create a range-based partition.
+        :param Sequence['GetTableRangePartitioningRangeArgs'] ranges: Information required to partition based on ranges. Structure is documented below.
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "ranges", ranges)
+
+    @property
+    @pulumi.getter
+    def field(self) -> builtins.str:
+        """
+        The field used to determine how to create a range-based partition.
+        """
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter
+    def ranges(self) -> Sequence['outputs.GetTableRangePartitioningRangeResult']:
+        """
+        Information required to partition based on ranges. Structure is documented below.
+        """
+        return pulumi.get(self, "ranges")
+
+
+@pulumi.output_type
+class GetTableRangePartitioningRangeResult(dict):
+    def __init__(__self__, *,
+                 end: builtins.int,
+                 interval: builtins.int,
+                 start: builtins.int):
+        """
+        :param builtins.int end: End of the range partitioning, exclusive.
+        :param builtins.int interval: The width of each range within the partition.
+        :param builtins.int start: Start of the range partitioning, inclusive.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> builtins.int:
+        """
+        End of the range partitioning, exclusive.
+        """
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> builtins.int:
+        """
+        The width of each range within the partition.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter
+    def start(self) -> builtins.int:
+        """
+        Start of the range partitioning, inclusive.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class GetTableSchemaForeignTypeInfoResult(dict):
+    def __init__(__self__, *,
+                 type_system: builtins.str):
+        """
+        :param builtins.str type_system: Specifies the system which defines the foreign data type.
+        """
+        pulumi.set(__self__, "type_system", type_system)
+
+    @property
+    @pulumi.getter(name="typeSystem")
+    def type_system(self) -> builtins.str:
+        """
+        Specifies the system which defines the foreign data type.
+        """
+        return pulumi.get(self, "type_system")
+
+
+@pulumi.output_type
+class GetTableTableConstraintResult(dict):
+    def __init__(__self__, *,
+                 foreign_keys: Sequence['outputs.GetTableTableConstraintForeignKeyResult'],
+                 primary_keys: Sequence['outputs.GetTableTableConstraintPrimaryKeyResult']):
+        """
+        :param Sequence['GetTableTableConstraintForeignKeyArgs'] foreign_keys: Present only if the table has a foreign key. The foreign key is not enforced.
+        :param Sequence['GetTableTableConstraintPrimaryKeyArgs'] primary_keys: Represents a primary key constraint on a table's columns. Present only if the table has a primary key. The primary key is not enforced.
+        """
+        pulumi.set(__self__, "foreign_keys", foreign_keys)
+        pulumi.set(__self__, "primary_keys", primary_keys)
+
+    @property
+    @pulumi.getter(name="foreignKeys")
+    def foreign_keys(self) -> Sequence['outputs.GetTableTableConstraintForeignKeyResult']:
+        """
+        Present only if the table has a foreign key. The foreign key is not enforced.
+        """
+        return pulumi.get(self, "foreign_keys")
+
+    @property
+    @pulumi.getter(name="primaryKeys")
+    def primary_keys(self) -> Sequence['outputs.GetTableTableConstraintPrimaryKeyResult']:
+        """
+        Represents a primary key constraint on a table's columns. Present only if the table has a primary key. The primary key is not enforced.
+        """
+        return pulumi.get(self, "primary_keys")
+
+
+@pulumi.output_type
+class GetTableTableConstraintForeignKeyResult(dict):
+    def __init__(__self__, *,
+                 column_references: Sequence['outputs.GetTableTableConstraintForeignKeyColumnReferenceResult'],
+                 name: builtins.str,
+                 referenced_tables: Sequence['outputs.GetTableTableConstraintForeignKeyReferencedTableResult']):
+        """
+        :param Sequence['GetTableTableConstraintForeignKeyColumnReferenceArgs'] column_references: The pair of the foreign key column and primary key column.
+        :param builtins.str name: Set only if the foreign key constraint is named.
+        :param Sequence['GetTableTableConstraintForeignKeyReferencedTableArgs'] referenced_tables: The table that holds the primary key and is referenced by this foreign key.
+        """
+        pulumi.set(__self__, "column_references", column_references)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "referenced_tables", referenced_tables)
+
+    @property
+    @pulumi.getter(name="columnReferences")
+    def column_references(self) -> Sequence['outputs.GetTableTableConstraintForeignKeyColumnReferenceResult']:
+        """
+        The pair of the foreign key column and primary key column.
+        """
+        return pulumi.get(self, "column_references")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        Set only if the foreign key constraint is named.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="referencedTables")
+    def referenced_tables(self) -> Sequence['outputs.GetTableTableConstraintForeignKeyReferencedTableResult']:
+        """
+        The table that holds the primary key and is referenced by this foreign key.
+        """
+        return pulumi.get(self, "referenced_tables")
+
+
+@pulumi.output_type
+class GetTableTableConstraintForeignKeyColumnReferenceResult(dict):
+    def __init__(__self__, *,
+                 referenced_column: builtins.str,
+                 referencing_column: builtins.str):
+        """
+        :param builtins.str referenced_column: The column in the primary key that are referenced by the referencingColumn.
+        :param builtins.str referencing_column: The column that composes the foreign key.
+        """
+        pulumi.set(__self__, "referenced_column", referenced_column)
+        pulumi.set(__self__, "referencing_column", referencing_column)
+
+    @property
+    @pulumi.getter(name="referencedColumn")
+    def referenced_column(self) -> builtins.str:
+        """
+        The column in the primary key that are referenced by the referencingColumn.
+        """
+        return pulumi.get(self, "referenced_column")
+
+    @property
+    @pulumi.getter(name="referencingColumn")
+    def referencing_column(self) -> builtins.str:
+        """
+        The column that composes the foreign key.
+        """
+        return pulumi.get(self, "referencing_column")
+
+
+@pulumi.output_type
+class GetTableTableConstraintForeignKeyReferencedTableResult(dict):
+    def __init__(__self__, *,
+                 dataset_id: builtins.str,
+                 project_id: builtins.str,
+                 table_id: builtins.str):
+        """
+        :param builtins.str dataset_id: The dataset ID.
+        :param builtins.str project_id: The ID of the project containing this table.
+        :param builtins.str table_id: The table ID.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "table_id", table_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> builtins.str:
+        """
+        The dataset ID.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> builtins.str:
+        """
+        The ID of the project containing this table.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> builtins.str:
+        """
+        The table ID.
+        """
+        return pulumi.get(self, "table_id")
+
+
+@pulumi.output_type
+class GetTableTableConstraintPrimaryKeyResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] columns: The columns that are composed of the primary key constraint.
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Sequence[builtins.str]:
+        """
+        The columns that are composed of the primary key constraint.
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetTableTableReplicationInfoResult(dict):
+    def __init__(__self__, *,
+                 replication_interval_ms: builtins.int,
+                 source_dataset_id: builtins.str,
+                 source_project_id: builtins.str,
+                 source_table_id: builtins.str):
+        """
+        :param builtins.int replication_interval_ms: The interval at which the source materialized view is polled for updates. The default is 300000.
+        :param builtins.str source_dataset_id: The ID of the source dataset.
+        :param builtins.str source_project_id: The ID of the source project.
+        :param builtins.str source_table_id: The ID of the source materialized view.
+        """
+        pulumi.set(__self__, "replication_interval_ms", replication_interval_ms)
+        pulumi.set(__self__, "source_dataset_id", source_dataset_id)
+        pulumi.set(__self__, "source_project_id", source_project_id)
+        pulumi.set(__self__, "source_table_id", source_table_id)
+
+    @property
+    @pulumi.getter(name="replicationIntervalMs")
+    def replication_interval_ms(self) -> builtins.int:
+        """
+        The interval at which the source materialized view is polled for updates. The default is 300000.
+        """
+        return pulumi.get(self, "replication_interval_ms")
+
+    @property
+    @pulumi.getter(name="sourceDatasetId")
+    def source_dataset_id(self) -> builtins.str:
+        """
+        The ID of the source dataset.
+        """
+        return pulumi.get(self, "source_dataset_id")
+
+    @property
+    @pulumi.getter(name="sourceProjectId")
+    def source_project_id(self) -> builtins.str:
+        """
+        The ID of the source project.
+        """
+        return pulumi.get(self, "source_project_id")
+
+    @property
+    @pulumi.getter(name="sourceTableId")
+    def source_table_id(self) -> builtins.str:
+        """
+        The ID of the source materialized view.
+        """
+        return pulumi.get(self, "source_table_id")
+
+
+@pulumi.output_type
+class GetTableTimePartitioningResult(dict):
+    def __init__(__self__, *,
+                 expiration_ms: builtins.int,
+                 field: builtins.str,
+                 require_partition_filter: builtins.bool,
+                 type: builtins.str):
+        """
+        :param builtins.int expiration_ms: Number of milliseconds for which to keep the storage for a partition.
+        :param builtins.str field: The field used to determine how to create a time-based partition. If time-based partitioning is enabled without this value, the table is partitioned based on the load time.
+        :param builtins.bool require_partition_filter: If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        :param builtins.str type: The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively.
+        """
+        pulumi.set(__self__, "expiration_ms", expiration_ms)
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "require_partition_filter", require_partition_filter)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="expirationMs")
+    def expiration_ms(self) -> builtins.int:
+        """
+        Number of milliseconds for which to keep the storage for a partition.
+        """
+        return pulumi.get(self, "expiration_ms")
+
+    @property
+    @pulumi.getter
+    def field(self) -> builtins.str:
+        """
+        The field used to determine how to create a time-based partition. If time-based partitioning is enabled without this value, the table is partitioned based on the load time.
+        """
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter(name="requirePartitionFilter")
+    def require_partition_filter(self) -> builtins.bool:
+        """
+        If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        """
+        return pulumi.get(self, "require_partition_filter")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetTableViewResult(dict):
+    def __init__(__self__, *,
+                 query: builtins.str,
+                 use_legacy_sql: builtins.bool):
+        """
+        :param builtins.str query: A query that BigQuery executes when the view is referenced.
+        :param builtins.bool use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL
+        """
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "use_legacy_sql", use_legacy_sql)
+
+    @property
+    @pulumi.getter
+    def query(self) -> builtins.str:
+        """
+        A query that BigQuery executes when the view is referenced.
+        """
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter(name="useLegacySql")
+    def use_legacy_sql(self) -> builtins.bool:
+        """
+        Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL
+        """
+        return pulumi.get(self, "use_legacy_sql")
 
 
 @pulumi.output_type

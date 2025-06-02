@@ -17,8 +17,8 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumi/time";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "tf-test_80332",
- *     name: "tf-test_13293",
+ *     projectId: "tf-test_89313",
+ *     name: "tf-test_60646",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",

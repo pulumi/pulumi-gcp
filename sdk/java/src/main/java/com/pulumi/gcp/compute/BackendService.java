@@ -15,10 +15,12 @@ import com.pulumi.gcp.compute.outputs.BackendServiceCdnPolicy;
 import com.pulumi.gcp.compute.outputs.BackendServiceCircuitBreakers;
 import com.pulumi.gcp.compute.outputs.BackendServiceConsistentHash;
 import com.pulumi.gcp.compute.outputs.BackendServiceCustomMetric;
+import com.pulumi.gcp.compute.outputs.BackendServiceDynamicForwarding;
 import com.pulumi.gcp.compute.outputs.BackendServiceIap;
 import com.pulumi.gcp.compute.outputs.BackendServiceLocalityLbPolicy;
 import com.pulumi.gcp.compute.outputs.BackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.BackendServiceMaxStreamDuration;
+import com.pulumi.gcp.compute.outputs.BackendServiceNetworkPassThroughLbTrafficPolicy;
 import com.pulumi.gcp.compute.outputs.BackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.BackendServiceSecuritySettings;
 import com.pulumi.gcp.compute.outputs.BackendServiceStrongSessionAffinityCookie;
@@ -874,6 +876,49 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Backend Service Dynamic Forwarding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingIpPortSelectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .dynamicForwarding(BackendServiceDynamicForwardingArgs.builder()
+ *                 .ipPortSelection(BackendServiceDynamicForwardingIpPortSelectionArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * BackendService can be imported using any of these accepted formats:
@@ -1110,6 +1155,24 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dynamicForwarding", refs={BackendServiceDynamicForwarding.class}, tree="[0]")
+    private Output</* @Nullable */ BackendServiceDynamicForwarding> dynamicForwarding;
+
+    /**
+     * @return Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackendServiceDynamicForwarding>> dynamicForwarding() {
+        return Codegen.optional(this.dynamicForwarding);
     }
     /**
      * The resource URL for the edge security policy associated with this backend service.
@@ -1526,6 +1589,22 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="networkPassThroughLbTrafficPolicy", refs={BackendServiceNetworkPassThroughLbTrafficPolicy.class}, tree="[0]")
+    private Output</* @Nullable */ BackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicy;
+
+    /**
+     * @return Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackendServiceNetworkPassThroughLbTrafficPolicy>> networkPassThroughLbTrafficPolicy() {
+        return Codegen.optional(this.networkPassThroughLbTrafficPolicy);
     }
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.

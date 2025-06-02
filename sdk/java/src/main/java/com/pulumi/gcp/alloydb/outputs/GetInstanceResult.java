@@ -22,6 +22,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceResult {
+    private String activationPolicy;
     private Map<String,String> annotations;
     private String availabilityType;
     private List<GetInstanceClientConnectionConfig> clientConnectionConfigs;
@@ -60,6 +61,9 @@ public final class GetInstanceResult {
     private String updateTime;
 
     private GetInstanceResult() {}
+    public String activationPolicy() {
+        return this.activationPolicy;
+    }
     public Map<String,String> annotations() {
         return this.annotations;
     }
@@ -170,6 +174,7 @@ public final class GetInstanceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String activationPolicy;
         private Map<String,String> annotations;
         private String availabilityType;
         private List<GetInstanceClientConnectionConfig> clientConnectionConfigs;
@@ -205,6 +210,7 @@ public final class GetInstanceResult {
         public Builder() {}
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.activationPolicy = defaults.activationPolicy;
     	      this.annotations = defaults.annotations;
     	      this.availabilityType = defaults.availabilityType;
     	      this.clientConnectionConfigs = defaults.clientConnectionConfigs;
@@ -239,6 +245,14 @@ public final class GetInstanceResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
+        public Builder activationPolicy(String activationPolicy) {
+            if (activationPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "activationPolicy");
+            }
+            this.activationPolicy = activationPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
@@ -517,6 +531,7 @@ public final class GetInstanceResult {
         }
         public GetInstanceResult build() {
             final var _resultValue = new GetInstanceResult();
+            _resultValue.activationPolicy = activationPolicy;
             _resultValue.annotations = annotations;
             _resultValue.availabilityType = availabilityType;
             _resultValue.clientConnectionConfigs = clientConnectionConfigs;

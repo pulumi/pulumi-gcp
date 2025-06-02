@@ -13,14 +13,14 @@ namespace Pulumi.Gcp.Apigee.Inputs
     public sealed class AddonsConfigAddonsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration for the Monetization add-on.
+        /// Configuration for the Advanced API Ops add-on.
         /// Structure is documented below.
         /// </summary>
         [Input("advancedApiOpsConfig")]
         public Input<Inputs.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs>? AdvancedApiOpsConfig { get; set; }
 
         /// <summary>
-        /// Configuration for the Monetization add-on.
+        /// Configuration for the API Security add-on.
         /// Structure is documented below.
         /// </summary>
         [Input("apiSecurityConfig")]
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Apigee.Inputs
         public Input<Inputs.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs>? ConnectorsPlatformConfig { get; set; }
 
         /// <summary>
-        /// Configuration for the Monetization add-on.
+        /// Configuration for the Integration add-on.
         /// Structure is documented below.
         /// </summary>
         [Input("integrationConfig")]

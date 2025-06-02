@@ -66,6 +66,8 @@ __all__ = [
     'OrganizationPropertiesArgsDict',
     'OrganizationPropertiesPropertyArgs',
     'OrganizationPropertiesPropertyArgsDict',
+    'SecurityMonitoringConditionIncludeAllResourcesArgs',
+    'SecurityMonitoringConditionIncludeAllResourcesArgsDict',
     'SecurityProfileV2ProfileAssessmentConfigArgs',
     'SecurityProfileV2ProfileAssessmentConfigArgsDict',
     'SharedflowMetaDataArgs',
@@ -82,12 +84,12 @@ if not MYPY:
     class AddonsConfigAddonsConfigArgsDict(TypedDict):
         advanced_api_ops_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgsDict']]
         """
-        Configuration for the Monetization add-on.
+        Configuration for the Advanced API Ops add-on.
         Structure is documented below.
         """
         api_security_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgsDict']]
         """
-        Configuration for the Monetization add-on.
+        Configuration for the API Security add-on.
         Structure is documented below.
         """
         connectors_platform_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict']]
@@ -97,7 +99,7 @@ if not MYPY:
         """
         integration_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgsDict']]
         """
-        Configuration for the Monetization add-on.
+        Configuration for the Integration add-on.
         Structure is documented below.
         """
         monetization_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgsDict']]
@@ -117,13 +119,13 @@ class AddonsConfigAddonsConfigArgs:
                  integration_config: Optional[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs']] = None,
                  monetization_config: Optional[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgs']] = None):
         """
-        :param pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs'] advanced_api_ops_config: Configuration for the Monetization add-on.
+        :param pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs'] advanced_api_ops_config: Configuration for the Advanced API Ops add-on.
                Structure is documented below.
-        :param pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgs'] api_security_config: Configuration for the Monetization add-on.
+        :param pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgs'] api_security_config: Configuration for the API Security add-on.
                Structure is documented below.
         :param pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgs'] connectors_platform_config: Configuration for the Monetization add-on.
                Structure is documented below.
-        :param pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs'] integration_config: Configuration for the Monetization add-on.
+        :param pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs'] integration_config: Configuration for the Integration add-on.
                Structure is documented below.
         :param pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgs'] monetization_config: Configuration for the Monetization add-on.
                Structure is documented below.
@@ -143,7 +145,7 @@ class AddonsConfigAddonsConfigArgs:
     @pulumi.getter(name="advancedApiOpsConfig")
     def advanced_api_ops_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs']]:
         """
-        Configuration for the Monetization add-on.
+        Configuration for the Advanced API Ops add-on.
         Structure is documented below.
         """
         return pulumi.get(self, "advanced_api_ops_config")
@@ -156,7 +158,7 @@ class AddonsConfigAddonsConfigArgs:
     @pulumi.getter(name="apiSecurityConfig")
     def api_security_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgs']]:
         """
-        Configuration for the Monetization add-on.
+        Configuration for the API Security add-on.
         Structure is documented below.
         """
         return pulumi.get(self, "api_security_config")
@@ -182,7 +184,7 @@ class AddonsConfigAddonsConfigArgs:
     @pulumi.getter(name="integrationConfig")
     def integration_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs']]:
         """
-        Configuration for the Monetization add-on.
+        Configuration for the Integration add-on.
         Structure is documented below.
         """
         return pulumi.get(self, "integration_config")
@@ -241,12 +243,12 @@ if not MYPY:
     class AddonsConfigAddonsConfigApiSecurityConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the API security add-on is enabled.
         """
         expires_at: NotRequired[pulumi.Input[builtins.str]]
         """
         (Output)
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
 elif False:
     AddonsConfigAddonsConfigApiSecurityConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -257,9 +259,9 @@ class AddonsConfigAddonsConfigApiSecurityConfigArgs:
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  expires_at: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param pulumi.Input[builtins.bool] enabled: Flag that specifies whether the API security add-on is enabled.
         :param pulumi.Input[builtins.str] expires_at: (Output)
-               Flag that specifies whether the Advanced API Ops add-on is enabled.
+               Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -270,7 +272,7 @@ class AddonsConfigAddonsConfigApiSecurityConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the API security add-on is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -283,7 +285,7 @@ class AddonsConfigAddonsConfigApiSecurityConfigArgs:
     def expires_at(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         (Output)
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
         return pulumi.get(self, "expires_at")
 
@@ -296,12 +298,12 @@ if not MYPY:
     class AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the Connectors Platform add-on is enabled.
         """
         expires_at: NotRequired[pulumi.Input[builtins.str]]
         """
         (Output)
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
 elif False:
     AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -312,9 +314,9 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  expires_at: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param pulumi.Input[builtins.bool] enabled: Flag that specifies whether the Connectors Platform add-on is enabled.
         :param pulumi.Input[builtins.str] expires_at: (Output)
-               Flag that specifies whether the Advanced API Ops add-on is enabled.
+               Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -325,7 +327,7 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the Connectors Platform add-on is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -338,7 +340,7 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
     def expires_at(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         (Output)
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
         return pulumi.get(self, "expires_at")
 
@@ -351,7 +353,7 @@ if not MYPY:
     class AddonsConfigAddonsConfigIntegrationConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the Integration add-on is enabled.
         """
 elif False:
     AddonsConfigAddonsConfigIntegrationConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -361,7 +363,7 @@ class AddonsConfigAddonsConfigIntegrationConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None):
         """
-        :param pulumi.Input[builtins.bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param pulumi.Input[builtins.bool] enabled: Flag that specifies whether the Integration add-on is enabled.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -370,7 +372,7 @@ class AddonsConfigAddonsConfigIntegrationConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the Integration add-on is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -383,7 +385,7 @@ if not MYPY:
     class AddonsConfigAddonsConfigMonetizationConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the Monetization add-on is enabled.
         """
 elif False:
     AddonsConfigAddonsConfigMonetizationConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -393,7 +395,7 @@ class AddonsConfigAddonsConfigMonetizationConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None):
         """
-        :param pulumi.Input[builtins.bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param pulumi.Input[builtins.bool] enabled: Flag that specifies whether the Monetization add-on is enabled.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -402,7 +404,7 @@ class AddonsConfigAddonsConfigMonetizationConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the Monetization add-on is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -2107,6 +2109,18 @@ class OrganizationPropertiesPropertyArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class SecurityMonitoringConditionIncludeAllResourcesArgsDict(TypedDict):
+        pass
+elif False:
+    SecurityMonitoringConditionIncludeAllResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityMonitoringConditionIncludeAllResourcesArgs:
+    def __init__(__self__):
+        pass
 
 
 if not MYPY:

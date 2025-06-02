@@ -389,6 +389,24 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Region Backend Service Dynamic Forwarding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     name: "region-service",
+ *     region: "us-central1",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     dynamicForwarding: {
+ *         ipPortSelection: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * RegionBackendService can be imported using any of these accepted formats:
@@ -507,6 +525,12 @@ export class RegionBackendService extends pulumi.CustomResource {
      * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     */
+    public readonly dynamicForwarding!: pulumi.Output<outputs.compute.RegionBackendServiceDynamicForwarding | undefined>;
     /**
      * If true, enable Cloud CDN for this RegionBackendService.
      */
@@ -722,6 +746,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["customMetrics"] = state ? state.customMetrics : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dynamicForwarding"] = state ? state.dynamicForwarding : undefined;
             resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
             resourceInputs["failoverPolicy"] = state ? state.failoverPolicy : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
@@ -756,6 +781,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["consistentHash"] = args ? args.consistentHash : undefined;
             resourceInputs["customMetrics"] = args ? args.customMetrics : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dynamicForwarding"] = args ? args.dynamicForwarding : undefined;
             resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
             resourceInputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
             resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
@@ -850,6 +876,12 @@ export interface RegionBackendServiceState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     */
+    dynamicForwarding?: pulumi.Input<inputs.compute.RegionBackendServiceDynamicForwarding>;
     /**
      * If true, enable Cloud CDN for this RegionBackendService.
      */
@@ -1103,6 +1135,12 @@ export interface RegionBackendServiceArgs {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     */
+    dynamicForwarding?: pulumi.Input<inputs.compute.RegionBackendServiceDynamicForwarding>;
     /**
      * If true, enable Cloud CDN for this RegionBackendService.
      */

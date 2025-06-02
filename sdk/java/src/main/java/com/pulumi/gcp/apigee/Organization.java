@@ -165,6 +165,8 @@ import javax.annotation.Nullable;
  *         var org = new Organization("org", OrganizationArgs.builder()
  *             .description("Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction.")
  *             .projectId(current.project())
+ *             .apiConsumerDataLocation("europe-west1")
+ *             .billingType("PAYG")
  *             .disableVpcPeering(true)
  *             .build());
  * 

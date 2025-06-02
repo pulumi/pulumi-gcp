@@ -22,6 +22,7 @@ class FlexTemplateJobArgs:
     def __init__(__self__, *,
                  container_spec_gcs_path: pulumi.Input[builtins.str],
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 additional_pipeline_options: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  autoscaling_algorithm: Optional[pulumi.Input[builtins.str]] = None,
                  enable_streaming_engine: Optional[pulumi.Input[builtins.bool]] = None,
                  ip_configuration: Optional[pulumi.Input[builtins.str]] = None,
@@ -51,6 +52,7 @@ class FlexTemplateJobArgs:
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_pipeline_options: List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
         :param pulumi.Input[builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[builtins.bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[builtins.str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -86,6 +88,8 @@ class FlexTemplateJobArgs:
         pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
         if additional_experiments is not None:
             pulumi.set(__self__, "additional_experiments", additional_experiments)
+        if additional_pipeline_options is not None:
+            pulumi.set(__self__, "additional_pipeline_options", additional_pipeline_options)
         if autoscaling_algorithm is not None:
             pulumi.set(__self__, "autoscaling_algorithm", autoscaling_algorithm)
         if enable_streaming_engine is not None:
@@ -157,6 +161,18 @@ class FlexTemplateJobArgs:
     @additional_experiments.setter
     def additional_experiments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "additional_experiments", value)
+
+    @property
+    @pulumi.getter(name="additionalPipelineOptions")
+    def additional_pipeline_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+        """
+        return pulumi.get(self, "additional_pipeline_options")
+
+    @additional_pipeline_options.setter
+    def additional_pipeline_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "additional_pipeline_options", value)
 
     @property
     @pulumi.getter(name="autoscalingAlgorithm")
@@ -434,6 +450,7 @@ class FlexTemplateJobArgs:
 class _FlexTemplateJobState:
     def __init__(__self__, *,
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 additional_pipeline_options: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  autoscaling_algorithm: Optional[pulumi.Input[builtins.str]] = None,
                  container_spec_gcs_path: Optional[pulumi.Input[builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -465,6 +482,7 @@ class _FlexTemplateJobState:
         """
         Input properties used for looking up and filtering FlexTemplateJob resources.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_pipeline_options: List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
         :param pulumi.Input[builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[builtins.str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
@@ -507,6 +525,8 @@ class _FlexTemplateJobState:
         """
         if additional_experiments is not None:
             pulumi.set(__self__, "additional_experiments", additional_experiments)
+        if additional_pipeline_options is not None:
+            pulumi.set(__self__, "additional_pipeline_options", additional_pipeline_options)
         if autoscaling_algorithm is not None:
             pulumi.set(__self__, "autoscaling_algorithm", autoscaling_algorithm)
         if container_spec_gcs_path is not None:
@@ -575,6 +595,18 @@ class _FlexTemplateJobState:
     @additional_experiments.setter
     def additional_experiments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "additional_experiments", value)
+
+    @property
+    @pulumi.getter(name="additionalPipelineOptions")
+    def additional_pipeline_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+        """
+        return pulumi.get(self, "additional_pipeline_options")
+
+    @additional_pipeline_options.setter
+    def additional_pipeline_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "additional_pipeline_options", value)
 
     @property
     @pulumi.getter(name="autoscalingAlgorithm")
@@ -927,6 +959,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 additional_pipeline_options: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  autoscaling_algorithm: Optional[pulumi.Input[builtins.str]] = None,
                  container_spec_gcs_path: Optional[pulumi.Input[builtins.str]] = None,
                  enable_streaming_engine: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1027,6 +1060,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_pipeline_options: List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
         :param pulumi.Input[builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[builtins.str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
@@ -1158,6 +1192,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 additional_pipeline_options: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  autoscaling_algorithm: Optional[pulumi.Input[builtins.str]] = None,
                  container_spec_gcs_path: Optional[pulumi.Input[builtins.str]] = None,
                  enable_streaming_engine: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1191,6 +1226,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             __props__ = FlexTemplateJobArgs.__new__(FlexTemplateJobArgs)
 
             __props__.__dict__["additional_experiments"] = additional_experiments
+            __props__.__dict__["additional_pipeline_options"] = additional_pipeline_options
             __props__.__dict__["autoscaling_algorithm"] = autoscaling_algorithm
             if container_spec_gcs_path is None and not opts.urn:
                 raise TypeError("Missing required property 'container_spec_gcs_path'")
@@ -1234,6 +1270,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            additional_pipeline_options: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             autoscaling_algorithm: Optional[pulumi.Input[builtins.str]] = None,
             container_spec_gcs_path: Optional[pulumi.Input[builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -1270,6 +1307,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_pipeline_options: List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
         :param pulumi.Input[builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[builtins.str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
@@ -1315,6 +1353,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         __props__ = _FlexTemplateJobState.__new__(_FlexTemplateJobState)
 
         __props__.__dict__["additional_experiments"] = additional_experiments
+        __props__.__dict__["additional_pipeline_options"] = additional_pipeline_options
         __props__.__dict__["autoscaling_algorithm"] = autoscaling_algorithm
         __props__.__dict__["container_spec_gcs_path"] = container_spec_gcs_path
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1352,6 +1391,14 @@ class FlexTemplateJob(pulumi.CustomResource):
         List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         """
         return pulumi.get(self, "additional_experiments")
+
+    @property
+    @pulumi.getter(name="additionalPipelineOptions")
+    def additional_pipeline_options(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+        """
+        List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+        """
+        return pulumi.get(self, "additional_pipeline_options")
 
     @property
     @pulumi.getter(name="autoscalingAlgorithm")

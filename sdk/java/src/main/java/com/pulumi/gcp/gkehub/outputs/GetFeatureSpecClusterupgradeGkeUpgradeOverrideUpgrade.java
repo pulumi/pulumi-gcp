@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade {
     /**
-     * @return Name of the upgrade, e.g., &#34;k8s_control_plane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
+     * @return The name of the feature you want to know the status of.
      * 
      */
     private String name;
@@ -23,7 +23,7 @@ public final class GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade {
 
     private GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade() {}
     /**
-     * @return Name of the upgrade, e.g., &#34;k8s_control_plane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
+     * @return The name of the feature you want to know the status of.
      * 
      */
     public String name() {

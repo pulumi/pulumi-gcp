@@ -16,23 +16,49 @@ public final class GetFeatureArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetFeatureArgs Empty = new GetFeatureArgs();
 
+    /**
+     * The location for the GKE Hub Feature.
+     * 
+     */
     @Import(name="location", required=true)
     private Output<String> location;
 
+    /**
+     * @return The location for the GKE Hub Feature.
+     * 
+     */
     public Output<String> location() {
         return this.location;
     }
 
+    /**
+     * The name of the feature you want to know the status of.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the feature you want to know the status of.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -63,29 +89,67 @@ public final class GetFeatureArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetFeatureArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param location The location for the GKE Hub Feature.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location The location for the GKE Hub Feature.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }
 
+        /**
+         * @param name The name of the feature you want to know the status of.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the feature you want to know the status of.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

@@ -10,10 +10,12 @@ import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceCircuitBreakersArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceConsistentHashArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceCustomMetricArgs;
+import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceIapArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceLocalityLbPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceLogConfigArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceMaxStreamDurationArgs;
+import com.pulumi.gcp.compute.inputs.BackendServiceNetworkPassThroughLbTrafficPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceOutlierDetectionArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceSecuritySettingsArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceStrongSessionAffinityCookieArgs;
@@ -252,6 +254,25 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dynamicForwarding")
+    private @Nullable Output<BackendServiceDynamicForwardingArgs> dynamicForwarding;
+
+    /**
+     * @return Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackendServiceDynamicForwardingArgs>> dynamicForwarding() {
+        return Optional.ofNullable(this.dynamicForwarding);
     }
 
     /**
@@ -686,6 +707,23 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkPassThroughLbTrafficPolicy")
+    private @Nullable Output<BackendServiceNetworkPassThroughLbTrafficPolicyArgs> networkPassThroughLbTrafficPolicy;
+
+    /**
+     * @return Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackendServiceNetworkPassThroughLbTrafficPolicyArgs>> networkPassThroughLbTrafficPolicy() {
+        return Optional.ofNullable(this.networkPassThroughLbTrafficPolicy);
+    }
+
+    /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * Applicable backend service types can be a global backend service with the
      * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -926,6 +964,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         this.customRequestHeaders = $.customRequestHeaders;
         this.customResponseHeaders = $.customResponseHeaders;
         this.description = $.description;
+        this.dynamicForwarding = $.dynamicForwarding;
         this.edgeSecurityPolicy = $.edgeSecurityPolicy;
         this.enableCdn = $.enableCdn;
         this.externalManagedMigrationState = $.externalManagedMigrationState;
@@ -941,6 +980,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         this.logConfig = $.logConfig;
         this.maxStreamDuration = $.maxStreamDuration;
         this.name = $.name;
+        this.networkPassThroughLbTrafficPolicy = $.networkPassThroughLbTrafficPolicy;
         this.outlierDetection = $.outlierDetection;
         this.portName = $.portName;
         this.project = $.project;
@@ -1309,6 +1349,31 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * feature which together with Service Extension allows customized and complex routing logic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicForwarding(@Nullable Output<BackendServiceDynamicForwardingArgs> dynamicForwarding) {
+            $.dynamicForwarding = dynamicForwarding;
+            return this;
+        }
+
+        /**
+         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * feature which together with Service Extension allows customized and complex routing logic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicForwarding(BackendServiceDynamicForwardingArgs dynamicForwarding) {
+            return dynamicForwarding(Output.of(dynamicForwarding));
         }
 
         /**
@@ -1846,6 +1911,29 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPassThroughLbTrafficPolicy(@Nullable Output<BackendServiceNetworkPassThroughLbTrafficPolicyArgs> networkPassThroughLbTrafficPolicy) {
+            $.networkPassThroughLbTrafficPolicy = networkPassThroughLbTrafficPolicy;
+            return this;
+        }
+
+        /**
+         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPassThroughLbTrafficPolicy(BackendServiceNetworkPassThroughLbTrafficPolicyArgs networkPassThroughLbTrafficPolicy) {
+            return networkPassThroughLbTrafficPolicy(Output.of(networkPassThroughLbTrafficPolicy));
         }
 
         /**

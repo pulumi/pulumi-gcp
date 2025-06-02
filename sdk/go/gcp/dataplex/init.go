@@ -63,12 +63,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EntryTypeIamPolicy{}
 	case "gcp:dataplex/glossary:Glossary":
 		r = &Glossary{}
+	case "gcp:dataplex/glossaryCategory:GlossaryCategory":
+		r = &GlossaryCategory{}
 	case "gcp:dataplex/glossaryIamBinding:GlossaryIamBinding":
 		r = &GlossaryIamBinding{}
 	case "gcp:dataplex/glossaryIamMember:GlossaryIamMember":
 		r = &GlossaryIamMember{}
 	case "gcp:dataplex/glossaryIamPolicy:GlossaryIamPolicy":
 		r = &GlossaryIamPolicy{}
+	case "gcp:dataplex/glossaryTerm:GlossaryTerm":
+		r = &GlossaryTerm{}
 	case "gcp:dataplex/lake:Lake":
 		r = &Lake{}
 	case "gcp:dataplex/lakeIamBinding:LakeIamBinding":
@@ -213,6 +217,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"dataplex/glossaryCategory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"dataplex/glossaryIamBinding",
 		&module{version},
 	)
@@ -224,6 +233,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataplex/glossaryIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/glossaryTerm",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

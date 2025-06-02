@@ -7,6 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * subcategory: "Secret Manager"
+ * description: |-
+ *   List the Secret Manager Regional Secrets.
+ * ---
+ *
  * Use this data source to list the Secret Manager Regional Secrets.
  *
  * ## Example Usage
@@ -70,6 +75,11 @@ export interface GetRegionalSecretsResult {
     readonly secrets: outputs.secretmanager.GetRegionalSecretsSecret[];
 }
 /**
+ * subcategory: "Secret Manager"
+ * description: |-
+ *   List the Secret Manager Regional Secrets.
+ * ---
+ *
  * Use this data source to list the Secret Manager Regional Secrets.
  *
  * ## Example Usage

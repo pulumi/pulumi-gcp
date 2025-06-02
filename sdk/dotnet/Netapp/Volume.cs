@@ -165,6 +165,13 @@ namespace Pulumi.Gcp.Netapp
         public Output<bool> HasReplication { get; private set; } = null!;
 
         /// <summary>
+        /// The Hybrid Replication parameters for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("hybridReplicationParameters")]
+        public Output<Outputs.VolumeHybridReplicationParameters?> HybridReplicationParameters { get; private set; } = null!;
+
+        /// <summary>
         /// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
         /// </summary>
         [Output("kerberosEnabled")]
@@ -450,6 +457,13 @@ namespace Pulumi.Gcp.Netapp
         public Input<Inputs.VolumeExportPolicyArgs>? ExportPolicy { get; set; }
 
         /// <summary>
+        /// The Hybrid Replication parameters for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("hybridReplicationParameters")]
+        public Input<Inputs.VolumeHybridReplicationParametersArgs>? HybridReplicationParameters { get; set; }
+
+        /// <summary>
         /// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
         /// </summary>
         [Input("kerberosEnabled")]
@@ -686,6 +700,13 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("hasReplication")]
         public Input<bool>? HasReplication { get; set; }
+
+        /// <summary>
+        /// The Hybrid Replication parameters for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("hybridReplicationParameters")]
+        public Input<Inputs.VolumeHybridReplicationParametersGetArgs>? HybridReplicationParameters { get; set; }
 
         /// <summary>
         /// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).

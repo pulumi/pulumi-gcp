@@ -258,8 +258,8 @@ type InterconnectAttachment struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
-	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+	// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+	// Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
 	Mtu pulumi.StringOutput `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -451,8 +451,8 @@ type interconnectAttachmentState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
-	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+	// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+	// Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
 	Mtu *string `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -607,8 +607,8 @@ type InterconnectAttachmentState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
-	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+	// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+	// Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
 	Mtu pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -742,8 +742,8 @@ type interconnectAttachmentArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
-	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+	// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+	// Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
 	Mtu *string `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -855,8 +855,8 @@ type InterconnectAttachmentArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
-	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+	// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+	// Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
 	Mtu pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -1129,8 +1129,8 @@ func (o InterconnectAttachmentOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Maximum Transmission Unit (MTU), in bytes, of packets passing through
-// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+// Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
 func (o InterconnectAttachmentOutput) Mtu() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.Mtu }).(pulumi.StringOutput)
 }

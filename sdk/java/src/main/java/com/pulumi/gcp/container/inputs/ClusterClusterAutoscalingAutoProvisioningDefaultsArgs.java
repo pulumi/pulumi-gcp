@@ -134,14 +134,14 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
     }
 
     /**
-     * The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+     * The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
      * 
      */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+     * @return The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -379,7 +379,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param serviceAccount The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+         * @param serviceAccount The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param serviceAccount The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+         * @param serviceAccount The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
          * 
          * @return builder
          * 

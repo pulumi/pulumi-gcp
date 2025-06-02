@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Apigee.Outputs
     public sealed class AddonsConfigAddonsConfigIntegrationConfig
     {
         /// <summary>
-        /// Flag that specifies whether the Advanced API Ops add-on is enabled.
+        /// Flag that specifies whether the Integration add-on is enabled.
         /// </summary>
         public readonly bool? Enabled;
 

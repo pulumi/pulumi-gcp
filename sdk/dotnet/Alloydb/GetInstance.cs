@@ -152,6 +152,7 @@ namespace Pulumi.Gcp.Alloydb
     [OutputType]
     public sealed class GetInstanceResult
     {
+        public readonly string ActivationPolicy;
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string AvailabilityType;
         public readonly ImmutableArray<Outputs.GetInstanceClientConnectionConfigResult> ClientConnectionConfigs;
@@ -190,6 +191,8 @@ namespace Pulumi.Gcp.Alloydb
 
         [OutputConstructor]
         private GetInstanceResult(
+            string activationPolicy,
+
             ImmutableDictionary<string, string> annotations,
 
             string availabilityType,
@@ -254,6 +257,7 @@ namespace Pulumi.Gcp.Alloydb
 
             string updateTime)
         {
+            ActivationPolicy = activationPolicy;
             Annotations = annotations;
             AvailabilityType = availabilityType;
             ClientConnectionConfigs = clientConnectionConfigs;

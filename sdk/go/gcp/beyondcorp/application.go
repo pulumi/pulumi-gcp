@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Warning:** `beyondcorp.Application` is deprecated. Use `googleBeyondcorpSecurityGatewayApplication` instead.
+// > **Warning:** `beyondcorp.Application` is deprecated. Use `beyondcorp.SecurityGatewayApplication` instead.
 //
 // Specifies application endpoint(s) to protect behind a Security Gateway.
 //

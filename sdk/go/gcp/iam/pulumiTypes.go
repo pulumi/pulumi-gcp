@@ -3444,6 +3444,279 @@ func (o WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkforcePoolProviderKeyKeyData struct {
+	// (Output)
+	// The format of the key.
+	Format *string `pulumi:"format"`
+	// (Output)
+	// The key data. The format of the key is represented by the format field.
+	Key *string `pulumi:"key"`
+	// The specifications for the key.
+	// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
+	//
+	// ***
+	KeySpec string `pulumi:"keySpec"`
+	// (Output)
+	// Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
+	// Only present if the key data represents a X.509 certificate.
+	// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+	// Offsets other than "Z" are also accepted.
+	// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+	NotAfterTime *string `pulumi:"notAfterTime"`
+	// (Output)
+	// Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
+	// Only present if the key data represents a X.509 certificate.
+	// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+	// Offsets other than "Z" are also accepted.
+	// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+	NotBeforeTime *string `pulumi:"notBeforeTime"`
+}
+
+// WorkforcePoolProviderKeyKeyDataInput is an input type that accepts WorkforcePoolProviderKeyKeyDataArgs and WorkforcePoolProviderKeyKeyDataOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderKeyKeyDataInput` via:
+//
+//	WorkforcePoolProviderKeyKeyDataArgs{...}
+type WorkforcePoolProviderKeyKeyDataInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderKeyKeyDataOutput() WorkforcePoolProviderKeyKeyDataOutput
+	ToWorkforcePoolProviderKeyKeyDataOutputWithContext(context.Context) WorkforcePoolProviderKeyKeyDataOutput
+}
+
+type WorkforcePoolProviderKeyKeyDataArgs struct {
+	// (Output)
+	// The format of the key.
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// (Output)
+	// The key data. The format of the key is represented by the format field.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The specifications for the key.
+	// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
+	//
+	// ***
+	KeySpec pulumi.StringInput `pulumi:"keySpec"`
+	// (Output)
+	// Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
+	// Only present if the key data represents a X.509 certificate.
+	// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+	// Offsets other than "Z" are also accepted.
+	// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+	NotAfterTime pulumi.StringPtrInput `pulumi:"notAfterTime"`
+	// (Output)
+	// Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
+	// Only present if the key data represents a X.509 certificate.
+	// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+	// Offsets other than "Z" are also accepted.
+	// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+	NotBeforeTime pulumi.StringPtrInput `pulumi:"notBeforeTime"`
+}
+
+func (WorkforcePoolProviderKeyKeyDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderKeyKeyData)(nil)).Elem()
+}
+
+func (i WorkforcePoolProviderKeyKeyDataArgs) ToWorkforcePoolProviderKeyKeyDataOutput() WorkforcePoolProviderKeyKeyDataOutput {
+	return i.ToWorkforcePoolProviderKeyKeyDataOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderKeyKeyDataArgs) ToWorkforcePoolProviderKeyKeyDataOutputWithContext(ctx context.Context) WorkforcePoolProviderKeyKeyDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderKeyKeyDataOutput)
+}
+
+func (i WorkforcePoolProviderKeyKeyDataArgs) ToWorkforcePoolProviderKeyKeyDataPtrOutput() WorkforcePoolProviderKeyKeyDataPtrOutput {
+	return i.ToWorkforcePoolProviderKeyKeyDataPtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderKeyKeyDataArgs) ToWorkforcePoolProviderKeyKeyDataPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderKeyKeyDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderKeyKeyDataOutput).ToWorkforcePoolProviderKeyKeyDataPtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolProviderKeyKeyDataPtrInput is an input type that accepts WorkforcePoolProviderKeyKeyDataArgs, WorkforcePoolProviderKeyKeyDataPtr and WorkforcePoolProviderKeyKeyDataPtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderKeyKeyDataPtrInput` via:
+//
+//	        WorkforcePoolProviderKeyKeyDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolProviderKeyKeyDataPtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderKeyKeyDataPtrOutput() WorkforcePoolProviderKeyKeyDataPtrOutput
+	ToWorkforcePoolProviderKeyKeyDataPtrOutputWithContext(context.Context) WorkforcePoolProviderKeyKeyDataPtrOutput
+}
+
+type workforcePoolProviderKeyKeyDataPtrType WorkforcePoolProviderKeyKeyDataArgs
+
+func WorkforcePoolProviderKeyKeyDataPtr(v *WorkforcePoolProviderKeyKeyDataArgs) WorkforcePoolProviderKeyKeyDataPtrInput {
+	return (*workforcePoolProviderKeyKeyDataPtrType)(v)
+}
+
+func (*workforcePoolProviderKeyKeyDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderKeyKeyData)(nil)).Elem()
+}
+
+func (i *workforcePoolProviderKeyKeyDataPtrType) ToWorkforcePoolProviderKeyKeyDataPtrOutput() WorkforcePoolProviderKeyKeyDataPtrOutput {
+	return i.ToWorkforcePoolProviderKeyKeyDataPtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolProviderKeyKeyDataPtrType) ToWorkforcePoolProviderKeyKeyDataPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderKeyKeyDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderKeyKeyDataPtrOutput)
+}
+
+type WorkforcePoolProviderKeyKeyDataOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderKeyKeyDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderKeyKeyData)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderKeyKeyDataOutput) ToWorkforcePoolProviderKeyKeyDataOutput() WorkforcePoolProviderKeyKeyDataOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderKeyKeyDataOutput) ToWorkforcePoolProviderKeyKeyDataOutputWithContext(ctx context.Context) WorkforcePoolProviderKeyKeyDataOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderKeyKeyDataOutput) ToWorkforcePoolProviderKeyKeyDataPtrOutput() WorkforcePoolProviderKeyKeyDataPtrOutput {
+	return o.ToWorkforcePoolProviderKeyKeyDataPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolProviderKeyKeyDataOutput) ToWorkforcePoolProviderKeyKeyDataPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderKeyKeyDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolProviderKeyKeyData) *WorkforcePoolProviderKeyKeyData {
+		return &v
+	}).(WorkforcePoolProviderKeyKeyDataPtrOutput)
+}
+
+// (Output)
+// The format of the key.
+func (o WorkforcePoolProviderKeyKeyDataOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderKeyKeyData) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The key data. The format of the key is represented by the format field.
+func (o WorkforcePoolProviderKeyKeyDataOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderKeyKeyData) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The specifications for the key.
+// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
+//
+// ***
+func (o WorkforcePoolProviderKeyKeyDataOutput) KeySpec() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderKeyKeyData) string { return v.KeySpec }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
+// Only present if the key data represents a X.509 certificate.
+// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+// Offsets other than "Z" are also accepted.
+// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+func (o WorkforcePoolProviderKeyKeyDataOutput) NotAfterTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderKeyKeyData) *string { return v.NotAfterTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
+// Only present if the key data represents a X.509 certificate.
+// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+// Offsets other than "Z" are also accepted.
+// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+func (o WorkforcePoolProviderKeyKeyDataOutput) NotBeforeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderKeyKeyData) *string { return v.NotBeforeTime }).(pulumi.StringPtrOutput)
+}
+
+type WorkforcePoolProviderKeyKeyDataPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderKeyKeyDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderKeyKeyData)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderKeyKeyDataPtrOutput) ToWorkforcePoolProviderKeyKeyDataPtrOutput() WorkforcePoolProviderKeyKeyDataPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderKeyKeyDataPtrOutput) ToWorkforcePoolProviderKeyKeyDataPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderKeyKeyDataPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderKeyKeyDataPtrOutput) Elem() WorkforcePoolProviderKeyKeyDataOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderKeyKeyData) WorkforcePoolProviderKeyKeyData {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolProviderKeyKeyData
+		return ret
+	}).(WorkforcePoolProviderKeyKeyDataOutput)
+}
+
+// (Output)
+// The format of the key.
+func (o WorkforcePoolProviderKeyKeyDataPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderKeyKeyData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The key data. The format of the key is represented by the format field.
+func (o WorkforcePoolProviderKeyKeyDataPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderKeyKeyData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specifications for the key.
+// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
+//
+// ***
+func (o WorkforcePoolProviderKeyKeyDataPtrOutput) KeySpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderKeyKeyData) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeySpec
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
+// Only present if the key data represents a X.509 certificate.
+// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+// Offsets other than "Z" are also accepted.
+// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+func (o WorkforcePoolProviderKeyKeyDataPtrOutput) NotAfterTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderKeyKeyData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotAfterTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
+// Only present if the key data represents a X.509 certificate.
+// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+// Offsets other than "Z" are also accepted.
+// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+func (o WorkforcePoolProviderKeyKeyDataPtrOutput) NotBeforeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderKeyKeyData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotBeforeTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkforcePoolProviderOidc struct {
 	// The client ID. Must match the audience claim of the JWT issued by the identity provider.
 	ClientId string `pulumi:"clientId"`
@@ -5384,6 +5657,109 @@ func (o WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor {
 		return vs[0].([]WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor)[vs[1].(int)]
 	}).(WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorOutput)
+}
+
+type WorkloadIdentityPoolNamespaceOwnerService struct {
+	// (Output)
+	// The service agent principal subject, e.g.
+	// `serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com`.
+	PrincipalSubject *string `pulumi:"principalSubject"`
+}
+
+// WorkloadIdentityPoolNamespaceOwnerServiceInput is an input type that accepts WorkloadIdentityPoolNamespaceOwnerServiceArgs and WorkloadIdentityPoolNamespaceOwnerServiceOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolNamespaceOwnerServiceInput` via:
+//
+//	WorkloadIdentityPoolNamespaceOwnerServiceArgs{...}
+type WorkloadIdentityPoolNamespaceOwnerServiceInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolNamespaceOwnerServiceOutput() WorkloadIdentityPoolNamespaceOwnerServiceOutput
+	ToWorkloadIdentityPoolNamespaceOwnerServiceOutputWithContext(context.Context) WorkloadIdentityPoolNamespaceOwnerServiceOutput
+}
+
+type WorkloadIdentityPoolNamespaceOwnerServiceArgs struct {
+	// (Output)
+	// The service agent principal subject, e.g.
+	// `serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com`.
+	PrincipalSubject pulumi.StringPtrInput `pulumi:"principalSubject"`
+}
+
+func (WorkloadIdentityPoolNamespaceOwnerServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolNamespaceOwnerService)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolNamespaceOwnerServiceArgs) ToWorkloadIdentityPoolNamespaceOwnerServiceOutput() WorkloadIdentityPoolNamespaceOwnerServiceOutput {
+	return i.ToWorkloadIdentityPoolNamespaceOwnerServiceOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolNamespaceOwnerServiceArgs) ToWorkloadIdentityPoolNamespaceOwnerServiceOutputWithContext(ctx context.Context) WorkloadIdentityPoolNamespaceOwnerServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolNamespaceOwnerServiceOutput)
+}
+
+// WorkloadIdentityPoolNamespaceOwnerServiceArrayInput is an input type that accepts WorkloadIdentityPoolNamespaceOwnerServiceArray and WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolNamespaceOwnerServiceArrayInput` via:
+//
+//	WorkloadIdentityPoolNamespaceOwnerServiceArray{ WorkloadIdentityPoolNamespaceOwnerServiceArgs{...} }
+type WorkloadIdentityPoolNamespaceOwnerServiceArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolNamespaceOwnerServiceArrayOutput() WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput
+	ToWorkloadIdentityPoolNamespaceOwnerServiceArrayOutputWithContext(context.Context) WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput
+}
+
+type WorkloadIdentityPoolNamespaceOwnerServiceArray []WorkloadIdentityPoolNamespaceOwnerServiceInput
+
+func (WorkloadIdentityPoolNamespaceOwnerServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadIdentityPoolNamespaceOwnerService)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolNamespaceOwnerServiceArray) ToWorkloadIdentityPoolNamespaceOwnerServiceArrayOutput() WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput {
+	return i.ToWorkloadIdentityPoolNamespaceOwnerServiceArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolNamespaceOwnerServiceArray) ToWorkloadIdentityPoolNamespaceOwnerServiceArrayOutputWithContext(ctx context.Context) WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput)
+}
+
+type WorkloadIdentityPoolNamespaceOwnerServiceOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolNamespaceOwnerServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolNamespaceOwnerService)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolNamespaceOwnerServiceOutput) ToWorkloadIdentityPoolNamespaceOwnerServiceOutput() WorkloadIdentityPoolNamespaceOwnerServiceOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolNamespaceOwnerServiceOutput) ToWorkloadIdentityPoolNamespaceOwnerServiceOutputWithContext(ctx context.Context) WorkloadIdentityPoolNamespaceOwnerServiceOutput {
+	return o
+}
+
+// (Output)
+// The service agent principal subject, e.g.
+// `serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com`.
+func (o WorkloadIdentityPoolNamespaceOwnerServiceOutput) PrincipalSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolNamespaceOwnerService) *string { return v.PrincipalSubject }).(pulumi.StringPtrOutput)
+}
+
+type WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadIdentityPoolNamespaceOwnerService)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput) ToWorkloadIdentityPoolNamespaceOwnerServiceArrayOutput() WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput) ToWorkloadIdentityPoolNamespaceOwnerServiceArrayOutputWithContext(ctx context.Context) WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput) Index(i pulumi.IntInput) WorkloadIdentityPoolNamespaceOwnerServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadIdentityPoolNamespaceOwnerService {
+		return vs[0].([]WorkloadIdentityPoolNamespaceOwnerService)[vs[1].(int)]
+	}).(WorkloadIdentityPoolNamespaceOwnerServiceOutput)
 }
 
 type WorkloadIdentityPoolProviderAws struct {
@@ -7960,6 +8336,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderKeyKeyDataInput)(nil)).Elem(), WorkforcePoolProviderKeyKeyDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderKeyKeyDataPtrInput)(nil)).Elem(), WorkforcePoolProviderKeyKeyDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcPtrInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcClientSecretInput)(nil)).Elem(), WorkforcePoolProviderOidcClientSecretArgs{})
@@ -7982,6 +8360,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArrayInput)(nil)).Elem(), WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorInput)(nil)).Elem(), WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArrayInput)(nil)).Elem(), WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolNamespaceOwnerServiceInput)(nil)).Elem(), WorkloadIdentityPoolNamespaceOwnerServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolNamespaceOwnerServiceArrayInput)(nil)).Elem(), WorkloadIdentityPoolNamespaceOwnerServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderAwsInput)(nil)).Elem(), WorkloadIdentityPoolProviderAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderAwsPtrInput)(nil)).Elem(), WorkloadIdentityPoolProviderAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderOidcInput)(nil)).Elem(), WorkloadIdentityPoolProviderOidcArgs{})
@@ -8060,6 +8440,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersPtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderKeyKeyDataOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderKeyKeyDataPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcClientSecretOutput{})
@@ -8082,6 +8464,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArrayOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolNamespaceOwnerServiceOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolNamespaceOwnerServiceArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderAwsOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderAwsPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderOidcOutput{})

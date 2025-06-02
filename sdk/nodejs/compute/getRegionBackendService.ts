@@ -65,6 +65,7 @@ export interface GetRegionBackendServiceResult {
     readonly creationTimestamp: string;
     readonly customMetrics: outputs.compute.GetRegionBackendServiceCustomMetric[];
     readonly description: string;
+    readonly dynamicForwardings: outputs.compute.GetRegionBackendServiceDynamicForwarding[];
     readonly enableCdn: boolean;
     readonly failoverPolicies: outputs.compute.GetRegionBackendServiceFailoverPolicy[];
     readonly fingerprint: string;

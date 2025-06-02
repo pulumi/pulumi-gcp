@@ -14465,7 +14465,7 @@ func (o GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput) 
 }
 
 type GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade struct {
-	// Name of the upgrade, e.g., "k8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
+	// The name of the feature you want to know the status of.
 	Name string `pulumi:"name"`
 	// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
 	Version string `pulumi:"version"`
@@ -14483,7 +14483,7 @@ type GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeInput interface {
 }
 
 type GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs struct {
-	// Name of the upgrade, e.g., "k8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
+	// The name of the feature you want to know the status of.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
 	Version pulumi.StringInput `pulumi:"version"`
@@ -14540,7 +14540,7 @@ func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) ToGetFeatur
 	return o
 }
 
-// Name of the upgrade, e.g., "k8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
+// The name of the feature you want to know the status of.
 func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -15379,6 +15379,100 @@ func (o GetFeatureStateStateArrayOutput) Index(i pulumi.IntInput) GetFeatureStat
 	}).(GetFeatureStateStateOutput)
 }
 
+type GetMembershipAuthority struct {
+	Issuer string `pulumi:"issuer"`
+}
+
+// GetMembershipAuthorityInput is an input type that accepts GetMembershipAuthorityArgs and GetMembershipAuthorityOutput values.
+// You can construct a concrete instance of `GetMembershipAuthorityInput` via:
+//
+//	GetMembershipAuthorityArgs{...}
+type GetMembershipAuthorityInput interface {
+	pulumi.Input
+
+	ToGetMembershipAuthorityOutput() GetMembershipAuthorityOutput
+	ToGetMembershipAuthorityOutputWithContext(context.Context) GetMembershipAuthorityOutput
+}
+
+type GetMembershipAuthorityArgs struct {
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+}
+
+func (GetMembershipAuthorityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembershipAuthority)(nil)).Elem()
+}
+
+func (i GetMembershipAuthorityArgs) ToGetMembershipAuthorityOutput() GetMembershipAuthorityOutput {
+	return i.ToGetMembershipAuthorityOutputWithContext(context.Background())
+}
+
+func (i GetMembershipAuthorityArgs) ToGetMembershipAuthorityOutputWithContext(ctx context.Context) GetMembershipAuthorityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembershipAuthorityOutput)
+}
+
+// GetMembershipAuthorityArrayInput is an input type that accepts GetMembershipAuthorityArray and GetMembershipAuthorityArrayOutput values.
+// You can construct a concrete instance of `GetMembershipAuthorityArrayInput` via:
+//
+//	GetMembershipAuthorityArray{ GetMembershipAuthorityArgs{...} }
+type GetMembershipAuthorityArrayInput interface {
+	pulumi.Input
+
+	ToGetMembershipAuthorityArrayOutput() GetMembershipAuthorityArrayOutput
+	ToGetMembershipAuthorityArrayOutputWithContext(context.Context) GetMembershipAuthorityArrayOutput
+}
+
+type GetMembershipAuthorityArray []GetMembershipAuthorityInput
+
+func (GetMembershipAuthorityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembershipAuthority)(nil)).Elem()
+}
+
+func (i GetMembershipAuthorityArray) ToGetMembershipAuthorityArrayOutput() GetMembershipAuthorityArrayOutput {
+	return i.ToGetMembershipAuthorityArrayOutputWithContext(context.Background())
+}
+
+func (i GetMembershipAuthorityArray) ToGetMembershipAuthorityArrayOutputWithContext(ctx context.Context) GetMembershipAuthorityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembershipAuthorityArrayOutput)
+}
+
+type GetMembershipAuthorityOutput struct{ *pulumi.OutputState }
+
+func (GetMembershipAuthorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembershipAuthority)(nil)).Elem()
+}
+
+func (o GetMembershipAuthorityOutput) ToGetMembershipAuthorityOutput() GetMembershipAuthorityOutput {
+	return o
+}
+
+func (o GetMembershipAuthorityOutput) ToGetMembershipAuthorityOutputWithContext(ctx context.Context) GetMembershipAuthorityOutput {
+	return o
+}
+
+func (o GetMembershipAuthorityOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMembershipAuthority) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+type GetMembershipAuthorityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMembershipAuthorityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembershipAuthority)(nil)).Elem()
+}
+
+func (o GetMembershipAuthorityArrayOutput) ToGetMembershipAuthorityArrayOutput() GetMembershipAuthorityArrayOutput {
+	return o
+}
+
+func (o GetMembershipAuthorityArrayOutput) ToGetMembershipAuthorityArrayOutputWithContext(ctx context.Context) GetMembershipAuthorityArrayOutput {
+	return o
+}
+
+func (o GetMembershipAuthorityArrayOutput) Index(i pulumi.IntInput) GetMembershipAuthorityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMembershipAuthority {
+		return vs[0].([]GetMembershipAuthority)[vs[1].(int)]
+	}).(GetMembershipAuthorityOutput)
+}
+
 type GetMembershipBindingState struct {
 	// Code describes the state of a MembershipBinding resource.
 	Code string `pulumi:"code"`
@@ -15474,6 +15568,197 @@ func (o GetMembershipBindingStateArrayOutput) Index(i pulumi.IntInput) GetMember
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMembershipBindingState {
 		return vs[0].([]GetMembershipBindingState)[vs[1].(int)]
 	}).(GetMembershipBindingStateOutput)
+}
+
+type GetMembershipEndpoint struct {
+	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+	GkeClusters []GetMembershipEndpointGkeCluster `pulumi:"gkeClusters"`
+}
+
+// GetMembershipEndpointInput is an input type that accepts GetMembershipEndpointArgs and GetMembershipEndpointOutput values.
+// You can construct a concrete instance of `GetMembershipEndpointInput` via:
+//
+//	GetMembershipEndpointArgs{...}
+type GetMembershipEndpointInput interface {
+	pulumi.Input
+
+	ToGetMembershipEndpointOutput() GetMembershipEndpointOutput
+	ToGetMembershipEndpointOutputWithContext(context.Context) GetMembershipEndpointOutput
+}
+
+type GetMembershipEndpointArgs struct {
+	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+	GkeClusters GetMembershipEndpointGkeClusterArrayInput `pulumi:"gkeClusters"`
+}
+
+func (GetMembershipEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembershipEndpoint)(nil)).Elem()
+}
+
+func (i GetMembershipEndpointArgs) ToGetMembershipEndpointOutput() GetMembershipEndpointOutput {
+	return i.ToGetMembershipEndpointOutputWithContext(context.Background())
+}
+
+func (i GetMembershipEndpointArgs) ToGetMembershipEndpointOutputWithContext(ctx context.Context) GetMembershipEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembershipEndpointOutput)
+}
+
+// GetMembershipEndpointArrayInput is an input type that accepts GetMembershipEndpointArray and GetMembershipEndpointArrayOutput values.
+// You can construct a concrete instance of `GetMembershipEndpointArrayInput` via:
+//
+//	GetMembershipEndpointArray{ GetMembershipEndpointArgs{...} }
+type GetMembershipEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetMembershipEndpointArrayOutput() GetMembershipEndpointArrayOutput
+	ToGetMembershipEndpointArrayOutputWithContext(context.Context) GetMembershipEndpointArrayOutput
+}
+
+type GetMembershipEndpointArray []GetMembershipEndpointInput
+
+func (GetMembershipEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembershipEndpoint)(nil)).Elem()
+}
+
+func (i GetMembershipEndpointArray) ToGetMembershipEndpointArrayOutput() GetMembershipEndpointArrayOutput {
+	return i.ToGetMembershipEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetMembershipEndpointArray) ToGetMembershipEndpointArrayOutputWithContext(ctx context.Context) GetMembershipEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembershipEndpointArrayOutput)
+}
+
+type GetMembershipEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetMembershipEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembershipEndpoint)(nil)).Elem()
+}
+
+func (o GetMembershipEndpointOutput) ToGetMembershipEndpointOutput() GetMembershipEndpointOutput {
+	return o
+}
+
+func (o GetMembershipEndpointOutput) ToGetMembershipEndpointOutputWithContext(ctx context.Context) GetMembershipEndpointOutput {
+	return o
+}
+
+// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+func (o GetMembershipEndpointOutput) GkeClusters() GetMembershipEndpointGkeClusterArrayOutput {
+	return o.ApplyT(func(v GetMembershipEndpoint) []GetMembershipEndpointGkeCluster { return v.GkeClusters }).(GetMembershipEndpointGkeClusterArrayOutput)
+}
+
+type GetMembershipEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMembershipEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembershipEndpoint)(nil)).Elem()
+}
+
+func (o GetMembershipEndpointArrayOutput) ToGetMembershipEndpointArrayOutput() GetMembershipEndpointArrayOutput {
+	return o
+}
+
+func (o GetMembershipEndpointArrayOutput) ToGetMembershipEndpointArrayOutputWithContext(ctx context.Context) GetMembershipEndpointArrayOutput {
+	return o
+}
+
+func (o GetMembershipEndpointArrayOutput) Index(i pulumi.IntInput) GetMembershipEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMembershipEndpoint {
+		return vs[0].([]GetMembershipEndpoint)[vs[1].(int)]
+	}).(GetMembershipEndpointOutput)
+}
+
+type GetMembershipEndpointGkeCluster struct {
+	ResourceLink string `pulumi:"resourceLink"`
+}
+
+// GetMembershipEndpointGkeClusterInput is an input type that accepts GetMembershipEndpointGkeClusterArgs and GetMembershipEndpointGkeClusterOutput values.
+// You can construct a concrete instance of `GetMembershipEndpointGkeClusterInput` via:
+//
+//	GetMembershipEndpointGkeClusterArgs{...}
+type GetMembershipEndpointGkeClusterInput interface {
+	pulumi.Input
+
+	ToGetMembershipEndpointGkeClusterOutput() GetMembershipEndpointGkeClusterOutput
+	ToGetMembershipEndpointGkeClusterOutputWithContext(context.Context) GetMembershipEndpointGkeClusterOutput
+}
+
+type GetMembershipEndpointGkeClusterArgs struct {
+	ResourceLink pulumi.StringInput `pulumi:"resourceLink"`
+}
+
+func (GetMembershipEndpointGkeClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembershipEndpointGkeCluster)(nil)).Elem()
+}
+
+func (i GetMembershipEndpointGkeClusterArgs) ToGetMembershipEndpointGkeClusterOutput() GetMembershipEndpointGkeClusterOutput {
+	return i.ToGetMembershipEndpointGkeClusterOutputWithContext(context.Background())
+}
+
+func (i GetMembershipEndpointGkeClusterArgs) ToGetMembershipEndpointGkeClusterOutputWithContext(ctx context.Context) GetMembershipEndpointGkeClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembershipEndpointGkeClusterOutput)
+}
+
+// GetMembershipEndpointGkeClusterArrayInput is an input type that accepts GetMembershipEndpointGkeClusterArray and GetMembershipEndpointGkeClusterArrayOutput values.
+// You can construct a concrete instance of `GetMembershipEndpointGkeClusterArrayInput` via:
+//
+//	GetMembershipEndpointGkeClusterArray{ GetMembershipEndpointGkeClusterArgs{...} }
+type GetMembershipEndpointGkeClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetMembershipEndpointGkeClusterArrayOutput() GetMembershipEndpointGkeClusterArrayOutput
+	ToGetMembershipEndpointGkeClusterArrayOutputWithContext(context.Context) GetMembershipEndpointGkeClusterArrayOutput
+}
+
+type GetMembershipEndpointGkeClusterArray []GetMembershipEndpointGkeClusterInput
+
+func (GetMembershipEndpointGkeClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembershipEndpointGkeCluster)(nil)).Elem()
+}
+
+func (i GetMembershipEndpointGkeClusterArray) ToGetMembershipEndpointGkeClusterArrayOutput() GetMembershipEndpointGkeClusterArrayOutput {
+	return i.ToGetMembershipEndpointGkeClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetMembershipEndpointGkeClusterArray) ToGetMembershipEndpointGkeClusterArrayOutputWithContext(ctx context.Context) GetMembershipEndpointGkeClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembershipEndpointGkeClusterArrayOutput)
+}
+
+type GetMembershipEndpointGkeClusterOutput struct{ *pulumi.OutputState }
+
+func (GetMembershipEndpointGkeClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembershipEndpointGkeCluster)(nil)).Elem()
+}
+
+func (o GetMembershipEndpointGkeClusterOutput) ToGetMembershipEndpointGkeClusterOutput() GetMembershipEndpointGkeClusterOutput {
+	return o
+}
+
+func (o GetMembershipEndpointGkeClusterOutput) ToGetMembershipEndpointGkeClusterOutputWithContext(ctx context.Context) GetMembershipEndpointGkeClusterOutput {
+	return o
+}
+
+func (o GetMembershipEndpointGkeClusterOutput) ResourceLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMembershipEndpointGkeCluster) string { return v.ResourceLink }).(pulumi.StringOutput)
+}
+
+type GetMembershipEndpointGkeClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMembershipEndpointGkeClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembershipEndpointGkeCluster)(nil)).Elem()
+}
+
+func (o GetMembershipEndpointGkeClusterArrayOutput) ToGetMembershipEndpointGkeClusterArrayOutput() GetMembershipEndpointGkeClusterArrayOutput {
+	return o
+}
+
+func (o GetMembershipEndpointGkeClusterArrayOutput) ToGetMembershipEndpointGkeClusterArrayOutputWithContext(ctx context.Context) GetMembershipEndpointGkeClusterArrayOutput {
+	return o
+}
+
+func (o GetMembershipEndpointGkeClusterArrayOutput) Index(i pulumi.IntInput) GetMembershipEndpointGkeClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMembershipEndpointGkeCluster {
+		return vs[0].([]GetMembershipEndpointGkeCluster)[vs[1].(int)]
+	}).(GetMembershipEndpointGkeClusterOutput)
 }
 
 func init() {
@@ -15685,8 +15970,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateArrayInput)(nil)).Elem(), GetFeatureStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateStateInput)(nil)).Elem(), GetFeatureStateStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateStateArrayInput)(nil)).Elem(), GetFeatureStateStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipAuthorityInput)(nil)).Elem(), GetMembershipAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipAuthorityArrayInput)(nil)).Elem(), GetMembershipAuthorityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipBindingStateInput)(nil)).Elem(), GetMembershipBindingStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipBindingStateArrayInput)(nil)).Elem(), GetMembershipBindingStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipEndpointInput)(nil)).Elem(), GetMembershipEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipEndpointArrayInput)(nil)).Elem(), GetMembershipEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipEndpointGkeClusterInput)(nil)).Elem(), GetMembershipEndpointGkeClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipEndpointGkeClusterArrayInput)(nil)).Elem(), GetMembershipEndpointGkeClusterArray{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigOutput{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPtrOutput{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementOutput{})
@@ -15895,6 +16186,12 @@ func init() {
 	pulumi.RegisterOutputType(GetFeatureStateArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureStateStateOutput{})
 	pulumi.RegisterOutputType(GetFeatureStateStateArrayOutput{})
+	pulumi.RegisterOutputType(GetMembershipAuthorityOutput{})
+	pulumi.RegisterOutputType(GetMembershipAuthorityArrayOutput{})
 	pulumi.RegisterOutputType(GetMembershipBindingStateOutput{})
 	pulumi.RegisterOutputType(GetMembershipBindingStateArrayOutput{})
+	pulumi.RegisterOutputType(GetMembershipEndpointOutput{})
+	pulumi.RegisterOutputType(GetMembershipEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetMembershipEndpointGkeClusterOutput{})
+	pulumi.RegisterOutputType(GetMembershipEndpointGkeClusterArrayOutput{})
 }

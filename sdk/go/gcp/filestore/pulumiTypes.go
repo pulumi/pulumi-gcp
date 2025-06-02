@@ -842,6 +842,9 @@ type InstanceFileSharesNfsExportOption struct {
 	// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
 	// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 	IpRanges []string `pulumi:"ipRanges"`
+	// The source VPC network for `ipRanges`.
+	// Required for instances using Private Service Connect, optional otherwise.
+	Network *string `pulumi:"network"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
 	// for not allowing root access. The default is NO_ROOT_SQUASH.
 	// Default value is `NO_ROOT_SQUASH`.
@@ -878,6 +881,9 @@ type InstanceFileSharesNfsExportOptionArgs struct {
 	// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
 	// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
+	// The source VPC network for `ipRanges`.
+	// Required for instances using Private Service Connect, optional otherwise.
+	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
 	// for not allowing root access. The default is NO_ROOT_SQUASH.
 	// Default value is `NO_ROOT_SQUASH`.
@@ -963,6 +969,12 @@ func (o InstanceFileSharesNfsExportOptionOutput) AnonUid() pulumi.IntPtrOutput {
 // The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 func (o InstanceFileSharesNfsExportOptionOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceFileSharesNfsExportOption) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+}
+
+// The source VPC network for `ipRanges`.
+// Required for instances using Private Service Connect, optional otherwise.
+func (o InstanceFileSharesNfsExportOptionOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFileSharesNfsExportOption) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
 // Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
@@ -1263,9 +1275,7 @@ type InstanceNetwork struct {
 	// If not provided, the connect mode defaults to
 	// DIRECT_PEERING.
 	// Default value is `DIRECT_PEERING`.
-	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-	//
-	// ***
+	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
 	ConnectMode *string `pulumi:"connectMode"`
 	// (Output)
 	// A list of IPv4 or IPv6 addresses.
@@ -1277,6 +1287,10 @@ type InstanceNetwork struct {
 	// The name of the GCE VPC network to which the
 	// instance is connected.
 	Network string `pulumi:"network"`
+	// Private Service Connect configuration.
+	// Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
+	// Structure is documented below.
+	PscConfig *InstanceNetworkPscConfig `pulumi:"pscConfig"`
 	// A /29 CIDR block that identifies the range of IP
 	// addresses reserved for this instance.
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
@@ -1298,9 +1312,7 @@ type InstanceNetworkArgs struct {
 	// If not provided, the connect mode defaults to
 	// DIRECT_PEERING.
 	// Default value is `DIRECT_PEERING`.
-	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-	//
-	// ***
+	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
 	ConnectMode pulumi.StringPtrInput `pulumi:"connectMode"`
 	// (Output)
 	// A list of IPv4 or IPv6 addresses.
@@ -1312,6 +1324,10 @@ type InstanceNetworkArgs struct {
 	// The name of the GCE VPC network to which the
 	// instance is connected.
 	Network pulumi.StringInput `pulumi:"network"`
+	// Private Service Connect configuration.
+	// Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
+	// Structure is documented below.
+	PscConfig InstanceNetworkPscConfigPtrInput `pulumi:"pscConfig"`
 	// A /29 CIDR block that identifies the range of IP
 	// addresses reserved for this instance.
 	ReservedIpRange pulumi.StringPtrInput `pulumi:"reservedIpRange"`
@@ -1372,9 +1388,7 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Co
 // If not provided, the connect mode defaults to
 // DIRECT_PEERING.
 // Default value is `DIRECT_PEERING`.
-// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-//
-// ***
+// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
 func (o InstanceNetworkOutput) ConnectMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.ConnectMode }).(pulumi.StringPtrOutput)
 }
@@ -1396,6 +1410,13 @@ func (o InstanceNetworkOutput) Modes() pulumi.StringArrayOutput {
 // instance is connected.
 func (o InstanceNetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Private Service Connect configuration.
+// Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
+// Structure is documented below.
+func (o InstanceNetworkOutput) PscConfig() InstanceNetworkPscConfigPtrOutput {
+	return o.ApplyT(func(v InstanceNetwork) *InstanceNetworkPscConfig { return v.PscConfig }).(InstanceNetworkPscConfigPtrOutput)
 }
 
 // A /29 CIDR block that identifies the range of IP
@@ -1422,6 +1443,163 @@ func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceNetwork {
 		return vs[0].([]InstanceNetwork)[vs[1].(int)]
 	}).(InstanceNetworkOutput)
+}
+
+type InstanceNetworkPscConfig struct {
+	// Consumer service project in which the Private Service Connect endpoint
+	// would be set up. This is optional, and only relevant in case the network
+	// is a shared VPC. If this is not specified, the endpoint would be set up
+	// in the VPC host project.
+	//
+	// ***
+	EndpointProject *string `pulumi:"endpointProject"`
+}
+
+// InstanceNetworkPscConfigInput is an input type that accepts InstanceNetworkPscConfigArgs and InstanceNetworkPscConfigOutput values.
+// You can construct a concrete instance of `InstanceNetworkPscConfigInput` via:
+//
+//	InstanceNetworkPscConfigArgs{...}
+type InstanceNetworkPscConfigInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPscConfigOutput() InstanceNetworkPscConfigOutput
+	ToInstanceNetworkPscConfigOutputWithContext(context.Context) InstanceNetworkPscConfigOutput
+}
+
+type InstanceNetworkPscConfigArgs struct {
+	// Consumer service project in which the Private Service Connect endpoint
+	// would be set up. This is optional, and only relevant in case the network
+	// is a shared VPC. If this is not specified, the endpoint would be set up
+	// in the VPC host project.
+	//
+	// ***
+	EndpointProject pulumi.StringPtrInput `pulumi:"endpointProject"`
+}
+
+func (InstanceNetworkPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPscConfig)(nil)).Elem()
+}
+
+func (i InstanceNetworkPscConfigArgs) ToInstanceNetworkPscConfigOutput() InstanceNetworkPscConfigOutput {
+	return i.ToInstanceNetworkPscConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPscConfigArgs) ToInstanceNetworkPscConfigOutputWithContext(ctx context.Context) InstanceNetworkPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPscConfigOutput)
+}
+
+func (i InstanceNetworkPscConfigArgs) ToInstanceNetworkPscConfigPtrOutput() InstanceNetworkPscConfigPtrOutput {
+	return i.ToInstanceNetworkPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPscConfigArgs) ToInstanceNetworkPscConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkPscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPscConfigOutput).ToInstanceNetworkPscConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkPscConfigPtrInput is an input type that accepts InstanceNetworkPscConfigArgs, InstanceNetworkPscConfigPtr and InstanceNetworkPscConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkPscConfigPtrInput` via:
+//
+//	        InstanceNetworkPscConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkPscConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPscConfigPtrOutput() InstanceNetworkPscConfigPtrOutput
+	ToInstanceNetworkPscConfigPtrOutputWithContext(context.Context) InstanceNetworkPscConfigPtrOutput
+}
+
+type instanceNetworkPscConfigPtrType InstanceNetworkPscConfigArgs
+
+func InstanceNetworkPscConfigPtr(v *InstanceNetworkPscConfigArgs) InstanceNetworkPscConfigPtrInput {
+	return (*instanceNetworkPscConfigPtrType)(v)
+}
+
+func (*instanceNetworkPscConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPscConfig)(nil)).Elem()
+}
+
+func (i *instanceNetworkPscConfigPtrType) ToInstanceNetworkPscConfigPtrOutput() InstanceNetworkPscConfigPtrOutput {
+	return i.ToInstanceNetworkPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkPscConfigPtrType) ToInstanceNetworkPscConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkPscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPscConfigPtrOutput)
+}
+
+type InstanceNetworkPscConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPscConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkPscConfigOutput) ToInstanceNetworkPscConfigOutput() InstanceNetworkPscConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkPscConfigOutput) ToInstanceNetworkPscConfigOutputWithContext(ctx context.Context) InstanceNetworkPscConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkPscConfigOutput) ToInstanceNetworkPscConfigPtrOutput() InstanceNetworkPscConfigPtrOutput {
+	return o.ToInstanceNetworkPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkPscConfigOutput) ToInstanceNetworkPscConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkPscConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkPscConfig) *InstanceNetworkPscConfig {
+		return &v
+	}).(InstanceNetworkPscConfigPtrOutput)
+}
+
+// Consumer service project in which the Private Service Connect endpoint
+// would be set up. This is optional, and only relevant in case the network
+// is a shared VPC. If this is not specified, the endpoint would be set up
+// in the VPC host project.
+//
+// ***
+func (o InstanceNetworkPscConfigOutput) EndpointProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPscConfig) *string { return v.EndpointProject }).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkPscConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPscConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPscConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkPscConfigPtrOutput) ToInstanceNetworkPscConfigPtrOutput() InstanceNetworkPscConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPscConfigPtrOutput) ToInstanceNetworkPscConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkPscConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPscConfigPtrOutput) Elem() InstanceNetworkPscConfigOutput {
+	return o.ApplyT(func(v *InstanceNetworkPscConfig) InstanceNetworkPscConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkPscConfig
+		return ret
+	}).(InstanceNetworkPscConfigOutput)
+}
+
+// Consumer service project in which the Private Service Connect endpoint
+// would be set up. This is optional, and only relevant in case the network
+// is a shared VPC. If this is not specified, the endpoint would be set up
+// in the VPC host project.
+//
+// ***
+func (o InstanceNetworkPscConfigPtrOutput) EndpointProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPscConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointProject
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstancePerformanceConfig struct {
@@ -2515,6 +2693,9 @@ type GetInstanceFileShareNfsExportOption struct {
 	// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
 	// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 	IpRanges []string `pulumi:"ipRanges"`
+	// The source VPC network for 'ip_ranges'.
+	// Required for instances using Private Service Connect, optional otherwise.
+	Network string `pulumi:"network"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
 	// for not allowing root access. The default is NO_ROOT_SQUASH. Default value: "NO_ROOT_SQUASH" Possible values: ["NO_ROOT_SQUASH", "ROOT_SQUASH"]
 	SquashMode string `pulumi:"squashMode"`
@@ -2547,6 +2728,9 @@ type GetInstanceFileShareNfsExportOptionArgs struct {
 	// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
 	// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
+	// The source VPC network for 'ip_ranges'.
+	// Required for instances using Private Service Connect, optional otherwise.
+	Network pulumi.StringInput `pulumi:"network"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
 	// for not allowing root access. The default is NO_ROOT_SQUASH. Default value: "NO_ROOT_SQUASH" Possible values: ["NO_ROOT_SQUASH", "ROOT_SQUASH"]
 	SquashMode pulumi.StringInput `pulumi:"squashMode"`
@@ -2628,6 +2812,12 @@ func (o GetInstanceFileShareNfsExportOptionOutput) AnonUid() pulumi.IntOutput {
 // The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 func (o GetInstanceFileShareNfsExportOptionOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+}
+
+// The source VPC network for 'ip_ranges'.
+// Required for instances using Private Service Connect, optional otherwise.
+func (o GetInstanceFileShareNfsExportOptionOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) string { return v.Network }).(pulumi.StringOutput)
 }
 
 // Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
@@ -2862,7 +3052,7 @@ func (o GetInstanceInitialReplicationReplicaArrayOutput) Index(i pulumi.IntInput
 type GetInstanceNetwork struct {
 	// The network connect mode of the Filestore instance.
 	// If not provided, the connect mode defaults to
-	// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS"]
+	// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS", "PRIVATE_SERVICE_CONNECT"]
 	ConnectMode string `pulumi:"connectMode"`
 	// A list of IPv4 or IPv6 addresses.
 	IpAddresses []string `pulumi:"ipAddresses"`
@@ -2872,6 +3062,9 @@ type GetInstanceNetwork struct {
 	// The name of the GCE VPC network to which the
 	// instance is connected.
 	Network string `pulumi:"network"`
+	// Private Service Connect configuration.
+	// Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
+	PscConfigs []GetInstanceNetworkPscConfig `pulumi:"pscConfigs"`
 	// A /29 CIDR block that identifies the range of IP
 	// addresses reserved for this instance.
 	ReservedIpRange string `pulumi:"reservedIpRange"`
@@ -2891,7 +3084,7 @@ type GetInstanceNetworkInput interface {
 type GetInstanceNetworkArgs struct {
 	// The network connect mode of the Filestore instance.
 	// If not provided, the connect mode defaults to
-	// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS"]
+	// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS", "PRIVATE_SERVICE_CONNECT"]
 	ConnectMode pulumi.StringInput `pulumi:"connectMode"`
 	// A list of IPv4 or IPv6 addresses.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
@@ -2901,6 +3094,9 @@ type GetInstanceNetworkArgs struct {
 	// The name of the GCE VPC network to which the
 	// instance is connected.
 	Network pulumi.StringInput `pulumi:"network"`
+	// Private Service Connect configuration.
+	// Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
+	PscConfigs GetInstanceNetworkPscConfigArrayInput `pulumi:"pscConfigs"`
 	// A /29 CIDR block that identifies the range of IP
 	// addresses reserved for this instance.
 	ReservedIpRange pulumi.StringInput `pulumi:"reservedIpRange"`
@@ -2959,7 +3155,7 @@ func (o GetInstanceNetworkOutput) ToGetInstanceNetworkOutputWithContext(ctx cont
 
 // The network connect mode of the Filestore instance.
 // If not provided, the connect mode defaults to
-// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS"]
+// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS", "PRIVATE_SERVICE_CONNECT"]
 func (o GetInstanceNetworkOutput) ConnectMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) string { return v.ConnectMode }).(pulumi.StringOutput)
 }
@@ -2979,6 +3175,12 @@ func (o GetInstanceNetworkOutput) Modes() pulumi.StringArrayOutput {
 // instance is connected.
 func (o GetInstanceNetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Private Service Connect configuration.
+// Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
+func (o GetInstanceNetworkOutput) PscConfigs() GetInstanceNetworkPscConfigArrayOutput {
+	return o.ApplyT(func(v GetInstanceNetwork) []GetInstanceNetworkPscConfig { return v.PscConfigs }).(GetInstanceNetworkPscConfigArrayOutput)
 }
 
 // A /29 CIDR block that identifies the range of IP
@@ -3005,6 +3207,112 @@ func (o GetInstanceNetworkArrayOutput) Index(i pulumi.IntInput) GetInstanceNetwo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetwork {
 		return vs[0].([]GetInstanceNetwork)[vs[1].(int)]
 	}).(GetInstanceNetworkOutput)
+}
+
+type GetInstanceNetworkPscConfig struct {
+	// Consumer service project in which the Private Service Connect endpoint
+	// would be set up. This is optional, and only relevant in case the network
+	// is a shared VPC. If this is not specified, the endpoint would be set up
+	// in the VPC host project.
+	EndpointProject string `pulumi:"endpointProject"`
+}
+
+// GetInstanceNetworkPscConfigInput is an input type that accepts GetInstanceNetworkPscConfigArgs and GetInstanceNetworkPscConfigOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkPscConfigInput` via:
+//
+//	GetInstanceNetworkPscConfigArgs{...}
+type GetInstanceNetworkPscConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkPscConfigOutput() GetInstanceNetworkPscConfigOutput
+	ToGetInstanceNetworkPscConfigOutputWithContext(context.Context) GetInstanceNetworkPscConfigOutput
+}
+
+type GetInstanceNetworkPscConfigArgs struct {
+	// Consumer service project in which the Private Service Connect endpoint
+	// would be set up. This is optional, and only relevant in case the network
+	// is a shared VPC. If this is not specified, the endpoint would be set up
+	// in the VPC host project.
+	EndpointProject pulumi.StringInput `pulumi:"endpointProject"`
+}
+
+func (GetInstanceNetworkPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkPscConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkPscConfigArgs) ToGetInstanceNetworkPscConfigOutput() GetInstanceNetworkPscConfigOutput {
+	return i.ToGetInstanceNetworkPscConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkPscConfigArgs) ToGetInstanceNetworkPscConfigOutputWithContext(ctx context.Context) GetInstanceNetworkPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkPscConfigOutput)
+}
+
+// GetInstanceNetworkPscConfigArrayInput is an input type that accepts GetInstanceNetworkPscConfigArray and GetInstanceNetworkPscConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkPscConfigArrayInput` via:
+//
+//	GetInstanceNetworkPscConfigArray{ GetInstanceNetworkPscConfigArgs{...} }
+type GetInstanceNetworkPscConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkPscConfigArrayOutput() GetInstanceNetworkPscConfigArrayOutput
+	ToGetInstanceNetworkPscConfigArrayOutputWithContext(context.Context) GetInstanceNetworkPscConfigArrayOutput
+}
+
+type GetInstanceNetworkPscConfigArray []GetInstanceNetworkPscConfigInput
+
+func (GetInstanceNetworkPscConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkPscConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkPscConfigArray) ToGetInstanceNetworkPscConfigArrayOutput() GetInstanceNetworkPscConfigArrayOutput {
+	return i.ToGetInstanceNetworkPscConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkPscConfigArray) ToGetInstanceNetworkPscConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkPscConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkPscConfigArrayOutput)
+}
+
+type GetInstanceNetworkPscConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkPscConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkPscConfigOutput) ToGetInstanceNetworkPscConfigOutput() GetInstanceNetworkPscConfigOutput {
+	return o
+}
+
+func (o GetInstanceNetworkPscConfigOutput) ToGetInstanceNetworkPscConfigOutputWithContext(ctx context.Context) GetInstanceNetworkPscConfigOutput {
+	return o
+}
+
+// Consumer service project in which the Private Service Connect endpoint
+// would be set up. This is optional, and only relevant in case the network
+// is a shared VPC. If this is not specified, the endpoint would be set up
+// in the VPC host project.
+func (o GetInstanceNetworkPscConfigOutput) EndpointProject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkPscConfig) string { return v.EndpointProject }).(pulumi.StringOutput)
+}
+
+type GetInstanceNetworkPscConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkPscConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkPscConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkPscConfigArrayOutput) ToGetInstanceNetworkPscConfigArrayOutput() GetInstanceNetworkPscConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkPscConfigArrayOutput) ToGetInstanceNetworkPscConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkPscConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkPscConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkPscConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkPscConfig {
+		return vs[0].([]GetInstanceNetworkPscConfig)[vs[1].(int)]
+	}).(GetInstanceNetworkPscConfigOutput)
 }
 
 type GetInstancePerformanceConfig struct {
@@ -3350,6 +3658,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInitialReplicationReplicaArrayInput)(nil)).Elem(), InstanceInitialReplicationReplicaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInput)(nil)).Elem(), InstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkArrayInput)(nil)).Elem(), InstanceNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPscConfigInput)(nil)).Elem(), InstanceNetworkPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPscConfigPtrInput)(nil)).Elem(), InstanceNetworkPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigInput)(nil)).Elem(), InstancePerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigPtrInput)(nil)).Elem(), InstancePerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigFixedIopsInput)(nil)).Elem(), InstancePerformanceConfigFixedIopsArgs{})
@@ -3374,6 +3684,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceInitialReplicationReplicaArrayInput)(nil)).Elem(), GetInstanceInitialReplicationReplicaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInput)(nil)).Elem(), GetInstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkArrayInput)(nil)).Elem(), GetInstanceNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkPscConfigInput)(nil)).Elem(), GetInstanceNetworkPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkPscConfigArrayInput)(nil)).Elem(), GetInstanceNetworkPscConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigInput)(nil)).Elem(), GetInstancePerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigArrayInput)(nil)).Elem(), GetInstancePerformanceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigFixedIopInput)(nil)).Elem(), GetInstancePerformanceConfigFixedIopArgs{})
@@ -3398,6 +3710,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceInitialReplicationReplicaArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkArrayOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPscConfigOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPscConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstancePerformanceConfigOutput{})
 	pulumi.RegisterOutputType(InstancePerformanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstancePerformanceConfigFixedIopsOutput{})
@@ -3422,6 +3736,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceInitialReplicationReplicaArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkPscConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkPscConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePerformanceConfigOutput{})
 	pulumi.RegisterOutputType(GetInstancePerformanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePerformanceConfigFixedIopOutput{})

@@ -6,8 +6,11 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class URLMapDefaultRouteActionRequestMirrorPolicyArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,10 +32,28 @@ public final class URLMapDefaultRouteActionRequestMirrorPolicyArgs extends com.p
         return this.backendService;
     }
 
+    /**
+     * The percentage of requests to be mirrored to backendService.
+     * The value must be between 0.0 and 100.0 inclusive.
+     * 
+     */
+    @Import(name="mirrorPercent")
+    private @Nullable Output<Double> mirrorPercent;
+
+    /**
+     * @return The percentage of requests to be mirrored to backendService.
+     * The value must be between 0.0 and 100.0 inclusive.
+     * 
+     */
+    public Optional<Output<Double>> mirrorPercent() {
+        return Optional.ofNullable(this.mirrorPercent);
+    }
+
     private URLMapDefaultRouteActionRequestMirrorPolicyArgs() {}
 
     private URLMapDefaultRouteActionRequestMirrorPolicyArgs(URLMapDefaultRouteActionRequestMirrorPolicyArgs $) {
         this.backendService = $.backendService;
+        this.mirrorPercent = $.mirrorPercent;
     }
 
     public static Builder builder() {
@@ -72,6 +93,29 @@ public final class URLMapDefaultRouteActionRequestMirrorPolicyArgs extends com.p
          */
         public Builder backendService(String backendService) {
             return backendService(Output.of(backendService));
+        }
+
+        /**
+         * @param mirrorPercent The percentage of requests to be mirrored to backendService.
+         * The value must be between 0.0 and 100.0 inclusive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirrorPercent(@Nullable Output<Double> mirrorPercent) {
+            $.mirrorPercent = mirrorPercent;
+            return this;
+        }
+
+        /**
+         * @param mirrorPercent The percentage of requests to be mirrored to backendService.
+         * The value must be between 0.0 and 100.0 inclusive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirrorPercent(Double mirrorPercent) {
+            return mirrorPercent(Output.of(mirrorPercent));
         }
 
         public URLMapDefaultRouteActionRequestMirrorPolicyArgs build() {

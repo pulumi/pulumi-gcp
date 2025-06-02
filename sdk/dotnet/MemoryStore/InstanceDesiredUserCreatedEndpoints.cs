@@ -274,9 +274,9 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         InstanceId = "instance-user-auto-conn",
     ///         ShardCount = 1,
-    ///         DesiredPscAutoConnections = new[]
+    ///         DesiredAutoCreatedEndpoints = new[]
     ///         {
-    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredPscAutoConnectionArgs
+    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs
     ///             {
     ///                 Network = network1.Id,
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),

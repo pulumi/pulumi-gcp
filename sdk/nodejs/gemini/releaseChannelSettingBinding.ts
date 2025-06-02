@@ -114,7 +114,7 @@ export class ReleaseChannelSettingBinding extends pulumi.CustomResource {
      * Product type of the setting binding.
      * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
      */
-    public readonly product!: pulumi.Output<string | undefined>;
+    public readonly product!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

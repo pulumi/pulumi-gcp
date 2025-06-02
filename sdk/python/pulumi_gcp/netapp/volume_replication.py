@@ -249,6 +249,8 @@ class _VolumeReplicationState:
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  force_stopping: Optional[pulumi.Input[builtins.bool]] = None,
                  healthy: Optional[pulumi.Input[builtins.bool]] = None,
+                 hybrid_peering_details: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]]] = None,
+                 hybrid_replication_type: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  mirror_state: Optional[pulumi.Input[builtins.str]] = None,
@@ -279,6 +281,9 @@ class _VolumeReplicationState:
         :param pulumi.Input[builtins.bool] healthy: Condition of the relationship. Can be one of the following:
                - true: The replication relationship is healthy. It has not missed the most recent scheduled transfer.
                - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer.
+        :param pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]] hybrid_peering_details: HybridPeeringDetails contains details about the hybrid peering.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] hybrid_replication_type: Hybrid replication type.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -328,6 +333,10 @@ class _VolumeReplicationState:
             pulumi.set(__self__, "force_stopping", force_stopping)
         if healthy is not None:
             pulumi.set(__self__, "healthy", healthy)
+        if hybrid_peering_details is not None:
+            pulumi.set(__self__, "hybrid_peering_details", hybrid_peering_details)
+        if hybrid_replication_type is not None:
+            pulumi.set(__self__, "hybrid_replication_type", hybrid_replication_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -457,6 +466,31 @@ class _VolumeReplicationState:
     @healthy.setter
     def healthy(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "healthy", value)
+
+    @property
+    @pulumi.getter(name="hybridPeeringDetails")
+    def hybrid_peering_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]]]:
+        """
+        HybridPeeringDetails contains details about the hybrid peering.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hybrid_peering_details")
+
+    @hybrid_peering_details.setter
+    def hybrid_peering_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]]]):
+        pulumi.set(self, "hybrid_peering_details", value)
+
+    @property
+    @pulumi.getter(name="hybridReplicationType")
+    def hybrid_replication_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Hybrid replication type.
+        """
+        return pulumi.get(self, "hybrid_replication_type")
+
+    @hybrid_replication_type.setter
+    def hybrid_replication_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "hybrid_replication_type", value)
 
     @property
     @pulumi.getter
@@ -917,6 +951,8 @@ class VolumeReplication(pulumi.CustomResource):
             __props__.__dict__["destination_volume"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["healthy"] = None
+            __props__.__dict__["hybrid_peering_details"] = None
+            __props__.__dict__["hybrid_replication_type"] = None
             __props__.__dict__["mirror_state"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["role"] = None
@@ -944,6 +980,8 @@ class VolumeReplication(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             force_stopping: Optional[pulumi.Input[builtins.bool]] = None,
             healthy: Optional[pulumi.Input[builtins.bool]] = None,
+            hybrid_peering_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridPeeringDetailArgs', 'VolumeReplicationHybridPeeringDetailArgsDict']]]]] = None,
+            hybrid_replication_type: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             location: Optional[pulumi.Input[builtins.str]] = None,
             mirror_state: Optional[pulumi.Input[builtins.str]] = None,
@@ -979,6 +1017,9 @@ class VolumeReplication(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] healthy: Condition of the relationship. Can be one of the following:
                - true: The replication relationship is healthy. It has not missed the most recent scheduled transfer.
                - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridPeeringDetailArgs', 'VolumeReplicationHybridPeeringDetailArgsDict']]]] hybrid_peering_details: HybridPeeringDetails contains details about the hybrid peering.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] hybrid_replication_type: Hybrid replication type.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1024,6 +1065,8 @@ class VolumeReplication(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["force_stopping"] = force_stopping
         __props__.__dict__["healthy"] = healthy
+        __props__.__dict__["hybrid_peering_details"] = hybrid_peering_details
+        __props__.__dict__["hybrid_replication_type"] = hybrid_replication_type
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["mirror_state"] = mirror_state
@@ -1107,6 +1150,23 @@ class VolumeReplication(pulumi.CustomResource):
         - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer.
         """
         return pulumi.get(self, "healthy")
+
+    @property
+    @pulumi.getter(name="hybridPeeringDetails")
+    def hybrid_peering_details(self) -> pulumi.Output[Sequence['outputs.VolumeReplicationHybridPeeringDetail']]:
+        """
+        HybridPeeringDetails contains details about the hybrid peering.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hybrid_peering_details")
+
+    @property
+    @pulumi.getter(name="hybridReplicationType")
+    def hybrid_replication_type(self) -> pulumi.Output[builtins.str]:
+        """
+        Hybrid replication type.
+        """
+        return pulumi.get(self, "hybrid_replication_type")
 
     @property
     @pulumi.getter

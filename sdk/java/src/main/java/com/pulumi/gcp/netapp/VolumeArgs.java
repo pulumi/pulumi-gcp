@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.netapp.inputs.VolumeBackupConfigArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeExportPolicyArgs;
+import com.pulumi.gcp.netapp.inputs.VolumeHybridReplicationParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeRestoreParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeSnapshotPolicyArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeTieringPolicyArgs;
@@ -107,6 +108,23 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<VolumeExportPolicyArgs>> exportPolicy() {
         return Optional.ofNullable(this.exportPolicy);
+    }
+
+    /**
+     * The Hybrid Replication parameters for the volume.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="hybridReplicationParameters")
+    private @Nullable Output<VolumeHybridReplicationParametersArgs> hybridReplicationParameters;
+
+    /**
+     * @return The Hybrid Replication parameters for the volume.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VolumeHybridReplicationParametersArgs>> hybridReplicationParameters() {
+        return Optional.ofNullable(this.hybridReplicationParameters);
     }
 
     /**
@@ -419,6 +437,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.exportPolicy = $.exportPolicy;
+        this.hybridReplicationParameters = $.hybridReplicationParameters;
         this.kerberosEnabled = $.kerberosEnabled;
         this.labels = $.labels;
         this.largeCapacity = $.largeCapacity;
@@ -570,6 +589,29 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder exportPolicy(VolumeExportPolicyArgs exportPolicy) {
             return exportPolicy(Output.of(exportPolicy));
+        }
+
+        /**
+         * @param hybridReplicationParameters The Hybrid Replication parameters for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridReplicationParameters(@Nullable Output<VolumeHybridReplicationParametersArgs> hybridReplicationParameters) {
+            $.hybridReplicationParameters = hybridReplicationParameters;
+            return this;
+        }
+
+        /**
+         * @param hybridReplicationParameters The Hybrid Replication parameters for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridReplicationParameters(VolumeHybridReplicationParametersArgs hybridReplicationParameters) {
+            return hybridReplicationParameters(Output.of(hybridReplicationParameters));
         }
 
         /**

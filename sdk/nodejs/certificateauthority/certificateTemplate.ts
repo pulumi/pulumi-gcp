@@ -104,6 +104,128 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Privateca Template Zero Max Issuer Path Length Null Ca
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificateauthority.CertificateTemplate("default", {
+ *     name: "my-template",
+ *     location: "us-central1",
+ *     description: "A sample certificate template",
+ *     identityConstraints: {
+ *         allowSubjectAltNamesPassthrough: true,
+ *         allowSubjectPassthrough: true,
+ *         celExpression: {
+ *             description: "Always true",
+ *             expression: "true",
+ *             location: "any.file.anywhere",
+ *             title: "Sample expression",
+ *         },
+ *     },
+ *     maximumLifetime: "86400s",
+ *     passthroughExtensions: {
+ *         additionalExtensions: [{
+ *             objectIdPaths: [
+ *                 1,
+ *                 6,
+ *             ],
+ *         }],
+ *         knownExtensions: ["EXTENDED_KEY_USAGE"],
+ *     },
+ *     predefinedValues: {
+ *         additionalExtensions: [{
+ *             objectId: {
+ *                 objectIdPaths: [
+ *                     1,
+ *                     6,
+ *                 ],
+ *             },
+ *             value: "c3RyaW5nCg==",
+ *             critical: true,
+ *         }],
+ *         aiaOcspServers: ["string"],
+ *         caOptions: {
+ *             isCa: false,
+ *             nullCa: true,
+ *             zeroMaxIssuerPathLength: true,
+ *             maxIssuerPathLength: 0,
+ *         },
+ *         keyUsage: {
+ *             baseKeyUsage: {
+ *                 certSign: false,
+ *                 contentCommitment: true,
+ *                 crlSign: false,
+ *                 dataEncipherment: true,
+ *                 decipherOnly: true,
+ *                 digitalSignature: true,
+ *                 encipherOnly: true,
+ *                 keyAgreement: true,
+ *                 keyEncipherment: true,
+ *             },
+ *             extendedKeyUsage: {
+ *                 clientAuth: true,
+ *                 codeSigning: true,
+ *                 emailProtection: true,
+ *                 ocspSigning: true,
+ *                 serverAuth: true,
+ *                 timeStamping: true,
+ *             },
+ *             unknownExtendedKeyUsages: [{
+ *                 objectIdPaths: [
+ *                     1,
+ *                     6,
+ *                 ],
+ *             }],
+ *         },
+ *         policyIds: [{
+ *             objectIdPaths: [
+ *                 1,
+ *                 6,
+ *             ],
+ *         }],
+ *         nameConstraints: {
+ *             critical: true,
+ *             permittedDnsNames: [
+ *                 "*.example1.com",
+ *                 "*.example2.com",
+ *             ],
+ *             excludedDnsNames: [
+ *                 "*.deny.example1.com",
+ *                 "*.deny.example2.com",
+ *             ],
+ *             permittedIpRanges: [
+ *                 "10.0.0.0/8",
+ *                 "11.0.0.0/8",
+ *             ],
+ *             excludedIpRanges: [
+ *                 "10.1.1.0/24",
+ *                 "11.1.1.0/24",
+ *             ],
+ *             permittedEmailAddresses: [
+ *                 ".example1.com",
+ *                 ".example2.com",
+ *             ],
+ *             excludedEmailAddresses: [
+ *                 ".deny.example1.com",
+ *                 ".deny.example2.com",
+ *             ],
+ *             permittedUris: [
+ *                 ".example1.com",
+ *                 ".example2.com",
+ *             ],
+ *             excludedUris: [
+ *                 ".deny.example1.com",
+ *                 ".deny.example2.com",
+ *             ],
+ *         },
+ *     },
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

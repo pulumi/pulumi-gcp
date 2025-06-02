@@ -90,6 +90,11 @@ export const getDefaultServiceAccount: typeof import("./getDefaultServiceAccount
 export const getDefaultServiceAccountOutput: typeof import("./getDefaultServiceAccount").getDefaultServiceAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getDefaultServiceAccount","getDefaultServiceAccountOutput"], () => require("./getDefaultServiceAccount"));
 
+export { GetTableArgs, GetTableResult, GetTableOutputArgs } from "./getTable";
+export const getTable: typeof import("./getTable").getTable = null as any;
+export const getTableOutput: typeof import("./getTable").getTableOutput = null as any;
+utilities.lazyLoad(exports, ["getTable","getTableOutput"], () => require("./getTable"));
+
 export { GetTableIamPolicyArgs, GetTableIamPolicyResult, GetTableIamPolicyOutputArgs } from "./getTableIamPolicy";
 export const getTableIamPolicy: typeof import("./getTableIamPolicy").getTableIamPolicy = null as any;
 export const getTableIamPolicyOutput: typeof import("./getTableIamPolicy").getTableIamPolicyOutput = null as any;

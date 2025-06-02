@@ -202,7 +202,7 @@ import * as utilities from "../utilities";
  * const instance_user_auto_connInstance = new gcp.memorystore.Instance("instance-user-auto-conn", {
  *     instanceId: "instance-user-auto-conn",
  *     shardCount: 1,
- *     desiredPscAutoConnections: [{
+ *     desiredAutoCreatedEndpoints: [{
  *         network: network1.id,
  *         projectId: project.then(project => project.projectId),
  *     }],

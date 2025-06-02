@@ -13,30 +13,64 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateTemplatePredefinedValuesCaOptions {
     /**
-     * @return Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+     * @return Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
      * 
      */
     private @Nullable Boolean isCa;
     /**
-     * @return Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+     * @return Optional. Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
+     * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
      * 
      */
     private @Nullable Integer maxIssuerPathLength;
+    /**
+     * @return Optional. When true, the &#34;CA&#34; in Basic Constraints extension will be set to null and omitted from the CA certificate.
+     * If both `is_ca` and `null_ca` are unset, the &#34;CA&#34; in Basic Constraints extension will be set to false.
+     * Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+     * 
+     */
+    private @Nullable Boolean nullCa;
+    /**
+     * @return Optional. When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
+     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * the max path length will be omitted from the CA certificate.
+     * 
+     */
+    private @Nullable Boolean zeroMaxIssuerPathLength;
 
     private CertificateTemplatePredefinedValuesCaOptions() {}
     /**
-     * @return Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+     * @return Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
      * 
      */
     public Optional<Boolean> isCa() {
         return Optional.ofNullable(this.isCa);
     }
     /**
-     * @return Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+     * @return Optional. Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
+     * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
      * 
      */
     public Optional<Integer> maxIssuerPathLength() {
         return Optional.ofNullable(this.maxIssuerPathLength);
+    }
+    /**
+     * @return Optional. When true, the &#34;CA&#34; in Basic Constraints extension will be set to null and omitted from the CA certificate.
+     * If both `is_ca` and `null_ca` are unset, the &#34;CA&#34; in Basic Constraints extension will be set to false.
+     * Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+     * 
+     */
+    public Optional<Boolean> nullCa() {
+        return Optional.ofNullable(this.nullCa);
+    }
+    /**
+     * @return Optional. When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
+     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * the max path length will be omitted from the CA certificate.
+     * 
+     */
+    public Optional<Boolean> zeroMaxIssuerPathLength() {
+        return Optional.ofNullable(this.zeroMaxIssuerPathLength);
     }
 
     public static Builder builder() {
@@ -50,11 +84,15 @@ public final class CertificateTemplatePredefinedValuesCaOptions {
     public static final class Builder {
         private @Nullable Boolean isCa;
         private @Nullable Integer maxIssuerPathLength;
+        private @Nullable Boolean nullCa;
+        private @Nullable Boolean zeroMaxIssuerPathLength;
         public Builder() {}
         public Builder(CertificateTemplatePredefinedValuesCaOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isCa = defaults.isCa;
     	      this.maxIssuerPathLength = defaults.maxIssuerPathLength;
+    	      this.nullCa = defaults.nullCa;
+    	      this.zeroMaxIssuerPathLength = defaults.zeroMaxIssuerPathLength;
         }
 
         @CustomType.Setter
@@ -69,10 +107,24 @@ public final class CertificateTemplatePredefinedValuesCaOptions {
             this.maxIssuerPathLength = maxIssuerPathLength;
             return this;
         }
+        @CustomType.Setter
+        public Builder nullCa(@Nullable Boolean nullCa) {
+
+            this.nullCa = nullCa;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder zeroMaxIssuerPathLength(@Nullable Boolean zeroMaxIssuerPathLength) {
+
+            this.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
+            return this;
+        }
         public CertificateTemplatePredefinedValuesCaOptions build() {
             final var _resultValue = new CertificateTemplatePredefinedValuesCaOptions();
             _resultValue.isCa = isCa;
             _resultValue.maxIssuerPathLength = maxIssuerPathLength;
+            _resultValue.nullCa = nullCa;
+            _resultValue.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
             return _resultValue;
         }
     }

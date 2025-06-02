@@ -173,7 +173,23 @@ def get_feature(location: Optional[builtins.str] = None,
                 project: Optional[builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the details of a specific GKE Hub Feature. Use this data source to retrieve the feature's configuration and state.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    example = gcp.gkehub.get_feature(location="global",
+        name="servicemesh")
+    ```
+
+
+    :param builtins.str location: The location for the GKE Hub Feature.
+    :param builtins.str name: The name of the feature you want to know the status of.
+    :param builtins.str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['location'] = location
@@ -202,7 +218,23 @@ def get_feature_output(location: Optional[pulumi.Input[builtins.str]] = None,
                        project: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the details of a specific GKE Hub Feature. Use this data source to retrieve the feature's configuration and state.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    example = gcp.gkehub.get_feature(location="global",
+        name="servicemesh")
+    ```
+
+
+    :param builtins.str location: The location for the GKE Hub Feature.
+    :param builtins.str name: The name of the feature you want to know the status of.
+    :param builtins.str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['location'] = location

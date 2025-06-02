@@ -20,7 +20,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
     public static final AddonsConfigAddonsConfigArgs Empty = new AddonsConfigAddonsConfigArgs();
 
     /**
-     * Configuration for the Monetization add-on.
+     * Configuration for the Advanced API Ops add-on.
      * Structure is documented below.
      * 
      */
@@ -28,7 +28,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
     private @Nullable Output<AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs> advancedApiOpsConfig;
 
     /**
-     * @return Configuration for the Monetization add-on.
+     * @return Configuration for the Advanced API Ops add-on.
      * Structure is documented below.
      * 
      */
@@ -37,7 +37,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Configuration for the Monetization add-on.
+     * Configuration for the API Security add-on.
      * Structure is documented below.
      * 
      */
@@ -45,7 +45,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
     private @Nullable Output<AddonsConfigAddonsConfigApiSecurityConfigArgs> apiSecurityConfig;
 
     /**
-     * @return Configuration for the Monetization add-on.
+     * @return Configuration for the API Security add-on.
      * Structure is documented below.
      * 
      */
@@ -71,7 +71,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Configuration for the Monetization add-on.
+     * Configuration for the Integration add-on.
      * Structure is documented below.
      * 
      */
@@ -79,7 +79,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
     private @Nullable Output<AddonsConfigAddonsConfigIntegrationConfigArgs> integrationConfig;
 
     /**
-     * @return Configuration for the Monetization add-on.
+     * @return Configuration for the Integration add-on.
      * Structure is documented below.
      * 
      */
@@ -133,7 +133,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param advancedApiOpsConfig Configuration for the Monetization add-on.
+         * @param advancedApiOpsConfig Configuration for the Advanced API Ops add-on.
          * Structure is documented below.
          * 
          * @return builder
@@ -145,7 +145,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param advancedApiOpsConfig Configuration for the Monetization add-on.
+         * @param advancedApiOpsConfig Configuration for the Advanced API Ops add-on.
          * Structure is documented below.
          * 
          * @return builder
@@ -156,7 +156,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param apiSecurityConfig Configuration for the Monetization add-on.
+         * @param apiSecurityConfig Configuration for the API Security add-on.
          * Structure is documented below.
          * 
          * @return builder
@@ -168,7 +168,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param apiSecurityConfig Configuration for the Monetization add-on.
+         * @param apiSecurityConfig Configuration for the API Security add-on.
          * Structure is documented below.
          * 
          * @return builder
@@ -202,7 +202,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param integrationConfig Configuration for the Monetization add-on.
+         * @param integrationConfig Configuration for the Integration add-on.
          * Structure is documented below.
          * 
          * @return builder
@@ -214,7 +214,7 @@ public final class AddonsConfigAddonsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param integrationConfig Configuration for the Monetization add-on.
+         * @param integrationConfig Configuration for the Integration add-on.
          * Structure is documented below.
          * 
          * @return builder

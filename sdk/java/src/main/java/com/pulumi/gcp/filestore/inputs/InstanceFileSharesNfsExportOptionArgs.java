@@ -96,6 +96,23 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
     }
 
     /**
+     * The source VPC network for `ip_ranges`.
+     * Required for instances using Private Service Connect, optional otherwise.
+     * 
+     */
+    @Import(name="network")
+    private @Nullable Output<String> network;
+
+    /**
+     * @return The source VPC network for `ip_ranges`.
+     * Required for instances using Private Service Connect, optional otherwise.
+     * 
+     */
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
+    }
+
+    /**
      * Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
      * for not allowing root access. The default is NO_ROOT_SQUASH.
      * Default value is `NO_ROOT_SQUASH`.
@@ -123,6 +140,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
         this.anonGid = $.anonGid;
         this.anonUid = $.anonUid;
         this.ipRanges = $.ipRanges;
+        this.network = $.network;
         this.squashMode = $.squashMode;
     }
 
@@ -256,6 +274,29 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
          */
         public Builder ipRanges(String... ipRanges) {
             return ipRanges(List.of(ipRanges));
+        }
+
+        /**
+         * @param network The source VPC network for `ip_ranges`.
+         * Required for instances using Private Service Connect, optional otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(@Nullable Output<String> network) {
+            $.network = network;
+            return this;
+        }
+
+        /**
+         * @param network The source VPC network for `ip_ranges`.
+         * Required for instances using Private Service Connect, optional otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(String network) {
+            return network(Output.of(network));
         }
 
         /**

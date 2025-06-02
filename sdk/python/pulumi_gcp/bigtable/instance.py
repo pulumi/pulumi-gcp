@@ -32,7 +32,7 @@ class InstanceArgs:
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
@@ -78,7 +78,7 @@ class InstanceArgs:
     @pulumi.getter
     def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]]:
         """
-        A block of cluster configuration options. This can be specified at least once, and up 
+        A block of cluster configuration options. This can be specified at least once, and up
         to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         to default to the backend value. See structure below.
 
@@ -200,7 +200,7 @@ class _InstanceState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
@@ -254,7 +254,7 @@ class _InstanceState:
     @pulumi.getter
     def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]]:
         """
-        A block of cluster configuration options. This can be specified at least once, and up 
+        A block of cluster configuration options. This can be specified at least once, and up
         to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         to default to the backend value. See structure below.
 
@@ -403,9 +403,8 @@ class Instance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        ## +---
+        ## subcategory: "Cloud Bigtable"
 
-        subcategory: "Cloud Bigtable"
         description: |-
           Creates a Google Bigtable instance.
         ---
@@ -495,7 +494,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
@@ -524,9 +523,8 @@ class Instance(pulumi.CustomResource):
                  args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## +---
+        ## subcategory: "Cloud Bigtable"
 
-        subcategory: "Cloud Bigtable"
         description: |-
           Creates a Google Bigtable instance.
         ---
@@ -685,7 +683,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceClusterArgs', 'InstanceClusterArgsDict']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
@@ -731,7 +729,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def clusters(self) -> pulumi.Output[Sequence['outputs.InstanceCluster']]:
         """
-        A block of cluster configuration options. This can be specified at least once, and up 
+        A block of cluster configuration options. This can be specified at least once, and up
         to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         to default to the backend value. See structure below.
 

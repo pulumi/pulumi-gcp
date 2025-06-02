@@ -56,7 +56,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      */
     private @Nullable List<String> oauthScopes;
     /**
-     * @return The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+     * @return The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
      * 
      */
     private @Nullable String serviceAccount;
@@ -126,7 +126,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         return this.oauthScopes == null ? List.of() : this.oauthScopes;
     }
     /**
-     * @return The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+     * @return The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
      * 
      */
     public Optional<String> serviceAccount() {

@@ -722,6 +722,8 @@ class Organization(pulumi.CustomResource):
         org = gcp.apigee.Organization("org",
             description="Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction.",
             project_id=current.project,
+            api_consumer_data_location="europe-west1",
+            billing_type="PAYG",
             disable_vpc_peering=True)
         ```
         ### Apigee Organization Cloud Full
@@ -920,6 +922,8 @@ class Organization(pulumi.CustomResource):
         org = gcp.apigee.Organization("org",
             description="Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction.",
             project_id=current.project,
+            api_consumer_data_location="europe-west1",
+            billing_type="PAYG",
             disable_vpc_peering=True)
         ```
         ### Apigee Organization Cloud Full

@@ -5,10 +5,10 @@ Subject: [PATCH] Bucket: Skip default labels for Import and Create
 
 
 diff --git a/google-beta/services/storage/resource_storage_bucket.go b/google-beta/services/storage/resource_storage_bucket.go
-index caf1608ce..f37f56004 100644
+index e5c2ead58..bda06ff61 100644
 --- a/google-beta/services/storage/resource_storage_bucket.go
 +++ b/google-beta/services/storage/resource_storage_bucket.go
-@@ -2034,10 +2034,10 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res
+@@ -2236,10 +2236,10 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res
  	if err := d.Set("lifecycle_rule", flattenBucketLifecycle(d, res.Lifecycle)); err != nil {
  		return fmt.Errorf("Error setting lifecycle_rule: %s", err)
  	}
@@ -22,10 +22,10 @@ index caf1608ce..f37f56004 100644
  	}
  	if err := d.Set("effective_labels", res.Labels); err != nil {
 diff --git a/google-beta/tpgresource/labels.go b/google-beta/tpgresource/labels.go
-index eafe38438..c1f82d0d2 100644
+index c3be35fd5..18c9af8cc 100644
 --- a/google-beta/tpgresource/labels.go
 +++ b/google-beta/tpgresource/labels.go
-@@ -31,6 +31,34 @@ func SetLabels(labels map[string]string, d *schema.ResourceData, lineage string)
+@@ -45,6 +45,34 @@ func SetLabels(labels map[string]string, d *schema.ResourceData, lineage string)
  	return d.Set(lineage, transformed)
  }
  

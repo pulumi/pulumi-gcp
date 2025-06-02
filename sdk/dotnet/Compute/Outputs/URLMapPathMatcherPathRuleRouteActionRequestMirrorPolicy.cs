@@ -17,11 +17,20 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The full or partial URL to the BackendService resource being mirrored to.
         /// </summary>
         public readonly string BackendService;
+        /// <summary>
+        /// The percentage of requests to be mirrored to backendService.
+        /// The value must be between 0.0 and 100.0 inclusive.
+        /// </summary>
+        public readonly double? MirrorPercent;
 
         [OutputConstructor]
-        private URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(string backendService)
+        private URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(
+            string backendService,
+
+            double? mirrorPercent)
         {
             BackendService = backendService;
+            MirrorPercent = mirrorPercent;
         }
     }
 }

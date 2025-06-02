@@ -74,6 +74,7 @@ type LookupRegionBackendServiceResult struct {
 	CreationTimestamp            string                                            `pulumi:"creationTimestamp"`
 	CustomMetrics                []GetRegionBackendServiceCustomMetric             `pulumi:"customMetrics"`
 	Description                  string                                            `pulumi:"description"`
+	DynamicForwardings           []GetRegionBackendServiceDynamicForwarding        `pulumi:"dynamicForwardings"`
 	EnableCdn                    bool                                              `pulumi:"enableCdn"`
 	FailoverPolicies             []GetRegionBackendServiceFailoverPolicy           `pulumi:"failoverPolicies"`
 	Fingerprint                  string                                            `pulumi:"fingerprint"`
@@ -184,6 +185,12 @@ func (o LookupRegionBackendServiceResultOutput) CustomMetrics() GetRegionBackend
 
 func (o LookupRegionBackendServiceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionBackendServiceResultOutput) DynamicForwardings() GetRegionBackendServiceDynamicForwardingArrayOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) []GetRegionBackendServiceDynamicForwarding {
+		return v.DynamicForwardings
+	}).(GetRegionBackendServiceDynamicForwardingArrayOutput)
 }
 
 func (o LookupRegionBackendServiceResultOutput) EnableCdn() pulumi.BoolOutput {

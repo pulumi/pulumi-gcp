@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:managedkafka/acl:Acl":
+		r = &Acl{}
 	case "gcp:managedkafka/cluster:Cluster":
 		r = &Cluster{}
 	case "gcp:managedkafka/connectCluster:ConnectCluster":
@@ -42,6 +44,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"managedkafka/acl",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"managedkafka/cluster",

@@ -19,6 +19,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The Compute NetworkFirewallPolicy with rules resource
+ * 
  * ## Example Usage
  * 
  * ### Compute Network Firewall Policy With Rules Full
@@ -43,8 +45,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
  * import com.pulumi.gcp.networksecurity.SecurityProfileGroup;
  * import com.pulumi.gcp.networksecurity.SecurityProfileGroupArgs;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicyWithRules;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicyWithRulesArgs;
  * import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyWithRulesRuleArgs;
@@ -101,11 +101,6 @@ import javax.annotation.Nullable;
  *             .parent("organizations/123456789")
  *             .description("my description")
  *             .threatPreventionProfile(securityProfile1.id())
- *             .build());
- * 
- *         var network = new Network("network", NetworkArgs.builder()
- *             .name("network")
- *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var primary = new NetworkFirewallPolicyWithRules("primary", NetworkFirewallPolicyWithRulesArgs.builder()
@@ -182,39 +177,6 @@ import javax.annotation.Nullable;
  *                         .srcIpRanges("0.0.0.0/0")
  *                         .layer4Configs(NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
- *                             .build())
- *                         .build())
- *                     .build(),
- *                 NetworkFirewallPolicyWithRulesRuleArgs.builder()
- *                     .description("network scope rule 1")
- *                     .ruleName("network scope 1")
- *                     .priority(4000)
- *                     .enableLogging(false)
- *                     .action("allow")
- *                     .direction("INGRESS")
- *                     .match(NetworkFirewallPolicyWithRulesRuleMatchArgs.builder()
- *                         .srcIpRanges("11.100.0.1/32")
- *                         .srcNetworkScope("VPC_NETWORKS")
- *                         .srcNetworks(network.id())
- *                         .layer4Configs(NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
- *                             .ipProtocol("tcp")
- *                             .ports("8080")
- *                             .build())
- *                         .build())
- *                     .build(),
- *                 NetworkFirewallPolicyWithRulesRuleArgs.builder()
- *                     .description("network scope rule 2")
- *                     .ruleName("network scope 2")
- *                     .priority(5000)
- *                     .enableLogging(false)
- *                     .action("allow")
- *                     .direction("EGRESS")
- *                     .match(NetworkFirewallPolicyWithRulesRuleMatchArgs.builder()
- *                         .destIpRanges("0.0.0.0/0")
- *                         .destNetworkScope("INTERNET")
- *                         .layer4Configs(NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
- *                             .ipProtocol("tcp")
- *                             .ports("8080")
  *                             .build())
  *                         .build())
  *                     .build())

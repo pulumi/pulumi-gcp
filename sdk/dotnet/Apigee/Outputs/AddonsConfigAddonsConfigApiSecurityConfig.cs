@@ -14,12 +14,12 @@ namespace Pulumi.Gcp.Apigee.Outputs
     public sealed class AddonsConfigAddonsConfigApiSecurityConfig
     {
         /// <summary>
-        /// Flag that specifies whether the Advanced API Ops add-on is enabled.
+        /// Flag that specifies whether the API security add-on is enabled.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// (Output)
-        /// Flag that specifies whether the Advanced API Ops add-on is enabled.
+        /// Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
         /// </summary>
         public readonly string? ExpiresAt;
 

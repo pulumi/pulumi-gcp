@@ -43,6 +43,12 @@ public final class InstanceFileSharesNfsExportOption {
      */
     private @Nullable List<String> ipRanges;
     /**
+     * @return The source VPC network for `ip_ranges`.
+     * Required for instances using Private Service Connect, optional otherwise.
+     * 
+     */
+    private @Nullable String network;
+    /**
      * @return Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
      * for not allowing root access. The default is NO_ROOT_SQUASH.
      * Default value is `NO_ROOT_SQUASH`.
@@ -90,6 +96,14 @@ public final class InstanceFileSharesNfsExportOption {
         return this.ipRanges == null ? List.of() : this.ipRanges;
     }
     /**
+     * @return The source VPC network for `ip_ranges`.
+     * Required for instances using Private Service Connect, optional otherwise.
+     * 
+     */
+    public Optional<String> network() {
+        return Optional.ofNullable(this.network);
+    }
+    /**
      * @return Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
      * for not allowing root access. The default is NO_ROOT_SQUASH.
      * Default value is `NO_ROOT_SQUASH`.
@@ -113,6 +127,7 @@ public final class InstanceFileSharesNfsExportOption {
         private @Nullable Integer anonGid;
         private @Nullable Integer anonUid;
         private @Nullable List<String> ipRanges;
+        private @Nullable String network;
         private @Nullable String squashMode;
         public Builder() {}
         public Builder(InstanceFileSharesNfsExportOption defaults) {
@@ -121,6 +136,7 @@ public final class InstanceFileSharesNfsExportOption {
     	      this.anonGid = defaults.anonGid;
     	      this.anonUid = defaults.anonUid;
     	      this.ipRanges = defaults.ipRanges;
+    	      this.network = defaults.network;
     	      this.squashMode = defaults.squashMode;
         }
 
@@ -152,6 +168,12 @@ public final class InstanceFileSharesNfsExportOption {
             return ipRanges(List.of(ipRanges));
         }
         @CustomType.Setter
+        public Builder network(@Nullable String network) {
+
+            this.network = network;
+            return this;
+        }
+        @CustomType.Setter
         public Builder squashMode(@Nullable String squashMode) {
 
             this.squashMode = squashMode;
@@ -163,6 +185,7 @@ public final class InstanceFileSharesNfsExportOption {
             _resultValue.anonGid = anonGid;
             _resultValue.anonUid = anonUid;
             _resultValue.ipRanges = ipRanges;
+            _resultValue.network = network;
             _resultValue.squashMode = squashMode;
             return _resultValue;
         }

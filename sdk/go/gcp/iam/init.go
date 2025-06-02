@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkforcePool{}
 	case "gcp:iam/workforcePoolProvider:WorkforcePoolProvider":
 		r = &WorkforcePoolProvider{}
+	case "gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey":
+		r = &WorkforcePoolProviderKey{}
 	case "gcp:iam/workloadIdentityPool:WorkloadIdentityPool":
 		r = &WorkloadIdentityPool{}
 	case "gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding":
@@ -49,6 +51,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkloadIdentityPoolIamMember{}
 	case "gcp:iam/workloadIdentityPoolIamPolicy:WorkloadIdentityPoolIamPolicy":
 		r = &WorkloadIdentityPoolIamPolicy{}
+	case "gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity":
+		r = &WorkloadIdentityPoolManagedIdentity{}
+	case "gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace":
+		r = &WorkloadIdentityPoolNamespace{}
 	case "gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider":
 		r = &WorkloadIdentityPoolProvider{}
 	default:
@@ -116,6 +122,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"iam/workforcePoolProviderKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"iam/workloadIdentityPool",
 		&module{version},
 	)
@@ -132,6 +143,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iam/workloadIdentityPoolIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iam/workloadIdentityPoolManagedIdentity",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iam/workloadIdentityPoolNamespace",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

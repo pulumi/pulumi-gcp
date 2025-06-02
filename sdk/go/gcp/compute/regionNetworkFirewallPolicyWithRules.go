@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The Compute NetworkFirewallPolicy with rules resource
+//
 // ## Example Usage
 //
 // ### Compute Region Network Firewall Policy With Rules Full
@@ -67,13 +69,6 @@ import (
 //				Description: pulumi.String("Tag value"),
 //				Parent:      secureTagKey1.ID(),
 //				ShortName:   pulumi.String("tag-value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("network"),
-//				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -159,53 +154,6 @@ import (
 //							Layer4Configs: compute.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
 //								&compute.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
 //									IpProtocol: pulumi.String("udp"),
-//								},
-//							},
-//						},
-//					},
-//					&compute.RegionNetworkFirewallPolicyWithRulesRuleArgs{
-//						Description:   pulumi.String("network scope rule 1"),
-//						RuleName:      pulumi.String("network scope 1"),
-//						Priority:      pulumi.Int(4000),
-//						EnableLogging: pulumi.Bool(false),
-//						Action:        pulumi.String("allow"),
-//						Direction:     pulumi.String("INGRESS"),
-//						Match: &compute.RegionNetworkFirewallPolicyWithRulesRuleMatchArgs{
-//							SrcIpRanges: pulumi.StringArray{
-//								pulumi.String("11.100.0.1/32"),
-//							},
-//							SrcNetworkScope: pulumi.String("VPC_NETWORKS"),
-//							SrcNetworks: pulumi.StringArray{
-//								network.ID(),
-//							},
-//							Layer4Configs: compute.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
-//								&compute.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
-//									IpProtocol: pulumi.String("tcp"),
-//									Ports: pulumi.StringArray{
-//										pulumi.String("8080"),
-//									},
-//								},
-//							},
-//						},
-//					},
-//					&compute.RegionNetworkFirewallPolicyWithRulesRuleArgs{
-//						Description:   pulumi.String("network scope rule 2"),
-//						RuleName:      pulumi.String("network scope 2"),
-//						Priority:      pulumi.Int(5000),
-//						EnableLogging: pulumi.Bool(false),
-//						Action:        pulumi.String("allow"),
-//						Direction:     pulumi.String("EGRESS"),
-//						Match: &compute.RegionNetworkFirewallPolicyWithRulesRuleMatchArgs{
-//							DestIpRanges: pulumi.StringArray{
-//								pulumi.String("0.0.0.0/0"),
-//							},
-//							DestNetworkScope: pulumi.String("NON_INTERNET"),
-//							Layer4Configs: compute.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
-//								&compute.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
-//									IpProtocol: pulumi.String("tcp"),
-//									Ports: pulumi.StringArray{
-//										pulumi.String("8080"),
-//									},
 //								},
 //							},
 //						},

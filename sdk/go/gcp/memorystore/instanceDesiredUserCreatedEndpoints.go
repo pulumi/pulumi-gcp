@@ -316,8 +316,8 @@ import (
 //			instance_user_auto_connInstance, err := memorystore.NewInstance(ctx, "instance-user-auto-conn", &memorystore.InstanceArgs{
 //				InstanceId: pulumi.String("instance-user-auto-conn"),
 //				ShardCount: pulumi.Int(1),
-//				DesiredPscAutoConnections: memorystore.InstanceDesiredPscAutoConnectionArray{
-//					&memorystore.InstanceDesiredPscAutoConnectionArgs{
+//				DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
+//					&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
 //						Network:   network1.ID(),
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},

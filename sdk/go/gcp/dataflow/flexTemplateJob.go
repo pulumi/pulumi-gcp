@@ -130,6 +130,8 @@ type FlexTemplateJob struct {
 
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments pulumi.StringArrayOutput `pulumi:"additionalExperiments"`
+	// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+	AdditionalPipelineOptions pulumi.StringArrayOutput `pulumi:"additionalPipelineOptions"`
 	// The algorithm to use for autoscaling.
 	AutoscalingAlgorithm pulumi.StringOutput `pulumi:"autoscalingAlgorithm"`
 	// The GCS path to the Dataflow job Flex
@@ -239,6 +241,8 @@ func GetFlexTemplateJob(ctx *pulumi.Context,
 type flexTemplateJobState struct {
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments []string `pulumi:"additionalExperiments"`
+	// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+	AdditionalPipelineOptions []string `pulumi:"additionalPipelineOptions"`
 	// The algorithm to use for autoscaling.
 	AutoscalingAlgorithm *string `pulumi:"autoscalingAlgorithm"`
 	// The GCS path to the Dataflow job Flex
@@ -311,6 +315,8 @@ type flexTemplateJobState struct {
 type FlexTemplateJobState struct {
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments pulumi.StringArrayInput
+	// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+	AdditionalPipelineOptions pulumi.StringArrayInput
 	// The algorithm to use for autoscaling.
 	AutoscalingAlgorithm pulumi.StringPtrInput
 	// The GCS path to the Dataflow job Flex
@@ -387,6 +393,8 @@ func (FlexTemplateJobState) ElementType() reflect.Type {
 type flexTemplateJobArgs struct {
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments []string `pulumi:"additionalExperiments"`
+	// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+	AdditionalPipelineOptions []string `pulumi:"additionalPipelineOptions"`
 	// The algorithm to use for autoscaling.
 	AutoscalingAlgorithm *string `pulumi:"autoscalingAlgorithm"`
 	// The GCS path to the Dataflow job Flex
@@ -451,6 +459,8 @@ type flexTemplateJobArgs struct {
 type FlexTemplateJobArgs struct {
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments pulumi.StringArrayInput
+	// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+	AdditionalPipelineOptions pulumi.StringArrayInput
 	// The algorithm to use for autoscaling.
 	AutoscalingAlgorithm pulumi.StringPtrInput
 	// The GCS path to the Dataflow job Flex
@@ -601,6 +611,11 @@ func (o FlexTemplateJobOutput) ToFlexTemplateJobOutputWithContext(ctx context.Co
 // List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 func (o FlexTemplateJobOutput) AdditionalExperiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringArrayOutput { return v.AdditionalExperiments }).(pulumi.StringArrayOutput)
+}
+
+// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+func (o FlexTemplateJobOutput) AdditionalPipelineOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringArrayOutput { return v.AdditionalPipelineOptions }).(pulumi.StringArrayOutput)
 }
 
 // The algorithm to use for autoscaling.

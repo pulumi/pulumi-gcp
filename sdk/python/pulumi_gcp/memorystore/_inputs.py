@@ -34,6 +34,8 @@ __all__ = [
     'InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict',
     'InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs',
     'InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict',
+    'InstanceDesiredAutoCreatedEndpointArgs',
+    'InstanceDesiredAutoCreatedEndpointArgsDict',
     'InstanceDesiredPscAutoConnectionArgs',
     'InstanceDesiredPscAutoConnectionArgsDict',
     'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs',
@@ -626,6 +628,65 @@ class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs:
     @uid.setter
     def uid(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "uid", value)
+
+
+if not MYPY:
+    class InstanceDesiredAutoCreatedEndpointArgsDict(TypedDict):
+        network: pulumi.Input[builtins.str]
+        """
+        (Output)
+        Output only. The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        project_id: pulumi.Input[builtins.str]
+        """
+        (Output)
+        Output only. The consumer project_id where the forwarding rule is created from.
+        """
+elif False:
+    InstanceDesiredAutoCreatedEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceDesiredAutoCreatedEndpointArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[builtins.str],
+                 project_id: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] network: (Output)
+               Output only. The consumer network where the IP address resides, in the form of
+               projects/{project_id}/global/networks/{network_id}.
+        :param pulumi.Input[builtins.str] project_id: (Output)
+               Output only. The consumer project_id where the forwarding rule is created from.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[builtins.str]:
+        """
+        (Output)
+        Output only. The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[builtins.str]:
+        """
+        (Output)
+        Output only. The consumer project_id where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "project_id", value)
 
 
 if not MYPY:

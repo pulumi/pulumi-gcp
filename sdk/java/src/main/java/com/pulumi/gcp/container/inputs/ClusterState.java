@@ -1550,14 +1550,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The custom keys configuration of the cluster.
+     * The custom keys configuration of the cluster Structure is documented below.
      * 
      */
     @Import(name="userManagedKeysConfig")
     private @Nullable Output<ClusterUserManagedKeysConfigArgs> userManagedKeysConfig;
 
     /**
-     * @return The custom keys configuration of the cluster.
+     * @return The custom keys configuration of the cluster Structure is documented below.
      * 
      */
     public Optional<Output<ClusterUserManagedKeysConfigArgs>> userManagedKeysConfig() {
@@ -3724,7 +3724,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userManagedKeysConfig The custom keys configuration of the cluster.
+         * @param userManagedKeysConfig The custom keys configuration of the cluster Structure is documented below.
          * 
          * @return builder
          * 
@@ -3735,7 +3735,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userManagedKeysConfig The custom keys configuration of the cluster.
+         * @param userManagedKeysConfig The custom keys configuration of the cluster Structure is documented below.
          * 
          * @return builder
          * 

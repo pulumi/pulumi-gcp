@@ -718,6 +718,38 @@ import (
 //	}
 //
 // ```
+// ### Backend Service Dynamic Forwarding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				DynamicForwarding: &compute.BackendServiceDynamicForwardingArgs{
+//					IpPortSelection: &compute.BackendServiceDynamicForwardingIpPortSelectionArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // BackendService can be imported using any of these accepted formats:
@@ -789,6 +821,10 @@ type BackendService struct {
 	CustomResponseHeaders pulumi.StringArrayOutput `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+	// feature which together with Service Extension allows customized and complex routing logic.
+	// Structure is documented below.
+	DynamicForwarding BackendServiceDynamicForwardingPtrOutput `pulumi:"dynamicForwarding"`
 	// The resource URL for the edge security policy associated with this backend service.
 	EdgeSecurityPolicy pulumi.StringPtrOutput `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendService.
@@ -922,6 +958,9 @@ type BackendService struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configures traffic steering properties of internal passthrough Network Load Balancers.
+	// Structure is documented below.
+	NetworkPassThroughLbTrafficPolicy BackendServiceNetworkPassThroughLbTrafficPolicyPtrOutput `pulumi:"networkPassThroughLbTrafficPolicy"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// Applicable backend service types can be a global backend service with the
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -1046,6 +1085,10 @@ type backendServiceState struct {
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+	// feature which together with Service Extension allows customized and complex routing logic.
+	// Structure is documented below.
+	DynamicForwarding *BackendServiceDynamicForwarding `pulumi:"dynamicForwarding"`
 	// The resource URL for the edge security policy associated with this backend service.
 	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendService.
@@ -1179,6 +1222,9 @@ type backendServiceState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Configures traffic steering properties of internal passthrough Network Load Balancers.
+	// Structure is documented below.
+	NetworkPassThroughLbTrafficPolicy *BackendServiceNetworkPassThroughLbTrafficPolicy `pulumi:"networkPassThroughLbTrafficPolicy"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// Applicable backend service types can be a global backend service with the
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -1274,6 +1320,10 @@ type BackendServiceState struct {
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+	// feature which together with Service Extension allows customized and complex routing logic.
+	// Structure is documented below.
+	DynamicForwarding BackendServiceDynamicForwardingPtrInput
 	// The resource URL for the edge security policy associated with this backend service.
 	EdgeSecurityPolicy pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendService.
@@ -1407,6 +1457,9 @@ type BackendServiceState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Configures traffic steering properties of internal passthrough Network Load Balancers.
+	// Structure is documented below.
+	NetworkPassThroughLbTrafficPolicy BackendServiceNetworkPassThroughLbTrafficPolicyPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// Applicable backend service types can be a global backend service with the
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -1504,6 +1557,10 @@ type backendServiceArgs struct {
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+	// feature which together with Service Extension allows customized and complex routing logic.
+	// Structure is documented below.
+	DynamicForwarding *BackendServiceDynamicForwarding `pulumi:"dynamicForwarding"`
 	// The resource URL for the edge security policy associated with this backend service.
 	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendService.
@@ -1632,6 +1689,9 @@ type backendServiceArgs struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Configures traffic steering properties of internal passthrough Network Load Balancers.
+	// Structure is documented below.
+	NetworkPassThroughLbTrafficPolicy *BackendServiceNetworkPassThroughLbTrafficPolicy `pulumi:"networkPassThroughLbTrafficPolicy"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// Applicable backend service types can be a global backend service with the
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -1724,6 +1784,10 @@ type BackendServiceArgs struct {
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+	// feature which together with Service Extension allows customized and complex routing logic.
+	// Structure is documented below.
+	DynamicForwarding BackendServiceDynamicForwardingPtrInput
 	// The resource URL for the edge security policy associated with this backend service.
 	EdgeSecurityPolicy pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendService.
@@ -1852,6 +1916,9 @@ type BackendServiceArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Configures traffic steering properties of internal passthrough Network Load Balancers.
+	// Structure is documented below.
+	NetworkPassThroughLbTrafficPolicy BackendServiceNetworkPassThroughLbTrafficPolicyPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// Applicable backend service types can be a global backend service with the
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -2067,6 +2134,13 @@ func (o BackendServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+// feature which together with Service Extension allows customized and complex routing logic.
+// Structure is documented below.
+func (o BackendServiceOutput) DynamicForwarding() BackendServiceDynamicForwardingPtrOutput {
+	return o.ApplyT(func(v *BackendService) BackendServiceDynamicForwardingPtrOutput { return v.DynamicForwarding }).(BackendServiceDynamicForwardingPtrOutput)
+}
+
 // The resource URL for the edge security policy associated with this backend service.
 func (o BackendServiceOutput) EdgeSecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.EdgeSecurityPolicy }).(pulumi.StringPtrOutput)
@@ -2243,6 +2317,14 @@ func (o BackendServiceOutput) MaxStreamDuration() BackendServiceMaxStreamDuratio
 // ***
 func (o BackendServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configures traffic steering properties of internal passthrough Network Load Balancers.
+// Structure is documented below.
+func (o BackendServiceOutput) NetworkPassThroughLbTrafficPolicy() BackendServiceNetworkPassThroughLbTrafficPolicyPtrOutput {
+	return o.ApplyT(func(v *BackendService) BackendServiceNetworkPassThroughLbTrafficPolicyPtrOutput {
+		return v.NetworkPassThroughLbTrafficPolicy
+	}).(BackendServiceNetworkPassThroughLbTrafficPolicyPtrOutput)
 }
 
 // Settings controlling eviction of unhealthy hosts from the load balancing pool.

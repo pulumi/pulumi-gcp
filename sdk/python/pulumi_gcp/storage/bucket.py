@@ -31,6 +31,7 @@ class BucketArgs:
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  hierarchical_namespace: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']] = None,
+                 ip_filter: Optional[pulumi.Input['BucketIpFilterArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
                  logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
@@ -60,6 +61,7 @@ class BucketArgs:
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
         :param pulumi.Input['BucketHierarchicalNamespaceArgs'] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
+        :param pulumi.Input['BucketIpFilterArgs'] ip_filter: The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketLoggingArgs'] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
@@ -94,6 +96,8 @@ class BucketArgs:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if hierarchical_namespace is not None:
             pulumi.set(__self__, "hierarchical_namespace", hierarchical_namespace)
+        if ip_filter is not None:
+            pulumi.set(__self__, "ip_filter", ip_filter)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if lifecycle_rules is not None:
@@ -234,6 +238,18 @@ class BucketArgs:
     @hierarchical_namespace.setter
     def hierarchical_namespace(self, value: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]):
         pulumi.set(self, "hierarchical_namespace", value)
+
+    @property
+    @pulumi.getter(name="ipFilter")
+    def ip_filter(self) -> Optional[pulumi.Input['BucketIpFilterArgs']]:
+        """
+        The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+        """
+        return pulumi.get(self, "ip_filter")
+
+    @ip_filter.setter
+    def ip_filter(self, value: Optional[pulumi.Input['BucketIpFilterArgs']]):
+        pulumi.set(self, "ip_filter", value)
 
     @property
     @pulumi.getter
@@ -418,6 +434,7 @@ class _BucketState:
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  hierarchical_namespace: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']] = None,
+                 ip_filter: Optional[pulumi.Input['BucketIpFilterArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
@@ -451,6 +468,7 @@ class _BucketState:
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
         :param pulumi.Input['BucketHierarchicalNamespaceArgs'] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
+        :param pulumi.Input['BucketIpFilterArgs'] ip_filter: The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[builtins.str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -495,6 +513,8 @@ class _BucketState:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if hierarchical_namespace is not None:
             pulumi.set(__self__, "hierarchical_namespace", hierarchical_namespace)
+        if ip_filter is not None:
+            pulumi.set(__self__, "ip_filter", ip_filter)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if lifecycle_rules is not None:
@@ -644,6 +664,18 @@ class _BucketState:
     @hierarchical_namespace.setter
     def hierarchical_namespace(self, value: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]):
         pulumi.set(self, "hierarchical_namespace", value)
+
+    @property
+    @pulumi.getter(name="ipFilter")
+    def ip_filter(self) -> Optional[pulumi.Input['BucketIpFilterArgs']]:
+        """
+        The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+        """
+        return pulumi.get(self, "ip_filter")
+
+    @ip_filter.setter
+    def ip_filter(self, value: Optional[pulumi.Input['BucketIpFilterArgs']]):
+        pulumi.set(self, "ip_filter", value)
 
     @property
     @pulumi.getter
@@ -916,6 +948,7 @@ class Bucket(pulumi.CustomResource):
                  encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  hierarchical_namespace: Optional[pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
+                 ip_filter: Optional[pulumi.Input[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
@@ -1097,6 +1130,7 @@ class Bucket(pulumi.CustomResource):
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
         :param pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
+        :param pulumi.Input[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']] ip_filter: The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[builtins.str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -1299,6 +1333,7 @@ class Bucket(pulumi.CustomResource):
                  encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  hierarchical_namespace: Optional[pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
+                 ip_filter: Optional[pulumi.Input[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
@@ -1331,6 +1366,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["hierarchical_namespace"] = hierarchical_namespace
+            __props__.__dict__["ip_filter"] = ip_filter
             __props__.__dict__["labels"] = labels
             __props__.__dict__["lifecycle_rules"] = lifecycle_rules
             if location is None and not opts.urn:
@@ -1376,6 +1412,7 @@ class Bucket(pulumi.CustomResource):
             encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
             force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
             hierarchical_namespace: Optional[pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
+            ip_filter: Optional[pulumi.Input[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
             location: Optional[pulumi.Input[builtins.str]] = None,
@@ -1414,6 +1451,7 @@ class Bucket(pulumi.CustomResource):
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
         :param pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
+        :param pulumi.Input[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']] ip_filter: The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[builtins.str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -1453,6 +1491,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["encryption"] = encryption
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["hierarchical_namespace"] = hierarchical_namespace
+        __props__.__dict__["ip_filter"] = ip_filter
         __props__.__dict__["labels"] = labels
         __props__.__dict__["lifecycle_rules"] = lifecycle_rules
         __props__.__dict__["location"] = location
@@ -1546,6 +1585,14 @@ class Bucket(pulumi.CustomResource):
         The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         """
         return pulumi.get(self, "hierarchical_namespace")
+
+    @property
+    @pulumi.getter(name="ipFilter")
+    def ip_filter(self) -> pulumi.Output[Optional['outputs.BucketIpFilter']]:
+        """
+        The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+        """
+        return pulumi.get(self, "ip_filter")
 
     @property
     @pulumi.getter

@@ -13,14 +13,14 @@ namespace Pulumi.Gcp.Apigee.Inputs
     public sealed class AddonsConfigAddonsConfigConnectorsPlatformConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flag that specifies whether the Advanced API Ops add-on is enabled.
+        /// Flag that specifies whether the Connectors Platform add-on is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// (Output)
-        /// Flag that specifies whether the Advanced API Ops add-on is enabled.
+        /// Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }

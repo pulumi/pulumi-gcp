@@ -67,6 +67,7 @@ type LookupInstanceResult struct {
 	CreateTime                      string                                      `pulumi:"createTime"`
 	CrossInstanceReplicationConfigs []GetInstanceCrossInstanceReplicationConfig `pulumi:"crossInstanceReplicationConfigs"`
 	DeletionProtectionEnabled       bool                                        `pulumi:"deletionProtectionEnabled"`
+	DesiredAutoCreatedEndpoints     []GetInstanceDesiredAutoCreatedEndpoint     `pulumi:"desiredAutoCreatedEndpoints"`
 	DesiredPscAutoConnections       []GetInstanceDesiredPscAutoConnection       `pulumi:"desiredPscAutoConnections"`
 	DiscoveryEndpoints              []GetInstanceDiscoveryEndpoint              `pulumi:"discoveryEndpoints"`
 	EffectiveLabels                 map[string]string                           `pulumi:"effectiveLabels"`
@@ -166,6 +167,12 @@ func (o LookupInstanceResultOutput) CrossInstanceReplicationConfigs() GetInstanc
 
 func (o LookupInstanceResultOutput) DeletionProtectionEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceResult) bool { return v.DeletionProtectionEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupInstanceResultOutput) DesiredAutoCreatedEndpoints() GetInstanceDesiredAutoCreatedEndpointArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceDesiredAutoCreatedEndpoint {
+		return v.DesiredAutoCreatedEndpoints
+	}).(GetInstanceDesiredAutoCreatedEndpointArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) DesiredPscAutoConnections() GetInstanceDesiredPscAutoConnectionArrayOutput {

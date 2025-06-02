@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceAutomatedBackupConfig;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceCrossInstanceReplicationConfig;
+import com.pulumi.gcp.memorystore.outputs.GetInstanceDesiredAutoCreatedEndpoint;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceDesiredPscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceDiscoveryEndpoint;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceEndpoint;
@@ -37,6 +38,7 @@ public final class GetInstanceResult {
     private String createTime;
     private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
     private Boolean deletionProtectionEnabled;
+    private List<GetInstanceDesiredAutoCreatedEndpoint> desiredAutoCreatedEndpoints;
     private List<GetInstanceDesiredPscAutoConnection> desiredPscAutoConnections;
     private List<GetInstanceDiscoveryEndpoint> discoveryEndpoints;
     private Map<String,String> effectiveLabels;
@@ -91,6 +93,9 @@ public final class GetInstanceResult {
     }
     public Boolean deletionProtectionEnabled() {
         return this.deletionProtectionEnabled;
+    }
+    public List<GetInstanceDesiredAutoCreatedEndpoint> desiredAutoCreatedEndpoints() {
+        return this.desiredAutoCreatedEndpoints;
     }
     public List<GetInstanceDesiredPscAutoConnection> desiredPscAutoConnections() {
         return this.desiredPscAutoConnections;
@@ -205,6 +210,7 @@ public final class GetInstanceResult {
         private String createTime;
         private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
         private Boolean deletionProtectionEnabled;
+        private List<GetInstanceDesiredAutoCreatedEndpoint> desiredAutoCreatedEndpoints;
         private List<GetInstanceDesiredPscAutoConnection> desiredPscAutoConnections;
         private List<GetInstanceDiscoveryEndpoint> discoveryEndpoints;
         private Map<String,String> effectiveLabels;
@@ -245,6 +251,7 @@ public final class GetInstanceResult {
     	      this.createTime = defaults.createTime;
     	      this.crossInstanceReplicationConfigs = defaults.crossInstanceReplicationConfigs;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
+    	      this.desiredAutoCreatedEndpoints = defaults.desiredAutoCreatedEndpoints;
     	      this.desiredPscAutoConnections = defaults.desiredPscAutoConnections;
     	      this.discoveryEndpoints = defaults.discoveryEndpoints;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -331,6 +338,17 @@ public final class GetInstanceResult {
             }
             this.deletionProtectionEnabled = deletionProtectionEnabled;
             return this;
+        }
+        @CustomType.Setter
+        public Builder desiredAutoCreatedEndpoints(List<GetInstanceDesiredAutoCreatedEndpoint> desiredAutoCreatedEndpoints) {
+            if (desiredAutoCreatedEndpoints == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "desiredAutoCreatedEndpoints");
+            }
+            this.desiredAutoCreatedEndpoints = desiredAutoCreatedEndpoints;
+            return this;
+        }
+        public Builder desiredAutoCreatedEndpoints(GetInstanceDesiredAutoCreatedEndpoint... desiredAutoCreatedEndpoints) {
+            return desiredAutoCreatedEndpoints(List.of(desiredAutoCreatedEndpoints));
         }
         @CustomType.Setter
         public Builder desiredPscAutoConnections(List<GetInstanceDesiredPscAutoConnection> desiredPscAutoConnections) {
@@ -623,6 +641,7 @@ public final class GetInstanceResult {
             _resultValue.createTime = createTime;
             _resultValue.crossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
+            _resultValue.desiredAutoCreatedEndpoints = desiredAutoCreatedEndpoints;
             _resultValue.desiredPscAutoConnections = desiredPscAutoConnections;
             _resultValue.discoveryEndpoints = discoveryEndpoints;
             _resultValue.effectiveLabels = effectiveLabels;

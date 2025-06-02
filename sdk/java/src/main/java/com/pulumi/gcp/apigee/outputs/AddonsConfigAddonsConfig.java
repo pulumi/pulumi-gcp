@@ -16,13 +16,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AddonsConfigAddonsConfig {
     /**
-     * @return Configuration for the Monetization add-on.
+     * @return Configuration for the Advanced API Ops add-on.
      * Structure is documented below.
      * 
      */
     private @Nullable AddonsConfigAddonsConfigAdvancedApiOpsConfig advancedApiOpsConfig;
     /**
-     * @return Configuration for the Monetization add-on.
+     * @return Configuration for the API Security add-on.
      * Structure is documented below.
      * 
      */
@@ -34,7 +34,7 @@ public final class AddonsConfigAddonsConfig {
      */
     private @Nullable AddonsConfigAddonsConfigConnectorsPlatformConfig connectorsPlatformConfig;
     /**
-     * @return Configuration for the Monetization add-on.
+     * @return Configuration for the Integration add-on.
      * Structure is documented below.
      * 
      */
@@ -48,7 +48,7 @@ public final class AddonsConfigAddonsConfig {
 
     private AddonsConfigAddonsConfig() {}
     /**
-     * @return Configuration for the Monetization add-on.
+     * @return Configuration for the Advanced API Ops add-on.
      * Structure is documented below.
      * 
      */
@@ -56,7 +56,7 @@ public final class AddonsConfigAddonsConfig {
         return Optional.ofNullable(this.advancedApiOpsConfig);
     }
     /**
-     * @return Configuration for the Monetization add-on.
+     * @return Configuration for the API Security add-on.
      * Structure is documented below.
      * 
      */
@@ -72,7 +72,7 @@ public final class AddonsConfigAddonsConfig {
         return Optional.ofNullable(this.connectorsPlatformConfig);
     }
     /**
-     * @return Configuration for the Monetization add-on.
+     * @return Configuration for the Integration add-on.
      * Structure is documented below.
      * 
      */

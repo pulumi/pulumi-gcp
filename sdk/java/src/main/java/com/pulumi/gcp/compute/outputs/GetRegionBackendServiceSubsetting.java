@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -15,6 +16,17 @@ public final class GetRegionBackendServiceSubsetting {
      * 
      */
     private String policy;
+    /**
+     * @return The number of backends per backend group assigned to each proxy instance or each service mesh client.
+     * An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+     * CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+     * subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+     * If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+     * of proxies/clients visible to each backend and vice versa.
+     * Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+     * 
+     */
+    private Integer subsetSize;
 
     private GetRegionBackendServiceSubsetting() {}
     /**
@@ -23,6 +35,19 @@ public final class GetRegionBackendServiceSubsetting {
      */
     public String policy() {
         return this.policy;
+    }
+    /**
+     * @return The number of backends per backend group assigned to each proxy instance or each service mesh client.
+     * An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+     * CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+     * subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+     * If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+     * of proxies/clients visible to each backend and vice versa.
+     * Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+     * 
+     */
+    public Integer subsetSize() {
+        return this.subsetSize;
     }
 
     public static Builder builder() {
@@ -35,10 +60,12 @@ public final class GetRegionBackendServiceSubsetting {
     @CustomType.Builder
     public static final class Builder {
         private String policy;
+        private Integer subsetSize;
         public Builder() {}
         public Builder(GetRegionBackendServiceSubsetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.policy = defaults.policy;
+    	      this.subsetSize = defaults.subsetSize;
         }
 
         @CustomType.Setter
@@ -49,9 +76,18 @@ public final class GetRegionBackendServiceSubsetting {
             this.policy = policy;
             return this;
         }
+        @CustomType.Setter
+        public Builder subsetSize(Integer subsetSize) {
+            if (subsetSize == null) {
+              throw new MissingRequiredPropertyException("GetRegionBackendServiceSubsetting", "subsetSize");
+            }
+            this.subsetSize = subsetSize;
+            return this;
+        }
         public GetRegionBackendServiceSubsetting build() {
             final var _resultValue = new GetRegionBackendServiceSubsetting();
             _resultValue.policy = policy;
+            _resultValue.subsetSize = subsetSize;
             return _resultValue;
         }
     }

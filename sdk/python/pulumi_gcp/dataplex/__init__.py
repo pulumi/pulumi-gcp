@@ -36,9 +36,11 @@ from .get_lake_iam_policy import *
 from .get_task_iam_policy import *
 from .get_zone_iam_policy import *
 from .glossary import *
+from .glossary_category import *
 from .glossary_iam_binding import *
 from .glossary_iam_member import *
 from .glossary_iam_policy import *
+from .glossary_term import *
 from .lake import *
 from .lake_iam_binding import *
 from .lake_iam_member import *

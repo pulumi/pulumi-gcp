@@ -154,6 +154,7 @@ namespace Pulumi.Gcp.Storage
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetBucketIpFilterResult> IpFilters;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly ImmutableArray<Outputs.GetBucketLifecycleRuleResult> LifecycleRules;
         public readonly string Location;
@@ -197,6 +198,8 @@ namespace Pulumi.Gcp.Storage
             ImmutableArray<Outputs.GetBucketHierarchicalNamespaceResult> hierarchicalNamespaces,
 
             string id,
+
+            ImmutableArray<Outputs.GetBucketIpFilterResult> ipFilters,
 
             ImmutableDictionary<string, string> labels,
 
@@ -250,6 +253,7 @@ namespace Pulumi.Gcp.Storage
             ForceDestroy = forceDestroy;
             HierarchicalNamespaces = hierarchicalNamespaces;
             Id = id;
+            IpFilters = ipFilters;
             Labels = labels;
             LifecycleRules = lifecycleRules;
             Location = location;

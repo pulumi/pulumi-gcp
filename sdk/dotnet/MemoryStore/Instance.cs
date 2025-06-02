@@ -65,10 +65,10 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var instance_basic = new Gcp.MemoryStore.Instance("instance-basic", new()
     ///     {
     ///         InstanceId = "basic-instance",
-    ///         ShardCount = 3,
-    ///         DesiredPscAutoConnections = new[]
+    ///         ShardCount = 1,
+    ///         DesiredAutoCreatedEndpoints = new[]
     ///         {
-    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredPscAutoConnectionArgs
+    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs
     ///             {
     ///                 Network = producerNet.Id,
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
@@ -148,17 +148,17 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var instance_full = new Gcp.MemoryStore.Instance("instance-full", new()
     ///     {
     ///         InstanceId = "full-instance",
-    ///         ShardCount = 3,
-    ///         DesiredPscAutoConnections = new[]
+    ///         ShardCount = 1,
+    ///         DesiredAutoCreatedEndpoints = new[]
     ///         {
-    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredPscAutoConnectionArgs
+    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs
     ///             {
     ///                 Network = producerNet.Id,
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///             },
     ///         },
     ///         Location = "us-central1",
-    ///         ReplicaCount = 2,
+    ///         ReplicaCount = 1,
     ///         NodeType = "SHARED_CORE_NANO",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_DISABLED",
     ///         AuthorizationMode = "AUTH_DISABLED",
@@ -259,10 +259,10 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var instance_persistence_aof = new Gcp.MemoryStore.Instance("instance-persistence-aof", new()
     ///     {
     ///         InstanceId = "aof-instance",
-    ///         ShardCount = 3,
-    ///         DesiredPscAutoConnections = new[]
+    ///         ShardCount = 1,
+    ///         DesiredAutoCreatedEndpoints = new[]
     ///         {
-    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredPscAutoConnectionArgs
+    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs
     ///             {
     ///                 Network = producerNet.Id,
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
@@ -335,9 +335,9 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         InstanceId = "primary-instance",
     ///         ShardCount = 1,
-    ///         DesiredPscAutoConnections = new[]
+    ///         DesiredAutoCreatedEndpoints = new[]
     ///         {
-    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredPscAutoConnectionArgs
+    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs
     ///             {
     ///                 Network = primaryProducerNet.Id,
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
@@ -414,9 +414,9 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         InstanceId = "secondary-instance",
     ///         ShardCount = 1,
-    ///         DesiredPscAutoConnections = new[]
+    ///         DesiredAutoCreatedEndpoints = new[]
     ///         {
-    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredPscAutoConnectionArgs
+    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs
     ///             {
     ///                 Network = secondaryProducerNet.Id,
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
@@ -538,12 +538,19 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<bool?> DeletionProtectionEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. User inputs for the auto-created PSC connections.
+        /// Immutable. User inputs for the auto-created endpoints connections.
+        /// </summary>
+        [Output("desiredAutoCreatedEndpoints")]
+        public Output<ImmutableArray<Outputs.InstanceDesiredAutoCreatedEndpoint>> DesiredAutoCreatedEndpoints { get; private set; } = null!;
+
+        /// <summary>
+        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
         /// </summary>
         [Output("desiredPscAutoConnections")]
         public Output<ImmutableArray<Outputs.InstanceDesiredPscAutoConnection>> DesiredPscAutoConnections { get; private set; } = null!;
 
         /// <summary>
+        /// (Deprecated)
         /// Output only. Endpoints clients can connect to the instance through. Currently only one
         /// discovery endpoint is supported.
         /// Structure is documented below.
@@ -691,6 +698,7 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<ImmutableArray<Outputs.InstancePscAttachmentDetail>> PscAttachmentDetails { get; private set; } = null!;
 
         /// <summary>
+        /// (Deprecated)
         /// Output only. User inputs and resource details of the auto-created PSC connections.
         /// Structure is documented below.
         /// </summary>
@@ -841,12 +849,25 @@ namespace Pulumi.Gcp.MemoryStore
         [Input("deletionProtectionEnabled")]
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
+        [Input("desiredAutoCreatedEndpoints")]
+        private InputList<Inputs.InstanceDesiredAutoCreatedEndpointArgs>? _desiredAutoCreatedEndpoints;
+
+        /// <summary>
+        /// Immutable. User inputs for the auto-created endpoints connections.
+        /// </summary>
+        public InputList<Inputs.InstanceDesiredAutoCreatedEndpointArgs> DesiredAutoCreatedEndpoints
+        {
+            get => _desiredAutoCreatedEndpoints ?? (_desiredAutoCreatedEndpoints = new InputList<Inputs.InstanceDesiredAutoCreatedEndpointArgs>());
+            set => _desiredAutoCreatedEndpoints = value;
+        }
+
         [Input("desiredPscAutoConnections")]
         private InputList<Inputs.InstanceDesiredPscAutoConnectionArgs>? _desiredPscAutoConnections;
 
         /// <summary>
-        /// Immutable. User inputs for the auto-created PSC connections.
+        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
         /// </summary>
+        [Obsolete(@"`desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.")]
         public InputList<Inputs.InstanceDesiredPscAutoConnectionArgs> DesiredPscAutoConnections
         {
             get => _desiredPscAutoConnections ?? (_desiredPscAutoConnections = new InputList<Inputs.InstanceDesiredPscAutoConnectionArgs>());
@@ -1040,12 +1061,25 @@ namespace Pulumi.Gcp.MemoryStore
         [Input("deletionProtectionEnabled")]
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
+        [Input("desiredAutoCreatedEndpoints")]
+        private InputList<Inputs.InstanceDesiredAutoCreatedEndpointGetArgs>? _desiredAutoCreatedEndpoints;
+
+        /// <summary>
+        /// Immutable. User inputs for the auto-created endpoints connections.
+        /// </summary>
+        public InputList<Inputs.InstanceDesiredAutoCreatedEndpointGetArgs> DesiredAutoCreatedEndpoints
+        {
+            get => _desiredAutoCreatedEndpoints ?? (_desiredAutoCreatedEndpoints = new InputList<Inputs.InstanceDesiredAutoCreatedEndpointGetArgs>());
+            set => _desiredAutoCreatedEndpoints = value;
+        }
+
         [Input("desiredPscAutoConnections")]
         private InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs>? _desiredPscAutoConnections;
 
         /// <summary>
-        /// Immutable. User inputs for the auto-created PSC connections.
+        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
         /// </summary>
+        [Obsolete(@"`desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.")]
         public InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs> DesiredPscAutoConnections
         {
             get => _desiredPscAutoConnections ?? (_desiredPscAutoConnections = new InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs>());
@@ -1056,10 +1090,12 @@ namespace Pulumi.Gcp.MemoryStore
         private InputList<Inputs.InstanceDiscoveryEndpointGetArgs>? _discoveryEndpoints;
 
         /// <summary>
+        /// (Deprecated)
         /// Output only. Endpoints clients can connect to the instance through. Currently only one
         /// discovery endpoint is supported.
         /// Structure is documented below.
         /// </summary>
+        [Obsolete(@"`discovery_endpoints` is deprecated  Use `endpoints` instead.")]
         public InputList<Inputs.InstanceDiscoveryEndpointGetArgs> DiscoveryEndpoints
         {
             get => _discoveryEndpoints ?? (_discoveryEndpoints = new InputList<Inputs.InstanceDiscoveryEndpointGetArgs>());
@@ -1255,9 +1291,11 @@ namespace Pulumi.Gcp.MemoryStore
         private InputList<Inputs.InstancePscAutoConnectionGetArgs>? _pscAutoConnections;
 
         /// <summary>
+        /// (Deprecated)
         /// Output only. User inputs and resource details of the auto-created PSC connections.
         /// Structure is documented below.
         /// </summary>
+        [Obsolete(@"`psc_auto_connections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.")]
         public InputList<Inputs.InstancePscAutoConnectionGetArgs> PscAutoConnections
         {
             get => _pscAutoConnections ?? (_pscAutoConnections = new InputList<Inputs.InstancePscAutoConnectionGetArgs>());
