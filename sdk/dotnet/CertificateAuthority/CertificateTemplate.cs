@@ -150,6 +150,180 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// ### Privateca Template Zero Max Issuer Path Length Null Ca
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateAuthority.CertificateTemplate("default", new()
+    ///     {
+    ///         Name = "my-template",
+    ///         Location = "us-central1",
+    ///         Description = "A sample certificate template",
+    ///         IdentityConstraints = new Gcp.CertificateAuthority.Inputs.CertificateTemplateIdentityConstraintsArgs
+    ///         {
+    ///             AllowSubjectAltNamesPassthrough = true,
+    ///             AllowSubjectPassthrough = true,
+    ///             CelExpression = new Gcp.CertificateAuthority.Inputs.CertificateTemplateIdentityConstraintsCelExpressionArgs
+    ///             {
+    ///                 Description = "Always true",
+    ///                 Expression = "true",
+    ///                 Location = "any.file.anywhere",
+    ///                 Title = "Sample expression",
+    ///             },
+    ///         },
+    ///         MaximumLifetime = "86400s",
+    ///         PassthroughExtensions = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePassthroughExtensionsArgs
+    ///         {
+    ///             AdditionalExtensions = new[]
+    ///             {
+    ///                 new Gcp.CertificateAuthority.Inputs.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs
+    ///                 {
+    ///                     ObjectIdPaths = new[]
+    ///                     {
+    ///                         1,
+    ///                         6,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             KnownExtensions = new[]
+    ///             {
+    ///                 "EXTENDED_KEY_USAGE",
+    ///             },
+    ///         },
+    ///         PredefinedValues = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesArgs
+    ///         {
+    ///             AdditionalExtensions = new[]
+    ///             {
+    ///                 new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesAdditionalExtensionArgs
+    ///                 {
+    ///                     ObjectId = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs
+    ///                     {
+    ///                         ObjectIdPaths = new[]
+    ///                         {
+    ///                             1,
+    ///                             6,
+    ///                         },
+    ///                     },
+    ///                     Value = "c3RyaW5nCg==",
+    ///                     Critical = true,
+    ///                 },
+    ///             },
+    ///             AiaOcspServers = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             CaOptions = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesCaOptionsArgs
+    ///             {
+    ///                 IsCa = false,
+    ///                 NullCa = true,
+    ///                 ZeroMaxIssuerPathLength = true,
+    ///                 MaxIssuerPathLength = 0,
+    ///             },
+    ///             KeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageArgs
+    ///             {
+    ///                 BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs
+    ///                 {
+    ///                     CertSign = false,
+    ///                     ContentCommitment = true,
+    ///                     CrlSign = false,
+    ///                     DataEncipherment = true,
+    ///                     DecipherOnly = true,
+    ///                     DigitalSignature = true,
+    ///                     EncipherOnly = true,
+    ///                     KeyAgreement = true,
+    ///                     KeyEncipherment = true,
+    ///                 },
+    ///                 ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs
+    ///                 {
+    ///                     ClientAuth = true,
+    ///                     CodeSigning = true,
+    ///                     EmailProtection = true,
+    ///                     OcspSigning = true,
+    ///                     ServerAuth = true,
+    ///                     TimeStamping = true,
+    ///                 },
+    ///                 UnknownExtendedKeyUsages = new[]
+    ///                 {
+    ///                     new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs
+    ///                     {
+    ///                         ObjectIdPaths = new[]
+    ///                         {
+    ///                             1,
+    ///                             6,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             PolicyIds = new[]
+    ///             {
+    ///                 new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesPolicyIdArgs
+    ///                 {
+    ///                     ObjectIdPaths = new[]
+    ///                     {
+    ///                         1,
+    ///                         6,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             NameConstraints = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesNameConstraintsArgs
+    ///             {
+    ///                 Critical = true,
+    ///                 PermittedDnsNames = new[]
+    ///                 {
+    ///                     "*.example1.com",
+    ///                     "*.example2.com",
+    ///                 },
+    ///                 ExcludedDnsNames = new[]
+    ///                 {
+    ///                     "*.deny.example1.com",
+    ///                     "*.deny.example2.com",
+    ///                 },
+    ///                 PermittedIpRanges = new[]
+    ///                 {
+    ///                     "10.0.0.0/8",
+    ///                     "11.0.0.0/8",
+    ///                 },
+    ///                 ExcludedIpRanges = new[]
+    ///                 {
+    ///                     "10.1.1.0/24",
+    ///                     "11.1.1.0/24",
+    ///                 },
+    ///                 PermittedEmailAddresses = new[]
+    ///                 {
+    ///                     ".example1.com",
+    ///                     ".example2.com",
+    ///                 },
+    ///                 ExcludedEmailAddresses = new[]
+    ///                 {
+    ///                     ".deny.example1.com",
+    ///                     ".deny.example2.com",
+    ///                 },
+    ///                 PermittedUris = new[]
+    ///                 {
+    ///                     ".example1.com",
+    ///                     ".example2.com",
+    ///                 },
+    ///                 ExcludedUris = new[]
+    ///                 {
+    ///                     ".deny.example1.com",
+    ///                     ".deny.example2.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

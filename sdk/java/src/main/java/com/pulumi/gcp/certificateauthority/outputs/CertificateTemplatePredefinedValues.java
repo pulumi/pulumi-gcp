@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateTemplatePredefinedValuesAdditionalExtension;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateTemplatePredefinedValuesCaOptions;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateTemplatePredefinedValuesKeyUsage;
+import com.pulumi.gcp.certificateauthority.outputs.CertificateTemplatePredefinedValuesNameConstraints;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateTemplatePredefinedValuesPolicyId;
 import java.lang.String;
 import java.util.List;
@@ -39,6 +40,12 @@ public final class CertificateTemplatePredefinedValues {
      * 
      */
     private @Nullable CertificateTemplatePredefinedValuesKeyUsage keyUsage;
+    /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable CertificateTemplatePredefinedValuesNameConstraints nameConstraints;
     /**
      * @return Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
@@ -79,6 +86,14 @@ public final class CertificateTemplatePredefinedValues {
         return Optional.ofNullable(this.keyUsage);
     }
     /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<CertificateTemplatePredefinedValuesNameConstraints> nameConstraints() {
+        return Optional.ofNullable(this.nameConstraints);
+    }
+    /**
      * @return Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
@@ -100,6 +115,7 @@ public final class CertificateTemplatePredefinedValues {
         private @Nullable List<String> aiaOcspServers;
         private @Nullable CertificateTemplatePredefinedValuesCaOptions caOptions;
         private @Nullable CertificateTemplatePredefinedValuesKeyUsage keyUsage;
+        private @Nullable CertificateTemplatePredefinedValuesNameConstraints nameConstraints;
         private @Nullable List<CertificateTemplatePredefinedValuesPolicyId> policyIds;
         public Builder() {}
         public Builder(CertificateTemplatePredefinedValues defaults) {
@@ -108,6 +124,7 @@ public final class CertificateTemplatePredefinedValues {
     	      this.aiaOcspServers = defaults.aiaOcspServers;
     	      this.caOptions = defaults.caOptions;
     	      this.keyUsage = defaults.keyUsage;
+    	      this.nameConstraints = defaults.nameConstraints;
     	      this.policyIds = defaults.policyIds;
         }
 
@@ -142,6 +159,12 @@ public final class CertificateTemplatePredefinedValues {
             return this;
         }
         @CustomType.Setter
+        public Builder nameConstraints(@Nullable CertificateTemplatePredefinedValuesNameConstraints nameConstraints) {
+
+            this.nameConstraints = nameConstraints;
+            return this;
+        }
+        @CustomType.Setter
         public Builder policyIds(@Nullable List<CertificateTemplatePredefinedValuesPolicyId> policyIds) {
 
             this.policyIds = policyIds;
@@ -156,6 +179,7 @@ public final class CertificateTemplatePredefinedValues {
             _resultValue.aiaOcspServers = aiaOcspServers;
             _resultValue.caOptions = caOptions;
             _resultValue.keyUsage = keyUsage;
+            _resultValue.nameConstraints = nameConstraints;
             _resultValue.policyIds = policyIds;
             return _resultValue;
         }

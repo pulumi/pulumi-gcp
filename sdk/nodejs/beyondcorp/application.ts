@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * > **Warning:** `gcp.beyondcorp.Application` is deprecated. Use `googleBeyondcorpSecurityGatewayApplication` instead.
+ * > **Warning:** `gcp.beyondcorp.Application` is deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
  *
  * Specifies application endpoint(s) to protect behind a Security Gateway.
  *

@@ -16,6 +16,7 @@ import com.pulumi.gcp.compute.outputs.RegionBackendServiceCircuitBreakers;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceConnectionTrackingPolicy;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceConsistentHash;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceCustomMetric;
+import com.pulumi.gcp.compute.outputs.RegionBackendServiceDynamicForwarding;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceFailoverPolicy;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceLogConfig;
@@ -781,6 +782,50 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Backend Service Dynamic Forwarding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingIpPortSelectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+ *             .name("region-service")
+ *             .region("us-central1")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .dynamicForwarding(RegionBackendServiceDynamicForwardingArgs.builder()
+ *                 .ipPortSelection(RegionBackendServiceDynamicForwardingIpPortSelectionArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * RegionBackendService can be imported using any of these accepted formats:
@@ -993,6 +1038,24 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dynamicForwarding", refs={RegionBackendServiceDynamicForwarding.class}, tree="[0]")
+    private Output</* @Nullable */ RegionBackendServiceDynamicForwarding> dynamicForwarding;
+
+    /**
+     * @return Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionBackendServiceDynamicForwarding>> dynamicForwarding() {
+        return Codegen.optional(this.dynamicForwarding);
     }
     /**
      * If true, enable Cloud CDN for this RegionBackendService.

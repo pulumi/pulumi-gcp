@@ -42,6 +42,7 @@ __all__ = [
     'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames',
     'OrganizationProperties',
     'OrganizationPropertiesProperty',
+    'SecurityMonitoringConditionIncludeAllResources',
     'SecurityProfileV2ProfileAssessmentConfig',
     'SharedflowMetaData',
     'TargetServerSSlInfo',
@@ -82,13 +83,13 @@ class AddonsConfigAddonsConfig(dict):
                  integration_config: Optional['outputs.AddonsConfigAddonsConfigIntegrationConfig'] = None,
                  monetization_config: Optional['outputs.AddonsConfigAddonsConfigMonetizationConfig'] = None):
         """
-        :param 'AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs' advanced_api_ops_config: Configuration for the Monetization add-on.
+        :param 'AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs' advanced_api_ops_config: Configuration for the Advanced API Ops add-on.
                Structure is documented below.
-        :param 'AddonsConfigAddonsConfigApiSecurityConfigArgs' api_security_config: Configuration for the Monetization add-on.
+        :param 'AddonsConfigAddonsConfigApiSecurityConfigArgs' api_security_config: Configuration for the API Security add-on.
                Structure is documented below.
         :param 'AddonsConfigAddonsConfigConnectorsPlatformConfigArgs' connectors_platform_config: Configuration for the Monetization add-on.
                Structure is documented below.
-        :param 'AddonsConfigAddonsConfigIntegrationConfigArgs' integration_config: Configuration for the Monetization add-on.
+        :param 'AddonsConfigAddonsConfigIntegrationConfigArgs' integration_config: Configuration for the Integration add-on.
                Structure is documented below.
         :param 'AddonsConfigAddonsConfigMonetizationConfigArgs' monetization_config: Configuration for the Monetization add-on.
                Structure is documented below.
@@ -108,7 +109,7 @@ class AddonsConfigAddonsConfig(dict):
     @pulumi.getter(name="advancedApiOpsConfig")
     def advanced_api_ops_config(self) -> Optional['outputs.AddonsConfigAddonsConfigAdvancedApiOpsConfig']:
         """
-        Configuration for the Monetization add-on.
+        Configuration for the Advanced API Ops add-on.
         Structure is documented below.
         """
         return pulumi.get(self, "advanced_api_ops_config")
@@ -117,7 +118,7 @@ class AddonsConfigAddonsConfig(dict):
     @pulumi.getter(name="apiSecurityConfig")
     def api_security_config(self) -> Optional['outputs.AddonsConfigAddonsConfigApiSecurityConfig']:
         """
-        Configuration for the Monetization add-on.
+        Configuration for the API Security add-on.
         Structure is documented below.
         """
         return pulumi.get(self, "api_security_config")
@@ -135,7 +136,7 @@ class AddonsConfigAddonsConfig(dict):
     @pulumi.getter(name="integrationConfig")
     def integration_config(self) -> Optional['outputs.AddonsConfigAddonsConfigIntegrationConfig']:
         """
-        Configuration for the Monetization add-on.
+        Configuration for the Integration add-on.
         Structure is documented below.
         """
         return pulumi.get(self, "integration_config")
@@ -192,9 +193,9 @@ class AddonsConfigAddonsConfigApiSecurityConfig(dict):
                  enabled: Optional[builtins.bool] = None,
                  expires_at: Optional[builtins.str] = None):
         """
-        :param builtins.bool enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param builtins.bool enabled: Flag that specifies whether the API security add-on is enabled.
         :param builtins.str expires_at: (Output)
-               Flag that specifies whether the Advanced API Ops add-on is enabled.
+               Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -205,7 +206,7 @@ class AddonsConfigAddonsConfigApiSecurityConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[builtins.bool]:
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the API security add-on is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -214,7 +215,7 @@ class AddonsConfigAddonsConfigApiSecurityConfig(dict):
     def expires_at(self) -> Optional[builtins.str]:
         """
         (Output)
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
         return pulumi.get(self, "expires_at")
 
@@ -242,9 +243,9 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfig(dict):
                  enabled: Optional[builtins.bool] = None,
                  expires_at: Optional[builtins.str] = None):
         """
-        :param builtins.bool enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param builtins.bool enabled: Flag that specifies whether the Connectors Platform add-on is enabled.
         :param builtins.str expires_at: (Output)
-               Flag that specifies whether the Advanced API Ops add-on is enabled.
+               Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -255,7 +256,7 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[builtins.bool]:
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the Connectors Platform add-on is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -264,7 +265,7 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfig(dict):
     def expires_at(self) -> Optional[builtins.str]:
         """
         (Output)
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
         return pulumi.get(self, "expires_at")
 
@@ -274,7 +275,7 @@ class AddonsConfigAddonsConfigIntegrationConfig(dict):
     def __init__(__self__, *,
                  enabled: Optional[builtins.bool] = None):
         """
-        :param builtins.bool enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param builtins.bool enabled: Flag that specifies whether the Integration add-on is enabled.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -283,7 +284,7 @@ class AddonsConfigAddonsConfigIntegrationConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[builtins.bool]:
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the Integration add-on is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -293,7 +294,7 @@ class AddonsConfigAddonsConfigMonetizationConfig(dict):
     def __init__(__self__, *,
                  enabled: Optional[builtins.bool] = None):
         """
-        :param builtins.bool enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param builtins.bool enabled: Flag that specifies whether the Monetization add-on is enabled.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -302,7 +303,7 @@ class AddonsConfigAddonsConfigMonetizationConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[builtins.bool]:
         """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        Flag that specifies whether the Monetization add-on is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -1571,6 +1572,12 @@ class OrganizationPropertiesProperty(dict):
         Value of the property.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SecurityMonitoringConditionIncludeAllResources(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

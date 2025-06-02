@@ -56,6 +56,8 @@ __all__ = [
     'WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict',
     'WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs',
     'WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict',
+    'WorkforcePoolProviderKeyKeyDataArgs',
+    'WorkforcePoolProviderKeyKeyDataArgsDict',
     'WorkforcePoolProviderOidcArgs',
     'WorkforcePoolProviderOidcArgsDict',
     'WorkforcePoolProviderOidcClientSecretArgs',
@@ -78,6 +80,8 @@ __all__ = [
     'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict',
     'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs',
     'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict',
+    'WorkloadIdentityPoolNamespaceOwnerServiceArgs',
+    'WorkloadIdentityPoolNamespaceOwnerServiceArgsDict',
     'WorkloadIdentityPoolProviderAwsArgs',
     'WorkloadIdentityPoolProviderAwsArgsDict',
     'WorkloadIdentityPoolProviderOidcArgs',
@@ -1577,6 +1581,162 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
 
 
 if not MYPY:
+    class WorkforcePoolProviderKeyKeyDataArgsDict(TypedDict):
+        key_spec: pulumi.Input[builtins.str]
+        """
+        The specifications for the key.
+        Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
+
+        - - -
+        """
+        format: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The format of the key.
+        """
+        key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The key data. The format of the key is represented by the format field.
+        """
+        not_after_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
+        Only present if the key data represents a X.509 certificate.
+        Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+        Offsets other than "Z" are also accepted.
+        Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+        """
+        not_before_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
+        Only present if the key data represents a X.509 certificate.
+        Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+        Offsets other than "Z" are also accepted.
+        Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+        """
+elif False:
+    WorkforcePoolProviderKeyKeyDataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkforcePoolProviderKeyKeyDataArgs:
+    def __init__(__self__, *,
+                 key_spec: pulumi.Input[builtins.str],
+                 format: Optional[pulumi.Input[builtins.str]] = None,
+                 key: Optional[pulumi.Input[builtins.str]] = None,
+                 not_after_time: Optional[pulumi.Input[builtins.str]] = None,
+                 not_before_time: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] key_spec: The specifications for the key.
+               Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
+               
+               - - -
+        :param pulumi.Input[builtins.str] format: (Output)
+               The format of the key.
+        :param pulumi.Input[builtins.str] key: (Output)
+               The key data. The format of the key is represented by the format field.
+        :param pulumi.Input[builtins.str] not_after_time: (Output)
+               Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
+               Only present if the key data represents a X.509 certificate.
+               Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+               Offsets other than "Z" are also accepted.
+               Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+        :param pulumi.Input[builtins.str] not_before_time: (Output)
+               Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
+               Only present if the key data represents a X.509 certificate.
+               Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+               Offsets other than "Z" are also accepted.
+               Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+        """
+        pulumi.set(__self__, "key_spec", key_spec)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if not_after_time is not None:
+            pulumi.set(__self__, "not_after_time", not_after_time)
+        if not_before_time is not None:
+            pulumi.set(__self__, "not_before_time", not_before_time)
+
+    @property
+    @pulumi.getter(name="keySpec")
+    def key_spec(self) -> pulumi.Input[builtins.str]:
+        """
+        The specifications for the key.
+        Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
+
+        - - -
+        """
+        return pulumi.get(self, "key_spec")
+
+    @key_spec.setter
+    def key_spec(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "key_spec", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The format of the key.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The key data. The format of the key is represented by the format field.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="notAfterTime")
+    def not_after_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
+        Only present if the key data represents a X.509 certificate.
+        Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+        Offsets other than "Z" are also accepted.
+        Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+        """
+        return pulumi.get(self, "not_after_time")
+
+    @not_after_time.setter
+    def not_after_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "not_after_time", value)
+
+    @property
+    @pulumi.getter(name="notBeforeTime")
+    def not_before_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
+        Only present if the key data represents a X.509 certificate.
+        Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+        Offsets other than "Z" are also accepted.
+        Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+        """
+        return pulumi.get(self, "not_before_time")
+
+    @not_before_time.setter
+    def not_before_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "not_before_time", value)
+
+
+if not MYPY:
     class WorkforcePoolProviderOidcArgsDict(TypedDict):
         client_id: pulumi.Input[builtins.str]
         """
@@ -2432,6 +2592,44 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs:
     @pem_certificate.setter
     def pem_certificate(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "pem_certificate", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolNamespaceOwnerServiceArgsDict(TypedDict):
+        principal_subject: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The service agent principal subject, e.g.
+        `serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com`.
+        """
+elif False:
+    WorkloadIdentityPoolNamespaceOwnerServiceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolNamespaceOwnerServiceArgs:
+    def __init__(__self__, *,
+                 principal_subject: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] principal_subject: (Output)
+               The service agent principal subject, e.g.
+               `serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com`.
+        """
+        if principal_subject is not None:
+            pulumi.set(__self__, "principal_subject", principal_subject)
+
+    @property
+    @pulumi.getter(name="principalSubject")
+    def principal_subject(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The service agent principal subject, e.g.
+        `serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "principal_subject")
+
+    @principal_subject.setter
+    def principal_subject(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "principal_subject", value)
 
 
 if not MYPY:

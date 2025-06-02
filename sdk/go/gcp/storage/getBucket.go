@@ -72,6 +72,7 @@ type LookupBucketResult struct {
 	HierarchicalNamespaces []GetBucketHierarchicalNamespace `pulumi:"hierarchicalNamespaces"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                      `pulumi:"id"`
+	IpFilters                []GetBucketIpFilter         `pulumi:"ipFilters"`
 	Labels                   map[string]string           `pulumi:"labels"`
 	LifecycleRules           []GetBucketLifecycleRule    `pulumi:"lifecycleRules"`
 	Location                 string                      `pulumi:"location"`
@@ -170,6 +171,10 @@ func (o LookupBucketResultOutput) HierarchicalNamespaces() GetBucketHierarchical
 // The provider-assigned unique ID for this managed resource.
 func (o LookupBucketResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupBucketResultOutput) IpFilters() GetBucketIpFilterArrayOutput {
+	return o.ApplyT(func(v LookupBucketResult) []GetBucketIpFilter { return v.IpFilters }).(GetBucketIpFilterArrayOutput)
 }
 
 func (o LookupBucketResultOutput) Labels() pulumi.StringMapOutput {

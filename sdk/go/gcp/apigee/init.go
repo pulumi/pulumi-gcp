@@ -73,6 +73,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NatAddress{}
 	case "gcp:apigee/organization:Organization":
 		r = &Organization{}
+	case "gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition":
+		r = &SecurityMonitoringCondition{}
 	case "gcp:apigee/securityProfileV2:SecurityProfileV2":
 		r = &SecurityProfileV2{}
 	case "gcp:apigee/sharedflow:Sharedflow":
@@ -224,6 +226,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/organization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/securityMonitoringCondition",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

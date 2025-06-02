@@ -14,12 +14,12 @@ namespace Pulumi.Gcp.Apigee.Outputs
     public sealed class AddonsConfigAddonsConfig
     {
         /// <summary>
-        /// Configuration for the Monetization add-on.
+        /// Configuration for the Advanced API Ops add-on.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AddonsConfigAddonsConfigAdvancedApiOpsConfig? AdvancedApiOpsConfig;
         /// <summary>
-        /// Configuration for the Monetization add-on.
+        /// Configuration for the API Security add-on.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AddonsConfigAddonsConfigApiSecurityConfig? ApiSecurityConfig;
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Apigee.Outputs
         /// </summary>
         public readonly Outputs.AddonsConfigAddonsConfigConnectorsPlatformConfig? ConnectorsPlatformConfig;
         /// <summary>
-        /// Configuration for the Monetization add-on.
+        /// Configuration for the Integration add-on.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AddonsConfigAddonsConfigIntegrationConfig? IntegrationConfig;

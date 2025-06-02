@@ -1327,6 +1327,121 @@ func (o InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) Inde
 	}).(InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput)
 }
 
+type InstanceDesiredAutoCreatedEndpoint struct {
+	// (Output)
+	// Output only. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network string `pulumi:"network"`
+	// (Output)
+	// Output only. The consumer projectId where the forwarding rule is created from.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// InstanceDesiredAutoCreatedEndpointInput is an input type that accepts InstanceDesiredAutoCreatedEndpointArgs and InstanceDesiredAutoCreatedEndpointOutput values.
+// You can construct a concrete instance of `InstanceDesiredAutoCreatedEndpointInput` via:
+//
+//	InstanceDesiredAutoCreatedEndpointArgs{...}
+type InstanceDesiredAutoCreatedEndpointInput interface {
+	pulumi.Input
+
+	ToInstanceDesiredAutoCreatedEndpointOutput() InstanceDesiredAutoCreatedEndpointOutput
+	ToInstanceDesiredAutoCreatedEndpointOutputWithContext(context.Context) InstanceDesiredAutoCreatedEndpointOutput
+}
+
+type InstanceDesiredAutoCreatedEndpointArgs struct {
+	// (Output)
+	// Output only. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network pulumi.StringInput `pulumi:"network"`
+	// (Output)
+	// Output only. The consumer projectId where the forwarding rule is created from.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (InstanceDesiredAutoCreatedEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDesiredAutoCreatedEndpoint)(nil)).Elem()
+}
+
+func (i InstanceDesiredAutoCreatedEndpointArgs) ToInstanceDesiredAutoCreatedEndpointOutput() InstanceDesiredAutoCreatedEndpointOutput {
+	return i.ToInstanceDesiredAutoCreatedEndpointOutputWithContext(context.Background())
+}
+
+func (i InstanceDesiredAutoCreatedEndpointArgs) ToInstanceDesiredAutoCreatedEndpointOutputWithContext(ctx context.Context) InstanceDesiredAutoCreatedEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDesiredAutoCreatedEndpointOutput)
+}
+
+// InstanceDesiredAutoCreatedEndpointArrayInput is an input type that accepts InstanceDesiredAutoCreatedEndpointArray and InstanceDesiredAutoCreatedEndpointArrayOutput values.
+// You can construct a concrete instance of `InstanceDesiredAutoCreatedEndpointArrayInput` via:
+//
+//	InstanceDesiredAutoCreatedEndpointArray{ InstanceDesiredAutoCreatedEndpointArgs{...} }
+type InstanceDesiredAutoCreatedEndpointArrayInput interface {
+	pulumi.Input
+
+	ToInstanceDesiredAutoCreatedEndpointArrayOutput() InstanceDesiredAutoCreatedEndpointArrayOutput
+	ToInstanceDesiredAutoCreatedEndpointArrayOutputWithContext(context.Context) InstanceDesiredAutoCreatedEndpointArrayOutput
+}
+
+type InstanceDesiredAutoCreatedEndpointArray []InstanceDesiredAutoCreatedEndpointInput
+
+func (InstanceDesiredAutoCreatedEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceDesiredAutoCreatedEndpoint)(nil)).Elem()
+}
+
+func (i InstanceDesiredAutoCreatedEndpointArray) ToInstanceDesiredAutoCreatedEndpointArrayOutput() InstanceDesiredAutoCreatedEndpointArrayOutput {
+	return i.ToInstanceDesiredAutoCreatedEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceDesiredAutoCreatedEndpointArray) ToInstanceDesiredAutoCreatedEndpointArrayOutputWithContext(ctx context.Context) InstanceDesiredAutoCreatedEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDesiredAutoCreatedEndpointArrayOutput)
+}
+
+type InstanceDesiredAutoCreatedEndpointOutput struct{ *pulumi.OutputState }
+
+func (InstanceDesiredAutoCreatedEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDesiredAutoCreatedEndpoint)(nil)).Elem()
+}
+
+func (o InstanceDesiredAutoCreatedEndpointOutput) ToInstanceDesiredAutoCreatedEndpointOutput() InstanceDesiredAutoCreatedEndpointOutput {
+	return o
+}
+
+func (o InstanceDesiredAutoCreatedEndpointOutput) ToInstanceDesiredAutoCreatedEndpointOutputWithContext(ctx context.Context) InstanceDesiredAutoCreatedEndpointOutput {
+	return o
+}
+
+// (Output)
+// Output only. The consumer network where the IP address resides, in the form of
+// projects/{project_id}/global/networks/{network_id}.
+func (o InstanceDesiredAutoCreatedEndpointOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceDesiredAutoCreatedEndpoint) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output only. The consumer projectId where the forwarding rule is created from.
+func (o InstanceDesiredAutoCreatedEndpointOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceDesiredAutoCreatedEndpoint) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type InstanceDesiredAutoCreatedEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceDesiredAutoCreatedEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceDesiredAutoCreatedEndpoint)(nil)).Elem()
+}
+
+func (o InstanceDesiredAutoCreatedEndpointArrayOutput) ToInstanceDesiredAutoCreatedEndpointArrayOutput() InstanceDesiredAutoCreatedEndpointArrayOutput {
+	return o
+}
+
+func (o InstanceDesiredAutoCreatedEndpointArrayOutput) ToInstanceDesiredAutoCreatedEndpointArrayOutputWithContext(ctx context.Context) InstanceDesiredAutoCreatedEndpointArrayOutput {
+	return o
+}
+
+func (o InstanceDesiredAutoCreatedEndpointArrayOutput) Index(i pulumi.IntInput) InstanceDesiredAutoCreatedEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceDesiredAutoCreatedEndpoint {
+		return vs[0].([]InstanceDesiredAutoCreatedEndpoint)[vs[1].(int)]
+	}).(InstanceDesiredAutoCreatedEndpointOutput)
+}
+
 type InstanceDesiredPscAutoConnection struct {
 	// (Output)
 	// Output only. The consumer network where the IP address resides, in the form of
@@ -5936,6 +6051,115 @@ func (o GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) I
 	}).(GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput)
 }
 
+type GetInstanceDesiredAutoCreatedEndpoint struct {
+	// Required. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network string `pulumi:"network"`
+	// Required. The consumer projectId where the forwarding rule is created from.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetInstanceDesiredAutoCreatedEndpointInput is an input type that accepts GetInstanceDesiredAutoCreatedEndpointArgs and GetInstanceDesiredAutoCreatedEndpointOutput values.
+// You can construct a concrete instance of `GetInstanceDesiredAutoCreatedEndpointInput` via:
+//
+//	GetInstanceDesiredAutoCreatedEndpointArgs{...}
+type GetInstanceDesiredAutoCreatedEndpointInput interface {
+	pulumi.Input
+
+	ToGetInstanceDesiredAutoCreatedEndpointOutput() GetInstanceDesiredAutoCreatedEndpointOutput
+	ToGetInstanceDesiredAutoCreatedEndpointOutputWithContext(context.Context) GetInstanceDesiredAutoCreatedEndpointOutput
+}
+
+type GetInstanceDesiredAutoCreatedEndpointArgs struct {
+	// Required. The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Required. The consumer projectId where the forwarding rule is created from.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetInstanceDesiredAutoCreatedEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDesiredAutoCreatedEndpoint)(nil)).Elem()
+}
+
+func (i GetInstanceDesiredAutoCreatedEndpointArgs) ToGetInstanceDesiredAutoCreatedEndpointOutput() GetInstanceDesiredAutoCreatedEndpointOutput {
+	return i.ToGetInstanceDesiredAutoCreatedEndpointOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDesiredAutoCreatedEndpointArgs) ToGetInstanceDesiredAutoCreatedEndpointOutputWithContext(ctx context.Context) GetInstanceDesiredAutoCreatedEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDesiredAutoCreatedEndpointOutput)
+}
+
+// GetInstanceDesiredAutoCreatedEndpointArrayInput is an input type that accepts GetInstanceDesiredAutoCreatedEndpointArray and GetInstanceDesiredAutoCreatedEndpointArrayOutput values.
+// You can construct a concrete instance of `GetInstanceDesiredAutoCreatedEndpointArrayInput` via:
+//
+//	GetInstanceDesiredAutoCreatedEndpointArray{ GetInstanceDesiredAutoCreatedEndpointArgs{...} }
+type GetInstanceDesiredAutoCreatedEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceDesiredAutoCreatedEndpointArrayOutput() GetInstanceDesiredAutoCreatedEndpointArrayOutput
+	ToGetInstanceDesiredAutoCreatedEndpointArrayOutputWithContext(context.Context) GetInstanceDesiredAutoCreatedEndpointArrayOutput
+}
+
+type GetInstanceDesiredAutoCreatedEndpointArray []GetInstanceDesiredAutoCreatedEndpointInput
+
+func (GetInstanceDesiredAutoCreatedEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDesiredAutoCreatedEndpoint)(nil)).Elem()
+}
+
+func (i GetInstanceDesiredAutoCreatedEndpointArray) ToGetInstanceDesiredAutoCreatedEndpointArrayOutput() GetInstanceDesiredAutoCreatedEndpointArrayOutput {
+	return i.ToGetInstanceDesiredAutoCreatedEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDesiredAutoCreatedEndpointArray) ToGetInstanceDesiredAutoCreatedEndpointArrayOutputWithContext(ctx context.Context) GetInstanceDesiredAutoCreatedEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDesiredAutoCreatedEndpointArrayOutput)
+}
+
+type GetInstanceDesiredAutoCreatedEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDesiredAutoCreatedEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDesiredAutoCreatedEndpoint)(nil)).Elem()
+}
+
+func (o GetInstanceDesiredAutoCreatedEndpointOutput) ToGetInstanceDesiredAutoCreatedEndpointOutput() GetInstanceDesiredAutoCreatedEndpointOutput {
+	return o
+}
+
+func (o GetInstanceDesiredAutoCreatedEndpointOutput) ToGetInstanceDesiredAutoCreatedEndpointOutputWithContext(ctx context.Context) GetInstanceDesiredAutoCreatedEndpointOutput {
+	return o
+}
+
+// Required. The consumer network where the IP address resides, in the form of
+// projects/{project_id}/global/networks/{network_id}.
+func (o GetInstanceDesiredAutoCreatedEndpointOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDesiredAutoCreatedEndpoint) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Required. The consumer projectId where the forwarding rule is created from.
+func (o GetInstanceDesiredAutoCreatedEndpointOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDesiredAutoCreatedEndpoint) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetInstanceDesiredAutoCreatedEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDesiredAutoCreatedEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDesiredAutoCreatedEndpoint)(nil)).Elem()
+}
+
+func (o GetInstanceDesiredAutoCreatedEndpointArrayOutput) ToGetInstanceDesiredAutoCreatedEndpointArrayOutput() GetInstanceDesiredAutoCreatedEndpointArrayOutput {
+	return o
+}
+
+func (o GetInstanceDesiredAutoCreatedEndpointArrayOutput) ToGetInstanceDesiredAutoCreatedEndpointArrayOutputWithContext(ctx context.Context) GetInstanceDesiredAutoCreatedEndpointArrayOutput {
+	return o
+}
+
+func (o GetInstanceDesiredAutoCreatedEndpointArrayOutput) Index(i pulumi.IntInput) GetInstanceDesiredAutoCreatedEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceDesiredAutoCreatedEndpoint {
+		return vs[0].([]GetInstanceDesiredAutoCreatedEndpoint)[vs[1].(int)]
+	}).(GetInstanceDesiredAutoCreatedEndpointOutput)
+}
+
 type GetInstanceDesiredPscAutoConnection struct {
 	// Required. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
@@ -8434,6 +8658,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigPrimaryInstancePtrInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigSecondaryInstanceInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigSecondaryInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredAutoCreatedEndpointInput)(nil)).Elem(), InstanceDesiredAutoCreatedEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredAutoCreatedEndpointArrayInput)(nil)).Elem(), InstanceDesiredAutoCreatedEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredPscAutoConnectionInput)(nil)).Elem(), InstanceDesiredPscAutoConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredPscAutoConnectionArrayInput)(nil)).Elem(), InstanceDesiredPscAutoConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointInput)(nil)).Elem(), InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs{})
@@ -8497,6 +8723,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigSecondaryInstanceInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDesiredAutoCreatedEndpointInput)(nil)).Elem(), GetInstanceDesiredAutoCreatedEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDesiredAutoCreatedEndpointArrayInput)(nil)).Elem(), GetInstanceDesiredAutoCreatedEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDesiredPscAutoConnectionInput)(nil)).Elem(), GetInstanceDesiredPscAutoConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDesiredPscAutoConnectionArrayInput)(nil)).Elem(), GetInstanceDesiredPscAutoConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDiscoveryEndpointInput)(nil)).Elem(), GetInstanceDiscoveryEndpointArgs{})
@@ -8555,6 +8783,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput{})
 	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput{})
 	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceDesiredAutoCreatedEndpointOutput{})
+	pulumi.RegisterOutputType(InstanceDesiredAutoCreatedEndpointArrayOutput{})
 	pulumi.RegisterOutputType(InstanceDesiredPscAutoConnectionOutput{})
 	pulumi.RegisterOutputType(InstanceDesiredPscAutoConnectionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput{})
@@ -8618,6 +8848,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceDesiredAutoCreatedEndpointOutput{})
+	pulumi.RegisterOutputType(GetInstanceDesiredAutoCreatedEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceDesiredPscAutoConnectionOutput{})
 	pulumi.RegisterOutputType(GetInstanceDesiredPscAutoConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceDiscoveryEndpointOutput{})

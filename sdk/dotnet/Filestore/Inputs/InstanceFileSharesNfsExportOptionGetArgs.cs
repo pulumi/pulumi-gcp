@@ -52,6 +52,13 @@ namespace Pulumi.Gcp.Filestore.Inputs
         }
 
         /// <summary>
+        /// The source VPC network for `ip_ranges`.
+        /// Required for instances using Private Service Connect, optional otherwise.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
         /// for not allowing root access. The default is NO_ROOT_SQUASH.
         /// Default value is `NO_ROOT_SQUASH`.

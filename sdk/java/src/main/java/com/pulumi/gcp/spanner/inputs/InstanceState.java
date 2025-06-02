@@ -19,25 +19,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceState Empty = new InstanceState();
 
-    /**
-     * The autoscaling configuration. Autoscaling is enabled if this field is set.
-     * When autoscaling is enabled, num_nodes and processing_units are treated as,
-     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-     * the instance.
-     * Structure is documented below.
-     * 
-     */
     @Import(name="autoscalingConfig")
     private @Nullable Output<InstanceAutoscalingConfigArgs> autoscalingConfig;
 
-    /**
-     * @return The autoscaling configuration. Autoscaling is enabled if this field is set.
-     * When autoscaling is enabled, num_nodes and processing_units are treated as,
-     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-     * the instance.
-     * Structure is documented below.
-     * 
-     */
     public Optional<Output<InstanceAutoscalingConfigArgs>> autoscalingConfig() {
         return Optional.ofNullable(this.autoscalingConfig);
     }
@@ -159,6 +143,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+     * usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+     * When configured as FREE_INSTANCE, the field `edition` should not be configured.
+     * Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+     * 
+     */
+    @Import(name="instanceType")
+    private @Nullable Output<String> instanceType;
+
+    /**
+     * @return The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+     * usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+     * When configured as FREE_INSTANCE, the field `edition` should not be configured.
+     * Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+     * 
+     */
+    public Optional<Output<String>> instanceType() {
+        return Optional.ofNullable(this.instanceType);
+    }
+
+    /**
      * An object containing a list of &#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
@@ -275,6 +280,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.edition = $.edition;
         this.effectiveLabels = $.effectiveLabels;
         this.forceDestroy = $.forceDestroy;
+        this.instanceType = $.instanceType;
         this.labels = $.labels;
         this.name = $.name;
         this.numNodes = $.numNodes;
@@ -302,31 +308,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             $ = new InstanceState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param autoscalingConfig The autoscaling configuration. Autoscaling is enabled if this field is set.
-         * When autoscaling is enabled, num_nodes and processing_units are treated as,
-         * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-         * the instance.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscalingConfig(@Nullable Output<InstanceAutoscalingConfigArgs> autoscalingConfig) {
             $.autoscalingConfig = autoscalingConfig;
             return this;
         }
 
-        /**
-         * @param autoscalingConfig The autoscaling configuration. Autoscaling is enabled if this field is set.
-         * When autoscaling is enabled, num_nodes and processing_units are treated as,
-         * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-         * the instance.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscalingConfig(InstanceAutoscalingConfigArgs autoscalingConfig) {
             return autoscalingConfig(Output.of(autoscalingConfig));
         }
@@ -481,6 +467,33 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
+        }
+
+        /**
+         * @param instanceType The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+         * usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+         * When configured as FREE_INSTANCE, the field `edition` should not be configured.
+         * Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(@Nullable Output<String> instanceType) {
+            $.instanceType = instanceType;
+            return this;
+        }
+
+        /**
+         * @param instanceType The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+         * usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+         * When configured as FREE_INSTANCE, the field `edition` should not be configured.
+         * Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(String instanceType) {
+            return instanceType(Output.of(instanceType));
         }
 
         /**

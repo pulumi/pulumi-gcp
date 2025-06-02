@@ -1682,14 +1682,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.tpuIpv4CidrBlock;
     }
     /**
-     * The custom keys configuration of the cluster.
+     * The custom keys configuration of the cluster Structure is documented below.
      * 
      */
     @Export(name="userManagedKeysConfig", refs={ClusterUserManagedKeysConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterUserManagedKeysConfig> userManagedKeysConfig;
 
     /**
-     * @return The custom keys configuration of the cluster.
+     * @return The custom keys configuration of the cluster Structure is documented below.
      * 
      */
     public Output<Optional<ClusterUserManagedKeysConfig>> userManagedKeysConfig() {

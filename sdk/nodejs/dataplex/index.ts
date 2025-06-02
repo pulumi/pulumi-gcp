@@ -155,6 +155,11 @@ export type Glossary = import("./glossary").Glossary;
 export const Glossary: typeof import("./glossary").Glossary = null as any;
 utilities.lazyLoad(exports, ["Glossary"], () => require("./glossary"));
 
+export { GlossaryCategoryArgs, GlossaryCategoryState } from "./glossaryCategory";
+export type GlossaryCategory = import("./glossaryCategory").GlossaryCategory;
+export const GlossaryCategory: typeof import("./glossaryCategory").GlossaryCategory = null as any;
+utilities.lazyLoad(exports, ["GlossaryCategory"], () => require("./glossaryCategory"));
+
 export { GlossaryIamBindingArgs, GlossaryIamBindingState } from "./glossaryIamBinding";
 export type GlossaryIamBinding = import("./glossaryIamBinding").GlossaryIamBinding;
 export const GlossaryIamBinding: typeof import("./glossaryIamBinding").GlossaryIamBinding = null as any;
@@ -169,6 +174,11 @@ export { GlossaryIamPolicyArgs, GlossaryIamPolicyState } from "./glossaryIamPoli
 export type GlossaryIamPolicy = import("./glossaryIamPolicy").GlossaryIamPolicy;
 export const GlossaryIamPolicy: typeof import("./glossaryIamPolicy").GlossaryIamPolicy = null as any;
 utilities.lazyLoad(exports, ["GlossaryIamPolicy"], () => require("./glossaryIamPolicy"));
+
+export { GlossaryTermArgs, GlossaryTermState } from "./glossaryTerm";
+export type GlossaryTerm = import("./glossaryTerm").GlossaryTerm;
+export const GlossaryTerm: typeof import("./glossaryTerm").GlossaryTerm = null as any;
+utilities.lazyLoad(exports, ["GlossaryTerm"], () => require("./glossaryTerm"));
 
 export { LakeArgs, LakeState } from "./lake";
 export type Lake = import("./lake").Lake;
@@ -277,12 +287,16 @@ const _module = {
                 return new EntryTypeIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataplex/glossary:Glossary":
                 return new Glossary(name, <any>undefined, { urn })
+            case "gcp:dataplex/glossaryCategory:GlossaryCategory":
+                return new GlossaryCategory(name, <any>undefined, { urn })
             case "gcp:dataplex/glossaryIamBinding:GlossaryIamBinding":
                 return new GlossaryIamBinding(name, <any>undefined, { urn })
             case "gcp:dataplex/glossaryIamMember:GlossaryIamMember":
                 return new GlossaryIamMember(name, <any>undefined, { urn })
             case "gcp:dataplex/glossaryIamPolicy:GlossaryIamPolicy":
                 return new GlossaryIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataplex/glossaryTerm:GlossaryTerm":
+                return new GlossaryTerm(name, <any>undefined, { urn })
             case "gcp:dataplex/lake:Lake":
                 return new Lake(name, <any>undefined, { urn })
             case "gcp:dataplex/lakeIamBinding:LakeIamBinding":
@@ -333,9 +347,11 @@ pulumi.runtime.registerResourceModule("gcp", "dataplex/entryTypeIamBinding", _mo
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryTypeIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryTypeIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/glossary", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/glossaryCategory", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/glossaryIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/glossaryIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/glossaryIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/glossaryTerm", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lake", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamMember", _module)

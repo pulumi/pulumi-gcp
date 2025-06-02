@@ -147,6 +147,11 @@ type VolumeReplication struct {
 	// - true: The replication relationship is healthy. It has not missed the most recent scheduled transfer.
 	// - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer.
 	Healthy pulumi.BoolOutput `pulumi:"healthy"`
+	// HybridPeeringDetails contains details about the hybrid peering.
+	// Structure is documented below.
+	HybridPeeringDetails VolumeReplicationHybridPeeringDetailArrayOutput `pulumi:"hybridPeeringDetails"`
+	// Hybrid replication type.
+	HybridReplicationType pulumi.StringOutput `pulumi:"hybridReplicationType"`
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -260,6 +265,11 @@ type volumeReplicationState struct {
 	// - true: The replication relationship is healthy. It has not missed the most recent scheduled transfer.
 	// - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer.
 	Healthy *bool `pulumi:"healthy"`
+	// HybridPeeringDetails contains details about the hybrid peering.
+	// Structure is documented below.
+	HybridPeeringDetails []VolumeReplicationHybridPeeringDetail `pulumi:"hybridPeeringDetails"`
+	// Hybrid replication type.
+	HybridReplicationType *string `pulumi:"hybridReplicationType"`
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -330,6 +340,11 @@ type VolumeReplicationState struct {
 	// - true: The replication relationship is healthy. It has not missed the most recent scheduled transfer.
 	// - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer.
 	Healthy pulumi.BoolPtrInput
+	// HybridPeeringDetails contains details about the hybrid peering.
+	// Structure is documented below.
+	HybridPeeringDetails VolumeReplicationHybridPeeringDetailArrayInput
+	// Hybrid replication type.
+	HybridReplicationType pulumi.StringPtrInput
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -593,6 +608,19 @@ func (o VolumeReplicationOutput) ForceStopping() pulumi.BoolPtrOutput {
 // - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer.
 func (o VolumeReplicationOutput) Healthy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *VolumeReplication) pulumi.BoolOutput { return v.Healthy }).(pulumi.BoolOutput)
+}
+
+// HybridPeeringDetails contains details about the hybrid peering.
+// Structure is documented below.
+func (o VolumeReplicationOutput) HybridPeeringDetails() VolumeReplicationHybridPeeringDetailArrayOutput {
+	return o.ApplyT(func(v *VolumeReplication) VolumeReplicationHybridPeeringDetailArrayOutput {
+		return v.HybridPeeringDetails
+	}).(VolumeReplicationHybridPeeringDetailArrayOutput)
+}
+
+// Hybrid replication type.
+func (o VolumeReplicationOutput) HybridReplicationType() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeReplication) pulumi.StringOutput { return v.HybridReplicationType }).(pulumi.StringOutput)
 }
 
 // Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`

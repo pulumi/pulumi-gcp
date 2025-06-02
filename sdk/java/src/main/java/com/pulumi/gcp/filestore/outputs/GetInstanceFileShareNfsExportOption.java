@@ -40,6 +40,12 @@ public final class GetInstanceFileShareNfsExportOption {
      */
     private List<String> ipRanges;
     /**
+     * @return The source VPC network for &#39;ip_ranges&#39;.
+     * Required for instances using Private Service Connect, optional otherwise.
+     * 
+     */
+    private String network;
+    /**
      * @return Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
      * for not allowing root access. The default is NO_ROOT_SQUASH. Default value: &#34;NO_ROOT_SQUASH&#34; Possible values: [&#34;NO_ROOT_SQUASH&#34;, &#34;ROOT_SQUASH&#34;]
      * 
@@ -83,6 +89,14 @@ public final class GetInstanceFileShareNfsExportOption {
         return this.ipRanges;
     }
     /**
+     * @return The source VPC network for &#39;ip_ranges&#39;.
+     * Required for instances using Private Service Connect, optional otherwise.
+     * 
+     */
+    public String network() {
+        return this.network;
+    }
+    /**
      * @return Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
      * for not allowing root access. The default is NO_ROOT_SQUASH. Default value: &#34;NO_ROOT_SQUASH&#34; Possible values: [&#34;NO_ROOT_SQUASH&#34;, &#34;ROOT_SQUASH&#34;]
      * 
@@ -104,6 +118,7 @@ public final class GetInstanceFileShareNfsExportOption {
         private Integer anonGid;
         private Integer anonUid;
         private List<String> ipRanges;
+        private String network;
         private String squashMode;
         public Builder() {}
         public Builder(GetInstanceFileShareNfsExportOption defaults) {
@@ -112,6 +127,7 @@ public final class GetInstanceFileShareNfsExportOption {
     	      this.anonGid = defaults.anonGid;
     	      this.anonUid = defaults.anonUid;
     	      this.ipRanges = defaults.ipRanges;
+    	      this.network = defaults.network;
     	      this.squashMode = defaults.squashMode;
         }
 
@@ -151,6 +167,14 @@ public final class GetInstanceFileShareNfsExportOption {
             return ipRanges(List.of(ipRanges));
         }
         @CustomType.Setter
+        public Builder network(String network) {
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetInstanceFileShareNfsExportOption", "network");
+            }
+            this.network = network;
+            return this;
+        }
+        @CustomType.Setter
         public Builder squashMode(String squashMode) {
             if (squashMode == null) {
               throw new MissingRequiredPropertyException("GetInstanceFileShareNfsExportOption", "squashMode");
@@ -164,6 +188,7 @@ public final class GetInstanceFileShareNfsExportOption {
             _resultValue.anonGid = anonGid;
             _resultValue.anonUid = anonUid;
             _resultValue.ipRanges = ipRanges;
+            _resultValue.network = network;
             _resultValue.squashMode = squashMode;
             return _resultValue;
         }

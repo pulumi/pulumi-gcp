@@ -25,8 +25,8 @@ namespace Pulumi.Gcp.ManagedKafka
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "tf-test_91980",
-    ///         Name = "tf-test_37118",
+    ///         ProjectId = "tf-test_8270",
+    ///         Name = "tf-test_41150",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",

@@ -101,7 +101,7 @@ type ReleaseChannelSettingBinding struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Product type of the setting binding.
 	// Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
-	Product pulumi.StringPtrOutput `pulumi:"product"`
+	Product pulumi.StringOutput `pulumi:"product"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -401,8 +401,8 @@ func (o ReleaseChannelSettingBindingOutput) Name() pulumi.StringOutput {
 
 // Product type of the setting binding.
 // Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
-func (o ReleaseChannelSettingBindingOutput) Product() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReleaseChannelSettingBinding) pulumi.StringPtrOutput { return v.Product }).(pulumi.StringPtrOutput)
+func (o ReleaseChannelSettingBindingOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReleaseChannelSettingBinding) pulumi.StringOutput { return v.Product }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

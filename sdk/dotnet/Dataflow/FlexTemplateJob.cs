@@ -112,6 +112,12 @@ namespace Pulumi.Gcp.Dataflow
         public Output<ImmutableArray<string>> AdditionalExperiments { get; private set; } = null!;
 
         /// <summary>
+        /// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+        /// </summary>
+        [Output("additionalPipelineOptions")]
+        public Output<ImmutableArray<string>> AdditionalPipelineOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The algorithm to use for autoscaling.
         /// </summary>
         [Output("autoscalingAlgorithm")]
@@ -349,6 +355,18 @@ namespace Pulumi.Gcp.Dataflow
             set => _additionalExperiments = value;
         }
 
+        [Input("additionalPipelineOptions")]
+        private InputList<string>? _additionalPipelineOptions;
+
+        /// <summary>
+        /// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+        /// </summary>
+        public InputList<string> AdditionalPipelineOptions
+        {
+            get => _additionalPipelineOptions ?? (_additionalPipelineOptions = new InputList<string>());
+            set => _additionalPipelineOptions = value;
+        }
+
         /// <summary>
         /// The algorithm to use for autoscaling.
         /// </summary>
@@ -533,6 +551,18 @@ namespace Pulumi.Gcp.Dataflow
         {
             get => _additionalExperiments ?? (_additionalExperiments = new InputList<string>());
             set => _additionalExperiments = value;
+        }
+
+        [Input("additionalPipelineOptions")]
+        private InputList<string>? _additionalPipelineOptions;
+
+        /// <summary>
+        /// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
+        /// </summary>
+        public InputList<string> AdditionalPipelineOptions
+        {
+            get => _additionalPipelineOptions ?? (_additionalPipelineOptions = new InputList<string>());
+            set => _additionalPipelineOptions = value;
         }
 
         /// <summary>

@@ -10,9 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable
 {
     /// <summary>
-    /// ## +---
+    /// ## subcategory: "Cloud Bigtable"
     /// 
-    /// subcategory: "Cloud Bigtable"
     /// description: |-
     ///   Creates a Google Bigtable instance.
     /// ---
@@ -130,7 +129,7 @@ namespace Pulumi.Gcp.BigTable
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A block of cluster configuration options. This can be specified at least once, and up 
+        /// A block of cluster configuration options. This can be specified at least once, and up
         /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         /// to default to the backend value. See structure below.
         /// 
@@ -259,7 +258,7 @@ namespace Pulumi.Gcp.BigTable
         private InputList<Inputs.InstanceClusterArgs>? _clusters;
 
         /// <summary>
-        /// A block of cluster configuration options. This can be specified at least once, and up 
+        /// A block of cluster configuration options. This can be specified at least once, and up
         /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         /// to default to the backend value. See structure below.
         /// 
@@ -340,7 +339,7 @@ namespace Pulumi.Gcp.BigTable
         private InputList<Inputs.InstanceClusterGetArgs>? _clusters;
 
         /// <summary>
-        /// A block of cluster configuration options. This can be specified at least once, and up 
+        /// A block of cluster configuration options. This can be specified at least once, and up
         /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         /// to default to the backend value. See structure below.
         /// 

@@ -45,6 +45,11 @@ export const getFeatureIamPolicy: typeof import("./getFeatureIamPolicy").getFeat
 export const getFeatureIamPolicyOutput: typeof import("./getFeatureIamPolicy").getFeatureIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getFeatureIamPolicy","getFeatureIamPolicyOutput"], () => require("./getFeatureIamPolicy"));
 
+export { GetMembershipArgs, GetMembershipResult, GetMembershipOutputArgs } from "./getMembership";
+export const getMembership: typeof import("./getMembership").getMembership = null as any;
+export const getMembershipOutput: typeof import("./getMembership").getMembershipOutput = null as any;
+utilities.lazyLoad(exports, ["getMembership","getMembershipOutput"], () => require("./getMembership"));
+
 export { GetMembershipBindingArgs, GetMembershipBindingResult, GetMembershipBindingOutputArgs } from "./getMembershipBinding";
 export const getMembershipBinding: typeof import("./getMembershipBinding").getMembershipBinding = null as any;
 export const getMembershipBindingOutput: typeof import("./getMembershipBinding").getMembershipBindingOutput = null as any;

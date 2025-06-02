@@ -430,9 +430,9 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_29439")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_37559")
         namespace = gcp.gkehub.Namespace("namespace",
-            scope_namespace_id="tf-test-namespace_87786",
+            scope_namespace_id="tf-test-namespace_91980",
             scope_id=scope.scope_id,
             scope=scope.name,
             namespace_labels={
@@ -515,9 +515,9 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_29439")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_37559")
         namespace = gcp.gkehub.Namespace("namespace",
-            scope_namespace_id="tf-test-namespace_87786",
+            scope_namespace_id="tf-test-namespace_91980",
             scope_id=scope.scope_id,
             scope=scope.name,
             namespace_labels={

@@ -421,6 +421,23 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Backend Service Dynamic Forwarding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     dynamicForwarding: {
+ *         ipPortSelection: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * BackendService can be imported using any of these accepted formats:
@@ -542,6 +559,12 @@ export class BackendService extends pulumi.CustomResource {
      * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     */
+    public readonly dynamicForwarding!: pulumi.Output<outputs.compute.BackendServiceDynamicForwarding | undefined>;
     /**
      * The resource URL for the edge security policy associated with this backend service.
      */
@@ -707,6 +730,11 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     */
+    public readonly networkPassThroughLbTrafficPolicy!: pulumi.Output<outputs.compute.BackendServiceNetworkPassThroughLbTrafficPolicy | undefined>;
+    /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * Applicable backend service types can be a global backend service with the
      * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -803,6 +831,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["customRequestHeaders"] = state ? state.customRequestHeaders : undefined;
             resourceInputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dynamicForwarding"] = state ? state.dynamicForwarding : undefined;
             resourceInputs["edgeSecurityPolicy"] = state ? state.edgeSecurityPolicy : undefined;
             resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
             resourceInputs["externalManagedMigrationState"] = state ? state.externalManagedMigrationState : undefined;
@@ -818,6 +847,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
             resourceInputs["maxStreamDuration"] = state ? state.maxStreamDuration : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkPassThroughLbTrafficPolicy"] = state ? state.networkPassThroughLbTrafficPolicy : undefined;
             resourceInputs["outlierDetection"] = state ? state.outlierDetection : undefined;
             resourceInputs["portName"] = state ? state.portName : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -843,6 +873,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["customRequestHeaders"] = args ? args.customRequestHeaders : undefined;
             resourceInputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dynamicForwarding"] = args ? args.dynamicForwarding : undefined;
             resourceInputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
             resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
             resourceInputs["externalManagedMigrationState"] = args ? args.externalManagedMigrationState : undefined;
@@ -856,6 +887,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["maxStreamDuration"] = args ? args.maxStreamDuration : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkPassThroughLbTrafficPolicy"] = args ? args.networkPassThroughLbTrafficPolicy : undefined;
             resourceInputs["outlierDetection"] = args ? args.outlierDetection : undefined;
             resourceInputs["portName"] = args ? args.portName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -950,6 +982,12 @@ export interface BackendServiceState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     */
+    dynamicForwarding?: pulumi.Input<inputs.compute.BackendServiceDynamicForwarding>;
     /**
      * The resource URL for the edge security policy associated with this backend service.
      */
@@ -1115,6 +1153,11 @@ export interface BackendServiceState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     */
+    networkPassThroughLbTrafficPolicy?: pulumi.Input<inputs.compute.BackendServiceNetworkPassThroughLbTrafficPolicy>;
+    /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * Applicable backend service types can be a global backend service with the
      * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -1256,6 +1299,12 @@ export interface BackendServiceArgs {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     */
+    dynamicForwarding?: pulumi.Input<inputs.compute.BackendServiceDynamicForwarding>;
     /**
      * The resource URL for the edge security policy associated with this backend service.
      */
@@ -1411,6 +1460,11 @@ export interface BackendServiceArgs {
      * - - -
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     */
+    networkPassThroughLbTrafficPolicy?: pulumi.Input<inputs.compute.BackendServiceNetworkPassThroughLbTrafficPolicy>;
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * Applicable backend service types can be a global backend service with the

@@ -334,7 +334,7 @@ class Application(pulumi.CustomResource):
                  upstreams: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUpstreamArgs', 'ApplicationUpstreamArgsDict']]]]] = None,
                  __props__=None):
         """
-        > **Warning:** `beyondcorp.Application` is deprecated. Use `google_beyondcorp_security_gateway_application` instead.
+        > **Warning:** `beyondcorp.Application` is deprecated. Use `beyondcorp.SecurityGatewayApplication` instead.
 
         Specifies application endpoint(s) to protect behind a Security Gateway.
 
@@ -441,7 +441,7 @@ class Application(pulumi.CustomResource):
                  args: ApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Warning:** `beyondcorp.Application` is deprecated. Use `google_beyondcorp_security_gateway_application` instead.
+        > **Warning:** `beyondcorp.Application` is deprecated. Use `beyondcorp.SecurityGatewayApplication` instead.
 
         Specifies application endpoint(s) to protect behind a Security Gateway.
 

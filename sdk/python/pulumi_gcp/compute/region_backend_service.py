@@ -31,6 +31,7 @@ class RegionBackendServiceArgs:
                  consistent_hash: Optional[pulumi.Input['RegionBackendServiceConsistentHashArgs']] = None,
                  custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 dynamic_forwarding: Optional[pulumi.Input['RegionBackendServiceDynamicForwardingArgs']] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
                  failover_policy: Optional[pulumi.Input['RegionBackendServiceFailoverPolicyArgs']] = None,
                  health_checks: Optional[pulumi.Input[builtins.str]] = None,
@@ -82,6 +83,9 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input['RegionBackendServiceDynamicForwardingArgs'] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+               feature which together with Service Extension allows customized and complex routing logic.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
         :param pulumi.Input['RegionBackendServiceFailoverPolicyArgs'] failover_policy: Policy for failovers.
                Structure is documented below.
@@ -219,6 +223,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "custom_metrics", custom_metrics)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_forwarding is not None:
+            pulumi.set(__self__, "dynamic_forwarding", dynamic_forwarding)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
         if failover_policy is not None:
@@ -387,6 +393,20 @@ class RegionBackendServiceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dynamicForwarding")
+    def dynamic_forwarding(self) -> Optional[pulumi.Input['RegionBackendServiceDynamicForwardingArgs']]:
+        """
+        Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        feature which together with Service Extension allows customized and complex routing logic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_forwarding")
+
+    @dynamic_forwarding.setter
+    def dynamic_forwarding(self, value: Optional[pulumi.Input['RegionBackendServiceDynamicForwardingArgs']]):
+        pulumi.set(self, "dynamic_forwarding", value)
 
     @property
     @pulumi.getter(name="enableCdn")
@@ -740,6 +760,7 @@ class _RegionBackendServiceState:
                  creation_timestamp: Optional[pulumi.Input[builtins.str]] = None,
                  custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 dynamic_forwarding: Optional[pulumi.Input['RegionBackendServiceDynamicForwardingArgs']] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
                  failover_policy: Optional[pulumi.Input['RegionBackendServiceFailoverPolicyArgs']] = None,
                  fingerprint: Optional[pulumi.Input[builtins.str]] = None,
@@ -795,6 +816,9 @@ class _RegionBackendServiceState:
         :param pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input['RegionBackendServiceDynamicForwardingArgs'] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+               feature which together with Service Extension allows customized and complex routing logic.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
         :param pulumi.Input['RegionBackendServiceFailoverPolicyArgs'] failover_policy: Policy for failovers.
                Structure is documented below.
@@ -938,6 +962,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "custom_metrics", custom_metrics)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_forwarding is not None:
+            pulumi.set(__self__, "dynamic_forwarding", dynamic_forwarding)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
         if failover_policy is not None:
@@ -1124,6 +1150,20 @@ class _RegionBackendServiceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dynamicForwarding")
+    def dynamic_forwarding(self) -> Optional[pulumi.Input['RegionBackendServiceDynamicForwardingArgs']]:
+        """
+        Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        feature which together with Service Extension allows customized and complex routing logic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_forwarding")
+
+    @dynamic_forwarding.setter
+    def dynamic_forwarding(self, value: Optional[pulumi.Input['RegionBackendServiceDynamicForwardingArgs']]):
+        pulumi.set(self, "dynamic_forwarding", value)
 
     @property
     @pulumi.getter(name="enableCdn")
@@ -1516,6 +1556,7 @@ class RegionBackendService(pulumi.CustomResource):
                  consistent_hash: Optional[pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
                  custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 dynamic_forwarding: Optional[pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
                  failover_policy: Optional[pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
                  health_checks: Optional[pulumi.Input[builtins.str]] = None,
@@ -1890,6 +1931,23 @@ class RegionBackendService(pulumi.CustomResource):
                 ],
             }])
         ```
+        ### Region Backend Service Dynamic Forwarding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            dynamic_forwarding={
+                "ip_port_selection": {
+                    "enabled": True,
+                },
+            })
+        ```
+
         ## Import
 
         RegionBackendService can be imported using any of these accepted formats:
@@ -1951,6 +2009,9 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+               feature which together with Service Extension allows customized and complex routing logic.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
         :param pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']] failover_policy: Policy for failovers.
                Structure is documented below.
@@ -2429,6 +2490,23 @@ class RegionBackendService(pulumi.CustomResource):
                 ],
             }])
         ```
+        ### Region Backend Service Dynamic Forwarding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            dynamic_forwarding={
+                "ip_port_selection": {
+                    "enabled": True,
+                },
+            })
+        ```
+
         ## Import
 
         RegionBackendService can be imported using any of these accepted formats:
@@ -2483,6 +2561,7 @@ class RegionBackendService(pulumi.CustomResource):
                  consistent_hash: Optional[pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
                  custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 dynamic_forwarding: Optional[pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
                  failover_policy: Optional[pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
                  health_checks: Optional[pulumi.Input[builtins.str]] = None,
@@ -2521,6 +2600,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["consistent_hash"] = consistent_hash
             __props__.__dict__["custom_metrics"] = custom_metrics
             __props__.__dict__["description"] = description
+            __props__.__dict__["dynamic_forwarding"] = dynamic_forwarding
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["failover_policy"] = failover_policy
             __props__.__dict__["health_checks"] = health_checks
@@ -2565,6 +2645,7 @@ class RegionBackendService(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[builtins.str]] = None,
             custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
+            dynamic_forwarding: Optional[pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']]] = None,
             enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
             failover_policy: Optional[pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
             fingerprint: Optional[pulumi.Input[builtins.str]] = None,
@@ -2625,6 +2706,9 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+               feature which together with Service Extension allows customized and complex routing logic.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
         :param pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']] failover_policy: Policy for failovers.
                Structure is documented below.
@@ -2762,6 +2846,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["custom_metrics"] = custom_metrics
         __props__.__dict__["description"] = description
+        __props__.__dict__["dynamic_forwarding"] = dynamic_forwarding
         __props__.__dict__["enable_cdn"] = enable_cdn
         __props__.__dict__["failover_policy"] = failover_policy
         __props__.__dict__["fingerprint"] = fingerprint
@@ -2886,6 +2971,16 @@ class RegionBackendService(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dynamicForwarding")
+    def dynamic_forwarding(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceDynamicForwarding']]:
+        """
+        Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        feature which together with Service Extension allows customized and complex routing logic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_forwarding")
 
     @property
     @pulumi.getter(name="enableCdn")

@@ -872,6 +872,326 @@ import (
 //	}
 //
 // ```
+// ### Url Map Default Mirror Percent
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			home, err := compute.NewBackendService(ctx, "home", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("home"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mirror, err := compute.NewBackendService(ctx, "mirror", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("mirror"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("Test for default route action mirror percent"),
+//				DefaultService: home.ID(),
+//				DefaultRouteAction: &compute.URLMapDefaultRouteActionArgs{
+//					RequestMirrorPolicy: &compute.URLMapDefaultRouteActionRequestMirrorPolicyArgs{
+//						BackendService: mirror.ID(),
+//						MirrorPercent:  pulumi.Float64(50),
+//					},
+//				},
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: home.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Path Matcher Default Mirror Percent
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			home, err := compute.NewBackendService(ctx, "home", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("home"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mirror, err := compute.NewBackendService(ctx, "mirror", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("mirror"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("Test for default route action mirror percent"),
+//				DefaultService: home.ID(),
+//				DefaultRouteAction: &compute.URLMapDefaultRouteActionArgs{
+//					RequestMirrorPolicy: &compute.URLMapDefaultRouteActionRequestMirrorPolicyArgs{
+//						BackendService: mirror.ID(),
+//						MirrorPercent:  pulumi.Float64(50),
+//					},
+//				},
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: home.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Path Rule Mirror Percent
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			home, err := compute.NewBackendService(ctx, "home", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("home"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mirror, err := compute.NewBackendService(ctx, "mirror", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("mirror"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("Test for path matcher default route action mirror percent"),
+//				DefaultService: home.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: home.ID(),
+//						DefaultRouteAction: &compute.URLMapPathMatcherDefaultRouteActionArgs{
+//							RequestMirrorPolicy: &compute.URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs{
+//								BackendService: mirror.ID(),
+//								MirrorPercent:  pulumi.Float64(75),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Route Rule Mirror Percent
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			home, err := compute.NewBackendService(ctx, "home", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("home"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mirror, err := compute.NewBackendService(ctx, "mirror", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("mirror"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("Test for path rule route action mirror percent"),
+//				DefaultService: home.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: home.ID(),
+//						PathRules: compute.URLMapPathMatcherPathRuleArray{
+//							&compute.URLMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/home"),
+//								},
+//								Service: home.ID(),
+//								RouteAction: &compute.URLMapPathMatcherPathRuleRouteActionArgs{
+//									RequestMirrorPolicy: &compute.URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{
+//										BackendService: mirror.ID(),
+//										MirrorPercent:  pulumi.Float64(25),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Url Map Path Template Match
 //
 // ```go

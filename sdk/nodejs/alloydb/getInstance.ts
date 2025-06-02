@@ -58,6 +58,7 @@ export interface GetInstanceArgs {
  * A collection of values returned by getInstance.
  */
 export interface GetInstanceResult {
+    readonly activationPolicy: string;
     readonly annotations: {[key: string]: string};
     readonly availabilityType: string;
     readonly clientConnectionConfigs: outputs.alloydb.GetInstanceClientConnectionConfig[];

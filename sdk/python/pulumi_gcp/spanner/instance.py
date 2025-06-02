@@ -28,6 +28,7 @@ class InstanceArgs:
                  default_backup_schedule_type: Optional[pulumi.Input[builtins.str]] = None,
                  edition: Optional[pulumi.Input[builtins.str]] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
+                 instance_type: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  num_nodes: Optional[pulumi.Input[builtins.int]] = None,
@@ -46,11 +47,6 @@ class InstanceArgs:
                
                
                - - -
-        :param pulumi.Input['InstanceAutoscalingConfigArgs'] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
-               When autoscaling is enabled, num_nodes and processing_units are treated as,
-               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-               the instance.
-               Structure is documented below.
         :param pulumi.Input[builtins.str] default_backup_schedule_type: Controls the default backup behavior for new databases within the instance.
                Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
                if unset or NONE, no default backup schedule will be created for new databases within the instance.
@@ -59,6 +55,10 @@ class InstanceArgs:
                Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input[builtins.bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
+        :param pulumi.Input[builtins.str] instance_type: The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+               usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+               When configured as FREE_INSTANCE, the field `edition` should not be configured.
+               Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -81,6 +81,8 @@ class InstanceArgs:
             pulumi.set(__self__, "edition", edition)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -128,13 +130,6 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="autoscalingConfig")
     def autoscaling_config(self) -> Optional[pulumi.Input['InstanceAutoscalingConfigArgs']]:
-        """
-        The autoscaling configuration. Autoscaling is enabled if this field is set.
-        When autoscaling is enabled, num_nodes and processing_units are treated as,
-        OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-        the instance.
-        Structure is documented below.
-        """
         return pulumi.get(self, "autoscaling_config")
 
     @autoscaling_config.setter
@@ -181,6 +176,21 @@ class InstanceArgs:
     @force_destroy.setter
     def force_destroy(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+        usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+        When configured as FREE_INSTANCE, the field `edition` should not be configured.
+        Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "instance_type", value)
 
     @property
     @pulumi.getter
@@ -255,6 +265,7 @@ class _InstanceState:
                  edition: Optional[pulumi.Input[builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
+                 instance_type: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  num_nodes: Optional[pulumi.Input[builtins.int]] = None,
@@ -264,11 +275,6 @@ class _InstanceState:
                  state: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input['InstanceAutoscalingConfigArgs'] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
-               When autoscaling is enabled, num_nodes and processing_units are treated as,
-               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-               the instance.
-               Structure is documented below.
         :param pulumi.Input[builtins.str] config: The name of the instance's configuration (similar but not
                quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
@@ -289,6 +295,10 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
+        :param pulumi.Input[builtins.str] instance_type: The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+               usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+               When configured as FREE_INSTANCE, the field `edition` should not be configured.
+               Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -318,6 +328,8 @@ class _InstanceState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -336,13 +348,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="autoscalingConfig")
     def autoscaling_config(self) -> Optional[pulumi.Input['InstanceAutoscalingConfigArgs']]:
-        """
-        The autoscaling configuration. Autoscaling is enabled if this field is set.
-        When autoscaling is enabled, num_nodes and processing_units are treated as,
-        OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-        the instance.
-        Structure is documented below.
-        """
         return pulumi.get(self, "autoscaling_config")
 
     @autoscaling_config.setter
@@ -434,6 +439,21 @@ class _InstanceState:
     @force_destroy.setter
     def force_destroy(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+        usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+        When configured as FREE_INSTANCE, the field `edition` should not be configured.
+        Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "instance_type", value)
 
     @property
     @pulumi.getter
@@ -535,6 +555,7 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  edition: Optional[pulumi.Input[builtins.str]] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
+                 instance_type: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  num_nodes: Optional[pulumi.Input[builtins.int]] = None,
@@ -624,11 +645,6 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
-               When autoscaling is enabled, num_nodes and processing_units are treated as,
-               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-               the instance.
-               Structure is documented below.
         :param pulumi.Input[builtins.str] config: The name of the instance's configuration (similar but not
                quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
@@ -648,6 +664,10 @@ class Instance(pulumi.CustomResource):
                Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input[builtins.bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
+        :param pulumi.Input[builtins.str] instance_type: The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+               usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+               When configured as FREE_INSTANCE, the field `edition` should not be configured.
+               Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -768,6 +788,7 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  edition: Optional[pulumi.Input[builtins.str]] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
+                 instance_type: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  num_nodes: Optional[pulumi.Input[builtins.int]] = None,
@@ -792,6 +813,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["edition"] = edition
             __props__.__dict__["force_destroy"] = force_destroy
+            __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["num_nodes"] = num_nodes
@@ -819,6 +841,7 @@ class Instance(pulumi.CustomResource):
             edition: Optional[pulumi.Input[builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
+            instance_type: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             num_nodes: Optional[pulumi.Input[builtins.int]] = None,
@@ -833,11 +856,6 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
-               When autoscaling is enabled, num_nodes and processing_units are treated as,
-               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-               the instance.
-               Structure is documented below.
         :param pulumi.Input[builtins.str] config: The name of the instance's configuration (similar but not
                quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
@@ -858,6 +876,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
+        :param pulumi.Input[builtins.str] instance_type: The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+               usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+               When configured as FREE_INSTANCE, the field `edition` should not be configured.
+               Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -884,6 +906,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["edition"] = edition
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["force_destroy"] = force_destroy
+        __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["num_nodes"] = num_nodes
@@ -896,13 +919,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="autoscalingConfig")
     def autoscaling_config(self) -> pulumi.Output[Optional['outputs.InstanceAutoscalingConfig']]:
-        """
-        The autoscaling configuration. Autoscaling is enabled if this field is set.
-        When autoscaling is enabled, num_nodes and processing_units are treated as,
-        OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-        the instance.
-        Structure is documented below.
-        """
         return pulumi.get(self, "autoscaling_config")
 
     @property
@@ -966,6 +982,17 @@ class Instance(pulumi.CustomResource):
         This must be set to true if you created a backup manually in the console.
         """
         return pulumi.get(self, "force_destroy")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Output[builtins.str]:
+        """
+        The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+        usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+        When configured as FREE_INSTANCE, the field `edition` should not be configured.
+        Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+        """
+        return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter

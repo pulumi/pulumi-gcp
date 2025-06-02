@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * The Compute NetworkFirewallPolicy with rules resource
+ *
  * ## Example Usage
  *
  * ### Compute Region Network Firewall Policy With Rules Full
@@ -38,10 +40,6 @@ import * as utilities from "../utilities";
  *     description: "Tag value",
  *     parent: secureTagKey1.id,
  *     shortName: "tag-value",
- * });
- * const network = new gcp.compute.Network("network", {
- *     name: "network",
- *     autoCreateSubnetworks: false,
  * });
  * const primary = new gcp.compute.RegionNetworkFirewallPolicyWithRules("primary", {
  *     name: "fw-policy",
@@ -109,39 +107,6 @@ import * as utilities from "../utilities";
  *                 }],
  *                 layer4Configs: [{
  *                     ipProtocol: "udp",
- *                 }],
- *             },
- *         },
- *         {
- *             description: "network scope rule 1",
- *             ruleName: "network scope 1",
- *             priority: 4000,
- *             enableLogging: false,
- *             action: "allow",
- *             direction: "INGRESS",
- *             match: {
- *                 srcIpRanges: ["11.100.0.1/32"],
- *                 srcNetworkScope: "VPC_NETWORKS",
- *                 srcNetworks: [network.id],
- *                 layer4Configs: [{
- *                     ipProtocol: "tcp",
- *                     ports: ["8080"],
- *                 }],
- *             },
- *         },
- *         {
- *             description: "network scope rule 2",
- *             ruleName: "network scope 2",
- *             priority: 5000,
- *             enableLogging: false,
- *             action: "allow",
- *             direction: "EGRESS",
- *             match: {
- *                 destIpRanges: ["0.0.0.0/0"],
- *                 destNetworkScope: "NON_INTERNET",
- *                 layer4Configs: [{
- *                     ipProtocol: "tcp",
- *                     ports: ["8080"],
  *                 }],
  *             },
  *         },

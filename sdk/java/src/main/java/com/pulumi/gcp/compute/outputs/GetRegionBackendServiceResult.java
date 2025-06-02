@@ -11,6 +11,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceCircuitBreaker;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceConnectionTrackingPolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceConsistentHash;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceCustomMetric;
+import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceDynamicForwarding;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceFailoverPolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceLogConfig;
@@ -37,6 +38,7 @@ public final class GetRegionBackendServiceResult {
     private String creationTimestamp;
     private List<GetRegionBackendServiceCustomMetric> customMetrics;
     private String description;
+    private List<GetRegionBackendServiceDynamicForwarding> dynamicForwardings;
     private Boolean enableCdn;
     private List<GetRegionBackendServiceFailoverPolicy> failoverPolicies;
     private String fingerprint;
@@ -96,6 +98,9 @@ public final class GetRegionBackendServiceResult {
     }
     public String description() {
         return this.description;
+    }
+    public List<GetRegionBackendServiceDynamicForwarding> dynamicForwardings() {
+        return this.dynamicForwardings;
     }
     public Boolean enableCdn() {
         return this.enableCdn;
@@ -193,6 +198,7 @@ public final class GetRegionBackendServiceResult {
         private String creationTimestamp;
         private List<GetRegionBackendServiceCustomMetric> customMetrics;
         private String description;
+        private List<GetRegionBackendServiceDynamicForwarding> dynamicForwardings;
         private Boolean enableCdn;
         private List<GetRegionBackendServiceFailoverPolicy> failoverPolicies;
         private String fingerprint;
@@ -230,6 +236,7 @@ public final class GetRegionBackendServiceResult {
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.customMetrics = defaults.customMetrics;
     	      this.description = defaults.description;
+    	      this.dynamicForwardings = defaults.dynamicForwardings;
     	      this.enableCdn = defaults.enableCdn;
     	      this.failoverPolicies = defaults.failoverPolicies;
     	      this.fingerprint = defaults.fingerprint;
@@ -353,6 +360,17 @@ public final class GetRegionBackendServiceResult {
             }
             this.description = description;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dynamicForwardings(List<GetRegionBackendServiceDynamicForwarding> dynamicForwardings) {
+            if (dynamicForwardings == null) {
+              throw new MissingRequiredPropertyException("GetRegionBackendServiceResult", "dynamicForwardings");
+            }
+            this.dynamicForwardings = dynamicForwardings;
+            return this;
+        }
+        public Builder dynamicForwardings(GetRegionBackendServiceDynamicForwarding... dynamicForwardings) {
+            return dynamicForwardings(List.of(dynamicForwardings));
         }
         @CustomType.Setter
         public Builder enableCdn(Boolean enableCdn) {
@@ -575,6 +593,7 @@ public final class GetRegionBackendServiceResult {
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.customMetrics = customMetrics;
             _resultValue.description = description;
+            _resultValue.dynamicForwardings = dynamicForwardings;
             _resultValue.enableCdn = enableCdn;
             _resultValue.failoverPolicies = failoverPolicies;
             _resultValue.fingerprint = fingerprint;

@@ -64,6 +64,7 @@ export interface GetInstanceResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly instanceType: string;
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly numNodes: number;

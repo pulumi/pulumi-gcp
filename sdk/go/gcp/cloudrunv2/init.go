@@ -37,6 +37,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceIamMember{}
 	case "gcp:cloudrunv2/serviceIamPolicy:ServiceIamPolicy":
 		r = &ServiceIamPolicy{}
+	case "gcp:cloudrunv2/workerPool:WorkerPool":
+		r = &WorkerPool{}
+	case "gcp:cloudrunv2/workerPoolIamBinding:WorkerPoolIamBinding":
+		r = &WorkerPoolIamBinding{}
+	case "gcp:cloudrunv2/workerPoolIamMember:WorkerPoolIamMember":
+		r = &WorkerPoolIamMember{}
+	case "gcp:cloudrunv2/workerPoolIamPolicy:WorkerPoolIamPolicy":
+		r = &WorkerPoolIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -88,6 +96,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"cloudrunv2/serviceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/workerPool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/workerPoolIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/workerPoolIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/workerPoolIamPolicy",
 		&module{version},
 	)
 }

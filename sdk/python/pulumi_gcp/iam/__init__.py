@@ -21,10 +21,13 @@ from .principal_access_boundary_policy import *
 from .projects_policy_binding import *
 from .workforce_pool import *
 from .workforce_pool_provider import *
+from .workforce_pool_provider_key import *
 from .workload_identity_pool import *
 from .workload_identity_pool_iam_binding import *
 from .workload_identity_pool_iam_member import *
 from .workload_identity_pool_iam_policy import *
+from .workload_identity_pool_managed_identity import *
+from .workload_identity_pool_namespace import *
 from .workload_identity_pool_provider import *
 from ._inputs import *
 from . import outputs

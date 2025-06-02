@@ -16,14 +16,14 @@ public final class AddonsConfigAddonsConfigMonetizationConfigArgs extends com.pu
     public static final AddonsConfigAddonsConfigMonetizationConfigArgs Empty = new AddonsConfigAddonsConfigMonetizationConfigArgs();
 
     /**
-     * Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * Flag that specifies whether the Monetization add-on is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * @return Flag that specifies whether the Monetization add-on is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class AddonsConfigAddonsConfigMonetizationConfigArgs extends com.pu
         }
 
         /**
-         * @param enabled Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * @param enabled Flag that specifies whether the Monetization add-on is enabled.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class AddonsConfigAddonsConfigMonetizationConfigArgs extends com.pu
         }
 
         /**
-         * @param enabled Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * @param enabled Flag that specifies whether the Monetization add-on is enabled.
          * 
          * @return builder
          * 

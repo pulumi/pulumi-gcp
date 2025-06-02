@@ -122,7 +122,10 @@ __all__ = [
     'GetFeatureSpecMulticlusteringressResult',
     'GetFeatureStateResult',
     'GetFeatureStateStateResult',
+    'GetMembershipAuthorityResult',
     'GetMembershipBindingStateResult',
+    'GetMembershipEndpointResult',
+    'GetMembershipEndpointGkeClusterResult',
 ]
 
 @pulumi.output_type
@@ -4806,7 +4809,7 @@ class GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeResult(dict):
                  name: builtins.str,
                  version: builtins.str):
         """
-        :param builtins.str name: Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        :param builtins.str name: The name of the feature you want to know the status of.
         :param builtins.str version: Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
         """
         pulumi.set(__self__, "name", name)
@@ -4816,7 +4819,7 @@ class GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeResult(dict):
     @pulumi.getter
     def name(self) -> builtins.str:
         """
-        Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        The name of the feature you want to know the status of.
         """
         return pulumi.get(self, "name")
 
@@ -5007,6 +5010,18 @@ class GetFeatureStateStateResult(dict):
 
 
 @pulumi.output_type
+class GetMembershipAuthorityResult(dict):
+    def __init__(__self__, *,
+                 issuer: builtins.str):
+        pulumi.set(__self__, "issuer", issuer)
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> builtins.str:
+        return pulumi.get(self, "issuer")
+
+
+@pulumi.output_type
 class GetMembershipBindingStateResult(dict):
     def __init__(__self__, *,
                  code: builtins.str):
@@ -5022,5 +5037,35 @@ class GetMembershipBindingStateResult(dict):
         Code describes the state of a MembershipBinding resource.
         """
         return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class GetMembershipEndpointResult(dict):
+    def __init__(__self__, *,
+                 gke_clusters: Sequence['outputs.GetMembershipEndpointGkeClusterResult']):
+        """
+        :param Sequence['GetMembershipEndpointGkeClusterArgs'] gke_clusters: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+        """
+        pulumi.set(__self__, "gke_clusters", gke_clusters)
+
+    @property
+    @pulumi.getter(name="gkeClusters")
+    def gke_clusters(self) -> Sequence['outputs.GetMembershipEndpointGkeClusterResult']:
+        """
+        If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+        """
+        return pulumi.get(self, "gke_clusters")
+
+
+@pulumi.output_type
+class GetMembershipEndpointGkeClusterResult(dict):
+    def __init__(__self__, *,
+                 resource_link: builtins.str):
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> builtins.str:
+        return pulumi.get(self, "resource_link")
 
 

@@ -26,6 +26,7 @@ __all__ = [
     'InstanceInitialReplication',
     'InstanceInitialReplicationReplica',
     'InstanceNetwork',
+    'InstanceNetworkPscConfig',
     'InstancePerformanceConfig',
     'InstancePerformanceConfigFixedIops',
     'InstancePerformanceConfigIopsPerTb',
@@ -38,6 +39,7 @@ __all__ = [
     'GetInstanceInitialReplicationResult',
     'GetInstanceInitialReplicationReplicaResult',
     'GetInstanceNetworkResult',
+    'GetInstanceNetworkPscConfigResult',
     'GetInstancePerformanceConfigResult',
     'GetInstancePerformanceConfigFixedIopResult',
     'GetInstancePerformanceConfigIopsPerTbResult',
@@ -361,6 +363,7 @@ class InstanceFileSharesNfsExportOption(dict):
                  anon_gid: Optional[builtins.int] = None,
                  anon_uid: Optional[builtins.int] = None,
                  ip_ranges: Optional[Sequence[builtins.str]] = None,
+                 network: Optional[builtins.str] = None,
                  squash_mode: Optional[builtins.str] = None):
         """
         :param builtins.str access_mode: Either READ_ONLY, for allowing only read requests on the exported directory,
@@ -376,6 +379,8 @@ class InstanceFileSharesNfsExportOption(dict):
         :param Sequence[builtins.str] ip_ranges: List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
                Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
                The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+        :param builtins.str network: The source VPC network for `ip_ranges`.
+               Required for instances using Private Service Connect, optional otherwise.
         :param builtins.str squash_mode: Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
                for not allowing root access. The default is NO_ROOT_SQUASH.
                Default value is `NO_ROOT_SQUASH`.
@@ -389,6 +394,8 @@ class InstanceFileSharesNfsExportOption(dict):
             pulumi.set(__self__, "anon_uid", anon_uid)
         if ip_ranges is not None:
             pulumi.set(__self__, "ip_ranges", ip_ranges)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if squash_mode is not None:
             pulumi.set(__self__, "squash_mode", squash_mode)
 
@@ -432,6 +439,15 @@ class InstanceFileSharesNfsExportOption(dict):
         The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
         """
         return pulumi.get(self, "ip_ranges")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[builtins.str]:
+        """
+        The source VPC network for `ip_ranges`.
+        Required for instances using Private Service Connect, optional otherwise.
+        """
+        return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="squashMode")
@@ -526,6 +542,8 @@ class InstanceNetwork(dict):
             suggest = "connect_mode"
         elif key == "ipAddresses":
             suggest = "ip_addresses"
+        elif key == "pscConfig":
+            suggest = "psc_config"
         elif key == "reservedIpRange":
             suggest = "reserved_ip_range"
 
@@ -545,6 +563,7 @@ class InstanceNetwork(dict):
                  network: builtins.str,
                  connect_mode: Optional[builtins.str] = None,
                  ip_addresses: Optional[Sequence[builtins.str]] = None,
+                 psc_config: Optional['outputs.InstanceNetworkPscConfig'] = None,
                  reserved_ip_range: Optional[builtins.str] = None):
         """
         :param Sequence[builtins.str] modes: IP versions for which the instance has
@@ -556,11 +575,12 @@ class InstanceNetwork(dict):
                If not provided, the connect mode defaults to
                DIRECT_PEERING.
                Default value is `DIRECT_PEERING`.
-               Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-               
-               - - -
+               Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
         :param Sequence[builtins.str] ip_addresses: (Output)
                A list of IPv4 or IPv6 addresses.
+        :param 'InstanceNetworkPscConfigArgs' psc_config: Private Service Connect configuration.
+               Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+               Structure is documented below.
         :param builtins.str reserved_ip_range: A /29 CIDR block that identifies the range of IP
                addresses reserved for this instance.
         """
@@ -570,6 +590,8 @@ class InstanceNetwork(dict):
             pulumi.set(__self__, "connect_mode", connect_mode)
         if ip_addresses is not None:
             pulumi.set(__self__, "ip_addresses", ip_addresses)
+        if psc_config is not None:
+            pulumi.set(__self__, "psc_config", psc_config)
         if reserved_ip_range is not None:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
 
@@ -600,9 +622,7 @@ class InstanceNetwork(dict):
         If not provided, the connect mode defaults to
         DIRECT_PEERING.
         Default value is `DIRECT_PEERING`.
-        Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-
-        - - -
+        Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
         """
         return pulumi.get(self, "connect_mode")
 
@@ -616,6 +636,16 @@ class InstanceNetwork(dict):
         return pulumi.get(self, "ip_addresses")
 
     @property
+    @pulumi.getter(name="pscConfig")
+    def psc_config(self) -> Optional['outputs.InstanceNetworkPscConfig']:
+        """
+        Private Service Connect configuration.
+        Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_config")
+
+    @property
     @pulumi.getter(name="reservedIpRange")
     def reserved_ip_range(self) -> Optional[builtins.str]:
         """
@@ -623,6 +653,52 @@ class InstanceNetwork(dict):
         addresses reserved for this instance.
         """
         return pulumi.get(self, "reserved_ip_range")
+
+
+@pulumi.output_type
+class InstanceNetworkPscConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointProject":
+            suggest = "endpoint_project"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNetworkPscConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNetworkPscConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNetworkPscConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint_project: Optional[builtins.str] = None):
+        """
+        :param builtins.str endpoint_project: Consumer service project in which the Private Service Connect endpoint
+               would be set up. This is optional, and only relevant in case the network
+               is a shared VPC. If this is not specified, the endpoint would be set up
+               in the VPC host project.
+               
+               - - -
+        """
+        if endpoint_project is not None:
+            pulumi.set(__self__, "endpoint_project", endpoint_project)
+
+    @property
+    @pulumi.getter(name="endpointProject")
+    def endpoint_project(self) -> Optional[builtins.str]:
+        """
+        Consumer service project in which the Private Service Connect endpoint
+        would be set up. This is optional, and only relevant in case the network
+        is a shared VPC. If this is not specified, the endpoint would be set up
+        in the VPC host project.
+
+        - - -
+        """
+        return pulumi.get(self, "endpoint_project")
 
 
 @pulumi.output_type
@@ -984,6 +1060,7 @@ class GetInstanceFileShareNfsExportOptionResult(dict):
                  anon_gid: builtins.int,
                  anon_uid: builtins.int,
                  ip_ranges: Sequence[builtins.str],
+                 network: builtins.str,
                  squash_mode: builtins.str):
         """
         :param builtins.str access_mode: Either READ_ONLY, for allowing only read requests on the exported directory,
@@ -997,6 +1074,8 @@ class GetInstanceFileShareNfsExportOptionResult(dict):
         :param Sequence[builtins.str] ip_ranges: List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
                Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
                The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+        :param builtins.str network: The source VPC network for 'ip_ranges'.
+               Required for instances using Private Service Connect, optional otherwise.
         :param builtins.str squash_mode: Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
                for not allowing root access. The default is NO_ROOT_SQUASH. Default value: "NO_ROOT_SQUASH" Possible values: ["NO_ROOT_SQUASH", "ROOT_SQUASH"]
         """
@@ -1004,6 +1083,7 @@ class GetInstanceFileShareNfsExportOptionResult(dict):
         pulumi.set(__self__, "anon_gid", anon_gid)
         pulumi.set(__self__, "anon_uid", anon_uid)
         pulumi.set(__self__, "ip_ranges", ip_ranges)
+        pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "squash_mode", squash_mode)
 
     @property
@@ -1044,6 +1124,15 @@ class GetInstanceFileShareNfsExportOptionResult(dict):
         The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
         """
         return pulumi.get(self, "ip_ranges")
+
+    @property
+    @pulumi.getter
+    def network(self) -> builtins.str:
+        """
+        The source VPC network for 'ip_ranges'.
+        Required for instances using Private Service Connect, optional otherwise.
+        """
+        return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="squashMode")
@@ -1109,16 +1198,19 @@ class GetInstanceNetworkResult(dict):
                  ip_addresses: Sequence[builtins.str],
                  modes: Sequence[builtins.str],
                  network: builtins.str,
+                 psc_configs: Sequence['outputs.GetInstanceNetworkPscConfigResult'],
                  reserved_ip_range: builtins.str):
         """
         :param builtins.str connect_mode: The network connect mode of the Filestore instance.
                If not provided, the connect mode defaults to
-               DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS"]
+               DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS", "PRIVATE_SERVICE_CONNECT"]
         :param Sequence[builtins.str] ip_addresses: A list of IPv4 or IPv6 addresses.
         :param Sequence[builtins.str] modes: IP versions for which the instance has
                IP addresses assigned. Possible values: ["ADDRESS_MODE_UNSPECIFIED", "MODE_IPV4", "MODE_IPV6"]
         :param builtins.str network: The name of the GCE VPC network to which the
                instance is connected.
+        :param Sequence['GetInstanceNetworkPscConfigArgs'] psc_configs: Private Service Connect configuration.
+               Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
         :param builtins.str reserved_ip_range: A /29 CIDR block that identifies the range of IP
                addresses reserved for this instance.
         """
@@ -1126,6 +1218,7 @@ class GetInstanceNetworkResult(dict):
         pulumi.set(__self__, "ip_addresses", ip_addresses)
         pulumi.set(__self__, "modes", modes)
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "psc_configs", psc_configs)
         pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
 
     @property
@@ -1134,7 +1227,7 @@ class GetInstanceNetworkResult(dict):
         """
         The network connect mode of the Filestore instance.
         If not provided, the connect mode defaults to
-        DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS"]
+        DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS", "PRIVATE_SERVICE_CONNECT"]
         """
         return pulumi.get(self, "connect_mode")
 
@@ -1165,6 +1258,15 @@ class GetInstanceNetworkResult(dict):
         return pulumi.get(self, "network")
 
     @property
+    @pulumi.getter(name="pscConfigs")
+    def psc_configs(self) -> Sequence['outputs.GetInstanceNetworkPscConfigResult']:
+        """
+        Private Service Connect configuration.
+        Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+        """
+        return pulumi.get(self, "psc_configs")
+
+    @property
     @pulumi.getter(name="reservedIpRange")
     def reserved_ip_range(self) -> builtins.str:
         """
@@ -1172,6 +1274,30 @@ class GetInstanceNetworkResult(dict):
         addresses reserved for this instance.
         """
         return pulumi.get(self, "reserved_ip_range")
+
+
+@pulumi.output_type
+class GetInstanceNetworkPscConfigResult(dict):
+    def __init__(__self__, *,
+                 endpoint_project: builtins.str):
+        """
+        :param builtins.str endpoint_project: Consumer service project in which the Private Service Connect endpoint
+               would be set up. This is optional, and only relevant in case the network
+               is a shared VPC. If this is not specified, the endpoint would be set up
+               in the VPC host project.
+        """
+        pulumi.set(__self__, "endpoint_project", endpoint_project)
+
+    @property
+    @pulumi.getter(name="endpointProject")
+    def endpoint_project(self) -> builtins.str:
+        """
+        Consumer service project in which the Private Service Connect endpoint
+        would be set up. This is optional, and only relevant in case the network
+        is a shared VPC. If this is not specified, the endpoint would be set up
+        in the VPC host project.
+        """
+        return pulumi.get(self, "endpoint_project")
 
 
 @pulumi.output_type

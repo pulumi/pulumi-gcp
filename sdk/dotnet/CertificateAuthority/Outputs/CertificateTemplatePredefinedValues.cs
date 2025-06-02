@@ -33,6 +33,11 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// </summary>
         public readonly Outputs.CertificateTemplatePredefinedValuesKeyUsage? KeyUsage;
         /// <summary>
+        /// Describes the X.509 name constraints extension.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.CertificateTemplatePredefinedValuesNameConstraints? NameConstraints;
+        /// <summary>
         /// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         /// Structure is documented below.
         /// </summary>
@@ -48,12 +53,15 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
             Outputs.CertificateTemplatePredefinedValuesKeyUsage? keyUsage,
 
+            Outputs.CertificateTemplatePredefinedValuesNameConstraints? nameConstraints,
+
             ImmutableArray<Outputs.CertificateTemplatePredefinedValuesPolicyId> policyIds)
         {
             AdditionalExtensions = additionalExtensions;
             AiaOcspServers = aiaOcspServers;
             CaOptions = caOptions;
             KeyUsage = keyUsage;
+            NameConstraints = nameConstraints;
             PolicyIds = policyIds;
         }
     }

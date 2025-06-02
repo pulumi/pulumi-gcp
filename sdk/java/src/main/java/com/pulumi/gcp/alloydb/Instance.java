@@ -257,6 +257,36 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:alloydb/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
+     * &#39;Specifies whether an instance needs to spin up. Once the instance is
+     * active, the activation policy can be updated to the `NEVER` to stop the
+     * instance. Likewise, the activation policy can be updated to `ALWAYS` to
+     * start the instance.
+     * There are restrictions around when an instance can/cannot be activated (for
+     * example, a read pool instance should be stopped before stopping primary
+     * etc.). Please refer to the API documentation for more details.
+     * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.&#39;
+     * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
+     * 
+     */
+    @Export(name="activationPolicy", refs={String.class}, tree="[0]")
+    private Output<String> activationPolicy;
+
+    /**
+     * @return &#39;Specifies whether an instance needs to spin up. Once the instance is
+     * active, the activation policy can be updated to the `NEVER` to stop the
+     * instance. Likewise, the activation policy can be updated to `ALWAYS` to
+     * start the instance.
+     * There are restrictions around when an instance can/cannot be activated (for
+     * example, a read pool instance should be stopped before stopping primary
+     * etc.). Please refer to the API documentation for more details.
+     * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.&#39;
+     * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
+     * 
+     */
+    public Output<String> activationPolicy() {
+        return this.activationPolicy;
+    }
+    /**
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.

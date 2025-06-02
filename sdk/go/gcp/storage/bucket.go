@@ -273,6 +273,8 @@ type Bucket struct {
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace BucketHierarchicalNamespacePtrOutput `pulumi:"hierarchicalNamespace"`
+	// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+	IpFilter BucketIpFilterPtrOutput `pulumi:"ipFilter"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -378,6 +380,8 @@ type bucketState struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace *BucketHierarchicalNamespace `pulumi:"hierarchicalNamespace"`
+	// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+	IpFilter *BucketIpFilter `pulumi:"ipFilter"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -446,6 +450,8 @@ type BucketState struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace BucketHierarchicalNamespacePtrInput
+	// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+	IpFilter BucketIpFilterPtrInput
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -517,6 +523,8 @@ type bucketArgs struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace *BucketHierarchicalNamespace `pulumi:"hierarchicalNamespace"`
+	// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+	IpFilter *BucketIpFilter `pulumi:"ipFilter"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -573,6 +581,8 @@ type BucketArgs struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace BucketHierarchicalNamespacePtrInput
+	// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+	IpFilter BucketIpFilterPtrInput
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -740,6 +750,11 @@ func (o BucketOutput) ForceDestroy() pulumi.BoolPtrOutput {
 // The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 func (o BucketOutput) HierarchicalNamespace() BucketHierarchicalNamespacePtrOutput {
 	return o.ApplyT(func(v *Bucket) BucketHierarchicalNamespacePtrOutput { return v.HierarchicalNamespace }).(BucketHierarchicalNamespacePtrOutput)
+}
+
+// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+func (o BucketOutput) IpFilter() BucketIpFilterPtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketIpFilterPtrOutput { return v.IpFilter }).(BucketIpFilterPtrOutput)
 }
 
 // A map of key/value label pairs to assign to the bucket.

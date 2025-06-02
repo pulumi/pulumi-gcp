@@ -546,16 +546,16 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.labels);
     }
     /**
-     * Maximum Transmission Unit (MTU), in bytes, of packets passing through
-     * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+     * Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+     * Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
      * 
      */
     @Export(name="mtu", refs={String.class}, tree="[0]")
     private Output<String> mtu;
 
     /**
-     * @return Maximum Transmission Unit (MTU), in bytes, of packets passing through
-     * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+     * @return Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+     * Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
      * 
      */
     public Output<String> mtu() {

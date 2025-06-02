@@ -151,6 +151,11 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly hasReplication!: pulumi.Output<boolean>;
     /**
+     * The Hybrid Replication parameters for the volume.
+     * Structure is documented below.
+     */
+    public readonly hybridReplicationParameters!: pulumi.Output<outputs.netapp.VolumeHybridReplicationParameters | undefined>;
+    /**
      * Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
      */
     public readonly kerberosEnabled!: pulumi.Output<boolean | undefined>;
@@ -314,6 +319,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
             resourceInputs["exportPolicy"] = state ? state.exportPolicy : undefined;
             resourceInputs["hasReplication"] = state ? state.hasReplication : undefined;
+            resourceInputs["hybridReplicationParameters"] = state ? state.hybridReplicationParameters : undefined;
             resourceInputs["kerberosEnabled"] = state ? state.kerberosEnabled : undefined;
             resourceInputs["kmsConfig"] = state ? state.kmsConfig : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -366,6 +372,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["exportPolicy"] = args ? args.exportPolicy : undefined;
+            resourceInputs["hybridReplicationParameters"] = args ? args.hybridReplicationParameters : undefined;
             resourceInputs["kerberosEnabled"] = args ? args.kerberosEnabled : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["largeCapacity"] = args ? args.largeCapacity : undefined;
@@ -463,6 +470,11 @@ export interface VolumeState {
      * Indicates whether the volume is part of a volume replication relationship.
      */
     hasReplication?: pulumi.Input<boolean>;
+    /**
+     * The Hybrid Replication parameters for the volume.
+     * Structure is documented below.
+     */
+    hybridReplicationParameters?: pulumi.Input<inputs.netapp.VolumeHybridReplicationParameters>;
     /**
      * Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
      */
@@ -633,6 +645,11 @@ export interface VolumeArgs {
      * Structure is documented below.
      */
     exportPolicy?: pulumi.Input<inputs.netapp.VolumeExportPolicy>;
+    /**
+     * The Hybrid Replication parameters for the volume.
+     * Structure is documented below.
+     */
+    hybridReplicationParameters?: pulumi.Input<inputs.netapp.VolumeHybridReplicationParameters>;
     /**
      * Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
      */

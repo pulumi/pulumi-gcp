@@ -142,11 +142,6 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// The autoscaling configuration. Autoscaling is enabled if this field is set.
-	// When autoscaling is enabled, numNodes and processingUnits are treated as,
-	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-	// the instance.
-	// Structure is documented below.
 	AutoscalingConfig InstanceAutoscalingConfigPtrOutput `pulumi:"autoscalingConfig"`
 	// The name of the instance's configuration (similar but not
 	// quite the same as a region) which defines the geographic placement and
@@ -173,6 +168,11 @@ type Instance struct {
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+	// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+	// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+	// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
@@ -237,11 +237,6 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// The autoscaling configuration. Autoscaling is enabled if this field is set.
-	// When autoscaling is enabled, numNodes and processingUnits are treated as,
-	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-	// the instance.
-	// Structure is documented below.
 	AutoscalingConfig *InstanceAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// The name of the instance's configuration (similar but not
 	// quite the same as a region) which defines the geographic placement and
@@ -268,6 +263,11 @@ type instanceState struct {
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+	// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+	// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+	// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+	InstanceType *string `pulumi:"instanceType"`
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
@@ -292,11 +292,6 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// The autoscaling configuration. Autoscaling is enabled if this field is set.
-	// When autoscaling is enabled, numNodes and processingUnits are treated as,
-	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-	// the instance.
-	// Structure is documented below.
 	AutoscalingConfig InstanceAutoscalingConfigPtrInput
 	// The name of the instance's configuration (similar but not
 	// quite the same as a region) which defines the geographic placement and
@@ -323,6 +318,11 @@ type InstanceState struct {
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
 	ForceDestroy pulumi.BoolPtrInput
+	// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+	// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+	// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+	// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+	InstanceType pulumi.StringPtrInput
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
@@ -351,11 +351,6 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// The autoscaling configuration. Autoscaling is enabled if this field is set.
-	// When autoscaling is enabled, numNodes and processingUnits are treated as,
-	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-	// the instance.
-	// Structure is documented below.
 	AutoscalingConfig *InstanceAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// The name of the instance's configuration (similar but not
 	// quite the same as a region) which defines the geographic placement and
@@ -380,6 +375,11 @@ type instanceArgs struct {
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+	// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+	// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+	// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+	InstanceType *string `pulumi:"instanceType"`
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
@@ -400,11 +400,6 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The autoscaling configuration. Autoscaling is enabled if this field is set.
-	// When autoscaling is enabled, numNodes and processingUnits are treated as,
-	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-	// the instance.
-	// Structure is documented below.
 	AutoscalingConfig InstanceAutoscalingConfigPtrInput
 	// The name of the instance's configuration (similar but not
 	// quite the same as a region) which defines the geographic placement and
@@ -429,6 +424,11 @@ type InstanceArgs struct {
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
 	ForceDestroy pulumi.BoolPtrInput
+	// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+	// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+	// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+	// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+	InstanceType pulumi.StringPtrInput
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
@@ -534,11 +534,6 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// The autoscaling configuration. Autoscaling is enabled if this field is set.
-// When autoscaling is enabled, numNodes and processingUnits are treated as,
-// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-// the instance.
-// Structure is documented below.
 func (o InstanceOutput) AutoscalingConfig() InstanceAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceAutoscalingConfigPtrOutput { return v.AutoscalingConfig }).(InstanceAutoscalingConfigPtrOutput)
 }
@@ -584,6 +579,14 @@ func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 // This must be set to true if you created a backup manually in the console.
 func (o InstanceOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+func (o InstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // An object containing a list of "key": value pairs.

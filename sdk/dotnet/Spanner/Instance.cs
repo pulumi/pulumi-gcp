@@ -120,13 +120,6 @@ namespace Pulumi.Gcp.Spanner
     [GcpResourceType("gcp:spanner/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
-        /// When autoscaling is enabled, num_nodes and processing_units are treated as,
-        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-        /// the instance.
-        /// Structure is documented below.
-        /// </summary>
         [Output("autoscalingConfig")]
         public Output<Outputs.InstanceAutoscalingConfig?> AutoscalingConfig { get; private set; } = null!;
 
@@ -179,6 +172,15 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+        /// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+        /// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+        /// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+        /// </summary>
+        [Output("instanceType")]
+        public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
         /// An object containing a list of "key": value pairs.
@@ -276,13 +278,6 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
-        /// When autoscaling is enabled, num_nodes and processing_units are treated as,
-        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-        /// the instance.
-        /// Structure is documented below.
-        /// </summary>
         [Input("autoscalingConfig")]
         public Input<Inputs.InstanceAutoscalingConfigArgs>? AutoscalingConfig { get; set; }
 
@@ -330,6 +325,15 @@ namespace Pulumi.Gcp.Spanner
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+        /// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+        /// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+        /// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -376,13 +380,6 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
-        /// When autoscaling is enabled, num_nodes and processing_units are treated as,
-        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-        /// the instance.
-        /// Structure is documented below.
-        /// </summary>
         [Input("autoscalingConfig")]
         public Input<Inputs.InstanceAutoscalingConfigGetArgs>? AutoscalingConfig { get; set; }
 
@@ -445,6 +442,15 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
+
+        /// <summary>
+        /// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+        /// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+        /// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+        /// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

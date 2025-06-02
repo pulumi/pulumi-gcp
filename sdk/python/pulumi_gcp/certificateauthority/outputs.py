@@ -108,6 +108,7 @@ __all__ = [
     'CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage',
     'CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage',
     'CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage',
+    'CertificateTemplatePredefinedValuesNameConstraints',
     'CertificateTemplatePredefinedValuesPolicyId',
     'GetAuthorityAccessUrlResult',
     'GetAuthorityConfigResult',
@@ -6393,6 +6394,8 @@ class CertificateTemplatePredefinedValues(dict):
             suggest = "ca_options"
         elif key == "keyUsage":
             suggest = "key_usage"
+        elif key == "nameConstraints":
+            suggest = "name_constraints"
         elif key == "policyIds":
             suggest = "policy_ids"
 
@@ -6412,6 +6415,7 @@ class CertificateTemplatePredefinedValues(dict):
                  aia_ocsp_servers: Optional[Sequence[builtins.str]] = None,
                  ca_options: Optional['outputs.CertificateTemplatePredefinedValuesCaOptions'] = None,
                  key_usage: Optional['outputs.CertificateTemplatePredefinedValuesKeyUsage'] = None,
+                 name_constraints: Optional['outputs.CertificateTemplatePredefinedValuesNameConstraints'] = None,
                  policy_ids: Optional[Sequence['outputs.CertificateTemplatePredefinedValuesPolicyId']] = None):
         """
         :param Sequence['CertificateTemplatePredefinedValuesAdditionalExtensionArgs'] additional_extensions: Optional. Describes custom X.509 extensions.
@@ -6420,6 +6424,8 @@ class CertificateTemplatePredefinedValues(dict):
         :param 'CertificateTemplatePredefinedValuesCaOptionsArgs' ca_options: Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
                Structure is documented below.
         :param 'CertificateTemplatePredefinedValuesKeyUsageArgs' key_usage: Optional. Indicates the intended use for keys that correspond to a certificate.
+               Structure is documented below.
+        :param 'CertificateTemplatePredefinedValuesNameConstraintsArgs' name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
         :param Sequence['CertificateTemplatePredefinedValuesPolicyIdArgs'] policy_ids: Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
@@ -6432,6 +6438,8 @@ class CertificateTemplatePredefinedValues(dict):
             pulumi.set(__self__, "ca_options", ca_options)
         if key_usage is not None:
             pulumi.set(__self__, "key_usage", key_usage)
+        if name_constraints is not None:
+            pulumi.set(__self__, "name_constraints", name_constraints)
         if policy_ids is not None:
             pulumi.set(__self__, "policy_ids", policy_ids)
 
@@ -6469,6 +6477,15 @@ class CertificateTemplatePredefinedValues(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "key_usage")
+
+    @property
+    @pulumi.getter(name="nameConstraints")
+    def name_constraints(self) -> Optional['outputs.CertificateTemplatePredefinedValuesNameConstraints']:
+        """
+        Describes the X.509 name constraints extension.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "name_constraints")
 
     @property
     @pulumi.getter(name="policyIds")
@@ -6584,6 +6601,10 @@ class CertificateTemplatePredefinedValuesCaOptions(dict):
             suggest = "is_ca"
         elif key == "maxIssuerPathLength":
             suggest = "max_issuer_path_length"
+        elif key == "nullCa":
+            suggest = "null_ca"
+        elif key == "zeroMaxIssuerPathLength":
+            suggest = "zero_max_issuer_path_length"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePredefinedValuesCaOptions. Access the value via the '{suggest}' property getter instead.")
@@ -6598,21 +6619,34 @@ class CertificateTemplatePredefinedValuesCaOptions(dict):
 
     def __init__(__self__, *,
                  is_ca: Optional[builtins.bool] = None,
-                 max_issuer_path_length: Optional[builtins.int] = None):
+                 max_issuer_path_length: Optional[builtins.int] = None,
+                 null_ca: Optional[builtins.bool] = None,
+                 zero_max_issuer_path_length: Optional[builtins.bool] = None):
         """
-        :param builtins.bool is_ca: Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
-        :param builtins.int max_issuer_path_length: Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+        :param builtins.bool is_ca: Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is true, the "CA" in Basic Constraints extension will be set to true.
+        :param builtins.int max_issuer_path_length: Optional. Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+               subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+        :param builtins.bool null_ca: Optional. When true, the "CA" in Basic Constraints extension will be set to null and omitted from the CA certificate.
+               If both `is_ca` and `null_ca` are unset, the "CA" in Basic Constraints extension will be set to false.
+               Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+        :param builtins.bool zero_max_issuer_path_length: Optional. When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+               if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+               the max path length will be omitted from the CA certificate.
         """
         if is_ca is not None:
             pulumi.set(__self__, "is_ca", is_ca)
         if max_issuer_path_length is not None:
             pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
+        if null_ca is not None:
+            pulumi.set(__self__, "null_ca", null_ca)
+        if zero_max_issuer_path_length is not None:
+            pulumi.set(__self__, "zero_max_issuer_path_length", zero_max_issuer_path_length)
 
     @property
     @pulumi.getter(name="isCa")
     def is_ca(self) -> Optional[builtins.bool]:
         """
-        Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+        Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is true, the "CA" in Basic Constraints extension will be set to true.
         """
         return pulumi.get(self, "is_ca")
 
@@ -6620,9 +6654,30 @@ class CertificateTemplatePredefinedValuesCaOptions(dict):
     @pulumi.getter(name="maxIssuerPathLength")
     def max_issuer_path_length(self) -> Optional[builtins.int]:
         """
-        Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+        Optional. Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
         """
         return pulumi.get(self, "max_issuer_path_length")
+
+    @property
+    @pulumi.getter(name="nullCa")
+    def null_ca(self) -> Optional[builtins.bool]:
+        """
+        Optional. When true, the "CA" in Basic Constraints extension will be set to null and omitted from the CA certificate.
+        If both `is_ca` and `null_ca` are unset, the "CA" in Basic Constraints extension will be set to false.
+        Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+        """
+        return pulumi.get(self, "null_ca")
+
+    @property
+    @pulumi.getter(name="zeroMaxIssuerPathLength")
+    def zero_max_issuer_path_length(self) -> Optional[builtins.bool]:
+        """
+        Optional. When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+        if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+        the max path length will be omitted from the CA certificate.
+        """
+        return pulumi.get(self, "zero_max_issuer_path_length")
 
 
 @pulumi.output_type
@@ -6982,6 +7037,199 @@ class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage(dict):
         Required. The parts of an OID path. The most significant parts of the path come first.
         """
         return pulumi.get(self, "object_id_paths")
+
+
+@pulumi.output_type
+class CertificateTemplatePredefinedValuesNameConstraints(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludedDnsNames":
+            suggest = "excluded_dns_names"
+        elif key == "excludedEmailAddresses":
+            suggest = "excluded_email_addresses"
+        elif key == "excludedIpRanges":
+            suggest = "excluded_ip_ranges"
+        elif key == "excludedUris":
+            suggest = "excluded_uris"
+        elif key == "permittedDnsNames":
+            suggest = "permitted_dns_names"
+        elif key == "permittedEmailAddresses":
+            suggest = "permitted_email_addresses"
+        elif key == "permittedIpRanges":
+            suggest = "permitted_ip_ranges"
+        elif key == "permittedUris":
+            suggest = "permitted_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplatePredefinedValuesNameConstraints. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplatePredefinedValuesNameConstraints.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplatePredefinedValuesNameConstraints.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 critical: builtins.bool,
+                 excluded_dns_names: Optional[Sequence[builtins.str]] = None,
+                 excluded_email_addresses: Optional[Sequence[builtins.str]] = None,
+                 excluded_ip_ranges: Optional[Sequence[builtins.str]] = None,
+                 excluded_uris: Optional[Sequence[builtins.str]] = None,
+                 permitted_dns_names: Optional[Sequence[builtins.str]] = None,
+                 permitted_email_addresses: Optional[Sequence[builtins.str]] = None,
+                 permitted_ip_ranges: Optional[Sequence[builtins.str]] = None,
+                 permitted_uris: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.bool critical: Indicates whether or not the name constraints are marked critical.
+        :param Sequence[builtins.str] excluded_dns_names: Contains excluded DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, `example.com`, `www.example.com`, `www.sub.example.com`
+               would satisfy `example.com` while `example1.com` does not.
+        :param Sequence[builtins.str] excluded_email_addresses: Contains the excluded email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. `.example.com`) to indicate
+               all email addresses in that domain.
+        :param Sequence[builtins.str] excluded_ip_ranges: Contains the excluded IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param Sequence[builtins.str] excluded_uris: Contains the excluded URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like `.example.com`)
+        :param Sequence[builtins.str] permitted_dns_names: Contains permitted DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, `example.com`, `www.example.com`, `www.sub.example.com`
+               would satisfy `example.com` while `example1.com` does not.
+        :param Sequence[builtins.str] permitted_email_addresses: Contains the permitted email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. `.example.com`) to indicate
+               all email addresses in that domain.
+        :param Sequence[builtins.str] permitted_ip_ranges: Contains the permitted IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param Sequence[builtins.str] permitted_uris: Contains the permitted URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like `.example.com`)
+        """
+        pulumi.set(__self__, "critical", critical)
+        if excluded_dns_names is not None:
+            pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
+        if excluded_email_addresses is not None:
+            pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
+        if excluded_ip_ranges is not None:
+            pulumi.set(__self__, "excluded_ip_ranges", excluded_ip_ranges)
+        if excluded_uris is not None:
+            pulumi.set(__self__, "excluded_uris", excluded_uris)
+        if permitted_dns_names is not None:
+            pulumi.set(__self__, "permitted_dns_names", permitted_dns_names)
+        if permitted_email_addresses is not None:
+            pulumi.set(__self__, "permitted_email_addresses", permitted_email_addresses)
+        if permitted_ip_ranges is not None:
+            pulumi.set(__self__, "permitted_ip_ranges", permitted_ip_ranges)
+        if permitted_uris is not None:
+            pulumi.set(__self__, "permitted_uris", permitted_uris)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> builtins.bool:
+        """
+        Indicates whether or not the name constraints are marked critical.
+        """
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter(name="excludedDnsNames")
+    def excluded_dns_names(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Contains excluded DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, `example.com`, `www.example.com`, `www.sub.example.com`
+        would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "excluded_dns_names")
+
+    @property
+    @pulumi.getter(name="excludedEmailAddresses")
+    def excluded_email_addresses(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Contains the excluded email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. `.example.com`) to indicate
+        all email addresses in that domain.
+        """
+        return pulumi.get(self, "excluded_email_addresses")
+
+    @property
+    @pulumi.getter(name="excludedIpRanges")
+    def excluded_ip_ranges(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Contains the excluded IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
+        return pulumi.get(self, "excluded_ip_ranges")
+
+    @property
+    @pulumi.getter(name="excludedUris")
+    def excluded_uris(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Contains the excluded URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "excluded_uris")
+
+    @property
+    @pulumi.getter(name="permittedDnsNames")
+    def permitted_dns_names(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Contains permitted DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, `example.com`, `www.example.com`, `www.sub.example.com`
+        would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "permitted_dns_names")
+
+    @property
+    @pulumi.getter(name="permittedEmailAddresses")
+    def permitted_email_addresses(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Contains the permitted email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. `.example.com`) to indicate
+        all email addresses in that domain.
+        """
+        return pulumi.get(self, "permitted_email_addresses")
+
+    @property
+    @pulumi.getter(name="permittedIpRanges")
+    def permitted_ip_ranges(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Contains the permitted IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
+        return pulumi.get(self, "permitted_ip_ranges")
+
+    @property
+    @pulumi.getter(name="permittedUris")
+    def permitted_uris(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Contains the permitted URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "permitted_uris")
 
 
 @pulumi.output_type

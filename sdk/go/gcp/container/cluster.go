@@ -508,7 +508,7 @@ type Cluster struct {
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock pulumi.StringOutput `pulumi:"tpuIpv4CidrBlock"`
-	// The custom keys configuration of the cluster.
+	// The custom keys configuration of the cluster Structure is documented below.
 	UserManagedKeysConfig ClusterUserManagedKeysConfigPtrOutput `pulumi:"userManagedKeysConfig"`
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
@@ -860,7 +860,7 @@ type clusterState struct {
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock *string `pulumi:"tpuIpv4CidrBlock"`
-	// The custom keys configuration of the cluster.
+	// The custom keys configuration of the cluster Structure is documented below.
 	UserManagedKeysConfig *ClusterUserManagedKeysConfig `pulumi:"userManagedKeysConfig"`
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
@@ -1178,7 +1178,7 @@ type ClusterState struct {
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock pulumi.StringPtrInput
-	// The custom keys configuration of the cluster.
+	// The custom keys configuration of the cluster Structure is documented below.
 	UserManagedKeysConfig ClusterUserManagedKeysConfigPtrInput
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
@@ -1476,7 +1476,7 @@ type clusterArgs struct {
 	Subnetwork *string `pulumi:"subnetwork"`
 	// TPU configuration for the cluster.
 	TpuConfig *ClusterTpuConfig `pulumi:"tpuConfig"`
-	// The custom keys configuration of the cluster.
+	// The custom keys configuration of the cluster Structure is documented below.
 	UserManagedKeysConfig *ClusterUserManagedKeysConfig `pulumi:"userManagedKeysConfig"`
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
@@ -1771,7 +1771,7 @@ type ClusterArgs struct {
 	Subnetwork pulumi.StringPtrInput
 	// TPU configuration for the cluster.
 	TpuConfig ClusterTpuConfigPtrInput
-	// The custom keys configuration of the cluster.
+	// The custom keys configuration of the cluster Structure is documented below.
 	UserManagedKeysConfig ClusterUserManagedKeysConfigPtrInput
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
@@ -2418,7 +2418,7 @@ func (o ClusterOutput) TpuIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.TpuIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
-// The custom keys configuration of the cluster.
+// The custom keys configuration of the cluster Structure is documented below.
 func (o ClusterOutput) UserManagedKeysConfig() ClusterUserManagedKeysConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterUserManagedKeysConfigPtrOutput { return v.UserManagedKeysConfig }).(ClusterUserManagedKeysConfigPtrOutput)
 }

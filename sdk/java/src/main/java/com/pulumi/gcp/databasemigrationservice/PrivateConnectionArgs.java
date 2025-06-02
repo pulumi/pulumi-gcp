@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionVpcPeeringConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PrivateConnectionArgs Empty = new PrivateConnectionArgs();
+
+    /**
+     * If set to true, will skip validations.
+     * 
+     */
+    @Import(name="createWithoutValidation")
+    private @Nullable Output<Boolean> createWithoutValidation;
+
+    /**
+     * @return If set to true, will skip validations.
+     * 
+     */
+    public Optional<Output<Boolean>> createWithoutValidation() {
+        return Optional.ofNullable(this.createWithoutValidation);
+    }
 
     /**
      * Display name.
@@ -109,6 +125,7 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
     private PrivateConnectionArgs() {}
 
     private PrivateConnectionArgs(PrivateConnectionArgs $) {
+        this.createWithoutValidation = $.createWithoutValidation;
         this.displayName = $.displayName;
         this.labels = $.labels;
         this.location = $.location;
@@ -133,6 +150,27 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(PrivateConnectionArgs defaults) {
             $ = new PrivateConnectionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createWithoutValidation If set to true, will skip validations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createWithoutValidation(@Nullable Output<Boolean> createWithoutValidation) {
+            $.createWithoutValidation = createWithoutValidation;
+            return this;
+        }
+
+        /**
+         * @param createWithoutValidation If set to true, will skip validations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createWithoutValidation(Boolean createWithoutValidation) {
+            return createWithoutValidation(Output.of(createWithoutValidation));
         }
 
         /**

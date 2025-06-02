@@ -25,6 +25,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
+     * &#39;Specifies whether an instance needs to spin up. Once the instance is
+     * active, the activation policy can be updated to the `NEVER` to stop the
+     * instance. Likewise, the activation policy can be updated to `ALWAYS` to
+     * start the instance.
+     * There are restrictions around when an instance can/cannot be activated (for
+     * example, a read pool instance should be stopped before stopping primary
+     * etc.). Please refer to the API documentation for more details.
+     * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.&#39;
+     * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
+     * 
+     */
+    @Import(name="activationPolicy")
+    private @Nullable Output<String> activationPolicy;
+
+    /**
+     * @return &#39;Specifies whether an instance needs to spin up. Once the instance is
+     * active, the activation policy can be updated to the `NEVER` to stop the
+     * instance. Likewise, the activation policy can be updated to `ALWAYS` to
+     * start the instance.
+     * There are restrictions around when an instance can/cannot be activated (for
+     * example, a read pool instance should be stopped before stopping primary
+     * etc.). Please refer to the API documentation for more details.
+     * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.&#39;
+     * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
+     * 
+     */
+    public Optional<Output<String>> activationPolicy() {
+        return Optional.ofNullable(this.activationPolicy);
+    }
+
+    /**
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -299,6 +330,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
+        this.activationPolicy = $.activationPolicy;
         this.annotations = $.annotations;
         this.availabilityType = $.availabilityType;
         this.clientConnectionConfig = $.clientConnectionConfig;
@@ -333,6 +365,43 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceArgs defaults) {
             $ = new InstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param activationPolicy &#39;Specifies whether an instance needs to spin up. Once the instance is
+         * active, the activation policy can be updated to the `NEVER` to stop the
+         * instance. Likewise, the activation policy can be updated to `ALWAYS` to
+         * start the instance.
+         * There are restrictions around when an instance can/cannot be activated (for
+         * example, a read pool instance should be stopped before stopping primary
+         * etc.). Please refer to the API documentation for more details.
+         * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.&#39;
+         * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activationPolicy(@Nullable Output<String> activationPolicy) {
+            $.activationPolicy = activationPolicy;
+            return this;
+        }
+
+        /**
+         * @param activationPolicy &#39;Specifies whether an instance needs to spin up. Once the instance is
+         * active, the activation policy can be updated to the `NEVER` to stop the
+         * instance. Likewise, the activation policy can be updated to `ALWAYS` to
+         * start the instance.
+         * There are restrictions around when an instance can/cannot be activated (for
+         * example, a read pool instance should be stopped before stopping primary
+         * etc.). Please refer to the API documentation for more details.
+         * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.&#39;
+         * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activationPolicy(String activationPolicy) {
+            return activationPolicy(Output.of(activationPolicy));
         }
 
         /**

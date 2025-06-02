@@ -25,6 +25,7 @@ class InstanceArgs:
                  cluster: pulumi.Input[builtins.str],
                  instance_id: pulumi.Input[builtins.str],
                  instance_type: pulumi.Input[builtins.str],
+                 activation_policy: Optional[pulumi.Input[builtins.str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  availability_type: Optional[pulumi.Input[builtins.str]] = None,
                  client_connection_config: Optional[pulumi.Input['InstanceClientConnectionConfigArgs']] = None,
@@ -46,6 +47,15 @@ class InstanceArgs:
                
                
                - - -
+        :param pulumi.Input[builtins.str] activation_policy: 'Specifies whether an instance needs to spin up. Once the instance is
+               active, the activation policy can be updated to the `NEVER` to stop the
+               instance. Likewise, the activation policy can be updated to `ALWAYS` to
+               start the instance.
+               There are restrictions around when an instance can/cannot be activated (for
+               example, a read pool instance should be stopped before stopping primary
+               etc.). Please refer to the API documentation for more details.
+               Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
+               Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -80,6 +90,8 @@ class InstanceArgs:
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "instance_type", instance_type)
+        if activation_policy is not None:
+            pulumi.set(__self__, "activation_policy", activation_policy)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if availability_type is not None:
@@ -143,6 +155,26 @@ class InstanceArgs:
     @instance_type.setter
     def instance_type(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="activationPolicy")
+    def activation_policy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        'Specifies whether an instance needs to spin up. Once the instance is
+        active, the activation policy can be updated to the `NEVER` to stop the
+        instance. Likewise, the activation policy can be updated to `ALWAYS` to
+        start the instance.
+        There are restrictions around when an instance can/cannot be activated (for
+        example, a read pool instance should be stopped before stopping primary
+        etc.). Please refer to the API documentation for more details.
+        Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
+        Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
+        """
+        return pulumi.get(self, "activation_policy")
+
+    @activation_policy.setter
+    def activation_policy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "activation_policy", value)
 
     @property
     @pulumi.getter
@@ -321,6 +353,7 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 activation_policy: Optional[pulumi.Input[builtins.str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  availability_type: Optional[pulumi.Input[builtins.str]] = None,
                  client_connection_config: Optional[pulumi.Input['InstanceClientConnectionConfigArgs']] = None,
@@ -351,6 +384,15 @@ class _InstanceState:
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[builtins.str] activation_policy: 'Specifies whether an instance needs to spin up. Once the instance is
+               active, the activation policy can be updated to the `NEVER` to stop the
+               instance. Likewise, the activation policy can be updated to `ALWAYS` to
+               start the instance.
+               There are restrictions around when an instance can/cannot be activated (for
+               example, a read pool instance should be stopped before stopping primary
+               etc.). Please refer to the API documentation for more details.
+               Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
+               Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -404,6 +446,8 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] uid: The system-generated UID of the resource.
         :param pulumi.Input[builtins.str] update_time: Time the Instance was updated in UTC.
         """
+        if activation_policy is not None:
+            pulumi.set(__self__, "activation_policy", activation_policy)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if availability_type is not None:
@@ -460,6 +504,26 @@ class _InstanceState:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="activationPolicy")
+    def activation_policy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        'Specifies whether an instance needs to spin up. Once the instance is
+        active, the activation policy can be updated to the `NEVER` to stop the
+        instance. Likewise, the activation policy can be updated to `ALWAYS` to
+        start the instance.
+        There are restrictions around when an instance can/cannot be activated (for
+        example, a read pool instance should be stopped before stopping primary
+        etc.). Please refer to the API documentation for more details.
+        Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
+        Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
+        """
+        return pulumi.get(self, "activation_policy")
+
+    @activation_policy.setter
+    def activation_policy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "activation_policy", value)
 
     @property
     @pulumi.getter
@@ -824,6 +888,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 activation_policy: Optional[pulumi.Input[builtins.str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  availability_type: Optional[pulumi.Input[builtins.str]] = None,
                  client_connection_config: Optional[pulumi.Input[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict']]] = None,
@@ -963,6 +1028,15 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] activation_policy: 'Specifies whether an instance needs to spin up. Once the instance is
+               active, the activation policy can be updated to the `NEVER` to stop the
+               instance. Likewise, the activation policy can be updated to `ALWAYS` to
+               start the instance.
+               There are restrictions around when an instance can/cannot be activated (for
+               example, a read pool instance should be stopped before stopping primary
+               etc.). Please refer to the API documentation for more details.
+               Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
+               Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -1141,6 +1215,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 activation_policy: Optional[pulumi.Input[builtins.str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  availability_type: Optional[pulumi.Input[builtins.str]] = None,
                  client_connection_config: Optional[pulumi.Input[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict']]] = None,
@@ -1166,6 +1241,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["activation_policy"] = activation_policy
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["availability_type"] = availability_type
             __props__.__dict__["client_connection_config"] = client_connection_config
@@ -1212,6 +1288,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            activation_policy: Optional[pulumi.Input[builtins.str]] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             availability_type: Optional[pulumi.Input[builtins.str]] = None,
             client_connection_config: Optional[pulumi.Input[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict']]] = None,
@@ -1247,6 +1324,15 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] activation_policy: 'Specifies whether an instance needs to spin up. Once the instance is
+               active, the activation policy can be updated to the `NEVER` to stop the
+               instance. Likewise, the activation policy can be updated to `ALWAYS` to
+               start the instance.
+               There are restrictions around when an instance can/cannot be activated (for
+               example, a read pool instance should be stopped before stopping primary
+               etc.). Please refer to the API documentation for more details.
+               Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
+               Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -1304,6 +1390,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["activation_policy"] = activation_policy
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["availability_type"] = availability_type
         __props__.__dict__["client_connection_config"] = client_connection_config
@@ -1333,6 +1420,22 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="activationPolicy")
+    def activation_policy(self) -> pulumi.Output[builtins.str]:
+        """
+        'Specifies whether an instance needs to spin up. Once the instance is
+        active, the activation policy can be updated to the `NEVER` to stop the
+        instance. Likewise, the activation policy can be updated to `ALWAYS` to
+        start the instance.
+        There are restrictions around when an instance can/cannot be activated (for
+        example, a read pool instance should be stopped before stopping primary
+        etc.). Please refer to the API documentation for more details.
+        Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
+        Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
+        """
+        return pulumi.get(self, "activation_policy")
 
     @property
     @pulumi.getter

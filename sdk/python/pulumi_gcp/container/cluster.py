@@ -309,7 +309,7 @@ class ClusterArgs:
         :param pulumi.Input[builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: TPU configuration for the cluster.
-        :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster.
+        :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
@@ -1473,7 +1473,7 @@ class ClusterArgs:
     @pulumi.getter(name="userManagedKeysConfig")
     def user_managed_keys_config(self) -> Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']]:
         """
-        The custom keys configuration of the cluster.
+        The custom keys configuration of the cluster Structure is documented below.
         """
         return pulumi.get(self, "user_managed_keys_config")
 
@@ -1835,7 +1835,7 @@ class _ClusterState:
         :param pulumi.Input[builtins.str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
-        :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster.
+        :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
@@ -3129,7 +3129,7 @@ class _ClusterState:
     @pulumi.getter(name="userManagedKeysConfig")
     def user_managed_keys_config(self) -> Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']]:
         """
-        The custom keys configuration of the cluster.
+        The custom keys configuration of the cluster Structure is documented below.
         """
         return pulumi.get(self, "user_managed_keys_config")
 
@@ -3592,7 +3592,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']] tpu_config: TPU configuration for the cluster.
-        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']] user_managed_keys_config: The custom keys configuration of the cluster.
+        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
         :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
@@ -4240,7 +4240,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
-        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']] user_managed_keys_config: The custom keys configuration of the cluster.
+        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
         :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
@@ -5130,7 +5130,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="userManagedKeysConfig")
     def user_managed_keys_config(self) -> pulumi.Output[Optional['outputs.ClusterUserManagedKeysConfig']]:
         """
-        The custom keys configuration of the cluster.
+        The custom keys configuration of the cluster Structure is documented below.
         """
         return pulumi.get(self, "user_managed_keys_config")
 

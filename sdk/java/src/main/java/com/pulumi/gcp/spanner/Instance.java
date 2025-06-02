@@ -172,25 +172,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:spanner/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
-    /**
-     * The autoscaling configuration. Autoscaling is enabled if this field is set.
-     * When autoscaling is enabled, num_nodes and processing_units are treated as,
-     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-     * the instance.
-     * Structure is documented below.
-     * 
-     */
     @Export(name="autoscalingConfig", refs={InstanceAutoscalingConfig.class}, tree="[0]")
     private Output</* @Nullable */ InstanceAutoscalingConfig> autoscalingConfig;
 
-    /**
-     * @return The autoscaling configuration. Autoscaling is enabled if this field is set.
-     * When autoscaling is enabled, num_nodes and processing_units are treated as,
-     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-     * the instance.
-     * Structure is documented below.
-     * 
-     */
     public Output<Optional<InstanceAutoscalingConfig>> autoscalingConfig() {
         return Codegen.optional(this.autoscalingConfig);
     }
@@ -303,6 +287,26 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
+    }
+    /**
+     * The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+     * usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+     * When configured as FREE_INSTANCE, the field `edition` should not be configured.
+     * Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+     * 
+     */
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
+    private Output<String> instanceType;
+
+    /**
+     * @return The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+     * usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+     * When configured as FREE_INSTANCE, the field `edition` should not be configured.
+     * Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+     * 
+     */
+    public Output<String> instanceType() {
+        return this.instanceType;
     }
     /**
      * An object containing a list of &#34;key&#34;: value pairs.

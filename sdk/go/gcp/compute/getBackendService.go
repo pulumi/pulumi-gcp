@@ -83,8 +83,9 @@ type LookupBackendServiceResult struct {
 	CustomRequestHeaders         []string                          `pulumi:"customRequestHeaders"`
 	CustomResponseHeaders        []string                          `pulumi:"customResponseHeaders"`
 	// Textual description for the Backend Service.
-	Description        string `pulumi:"description"`
-	EdgeSecurityPolicy string `pulumi:"edgeSecurityPolicy"`
+	Description        string                               `pulumi:"description"`
+	DynamicForwardings []GetBackendServiceDynamicForwarding `pulumi:"dynamicForwardings"`
+	EdgeSecurityPolicy string                               `pulumi:"edgeSecurityPolicy"`
 	// Whether or not Cloud CDN is enabled on the Backend Service.
 	EnableCdn                                 bool    `pulumi:"enableCdn"`
 	ExternalManagedMigrationState             string  `pulumi:"externalManagedMigrationState"`
@@ -97,15 +98,16 @@ type LookupBackendServiceResult struct {
 	HealthChecks []string               `pulumi:"healthChecks"`
 	Iaps         []GetBackendServiceIap `pulumi:"iaps"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                       string                               `pulumi:"id"`
-	IpAddressSelectionPolicy string                               `pulumi:"ipAddressSelectionPolicy"`
-	LoadBalancingScheme      string                               `pulumi:"loadBalancingScheme"`
-	LocalityLbPolicies       []GetBackendServiceLocalityLbPolicy  `pulumi:"localityLbPolicies"`
-	LocalityLbPolicy         string                               `pulumi:"localityLbPolicy"`
-	LogConfigs               []GetBackendServiceLogConfig         `pulumi:"logConfigs"`
-	MaxStreamDurations       []GetBackendServiceMaxStreamDuration `pulumi:"maxStreamDurations"`
-	Name                     string                               `pulumi:"name"`
-	OutlierDetections        []GetBackendServiceOutlierDetection  `pulumi:"outlierDetections"`
+	Id                                  string                                               `pulumi:"id"`
+	IpAddressSelectionPolicy            string                                               `pulumi:"ipAddressSelectionPolicy"`
+	LoadBalancingScheme                 string                                               `pulumi:"loadBalancingScheme"`
+	LocalityLbPolicies                  []GetBackendServiceLocalityLbPolicy                  `pulumi:"localityLbPolicies"`
+	LocalityLbPolicy                    string                                               `pulumi:"localityLbPolicy"`
+	LogConfigs                          []GetBackendServiceLogConfig                         `pulumi:"logConfigs"`
+	MaxStreamDurations                  []GetBackendServiceMaxStreamDuration                 `pulumi:"maxStreamDurations"`
+	Name                                string                                               `pulumi:"name"`
+	NetworkPassThroughLbTrafficPolicies []GetBackendServiceNetworkPassThroughLbTrafficPolicy `pulumi:"networkPassThroughLbTrafficPolicies"`
+	OutlierDetections                   []GetBackendServiceOutlierDetection                  `pulumi:"outlierDetections"`
 	// The name of a service that has been added to an instance group in this backend.
 	PortName string  `pulumi:"portName"`
 	Project  *string `pulumi:"project"`
@@ -213,6 +215,10 @@ func (o LookupBackendServiceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o LookupBackendServiceResultOutput) DynamicForwardings() GetBackendServiceDynamicForwardingArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceDynamicForwarding { return v.DynamicForwardings }).(GetBackendServiceDynamicForwardingArrayOutput)
+}
+
 func (o LookupBackendServiceResultOutput) EdgeSecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.EdgeSecurityPolicy }).(pulumi.StringOutput)
 }
@@ -280,6 +286,12 @@ func (o LookupBackendServiceResultOutput) MaxStreamDurations() GetBackendService
 
 func (o LookupBackendServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) NetworkPassThroughLbTrafficPolicies() GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceNetworkPassThroughLbTrafficPolicy {
+		return v.NetworkPassThroughLbTrafficPolicies
+	}).(GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput)
 }
 
 func (o LookupBackendServiceResultOutput) OutlierDetections() GetBackendServiceOutlierDetectionArrayOutput {

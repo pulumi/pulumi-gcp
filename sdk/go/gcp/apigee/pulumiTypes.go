@@ -14,16 +14,16 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AddonsConfigAddonsConfig struct {
-	// Configuration for the Monetization add-on.
+	// Configuration for the Advanced API Ops add-on.
 	// Structure is documented below.
 	AdvancedApiOpsConfig *AddonsConfigAddonsConfigAdvancedApiOpsConfig `pulumi:"advancedApiOpsConfig"`
-	// Configuration for the Monetization add-on.
+	// Configuration for the API Security add-on.
 	// Structure is documented below.
 	ApiSecurityConfig *AddonsConfigAddonsConfigApiSecurityConfig `pulumi:"apiSecurityConfig"`
 	// Configuration for the Monetization add-on.
 	// Structure is documented below.
 	ConnectorsPlatformConfig *AddonsConfigAddonsConfigConnectorsPlatformConfig `pulumi:"connectorsPlatformConfig"`
-	// Configuration for the Monetization add-on.
+	// Configuration for the Integration add-on.
 	// Structure is documented below.
 	IntegrationConfig *AddonsConfigAddonsConfigIntegrationConfig `pulumi:"integrationConfig"`
 	// Configuration for the Monetization add-on.
@@ -43,16 +43,16 @@ type AddonsConfigAddonsConfigInput interface {
 }
 
 type AddonsConfigAddonsConfigArgs struct {
-	// Configuration for the Monetization add-on.
+	// Configuration for the Advanced API Ops add-on.
 	// Structure is documented below.
 	AdvancedApiOpsConfig AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrInput `pulumi:"advancedApiOpsConfig"`
-	// Configuration for the Monetization add-on.
+	// Configuration for the API Security add-on.
 	// Structure is documented below.
 	ApiSecurityConfig AddonsConfigAddonsConfigApiSecurityConfigPtrInput `pulumi:"apiSecurityConfig"`
 	// Configuration for the Monetization add-on.
 	// Structure is documented below.
 	ConnectorsPlatformConfig AddonsConfigAddonsConfigConnectorsPlatformConfigPtrInput `pulumi:"connectorsPlatformConfig"`
-	// Configuration for the Monetization add-on.
+	// Configuration for the Integration add-on.
 	// Structure is documented below.
 	IntegrationConfig AddonsConfigAddonsConfigIntegrationConfigPtrInput `pulumi:"integrationConfig"`
 	// Configuration for the Monetization add-on.
@@ -137,7 +137,7 @@ func (o AddonsConfigAddonsConfigOutput) ToAddonsConfigAddonsConfigPtrOutputWithC
 	}).(AddonsConfigAddonsConfigPtrOutput)
 }
 
-// Configuration for the Monetization add-on.
+// Configuration for the Advanced API Ops add-on.
 // Structure is documented below.
 func (o AddonsConfigAddonsConfigOutput) AdvancedApiOpsConfig() AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigAdvancedApiOpsConfig {
@@ -145,7 +145,7 @@ func (o AddonsConfigAddonsConfigOutput) AdvancedApiOpsConfig() AddonsConfigAddon
 	}).(AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput)
 }
 
-// Configuration for the Monetization add-on.
+// Configuration for the API Security add-on.
 // Structure is documented below.
 func (o AddonsConfigAddonsConfigOutput) ApiSecurityConfig() AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigApiSecurityConfig {
@@ -161,7 +161,7 @@ func (o AddonsConfigAddonsConfigOutput) ConnectorsPlatformConfig() AddonsConfigA
 	}).(AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput)
 }
 
-// Configuration for the Monetization add-on.
+// Configuration for the Integration add-on.
 // Structure is documented below.
 func (o AddonsConfigAddonsConfigOutput) IntegrationConfig() AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigIntegrationConfig {
@@ -201,7 +201,7 @@ func (o AddonsConfigAddonsConfigPtrOutput) Elem() AddonsConfigAddonsConfigOutput
 	}).(AddonsConfigAddonsConfigOutput)
 }
 
-// Configuration for the Monetization add-on.
+// Configuration for the Advanced API Ops add-on.
 // Structure is documented below.
 func (o AddonsConfigAddonsConfigPtrOutput) AdvancedApiOpsConfig() AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
 	return o.ApplyT(func(v *AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigAdvancedApiOpsConfig {
@@ -212,7 +212,7 @@ func (o AddonsConfigAddonsConfigPtrOutput) AdvancedApiOpsConfig() AddonsConfigAd
 	}).(AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput)
 }
 
-// Configuration for the Monetization add-on.
+// Configuration for the API Security add-on.
 // Structure is documented below.
 func (o AddonsConfigAddonsConfigPtrOutput) ApiSecurityConfig() AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
 	return o.ApplyT(func(v *AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigApiSecurityConfig {
@@ -234,7 +234,7 @@ func (o AddonsConfigAddonsConfigPtrOutput) ConnectorsPlatformConfig() AddonsConf
 	}).(AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput)
 }
 
-// Configuration for the Monetization add-on.
+// Configuration for the Integration add-on.
 // Structure is documented below.
 func (o AddonsConfigAddonsConfigPtrOutput) IntegrationConfig() AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
 	return o.ApplyT(func(v *AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigIntegrationConfig {
@@ -394,10 +394,10 @@ func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput) Enabled() pulumi.
 }
 
 type AddonsConfigAddonsConfigApiSecurityConfig struct {
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Flag that specifies whether the API security add-on is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// (Output)
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
 	ExpiresAt *string `pulumi:"expiresAt"`
 }
 
@@ -413,10 +413,10 @@ type AddonsConfigAddonsConfigApiSecurityConfigInput interface {
 }
 
 type AddonsConfigAddonsConfigApiSecurityConfigArgs struct {
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Flag that specifies whether the API security add-on is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// (Output)
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
 	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
 }
 
@@ -497,13 +497,13 @@ func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) ToAddonsConfigAddonsCon
 	}).(AddonsConfigAddonsConfigApiSecurityConfigPtrOutput)
 }
 
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Flag that specifies whether the API security add-on is enabled.
 func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfigApiSecurityConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // (Output)
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
 func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfigApiSecurityConfig) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
@@ -532,7 +532,7 @@ func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) Elem() AddonsConfigA
 	}).(AddonsConfigAddonsConfigApiSecurityConfigOutput)
 }
 
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Flag that specifies whether the API security add-on is enabled.
 func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AddonsConfigAddonsConfigApiSecurityConfig) *bool {
 		if v == nil {
@@ -543,7 +543,7 @@ func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) Enabled() pulumi.Boo
 }
 
 // (Output)
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
 func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddonsConfigAddonsConfigApiSecurityConfig) *string {
 		if v == nil {
@@ -554,10 +554,10 @@ func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) ExpiresAt() pulumi.S
 }
 
 type AddonsConfigAddonsConfigConnectorsPlatformConfig struct {
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Flag that specifies whether the Connectors Platform add-on is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// (Output)
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
 	ExpiresAt *string `pulumi:"expiresAt"`
 }
 
@@ -573,10 +573,10 @@ type AddonsConfigAddonsConfigConnectorsPlatformConfigInput interface {
 }
 
 type AddonsConfigAddonsConfigConnectorsPlatformConfigArgs struct {
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Flag that specifies whether the Connectors Platform add-on is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// (Output)
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
 	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
 }
 
@@ -657,13 +657,13 @@ func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ToAddonsConfigAd
 	}).(AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput)
 }
 
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Flag that specifies whether the Connectors Platform add-on is enabled.
 func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfigConnectorsPlatformConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // (Output)
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
 func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfigConnectorsPlatformConfig) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
@@ -692,7 +692,7 @@ func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) Elem() Addons
 	}).(AddonsConfigAddonsConfigConnectorsPlatformConfigOutput)
 }
 
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Flag that specifies whether the Connectors Platform add-on is enabled.
 func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AddonsConfigAddonsConfigConnectorsPlatformConfig) *bool {
 		if v == nil {
@@ -703,7 +703,7 @@ func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) Enabled() pul
 }
 
 // (Output)
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
 func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddonsConfigAddonsConfigConnectorsPlatformConfig) *string {
 		if v == nil {
@@ -714,7 +714,7 @@ func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) ExpiresAt() p
 }
 
 type AddonsConfigAddonsConfigIntegrationConfig struct {
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Flag that specifies whether the Integration add-on is enabled.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -730,7 +730,7 @@ type AddonsConfigAddonsConfigIntegrationConfigInput interface {
 }
 
 type AddonsConfigAddonsConfigIntegrationConfigArgs struct {
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Flag that specifies whether the Integration add-on is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -811,7 +811,7 @@ func (o AddonsConfigAddonsConfigIntegrationConfigOutput) ToAddonsConfigAddonsCon
 	}).(AddonsConfigAddonsConfigIntegrationConfigPtrOutput)
 }
 
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Flag that specifies whether the Integration add-on is enabled.
 func (o AddonsConfigAddonsConfigIntegrationConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfigIntegrationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -840,7 +840,7 @@ func (o AddonsConfigAddonsConfigIntegrationConfigPtrOutput) Elem() AddonsConfigA
 	}).(AddonsConfigAddonsConfigIntegrationConfigOutput)
 }
 
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Flag that specifies whether the Integration add-on is enabled.
 func (o AddonsConfigAddonsConfigIntegrationConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AddonsConfigAddonsConfigIntegrationConfig) *bool {
 		if v == nil {
@@ -851,7 +851,7 @@ func (o AddonsConfigAddonsConfigIntegrationConfigPtrOutput) Enabled() pulumi.Boo
 }
 
 type AddonsConfigAddonsConfigMonetizationConfig struct {
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Flag that specifies whether the Monetization add-on is enabled.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -867,7 +867,7 @@ type AddonsConfigAddonsConfigMonetizationConfigInput interface {
 }
 
 type AddonsConfigAddonsConfigMonetizationConfigArgs struct {
-	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	// Flag that specifies whether the Monetization add-on is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -948,7 +948,7 @@ func (o AddonsConfigAddonsConfigMonetizationConfigOutput) ToAddonsConfigAddonsCo
 	}).(AddonsConfigAddonsConfigMonetizationConfigPtrOutput)
 }
 
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Flag that specifies whether the Monetization add-on is enabled.
 func (o AddonsConfigAddonsConfigMonetizationConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfigMonetizationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -977,7 +977,7 @@ func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) Elem() AddonsConfig
 	}).(AddonsConfigAddonsConfigMonetizationConfigOutput)
 }
 
-// Flag that specifies whether the Advanced API Ops add-on is enabled.
+// Flag that specifies whether the Monetization add-on is enabled.
 func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AddonsConfigAddonsConfigMonetizationConfig) *bool {
 		if v == nil {
@@ -3919,6 +3919,124 @@ func (o OrganizationPropertiesPropertyArrayOutput) Index(i pulumi.IntInput) Orga
 	}).(OrganizationPropertiesPropertyOutput)
 }
 
+type SecurityMonitoringConditionIncludeAllResources struct {
+}
+
+// SecurityMonitoringConditionIncludeAllResourcesInput is an input type that accepts SecurityMonitoringConditionIncludeAllResourcesArgs and SecurityMonitoringConditionIncludeAllResourcesOutput values.
+// You can construct a concrete instance of `SecurityMonitoringConditionIncludeAllResourcesInput` via:
+//
+//	SecurityMonitoringConditionIncludeAllResourcesArgs{...}
+type SecurityMonitoringConditionIncludeAllResourcesInput interface {
+	pulumi.Input
+
+	ToSecurityMonitoringConditionIncludeAllResourcesOutput() SecurityMonitoringConditionIncludeAllResourcesOutput
+	ToSecurityMonitoringConditionIncludeAllResourcesOutputWithContext(context.Context) SecurityMonitoringConditionIncludeAllResourcesOutput
+}
+
+type SecurityMonitoringConditionIncludeAllResourcesArgs struct {
+}
+
+func (SecurityMonitoringConditionIncludeAllResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityMonitoringConditionIncludeAllResources)(nil)).Elem()
+}
+
+func (i SecurityMonitoringConditionIncludeAllResourcesArgs) ToSecurityMonitoringConditionIncludeAllResourcesOutput() SecurityMonitoringConditionIncludeAllResourcesOutput {
+	return i.ToSecurityMonitoringConditionIncludeAllResourcesOutputWithContext(context.Background())
+}
+
+func (i SecurityMonitoringConditionIncludeAllResourcesArgs) ToSecurityMonitoringConditionIncludeAllResourcesOutputWithContext(ctx context.Context) SecurityMonitoringConditionIncludeAllResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityMonitoringConditionIncludeAllResourcesOutput)
+}
+
+func (i SecurityMonitoringConditionIncludeAllResourcesArgs) ToSecurityMonitoringConditionIncludeAllResourcesPtrOutput() SecurityMonitoringConditionIncludeAllResourcesPtrOutput {
+	return i.ToSecurityMonitoringConditionIncludeAllResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityMonitoringConditionIncludeAllResourcesArgs) ToSecurityMonitoringConditionIncludeAllResourcesPtrOutputWithContext(ctx context.Context) SecurityMonitoringConditionIncludeAllResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityMonitoringConditionIncludeAllResourcesOutput).ToSecurityMonitoringConditionIncludeAllResourcesPtrOutputWithContext(ctx)
+}
+
+// SecurityMonitoringConditionIncludeAllResourcesPtrInput is an input type that accepts SecurityMonitoringConditionIncludeAllResourcesArgs, SecurityMonitoringConditionIncludeAllResourcesPtr and SecurityMonitoringConditionIncludeAllResourcesPtrOutput values.
+// You can construct a concrete instance of `SecurityMonitoringConditionIncludeAllResourcesPtrInput` via:
+//
+//	        SecurityMonitoringConditionIncludeAllResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityMonitoringConditionIncludeAllResourcesPtrInput interface {
+	pulumi.Input
+
+	ToSecurityMonitoringConditionIncludeAllResourcesPtrOutput() SecurityMonitoringConditionIncludeAllResourcesPtrOutput
+	ToSecurityMonitoringConditionIncludeAllResourcesPtrOutputWithContext(context.Context) SecurityMonitoringConditionIncludeAllResourcesPtrOutput
+}
+
+type securityMonitoringConditionIncludeAllResourcesPtrType SecurityMonitoringConditionIncludeAllResourcesArgs
+
+func SecurityMonitoringConditionIncludeAllResourcesPtr(v *SecurityMonitoringConditionIncludeAllResourcesArgs) SecurityMonitoringConditionIncludeAllResourcesPtrInput {
+	return (*securityMonitoringConditionIncludeAllResourcesPtrType)(v)
+}
+
+func (*securityMonitoringConditionIncludeAllResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityMonitoringConditionIncludeAllResources)(nil)).Elem()
+}
+
+func (i *securityMonitoringConditionIncludeAllResourcesPtrType) ToSecurityMonitoringConditionIncludeAllResourcesPtrOutput() SecurityMonitoringConditionIncludeAllResourcesPtrOutput {
+	return i.ToSecurityMonitoringConditionIncludeAllResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *securityMonitoringConditionIncludeAllResourcesPtrType) ToSecurityMonitoringConditionIncludeAllResourcesPtrOutputWithContext(ctx context.Context) SecurityMonitoringConditionIncludeAllResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityMonitoringConditionIncludeAllResourcesPtrOutput)
+}
+
+type SecurityMonitoringConditionIncludeAllResourcesOutput struct{ *pulumi.OutputState }
+
+func (SecurityMonitoringConditionIncludeAllResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityMonitoringConditionIncludeAllResources)(nil)).Elem()
+}
+
+func (o SecurityMonitoringConditionIncludeAllResourcesOutput) ToSecurityMonitoringConditionIncludeAllResourcesOutput() SecurityMonitoringConditionIncludeAllResourcesOutput {
+	return o
+}
+
+func (o SecurityMonitoringConditionIncludeAllResourcesOutput) ToSecurityMonitoringConditionIncludeAllResourcesOutputWithContext(ctx context.Context) SecurityMonitoringConditionIncludeAllResourcesOutput {
+	return o
+}
+
+func (o SecurityMonitoringConditionIncludeAllResourcesOutput) ToSecurityMonitoringConditionIncludeAllResourcesPtrOutput() SecurityMonitoringConditionIncludeAllResourcesPtrOutput {
+	return o.ToSecurityMonitoringConditionIncludeAllResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityMonitoringConditionIncludeAllResourcesOutput) ToSecurityMonitoringConditionIncludeAllResourcesPtrOutputWithContext(ctx context.Context) SecurityMonitoringConditionIncludeAllResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityMonitoringConditionIncludeAllResources) *SecurityMonitoringConditionIncludeAllResources {
+		return &v
+	}).(SecurityMonitoringConditionIncludeAllResourcesPtrOutput)
+}
+
+type SecurityMonitoringConditionIncludeAllResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityMonitoringConditionIncludeAllResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityMonitoringConditionIncludeAllResources)(nil)).Elem()
+}
+
+func (o SecurityMonitoringConditionIncludeAllResourcesPtrOutput) ToSecurityMonitoringConditionIncludeAllResourcesPtrOutput() SecurityMonitoringConditionIncludeAllResourcesPtrOutput {
+	return o
+}
+
+func (o SecurityMonitoringConditionIncludeAllResourcesPtrOutput) ToSecurityMonitoringConditionIncludeAllResourcesPtrOutputWithContext(ctx context.Context) SecurityMonitoringConditionIncludeAllResourcesPtrOutput {
+	return o
+}
+
+func (o SecurityMonitoringConditionIncludeAllResourcesPtrOutput) Elem() SecurityMonitoringConditionIncludeAllResourcesOutput {
+	return o.ApplyT(func(v *SecurityMonitoringConditionIncludeAllResources) SecurityMonitoringConditionIncludeAllResources {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityMonitoringConditionIncludeAllResources
+		return ret
+	}).(SecurityMonitoringConditionIncludeAllResourcesOutput)
+}
+
 type SecurityProfileV2ProfileAssessmentConfig struct {
 	// The identifier for this object. Format specified above.
 	Assessment string `pulumi:"assessment"`
@@ -4668,6 +4786,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPtrInput)(nil)).Elem(), OrganizationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyInput)(nil)).Elem(), OrganizationPropertiesPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyArrayInput)(nil)).Elem(), OrganizationPropertiesPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityMonitoringConditionIncludeAllResourcesInput)(nil)).Elem(), SecurityMonitoringConditionIncludeAllResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityMonitoringConditionIncludeAllResourcesPtrInput)(nil)).Elem(), SecurityMonitoringConditionIncludeAllResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileV2ProfileAssessmentConfigInput)(nil)).Elem(), SecurityProfileV2ProfileAssessmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileV2ProfileAssessmentConfigArrayInput)(nil)).Elem(), SecurityProfileV2ProfileAssessmentConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SharedflowMetaDataInput)(nil)).Elem(), SharedflowMetaDataArgs{})
@@ -4726,6 +4846,8 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPropertyOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPropertyArrayOutput{})
+	pulumi.RegisterOutputType(SecurityMonitoringConditionIncludeAllResourcesOutput{})
+	pulumi.RegisterOutputType(SecurityMonitoringConditionIncludeAllResourcesPtrOutput{})
 	pulumi.RegisterOutputType(SecurityProfileV2ProfileAssessmentConfigOutput{})
 	pulumi.RegisterOutputType(SecurityProfileV2ProfileAssessmentConfigArrayOutput{})
 	pulumi.RegisterOutputType(SharedflowMetaDataOutput{})

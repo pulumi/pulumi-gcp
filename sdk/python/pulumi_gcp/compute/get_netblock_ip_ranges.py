@@ -141,9 +141,13 @@ def get_netblock_ip_ranges(range_type: Optional[builtins.str] = None,
            
            * `google-netblocks` - Corresponds to IP addresses used for Google services. [More details.](https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges)
            
-           * `restricted-googleapis` - Corresponds to the IP addresses used for Private Google Access only for services that support VPC Service Controls API access. [More details.](https://cloud.google.com/vpc/docs/private-access-options#domain-vips)
+           * `restricted-googleapis` - Corresponds to the IP addresses used for Private Google Access only for services that support VPC Service Controls API access. These ranges are for DNS configuration. [More details.](https://cloud.google.com/vpc/docs/configure-private-google-access#config-options)
            
-           * `private-googleapis` - Corresponds to the IP addresses used for Private Google Access for services that do not support VPC Service Controls. [More details.](https://cloud.google.com/vpc/docs/private-access-options#domain-vips)
+           * `restricted-googleapis-with-directconnectivity` - Corresponds to the IP addresses used for Private Google Access only for services that support VPC Service Controls API access. These ranges are for routing and firewall configurations. [More details.](https://cloud.google.com/vpc/docs/configure-private-google-access#config-options)
+           
+           * `private-googleapis` - Corresponds to the IP addresses used for Private Google Access, including services that do not support VPC Service Controls. These ranges are for DNS configuration. [More details.](https://cloud.google.com/vpc/docs/configure-private-google-access#config-options)
+           
+           * `private-googleapis-with-directconnectivity` - Corresponds to the IP addresses used for Private Google Access, including services that do not support VPC Service Controls. These ranges are for routing and firewall configurations. [More details.](https://cloud.google.com/vpc/docs/configure-private-google-access#config-options)
            
            * `dns-forwarders` - Corresponds to the IP addresses used to originate Cloud DNS outbound forwarding. [More details.](https://cloud.google.com/dns/zones/#creating-forwarding-zones)
            
@@ -151,7 +155,7 @@ def get_netblock_ip_ranges(range_type: Optional[builtins.str] = None,
            
            * `health-checkers` - Corresponds to the IP addresses used for health checking in Cloud Load Balancing. [More details.](https://cloud.google.com/load-balancing/docs/health-checks)
            
-           * `legacy-health-checkers` - Corresponds to the IP addresses used for legacy style health checkers (used by Network Load Balancing). [ More details.](https://cloud.google.com/load-balancing/docs/health-checks)
+           * `legacy-health-checkers` - Corresponds to the IP addresses used for legacy style health checkers (used by Network Load Balancing). [More details.](https://cloud.google.com/load-balancing/docs/health-checks)
     """
     __args__ = dict()
     __args__['rangeType'] = range_type
@@ -210,9 +214,13 @@ def get_netblock_ip_ranges_output(range_type: Optional[pulumi.Input[Optional[bui
            
            * `google-netblocks` - Corresponds to IP addresses used for Google services. [More details.](https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges)
            
-           * `restricted-googleapis` - Corresponds to the IP addresses used for Private Google Access only for services that support VPC Service Controls API access. [More details.](https://cloud.google.com/vpc/docs/private-access-options#domain-vips)
+           * `restricted-googleapis` - Corresponds to the IP addresses used for Private Google Access only for services that support VPC Service Controls API access. These ranges are for DNS configuration. [More details.](https://cloud.google.com/vpc/docs/configure-private-google-access#config-options)
            
-           * `private-googleapis` - Corresponds to the IP addresses used for Private Google Access for services that do not support VPC Service Controls. [More details.](https://cloud.google.com/vpc/docs/private-access-options#domain-vips)
+           * `restricted-googleapis-with-directconnectivity` - Corresponds to the IP addresses used for Private Google Access only for services that support VPC Service Controls API access. These ranges are for routing and firewall configurations. [More details.](https://cloud.google.com/vpc/docs/configure-private-google-access#config-options)
+           
+           * `private-googleapis` - Corresponds to the IP addresses used for Private Google Access, including services that do not support VPC Service Controls. These ranges are for DNS configuration. [More details.](https://cloud.google.com/vpc/docs/configure-private-google-access#config-options)
+           
+           * `private-googleapis-with-directconnectivity` - Corresponds to the IP addresses used for Private Google Access, including services that do not support VPC Service Controls. These ranges are for routing and firewall configurations. [More details.](https://cloud.google.com/vpc/docs/configure-private-google-access#config-options)
            
            * `dns-forwarders` - Corresponds to the IP addresses used to originate Cloud DNS outbound forwarding. [More details.](https://cloud.google.com/dns/zones/#creating-forwarding-zones)
            
@@ -220,7 +228,7 @@ def get_netblock_ip_ranges_output(range_type: Optional[pulumi.Input[Optional[bui
            
            * `health-checkers` - Corresponds to the IP addresses used for health checking in Cloud Load Balancing. [More details.](https://cloud.google.com/load-balancing/docs/health-checks)
            
-           * `legacy-health-checkers` - Corresponds to the IP addresses used for legacy style health checkers (used by Network Load Balancing). [ More details.](https://cloud.google.com/load-balancing/docs/health-checks)
+           * `legacy-health-checkers` - Corresponds to the IP addresses used for legacy style health checkers (used by Network Load Balancing). [More details.](https://cloud.google.com/load-balancing/docs/health-checks)
     """
     __args__ = dict()
     __args__['rangeType'] = range_type

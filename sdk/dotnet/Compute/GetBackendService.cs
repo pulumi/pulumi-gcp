@@ -178,6 +178,7 @@ namespace Pulumi.Gcp.Compute
         /// Textual description for the Backend Service.
         /// </summary>
         public readonly string Description;
+        public readonly ImmutableArray<Outputs.GetBackendServiceDynamicForwardingResult> DynamicForwardings;
         public readonly string EdgeSecurityPolicy;
         /// <summary>
         /// Whether or not Cloud CDN is enabled on the Backend Service.
@@ -209,6 +210,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetBackendServiceLogConfigResult> LogConfigs;
         public readonly ImmutableArray<Outputs.GetBackendServiceMaxStreamDurationResult> MaxStreamDurations;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetBackendServiceNetworkPassThroughLbTrafficPolicyResult> NetworkPassThroughLbTrafficPolicies;
         public readonly ImmutableArray<Outputs.GetBackendServiceOutlierDetectionResult> OutlierDetections;
         /// <summary>
         /// The name of a service that has been added to an instance group in this backend.
@@ -263,6 +265,8 @@ namespace Pulumi.Gcp.Compute
 
             string description,
 
+            ImmutableArray<Outputs.GetBackendServiceDynamicForwardingResult> dynamicForwardings,
+
             string edgeSecurityPolicy,
 
             bool enableCdn,
@@ -294,6 +298,8 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetBackendServiceMaxStreamDurationResult> maxStreamDurations,
 
             string name,
+
+            ImmutableArray<Outputs.GetBackendServiceNetworkPassThroughLbTrafficPolicyResult> networkPassThroughLbTrafficPolicies,
 
             ImmutableArray<Outputs.GetBackendServiceOutlierDetectionResult> outlierDetections,
 
@@ -331,6 +337,7 @@ namespace Pulumi.Gcp.Compute
             CustomRequestHeaders = customRequestHeaders;
             CustomResponseHeaders = customResponseHeaders;
             Description = description;
+            DynamicForwardings = dynamicForwardings;
             EdgeSecurityPolicy = edgeSecurityPolicy;
             EnableCdn = enableCdn;
             ExternalManagedMigrationState = externalManagedMigrationState;
@@ -347,6 +354,7 @@ namespace Pulumi.Gcp.Compute
             LogConfigs = logConfigs;
             MaxStreamDurations = maxStreamDurations;
             Name = name;
+            NetworkPassThroughLbTrafficPolicies = networkPassThroughLbTrafficPolicies;
             OutlierDetections = outlierDetections;
             PortName = portName;
             Project = project;

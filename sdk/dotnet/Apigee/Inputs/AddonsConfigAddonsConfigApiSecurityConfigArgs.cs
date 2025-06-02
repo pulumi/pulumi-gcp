@@ -13,14 +13,14 @@ namespace Pulumi.Gcp.Apigee.Inputs
     public sealed class AddonsConfigAddonsConfigApiSecurityConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flag that specifies whether the Advanced API Ops add-on is enabled.
+        /// Flag that specifies whether the API security add-on is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// (Output)
-        /// Flag that specifies whether the Advanced API Ops add-on is enabled.
+        /// Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }

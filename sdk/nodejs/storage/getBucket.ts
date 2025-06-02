@@ -62,6 +62,7 @@ export interface GetBucketResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ipFilters: outputs.storage.GetBucketIpFilter[];
     readonly labels: {[key: string]: string};
     readonly lifecycleRules: outputs.storage.GetBucketLifecycleRule[];
     readonly location: string;

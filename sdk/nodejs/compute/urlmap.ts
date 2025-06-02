@@ -556,6 +556,202 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Url Map Default Mirror Percent
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.BackendService("home", {
+ *     name: "home",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const mirror = new gcp.compute.BackendService("mirror", {
+ *     name: "mirror",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     description: "Test for default route action mirror percent",
+ *     defaultService: home.id,
+ *     defaultRouteAction: {
+ *         requestMirrorPolicy: {
+ *             backendService: mirror.id,
+ *             mirrorPercent: 50,
+ *         },
+ *     },
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *     }],
+ * });
+ * ```
+ * ### Url Map Path Matcher Default Mirror Percent
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.BackendService("home", {
+ *     name: "home",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const mirror = new gcp.compute.BackendService("mirror", {
+ *     name: "mirror",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     description: "Test for default route action mirror percent",
+ *     defaultService: home.id,
+ *     defaultRouteAction: {
+ *         requestMirrorPolicy: {
+ *             backendService: mirror.id,
+ *             mirrorPercent: 50,
+ *         },
+ *     },
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *     }],
+ * });
+ * ```
+ * ### Url Map Path Rule Mirror Percent
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.BackendService("home", {
+ *     name: "home",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const mirror = new gcp.compute.BackendService("mirror", {
+ *     name: "mirror",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     description: "Test for path matcher default route action mirror percent",
+ *     defaultService: home.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         defaultRouteAction: {
+ *             requestMirrorPolicy: {
+ *                 backendService: mirror.id,
+ *                 mirrorPercent: 75,
+ *             },
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Url Map Route Rule Mirror Percent
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.BackendService("home", {
+ *     name: "home",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const mirror = new gcp.compute.BackendService("mirror", {
+ *     name: "mirror",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     description: "Test for path rule route action mirror percent",
+ *     defaultService: home.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         pathRules: [{
+ *             paths: ["/home"],
+ *             service: home.id,
+ *             routeAction: {
+ *                 requestMirrorPolicy: {
+ *                     backendService: mirror.id,
+ *                     mirrorPercent: 25,
+ *                 },
+ *             },
+ *         }],
+ *     }],
+ * });
+ * ```
  * ### Url Map Path Template Match
  *
  * ```typescript

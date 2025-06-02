@@ -22,12 +22,16 @@ __all__ = [
     'VolumeExportPolicyArgsDict',
     'VolumeExportPolicyRuleArgs',
     'VolumeExportPolicyRuleArgsDict',
+    'VolumeHybridReplicationParametersArgs',
+    'VolumeHybridReplicationParametersArgsDict',
     'VolumeMountOptionArgs',
     'VolumeMountOptionArgsDict',
     'VolumeReplicationDestinationVolumeParametersArgs',
     'VolumeReplicationDestinationVolumeParametersArgsDict',
     'VolumeReplicationDestinationVolumeParametersTieringPolicyArgs',
     'VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict',
+    'VolumeReplicationHybridPeeringDetailArgs',
+    'VolumeReplicationHybridPeeringDetailArgsDict',
     'VolumeReplicationTransferStatArgs',
     'VolumeReplicationTransferStatArgsDict',
     'VolumeRestoreParametersArgs',
@@ -393,6 +397,181 @@ class VolumeExportPolicyRuleArgs:
 
 
 if not MYPY:
+    class VolumeHybridReplicationParametersArgsDict(TypedDict):
+        cluster_location: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Optional. Description of the replication.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        Optional. Labels to be added to the replication as the key value pairs.
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        peer_cluster_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Required. Name of the user's local source cluster to be peered with the destination cluster.
+        """
+        peer_ip_addresses: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Required. List of node ip addresses to be peered with.
+        """
+        peer_svm_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+        """
+        peer_volume_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Required. Name of the user's local source volume to be peered with the destination volume.
+        """
+        replication: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Required. Desired name for the replication of this volume.
+        """
+elif False:
+    VolumeHybridReplicationParametersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VolumeHybridReplicationParametersArgs:
+    def __init__(__self__, *,
+                 cluster_location: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 peer_cluster_name: Optional[pulumi.Input[builtins.str]] = None,
+                 peer_ip_addresses: Optional[pulumi.Input[builtins.str]] = None,
+                 peer_svm_name: Optional[pulumi.Input[builtins.str]] = None,
+                 peer_volume_name: Optional[pulumi.Input[builtins.str]] = None,
+                 replication: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] cluster_location: Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+        :param pulumi.Input[builtins.str] description: Optional. Description of the replication.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels to be added to the replication as the key value pairs.
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[builtins.str] peer_cluster_name: Required. Name of the user's local source cluster to be peered with the destination cluster.
+        :param pulumi.Input[builtins.str] peer_ip_addresses: Required. List of node ip addresses to be peered with.
+        :param pulumi.Input[builtins.str] peer_svm_name: Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+        :param pulumi.Input[builtins.str] peer_volume_name: Required. Name of the user's local source volume to be peered with the destination volume.
+        :param pulumi.Input[builtins.str] replication: Required. Desired name for the replication of this volume.
+        """
+        if cluster_location is not None:
+            pulumi.set(__self__, "cluster_location", cluster_location)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if peer_cluster_name is not None:
+            pulumi.set(__self__, "peer_cluster_name", peer_cluster_name)
+        if peer_ip_addresses is not None:
+            pulumi.set(__self__, "peer_ip_addresses", peer_ip_addresses)
+        if peer_svm_name is not None:
+            pulumi.set(__self__, "peer_svm_name", peer_svm_name)
+        if peer_volume_name is not None:
+            pulumi.set(__self__, "peer_volume_name", peer_volume_name)
+        if replication is not None:
+            pulumi.set(__self__, "replication", replication)
+
+    @property
+    @pulumi.getter(name="clusterLocation")
+    def cluster_location(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+        """
+        return pulumi.get(self, "cluster_location")
+
+    @cluster_location.setter
+    def cluster_location(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cluster_location", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional. Description of the replication.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Optional. Labels to be added to the replication as the key value pairs.
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="peerClusterName")
+    def peer_cluster_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Required. Name of the user's local source cluster to be peered with the destination cluster.
+        """
+        return pulumi.get(self, "peer_cluster_name")
+
+    @peer_cluster_name.setter
+    def peer_cluster_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "peer_cluster_name", value)
+
+    @property
+    @pulumi.getter(name="peerIpAddresses")
+    def peer_ip_addresses(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Required. List of node ip addresses to be peered with.
+        """
+        return pulumi.get(self, "peer_ip_addresses")
+
+    @peer_ip_addresses.setter
+    def peer_ip_addresses(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "peer_ip_addresses", value)
+
+    @property
+    @pulumi.getter(name="peerSvmName")
+    def peer_svm_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+        """
+        return pulumi.get(self, "peer_svm_name")
+
+    @peer_svm_name.setter
+    def peer_svm_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "peer_svm_name", value)
+
+    @property
+    @pulumi.getter(name="peerVolumeName")
+    def peer_volume_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Required. Name of the user's local source volume to be peered with the destination volume.
+        """
+        return pulumi.get(self, "peer_volume_name")
+
+    @peer_volume_name.setter
+    def peer_volume_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "peer_volume_name", value)
+
+    @property
+    @pulumi.getter
+    def replication(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Required. Desired name for the replication of this volume.
+        """
+        return pulumi.get(self, "replication")
+
+    @replication.setter
+    def replication(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "replication", value)
+
+
+if not MYPY:
     class VolumeMountOptionArgsDict(TypedDict):
         export: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -675,6 +854,182 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicyArgs:
     @tier_action.setter
     def tier_action(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "tier_action", value)
+
+
+if not MYPY:
+    class VolumeReplicationHybridPeeringDetailArgsDict(TypedDict):
+        command: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
+        """
+        command_expiry_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Optional. Expiration time for the peering command to be executed on user's ONTAP.
+        Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
+        """
+        passphrase: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Optional. Temporary passphrase generated to accept cluster peering command.
+        """
+        peer_cluster_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Optional. Name of the user's local source cluster to be peered with the destination cluster.
+        """
+        peer_svm_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Optional. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+        """
+        peer_volume_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Optional. Name of the user's local source volume to be peered with the destination volume.
+        """
+        subnet_ip: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Optional. IP address of the subnet.
+        """
+elif False:
+    VolumeReplicationHybridPeeringDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VolumeReplicationHybridPeeringDetailArgs:
+    def __init__(__self__, *,
+                 command: Optional[pulumi.Input[builtins.str]] = None,
+                 command_expiry_time: Optional[pulumi.Input[builtins.str]] = None,
+                 passphrase: Optional[pulumi.Input[builtins.str]] = None,
+                 peer_cluster_name: Optional[pulumi.Input[builtins.str]] = None,
+                 peer_svm_name: Optional[pulumi.Input[builtins.str]] = None,
+                 peer_volume_name: Optional[pulumi.Input[builtins.str]] = None,
+                 subnet_ip: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] command: (Output)
+               Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
+        :param pulumi.Input[builtins.str] command_expiry_time: (Output)
+               Optional. Expiration time for the peering command to be executed on user's ONTAP.
+               Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
+        :param pulumi.Input[builtins.str] passphrase: (Output)
+               Optional. Temporary passphrase generated to accept cluster peering command.
+        :param pulumi.Input[builtins.str] peer_cluster_name: (Output)
+               Optional. Name of the user's local source cluster to be peered with the destination cluster.
+        :param pulumi.Input[builtins.str] peer_svm_name: (Output)
+               Optional. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+        :param pulumi.Input[builtins.str] peer_volume_name: (Output)
+               Optional. Name of the user's local source volume to be peered with the destination volume.
+        :param pulumi.Input[builtins.str] subnet_ip: (Output)
+               Optional. IP address of the subnet.
+        """
+        if command is not None:
+            pulumi.set(__self__, "command", command)
+        if command_expiry_time is not None:
+            pulumi.set(__self__, "command_expiry_time", command_expiry_time)
+        if passphrase is not None:
+            pulumi.set(__self__, "passphrase", passphrase)
+        if peer_cluster_name is not None:
+            pulumi.set(__self__, "peer_cluster_name", peer_cluster_name)
+        if peer_svm_name is not None:
+            pulumi.set(__self__, "peer_svm_name", peer_svm_name)
+        if peer_volume_name is not None:
+            pulumi.set(__self__, "peer_volume_name", peer_volume_name)
+        if subnet_ip is not None:
+            pulumi.set(__self__, "subnet_ip", subnet_ip)
+
+    @property
+    @pulumi.getter
+    def command(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
+        """
+        return pulumi.get(self, "command")
+
+    @command.setter
+    def command(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "command", value)
+
+    @property
+    @pulumi.getter(name="commandExpiryTime")
+    def command_expiry_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Optional. Expiration time for the peering command to be executed on user's ONTAP.
+        Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
+        """
+        return pulumi.get(self, "command_expiry_time")
+
+    @command_expiry_time.setter
+    def command_expiry_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "command_expiry_time", value)
+
+    @property
+    @pulumi.getter
+    def passphrase(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Optional. Temporary passphrase generated to accept cluster peering command.
+        """
+        return pulumi.get(self, "passphrase")
+
+    @passphrase.setter
+    def passphrase(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "passphrase", value)
+
+    @property
+    @pulumi.getter(name="peerClusterName")
+    def peer_cluster_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Optional. Name of the user's local source cluster to be peered with the destination cluster.
+        """
+        return pulumi.get(self, "peer_cluster_name")
+
+    @peer_cluster_name.setter
+    def peer_cluster_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "peer_cluster_name", value)
+
+    @property
+    @pulumi.getter(name="peerSvmName")
+    def peer_svm_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Optional. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+        """
+        return pulumi.get(self, "peer_svm_name")
+
+    @peer_svm_name.setter
+    def peer_svm_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "peer_svm_name", value)
+
+    @property
+    @pulumi.getter(name="peerVolumeName")
+    def peer_volume_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Optional. Name of the user's local source volume to be peered with the destination volume.
+        """
+        return pulumi.get(self, "peer_volume_name")
+
+    @peer_volume_name.setter
+    def peer_volume_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "peer_volume_name", value)
+
+    @property
+    @pulumi.getter(name="subnetIp")
+    def subnet_ip(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Optional. IP address of the subnet.
+        """
+        return pulumi.get(self, "subnet_ip")
+
+    @subnet_ip.setter
+    def subnet_ip(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subnet_ip", value)
 
 
 if not MYPY:

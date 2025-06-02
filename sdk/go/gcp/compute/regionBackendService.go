@@ -641,6 +641,39 @@ import (
 //	}
 //
 // ```
+// ### Region Backend Service Dynamic Forwarding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("region-service"),
+//				Region:              pulumi.String("us-central1"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				DynamicForwarding: &compute.RegionBackendServiceDynamicForwardingArgs{
+//					IpPortSelection: &compute.RegionBackendServiceDynamicForwardingIpPortSelectionArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RegionBackendService can be imported using any of these accepted formats:
@@ -713,6 +746,10 @@ type RegionBackendService struct {
 	CustomMetrics RegionBackendServiceCustomMetricArrayOutput `pulumi:"customMetrics"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+	// feature which together with Service Extension allows customized and complex routing logic.
+	// Structure is documented below.
+	DynamicForwarding RegionBackendServiceDynamicForwardingPtrOutput `pulumi:"dynamicForwarding"`
 	// If true, enable Cloud CDN for this RegionBackendService.
 	EnableCdn pulumi.BoolPtrOutput `pulumi:"enableCdn"`
 	// Policy for failovers.
@@ -929,6 +966,10 @@ type regionBackendServiceState struct {
 	CustomMetrics []RegionBackendServiceCustomMetric `pulumi:"customMetrics"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+	// feature which together with Service Extension allows customized and complex routing logic.
+	// Structure is documented below.
+	DynamicForwarding *RegionBackendServiceDynamicForwarding `pulumi:"dynamicForwarding"`
 	// If true, enable Cloud CDN for this RegionBackendService.
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// Policy for failovers.
@@ -1116,6 +1157,10 @@ type RegionBackendServiceState struct {
 	CustomMetrics RegionBackendServiceCustomMetricArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+	// feature which together with Service Extension allows customized and complex routing logic.
+	// Structure is documented below.
+	DynamicForwarding RegionBackendServiceDynamicForwardingPtrInput
 	// If true, enable Cloud CDN for this RegionBackendService.
 	EnableCdn pulumi.BoolPtrInput
 	// Policy for failovers.
@@ -1305,6 +1350,10 @@ type regionBackendServiceArgs struct {
 	CustomMetrics []RegionBackendServiceCustomMetric `pulumi:"customMetrics"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+	// feature which together with Service Extension allows customized and complex routing logic.
+	// Structure is documented below.
+	DynamicForwarding *RegionBackendServiceDynamicForwarding `pulumi:"dynamicForwarding"`
 	// If true, enable Cloud CDN for this RegionBackendService.
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// Policy for failovers.
@@ -1484,6 +1533,10 @@ type RegionBackendServiceArgs struct {
 	CustomMetrics RegionBackendServiceCustomMetricArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+	// feature which together with Service Extension allows customized and complex routing logic.
+	// Structure is documented below.
+	DynamicForwarding RegionBackendServiceDynamicForwardingPtrInput
 	// If true, enable Cloud CDN for this RegionBackendService.
 	EnableCdn pulumi.BoolPtrInput
 	// Policy for failovers.
@@ -1780,6 +1833,15 @@ func (o RegionBackendServiceOutput) CustomMetrics() RegionBackendServiceCustomMe
 // An optional description of this resource.
 func (o RegionBackendServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+// feature which together with Service Extension allows customized and complex routing logic.
+// Structure is documented below.
+func (o RegionBackendServiceOutput) DynamicForwarding() RegionBackendServiceDynamicForwardingPtrOutput {
+	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceDynamicForwardingPtrOutput {
+		return v.DynamicForwarding
+	}).(RegionBackendServiceDynamicForwardingPtrOutput)
 }
 
 // If true, enable Cloud CDN for this RegionBackendService.

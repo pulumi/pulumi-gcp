@@ -28,7 +28,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, external_managed_migration_state=None, external_managed_migration_testing_percentage=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, max_stream_durations=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None, tls_settings=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, dynamic_forwardings=None, edge_security_policy=None, enable_cdn=None, external_managed_migration_state=None, external_managed_migration_testing_percentage=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, max_stream_durations=None, name=None, network_pass_through_lb_traffic_policies=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None, tls_settings=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -65,6 +65,9 @@ class GetBackendServiceResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if dynamic_forwardings and not isinstance(dynamic_forwardings, list):
+            raise TypeError("Expected argument 'dynamic_forwardings' to be a list")
+        pulumi.set(__self__, "dynamic_forwardings", dynamic_forwardings)
         if edge_security_policy and not isinstance(edge_security_policy, str):
             raise TypeError("Expected argument 'edge_security_policy' to be a str")
         pulumi.set(__self__, "edge_security_policy", edge_security_policy)
@@ -113,6 +116,9 @@ class GetBackendServiceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network_pass_through_lb_traffic_policies and not isinstance(network_pass_through_lb_traffic_policies, list):
+            raise TypeError("Expected argument 'network_pass_through_lb_traffic_policies' to be a list")
+        pulumi.set(__self__, "network_pass_through_lb_traffic_policies", network_pass_through_lb_traffic_policies)
         if outlier_detections and not isinstance(outlier_detections, list):
             raise TypeError("Expected argument 'outlier_detections' to be a list")
         pulumi.set(__self__, "outlier_detections", outlier_detections)
@@ -220,6 +226,11 @@ class GetBackendServiceResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="dynamicForwardings")
+    def dynamic_forwardings(self) -> Sequence['outputs.GetBackendServiceDynamicForwardingResult']:
+        return pulumi.get(self, "dynamic_forwardings")
+
+    @property
     @pulumi.getter(name="edgeSecurityPolicy")
     def edge_security_policy(self) -> builtins.str:
         return pulumi.get(self, "edge_security_policy")
@@ -315,6 +326,11 @@ class GetBackendServiceResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkPassThroughLbTrafficPolicies")
+    def network_pass_through_lb_traffic_policies(self) -> Sequence['outputs.GetBackendServiceNetworkPassThroughLbTrafficPolicyResult']:
+        return pulumi.get(self, "network_pass_through_lb_traffic_policies")
+
+    @property
     @pulumi.getter(name="outlierDetections")
     def outlier_detections(self) -> Sequence['outputs.GetBackendServiceOutlierDetectionResult']:
         return pulumi.get(self, "outlier_detections")
@@ -408,6 +424,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             custom_request_headers=self.custom_request_headers,
             custom_response_headers=self.custom_response_headers,
             description=self.description,
+            dynamic_forwardings=self.dynamic_forwardings,
             edge_security_policy=self.edge_security_policy,
             enable_cdn=self.enable_cdn,
             external_managed_migration_state=self.external_managed_migration_state,
@@ -424,6 +441,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             log_configs=self.log_configs,
             max_stream_durations=self.max_stream_durations,
             name=self.name,
+            network_pass_through_lb_traffic_policies=self.network_pass_through_lb_traffic_policies,
             outlier_detections=self.outlier_detections,
             port_name=self.port_name,
             project=self.project,
@@ -483,6 +501,7 @@ def get_backend_service(name: Optional[builtins.str] = None,
         custom_request_headers=pulumi.get(__ret__, 'custom_request_headers'),
         custom_response_headers=pulumi.get(__ret__, 'custom_response_headers'),
         description=pulumi.get(__ret__, 'description'),
+        dynamic_forwardings=pulumi.get(__ret__, 'dynamic_forwardings'),
         edge_security_policy=pulumi.get(__ret__, 'edge_security_policy'),
         enable_cdn=pulumi.get(__ret__, 'enable_cdn'),
         external_managed_migration_state=pulumi.get(__ret__, 'external_managed_migration_state'),
@@ -499,6 +518,7 @@ def get_backend_service(name: Optional[builtins.str] = None,
         log_configs=pulumi.get(__ret__, 'log_configs'),
         max_stream_durations=pulumi.get(__ret__, 'max_stream_durations'),
         name=pulumi.get(__ret__, 'name'),
+        network_pass_through_lb_traffic_policies=pulumi.get(__ret__, 'network_pass_through_lb_traffic_policies'),
         outlier_detections=pulumi.get(__ret__, 'outlier_detections'),
         port_name=pulumi.get(__ret__, 'port_name'),
         project=pulumi.get(__ret__, 'project'),
@@ -555,6 +575,7 @@ def get_backend_service_output(name: Optional[pulumi.Input[builtins.str]] = None
         custom_request_headers=pulumi.get(__response__, 'custom_request_headers'),
         custom_response_headers=pulumi.get(__response__, 'custom_response_headers'),
         description=pulumi.get(__response__, 'description'),
+        dynamic_forwardings=pulumi.get(__response__, 'dynamic_forwardings'),
         edge_security_policy=pulumi.get(__response__, 'edge_security_policy'),
         enable_cdn=pulumi.get(__response__, 'enable_cdn'),
         external_managed_migration_state=pulumi.get(__response__, 'external_managed_migration_state'),
@@ -571,6 +592,7 @@ def get_backend_service_output(name: Optional[pulumi.Input[builtins.str]] = None
         log_configs=pulumi.get(__response__, 'log_configs'),
         max_stream_durations=pulumi.get(__response__, 'max_stream_durations'),
         name=pulumi.get(__response__, 'name'),
+        network_pass_through_lb_traffic_policies=pulumi.get(__response__, 'network_pass_through_lb_traffic_policies'),
         outlier_detections=pulumi.get(__response__, 'outlier_detections'),
         port_name=pulumi.get(__response__, 'port_name'),
         project=pulumi.get(__response__, 'project'),

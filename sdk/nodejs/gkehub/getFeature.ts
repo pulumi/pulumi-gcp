@@ -6,6 +6,21 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves the details of a specific GKE Hub Feature. Use this data source to retrieve the feature's configuration and state.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = gcp.gkehub.getFeature({
+ *     location: "global",
+ *     name: "servicemesh",
+ * });
+ * ```
+ */
 export function getFeature(args: GetFeatureArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:gkehub/getFeature:getFeature", {
@@ -19,8 +34,18 @@ export function getFeature(args: GetFeatureArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getFeature.
  */
 export interface GetFeatureArgs {
+    /**
+     * The location for the GKE Hub Feature.
+     */
     location: string;
+    /**
+     * The name of the feature you want to know the status of.
+     */
     name: string;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: string;
 }
 
@@ -46,6 +71,21 @@ export interface GetFeatureResult {
     readonly states: outputs.gkehub.GetFeatureState[];
     readonly updateTime: string;
 }
+/**
+ * Retrieves the details of a specific GKE Hub Feature. Use this data source to retrieve the feature's configuration and state.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = gcp.gkehub.getFeature({
+ *     location: "global",
+ *     name: "servicemesh",
+ * });
+ * ```
+ */
 export function getFeatureOutput(args: GetFeatureOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFeatureResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:gkehub/getFeature:getFeature", {
@@ -59,7 +99,17 @@ export function getFeatureOutput(args: GetFeatureOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getFeature.
  */
 export interface GetFeatureOutputArgs {
+    /**
+     * The location for the GKE Hub Feature.
+     */
     location: pulumi.Input<string>;
+    /**
+     * The name of the feature you want to know the status of.
+     */
     name: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

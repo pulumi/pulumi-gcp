@@ -1130,6 +1130,186 @@ class URLMap(pulumi.CustomResource):
                 ],
             }])
         ```
+        ### Url Map Default Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.BackendService("home",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.BackendService("mirror",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for default route action mirror percent",
+            default_service=home.id,
+            default_route_action={
+                "request_mirror_policy": {
+                    "backend_service": mirror.id,
+                    "mirror_percent": 50,
+                },
+            },
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+            }])
+        ```
+        ### Url Map Path Matcher Default Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.BackendService("home",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.BackendService("mirror",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for default route action mirror percent",
+            default_service=home.id,
+            default_route_action={
+                "request_mirror_policy": {
+                    "backend_service": mirror.id,
+                    "mirror_percent": 50,
+                },
+            },
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+            }])
+        ```
+        ### Url Map Path Rule Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.BackendService("home",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.BackendService("mirror",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for path matcher default route action mirror percent",
+            default_service=home.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+                "default_route_action": {
+                    "request_mirror_policy": {
+                        "backend_service": mirror.id,
+                        "mirror_percent": 75,
+                    },
+                },
+            }])
+        ```
+        ### Url Map Route Rule Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.BackendService("home",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.BackendService("mirror",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for path rule route action mirror percent",
+            default_service=home.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+                "path_rules": [{
+                    "paths": ["/home"],
+                    "service": home.id,
+                    "route_action": {
+                        "request_mirror_policy": {
+                            "backend_service": mirror.id,
+                            "mirror_percent": 25,
+                        },
+                    },
+                }],
+            }])
+        ```
         ### Url Map Path Template Match
 
         ```python
@@ -1872,6 +2052,186 @@ class URLMap(pulumi.CustomResource):
                         }],
                     },
                 ],
+            }])
+        ```
+        ### Url Map Default Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.BackendService("home",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.BackendService("mirror",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for default route action mirror percent",
+            default_service=home.id,
+            default_route_action={
+                "request_mirror_policy": {
+                    "backend_service": mirror.id,
+                    "mirror_percent": 50,
+                },
+            },
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+            }])
+        ```
+        ### Url Map Path Matcher Default Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.BackendService("home",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.BackendService("mirror",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for default route action mirror percent",
+            default_service=home.id,
+            default_route_action={
+                "request_mirror_policy": {
+                    "backend_service": mirror.id,
+                    "mirror_percent": 50,
+                },
+            },
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+            }])
+        ```
+        ### Url Map Path Rule Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.BackendService("home",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.BackendService("mirror",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for path matcher default route action mirror percent",
+            default_service=home.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+                "default_route_action": {
+                    "request_mirror_policy": {
+                        "backend_service": mirror.id,
+                        "mirror_percent": 75,
+                    },
+                },
+            }])
+        ```
+        ### Url Map Route Rule Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.BackendService("home",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.BackendService("mirror",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for path rule route action mirror percent",
+            default_service=home.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+                "path_rules": [{
+                    "paths": ["/home"],
+                    "service": home.id,
+                    "route_action": {
+                        "request_mirror_policy": {
+                            "backend_service": mirror.id,
+                            "mirror_percent": 25,
+                        },
+                    },
+                }],
             }])
         ```
         ### Url Map Path Template Match

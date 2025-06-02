@@ -131,6 +131,9 @@ type Volume struct {
 	ExportPolicy VolumeExportPolicyPtrOutput `pulumi:"exportPolicy"`
 	// Indicates whether the volume is part of a volume replication relationship.
 	HasReplication pulumi.BoolOutput `pulumi:"hasReplication"`
+	// The Hybrid Replication parameters for the volume.
+	// Structure is documented below.
+	HybridReplicationParameters VolumeHybridReplicationParametersPtrOutput `pulumi:"hybridReplicationParameters"`
 	// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
 	KerberosEnabled pulumi.BoolPtrOutput `pulumi:"kerberosEnabled"`
 	// Reports the CMEK policy resurce name being used for volume encryption. Inherited from storage pool.
@@ -288,6 +291,9 @@ type volumeState struct {
 	ExportPolicy *VolumeExportPolicy `pulumi:"exportPolicy"`
 	// Indicates whether the volume is part of a volume replication relationship.
 	HasReplication *bool `pulumi:"hasReplication"`
+	// The Hybrid Replication parameters for the volume.
+	// Structure is documented below.
+	HybridReplicationParameters *VolumeHybridReplicationParameters `pulumi:"hybridReplicationParameters"`
 	// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
 	KerberosEnabled *bool `pulumi:"kerberosEnabled"`
 	// Reports the CMEK policy resurce name being used for volume encryption. Inherited from storage pool.
@@ -396,6 +402,9 @@ type VolumeState struct {
 	ExportPolicy VolumeExportPolicyPtrInput
 	// Indicates whether the volume is part of a volume replication relationship.
 	HasReplication pulumi.BoolPtrInput
+	// The Hybrid Replication parameters for the volume.
+	// Structure is documented below.
+	HybridReplicationParameters VolumeHybridReplicationParametersPtrInput
 	// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
 	KerberosEnabled pulumi.BoolPtrInput
 	// Reports the CMEK policy resurce name being used for volume encryption. Inherited from storage pool.
@@ -496,6 +505,9 @@ type volumeArgs struct {
 	// Export policy of the volume for NFSV3 and/or NFSV4.1 access.
 	// Structure is documented below.
 	ExportPolicy *VolumeExportPolicy `pulumi:"exportPolicy"`
+	// The Hybrid Replication parameters for the volume.
+	// Structure is documented below.
+	HybridReplicationParameters *VolumeHybridReplicationParameters `pulumi:"hybridReplicationParameters"`
 	// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
 	KerberosEnabled *bool `pulumi:"kerberosEnabled"`
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -567,6 +579,9 @@ type VolumeArgs struct {
 	// Export policy of the volume for NFSV3 and/or NFSV4.1 access.
 	// Structure is documented below.
 	ExportPolicy VolumeExportPolicyPtrInput
+	// The Hybrid Replication parameters for the volume.
+	// Structure is documented below.
+	HybridReplicationParameters VolumeHybridReplicationParametersPtrInput
 	// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
 	KerberosEnabled pulumi.BoolPtrInput
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -766,6 +781,12 @@ func (o VolumeOutput) ExportPolicy() VolumeExportPolicyPtrOutput {
 // Indicates whether the volume is part of a volume replication relationship.
 func (o VolumeOutput) HasReplication() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Volume) pulumi.BoolOutput { return v.HasReplication }).(pulumi.BoolOutput)
+}
+
+// The Hybrid Replication parameters for the volume.
+// Structure is documented below.
+func (o VolumeOutput) HybridReplicationParameters() VolumeHybridReplicationParametersPtrOutput {
+	return o.ApplyT(func(v *Volume) VolumeHybridReplicationParametersPtrOutput { return v.HybridReplicationParameters }).(VolumeHybridReplicationParametersPtrOutput)
 }
 
 // Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).

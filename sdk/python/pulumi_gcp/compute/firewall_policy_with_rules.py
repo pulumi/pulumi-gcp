@@ -298,6 +298,9 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                  short_name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
+        The Compute FirewallPolicy with rules resource. It declaratively manges all
+        rules in the firewall policy.
+
         ## Example Usage
 
         ### Compute Firewall Policy With Rules Full
@@ -339,7 +342,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": True,
                     "action": "allow",
                     "direction": "EGRESS",
-                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.project_id}/global/networks/default"],
+                    "target_resources": [network.self_link],
                     "match": {
                         "dest_ip_ranges": ["11.100.0.1/32"],
                         "dest_fqdns": [
@@ -405,39 +408,6 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                         "src_ip_ranges": ["0.0.0.0/0"],
                         "layer4_configs": [{
                             "ip_protocol": "tcp",
-                        }],
-                    },
-                },
-                {
-                    "description": "network scope rule 1",
-                    "rule_name": "network scope 1",
-                    "priority": 4000,
-                    "enable_logging": False,
-                    "action": "allow",
-                    "direction": "INGRESS",
-                    "match": {
-                        "src_ip_ranges": ["11.100.0.1/32"],
-                        "src_network_scope": "VPC_NETWORKS",
-                        "src_networks": [network.id],
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": ["8080"],
-                        }],
-                    },
-                },
-                {
-                    "description": "network scope rule 2",
-                    "rule_name": "network scope 2",
-                    "priority": 5000,
-                    "enable_logging": False,
-                    "action": "allow",
-                    "direction": "EGRESS",
-                    "match": {
-                        "dest_ip_ranges": ["0.0.0.0/0"],
-                        "dest_network_scope": "INTERNET",
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": ["8080"],
                         }],
                     },
                 },
@@ -479,6 +449,9 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                  args: FirewallPolicyWithRulesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The Compute FirewallPolicy with rules resource. It declaratively manges all
+        rules in the firewall policy.
+
         ## Example Usage
 
         ### Compute Firewall Policy With Rules Full
@@ -520,7 +493,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": True,
                     "action": "allow",
                     "direction": "EGRESS",
-                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.project_id}/global/networks/default"],
+                    "target_resources": [network.self_link],
                     "match": {
                         "dest_ip_ranges": ["11.100.0.1/32"],
                         "dest_fqdns": [
@@ -586,39 +559,6 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                         "src_ip_ranges": ["0.0.0.0/0"],
                         "layer4_configs": [{
                             "ip_protocol": "tcp",
-                        }],
-                    },
-                },
-                {
-                    "description": "network scope rule 1",
-                    "rule_name": "network scope 1",
-                    "priority": 4000,
-                    "enable_logging": False,
-                    "action": "allow",
-                    "direction": "INGRESS",
-                    "match": {
-                        "src_ip_ranges": ["11.100.0.1/32"],
-                        "src_network_scope": "VPC_NETWORKS",
-                        "src_networks": [network.id],
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": ["8080"],
-                        }],
-                    },
-                },
-                {
-                    "description": "network scope rule 2",
-                    "rule_name": "network scope 2",
-                    "priority": 5000,
-                    "enable_logging": False,
-                    "action": "allow",
-                    "direction": "EGRESS",
-                    "match": {
-                        "dest_ip_ranges": ["0.0.0.0/0"],
-                        "dest_network_scope": "INTERNET",
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": ["8080"],
                         }],
                     },
                 },

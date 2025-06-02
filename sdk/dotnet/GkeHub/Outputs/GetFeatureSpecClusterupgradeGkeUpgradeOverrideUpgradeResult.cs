@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeResult
     {
         /// <summary>
-        /// Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        /// The name of the feature you want to know the status of.
         /// </summary>
         public readonly string Name;
         /// <summary>

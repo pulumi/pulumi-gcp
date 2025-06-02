@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string CreationTimestamp;
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceCustomMetricResult> CustomMetrics;
         public readonly string Description;
+        public readonly ImmutableArray<Outputs.GetRegionBackendServiceDynamicForwardingResult> DynamicForwardings;
         public readonly bool EnableCdn;
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceFailoverPolicyResult> FailoverPolicies;
         public readonly string Fingerprint;
@@ -211,6 +212,8 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetRegionBackendServiceCustomMetricResult> customMetrics,
 
             string description,
+
+            ImmutableArray<Outputs.GetRegionBackendServiceDynamicForwardingResult> dynamicForwardings,
 
             bool enableCdn,
 
@@ -270,6 +273,7 @@ namespace Pulumi.Gcp.Compute
             CreationTimestamp = creationTimestamp;
             CustomMetrics = customMetrics;
             Description = description;
+            DynamicForwardings = dynamicForwardings;
             EnableCdn = enableCdn;
             FailoverPolicies = failoverPolicies;
             Fingerprint = fingerprint;

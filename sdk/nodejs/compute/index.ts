@@ -145,6 +145,11 @@ export type ForwardingRule = import("./forwardingRule").ForwardingRule;
 export const ForwardingRule: typeof import("./forwardingRule").ForwardingRule = null as any;
 utilities.lazyLoad(exports, ["ForwardingRule"], () => require("./forwardingRule"));
 
+export { FutureReservationArgs, FutureReservationState } from "./futureReservation";
+export type FutureReservation = import("./futureReservation").FutureReservation;
+export const FutureReservation: typeof import("./futureReservation").FutureReservation = null as any;
+utilities.lazyLoad(exports, ["FutureReservation"], () => require("./futureReservation"));
+
 export { GetAddressArgs, GetAddressResult, GetAddressOutputArgs } from "./getAddress";
 export const getAddress: typeof import("./getAddress").getAddress = null as any;
 export const getAddressOutput: typeof import("./getAddress").getAddressOutput = null as any;
@@ -1211,6 +1216,8 @@ const _module = {
                 return new FirewallPolicyWithRules(name, <any>undefined, { urn })
             case "gcp:compute/forwardingRule:ForwardingRule":
                 return new ForwardingRule(name, <any>undefined, { urn })
+            case "gcp:compute/futureReservation:FutureReservation":
+                return new FutureReservation(name, <any>undefined, { urn })
             case "gcp:compute/globalAddress:GlobalAddress":
                 return new GlobalAddress(name, <any>undefined, { urn })
             case "gcp:compute/globalForwardingRule:GlobalForwardingRule":
@@ -1516,6 +1523,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicyAssociation"
 pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicyWithRules", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/forwardingRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/futureReservation", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/globalAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/globalForwardingRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/globalNetworkEndpoint", _module)

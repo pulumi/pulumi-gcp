@@ -46,8 +46,8 @@ import * as utilities from "../utilities";
  * const project = gcp.organizations.getProject({});
  * const instance_basic = new gcp.memorystore.Instance("instance-basic", {
  *     instanceId: "basic-instance",
- *     shardCount: 3,
- *     desiredPscAutoConnections: [{
+ *     shardCount: 1,
+ *     desiredAutoCreatedEndpoints: [{
  *         network: producerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
@@ -97,13 +97,13 @@ import * as utilities from "../utilities";
  * const project = gcp.organizations.getProject({});
  * const instance_full = new gcp.memorystore.Instance("instance-full", {
  *     instanceId: "full-instance",
- *     shardCount: 3,
- *     desiredPscAutoConnections: [{
+ *     shardCount: 1,
+ *     desiredAutoCreatedEndpoints: [{
  *         network: producerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
  *     location: "us-central1",
- *     replicaCount: 2,
+ *     replicaCount: 1,
  *     nodeType: "SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_DISABLED",
  *     authorizationMode: "AUTH_DISABLED",
@@ -171,8 +171,8 @@ import * as utilities from "../utilities";
  * const project = gcp.organizations.getProject({});
  * const instance_persistence_aof = new gcp.memorystore.Instance("instance-persistence-aof", {
  *     instanceId: "aof-instance",
- *     shardCount: 3,
- *     desiredPscAutoConnections: [{
+ *     shardCount: 1,
+ *     desiredAutoCreatedEndpoints: [{
  *         network: producerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
@@ -219,7 +219,7 @@ import * as utilities from "../utilities";
  * const primaryInstance = new gcp.memorystore.Instance("primary_instance", {
  *     instanceId: "primary-instance",
  *     shardCount: 1,
- *     desiredPscAutoConnections: [{
+ *     desiredAutoCreatedEndpoints: [{
  *         network: primaryProducerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
@@ -273,7 +273,7 @@ import * as utilities from "../utilities";
  * const secondaryInstance = new gcp.memorystore.Instance("secondary_instance", {
  *     instanceId: "secondary-instance",
  *     shardCount: 1,
- *     desiredPscAutoConnections: [{
+ *     desiredAutoCreatedEndpoints: [{
  *         network: secondaryProducerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
@@ -393,13 +393,22 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly deletionProtectionEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Immutable. User inputs for the auto-created PSC connections.
+     * Immutable. User inputs for the auto-created endpoints connections.
+     */
+    public readonly desiredAutoCreatedEndpoints!: pulumi.Output<outputs.memorystore.InstanceDesiredAutoCreatedEndpoint[] | undefined>;
+    /**
+     * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+     *
+     * @deprecated `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
      */
     public readonly desiredPscAutoConnections!: pulumi.Output<outputs.memorystore.InstanceDesiredPscAutoConnection[] | undefined>;
     /**
+     * (Deprecated)
      * Output only. Endpoints clients can connect to the instance through. Currently only one
      * discovery endpoint is supported.
      * Structure is documented below.
+     *
+     * @deprecated `discoveryEndpoints` is deprecated  Use `endpoints` instead.
      */
     public /*out*/ readonly discoveryEndpoints!: pulumi.Output<outputs.memorystore.InstanceDiscoveryEndpoint[]>;
     /**
@@ -506,8 +515,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly pscAttachmentDetails!: pulumi.Output<outputs.memorystore.InstancePscAttachmentDetail[]>;
     /**
+     * (Deprecated)
      * Output only. User inputs and resource details of the auto-created PSC connections.
      * Structure is documented below.
+     *
+     * @deprecated `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
      */
     public /*out*/ readonly pscAutoConnections!: pulumi.Output<outputs.memorystore.InstancePscAutoConnection[]>;
     /**
@@ -577,6 +589,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["crossInstanceReplicationConfig"] = state ? state.crossInstanceReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
+            resourceInputs["desiredAutoCreatedEndpoints"] = state ? state.desiredAutoCreatedEndpoints : undefined;
             resourceInputs["desiredPscAutoConnections"] = state ? state.desiredPscAutoConnections : undefined;
             resourceInputs["discoveryEndpoints"] = state ? state.discoveryEndpoints : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -622,6 +635,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["automatedBackupConfig"] = args ? args.automatedBackupConfig : undefined;
             resourceInputs["crossInstanceReplicationConfig"] = args ? args.crossInstanceReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
+            resourceInputs["desiredAutoCreatedEndpoints"] = args ? args.desiredAutoCreatedEndpoints : undefined;
             resourceInputs["desiredPscAutoConnections"] = args ? args.desiredPscAutoConnections : undefined;
             resourceInputs["engineConfigs"] = args ? args.engineConfigs : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
@@ -696,13 +710,22 @@ export interface InstanceState {
      */
     deletionProtectionEnabled?: pulumi.Input<boolean>;
     /**
-     * Immutable. User inputs for the auto-created PSC connections.
+     * Immutable. User inputs for the auto-created endpoints connections.
+     */
+    desiredAutoCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredAutoCreatedEndpoint>[]>;
+    /**
+     * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+     *
+     * @deprecated `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
      */
     desiredPscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredPscAutoConnection>[]>;
     /**
+     * (Deprecated)
      * Output only. Endpoints clients can connect to the instance through. Currently only one
      * discovery endpoint is supported.
      * Structure is documented below.
+     *
+     * @deprecated `discoveryEndpoints` is deprecated  Use `endpoints` instead.
      */
     discoveryEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDiscoveryEndpoint>[]>;
     /**
@@ -809,8 +832,11 @@ export interface InstanceState {
      */
     pscAttachmentDetails?: pulumi.Input<pulumi.Input<inputs.memorystore.InstancePscAttachmentDetail>[]>;
     /**
+     * (Deprecated)
      * Output only. User inputs and resource details of the auto-created PSC connections.
      * Structure is documented below.
+     *
+     * @deprecated `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
      */
     pscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstancePscAutoConnection>[]>;
     /**
@@ -887,7 +913,13 @@ export interface InstanceArgs {
      */
     deletionProtectionEnabled?: pulumi.Input<boolean>;
     /**
-     * Immutable. User inputs for the auto-created PSC connections.
+     * Immutable. User inputs for the auto-created endpoints connections.
+     */
+    desiredAutoCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredAutoCreatedEndpoint>[]>;
+    /**
+     * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+     *
+     * @deprecated `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
      */
     desiredPscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredPscAutoConnection>[]>;
     /**

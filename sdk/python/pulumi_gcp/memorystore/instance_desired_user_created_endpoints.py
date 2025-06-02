@@ -369,7 +369,7 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         instance_user_auto_conn_instance = gcp.memorystore.Instance("instance-user-auto-conn",
             instance_id="instance-user-auto-conn",
             shard_count=1,
-            desired_psc_auto_connections=[{
+            desired_auto_created_endpoints=[{
                 "network": network1.id,
                 "project_id": project.project_id,
             }],
@@ -647,7 +647,7 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         instance_user_auto_conn_instance = gcp.memorystore.Instance("instance-user-auto-conn",
             instance_id="instance-user-auto-conn",
             shard_count=1,
-            desired_psc_auto_connections=[{
+            desired_auto_created_endpoints=[{
                 "network": network1.id,
                 "project_id": project.project_id,
             }],

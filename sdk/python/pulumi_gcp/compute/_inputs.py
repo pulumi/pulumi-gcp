@@ -70,6 +70,10 @@ __all__ = [
     'BackendServiceConsistentHashHttpCookieTtlArgsDict',
     'BackendServiceCustomMetricArgs',
     'BackendServiceCustomMetricArgsDict',
+    'BackendServiceDynamicForwardingArgs',
+    'BackendServiceDynamicForwardingArgsDict',
+    'BackendServiceDynamicForwardingIpPortSelectionArgs',
+    'BackendServiceDynamicForwardingIpPortSelectionArgsDict',
     'BackendServiceIamBindingConditionArgs',
     'BackendServiceIamBindingConditionArgsDict',
     'BackendServiceIamMemberConditionArgs',
@@ -86,6 +90,10 @@ __all__ = [
     'BackendServiceLogConfigArgsDict',
     'BackendServiceMaxStreamDurationArgs',
     'BackendServiceMaxStreamDurationArgsDict',
+    'BackendServiceNetworkPassThroughLbTrafficPolicyArgs',
+    'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict',
+    'BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs',
+    'BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgsDict',
     'BackendServiceOutlierDetectionArgs',
     'BackendServiceOutlierDetectionArgsDict',
     'BackendServiceOutlierDetectionBaseEjectionTimeArgs',
@@ -148,6 +156,52 @@ __all__ = [
     'FirewallPolicyWithRulesRuleMatchLayer4ConfigArgsDict',
     'ForwardingRuleServiceDirectoryRegistrationsArgs',
     'ForwardingRuleServiceDirectoryRegistrationsArgsDict',
+    'FutureReservationAutoCreatedReservationsDurationArgs',
+    'FutureReservationAutoCreatedReservationsDurationArgsDict',
+    'FutureReservationCommitmentInfoArgs',
+    'FutureReservationCommitmentInfoArgsDict',
+    'FutureReservationShareSettingsArgs',
+    'FutureReservationShareSettingsArgsDict',
+    'FutureReservationShareSettingsProjectMapArgs',
+    'FutureReservationShareSettingsProjectMapArgsDict',
+    'FutureReservationSpecificSkuPropertiesArgs',
+    'FutureReservationSpecificSkuPropertiesArgsDict',
+    'FutureReservationSpecificSkuPropertiesInstancePropertiesArgs',
+    'FutureReservationSpecificSkuPropertiesInstancePropertiesArgsDict',
+    'FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs',
+    'FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgsDict',
+    'FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsdArgs',
+    'FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsdArgsDict',
+    'FutureReservationStatusArgs',
+    'FutureReservationStatusArgsDict',
+    'FutureReservationStatusLastKnownGoodStateArgs',
+    'FutureReservationStatusLastKnownGoodStateArgsDict',
+    'FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgs',
+    'FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgsDict',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgsDict',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgsDict',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgs',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgsDict',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgsDict',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesArgs',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesArgsDict',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgsDict',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsdArgs',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsdArgsDict',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgs',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgsDict',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDurationArgs',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDurationArgsDict',
+    'FutureReservationStatusSpecificSkuPropertiesArgs',
+    'FutureReservationStatusSpecificSkuPropertiesArgsDict',
+    'FutureReservationTimeWindowArgs',
+    'FutureReservationTimeWindowArgsDict',
+    'FutureReservationTimeWindowDurationArgs',
+    'FutureReservationTimeWindowDurationArgsDict',
     'GlobalForwardingRuleMetadataFilterArgs',
     'GlobalForwardingRuleMetadataFilterArgsDict',
     'GlobalForwardingRuleMetadataFilterFilterLabelArgs',
@@ -604,6 +658,10 @@ __all__ = [
     'RegionBackendServiceConsistentHashHttpCookieTtlArgsDict',
     'RegionBackendServiceCustomMetricArgs',
     'RegionBackendServiceCustomMetricArgsDict',
+    'RegionBackendServiceDynamicForwardingArgs',
+    'RegionBackendServiceDynamicForwardingArgsDict',
+    'RegionBackendServiceDynamicForwardingIpPortSelectionArgs',
+    'RegionBackendServiceDynamicForwardingIpPortSelectionArgsDict',
     'RegionBackendServiceFailoverPolicyArgs',
     'RegionBackendServiceFailoverPolicyArgsDict',
     'RegionBackendServiceIamBindingConditionArgs',
@@ -4609,6 +4667,73 @@ class BackendServiceCustomMetricArgs:
 
 
 if not MYPY:
+    class BackendServiceDynamicForwardingArgsDict(TypedDict):
+        ip_port_selection: NotRequired[pulumi.Input['BackendServiceDynamicForwardingIpPortSelectionArgsDict']]
+        """
+        IP:PORT based dynamic forwarding configuration.
+        Structure is documented below.
+        """
+elif False:
+    BackendServiceDynamicForwardingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendServiceDynamicForwardingArgs:
+    def __init__(__self__, *,
+                 ip_port_selection: Optional[pulumi.Input['BackendServiceDynamicForwardingIpPortSelectionArgs']] = None):
+        """
+        :param pulumi.Input['BackendServiceDynamicForwardingIpPortSelectionArgs'] ip_port_selection: IP:PORT based dynamic forwarding configuration.
+               Structure is documented below.
+        """
+        if ip_port_selection is not None:
+            pulumi.set(__self__, "ip_port_selection", ip_port_selection)
+
+    @property
+    @pulumi.getter(name="ipPortSelection")
+    def ip_port_selection(self) -> Optional[pulumi.Input['BackendServiceDynamicForwardingIpPortSelectionArgs']]:
+        """
+        IP:PORT based dynamic forwarding configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ip_port_selection")
+
+    @ip_port_selection.setter
+    def ip_port_selection(self, value: Optional[pulumi.Input['BackendServiceDynamicForwardingIpPortSelectionArgs']]):
+        pulumi.set(self, "ip_port_selection", value)
+
+
+if not MYPY:
+    class BackendServiceDynamicForwardingIpPortSelectionArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        A boolean flag enabling IP:PORT based dynamic forwarding.
+        """
+elif False:
+    BackendServiceDynamicForwardingIpPortSelectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendServiceDynamicForwardingIpPortSelectionArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enabled: A boolean flag enabling IP:PORT based dynamic forwarding.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        A boolean flag enabling IP:PORT based dynamic forwarding.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
     class BackendServiceIamBindingConditionArgsDict(TypedDict):
         expression: pulumi.Input[builtins.str]
         """
@@ -5244,6 +5369,111 @@ class BackendServiceMaxStreamDurationArgs:
     @nanos.setter
     def nanos(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "nanos", value)
+
+
+if not MYPY:
+    class BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict(TypedDict):
+        zonal_affinity: NotRequired[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgsDict']]
+        """
+        When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+        Structure is documented below.
+        """
+elif False:
+    BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendServiceNetworkPassThroughLbTrafficPolicyArgs:
+    def __init__(__self__, *,
+                 zonal_affinity: Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs']] = None):
+        """
+        :param pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs'] zonal_affinity: When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+               Structure is documented below.
+        """
+        if zonal_affinity is not None:
+            pulumi.set(__self__, "zonal_affinity", zonal_affinity)
+
+    @property
+    @pulumi.getter(name="zonalAffinity")
+    def zonal_affinity(self) -> Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs']]:
+        """
+        When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "zonal_affinity")
+
+    @zonal_affinity.setter
+    def zonal_affinity(self, value: Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs']]):
+        pulumi.set(self, "zonal_affinity", value)
+
+
+if not MYPY:
+    class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgsDict(TypedDict):
+        spillover: NotRequired[pulumi.Input[builtins.str]]
+        """
+        This field indicates whether zonal affinity is enabled or not.
+        Default value is `ZONAL_AFFINITY_DISABLED`.
+        Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
+        """
+        spillover_ratio: NotRequired[pulumi.Input[builtins.float]]
+        """
+        The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+        to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+        distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+        of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+        threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+        """
+elif False:
+    BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs:
+    def __init__(__self__, *,
+                 spillover: Optional[pulumi.Input[builtins.str]] = None,
+                 spillover_ratio: Optional[pulumi.Input[builtins.float]] = None):
+        """
+        :param pulumi.Input[builtins.str] spillover: This field indicates whether zonal affinity is enabled or not.
+               Default value is `ZONAL_AFFINITY_DISABLED`.
+               Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
+        :param pulumi.Input[builtins.float] spillover_ratio: The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+               to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+               distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+               of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+               threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+        """
+        if spillover is not None:
+            pulumi.set(__self__, "spillover", spillover)
+        if spillover_ratio is not None:
+            pulumi.set(__self__, "spillover_ratio", spillover_ratio)
+
+    @property
+    @pulumi.getter
+    def spillover(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This field indicates whether zonal affinity is enabled or not.
+        Default value is `ZONAL_AFFINITY_DISABLED`.
+        Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
+        """
+        return pulumi.get(self, "spillover")
+
+    @spillover.setter
+    def spillover(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "spillover", value)
+
+    @property
+    @pulumi.getter(name="spilloverRatio")
+    def spillover_ratio(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+        to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+        distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+        of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+        threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+        """
+        return pulumi.get(self, "spillover_ratio")
+
+    @spillover_ratio.setter
+    def spillover_ratio(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "spillover_ratio", value)
 
 
 if not MYPY:
@@ -8964,6 +9194,1815 @@ class ForwardingRuleServiceDirectoryRegistrationsArgs:
     @service.setter
     def service(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class FutureReservationAutoCreatedReservationsDurationArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        """
+elif False:
+    FutureReservationAutoCreatedReservationsDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationAutoCreatedReservationsDurationArgs:
+    def __init__(__self__, *,
+                 nanos: Optional[pulumi.Input[builtins.int]] = None,
+                 seconds: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        :param pulumi.Input[builtins.str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        """
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "seconds", value)
+
+
+if not MYPY:
+    class FutureReservationCommitmentInfoArgsDict(TypedDict):
+        commitment_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        name of the commitment where capacity is being delivered to.
+        """
+        commitment_plan: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Indicates if a Commitment needs to be created as part of FR delivery. If this field is not present, then no commitment needs to be created.
+        Possible values are: `INVALID`, `THIRTY_SIX_MONTH`, `TWELVE_MONTH`.
+        """
+        previous_commitment_terms: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Only applicable if FR is delivering to the same reservation. If set, all parent commitments will be extended to match the end date of the plan for this commitment.
+        Possible values are: `EXTEND`.
+        """
+elif False:
+    FutureReservationCommitmentInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationCommitmentInfoArgs:
+    def __init__(__self__, *,
+                 commitment_name: Optional[pulumi.Input[builtins.str]] = None,
+                 commitment_plan: Optional[pulumi.Input[builtins.str]] = None,
+                 previous_commitment_terms: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] commitment_name: name of the commitment where capacity is being delivered to.
+        :param pulumi.Input[builtins.str] commitment_plan: Indicates if a Commitment needs to be created as part of FR delivery. If this field is not present, then no commitment needs to be created.
+               Possible values are: `INVALID`, `THIRTY_SIX_MONTH`, `TWELVE_MONTH`.
+        :param pulumi.Input[builtins.str] previous_commitment_terms: Only applicable if FR is delivering to the same reservation. If set, all parent commitments will be extended to match the end date of the plan for this commitment.
+               Possible values are: `EXTEND`.
+        """
+        if commitment_name is not None:
+            pulumi.set(__self__, "commitment_name", commitment_name)
+        if commitment_plan is not None:
+            pulumi.set(__self__, "commitment_plan", commitment_plan)
+        if previous_commitment_terms is not None:
+            pulumi.set(__self__, "previous_commitment_terms", previous_commitment_terms)
+
+    @property
+    @pulumi.getter(name="commitmentName")
+    def commitment_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        name of the commitment where capacity is being delivered to.
+        """
+        return pulumi.get(self, "commitment_name")
+
+    @commitment_name.setter
+    def commitment_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "commitment_name", value)
+
+    @property
+    @pulumi.getter(name="commitmentPlan")
+    def commitment_plan(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Indicates if a Commitment needs to be created as part of FR delivery. If this field is not present, then no commitment needs to be created.
+        Possible values are: `INVALID`, `THIRTY_SIX_MONTH`, `TWELVE_MONTH`.
+        """
+        return pulumi.get(self, "commitment_plan")
+
+    @commitment_plan.setter
+    def commitment_plan(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "commitment_plan", value)
+
+    @property
+    @pulumi.getter(name="previousCommitmentTerms")
+    def previous_commitment_terms(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Only applicable if FR is delivering to the same reservation. If set, all parent commitments will be extended to match the end date of the plan for this commitment.
+        Possible values are: `EXTEND`.
+        """
+        return pulumi.get(self, "previous_commitment_terms")
+
+    @previous_commitment_terms.setter
+    def previous_commitment_terms(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "previous_commitment_terms", value)
+
+
+if not MYPY:
+    class FutureReservationShareSettingsArgsDict(TypedDict):
+        project_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['FutureReservationShareSettingsProjectMapArgsDict']]]]
+        """
+        A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        Structure is documented below.
+        """
+        projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        """
+        share_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Type of sharing for this future reservation.
+        Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
+        """
+elif False:
+    FutureReservationShareSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationShareSettingsArgs:
+    def __init__(__self__, *,
+                 project_maps: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationShareSettingsProjectMapArgs']]]] = None,
+                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 share_type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FutureReservationShareSettingsProjectMapArgs']]] project_maps: A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] projects: list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        :param pulumi.Input[builtins.str] share_type: Type of sharing for this future reservation.
+               Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
+        """
+        if project_maps is not None:
+            pulumi.set(__self__, "project_maps", project_maps)
+        if projects is not None:
+            pulumi.set(__self__, "projects", projects)
+        if share_type is not None:
+            pulumi.set(__self__, "share_type", share_type)
+
+    @property
+    @pulumi.getter(name="projectMaps")
+    def project_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationShareSettingsProjectMapArgs']]]]:
+        """
+        A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "project_maps")
+
+    @project_maps.setter
+    def project_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationShareSettingsProjectMapArgs']]]]):
+        pulumi.set(self, "project_maps", value)
+
+    @property
+    @pulumi.getter
+    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        """
+        return pulumi.get(self, "projects")
+
+    @projects.setter
+    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "projects", value)
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Type of sharing for this future reservation.
+        Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
+        """
+        return pulumi.get(self, "share_type")
+
+    @share_type.setter
+    def share_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "share_type", value)
+
+
+if not MYPY:
+    class FutureReservationShareSettingsProjectMapArgsDict(TypedDict):
+        id: pulumi.Input[builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        project_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The project ID, should be same as the key of this project config in the parent map.
+        """
+elif False:
+    FutureReservationShareSettingsProjectMapArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationShareSettingsProjectMapArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[builtins.str],
+                 project_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] id: The identifier for this object. Format specified above.
+        :param pulumi.Input[builtins.str] project_id: The project ID, should be same as the key of this project config in the parent map.
+        """
+        pulumi.set(__self__, "id", id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The project ID, should be same as the key of this project config in the parent map.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class FutureReservationSpecificSkuPropertiesArgsDict(TypedDict):
+        instance_properties: NotRequired[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesArgsDict']]
+        """
+        Properties of the SKU instances being reserved.
+        Structure is documented below.
+        """
+        source_instance_template: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+        """
+        total_count: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Total number of instances for which capacity assurance is requested at a future time period.
+        """
+elif False:
+    FutureReservationSpecificSkuPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationSpecificSkuPropertiesArgs:
+    def __init__(__self__, *,
+                 instance_properties: Optional[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesArgs']] = None,
+                 source_instance_template: Optional[pulumi.Input[builtins.str]] = None,
+                 total_count: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesArgs'] instance_properties: Properties of the SKU instances being reserved.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] source_instance_template: The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+        :param pulumi.Input[builtins.str] total_count: Total number of instances for which capacity assurance is requested at a future time period.
+        """
+        if instance_properties is not None:
+            pulumi.set(__self__, "instance_properties", instance_properties)
+        if source_instance_template is not None:
+            pulumi.set(__self__, "source_instance_template", source_instance_template)
+        if total_count is not None:
+            pulumi.set(__self__, "total_count", total_count)
+
+    @property
+    @pulumi.getter(name="instanceProperties")
+    def instance_properties(self) -> Optional[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesArgs']]:
+        """
+        Properties of the SKU instances being reserved.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instance_properties")
+
+    @instance_properties.setter
+    def instance_properties(self, value: Optional[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesArgs']]):
+        pulumi.set(self, "instance_properties", value)
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+        """
+        return pulumi.get(self, "source_instance_template")
+
+    @source_instance_template.setter
+    def source_instance_template(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "source_instance_template", value)
+
+    @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Total number of instances for which capacity assurance is requested at a future time period.
+        """
+        return pulumi.get(self, "total_count")
+
+    @total_count.setter
+    def total_count(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_count", value)
+
+
+if not MYPY:
+    class FutureReservationSpecificSkuPropertiesInstancePropertiesArgsDict(TypedDict):
+        guest_accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgsDict']]]]
+        """
+        Specifies accelerator type and count.
+        Structure is documented below.
+        """
+        local_ssds: NotRequired[pulumi.Input[Sequence[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsdArgsDict']]]]
+        """
+        Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
+        Structure is documented below.
+        """
+        location_hint: NotRequired[pulumi.Input[builtins.str]]
+        """
+        An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+        """
+        machine_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
+        """
+        maintenance_freeze_duration_hours: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
+        """
+        maintenance_interval: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        Possible values are: `PERIODIC`.
+        """
+        min_cpu_platform: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Minimum cpu platform the reservation.
+        """
+elif False:
+    FutureReservationSpecificSkuPropertiesInstancePropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationSpecificSkuPropertiesInstancePropertiesArgs:
+    def __init__(__self__, *,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs']]]] = None,
+                 local_ssds: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsdArgs']]]] = None,
+                 location_hint: Optional[pulumi.Input[builtins.str]] = None,
+                 machine_type: Optional[pulumi.Input[builtins.str]] = None,
+                 maintenance_freeze_duration_hours: Optional[pulumi.Input[builtins.int]] = None,
+                 maintenance_interval: Optional[pulumi.Input[builtins.str]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs']]] guest_accelerators: Specifies accelerator type and count.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsdArgs']]] local_ssds: Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] location_hint: An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+        :param pulumi.Input[builtins.str] machine_type: Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
+        :param pulumi.Input[builtins.int] maintenance_freeze_duration_hours: Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
+        :param pulumi.Input[builtins.str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+               Possible values are: `PERIODIC`.
+        :param pulumi.Input[builtins.str] min_cpu_platform: Minimum cpu platform the reservation.
+        """
+        if guest_accelerators is not None:
+            pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        if local_ssds is not None:
+            pulumi.set(__self__, "local_ssds", local_ssds)
+        if location_hint is not None:
+            pulumi.set(__self__, "location_hint", location_hint)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if maintenance_freeze_duration_hours is not None:
+            pulumi.set(__self__, "maintenance_freeze_duration_hours", maintenance_freeze_duration_hours)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+
+    @property
+    @pulumi.getter(name="guestAccelerators")
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs']]]]:
+        """
+        Specifies accelerator type and count.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guest_accelerators")
+
+    @guest_accelerators.setter
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs']]]]):
+        pulumi.set(self, "guest_accelerators", value)
+
+    @property
+    @pulumi.getter(name="localSsds")
+    def local_ssds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsdArgs']]]]:
+        """
+        Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "local_ssds")
+
+    @local_ssds.setter
+    def local_ssds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsdArgs']]]]):
+        pulumi.set(self, "local_ssds", value)
+
+    @property
+    @pulumi.getter(name="locationHint")
+    def location_hint(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+        """
+        return pulumi.get(self, "location_hint")
+
+    @location_hint.setter
+    def location_hint(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "location_hint", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="maintenanceFreezeDurationHours")
+    def maintenance_freeze_duration_hours(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
+        """
+        return pulumi.get(self, "maintenance_freeze_duration_hours")
+
+    @maintenance_freeze_duration_hours.setter
+    def maintenance_freeze_duration_hours(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "maintenance_freeze_duration_hours", value)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        Possible values are: `PERIODIC`.
+        """
+        return pulumi.get(self, "maintenance_interval")
+
+    @maintenance_interval.setter
+    def maintenance_interval(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "maintenance_interval", value)
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Minimum cpu platform the reservation.
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "min_cpu_platform", value)
+
+
+if not MYPY:
+    class FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgsDict(TypedDict):
+        accelerator_count: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        accelerator_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Full or partial URL of the accelerator type resource to attach to this instance.
+        """
+elif False:
+    FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs:
+    def __init__(__self__, *,
+                 accelerator_count: Optional[pulumi.Input[builtins.int]] = None,
+                 accelerator_type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] accelerator_count: The number of the guest accelerator cards exposed to this instance.
+        :param pulumi.Input[builtins.str] accelerator_type: Full or partial URL of the accelerator type resource to attach to this instance.
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @accelerator_count.setter
+    def accelerator_count(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "accelerator_count", value)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Full or partial URL of the accelerator type resource to attach to this instance.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "accelerator_type", value)
+
+
+if not MYPY:
+    class FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsdArgsDict(TypedDict):
+        disk_size_gb: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the size of the disk in base-2 GB.
+        """
+        interface: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        Possible values are: `SCSI`, `NVME`.
+        """
+elif False:
+    FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationSpecificSkuPropertiesInstancePropertiesLocalSsdArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[pulumi.Input[builtins.str]] = None,
+                 interface: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] disk_size_gb: Specifies the size of the disk in base-2 GB.
+        :param pulumi.Input[builtins.str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+               Possible values are: `SCSI`, `NVME`.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the size of the disk in base-2 GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        Possible values are: `SCSI`, `NVME`.
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "interface", value)
+
+
+if not MYPY:
+    class FutureReservationStatusArgsDict(TypedDict):
+        amendment_status: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The current status of the requested amendment.
+        Possible values are: .
+        """
+        auto_created_reservations: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Fully qualified urls of the automatically created reservations at startTime.
+        """
+        fulfilled_count: NotRequired[pulumi.Input[builtins.str]]
+        """
+        This count indicates the fulfilled capacity so far. This is set during "PROVISIONING" state. This count also includes capacity delivered as part of existing matching reservations.
+        """
+        last_known_good_state: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateArgsDict']]
+        """
+        This field represents the future reservation before an amendment was requested. If the amendment is declined, the Future Reservation will be reverted to the last known good state. The last known good state is not set when updating a future reservation whose Procurement Status is DRAFTING.
+        Structure is documented below.
+        """
+        lock_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The lock time of the FutureReservation before an amendment was requested.
+        """
+        procurement_status: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The status of the last known good state for the Future Reservation
+        Possible values are: .
+        """
+        specific_sku_properties: NotRequired[pulumi.Input['FutureReservationStatusSpecificSkuPropertiesArgsDict']]
+        """
+        The previous instance related properties of the Future Reservation.
+        Structure is documented below.
+        """
+elif False:
+    FutureReservationStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusArgs:
+    def __init__(__self__, *,
+                 amendment_status: Optional[pulumi.Input[builtins.str]] = None,
+                 auto_created_reservations: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 fulfilled_count: Optional[pulumi.Input[builtins.str]] = None,
+                 last_known_good_state: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateArgs']] = None,
+                 lock_time: Optional[pulumi.Input[builtins.str]] = None,
+                 procurement_status: Optional[pulumi.Input[builtins.str]] = None,
+                 specific_sku_properties: Optional[pulumi.Input['FutureReservationStatusSpecificSkuPropertiesArgs']] = None):
+        """
+        :param pulumi.Input[builtins.str] amendment_status: The current status of the requested amendment.
+               Possible values are: .
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] auto_created_reservations: Fully qualified urls of the automatically created reservations at startTime.
+        :param pulumi.Input[builtins.str] fulfilled_count: This count indicates the fulfilled capacity so far. This is set during "PROVISIONING" state. This count also includes capacity delivered as part of existing matching reservations.
+        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateArgs'] last_known_good_state: This field represents the future reservation before an amendment was requested. If the amendment is declined, the Future Reservation will be reverted to the last known good state. The last known good state is not set when updating a future reservation whose Procurement Status is DRAFTING.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] lock_time: The lock time of the FutureReservation before an amendment was requested.
+        :param pulumi.Input[builtins.str] procurement_status: The status of the last known good state for the Future Reservation
+               Possible values are: .
+        :param pulumi.Input['FutureReservationStatusSpecificSkuPropertiesArgs'] specific_sku_properties: The previous instance related properties of the Future Reservation.
+               Structure is documented below.
+        """
+        if amendment_status is not None:
+            pulumi.set(__self__, "amendment_status", amendment_status)
+        if auto_created_reservations is not None:
+            pulumi.set(__self__, "auto_created_reservations", auto_created_reservations)
+        if fulfilled_count is not None:
+            pulumi.set(__self__, "fulfilled_count", fulfilled_count)
+        if last_known_good_state is not None:
+            pulumi.set(__self__, "last_known_good_state", last_known_good_state)
+        if lock_time is not None:
+            pulumi.set(__self__, "lock_time", lock_time)
+        if procurement_status is not None:
+            pulumi.set(__self__, "procurement_status", procurement_status)
+        if specific_sku_properties is not None:
+            pulumi.set(__self__, "specific_sku_properties", specific_sku_properties)
+
+    @property
+    @pulumi.getter(name="amendmentStatus")
+    def amendment_status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The current status of the requested amendment.
+        Possible values are: .
+        """
+        return pulumi.get(self, "amendment_status")
+
+    @amendment_status.setter
+    def amendment_status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "amendment_status", value)
+
+    @property
+    @pulumi.getter(name="autoCreatedReservations")
+    def auto_created_reservations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Fully qualified urls of the automatically created reservations at startTime.
+        """
+        return pulumi.get(self, "auto_created_reservations")
+
+    @auto_created_reservations.setter
+    def auto_created_reservations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "auto_created_reservations", value)
+
+    @property
+    @pulumi.getter(name="fulfilledCount")
+    def fulfilled_count(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This count indicates the fulfilled capacity so far. This is set during "PROVISIONING" state. This count also includes capacity delivered as part of existing matching reservations.
+        """
+        return pulumi.get(self, "fulfilled_count")
+
+    @fulfilled_count.setter
+    def fulfilled_count(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "fulfilled_count", value)
+
+    @property
+    @pulumi.getter(name="lastKnownGoodState")
+    def last_known_good_state(self) -> Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateArgs']]:
+        """
+        This field represents the future reservation before an amendment was requested. If the amendment is declined, the Future Reservation will be reverted to the last known good state. The last known good state is not set when updating a future reservation whose Procurement Status is DRAFTING.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "last_known_good_state")
+
+    @last_known_good_state.setter
+    def last_known_good_state(self, value: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateArgs']]):
+        pulumi.set(self, "last_known_good_state", value)
+
+    @property
+    @pulumi.getter(name="lockTime")
+    def lock_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The lock time of the FutureReservation before an amendment was requested.
+        """
+        return pulumi.get(self, "lock_time")
+
+    @lock_time.setter
+    def lock_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "lock_time", value)
+
+    @property
+    @pulumi.getter(name="procurementStatus")
+    def procurement_status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The status of the last known good state for the Future Reservation
+        Possible values are: .
+        """
+        return pulumi.get(self, "procurement_status")
+
+    @procurement_status.setter
+    def procurement_status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "procurement_status", value)
+
+    @property
+    @pulumi.getter(name="specificSkuProperties")
+    def specific_sku_properties(self) -> Optional[pulumi.Input['FutureReservationStatusSpecificSkuPropertiesArgs']]:
+        """
+        The previous instance related properties of the Future Reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "specific_sku_properties")
+
+    @specific_sku_properties.setter
+    def specific_sku_properties(self, value: Optional[pulumi.Input['FutureReservationStatusSpecificSkuPropertiesArgs']]):
+        pulumi.set(self, "specific_sku_properties", value)
+
+
+if not MYPY:
+    class FutureReservationStatusLastKnownGoodStateArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The description of the FutureReservation before an amendment was requested.
+        """
+        existing_matching_usage_info: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgsDict']]
+        """
+        Represents the matching usage for the future reservation before an amendment was requested.
+        Structure is documented below.
+        """
+        future_reservation_specs: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgsDict']]
+        """
+        The previous instance-related properties of the Future Reservation.
+        Structure is documented below.
+        """
+        lock_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The lock time of the FutureReservation before an amendment was requested.
+        """
+        name_prefix: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name prefix of the Future Reservation before an amendment was requested.
+        """
+        procurement_status: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The status of the last known good state for the Future Reservation
+        Possible values are: .
+        """
+elif False:
+    FutureReservationStatusLastKnownGoodStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusLastKnownGoodStateArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
+                 existing_matching_usage_info: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgs']] = None,
+                 future_reservation_specs: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs']] = None,
+                 lock_time: Optional[pulumi.Input[builtins.str]] = None,
+                 name_prefix: Optional[pulumi.Input[builtins.str]] = None,
+                 procurement_status: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] description: The description of the FutureReservation before an amendment was requested.
+        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgs'] existing_matching_usage_info: Represents the matching usage for the future reservation before an amendment was requested.
+               Structure is documented below.
+        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs'] future_reservation_specs: The previous instance-related properties of the Future Reservation.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] lock_time: The lock time of the FutureReservation before an amendment was requested.
+        :param pulumi.Input[builtins.str] name_prefix: The name prefix of the Future Reservation before an amendment was requested.
+        :param pulumi.Input[builtins.str] procurement_status: The status of the last known good state for the Future Reservation
+               Possible values are: .
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if existing_matching_usage_info is not None:
+            pulumi.set(__self__, "existing_matching_usage_info", existing_matching_usage_info)
+        if future_reservation_specs is not None:
+            pulumi.set(__self__, "future_reservation_specs", future_reservation_specs)
+        if lock_time is not None:
+            pulumi.set(__self__, "lock_time", lock_time)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if procurement_status is not None:
+            pulumi.set(__self__, "procurement_status", procurement_status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The description of the FutureReservation before an amendment was requested.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="existingMatchingUsageInfo")
+    def existing_matching_usage_info(self) -> Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgs']]:
+        """
+        Represents the matching usage for the future reservation before an amendment was requested.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "existing_matching_usage_info")
+
+    @existing_matching_usage_info.setter
+    def existing_matching_usage_info(self, value: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgs']]):
+        pulumi.set(self, "existing_matching_usage_info", value)
+
+    @property
+    @pulumi.getter(name="futureReservationSpecs")
+    def future_reservation_specs(self) -> Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs']]:
+        """
+        The previous instance-related properties of the Future Reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "future_reservation_specs")
+
+    @future_reservation_specs.setter
+    def future_reservation_specs(self, value: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs']]):
+        pulumi.set(self, "future_reservation_specs", value)
+
+    @property
+    @pulumi.getter(name="lockTime")
+    def lock_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The lock time of the FutureReservation before an amendment was requested.
+        """
+        return pulumi.get(self, "lock_time")
+
+    @lock_time.setter
+    def lock_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "lock_time", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name prefix of the Future Reservation before an amendment was requested.
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter(name="procurementStatus")
+    def procurement_status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The status of the last known good state for the Future Reservation
+        Possible values are: .
+        """
+        return pulumi.get(self, "procurement_status")
+
+    @procurement_status.setter
+    def procurement_status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "procurement_status", value)
+
+
+if not MYPY:
+    class FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgsDict(TypedDict):
+        count: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Count representing minimum(FR totalCount, matching_reserved_capacity+matching_unreserved_instances).
+        """
+        time_stamp: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Timestamp when the matching usage was calculated.
+        """
+elif False:
+    FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgs:
+    def __init__(__self__, *,
+                 count: Optional[pulumi.Input[builtins.str]] = None,
+                 time_stamp: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] count: Count representing minimum(FR totalCount, matching_reserved_capacity+matching_unreserved_instances).
+        :param pulumi.Input[builtins.str] time_stamp: Timestamp when the matching usage was calculated.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if time_stamp is not None:
+            pulumi.set(__self__, "time_stamp", time_stamp)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Count representing minimum(FR totalCount, matching_reserved_capacity+matching_unreserved_instances).
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter(name="timeStamp")
+    def time_stamp(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Timestamp when the matching usage was calculated.
+        """
+        return pulumi.get(self, "time_stamp")
+
+    @time_stamp.setter
+    def time_stamp(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "time_stamp", value)
+
+
+if not MYPY:
+    class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgsDict(TypedDict):
+        share_settings: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgsDict']]
+        """
+        The previous share settings of the Future Reservation.
+        Structure is documented below.
+        """
+        specific_sku_properties: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgsDict']]
+        """
+        The previous instance related properties of the Future Reservation.
+        Structure is documented below.
+        """
+        time_window: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgsDict']]
+        """
+        Time window for this Future Reservation.
+        Structure is documented below.
+        """
+elif False:
+    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs:
+    def __init__(__self__, *,
+                 share_settings: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs']] = None,
+                 specific_sku_properties: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs']] = None,
+                 time_window: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgs']] = None):
+        """
+        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs'] share_settings: The previous share settings of the Future Reservation.
+               Structure is documented below.
+        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs'] specific_sku_properties: The previous instance related properties of the Future Reservation.
+               Structure is documented below.
+        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgs'] time_window: Time window for this Future Reservation.
+               Structure is documented below.
+        """
+        if share_settings is not None:
+            pulumi.set(__self__, "share_settings", share_settings)
+        if specific_sku_properties is not None:
+            pulumi.set(__self__, "specific_sku_properties", specific_sku_properties)
+        if time_window is not None:
+            pulumi.set(__self__, "time_window", time_window)
+
+    @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs']]:
+        """
+        The previous share settings of the Future Reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "share_settings")
+
+    @share_settings.setter
+    def share_settings(self, value: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs']]):
+        pulumi.set(self, "share_settings", value)
+
+    @property
+    @pulumi.getter(name="specificSkuProperties")
+    def specific_sku_properties(self) -> Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs']]:
+        """
+        The previous instance related properties of the Future Reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "specific_sku_properties")
+
+    @specific_sku_properties.setter
+    def specific_sku_properties(self, value: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs']]):
+        pulumi.set(self, "specific_sku_properties", value)
+
+    @property
+    @pulumi.getter(name="timeWindow")
+    def time_window(self) -> Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgs']]:
+        """
+        Time window for this Future Reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time_window")
+
+    @time_window.setter
+    def time_window(self, value: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgs']]):
+        pulumi.set(self, "time_window", value)
+
+
+if not MYPY:
+    class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgsDict(TypedDict):
+        project_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgsDict']]]]
+        """
+        A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        Structure is documented below.
+        """
+        projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        """
+        share_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Type of sharing for this future reservation.
+        Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
+        """
+elif False:
+    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs:
+    def __init__(__self__, *,
+                 project_maps: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgs']]]] = None,
+                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 share_type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgs']]] project_maps: A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] projects: list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        :param pulumi.Input[builtins.str] share_type: Type of sharing for this future reservation.
+               Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
+        """
+        if project_maps is not None:
+            pulumi.set(__self__, "project_maps", project_maps)
+        if projects is not None:
+            pulumi.set(__self__, "projects", projects)
+        if share_type is not None:
+            pulumi.set(__self__, "share_type", share_type)
+
+    @property
+    @pulumi.getter(name="projectMaps")
+    def project_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgs']]]]:
+        """
+        A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "project_maps")
+
+    @project_maps.setter
+    def project_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgs']]]]):
+        pulumi.set(self, "project_maps", value)
+
+    @property
+    @pulumi.getter
+    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        """
+        return pulumi.get(self, "projects")
+
+    @projects.setter
+    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "projects", value)
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Type of sharing for this future reservation.
+        Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
+        """
+        return pulumi.get(self, "share_type")
+
+    @share_type.setter
+    def share_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "share_type", value)
+
+
+if not MYPY:
+    class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgsDict(TypedDict):
+        project: pulumi.Input[builtins.str]
+        """
+        (Required) The identifier for this object. Format specified above.
+        """
+        project_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The project ID, should be same as the key of this project config in the parent map.
+        """
+elif False:
+    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgs:
+    def __init__(__self__, *,
+                 project: pulumi.Input[builtins.str],
+                 project_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] project: (Required) The identifier for this object. Format specified above.
+        :param pulumi.Input[builtins.str] project_id: The project ID, should be same as the key of this project config in the parent map.
+        """
+        pulumi.set(__self__, "project", project)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[builtins.str]:
+        """
+        (Required) The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The project ID, should be same as the key of this project config in the parent map.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgsDict(TypedDict):
+        instance_properties: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesArgsDict']]
+        """
+        Properties of the SKU instances being reserved.
+        Structure is documented below.
+        """
+        source_instance_template: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+        """
+        total_count: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Total number of instances for which capacity assurance is requested at a future time period.
+        """
+elif False:
+    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs:
+    def __init__(__self__, *,
+                 instance_properties: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesArgs']] = None,
+                 source_instance_template: Optional[pulumi.Input[builtins.str]] = None,
+                 total_count: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesArgs'] instance_properties: Properties of the SKU instances being reserved.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] source_instance_template: The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+        :param pulumi.Input[builtins.str] total_count: Total number of instances for which capacity assurance is requested at a future time period.
+        """
+        if instance_properties is not None:
+            pulumi.set(__self__, "instance_properties", instance_properties)
+        if source_instance_template is not None:
+            pulumi.set(__self__, "source_instance_template", source_instance_template)
+        if total_count is not None:
+            pulumi.set(__self__, "total_count", total_count)
+
+    @property
+    @pulumi.getter(name="instanceProperties")
+    def instance_properties(self) -> Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesArgs']]:
+        """
+        Properties of the SKU instances being reserved.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instance_properties")
+
+    @instance_properties.setter
+    def instance_properties(self, value: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesArgs']]):
+        pulumi.set(self, "instance_properties", value)
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+        """
+        return pulumi.get(self, "source_instance_template")
+
+    @source_instance_template.setter
+    def source_instance_template(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "source_instance_template", value)
+
+    @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Total number of instances for which capacity assurance is requested at a future time period.
+        """
+        return pulumi.get(self, "total_count")
+
+    @total_count.setter
+    def total_count(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_count", value)
+
+
+if not MYPY:
+    class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesArgsDict(TypedDict):
+        guest_accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgsDict']]]]
+        """
+        Specifies accelerator type and count.
+        Structure is documented below.
+        """
+        local_ssds: NotRequired[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsdArgsDict']]]]
+        """
+        Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
+        Structure is documented below.
+        """
+        location_hint: NotRequired[pulumi.Input[builtins.str]]
+        """
+        An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+        """
+        machine_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
+        """
+        maintenance_freeze_duration_hours: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
+        """
+        maintenance_interval: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        Possible values are: `PERIODIC`.
+        """
+        min_cpu_platform: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Minimum cpu platform the reservation.
+        """
+elif False:
+    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesArgs:
+    def __init__(__self__, *,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs']]]] = None,
+                 local_ssds: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsdArgs']]]] = None,
+                 location_hint: Optional[pulumi.Input[builtins.str]] = None,
+                 machine_type: Optional[pulumi.Input[builtins.str]] = None,
+                 maintenance_freeze_duration_hours: Optional[pulumi.Input[builtins.int]] = None,
+                 maintenance_interval: Optional[pulumi.Input[builtins.str]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs']]] guest_accelerators: Specifies accelerator type and count.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsdArgs']]] local_ssds: Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] location_hint: An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+        :param pulumi.Input[builtins.str] machine_type: Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
+        :param pulumi.Input[builtins.int] maintenance_freeze_duration_hours: Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
+        :param pulumi.Input[builtins.str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+               Possible values are: `PERIODIC`.
+        :param pulumi.Input[builtins.str] min_cpu_platform: Minimum cpu platform the reservation.
+        """
+        if guest_accelerators is not None:
+            pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        if local_ssds is not None:
+            pulumi.set(__self__, "local_ssds", local_ssds)
+        if location_hint is not None:
+            pulumi.set(__self__, "location_hint", location_hint)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if maintenance_freeze_duration_hours is not None:
+            pulumi.set(__self__, "maintenance_freeze_duration_hours", maintenance_freeze_duration_hours)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+
+    @property
+    @pulumi.getter(name="guestAccelerators")
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs']]]]:
+        """
+        Specifies accelerator type and count.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guest_accelerators")
+
+    @guest_accelerators.setter
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs']]]]):
+        pulumi.set(self, "guest_accelerators", value)
+
+    @property
+    @pulumi.getter(name="localSsds")
+    def local_ssds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsdArgs']]]]:
+        """
+        Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "local_ssds")
+
+    @local_ssds.setter
+    def local_ssds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsdArgs']]]]):
+        pulumi.set(self, "local_ssds", value)
+
+    @property
+    @pulumi.getter(name="locationHint")
+    def location_hint(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+        """
+        return pulumi.get(self, "location_hint")
+
+    @location_hint.setter
+    def location_hint(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "location_hint", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="maintenanceFreezeDurationHours")
+    def maintenance_freeze_duration_hours(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
+        """
+        return pulumi.get(self, "maintenance_freeze_duration_hours")
+
+    @maintenance_freeze_duration_hours.setter
+    def maintenance_freeze_duration_hours(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "maintenance_freeze_duration_hours", value)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        Possible values are: `PERIODIC`.
+        """
+        return pulumi.get(self, "maintenance_interval")
+
+    @maintenance_interval.setter
+    def maintenance_interval(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "maintenance_interval", value)
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Minimum cpu platform the reservation.
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "min_cpu_platform", value)
+
+
+if not MYPY:
+    class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgsDict(TypedDict):
+        accelerator_count: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        accelerator_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Full or partial URL of the accelerator type resource to attach to this instance.
+        """
+elif False:
+    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAcceleratorArgs:
+    def __init__(__self__, *,
+                 accelerator_count: Optional[pulumi.Input[builtins.int]] = None,
+                 accelerator_type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] accelerator_count: The number of the guest accelerator cards exposed to this instance.
+        :param pulumi.Input[builtins.str] accelerator_type: Full or partial URL of the accelerator type resource to attach to this instance.
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @accelerator_count.setter
+    def accelerator_count(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "accelerator_count", value)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Full or partial URL of the accelerator type resource to attach to this instance.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "accelerator_type", value)
+
+
+if not MYPY:
+    class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsdArgsDict(TypedDict):
+        disk_size_gb: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the size of the disk in base-2 GB.
+        """
+        interface: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        Possible values are: `SCSI`, `NVME`.
+        """
+elif False:
+    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsdArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[pulumi.Input[builtins.str]] = None,
+                 interface: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] disk_size_gb: Specifies the size of the disk in base-2 GB.
+        :param pulumi.Input[builtins.str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+               Possible values are: `SCSI`, `NVME`.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the size of the disk in base-2 GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        Possible values are: `SCSI`, `NVME`.
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "interface", value)
+
+
+if not MYPY:
+    class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgsDict(TypedDict):
+        duration: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDurationArgsDict']]
+        """
+        Duration of the future reservation
+        Structure is documented below.
+        """
+        end_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        End time of the future reservation in RFC3339 format.
+        """
+        start_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Start time of the future reservation in RFC3339 format.
+        """
+elif False:
+    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgs:
+    def __init__(__self__, *,
+                 duration: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDurationArgs']] = None,
+                 end_time: Optional[pulumi.Input[builtins.str]] = None,
+                 start_time: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDurationArgs'] duration: Duration of the future reservation
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] end_time: End time of the future reservation in RFC3339 format.
+        :param pulumi.Input[builtins.str] start_time: Start time of the future reservation in RFC3339 format.
+        """
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDurationArgs']]:
+        """
+        Duration of the future reservation
+        Structure is documented below.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDurationArgs']]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        End time of the future reservation in RFC3339 format.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Start time of the future reservation in RFC3339 format.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "start_time", value)
+
+
+if not MYPY:
+    class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDurationArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution.
+
+        - - -
+        """
+        seconds: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        """
+elif False:
+    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDurationArgs:
+    def __init__(__self__, *,
+                 nanos: Optional[pulumi.Input[builtins.int]] = None,
+                 seconds: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] nanos: Span of time that's a fraction of a second at nanosecond resolution.
+               
+               - - -
+        :param pulumi.Input[builtins.str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        """
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution.
+
+        - - -
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "seconds", value)
+
+
+if not MYPY:
+    class FutureReservationStatusSpecificSkuPropertiesArgsDict(TypedDict):
+        source_instance_template_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        ID of the instance template used to populate the Future Reservation properties.
+        """
+elif False:
+    FutureReservationStatusSpecificSkuPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationStatusSpecificSkuPropertiesArgs:
+    def __init__(__self__, *,
+                 source_instance_template_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] source_instance_template_id: ID of the instance template used to populate the Future Reservation properties.
+        """
+        if source_instance_template_id is not None:
+            pulumi.set(__self__, "source_instance_template_id", source_instance_template_id)
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplateId")
+    def source_instance_template_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the instance template used to populate the Future Reservation properties.
+        """
+        return pulumi.get(self, "source_instance_template_id")
+
+    @source_instance_template_id.setter
+    def source_instance_template_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "source_instance_template_id", value)
+
+
+if not MYPY:
+    class FutureReservationTimeWindowArgsDict(TypedDict):
+        start_time: pulumi.Input[builtins.str]
+        """
+        Start time of the future reservation in RFC3339 format.
+        """
+        duration: NotRequired[pulumi.Input['FutureReservationTimeWindowDurationArgsDict']]
+        """
+        Duration of the future reservation
+        Structure is documented below.
+        """
+        end_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        End time of the future reservation in RFC3339 format.
+        """
+elif False:
+    FutureReservationTimeWindowArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationTimeWindowArgs:
+    def __init__(__self__, *,
+                 start_time: pulumi.Input[builtins.str],
+                 duration: Optional[pulumi.Input['FutureReservationTimeWindowDurationArgs']] = None,
+                 end_time: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] start_time: Start time of the future reservation in RFC3339 format.
+        :param pulumi.Input['FutureReservationTimeWindowDurationArgs'] duration: Duration of the future reservation
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] end_time: End time of the future reservation in RFC3339 format.
+        """
+        pulumi.set(__self__, "start_time", start_time)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[builtins.str]:
+        """
+        Start time of the future reservation in RFC3339 format.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input['FutureReservationTimeWindowDurationArgs']]:
+        """
+        Duration of the future reservation
+        Structure is documented below.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input['FutureReservationTimeWindowDurationArgs']]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        End time of the future reservation in RFC3339 format.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "end_time", value)
+
+
+if not MYPY:
+    class FutureReservationTimeWindowDurationArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution.
+
+        - - -
+        """
+        seconds: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        """
+elif False:
+    FutureReservationTimeWindowDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationTimeWindowDurationArgs:
+    def __init__(__self__, *,
+                 nanos: Optional[pulumi.Input[builtins.int]] = None,
+                 seconds: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] nanos: Span of time that's a fraction of a second at nanosecond resolution.
+               
+               - - -
+        :param pulumi.Input[builtins.str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        """
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution.
+
+        - - -
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "seconds", value)
 
 
 if not MYPY:
@@ -33048,6 +35087,73 @@ class RegionBackendServiceCustomMetricArgs:
 
 
 if not MYPY:
+    class RegionBackendServiceDynamicForwardingArgsDict(TypedDict):
+        ip_port_selection: NotRequired[pulumi.Input['RegionBackendServiceDynamicForwardingIpPortSelectionArgsDict']]
+        """
+        IP:PORT based dynamic forwarding configuration.
+        Structure is documented below.
+        """
+elif False:
+    RegionBackendServiceDynamicForwardingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionBackendServiceDynamicForwardingArgs:
+    def __init__(__self__, *,
+                 ip_port_selection: Optional[pulumi.Input['RegionBackendServiceDynamicForwardingIpPortSelectionArgs']] = None):
+        """
+        :param pulumi.Input['RegionBackendServiceDynamicForwardingIpPortSelectionArgs'] ip_port_selection: IP:PORT based dynamic forwarding configuration.
+               Structure is documented below.
+        """
+        if ip_port_selection is not None:
+            pulumi.set(__self__, "ip_port_selection", ip_port_selection)
+
+    @property
+    @pulumi.getter(name="ipPortSelection")
+    def ip_port_selection(self) -> Optional[pulumi.Input['RegionBackendServiceDynamicForwardingIpPortSelectionArgs']]:
+        """
+        IP:PORT based dynamic forwarding configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ip_port_selection")
+
+    @ip_port_selection.setter
+    def ip_port_selection(self, value: Optional[pulumi.Input['RegionBackendServiceDynamicForwardingIpPortSelectionArgs']]):
+        pulumi.set(self, "ip_port_selection", value)
+
+
+if not MYPY:
+    class RegionBackendServiceDynamicForwardingIpPortSelectionArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        A boolean flag enabling IP:PORT based dynamic forwarding.
+        """
+elif False:
+    RegionBackendServiceDynamicForwardingIpPortSelectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionBackendServiceDynamicForwardingIpPortSelectionArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enabled: A boolean flag enabling IP:PORT based dynamic forwarding.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        A boolean flag enabling IP:PORT based dynamic forwarding.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
     class RegionBackendServiceFailoverPolicyArgsDict(TypedDict):
         disable_connection_drain_on_failover: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -34084,18 +36190,38 @@ if not MYPY:
         The algorithm used for subsetting.
         Possible values are: `CONSISTENT_HASH_SUBSETTING`.
         """
+        subset_size: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The number of backends per backend group assigned to each proxy instance or each service mesh client.
+        An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+        CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+        subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+        If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+        of proxies/clients visible to each backend and vice versa.
+        Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+        """
 elif False:
     RegionBackendServiceSubsettingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionBackendServiceSubsettingArgs:
     def __init__(__self__, *,
-                 policy: pulumi.Input[builtins.str]):
+                 policy: pulumi.Input[builtins.str],
+                 subset_size: Optional[pulumi.Input[builtins.int]] = None):
         """
         :param pulumi.Input[builtins.str] policy: The algorithm used for subsetting.
                Possible values are: `CONSISTENT_HASH_SUBSETTING`.
+        :param pulumi.Input[builtins.int] subset_size: The number of backends per backend group assigned to each proxy instance or each service mesh client.
+               An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+               CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+               subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+               If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+               of proxies/clients visible to each backend and vice versa.
+               Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
         """
         pulumi.set(__self__, "policy", policy)
+        if subset_size is not None:
+            pulumi.set(__self__, "subset_size", subset_size)
 
     @property
     @pulumi.getter
@@ -34109,6 +36235,24 @@ class RegionBackendServiceSubsettingArgs:
     @policy.setter
     def policy(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter(name="subsetSize")
+    def subset_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of backends per backend group assigned to each proxy instance or each service mesh client.
+        An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+        CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+        subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+        If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+        of proxies/clients visible to each backend and vice versa.
+        Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+        """
+        return pulumi.get(self, "subset_size")
+
+    @subset_size.setter
+    def subset_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "subset_size", value)
 
 
 if not MYPY:
@@ -62048,17 +64192,27 @@ if not MYPY:
         """
         The full or partial URL to the BackendService resource being mirrored to.
         """
+        mirror_percent: NotRequired[pulumi.Input[builtins.float]]
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
 elif False:
     URLMapDefaultRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapDefaultRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
-                 backend_service: pulumi.Input[builtins.str]):
+                 backend_service: pulumi.Input[builtins.str],
+                 mirror_percent: Optional[pulumi.Input[builtins.float]] = None):
         """
         :param pulumi.Input[builtins.str] backend_service: The full or partial URL to the BackendService resource being mirrored to.
+        :param pulumi.Input[builtins.float] mirror_percent: The percentage of requests to be mirrored to backendService.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
+        if mirror_percent is not None:
+            pulumi.set(__self__, "mirror_percent", mirror_percent)
 
     @property
     @pulumi.getter(name="backendService")
@@ -62071,6 +64225,19 @@ class URLMapDefaultRouteActionRequestMirrorPolicyArgs:
     @backend_service.setter
     def backend_service(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "backend_service", value)
+
+    @property
+    @pulumi.getter(name="mirrorPercent")
+    def mirror_percent(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "mirror_percent")
+
+    @mirror_percent.setter
+    def mirror_percent(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "mirror_percent", value)
 
 
 if not MYPY:
@@ -64459,17 +66626,27 @@ if not MYPY:
         """
         The full or partial URL to the BackendService resource being mirrored to.
         """
+        mirror_percent: NotRequired[pulumi.Input[builtins.float]]
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
 elif False:
     URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
-                 backend_service: pulumi.Input[builtins.str]):
+                 backend_service: pulumi.Input[builtins.str],
+                 mirror_percent: Optional[pulumi.Input[builtins.float]] = None):
         """
         :param pulumi.Input[builtins.str] backend_service: The full or partial URL to the BackendService resource being mirrored to.
+        :param pulumi.Input[builtins.float] mirror_percent: The percentage of requests to be mirrored to backendService.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
+        if mirror_percent is not None:
+            pulumi.set(__self__, "mirror_percent", mirror_percent)
 
     @property
     @pulumi.getter(name="backendService")
@@ -64482,6 +66659,19 @@ class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs:
     @backend_service.setter
     def backend_service(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "backend_service", value)
+
+    @property
+    @pulumi.getter(name="mirrorPercent")
+    def mirror_percent(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "mirror_percent")
+
+    @mirror_percent.setter
+    def mirror_percent(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "mirror_percent", value)
 
 
 if not MYPY:
@@ -66681,17 +68871,27 @@ if not MYPY:
         """
         The full or partial URL to the BackendService resource being mirrored to.
         """
+        mirror_percent: NotRequired[pulumi.Input[builtins.float]]
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
 elif False:
     URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
-                 backend_service: pulumi.Input[builtins.str]):
+                 backend_service: pulumi.Input[builtins.str],
+                 mirror_percent: Optional[pulumi.Input[builtins.float]] = None):
         """
         :param pulumi.Input[builtins.str] backend_service: The full or partial URL to the BackendService resource being mirrored to.
+        :param pulumi.Input[builtins.float] mirror_percent: The percentage of requests to be mirrored to backendService.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
+        if mirror_percent is not None:
+            pulumi.set(__self__, "mirror_percent", mirror_percent)
 
     @property
     @pulumi.getter(name="backendService")
@@ -66704,6 +68904,19 @@ class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
     @backend_service.setter
     def backend_service(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "backend_service", value)
+
+    @property
+    @pulumi.getter(name="mirrorPercent")
+    def mirror_percent(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "mirror_percent")
+
+    @mirror_percent.setter
+    def mirror_percent(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "mirror_percent", value)
 
 
 if not MYPY:
@@ -69768,17 +71981,27 @@ if not MYPY:
         """
         The full or partial URL to the BackendService resource being mirrored to.
         """
+        mirror_percent: NotRequired[pulumi.Input[builtins.float]]
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
 elif False:
     URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
-                 backend_service: pulumi.Input[builtins.str]):
+                 backend_service: pulumi.Input[builtins.str],
+                 mirror_percent: Optional[pulumi.Input[builtins.float]] = None):
         """
         :param pulumi.Input[builtins.str] backend_service: The full or partial URL to the BackendService resource being mirrored to.
+        :param pulumi.Input[builtins.float] mirror_percent: The percentage of requests to be mirrored to backendService.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
+        if mirror_percent is not None:
+            pulumi.set(__self__, "mirror_percent", mirror_percent)
 
     @property
     @pulumi.getter(name="backendService")
@@ -69791,6 +72014,19 @@ class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
     @backend_service.setter
     def backend_service(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "backend_service", value)
+
+    @property
+    @pulumi.getter(name="mirrorPercent")
+    def mirror_percent(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "mirror_percent")
+
+    @mirror_percent.setter
+    def mirror_percent(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "mirror_percent", value)
 
 
 if not MYPY:

@@ -64,6 +64,7 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
+	ActivationPolicy        string                              `pulumi:"activationPolicy"`
 	Annotations             map[string]string                   `pulumi:"annotations"`
 	AvailabilityType        string                              `pulumi:"availabilityType"`
 	ClientConnectionConfigs []GetInstanceClientConnectionConfig `pulumi:"clientConnectionConfigs"`
@@ -141,6 +142,10 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanc
 
 func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
 	return o
+}
+
+func (o LookupInstanceResultOutput) ActivationPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ActivationPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) Annotations() pulumi.StringMapOutput {

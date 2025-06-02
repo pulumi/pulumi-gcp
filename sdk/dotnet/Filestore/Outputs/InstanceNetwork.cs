@@ -18,9 +18,7 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// If not provided, the connect mode defaults to
         /// DIRECT_PEERING.
         /// Default value is `DIRECT_PEERING`.
-        /// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-        /// 
-        /// - - -
+        /// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
         /// </summary>
         public readonly string? ConnectMode;
         /// <summary>
@@ -40,6 +38,12 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
+        /// Private Service Connect configuration.
+        /// Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.InstanceNetworkPscConfig? PscConfig;
+        /// <summary>
         /// A /29 CIDR block that identifies the range of IP
         /// addresses reserved for this instance.
         /// </summary>
@@ -55,12 +59,15 @@ namespace Pulumi.Gcp.Filestore.Outputs
 
             string network,
 
+            Outputs.InstanceNetworkPscConfig? pscConfig,
+
             string? reservedIpRange)
         {
             ConnectMode = connectMode;
             IpAddresses = ipAddresses;
             Modes = modes;
             Network = network;
+            PscConfig = pscConfig;
             ReservedIpRange = reservedIpRange;
         }
     }

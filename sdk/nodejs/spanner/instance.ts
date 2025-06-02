@@ -118,13 +118,6 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
-    /**
-     * The autoscaling configuration. Autoscaling is enabled if this field is set.
-     * When autoscaling is enabled, numNodes and processingUnits are treated as,
-     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-     * the instance.
-     * Structure is documented below.
-     */
     public readonly autoscalingConfig!: pulumi.Output<outputs.spanner.InstanceAutoscalingConfig | undefined>;
     /**
      * The name of the instance's configuration (similar but not
@@ -164,6 +157,13 @@ export class Instance extends pulumi.CustomResource {
      * This must be set to true if you created a backup manually in the console.
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
+     * The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+     * usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+     * When configured as FREE_INSTANCE, the field `edition` should not be configured.
+     * Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+     */
+    public readonly instanceType!: pulumi.Output<string>;
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -216,6 +216,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["edition"] = state ? state.edition : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["numNodes"] = state ? state.numNodes : undefined;
@@ -237,6 +238,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["numNodes"] = args ? args.numNodes : undefined;
@@ -257,13 +259,6 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
-    /**
-     * The autoscaling configuration. Autoscaling is enabled if this field is set.
-     * When autoscaling is enabled, numNodes and processingUnits are treated as,
-     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-     * the instance.
-     * Structure is documented below.
-     */
     autoscalingConfig?: pulumi.Input<inputs.spanner.InstanceAutoscalingConfig>;
     /**
      * The name of the instance's configuration (similar but not
@@ -304,6 +299,13 @@ export interface InstanceState {
      */
     forceDestroy?: pulumi.Input<boolean>;
     /**
+     * The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+     * usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+     * When configured as FREE_INSTANCE, the field `edition` should not be configured.
+     * Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      *
@@ -340,13 +342,6 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    /**
-     * The autoscaling configuration. Autoscaling is enabled if this field is set.
-     * When autoscaling is enabled, numNodes and processingUnits are treated as,
-     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
-     * the instance.
-     * Structure is documented below.
-     */
     autoscalingConfig?: pulumi.Input<inputs.spanner.InstanceAutoscalingConfig>;
     /**
      * The name of the instance's configuration (similar but not
@@ -382,6 +377,13 @@ export interface InstanceArgs {
      * This must be set to true if you created a backup manually in the console.
      */
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
+     * usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
+     * When configured as FREE_INSTANCE, the field `edition` should not be configured.
+     * Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
+     */
+    instanceType?: pulumi.Input<string>;
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.

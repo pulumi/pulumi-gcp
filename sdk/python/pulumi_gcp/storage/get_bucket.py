@@ -28,7 +28,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, hierarchical_namespaces=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, project_number=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, soft_delete_policies=None, storage_class=None, time_created=None, uniform_bucket_level_access=None, updated=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, hierarchical_namespaces=None, id=None, ip_filters=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, project_number=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, soft_delete_policies=None, storage_class=None, time_created=None, uniform_bucket_level_access=None, updated=None, url=None, versionings=None, websites=None):
         if autoclasses and not isinstance(autoclasses, list):
             raise TypeError("Expected argument 'autoclasses' to be a list")
         pulumi.set(__self__, "autoclasses", autoclasses)
@@ -59,6 +59,9 @@ class GetBucketResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ip_filters and not isinstance(ip_filters, list):
+            raise TypeError("Expected argument 'ip_filters' to be a list")
+        pulumi.set(__self__, "ip_filters", ip_filters)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -175,6 +178,11 @@ class GetBucketResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipFilters")
+    def ip_filters(self) -> Sequence['outputs.GetBucketIpFilterResult']:
+        return pulumi.get(self, "ip_filters")
 
     @property
     @pulumi.getter
@@ -298,6 +306,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             force_destroy=self.force_destroy,
             hierarchical_namespaces=self.hierarchical_namespaces,
             id=self.id,
+            ip_filters=self.ip_filters,
             labels=self.labels,
             lifecycle_rules=self.lifecycle_rules,
             location=self.location,
@@ -360,6 +369,7 @@ def get_bucket(name: Optional[builtins.str] = None,
         force_destroy=pulumi.get(__ret__, 'force_destroy'),
         hierarchical_namespaces=pulumi.get(__ret__, 'hierarchical_namespaces'),
         id=pulumi.get(__ret__, 'id'),
+        ip_filters=pulumi.get(__ret__, 'ip_filters'),
         labels=pulumi.get(__ret__, 'labels'),
         lifecycle_rules=pulumi.get(__ret__, 'lifecycle_rules'),
         location=pulumi.get(__ret__, 'location'),
@@ -419,6 +429,7 @@ def get_bucket_output(name: Optional[pulumi.Input[builtins.str]] = None,
         force_destroy=pulumi.get(__response__, 'force_destroy'),
         hierarchical_namespaces=pulumi.get(__response__, 'hierarchical_namespaces'),
         id=pulumi.get(__response__, 'id'),
+        ip_filters=pulumi.get(__response__, 'ip_filters'),
         labels=pulumi.get(__response__, 'labels'),
         lifecycle_rules=pulumi.get(__response__, 'lifecycle_rules'),
         location=pulumi.get(__response__, 'location'),

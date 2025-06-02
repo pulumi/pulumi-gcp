@@ -14287,7 +14287,7 @@ type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
 	//
 	// > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoringService` and `loggingService`.
 	OauthScopes []string `pulumi:"oauthScopes"`
-	// The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+	// The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -14325,7 +14325,7 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
 	//
 	// > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoringService` and `loggingService`.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	// The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+	// The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
@@ -14451,7 +14451,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) OauthScopes() p
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
-// The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+// The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
@@ -14568,7 +14568,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) OauthScopes(
 	}).(pulumi.StringArrayOutput)
 }
 
-// The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+// The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *string {
 		if v == nil {

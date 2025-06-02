@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.SecretManager
     public static class GetRegionalSecretVersion
     {
         /// <summary>
+        /// subcategory: "Secret Manager"
+        /// description: |-
+        ///   Get a Secret Manager regional secret's version.
+        /// ---
+        /// 
         /// Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
         /// 
         /// ## Example Usage
@@ -37,6 +42,11 @@ namespace Pulumi.Gcp.SecretManager
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionalSecretVersionResult>("gcp:secretmanager/getRegionalSecretVersion:getRegionalSecretVersion", args ?? new GetRegionalSecretVersionArgs(), options.WithDefaults());
 
         /// <summary>
+        /// subcategory: "Secret Manager"
+        /// description: |-
+        ///   Get a Secret Manager regional secret's version.
+        /// ---
+        /// 
         /// Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
         /// 
         /// ## Example Usage
@@ -62,6 +72,11 @@ namespace Pulumi.Gcp.SecretManager
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionalSecretVersionResult>("gcp:secretmanager/getRegionalSecretVersion:getRegionalSecretVersion", args ?? new GetRegionalSecretVersionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// subcategory: "Secret Manager"
+        /// description: |-
+        ///   Get a Secret Manager regional secret's version.
+        /// ---
+        /// 
         /// Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
         /// 
         /// ## Example Usage

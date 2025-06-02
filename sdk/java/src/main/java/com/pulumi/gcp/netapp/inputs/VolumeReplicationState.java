@@ -6,6 +6,7 @@ package com.pulumi.gcp.netapp.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.netapp.inputs.VolumeReplicationDestinationVolumeParametersArgs;
+import com.pulumi.gcp.netapp.inputs.VolumeReplicationHybridPeeringDetailArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeReplicationTransferStatArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -142,6 +143,38 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<Boolean>> healthy() {
         return Optional.ofNullable(this.healthy);
+    }
+
+    /**
+     * HybridPeeringDetails contains details about the hybrid peering.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="hybridPeeringDetails")
+    private @Nullable Output<List<VolumeReplicationHybridPeeringDetailArgs>> hybridPeeringDetails;
+
+    /**
+     * @return HybridPeeringDetails contains details about the hybrid peering.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<VolumeReplicationHybridPeeringDetailArgs>>> hybridPeeringDetails() {
+        return Optional.ofNullable(this.hybridPeeringDetails);
+    }
+
+    /**
+     * Hybrid replication type.
+     * 
+     */
+    @Import(name="hybridReplicationType")
+    private @Nullable Output<String> hybridReplicationType;
+
+    /**
+     * @return Hybrid replication type.
+     * 
+     */
+    public Optional<Output<String>> hybridReplicationType() {
+        return Optional.ofNullable(this.hybridReplicationType);
     }
 
     /**
@@ -406,6 +439,8 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
         this.effectiveLabels = $.effectiveLabels;
         this.forceStopping = $.forceStopping;
         this.healthy = $.healthy;
+        this.hybridPeeringDetails = $.hybridPeeringDetails;
+        this.hybridReplicationType = $.hybridReplicationType;
         this.labels = $.labels;
         this.location = $.location;
         this.mirrorState = $.mirrorState;
@@ -607,6 +642,61 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
          */
         public Builder healthy(Boolean healthy) {
             return healthy(Output.of(healthy));
+        }
+
+        /**
+         * @param hybridPeeringDetails HybridPeeringDetails contains details about the hybrid peering.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridPeeringDetails(@Nullable Output<List<VolumeReplicationHybridPeeringDetailArgs>> hybridPeeringDetails) {
+            $.hybridPeeringDetails = hybridPeeringDetails;
+            return this;
+        }
+
+        /**
+         * @param hybridPeeringDetails HybridPeeringDetails contains details about the hybrid peering.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridPeeringDetails(List<VolumeReplicationHybridPeeringDetailArgs> hybridPeeringDetails) {
+            return hybridPeeringDetails(Output.of(hybridPeeringDetails));
+        }
+
+        /**
+         * @param hybridPeeringDetails HybridPeeringDetails contains details about the hybrid peering.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridPeeringDetails(VolumeReplicationHybridPeeringDetailArgs... hybridPeeringDetails) {
+            return hybridPeeringDetails(List.of(hybridPeeringDetails));
+        }
+
+        /**
+         * @param hybridReplicationType Hybrid replication type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridReplicationType(@Nullable Output<String> hybridReplicationType) {
+            $.hybridReplicationType = hybridReplicationType;
+            return this;
+        }
+
+        /**
+         * @param hybridReplicationType Hybrid replication type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridReplicationType(String hybridReplicationType) {
+            return hybridReplicationType(Output.of(hybridReplicationType));
         }
 
         /**

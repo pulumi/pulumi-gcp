@@ -36,6 +36,21 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * List of pipeline options that should be used by the job. An example value is `[&#34;numberOfWorkerHarnessThreads=20&#34;]`.
+     * 
+     */
+    @Import(name="additionalPipelineOptions")
+    private @Nullable Output<List<String>> additionalPipelineOptions;
+
+    /**
+     * @return List of pipeline options that should be used by the job. An example value is `[&#34;numberOfWorkerHarnessThreads=20&#34;]`.
+     * 
+     */
+    public Optional<Output<List<String>>> additionalPipelineOptions() {
+        return Optional.ofNullable(this.additionalPipelineOptions);
+    }
+
+    /**
      * The algorithm to use for autoscaling.
      * 
      */
@@ -402,6 +417,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
 
     private FlexTemplateJobArgs(FlexTemplateJobArgs $) {
         this.additionalExperiments = $.additionalExperiments;
+        this.additionalPipelineOptions = $.additionalPipelineOptions;
         this.autoscalingAlgorithm = $.autoscalingAlgorithm;
         this.containerSpecGcsPath = $.containerSpecGcsPath;
         this.enableStreamingEngine = $.enableStreamingEngine;
@@ -474,6 +490,37 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder additionalExperiments(String... additionalExperiments) {
             return additionalExperiments(List.of(additionalExperiments));
+        }
+
+        /**
+         * @param additionalPipelineOptions List of pipeline options that should be used by the job. An example value is `[&#34;numberOfWorkerHarnessThreads=20&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalPipelineOptions(@Nullable Output<List<String>> additionalPipelineOptions) {
+            $.additionalPipelineOptions = additionalPipelineOptions;
+            return this;
+        }
+
+        /**
+         * @param additionalPipelineOptions List of pipeline options that should be used by the job. An example value is `[&#34;numberOfWorkerHarnessThreads=20&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalPipelineOptions(List<String> additionalPipelineOptions) {
+            return additionalPipelineOptions(Output.of(additionalPipelineOptions));
+        }
+
+        /**
+         * @param additionalPipelineOptions List of pipeline options that should be used by the job. An example value is `[&#34;numberOfWorkerHarnessThreads=20&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalPipelineOptions(String... additionalPipelineOptions) {
+            return additionalPipelineOptions(List.of(additionalPipelineOptions));
         }
 
         /**

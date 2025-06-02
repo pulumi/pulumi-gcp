@@ -29,6 +29,7 @@ public final class GetInstanceResult {
      * 
      */
     private String id;
+    private String instanceType;
     private Map<String,String> labels;
     private String name;
     private Integer numNodes;
@@ -65,6 +66,9 @@ public final class GetInstanceResult {
      */
     public String id() {
         return this.id;
+    }
+    public String instanceType() {
+        return this.instanceType;
     }
     public Map<String,String> labels() {
         return this.labels;
@@ -105,6 +109,7 @@ public final class GetInstanceResult {
         private Map<String,String> effectiveLabels;
         private Boolean forceDestroy;
         private String id;
+        private String instanceType;
         private Map<String,String> labels;
         private String name;
         private Integer numNodes;
@@ -123,6 +128,7 @@ public final class GetInstanceResult {
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.forceDestroy = defaults.forceDestroy;
     	      this.id = defaults.id;
+    	      this.instanceType = defaults.instanceType;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.numNodes = defaults.numNodes;
@@ -196,6 +202,14 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder instanceType(String instanceType) {
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "instanceType");
+            }
+            this.instanceType = instanceType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "labels");
@@ -259,6 +273,7 @@ public final class GetInstanceResult {
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.forceDestroy = forceDestroy;
             _resultValue.id = id;
+            _resultValue.instanceType = instanceType;
             _resultValue.labels = labels;
             _resultValue.name = name;
             _resultValue.numNodes = numNodes;

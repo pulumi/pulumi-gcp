@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
         /// <summary>
-        /// The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+        /// The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
         /// </summary>
         public readonly string? ServiceAccount;
         /// <summary>

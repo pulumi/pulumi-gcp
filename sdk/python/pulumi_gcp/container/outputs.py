@@ -4805,7 +4805,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         :param Sequence[builtins.str] oauth_scopes: Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
                
                > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoring_service` and `logging_service`.
-        :param builtins.str service_account: The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+        :param builtins.str service_account: The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs' upgrade_settings: Specifies the upgrade settings for NAP created node pools
         """
@@ -4894,7 +4894,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[builtins.str]:
         """
-        The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+        The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
         """
         return pulumi.get(self, "service_account")
 

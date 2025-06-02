@@ -31,6 +31,7 @@ class VolumeArgs:
                  deletion_policy: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  export_policy: Optional[pulumi.Input['VolumeExportPolicyArgs']] = None,
+                 hybrid_replication_parameters: Optional[pulumi.Input['VolumeHybridReplicationParametersArgs']] = None,
                  kerberos_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  large_capacity: Optional[pulumi.Input[builtins.bool]] = None,
@@ -61,6 +62,8 @@ class VolumeArgs:
                Possible values: DEFAULT, FORCE.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input['VolumeExportPolicyArgs'] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
+               Structure is documented below.
+        :param pulumi.Input['VolumeHybridReplicationParametersArgs'] hybrid_replication_parameters: The Hybrid Replication parameters for the volume.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -106,6 +109,8 @@ class VolumeArgs:
             pulumi.set(__self__, "description", description)
         if export_policy is not None:
             pulumi.set(__self__, "export_policy", export_policy)
+        if hybrid_replication_parameters is not None:
+            pulumi.set(__self__, "hybrid_replication_parameters", hybrid_replication_parameters)
         if kerberos_enabled is not None:
             pulumi.set(__self__, "kerberos_enabled", kerberos_enabled)
         if labels is not None:
@@ -248,6 +253,19 @@ class VolumeArgs:
     @export_policy.setter
     def export_policy(self, value: Optional[pulumi.Input['VolumeExportPolicyArgs']]):
         pulumi.set(self, "export_policy", value)
+
+    @property
+    @pulumi.getter(name="hybridReplicationParameters")
+    def hybrid_replication_parameters(self) -> Optional[pulumi.Input['VolumeHybridReplicationParametersArgs']]:
+        """
+        The Hybrid Replication parameters for the volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hybrid_replication_parameters")
+
+    @hybrid_replication_parameters.setter
+    def hybrid_replication_parameters(self, value: Optional[pulumi.Input['VolumeHybridReplicationParametersArgs']]):
+        pulumi.set(self, "hybrid_replication_parameters", value)
 
     @property
     @pulumi.getter(name="kerberosEnabled")
@@ -448,6 +466,7 @@ class _VolumeState:
                  encryption_type: Optional[pulumi.Input[builtins.str]] = None,
                  export_policy: Optional[pulumi.Input['VolumeExportPolicyArgs']] = None,
                  has_replication: Optional[pulumi.Input[builtins.bool]] = None,
+                 hybrid_replication_parameters: Optional[pulumi.Input['VolumeHybridReplicationParametersArgs']] = None,
                  kerberos_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  kms_config: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -496,6 +515,8 @@ class _VolumeState:
         :param pulumi.Input['VolumeExportPolicyArgs'] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] has_replication: Indicates whether the volume is part of a volume replication relationship.
+        :param pulumi.Input['VolumeHybridReplicationParametersArgs'] hybrid_replication_parameters: The Hybrid Replication parameters for the volume.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
         :param pulumi.Input[builtins.str] kms_config: Reports the CMEK policy resurce name being used for volume encryption. Inherited from storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -568,6 +589,8 @@ class _VolumeState:
             pulumi.set(__self__, "export_policy", export_policy)
         if has_replication is not None:
             pulumi.set(__self__, "has_replication", has_replication)
+        if hybrid_replication_parameters is not None:
+            pulumi.set(__self__, "hybrid_replication_parameters", hybrid_replication_parameters)
         if kerberos_enabled is not None:
             pulumi.set(__self__, "kerberos_enabled", kerberos_enabled)
         if kms_config is not None:
@@ -765,6 +788,19 @@ class _VolumeState:
     @has_replication.setter
     def has_replication(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "has_replication", value)
+
+    @property
+    @pulumi.getter(name="hybridReplicationParameters")
+    def hybrid_replication_parameters(self) -> Optional[pulumi.Input['VolumeHybridReplicationParametersArgs']]:
+        """
+        The Hybrid Replication parameters for the volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hybrid_replication_parameters")
+
+    @hybrid_replication_parameters.setter
+    def hybrid_replication_parameters(self, value: Optional[pulumi.Input['VolumeHybridReplicationParametersArgs']]):
+        pulumi.set(self, "hybrid_replication_parameters", value)
 
     @property
     @pulumi.getter(name="kerberosEnabled")
@@ -1157,6 +1193,7 @@ class Volume(pulumi.CustomResource):
                  deletion_policy: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  export_policy: Optional[pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
+                 hybrid_replication_parameters: Optional[pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']]] = None,
                  kerberos_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  large_capacity: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1250,6 +1287,8 @@ class Volume(pulumi.CustomResource):
                Possible values: DEFAULT, FORCE.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
+               Structure is documented below.
+        :param pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']] hybrid_replication_parameters: The Hybrid Replication parameters for the volume.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -1376,6 +1415,7 @@ class Volume(pulumi.CustomResource):
                  deletion_policy: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  export_policy: Optional[pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
+                 hybrid_replication_parameters: Optional[pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']]] = None,
                  kerberos_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  large_capacity: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1410,6 +1450,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["export_policy"] = export_policy
+            __props__.__dict__["hybrid_replication_parameters"] = hybrid_replication_parameters
             __props__.__dict__["kerberos_enabled"] = kerberos_enabled
             __props__.__dict__["labels"] = labels
             __props__.__dict__["large_capacity"] = large_capacity
@@ -1477,6 +1518,7 @@ class Volume(pulumi.CustomResource):
             encryption_type: Optional[pulumi.Input[builtins.str]] = None,
             export_policy: Optional[pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
             has_replication: Optional[pulumi.Input[builtins.bool]] = None,
+            hybrid_replication_parameters: Optional[pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']]] = None,
             kerberos_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             kms_config: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -1530,6 +1572,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] has_replication: Indicates whether the volume is part of a volume replication relationship.
+        :param pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']] hybrid_replication_parameters: The Hybrid Replication parameters for the volume.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
         :param pulumi.Input[builtins.str] kms_config: Reports the CMEK policy resurce name being used for volume encryption. Inherited from storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -1595,6 +1639,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["encryption_type"] = encryption_type
         __props__.__dict__["export_policy"] = export_policy
         __props__.__dict__["has_replication"] = has_replication
+        __props__.__dict__["hybrid_replication_parameters"] = hybrid_replication_parameters
         __props__.__dict__["kerberos_enabled"] = kerberos_enabled
         __props__.__dict__["kms_config"] = kms_config
         __props__.__dict__["labels"] = labels
@@ -1719,6 +1764,15 @@ class Volume(pulumi.CustomResource):
         Indicates whether the volume is part of a volume replication relationship.
         """
         return pulumi.get(self, "has_replication")
+
+    @property
+    @pulumi.getter(name="hybridReplicationParameters")
+    def hybrid_replication_parameters(self) -> pulumi.Output[Optional['outputs.VolumeHybridReplicationParameters']]:
+        """
+        The Hybrid Replication parameters for the volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hybrid_replication_parameters")
 
     @property
     @pulumi.getter(name="kerberosEnabled")

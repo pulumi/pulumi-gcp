@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// The Compute NetworkFirewallPolicy with rules resource
+    /// 
     /// ## Example Usage
     /// 
     /// ### Compute Network Firewall Policy With Rules Full
@@ -71,12 +73,6 @@ namespace Pulumi.Gcp.Compute
     ///         Parent = "organizations/123456789",
     ///         Description = "my description",
     ///         ThreatPreventionProfile = securityProfile1.Id,
-    ///     });
-    /// 
-    ///     var network = new Gcp.Compute.Network("network", new()
-    ///     {
-    ///         Name = "network",
-    ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var primary = new Gcp.Compute.NetworkFirewallPolicyWithRules("primary", new()
@@ -212,66 +208,6 @@ namespace Pulumi.Gcp.Compute
     ///                         new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
     ///                         {
     ///                             IpProtocol = "tcp",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleArgs
-    ///             {
-    ///                 Description = "network scope rule 1",
-    ///                 RuleName = "network scope 1",
-    ///                 Priority = 4000,
-    ///                 EnableLogging = false,
-    ///                 Action = "allow",
-    ///                 Direction = "INGRESS",
-    ///                 Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchArgs
-    ///                 {
-    ///                     SrcIpRanges = new[]
-    ///                     {
-    ///                         "11.100.0.1/32",
-    ///                     },
-    ///                     SrcNetworkScope = "VPC_NETWORKS",
-    ///                     SrcNetworks = new[]
-    ///                     {
-    ///                         network.Id,
-    ///                     },
-    ///                     Layer4Configs = new[]
-    ///                     {
-    ///                         new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
-    ///                         {
-    ///                             IpProtocol = "tcp",
-    ///                             Ports = new[]
-    ///                             {
-    ///                                 "8080",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleArgs
-    ///             {
-    ///                 Description = "network scope rule 2",
-    ///                 RuleName = "network scope 2",
-    ///                 Priority = 5000,
-    ///                 EnableLogging = false,
-    ///                 Action = "allow",
-    ///                 Direction = "EGRESS",
-    ///                 Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchArgs
-    ///                 {
-    ///                     DestIpRanges = new[]
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                     },
-    ///                     DestNetworkScope = "INTERNET",
-    ///                     Layer4Configs = new[]
-    ///                     {
-    ///                         new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
-    ///                         {
-    ///                             IpProtocol = "tcp",
-    ///                             Ports = new[]
-    ///                             {
-    ///                                 "8080",
-    ///                             },
     ///                         },
     ///                     },
     ///                 },

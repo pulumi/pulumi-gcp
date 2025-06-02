@@ -674,7 +674,7 @@ class ReleaseChannelSettingBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def product(self) -> pulumi.Output[Optional[builtins.str]]:
+    def product(self) -> pulumi.Output[builtins.str]:
         """
         Product type of the setting binding.
         Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.

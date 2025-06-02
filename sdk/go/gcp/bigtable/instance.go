@@ -11,9 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## +---
+// ## subcategory: "Cloud Bigtable"
 //
-// subcategory: "Cloud Bigtable"
 // description: |-
 //
 //	Creates a Google Bigtable instance.

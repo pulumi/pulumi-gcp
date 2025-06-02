@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// subcategory: "Secret Manager"
+// description: |-
+//
+//	List the Secret Manager Regional Secrets.
+//
+// ---
+//
 // Use this data source to list the Secret Manager Regional Secrets.
 //
 // ## Example Usage

@@ -32,12 +32,12 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
     ///     {
-    ///         ScopeId = "tf-test-scope_2067",
+    ///         ScopeId = "tf-test-scope_37118",
     ///     });
     /// 
     ///     var scopeRbacRoleBinding = new Gcp.GkeHub.ScopeRbacRoleBinding("scope_rbac_role_binding", new()
     ///     {
-    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_40785",
+    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_80332",
     ///         ScopeId = scope.ScopeId,
     ///         User = "test-email@gmail.com",
     ///         Role = new Gcp.GkeHub.Inputs.ScopeRbacRoleBindingRoleArgs

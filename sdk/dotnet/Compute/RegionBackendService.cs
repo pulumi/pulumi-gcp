@@ -563,6 +563,33 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Backend Service Dynamic Forwarding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "region-service",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         DynamicForwarding = new Gcp.Compute.Inputs.RegionBackendServiceDynamicForwardingArgs
+    ///         {
+    ///             IpPortSelection = new Gcp.Compute.Inputs.RegionBackendServiceDynamicForwardingIpPortSelectionArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RegionBackendService can be imported using any of these accepted formats:
@@ -675,6 +702,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        /// feature which together with Service Extension allows customized and complex routing logic.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("dynamicForwarding")]
+        public Output<Outputs.RegionBackendServiceDynamicForwarding?> DynamicForwarding { get; private set; } = null!;
 
         /// <summary>
         /// If true, enable Cloud CDN for this RegionBackendService.
@@ -1046,6 +1081,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        /// feature which together with Service Extension allows customized and complex routing logic.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dynamicForwarding")]
+        public Input<Inputs.RegionBackendServiceDynamicForwardingArgs>? DynamicForwarding { get; set; }
+
+        /// <summary>
         /// If true, enable Cloud CDN for this RegionBackendService.
         /// </summary>
         [Input("enableCdn")]
@@ -1362,6 +1405,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        /// feature which together with Service Extension allows customized and complex routing logic.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dynamicForwarding")]
+        public Input<Inputs.RegionBackendServiceDynamicForwardingGetArgs>? DynamicForwarding { get; set; }
 
         /// <summary>
         /// If true, enable Cloud CDN for this RegionBackendService.

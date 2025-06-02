@@ -17,14 +17,14 @@ public final class CertificateTemplatePredefinedValuesCaOptionsArgs extends com.
     public static final CertificateTemplatePredefinedValuesCaOptionsArgs Empty = new CertificateTemplatePredefinedValuesCaOptionsArgs();
 
     /**
-     * Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+     * Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
      * 
      */
     @Import(name="isCa")
     private @Nullable Output<Boolean> isCa;
 
     /**
-     * @return Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+     * @return Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
      * 
      */
     public Optional<Output<Boolean>> isCa() {
@@ -32,18 +32,58 @@ public final class CertificateTemplatePredefinedValuesCaOptionsArgs extends com.
     }
 
     /**
-     * Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+     * Optional. Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
+     * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
      * 
      */
     @Import(name="maxIssuerPathLength")
     private @Nullable Output<Integer> maxIssuerPathLength;
 
     /**
-     * @return Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+     * @return Optional. Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
+     * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
      * 
      */
     public Optional<Output<Integer>> maxIssuerPathLength() {
         return Optional.ofNullable(this.maxIssuerPathLength);
+    }
+
+    /**
+     * Optional. When true, the &#34;CA&#34; in Basic Constraints extension will be set to null and omitted from the CA certificate.
+     * If both `is_ca` and `null_ca` are unset, the &#34;CA&#34; in Basic Constraints extension will be set to false.
+     * Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+     * 
+     */
+    @Import(name="nullCa")
+    private @Nullable Output<Boolean> nullCa;
+
+    /**
+     * @return Optional. When true, the &#34;CA&#34; in Basic Constraints extension will be set to null and omitted from the CA certificate.
+     * If both `is_ca` and `null_ca` are unset, the &#34;CA&#34; in Basic Constraints extension will be set to false.
+     * Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+     * 
+     */
+    public Optional<Output<Boolean>> nullCa() {
+        return Optional.ofNullable(this.nullCa);
+    }
+
+    /**
+     * Optional. When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
+     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * the max path length will be omitted from the CA certificate.
+     * 
+     */
+    @Import(name="zeroMaxIssuerPathLength")
+    private @Nullable Output<Boolean> zeroMaxIssuerPathLength;
+
+    /**
+     * @return Optional. When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
+     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * the max path length will be omitted from the CA certificate.
+     * 
+     */
+    public Optional<Output<Boolean>> zeroMaxIssuerPathLength() {
+        return Optional.ofNullable(this.zeroMaxIssuerPathLength);
     }
 
     private CertificateTemplatePredefinedValuesCaOptionsArgs() {}
@@ -51,6 +91,8 @@ public final class CertificateTemplatePredefinedValuesCaOptionsArgs extends com.
     private CertificateTemplatePredefinedValuesCaOptionsArgs(CertificateTemplatePredefinedValuesCaOptionsArgs $) {
         this.isCa = $.isCa;
         this.maxIssuerPathLength = $.maxIssuerPathLength;
+        this.nullCa = $.nullCa;
+        this.zeroMaxIssuerPathLength = $.zeroMaxIssuerPathLength;
     }
 
     public static Builder builder() {
@@ -72,7 +114,7 @@ public final class CertificateTemplatePredefinedValuesCaOptionsArgs extends com.
         }
 
         /**
-         * @param isCa Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+         * @param isCa Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
          * 
          * @return builder
          * 
@@ -83,7 +125,7 @@ public final class CertificateTemplatePredefinedValuesCaOptionsArgs extends com.
         }
 
         /**
-         * @param isCa Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
+         * @param isCa Optional. Refers to the &#34;CA&#34; X.509 extension, which is a boolean value. When this value is true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
          * 
          * @return builder
          * 
@@ -93,7 +135,8 @@ public final class CertificateTemplatePredefinedValuesCaOptionsArgs extends com.
         }
 
         /**
-         * @param maxIssuerPathLength Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+         * @param maxIssuerPathLength Optional. Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
          * 
          * @return builder
          * 
@@ -104,13 +147,64 @@ public final class CertificateTemplatePredefinedValuesCaOptionsArgs extends com.
         }
 
         /**
-         * @param maxIssuerPathLength Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
+         * @param maxIssuerPathLength Optional. Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
          * 
          * @return builder
          * 
          */
         public Builder maxIssuerPathLength(Integer maxIssuerPathLength) {
             return maxIssuerPathLength(Output.of(maxIssuerPathLength));
+        }
+
+        /**
+         * @param nullCa Optional. When true, the &#34;CA&#34; in Basic Constraints extension will be set to null and omitted from the CA certificate.
+         * If both `is_ca` and `null_ca` are unset, the &#34;CA&#34; in Basic Constraints extension will be set to false.
+         * Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nullCa(@Nullable Output<Boolean> nullCa) {
+            $.nullCa = nullCa;
+            return this;
+        }
+
+        /**
+         * @param nullCa Optional. When true, the &#34;CA&#34; in Basic Constraints extension will be set to null and omitted from the CA certificate.
+         * If both `is_ca` and `null_ca` are unset, the &#34;CA&#34; in Basic Constraints extension will be set to false.
+         * Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nullCa(Boolean nullCa) {
+            return nullCa(Output.of(nullCa));
+        }
+
+        /**
+         * @param zeroMaxIssuerPathLength Optional. When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
+         * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+         * the max path length will be omitted from the CA certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zeroMaxIssuerPathLength(@Nullable Output<Boolean> zeroMaxIssuerPathLength) {
+            $.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
+            return this;
+        }
+
+        /**
+         * @param zeroMaxIssuerPathLength Optional. When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
+         * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+         * the max path length will be omitted from the CA certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zeroMaxIssuerPathLength(Boolean zeroMaxIssuerPathLength) {
+            return zeroMaxIssuerPathLength(Output.of(zeroMaxIssuerPathLength));
         }
 
         public CertificateTemplatePredefinedValuesCaOptionsArgs build() {

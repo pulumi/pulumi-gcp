@@ -17,6 +17,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AclAclEntry',
     'ClusterCapacityConfig',
     'ClusterGcpConfig',
     'ClusterGcpConfigAccessConfig',
@@ -28,6 +29,86 @@ __all__ = [
     'ConnectClusterGcpConfigAccessConfigNetworkConfig',
     'ConnectorTaskRestartPolicy',
 ]
+
+@pulumi.output_type
+class AclAclEntry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "permissionType":
+            suggest = "permission_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclAclEntry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclAclEntry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclAclEntry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 operation: builtins.str,
+                 principal: builtins.str,
+                 host: Optional[builtins.str] = None,
+                 permission_type: Optional[builtins.str] = None):
+        """
+        :param builtins.str operation: The operation type. Allowed values are (case insensitive): ALL, READ,
+               WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
+               ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols
+               for valid combinations of resource_type and operation for different Kafka API requests.
+        :param builtins.str principal: The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard "User:*" to refer to all users.
+        :param builtins.str host: The host. Must be set to "*" for Managed Service for Apache Kafka.
+               
+               - - -
+        :param builtins.str permission_type: The permission type. Accepted values are (case insensitive): ALLOW, DENY.
+        """
+        pulumi.set(__self__, "operation", operation)
+        pulumi.set(__self__, "principal", principal)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if permission_type is not None:
+            pulumi.set(__self__, "permission_type", permission_type)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> builtins.str:
+        """
+        The operation type. Allowed values are (case insensitive): ALL, READ,
+        WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
+        ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols
+        for valid combinations of resource_type and operation for different Kafka API requests.
+        """
+        return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter
+    def principal(self) -> builtins.str:
+        """
+        The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard "User:*" to refer to all users.
+        """
+        return pulumi.get(self, "principal")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[builtins.str]:
+        """
+        The host. Must be set to "*" for Managed Service for Apache Kafka.
+
+        - - -
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="permissionType")
+    def permission_type(self) -> Optional[builtins.str]:
+        """
+        The permission type. Accepted values are (case insensitive): ALLOW, DENY.
+        """
+        return pulumi.get(self, "permission_type")
+
 
 @pulumi.output_type
 class ClusterCapacityConfig(dict):

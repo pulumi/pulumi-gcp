@@ -228,6 +228,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly hierarchicalNamespace!: pulumi.Output<outputs.storage.BucketHierarchicalNamespace | undefined>;
     /**
+     * The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+     */
+    public readonly ipFilter!: pulumi.Output<outputs.storage.BucketIpFilter | undefined>;
+    /**
      * A map of key/value label pairs to assign to the bucket.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -338,6 +342,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["encryption"] = state ? state.encryption : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["hierarchicalNamespace"] = state ? state.hierarchicalNamespace : undefined;
+            resourceInputs["ipFilter"] = state ? state.ipFilter : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -372,6 +377,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["hierarchicalNamespace"] = args ? args.hierarchicalNamespace : undefined;
+            resourceInputs["ipFilter"] = args ? args.ipFilter : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -441,6 +447,10 @@ export interface BucketState {
      * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
      */
     hierarchicalNamespace?: pulumi.Input<inputs.storage.BucketHierarchicalNamespace>;
+    /**
+     * The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+     */
+    ipFilter?: pulumi.Input<inputs.storage.BucketIpFilter>;
     /**
      * A map of key/value label pairs to assign to the bucket.
      */
@@ -569,6 +579,10 @@ export interface BucketArgs {
      * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
      */
     hierarchicalNamespace?: pulumi.Input<inputs.storage.BucketHierarchicalNamespace>;
+    /**
+     * The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+     */
+    ipFilter?: pulumi.Input<inputs.storage.BucketIpFilter>;
     /**
      * A map of key/value label pairs to assign to the bucket.
      */

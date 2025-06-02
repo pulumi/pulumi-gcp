@@ -138,9 +138,11 @@ import (
 //				return err
 //			}
 //			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
-//				Description:       pulumi.String("Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction."),
-//				ProjectId:         pulumi.String(current.Project),
-//				DisableVpcPeering: pulumi.Bool(true),
+//				Description:             pulumi.String("Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction."),
+//				ProjectId:               pulumi.String(current.Project),
+//				ApiConsumerDataLocation: pulumi.String("europe-west1"),
+//				BillingType:             pulumi.String("PAYG"),
+//				DisableVpcPeering:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

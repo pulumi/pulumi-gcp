@@ -626,7 +626,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
     /**
-     * The custom keys configuration of the cluster.
+     * The custom keys configuration of the cluster Structure is documented below.
      */
     public readonly userManagedKeysConfig!: pulumi.Output<outputs.container.ClusterUserManagedKeysConfig | undefined>;
     /**
@@ -1306,7 +1306,7 @@ export interface ClusterState {
      */
     tpuIpv4CidrBlock?: pulumi.Input<string>;
     /**
-     * The custom keys configuration of the cluster.
+     * The custom keys configuration of the cluster Structure is documented below.
      */
     userManagedKeysConfig?: pulumi.Input<inputs.container.ClusterUserManagedKeysConfig>;
     /**
@@ -1754,7 +1754,7 @@ export interface ClusterArgs {
      */
     tpuConfig?: pulumi.Input<inputs.container.ClusterTpuConfig>;
     /**
-     * The custom keys configuration of the cluster.
+     * The custom keys configuration of the cluster Structure is documented below.
      */
     userManagedKeysConfig?: pulumi.Input<inputs.container.ClusterUserManagedKeysConfig>;
     /**

@@ -38,6 +38,18 @@ __all__ = [
     'ApplicationUpstreamEgressPolicyArgsDict',
     'ApplicationUpstreamNetworkArgs',
     'ApplicationUpstreamNetworkArgsDict',
+    'SecurityGatewayApplicationEndpointMatcherArgs',
+    'SecurityGatewayApplicationEndpointMatcherArgsDict',
+    'SecurityGatewayApplicationIamBindingConditionArgs',
+    'SecurityGatewayApplicationIamBindingConditionArgsDict',
+    'SecurityGatewayApplicationIamMemberConditionArgs',
+    'SecurityGatewayApplicationIamMemberConditionArgsDict',
+    'SecurityGatewayApplicationUpstreamArgs',
+    'SecurityGatewayApplicationUpstreamArgsDict',
+    'SecurityGatewayApplicationUpstreamEgressPolicyArgs',
+    'SecurityGatewayApplicationUpstreamEgressPolicyArgsDict',
+    'SecurityGatewayApplicationUpstreamNetworkArgs',
+    'SecurityGatewayApplicationUpstreamNetworkArgsDict',
     'SecurityGatewayHubArgs',
     'SecurityGatewayHubArgsDict',
     'SecurityGatewayHubInternetGatewayArgs',
@@ -616,6 +628,312 @@ elif False:
 
 @pulumi.input_type
 class ApplicationUpstreamNetworkArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] name: Required. Network name is of the format:
+               `projects/{project}/global/networks/{network}`
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        Required. Network name is of the format:
+        `projects/{project}/global/networks/{network}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class SecurityGatewayApplicationEndpointMatcherArgsDict(TypedDict):
+        hostname: pulumi.Input[builtins.str]
+        """
+        Required. Hostname of the application.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]
+        """
+        Optional. Ports of the application.
+
+        - - -
+        """
+elif False:
+    SecurityGatewayApplicationEndpointMatcherArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityGatewayApplicationEndpointMatcherArgs:
+    def __init__(__self__, *,
+                 hostname: pulumi.Input[builtins.str],
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None):
+        """
+        :param pulumi.Input[builtins.str] hostname: Required. Hostname of the application.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] ports: Optional. Ports of the application.
+               
+               - - -
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[builtins.str]:
+        """
+        Required. Hostname of the application.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]:
+        """
+        Optional. Ports of the application.
+
+        - - -
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]):
+        pulumi.set(self, "ports", value)
+
+
+if not MYPY:
+    class SecurityGatewayApplicationIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[builtins.str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    SecurityGatewayApplicationIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityGatewayApplicationIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class SecurityGatewayApplicationIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[builtins.str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    SecurityGatewayApplicationIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityGatewayApplicationIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class SecurityGatewayApplicationUpstreamArgsDict(TypedDict):
+        egress_policy: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamEgressPolicyArgsDict']]
+        """
+        Optional. Routing policy information.
+        Structure is documented below.
+        """
+        network: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamNetworkArgsDict']]
+        """
+        Network to forward traffic to.
+        Structure is documented below.
+        """
+elif False:
+    SecurityGatewayApplicationUpstreamArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityGatewayApplicationUpstreamArgs:
+    def __init__(__self__, *,
+                 egress_policy: Optional[pulumi.Input['SecurityGatewayApplicationUpstreamEgressPolicyArgs']] = None,
+                 network: Optional[pulumi.Input['SecurityGatewayApplicationUpstreamNetworkArgs']] = None):
+        """
+        :param pulumi.Input['SecurityGatewayApplicationUpstreamEgressPolicyArgs'] egress_policy: Optional. Routing policy information.
+               Structure is documented below.
+        :param pulumi.Input['SecurityGatewayApplicationUpstreamNetworkArgs'] network: Network to forward traffic to.
+               Structure is documented below.
+        """
+        if egress_policy is not None:
+            pulumi.set(__self__, "egress_policy", egress_policy)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter(name="egressPolicy")
+    def egress_policy(self) -> Optional[pulumi.Input['SecurityGatewayApplicationUpstreamEgressPolicyArgs']]:
+        """
+        Optional. Routing policy information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "egress_policy")
+
+    @egress_policy.setter
+    def egress_policy(self, value: Optional[pulumi.Input['SecurityGatewayApplicationUpstreamEgressPolicyArgs']]):
+        pulumi.set(self, "egress_policy", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['SecurityGatewayApplicationUpstreamNetworkArgs']]:
+        """
+        Network to forward traffic to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['SecurityGatewayApplicationUpstreamNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+
+if not MYPY:
+    class SecurityGatewayApplicationUpstreamEgressPolicyArgsDict(TypedDict):
+        regions: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        """
+        Required. List of regions where the application sends traffic to.
+        """
+elif False:
+    SecurityGatewayApplicationUpstreamEgressPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityGatewayApplicationUpstreamEgressPolicyArgs:
+    def __init__(__self__, *,
+                 regions: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] regions: Required. List of regions where the application sends traffic to.
+        """
+        pulumi.set(__self__, "regions", regions)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+        """
+        Required. List of regions where the application sends traffic to.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        pulumi.set(self, "regions", value)
+
+
+if not MYPY:
+    class SecurityGatewayApplicationUpstreamNetworkArgsDict(TypedDict):
+        name: pulumi.Input[builtins.str]
+        """
+        Required. Network name is of the format:
+        `projects/{project}/global/networks/{network}`
+        """
+elif False:
+    SecurityGatewayApplicationUpstreamNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityGatewayApplicationUpstreamNetworkArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[builtins.str]):
         """
