@@ -384,6 +384,14 @@ import * as utilities from "../utilities";
  *             },
  *         ],
  *     }],
+ *     logConfig: {
+ *         enable: true,
+ *         optionalMode: "CUSTOM",
+ *         optionalFields: [
+ *             "orca_load_report",
+ *             "tls.protocol",
+ *         ],
+ *     },
  * });
  * ```
  * ### Backend Service Tls Settings

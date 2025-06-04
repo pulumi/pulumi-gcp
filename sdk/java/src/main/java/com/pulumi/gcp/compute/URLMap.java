@@ -1377,6 +1377,257 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Http Filter Configs
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapTestArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("default-backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var service_a = new BackendService("service-a", BackendServiceArgs.builder()
+ *             .name("service-a-backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("Test for httpFilterConfigs in route rules")
+ *             .defaultService(default_.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(default_.id())
+ *                 .routeRules(URLMapPathMatcherRouteRuleArgs.builder()
+ *                     .priority(1)
+ *                     .service(service_a.id())
+ *                     .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                         .prefixMatch("/")
+ *                         .ignoreCase(true)
+ *                         .build())
+ *                     .httpFilterConfigs(URLMapPathMatcherRouteRuleHttpFilterConfigArgs.builder()
+ *                         .filterName("envoy.wasm")
+ *                         .configTypeUrl("type.googleapis.com/google.protobuf.Struct")
+ *                         .config(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("name", "my-filter"),
+ *                                 jsonProperty("root_id", "my_root_id"),
+ *                                 jsonProperty("vm_config", jsonObject(
+ *                                     jsonProperty("vm_id", "my_vm_id"),
+ *                                     jsonProperty("runtime", "envoy.wasm.runtime.v8"),
+ *                                     jsonProperty("code", jsonObject(
+ *                                         jsonProperty("local", jsonObject(
+ *                                             jsonProperty("inline_string", "const WASM_BINARY = '...'")
+ *                                         ))
+ *                                     ))
+ *                                 ))
+ *                             )))
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .tests(URLMapTestArgs.builder()
+ *                 .service(default_.id())
+ *                 .host("mysite.com")
+ *                 .path("/")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Http Filter Metadata
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapTestArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("default-backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var service_a = new BackendService("service-a", BackendServiceArgs.builder()
+ *             .name("service-a-backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var service_b = new BackendService("service-b", BackendServiceArgs.builder()
+ *             .name("service-b-backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("Test for httpFilterMetadata in route rules")
+ *             .defaultService(default_.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(default_.id())
+ *                 .routeRules(                
+ *                     URLMapPathMatcherRouteRuleArgs.builder()
+ *                         .priority(1)
+ *                         .service(service_a.id())
+ *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                             .prefixMatch("/")
+ *                             .ignoreCase(true)
+ *                             .build())
+ *                         .httpFilterMetadatas(URLMapPathMatcherRouteRuleHttpFilterMetadataArgs.builder()
+ *                             .filterName("envoy.wasm")
+ *                             .configTypeUrl("type.googleapis.com/google.protobuf.Struct")
+ *                             .config(serializeJson(
+ *                                 jsonObject(
+ *                                     jsonProperty("fields", jsonObject(
+ *                                         jsonProperty("timeout", jsonObject(
+ *                                             jsonProperty("string_value", "30s")
+ *                                         )),
+ *                                         jsonProperty("retries", jsonObject(
+ *                                             jsonProperty("number_value", 3)
+ *                                         )),
+ *                                         jsonProperty("debug", jsonObject(
+ *                                             jsonProperty("bool_value", true)
+ *                                         ))
+ *                                     ))
+ *                                 )))
+ *                             .build())
+ *                         .build(),
+ *                     URLMapPathMatcherRouteRuleArgs.builder()
+ *                         .priority(2)
+ *                         .service(service_b.id())
+ *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                             .prefixMatch("/api")
+ *                             .ignoreCase(true)
+ *                             .build())
+ *                         .httpFilterMetadatas(URLMapPathMatcherRouteRuleHttpFilterMetadataArgs.builder()
+ *                             .filterName("envoy.rate_limit")
+ *                             .configTypeUrl("type.googleapis.com/google.protobuf.Struct")
+ *                             .config(serializeJson(
+ *                                 jsonObject(
+ *                                     jsonProperty("fields", jsonObject(
+ *                                         jsonProperty("requests_per_unit", jsonObject(
+ *                                             jsonProperty("number_value", 100)
+ *                                         )),
+ *                                         jsonProperty("unit", jsonObject(
+ *                                             jsonProperty("string_value", "MINUTE")
+ *                                         ))
+ *                                     ))
+ *                                 )))
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .tests(URLMapTestArgs.builder()
+ *                 .service(default_.id())
+ *                 .host("mysite.com")
+ *                 .path("/")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -122,7 +122,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * Type of the disk attached to each node
-     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-standard&#39;
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39;
      * 
      */
     @Import(name="diskType")
@@ -130,7 +130,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Type of the disk attached to each node
-     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-standard&#39;
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39;
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -999,7 +999,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param diskType Type of the disk attached to each node
-         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-standard&#39;
+         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39;
          * 
          * @return builder
          * 
@@ -1011,7 +1011,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param diskType Type of the disk attached to each node
-         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-standard&#39;
+         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39;
          * 
          * @return builder
          * 

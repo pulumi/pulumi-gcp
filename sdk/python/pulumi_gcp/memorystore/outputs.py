@@ -1079,7 +1079,7 @@ class InstanceGcsSource(dict):
                  uris: Sequence[builtins.str]):
         """
         :param Sequence[builtins.str] uris: URIs of the GCS objects to import.
-               Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+               Example: gs://bucket1/object1, gs://bucket2/folder2/object2
         """
         pulumi.set(__self__, "uris", uris)
 
@@ -1088,7 +1088,7 @@ class InstanceGcsSource(dict):
     def uris(self) -> Sequence[builtins.str]:
         """
         URIs of the GCS objects to import.
-        Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+        Example: gs://bucket1/object1, gs://bucket2/folder2/object2
         """
         return pulumi.get(self, "uris")
 
@@ -1409,7 +1409,7 @@ class InstanceManagedBackupSource(dict):
     def __init__(__self__, *,
                  backup: builtins.str):
         """
-        :param builtins.str backup: Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        :param builtins.str backup: Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         """
         pulumi.set(__self__, "backup", backup)
 
@@ -1417,7 +1417,7 @@ class InstanceManagedBackupSource(dict):
     @pulumi.getter
     def backup(self) -> builtins.str:
         """
-        Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         """
         return pulumi.get(self, "backup")
 
@@ -2604,7 +2604,7 @@ class GetInstanceGcsSourceResult(dict):
                  uris: Sequence[builtins.str]):
         """
         :param Sequence[builtins.str] uris: URIs of the GCS objects to import.
-               Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+               Example: gs://bucket1/object1, gs://bucket2/folder2/object2
         """
         pulumi.set(__self__, "uris", uris)
 
@@ -2613,7 +2613,7 @@ class GetInstanceGcsSourceResult(dict):
     def uris(self) -> Sequence[builtins.str]:
         """
         URIs of the GCS objects to import.
-        Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+        Example: gs://bucket1/object1, gs://bucket2/folder2/object2
         """
         return pulumi.get(self, "uris")
 
@@ -2848,7 +2848,7 @@ class GetInstanceManagedBackupSourceResult(dict):
     def __init__(__self__, *,
                  backup: builtins.str):
         """
-        :param builtins.str backup: Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        :param builtins.str backup: Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
         """
         pulumi.set(__self__, "backup", backup)
 
@@ -2856,7 +2856,7 @@ class GetInstanceManagedBackupSourceResult(dict):
     @pulumi.getter
     def backup(self) -> builtins.str:
         """
-        Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
         """
         return pulumi.get(self, "backup")
 

@@ -648,6 +648,14 @@ import (
 //						},
 //					},
 //				},
+//				LogConfig: &compute.BackendServiceLogConfigArgs{
+//					Enable:       pulumi.Bool(true),
+//					OptionalMode: pulumi.String("CUSTOM"),
+//					OptionalFields: pulumi.StringArray{
+//						pulumi.String("orca_load_report"),
+//						pulumi.String("tls.protocol"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

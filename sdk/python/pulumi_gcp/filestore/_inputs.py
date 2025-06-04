@@ -205,19 +205,29 @@ if not MYPY:
         The replication role.
         Structure is documented below.
         """
+        role: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The replication role.
+        """
 elif False:
     InstanceEffectiveReplicationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceEffectiveReplicationArgs:
     def __init__(__self__, *,
-                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]] = None):
+                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]] = None,
+                 role: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]] replicas: The replication role.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] role: (Output)
+               The replication role.
         """
         if replicas is not None:
             pulumi.set(__self__, "replicas", replicas)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -232,6 +242,19 @@ class InstanceEffectiveReplicationArgs:
     def replicas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]]):
         pulumi.set(self, "replicas", value)
 
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The replication role.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "role", value)
+
 
 if not MYPY:
     class InstanceEffectiveReplicationReplicaArgsDict(TypedDict):
@@ -241,6 +264,10 @@ if not MYPY:
         Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        """
+        peer_instance: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The peer instance.
         """
         state: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -259,6 +286,7 @@ elif False:
 class InstanceEffectiveReplicationReplicaArgs:
     def __init__(__self__, *,
                  last_active_sync_time: Optional[pulumi.Input[builtins.str]] = None,
+                 peer_instance: Optional[pulumi.Input[builtins.str]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  state_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
@@ -266,6 +294,7 @@ class InstanceEffectiveReplicationReplicaArgs:
                Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param pulumi.Input[builtins.str] peer_instance: The peer instance.
         :param pulumi.Input[builtins.str] state: (Output)
                Output only. The replica state
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] state_reasons: (Output)
@@ -273,6 +302,8 @@ class InstanceEffectiveReplicationReplicaArgs:
         """
         if last_active_sync_time is not None:
             pulumi.set(__self__, "last_active_sync_time", last_active_sync_time)
+        if peer_instance is not None:
+            pulumi.set(__self__, "peer_instance", peer_instance)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if state_reasons is not None:
@@ -292,6 +323,18 @@ class InstanceEffectiveReplicationReplicaArgs:
     @last_active_sync_time.setter
     def last_active_sync_time(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "last_active_sync_time", value)
+
+    @property
+    @pulumi.getter(name="peerInstance")
+    def peer_instance(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The peer instance.
+        """
+        return pulumi.get(self, "peer_instance")
+
+    @peer_instance.setter
+    def peer_instance(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "peer_instance", value)
 
     @property
     @pulumi.getter

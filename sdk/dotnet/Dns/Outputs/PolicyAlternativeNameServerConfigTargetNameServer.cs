@@ -18,6 +18,8 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
         /// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
         /// Possible values are: `default`, `private`.
+        /// 
+        /// &lt;a name="nested_dns64_config"&gt;&lt;/a&gt;The `dns64_config` block supports:
         /// </summary>
         public readonly string? ForwardingPath;
         /// <summary>

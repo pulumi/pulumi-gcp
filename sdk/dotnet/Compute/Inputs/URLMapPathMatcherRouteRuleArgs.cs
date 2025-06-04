@@ -29,6 +29,38 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("headerAction")]
         public Input<Inputs.URLMapPathMatcherRouteRuleHeaderActionArgs>? HeaderAction { get; set; }
 
+        [Input("httpFilterConfigs")]
+        private InputList<Inputs.URLMapPathMatcherRouteRuleHttpFilterConfigArgs>? _httpFilterConfigs;
+
+        /// <summary>
+        /// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+        /// httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// See ForwardingRule for more details.
+        /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.URLMapPathMatcherRouteRuleHttpFilterConfigArgs> HttpFilterConfigs
+        {
+            get => _httpFilterConfigs ?? (_httpFilterConfigs = new InputList<Inputs.URLMapPathMatcherRouteRuleHttpFilterConfigArgs>());
+            set => _httpFilterConfigs = value;
+        }
+
+        [Input("httpFilterMetadatas")]
+        private InputList<Inputs.URLMapPathMatcherRouteRuleHttpFilterMetadataArgs>? _httpFilterMetadatas;
+
+        /// <summary>
+        /// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+        /// httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// See ForwardingRule for more details.
+        /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.URLMapPathMatcherRouteRuleHttpFilterMetadataArgs> HttpFilterMetadatas
+        {
+            get => _httpFilterMetadatas ?? (_httpFilterMetadatas = new InputList<Inputs.URLMapPathMatcherRouteRuleHttpFilterMetadataArgs>());
+            set => _httpFilterMetadatas = value;
+        }
+
         [Input("matchRules")]
         private InputList<Inputs.URLMapPathMatcherRouteRuleMatchRuleArgs>? _matchRules;
 

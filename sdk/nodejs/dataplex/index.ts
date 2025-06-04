@@ -65,6 +65,11 @@ export type DatascanIamPolicy = import("./datascanIamPolicy").DatascanIamPolicy;
 export const DatascanIamPolicy: typeof import("./datascanIamPolicy").DatascanIamPolicy = null as any;
 utilities.lazyLoad(exports, ["DatascanIamPolicy"], () => require("./datascanIamPolicy"));
 
+export { EntryArgs, EntryState } from "./entry";
+export type Entry = import("./entry").Entry;
+export const Entry: typeof import("./entry").Entry = null as any;
+utilities.lazyLoad(exports, ["Entry"], () => require("./entry"));
+
 export { EntryGroupArgs, EntryGroupState } from "./entryGroup";
 export type EntryGroup = import("./entryGroup").EntryGroup;
 export const EntryGroup: typeof import("./entryGroup").EntryGroup = null as any;
@@ -269,6 +274,8 @@ const _module = {
                 return new DatascanIamMember(name, <any>undefined, { urn })
             case "gcp:dataplex/datascanIamPolicy:DatascanIamPolicy":
                 return new DatascanIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataplex/entry:Entry":
+                return new Entry(name, <any>undefined, { urn })
             case "gcp:dataplex/entryGroup:EntryGroup":
                 return new EntryGroup(name, <any>undefined, { urn })
             case "gcp:dataplex/entryGroupIamBinding:EntryGroupIamBinding":
@@ -338,6 +345,7 @@ pulumi.runtime.registerResourceModule("gcp", "dataplex/datascan", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/entry", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroupIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroupIamMember", _module)

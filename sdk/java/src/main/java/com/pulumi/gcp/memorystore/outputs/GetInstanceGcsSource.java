@@ -13,7 +13,7 @@ import java.util.Objects;
 public final class GetInstanceGcsSource {
     /**
      * @return URIs of the GCS objects to import.
-     * Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+     * Example: gs://bucket1/object1, gs://bucket2/folder2/object2
      * 
      */
     private List<String> uris;
@@ -21,7 +21,7 @@ public final class GetInstanceGcsSource {
     private GetInstanceGcsSource() {}
     /**
      * @return URIs of the GCS objects to import.
-     * Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+     * Example: gs://bucket1/object1, gs://bucket2/folder2/object2
      * 
      */
     public List<String> uris() {

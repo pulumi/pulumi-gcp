@@ -22,6 +22,12 @@ namespace Pulumi.Gcp.Filestore.Inputs
         public Input<string>? LastActiveSyncTime { get; set; }
 
         /// <summary>
+        /// The peer instance.
+        /// </summary>
+        [Input("peerInstance")]
+        public Input<string>? PeerInstance { get; set; }
+
+        /// <summary>
         /// (Output)
         /// Output only. The replica state
         /// </summary>

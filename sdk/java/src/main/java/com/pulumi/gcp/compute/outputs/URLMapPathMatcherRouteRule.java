@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleCustomErrorResponsePolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleHeaderAction;
+import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleHttpFilterConfig;
+import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleHttpFilterMetadata;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleMatchRule;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleRouteAction;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleUrlRedirect;
@@ -34,6 +36,24 @@ public final class URLMapPathMatcherRouteRule {
      * 
      */
     private @Nullable URLMapPathMatcherRouteRuleHeaderAction headerAction;
+    /**
+     * @return Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+     * httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     * See ForwardingRule for more details.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<URLMapPathMatcherRouteRuleHttpFilterConfig> httpFilterConfigs;
+    /**
+     * @return Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+     * httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     * See ForwardingRule for more details.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<URLMapPathMatcherRouteRuleHttpFilterMetadata> httpFilterMetadatas;
     /**
      * @return The rules for determining a match.
      * Structure is documented below.
@@ -107,6 +127,28 @@ public final class URLMapPathMatcherRouteRule {
      */
     public Optional<URLMapPathMatcherRouteRuleHeaderAction> headerAction() {
         return Optional.ofNullable(this.headerAction);
+    }
+    /**
+     * @return Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+     * httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     * See ForwardingRule for more details.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    public List<URLMapPathMatcherRouteRuleHttpFilterConfig> httpFilterConfigs() {
+        return this.httpFilterConfigs == null ? List.of() : this.httpFilterConfigs;
+    }
+    /**
+     * @return Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+     * httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     * See ForwardingRule for more details.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    public List<URLMapPathMatcherRouteRuleHttpFilterMetadata> httpFilterMetadatas() {
+        return this.httpFilterMetadatas == null ? List.of() : this.httpFilterMetadatas;
     }
     /**
      * @return The rules for determining a match.
@@ -183,6 +225,8 @@ public final class URLMapPathMatcherRouteRule {
     public static final class Builder {
         private @Nullable URLMapPathMatcherRouteRuleCustomErrorResponsePolicy customErrorResponsePolicy;
         private @Nullable URLMapPathMatcherRouteRuleHeaderAction headerAction;
+        private @Nullable List<URLMapPathMatcherRouteRuleHttpFilterConfig> httpFilterConfigs;
+        private @Nullable List<URLMapPathMatcherRouteRuleHttpFilterMetadata> httpFilterMetadatas;
         private @Nullable List<URLMapPathMatcherRouteRuleMatchRule> matchRules;
         private Integer priority;
         private @Nullable URLMapPathMatcherRouteRuleRouteAction routeAction;
@@ -193,6 +237,8 @@ public final class URLMapPathMatcherRouteRule {
     	      Objects.requireNonNull(defaults);
     	      this.customErrorResponsePolicy = defaults.customErrorResponsePolicy;
     	      this.headerAction = defaults.headerAction;
+    	      this.httpFilterConfigs = defaults.httpFilterConfigs;
+    	      this.httpFilterMetadatas = defaults.httpFilterMetadatas;
     	      this.matchRules = defaults.matchRules;
     	      this.priority = defaults.priority;
     	      this.routeAction = defaults.routeAction;
@@ -211,6 +257,24 @@ public final class URLMapPathMatcherRouteRule {
 
             this.headerAction = headerAction;
             return this;
+        }
+        @CustomType.Setter
+        public Builder httpFilterConfigs(@Nullable List<URLMapPathMatcherRouteRuleHttpFilterConfig> httpFilterConfigs) {
+
+            this.httpFilterConfigs = httpFilterConfigs;
+            return this;
+        }
+        public Builder httpFilterConfigs(URLMapPathMatcherRouteRuleHttpFilterConfig... httpFilterConfigs) {
+            return httpFilterConfigs(List.of(httpFilterConfigs));
+        }
+        @CustomType.Setter
+        public Builder httpFilterMetadatas(@Nullable List<URLMapPathMatcherRouteRuleHttpFilterMetadata> httpFilterMetadatas) {
+
+            this.httpFilterMetadatas = httpFilterMetadatas;
+            return this;
+        }
+        public Builder httpFilterMetadatas(URLMapPathMatcherRouteRuleHttpFilterMetadata... httpFilterMetadatas) {
+            return httpFilterMetadatas(List.of(httpFilterMetadatas));
         }
         @CustomType.Setter
         public Builder matchRules(@Nullable List<URLMapPathMatcherRouteRuleMatchRule> matchRules) {
@@ -251,6 +315,8 @@ public final class URLMapPathMatcherRouteRule {
             final var _resultValue = new URLMapPathMatcherRouteRule();
             _resultValue.customErrorResponsePolicy = customErrorResponsePolicy;
             _resultValue.headerAction = headerAction;
+            _resultValue.httpFilterConfigs = httpFilterConfigs;
+            _resultValue.httpFilterMetadatas = httpFilterMetadatas;
             _resultValue.matchRules = matchRules;
             _resultValue.priority = priority;
             _resultValue.routeAction = routeAction;

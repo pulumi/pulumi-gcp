@@ -78,25 +78,27 @@ type LookupRouterNatResult struct {
 	EndpointTypes                    []string `pulumi:"endpointTypes"`
 	IcmpIdleTimeoutSec               int      `pulumi:"icmpIdleTimeoutSec"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                            string                   `pulumi:"id"`
-	InitialNatIps                 []string                 `pulumi:"initialNatIps"`
-	LogConfigs                    []GetRouterNatLogConfig  `pulumi:"logConfigs"`
-	MaxPortsPerVm                 int                      `pulumi:"maxPortsPerVm"`
-	MinPortsPerVm                 int                      `pulumi:"minPortsPerVm"`
-	Name                          string                   `pulumi:"name"`
-	NatIpAllocateOption           string                   `pulumi:"natIpAllocateOption"`
-	NatIps                        []string                 `pulumi:"natIps"`
-	Project                       *string                  `pulumi:"project"`
-	Region                        *string                  `pulumi:"region"`
-	Router                        string                   `pulumi:"router"`
-	Rules                         []GetRouterNatRule       `pulumi:"rules"`
-	SourceSubnetworkIpRangesToNat string                   `pulumi:"sourceSubnetworkIpRangesToNat"`
-	Subnetworks                   []GetRouterNatSubnetwork `pulumi:"subnetworks"`
-	TcpEstablishedIdleTimeoutSec  int                      `pulumi:"tcpEstablishedIdleTimeoutSec"`
-	TcpTimeWaitTimeoutSec         int                      `pulumi:"tcpTimeWaitTimeoutSec"`
-	TcpTransitoryIdleTimeoutSec   int                      `pulumi:"tcpTransitoryIdleTimeoutSec"`
-	Type                          string                   `pulumi:"type"`
-	UdpIdleTimeoutSec             int                      `pulumi:"udpIdleTimeoutSec"`
+	Id                              string                        `pulumi:"id"`
+	InitialNatIps                   []string                      `pulumi:"initialNatIps"`
+	LogConfigs                      []GetRouterNatLogConfig       `pulumi:"logConfigs"`
+	MaxPortsPerVm                   int                           `pulumi:"maxPortsPerVm"`
+	MinPortsPerVm                   int                           `pulumi:"minPortsPerVm"`
+	Name                            string                        `pulumi:"name"`
+	Nat64Subnetworks                []GetRouterNatNat64Subnetwork `pulumi:"nat64Subnetworks"`
+	NatIpAllocateOption             string                        `pulumi:"natIpAllocateOption"`
+	NatIps                          []string                      `pulumi:"natIps"`
+	Project                         *string                       `pulumi:"project"`
+	Region                          *string                       `pulumi:"region"`
+	Router                          string                        `pulumi:"router"`
+	Rules                           []GetRouterNatRule            `pulumi:"rules"`
+	SourceSubnetworkIpRangesToNat   string                        `pulumi:"sourceSubnetworkIpRangesToNat"`
+	SourceSubnetworkIpRangesToNat64 string                        `pulumi:"sourceSubnetworkIpRangesToNat64"`
+	Subnetworks                     []GetRouterNatSubnetwork      `pulumi:"subnetworks"`
+	TcpEstablishedIdleTimeoutSec    int                           `pulumi:"tcpEstablishedIdleTimeoutSec"`
+	TcpTimeWaitTimeoutSec           int                           `pulumi:"tcpTimeWaitTimeoutSec"`
+	TcpTransitoryIdleTimeoutSec     int                           `pulumi:"tcpTransitoryIdleTimeoutSec"`
+	Type                            string                        `pulumi:"type"`
+	UdpIdleTimeoutSec               int                           `pulumi:"udpIdleTimeoutSec"`
 }
 
 func LookupRouterNatOutput(ctx *pulumi.Context, args LookupRouterNatOutputArgs, opts ...pulumi.InvokeOption) LookupRouterNatResultOutput {
@@ -192,6 +194,10 @@ func (o LookupRouterNatResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouterNatResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupRouterNatResultOutput) Nat64Subnetworks() GetRouterNatNat64SubnetworkArrayOutput {
+	return o.ApplyT(func(v LookupRouterNatResult) []GetRouterNatNat64Subnetwork { return v.Nat64Subnetworks }).(GetRouterNatNat64SubnetworkArrayOutput)
+}
+
 func (o LookupRouterNatResultOutput) NatIpAllocateOption() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouterNatResult) string { return v.NatIpAllocateOption }).(pulumi.StringOutput)
 }
@@ -218,6 +224,10 @@ func (o LookupRouterNatResultOutput) Rules() GetRouterNatRuleArrayOutput {
 
 func (o LookupRouterNatResultOutput) SourceSubnetworkIpRangesToNat() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouterNatResult) string { return v.SourceSubnetworkIpRangesToNat }).(pulumi.StringOutput)
+}
+
+func (o LookupRouterNatResultOutput) SourceSubnetworkIpRangesToNat64() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterNatResult) string { return v.SourceSubnetworkIpRangesToNat64 }).(pulumi.StringOutput)
 }
 
 func (o LookupRouterNatResultOutput) Subnetworks() GetRouterNatSubnetworkArrayOutput {

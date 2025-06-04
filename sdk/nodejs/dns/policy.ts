@@ -122,6 +122,11 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Configurations related to DNS64 for this Policy.
+     * Structure is documented below.
+     */
+    public readonly dns64Config!: pulumi.Output<outputs.dns.PolicyDns64Config>;
+    /**
      * Allows networks bound to this policy to receive DNS queries sent
      * by VMs or applications over VPN connections. When enabled, a
      * virtual IP address will be allocated from each of the sub-networks
@@ -166,6 +171,7 @@ export class Policy extends pulumi.CustomResource {
             const state = argsOrState as PolicyState | undefined;
             resourceInputs["alternativeNameServerConfig"] = state ? state.alternativeNameServerConfig : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dns64Config"] = state ? state.dns64Config : undefined;
             resourceInputs["enableInboundForwarding"] = state ? state.enableInboundForwarding : undefined;
             resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -175,6 +181,7 @@ export class Policy extends pulumi.CustomResource {
             const args = argsOrState as PolicyArgs | undefined;
             resourceInputs["alternativeNameServerConfig"] = args ? args.alternativeNameServerConfig : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dns64Config"] = args ? args.dns64Config : undefined;
             resourceInputs["enableInboundForwarding"] = args ? args.enableInboundForwarding : undefined;
             resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -201,6 +208,11 @@ export interface PolicyState {
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Configurations related to DNS64 for this Policy.
+     * Structure is documented below.
+     */
+    dns64Config?: pulumi.Input<inputs.dns.PolicyDns64Config>;
     /**
      * Allows networks bound to this policy to receive DNS queries sent
      * by VMs or applications over VPN connections. When enabled, a
@@ -247,6 +259,11 @@ export interface PolicyArgs {
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Configurations related to DNS64 for this Policy.
+     * Structure is documented below.
+     */
+    dns64Config?: pulumi.Input<inputs.dns.PolicyDns64Config>;
     /**
      * Allows networks bound to this policy to receive DNS queries sent
      * by VMs or applications over VPN connections. When enabled, a

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
     public sealed class PolicyBasedRouteFilter
     {
         /// <summary>
-        /// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        /// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
         /// 
         /// - - -
         /// </summary>
@@ -25,11 +25,11 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
         public readonly string? IpProtocol;
         /// <summary>
         /// Internet protocol versions this policy-based route applies to.
-        /// Possible values are: `IPV4`.
+        /// Possible values are: `IPV4`, `IPV6`.
         /// </summary>
         public readonly string ProtocolVersion;
         /// <summary>
-        /// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        /// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
         /// </summary>
         public readonly string? SrcRange;
 

@@ -22,6 +22,7 @@ public final class GetBackendServiceLogConfig {
      * @return This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
      * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
      * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+     * For example: orca_load_report, tls.protocol
      * 
      */
     private List<String> optionalFields;
@@ -52,6 +53,7 @@ public final class GetBackendServiceLogConfig {
      * @return This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
      * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
      * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+     * For example: orca_load_report, tls.protocol
      * 
      */
     public List<String> optionalFields() {

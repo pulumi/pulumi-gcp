@@ -599,7 +599,7 @@ index eea0057a2..726c86dd3 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index d5f391e5a..e7ef27278 100644
+index 0ad510045..48a01d361 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -41,7 +41,6 @@ To get more information about BackendService, see:
@@ -1791,7 +1791,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 68ca644be..54a72932c 100644
+index 2d5065e7e..c8af0fbe2 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -24,7 +24,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1914,7 +1914,7 @@ index 85fd0b322..177058967 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index cdf542d31..55f031959 100644
+index 385853bbb..2b8f9212e 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
@@ -2455,7 +2455,7 @@ index 16263d664..39b825f3b 100644
  * `dnssec_config` -
    (Optional)
 diff --git a/website/docs/r/dns_policy.html.markdown b/website/docs/r/dns_policy.html.markdown
-index 183401721..6e3f6e8b1 100644
+index 3346801a7..a4c01bc0d 100644
 --- a/website/docs/r/dns_policy.html.markdown
 +++ b/website/docs/r/dns_policy.html.markdown
 @@ -98,7 +98,7 @@ The following arguments are supported:
@@ -2465,7 +2465,7 @@ index 183401721..6e3f6e8b1 100644
 -  A textual description field. Defaults to 'Managed by Terraform'.
 +  A textual description field. Defaults to 'Managed by Pulumi'.
  
- * `enable_inbound_forwarding` -
+ * `dns64_config` -
    (Optional)
 diff --git a/website/docs/r/firebase_project.html.markdown b/website/docs/r/firebase_project.html.markdown
 index 7a931c87f..9cf278c9e 100644
@@ -4091,7 +4091,7 @@ index 548939a08..8217b9e28 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/storage_bucket_object.html.markdown b/website/docs/r/storage_bucket_object.html.markdown
-index 6e8f48c8c..7fd54c28c 100644
+index a624a892a..a2f8b1f68 100644
 --- a/website/docs/r/storage_bucket_object.html.markdown
 +++ b/website/docs/r/storage_bucket_object.html.markdown
 @@ -66,7 +66,7 @@ The following arguments are supported:

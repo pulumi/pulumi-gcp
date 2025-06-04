@@ -25,6 +25,13 @@ namespace Pulumi.Gcp.Filestore.Inputs
             set => _replicas = value;
         }
 
+        /// <summary>
+        /// (Output)
+        /// The replication role.
+        /// </summary>
+        [Input("role")]
+        public Input<string>? Role { get; set; }
+
         public InstanceEffectiveReplicationGetArgs()
         {
         }

@@ -745,6 +745,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.compute.inputs.BackendServiceCustomMetricArgs;
  * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceLogConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -802,6 +803,13 @@ import javax.annotation.Nullable;
  *                         .name("orca.named_metrics.foo")
  *                         .dryRun(false)
  *                         .build())
+ *                 .build())
+ *             .logConfig(BackendServiceLogConfigArgs.builder()
+ *                 .enable(true)
+ *                 .optionalMode("CUSTOM")
+ *                 .optionalFields(                
+ *                     "orca_load_report",
+ *                     "tls.protocol")
  *                 .build())
  *             .build());
  * 

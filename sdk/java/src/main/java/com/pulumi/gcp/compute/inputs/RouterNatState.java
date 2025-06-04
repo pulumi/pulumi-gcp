@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RouterNatLogConfigArgs;
+import com.pulumi.gcp.compute.inputs.RouterNatNat64SubnetworkArgs;
 import com.pulumi.gcp.compute.inputs.RouterNatRuleArgs;
 import com.pulumi.gcp.compute.inputs.RouterNatSubnetworkArgs;
 import java.lang.Boolean;
@@ -221,6 +222,25 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+     * Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="nat64Subnetworks")
+    private @Nullable Output<List<RouterNatNat64SubnetworkArgs>> nat64Subnetworks;
+
+    /**
+     * @return One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+     * Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RouterNatNat64SubnetworkArgs>>> nat64Subnetworks() {
+        return Optional.ofNullable(this.nat64Subnetworks);
+    }
+
+    /**
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
@@ -368,6 +388,31 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specify the Nat option for NAT64, which can take one of the following values:
+     * ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
+     * LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64Subnetwork below).
+     * Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
+     * Other Router.Nat sections can still be present to enable NAT44 only.
+     * Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
+     * 
+     */
+    @Import(name="sourceSubnetworkIpRangesToNat64")
+    private @Nullable Output<String> sourceSubnetworkIpRangesToNat64;
+
+    /**
+     * @return Specify the Nat option for NAT64, which can take one of the following values:
+     * ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
+     * LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64Subnetwork below).
+     * Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
+     * Other Router.Nat sections can still be present to enable NAT44 only.
+     * Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
+     * 
+     */
+    public Optional<Output<String>> sourceSubnetworkIpRangesToNat64() {
+        return Optional.ofNullable(this.sourceSubnetworkIpRangesToNat64);
+    }
+
+    /**
      * One or more subnetwork NAT configurations. Only used if
      * `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
      * Structure is documented below.
@@ -491,6 +536,7 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         this.maxPortsPerVm = $.maxPortsPerVm;
         this.minPortsPerVm = $.minPortsPerVm;
         this.name = $.name;
+        this.nat64Subnetworks = $.nat64Subnetworks;
         this.natIpAllocateOption = $.natIpAllocateOption;
         this.natIps = $.natIps;
         this.project = $.project;
@@ -498,6 +544,7 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         this.router = $.router;
         this.rules = $.rules;
         this.sourceSubnetworkIpRangesToNat = $.sourceSubnetworkIpRangesToNat;
+        this.sourceSubnetworkIpRangesToNat64 = $.sourceSubnetworkIpRangesToNat64;
         this.subnetworks = $.subnetworks;
         this.tcpEstablishedIdleTimeoutSec = $.tcpEstablishedIdleTimeoutSec;
         this.tcpTimeWaitTimeoutSec = $.tcpTimeWaitTimeoutSec;
@@ -825,6 +872,43 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param nat64Subnetworks One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+         * Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nat64Subnetworks(@Nullable Output<List<RouterNatNat64SubnetworkArgs>> nat64Subnetworks) {
+            $.nat64Subnetworks = nat64Subnetworks;
+            return this;
+        }
+
+        /**
+         * @param nat64Subnetworks One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+         * Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nat64Subnetworks(List<RouterNatNat64SubnetworkArgs> nat64Subnetworks) {
+            return nat64Subnetworks(Output.of(nat64Subnetworks));
+        }
+
+        /**
+         * @param nat64Subnetworks One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+         * Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nat64Subnetworks(RouterNatNat64SubnetworkArgs... nat64Subnetworks) {
+            return nat64Subnetworks(List.of(nat64Subnetworks));
+        }
+
+        /**
          * @param natIpAllocateOption How external IPs should be allocated for this NAT. Valid values are
          * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
          * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
@@ -1036,6 +1120,37 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceSubnetworkIpRangesToNat(String sourceSubnetworkIpRangesToNat) {
             return sourceSubnetworkIpRangesToNat(Output.of(sourceSubnetworkIpRangesToNat));
+        }
+
+        /**
+         * @param sourceSubnetworkIpRangesToNat64 Specify the Nat option for NAT64, which can take one of the following values:
+         * ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
+         * LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64Subnetwork below).
+         * Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
+         * Other Router.Nat sections can still be present to enable NAT44 only.
+         * Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSubnetworkIpRangesToNat64(@Nullable Output<String> sourceSubnetworkIpRangesToNat64) {
+            $.sourceSubnetworkIpRangesToNat64 = sourceSubnetworkIpRangesToNat64;
+            return this;
+        }
+
+        /**
+         * @param sourceSubnetworkIpRangesToNat64 Specify the Nat option for NAT64, which can take one of the following values:
+         * ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
+         * LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64Subnetwork below).
+         * Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
+         * Other Router.Nat sections can still be present to enable NAT44 only.
+         * Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSubnetworkIpRangesToNat64(String sourceSubnetworkIpRangesToNat64) {
+            return sourceSubnetworkIpRangesToNat64(Output.of(sourceSubnetworkIpRangesToNat64));
         }
 
         /**

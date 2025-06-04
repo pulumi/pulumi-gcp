@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Md5hash { get; private set; } = null!;
 
         /// <summary>
-        /// Hex value of md5hash
+        /// (Computed) Hex value of md5hash`
         /// </summary>
         [Output("md5hexhash")]
         public Output<string> Md5hexhash { get; private set; } = null!;
@@ -518,7 +518,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Md5hash { get; set; }
 
         /// <summary>
-        /// Hex value of md5hash
+        /// (Computed) Hex value of md5hash`
         /// </summary>
         [Input("md5hexhash")]
         public Input<string>? Md5hexhash { get; set; }

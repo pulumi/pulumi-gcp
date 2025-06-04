@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['BackupVaultArgs', 'BackupVault']
 
@@ -22,6 +24,7 @@ class BackupVaultArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[builtins.str],
                  backup_region: Optional[pulumi.Input[builtins.str]] = None,
+                 backup_retention_policy: Optional[pulumi.Input['BackupVaultBackupRetentionPolicyArgs']] = None,
                  backup_vault_type: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -31,6 +34,8 @@ class BackupVaultArgs:
         The set of arguments for constructing a BackupVault resource.
         :param pulumi.Input[builtins.str] location: Location (region) of the backup vault.
         :param pulumi.Input[builtins.str] backup_region: Region in which backup is stored.
+        :param pulumi.Input['BackupVaultBackupRetentionPolicyArgs'] backup_retention_policy: Backup retention policy defining the retention of the backups.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] backup_vault_type: Type of the backup vault to be created. Default is IN_REGION.
                Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
@@ -48,6 +53,8 @@ class BackupVaultArgs:
         pulumi.set(__self__, "location", location)
         if backup_region is not None:
             pulumi.set(__self__, "backup_region", backup_region)
+        if backup_retention_policy is not None:
+            pulumi.set(__self__, "backup_retention_policy", backup_retention_policy)
         if backup_vault_type is not None:
             pulumi.set(__self__, "backup_vault_type", backup_vault_type)
         if description is not None:
@@ -82,6 +89,19 @@ class BackupVaultArgs:
     @backup_region.setter
     def backup_region(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "backup_region", value)
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicy")
+    def backup_retention_policy(self) -> Optional[pulumi.Input['BackupVaultBackupRetentionPolicyArgs']]:
+        """
+        Backup retention policy defining the retention of the backups.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "backup_retention_policy")
+
+    @backup_retention_policy.setter
+    def backup_retention_policy(self, value: Optional[pulumi.Input['BackupVaultBackupRetentionPolicyArgs']]):
+        pulumi.set(self, "backup_retention_policy", value)
 
     @property
     @pulumi.getter(name="backupVaultType")
@@ -156,6 +176,7 @@ class BackupVaultArgs:
 class _BackupVaultState:
     def __init__(__self__, *,
                  backup_region: Optional[pulumi.Input[builtins.str]] = None,
+                 backup_retention_policy: Optional[pulumi.Input['BackupVaultBackupRetentionPolicyArgs']] = None,
                  backup_vault_type: Optional[pulumi.Input[builtins.str]] = None,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
@@ -172,6 +193,8 @@ class _BackupVaultState:
         """
         Input properties used for looking up and filtering BackupVault resources.
         :param pulumi.Input[builtins.str] backup_region: Region in which backup is stored.
+        :param pulumi.Input['BackupVaultBackupRetentionPolicyArgs'] backup_retention_policy: Backup retention policy defining the retention of the backups.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] backup_vault_type: Type of the backup vault to be created. Default is IN_REGION.
                Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
         :param pulumi.Input[builtins.str] create_time: Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -197,6 +220,8 @@ class _BackupVaultState:
         """
         if backup_region is not None:
             pulumi.set(__self__, "backup_region", backup_region)
+        if backup_retention_policy is not None:
+            pulumi.set(__self__, "backup_retention_policy", backup_retention_policy)
         if backup_vault_type is not None:
             pulumi.set(__self__, "backup_vault_type", backup_vault_type)
         if create_time is not None:
@@ -235,6 +260,19 @@ class _BackupVaultState:
     @backup_region.setter
     def backup_region(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "backup_region", value)
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicy")
+    def backup_retention_policy(self) -> Optional[pulumi.Input['BackupVaultBackupRetentionPolicyArgs']]:
+        """
+        Backup retention policy defining the retention of the backups.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "backup_retention_policy")
+
+    @backup_retention_policy.setter
+    def backup_retention_policy(self, value: Optional[pulumi.Input['BackupVaultBackupRetentionPolicyArgs']]):
+        pulumi.set(self, "backup_retention_policy", value)
 
     @property
     @pulumi.getter(name="backupVaultType")
@@ -409,6 +447,7 @@ class BackupVault(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_region: Optional[pulumi.Input[builtins.str]] = None,
+                 backup_retention_policy: Optional[pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']]] = None,
                  backup_vault_type: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -470,6 +509,8 @@ class BackupVault(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] backup_region: Region in which backup is stored.
+        :param pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']] backup_retention_policy: Backup retention policy defining the retention of the backups.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] backup_vault_type: Type of the backup vault to be created. Default is IN_REGION.
                Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
@@ -558,6 +599,7 @@ class BackupVault(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_region: Optional[pulumi.Input[builtins.str]] = None,
+                 backup_retention_policy: Optional[pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']]] = None,
                  backup_vault_type: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -574,6 +616,7 @@ class BackupVault(pulumi.CustomResource):
             __props__ = BackupVaultArgs.__new__(BackupVaultArgs)
 
             __props__.__dict__["backup_region"] = backup_region
+            __props__.__dict__["backup_retention_policy"] = backup_retention_policy
             __props__.__dict__["backup_vault_type"] = backup_vault_type
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
@@ -602,6 +645,7 @@ class BackupVault(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_region: Optional[pulumi.Input[builtins.str]] = None,
+            backup_retention_policy: Optional[pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']]] = None,
             backup_vault_type: Optional[pulumi.Input[builtins.str]] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
@@ -623,6 +667,8 @@ class BackupVault(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] backup_region: Region in which backup is stored.
+        :param pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']] backup_retention_policy: Backup retention policy defining the retention of the backups.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] backup_vault_type: Type of the backup vault to be created. Default is IN_REGION.
                Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
         :param pulumi.Input[builtins.str] create_time: Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -651,6 +697,7 @@ class BackupVault(pulumi.CustomResource):
         __props__ = _BackupVaultState.__new__(_BackupVaultState)
 
         __props__.__dict__["backup_region"] = backup_region
+        __props__.__dict__["backup_retention_policy"] = backup_retention_policy
         __props__.__dict__["backup_vault_type"] = backup_vault_type
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
@@ -673,6 +720,15 @@ class BackupVault(pulumi.CustomResource):
         Region in which backup is stored.
         """
         return pulumi.get(self, "backup_region")
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicy")
+    def backup_retention_policy(self) -> pulumi.Output[Optional['outputs.BackupVaultBackupRetentionPolicy']]:
+        """
+        Backup retention policy defining the retention of the backups.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "backup_retention_policy")
 
     @property
     @pulumi.getter(name="backupVaultType")

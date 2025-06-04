@@ -1513,6 +1513,288 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Url Map Http Filter Configs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "default-backend",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var service_a = new Gcp.Compute.BackendService("service-a", new()
+    ///     {
+    ///         Name = "service-a-backend",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.URLMap("urlmap", new()
+    ///     {
+    ///         Name = "urlmap",
+    ///         Description = "Test for httpFilterConfigs in route rules",
+    ///         DefaultService = @default.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = @default.Id,
+    ///                 RouteRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleArgs
+    ///                     {
+    ///                         Priority = 1,
+    ///                         Service = service_a.Id,
+    ///                         MatchRules = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleMatchRuleArgs
+    ///                             {
+    ///                                 PrefixMatch = "/",
+    ///                                 IgnoreCase = true,
+    ///                             },
+    ///                         },
+    ///                         HttpFilterConfigs = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleHttpFilterConfigArgs
+    ///                             {
+    ///                                 FilterName = "envoy.wasm",
+    ///                                 ConfigTypeUrl = "type.googleapis.com/google.protobuf.Struct",
+    ///                                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["name"] = "my-filter",
+    ///                                     ["root_id"] = "my_root_id",
+    ///                                     ["vm_config"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["vm_id"] = "my_vm_id",
+    ///                                         ["runtime"] = "envoy.wasm.runtime.v8",
+    ///                                         ["code"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["local"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["inline_string"] = "const WASM_BINARY = '...'",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 }),
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Tests = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapTestArgs
+    ///             {
+    ///                 Service = @default.Id,
+    ///                 Host = "mysite.com",
+    ///                 Path = "/",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Url Map Http Filter Metadata
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "default-backend",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var service_a = new Gcp.Compute.BackendService("service-a", new()
+    ///     {
+    ///         Name = "service-a-backend",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var service_b = new Gcp.Compute.BackendService("service-b", new()
+    ///     {
+    ///         Name = "service-b-backend",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.URLMap("urlmap", new()
+    ///     {
+    ///         Name = "urlmap",
+    ///         Description = "Test for httpFilterMetadata in route rules",
+    ///         DefaultService = @default.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = @default.Id,
+    ///                 RouteRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleArgs
+    ///                     {
+    ///                         Priority = 1,
+    ///                         Service = service_a.Id,
+    ///                         MatchRules = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleMatchRuleArgs
+    ///                             {
+    ///                                 PrefixMatch = "/",
+    ///                                 IgnoreCase = true,
+    ///                             },
+    ///                         },
+    ///                         HttpFilterMetadatas = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleHttpFilterMetadataArgs
+    ///                             {
+    ///                                 FilterName = "envoy.wasm",
+    ///                                 ConfigTypeUrl = "type.googleapis.com/google.protobuf.Struct",
+    ///                                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["fields"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["timeout"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["string_value"] = "30s",
+    ///                                         },
+    ///                                         ["retries"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["number_value"] = 3,
+    ///                                         },
+    ///                                         ["debug"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["bool_value"] = true,
+    ///                                         },
+    ///                                     },
+    ///                                 }),
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleArgs
+    ///                     {
+    ///                         Priority = 2,
+    ///                         Service = service_b.Id,
+    ///                         MatchRules = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleMatchRuleArgs
+    ///                             {
+    ///                                 PrefixMatch = "/api",
+    ///                                 IgnoreCase = true,
+    ///                             },
+    ///                         },
+    ///                         HttpFilterMetadatas = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleHttpFilterMetadataArgs
+    ///                             {
+    ///                                 FilterName = "envoy.rate_limit",
+    ///                                 ConfigTypeUrl = "type.googleapis.com/google.protobuf.Struct",
+    ///                                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["fields"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["requests_per_unit"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["number_value"] = 100,
+    ///                                         },
+    ///                                         ["unit"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["string_value"] = "MINUTE",
+    ///                                         },
+    ///                                     },
+    ///                                 }),
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Tests = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapTestArgs
+    ///             {
+    ///                 Service = @default.Id,
+    ///                 Host = "mysite.com",
+    ///                 Path = "/",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

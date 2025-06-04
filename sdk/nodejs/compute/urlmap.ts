@@ -905,6 +905,182 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Url Map Http Filter Configs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "default-backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const service_a = new gcp.compute.BackendService("service-a", {
+ *     name: "service-a-backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     description: "Test for httpFilterConfigs in route rules",
+ *     defaultService: _default.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: _default.id,
+ *         routeRules: [{
+ *             priority: 1,
+ *             service: service_a.id,
+ *             matchRules: [{
+ *                 prefixMatch: "/",
+ *                 ignoreCase: true,
+ *             }],
+ *             httpFilterConfigs: [{
+ *                 filterName: "envoy.wasm",
+ *                 configTypeUrl: "type.googleapis.com/google.protobuf.Struct",
+ *                 config: JSON.stringify({
+ *                     name: "my-filter",
+ *                     root_id: "my_root_id",
+ *                     vm_config: {
+ *                         vm_id: "my_vm_id",
+ *                         runtime: "envoy.wasm.runtime.v8",
+ *                         code: {
+ *                             local: {
+ *                                 inline_string: "const WASM_BINARY = '...'",
+ *                             },
+ *                         },
+ *                     },
+ *                 }),
+ *             }],
+ *         }],
+ *     }],
+ *     tests: [{
+ *         service: _default.id,
+ *         host: "mysite.com",
+ *         path: "/",
+ *     }],
+ * });
+ * ```
+ * ### Url Map Http Filter Metadata
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "default-backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const service_a = new gcp.compute.BackendService("service-a", {
+ *     name: "service-a-backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const service_b = new gcp.compute.BackendService("service-b", {
+ *     name: "service-b-backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     description: "Test for httpFilterMetadata in route rules",
+ *     defaultService: _default.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: _default.id,
+ *         routeRules: [
+ *             {
+ *                 priority: 1,
+ *                 service: service_a.id,
+ *                 matchRules: [{
+ *                     prefixMatch: "/",
+ *                     ignoreCase: true,
+ *                 }],
+ *                 httpFilterMetadatas: [{
+ *                     filterName: "envoy.wasm",
+ *                     configTypeUrl: "type.googleapis.com/google.protobuf.Struct",
+ *                     config: JSON.stringify({
+ *                         fields: {
+ *                             timeout: {
+ *                                 string_value: "30s",
+ *                             },
+ *                             retries: {
+ *                                 number_value: 3,
+ *                             },
+ *                             debug: {
+ *                                 bool_value: true,
+ *                             },
+ *                         },
+ *                     }),
+ *                 }],
+ *             },
+ *             {
+ *                 priority: 2,
+ *                 service: service_b.id,
+ *                 matchRules: [{
+ *                     prefixMatch: "/api",
+ *                     ignoreCase: true,
+ *                 }],
+ *                 httpFilterMetadatas: [{
+ *                     filterName: "envoy.rate_limit",
+ *                     configTypeUrl: "type.googleapis.com/google.protobuf.Struct",
+ *                     config: JSON.stringify({
+ *                         fields: {
+ *                             requests_per_unit: {
+ *                                 number_value: 100,
+ *                             },
+ *                             unit: {
+ *                                 string_value: "MINUTE",
+ *                             },
+ *                         },
+ *                     }),
+ *                 }],
+ *             },
+ *         ],
+ *     }],
+ *     tests: [{
+ *         service: _default.id,
+ *         host: "mysite.com",
+ *         path: "/",
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

@@ -164,12 +164,12 @@ class PolicyBasedRouteFilter(dict):
                  src_range: Optional[builtins.str] = None):
         """
         :param builtins.str protocol_version: Internet protocol versions this policy-based route applies to.
-               Possible values are: `IPV4`.
-        :param builtins.str dest_range: The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+               Possible values are: `IPV4`, `IPV6`.
+        :param builtins.str dest_range: The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
                
                - - -
         :param builtins.str ip_protocol: The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
-        :param builtins.str src_range: The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        :param builtins.str src_range: The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
         """
         pulumi.set(__self__, "protocol_version", protocol_version)
         if dest_range is not None:
@@ -184,7 +184,7 @@ class PolicyBasedRouteFilter(dict):
     def protocol_version(self) -> builtins.str:
         """
         Internet protocol versions this policy-based route applies to.
-        Possible values are: `IPV4`.
+        Possible values are: `IPV4`, `IPV6`.
         """
         return pulumi.get(self, "protocol_version")
 
@@ -192,7 +192,7 @@ class PolicyBasedRouteFilter(dict):
     @pulumi.getter(name="destRange")
     def dest_range(self) -> Optional[builtins.str]:
         """
-        The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
 
         - - -
         """
@@ -210,7 +210,7 @@ class PolicyBasedRouteFilter(dict):
     @pulumi.getter(name="srcRange")
     def src_range(self) -> Optional[builtins.str]:
         """
-        The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
         """
         return pulumi.get(self, "src_range")
 

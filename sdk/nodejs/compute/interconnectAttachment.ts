@@ -81,6 +81,39 @@ import * as utilities from "../utilities";
  *     ipsecInternalAddresses: [address.selfLink],
  * });
  * ```
+ * ### Compute Interconnect Attachment Custom Ranges
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foobarNetwork = new gcp.compute.Network("foobar", {
+ *     name: "test-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const foobar = new gcp.compute.Router("foobar", {
+ *     name: "test-router",
+ *     network: foobarNetwork.name,
+ *     bgp: {
+ *         asn: 16550,
+ *     },
+ * });
+ * const custom_ranges_interconnect_attachment = new gcp.compute.InterconnectAttachment("custom-ranges-interconnect-attachment", {
+ *     name: "test-custom-ranges-interconnect-attachment",
+ *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
+ *     type: "PARTNER",
+ *     router: foobar.id,
+ *     mtu: "1500",
+ *     stackType: "IPV4_IPV6",
+ *     labels: {
+ *         mykey: "myvalue",
+ *     },
+ *     candidateCloudRouterIpAddress: "192.169.0.1/29",
+ *     candidateCustomerRouterIpAddress: "192.169.0.2/29",
+ *     candidateCloudRouterIpv6Address: "748d:2f23:6651:9455:828b:ca81:6fe0:fed1/125",
+ *     candidateCustomerRouterIpv6Address: "748d:2f23:6651:9455:828b:ca81:6fe0:fed2/125",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -154,6 +187,26 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
      */
     public readonly bandwidth!: pulumi.Output<string>;
+    /**
+     * Single IPv4 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 203.0.113.1/29
+     */
+    public readonly candidateCloudRouterIpAddress!: pulumi.Output<string | undefined>;
+    /**
+     * Single IPv6 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 2001:db8::1/125
+     */
+    public readonly candidateCloudRouterIpv6Address!: pulumi.Output<string | undefined>;
+    /**
+     * Single IPv4 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 203.0.113.2/29
+     */
+    public readonly candidateCustomerRouterIpAddress!: pulumi.Output<string | undefined>;
+    /**
+     * Single IPv6 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 2001:db8::2/125
+     */
+    public readonly candidateCustomerRouterIpv6Address!: pulumi.Output<string | undefined>;
     /**
      * Up to 16 candidate prefixes that can be used to restrict the allocation
      * of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -374,6 +427,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             const state = argsOrState as InterconnectAttachmentState | undefined;
             resourceInputs["adminEnabled"] = state ? state.adminEnabled : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["candidateCloudRouterIpAddress"] = state ? state.candidateCloudRouterIpAddress : undefined;
+            resourceInputs["candidateCloudRouterIpv6Address"] = state ? state.candidateCloudRouterIpv6Address : undefined;
+            resourceInputs["candidateCustomerRouterIpAddress"] = state ? state.candidateCustomerRouterIpAddress : undefined;
+            resourceInputs["candidateCustomerRouterIpv6Address"] = state ? state.candidateCustomerRouterIpv6Address : undefined;
             resourceInputs["candidateSubnets"] = state ? state.candidateSubnets : undefined;
             resourceInputs["cloudRouterIpAddress"] = state ? state.cloudRouterIpAddress : undefined;
             resourceInputs["cloudRouterIpv6Address"] = state ? state.cloudRouterIpv6Address : undefined;
@@ -411,6 +468,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             }
             resourceInputs["adminEnabled"] = args ? args.adminEnabled : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["candidateCloudRouterIpAddress"] = args ? args.candidateCloudRouterIpAddress : undefined;
+            resourceInputs["candidateCloudRouterIpv6Address"] = args ? args.candidateCloudRouterIpv6Address : undefined;
+            resourceInputs["candidateCustomerRouterIpAddress"] = args ? args.candidateCustomerRouterIpAddress : undefined;
+            resourceInputs["candidateCustomerRouterIpv6Address"] = args ? args.candidateCustomerRouterIpv6Address : undefined;
             resourceInputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
@@ -467,6 +528,26 @@ export interface InterconnectAttachmentState {
      * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
      */
     bandwidth?: pulumi.Input<string>;
+    /**
+     * Single IPv4 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 203.0.113.1/29
+     */
+    candidateCloudRouterIpAddress?: pulumi.Input<string>;
+    /**
+     * Single IPv6 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 2001:db8::1/125
+     */
+    candidateCloudRouterIpv6Address?: pulumi.Input<string>;
+    /**
+     * Single IPv4 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 203.0.113.2/29
+     */
+    candidateCustomerRouterIpAddress?: pulumi.Input<string>;
+    /**
+     * Single IPv6 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 2001:db8::2/125
+     */
+    candidateCustomerRouterIpv6Address?: pulumi.Input<string>;
     /**
      * Up to 16 candidate prefixes that can be used to restrict the allocation
      * of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -691,6 +772,26 @@ export interface InterconnectAttachmentArgs {
      * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
      */
     bandwidth?: pulumi.Input<string>;
+    /**
+     * Single IPv4 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 203.0.113.1/29
+     */
+    candidateCloudRouterIpAddress?: pulumi.Input<string>;
+    /**
+     * Single IPv6 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 2001:db8::1/125
+     */
+    candidateCloudRouterIpv6Address?: pulumi.Input<string>;
+    /**
+     * Single IPv4 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 203.0.113.2/29
+     */
+    candidateCustomerRouterIpAddress?: pulumi.Input<string>;
+    /**
+     * Single IPv6 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 2001:db8::2/125
+     */
+    candidateCustomerRouterIpv6Address?: pulumi.Input<string>;
     /**
      * Up to 16 candidate prefixes that can be used to restrict the allocation
      * of cloudRouterIpAddress and customerRouterIpAddress for this attachment.

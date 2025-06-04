@@ -2764,7 +2764,7 @@ func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) ServiceAttachment(
 
 type InstanceGcsSource struct {
 	// URIs of the GCS objects to import.
-	// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+	// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
 	Uris []string `pulumi:"uris"`
 }
 
@@ -2781,7 +2781,7 @@ type InstanceGcsSourceInput interface {
 
 type InstanceGcsSourceArgs struct {
 	// URIs of the GCS objects to import.
-	// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+	// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
 	Uris pulumi.StringArrayInput `pulumi:"uris"`
 }
 
@@ -2863,7 +2863,7 @@ func (o InstanceGcsSourceOutput) ToInstanceGcsSourcePtrOutputWithContext(ctx con
 }
 
 // URIs of the GCS objects to import.
-// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
 func (o InstanceGcsSourceOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceGcsSource) []string { return v.Uris }).(pulumi.StringArrayOutput)
 }
@@ -2893,7 +2893,7 @@ func (o InstanceGcsSourcePtrOutput) Elem() InstanceGcsSourceOutput {
 }
 
 // URIs of the GCS objects to import.
-// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
 func (o InstanceGcsSourcePtrOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceGcsSource) []string {
 		if v == nil {
@@ -3506,7 +3506,7 @@ func (o InstanceMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) Instanc
 }
 
 type InstanceManagedBackupSource struct {
-	// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+	// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
 	Backup string `pulumi:"backup"`
 }
 
@@ -3522,7 +3522,7 @@ type InstanceManagedBackupSourceInput interface {
 }
 
 type InstanceManagedBackupSourceArgs struct {
-	// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+	// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
 	Backup pulumi.StringInput `pulumi:"backup"`
 }
 
@@ -3603,7 +3603,7 @@ func (o InstanceManagedBackupSourceOutput) ToInstanceManagedBackupSourcePtrOutpu
 	}).(InstanceManagedBackupSourcePtrOutput)
 }
 
-// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
 func (o InstanceManagedBackupSourceOutput) Backup() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceManagedBackupSource) string { return v.Backup }).(pulumi.StringOutput)
 }
@@ -3632,7 +3632,7 @@ func (o InstanceManagedBackupSourcePtrOutput) Elem() InstanceManagedBackupSource
 	}).(InstanceManagedBackupSourceOutput)
 }
 
-// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
 func (o InstanceManagedBackupSourcePtrOutput) Backup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceManagedBackupSource) *string {
 		if v == nil {
@@ -6773,7 +6773,7 @@ func (o GetInstanceEndpointConnectionPscAutoConnectionArrayOutput) Index(i pulum
 
 type GetInstanceGcsSource struct {
 	// URIs of the GCS objects to import.
-	// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+	// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
 	Uris []string `pulumi:"uris"`
 }
 
@@ -6790,7 +6790,7 @@ type GetInstanceGcsSourceInput interface {
 
 type GetInstanceGcsSourceArgs struct {
 	// URIs of the GCS objects to import.
-	// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+	// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
 	Uris pulumi.StringArrayInput `pulumi:"uris"`
 }
 
@@ -6846,7 +6846,7 @@ func (o GetInstanceGcsSourceOutput) ToGetInstanceGcsSourceOutputWithContext(ctx 
 }
 
 // URIs of the GCS objects to import.
-// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
 func (o GetInstanceGcsSourceOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstanceGcsSource) []string { return v.Uris }).(pulumi.StringArrayOutput)
 }
@@ -7426,7 +7426,7 @@ func (o GetInstanceMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) GetI
 }
 
 type GetInstanceManagedBackupSource struct {
-	// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+	// Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
 	Backup string `pulumi:"backup"`
 }
 
@@ -7442,7 +7442,7 @@ type GetInstanceManagedBackupSourceInput interface {
 }
 
 type GetInstanceManagedBackupSourceArgs struct {
-	// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+	// Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
 	Backup pulumi.StringInput `pulumi:"backup"`
 }
 
@@ -7497,7 +7497,7 @@ func (o GetInstanceManagedBackupSourceOutput) ToGetInstanceManagedBackupSourceOu
 	return o
 }
 
-// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+// Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
 func (o GetInstanceManagedBackupSourceOutput) Backup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceManagedBackupSource) string { return v.Backup }).(pulumi.StringOutput)
 }

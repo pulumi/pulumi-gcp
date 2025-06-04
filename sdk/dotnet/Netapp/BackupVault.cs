@@ -79,6 +79,13 @@ namespace Pulumi.Gcp.Netapp
         public Output<string?> BackupRegion { get; private set; } = null!;
 
         /// <summary>
+        /// Backup retention policy defining the retention of the backups.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("backupRetentionPolicy")]
+        public Output<Outputs.BackupVaultBackupRetentionPolicy?> BackupRetentionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the backup vault to be created. Default is IN_REGION.
         /// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
         /// </summary>
@@ -223,6 +230,13 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? BackupRegion { get; set; }
 
         /// <summary>
+        /// Backup retention policy defining the retention of the backups.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("backupRetentionPolicy")]
+        public Input<Inputs.BackupVaultBackupRetentionPolicyArgs>? BackupRetentionPolicy { get; set; }
+
+        /// <summary>
         /// Type of the backup vault to be created. Default is IN_REGION.
         /// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
         /// </summary>
@@ -285,6 +299,13 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("backupRegion")]
         public Input<string>? BackupRegion { get; set; }
+
+        /// <summary>
+        /// Backup retention policy defining the retention of the backups.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("backupRetentionPolicy")]
+        public Input<Inputs.BackupVaultBackupRetentionPolicyGetArgs>? BackupRetentionPolicy { get; set; }
 
         /// <summary>
         /// Type of the backup vault to be created. Default is IN_REGION.

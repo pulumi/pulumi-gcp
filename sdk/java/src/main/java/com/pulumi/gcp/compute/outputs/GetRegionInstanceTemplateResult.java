@@ -140,6 +140,7 @@ public final class GetRegionInstanceTemplateResult {
      * 
      */
     private List<GetRegionInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs;
+    private String numericId;
     private Map<String,String> partnerMetadata;
     /**
      * @return The ID of the project in which the resource belongs. If it
@@ -353,6 +354,9 @@ public final class GetRegionInstanceTemplateResult {
     public List<GetRegionInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs() {
         return this.networkPerformanceConfigs;
     }
+    public String numericId() {
+        return this.numericId;
+    }
     public Map<String,String> partnerMetadata() {
         return this.partnerMetadata;
     }
@@ -461,6 +465,7 @@ public final class GetRegionInstanceTemplateResult {
         private String namePrefix;
         private List<GetRegionInstanceTemplateNetworkInterface> networkInterfaces;
         private List<GetRegionInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs;
+        private String numericId;
         private Map<String,String> partnerMetadata;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
@@ -501,6 +506,7 @@ public final class GetRegionInstanceTemplateResult {
     	      this.namePrefix = defaults.namePrefix;
     	      this.networkInterfaces = defaults.networkInterfaces;
     	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
+    	      this.numericId = defaults.numericId;
     	      this.partnerMetadata = defaults.partnerMetadata;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
@@ -721,6 +727,14 @@ public final class GetRegionInstanceTemplateResult {
             return networkPerformanceConfigs(List.of(networkPerformanceConfigs));
         }
         @CustomType.Setter
+        public Builder numericId(String numericId) {
+            if (numericId == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "numericId");
+            }
+            this.numericId = numericId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder partnerMetadata(Map<String,String> partnerMetadata) {
             if (partnerMetadata == null) {
               throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "partnerMetadata");
@@ -864,6 +878,7 @@ public final class GetRegionInstanceTemplateResult {
             _resultValue.namePrefix = namePrefix;
             _resultValue.networkInterfaces = networkInterfaces;
             _resultValue.networkPerformanceConfigs = networkPerformanceConfigs;
+            _resultValue.numericId = numericId;
             _resultValue.partnerMetadata = partnerMetadata;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;

@@ -228,14 +228,14 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hex value of md5hash
+     * (Computed) Hex value of md5hash`
      * 
      */
     @Import(name="md5hexhash")
     private @Nullable Output<String> md5hexhash;
 
     /**
-     * @return Hex value of md5hash
+     * @return (Computed) Hex value of md5hash`
      * 
      */
     public Optional<Output<String>> md5hexhash() {
@@ -727,7 +727,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param md5hexhash Hex value of md5hash
+         * @param md5hexhash (Computed) Hex value of md5hash`
          * 
          * @return builder
          * 
@@ -738,7 +738,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param md5hexhash Hex value of md5hash
+         * @param md5hexhash (Computed) Hex value of md5hash`
          * 
          * @return builder
          * 

@@ -255,7 +255,7 @@ type RuntimeTemplate struct {
 	ShieldedVmConfig RuntimeTemplateShieldedVmConfigOutput `pulumi:"shieldedVmConfig"`
 	// The notebook software configuration of the notebook runtime.
 	// Structure is documented below.
-	SoftwareConfig RuntimeTemplateSoftwareConfigPtrOutput `pulumi:"softwareConfig"`
+	SoftwareConfig RuntimeTemplateSoftwareConfigOutput `pulumi:"softwareConfig"`
 }
 
 // NewRuntimeTemplate registers a new resource with the given unique name, arguments, and options.
@@ -679,8 +679,8 @@ func (o RuntimeTemplateOutput) ShieldedVmConfig() RuntimeTemplateShieldedVmConfi
 
 // The notebook software configuration of the notebook runtime.
 // Structure is documented below.
-func (o RuntimeTemplateOutput) SoftwareConfig() RuntimeTemplateSoftwareConfigPtrOutput {
-	return o.ApplyT(func(v *RuntimeTemplate) RuntimeTemplateSoftwareConfigPtrOutput { return v.SoftwareConfig }).(RuntimeTemplateSoftwareConfigPtrOutput)
+func (o RuntimeTemplateOutput) SoftwareConfig() RuntimeTemplateSoftwareConfigOutput {
+	return o.ApplyT(func(v *RuntimeTemplate) RuntimeTemplateSoftwareConfigOutput { return v.SoftwareConfig }).(RuntimeTemplateSoftwareConfigOutput)
 }
 
 type RuntimeTemplateArrayOutput struct{ *pulumi.OutputState }

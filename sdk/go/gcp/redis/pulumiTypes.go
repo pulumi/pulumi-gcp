@@ -2331,8 +2331,7 @@ func (o ClusterMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) ClusterM
 }
 
 type ClusterManagedBackupSource struct {
-	// Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-	// like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+	// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
 	Backup string `pulumi:"backup"`
 }
 
@@ -2348,8 +2347,7 @@ type ClusterManagedBackupSourceInput interface {
 }
 
 type ClusterManagedBackupSourceArgs struct {
-	// Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-	// like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+	// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
 	Backup pulumi.StringInput `pulumi:"backup"`
 }
 
@@ -2430,8 +2428,7 @@ func (o ClusterManagedBackupSourceOutput) ToClusterManagedBackupSourcePtrOutputW
 	}).(ClusterManagedBackupSourcePtrOutput)
 }
 
-// Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-// like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
 func (o ClusterManagedBackupSourceOutput) Backup() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterManagedBackupSource) string { return v.Backup }).(pulumi.StringOutput)
 }
@@ -2460,8 +2457,7 @@ func (o ClusterManagedBackupSourcePtrOutput) Elem() ClusterManagedBackupSourceOu
 	}).(ClusterManagedBackupSourceOutput)
 }
 
-// Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-// like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
 func (o ClusterManagedBackupSourcePtrOutput) Backup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterManagedBackupSource) *string {
 		if v == nil {

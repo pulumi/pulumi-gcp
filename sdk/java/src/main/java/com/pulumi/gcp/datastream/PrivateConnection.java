@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.datastream.PrivateConnectionArgs;
 import com.pulumi.gcp.datastream.inputs.PrivateConnectionState;
 import com.pulumi.gcp.datastream.outputs.PrivateConnectionError;
+import com.pulumi.gcp.datastream.outputs.PrivateConnectionPscInterfaceConfig;
 import com.pulumi.gcp.datastream.outputs.PrivateConnectionVpcPeeringConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -70,6 +71,73 @@ import javax.annotation.Nullable;
  *             .vpcPeeringConfig(PrivateConnectionVpcPeeringConfigArgs.builder()
  *                 .vpc(defaultNetwork.id())
  *                 .subnet("10.0.0.0/29")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Datastream Private Connection Psc Interface
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.NetworkAttachment;
+ * import com.pulumi.gcp.compute.NetworkAttachmentArgs;
+ * import com.pulumi.gcp.datastream.PrivateConnection;
+ * import com.pulumi.gcp.datastream.PrivateConnectionArgs;
+ * import com.pulumi.gcp.datastream.inputs.PrivateConnectionPscInterfaceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("my-subnetwork")
+ *             .region("us-central1")
+ *             .network(defaultNetwork.id())
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .build());
+ * 
+ *         var defaultNetworkAttachment = new NetworkAttachment("defaultNetworkAttachment", NetworkAttachmentArgs.builder()
+ *             .name("my-network-attachment")
+ *             .region("us-central1")
+ *             .description("basic network attachment description")
+ *             .connectionPreference("ACCEPT_AUTOMATIC")
+ *             .subnetworks(defaultSubnetwork.selfLink())
+ *             .build());
+ * 
+ *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .privateConnectionId("my-connection")
+ *             .labels(Map.of("key", "value"))
+ *             .pscInterfaceConfig(PrivateConnectionPscInterfaceConfigArgs.builder()
+ *                 .networkAttachment(defaultNetworkAttachment.id())
  *                 .build())
  *             .build());
  * 
@@ -165,16 +233,18 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
         return this.errors;
     }
     /**
-     * Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -183,12 +253,16 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
     /**
      * The name of the location this private connection is located in.
      * 
+     * ***
+     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The name of the location this private connection is located in.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -222,11 +296,39 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
     public Output<String> privateConnectionId() {
         return this.privateConnectionId;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The PSC Interface configuration is used to create PSC Interface
+     * between Datastream and the consumer&#39;s PSC.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="pscInterfaceConfig", refs={PrivateConnectionPscInterfaceConfig.class}, tree="[0]")
+    private Output</* @Nullable */ PrivateConnectionPscInterfaceConfig> pscInterfaceConfig;
+
+    /**
+     * @return The PSC Interface configuration is used to create PSC Interface
+     * between Datastream and the consumer&#39;s PSC.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<PrivateConnectionPscInterfaceConfig>> pscInterfaceConfig() {
+        return Codegen.optional(this.pscInterfaceConfig);
     }
     /**
      * The combination of labels configured directly on the resource
@@ -265,7 +367,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vpcPeeringConfig", refs={PrivateConnectionVpcPeeringConfig.class}, tree="[0]")
-    private Output<PrivateConnectionVpcPeeringConfig> vpcPeeringConfig;
+    private Output</* @Nullable */ PrivateConnectionVpcPeeringConfig> vpcPeeringConfig;
 
     /**
      * @return The VPC Peering configuration is used to create VPC peering
@@ -273,8 +375,8 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<PrivateConnectionVpcPeeringConfig> vpcPeeringConfig() {
-        return this.vpcPeeringConfig;
+    public Output<Optional<PrivateConnectionVpcPeeringConfig>> vpcPeeringConfig() {
+        return Codegen.optional(this.vpcPeeringConfig);
     }
 
     /**

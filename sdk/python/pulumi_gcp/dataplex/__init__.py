@@ -18,6 +18,7 @@ from .datascan import *
 from .datascan_iam_binding import *
 from .datascan_iam_member import *
 from .datascan_iam_policy import *
+from .entry import *
 from .entry_group import *
 from .entry_group_iam_binding import *
 from .entry_group_iam_member import *

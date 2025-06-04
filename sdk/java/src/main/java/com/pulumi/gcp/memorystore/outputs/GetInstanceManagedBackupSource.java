@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceManagedBackupSource {
     /**
-     * @return Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+     * @return Example: &#39;projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}&#39;.
      * 
      */
     private String backup;
 
     private GetInstanceManagedBackupSource() {}
     /**
-     * @return Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+     * @return Example: &#39;projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}&#39;.
      * 
      */
     public String backup() {

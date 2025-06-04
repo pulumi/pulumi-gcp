@@ -168,7 +168,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
      * instance only, indicating the active as the peer_instance
      * 
      */
@@ -176,7 +176,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<InstanceInitialReplicationArgs> initialReplication;
 
     /**
-     * @return Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * @return Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
      * instance only, indicating the active as the peer_instance
      * 
      */
@@ -642,7 +642,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialReplication Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+         * @param initialReplication Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
          * instance only, indicating the active as the peer_instance
          * 
          * @return builder
@@ -654,7 +654,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialReplication Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+         * @param initialReplication Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
          * instance only, indicating the active as the peer_instance
          * 
          * @return builder

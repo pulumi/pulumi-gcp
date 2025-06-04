@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly int? DiskSizeGb;
         /// <summary>
         /// Type of the disk attached to each node
-        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         /// </summary>
         public readonly string? DiskType;
         /// <summary>

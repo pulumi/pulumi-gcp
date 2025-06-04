@@ -53,7 +53,7 @@ class InstanceArgs:
         :param pulumi.Input[builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[builtins.str] description: A description of the instance.
         :param pulumi.Input['InstanceDirectoryServicesArgs'] directory_services: Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
-        :param pulumi.Input['InstanceInitialReplicationArgs'] initial_replication: Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        :param pulumi.Input['InstanceInitialReplicationArgs'] initial_replication: Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
                instance only, indicating the active as the peer_instance
         :param pulumi.Input[builtins.str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -200,7 +200,7 @@ class InstanceArgs:
     @pulumi.getter(name="initialReplication")
     def initial_replication(self) -> Optional[pulumi.Input['InstanceInitialReplicationArgs']]:
         """
-        Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
         instance only, indicating the active as the peer_instance
         """
         return pulumi.get(self, "initial_replication")
@@ -364,7 +364,7 @@ class _InstanceState:
         :param pulumi.Input['InstanceFileSharesArgs'] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
-        :param pulumi.Input['InstanceInitialReplicationArgs'] initial_replication: Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        :param pulumi.Input['InstanceInitialReplicationArgs'] initial_replication: Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
                instance only, indicating the active as the peer_instance
         :param pulumi.Input[builtins.str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -554,7 +554,7 @@ class _InstanceState:
     @pulumi.getter(name="initialReplication")
     def initial_replication(self) -> Optional[pulumi.Input['InstanceInitialReplicationArgs']]:
         """
-        Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
         instance only, indicating the active as the peer_instance
         """
         return pulumi.get(self, "initial_replication")
@@ -888,7 +888,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
                instance only, indicating the active as the peer_instance
         :param pulumi.Input[builtins.str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -1178,7 +1178,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
                instance only, indicating the active as the peer_instance
         :param pulumi.Input[builtins.str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -1312,7 +1312,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="initialReplication")
     def initial_replication(self) -> pulumi.Output[Optional['outputs.InstanceInitialReplication']]:
         """
-        Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
         instance only, indicating the active as the peer_instance
         """
         return pulumi.get(self, "initial_replication")

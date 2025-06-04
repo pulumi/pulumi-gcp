@@ -144,7 +144,7 @@ namespace Pulumi.Gcp.Datastream
     ///         {
     ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
     ///             {
-    ///                 Network = privateConnection.VpcPeeringConfig.Apply(vpcPeeringConfig =&gt; vpcPeeringConfig.Vpc),
+    ///                 Network = privateConnection.VpcPeeringConfig.Apply(vpcPeeringConfig =&gt; vpcPeeringConfig?.Vpc),
     ///                 Subnetwork = defaultSubnetwork.SelfLink,
     ///                 AccessConfigs = new[]
     ///                 {
@@ -178,7 +178,7 @@ namespace Pulumi.Gcp.Datastream
     ///     var rules = new Gcp.Compute.Firewall("rules", new()
     ///     {
     ///         Name = "ingress-rule",
-    ///         Network = privateConnection.VpcPeeringConfig.Apply(vpcPeeringConfig =&gt; vpcPeeringConfig.Vpc),
+    ///         Network = privateConnection.VpcPeeringConfig.Apply(vpcPeeringConfig =&gt; vpcPeeringConfig?.Vpc),
     ///         Description = "Allow traffic into NAT VM",
     ///         Direction = "INGRESS",
     ///         Allows = new[]
@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.Datastream
     ///         },
     ///         SourceRanges = new[]
     ///         {
-    ///             privateConnection.VpcPeeringConfig.Apply(vpcPeeringConfig =&gt; vpcPeeringConfig.Subnet),
+    ///             privateConnection.VpcPeeringConfig.Apply(vpcPeeringConfig =&gt; vpcPeeringConfig?.Subnet),
     ///         },
     ///     });
     /// 

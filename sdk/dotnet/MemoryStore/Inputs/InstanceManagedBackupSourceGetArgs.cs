@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
     public sealed class InstanceManagedBackupSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        /// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         /// </summary>
         [Input("backup", required: true)]
         public Input<string> Backup { get; set; } = null!;

@@ -1452,6 +1452,175 @@ class URLMap(pulumi.CustomResource):
                 }],
             }])
         ```
+        ### Url Map Http Filter Configs
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="default-backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
+        service_a = gcp.compute.BackendService("service-a",
+            name="service-a-backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for httpFilterConfigs in route rules",
+            default_service=default.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": default.id,
+                "route_rules": [{
+                    "priority": 1,
+                    "service": service_a.id,
+                    "match_rules": [{
+                        "prefix_match": "/",
+                        "ignore_case": True,
+                    }],
+                    "http_filter_configs": [{
+                        "filter_name": "envoy.wasm",
+                        "config_type_url": "type.googleapis.com/google.protobuf.Struct",
+                        "config": json.dumps({
+                            "name": "my-filter",
+                            "root_id": "my_root_id",
+                            "vm_config": {
+                                "vm_id": "my_vm_id",
+                                "runtime": "envoy.wasm.runtime.v8",
+                                "code": {
+                                    "local": {
+                                        "inline_string": "const WASM_BINARY = '...'",
+                                    },
+                                },
+                            },
+                        }),
+                    }],
+                }],
+            }],
+            tests=[{
+                "service": default.id,
+                "host": "mysite.com",
+                "path": "/",
+            }])
+        ```
+        ### Url Map Http Filter Metadata
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="default-backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
+        service_a = gcp.compute.BackendService("service-a",
+            name="service-a-backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
+        service_b = gcp.compute.BackendService("service-b",
+            name="service-b-backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for httpFilterMetadata in route rules",
+            default_service=default.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": default.id,
+                "route_rules": [
+                    {
+                        "priority": 1,
+                        "service": service_a.id,
+                        "match_rules": [{
+                            "prefix_match": "/",
+                            "ignore_case": True,
+                        }],
+                        "http_filter_metadatas": [{
+                            "filter_name": "envoy.wasm",
+                            "config_type_url": "type.googleapis.com/google.protobuf.Struct",
+                            "config": json.dumps({
+                                "fields": {
+                                    "timeout": {
+                                        "string_value": "30s",
+                                    },
+                                    "retries": {
+                                        "number_value": 3,
+                                    },
+                                    "debug": {
+                                        "bool_value": True,
+                                    },
+                                },
+                            }),
+                        }],
+                    },
+                    {
+                        "priority": 2,
+                        "service": service_b.id,
+                        "match_rules": [{
+                            "prefix_match": "/api",
+                            "ignore_case": True,
+                        }],
+                        "http_filter_metadatas": [{
+                            "filter_name": "envoy.rate_limit",
+                            "config_type_url": "type.googleapis.com/google.protobuf.Struct",
+                            "config": json.dumps({
+                                "fields": {
+                                    "requests_per_unit": {
+                                        "number_value": 100,
+                                    },
+                                    "unit": {
+                                        "string_value": "MINUTE",
+                                    },
+                                },
+                            }),
+                        }],
+                    },
+                ],
+            }],
+            tests=[{
+                "service": default.id,
+                "host": "mysite.com",
+                "path": "/",
+            }])
+        ```
 
         ## Import
 
@@ -2374,6 +2543,175 @@ class URLMap(pulumi.CustomResource):
                         "error_service": error.id,
                     },
                 }],
+            }])
+        ```
+        ### Url Map Http Filter Configs
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="default-backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
+        service_a = gcp.compute.BackendService("service-a",
+            name="service-a-backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for httpFilterConfigs in route rules",
+            default_service=default.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": default.id,
+                "route_rules": [{
+                    "priority": 1,
+                    "service": service_a.id,
+                    "match_rules": [{
+                        "prefix_match": "/",
+                        "ignore_case": True,
+                    }],
+                    "http_filter_configs": [{
+                        "filter_name": "envoy.wasm",
+                        "config_type_url": "type.googleapis.com/google.protobuf.Struct",
+                        "config": json.dumps({
+                            "name": "my-filter",
+                            "root_id": "my_root_id",
+                            "vm_config": {
+                                "vm_id": "my_vm_id",
+                                "runtime": "envoy.wasm.runtime.v8",
+                                "code": {
+                                    "local": {
+                                        "inline_string": "const WASM_BINARY = '...'",
+                                    },
+                                },
+                            },
+                        }),
+                    }],
+                }],
+            }],
+            tests=[{
+                "service": default.id,
+                "host": "mysite.com",
+                "path": "/",
+            }])
+        ```
+        ### Url Map Http Filter Metadata
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="default-backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
+        service_a = gcp.compute.BackendService("service-a",
+            name="service-a-backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
+        service_b = gcp.compute.BackendService("service-b",
+            name="service-b-backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="Test for httpFilterMetadata in route rules",
+            default_service=default.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": default.id,
+                "route_rules": [
+                    {
+                        "priority": 1,
+                        "service": service_a.id,
+                        "match_rules": [{
+                            "prefix_match": "/",
+                            "ignore_case": True,
+                        }],
+                        "http_filter_metadatas": [{
+                            "filter_name": "envoy.wasm",
+                            "config_type_url": "type.googleapis.com/google.protobuf.Struct",
+                            "config": json.dumps({
+                                "fields": {
+                                    "timeout": {
+                                        "string_value": "30s",
+                                    },
+                                    "retries": {
+                                        "number_value": 3,
+                                    },
+                                    "debug": {
+                                        "bool_value": True,
+                                    },
+                                },
+                            }),
+                        }],
+                    },
+                    {
+                        "priority": 2,
+                        "service": service_b.id,
+                        "match_rules": [{
+                            "prefix_match": "/api",
+                            "ignore_case": True,
+                        }],
+                        "http_filter_metadatas": [{
+                            "filter_name": "envoy.rate_limit",
+                            "config_type_url": "type.googleapis.com/google.protobuf.Struct",
+                            "config": json.dumps({
+                                "fields": {
+                                    "requests_per_unit": {
+                                        "number_value": 100,
+                                    },
+                                    "unit": {
+                                        "string_value": "MINUTE",
+                                    },
+                                },
+                            }),
+                        }],
+                    },
+                ],
+            }],
+            tests=[{
+                "service": default.id,
+                "host": "mysite.com",
+                "path": "/",
             }])
         ```
 

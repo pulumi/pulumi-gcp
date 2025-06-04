@@ -21,6 +21,10 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// </summary>
         public readonly string? LastActiveSyncTime;
         /// <summary>
+        /// The peer instance.
+        /// </summary>
+        public readonly string? PeerInstance;
+        /// <summary>
         /// (Output)
         /// Output only. The replica state
         /// </summary>
@@ -35,11 +39,14 @@ namespace Pulumi.Gcp.Filestore.Outputs
         private InstanceEffectiveReplicationReplica(
             string? lastActiveSyncTime,
 
+            string? peerInstance,
+
             string? state,
 
             ImmutableArray<string> stateReasons)
         {
             LastActiveSyncTime = lastActiveSyncTime;
+            PeerInstance = peerInstance;
             State = state;
             StateReasons = stateReasons;
         }

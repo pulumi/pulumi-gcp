@@ -80,6 +80,7 @@ export interface GetRouterNatResult {
     readonly maxPortsPerVm: number;
     readonly minPortsPerVm: number;
     readonly name: string;
+    readonly nat64Subnetworks: outputs.compute.GetRouterNatNat64Subnetwork[];
     readonly natIpAllocateOption: string;
     readonly natIps: string[];
     readonly project?: string;
@@ -87,6 +88,7 @@ export interface GetRouterNatResult {
     readonly router: string;
     readonly rules: outputs.compute.GetRouterNatRule[];
     readonly sourceSubnetworkIpRangesToNat: string;
+    readonly sourceSubnetworkIpRangesToNat64: string;
     readonly subnetworks: outputs.compute.GetRouterNatSubnetwork[];
     readonly tcpEstablishedIdleTimeoutSec: number;
     readonly tcpTimeWaitTimeoutSec: number;

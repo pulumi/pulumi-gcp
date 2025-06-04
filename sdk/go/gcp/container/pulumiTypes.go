@@ -21028,7 +21028,7 @@ type ClusterNodeConfig struct {
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
 	DiskType *string `pulumi:"diskType"`
 	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints []ClusterNodeConfigEffectiveTaint `pulumi:"effectiveTaints"`
@@ -21184,7 +21184,7 @@ type ClusterNodeConfigArgs struct {
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints ClusterNodeConfigEffectiveTaintArrayInput `pulumi:"effectiveTaints"`
@@ -21420,7 +21420,7 @@ func (o ClusterNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
 func (o ClusterNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -21748,7 +21748,7 @@ func (o ClusterNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
 func (o ClusterNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
 		if v == nil {
@@ -29602,7 +29602,7 @@ type ClusterNodePoolNodeConfig struct {
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
 	DiskType *string `pulumi:"diskType"`
 	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints []ClusterNodePoolNodeConfigEffectiveTaint `pulumi:"effectiveTaints"`
@@ -29758,7 +29758,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints ClusterNodePoolNodeConfigEffectiveTaintArrayInput `pulumi:"effectiveTaints"`
@@ -30000,7 +30000,7 @@ func (o ClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
 func (o ClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -30348,7 +30348,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
 func (o ClusterNodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
 		if v == nil {

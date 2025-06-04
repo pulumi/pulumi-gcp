@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// Type of the disk attached to each node
-        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }

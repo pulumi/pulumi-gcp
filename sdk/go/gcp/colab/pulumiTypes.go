@@ -1983,8 +1983,13 @@ type RuntimeTemplateSoftwareConfig struct {
 	// Environment variables to be passed to the container.
 	// Structure is documented below.
 	Envs []RuntimeTemplateSoftwareConfigEnv `pulumi:"envs"`
+	// (Optional, Deprecated)
 	// Post startup script config.
 	// Structure is documented below.
+	//
+	// > **Warning:** `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+	//
+	// Deprecated: `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
 	PostStartupScriptConfig *RuntimeTemplateSoftwareConfigPostStartupScriptConfig `pulumi:"postStartupScriptConfig"`
 }
 
@@ -2003,8 +2008,13 @@ type RuntimeTemplateSoftwareConfigArgs struct {
 	// Environment variables to be passed to the container.
 	// Structure is documented below.
 	Envs RuntimeTemplateSoftwareConfigEnvArrayInput `pulumi:"envs"`
+	// (Optional, Deprecated)
 	// Post startup script config.
 	// Structure is documented below.
+	//
+	// > **Warning:** `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+	//
+	// Deprecated: `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
 	PostStartupScriptConfig RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput `pulumi:"postStartupScriptConfig"`
 }
 
@@ -2091,8 +2101,13 @@ func (o RuntimeTemplateSoftwareConfigOutput) Envs() RuntimeTemplateSoftwareConfi
 	return o.ApplyT(func(v RuntimeTemplateSoftwareConfig) []RuntimeTemplateSoftwareConfigEnv { return v.Envs }).(RuntimeTemplateSoftwareConfigEnvArrayOutput)
 }
 
+// (Optional, Deprecated)
 // Post startup script config.
 // Structure is documented below.
+//
+// > **Warning:** `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+//
+// Deprecated: `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
 func (o RuntimeTemplateSoftwareConfigOutput) PostStartupScriptConfig() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
 	return o.ApplyT(func(v RuntimeTemplateSoftwareConfig) *RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
 		return v.PostStartupScriptConfig
@@ -2134,8 +2149,13 @@ func (o RuntimeTemplateSoftwareConfigPtrOutput) Envs() RuntimeTemplateSoftwareCo
 	}).(RuntimeTemplateSoftwareConfigEnvArrayOutput)
 }
 
+// (Optional, Deprecated)
 // Post startup script config.
 // Structure is documented below.
+//
+// > **Warning:** `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+//
+// Deprecated: `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
 func (o RuntimeTemplateSoftwareConfigPtrOutput) PostStartupScriptConfig() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
 	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfig) *RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
 		if v == nil {

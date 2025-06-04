@@ -580,6 +580,7 @@ __all__ = [
     'RouterBgpAdvertisedIpRange',
     'RouterMd5AuthenticationKeys',
     'RouterNatLogConfig',
+    'RouterNatNat64Subnetwork',
     'RouterNatRule',
     'RouterNatRuleAction',
     'RouterNatSubnetwork',
@@ -716,6 +717,8 @@ __all__ = [
     'URLMapPathMatcherRouteRuleHeaderAction',
     'URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd',
     'URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd',
+    'URLMapPathMatcherRouteRuleHttpFilterConfig',
+    'URLMapPathMatcherRouteRuleHttpFilterMetadata',
     'URLMapPathMatcherRouteRuleMatchRule',
     'URLMapPathMatcherRouteRuleMatchRuleHeaderMatch',
     'URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch',
@@ -971,6 +974,7 @@ __all__ = [
     'GetRouterBgpAdvertisedIpRangeResult',
     'GetRouterMd5AuthenticationKeyResult',
     'GetRouterNatLogConfigResult',
+    'GetRouterNatNat64SubnetworkResult',
     'GetRouterNatRuleResult',
     'GetRouterNatRuleActionResult',
     'GetRouterNatSubnetworkResult',
@@ -3795,6 +3799,7 @@ class BackendServiceLogConfig(dict):
         :param Sequence[builtins.str] optional_fields: This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
                was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
                For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+               For example: orca_load_report, tls.protocol
         :param builtins.str optional_mode: Specifies the optional logging mode for the load balancer traffic.
                Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
                Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
@@ -3827,6 +3832,7 @@ class BackendServiceLogConfig(dict):
         This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
         was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
         For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        For example: orca_load_report, tls.protocol
         """
         return pulumi.get(self, "optional_fields")
 
@@ -43771,6 +43777,26 @@ class RouterNatLogConfig(dict):
 
 
 @pulumi.output_type
+class RouterNatNat64Subnetwork(dict):
+    def __init__(__self__, *,
+                 name: builtins.str):
+        """
+        :param builtins.str name: Name of the NAT service. The name must be 1-63 characters long and
+               comply with RFC1035.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        Name of the NAT service. The name must be 1-63 characters long and
+        comply with RFC1035.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class RouterNatRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -43978,7 +44004,7 @@ class RouterNatSubnetwork(dict):
                  source_ip_ranges_to_nats: Sequence[builtins.str],
                  secondary_ip_range_names: Optional[Sequence[builtins.str]] = None):
         """
-        :param builtins.str name: Self-link of subnetwork to NAT
+        :param builtins.str name: Self-link of the subnetwork resource that will use NAT64
         :param Sequence[builtins.str] source_ip_ranges_to_nats: List of options for which source IPs in the subnetwork
                should have NAT enabled. Supported values include:
                `ALL_IP_RANGES`, `LIST_OF_SECONDARY_IP_RANGES`,
@@ -43987,6 +44013,8 @@ class RouterNatSubnetwork(dict):
                to use NAT. This can be populated only if
                `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
                sourceIpRangesToNat
+               
+               <a name="nested_nat64_subnetwork"></a>The `nat64_subnetwork` block supports:
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "source_ip_ranges_to_nats", source_ip_ranges_to_nats)
@@ -43997,7 +44025,7 @@ class RouterNatSubnetwork(dict):
     @pulumi.getter
     def name(self) -> builtins.str:
         """
-        Self-link of subnetwork to NAT
+        Self-link of the subnetwork resource that will use NAT64
         """
         return pulumi.get(self, "name")
 
@@ -44020,6 +44048,8 @@ class RouterNatSubnetwork(dict):
         to use NAT. This can be populated only if
         `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
         sourceIpRangesToNat
+
+        <a name="nested_nat64_subnetwork"></a>The `nat64_subnetwork` block supports:
         """
         return pulumi.get(self, "secondary_ip_range_names")
 
@@ -53478,6 +53508,10 @@ class URLMapPathMatcherRouteRule(dict):
             suggest = "custom_error_response_policy"
         elif key == "headerAction":
             suggest = "header_action"
+        elif key == "httpFilterConfigs":
+            suggest = "http_filter_configs"
+        elif key == "httpFilterMetadatas":
+            suggest = "http_filter_metadatas"
         elif key == "matchRules":
             suggest = "match_rules"
         elif key == "routeAction":
@@ -53500,6 +53534,8 @@ class URLMapPathMatcherRouteRule(dict):
                  priority: builtins.int,
                  custom_error_response_policy: Optional['outputs.URLMapPathMatcherRouteRuleCustomErrorResponsePolicy'] = None,
                  header_action: Optional['outputs.URLMapPathMatcherRouteRuleHeaderAction'] = None,
+                 http_filter_configs: Optional[Sequence['outputs.URLMapPathMatcherRouteRuleHttpFilterConfig']] = None,
+                 http_filter_metadatas: Optional[Sequence['outputs.URLMapPathMatcherRouteRuleHttpFilterMetadata']] = None,
                  match_rules: Optional[Sequence['outputs.URLMapPathMatcherRouteRuleMatchRule']] = None,
                  route_action: Optional['outputs.URLMapPathMatcherRouteRuleRouteAction'] = None,
                  service: Optional[builtins.str] = None,
@@ -53524,6 +53560,16 @@ class URLMapPathMatcherRouteRule(dict):
                the selected backendService. The headerAction specified here are applied before
                the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
                outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
+               Structure is documented below.
+        :param Sequence['URLMapPathMatcherRouteRuleHttpFilterConfigArgs'] http_filter_configs: Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+               httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+               See ForwardingRule for more details.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+               Structure is documented below.
+        :param Sequence['URLMapPathMatcherRouteRuleHttpFilterMetadataArgs'] http_filter_metadatas: Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+               httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+               See ForwardingRule for more details.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
                Structure is documented below.
         :param Sequence['URLMapPathMatcherRouteRuleMatchRuleArgs'] match_rules: The rules for determining a match.
                Structure is documented below.
@@ -53551,6 +53597,10 @@ class URLMapPathMatcherRouteRule(dict):
             pulumi.set(__self__, "custom_error_response_policy", custom_error_response_policy)
         if header_action is not None:
             pulumi.set(__self__, "header_action", header_action)
+        if http_filter_configs is not None:
+            pulumi.set(__self__, "http_filter_configs", http_filter_configs)
+        if http_filter_metadatas is not None:
+            pulumi.set(__self__, "http_filter_metadatas", http_filter_metadatas)
         if match_rules is not None:
             pulumi.set(__self__, "match_rules", match_rules)
         if route_action is not None:
@@ -53600,6 +53650,30 @@ class URLMapPathMatcherRouteRule(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "header_action")
+
+    @property
+    @pulumi.getter(name="httpFilterConfigs")
+    def http_filter_configs(self) -> Optional[Sequence['outputs.URLMapPathMatcherRouteRuleHttpFilterConfig']]:
+        """
+        Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+        httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        See ForwardingRule for more details.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_filter_configs")
+
+    @property
+    @pulumi.getter(name="httpFilterMetadatas")
+    def http_filter_metadatas(self) -> Optional[Sequence['outputs.URLMapPathMatcherRouteRuleHttpFilterMetadata']]:
+        """
+        Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+        httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        See ForwardingRule for more details.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_filter_metadatas")
 
     @property
     @pulumi.getter(name="matchRules")
@@ -54002,6 +54076,142 @@ class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd(dict):
         If true, headerValue is set for the header, discarding any values that were set for that header.
         """
         return pulumi.get(self, "replace")
+
+
+@pulumi.output_type
+class URLMapPathMatcherRouteRuleHttpFilterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configTypeUrl":
+            suggest = "config_type_url"
+        elif key == "filterName":
+            suggest = "filter_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in URLMapPathMatcherRouteRuleHttpFilterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        URLMapPathMatcherRouteRuleHttpFilterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        URLMapPathMatcherRouteRuleHttpFilterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config: Optional[builtins.str] = None,
+                 config_type_url: Optional[builtins.str] = None,
+                 filter_name: Optional[builtins.str] = None):
+        """
+        :param builtins.str config: The configuration needed to enable the networkservices.HttpFilter resource.
+               The configuration must be YAML formatted and only contain fields defined in the protobuf identified in configTypeUrl
+        :param builtins.str config_type_url: The fully qualified versioned proto3 type url of the protobuf that the filter expects for its contextual settings,
+               for example: type.googleapis.com/google.protobuf.Struct
+        :param builtins.str filter_name: Name of the networkservices.HttpFilter resource this configuration belongs to.
+               This name must be known to the xDS client. Example: envoy.wasm
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if config_type_url is not None:
+            pulumi.set(__self__, "config_type_url", config_type_url)
+        if filter_name is not None:
+            pulumi.set(__self__, "filter_name", filter_name)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[builtins.str]:
+        """
+        The configuration needed to enable the networkservices.HttpFilter resource.
+        The configuration must be YAML formatted and only contain fields defined in the protobuf identified in configTypeUrl
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="configTypeUrl")
+    def config_type_url(self) -> Optional[builtins.str]:
+        """
+        The fully qualified versioned proto3 type url of the protobuf that the filter expects for its contextual settings,
+        for example: type.googleapis.com/google.protobuf.Struct
+        """
+        return pulumi.get(self, "config_type_url")
+
+    @property
+    @pulumi.getter(name="filterName")
+    def filter_name(self) -> Optional[builtins.str]:
+        """
+        Name of the networkservices.HttpFilter resource this configuration belongs to.
+        This name must be known to the xDS client. Example: envoy.wasm
+        """
+        return pulumi.get(self, "filter_name")
+
+
+@pulumi.output_type
+class URLMapPathMatcherRouteRuleHttpFilterMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configTypeUrl":
+            suggest = "config_type_url"
+        elif key == "filterName":
+            suggest = "filter_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in URLMapPathMatcherRouteRuleHttpFilterMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        URLMapPathMatcherRouteRuleHttpFilterMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        URLMapPathMatcherRouteRuleHttpFilterMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config: Optional[builtins.str] = None,
+                 config_type_url: Optional[builtins.str] = None,
+                 filter_name: Optional[builtins.str] = None):
+        """
+        :param builtins.str config: The configuration needed to enable the networkservices.HttpFilter resource.
+               The configuration must be YAML formatted and only contain fields defined in the protobuf identified in configTypeUrl
+        :param builtins.str config_type_url: The fully qualified versioned proto3 type url of the protobuf that the filter expects for its contextual settings,
+               for example: type.googleapis.com/google.protobuf.Struct
+        :param builtins.str filter_name: Name of the networkservices.HttpFilter resource this configuration belongs to.
+               This name must be known to the xDS client. Example: envoy.wasm
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if config_type_url is not None:
+            pulumi.set(__self__, "config_type_url", config_type_url)
+        if filter_name is not None:
+            pulumi.set(__self__, "filter_name", filter_name)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[builtins.str]:
+        """
+        The configuration needed to enable the networkservices.HttpFilter resource.
+        The configuration must be YAML formatted and only contain fields defined in the protobuf identified in configTypeUrl
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="configTypeUrl")
+    def config_type_url(self) -> Optional[builtins.str]:
+        """
+        The fully qualified versioned proto3 type url of the protobuf that the filter expects for its contextual settings,
+        for example: type.googleapis.com/google.protobuf.Struct
+        """
+        return pulumi.get(self, "config_type_url")
+
+    @property
+    @pulumi.getter(name="filterName")
+    def filter_name(self) -> Optional[builtins.str]:
+        """
+        Name of the networkservices.HttpFilter resource this configuration belongs to.
+        This name must be known to the xDS client. Example: envoy.wasm
+        """
+        return pulumi.get(self, "filter_name")
 
 
 @pulumi.output_type
@@ -57423,6 +57633,7 @@ class GetBackendServiceLogConfigResult(dict):
         :param Sequence[builtins.str] optional_fields: This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
                was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
                For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+               For example: orca_load_report, tls.protocol
         :param builtins.str optional_mode: Specifies the optional logging mode for the load balancer traffic.
                Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
         :param builtins.float sample_rate: This field can only be specified if logging is enabled for this backend service. The value of
@@ -57450,6 +57661,7 @@ class GetBackendServiceLogConfigResult(dict):
         This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
         was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
         For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        For example: orca_load_report, tls.protocol
         """
         return pulumi.get(self, "optional_fields")
 
@@ -69470,6 +69682,26 @@ class GetRouterNatLogConfigResult(dict):
         Specifies the desired filtering of logs on this NAT. Possible values: ["ERRORS_ONLY", "TRANSLATIONS_ONLY", "ALL"]
         """
         return pulumi.get(self, "filter")
+
+
+@pulumi.output_type
+class GetRouterNatNat64SubnetworkResult(dict):
+    def __init__(__self__, *,
+                 name: builtins.str):
+        """
+        :param builtins.str name: Name of the NAT service. The name must be 1-63 characters long and
+               comply with RFC1035.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        Name of the NAT service. The name must be 1-63 characters long and
+        comply with RFC1035.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

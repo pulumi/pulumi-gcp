@@ -63,6 +63,74 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Single IPv4 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 203.0.113.1/29
+     * 
+     */
+    @Import(name="candidateCloudRouterIpAddress")
+    private @Nullable Output<String> candidateCloudRouterIpAddress;
+
+    /**
+     * @return Single IPv4 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 203.0.113.1/29
+     * 
+     */
+    public Optional<Output<String>> candidateCloudRouterIpAddress() {
+        return Optional.ofNullable(this.candidateCloudRouterIpAddress);
+    }
+
+    /**
+     * Single IPv6 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 2001:db8::1/125
+     * 
+     */
+    @Import(name="candidateCloudRouterIpv6Address")
+    private @Nullable Output<String> candidateCloudRouterIpv6Address;
+
+    /**
+     * @return Single IPv6 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 2001:db8::1/125
+     * 
+     */
+    public Optional<Output<String>> candidateCloudRouterIpv6Address() {
+        return Optional.ofNullable(this.candidateCloudRouterIpv6Address);
+    }
+
+    /**
+     * Single IPv4 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 203.0.113.2/29
+     * 
+     */
+    @Import(name="candidateCustomerRouterIpAddress")
+    private @Nullable Output<String> candidateCustomerRouterIpAddress;
+
+    /**
+     * @return Single IPv4 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 203.0.113.2/29
+     * 
+     */
+    public Optional<Output<String>> candidateCustomerRouterIpAddress() {
+        return Optional.ofNullable(this.candidateCustomerRouterIpAddress);
+    }
+
+    /**
+     * Single IPv6 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 2001:db8::2/125
+     * 
+     */
+    @Import(name="candidateCustomerRouterIpv6Address")
+    private @Nullable Output<String> candidateCustomerRouterIpv6Address;
+
+    /**
+     * @return Single IPv6 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 2001:db8::2/125
+     * 
+     */
+    public Optional<Output<String>> candidateCustomerRouterIpv6Address() {
+        return Optional.ofNullable(this.candidateCustomerRouterIpv6Address);
+    }
+
+    /**
      * Up to 16 candidate prefixes that can be used to restrict the allocation
      * of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
      * All prefixes must be within link-local address space (169.254.0.0/16)
@@ -441,6 +509,10 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
     private InterconnectAttachmentArgs(InterconnectAttachmentArgs $) {
         this.adminEnabled = $.adminEnabled;
         this.bandwidth = $.bandwidth;
+        this.candidateCloudRouterIpAddress = $.candidateCloudRouterIpAddress;
+        this.candidateCloudRouterIpv6Address = $.candidateCloudRouterIpv6Address;
+        this.candidateCustomerRouterIpAddress = $.candidateCustomerRouterIpAddress;
+        this.candidateCustomerRouterIpv6Address = $.candidateCustomerRouterIpv6Address;
         this.candidateSubnets = $.candidateSubnets;
         this.description = $.description;
         this.edgeAvailabilityDomain = $.edgeAvailabilityDomain;
@@ -529,6 +601,98 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
          */
         public Builder bandwidth(String bandwidth) {
             return bandwidth(Output.of(bandwidth));
+        }
+
+        /**
+         * @param candidateCloudRouterIpAddress Single IPv4 address + prefix length to be configured on the cloud router interface for this
+         * interconnect attachment. Example: 203.0.113.1/29
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCloudRouterIpAddress(@Nullable Output<String> candidateCloudRouterIpAddress) {
+            $.candidateCloudRouterIpAddress = candidateCloudRouterIpAddress;
+            return this;
+        }
+
+        /**
+         * @param candidateCloudRouterIpAddress Single IPv4 address + prefix length to be configured on the cloud router interface for this
+         * interconnect attachment. Example: 203.0.113.1/29
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCloudRouterIpAddress(String candidateCloudRouterIpAddress) {
+            return candidateCloudRouterIpAddress(Output.of(candidateCloudRouterIpAddress));
+        }
+
+        /**
+         * @param candidateCloudRouterIpv6Address Single IPv6 address + prefix length to be configured on the cloud router interface for this
+         * interconnect attachment. Example: 2001:db8::1/125
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCloudRouterIpv6Address(@Nullable Output<String> candidateCloudRouterIpv6Address) {
+            $.candidateCloudRouterIpv6Address = candidateCloudRouterIpv6Address;
+            return this;
+        }
+
+        /**
+         * @param candidateCloudRouterIpv6Address Single IPv6 address + prefix length to be configured on the cloud router interface for this
+         * interconnect attachment. Example: 2001:db8::1/125
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCloudRouterIpv6Address(String candidateCloudRouterIpv6Address) {
+            return candidateCloudRouterIpv6Address(Output.of(candidateCloudRouterIpv6Address));
+        }
+
+        /**
+         * @param candidateCustomerRouterIpAddress Single IPv4 address + prefix length to be configured on the customer router interface for this
+         * interconnect attachment. Example: 203.0.113.2/29
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCustomerRouterIpAddress(@Nullable Output<String> candidateCustomerRouterIpAddress) {
+            $.candidateCustomerRouterIpAddress = candidateCustomerRouterIpAddress;
+            return this;
+        }
+
+        /**
+         * @param candidateCustomerRouterIpAddress Single IPv4 address + prefix length to be configured on the customer router interface for this
+         * interconnect attachment. Example: 203.0.113.2/29
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCustomerRouterIpAddress(String candidateCustomerRouterIpAddress) {
+            return candidateCustomerRouterIpAddress(Output.of(candidateCustomerRouterIpAddress));
+        }
+
+        /**
+         * @param candidateCustomerRouterIpv6Address Single IPv6 address + prefix length to be configured on the customer router interface for this
+         * interconnect attachment. Example: 2001:db8::2/125
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCustomerRouterIpv6Address(@Nullable Output<String> candidateCustomerRouterIpv6Address) {
+            $.candidateCustomerRouterIpv6Address = candidateCustomerRouterIpv6Address;
+            return this;
+        }
+
+        /**
+         * @param candidateCustomerRouterIpv6Address Single IPv6 address + prefix length to be configured on the customer router interface for this
+         * interconnect attachment. Example: 2001:db8::2/125
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCustomerRouterIpv6Address(String candidateCustomerRouterIpv6Address) {
+            return candidateCustomerRouterIpv6Address(Output.of(candidateCustomerRouterIpv6Address));
         }
 
         /**

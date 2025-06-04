@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -89,6 +91,11 @@ export class BackupVault extends pulumi.CustomResource {
      */
     public readonly backupRegion!: pulumi.Output<string | undefined>;
     /**
+     * Backup retention policy defining the retention of the backups.
+     * Structure is documented below.
+     */
+    public readonly backupRetentionPolicy!: pulumi.Output<outputs.netapp.BackupVaultBackupRetentionPolicy | undefined>;
+    /**
      * Type of the backup vault to be created. Default is IN_REGION.
      * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
      */
@@ -164,6 +171,7 @@ export class BackupVault extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BackupVaultState | undefined;
             resourceInputs["backupRegion"] = state ? state.backupRegion : undefined;
+            resourceInputs["backupRetentionPolicy"] = state ? state.backupRetentionPolicy : undefined;
             resourceInputs["backupVaultType"] = state ? state.backupVaultType : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -183,6 +191,7 @@ export class BackupVault extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["backupRegion"] = args ? args.backupRegion : undefined;
+            resourceInputs["backupRetentionPolicy"] = args ? args.backupRetentionPolicy : undefined;
             resourceInputs["backupVaultType"] = args ? args.backupVaultType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -212,6 +221,11 @@ export interface BackupVaultState {
      * Region in which backup is stored.
      */
     backupRegion?: pulumi.Input<string>;
+    /**
+     * Backup retention policy defining the retention of the backups.
+     * Structure is documented below.
+     */
+    backupRetentionPolicy?: pulumi.Input<inputs.netapp.BackupVaultBackupRetentionPolicy>;
     /**
      * Type of the backup vault to be created. Default is IN_REGION.
      * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
@@ -283,6 +297,11 @@ export interface BackupVaultArgs {
      * Region in which backup is stored.
      */
     backupRegion?: pulumi.Input<string>;
+    /**
+     * Backup retention policy defining the retention of the backups.
+     * Structure is documented below.
+     */
+    backupRetentionPolicy?: pulumi.Input<inputs.netapp.BackupVaultBackupRetentionPolicy>;
     /**
      * Type of the backup vault to be created. Default is IN_REGION.
      * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.

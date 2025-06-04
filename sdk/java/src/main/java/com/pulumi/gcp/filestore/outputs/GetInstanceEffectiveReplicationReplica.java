@@ -19,6 +19,11 @@ public final class GetInstanceEffectiveReplicationReplica {
      */
     private String lastActiveSyncTime;
     /**
+     * @return The peer instance.
+     * 
+     */
+    private String peerInstance;
+    /**
      * @return Output only. The replica state
      * 
      */
@@ -38,6 +43,13 @@ public final class GetInstanceEffectiveReplicationReplica {
      */
     public String lastActiveSyncTime() {
         return this.lastActiveSyncTime;
+    }
+    /**
+     * @return The peer instance.
+     * 
+     */
+    public String peerInstance() {
+        return this.peerInstance;
     }
     /**
      * @return Output only. The replica state
@@ -64,12 +76,14 @@ public final class GetInstanceEffectiveReplicationReplica {
     @CustomType.Builder
     public static final class Builder {
         private String lastActiveSyncTime;
+        private String peerInstance;
         private String state;
         private List<String> stateReasons;
         public Builder() {}
         public Builder(GetInstanceEffectiveReplicationReplica defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lastActiveSyncTime = defaults.lastActiveSyncTime;
+    	      this.peerInstance = defaults.peerInstance;
     	      this.state = defaults.state;
     	      this.stateReasons = defaults.stateReasons;
         }
@@ -80,6 +94,14 @@ public final class GetInstanceEffectiveReplicationReplica {
               throw new MissingRequiredPropertyException("GetInstanceEffectiveReplicationReplica", "lastActiveSyncTime");
             }
             this.lastActiveSyncTime = lastActiveSyncTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder peerInstance(String peerInstance) {
+            if (peerInstance == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEffectiveReplicationReplica", "peerInstance");
+            }
+            this.peerInstance = peerInstance;
             return this;
         }
         @CustomType.Setter
@@ -104,6 +126,7 @@ public final class GetInstanceEffectiveReplicationReplica {
         public GetInstanceEffectiveReplicationReplica build() {
             final var _resultValue = new GetInstanceEffectiveReplicationReplica();
             _resultValue.lastActiveSyncTime = lastActiveSyncTime;
+            _resultValue.peerInstance = peerInstance;
             _resultValue.state = state;
             _resultValue.stateReasons = stateReasons;
             return _resultValue;

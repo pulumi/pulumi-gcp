@@ -265,7 +265,7 @@ type Instance struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesOutput `pulumi:"fileShares"`
-	// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+	// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
 	// instance only, indicating the active as the peer_instance
 	InitialReplication InstanceInitialReplicationPtrOutput `pulumi:"initialReplication"`
 	// KMS key name used for data encryption.
@@ -373,7 +373,7 @@ type instanceState struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares *InstanceFileShares `pulumi:"fileShares"`
-	// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+	// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
 	// instance only, indicating the active as the peer_instance
 	InitialReplication *InstanceInitialReplication `pulumi:"initialReplication"`
 	// KMS key name used for data encryption.
@@ -438,7 +438,7 @@ type InstanceState struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesPtrInput
-	// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+	// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
 	// instance only, indicating the active as the peer_instance
 	InitialReplication InstanceInitialReplicationPtrInput
 	// KMS key name used for data encryption.
@@ -497,7 +497,7 @@ type instanceArgs struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileShares `pulumi:"fileShares"`
-	// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+	// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
 	// instance only, indicating the active as the peer_instance
 	InitialReplication *InstanceInitialReplication `pulumi:"initialReplication"`
 	// KMS key name used for data encryption.
@@ -550,7 +550,7 @@ type InstanceArgs struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesInput
-	// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+	// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
 	// instance only, indicating the active as the peer_instance
 	InitialReplication InstanceInitialReplicationPtrInput
 	// KMS key name used for data encryption.
@@ -725,7 +725,7 @@ func (o InstanceOutput) FileShares() InstanceFileSharesOutput {
 	return o.ApplyT(func(v *Instance) InstanceFileSharesOutput { return v.FileShares }).(InstanceFileSharesOutput)
 }
 
-// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
 // instance only, indicating the active as the peer_instance
 func (o InstanceOutput) InitialReplication() InstanceInitialReplicationPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceInitialReplicationPtrOutput { return v.InitialReplication }).(InstanceInitialReplicationPtrOutput)

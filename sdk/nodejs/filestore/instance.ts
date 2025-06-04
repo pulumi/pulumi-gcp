@@ -218,7 +218,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly fileShares!: pulumi.Output<outputs.filestore.InstanceFileShares>;
     /**
-     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
      * instance only, indicating the active as the peer_instance
      */
     public readonly initialReplication!: pulumi.Output<outputs.filestore.InstanceInitialReplication | undefined>;
@@ -403,7 +403,7 @@ export interface InstanceState {
      */
     fileShares?: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
-     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
      * instance only, indicating the active as the peer_instance
      */
     initialReplication?: pulumi.Input<inputs.filestore.InstanceInitialReplication>;
@@ -495,7 +495,7 @@ export interface InstanceArgs {
      */
     fileShares: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
-     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
      * instance only, indicating the active as the peer_instance
      */
     initialReplication?: pulumi.Input<inputs.filestore.InstanceInitialReplication>;

@@ -13,6 +13,219 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type BackupVaultBackupRetentionPolicy struct {
+	// Minimum retention duration in days for backups in the backup vault.
+	BackupMinimumEnforcedRetentionDays int `pulumi:"backupMinimumEnforcedRetentionDays"`
+	// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+	DailyBackupImmutable *bool `pulumi:"dailyBackupImmutable"`
+	// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+	ManualBackupImmutable *bool `pulumi:"manualBackupImmutable"`
+	// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+	MonthlyBackupImmutable *bool `pulumi:"monthlyBackupImmutable"`
+	// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+	WeeklyBackupImmutable *bool `pulumi:"weeklyBackupImmutable"`
+}
+
+// BackupVaultBackupRetentionPolicyInput is an input type that accepts BackupVaultBackupRetentionPolicyArgs and BackupVaultBackupRetentionPolicyOutput values.
+// You can construct a concrete instance of `BackupVaultBackupRetentionPolicyInput` via:
+//
+//	BackupVaultBackupRetentionPolicyArgs{...}
+type BackupVaultBackupRetentionPolicyInput interface {
+	pulumi.Input
+
+	ToBackupVaultBackupRetentionPolicyOutput() BackupVaultBackupRetentionPolicyOutput
+	ToBackupVaultBackupRetentionPolicyOutputWithContext(context.Context) BackupVaultBackupRetentionPolicyOutput
+}
+
+type BackupVaultBackupRetentionPolicyArgs struct {
+	// Minimum retention duration in days for backups in the backup vault.
+	BackupMinimumEnforcedRetentionDays pulumi.IntInput `pulumi:"backupMinimumEnforcedRetentionDays"`
+	// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+	DailyBackupImmutable pulumi.BoolPtrInput `pulumi:"dailyBackupImmutable"`
+	// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+	ManualBackupImmutable pulumi.BoolPtrInput `pulumi:"manualBackupImmutable"`
+	// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+	MonthlyBackupImmutable pulumi.BoolPtrInput `pulumi:"monthlyBackupImmutable"`
+	// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+	WeeklyBackupImmutable pulumi.BoolPtrInput `pulumi:"weeklyBackupImmutable"`
+}
+
+func (BackupVaultBackupRetentionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupVaultBackupRetentionPolicy)(nil)).Elem()
+}
+
+func (i BackupVaultBackupRetentionPolicyArgs) ToBackupVaultBackupRetentionPolicyOutput() BackupVaultBackupRetentionPolicyOutput {
+	return i.ToBackupVaultBackupRetentionPolicyOutputWithContext(context.Background())
+}
+
+func (i BackupVaultBackupRetentionPolicyArgs) ToBackupVaultBackupRetentionPolicyOutputWithContext(ctx context.Context) BackupVaultBackupRetentionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupVaultBackupRetentionPolicyOutput)
+}
+
+func (i BackupVaultBackupRetentionPolicyArgs) ToBackupVaultBackupRetentionPolicyPtrOutput() BackupVaultBackupRetentionPolicyPtrOutput {
+	return i.ToBackupVaultBackupRetentionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BackupVaultBackupRetentionPolicyArgs) ToBackupVaultBackupRetentionPolicyPtrOutputWithContext(ctx context.Context) BackupVaultBackupRetentionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupVaultBackupRetentionPolicyOutput).ToBackupVaultBackupRetentionPolicyPtrOutputWithContext(ctx)
+}
+
+// BackupVaultBackupRetentionPolicyPtrInput is an input type that accepts BackupVaultBackupRetentionPolicyArgs, BackupVaultBackupRetentionPolicyPtr and BackupVaultBackupRetentionPolicyPtrOutput values.
+// You can construct a concrete instance of `BackupVaultBackupRetentionPolicyPtrInput` via:
+//
+//	        BackupVaultBackupRetentionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupVaultBackupRetentionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToBackupVaultBackupRetentionPolicyPtrOutput() BackupVaultBackupRetentionPolicyPtrOutput
+	ToBackupVaultBackupRetentionPolicyPtrOutputWithContext(context.Context) BackupVaultBackupRetentionPolicyPtrOutput
+}
+
+type backupVaultBackupRetentionPolicyPtrType BackupVaultBackupRetentionPolicyArgs
+
+func BackupVaultBackupRetentionPolicyPtr(v *BackupVaultBackupRetentionPolicyArgs) BackupVaultBackupRetentionPolicyPtrInput {
+	return (*backupVaultBackupRetentionPolicyPtrType)(v)
+}
+
+func (*backupVaultBackupRetentionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupVaultBackupRetentionPolicy)(nil)).Elem()
+}
+
+func (i *backupVaultBackupRetentionPolicyPtrType) ToBackupVaultBackupRetentionPolicyPtrOutput() BackupVaultBackupRetentionPolicyPtrOutput {
+	return i.ToBackupVaultBackupRetentionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *backupVaultBackupRetentionPolicyPtrType) ToBackupVaultBackupRetentionPolicyPtrOutputWithContext(ctx context.Context) BackupVaultBackupRetentionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupVaultBackupRetentionPolicyPtrOutput)
+}
+
+type BackupVaultBackupRetentionPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackupVaultBackupRetentionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupVaultBackupRetentionPolicy)(nil)).Elem()
+}
+
+func (o BackupVaultBackupRetentionPolicyOutput) ToBackupVaultBackupRetentionPolicyOutput() BackupVaultBackupRetentionPolicyOutput {
+	return o
+}
+
+func (o BackupVaultBackupRetentionPolicyOutput) ToBackupVaultBackupRetentionPolicyOutputWithContext(ctx context.Context) BackupVaultBackupRetentionPolicyOutput {
+	return o
+}
+
+func (o BackupVaultBackupRetentionPolicyOutput) ToBackupVaultBackupRetentionPolicyPtrOutput() BackupVaultBackupRetentionPolicyPtrOutput {
+	return o.ToBackupVaultBackupRetentionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BackupVaultBackupRetentionPolicyOutput) ToBackupVaultBackupRetentionPolicyPtrOutputWithContext(ctx context.Context) BackupVaultBackupRetentionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupVaultBackupRetentionPolicy) *BackupVaultBackupRetentionPolicy {
+		return &v
+	}).(BackupVaultBackupRetentionPolicyPtrOutput)
+}
+
+// Minimum retention duration in days for backups in the backup vault.
+func (o BackupVaultBackupRetentionPolicyOutput) BackupMinimumEnforcedRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v BackupVaultBackupRetentionPolicy) int { return v.BackupMinimumEnforcedRetentionDays }).(pulumi.IntOutput)
+}
+
+// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+func (o BackupVaultBackupRetentionPolicyOutput) DailyBackupImmutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupVaultBackupRetentionPolicy) *bool { return v.DailyBackupImmutable }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+func (o BackupVaultBackupRetentionPolicyOutput) ManualBackupImmutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupVaultBackupRetentionPolicy) *bool { return v.ManualBackupImmutable }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+func (o BackupVaultBackupRetentionPolicyOutput) MonthlyBackupImmutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupVaultBackupRetentionPolicy) *bool { return v.MonthlyBackupImmutable }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+func (o BackupVaultBackupRetentionPolicyOutput) WeeklyBackupImmutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupVaultBackupRetentionPolicy) *bool { return v.WeeklyBackupImmutable }).(pulumi.BoolPtrOutput)
+}
+
+type BackupVaultBackupRetentionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupVaultBackupRetentionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupVaultBackupRetentionPolicy)(nil)).Elem()
+}
+
+func (o BackupVaultBackupRetentionPolicyPtrOutput) ToBackupVaultBackupRetentionPolicyPtrOutput() BackupVaultBackupRetentionPolicyPtrOutput {
+	return o
+}
+
+func (o BackupVaultBackupRetentionPolicyPtrOutput) ToBackupVaultBackupRetentionPolicyPtrOutputWithContext(ctx context.Context) BackupVaultBackupRetentionPolicyPtrOutput {
+	return o
+}
+
+func (o BackupVaultBackupRetentionPolicyPtrOutput) Elem() BackupVaultBackupRetentionPolicyOutput {
+	return o.ApplyT(func(v *BackupVaultBackupRetentionPolicy) BackupVaultBackupRetentionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BackupVaultBackupRetentionPolicy
+		return ret
+	}).(BackupVaultBackupRetentionPolicyOutput)
+}
+
+// Minimum retention duration in days for backups in the backup vault.
+func (o BackupVaultBackupRetentionPolicyPtrOutput) BackupMinimumEnforcedRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupVaultBackupRetentionPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BackupMinimumEnforcedRetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+func (o BackupVaultBackupRetentionPolicyPtrOutput) DailyBackupImmutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupVaultBackupRetentionPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DailyBackupImmutable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+func (o BackupVaultBackupRetentionPolicyPtrOutput) ManualBackupImmutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupVaultBackupRetentionPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ManualBackupImmutable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+func (o BackupVaultBackupRetentionPolicyPtrOutput) MonthlyBackupImmutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupVaultBackupRetentionPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MonthlyBackupImmutable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+func (o BackupVaultBackupRetentionPolicyPtrOutput) WeeklyBackupImmutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupVaultBackupRetentionPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklyBackupImmutable
+	}).(pulumi.BoolPtrOutput)
+}
+
 type VolumeBackupConfig struct {
 	// Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
 	BackupPolicies []string `pulumi:"backupPolicies"`
@@ -2984,6 +3197,8 @@ func (o VolumeTieringPolicyPtrOutput) TierAction() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupVaultBackupRetentionPolicyInput)(nil)).Elem(), BackupVaultBackupRetentionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupVaultBackupRetentionPolicyPtrInput)(nil)).Elem(), BackupVaultBackupRetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeBackupConfigInput)(nil)).Elem(), VolumeBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeBackupConfigPtrInput)(nil)).Elem(), VolumeBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeExportPolicyInput)(nil)).Elem(), VolumeExportPolicyArgs{})
@@ -3016,6 +3231,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotPolicyWeeklySchedulePtrInput)(nil)).Elem(), VolumeSnapshotPolicyWeeklyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTieringPolicyInput)(nil)).Elem(), VolumeTieringPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTieringPolicyPtrInput)(nil)).Elem(), VolumeTieringPolicyArgs{})
+	pulumi.RegisterOutputType(BackupVaultBackupRetentionPolicyOutput{})
+	pulumi.RegisterOutputType(BackupVaultBackupRetentionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(VolumeBackupConfigOutput{})
 	pulumi.RegisterOutputType(VolumeBackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(VolumeExportPolicyOutput{})

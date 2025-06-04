@@ -6,6 +6,7 @@ package com.pulumi.gcp.filestore.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.filestore.outputs.GetInstanceEffectiveReplicationReplica;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,6 +17,11 @@ public final class GetInstanceEffectiveReplication {
      * 
      */
     private List<GetInstanceEffectiveReplicationReplica> replicas;
+    /**
+     * @return The replication role.
+     * 
+     */
+    private String role;
 
     private GetInstanceEffectiveReplication() {}
     /**
@@ -24,6 +30,13 @@ public final class GetInstanceEffectiveReplication {
      */
     public List<GetInstanceEffectiveReplicationReplica> replicas() {
         return this.replicas;
+    }
+    /**
+     * @return The replication role.
+     * 
+     */
+    public String role() {
+        return this.role;
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class GetInstanceEffectiveReplication {
     @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceEffectiveReplicationReplica> replicas;
+        private String role;
         public Builder() {}
         public Builder(GetInstanceEffectiveReplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.replicas = defaults.replicas;
+    	      this.role = defaults.role;
         }
 
         @CustomType.Setter
@@ -53,9 +68,18 @@ public final class GetInstanceEffectiveReplication {
         public Builder replicas(GetInstanceEffectiveReplicationReplica... replicas) {
             return replicas(List.of(replicas));
         }
+        @CustomType.Setter
+        public Builder role(String role) {
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEffectiveReplication", "role");
+            }
+            this.role = role;
+            return this;
+        }
         public GetInstanceEffectiveReplication build() {
             final var _resultValue = new GetInstanceEffectiveReplication();
             _resultValue.replicas = replicas;
+            _resultValue.role = role;
             return _resultValue;
         }
     }

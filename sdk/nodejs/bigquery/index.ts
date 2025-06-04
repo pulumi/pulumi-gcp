@@ -85,6 +85,11 @@ export const getDatasetIamPolicy: typeof import("./getDatasetIamPolicy").getData
 export const getDatasetIamPolicyOutput: typeof import("./getDatasetIamPolicy").getDatasetIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getDatasetIamPolicy","getDatasetIamPolicyOutput"], () => require("./getDatasetIamPolicy"));
 
+export { GetDatasetsArgs, GetDatasetsResult, GetDatasetsOutputArgs } from "./getDatasets";
+export const getDatasets: typeof import("./getDatasets").getDatasets = null as any;
+export const getDatasetsOutput: typeof import("./getDatasets").getDatasetsOutput = null as any;
+utilities.lazyLoad(exports, ["getDatasets","getDatasetsOutput"], () => require("./getDatasets"));
+
 export { GetDefaultServiceAccountArgs, GetDefaultServiceAccountResult, GetDefaultServiceAccountOutputArgs } from "./getDefaultServiceAccount";
 export const getDefaultServiceAccount: typeof import("./getDefaultServiceAccount").getDefaultServiceAccount = null as any;
 export const getDefaultServiceAccountOutput: typeof import("./getDefaultServiceAccount").getDefaultServiceAccountOutput = null as any;

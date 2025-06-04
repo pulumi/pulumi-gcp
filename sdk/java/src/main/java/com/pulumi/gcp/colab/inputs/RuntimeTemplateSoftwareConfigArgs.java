@@ -35,18 +35,32 @@ public final class RuntimeTemplateSoftwareConfigArgs extends com.pulumi.resource
     }
 
     /**
+     * (Optional, Deprecated)
      * Post startup script config.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+     * 
+     * @deprecated
+     * `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+     * 
      */
+    @Deprecated /* `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time. */
     @Import(name="postStartupScriptConfig")
     private @Nullable Output<RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs> postStartupScriptConfig;
 
     /**
-     * @return Post startup script config.
+     * @return (Optional, Deprecated)
+     * Post startup script config.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+     * 
+     * @deprecated
+     * `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+     * 
      */
+    @Deprecated /* `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time. */
     public Optional<Output<RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs>> postStartupScriptConfig() {
         return Optional.ofNullable(this.postStartupScriptConfig);
     }
@@ -111,24 +125,38 @@ public final class RuntimeTemplateSoftwareConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param postStartupScriptConfig Post startup script config.
+         * @param postStartupScriptConfig (Optional, Deprecated)
+         * Post startup script config.
          * Structure is documented below.
+         * 
+         * &gt; **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+         * 
          */
+        @Deprecated /* `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time. */
         public Builder postStartupScriptConfig(@Nullable Output<RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs> postStartupScriptConfig) {
             $.postStartupScriptConfig = postStartupScriptConfig;
             return this;
         }
 
         /**
-         * @param postStartupScriptConfig Post startup script config.
+         * @param postStartupScriptConfig (Optional, Deprecated)
+         * Post startup script config.
          * Structure is documented below.
+         * 
+         * &gt; **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+         * 
          */
+        @Deprecated /* `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time. */
         public Builder postStartupScriptConfig(RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs postStartupScriptConfig) {
             return postStartupScriptConfig(Output.of(postStartupScriptConfig));
         }

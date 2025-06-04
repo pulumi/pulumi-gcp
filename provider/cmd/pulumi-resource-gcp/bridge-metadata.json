@@ -10420,6 +10420,9 @@
                     "log_config": {
                         "maxItemsOne": true
                     },
+                    "nat64_subnetwork": {
+                        "maxItemsOne": false
+                    },
                     "nat_ips": {
                         "maxItemsOne": false
                     },
@@ -11476,6 +11479,12 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "http_filter_configs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "http_filter_metadata": {
+                                                "maxItemsOne": false
                                             },
                                             "match_rules": {
                                                 "maxItemsOne": false,
@@ -15972,6 +15981,32 @@
                 "current": "gcp:dataplex/datascanIamPolicy:DatascanIamPolicy",
                 "majorVersion": 8
             },
+            "google_dataplex_entry": {
+                "current": "gcp:dataplex/entry:Entry",
+                "majorVersion": 8,
+                "fields": {
+                    "aspects": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "aspect": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "entry_source": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ancestors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_dataplex_entry_group": {
                 "current": "gcp:dataplex/entryGroup:EntryGroup",
                 "majorVersion": 8
@@ -17693,6 +17728,9 @@
                 "fields": {
                     "error": {
                         "maxItemsOne": false
+                    },
+                    "psc_interface_config": {
+                        "maxItemsOne": true
                     },
                     "vpc_peering_config": {
                         "maxItemsOne": true
@@ -19486,6 +19524,16 @@
                             "fields": {
                                 "target_name_servers": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "dns64_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "scope": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -25245,7 +25293,12 @@
             },
             "google_netapp_backup_vault": {
                 "current": "gcp:netapp/backupVault:BackupVault",
-                "majorVersion": 8
+                "majorVersion": 8,
+                "fields": {
+                    "backup_retention_policy": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "google_netapp_kmsconfig": {
                 "current": "gcp:netapp/kmsconfig:Kmsconfig",
@@ -34610,6 +34663,15 @@
                 "current": "gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy",
                 "majorVersion": 8
             },
+            "google_bigquery_datasets": {
+                "current": "gcp:bigquery/getDatasets:getDatasets",
+                "majorVersion": 8,
+                "fields": {
+                    "datasets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_bigquery_default_service_account": {
                 "current": "gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount",
                 "majorVersion": 8
@@ -37615,6 +37677,9 @@
                         "maxItemsOne": false
                     },
                     "log_config": {
+                        "maxItemsOne": false
+                    },
+                    "nat64_subnetwork": {
                         "maxItemsOne": false
                     },
                     "nat_ips": {
@@ -44262,6 +44327,7 @@
             "gcp:dataplex/datascanIamBinding:DatascanIamBinding": 0,
             "gcp:dataplex/datascanIamMember:DatascanIamMember": 0,
             "gcp:dataplex/datascanIamPolicy:DatascanIamPolicy": 0,
+            "gcp:dataplex/entry:Entry": 0,
             "gcp:dataplex/entryGroup:EntryGroup": 0,
             "gcp:dataplex/entryGroupIamBinding:EntryGroupIamBinding": 0,
             "gcp:dataplex/entryGroupIamMember:EntryGroupIamMember": 0,
@@ -44987,6 +45053,7 @@
             "gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy": 0,
             "gcp:bigquery/getDataset:getDataset": 0,
             "gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy": 0,
+            "gcp:bigquery/getDatasets:getDatasets": 0,
             "gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount": 0,
             "gcp:bigquery/getTable:getTable": 0,
             "gcp:bigquery/getTableIamPolicy:getTableIamPolicy": 0,

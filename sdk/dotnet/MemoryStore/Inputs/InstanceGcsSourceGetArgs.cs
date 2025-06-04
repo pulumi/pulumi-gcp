@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
 
         /// <summary>
         /// URIs of the GCS objects to import.
-        /// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+        /// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
         /// </summary>
         public InputList<string> Uris
         {

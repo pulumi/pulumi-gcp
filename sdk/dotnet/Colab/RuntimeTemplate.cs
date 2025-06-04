@@ -311,7 +311,7 @@ namespace Pulumi.Gcp.Colab
         /// Structure is documented below.
         /// </summary>
         [Output("softwareConfig")]
-        public Output<Outputs.RuntimeTemplateSoftwareConfig?> SoftwareConfig { get; private set; } = null!;
+        public Output<Outputs.RuntimeTemplateSoftwareConfig> SoftwareConfig { get; private set; } = null!;
 
 
         /// <summary>

@@ -117,7 +117,7 @@ index 5336d0218..827d90369 100644
    - field: 'service_account_name'
      provider_only: true
 diff --git a/google-beta/services/secretmanager/resource_secret_manager_secret_version.go b/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
-index 15e900dd7..c939dfb55 100644
+index d7087a839..bfee43be7 100644
 --- a/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
 +++ b/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
 @@ -29,9 +29,7 @@ import (
@@ -130,7 +130,7 @@ index 15e900dd7..c939dfb55 100644
  
  	"github.com/hashicorp/terraform-provider-google-beta/google-beta/tpgresource"
  	transport_tpg "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
-@@ -56,10 +54,6 @@ func ResourceSecretManagerSecretVersion() *schema.Resource {
+@@ -90,10 +88,6 @@ func ResourceSecretManagerSecretVersion() *schema.Resource {
  			Delete: schema.DefaultTimeout(20 * time.Minute),
  		},
  
@@ -141,7 +141,7 @@ index 15e900dd7..c939dfb55 100644
  		Schema: map[string]*schema.Schema{
  			"secret_data_wo_version": {
  				Type:        schema.TypeInt,
-@@ -76,15 +70,6 @@ func ResourceSecretManagerSecretVersion() *schema.Resource {
+@@ -110,15 +104,6 @@ func ResourceSecretManagerSecretVersion() *schema.Resource {
  				Sensitive:     true,
  				ConflictsWith: []string{},
  			},
@@ -157,7 +157,7 @@ index 15e900dd7..c939dfb55 100644
  			"secret": {
  				Type:             schema.TypeString,
  				Required:         true,
-@@ -539,12 +524,6 @@ func expandSecretManagerSecretVersionPayload(v interface{}, d tpgresource.Terraf
+@@ -538,12 +523,6 @@ func expandSecretManagerSecretVersionPayload(v interface{}, d tpgresource.Terraf
  	} else if val := reflect.ValueOf(transformedSecretData); val.IsValid() && !tpgresource.IsEmptyValue(val) {
  		transformed["data"] = transformedSecretData
  	}
@@ -170,7 +170,7 @@ index 15e900dd7..c939dfb55 100644
  	return transformed, nil
  }
  
-@@ -558,17 +537,6 @@ func expandSecretManagerSecretVersionPayloadSecretData(v interface{}, d tpgresou
+@@ -557,17 +536,6 @@ func expandSecretManagerSecretVersionPayloadSecretData(v interface{}, d tpgresou
  	}
  	return base64.StdEncoding.EncodeToString([]byte(v.(string))), nil
  }

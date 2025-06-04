@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Redis.Inputs
     public sealed class ClusterManagedBackupSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-        /// like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+        /// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         /// </summary>
         [Input("backup", required: true)]
         public Input<string> Backup { get; set; } = null!;

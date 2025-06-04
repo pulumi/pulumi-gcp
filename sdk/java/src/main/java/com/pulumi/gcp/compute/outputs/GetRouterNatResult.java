@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRouterNatLogConfig;
+import com.pulumi.gcp.compute.outputs.GetRouterNatNat64Subnetwork;
 import com.pulumi.gcp.compute.outputs.GetRouterNatRule;
 import com.pulumi.gcp.compute.outputs.GetRouterNatSubnetwork;
 import java.lang.Boolean;
@@ -34,6 +35,7 @@ public final class GetRouterNatResult {
     private Integer maxPortsPerVm;
     private Integer minPortsPerVm;
     private String name;
+    private List<GetRouterNatNat64Subnetwork> nat64Subnetworks;
     private String natIpAllocateOption;
     private List<String> natIps;
     private @Nullable String project;
@@ -41,6 +43,7 @@ public final class GetRouterNatResult {
     private String router;
     private List<GetRouterNatRule> rules;
     private String sourceSubnetworkIpRangesToNat;
+    private String sourceSubnetworkIpRangesToNat64;
     private List<GetRouterNatSubnetwork> subnetworks;
     private Integer tcpEstablishedIdleTimeoutSec;
     private Integer tcpTimeWaitTimeoutSec;
@@ -89,6 +92,9 @@ public final class GetRouterNatResult {
     public String name() {
         return this.name;
     }
+    public List<GetRouterNatNat64Subnetwork> nat64Subnetworks() {
+        return this.nat64Subnetworks;
+    }
     public String natIpAllocateOption() {
         return this.natIpAllocateOption;
     }
@@ -109,6 +115,9 @@ public final class GetRouterNatResult {
     }
     public String sourceSubnetworkIpRangesToNat() {
         return this.sourceSubnetworkIpRangesToNat;
+    }
+    public String sourceSubnetworkIpRangesToNat64() {
+        return this.sourceSubnetworkIpRangesToNat64;
     }
     public List<GetRouterNatSubnetwork> subnetworks() {
         return this.subnetworks;
@@ -150,6 +159,7 @@ public final class GetRouterNatResult {
         private Integer maxPortsPerVm;
         private Integer minPortsPerVm;
         private String name;
+        private List<GetRouterNatNat64Subnetwork> nat64Subnetworks;
         private String natIpAllocateOption;
         private List<String> natIps;
         private @Nullable String project;
@@ -157,6 +167,7 @@ public final class GetRouterNatResult {
         private String router;
         private List<GetRouterNatRule> rules;
         private String sourceSubnetworkIpRangesToNat;
+        private String sourceSubnetworkIpRangesToNat64;
         private List<GetRouterNatSubnetwork> subnetworks;
         private Integer tcpEstablishedIdleTimeoutSec;
         private Integer tcpTimeWaitTimeoutSec;
@@ -178,6 +189,7 @@ public final class GetRouterNatResult {
     	      this.maxPortsPerVm = defaults.maxPortsPerVm;
     	      this.minPortsPerVm = defaults.minPortsPerVm;
     	      this.name = defaults.name;
+    	      this.nat64Subnetworks = defaults.nat64Subnetworks;
     	      this.natIpAllocateOption = defaults.natIpAllocateOption;
     	      this.natIps = defaults.natIps;
     	      this.project = defaults.project;
@@ -185,6 +197,7 @@ public final class GetRouterNatResult {
     	      this.router = defaults.router;
     	      this.rules = defaults.rules;
     	      this.sourceSubnetworkIpRangesToNat = defaults.sourceSubnetworkIpRangesToNat;
+    	      this.sourceSubnetworkIpRangesToNat64 = defaults.sourceSubnetworkIpRangesToNat64;
     	      this.subnetworks = defaults.subnetworks;
     	      this.tcpEstablishedIdleTimeoutSec = defaults.tcpEstablishedIdleTimeoutSec;
     	      this.tcpTimeWaitTimeoutSec = defaults.tcpTimeWaitTimeoutSec;
@@ -302,6 +315,17 @@ public final class GetRouterNatResult {
             return this;
         }
         @CustomType.Setter
+        public Builder nat64Subnetworks(List<GetRouterNatNat64Subnetwork> nat64Subnetworks) {
+            if (nat64Subnetworks == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "nat64Subnetworks");
+            }
+            this.nat64Subnetworks = nat64Subnetworks;
+            return this;
+        }
+        public Builder nat64Subnetworks(GetRouterNatNat64Subnetwork... nat64Subnetworks) {
+            return nat64Subnetworks(List.of(nat64Subnetworks));
+        }
+        @CustomType.Setter
         public Builder natIpAllocateOption(String natIpAllocateOption) {
             if (natIpAllocateOption == null) {
               throw new MissingRequiredPropertyException("GetRouterNatResult", "natIpAllocateOption");
@@ -357,6 +381,14 @@ public final class GetRouterNatResult {
               throw new MissingRequiredPropertyException("GetRouterNatResult", "sourceSubnetworkIpRangesToNat");
             }
             this.sourceSubnetworkIpRangesToNat = sourceSubnetworkIpRangesToNat;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceSubnetworkIpRangesToNat64(String sourceSubnetworkIpRangesToNat64) {
+            if (sourceSubnetworkIpRangesToNat64 == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "sourceSubnetworkIpRangesToNat64");
+            }
+            this.sourceSubnetworkIpRangesToNat64 = sourceSubnetworkIpRangesToNat64;
             return this;
         }
         @CustomType.Setter
@@ -424,6 +456,7 @@ public final class GetRouterNatResult {
             _resultValue.maxPortsPerVm = maxPortsPerVm;
             _resultValue.minPortsPerVm = minPortsPerVm;
             _resultValue.name = name;
+            _resultValue.nat64Subnetworks = nat64Subnetworks;
             _resultValue.natIpAllocateOption = natIpAllocateOption;
             _resultValue.natIps = natIps;
             _resultValue.project = project;
@@ -431,6 +464,7 @@ public final class GetRouterNatResult {
             _resultValue.router = router;
             _resultValue.rules = rules;
             _resultValue.sourceSubnetworkIpRangesToNat = sourceSubnetworkIpRangesToNat;
+            _resultValue.sourceSubnetworkIpRangesToNat64 = sourceSubnetworkIpRangesToNat64;
             _resultValue.subnetworks = subnetworks;
             _resultValue.tcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
             _resultValue.tcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;

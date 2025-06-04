@@ -98,7 +98,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     networkInterfaces: [{
- *         network: privateConnection.vpcPeeringConfig.apply(vpcPeeringConfig => vpcPeeringConfig.vpc),
+ *         network: privateConnection.vpcPeeringConfig.apply(vpcPeeringConfig => vpcPeeringConfig?.vpc),
  *         subnetwork: defaultSubnetwork.selfLink,
  *         accessConfigs: [{
  *             natIp: natVmIp.address,
@@ -125,14 +125,14 @@ import * as utilities from "../utilities";
  * });
  * const rules = new gcp.compute.Firewall("rules", {
  *     name: "ingress-rule",
- *     network: privateConnection.vpcPeeringConfig.apply(vpcPeeringConfig => vpcPeeringConfig.vpc),
+ *     network: privateConnection.vpcPeeringConfig.apply(vpcPeeringConfig => vpcPeeringConfig?.vpc),
  *     description: "Allow traffic into NAT VM",
  *     direction: "INGRESS",
  *     allows: [{
  *         protocol: "tcp",
  *         ports: ["5432"],
  *     }],
- *     sourceRanges: [privateConnection.vpcPeeringConfig.apply(vpcPeeringConfig => vpcPeeringConfig.subnet)],
+ *     sourceRanges: [privateConnection.vpcPeeringConfig.apply(vpcPeeringConfig => vpcPeeringConfig?.subnet)],
  * });
  * const defaultConnectionProfile = new gcp.datastream.ConnectionProfile("default", {
  *     displayName: "Connection profile",
