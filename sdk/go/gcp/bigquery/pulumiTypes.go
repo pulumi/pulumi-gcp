@@ -17967,6 +17967,130 @@ func (o GetDatasetExternalDatasetReferenceArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetDatasetExternalDatasetReferenceOutput)
 }
 
+type GetDatasetsDataset struct {
+	// The id of the dataset.
+	DatasetId string `pulumi:"datasetId"`
+	// The friendly name of the dataset.
+	FriendlyName string `pulumi:"friendlyName"`
+	// User-provided dataset labels, in key/value pairs.
+	Labels map[string]string `pulumi:"labels"`
+	// The geographic location of the dataset.
+	Location string `pulumi:"location"`
+}
+
+// GetDatasetsDatasetInput is an input type that accepts GetDatasetsDatasetArgs and GetDatasetsDatasetOutput values.
+// You can construct a concrete instance of `GetDatasetsDatasetInput` via:
+//
+//	GetDatasetsDatasetArgs{...}
+type GetDatasetsDatasetInput interface {
+	pulumi.Input
+
+	ToGetDatasetsDatasetOutput() GetDatasetsDatasetOutput
+	ToGetDatasetsDatasetOutputWithContext(context.Context) GetDatasetsDatasetOutput
+}
+
+type GetDatasetsDatasetArgs struct {
+	// The id of the dataset.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The friendly name of the dataset.
+	FriendlyName pulumi.StringInput `pulumi:"friendlyName"`
+	// User-provided dataset labels, in key/value pairs.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The geographic location of the dataset.
+	Location pulumi.StringInput `pulumi:"location"`
+}
+
+func (GetDatasetsDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetsDataset)(nil)).Elem()
+}
+
+func (i GetDatasetsDatasetArgs) ToGetDatasetsDatasetOutput() GetDatasetsDatasetOutput {
+	return i.ToGetDatasetsDatasetOutputWithContext(context.Background())
+}
+
+func (i GetDatasetsDatasetArgs) ToGetDatasetsDatasetOutputWithContext(ctx context.Context) GetDatasetsDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetsDatasetOutput)
+}
+
+// GetDatasetsDatasetArrayInput is an input type that accepts GetDatasetsDatasetArray and GetDatasetsDatasetArrayOutput values.
+// You can construct a concrete instance of `GetDatasetsDatasetArrayInput` via:
+//
+//	GetDatasetsDatasetArray{ GetDatasetsDatasetArgs{...} }
+type GetDatasetsDatasetArrayInput interface {
+	pulumi.Input
+
+	ToGetDatasetsDatasetArrayOutput() GetDatasetsDatasetArrayOutput
+	ToGetDatasetsDatasetArrayOutputWithContext(context.Context) GetDatasetsDatasetArrayOutput
+}
+
+type GetDatasetsDatasetArray []GetDatasetsDatasetInput
+
+func (GetDatasetsDatasetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetsDataset)(nil)).Elem()
+}
+
+func (i GetDatasetsDatasetArray) ToGetDatasetsDatasetArrayOutput() GetDatasetsDatasetArrayOutput {
+	return i.ToGetDatasetsDatasetArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatasetsDatasetArray) ToGetDatasetsDatasetArrayOutputWithContext(ctx context.Context) GetDatasetsDatasetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetsDatasetArrayOutput)
+}
+
+type GetDatasetsDatasetOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetsDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetsDataset)(nil)).Elem()
+}
+
+func (o GetDatasetsDatasetOutput) ToGetDatasetsDatasetOutput() GetDatasetsDatasetOutput {
+	return o
+}
+
+func (o GetDatasetsDatasetOutput) ToGetDatasetsDatasetOutputWithContext(ctx context.Context) GetDatasetsDatasetOutput {
+	return o
+}
+
+// The id of the dataset.
+func (o GetDatasetsDatasetOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetsDataset) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The friendly name of the dataset.
+func (o GetDatasetsDatasetOutput) FriendlyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetsDataset) string { return v.FriendlyName }).(pulumi.StringOutput)
+}
+
+// User-provided dataset labels, in key/value pairs.
+func (o GetDatasetsDatasetOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDatasetsDataset) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The geographic location of the dataset.
+func (o GetDatasetsDatasetOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetsDataset) string { return v.Location }).(pulumi.StringOutput)
+}
+
+type GetDatasetsDatasetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetsDatasetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetsDataset)(nil)).Elem()
+}
+
+func (o GetDatasetsDatasetArrayOutput) ToGetDatasetsDatasetArrayOutput() GetDatasetsDatasetArrayOutput {
+	return o
+}
+
+func (o GetDatasetsDatasetArrayOutput) ToGetDatasetsDatasetArrayOutputWithContext(ctx context.Context) GetDatasetsDatasetArrayOutput {
+	return o
+}
+
+func (o GetDatasetsDatasetArrayOutput) Index(i pulumi.IntInput) GetDatasetsDatasetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatasetsDataset {
+		return vs[0].([]GetDatasetsDataset)[vs[1].(int)]
+	}).(GetDatasetsDatasetOutput)
+}
+
 type GetTableBiglakeConfiguration struct {
 	// The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connectionId can have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or "projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
 	ConnectionId string `pulumi:"connectionId"`
@@ -21550,6 +21674,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalCatalogDatasetOptionArrayInput)(nil)).Elem(), GetDatasetExternalCatalogDatasetOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalDatasetReferenceInput)(nil)).Elem(), GetDatasetExternalDatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalDatasetReferenceArrayInput)(nil)).Elem(), GetDatasetExternalDatasetReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetsDatasetInput)(nil)).Elem(), GetDatasetsDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetsDatasetArrayInput)(nil)).Elem(), GetDatasetsDatasetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableBiglakeConfigurationInput)(nil)).Elem(), GetTableBiglakeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableBiglakeConfigurationArrayInput)(nil)).Elem(), GetTableBiglakeConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableEncryptionConfigurationInput)(nil)).Elem(), GetTableEncryptionConfigurationArgs{})
@@ -21800,6 +21926,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatasetExternalCatalogDatasetOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetDatasetExternalDatasetReferenceOutput{})
 	pulumi.RegisterOutputType(GetDatasetExternalDatasetReferenceArrayOutput{})
+	pulumi.RegisterOutputType(GetDatasetsDatasetOutput{})
+	pulumi.RegisterOutputType(GetDatasetsDatasetArrayOutput{})
 	pulumi.RegisterOutputType(GetTableBiglakeConfigurationOutput{})
 	pulumi.RegisterOutputType(GetTableBiglakeConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetTableEncryptionConfigurationOutput{})

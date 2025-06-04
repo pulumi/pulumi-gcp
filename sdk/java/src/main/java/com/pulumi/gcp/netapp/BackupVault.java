@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.netapp.BackupVaultArgs;
 import com.pulumi.gcp.netapp.inputs.BackupVaultState;
+import com.pulumi.gcp.netapp.outputs.BackupVaultBackupRetentionPolicy;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -106,6 +107,22 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> backupRegion() {
         return Codegen.optional(this.backupRegion);
+    }
+    /**
+     * Backup retention policy defining the retention of the backups.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="backupRetentionPolicy", refs={BackupVaultBackupRetentionPolicy.class}, tree="[0]")
+    private Output</* @Nullable */ BackupVaultBackupRetentionPolicy> backupRetentionPolicy;
+
+    /**
+     * @return Backup retention policy defining the retention of the backups.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackupVaultBackupRetentionPolicy>> backupRetentionPolicy() {
+        return Codegen.optional(this.backupRetentionPolicy);
     }
     /**
      * Type of the backup vault to be created. Default is IN_REGION.

@@ -17,6 +17,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'BackupVaultBackupRetentionPolicy',
     'VolumeBackupConfig',
     'VolumeExportPolicy',
     'VolumeExportPolicyRule',
@@ -34,6 +35,97 @@ __all__ = [
     'VolumeSnapshotPolicyWeeklySchedule',
     'VolumeTieringPolicy',
 ]
+
+@pulumi.output_type
+class BackupVaultBackupRetentionPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupMinimumEnforcedRetentionDays":
+            suggest = "backup_minimum_enforced_retention_days"
+        elif key == "dailyBackupImmutable":
+            suggest = "daily_backup_immutable"
+        elif key == "manualBackupImmutable":
+            suggest = "manual_backup_immutable"
+        elif key == "monthlyBackupImmutable":
+            suggest = "monthly_backup_immutable"
+        elif key == "weeklyBackupImmutable":
+            suggest = "weekly_backup_immutable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupVaultBackupRetentionPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupVaultBackupRetentionPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupVaultBackupRetentionPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_minimum_enforced_retention_days: builtins.int,
+                 daily_backup_immutable: Optional[builtins.bool] = None,
+                 manual_backup_immutable: Optional[builtins.bool] = None,
+                 monthly_backup_immutable: Optional[builtins.bool] = None,
+                 weekly_backup_immutable: Optional[builtins.bool] = None):
+        """
+        :param builtins.int backup_minimum_enforced_retention_days: Minimum retention duration in days for backups in the backup vault.
+        :param builtins.bool daily_backup_immutable: Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        :param builtins.bool manual_backup_immutable: Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        :param builtins.bool monthly_backup_immutable: Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        :param builtins.bool weekly_backup_immutable: Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        """
+        pulumi.set(__self__, "backup_minimum_enforced_retention_days", backup_minimum_enforced_retention_days)
+        if daily_backup_immutable is not None:
+            pulumi.set(__self__, "daily_backup_immutable", daily_backup_immutable)
+        if manual_backup_immutable is not None:
+            pulumi.set(__self__, "manual_backup_immutable", manual_backup_immutable)
+        if monthly_backup_immutable is not None:
+            pulumi.set(__self__, "monthly_backup_immutable", monthly_backup_immutable)
+        if weekly_backup_immutable is not None:
+            pulumi.set(__self__, "weekly_backup_immutable", weekly_backup_immutable)
+
+    @property
+    @pulumi.getter(name="backupMinimumEnforcedRetentionDays")
+    def backup_minimum_enforced_retention_days(self) -> builtins.int:
+        """
+        Minimum retention duration in days for backups in the backup vault.
+        """
+        return pulumi.get(self, "backup_minimum_enforced_retention_days")
+
+    @property
+    @pulumi.getter(name="dailyBackupImmutable")
+    def daily_backup_immutable(self) -> Optional[builtins.bool]:
+        """
+        Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        """
+        return pulumi.get(self, "daily_backup_immutable")
+
+    @property
+    @pulumi.getter(name="manualBackupImmutable")
+    def manual_backup_immutable(self) -> Optional[builtins.bool]:
+        """
+        Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        """
+        return pulumi.get(self, "manual_backup_immutable")
+
+    @property
+    @pulumi.getter(name="monthlyBackupImmutable")
+    def monthly_backup_immutable(self) -> Optional[builtins.bool]:
+        """
+        Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        """
+        return pulumi.get(self, "monthly_backup_immutable")
+
+    @property
+    @pulumi.getter(name="weeklyBackupImmutable")
+    def weekly_backup_immutable(self) -> Optional[builtins.bool]:
+        """
+        Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        """
+        return pulumi.get(self, "weekly_backup_immutable")
+
 
 @pulumi.output_type
 class VolumeBackupConfig(dict):

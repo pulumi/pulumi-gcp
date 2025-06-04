@@ -133,6 +133,60 @@ import (
 //	}
 //
 // ```
+// ### Compute Interconnect Attachment Custom Ranges
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarNetwork, err := compute.NewNetwork(ctx, "foobar", &compute.NetworkArgs{
+//				Name:                  pulumi.String("test-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foobar, err := compute.NewRouter(ctx, "foobar", &compute.RouterArgs{
+//				Name:    pulumi.String("test-router"),
+//				Network: foobarNetwork.Name,
+//				Bgp: &compute.RouterBgpArgs{
+//					Asn: pulumi.Int(16550),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInterconnectAttachment(ctx, "custom-ranges-interconnect-attachment", &compute.InterconnectAttachmentArgs{
+//				Name:                   pulumi.String("test-custom-ranges-interconnect-attachment"),
+//				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
+//				Type:                   pulumi.String("PARTNER"),
+//				Router:                 foobar.ID(),
+//				Mtu:                    pulumi.String("1500"),
+//				StackType:              pulumi.String("IPV4_IPV6"),
+//				Labels: pulumi.StringMap{
+//					"mykey": pulumi.String("myvalue"),
+//				},
+//				CandidateCloudRouterIpAddress:      pulumi.String("192.169.0.1/29"),
+//				CandidateCustomerRouterIpAddress:   pulumi.String("192.169.0.2/29"),
+//				CandidateCloudRouterIpv6Address:    pulumi.String("748d:2f23:6651:9455:828b:ca81:6fe0:fed1/125"),
+//				CandidateCustomerRouterIpv6Address: pulumi.String("748d:2f23:6651:9455:828b:ca81:6fe0:fed2/125"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -176,6 +230,18 @@ type InterconnectAttachment struct {
 	// Defaults to BPS_10G
 	// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
+	// Single IPv4 address + prefix length to be configured on the cloud router interface for this
+	// interconnect attachment. Example: 203.0.113.1/29
+	CandidateCloudRouterIpAddress pulumi.StringPtrOutput `pulumi:"candidateCloudRouterIpAddress"`
+	// Single IPv6 address + prefix length to be configured on the cloud router interface for this
+	// interconnect attachment. Example: 2001:db8::1/125
+	CandidateCloudRouterIpv6Address pulumi.StringPtrOutput `pulumi:"candidateCloudRouterIpv6Address"`
+	// Single IPv4 address + prefix length to be configured on the customer router interface for this
+	// interconnect attachment. Example: 203.0.113.2/29
+	CandidateCustomerRouterIpAddress pulumi.StringPtrOutput `pulumi:"candidateCustomerRouterIpAddress"`
+	// Single IPv6 address + prefix length to be configured on the customer router interface for this
+	// interconnect attachment. Example: 2001:db8::2/125
+	CandidateCustomerRouterIpv6Address pulumi.StringPtrOutput `pulumi:"candidateCustomerRouterIpv6Address"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
 	// All prefixes must be within link-local address space (169.254.0.0/16)
@@ -369,6 +435,18 @@ type interconnectAttachmentState struct {
 	// Defaults to BPS_10G
 	// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
 	Bandwidth *string `pulumi:"bandwidth"`
+	// Single IPv4 address + prefix length to be configured on the cloud router interface for this
+	// interconnect attachment. Example: 203.0.113.1/29
+	CandidateCloudRouterIpAddress *string `pulumi:"candidateCloudRouterIpAddress"`
+	// Single IPv6 address + prefix length to be configured on the cloud router interface for this
+	// interconnect attachment. Example: 2001:db8::1/125
+	CandidateCloudRouterIpv6Address *string `pulumi:"candidateCloudRouterIpv6Address"`
+	// Single IPv4 address + prefix length to be configured on the customer router interface for this
+	// interconnect attachment. Example: 203.0.113.2/29
+	CandidateCustomerRouterIpAddress *string `pulumi:"candidateCustomerRouterIpAddress"`
+	// Single IPv6 address + prefix length to be configured on the customer router interface for this
+	// interconnect attachment. Example: 2001:db8::2/125
+	CandidateCustomerRouterIpv6Address *string `pulumi:"candidateCustomerRouterIpv6Address"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
 	// All prefixes must be within link-local address space (169.254.0.0/16)
@@ -525,6 +603,18 @@ type InterconnectAttachmentState struct {
 	// Defaults to BPS_10G
 	// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
 	Bandwidth pulumi.StringPtrInput
+	// Single IPv4 address + prefix length to be configured on the cloud router interface for this
+	// interconnect attachment. Example: 203.0.113.1/29
+	CandidateCloudRouterIpAddress pulumi.StringPtrInput
+	// Single IPv6 address + prefix length to be configured on the cloud router interface for this
+	// interconnect attachment. Example: 2001:db8::1/125
+	CandidateCloudRouterIpv6Address pulumi.StringPtrInput
+	// Single IPv4 address + prefix length to be configured on the customer router interface for this
+	// interconnect attachment. Example: 203.0.113.2/29
+	CandidateCustomerRouterIpAddress pulumi.StringPtrInput
+	// Single IPv6 address + prefix length to be configured on the customer router interface for this
+	// interconnect attachment. Example: 2001:db8::2/125
+	CandidateCustomerRouterIpv6Address pulumi.StringPtrInput
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
 	// All prefixes must be within link-local address space (169.254.0.0/16)
@@ -685,6 +775,18 @@ type interconnectAttachmentArgs struct {
 	// Defaults to BPS_10G
 	// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
 	Bandwidth *string `pulumi:"bandwidth"`
+	// Single IPv4 address + prefix length to be configured on the cloud router interface for this
+	// interconnect attachment. Example: 203.0.113.1/29
+	CandidateCloudRouterIpAddress *string `pulumi:"candidateCloudRouterIpAddress"`
+	// Single IPv6 address + prefix length to be configured on the cloud router interface for this
+	// interconnect attachment. Example: 2001:db8::1/125
+	CandidateCloudRouterIpv6Address *string `pulumi:"candidateCloudRouterIpv6Address"`
+	// Single IPv4 address + prefix length to be configured on the customer router interface for this
+	// interconnect attachment. Example: 203.0.113.2/29
+	CandidateCustomerRouterIpAddress *string `pulumi:"candidateCustomerRouterIpAddress"`
+	// Single IPv6 address + prefix length to be configured on the customer router interface for this
+	// interconnect attachment. Example: 2001:db8::2/125
+	CandidateCustomerRouterIpv6Address *string `pulumi:"candidateCustomerRouterIpv6Address"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
 	// All prefixes must be within link-local address space (169.254.0.0/16)
@@ -798,6 +900,18 @@ type InterconnectAttachmentArgs struct {
 	// Defaults to BPS_10G
 	// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
 	Bandwidth pulumi.StringPtrInput
+	// Single IPv4 address + prefix length to be configured on the cloud router interface for this
+	// interconnect attachment. Example: 203.0.113.1/29
+	CandidateCloudRouterIpAddress pulumi.StringPtrInput
+	// Single IPv6 address + prefix length to be configured on the cloud router interface for this
+	// interconnect attachment. Example: 2001:db8::1/125
+	CandidateCloudRouterIpv6Address pulumi.StringPtrInput
+	// Single IPv4 address + prefix length to be configured on the customer router interface for this
+	// interconnect attachment. Example: 203.0.113.2/29
+	CandidateCustomerRouterIpAddress pulumi.StringPtrInput
+	// Single IPv6 address + prefix length to be configured on the customer router interface for this
+	// interconnect attachment. Example: 2001:db8::2/125
+	CandidateCustomerRouterIpv6Address pulumi.StringPtrInput
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
 	// All prefixes must be within link-local address space (169.254.0.0/16)
@@ -1000,6 +1114,30 @@ func (o InterconnectAttachmentOutput) AdminEnabled() pulumi.BoolPtrOutput {
 // Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
 func (o InterconnectAttachmentOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
+// Single IPv4 address + prefix length to be configured on the cloud router interface for this
+// interconnect attachment. Example: 203.0.113.1/29
+func (o InterconnectAttachmentOutput) CandidateCloudRouterIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringPtrOutput { return v.CandidateCloudRouterIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Single IPv6 address + prefix length to be configured on the cloud router interface for this
+// interconnect attachment. Example: 2001:db8::1/125
+func (o InterconnectAttachmentOutput) CandidateCloudRouterIpv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringPtrOutput { return v.CandidateCloudRouterIpv6Address }).(pulumi.StringPtrOutput)
+}
+
+// Single IPv4 address + prefix length to be configured on the customer router interface for this
+// interconnect attachment. Example: 203.0.113.2/29
+func (o InterconnectAttachmentOutput) CandidateCustomerRouterIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringPtrOutput { return v.CandidateCustomerRouterIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Single IPv6 address + prefix length to be configured on the customer router interface for this
+// interconnect attachment. Example: 2001:db8::2/125
+func (o InterconnectAttachmentOutput) CandidateCustomerRouterIpv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringPtrOutput { return v.CandidateCustomerRouterIpv6Address }).(pulumi.StringPtrOutput)
 }
 
 // Up to 16 candidate prefixes that can be used to restrict the allocation

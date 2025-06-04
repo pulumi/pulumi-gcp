@@ -6,6 +6,7 @@ package com.pulumi.gcp.filestore.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.filestore.inputs.InstanceEffectiveReplicationReplicaArgs;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,10 +34,28 @@ public final class InstanceEffectiveReplicationArgs extends com.pulumi.resources
         return Optional.ofNullable(this.replicas);
     }
 
+    /**
+     * (Output)
+     * The replication role.
+     * 
+     */
+    @Import(name="role")
+    private @Nullable Output<String> role;
+
+    /**
+     * @return (Output)
+     * The replication role.
+     * 
+     */
+    public Optional<Output<String>> role() {
+        return Optional.ofNullable(this.role);
+    }
+
     private InstanceEffectiveReplicationArgs() {}
 
     private InstanceEffectiveReplicationArgs(InstanceEffectiveReplicationArgs $) {
         this.replicas = $.replicas;
+        this.role = $.role;
     }
 
     public static Builder builder() {
@@ -89,6 +108,29 @@ public final class InstanceEffectiveReplicationArgs extends com.pulumi.resources
          */
         public Builder replicas(InstanceEffectiveReplicationReplicaArgs... replicas) {
             return replicas(List.of(replicas));
+        }
+
+        /**
+         * @param role (Output)
+         * The replication role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder role(@Nullable Output<String> role) {
+            $.role = role;
+            return this;
+        }
+
+        /**
+         * @param role (Output)
+         * The replication role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder role(String role) {
+            return role(Output.of(role));
         }
 
         public InstanceEffectiveReplicationArgs build() {

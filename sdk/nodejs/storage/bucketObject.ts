@@ -134,7 +134,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public /*out*/ readonly md5hash!: pulumi.Output<string>;
     /**
-     * Hex value of md5hash
+     * (Computed) Hex value of md5hash`
      */
     public /*out*/ readonly md5hexhash!: pulumi.Output<string>;
     /**
@@ -316,7 +316,7 @@ export interface BucketObjectState {
      */
     md5hash?: pulumi.Input<string>;
     /**
-     * Hex value of md5hash
+     * (Computed) Hex value of md5hash`
      */
     md5hexhash?: pulumi.Input<string>;
     /**

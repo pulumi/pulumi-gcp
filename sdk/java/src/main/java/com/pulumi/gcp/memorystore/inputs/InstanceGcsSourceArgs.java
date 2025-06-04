@@ -17,7 +17,7 @@ public final class InstanceGcsSourceArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * URIs of the GCS objects to import.
-     * Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+     * Example: gs://bucket1/object1, gs://bucket2/folder2/object2
      * 
      */
     @Import(name="uris", required=true)
@@ -25,7 +25,7 @@ public final class InstanceGcsSourceArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return URIs of the GCS objects to import.
-     * Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+     * Example: gs://bucket1/object1, gs://bucket2/folder2/object2
      * 
      */
     public Output<List<String>> uris() {
@@ -58,7 +58,7 @@ public final class InstanceGcsSourceArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param uris URIs of the GCS objects to import.
-         * Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+         * Example: gs://bucket1/object1, gs://bucket2/folder2/object2
          * 
          * @return builder
          * 
@@ -70,7 +70,7 @@ public final class InstanceGcsSourceArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param uris URIs of the GCS objects to import.
-         * Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+         * Example: gs://bucket1/object1, gs://bucket2/folder2/object2
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class InstanceGcsSourceArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param uris URIs of the GCS objects to import.
-         * Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+         * Example: gs://bucket1/object1, gs://bucket2/folder2/object2
          * 
          * @return builder
          * 

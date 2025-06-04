@@ -5,6 +5,7 @@ package com.pulumi.gcp.netapp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.netapp.inputs.BackupVaultBackupRetentionPolicyArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -29,6 +30,23 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> backupRegion() {
         return Optional.ofNullable(this.backupRegion);
+    }
+
+    /**
+     * Backup retention policy defining the retention of the backups.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="backupRetentionPolicy")
+    private @Nullable Output<BackupVaultBackupRetentionPolicyArgs> backupRetentionPolicy;
+
+    /**
+     * @return Backup retention policy defining the retention of the backups.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackupVaultBackupRetentionPolicyArgs>> backupRetentionPolicy() {
+        return Optional.ofNullable(this.backupRetentionPolicy);
     }
 
     /**
@@ -246,6 +264,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
 
     private BackupVaultState(BackupVaultState $) {
         this.backupRegion = $.backupRegion;
+        this.backupRetentionPolicy = $.backupRetentionPolicy;
         this.backupVaultType = $.backupVaultType;
         this.createTime = $.createTime;
         this.description = $.description;
@@ -298,6 +317,29 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backupRegion(String backupRegion) {
             return backupRegion(Output.of(backupRegion));
+        }
+
+        /**
+         * @param backupRetentionPolicy Backup retention policy defining the retention of the backups.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPolicy(@Nullable Output<BackupVaultBackupRetentionPolicyArgs> backupRetentionPolicy) {
+            $.backupRetentionPolicy = backupRetentionPolicy;
+            return this;
+        }
+
+        /**
+         * @param backupRetentionPolicy Backup retention policy defining the retention of the backups.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPolicy(BackupVaultBackupRetentionPolicyArgs backupRetentionPolicy) {
+            return backupRetentionPolicy(Output.of(backupRetentionPolicy));
         }
 
         /**

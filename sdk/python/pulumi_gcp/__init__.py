@@ -4360,6 +4360,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/entry",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/entry:Entry": "Entry"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/entryGroup",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {

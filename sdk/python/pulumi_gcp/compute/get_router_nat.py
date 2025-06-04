@@ -28,7 +28,7 @@ class GetRouterNatResult:
     """
     A collection of values returned by getRouterNat.
     """
-    def __init__(__self__, auto_network_tier=None, drain_nat_ips=None, enable_dynamic_port_allocation=None, enable_endpoint_independent_mapping=None, endpoint_types=None, icmp_idle_timeout_sec=None, id=None, initial_nat_ips=None, log_configs=None, max_ports_per_vm=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, rules=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_time_wait_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, type=None, udp_idle_timeout_sec=None):
+    def __init__(__self__, auto_network_tier=None, drain_nat_ips=None, enable_dynamic_port_allocation=None, enable_endpoint_independent_mapping=None, endpoint_types=None, icmp_idle_timeout_sec=None, id=None, initial_nat_ips=None, log_configs=None, max_ports_per_vm=None, min_ports_per_vm=None, name=None, nat64_subnetworks=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, rules=None, source_subnetwork_ip_ranges_to_nat=None, source_subnetwork_ip_ranges_to_nat64=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_time_wait_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, type=None, udp_idle_timeout_sec=None):
         if auto_network_tier and not isinstance(auto_network_tier, str):
             raise TypeError("Expected argument 'auto_network_tier' to be a str")
         pulumi.set(__self__, "auto_network_tier", auto_network_tier)
@@ -65,6 +65,9 @@ class GetRouterNatResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if nat64_subnetworks and not isinstance(nat64_subnetworks, list):
+            raise TypeError("Expected argument 'nat64_subnetworks' to be a list")
+        pulumi.set(__self__, "nat64_subnetworks", nat64_subnetworks)
         if nat_ip_allocate_option and not isinstance(nat_ip_allocate_option, str):
             raise TypeError("Expected argument 'nat_ip_allocate_option' to be a str")
         pulumi.set(__self__, "nat_ip_allocate_option", nat_ip_allocate_option)
@@ -86,6 +89,9 @@ class GetRouterNatResult:
         if source_subnetwork_ip_ranges_to_nat and not isinstance(source_subnetwork_ip_ranges_to_nat, str):
             raise TypeError("Expected argument 'source_subnetwork_ip_ranges_to_nat' to be a str")
         pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
+        if source_subnetwork_ip_ranges_to_nat64 and not isinstance(source_subnetwork_ip_ranges_to_nat64, str):
+            raise TypeError("Expected argument 'source_subnetwork_ip_ranges_to_nat64' to be a str")
+        pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat64", source_subnetwork_ip_ranges_to_nat64)
         if subnetworks and not isinstance(subnetworks, list):
             raise TypeError("Expected argument 'subnetworks' to be a list")
         pulumi.set(__self__, "subnetworks", subnetworks)
@@ -169,6 +175,11 @@ class GetRouterNatResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="nat64Subnetworks")
+    def nat64_subnetworks(self) -> Sequence['outputs.GetRouterNatNat64SubnetworkResult']:
+        return pulumi.get(self, "nat64_subnetworks")
+
+    @property
     @pulumi.getter(name="natIpAllocateOption")
     def nat_ip_allocate_option(self) -> builtins.str:
         return pulumi.get(self, "nat_ip_allocate_option")
@@ -202,6 +213,11 @@ class GetRouterNatResult:
     @pulumi.getter(name="sourceSubnetworkIpRangesToNat")
     def source_subnetwork_ip_ranges_to_nat(self) -> builtins.str:
         return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat")
+
+    @property
+    @pulumi.getter(name="sourceSubnetworkIpRangesToNat64")
+    def source_subnetwork_ip_ranges_to_nat64(self) -> builtins.str:
+        return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat64")
 
     @property
     @pulumi.getter
@@ -252,6 +268,7 @@ class AwaitableGetRouterNatResult(GetRouterNatResult):
             max_ports_per_vm=self.max_ports_per_vm,
             min_ports_per_vm=self.min_ports_per_vm,
             name=self.name,
+            nat64_subnetworks=self.nat64_subnetworks,
             nat_ip_allocate_option=self.nat_ip_allocate_option,
             nat_ips=self.nat_ips,
             project=self.project,
@@ -259,6 +276,7 @@ class AwaitableGetRouterNatResult(GetRouterNatResult):
             router=self.router,
             rules=self.rules,
             source_subnetwork_ip_ranges_to_nat=self.source_subnetwork_ip_ranges_to_nat,
+            source_subnetwork_ip_ranges_to_nat64=self.source_subnetwork_ip_ranges_to_nat64,
             subnetworks=self.subnetworks,
             tcp_established_idle_timeout_sec=self.tcp_established_idle_timeout_sec,
             tcp_time_wait_timeout_sec=self.tcp_time_wait_timeout_sec,
@@ -320,6 +338,7 @@ def get_router_nat(name: Optional[builtins.str] = None,
         max_ports_per_vm=pulumi.get(__ret__, 'max_ports_per_vm'),
         min_ports_per_vm=pulumi.get(__ret__, 'min_ports_per_vm'),
         name=pulumi.get(__ret__, 'name'),
+        nat64_subnetworks=pulumi.get(__ret__, 'nat64_subnetworks'),
         nat_ip_allocate_option=pulumi.get(__ret__, 'nat_ip_allocate_option'),
         nat_ips=pulumi.get(__ret__, 'nat_ips'),
         project=pulumi.get(__ret__, 'project'),
@@ -327,6 +346,7 @@ def get_router_nat(name: Optional[builtins.str] = None,
         router=pulumi.get(__ret__, 'router'),
         rules=pulumi.get(__ret__, 'rules'),
         source_subnetwork_ip_ranges_to_nat=pulumi.get(__ret__, 'source_subnetwork_ip_ranges_to_nat'),
+        source_subnetwork_ip_ranges_to_nat64=pulumi.get(__ret__, 'source_subnetwork_ip_ranges_to_nat64'),
         subnetworks=pulumi.get(__ret__, 'subnetworks'),
         tcp_established_idle_timeout_sec=pulumi.get(__ret__, 'tcp_established_idle_timeout_sec'),
         tcp_time_wait_timeout_sec=pulumi.get(__ret__, 'tcp_time_wait_timeout_sec'),
@@ -385,6 +405,7 @@ def get_router_nat_output(name: Optional[pulumi.Input[builtins.str]] = None,
         max_ports_per_vm=pulumi.get(__response__, 'max_ports_per_vm'),
         min_ports_per_vm=pulumi.get(__response__, 'min_ports_per_vm'),
         name=pulumi.get(__response__, 'name'),
+        nat64_subnetworks=pulumi.get(__response__, 'nat64_subnetworks'),
         nat_ip_allocate_option=pulumi.get(__response__, 'nat_ip_allocate_option'),
         nat_ips=pulumi.get(__response__, 'nat_ips'),
         project=pulumi.get(__response__, 'project'),
@@ -392,6 +413,7 @@ def get_router_nat_output(name: Optional[pulumi.Input[builtins.str]] = None,
         router=pulumi.get(__response__, 'router'),
         rules=pulumi.get(__response__, 'rules'),
         source_subnetwork_ip_ranges_to_nat=pulumi.get(__response__, 'source_subnetwork_ip_ranges_to_nat'),
+        source_subnetwork_ip_ranges_to_nat64=pulumi.get(__response__, 'source_subnetwork_ip_ranges_to_nat64'),
         subnetworks=pulumi.get(__response__, 'subnetworks'),
         tcp_established_idle_timeout_sec=pulumi.get(__response__, 'tcp_established_idle_timeout_sec'),
         tcp_time_wait_timeout_sec=pulumi.get(__response__, 'tcp_time_wait_timeout_sec'),

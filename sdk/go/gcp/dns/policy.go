@@ -117,6 +117,9 @@ type Policy struct {
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrOutput `pulumi:"alternativeNameServerConfig"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Configurations related to DNS64 for this Policy.
+	// Structure is documented below.
+	Dns64Config PolicyDns64ConfigOutput `pulumi:"dns64Config"`
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
 	// virtual IP address will be allocated from each of the sub-networks
@@ -174,6 +177,9 @@ type policyState struct {
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
+	// Configurations related to DNS64 for this Policy.
+	// Structure is documented below.
+	Dns64Config *PolicyDns64Config `pulumi:"dns64Config"`
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
 	// virtual IP address will be allocated from each of the sub-networks
@@ -202,6 +208,9 @@ type PolicyState struct {
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
+	// Configurations related to DNS64 for this Policy.
+	// Structure is documented below.
+	Dns64Config PolicyDns64ConfigPtrInput
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
 	// virtual IP address will be allocated from each of the sub-networks
@@ -234,6 +243,9 @@ type policyArgs struct {
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
+	// Configurations related to DNS64 for this Policy.
+	// Structure is documented below.
+	Dns64Config *PolicyDns64Config `pulumi:"dns64Config"`
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
 	// virtual IP address will be allocated from each of the sub-networks
@@ -263,6 +275,9 @@ type PolicyArgs struct {
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
+	// Configurations related to DNS64 for this Policy.
+	// Structure is documented below.
+	Dns64Config PolicyDns64ConfigPtrInput
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
 	// virtual IP address will be allocated from each of the sub-networks
@@ -381,6 +396,12 @@ func (o PolicyOutput) AlternativeNameServerConfig() PolicyAlternativeNameServerC
 // A textual description field. Defaults to 'Managed by Pulumi'.
 func (o PolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Configurations related to DNS64 for this Policy.
+// Structure is documented below.
+func (o PolicyOutput) Dns64Config() PolicyDns64ConfigOutput {
+	return o.ApplyT(func(v *Policy) PolicyDns64ConfigOutput { return v.Dns64Config }).(PolicyDns64ConfigOutput)
 }
 
 // Allows networks bound to this policy to receive DNS queries sent

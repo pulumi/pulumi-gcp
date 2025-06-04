@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RouterNatSubnetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Self-link of subnetwork to NAT
+        /// Self-link of the subnetwork resource that will use NAT64
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -26,6 +26,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// to use NAT. This can be populated only if
         /// `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
         /// sourceIpRangesToNat
+        /// 
+        /// &lt;a name="nested_nat64_subnetwork"&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
         /// </summary>
         public InputList<string> SecondaryIpRangeNames
         {

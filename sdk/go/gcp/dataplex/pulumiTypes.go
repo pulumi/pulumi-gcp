@@ -6794,6 +6794,659 @@ func (o DatascanIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type EntryAspect struct {
+	// A nested object resource.
+	// Structure is documented below.
+	Aspect EntryAspectAspect `pulumi:"aspect"`
+	// Depending on how the aspect is attached to the entry, the format of the aspect key can be one of the following:
+	// If the aspect is attached directly to the entry: {project_number}.{locationId}.{aspectTypeId}
+	// If the aspect is attached to an entry's path: {project_number}.{locationId}.{aspectTypeId}@{path}
+	AspectKey string `pulumi:"aspectKey"`
+}
+
+// EntryAspectInput is an input type that accepts EntryAspectArgs and EntryAspectOutput values.
+// You can construct a concrete instance of `EntryAspectInput` via:
+//
+//	EntryAspectArgs{...}
+type EntryAspectInput interface {
+	pulumi.Input
+
+	ToEntryAspectOutput() EntryAspectOutput
+	ToEntryAspectOutputWithContext(context.Context) EntryAspectOutput
+}
+
+type EntryAspectArgs struct {
+	// A nested object resource.
+	// Structure is documented below.
+	Aspect EntryAspectAspectInput `pulumi:"aspect"`
+	// Depending on how the aspect is attached to the entry, the format of the aspect key can be one of the following:
+	// If the aspect is attached directly to the entry: {project_number}.{locationId}.{aspectTypeId}
+	// If the aspect is attached to an entry's path: {project_number}.{locationId}.{aspectTypeId}@{path}
+	AspectKey pulumi.StringInput `pulumi:"aspectKey"`
+}
+
+func (EntryAspectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryAspect)(nil)).Elem()
+}
+
+func (i EntryAspectArgs) ToEntryAspectOutput() EntryAspectOutput {
+	return i.ToEntryAspectOutputWithContext(context.Background())
+}
+
+func (i EntryAspectArgs) ToEntryAspectOutputWithContext(ctx context.Context) EntryAspectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryAspectOutput)
+}
+
+// EntryAspectArrayInput is an input type that accepts EntryAspectArray and EntryAspectArrayOutput values.
+// You can construct a concrete instance of `EntryAspectArrayInput` via:
+//
+//	EntryAspectArray{ EntryAspectArgs{...} }
+type EntryAspectArrayInput interface {
+	pulumi.Input
+
+	ToEntryAspectArrayOutput() EntryAspectArrayOutput
+	ToEntryAspectArrayOutputWithContext(context.Context) EntryAspectArrayOutput
+}
+
+type EntryAspectArray []EntryAspectInput
+
+func (EntryAspectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryAspect)(nil)).Elem()
+}
+
+func (i EntryAspectArray) ToEntryAspectArrayOutput() EntryAspectArrayOutput {
+	return i.ToEntryAspectArrayOutputWithContext(context.Background())
+}
+
+func (i EntryAspectArray) ToEntryAspectArrayOutputWithContext(ctx context.Context) EntryAspectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryAspectArrayOutput)
+}
+
+type EntryAspectOutput struct{ *pulumi.OutputState }
+
+func (EntryAspectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryAspect)(nil)).Elem()
+}
+
+func (o EntryAspectOutput) ToEntryAspectOutput() EntryAspectOutput {
+	return o
+}
+
+func (o EntryAspectOutput) ToEntryAspectOutputWithContext(ctx context.Context) EntryAspectOutput {
+	return o
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o EntryAspectOutput) Aspect() EntryAspectAspectOutput {
+	return o.ApplyT(func(v EntryAspect) EntryAspectAspect { return v.Aspect }).(EntryAspectAspectOutput)
+}
+
+// Depending on how the aspect is attached to the entry, the format of the aspect key can be one of the following:
+// If the aspect is attached directly to the entry: {project_number}.{locationId}.{aspectTypeId}
+// If the aspect is attached to an entry's path: {project_number}.{locationId}.{aspectTypeId}@{path}
+func (o EntryAspectOutput) AspectKey() pulumi.StringOutput {
+	return o.ApplyT(func(v EntryAspect) string { return v.AspectKey }).(pulumi.StringOutput)
+}
+
+type EntryAspectArrayOutput struct{ *pulumi.OutputState }
+
+func (EntryAspectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryAspect)(nil)).Elem()
+}
+
+func (o EntryAspectArrayOutput) ToEntryAspectArrayOutput() EntryAspectArrayOutput {
+	return o
+}
+
+func (o EntryAspectArrayOutput) ToEntryAspectArrayOutputWithContext(ctx context.Context) EntryAspectArrayOutput {
+	return o
+}
+
+func (o EntryAspectArrayOutput) Index(i pulumi.IntInput) EntryAspectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryAspect {
+		return vs[0].([]EntryAspect)[vs[1].(int)]
+	}).(EntryAspectOutput)
+}
+
+type EntryAspectAspect struct {
+	// (Output)
+	// The resource name of the type used to create this Aspect.
+	AspectType *string `pulumi:"aspectType"`
+	// (Output)
+	// The time when the Aspect was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+	Data string `pulumi:"data"`
+	// (Output)
+	// The path in the entry under which the aspect is attached.
+	Path *string `pulumi:"path"`
+	// (Output)
+	// The time when the Aspect was last modified.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// EntryAspectAspectInput is an input type that accepts EntryAspectAspectArgs and EntryAspectAspectOutput values.
+// You can construct a concrete instance of `EntryAspectAspectInput` via:
+//
+//	EntryAspectAspectArgs{...}
+type EntryAspectAspectInput interface {
+	pulumi.Input
+
+	ToEntryAspectAspectOutput() EntryAspectAspectOutput
+	ToEntryAspectAspectOutputWithContext(context.Context) EntryAspectAspectOutput
+}
+
+type EntryAspectAspectArgs struct {
+	// (Output)
+	// The resource name of the type used to create this Aspect.
+	AspectType pulumi.StringPtrInput `pulumi:"aspectType"`
+	// (Output)
+	// The time when the Aspect was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+	Data pulumi.StringInput `pulumi:"data"`
+	// (Output)
+	// The path in the entry under which the aspect is attached.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// (Output)
+	// The time when the Aspect was last modified.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (EntryAspectAspectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryAspectAspect)(nil)).Elem()
+}
+
+func (i EntryAspectAspectArgs) ToEntryAspectAspectOutput() EntryAspectAspectOutput {
+	return i.ToEntryAspectAspectOutputWithContext(context.Background())
+}
+
+func (i EntryAspectAspectArgs) ToEntryAspectAspectOutputWithContext(ctx context.Context) EntryAspectAspectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryAspectAspectOutput)
+}
+
+type EntryAspectAspectOutput struct{ *pulumi.OutputState }
+
+func (EntryAspectAspectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryAspectAspect)(nil)).Elem()
+}
+
+func (o EntryAspectAspectOutput) ToEntryAspectAspectOutput() EntryAspectAspectOutput {
+	return o
+}
+
+func (o EntryAspectAspectOutput) ToEntryAspectAspectOutputWithContext(ctx context.Context) EntryAspectAspectOutput {
+	return o
+}
+
+// (Output)
+// The resource name of the type used to create this Aspect.
+func (o EntryAspectAspectOutput) AspectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryAspectAspect) *string { return v.AspectType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time when the Aspect was created.
+func (o EntryAspectAspectOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryAspectAspect) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+func (o EntryAspectAspectOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v EntryAspectAspect) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The path in the entry under which the aspect is attached.
+func (o EntryAspectAspectOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryAspectAspect) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time when the Aspect was last modified.
+func (o EntryAspectAspectOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryAspectAspect) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type EntryEntrySource struct {
+	// Structure is documented below.
+	Ancestors []EntryEntrySourceAncestor `pulumi:"ancestors"`
+	// The time when the resource was created in the source system.
+	CreateTime *string `pulumi:"createTime"`
+	// A description of the data resource. Maximum length is 2,000 characters.
+	Description *string `pulumi:"description"`
+	// A user-friendly display name. Maximum length is 500 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// User-defined labels. The maximum size of keys and values is 128 characters each.
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels map[string]string `pulumi:"labels"`
+	// (Output)
+	// Location of the resource in the source system. You can search the entry by this location.
+	// By default, this should match the location of the entry group containing this entry.
+	// A different value allows capturing the source location for data external to Google Cloud.
+	Location *string `pulumi:"location"`
+	// The platform containing the source system. Maximum length is 64 characters.
+	Platform *string `pulumi:"platform"`
+	// The name of the resource in the source system. Maximum length is 4,000 characters.
+	Resource *string `pulumi:"resource"`
+	// The name of the source system. Maximum length is 64 characters.
+	System *string `pulumi:"system"`
+	// The time when the resource was last updated in the source system.
+	// If the entry exists in the system and its EntrySource has updateTime populated,
+	// further updates to the EntrySource of the entry must provide incremental updates to its updateTime.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// EntryEntrySourceInput is an input type that accepts EntryEntrySourceArgs and EntryEntrySourceOutput values.
+// You can construct a concrete instance of `EntryEntrySourceInput` via:
+//
+//	EntryEntrySourceArgs{...}
+type EntryEntrySourceInput interface {
+	pulumi.Input
+
+	ToEntryEntrySourceOutput() EntryEntrySourceOutput
+	ToEntryEntrySourceOutputWithContext(context.Context) EntryEntrySourceOutput
+}
+
+type EntryEntrySourceArgs struct {
+	// Structure is documented below.
+	Ancestors EntryEntrySourceAncestorArrayInput `pulumi:"ancestors"`
+	// The time when the resource was created in the source system.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// A description of the data resource. Maximum length is 2,000 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A user-friendly display name. Maximum length is 500 characters.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// User-defined labels. The maximum size of keys and values is 128 characters each.
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// (Output)
+	// Location of the resource in the source system. You can search the entry by this location.
+	// By default, this should match the location of the entry group containing this entry.
+	// A different value allows capturing the source location for data external to Google Cloud.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The platform containing the source system. Maximum length is 64 characters.
+	Platform pulumi.StringPtrInput `pulumi:"platform"`
+	// The name of the resource in the source system. Maximum length is 4,000 characters.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+	// The name of the source system. Maximum length is 64 characters.
+	System pulumi.StringPtrInput `pulumi:"system"`
+	// The time when the resource was last updated in the source system.
+	// If the entry exists in the system and its EntrySource has updateTime populated,
+	// further updates to the EntrySource of the entry must provide incremental updates to its updateTime.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (EntryEntrySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryEntrySource)(nil)).Elem()
+}
+
+func (i EntryEntrySourceArgs) ToEntryEntrySourceOutput() EntryEntrySourceOutput {
+	return i.ToEntryEntrySourceOutputWithContext(context.Background())
+}
+
+func (i EntryEntrySourceArgs) ToEntryEntrySourceOutputWithContext(ctx context.Context) EntryEntrySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryEntrySourceOutput)
+}
+
+func (i EntryEntrySourceArgs) ToEntryEntrySourcePtrOutput() EntryEntrySourcePtrOutput {
+	return i.ToEntryEntrySourcePtrOutputWithContext(context.Background())
+}
+
+func (i EntryEntrySourceArgs) ToEntryEntrySourcePtrOutputWithContext(ctx context.Context) EntryEntrySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryEntrySourceOutput).ToEntryEntrySourcePtrOutputWithContext(ctx)
+}
+
+// EntryEntrySourcePtrInput is an input type that accepts EntryEntrySourceArgs, EntryEntrySourcePtr and EntryEntrySourcePtrOutput values.
+// You can construct a concrete instance of `EntryEntrySourcePtrInput` via:
+//
+//	        EntryEntrySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntryEntrySourcePtrInput interface {
+	pulumi.Input
+
+	ToEntryEntrySourcePtrOutput() EntryEntrySourcePtrOutput
+	ToEntryEntrySourcePtrOutputWithContext(context.Context) EntryEntrySourcePtrOutput
+}
+
+type entryEntrySourcePtrType EntryEntrySourceArgs
+
+func EntryEntrySourcePtr(v *EntryEntrySourceArgs) EntryEntrySourcePtrInput {
+	return (*entryEntrySourcePtrType)(v)
+}
+
+func (*entryEntrySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntryEntrySource)(nil)).Elem()
+}
+
+func (i *entryEntrySourcePtrType) ToEntryEntrySourcePtrOutput() EntryEntrySourcePtrOutput {
+	return i.ToEntryEntrySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *entryEntrySourcePtrType) ToEntryEntrySourcePtrOutputWithContext(ctx context.Context) EntryEntrySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryEntrySourcePtrOutput)
+}
+
+type EntryEntrySourceOutput struct{ *pulumi.OutputState }
+
+func (EntryEntrySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryEntrySource)(nil)).Elem()
+}
+
+func (o EntryEntrySourceOutput) ToEntryEntrySourceOutput() EntryEntrySourceOutput {
+	return o
+}
+
+func (o EntryEntrySourceOutput) ToEntryEntrySourceOutputWithContext(ctx context.Context) EntryEntrySourceOutput {
+	return o
+}
+
+func (o EntryEntrySourceOutput) ToEntryEntrySourcePtrOutput() EntryEntrySourcePtrOutput {
+	return o.ToEntryEntrySourcePtrOutputWithContext(context.Background())
+}
+
+func (o EntryEntrySourceOutput) ToEntryEntrySourcePtrOutputWithContext(ctx context.Context) EntryEntrySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryEntrySource) *EntryEntrySource {
+		return &v
+	}).(EntryEntrySourcePtrOutput)
+}
+
+// Structure is documented below.
+func (o EntryEntrySourceOutput) Ancestors() EntryEntrySourceAncestorArrayOutput {
+	return o.ApplyT(func(v EntryEntrySource) []EntryEntrySourceAncestor { return v.Ancestors }).(EntryEntrySourceAncestorArrayOutput)
+}
+
+// The time when the resource was created in the source system.
+func (o EntryEntrySourceOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryEntrySource) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// A description of the data resource. Maximum length is 2,000 characters.
+func (o EntryEntrySourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryEntrySource) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A user-friendly display name. Maximum length is 500 characters.
+func (o EntryEntrySourceOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryEntrySource) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// User-defined labels. The maximum size of keys and values is 128 characters each.
+// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o EntryEntrySourceOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EntryEntrySource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Location of the resource in the source system. You can search the entry by this location.
+// By default, this should match the location of the entry group containing this entry.
+// A different value allows capturing the source location for data external to Google Cloud.
+func (o EntryEntrySourceOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryEntrySource) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The platform containing the source system. Maximum length is 64 characters.
+func (o EntryEntrySourceOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryEntrySource) *string { return v.Platform }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource in the source system. Maximum length is 4,000 characters.
+func (o EntryEntrySourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryEntrySource) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// The name of the source system. Maximum length is 64 characters.
+func (o EntryEntrySourceOutput) System() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryEntrySource) *string { return v.System }).(pulumi.StringPtrOutput)
+}
+
+// The time when the resource was last updated in the source system.
+// If the entry exists in the system and its EntrySource has updateTime populated,
+// further updates to the EntrySource of the entry must provide incremental updates to its updateTime.
+func (o EntryEntrySourceOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryEntrySource) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type EntryEntrySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (EntryEntrySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntryEntrySource)(nil)).Elem()
+}
+
+func (o EntryEntrySourcePtrOutput) ToEntryEntrySourcePtrOutput() EntryEntrySourcePtrOutput {
+	return o
+}
+
+func (o EntryEntrySourcePtrOutput) ToEntryEntrySourcePtrOutputWithContext(ctx context.Context) EntryEntrySourcePtrOutput {
+	return o
+}
+
+func (o EntryEntrySourcePtrOutput) Elem() EntryEntrySourceOutput {
+	return o.ApplyT(func(v *EntryEntrySource) EntryEntrySource {
+		if v != nil {
+			return *v
+		}
+		var ret EntryEntrySource
+		return ret
+	}).(EntryEntrySourceOutput)
+}
+
+// Structure is documented below.
+func (o EntryEntrySourcePtrOutput) Ancestors() EntryEntrySourceAncestorArrayOutput {
+	return o.ApplyT(func(v *EntryEntrySource) []EntryEntrySourceAncestor {
+		if v == nil {
+			return nil
+		}
+		return v.Ancestors
+	}).(EntryEntrySourceAncestorArrayOutput)
+}
+
+// The time when the resource was created in the source system.
+func (o EntryEntrySourcePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntryEntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// A description of the data resource. Maximum length is 2,000 characters.
+func (o EntryEntrySourcePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntryEntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// A user-friendly display name. Maximum length is 500 characters.
+func (o EntryEntrySourcePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntryEntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-defined labels. The maximum size of keys and values is 128 characters each.
+// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o EntryEntrySourcePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EntryEntrySource) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Location of the resource in the source system. You can search the entry by this location.
+// By default, this should match the location of the entry group containing this entry.
+// A different value allows capturing the source location for data external to Google Cloud.
+func (o EntryEntrySourcePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntryEntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The platform containing the source system. Maximum length is 64 characters.
+func (o EntryEntrySourcePtrOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntryEntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Platform
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource in the source system. Maximum length is 4,000 characters.
+func (o EntryEntrySourcePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntryEntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the source system. Maximum length is 64 characters.
+func (o EntryEntrySourcePtrOutput) System() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntryEntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.System
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time when the resource was last updated in the source system.
+// If the entry exists in the system and its EntrySource has updateTime populated,
+// further updates to the EntrySource of the entry must provide incremental updates to its updateTime.
+func (o EntryEntrySourcePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntryEntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type EntryEntrySourceAncestor struct {
+	// The name of the ancestor resource.
+	Name *string `pulumi:"name"`
+	// The type of the ancestor resource.
+	Type *string `pulumi:"type"`
+}
+
+// EntryEntrySourceAncestorInput is an input type that accepts EntryEntrySourceAncestorArgs and EntryEntrySourceAncestorOutput values.
+// You can construct a concrete instance of `EntryEntrySourceAncestorInput` via:
+//
+//	EntryEntrySourceAncestorArgs{...}
+type EntryEntrySourceAncestorInput interface {
+	pulumi.Input
+
+	ToEntryEntrySourceAncestorOutput() EntryEntrySourceAncestorOutput
+	ToEntryEntrySourceAncestorOutputWithContext(context.Context) EntryEntrySourceAncestorOutput
+}
+
+type EntryEntrySourceAncestorArgs struct {
+	// The name of the ancestor resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The type of the ancestor resource.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (EntryEntrySourceAncestorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryEntrySourceAncestor)(nil)).Elem()
+}
+
+func (i EntryEntrySourceAncestorArgs) ToEntryEntrySourceAncestorOutput() EntryEntrySourceAncestorOutput {
+	return i.ToEntryEntrySourceAncestorOutputWithContext(context.Background())
+}
+
+func (i EntryEntrySourceAncestorArgs) ToEntryEntrySourceAncestorOutputWithContext(ctx context.Context) EntryEntrySourceAncestorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryEntrySourceAncestorOutput)
+}
+
+// EntryEntrySourceAncestorArrayInput is an input type that accepts EntryEntrySourceAncestorArray and EntryEntrySourceAncestorArrayOutput values.
+// You can construct a concrete instance of `EntryEntrySourceAncestorArrayInput` via:
+//
+//	EntryEntrySourceAncestorArray{ EntryEntrySourceAncestorArgs{...} }
+type EntryEntrySourceAncestorArrayInput interface {
+	pulumi.Input
+
+	ToEntryEntrySourceAncestorArrayOutput() EntryEntrySourceAncestorArrayOutput
+	ToEntryEntrySourceAncestorArrayOutputWithContext(context.Context) EntryEntrySourceAncestorArrayOutput
+}
+
+type EntryEntrySourceAncestorArray []EntryEntrySourceAncestorInput
+
+func (EntryEntrySourceAncestorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryEntrySourceAncestor)(nil)).Elem()
+}
+
+func (i EntryEntrySourceAncestorArray) ToEntryEntrySourceAncestorArrayOutput() EntryEntrySourceAncestorArrayOutput {
+	return i.ToEntryEntrySourceAncestorArrayOutputWithContext(context.Background())
+}
+
+func (i EntryEntrySourceAncestorArray) ToEntryEntrySourceAncestorArrayOutputWithContext(ctx context.Context) EntryEntrySourceAncestorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryEntrySourceAncestorArrayOutput)
+}
+
+type EntryEntrySourceAncestorOutput struct{ *pulumi.OutputState }
+
+func (EntryEntrySourceAncestorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryEntrySourceAncestor)(nil)).Elem()
+}
+
+func (o EntryEntrySourceAncestorOutput) ToEntryEntrySourceAncestorOutput() EntryEntrySourceAncestorOutput {
+	return o
+}
+
+func (o EntryEntrySourceAncestorOutput) ToEntryEntrySourceAncestorOutputWithContext(ctx context.Context) EntryEntrySourceAncestorOutput {
+	return o
+}
+
+// The name of the ancestor resource.
+func (o EntryEntrySourceAncestorOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryEntrySourceAncestor) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The type of the ancestor resource.
+func (o EntryEntrySourceAncestorOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryEntrySourceAncestor) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type EntryEntrySourceAncestorArrayOutput struct{ *pulumi.OutputState }
+
+func (EntryEntrySourceAncestorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryEntrySourceAncestor)(nil)).Elem()
+}
+
+func (o EntryEntrySourceAncestorArrayOutput) ToEntryEntrySourceAncestorArrayOutput() EntryEntrySourceAncestorArrayOutput {
+	return o
+}
+
+func (o EntryEntrySourceAncestorArrayOutput) ToEntryEntrySourceAncestorArrayOutputWithContext(ctx context.Context) EntryEntrySourceAncestorArrayOutput {
+	return o
+}
+
+func (o EntryEntrySourceAncestorArrayOutput) Index(i pulumi.IntInput) EntryEntrySourceAncestorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryEntrySourceAncestor {
+		return vs[0].([]EntryEntrySourceAncestor)[vs[1].(int)]
+	}).(EntryEntrySourceAncestorOutput)
+}
+
 type EntryGroupIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -12805,6 +13458,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanIamBindingConditionPtrInput)(nil)).Elem(), DatascanIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanIamMemberConditionInput)(nil)).Elem(), DatascanIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanIamMemberConditionPtrInput)(nil)).Elem(), DatascanIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryAspectInput)(nil)).Elem(), EntryAspectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryAspectArrayInput)(nil)).Elem(), EntryAspectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryAspectAspectInput)(nil)).Elem(), EntryAspectAspectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryEntrySourceInput)(nil)).Elem(), EntryEntrySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryEntrySourcePtrInput)(nil)).Elem(), EntryEntrySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryEntrySourceAncestorInput)(nil)).Elem(), EntryEntrySourceAncestorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryEntrySourceAncestorArrayInput)(nil)).Elem(), EntryEntrySourceAncestorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamBindingConditionInput)(nil)).Elem(), EntryGroupIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamBindingConditionPtrInput)(nil)).Elem(), EntryGroupIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamMemberConditionInput)(nil)).Elem(), EntryGroupIamMemberConditionArgs{})
@@ -12961,6 +13621,13 @@ func init() {
 	pulumi.RegisterOutputType(DatascanIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DatascanIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(DatascanIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(EntryAspectOutput{})
+	pulumi.RegisterOutputType(EntryAspectArrayOutput{})
+	pulumi.RegisterOutputType(EntryAspectAspectOutput{})
+	pulumi.RegisterOutputType(EntryEntrySourceOutput{})
+	pulumi.RegisterOutputType(EntryEntrySourcePtrOutput{})
+	pulumi.RegisterOutputType(EntryEntrySourceAncestorOutput{})
+	pulumi.RegisterOutputType(EntryEntrySourceAncestorArrayOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamMemberConditionOutput{})

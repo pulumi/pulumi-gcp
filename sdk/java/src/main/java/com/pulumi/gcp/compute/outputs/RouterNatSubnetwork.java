@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RouterNatSubnetwork {
     /**
-     * @return Self-link of subnetwork to NAT
+     * @return Self-link of the subnetwork resource that will use NAT64
      * 
      */
     private String name;
@@ -22,6 +22,8 @@ public final class RouterNatSubnetwork {
      * to use NAT. This can be populated only if
      * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
      * sourceIpRangesToNat
+     * 
+     * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
      * 
      */
     private @Nullable List<String> secondaryIpRangeNames;
@@ -36,7 +38,7 @@ public final class RouterNatSubnetwork {
 
     private RouterNatSubnetwork() {}
     /**
-     * @return Self-link of subnetwork to NAT
+     * @return Self-link of the subnetwork resource that will use NAT64
      * 
      */
     public String name() {
@@ -47,6 +49,8 @@ public final class RouterNatSubnetwork {
      * to use NAT. This can be populated only if
      * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
      * sourceIpRangesToNat
+     * 
+     * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
      * 
      */
     public List<String> secondaryIpRangeNames() {

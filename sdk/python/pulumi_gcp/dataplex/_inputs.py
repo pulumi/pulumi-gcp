@@ -102,6 +102,14 @@ __all__ = [
     'DatascanIamBindingConditionArgsDict',
     'DatascanIamMemberConditionArgs',
     'DatascanIamMemberConditionArgsDict',
+    'EntryAspectArgs',
+    'EntryAspectArgsDict',
+    'EntryAspectAspectArgs',
+    'EntryAspectAspectArgsDict',
+    'EntryEntrySourceArgs',
+    'EntryEntrySourceArgsDict',
+    'EntryEntrySourceAncestorArgs',
+    'EntryEntrySourceAncestorArgsDict',
     'EntryGroupIamBindingConditionArgs',
     'EntryGroupIamBindingConditionArgsDict',
     'EntryGroupIamMemberConditionArgs',
@@ -2858,6 +2866,470 @@ class DatascanIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class EntryAspectArgsDict(TypedDict):
+        aspect: pulumi.Input['EntryAspectAspectArgsDict']
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        aspect_key: pulumi.Input[builtins.str]
+        """
+        Depending on how the aspect is attached to the entry, the format of the aspect key can be one of the following:
+        If the aspect is attached directly to the entry: {project_number}.{locationId}.{aspectTypeId}
+        If the aspect is attached to an entry's path: {project_number}.{locationId}.{aspectTypeId}@{path}
+        """
+elif False:
+    EntryAspectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EntryAspectArgs:
+    def __init__(__self__, *,
+                 aspect: pulumi.Input['EntryAspectAspectArgs'],
+                 aspect_key: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input['EntryAspectAspectArgs'] aspect: A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] aspect_key: Depending on how the aspect is attached to the entry, the format of the aspect key can be one of the following:
+               If the aspect is attached directly to the entry: {project_number}.{locationId}.{aspectTypeId}
+               If the aspect is attached to an entry's path: {project_number}.{locationId}.{aspectTypeId}@{path}
+        """
+        pulumi.set(__self__, "aspect", aspect)
+        pulumi.set(__self__, "aspect_key", aspect_key)
+
+    @property
+    @pulumi.getter
+    def aspect(self) -> pulumi.Input['EntryAspectAspectArgs']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aspect")
+
+    @aspect.setter
+    def aspect(self, value: pulumi.Input['EntryAspectAspectArgs']):
+        pulumi.set(self, "aspect", value)
+
+    @property
+    @pulumi.getter(name="aspectKey")
+    def aspect_key(self) -> pulumi.Input[builtins.str]:
+        """
+        Depending on how the aspect is attached to the entry, the format of the aspect key can be one of the following:
+        If the aspect is attached directly to the entry: {project_number}.{locationId}.{aspectTypeId}
+        If the aspect is attached to an entry's path: {project_number}.{locationId}.{aspectTypeId}@{path}
+        """
+        return pulumi.get(self, "aspect_key")
+
+    @aspect_key.setter
+    def aspect_key(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "aspect_key", value)
+
+
+if not MYPY:
+    class EntryAspectAspectArgsDict(TypedDict):
+        data: pulumi.Input[builtins.str]
+        """
+        The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+        """
+        aspect_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The resource name of the type used to create this Aspect.
+        """
+        create_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The time when the Aspect was created.
+        """
+        path: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The path in the entry under which the aspect is attached.
+        """
+        update_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The time when the Aspect was last modified.
+        """
+elif False:
+    EntryAspectAspectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EntryAspectAspectArgs:
+    def __init__(__self__, *,
+                 data: pulumi.Input[builtins.str],
+                 aspect_type: Optional[pulumi.Input[builtins.str]] = None,
+                 create_time: Optional[pulumi.Input[builtins.str]] = None,
+                 path: Optional[pulumi.Input[builtins.str]] = None,
+                 update_time: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] data: The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+        :param pulumi.Input[builtins.str] aspect_type: (Output)
+               The resource name of the type used to create this Aspect.
+        :param pulumi.Input[builtins.str] create_time: (Output)
+               The time when the Aspect was created.
+        :param pulumi.Input[builtins.str] path: (Output)
+               The path in the entry under which the aspect is attached.
+        :param pulumi.Input[builtins.str] update_time: (Output)
+               The time when the Aspect was last modified.
+        """
+        pulumi.set(__self__, "data", data)
+        if aspect_type is not None:
+            pulumi.set(__self__, "aspect_type", aspect_type)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def data(self) -> pulumi.Input[builtins.str]:
+        """
+        The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+        """
+        return pulumi.get(self, "data")
+
+    @data.setter
+    def data(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "data", value)
+
+    @property
+    @pulumi.getter(name="aspectType")
+    def aspect_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The resource name of the type used to create this Aspect.
+        """
+        return pulumi.get(self, "aspect_type")
+
+    @aspect_type.setter
+    def aspect_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "aspect_type", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The time when the Aspect was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The path in the entry under which the aspect is attached.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The time when the Aspect was last modified.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "update_time", value)
+
+
+if not MYPY:
+    class EntryEntrySourceArgsDict(TypedDict):
+        ancestors: NotRequired[pulumi.Input[Sequence[pulumi.Input['EntryEntrySourceAncestorArgsDict']]]]
+        """
+        Structure is documented below.
+        """
+        create_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The time when the resource was created in the source system.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A description of the data resource. Maximum length is 2,000 characters.
+        """
+        display_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A user-friendly display name. Maximum length is 500 characters.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        User-defined labels. The maximum size of keys and values is 128 characters each.
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        location: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Location of the resource in the source system. You can search the entry by this location.
+        By default, this should match the location of the entry group containing this entry.
+        A different value allows capturing the source location for data external to Google Cloud.
+        """
+        platform: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The platform containing the source system. Maximum length is 64 characters.
+        """
+        resource: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the resource in the source system. Maximum length is 4,000 characters.
+        """
+        system: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the source system. Maximum length is 64 characters.
+        """
+        update_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The time when the resource was last updated in the source system.
+        If the entry exists in the system and its EntrySource has updateTime populated,
+        further updates to the EntrySource of the entry must provide incremental updates to its updateTime.
+        """
+elif False:
+    EntryEntrySourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EntryEntrySourceArgs:
+    def __init__(__self__, *,
+                 ancestors: Optional[pulumi.Input[Sequence[pulumi.Input['EntryEntrySourceAncestorArgs']]]] = None,
+                 create_time: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
+                 display_name: Optional[pulumi.Input[builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 location: Optional[pulumi.Input[builtins.str]] = None,
+                 platform: Optional[pulumi.Input[builtins.str]] = None,
+                 resource: Optional[pulumi.Input[builtins.str]] = None,
+                 system: Optional[pulumi.Input[builtins.str]] = None,
+                 update_time: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['EntryEntrySourceAncestorArgs']]] ancestors: Structure is documented below.
+        :param pulumi.Input[builtins.str] create_time: The time when the resource was created in the source system.
+        :param pulumi.Input[builtins.str] description: A description of the data resource. Maximum length is 2,000 characters.
+        :param pulumi.Input[builtins.str] display_name: A user-friendly display name. Maximum length is 500 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels. The maximum size of keys and values is 128 characters each.
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[builtins.str] location: (Output)
+               Location of the resource in the source system. You can search the entry by this location.
+               By default, this should match the location of the entry group containing this entry.
+               A different value allows capturing the source location for data external to Google Cloud.
+        :param pulumi.Input[builtins.str] platform: The platform containing the source system. Maximum length is 64 characters.
+        :param pulumi.Input[builtins.str] resource: The name of the resource in the source system. Maximum length is 4,000 characters.
+        :param pulumi.Input[builtins.str] system: The name of the source system. Maximum length is 64 characters.
+        :param pulumi.Input[builtins.str] update_time: The time when the resource was last updated in the source system.
+               If the entry exists in the system and its EntrySource has updateTime populated,
+               further updates to the EntrySource of the entry must provide incremental updates to its updateTime.
+        """
+        if ancestors is not None:
+            pulumi.set(__self__, "ancestors", ancestors)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if platform is not None:
+            pulumi.set(__self__, "platform", platform)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+        if system is not None:
+            pulumi.set(__self__, "system", system)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def ancestors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryEntrySourceAncestorArgs']]]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ancestors")
+
+    @ancestors.setter
+    def ancestors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryEntrySourceAncestorArgs']]]]):
+        pulumi.set(self, "ancestors", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The time when the resource was created in the source system.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A description of the data resource. Maximum length is 2,000 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A user-friendly display name. Maximum length is 500 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        User-defined labels. The maximum size of keys and values is 128 characters each.
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Location of the resource in the source system. You can search the entry by this location.
+        By default, this should match the location of the entry group containing this entry.
+        A different value allows capturing the source location for data external to Google Cloud.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def platform(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The platform containing the source system. Maximum length is 64 characters.
+        """
+        return pulumi.get(self, "platform")
+
+    @platform.setter
+    def platform(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "platform", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the resource in the source system. Maximum length is 4,000 characters.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter
+    def system(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the source system. Maximum length is 64 characters.
+        """
+        return pulumi.get(self, "system")
+
+    @system.setter
+    def system(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "system", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The time when the resource was last updated in the source system.
+        If the entry exists in the system and its EntrySource has updateTime populated,
+        further updates to the EntrySource of the entry must provide incremental updates to its updateTime.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "update_time", value)
+
+
+if not MYPY:
+    class EntryEntrySourceAncestorArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the ancestor resource.
+        """
+        type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The type of the ancestor resource.
+        """
+elif False:
+    EntryEntrySourceAncestorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EntryEntrySourceAncestorArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] name: The name of the ancestor resource.
+        :param pulumi.Input[builtins.str] type: The type of the ancestor resource.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the ancestor resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type of the ancestor resource.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:

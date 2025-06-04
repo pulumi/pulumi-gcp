@@ -511,15 +511,15 @@ public class RuntimeTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="softwareConfig", refs={RuntimeTemplateSoftwareConfig.class}, tree="[0]")
-    private Output</* @Nullable */ RuntimeTemplateSoftwareConfig> softwareConfig;
+    private Output<RuntimeTemplateSoftwareConfig> softwareConfig;
 
     /**
      * @return The notebook software configuration of the notebook runtime.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<RuntimeTemplateSoftwareConfig>> softwareConfig() {
-        return Codegen.optional(this.softwareConfig);
+    public Output<RuntimeTemplateSoftwareConfig> softwareConfig() {
+        return this.softwareConfig;
     }
 
     /**

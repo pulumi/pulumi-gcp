@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
     public sealed class InstanceManagedBackupSource
     {
         /// <summary>
-        /// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        /// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         /// </summary>
         public readonly string Backup;
 

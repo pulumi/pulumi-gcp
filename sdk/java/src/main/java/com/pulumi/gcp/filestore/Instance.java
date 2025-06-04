@@ -413,7 +413,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.fileShares;
     }
     /**
-     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
      * instance only, indicating the active as the peer_instance
      * 
      */
@@ -421,7 +421,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ InstanceInitialReplication> initialReplication;
 
     /**
-     * @return Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * @return Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
      * instance only, indicating the active as the peer_instance
      * 
      */

@@ -1229,7 +1229,7 @@ class RuntimeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="softwareConfig")
-    def software_config(self) -> pulumi.Output[Optional['outputs.RuntimeTemplateSoftwareConfig']]:
+    def software_config(self) -> pulumi.Output['outputs.RuntimeTemplateSoftwareConfig']:
         """
         The notebook software configuration of the notebook runtime.
         Structure is documented below.

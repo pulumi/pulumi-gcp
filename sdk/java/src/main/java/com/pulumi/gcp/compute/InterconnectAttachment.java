@@ -157,6 +157,68 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Compute Interconnect Attachment Custom Ranges
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Router;
+ * import com.pulumi.gcp.compute.RouterArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
+ * import com.pulumi.gcp.compute.InterconnectAttachment;
+ * import com.pulumi.gcp.compute.InterconnectAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobarNetwork = new Network("foobarNetwork", NetworkArgs.builder()
+ *             .name("test-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var foobar = new Router("foobar", RouterArgs.builder()
+ *             .name("test-router")
+ *             .network(foobarNetwork.name())
+ *             .bgp(RouterBgpArgs.builder()
+ *                 .asn(16550)
+ *                 .build())
+ *             .build());
+ * 
+ *         var custom_ranges_interconnect_attachment = new InterconnectAttachment("custom-ranges-interconnect-attachment", InterconnectAttachmentArgs.builder()
+ *             .name("test-custom-ranges-interconnect-attachment")
+ *             .edgeAvailabilityDomain("AVAILABILITY_DOMAIN_1")
+ *             .type("PARTNER")
+ *             .router(foobar.id())
+ *             .mtu("1500")
+ *             .stackType("IPV4_IPV6")
+ *             .labels(Map.of("mykey", "myvalue"))
+ *             .candidateCloudRouterIpAddress("192.169.0.1/29")
+ *             .candidateCustomerRouterIpAddress("192.169.0.2/29")
+ *             .candidateCloudRouterIpv6Address("748d:2f23:6651:9455:828b:ca81:6fe0:fed1/125")
+ *             .candidateCustomerRouterIpv6Address("748d:2f23:6651:9455:828b:ca81:6fe0:fed2/125")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -230,6 +292,70 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
      */
     public Output<String> bandwidth() {
         return this.bandwidth;
+    }
+    /**
+     * Single IPv4 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 203.0.113.1/29
+     * 
+     */
+    @Export(name="candidateCloudRouterIpAddress", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> candidateCloudRouterIpAddress;
+
+    /**
+     * @return Single IPv4 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 203.0.113.1/29
+     * 
+     */
+    public Output<Optional<String>> candidateCloudRouterIpAddress() {
+        return Codegen.optional(this.candidateCloudRouterIpAddress);
+    }
+    /**
+     * Single IPv6 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 2001:db8::1/125
+     * 
+     */
+    @Export(name="candidateCloudRouterIpv6Address", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> candidateCloudRouterIpv6Address;
+
+    /**
+     * @return Single IPv6 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 2001:db8::1/125
+     * 
+     */
+    public Output<Optional<String>> candidateCloudRouterIpv6Address() {
+        return Codegen.optional(this.candidateCloudRouterIpv6Address);
+    }
+    /**
+     * Single IPv4 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 203.0.113.2/29
+     * 
+     */
+    @Export(name="candidateCustomerRouterIpAddress", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> candidateCustomerRouterIpAddress;
+
+    /**
+     * @return Single IPv4 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 203.0.113.2/29
+     * 
+     */
+    public Output<Optional<String>> candidateCustomerRouterIpAddress() {
+        return Codegen.optional(this.candidateCustomerRouterIpAddress);
+    }
+    /**
+     * Single IPv6 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 2001:db8::2/125
+     * 
+     */
+    @Export(name="candidateCustomerRouterIpv6Address", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> candidateCustomerRouterIpv6Address;
+
+    /**
+     * @return Single IPv6 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 2001:db8::2/125
+     * 
+     */
+    public Output<Optional<String>> candidateCustomerRouterIpv6Address() {
+        return Codegen.optional(this.candidateCustomerRouterIpv6Address);
     }
     /**
      * Up to 16 candidate prefixes that can be used to restrict the allocation

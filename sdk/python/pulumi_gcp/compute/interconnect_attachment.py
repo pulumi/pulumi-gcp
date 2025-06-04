@@ -25,6 +25,10 @@ class InterconnectAttachmentArgs:
                  router: pulumi.Input[builtins.str],
                  admin_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  bandwidth: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_cloud_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_cloud_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_customer_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_customer_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  edge_availability_domain: Optional[pulumi.Input[builtins.str]] = None,
@@ -54,6 +58,14 @@ class InterconnectAttachmentArgs:
                Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
                Defaults to BPS_10G
                Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
+        :param pulumi.Input[builtins.str] candidate_cloud_router_ip_address: Single IPv4 address + prefix length to be configured on the cloud router interface for this
+               interconnect attachment. Example: 203.0.113.1/29
+        :param pulumi.Input[builtins.str] candidate_cloud_router_ipv6_address: Single IPv6 address + prefix length to be configured on the cloud router interface for this
+               interconnect attachment. Example: 2001:db8::1/125
+        :param pulumi.Input[builtins.str] candidate_customer_router_ip_address: Single IPv4 address + prefix length to be configured on the customer router interface for this
+               interconnect attachment. Example: 203.0.113.2/29
+        :param pulumi.Input[builtins.str] candidate_customer_router_ipv6_address: Single IPv6 address + prefix length to be configured on the customer router interface for this
+               interconnect attachment. Example: 2001:db8::2/125
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation
                of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
                All prefixes must be within link-local address space (169.254.0.0/16)
@@ -140,6 +152,14 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if candidate_cloud_router_ip_address is not None:
+            pulumi.set(__self__, "candidate_cloud_router_ip_address", candidate_cloud_router_ip_address)
+        if candidate_cloud_router_ipv6_address is not None:
+            pulumi.set(__self__, "candidate_cloud_router_ipv6_address", candidate_cloud_router_ipv6_address)
+        if candidate_customer_router_ip_address is not None:
+            pulumi.set(__self__, "candidate_customer_router_ip_address", candidate_customer_router_ip_address)
+        if candidate_customer_router_ipv6_address is not None:
+            pulumi.set(__self__, "candidate_customer_router_ipv6_address", candidate_customer_router_ipv6_address)
         if candidate_subnets is not None:
             pulumi.set(__self__, "candidate_subnets", candidate_subnets)
         if description is not None:
@@ -215,6 +235,58 @@ class InterconnectAttachmentArgs:
     @bandwidth.setter
     def bandwidth(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="candidateCloudRouterIpAddress")
+    def candidate_cloud_router_ip_address(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Single IPv4 address + prefix length to be configured on the cloud router interface for this
+        interconnect attachment. Example: 203.0.113.1/29
+        """
+        return pulumi.get(self, "candidate_cloud_router_ip_address")
+
+    @candidate_cloud_router_ip_address.setter
+    def candidate_cloud_router_ip_address(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "candidate_cloud_router_ip_address", value)
+
+    @property
+    @pulumi.getter(name="candidateCloudRouterIpv6Address")
+    def candidate_cloud_router_ipv6_address(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Single IPv6 address + prefix length to be configured on the cloud router interface for this
+        interconnect attachment. Example: 2001:db8::1/125
+        """
+        return pulumi.get(self, "candidate_cloud_router_ipv6_address")
+
+    @candidate_cloud_router_ipv6_address.setter
+    def candidate_cloud_router_ipv6_address(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "candidate_cloud_router_ipv6_address", value)
+
+    @property
+    @pulumi.getter(name="candidateCustomerRouterIpAddress")
+    def candidate_customer_router_ip_address(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Single IPv4 address + prefix length to be configured on the customer router interface for this
+        interconnect attachment. Example: 203.0.113.2/29
+        """
+        return pulumi.get(self, "candidate_customer_router_ip_address")
+
+    @candidate_customer_router_ip_address.setter
+    def candidate_customer_router_ip_address(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "candidate_customer_router_ip_address", value)
+
+    @property
+    @pulumi.getter(name="candidateCustomerRouterIpv6Address")
+    def candidate_customer_router_ipv6_address(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Single IPv6 address + prefix length to be configured on the customer router interface for this
+        interconnect attachment. Example: 2001:db8::2/125
+        """
+        return pulumi.get(self, "candidate_customer_router_ipv6_address")
+
+    @candidate_customer_router_ipv6_address.setter
+    def candidate_customer_router_ipv6_address(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "candidate_customer_router_ipv6_address", value)
 
     @property
     @pulumi.getter(name="candidateSubnets")
@@ -467,6 +539,10 @@ class _InterconnectAttachmentState:
     def __init__(__self__, *,
                  admin_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  bandwidth: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_cloud_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_cloud_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_customer_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_customer_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  cloud_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
                  cloud_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
@@ -507,6 +583,14 @@ class _InterconnectAttachmentState:
                Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
                Defaults to BPS_10G
                Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
+        :param pulumi.Input[builtins.str] candidate_cloud_router_ip_address: Single IPv4 address + prefix length to be configured on the cloud router interface for this
+               interconnect attachment. Example: 203.0.113.1/29
+        :param pulumi.Input[builtins.str] candidate_cloud_router_ipv6_address: Single IPv6 address + prefix length to be configured on the cloud router interface for this
+               interconnect attachment. Example: 2001:db8::1/125
+        :param pulumi.Input[builtins.str] candidate_customer_router_ip_address: Single IPv4 address + prefix length to be configured on the customer router interface for this
+               interconnect attachment. Example: 203.0.113.2/29
+        :param pulumi.Input[builtins.str] candidate_customer_router_ipv6_address: Single IPv6 address + prefix length to be configured on the customer router interface for this
+               interconnect attachment. Example: 2001:db8::2/125
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation
                of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
                All prefixes must be within link-local address space (169.254.0.0/16)
@@ -626,6 +710,14 @@ class _InterconnectAttachmentState:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if candidate_cloud_router_ip_address is not None:
+            pulumi.set(__self__, "candidate_cloud_router_ip_address", candidate_cloud_router_ip_address)
+        if candidate_cloud_router_ipv6_address is not None:
+            pulumi.set(__self__, "candidate_cloud_router_ipv6_address", candidate_cloud_router_ipv6_address)
+        if candidate_customer_router_ip_address is not None:
+            pulumi.set(__self__, "candidate_customer_router_ip_address", candidate_customer_router_ip_address)
+        if candidate_customer_router_ipv6_address is not None:
+            pulumi.set(__self__, "candidate_customer_router_ipv6_address", candidate_customer_router_ipv6_address)
         if candidate_subnets is not None:
             pulumi.set(__self__, "candidate_subnets", candidate_subnets)
         if cloud_router_ip_address is not None:
@@ -716,6 +808,58 @@ class _InterconnectAttachmentState:
     @bandwidth.setter
     def bandwidth(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="candidateCloudRouterIpAddress")
+    def candidate_cloud_router_ip_address(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Single IPv4 address + prefix length to be configured on the cloud router interface for this
+        interconnect attachment. Example: 203.0.113.1/29
+        """
+        return pulumi.get(self, "candidate_cloud_router_ip_address")
+
+    @candidate_cloud_router_ip_address.setter
+    def candidate_cloud_router_ip_address(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "candidate_cloud_router_ip_address", value)
+
+    @property
+    @pulumi.getter(name="candidateCloudRouterIpv6Address")
+    def candidate_cloud_router_ipv6_address(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Single IPv6 address + prefix length to be configured on the cloud router interface for this
+        interconnect attachment. Example: 2001:db8::1/125
+        """
+        return pulumi.get(self, "candidate_cloud_router_ipv6_address")
+
+    @candidate_cloud_router_ipv6_address.setter
+    def candidate_cloud_router_ipv6_address(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "candidate_cloud_router_ipv6_address", value)
+
+    @property
+    @pulumi.getter(name="candidateCustomerRouterIpAddress")
+    def candidate_customer_router_ip_address(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Single IPv4 address + prefix length to be configured on the customer router interface for this
+        interconnect attachment. Example: 203.0.113.2/29
+        """
+        return pulumi.get(self, "candidate_customer_router_ip_address")
+
+    @candidate_customer_router_ip_address.setter
+    def candidate_customer_router_ip_address(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "candidate_customer_router_ip_address", value)
+
+    @property
+    @pulumi.getter(name="candidateCustomerRouterIpv6Address")
+    def candidate_customer_router_ipv6_address(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Single IPv6 address + prefix length to be configured on the customer router interface for this
+        interconnect attachment. Example: 2001:db8::2/125
+        """
+        return pulumi.get(self, "candidate_customer_router_ipv6_address")
+
+    @candidate_customer_router_ipv6_address.setter
+    def candidate_customer_router_ipv6_address(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "candidate_customer_router_ipv6_address", value)
 
     @property
     @pulumi.getter(name="candidateSubnets")
@@ -1170,6 +1314,10 @@ class InterconnectAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  bandwidth: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_cloud_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_cloud_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_customer_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_customer_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  edge_availability_domain: Optional[pulumi.Input[builtins.str]] = None,
@@ -1255,6 +1403,36 @@ class InterconnectAttachment(pulumi.CustomResource):
             encryption="IPSEC",
             ipsec_internal_addresses=[address.self_link])
         ```
+        ### Compute Interconnect Attachment Custom Ranges
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar_network = gcp.compute.Network("foobar",
+            name="test-network",
+            auto_create_subnetworks=False)
+        foobar = gcp.compute.Router("foobar",
+            name="test-router",
+            network=foobar_network.name,
+            bgp={
+                "asn": 16550,
+            })
+        custom_ranges_interconnect_attachment = gcp.compute.InterconnectAttachment("custom-ranges-interconnect-attachment",
+            name="test-custom-ranges-interconnect-attachment",
+            edge_availability_domain="AVAILABILITY_DOMAIN_1",
+            type="PARTNER",
+            router=foobar.id,
+            mtu="1500",
+            stack_type="IPV4_IPV6",
+            labels={
+                "mykey": "myvalue",
+            },
+            candidate_cloud_router_ip_address="192.169.0.1/29",
+            candidate_customer_router_ip_address="192.169.0.2/29",
+            candidate_cloud_router_ipv6_address="748d:2f23:6651:9455:828b:ca81:6fe0:fed1/125",
+            candidate_customer_router_ipv6_address="748d:2f23:6651:9455:828b:ca81:6fe0:fed2/125")
+        ```
 
         ## Import
 
@@ -1296,6 +1474,14 @@ class InterconnectAttachment(pulumi.CustomResource):
                Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
                Defaults to BPS_10G
                Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
+        :param pulumi.Input[builtins.str] candidate_cloud_router_ip_address: Single IPv4 address + prefix length to be configured on the cloud router interface for this
+               interconnect attachment. Example: 203.0.113.1/29
+        :param pulumi.Input[builtins.str] candidate_cloud_router_ipv6_address: Single IPv6 address + prefix length to be configured on the cloud router interface for this
+               interconnect attachment. Example: 2001:db8::1/125
+        :param pulumi.Input[builtins.str] candidate_customer_router_ip_address: Single IPv4 address + prefix length to be configured on the customer router interface for this
+               interconnect attachment. Example: 203.0.113.2/29
+        :param pulumi.Input[builtins.str] candidate_customer_router_ipv6_address: Single IPv6 address + prefix length to be configured on the customer router interface for this
+               interconnect attachment. Example: 2001:db8::2/125
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation
                of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
                All prefixes must be within link-local address space (169.254.0.0/16)
@@ -1455,6 +1641,36 @@ class InterconnectAttachment(pulumi.CustomResource):
             encryption="IPSEC",
             ipsec_internal_addresses=[address.self_link])
         ```
+        ### Compute Interconnect Attachment Custom Ranges
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar_network = gcp.compute.Network("foobar",
+            name="test-network",
+            auto_create_subnetworks=False)
+        foobar = gcp.compute.Router("foobar",
+            name="test-router",
+            network=foobar_network.name,
+            bgp={
+                "asn": 16550,
+            })
+        custom_ranges_interconnect_attachment = gcp.compute.InterconnectAttachment("custom-ranges-interconnect-attachment",
+            name="test-custom-ranges-interconnect-attachment",
+            edge_availability_domain="AVAILABILITY_DOMAIN_1",
+            type="PARTNER",
+            router=foobar.id,
+            mtu="1500",
+            stack_type="IPV4_IPV6",
+            labels={
+                "mykey": "myvalue",
+            },
+            candidate_cloud_router_ip_address="192.169.0.1/29",
+            candidate_customer_router_ip_address="192.169.0.2/29",
+            candidate_cloud_router_ipv6_address="748d:2f23:6651:9455:828b:ca81:6fe0:fed1/125",
+            candidate_customer_router_ipv6_address="748d:2f23:6651:9455:828b:ca81:6fe0:fed2/125")
+        ```
 
         ## Import
 
@@ -1503,6 +1719,10 @@ class InterconnectAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  bandwidth: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_cloud_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_cloud_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_customer_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
+                 candidate_customer_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  edge_availability_domain: Optional[pulumi.Input[builtins.str]] = None,
@@ -1530,6 +1750,10 @@ class InterconnectAttachment(pulumi.CustomResource):
 
             __props__.__dict__["admin_enabled"] = admin_enabled
             __props__.__dict__["bandwidth"] = bandwidth
+            __props__.__dict__["candidate_cloud_router_ip_address"] = candidate_cloud_router_ip_address
+            __props__.__dict__["candidate_cloud_router_ipv6_address"] = candidate_cloud_router_ipv6_address
+            __props__.__dict__["candidate_customer_router_ip_address"] = candidate_customer_router_ip_address
+            __props__.__dict__["candidate_customer_router_ipv6_address"] = candidate_customer_router_ipv6_address
             __props__.__dict__["candidate_subnets"] = candidate_subnets
             __props__.__dict__["description"] = description
             __props__.__dict__["edge_availability_domain"] = edge_availability_domain
@@ -1576,6 +1800,10 @@ class InterconnectAttachment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             bandwidth: Optional[pulumi.Input[builtins.str]] = None,
+            candidate_cloud_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
+            candidate_cloud_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
+            candidate_customer_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
+            candidate_customer_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
             candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             cloud_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
             cloud_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
@@ -1621,6 +1849,14 @@ class InterconnectAttachment(pulumi.CustomResource):
                Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
                Defaults to BPS_10G
                Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
+        :param pulumi.Input[builtins.str] candidate_cloud_router_ip_address: Single IPv4 address + prefix length to be configured on the cloud router interface for this
+               interconnect attachment. Example: 203.0.113.1/29
+        :param pulumi.Input[builtins.str] candidate_cloud_router_ipv6_address: Single IPv6 address + prefix length to be configured on the cloud router interface for this
+               interconnect attachment. Example: 2001:db8::1/125
+        :param pulumi.Input[builtins.str] candidate_customer_router_ip_address: Single IPv4 address + prefix length to be configured on the customer router interface for this
+               interconnect attachment. Example: 203.0.113.2/29
+        :param pulumi.Input[builtins.str] candidate_customer_router_ipv6_address: Single IPv6 address + prefix length to be configured on the customer router interface for this
+               interconnect attachment. Example: 2001:db8::2/125
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation
                of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
                All prefixes must be within link-local address space (169.254.0.0/16)
@@ -1742,6 +1978,10 @@ class InterconnectAttachment(pulumi.CustomResource):
 
         __props__.__dict__["admin_enabled"] = admin_enabled
         __props__.__dict__["bandwidth"] = bandwidth
+        __props__.__dict__["candidate_cloud_router_ip_address"] = candidate_cloud_router_ip_address
+        __props__.__dict__["candidate_cloud_router_ipv6_address"] = candidate_cloud_router_ipv6_address
+        __props__.__dict__["candidate_customer_router_ip_address"] = candidate_customer_router_ip_address
+        __props__.__dict__["candidate_customer_router_ipv6_address"] = candidate_customer_router_ipv6_address
         __props__.__dict__["candidate_subnets"] = candidate_subnets
         __props__.__dict__["cloud_router_ip_address"] = cloud_router_ip_address
         __props__.__dict__["cloud_router_ipv6_address"] = cloud_router_ipv6_address
@@ -1795,6 +2035,42 @@ class InterconnectAttachment(pulumi.CustomResource):
         Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
         """
         return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="candidateCloudRouterIpAddress")
+    def candidate_cloud_router_ip_address(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Single IPv4 address + prefix length to be configured on the cloud router interface for this
+        interconnect attachment. Example: 203.0.113.1/29
+        """
+        return pulumi.get(self, "candidate_cloud_router_ip_address")
+
+    @property
+    @pulumi.getter(name="candidateCloudRouterIpv6Address")
+    def candidate_cloud_router_ipv6_address(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Single IPv6 address + prefix length to be configured on the cloud router interface for this
+        interconnect attachment. Example: 2001:db8::1/125
+        """
+        return pulumi.get(self, "candidate_cloud_router_ipv6_address")
+
+    @property
+    @pulumi.getter(name="candidateCustomerRouterIpAddress")
+    def candidate_customer_router_ip_address(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Single IPv4 address + prefix length to be configured on the customer router interface for this
+        interconnect attachment. Example: 203.0.113.2/29
+        """
+        return pulumi.get(self, "candidate_customer_router_ip_address")
+
+    @property
+    @pulumi.getter(name="candidateCustomerRouterIpv6Address")
+    def candidate_customer_router_ipv6_address(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Single IPv6 address + prefix length to be configured on the customer router interface for this
+        interconnect attachment. Example: 2001:db8::2/125
+        """
+        return pulumi.get(self, "candidate_customer_router_ipv6_address")
 
     @property
     @pulumi.getter(name="candidateSubnets")

@@ -2281,7 +2281,15 @@ class BackendService(pulumi.CustomResource):
                         "dry_run": False,
                     },
                 ],
-            }])
+            }],
+            log_config={
+                "enable": True,
+                "optional_mode": "CUSTOM",
+                "optional_fields": [
+                    "orca_load_report",
+                    "tls.protocol",
+                ],
+            })
         ```
         ### Backend Service Tls Settings
 
@@ -2903,7 +2911,15 @@ class BackendService(pulumi.CustomResource):
                         "dry_run": False,
                     },
                 ],
-            }])
+            }],
+            log_config={
+                "enable": True,
+                "optional_mode": "CUSTOM",
+                "optional_fields": [
+                    "orca_load_report",
+                    "tls.protocol",
+                ],
+            })
         ```
         ### Backend Service Tls Settings
 

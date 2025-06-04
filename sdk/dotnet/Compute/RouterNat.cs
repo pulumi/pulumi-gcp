@@ -379,6 +379,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+        /// Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+        /// Structure is documented below.
+        /// </summary>
+        [Output("nat64Subnetworks")]
+        public Output<ImmutableArray<Outputs.RouterNatNat64Subnetwork>> Nat64Subnetworks { get; private set; } = null!;
+
+        /// <summary>
         /// How external IPs should be allocated for this NAT. Valid values are
         /// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
         /// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
@@ -441,6 +449,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("sourceSubnetworkIpRangesToNat")]
         public Output<string> SourceSubnetworkIpRangesToNat { get; private set; } = null!;
+
+        /// <summary>
+        /// Specify the Nat option for NAT64, which can take one of the following values:
+        /// ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
+        /// LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64Subnetwork below).
+        /// Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
+        /// Other Router.Nat sections can still be present to enable NAT44 only.
+        /// Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
+        /// </summary>
+        [Output("sourceSubnetworkIpRangesToNat64")]
+        public Output<string?> SourceSubnetworkIpRangesToNat64 { get; private set; } = null!;
 
         /// <summary>
         /// One or more subnetwork NAT configurations. Only used if
@@ -635,6 +654,20 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("nat64Subnetworks")]
+        private InputList<Inputs.RouterNatNat64SubnetworkArgs>? _nat64Subnetworks;
+
+        /// <summary>
+        /// One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+        /// Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RouterNatNat64SubnetworkArgs> Nat64Subnetworks
+        {
+            get => _nat64Subnetworks ?? (_nat64Subnetworks = new InputList<Inputs.RouterNatNat64SubnetworkArgs>());
+            set => _nat64Subnetworks = value;
+        }
+
         /// <summary>
         /// How external IPs should be allocated for this NAT. Valid values are
         /// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
@@ -710,6 +743,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceSubnetworkIpRangesToNat", required: true)]
         public Input<string> SourceSubnetworkIpRangesToNat { get; set; } = null!;
+
+        /// <summary>
+        /// Specify the Nat option for NAT64, which can take one of the following values:
+        /// ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
+        /// LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64Subnetwork below).
+        /// Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
+        /// Other Router.Nat sections can still be present to enable NAT44 only.
+        /// Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
+        /// </summary>
+        [Input("sourceSubnetworkIpRangesToNat64")]
+        public Input<string>? SourceSubnetworkIpRangesToNat64 { get; set; }
 
         [Input("subnetworks")]
         private InputList<Inputs.RouterNatSubnetworkArgs>? _subnetworks;
@@ -872,6 +916,20 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("nat64Subnetworks")]
+        private InputList<Inputs.RouterNatNat64SubnetworkGetArgs>? _nat64Subnetworks;
+
+        /// <summary>
+        /// One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+        /// Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RouterNatNat64SubnetworkGetArgs> Nat64Subnetworks
+        {
+            get => _nat64Subnetworks ?? (_nat64Subnetworks = new InputList<Inputs.RouterNatNat64SubnetworkGetArgs>());
+            set => _nat64Subnetworks = value;
+        }
+
         /// <summary>
         /// How external IPs should be allocated for this NAT. Valid values are
         /// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
@@ -947,6 +1005,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceSubnetworkIpRangesToNat")]
         public Input<string>? SourceSubnetworkIpRangesToNat { get; set; }
+
+        /// <summary>
+        /// Specify the Nat option for NAT64, which can take one of the following values:
+        /// ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
+        /// LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64Subnetwork below).
+        /// Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
+        /// Other Router.Nat sections can still be present to enable NAT44 only.
+        /// Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
+        /// </summary>
+        [Input("sourceSubnetworkIpRangesToNat64")]
+        public Input<string>? SourceSubnetworkIpRangesToNat64 { get; set; }
 
         [Input("subnetworks")]
         private InputList<Inputs.RouterNatSubnetworkGetArgs>? _subnetworks;

@@ -291,6 +291,12 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+     * Only used if `sourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+     * Structure is documented below.
+     */
+    public readonly nat64Subnetworks!: pulumi.Output<outputs.compute.RouterNatNat64Subnetwork[] | undefined>;
+    /**
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
@@ -340,6 +346,15 @@ export class RouterNat extends pulumi.CustomResource {
      * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      */
     public readonly sourceSubnetworkIpRangesToNat!: pulumi.Output<string>;
+    /**
+     * Specify the Nat option for NAT64, which can take one of the following values:
+     * ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
+     * LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64Subnetwork below).
+     * Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
+     * Other Router.Nat sections can still be present to enable NAT44 only.
+     * Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
+     */
+    public readonly sourceSubnetworkIpRangesToNat64!: pulumi.Output<string | undefined>;
     /**
      * One or more subnetwork NAT configurations. Only used if
      * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
@@ -399,6 +414,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["maxPortsPerVm"] = state ? state.maxPortsPerVm : undefined;
             resourceInputs["minPortsPerVm"] = state ? state.minPortsPerVm : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nat64Subnetworks"] = state ? state.nat64Subnetworks : undefined;
             resourceInputs["natIpAllocateOption"] = state ? state.natIpAllocateOption : undefined;
             resourceInputs["natIps"] = state ? state.natIps : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -406,6 +422,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["router"] = state ? state.router : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["sourceSubnetworkIpRangesToNat"] = state ? state.sourceSubnetworkIpRangesToNat : undefined;
+            resourceInputs["sourceSubnetworkIpRangesToNat64"] = state ? state.sourceSubnetworkIpRangesToNat64 : undefined;
             resourceInputs["subnetworks"] = state ? state.subnetworks : undefined;
             resourceInputs["tcpEstablishedIdleTimeoutSec"] = state ? state.tcpEstablishedIdleTimeoutSec : undefined;
             resourceInputs["tcpTimeWaitTimeoutSec"] = state ? state.tcpTimeWaitTimeoutSec : undefined;
@@ -431,6 +448,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["maxPortsPerVm"] = args ? args.maxPortsPerVm : undefined;
             resourceInputs["minPortsPerVm"] = args ? args.minPortsPerVm : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nat64Subnetworks"] = args ? args.nat64Subnetworks : undefined;
             resourceInputs["natIpAllocateOption"] = args ? args.natIpAllocateOption : undefined;
             resourceInputs["natIps"] = args ? args.natIps : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -438,6 +456,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["router"] = args ? args.router : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["sourceSubnetworkIpRangesToNat"] = args ? args.sourceSubnetworkIpRangesToNat : undefined;
+            resourceInputs["sourceSubnetworkIpRangesToNat64"] = args ? args.sourceSubnetworkIpRangesToNat64 : undefined;
             resourceInputs["subnetworks"] = args ? args.subnetworks : undefined;
             resourceInputs["tcpEstablishedIdleTimeoutSec"] = args ? args.tcpEstablishedIdleTimeoutSec : undefined;
             resourceInputs["tcpTimeWaitTimeoutSec"] = args ? args.tcpTimeWaitTimeoutSec : undefined;
@@ -516,6 +535,12 @@ export interface RouterNatState {
      */
     name?: pulumi.Input<string>;
     /**
+     * One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+     * Only used if `sourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+     * Structure is documented below.
+     */
+    nat64Subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatNat64Subnetwork>[]>;
+    /**
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
@@ -565,6 +590,15 @@ export interface RouterNatState {
      * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      */
     sourceSubnetworkIpRangesToNat?: pulumi.Input<string>;
+    /**
+     * Specify the Nat option for NAT64, which can take one of the following values:
+     * ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
+     * LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64Subnetwork below).
+     * Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
+     * Other Router.Nat sections can still be present to enable NAT44 only.
+     * Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
+     */
+    sourceSubnetworkIpRangesToNat64?: pulumi.Input<string>;
     /**
      * One or more subnetwork NAT configurations. Only used if
      * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
@@ -667,6 +701,12 @@ export interface RouterNatArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+     * Only used if `sourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+     * Structure is documented below.
+     */
+    nat64Subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatNat64Subnetwork>[]>;
+    /**
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
@@ -716,6 +756,15 @@ export interface RouterNatArgs {
      * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      */
     sourceSubnetworkIpRangesToNat: pulumi.Input<string>;
+    /**
+     * Specify the Nat option for NAT64, which can take one of the following values:
+     * ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
+     * LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64Subnetwork below).
+     * Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
+     * Other Router.Nat sections can still be present to enable NAT44 only.
+     * Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
+     */
+    sourceSubnetworkIpRangesToNat64?: pulumi.Input<string>;
     /**
      * One or more subnetwork NAT configurations. Only used if
      * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`

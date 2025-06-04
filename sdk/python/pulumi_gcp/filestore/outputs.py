@@ -159,13 +159,18 @@ class InstanceDirectoryServicesLdap(dict):
 @pulumi.output_type
 class InstanceEffectiveReplication(dict):
     def __init__(__self__, *,
-                 replicas: Optional[Sequence['outputs.InstanceEffectiveReplicationReplica']] = None):
+                 replicas: Optional[Sequence['outputs.InstanceEffectiveReplicationReplica']] = None,
+                 role: Optional[builtins.str] = None):
         """
         :param Sequence['InstanceEffectiveReplicationReplicaArgs'] replicas: The replication role.
                Structure is documented below.
+        :param builtins.str role: (Output)
+               The replication role.
         """
         if replicas is not None:
             pulumi.set(__self__, "replicas", replicas)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -176,6 +181,15 @@ class InstanceEffectiveReplication(dict):
         """
         return pulumi.get(self, "replicas")
 
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        The replication role.
+        """
+        return pulumi.get(self, "role")
+
 
 @pulumi.output_type
 class InstanceEffectiveReplicationReplica(dict):
@@ -184,6 +198,8 @@ class InstanceEffectiveReplicationReplica(dict):
         suggest = None
         if key == "lastActiveSyncTime":
             suggest = "last_active_sync_time"
+        elif key == "peerInstance":
+            suggest = "peer_instance"
         elif key == "stateReasons":
             suggest = "state_reasons"
 
@@ -200,6 +216,7 @@ class InstanceEffectiveReplicationReplica(dict):
 
     def __init__(__self__, *,
                  last_active_sync_time: Optional[builtins.str] = None,
+                 peer_instance: Optional[builtins.str] = None,
                  state: Optional[builtins.str] = None,
                  state_reasons: Optional[Sequence[builtins.str]] = None):
         """
@@ -207,6 +224,7 @@ class InstanceEffectiveReplicationReplica(dict):
                Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param builtins.str peer_instance: The peer instance.
         :param builtins.str state: (Output)
                Output only. The replica state
         :param Sequence[builtins.str] state_reasons: (Output)
@@ -214,6 +232,8 @@ class InstanceEffectiveReplicationReplica(dict):
         """
         if last_active_sync_time is not None:
             pulumi.set(__self__, "last_active_sync_time", last_active_sync_time)
+        if peer_instance is not None:
+            pulumi.set(__self__, "peer_instance", peer_instance)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if state_reasons is not None:
@@ -229,6 +249,14 @@ class InstanceEffectiveReplicationReplica(dict):
         Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         return pulumi.get(self, "last_active_sync_time")
+
+    @property
+    @pulumi.getter(name="peerInstance")
+    def peer_instance(self) -> Optional[builtins.str]:
+        """
+        The peer instance.
+        """
+        return pulumi.get(self, "peer_instance")
 
     @property
     @pulumi.getter
@@ -933,11 +961,14 @@ class GetInstanceDirectoryServiceLdapResult(dict):
 @pulumi.output_type
 class GetInstanceEffectiveReplicationResult(dict):
     def __init__(__self__, *,
-                 replicas: Sequence['outputs.GetInstanceEffectiveReplicationReplicaResult']):
+                 replicas: Sequence['outputs.GetInstanceEffectiveReplicationReplicaResult'],
+                 role: builtins.str):
         """
         :param Sequence['GetInstanceEffectiveReplicationReplicaArgs'] replicas: The replication role.
+        :param builtins.str role: The replication role.
         """
         pulumi.set(__self__, "replicas", replicas)
+        pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -947,21 +978,32 @@ class GetInstanceEffectiveReplicationResult(dict):
         """
         return pulumi.get(self, "replicas")
 
+    @property
+    @pulumi.getter
+    def role(self) -> builtins.str:
+        """
+        The replication role.
+        """
+        return pulumi.get(self, "role")
+
 
 @pulumi.output_type
 class GetInstanceEffectiveReplicationReplicaResult(dict):
     def __init__(__self__, *,
                  last_active_sync_time: builtins.str,
+                 peer_instance: builtins.str,
                  state: builtins.str,
                  state_reasons: Sequence[builtins.str]):
         """
         :param builtins.str last_active_sync_time: Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param builtins.str peer_instance: The peer instance.
         :param builtins.str state: Output only. The replica state
         :param Sequence[builtins.str] state_reasons: Output only. Additional information about the replication state, if available.
         """
         pulumi.set(__self__, "last_active_sync_time", last_active_sync_time)
+        pulumi.set(__self__, "peer_instance", peer_instance)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_reasons", state_reasons)
 
@@ -974,6 +1016,14 @@ class GetInstanceEffectiveReplicationReplicaResult(dict):
         Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         return pulumi.get(self, "last_active_sync_time")
+
+    @property
+    @pulumi.getter(name="peerInstance")
+    def peer_instance(self) -> builtins.str:
+        """
+        The peer instance.
+        """
+        return pulumi.get(self, "peer_instance")
 
     @property
     @pulumi.getter

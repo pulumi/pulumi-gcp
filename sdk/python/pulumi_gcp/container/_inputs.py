@@ -8501,7 +8501,7 @@ if not MYPY:
         disk_type: NotRequired[pulumi.Input[builtins.str]]
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         """
         effective_taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgsDict']]]]
         """
@@ -8777,7 +8777,7 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[builtins.int] disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[builtins.str] disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param pulumi.Input[builtins.bool] enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -9034,7 +9034,7 @@ class ClusterNodeConfigArgs:
     def disk_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         """
         return pulumi.get(self, "disk_type")
 
@@ -12755,7 +12755,7 @@ if not MYPY:
         disk_type: NotRequired[pulumi.Input[builtins.str]]
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         """
         effective_taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgsDict']]]]
         """
@@ -13031,7 +13031,7 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[builtins.int] disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[builtins.str] disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param pulumi.Input[builtins.bool] enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -13288,7 +13288,7 @@ class ClusterNodePoolNodeConfigArgs:
     def disk_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         """
         return pulumi.get(self, "disk_type")
 

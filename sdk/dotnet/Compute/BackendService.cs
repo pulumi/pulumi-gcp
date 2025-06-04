@@ -559,6 +559,16 @@ namespace Pulumi.Gcp.Compute
     ///                 },
     ///             },
     ///         },
+    ///         LogConfig = new Gcp.Compute.Inputs.BackendServiceLogConfigArgs
+    ///         {
+    ///             Enable = true,
+    ///             OptionalMode = "CUSTOM",
+    ///             OptionalFields = new[]
+    ///             {
+    ///                 "orca_load_report",
+    ///                 "tls.protocol",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

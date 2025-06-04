@@ -651,8 +651,11 @@ if not MYPY:
         """
         post_startup_script_config: NotRequired[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict']]
         """
+        (Optional, Deprecated)
         Post startup script config.
         Structure is documented below.
+
+        > **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
         """
 elif False:
     RuntimeTemplateSoftwareConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -665,11 +668,17 @@ class RuntimeTemplateSoftwareConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]] envs: Environment variables to be passed to the container.
                Structure is documented below.
-        :param pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs'] post_startup_script_config: Post startup script config.
+        :param pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs'] post_startup_script_config: (Optional, Deprecated)
+               Post startup script config.
                Structure is documented below.
+               
+               > **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
         """
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if post_startup_script_config is not None:
+            warnings.warn("""`post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.""", DeprecationWarning)
+            pulumi.log.warn("""post_startup_script_config is deprecated: `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.""")
         if post_startup_script_config is not None:
             pulumi.set(__self__, "post_startup_script_config", post_startup_script_config)
 
@@ -688,10 +697,14 @@ class RuntimeTemplateSoftwareConfigArgs:
 
     @property
     @pulumi.getter(name="postStartupScriptConfig")
+    @_utilities.deprecated("""`post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.""")
     def post_startup_script_config(self) -> Optional[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']]:
         """
+        (Optional, Deprecated)
         Post startup script config.
         Structure is documented below.
+
+        > **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
         """
         return pulumi.get(self, "post_startup_script_config")
 

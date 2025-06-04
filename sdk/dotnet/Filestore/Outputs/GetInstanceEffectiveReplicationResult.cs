@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// The replication role.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceEffectiveReplicationReplicaResult> Replicas;
+        /// <summary>
+        /// The replication role.
+        /// </summary>
+        public readonly string Role;
 
         [OutputConstructor]
-        private GetInstanceEffectiveReplicationResult(ImmutableArray<Outputs.GetInstanceEffectiveReplicationReplicaResult> replicas)
+        private GetInstanceEffectiveReplicationResult(
+            ImmutableArray<Outputs.GetInstanceEffectiveReplicationReplicaResult> replicas,
+
+            string role)
         {
             Replicas = replicas;
+            Role = role;
         }
     }
 }

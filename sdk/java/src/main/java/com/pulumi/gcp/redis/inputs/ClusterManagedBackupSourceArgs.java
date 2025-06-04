@@ -15,16 +15,14 @@ public final class ClusterManagedBackupSourceArgs extends com.pulumi.resources.R
     public static final ClusterManagedBackupSourceArgs Empty = new ClusterManagedBackupSourceArgs();
 
     /**
-     * Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-     * like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+     * Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
      * 
      */
     @Import(name="backup", required=true)
     private Output<String> backup;
 
     /**
-     * @return Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-     * like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+     * @return Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
      * 
      */
     public Output<String> backup() {
@@ -56,8 +54,7 @@ public final class ClusterManagedBackupSourceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param backup Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-         * like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+         * @param backup Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
          * 
          * @return builder
          * 
@@ -68,8 +65,7 @@ public final class ClusterManagedBackupSourceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param backup Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-         * like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+         * @param backup Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
          * 
          * @return builder
          * 

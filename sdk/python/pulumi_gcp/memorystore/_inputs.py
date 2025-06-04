@@ -1403,7 +1403,7 @@ if not MYPY:
         uris: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
         """
         URIs of the GCS objects to import.
-        Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+        Example: gs://bucket1/object1, gs://bucket2/folder2/object2
         """
 elif False:
     InstanceGcsSourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -1414,7 +1414,7 @@ class InstanceGcsSourceArgs:
                  uris: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] uris: URIs of the GCS objects to import.
-               Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+               Example: gs://bucket1/object1, gs://bucket2/folder2/object2
         """
         pulumi.set(__self__, "uris", uris)
 
@@ -1423,7 +1423,7 @@ class InstanceGcsSourceArgs:
     def uris(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
         URIs of the GCS objects to import.
-        Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+        Example: gs://bucket1/object1, gs://bucket2/folder2/object2
         """
         return pulumi.get(self, "uris")
 
@@ -1847,7 +1847,7 @@ if not MYPY:
     class InstanceManagedBackupSourceArgsDict(TypedDict):
         backup: pulumi.Input[builtins.str]
         """
-        Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         """
 elif False:
     InstanceManagedBackupSourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -1857,7 +1857,7 @@ class InstanceManagedBackupSourceArgs:
     def __init__(__self__, *,
                  backup: pulumi.Input[builtins.str]):
         """
-        :param pulumi.Input[builtins.str] backup: Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        :param pulumi.Input[builtins.str] backup: Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         """
         pulumi.set(__self__, "backup", backup)
 
@@ -1865,7 +1865,7 @@ class InstanceManagedBackupSourceArgs:
     @pulumi.getter
     def backup(self) -> pulumi.Input[builtins.str]:
         """
-        Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         """
         return pulumi.get(self, "backup")
 

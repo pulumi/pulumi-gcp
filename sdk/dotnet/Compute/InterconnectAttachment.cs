@@ -114,6 +114,52 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Compute Interconnect Attachment Custom Ranges
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobarNetwork = new Gcp.Compute.Network("foobar", new()
+    ///     {
+    ///         Name = "test-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.Router("foobar", new()
+    ///     {
+    ///         Name = "test-router",
+    ///         Network = foobarNetwork.Name,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 16550,
+    ///         },
+    ///     });
+    /// 
+    ///     var custom_ranges_interconnect_attachment = new Gcp.Compute.InterconnectAttachment("custom-ranges-interconnect-attachment", new()
+    ///     {
+    ///         Name = "test-custom-ranges-interconnect-attachment",
+    ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
+    ///         Type = "PARTNER",
+    ///         Router = foobar.Id,
+    ///         Mtu = "1500",
+    ///         StackType = "IPV4_IPV6",
+    ///         Labels = 
+    ///         {
+    ///             { "mykey", "myvalue" },
+    ///         },
+    ///         CandidateCloudRouterIpAddress = "192.169.0.1/29",
+    ///         CandidateCustomerRouterIpAddress = "192.169.0.2/29",
+    ///         CandidateCloudRouterIpv6Address = "748d:2f23:6651:9455:828b:ca81:6fe0:fed1/125",
+    ///         CandidateCustomerRouterIpv6Address = "748d:2f23:6651:9455:828b:ca81:6fe0:fed2/125",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -165,6 +211,34 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
+
+        /// <summary>
+        /// Single IPv4 address + prefix length to be configured on the cloud router interface for this
+        /// interconnect attachment. Example: 203.0.113.1/29
+        /// </summary>
+        [Output("candidateCloudRouterIpAddress")]
+        public Output<string?> CandidateCloudRouterIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// Single IPv6 address + prefix length to be configured on the cloud router interface for this
+        /// interconnect attachment. Example: 2001:db8::1/125
+        /// </summary>
+        [Output("candidateCloudRouterIpv6Address")]
+        public Output<string?> CandidateCloudRouterIpv6Address { get; private set; } = null!;
+
+        /// <summary>
+        /// Single IPv4 address + prefix length to be configured on the customer router interface for this
+        /// interconnect attachment. Example: 203.0.113.2/29
+        /// </summary>
+        [Output("candidateCustomerRouterIpAddress")]
+        public Output<string?> CandidateCustomerRouterIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// Single IPv6 address + prefix length to be configured on the customer router interface for this
+        /// interconnect attachment. Example: 2001:db8::2/125
+        /// </summary>
+        [Output("candidateCustomerRouterIpv6Address")]
+        public Output<string?> CandidateCustomerRouterIpv6Address { get; private set; } = null!;
 
         /// <summary>
         /// Up to 16 candidate prefixes that can be used to restrict the allocation
@@ -499,6 +573,34 @@ namespace Pulumi.Gcp.Compute
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
 
+        /// <summary>
+        /// Single IPv4 address + prefix length to be configured on the cloud router interface for this
+        /// interconnect attachment. Example: 203.0.113.1/29
+        /// </summary>
+        [Input("candidateCloudRouterIpAddress")]
+        public Input<string>? CandidateCloudRouterIpAddress { get; set; }
+
+        /// <summary>
+        /// Single IPv6 address + prefix length to be configured on the cloud router interface for this
+        /// interconnect attachment. Example: 2001:db8::1/125
+        /// </summary>
+        [Input("candidateCloudRouterIpv6Address")]
+        public Input<string>? CandidateCloudRouterIpv6Address { get; set; }
+
+        /// <summary>
+        /// Single IPv4 address + prefix length to be configured on the customer router interface for this
+        /// interconnect attachment. Example: 203.0.113.2/29
+        /// </summary>
+        [Input("candidateCustomerRouterIpAddress")]
+        public Input<string>? CandidateCustomerRouterIpAddress { get; set; }
+
+        /// <summary>
+        /// Single IPv6 address + prefix length to be configured on the customer router interface for this
+        /// interconnect attachment. Example: 2001:db8::2/125
+        /// </summary>
+        [Input("candidateCustomerRouterIpv6Address")]
+        public Input<string>? CandidateCustomerRouterIpv6Address { get; set; }
+
         [Input("candidateSubnets")]
         private InputList<string>? _candidateSubnets;
 
@@ -706,6 +808,34 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
+
+        /// <summary>
+        /// Single IPv4 address + prefix length to be configured on the cloud router interface for this
+        /// interconnect attachment. Example: 203.0.113.1/29
+        /// </summary>
+        [Input("candidateCloudRouterIpAddress")]
+        public Input<string>? CandidateCloudRouterIpAddress { get; set; }
+
+        /// <summary>
+        /// Single IPv6 address + prefix length to be configured on the cloud router interface for this
+        /// interconnect attachment. Example: 2001:db8::1/125
+        /// </summary>
+        [Input("candidateCloudRouterIpv6Address")]
+        public Input<string>? CandidateCloudRouterIpv6Address { get; set; }
+
+        /// <summary>
+        /// Single IPv4 address + prefix length to be configured on the customer router interface for this
+        /// interconnect attachment. Example: 203.0.113.2/29
+        /// </summary>
+        [Input("candidateCustomerRouterIpAddress")]
+        public Input<string>? CandidateCustomerRouterIpAddress { get; set; }
+
+        /// <summary>
+        /// Single IPv6 address + prefix length to be configured on the customer router interface for this
+        /// interconnect attachment. Example: 2001:db8::2/125
+        /// </summary>
+        [Input("candidateCustomerRouterIpv6Address")]
+        public Input<string>? CandidateCustomerRouterIpv6Address { get; set; }
 
         [Input("candidateSubnets")]
         private InputList<string>? _candidateSubnets;

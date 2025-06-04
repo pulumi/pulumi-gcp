@@ -428,16 +428,16 @@ func (o InternalRangeMigrationPtrOutput) Target() pulumi.StringPtrOutput {
 }
 
 type PolicyBasedRouteFilter struct {
-	// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
 	//
 	// ***
 	DestRange *string `pulumi:"destRange"`
 	// The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Internet protocol versions this policy-based route applies to.
-	// Possible values are: `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
 	ProtocolVersion string `pulumi:"protocolVersion"`
-	// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
 	SrcRange *string `pulumi:"srcRange"`
 }
 
@@ -453,16 +453,16 @@ type PolicyBasedRouteFilterInput interface {
 }
 
 type PolicyBasedRouteFilterArgs struct {
-	// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
 	//
 	// ***
 	DestRange pulumi.StringPtrInput `pulumi:"destRange"`
 	// The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
 	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
 	// Internet protocol versions this policy-based route applies to.
-	// Possible values are: `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
 	ProtocolVersion pulumi.StringInput `pulumi:"protocolVersion"`
-	// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
 	SrcRange pulumi.StringPtrInput `pulumi:"srcRange"`
 }
 
@@ -543,7 +543,7 @@ func (o PolicyBasedRouteFilterOutput) ToPolicyBasedRouteFilterPtrOutputWithConte
 	}).(PolicyBasedRouteFilterPtrOutput)
 }
 
-// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
 //
 // ***
 func (o PolicyBasedRouteFilterOutput) DestRange() pulumi.StringPtrOutput {
@@ -556,12 +556,12 @@ func (o PolicyBasedRouteFilterOutput) IpProtocol() pulumi.StringPtrOutput {
 }
 
 // Internet protocol versions this policy-based route applies to.
-// Possible values are: `IPV4`.
+// Possible values are: `IPV4`, `IPV6`.
 func (o PolicyBasedRouteFilterOutput) ProtocolVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyBasedRouteFilter) string { return v.ProtocolVersion }).(pulumi.StringOutput)
 }
 
-// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
 func (o PolicyBasedRouteFilterOutput) SrcRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyBasedRouteFilter) *string { return v.SrcRange }).(pulumi.StringPtrOutput)
 }
@@ -590,7 +590,7 @@ func (o PolicyBasedRouteFilterPtrOutput) Elem() PolicyBasedRouteFilterOutput {
 	}).(PolicyBasedRouteFilterOutput)
 }
 
-// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
 //
 // ***
 func (o PolicyBasedRouteFilterPtrOutput) DestRange() pulumi.StringPtrOutput {
@@ -613,7 +613,7 @@ func (o PolicyBasedRouteFilterPtrOutput) IpProtocol() pulumi.StringPtrOutput {
 }
 
 // Internet protocol versions this policy-based route applies to.
-// Possible values are: `IPV4`.
+// Possible values are: `IPV4`, `IPV6`.
 func (o PolicyBasedRouteFilterPtrOutput) ProtocolVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyBasedRouteFilter) *string {
 		if v == nil {
@@ -623,7 +623,7 @@ func (o PolicyBasedRouteFilterPtrOutput) ProtocolVersion() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
 func (o PolicyBasedRouteFilterPtrOutput) SrcRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyBasedRouteFilter) *string {
 		if v == nil {

@@ -402,6 +402,21 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
     }
 
     /**
+     * numeric identifier of the resource.
+     * 
+     */
+    @Import(name="numericId")
+    private @Nullable Output<String> numericId;
+
+    /**
+     * @return numeric identifier of the resource.
+     * 
+     */
+    public Optional<Output<String>> numericId() {
+        return Optional.ofNullable(this.numericId);
+    }
+
+    /**
      * Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
      * 
      */
@@ -630,6 +645,7 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
         this.namePrefix = $.namePrefix;
         this.networkInterfaces = $.networkInterfaces;
         this.networkPerformanceConfig = $.networkPerformanceConfig;
+        this.numericId = $.numericId;
         this.partnerMetadata = $.partnerMetadata;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
@@ -1190,6 +1206,27 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
          */
         public Builder networkPerformanceConfig(RegionInstanceTemplateNetworkPerformanceConfigArgs networkPerformanceConfig) {
             return networkPerformanceConfig(Output.of(networkPerformanceConfig));
+        }
+
+        /**
+         * @param numericId numeric identifier of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numericId(@Nullable Output<String> numericId) {
+            $.numericId = numericId;
+            return this;
+        }
+
+        /**
+         * @param numericId numeric identifier of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numericId(String numericId) {
+            return numericId(Output.of(numericId));
         }
 
         /**

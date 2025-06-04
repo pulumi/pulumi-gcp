@@ -27,6 +27,22 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.URLMapPathMatcherRouteRuleHeaderAction? HeaderAction;
         /// <summary>
+        /// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+        /// httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// See ForwardingRule for more details.
+        /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRuleHttpFilterConfig> HttpFilterConfigs;
+        /// <summary>
+        /// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+        /// httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// See ForwardingRule for more details.
+        /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRuleHttpFilterMetadata> HttpFilterMetadatas;
+        /// <summary>
         /// The rules for determining a match.
         /// Structure is documented below.
         /// </summary>
@@ -81,6 +97,10 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             Outputs.URLMapPathMatcherRouteRuleHeaderAction? headerAction,
 
+            ImmutableArray<Outputs.URLMapPathMatcherRouteRuleHttpFilterConfig> httpFilterConfigs,
+
+            ImmutableArray<Outputs.URLMapPathMatcherRouteRuleHttpFilterMetadata> httpFilterMetadatas,
+
             ImmutableArray<Outputs.URLMapPathMatcherRouteRuleMatchRule> matchRules,
 
             int priority,
@@ -93,6 +113,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             CustomErrorResponsePolicy = customErrorResponsePolicy;
             HeaderAction = headerAction;
+            HttpFilterConfigs = httpFilterConfigs;
+            HttpFilterMetadatas = httpFilterMetadatas;
             MatchRules = matchRules;
             Priority = priority;
             RouteAction = routeAction;

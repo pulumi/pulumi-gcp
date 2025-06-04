@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
         /// was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
         /// For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        /// For example: orca_load_report, tls.protocol
         /// </summary>
         public readonly ImmutableArray<string> OptionalFields;
         /// <summary>

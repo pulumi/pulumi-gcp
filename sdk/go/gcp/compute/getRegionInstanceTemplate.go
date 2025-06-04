@@ -138,6 +138,7 @@ type LookupRegionInstanceTemplateResult struct {
 	// The network performance configuration setting
 	// for the instance, if set. Structure is documented below.
 	NetworkPerformanceConfigs []GetRegionInstanceTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfigs"`
+	NumericId                 string                                              `pulumi:"numericId"`
 	PartnerMetadata           map[string]string                                   `pulumi:"partnerMetadata"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -348,6 +349,10 @@ func (o LookupRegionInstanceTemplateResultOutput) NetworkPerformanceConfigs() Ge
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) []GetRegionInstanceTemplateNetworkPerformanceConfig {
 		return v.NetworkPerformanceConfigs
 	}).(GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput)
+}
+
+func (o LookupRegionInstanceTemplateResultOutput) NumericId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) string { return v.NumericId }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionInstanceTemplateResultOutput) PartnerMetadata() pulumi.StringMapOutput {

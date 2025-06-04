@@ -20,10 +20,17 @@ public final class RuntimeTemplateSoftwareConfig {
      */
     private @Nullable List<RuntimeTemplateSoftwareConfigEnv> envs;
     /**
-     * @return Post startup script config.
+     * @return (Optional, Deprecated)
+     * Post startup script config.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+     * 
+     * @deprecated
+     * `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+     * 
      */
+    @Deprecated /* `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time. */
     private @Nullable RuntimeTemplateSoftwareConfigPostStartupScriptConfig postStartupScriptConfig;
 
     private RuntimeTemplateSoftwareConfig() {}
@@ -36,10 +43,17 @@ public final class RuntimeTemplateSoftwareConfig {
         return this.envs == null ? List.of() : this.envs;
     }
     /**
-     * @return Post startup script config.
+     * @return (Optional, Deprecated)
+     * Post startup script config.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+     * 
+     * @deprecated
+     * `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+     * 
      */
+    @Deprecated /* `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time. */
     public Optional<RuntimeTemplateSoftwareConfigPostStartupScriptConfig> postStartupScriptConfig() {
         return Optional.ofNullable(this.postStartupScriptConfig);
     }

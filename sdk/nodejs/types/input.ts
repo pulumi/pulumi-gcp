@@ -17493,8 +17493,13 @@ export namespace colab {
          */
         envs?: pulumi.Input<pulumi.Input<inputs.colab.RuntimeTemplateSoftwareConfigEnv>[]>;
         /**
+         * (Optional, Deprecated)
          * Post startup script config.
          * Structure is documented below.
+         *
+         * > **Warning:** `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
+         *
+         * @deprecated `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
          */
         postStartupScriptConfig?: pulumi.Input<inputs.colab.RuntimeTemplateSoftwareConfigPostStartupScriptConfig>;
     }
@@ -18990,6 +18995,7 @@ export namespace compute {
          * This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
          * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
          * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+         * For example: orca_load_report, tls.protocol
          */
         optionalFields?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -31061,6 +31067,14 @@ export namespace compute {
         filter: pulumi.Input<string>;
     }
 
+    export interface RouterNatNat64Subnetwork {
+        /**
+         * Name of the NAT service. The name must be 1-63 characters long and
+         * comply with RFC1035.
+         */
+        name: pulumi.Input<string>;
+    }
+
     export interface RouterNatRule {
         /**
          * The action to be enforced for traffic that matches this rule.
@@ -31118,7 +31132,7 @@ export namespace compute {
 
     export interface RouterNatSubnetwork {
         /**
-         * Self-link of subnetwork to NAT
+         * Self-link of the subnetwork resource that will use NAT64
          */
         name: pulumi.Input<string>;
         /**
@@ -31126,6 +31140,8 @@ export namespace compute {
          * to use NAT. This can be populated only if
          * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
          * sourceIpRangesToNat
+         *
+         * <a name="nestedNat64Subnetwork"></a>The `nat64Subnetwork` block supports:
          */
         secondaryIpRangeNames?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -33712,6 +33728,22 @@ export namespace compute {
          */
         headerAction?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleHeaderAction>;
         /**
+         * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+         * httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+         * See ForwardingRule for more details.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+         * Structure is documented below.
+         */
+        httpFilterConfigs?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleHttpFilterConfig>[]>;
+        /**
+         * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+         * httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+         * See ForwardingRule for more details.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+         * Structure is documented below.
+         */
+        httpFilterMetadatas?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleHttpFilterMetadata>[]>;
+        /**
          * The rules for determining a match.
          * Structure is documented below.
          */
@@ -33857,6 +33889,42 @@ export namespace compute {
          * If true, headerValue is set for the header, discarding any values that were set for that header.
          */
         replace: pulumi.Input<boolean>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleHttpFilterConfig {
+        /**
+         * The configuration needed to enable the networkservices.HttpFilter resource.
+         * The configuration must be YAML formatted and only contain fields defined in the protobuf identified in configTypeUrl
+         */
+        config?: pulumi.Input<string>;
+        /**
+         * The fully qualified versioned proto3 type url of the protobuf that the filter expects for its contextual settings,
+         * for example: type.googleapis.com/google.protobuf.Struct
+         */
+        configTypeUrl?: pulumi.Input<string>;
+        /**
+         * Name of the networkservices.HttpFilter resource this configuration belongs to.
+         * This name must be known to the xDS client. Example: envoy.wasm
+         */
+        filterName?: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleHttpFilterMetadata {
+        /**
+         * The configuration needed to enable the networkservices.HttpFilter resource.
+         * The configuration must be YAML formatted and only contain fields defined in the protobuf identified in configTypeUrl
+         */
+        config?: pulumi.Input<string>;
+        /**
+         * The fully qualified versioned proto3 type url of the protobuf that the filter expects for its contextual settings,
+         * for example: type.googleapis.com/google.protobuf.Struct
+         */
+        configTypeUrl?: pulumi.Input<string>;
+        /**
+         * Name of the networkservices.HttpFilter resource this configuration belongs to.
+         * This name must be known to the xDS client. Example: envoy.wasm
+         */
+        filterName?: pulumi.Input<string>;
     }
 
     export interface URLMapPathMatcherRouteRuleMatchRule {
@@ -36237,7 +36305,7 @@ export namespace container {
         diskSizeGb?: pulumi.Input<number>;
         /**
          * Type of the disk attached to each node
-         * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+         * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
          */
         diskType?: pulumi.Input<string>;
         /**
@@ -37180,7 +37248,7 @@ export namespace container {
         diskSizeGb?: pulumi.Input<number>;
         /**
          * Type of the disk attached to each node
-         * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+         * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
          */
         diskType?: pulumi.Input<string>;
         /**
@@ -46519,6 +46587,107 @@ export namespace dataplex {
         title: pulumi.Input<string>;
     }
 
+    export interface EntryAspect {
+        /**
+         * A nested object resource.
+         * Structure is documented below.
+         */
+        aspect: pulumi.Input<inputs.dataplex.EntryAspectAspect>;
+        /**
+         * Depending on how the aspect is attached to the entry, the format of the aspect key can be one of the following:
+         * If the aspect is attached directly to the entry: {project_number}.{locationId}.{aspectTypeId}
+         * If the aspect is attached to an entry's path: {project_number}.{locationId}.{aspectTypeId}@{path}
+         */
+        aspectKey: pulumi.Input<string>;
+    }
+
+    export interface EntryAspectAspect {
+        /**
+         * (Output)
+         * The resource name of the type used to create this Aspect.
+         */
+        aspectType?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The time when the Aspect was created.
+         */
+        createTime?: pulumi.Input<string>;
+        /**
+         * The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+         */
+        data: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The path in the entry under which the aspect is attached.
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The time when the Aspect was last modified.
+         */
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface EntryEntrySource {
+        /**
+         * Structure is documented below.
+         */
+        ancestors?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryEntrySourceAncestor>[]>;
+        /**
+         * The time when the resource was created in the source system.
+         */
+        createTime?: pulumi.Input<string>;
+        /**
+         * A description of the data resource. Maximum length is 2,000 characters.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * A user-friendly display name. Maximum length is 500 characters.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * User-defined labels. The maximum size of keys and values is 128 characters each.
+         * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * (Output)
+         * Location of the resource in the source system. You can search the entry by this location.
+         * By default, this should match the location of the entry group containing this entry.
+         * A different value allows capturing the source location for data external to Google Cloud.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * The platform containing the source system. Maximum length is 64 characters.
+         */
+        platform?: pulumi.Input<string>;
+        /**
+         * The name of the resource in the source system. Maximum length is 4,000 characters.
+         */
+        resource?: pulumi.Input<string>;
+        /**
+         * The name of the source system. Maximum length is 64 characters.
+         */
+        system?: pulumi.Input<string>;
+        /**
+         * The time when the resource was last updated in the source system.
+         * If the entry exists in the system and its EntrySource has updateTime populated,
+         * further updates to the EntrySource of the entry must provide incremental updates to its updateTime.
+         */
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface EntryEntrySourceAncestor {
+        /**
+         * The name of the ancestor resource.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The type of the ancestor resource.
+         */
+        type?: pulumi.Input<string>;
+    }
+
     export interface EntryGroupIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -50516,11 +50685,21 @@ export namespace datastream {
         message?: pulumi.Input<string>;
     }
 
+    export interface PrivateConnectionPscInterfaceConfig {
+        /**
+         * Fully qualified name of the network attachment that Datastream will connect to.
+         * Format: projects/{project}/regions/{region}/networkAttachments/{name}
+         * To get Datastream project for the accepted list:
+         * `gcloud datastream private-connections create [PC ID] --location=[LOCATION] --network-attachment=[NA URI] --validate-only --display-name=[ANY STRING]`
+         * Add Datastream project to the attachment accepted list:
+         * `gcloud compute network-attachments update [NA URI] --region=[NA region] --producer-accept-list=[TP from prev command]`
+         */
+        networkAttachment: pulumi.Input<string>;
+    }
+
     export interface PrivateConnectionVpcPeeringConfig {
         /**
          * A free subnet for peering. (CIDR of /29)
-         *
-         * - - -
          */
         subnet: pulumi.Input<string>;
         /**
@@ -55824,12 +56003,28 @@ export namespace dns {
          * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
          * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
          * Possible values are: `default`, `private`.
+         *
+         * <a name="nestedDns64Config"></a>The `dns64Config` block supports:
          */
         forwardingPath?: pulumi.Input<string>;
         /**
          * IPv4 address to forward to.
          */
         ipv4Address: pulumi.Input<string>;
+    }
+
+    export interface PolicyDns64Config {
+        /**
+         * The scope to which DNS64 config will be applied to.
+         */
+        scope: pulumi.Input<inputs.dns.PolicyDns64ConfigScope>;
+    }
+
+    export interface PolicyDns64ConfigScope {
+        /**
+         * Controls whether DNS64 is enabled globally at the network level.
+         */
+        allQueries?: pulumi.Input<boolean>;
     }
 
     export interface PolicyNetwork {
@@ -57508,6 +57703,11 @@ export namespace filestore {
          * Structure is documented below.
          */
         replicas?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceEffectiveReplicationReplica>[]>;
+        /**
+         * (Output)
+         * The replication role.
+         */
+        role?: pulumi.Input<string>;
     }
 
     export interface InstanceEffectiveReplicationReplica {
@@ -57518,6 +57718,10 @@ export namespace filestore {
          * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
          */
         lastActiveSyncTime?: pulumi.Input<string>;
+        /**
+         * The peer instance.
+         */
+        peerInstance?: pulumi.Input<string>;
         /**
          * (Output)
          * Output only. The replica state
@@ -67466,7 +67670,7 @@ export namespace memorystore {
     export interface InstanceGcsSource {
         /**
          * URIs of the GCS objects to import.
-         * Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+         * Example: gs://bucket1/object1, gs://bucket2/folder2/object2
          */
         uris: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -67572,7 +67776,7 @@ export namespace memorystore {
 
     export interface InstanceManagedBackupSource {
         /**
-         * Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+         * Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
          */
         backup: pulumi.Input<string>;
     }
@@ -69510,6 +69714,29 @@ export namespace monitoring {
 }
 
 export namespace netapp {
+    export interface BackupVaultBackupRetentionPolicy {
+        /**
+         * Minimum retention duration in days for backups in the backup vault.
+         */
+        backupMinimumEnforcedRetentionDays: pulumi.Input<number>;
+        /**
+         * Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+         */
+        dailyBackupImmutable?: pulumi.Input<boolean>;
+        /**
+         * Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+         */
+        manualBackupImmutable?: pulumi.Input<boolean>;
+        /**
+         * Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+         */
+        monthlyBackupImmutable?: pulumi.Input<boolean>;
+        /**
+         * Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
+         */
+        weeklyBackupImmutable?: pulumi.Input<boolean>;
+    }
+
     export interface VolumeBackupConfig {
         /**
          * Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
@@ -69921,7 +70148,7 @@ export namespace networkconnectivity {
 
     export interface PolicyBasedRouteFilter {
         /**
-         * The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+         * The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
          *
          * - - -
          */
@@ -69932,11 +70159,11 @@ export namespace networkconnectivity {
         ipProtocol?: pulumi.Input<string>;
         /**
          * Internet protocol versions this policy-based route applies to.
-         * Possible values are: `IPV4`.
+         * Possible values are: `IPV4`, `IPV6`.
          */
         protocolVersion: pulumi.Input<string>;
         /**
-         * The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+         * The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
          */
         srcRange?: pulumi.Input<string>;
     }
@@ -81877,8 +82104,7 @@ export namespace redis {
 
     export interface ClusterManagedBackupSource {
         /**
-         * Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-         * like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+         * Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
          */
         backup: pulumi.Input<string>;
     }

@@ -6,6 +6,7 @@ package com.pulumi.gcp.dns.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dns.inputs.PolicyAlternativeNameServerConfigArgs;
+import com.pulumi.gcp.dns.inputs.PolicyDns64ConfigArgs;
 import com.pulumi.gcp.dns.inputs.PolicyNetworkArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -53,6 +54,23 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Configurations related to DNS64 for this Policy.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dns64Config")
+    private @Nullable Output<PolicyDns64ConfigArgs> dns64Config;
+
+    /**
+     * @return Configurations related to DNS64 for this Policy.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PolicyDns64ConfigArgs>> dns64Config() {
+        return Optional.ofNullable(this.dns64Config);
     }
 
     /**
@@ -151,6 +169,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private PolicyState(PolicyState $) {
         this.alternativeNameServerConfig = $.alternativeNameServerConfig;
         this.description = $.description;
+        this.dns64Config = $.dns64Config;
         this.enableInboundForwarding = $.enableInboundForwarding;
         this.enableLogging = $.enableLogging;
         this.name = $.name;
@@ -222,6 +241,29 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dns64Config Configurations related to DNS64 for this Policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dns64Config(@Nullable Output<PolicyDns64ConfigArgs> dns64Config) {
+            $.dns64Config = dns64Config;
+            return this;
+        }
+
+        /**
+         * @param dns64Config Configurations related to DNS64 for this Policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dns64Config(PolicyDns64ConfigArgs dns64Config) {
+            return dns64Config(Output.of(dns64Config));
         }
 
         /**

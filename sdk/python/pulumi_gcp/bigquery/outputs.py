@@ -115,6 +115,7 @@ __all__ = [
     'GetDatasetDefaultEncryptionConfigurationResult',
     'GetDatasetExternalCatalogDatasetOptionResult',
     'GetDatasetExternalDatasetReferenceResult',
+    'GetDatasetsDatasetResult',
     'GetTableBiglakeConfigurationResult',
     'GetTableEncryptionConfigurationResult',
     'GetTableExternalCatalogTableOptionResult',
@@ -7082,6 +7083,57 @@ class GetDatasetExternalDatasetReferenceResult(dict):
         External source that backs this dataset.
         """
         return pulumi.get(self, "external_source")
+
+
+@pulumi.output_type
+class GetDatasetsDatasetResult(dict):
+    def __init__(__self__, *,
+                 dataset_id: builtins.str,
+                 friendly_name: builtins.str,
+                 labels: Mapping[str, builtins.str],
+                 location: builtins.str):
+        """
+        :param builtins.str dataset_id: The id of the dataset.
+        :param builtins.str friendly_name: The friendly name of the dataset.
+        :param Mapping[str, builtins.str] labels: User-provided dataset labels, in key/value pairs.
+        :param builtins.str location: The geographic location of the dataset.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "friendly_name", friendly_name)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> builtins.str:
+        """
+        The id of the dataset.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> builtins.str:
+        """
+        The friendly name of the dataset.
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, builtins.str]:
+        """
+        User-provided dataset labels, in key/value pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> builtins.str:
+        """
+        The geographic location of the dataset.
+        """
+        return pulumi.get(self, "location")
 
 
 @pulumi.output_type

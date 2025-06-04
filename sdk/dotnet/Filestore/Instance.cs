@@ -287,7 +287,7 @@ namespace Pulumi.Gcp.Filestore
         public Output<Outputs.InstanceFileShares> FileShares { get; private set; } = null!;
 
         /// <summary>
-        /// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        /// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
         /// instance only, indicating the active as the peer_instance
         /// </summary>
         [Output("initialReplication")]
@@ -458,7 +458,7 @@ namespace Pulumi.Gcp.Filestore
         public Input<Inputs.InstanceFileSharesArgs> FileShares { get; set; } = null!;
 
         /// <summary>
-        /// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        /// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
         /// instance only, indicating the active as the peer_instance
         /// </summary>
         [Input("initialReplication")]
@@ -639,7 +639,7 @@ namespace Pulumi.Gcp.Filestore
         public Input<Inputs.InstanceFileSharesGetArgs>? FileShares { get; set; }
 
         /// <summary>
-        /// Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+        /// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
         /// instance only, indicating the active as the peer_instance
         /// </summary>
         [Input("initialReplication")]

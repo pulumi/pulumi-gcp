@@ -191,6 +191,7 @@ namespace Pulumi.Gcp.Compute
         public readonly int MaxPortsPerVm;
         public readonly int MinPortsPerVm;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetRouterNatNat64SubnetworkResult> Nat64Subnetworks;
         public readonly string NatIpAllocateOption;
         public readonly ImmutableArray<string> NatIps;
         public readonly string? Project;
@@ -198,6 +199,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Router;
         public readonly ImmutableArray<Outputs.GetRouterNatRuleResult> Rules;
         public readonly string SourceSubnetworkIpRangesToNat;
+        public readonly string SourceSubnetworkIpRangesToNat64;
         public readonly ImmutableArray<Outputs.GetRouterNatSubnetworkResult> Subnetworks;
         public readonly int TcpEstablishedIdleTimeoutSec;
         public readonly int TcpTimeWaitTimeoutSec;
@@ -231,6 +233,8 @@ namespace Pulumi.Gcp.Compute
 
             string name,
 
+            ImmutableArray<Outputs.GetRouterNatNat64SubnetworkResult> nat64Subnetworks,
+
             string natIpAllocateOption,
 
             ImmutableArray<string> natIps,
@@ -244,6 +248,8 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetRouterNatRuleResult> rules,
 
             string sourceSubnetworkIpRangesToNat,
+
+            string sourceSubnetworkIpRangesToNat64,
 
             ImmutableArray<Outputs.GetRouterNatSubnetworkResult> subnetworks,
 
@@ -269,6 +275,7 @@ namespace Pulumi.Gcp.Compute
             MaxPortsPerVm = maxPortsPerVm;
             MinPortsPerVm = minPortsPerVm;
             Name = name;
+            Nat64Subnetworks = nat64Subnetworks;
             NatIpAllocateOption = natIpAllocateOption;
             NatIps = natIps;
             Project = project;
@@ -276,6 +283,7 @@ namespace Pulumi.Gcp.Compute
             Router = router;
             Rules = rules;
             SourceSubnetworkIpRangesToNat = sourceSubnetworkIpRangesToNat;
+            SourceSubnetworkIpRangesToNat64 = sourceSubnetworkIpRangesToNat64;
             Subnetworks = subnetworks;
             TcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
             TcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;

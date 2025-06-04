@@ -1198,8 +1198,7 @@ if not MYPY:
     class ClusterManagedBackupSourceArgsDict(TypedDict):
         backup: pulumi.Input[builtins.str]
         """
-        Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-        like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+        Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         """
 elif False:
     ClusterManagedBackupSourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -1209,8 +1208,7 @@ class ClusterManagedBackupSourceArgs:
     def __init__(__self__, *,
                  backup: pulumi.Input[builtins.str]):
         """
-        :param pulumi.Input[builtins.str] backup: Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-               like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+        :param pulumi.Input[builtins.str] backup: Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         """
         pulumi.set(__self__, "backup", backup)
 
@@ -1218,8 +1216,7 @@ class ClusterManagedBackupSourceArgs:
     @pulumi.getter
     def backup(self) -> pulumi.Input[builtins.str]:
         """
-        Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
-        like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+        Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         """
         return pulumi.get(self, "backup")
 

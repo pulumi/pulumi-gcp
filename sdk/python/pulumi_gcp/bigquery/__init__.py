@@ -22,6 +22,7 @@ from .dataset_iam_policy import *
 from .get_connection_iam_policy import *
 from .get_dataset import *
 from .get_dataset_iam_policy import *
+from .get_datasets import *
 from .get_default_service_account import *
 from .get_table import *
 from .get_table_iam_policy import *

@@ -256,7 +256,7 @@ export class RuntimeTemplate extends pulumi.CustomResource {
      * The notebook software configuration of the notebook runtime.
      * Structure is documented below.
      */
-    public readonly softwareConfig!: pulumi.Output<outputs.colab.RuntimeTemplateSoftwareConfig | undefined>;
+    public readonly softwareConfig!: pulumi.Output<outputs.colab.RuntimeTemplateSoftwareConfig>;
 
     /**
      * Create a RuntimeTemplate resource with the given unique name, arguments, and options.

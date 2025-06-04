@@ -194,6 +194,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionInstanceTemplateNetworkPerformanceConfig?> NetworkPerformanceConfig { get; private set; } = null!;
 
         /// <summary>
+        /// numeric identifier of the resource.
+        /// </summary>
+        [Output("numericId")]
+        public Output<string> NumericId { get; private set; } = null!;
+
+        /// <summary>
         /// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         /// </summary>
         [Output("partnerMetadata")]
@@ -781,6 +787,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.RegionInstanceTemplateNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
+        /// numeric identifier of the resource.
+        /// </summary>
+        [Input("numericId")]
+        public Input<string>? NumericId { get; set; }
 
         [Input("partnerMetadata")]
         private InputMap<string>? _partnerMetadata;

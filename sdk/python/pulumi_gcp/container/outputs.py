@@ -7115,7 +7115,7 @@ class ClusterNodeConfig(dict):
         :param builtins.int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param builtins.str disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         :param Sequence['ClusterNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param builtins.bool enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -7352,7 +7352,7 @@ class ClusterNodeConfig(dict):
     def disk_type(self) -> Optional[builtins.str]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         """
         return pulumi.get(self, "disk_type")
 
@@ -10456,7 +10456,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param builtins.int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param builtins.str disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         :param Sequence['ClusterNodePoolNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param builtins.bool enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -10693,7 +10693,7 @@ class ClusterNodePoolNodeConfig(dict):
     def disk_type(self) -> Optional[builtins.str]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
         """
         return pulumi.get(self, "disk_type")
 

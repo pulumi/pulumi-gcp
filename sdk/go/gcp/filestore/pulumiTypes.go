@@ -388,6 +388,9 @@ type InstanceEffectiveReplication struct {
 	// The replication role.
 	// Structure is documented below.
 	Replicas []InstanceEffectiveReplicationReplica `pulumi:"replicas"`
+	// (Output)
+	// The replication role.
+	Role *string `pulumi:"role"`
 }
 
 // InstanceEffectiveReplicationInput is an input type that accepts InstanceEffectiveReplicationArgs and InstanceEffectiveReplicationOutput values.
@@ -405,6 +408,9 @@ type InstanceEffectiveReplicationArgs struct {
 	// The replication role.
 	// Structure is documented below.
 	Replicas InstanceEffectiveReplicationReplicaArrayInput `pulumi:"replicas"`
+	// (Output)
+	// The replication role.
+	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
 func (InstanceEffectiveReplicationArgs) ElementType() reflect.Type {
@@ -464,6 +470,12 @@ func (o InstanceEffectiveReplicationOutput) Replicas() InstanceEffectiveReplicat
 	return o.ApplyT(func(v InstanceEffectiveReplication) []InstanceEffectiveReplicationReplica { return v.Replicas }).(InstanceEffectiveReplicationReplicaArrayOutput)
 }
 
+// (Output)
+// The replication role.
+func (o InstanceEffectiveReplicationOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEffectiveReplication) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
 type InstanceEffectiveReplicationArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceEffectiveReplicationArrayOutput) ElementType() reflect.Type {
@@ -490,6 +502,8 @@ type InstanceEffectiveReplicationReplica struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	LastActiveSyncTime *string `pulumi:"lastActiveSyncTime"`
+	// The peer instance.
+	PeerInstance *string `pulumi:"peerInstance"`
 	// (Output)
 	// Output only. The replica state
 	State *string `pulumi:"state"`
@@ -515,6 +529,8 @@ type InstanceEffectiveReplicationReplicaArgs struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	LastActiveSyncTime pulumi.StringPtrInput `pulumi:"lastActiveSyncTime"`
+	// The peer instance.
+	PeerInstance pulumi.StringPtrInput `pulumi:"peerInstance"`
 	// (Output)
 	// Output only. The replica state
 	State pulumi.StringPtrInput `pulumi:"state"`
@@ -580,6 +596,11 @@ func (o InstanceEffectiveReplicationReplicaOutput) ToInstanceEffectiveReplicatio
 // Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 func (o InstanceEffectiveReplicationReplicaOutput) LastActiveSyncTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceEffectiveReplicationReplica) *string { return v.LastActiveSyncTime }).(pulumi.StringPtrOutput)
+}
+
+// The peer instance.
+func (o InstanceEffectiveReplicationReplicaOutput) PeerInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEffectiveReplicationReplica) *string { return v.PeerInstance }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -2323,6 +2344,8 @@ func (o GetInstanceDirectoryServiceLdapArrayOutput) Index(i pulumi.IntInput) Get
 type GetInstanceEffectiveReplication struct {
 	// The replication role.
 	Replicas []GetInstanceEffectiveReplicationReplica `pulumi:"replicas"`
+	// The replication role.
+	Role string `pulumi:"role"`
 }
 
 // GetInstanceEffectiveReplicationInput is an input type that accepts GetInstanceEffectiveReplicationArgs and GetInstanceEffectiveReplicationOutput values.
@@ -2339,6 +2362,8 @@ type GetInstanceEffectiveReplicationInput interface {
 type GetInstanceEffectiveReplicationArgs struct {
 	// The replication role.
 	Replicas GetInstanceEffectiveReplicationReplicaArrayInput `pulumi:"replicas"`
+	// The replication role.
+	Role pulumi.StringInput `pulumi:"role"`
 }
 
 func (GetInstanceEffectiveReplicationArgs) ElementType() reflect.Type {
@@ -2397,6 +2422,11 @@ func (o GetInstanceEffectiveReplicationOutput) Replicas() GetInstanceEffectiveRe
 	return o.ApplyT(func(v GetInstanceEffectiveReplication) []GetInstanceEffectiveReplicationReplica { return v.Replicas }).(GetInstanceEffectiveReplicationReplicaArrayOutput)
 }
 
+// The replication role.
+func (o GetInstanceEffectiveReplicationOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEffectiveReplication) string { return v.Role }).(pulumi.StringOutput)
+}
+
 type GetInstanceEffectiveReplicationArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceEffectiveReplicationArrayOutput) ElementType() reflect.Type {
@@ -2422,6 +2452,8 @@ type GetInstanceEffectiveReplicationReplica struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	LastActiveSyncTime string `pulumi:"lastActiveSyncTime"`
+	// The peer instance.
+	PeerInstance string `pulumi:"peerInstance"`
 	// Output only. The replica state
 	State string `pulumi:"state"`
 	// Output only. Additional information about the replication state, if available.
@@ -2444,6 +2476,8 @@ type GetInstanceEffectiveReplicationReplicaArgs struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	LastActiveSyncTime pulumi.StringInput `pulumi:"lastActiveSyncTime"`
+	// The peer instance.
+	PeerInstance pulumi.StringInput `pulumi:"peerInstance"`
 	// Output only. The replica state
 	State pulumi.StringInput `pulumi:"state"`
 	// Output only. Additional information about the replication state, if available.
@@ -2506,6 +2540,11 @@ func (o GetInstanceEffectiveReplicationReplicaOutput) ToGetInstanceEffectiveRepl
 // Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 func (o GetInstanceEffectiveReplicationReplicaOutput) LastActiveSyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceEffectiveReplicationReplica) string { return v.LastActiveSyncTime }).(pulumi.StringOutput)
+}
+
+// The peer instance.
+func (o GetInstanceEffectiveReplicationReplicaOutput) PeerInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEffectiveReplicationReplica) string { return v.PeerInstance }).(pulumi.StringOutput)
 }
 
 // Output only. The replica state

@@ -82,6 +82,9 @@ type BackupVault struct {
 
 	// Region in which backup is stored.
 	BackupRegion pulumi.StringPtrOutput `pulumi:"backupRegion"`
+	// Backup retention policy defining the retention of the backups.
+	// Structure is documented below.
+	BackupRetentionPolicy BackupVaultBackupRetentionPolicyPtrOutput `pulumi:"backupRetentionPolicy"`
 	// Type of the backup vault to be created. Default is IN_REGION.
 	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
 	BackupVaultType pulumi.StringOutput `pulumi:"backupVaultType"`
@@ -158,6 +161,9 @@ func GetBackupVault(ctx *pulumi.Context,
 type backupVaultState struct {
 	// Region in which backup is stored.
 	BackupRegion *string `pulumi:"backupRegion"`
+	// Backup retention policy defining the retention of the backups.
+	// Structure is documented below.
+	BackupRetentionPolicy *BackupVaultBackupRetentionPolicy `pulumi:"backupRetentionPolicy"`
 	// Type of the backup vault to be created. Default is IN_REGION.
 	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
 	BackupVaultType *string `pulumi:"backupVaultType"`
@@ -197,6 +203,9 @@ type backupVaultState struct {
 type BackupVaultState struct {
 	// Region in which backup is stored.
 	BackupRegion pulumi.StringPtrInput
+	// Backup retention policy defining the retention of the backups.
+	// Structure is documented below.
+	BackupRetentionPolicy BackupVaultBackupRetentionPolicyPtrInput
 	// Type of the backup vault to be created. Default is IN_REGION.
 	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
 	BackupVaultType pulumi.StringPtrInput
@@ -240,6 +249,9 @@ func (BackupVaultState) ElementType() reflect.Type {
 type backupVaultArgs struct {
 	// Region in which backup is stored.
 	BackupRegion *string `pulumi:"backupRegion"`
+	// Backup retention policy defining the retention of the backups.
+	// Structure is documented below.
+	BackupRetentionPolicy *BackupVaultBackupRetentionPolicy `pulumi:"backupRetentionPolicy"`
 	// Type of the backup vault to be created. Default is IN_REGION.
 	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
 	BackupVaultType *string `pulumi:"backupVaultType"`
@@ -265,6 +277,9 @@ type backupVaultArgs struct {
 type BackupVaultArgs struct {
 	// Region in which backup is stored.
 	BackupRegion pulumi.StringPtrInput
+	// Backup retention policy defining the retention of the backups.
+	// Structure is documented below.
+	BackupRetentionPolicy BackupVaultBackupRetentionPolicyPtrInput
 	// Type of the backup vault to be created. Default is IN_REGION.
 	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
 	BackupVaultType pulumi.StringPtrInput
@@ -376,6 +391,12 @@ func (o BackupVaultOutput) ToBackupVaultOutputWithContext(ctx context.Context) B
 // Region in which backup is stored.
 func (o BackupVaultOutput) BackupRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringPtrOutput { return v.BackupRegion }).(pulumi.StringPtrOutput)
+}
+
+// Backup retention policy defining the retention of the backups.
+// Structure is documented below.
+func (o BackupVaultOutput) BackupRetentionPolicy() BackupVaultBackupRetentionPolicyPtrOutput {
+	return o.ApplyT(func(v *BackupVault) BackupVaultBackupRetentionPolicyPtrOutput { return v.BackupRetentionPolicy }).(BackupVaultBackupRetentionPolicyPtrOutput)
 }
 
 // Type of the backup vault to be created. Default is IN_REGION.
