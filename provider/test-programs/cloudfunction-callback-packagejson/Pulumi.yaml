@@ -1,0 +1,3 @@
+name: cloudfunction-callback-packagejson
+runtime: nodejs
+description: Test CloudFunction with callback to verify package.json processing
