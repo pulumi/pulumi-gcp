@@ -13,9 +13,9 @@
         "build": "tsc"
     },
     "dependencies": {
+        "@npmcli/package-json": "^6.2.0",
         "@pulumi/pulumi": "^3.142.0",
-        "@types/express": "^4.16.0",
-        "read-package-json": "^2.0.13"
+        "@types/express": "^4.16.0"
     },
     "devDependencies": {
         "@types/node": "^18.0.0",

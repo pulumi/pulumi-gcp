@@ -5,6 +5,8 @@ package gcp
 
 import (
 	"fmt"
+	"io"
+	"net/http"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -103,4 +105,35 @@ func TestCloudfunctionWrongType(t *testing.T) {
 	require.Error(t, err)
 
 	require.Contains(t, err.Error(), `Unexpected type at field "environmentVariables"`)
+}
+
+func TestCloudfunctionWithCallbackPackageJson(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+
+	testProgramDir := filepath.Join("test-programs", "cloudfunction-callback-packagejson")
+	test := pulumitest.NewPulumiTest(t, testProgramDir,
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+	)
+
+	// Test that the functionUrl returns the expected response, so we know the package.json processing worked
+	up := test.Up(t)
+	require.NotContains(t, up.StdOut, "npm warn deprecated")
+	require.NotNil(t, up)
+	require.NotNil(t, up.Outputs["functionUrl"])
+	functionURL := up.Outputs["functionUrl"].Value.(string)
+
+	resp, err := http.Get(functionURL) // #nosec G107
+	require.NoError(t, err, "http GET to functionUrl should not error")
+	require.Equal(t, 200, resp.StatusCode, "functionUrl should return status 200")
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+	require.NoError(t, err, "reading response body should not error")
+	require.Contains(t, string(body), "Hello from Cloud Function! Array: a, b, c",
+		"response body should contain 'Hello from Cloud Function! Array: a, b, c'")
+
 }

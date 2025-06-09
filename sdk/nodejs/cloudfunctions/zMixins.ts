@@ -262,26 +262,21 @@ async function computeCodePaths(
 // Get the list of packages declare in package.json, exclude pulumi and exclusions made by user,
 // generate the new package.json to be uploaded to GCP.
 // GCP will restore the packages itself.
-function producePackageJson(excludedPackages: Set<string>): Promise<string> {
-    return new Promise((resolve, reject) => {
-        const readPackageJson = require("read-package-json");
-        readPackageJson(filepath.basename('package.json'), null, false, (err: Error, packageJson: any) => {
-            if (err) {
-                return reject(err);
-            }
+async function producePackageJson(excludedPackages: Set<string>): Promise<string> {
+    const PackageJson = require("@npmcli/package-json");
+    const pkgJson = await PackageJson.load('./');
+    const packageJson = pkgJson.content;
 
-            // Override dependencies by removing @pulumi and excludedPackages
-            const dependencies = Object.keys(packageJson.dependencies)
-                .filter(pkg => !excludedPackages.has(pkg) && !pkg.startsWith("@pulumi"))
-                .reduce((obj, key) => {
-                    obj[key] = packageJson.dependencies[key];
-                    return obj;
-                }, <Record<string, string>>{});
+    // Override dependencies by removing @pulumi and excludedPackages
+    const dependencies = Object.keys(packageJson.dependencies || {})
+        .filter(pkg => !excludedPackages.has(pkg) && !pkg.startsWith("@pulumi"))
+        .reduce((obj, key) => {
+            obj[key] = packageJson.dependencies[key];
+            return obj;
+        }, <Record<string, string>>{});
 
-            resolve(JSON.stringify({
-                dependencies: dependencies,
-            }));
-        });
+    return JSON.stringify({
+        dependencies: dependencies,
     });
 }
 
@@ -291,7 +286,7 @@ function producePackageJson(excludedPackages: Set<string>): Promise<string> {
 function processExtraIncludePaths(extraIncludePaths: string[]): Record<string, pulumi.asset.FileAsset> {
     const filesToInclude: Record<string, pulumi.asset.FileAsset> = {};
 
-    for (const fullPath of extraIncludePaths){
+    for (const fullPath of extraIncludePaths) {
         const fileName = filepath.basename(fullPath);
         filesToInclude[fileName] = new pulumi.asset.FileAsset(fullPath);
     }
