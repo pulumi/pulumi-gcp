@@ -660,6 +660,7 @@ class Datascan(pulumi.CustomResource):
             data_quality_spec={
                 "sampling_percent": 5,
                 "row_filter": "station_id > 1000",
+                "catalog_publishing_enabled": True,
                 "post_scan_actions": {
                     "notification_report": {
                         "recipients": {
@@ -936,6 +937,7 @@ class Datascan(pulumi.CustomResource):
             data_quality_spec={
                 "sampling_percent": 5,
                 "row_filter": "station_id > 1000",
+                "catalog_publishing_enabled": True,
                 "post_scan_actions": {
                     "notification_report": {
                         "recipients": {

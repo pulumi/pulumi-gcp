@@ -223,6 +223,8 @@ type InterconnectAttachment struct {
 	// Whether the VLAN attachment is enabled or disabled.  When using
 	// PARTNER type this will Pre-Activate the interconnect attachment
 	AdminEnabled pulumi.BoolPtrOutput `pulumi:"adminEnabled"`
+	// URL of the AttachmentGroup that includes this Attachment.
+	AttachmentGroup pulumi.StringOutput `pulumi:"attachmentGroup"`
 	// Provisioned bandwidth capacity for the interconnect attachment.
 	// For attachments of type DEDICATED, the user can set the bandwidth.
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
@@ -428,6 +430,8 @@ type interconnectAttachmentState struct {
 	// Whether the VLAN attachment is enabled or disabled.  When using
 	// PARTNER type this will Pre-Activate the interconnect attachment
 	AdminEnabled *bool `pulumi:"adminEnabled"`
+	// URL of the AttachmentGroup that includes this Attachment.
+	AttachmentGroup *string `pulumi:"attachmentGroup"`
 	// Provisioned bandwidth capacity for the interconnect attachment.
 	// For attachments of type DEDICATED, the user can set the bandwidth.
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
@@ -596,6 +600,8 @@ type InterconnectAttachmentState struct {
 	// Whether the VLAN attachment is enabled or disabled.  When using
 	// PARTNER type this will Pre-Activate the interconnect attachment
 	AdminEnabled pulumi.BoolPtrInput
+	// URL of the AttachmentGroup that includes this Attachment.
+	AttachmentGroup pulumi.StringPtrInput
 	// Provisioned bandwidth capacity for the interconnect attachment.
 	// For attachments of type DEDICATED, the user can set the bandwidth.
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
@@ -1104,6 +1110,11 @@ func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutputWithContext(
 // PARTNER type this will Pre-Activate the interconnect attachment
 func (o InterconnectAttachmentOutput) AdminEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.BoolPtrOutput { return v.AdminEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// URL of the AttachmentGroup that includes this Attachment.
+func (o InterconnectAttachmentOutput) AttachmentGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.AttachmentGroup }).(pulumi.StringOutput)
 }
 
 // Provisioned bandwidth capacity for the interconnect attachment.

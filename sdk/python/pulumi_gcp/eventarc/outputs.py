@@ -854,21 +854,26 @@ class PipelineDestinationNetworkConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 network_attachment: builtins.str):
+                 network_attachment: Optional[builtins.str] = None):
         """
         :param builtins.str network_attachment: Name of the NetworkAttachment that allows access to the consumer VPC.
                Format:
                `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+               Required for HTTP endpoint destinations. Must not be specified for
+               Workflows, MessageBus, or Topic destinations.
         """
-        pulumi.set(__self__, "network_attachment", network_attachment)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
 
     @property
     @pulumi.getter(name="networkAttachment")
-    def network_attachment(self) -> builtins.str:
+    def network_attachment(self) -> Optional[builtins.str]:
         """
         Name of the NetworkAttachment that allows access to the consumer VPC.
         Format:
         `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        Required for HTTP endpoint destinations. Must not be specified for
+        Workflows, MessageBus, or Topic destinations.
         """
         return pulumi.get(self, "network_attachment")
 

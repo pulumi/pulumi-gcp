@@ -71,6 +71,10 @@ import (
 //						SnatPool:  pulumi.String("test-snat-pool"),
 //					},
 //				},
+//				PrivateRegistryConfig: &gkeonprem.VmwareAdminClusterPrivateRegistryConfigArgs{
+//					Address: pulumi.String("test-address"),
+//					CaCert:  pulumi.String("test-ca-cert"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -198,6 +202,10 @@ import (
 //				PlatformConfig: &gkeonprem.VmwareAdminClusterPlatformConfigArgs{
 //					RequiredPlatformVersion: pulumi.String("1.31.0"),
 //				},
+//				PrivateRegistryConfig: &gkeonprem.VmwareAdminClusterPrivateRegistryConfigArgs{
+//					Address: pulumi.String("test-address"),
+//					CaCert:  pulumi.String("test-ca-cert"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -261,6 +269,10 @@ import (
 //					MetalLbConfig: &gkeonprem.VmwareAdminClusterLoadBalancerMetalLbConfigArgs{
 //						Enabled: pulumi.Bool(true),
 //					},
+//				},
+//				PrivateRegistryConfig: &gkeonprem.VmwareAdminClusterPrivateRegistryConfigArgs{
+//					Address: pulumi.String("test-address"),
+//					CaCert:  pulumi.String("test-ca-cert"),
 //				},
 //			})
 //			if err != nil {
@@ -361,7 +373,9 @@ type VmwareAdminCluster struct {
 	OnPremVersion pulumi.StringPtrOutput `pulumi:"onPremVersion"`
 	// The VMware platform configuration.
 	PlatformConfig VmwareAdminClusterPlatformConfigPtrOutput `pulumi:"platformConfig"`
-	Project        pulumi.StringOutput                       `pulumi:"project"`
+	// Configuration for private registry.
+	PrivateRegistryConfig VmwareAdminClusterPrivateRegistryConfigPtrOutput `pulumi:"privateRegistryConfig"`
+	Project               pulumi.StringOutput                              `pulumi:"project"`
 	// If set, there are currently changes in flight to the VMware admin cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// (Output)
@@ -477,7 +491,9 @@ type vmwareAdminClusterState struct {
 	OnPremVersion *string `pulumi:"onPremVersion"`
 	// The VMware platform configuration.
 	PlatformConfig *VmwareAdminClusterPlatformConfig `pulumi:"platformConfig"`
-	Project        *string                           `pulumi:"project"`
+	// Configuration for private registry.
+	PrivateRegistryConfig *VmwareAdminClusterPrivateRegistryConfig `pulumi:"privateRegistryConfig"`
+	Project               *string                                  `pulumi:"project"`
 	// If set, there are currently changes in flight to the VMware admin cluster.
 	Reconciling *bool `pulumi:"reconciling"`
 	// (Output)
@@ -558,7 +574,9 @@ type VmwareAdminClusterState struct {
 	OnPremVersion pulumi.StringPtrInput
 	// The VMware platform configuration.
 	PlatformConfig VmwareAdminClusterPlatformConfigPtrInput
-	Project        pulumi.StringPtrInput
+	// Configuration for private registry.
+	PrivateRegistryConfig VmwareAdminClusterPrivateRegistryConfigPtrInput
+	Project               pulumi.StringPtrInput
 	// If set, there are currently changes in flight to the VMware admin cluster.
 	Reconciling pulumi.BoolPtrInput
 	// (Output)
@@ -616,7 +634,9 @@ type vmwareAdminClusterArgs struct {
 	OnPremVersion *string `pulumi:"onPremVersion"`
 	// The VMware platform configuration.
 	PlatformConfig *VmwareAdminClusterPlatformConfig `pulumi:"platformConfig"`
-	Project        *string                           `pulumi:"project"`
+	// Configuration for private registry.
+	PrivateRegistryConfig *VmwareAdminClusterPrivateRegistryConfig `pulumi:"privateRegistryConfig"`
+	Project               *string                                  `pulumi:"project"`
 	// Specifies vCenter config for the admin cluster.
 	Vcenter *VmwareAdminClusterVcenter `pulumi:"vcenter"`
 }
@@ -659,7 +679,9 @@ type VmwareAdminClusterArgs struct {
 	OnPremVersion pulumi.StringPtrInput
 	// The VMware platform configuration.
 	PlatformConfig VmwareAdminClusterPlatformConfigPtrInput
-	Project        pulumi.StringPtrInput
+	// Configuration for private registry.
+	PrivateRegistryConfig VmwareAdminClusterPrivateRegistryConfigPtrInput
+	Project               pulumi.StringPtrInput
 	// Specifies vCenter config for the admin cluster.
 	Vcenter VmwareAdminClusterVcenterPtrInput
 }
@@ -878,6 +900,13 @@ func (o VmwareAdminClusterOutput) OnPremVersion() pulumi.StringPtrOutput {
 // The VMware platform configuration.
 func (o VmwareAdminClusterOutput) PlatformConfig() VmwareAdminClusterPlatformConfigPtrOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterPlatformConfigPtrOutput { return v.PlatformConfig }).(VmwareAdminClusterPlatformConfigPtrOutput)
+}
+
+// Configuration for private registry.
+func (o VmwareAdminClusterOutput) PrivateRegistryConfig() VmwareAdminClusterPrivateRegistryConfigPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterPrivateRegistryConfigPtrOutput {
+		return v.PrivateRegistryConfig
+	}).(VmwareAdminClusterPrivateRegistryConfigPtrOutput)
 }
 
 func (o VmwareAdminClusterOutput) Project() pulumi.StringOutput {

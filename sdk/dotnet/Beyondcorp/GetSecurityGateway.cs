@@ -136,6 +136,7 @@ namespace Pulumi.Gcp.Beyondcorp
     public sealed class GetSecurityGatewayResult
     {
         public readonly string CreateTime;
+        public readonly string DelegatingServiceAccount;
         public readonly string DisplayName;
         public readonly ImmutableArray<string> ExternalIps;
         public readonly ImmutableArray<Outputs.GetSecurityGatewayHubResult> Hubs;
@@ -153,6 +154,8 @@ namespace Pulumi.Gcp.Beyondcorp
         [OutputConstructor]
         private GetSecurityGatewayResult(
             string createTime,
+
+            string delegatingServiceAccount,
 
             string displayName,
 
@@ -175,6 +178,7 @@ namespace Pulumi.Gcp.Beyondcorp
             string updateTime)
         {
             CreateTime = createTime;
+            DelegatingServiceAccount = delegatingServiceAccount;
             DisplayName = displayName;
             ExternalIps = externalIps;
             Hubs = hubs;

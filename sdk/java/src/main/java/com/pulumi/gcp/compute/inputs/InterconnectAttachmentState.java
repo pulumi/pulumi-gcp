@@ -38,6 +38,21 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
+     * URL of the AttachmentGroup that includes this Attachment.
+     * 
+     */
+    @Import(name="attachmentGroup")
+    private @Nullable Output<String> attachmentGroup;
+
+    /**
+     * @return URL of the AttachmentGroup that includes this Attachment.
+     * 
+     */
+    public Optional<Output<String>> attachmentGroup() {
+        return Optional.ofNullable(this.attachmentGroup);
+    }
+
+    /**
      * Provisioned bandwidth capacity for the interconnect attachment.
      * For attachments of type DEDICATED, the user can set the bandwidth.
      * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
@@ -750,6 +765,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
 
     private InterconnectAttachmentState(InterconnectAttachmentState $) {
         this.adminEnabled = $.adminEnabled;
+        this.attachmentGroup = $.attachmentGroup;
         this.bandwidth = $.bandwidth;
         this.candidateCloudRouterIpAddress = $.candidateCloudRouterIpAddress;
         this.candidateCloudRouterIpv6Address = $.candidateCloudRouterIpv6Address;
@@ -826,6 +842,27 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
          */
         public Builder adminEnabled(Boolean adminEnabled) {
             return adminEnabled(Output.of(adminEnabled));
+        }
+
+        /**
+         * @param attachmentGroup URL of the AttachmentGroup that includes this Attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachmentGroup(@Nullable Output<String> attachmentGroup) {
+            $.attachmentGroup = attachmentGroup;
+            return this;
+        }
+
+        /**
+         * @param attachmentGroup URL of the AttachmentGroup that includes this Attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachmentGroup(String attachmentGroup) {
+            return attachmentGroup(Output.of(attachmentGroup));
         }
 
         /**

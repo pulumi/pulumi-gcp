@@ -113,16 +113,14 @@ public final class DataSharingWithGoogleSettingBindingState extends com.pulumi.r
     }
 
     /**
-     * Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`.
+     * Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
      * 
      */
     @Import(name="product")
     private @Nullable Output<String> product;
 
     /**
-     * @return Product type of the setting binding.
-     * Possible values are: `GEMINI_CLOUD_ASSIST`.
+     * @return Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
      * 
      */
     public Optional<Output<String>> product() {
@@ -380,8 +378,7 @@ public final class DataSharingWithGoogleSettingBindingState extends com.pulumi.r
         }
 
         /**
-         * @param product Product type of the setting binding.
-         * Possible values are: `GEMINI_CLOUD_ASSIST`.
+         * @param product Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
          * 
          * @return builder
          * 
@@ -392,8 +389,7 @@ public final class DataSharingWithGoogleSettingBindingState extends com.pulumi.r
         }
 
         /**
-         * @param product Product type of the setting binding.
-         * Possible values are: `GEMINI_CLOUD_ASSIST`.
+         * @param product Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
          * 
          * @return builder
          * 

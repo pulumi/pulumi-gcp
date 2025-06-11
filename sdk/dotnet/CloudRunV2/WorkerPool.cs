@@ -442,14 +442,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 {
     ///                     Name = "hello-2",
     ///                     Image = "us-docker.pkg.dev/cloudrun/container/worker-pool",
-    ///                     Envs = new[]
-    ///                     {
-    ///                         new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerEnvArgs
-    ///                         {
-    ///                             Name = "PORT",
-    ///                             Value = "8081",
-    ///                         },
-    ///                     },
     ///                 },
     ///             },
     ///             Volumes = new[]

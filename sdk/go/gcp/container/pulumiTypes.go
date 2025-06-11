@@ -20858,6 +20858,143 @@ func (o ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput) S
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterNetworkPerformanceConfig struct {
+	// Specifies the total network bandwidth tier for NodePools in the cluster.
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// ClusterNetworkPerformanceConfigInput is an input type that accepts ClusterNetworkPerformanceConfigArgs and ClusterNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `ClusterNetworkPerformanceConfigInput` via:
+//
+//	ClusterNetworkPerformanceConfigArgs{...}
+type ClusterNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToClusterNetworkPerformanceConfigOutput() ClusterNetworkPerformanceConfigOutput
+	ToClusterNetworkPerformanceConfigOutputWithContext(context.Context) ClusterNetworkPerformanceConfigOutput
+}
+
+type ClusterNetworkPerformanceConfigArgs struct {
+	// Specifies the total network bandwidth tier for NodePools in the cluster.
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (ClusterNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i ClusterNetworkPerformanceConfigArgs) ToClusterNetworkPerformanceConfigOutput() ClusterNetworkPerformanceConfigOutput {
+	return i.ToClusterNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworkPerformanceConfigArgs) ToClusterNetworkPerformanceConfigOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworkPerformanceConfigOutput)
+}
+
+func (i ClusterNetworkPerformanceConfigArgs) ToClusterNetworkPerformanceConfigPtrOutput() ClusterNetworkPerformanceConfigPtrOutput {
+	return i.ToClusterNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworkPerformanceConfigArgs) ToClusterNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworkPerformanceConfigOutput).ToClusterNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNetworkPerformanceConfigPtrInput is an input type that accepts ClusterNetworkPerformanceConfigArgs, ClusterNetworkPerformanceConfigPtr and ClusterNetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNetworkPerformanceConfigPtrInput` via:
+//
+//	        ClusterNetworkPerformanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNetworkPerformanceConfigPtrOutput() ClusterNetworkPerformanceConfigPtrOutput
+	ToClusterNetworkPerformanceConfigPtrOutputWithContext(context.Context) ClusterNetworkPerformanceConfigPtrOutput
+}
+
+type clusterNetworkPerformanceConfigPtrType ClusterNetworkPerformanceConfigArgs
+
+func ClusterNetworkPerformanceConfigPtr(v *ClusterNetworkPerformanceConfigArgs) ClusterNetworkPerformanceConfigPtrInput {
+	return (*clusterNetworkPerformanceConfigPtrType)(v)
+}
+
+func (*clusterNetworkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *clusterNetworkPerformanceConfigPtrType) ToClusterNetworkPerformanceConfigPtrOutput() ClusterNetworkPerformanceConfigPtrOutput {
+	return i.ToClusterNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNetworkPerformanceConfigPtrType) ToClusterNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworkPerformanceConfigPtrOutput)
+}
+
+type ClusterNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o ClusterNetworkPerformanceConfigOutput) ToClusterNetworkPerformanceConfigOutput() ClusterNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigOutput) ToClusterNetworkPerformanceConfigOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigOutput) ToClusterNetworkPerformanceConfigPtrOutput() ClusterNetworkPerformanceConfigPtrOutput {
+	return o.ToClusterNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNetworkPerformanceConfigOutput) ToClusterNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNetworkPerformanceConfig) *ClusterNetworkPerformanceConfig {
+		return &v
+	}).(ClusterNetworkPerformanceConfigPtrOutput)
+}
+
+// Specifies the total network bandwidth tier for NodePools in the cluster.
+func (o ClusterNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type ClusterNetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o ClusterNetworkPerformanceConfigPtrOutput) ToClusterNetworkPerformanceConfigPtrOutput() ClusterNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigPtrOutput) ToClusterNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigPtrOutput) Elem() ClusterNetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *ClusterNetworkPerformanceConfig) ClusterNetworkPerformanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNetworkPerformanceConfig
+		return ret
+	}).(ClusterNetworkPerformanceConfigOutput)
+}
+
+// Specifies the total network bandwidth tier for NodePools in the cluster.
+func (o ClusterNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworkPerformanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TotalEgressBandwidthTier
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterNetworkPolicy struct {
 	// Whether network policy is enabled on the cluster.
 	Enabled bool `pulumi:"enabled"`
@@ -21043,7 +21180,7 @@ type ClusterNodeConfig struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket *ClusterNodeConfigFastSocket `pulumi:"fastSocket"`
-	// ) Enables Flex Start provisioning model for the node pool.
+	// Enables Flex Start provisioning model for the node pool.
 	FlexStart *bool `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -21199,7 +21336,7 @@ type ClusterNodeConfigArgs struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket ClusterNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
-	// ) Enables Flex Start provisioning model for the node pool.
+	// Enables Flex Start provisioning model for the node pool.
 	FlexStart pulumi.BoolPtrInput `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -21455,7 +21592,7 @@ func (o ClusterNodeConfigOutput) FastSocket() ClusterNodeConfigFastSocketPtrOutp
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigFastSocket { return v.FastSocket }).(ClusterNodeConfigFastSocketPtrOutput)
 }
 
-// ) Enables Flex Start provisioning model for the node pool.
+// Enables Flex Start provisioning model for the node pool.
 func (o ClusterNodeConfigOutput) FlexStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.FlexStart }).(pulumi.BoolPtrOutput)
 }
@@ -21811,7 +21948,7 @@ func (o ClusterNodeConfigPtrOutput) FastSocket() ClusterNodeConfigFastSocketPtrO
 	}).(ClusterNodeConfigFastSocketPtrOutput)
 }
 
-// ) Enables Flex Start provisioning model for the node pool.
+// Enables Flex Start provisioning model for the node pool.
 func (o ClusterNodeConfigPtrOutput) FlexStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *bool {
 		if v == nil {
@@ -29307,7 +29444,7 @@ func (o ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) Index
 }
 
 type ClusterNodePoolNetworkConfigNetworkPerformanceConfig struct {
-	// Specifies the total network bandwidth tier for the NodePool.
+	// Specifies the total network bandwidth tier for NodePools in the cluster.
 	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
 }
 
@@ -29323,7 +29460,7 @@ type ClusterNodePoolNetworkConfigNetworkPerformanceConfigInput interface {
 }
 
 type ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs struct {
-	// Specifies the total network bandwidth tier for the NodePool.
+	// Specifies the total network bandwidth tier for NodePools in the cluster.
 	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
 }
 
@@ -29404,7 +29541,7 @@ func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ToClusterNod
 	}).(ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
 }
 
-// Specifies the total network bandwidth tier for the NodePool.
+// Specifies the total network bandwidth tier for NodePools in the cluster.
 func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfigNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
 }
@@ -29433,7 +29570,7 @@ func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) Elem() Cl
 	}).(ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput)
 }
 
-// Specifies the total network bandwidth tier for the NodePool.
+// Specifies the total network bandwidth tier for NodePools in the cluster.
 func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfigNetworkPerformanceConfig) *string {
 		if v == nil {
@@ -29617,7 +29754,7 @@ type ClusterNodePoolNodeConfig struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket *ClusterNodePoolNodeConfigFastSocket `pulumi:"fastSocket"`
-	// ) Enables Flex Start provisioning model for the node pool.
+	// Enables Flex Start provisioning model for the node pool.
 	FlexStart *bool `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -29773,7 +29910,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket ClusterNodePoolNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
-	// ) Enables Flex Start provisioning model for the node pool.
+	// Enables Flex Start provisioning model for the node pool.
 	FlexStart pulumi.BoolPtrInput `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -30037,7 +30174,7 @@ func (o ClusterNodePoolNodeConfigOutput) FastSocket() ClusterNodePoolNodeConfigF
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigFastSocket { return v.FastSocket }).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
 }
 
-// ) Enables Flex Start provisioning model for the node pool.
+// Enables Flex Start provisioning model for the node pool.
 func (o ClusterNodePoolNodeConfigOutput) FlexStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.FlexStart }).(pulumi.BoolPtrOutput)
 }
@@ -30411,7 +30548,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) FastSocket() ClusterNodePoolNodeConf
 	}).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
 }
 
-// ) Enables Flex Start provisioning model for the node pool.
+// Enables Flex Start provisioning model for the node pool.
 func (o ClusterNodePoolNodeConfigPtrOutput) FlexStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *bool {
 		if v == nil {
@@ -35159,7 +35296,7 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.
 type ClusterNodePoolPlacementPolicy struct {
 	// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
 	PolicyName *string `pulumi:"policyName"`
-	// TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+	// The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
 	TpuTopology *string `pulumi:"tpuTopology"`
 	// Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
 	// `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
@@ -35180,7 +35317,7 @@ type ClusterNodePoolPlacementPolicyInput interface {
 type ClusterNodePoolPlacementPolicyArgs struct {
 	// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
 	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
-	// TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+	// The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
 	TpuTopology pulumi.StringPtrInput `pulumi:"tpuTopology"`
 	// Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
 	// `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
@@ -35269,7 +35406,7 @@ func (o ClusterNodePoolPlacementPolicyOutput) PolicyName() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ClusterNodePoolPlacementPolicy) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
 }
 
-// TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+// The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
 func (o ClusterNodePoolPlacementPolicyOutput) TpuTopology() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolPlacementPolicy) *string { return v.TpuTopology }).(pulumi.StringPtrOutput)
 }
@@ -35314,7 +35451,7 @@ func (o ClusterNodePoolPlacementPolicyPtrOutput) PolicyName() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+// The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
 func (o ClusterNodePoolPlacementPolicyPtrOutput) TpuTopology() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolPlacementPolicy) *string {
 		if v == nil {
@@ -40234,7 +40371,7 @@ func (o NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) Index(i pulu
 }
 
 type NodePoolNetworkConfigNetworkPerformanceConfig struct {
-	// Specifies the total network bandwidth tier for the NodePool.
+	// Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
 	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
 }
 
@@ -40250,7 +40387,7 @@ type NodePoolNetworkConfigNetworkPerformanceConfigInput interface {
 }
 
 type NodePoolNetworkConfigNetworkPerformanceConfigArgs struct {
-	// Specifies the total network bandwidth tier for the NodePool.
+	// Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
 	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
 }
 
@@ -40331,7 +40468,7 @@ func (o NodePoolNetworkConfigNetworkPerformanceConfigOutput) ToNodePoolNetworkCo
 	}).(NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
 }
 
-// Specifies the total network bandwidth tier for the NodePool.
+// Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
 func (o NodePoolNetworkConfigNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfigNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
 }
@@ -40360,7 +40497,7 @@ func (o NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) Elem() NodePoolN
 	}).(NodePoolNetworkConfigNetworkPerformanceConfigOutput)
 }
 
-// Specifies the total network bandwidth tier for the NodePool.
+// Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
 func (o NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNetworkConfigNetworkPerformanceConfig) *string {
 		if v == nil {
@@ -45702,7 +45839,7 @@ type NodePoolPlacementPolicy struct {
 	// The resource policy must be in the same project and region as the node pool.
 	// If not found, InvalidArgument error is returned.
 	PolicyName *string `pulumi:"policyName"`
-	// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+	// The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `"2x4"` or `"2x2x2"`.
 	TpuTopology *string `pulumi:"tpuTopology"`
 	// The type of the policy. Supports a single value: COMPACT.
 	// Specifying COMPACT placement policy type places node pool's nodes in a closer
@@ -45726,7 +45863,7 @@ type NodePoolPlacementPolicyArgs struct {
 	// The resource policy must be in the same project and region as the node pool.
 	// If not found, InvalidArgument error is returned.
 	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
-	// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+	// The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `"2x4"` or `"2x2x2"`.
 	TpuTopology pulumi.StringPtrInput `pulumi:"tpuTopology"`
 	// The type of the policy. Supports a single value: COMPACT.
 	// Specifying COMPACT placement policy type places node pool's nodes in a closer
@@ -45818,7 +45955,7 @@ func (o NodePoolPlacementPolicyOutput) PolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolPlacementPolicy) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
 }
 
-// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+// The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `"2x4"` or `"2x2x2"`.
 func (o NodePoolPlacementPolicyOutput) TpuTopology() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolPlacementPolicy) *string { return v.TpuTopology }).(pulumi.StringPtrOutput)
 }
@@ -45866,7 +46003,7 @@ func (o NodePoolPlacementPolicyPtrOutput) PolicyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+// The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `"2x4"` or `"2x2x2"`.
 func (o NodePoolPlacementPolicyPtrOutput) TpuTopology() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolPlacementPolicy) *string {
 		if v == nil {
@@ -53231,6 +53368,103 @@ func (o GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutp
 	}).(GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput)
 }
 
+type GetClusterNetworkPerformanceConfig struct {
+	// Specifies the total network bandwidth tier for NodePools in the cluster.
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// GetClusterNetworkPerformanceConfigInput is an input type that accepts GetClusterNetworkPerformanceConfigArgs and GetClusterNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `GetClusterNetworkPerformanceConfigInput` via:
+//
+//	GetClusterNetworkPerformanceConfigArgs{...}
+type GetClusterNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNetworkPerformanceConfigOutput() GetClusterNetworkPerformanceConfigOutput
+	ToGetClusterNetworkPerformanceConfigOutputWithContext(context.Context) GetClusterNetworkPerformanceConfigOutput
+}
+
+type GetClusterNetworkPerformanceConfigArgs struct {
+	// Specifies the total network bandwidth tier for NodePools in the cluster.
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (GetClusterNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetClusterNetworkPerformanceConfigArgs) ToGetClusterNetworkPerformanceConfigOutput() GetClusterNetworkPerformanceConfigOutput {
+	return i.ToGetClusterNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNetworkPerformanceConfigArgs) ToGetClusterNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetClusterNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNetworkPerformanceConfigOutput)
+}
+
+// GetClusterNetworkPerformanceConfigArrayInput is an input type that accepts GetClusterNetworkPerformanceConfigArray and GetClusterNetworkPerformanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNetworkPerformanceConfigArrayInput` via:
+//
+//	GetClusterNetworkPerformanceConfigArray{ GetClusterNetworkPerformanceConfigArgs{...} }
+type GetClusterNetworkPerformanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNetworkPerformanceConfigArrayOutput() GetClusterNetworkPerformanceConfigArrayOutput
+	ToGetClusterNetworkPerformanceConfigArrayOutputWithContext(context.Context) GetClusterNetworkPerformanceConfigArrayOutput
+}
+
+type GetClusterNetworkPerformanceConfigArray []GetClusterNetworkPerformanceConfigInput
+
+func (GetClusterNetworkPerformanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetClusterNetworkPerformanceConfigArray) ToGetClusterNetworkPerformanceConfigArrayOutput() GetClusterNetworkPerformanceConfigArrayOutput {
+	return i.ToGetClusterNetworkPerformanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNetworkPerformanceConfigArray) ToGetClusterNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetClusterNetworkPerformanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNetworkPerformanceConfigArrayOutput)
+}
+
+type GetClusterNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetClusterNetworkPerformanceConfigOutput) ToGetClusterNetworkPerformanceConfigOutput() GetClusterNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o GetClusterNetworkPerformanceConfigOutput) ToGetClusterNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetClusterNetworkPerformanceConfigOutput {
+	return o
+}
+
+// Specifies the total network bandwidth tier for NodePools in the cluster.
+func (o GetClusterNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type GetClusterNetworkPerformanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNetworkPerformanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetClusterNetworkPerformanceConfigArrayOutput) ToGetClusterNetworkPerformanceConfigArrayOutput() GetClusterNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNetworkPerformanceConfigArrayOutput) ToGetClusterNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetClusterNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNetworkPerformanceConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNetworkPerformanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNetworkPerformanceConfig {
+		return vs[0].([]GetClusterNetworkPerformanceConfig)[vs[1].(int)]
+	}).(GetClusterNetworkPerformanceConfigOutput)
+}
+
 type GetClusterNetworkPolicy struct {
 	// Whether network policy is enabled on the cluster.
 	Enabled bool `pulumi:"enabled"`
@@ -58995,7 +59229,7 @@ func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) In
 }
 
 type GetClusterNodePoolNetworkConfigNetworkPerformanceConfig struct {
-	// Specifies the total network bandwidth tier for the NodePool.
+	// Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
 	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
 }
 
@@ -59011,7 +59245,7 @@ type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigInput interface {
 }
 
 type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs struct {
-	// Specifies the total network bandwidth tier for the NodePool.
+	// Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
 	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
 }
 
@@ -59066,7 +59300,7 @@ func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ToGetClus
 	return o
 }
 
-// Specifies the total network bandwidth tier for the NodePool.
+// Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
 func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigNetworkPerformanceConfig) string {
 		return v.TotalEgressBandwidthTier
@@ -62853,7 +63087,7 @@ func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput) Index(i p
 type GetClusterNodePoolPlacementPolicy struct {
 	// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
 	PolicyName string `pulumi:"policyName"`
-	// TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+	// The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
 	TpuTopology string `pulumi:"tpuTopology"`
 	// Type defines the type of placement policy
 	Type string `pulumi:"type"`
@@ -62873,7 +63107,7 @@ type GetClusterNodePoolPlacementPolicyInput interface {
 type GetClusterNodePoolPlacementPolicyArgs struct {
 	// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
 	PolicyName pulumi.StringInput `pulumi:"policyName"`
-	// TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+	// The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
 	TpuTopology pulumi.StringInput `pulumi:"tpuTopology"`
 	// Type defines the type of placement policy
 	Type pulumi.StringInput `pulumi:"type"`
@@ -62935,7 +63169,7 @@ func (o GetClusterNodePoolPlacementPolicyOutput) PolicyName() pulumi.StringOutpu
 	return o.ApplyT(func(v GetClusterNodePoolPlacementPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
-// TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+// The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
 func (o GetClusterNodePoolPlacementPolicyOutput) TpuTopology() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolPlacementPolicy) string { return v.TpuTopology }).(pulumi.StringOutput)
 }
@@ -65847,6 +66081,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusPtrInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPerformanceConfigInput)(nil)).Elem(), ClusterNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPerformanceConfigPtrInput)(nil)).Elem(), ClusterNetworkPerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPolicyInput)(nil)).Elem(), ClusterNetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPolicyPtrInput)(nil)).Elem(), ClusterNetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigInput)(nil)).Elem(), ClusterNodeConfigArgs{})
@@ -66259,6 +66495,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusArrayInput)(nil)).Elem(), GetClusterMonitoringConfigManagedPrometheusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigInput)(nil)).Elem(), GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayInput)(nil)).Elem(), GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkPerformanceConfigInput)(nil)).Elem(), GetClusterNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkPerformanceConfigArrayInput)(nil)).Elem(), GetClusterNetworkPerformanceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkPolicyInput)(nil)).Elem(), GetClusterNetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkPolicyArrayInput)(nil)).Elem(), GetClusterNetworkPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigArgs{})
@@ -66729,6 +66967,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNetworkPerformanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigOutput{})
@@ -67141,6 +67381,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigManagedPrometheusArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNetworkPerformanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNetworkPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterNetworkPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigOutput{})

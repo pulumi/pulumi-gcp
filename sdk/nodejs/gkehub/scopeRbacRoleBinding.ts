@@ -34,8 +34,36 @@ import * as utilities from "../utilities";
  *     labels: {
  *         key: "value",
  *     },
+ * });
+ * ```
+ * ### Gkehub Scope Rbac Custom Role Binding Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_13293"});
+ * const rbacrolebindingactuation = new gcp.gkehub.Feature("rbacrolebindingactuation", {
+ *     name: "rbacrolebindingactuation",
+ *     location: "global",
+ *     spec: {
+ *         rbacrolebindingactuation: {
+ *             allowedCustomRoles: ["my-custom-role"],
+ *         },
+ *     },
+ * });
+ * const scopeRbacRoleBinding = new gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding", {
+ *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_40289",
+ *     scopeId: scope.scopeId,
+ *     user: "test-email@gmail.com",
+ *     role: {
+ *         customRole: "my-custom-role",
+ *     },
+ *     labels: {
+ *         key: "value",
+ *     },
  * }, {
- *     dependsOn: [scope],
+ *     dependsOn: [rbacrolebindingactuation],
  * });
  * ```
  *

@@ -27,6 +27,8 @@ __all__ = [
     'AppGroupAttribute',
     'DeveloperAttribute',
     'DnsZonePeeringConfig',
+    'EnvironmentClientIpResolutionConfig',
+    'EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm',
     'EnvironmentIamBindingCondition',
     'EnvironmentIamMemberCondition',
     'EnvironmentNodeConfig',
@@ -484,6 +486,92 @@ class DnsZonePeeringConfig(dict):
         The ID of the project that contains the producer VPC network.
         """
         return pulumi.get(self, "target_project_id")
+
+
+@pulumi.output_type
+class EnvironmentClientIpResolutionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerIndexAlgorithm":
+            suggest = "header_index_algorithm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentClientIpResolutionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentClientIpResolutionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentClientIpResolutionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_index_algorithm: Optional['outputs.EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm'] = None):
+        """
+        :param 'EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs' header_index_algorithm: Resolves the client ip based on a custom header.
+               Structure is documented below.
+        """
+        if header_index_algorithm is not None:
+            pulumi.set(__self__, "header_index_algorithm", header_index_algorithm)
+
+    @property
+    @pulumi.getter(name="headerIndexAlgorithm")
+    def header_index_algorithm(self) -> Optional['outputs.EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm']:
+        """
+        Resolves the client ip based on a custom header.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_index_algorithm")
+
+
+@pulumi.output_type
+class EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipHeaderIndex":
+            suggest = "ip_header_index"
+        elif key == "ipHeaderName":
+            suggest = "ip_header_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_header_index: builtins.int,
+                 ip_header_name: builtins.str):
+        """
+        :param builtins.int ip_header_index: The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
+        :param builtins.str ip_header_name: The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
+        """
+        pulumi.set(__self__, "ip_header_index", ip_header_index)
+        pulumi.set(__self__, "ip_header_name", ip_header_name)
+
+    @property
+    @pulumi.getter(name="ipHeaderIndex")
+    def ip_header_index(self) -> builtins.int:
+        """
+        The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
+        """
+        return pulumi.get(self, "ip_header_index")
+
+    @property
+    @pulumi.getter(name="ipHeaderName")
+    def ip_header_name(self) -> builtins.str:
+        """
+        The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
+        """
+        return pulumi.get(self, "ip_header_name")
 
 
 @pulumi.output_type

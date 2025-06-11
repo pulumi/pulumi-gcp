@@ -538,6 +538,7 @@ class InterconnectAttachmentArgs:
 class _InterconnectAttachmentState:
     def __init__(__self__, *,
                  admin_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 attachment_group: Optional[pulumi.Input[builtins.str]] = None,
                  bandwidth: Optional[pulumi.Input[builtins.str]] = None,
                  candidate_cloud_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
                  candidate_cloud_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
@@ -577,6 +578,7 @@ class _InterconnectAttachmentState:
         Input properties used for looking up and filtering InterconnectAttachment resources.
         :param pulumi.Input[builtins.bool] admin_enabled: Whether the VLAN attachment is enabled or disabled.  When using
                PARTNER type this will Pre-Activate the interconnect attachment
+        :param pulumi.Input[builtins.str] attachment_group: URL of the AttachmentGroup that includes this Attachment.
         :param pulumi.Input[builtins.str] bandwidth: Provisioned bandwidth capacity for the interconnect attachment.
                For attachments of type DEDICATED, the user can set the bandwidth.
                For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
@@ -708,6 +710,8 @@ class _InterconnectAttachmentState:
         """
         if admin_enabled is not None:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
+        if attachment_group is not None:
+            pulumi.set(__self__, "attachment_group", attachment_group)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if candidate_cloud_router_ip_address is not None:
@@ -791,6 +795,18 @@ class _InterconnectAttachmentState:
     @admin_enabled.setter
     def admin_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "admin_enabled", value)
+
+    @property
+    @pulumi.getter(name="attachmentGroup")
+    def attachment_group(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        URL of the AttachmentGroup that includes this Attachment.
+        """
+        return pulumi.get(self, "attachment_group")
+
+    @attachment_group.setter
+    def attachment_group(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "attachment_group", value)
 
     @property
     @pulumi.getter
@@ -1772,6 +1788,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["subnet_length"] = subnet_length
             __props__.__dict__["type"] = type
             __props__.__dict__["vlan_tag8021q"] = vlan_tag8021q
+            __props__.__dict__["attachment_group"] = None
             __props__.__dict__["cloud_router_ip_address"] = None
             __props__.__dict__["cloud_router_ipv6_address"] = None
             __props__.__dict__["creation_timestamp"] = None
@@ -1799,6 +1816,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+            attachment_group: Optional[pulumi.Input[builtins.str]] = None,
             bandwidth: Optional[pulumi.Input[builtins.str]] = None,
             candidate_cloud_router_ip_address: Optional[pulumi.Input[builtins.str]] = None,
             candidate_cloud_router_ipv6_address: Optional[pulumi.Input[builtins.str]] = None,
@@ -1843,6 +1861,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] admin_enabled: Whether the VLAN attachment is enabled or disabled.  When using
                PARTNER type this will Pre-Activate the interconnect attachment
+        :param pulumi.Input[builtins.str] attachment_group: URL of the AttachmentGroup that includes this Attachment.
         :param pulumi.Input[builtins.str] bandwidth: Provisioned bandwidth capacity for the interconnect attachment.
                For attachments of type DEDICATED, the user can set the bandwidth.
                For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
@@ -1977,6 +1996,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__ = _InterconnectAttachmentState.__new__(_InterconnectAttachmentState)
 
         __props__.__dict__["admin_enabled"] = admin_enabled
+        __props__.__dict__["attachment_group"] = attachment_group
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["candidate_cloud_router_ip_address"] = candidate_cloud_router_ip_address
         __props__.__dict__["candidate_cloud_router_ipv6_address"] = candidate_cloud_router_ipv6_address
@@ -2022,6 +2042,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         PARTNER type this will Pre-Activate the interconnect attachment
         """
         return pulumi.get(self, "admin_enabled")
+
+    @property
+    @pulumi.getter(name="attachmentGroup")
+    def attachment_group(self) -> pulumi.Output[builtins.str]:
+        """
+        URL of the AttachmentGroup that includes this Attachment.
+        """
+        return pulumi.get(self, "attachment_group")
 
     @property
     @pulumi.getter

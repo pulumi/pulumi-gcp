@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.GetTopicIngestionDataSourceSetting;
 import com.pulumi.gcp.pubsub.outputs.GetTopicMessageStoragePolicy;
+import com.pulumi.gcp.pubsub.outputs.GetTopicMessageTransform;
 import com.pulumi.gcp.pubsub.outputs.GetTopicSchemaSetting;
 import java.lang.String;
 import java.util.List;
@@ -28,6 +29,7 @@ public final class GetTopicResult {
     private Map<String,String> labels;
     private String messageRetentionDuration;
     private List<GetTopicMessageStoragePolicy> messageStoragePolicies;
+    private List<GetTopicMessageTransform> messageTransforms;
     private String name;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
@@ -59,6 +61,9 @@ public final class GetTopicResult {
     public List<GetTopicMessageStoragePolicy> messageStoragePolicies() {
         return this.messageStoragePolicies;
     }
+    public List<GetTopicMessageTransform> messageTransforms() {
+        return this.messageTransforms;
+    }
     public String name() {
         return this.name;
     }
@@ -88,6 +93,7 @@ public final class GetTopicResult {
         private Map<String,String> labels;
         private String messageRetentionDuration;
         private List<GetTopicMessageStoragePolicy> messageStoragePolicies;
+        private List<GetTopicMessageTransform> messageTransforms;
         private String name;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
@@ -102,6 +108,7 @@ public final class GetTopicResult {
     	      this.labels = defaults.labels;
     	      this.messageRetentionDuration = defaults.messageRetentionDuration;
     	      this.messageStoragePolicies = defaults.messageStoragePolicies;
+    	      this.messageTransforms = defaults.messageTransforms;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
@@ -171,6 +178,17 @@ public final class GetTopicResult {
             return messageStoragePolicies(List.of(messageStoragePolicies));
         }
         @CustomType.Setter
+        public Builder messageTransforms(List<GetTopicMessageTransform> messageTransforms) {
+            if (messageTransforms == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "messageTransforms");
+            }
+            this.messageTransforms = messageTransforms;
+            return this;
+        }
+        public Builder messageTransforms(GetTopicMessageTransform... messageTransforms) {
+            return messageTransforms(List.of(messageTransforms));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetTopicResult", "name");
@@ -212,6 +230,7 @@ public final class GetTopicResult {
             _resultValue.labels = labels;
             _resultValue.messageRetentionDuration = messageRetentionDuration;
             _resultValue.messageStoragePolicies = messageStoragePolicies;
+            _resultValue.messageTransforms = messageTransforms;
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;

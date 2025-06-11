@@ -28,7 +28,7 @@ class GetSubscriptionResult:
     """
     A collection of values returned by getSubscription.
     """
-    def __init__(__self__, ack_deadline_seconds=None, bigquery_configs=None, cloud_storage_configs=None, dead_letter_policies=None, effective_labels=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policies=None, filter=None, id=None, labels=None, message_retention_duration=None, name=None, project=None, pulumi_labels=None, push_configs=None, retain_acked_messages=None, retry_policies=None, topic=None):
+    def __init__(__self__, ack_deadline_seconds=None, bigquery_configs=None, cloud_storage_configs=None, dead_letter_policies=None, effective_labels=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policies=None, filter=None, id=None, labels=None, message_retention_duration=None, message_transforms=None, name=None, project=None, pulumi_labels=None, push_configs=None, retain_acked_messages=None, retry_policies=None, topic=None):
         if ack_deadline_seconds and not isinstance(ack_deadline_seconds, int):
             raise TypeError("Expected argument 'ack_deadline_seconds' to be a int")
         pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
@@ -65,6 +65,9 @@ class GetSubscriptionResult:
         if message_retention_duration and not isinstance(message_retention_duration, str):
             raise TypeError("Expected argument 'message_retention_duration' to be a str")
         pulumi.set(__self__, "message_retention_duration", message_retention_duration)
+        if message_transforms and not isinstance(message_transforms, list):
+            raise TypeError("Expected argument 'message_transforms' to be a list")
+        pulumi.set(__self__, "message_transforms", message_transforms)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -151,6 +154,11 @@ class GetSubscriptionResult:
         return pulumi.get(self, "message_retention_duration")
 
     @property
+    @pulumi.getter(name="messageTransforms")
+    def message_transforms(self) -> Sequence['outputs.GetSubscriptionMessageTransformResult']:
+        return pulumi.get(self, "message_transforms")
+
+    @property
     @pulumi.getter
     def name(self) -> builtins.str:
         return pulumi.get(self, "name")
@@ -204,6 +212,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             id=self.id,
             labels=self.labels,
             message_retention_duration=self.message_retention_duration,
+            message_transforms=self.message_transforms,
             name=self.name,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
@@ -256,6 +265,7 @@ def get_subscription(name: Optional[builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         message_retention_duration=pulumi.get(__ret__, 'message_retention_duration'),
+        message_transforms=pulumi.get(__ret__, 'message_transforms'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
@@ -305,6 +315,7 @@ def get_subscription_output(name: Optional[pulumi.Input[builtins.str]] = None,
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),
         message_retention_duration=pulumi.get(__response__, 'message_retention_duration'),
+        message_transforms=pulumi.get(__response__, 'message_transforms'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),

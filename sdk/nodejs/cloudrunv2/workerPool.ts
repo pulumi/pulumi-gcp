@@ -271,10 +271,6 @@ import * as utilities from "../utilities";
  *             {
  *                 name: "hello-2",
  *                 image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
- *                 envs: [{
- *                     name: "PORT",
- *                     value: "8081",
- *                 }],
  *             },
  *         ],
  *         volumes: [{

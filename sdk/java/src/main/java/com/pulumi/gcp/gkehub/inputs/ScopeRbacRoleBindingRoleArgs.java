@@ -16,10 +16,27 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
     public static final ScopeRbacRoleBindingRoleArgs Empty = new ScopeRbacRoleBindingRoleArgs();
 
     /**
-     * PredefinedRole is an ENUM representation of the default Kubernetes Roles
-     * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+     * CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
      * 
      * ***
+     * 
+     */
+    @Import(name="customRole")
+    private @Nullable Output<String> customRole;
+
+    /**
+     * @return CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> customRole() {
+        return Optional.ofNullable(this.customRole);
+    }
+
+    /**
+     * PredefinedRole is an ENUM representation of the default Kubernetes Roles
+     * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
      * 
      */
     @Import(name="predefinedRole")
@@ -29,8 +46,6 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
      * @return PredefinedRole is an ENUM representation of the default Kubernetes Roles
      * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
      * 
-     * ***
-     * 
      */
     public Optional<Output<String>> predefinedRole() {
         return Optional.ofNullable(this.predefinedRole);
@@ -39,6 +54,7 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
     private ScopeRbacRoleBindingRoleArgs() {}
 
     private ScopeRbacRoleBindingRoleArgs(ScopeRbacRoleBindingRoleArgs $) {
+        this.customRole = $.customRole;
         this.predefinedRole = $.predefinedRole;
     }
 
@@ -61,10 +77,33 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param predefinedRole PredefinedRole is an ENUM representation of the default Kubernetes Roles
-         * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+         * @param customRole CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
          * 
          * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customRole(@Nullable Output<String> customRole) {
+            $.customRole = customRole;
+            return this;
+        }
+
+        /**
+         * @param customRole CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customRole(String customRole) {
+            return customRole(Output.of(customRole));
+        }
+
+        /**
+         * @param predefinedRole PredefinedRole is an ENUM representation of the default Kubernetes Roles
+         * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
          * 
          * @return builder
          * 
@@ -77,8 +116,6 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
         /**
          * @param predefinedRole PredefinedRole is an ENUM representation of the default Kubernetes Roles
          * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -9,6 +9,7 @@ import com.pulumi.gcp.pubsub.outputs.GetSubscriptionBigqueryConfig;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionCloudStorageConfig;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionDeadLetterPolicy;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionExpirationPolicy;
+import com.pulumi.gcp.pubsub.outputs.GetSubscriptionMessageTransform;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionPushConfig;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionRetryPolicy;
 import java.lang.Boolean;
@@ -38,6 +39,7 @@ public final class GetSubscriptionResult {
     private String id;
     private Map<String,String> labels;
     private String messageRetentionDuration;
+    private List<GetSubscriptionMessageTransform> messageTransforms;
     private String name;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
@@ -87,6 +89,9 @@ public final class GetSubscriptionResult {
     public String messageRetentionDuration() {
         return this.messageRetentionDuration;
     }
+    public List<GetSubscriptionMessageTransform> messageTransforms() {
+        return this.messageTransforms;
+    }
     public String name() {
         return this.name;
     }
@@ -130,6 +135,7 @@ public final class GetSubscriptionResult {
         private String id;
         private Map<String,String> labels;
         private String messageRetentionDuration;
+        private List<GetSubscriptionMessageTransform> messageTransforms;
         private String name;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
@@ -152,6 +158,7 @@ public final class GetSubscriptionResult {
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.messageRetentionDuration = defaults.messageRetentionDuration;
+    	      this.messageTransforms = defaults.messageTransforms;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
@@ -270,6 +277,17 @@ public final class GetSubscriptionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder messageTransforms(List<GetSubscriptionMessageTransform> messageTransforms) {
+            if (messageTransforms == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "messageTransforms");
+            }
+            this.messageTransforms = messageTransforms;
+            return this;
+        }
+        public Builder messageTransforms(GetSubscriptionMessageTransform... messageTransforms) {
+            return messageTransforms(List.of(messageTransforms));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetSubscriptionResult", "name");
@@ -343,6 +361,7 @@ public final class GetSubscriptionResult {
             _resultValue.id = id;
             _resultValue.labels = labels;
             _resultValue.messageRetentionDuration = messageRetentionDuration;
+            _resultValue.messageTransforms = messageTransforms;
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;

@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.Gemini
     ///             { "my_key", "my_value" },
     ///         },
     ///         EnableCustomerDataSharing = true,
+    ///         DisableWebGrounding = true,
     ///     });
     /// 
     ///     var example = new Gcp.Gemini.GeminiGcpEnablementSettingBinding("example", new()
@@ -117,8 +118,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Product type of the setting binding.
-        /// Possible values are: `GEMINI_IN_BIGQUERY`.
+        /// Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
         /// </summary>
         [Output("product")]
         public Output<string> Product { get; private set; } = null!;
@@ -236,8 +236,7 @@ namespace Pulumi.Gcp.Gemini
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Product type of the setting binding.
-        /// Possible values are: `GEMINI_IN_BIGQUERY`.
+        /// Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
         /// </summary>
         [Input("product")]
         public Input<string>? Product { get; set; }
@@ -328,8 +327,7 @@ namespace Pulumi.Gcp.Gemini
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Product type of the setting binding.
-        /// Possible values are: `GEMINI_IN_BIGQUERY`.
+        /// Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
         /// </summary>
         [Input("product")]
         public Input<string>? Product { get; set; }

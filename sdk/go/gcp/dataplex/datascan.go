@@ -213,8 +213,9 @@ import (
 //					Field: pulumi.String("modified_date"),
 //				},
 //				DataQualitySpec: &dataplex.DatascanDataQualitySpecArgs{
-//					SamplingPercent: pulumi.Float64(5),
-//					RowFilter:       pulumi.String("station_id > 1000"),
+//					SamplingPercent:          pulumi.Float64(5),
+//					RowFilter:                pulumi.String("station_id > 1000"),
+//					CatalogPublishingEnabled: pulumi.Bool(true),
 //					PostScanActions: &dataplex.DatascanDataQualitySpecPostScanActionsArgs{
 //						NotificationReport: &dataplex.DatascanDataQualitySpecPostScanActionsNotificationReportArgs{
 //							Recipients: &dataplex.DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs{

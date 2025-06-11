@@ -73,16 +73,17 @@ type LookupSubscriptionResult struct {
 	ExpirationPolicies        []GetSubscriptionExpirationPolicy   `pulumi:"expirationPolicies"`
 	Filter                    string                              `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                       string                       `pulumi:"id"`
-	Labels                   map[string]string            `pulumi:"labels"`
-	MessageRetentionDuration string                       `pulumi:"messageRetentionDuration"`
-	Name                     string                       `pulumi:"name"`
-	Project                  *string                      `pulumi:"project"`
-	PulumiLabels             map[string]string            `pulumi:"pulumiLabels"`
-	PushConfigs              []GetSubscriptionPushConfig  `pulumi:"pushConfigs"`
-	RetainAckedMessages      bool                         `pulumi:"retainAckedMessages"`
-	RetryPolicies            []GetSubscriptionRetryPolicy `pulumi:"retryPolicies"`
-	Topic                    string                       `pulumi:"topic"`
+	Id                       string                            `pulumi:"id"`
+	Labels                   map[string]string                 `pulumi:"labels"`
+	MessageRetentionDuration string                            `pulumi:"messageRetentionDuration"`
+	MessageTransforms        []GetSubscriptionMessageTransform `pulumi:"messageTransforms"`
+	Name                     string                            `pulumi:"name"`
+	Project                  *string                           `pulumi:"project"`
+	PulumiLabels             map[string]string                 `pulumi:"pulumiLabels"`
+	PushConfigs              []GetSubscriptionPushConfig       `pulumi:"pushConfigs"`
+	RetainAckedMessages      bool                              `pulumi:"retainAckedMessages"`
+	RetryPolicies            []GetSubscriptionRetryPolicy      `pulumi:"retryPolicies"`
+	Topic                    string                            `pulumi:"topic"`
 }
 
 func LookupSubscriptionOutput(ctx *pulumi.Context, args LookupSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionResultOutput {
@@ -171,6 +172,10 @@ func (o LookupSubscriptionResultOutput) Labels() pulumi.StringMapOutput {
 
 func (o LookupSubscriptionResultOutput) MessageRetentionDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.MessageRetentionDuration }).(pulumi.StringOutput)
+}
+
+func (o LookupSubscriptionResultOutput) MessageTransforms() GetSubscriptionMessageTransformArrayOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) []GetSubscriptionMessageTransform { return v.MessageTransforms }).(GetSubscriptionMessageTransformArrayOutput)
 }
 
 func (o LookupSubscriptionResultOutput) Name() pulumi.StringOutput {

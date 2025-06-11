@@ -219,14 +219,14 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * ) Enables Flex Start provisioning model for the node pool.
+     * Enables Flex Start provisioning model for the node pool.
      * 
      */
     @Import(name="flexStart")
     private @Nullable Output<Boolean> flexStart;
 
     /**
-     * @return ) Enables Flex Start provisioning model for the node pool.
+     * @return Enables Flex Start provisioning model for the node pool.
      * 
      */
     public Optional<Output<Boolean>> flexStart() {
@@ -1142,7 +1142,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param flexStart ) Enables Flex Start provisioning model for the node pool.
+         * @param flexStart Enables Flex Start provisioning model for the node pool.
          * 
          * @return builder
          * 
@@ -1153,7 +1153,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param flexStart ) Enables Flex Start provisioning model for the node pool.
+         * @param flexStart Enables Flex Start provisioning model for the node pool.
          * 
          * @return builder
          * 

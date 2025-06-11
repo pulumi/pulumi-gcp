@@ -28,6 +28,7 @@ import com.pulumi.gcp.container.inputs.ClusterMasterAuthArgs;
 import com.pulumi.gcp.container.inputs.ClusterMasterAuthorizedNetworksConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterMeshCertificatesArgs;
 import com.pulumi.gcp.container.inputs.ClusterMonitoringConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNetworkPerformanceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNetworkPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolArgs;
@@ -1003,6 +1004,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Network bandwidth tier configuration.
+     * 
+     */
+    @Import(name="networkPerformanceConfig")
+    private @Nullable Output<ClusterNetworkPerformanceConfigArgs> networkPerformanceConfig;
+
+    /**
+     * @return Network bandwidth tier configuration.
+     * 
+     */
+    public Optional<Output<ClusterNetworkPerformanceConfigArgs>> networkPerformanceConfig() {
+        return Optional.ofNullable(this.networkPerformanceConfig);
+    }
+
+    /**
      * Configuration options for the
      * [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
      * feature. Structure is documented below.
@@ -1670,6 +1686,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.monitoringService = $.monitoringService;
         this.name = $.name;
         this.network = $.network;
+        this.networkPerformanceConfig = $.networkPerformanceConfig;
         this.networkPolicy = $.networkPolicy;
         this.networkingMode = $.networkingMode;
         this.nodeConfig = $.nodeConfig;
@@ -2969,6 +2986,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPerformanceConfig(@Nullable Output<ClusterNetworkPerformanceConfigArgs> networkPerformanceConfig) {
+            $.networkPerformanceConfig = networkPerformanceConfig;
+            return this;
+        }
+
+        /**
+         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPerformanceConfig(ClusterNetworkPerformanceConfigArgs networkPerformanceConfig) {
+            return networkPerformanceConfig(Output.of(networkPerformanceConfig));
         }
 
         /**

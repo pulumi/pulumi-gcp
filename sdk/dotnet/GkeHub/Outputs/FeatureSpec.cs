@@ -28,6 +28,11 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureSpecMulticlusteringress? Multiclusteringress;
+        /// <summary>
+        /// RBACRolebinding Actuation feature spec.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.FeatureSpecRbacrolebindingactuation? Rbacrolebindingactuation;
 
         [OutputConstructor]
         private FeatureSpec(
@@ -35,11 +40,14 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             Outputs.FeatureSpecFleetobservability? fleetobservability,
 
-            Outputs.FeatureSpecMulticlusteringress? multiclusteringress)
+            Outputs.FeatureSpecMulticlusteringress? multiclusteringress,
+
+            Outputs.FeatureSpecRbacrolebindingactuation? rbacrolebindingactuation)
         {
             Clusterupgrade = clusterupgrade;
             Fleetobservability = fleetobservability;
             Multiclusteringress = multiclusteringress;
+            Rbacrolebindingactuation = rbacrolebindingactuation;
         }
     }
 }

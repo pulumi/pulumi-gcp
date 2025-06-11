@@ -18,6 +18,12 @@ from .. import _utilities
 __all__ = [
     'ApiHubInstanceConfigArgs',
     'ApiHubInstanceConfigArgsDict',
+    'CurationEndpointArgs',
+    'CurationEndpointArgsDict',
+    'CurationEndpointApplicationIntegrationEndpointDetailsArgs',
+    'CurationEndpointApplicationIntegrationEndpointDetailsArgsDict',
+    'CurationPluginInstanceActionArgs',
+    'CurationPluginInstanceActionArgsDict',
 ]
 
 MYPY = False
@@ -151,5 +157,183 @@ class ApiHubInstanceConfigArgs:
     @vertex_location.setter
     def vertex_location(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "vertex_location", value)
+
+
+if not MYPY:
+    class CurationEndpointArgsDict(TypedDict):
+        application_integration_endpoint_details: pulumi.Input['CurationEndpointApplicationIntegrationEndpointDetailsArgsDict']
+        """
+        The details of the Application Integration endpoint to be triggered for
+        curation.
+        Structure is documented below.
+        """
+elif False:
+    CurationEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CurationEndpointArgs:
+    def __init__(__self__, *,
+                 application_integration_endpoint_details: pulumi.Input['CurationEndpointApplicationIntegrationEndpointDetailsArgs']):
+        """
+        :param pulumi.Input['CurationEndpointApplicationIntegrationEndpointDetailsArgs'] application_integration_endpoint_details: The details of the Application Integration endpoint to be triggered for
+               curation.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "application_integration_endpoint_details", application_integration_endpoint_details)
+
+    @property
+    @pulumi.getter(name="applicationIntegrationEndpointDetails")
+    def application_integration_endpoint_details(self) -> pulumi.Input['CurationEndpointApplicationIntegrationEndpointDetailsArgs']:
+        """
+        The details of the Application Integration endpoint to be triggered for
+        curation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "application_integration_endpoint_details")
+
+    @application_integration_endpoint_details.setter
+    def application_integration_endpoint_details(self, value: pulumi.Input['CurationEndpointApplicationIntegrationEndpointDetailsArgs']):
+        pulumi.set(self, "application_integration_endpoint_details", value)
+
+
+if not MYPY:
+    class CurationEndpointApplicationIntegrationEndpointDetailsArgsDict(TypedDict):
+        trigger_id: pulumi.Input[builtins.str]
+        """
+        The API trigger ID of the Application Integration workflow.
+        """
+        uri: pulumi.Input[builtins.str]
+        """
+        The endpoint URI should be a valid REST URI for triggering an Application
+        Integration.
+        Format:
+        `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
+        or
+        `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
+
+        - - -
+        """
+elif False:
+    CurationEndpointApplicationIntegrationEndpointDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CurationEndpointApplicationIntegrationEndpointDetailsArgs:
+    def __init__(__self__, *,
+                 trigger_id: pulumi.Input[builtins.str],
+                 uri: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] trigger_id: The API trigger ID of the Application Integration workflow.
+        :param pulumi.Input[builtins.str] uri: The endpoint URI should be a valid REST URI for triggering an Application
+               Integration.
+               Format:
+               `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
+               or
+               `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
+               
+               - - -
+        """
+        pulumi.set(__self__, "trigger_id", trigger_id)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> pulumi.Input[builtins.str]:
+        """
+        The API trigger ID of the Application Integration workflow.
+        """
+        return pulumi.get(self, "trigger_id")
+
+    @trigger_id.setter
+    def trigger_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "trigger_id", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[builtins.str]:
+        """
+        The endpoint URI should be a valid REST URI for triggering an Application
+        Integration.
+        Format:
+        `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
+        or
+        `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
+
+        - - -
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "uri", value)
+
+
+if not MYPY:
+    class CurationPluginInstanceActionArgsDict(TypedDict):
+        action_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The action ID that is using the curation.
+        This should map to one of the action IDs specified
+        in action configs in the plugin.
+        """
+        plugin_instance: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Plugin instance that is using the curation.
+        Format is
+        `projects/{project}/locations/{locati on}/plugins/{plugin}/instances/{instance}`
+        """
+elif False:
+    CurationPluginInstanceActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CurationPluginInstanceActionArgs:
+    def __init__(__self__, *,
+                 action_id: Optional[pulumi.Input[builtins.str]] = None,
+                 plugin_instance: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] action_id: (Output)
+               The action ID that is using the curation.
+               This should map to one of the action IDs specified
+               in action configs in the plugin.
+        :param pulumi.Input[builtins.str] plugin_instance: (Output)
+               Plugin instance that is using the curation.
+               Format is
+               `projects/{project}/locations/{locati on}/plugins/{plugin}/instances/{instance}`
+        """
+        if action_id is not None:
+            pulumi.set(__self__, "action_id", action_id)
+        if plugin_instance is not None:
+            pulumi.set(__self__, "plugin_instance", plugin_instance)
+
+    @property
+    @pulumi.getter(name="actionId")
+    def action_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The action ID that is using the curation.
+        This should map to one of the action IDs specified
+        in action configs in the plugin.
+        """
+        return pulumi.get(self, "action_id")
+
+    @action_id.setter
+    def action_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "action_id", value)
+
+    @property
+    @pulumi.getter(name="pluginInstance")
+    def plugin_instance(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Plugin instance that is using the curation.
+        Format is
+        `projects/{project}/locations/{locati on}/plugins/{plugin}/instances/{instance}`
+        """
+        return pulumi.get(self, "plugin_instance")
+
+    @plugin_instance.setter
+    def plugin_instance(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "plugin_instance", value)
 
 

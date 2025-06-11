@@ -453,6 +453,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string | undefined>;
     /**
+     * Network bandwidth tier configuration.
+     */
+    public readonly networkPerformanceConfig!: pulumi.Output<outputs.container.ClusterNetworkPerformanceConfig | undefined>;
+    /**
      * Configuration options for the
      * [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
      * feature. Structure is documented below.
@@ -710,6 +714,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["monitoringService"] = state ? state.monitoringService : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
             resourceInputs["networkPolicy"] = state ? state.networkPolicy : undefined;
             resourceInputs["networkingMode"] = state ? state.networkingMode : undefined;
             resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
@@ -793,6 +798,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["monitoringService"] = args ? args.monitoringService : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
             resourceInputs["networkPolicy"] = args ? args.networkPolicy : undefined;
             resourceInputs["networkingMode"] = args ? args.networkingMode : undefined;
             resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
@@ -1132,6 +1138,10 @@ export interface ClusterState {
      * shared network.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Network bandwidth tier configuration.
+     */
+    networkPerformanceConfig?: pulumi.Input<inputs.container.ClusterNetworkPerformanceConfig>;
     /**
      * Configuration options for the
      * [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
@@ -1602,6 +1612,10 @@ export interface ClusterArgs {
      * shared network.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Network bandwidth tier configuration.
+     */
+    networkPerformanceConfig?: pulumi.Input<inputs.container.ClusterNetworkPerformanceConfig>;
     /**
      * Configuration options for the
      * [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)

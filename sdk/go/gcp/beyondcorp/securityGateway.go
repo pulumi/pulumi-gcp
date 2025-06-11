@@ -76,6 +76,8 @@ type SecurityGateway struct {
 
 	// Output only. Timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Service account used for operations that involve resources in consumer projects.
+	DelegatingServiceAccount pulumi.StringOutput `pulumi:"delegatingServiceAccount"`
 	// Optional. An arbitrary user-provided name for the SecurityGateway.
 	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -154,6 +156,8 @@ func GetSecurityGateway(ctx *pulumi.Context,
 type securityGatewayState struct {
 	// Output only. Timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Service account used for operations that involve resources in consumer projects.
+	DelegatingServiceAccount *string `pulumi:"delegatingServiceAccount"`
 	// Optional. An arbitrary user-provided name for the SecurityGateway.
 	// Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -200,6 +204,8 @@ type securityGatewayState struct {
 type SecurityGatewayState struct {
 	// Output only. Timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
+	// Service account used for operations that involve resources in consumer projects.
+	DelegatingServiceAccount pulumi.StringPtrInput
 	// Optional. An arbitrary user-provided name for the SecurityGateway.
 	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
@@ -392,6 +398,11 @@ func (o SecurityGatewayOutput) ToSecurityGatewayOutputWithContext(ctx context.Co
 // Output only. Timestamp when the resource was created.
 func (o SecurityGatewayOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGateway) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Service account used for operations that involve resources in consumer projects.
+func (o SecurityGatewayOutput) DelegatingServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGateway) pulumi.StringOutput { return v.DelegatingServiceAccount }).(pulumi.StringOutput)
 }
 
 // Optional. An arbitrary user-provided name for the SecurityGateway.

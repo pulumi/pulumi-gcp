@@ -36,14 +36,14 @@ public final class NodePoolPlacementPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+     * The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `&#34;2x4&#34;` or `&#34;2x2x2&#34;`.
      * 
      */
     @Import(name="tpuTopology")
     private @Nullable Output<String> tpuTopology;
 
     /**
-     * @return The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+     * @return The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `&#34;2x4&#34;` or `&#34;2x2x2&#34;`.
      * 
      */
     public Optional<Output<String>> tpuTopology() {
@@ -121,7 +121,7 @@ public final class NodePoolPlacementPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tpuTopology The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+         * @param tpuTopology The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `&#34;2x4&#34;` or `&#34;2x2x2&#34;`.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class NodePoolPlacementPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tpuTopology The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+         * @param tpuTopology The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `&#34;2x4&#34;` or `&#34;2x2x2&#34;`.
          * 
          * @return builder
          * 

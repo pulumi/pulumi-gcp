@@ -143,6 +143,11 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public /*out*/ readonly interconnectAttachments!: pulumi.Output<string[]>;
     /**
+     * URLs of InterconnectGroups that include this Interconnect.
+     * Order is arbitrary and items are unique.
+     */
+    public /*out*/ readonly interconnectGroups!: pulumi.Output<string[]>;
+    /**
      * Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
      * Can take one of the following values:
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
@@ -298,6 +303,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["googleIpAddress"] = state ? state.googleIpAddress : undefined;
             resourceInputs["googleReferenceId"] = state ? state.googleReferenceId : undefined;
             resourceInputs["interconnectAttachments"] = state ? state.interconnectAttachments : undefined;
+            resourceInputs["interconnectGroups"] = state ? state.interconnectGroups : undefined;
             resourceInputs["interconnectType"] = state ? state.interconnectType : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -354,6 +360,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["googleIpAddress"] = undefined /*out*/;
             resourceInputs["googleReferenceId"] = undefined /*out*/;
             resourceInputs["interconnectAttachments"] = undefined /*out*/;
+            resourceInputs["interconnectGroups"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["operationalStatus"] = undefined /*out*/;
             resourceInputs["peerIpAddress"] = undefined /*out*/;
@@ -428,6 +435,11 @@ export interface InterconnectState {
      * A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
      */
     interconnectAttachments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URLs of InterconnectGroups that include this Interconnect.
+     * Order is arbitrary and items are unique.
+     */
+    interconnectGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
      * Can take one of the following values:

@@ -12,20 +12,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ScopeRbacRoleBindingRole {
     /**
-     * @return PredefinedRole is an ENUM representation of the default Kubernetes Roles
-     * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+     * @return CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
      * 
      * ***
+     * 
+     */
+    private @Nullable String customRole;
+    /**
+     * @return PredefinedRole is an ENUM representation of the default Kubernetes Roles
+     * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
      * 
      */
     private @Nullable String predefinedRole;
 
     private ScopeRbacRoleBindingRole() {}
     /**
-     * @return PredefinedRole is an ENUM representation of the default Kubernetes Roles
-     * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+     * @return CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
      * 
      * ***
+     * 
+     */
+    public Optional<String> customRole() {
+        return Optional.ofNullable(this.customRole);
+    }
+    /**
+     * @return PredefinedRole is an ENUM representation of the default Kubernetes Roles
+     * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
      * 
      */
     public Optional<String> predefinedRole() {
@@ -41,13 +53,21 @@ public final class ScopeRbacRoleBindingRole {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String customRole;
         private @Nullable String predefinedRole;
         public Builder() {}
         public Builder(ScopeRbacRoleBindingRole defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customRole = defaults.customRole;
     	      this.predefinedRole = defaults.predefinedRole;
         }
 
+        @CustomType.Setter
+        public Builder customRole(@Nullable String customRole) {
+
+            this.customRole = customRole;
+            return this;
+        }
         @CustomType.Setter
         public Builder predefinedRole(@Nullable String predefinedRole) {
 
@@ -56,6 +76,7 @@ public final class ScopeRbacRoleBindingRole {
         }
         public ScopeRbacRoleBindingRole build() {
             final var _resultValue = new ScopeRbacRoleBindingRole();
+            _resultValue.customRole = customRole;
             _resultValue.predefinedRole = predefinedRole;
             return _resultValue;
         }

@@ -37,7 +37,7 @@ import (
 //			}
 //			_, err = iam.NewWorkloadIdentityPoolNamespace(ctx, "example", &iam.WorkloadIdentityPoolNamespaceArgs{
 //				WorkloadIdentityPoolId:          pool.WorkloadIdentityPoolId,
-//				WorkloadIdentityPoolNamespaceId: pulumi.String("example-nmspc"),
+//				WorkloadIdentityPoolNamespaceId: pulumi.String("example-namespace"),
 //			})
 //			if err != nil {
 //				return err
@@ -70,7 +70,7 @@ import (
 //			}
 //			_, err = iam.NewWorkloadIdentityPoolNamespace(ctx, "example", &iam.WorkloadIdentityPoolNamespaceArgs{
 //				WorkloadIdentityPoolId:          pool.WorkloadIdentityPoolId,
-//				WorkloadIdentityPoolNamespaceId: pulumi.String("example-nmspc"),
+//				WorkloadIdentityPoolNamespaceId: pulumi.String("example-namespace"),
 //				Description:                     pulumi.String("Example Namespace in a Workload Identity Pool"),
 //				Disabled:                        pulumi.Bool(true),
 //			})

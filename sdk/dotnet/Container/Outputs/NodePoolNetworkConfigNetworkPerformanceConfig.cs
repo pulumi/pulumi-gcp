@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolNetworkConfigNetworkPerformanceConfig
     {
         /// <summary>
-        /// Specifies the total network bandwidth tier for the NodePool.
+        /// Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
         /// </summary>
         public readonly string TotalEgressBandwidthTier;
 

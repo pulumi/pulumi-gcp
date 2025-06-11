@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
+        /// Names of the containers that must start before this container.
+        /// </summary>
+        public readonly ImmutableArray<string> DependsOns;
+        /// <summary>
         /// List of environment variables to set in the container.
         /// Structure is documented below.
         /// </summary>
@@ -46,6 +50,13 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly Outputs.JobTemplateTemplateContainerResources? Resources;
         /// <summary>
+        /// Startup probe of application within the container.
+        /// All other probes are disabled if a startup probe is provided, until it
+        /// succeeds. Container will not be added to service endpoints if the probe fails.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.JobTemplateTemplateContainerStartupProbe? StartupProbe;
+        /// <summary>
         /// Volume to mount into the container's filesystem.
         /// Structure is documented below.
         /// </summary>
@@ -61,6 +72,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             ImmutableArray<string> commands,
 
+            ImmutableArray<string> dependsOns,
+
             ImmutableArray<Outputs.JobTemplateTemplateContainerEnv> envs,
 
             string image,
@@ -71,17 +84,21 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             Outputs.JobTemplateTemplateContainerResources? resources,
 
+            Outputs.JobTemplateTemplateContainerStartupProbe? startupProbe,
+
             ImmutableArray<Outputs.JobTemplateTemplateContainerVolumeMount> volumeMounts,
 
             string? workingDir)
         {
             Args = args;
             Commands = commands;
+            DependsOns = dependsOns;
             Envs = envs;
             Image = image;
             Name = name;
             Ports = ports;
             Resources = resources;
+            StartupProbe = startupProbe;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;
         }

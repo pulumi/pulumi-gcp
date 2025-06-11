@@ -50,6 +50,7 @@ export interface GetSecurityGatewayArgs {
  */
 export interface GetSecurityGatewayResult {
     readonly createTime: string;
+    readonly delegatingServiceAccount: string;
     readonly displayName: string;
     readonly externalIps: string[];
     readonly hubs: outputs.beyondcorp.GetSecurityGatewayHub[];

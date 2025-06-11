@@ -121,6 +121,57 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Backend Service Tls Settings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBackendAuthenticationConfig = new Gcp.NetworkSecurity.BackendAuthenticationConfig("default", new()
+    ///     {
+    ///         Name = "authentication",
+    ///         WellKnownRoots = "PUBLIC_ROOTS",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         Protocol = "HTTPS",
+    ///         TlsSettings = new Gcp.Compute.Inputs.BackendServiceTlsSettingsArgs
+    ///         {
+    ///             Sni = "example.com",
+    ///             SubjectAltNames = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.BackendServiceTlsSettingsSubjectAltNameArgs
+    ///                 {
+    ///                     DnsName = "example.com",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.BackendServiceTlsSettingsSubjectAltNameArgs
+    ///                 {
+    ///                     UniformResourceIdentifier = "https://example.com",
+    ///                 },
+    ///             },
+    ///             AuthenticationConfig = defaultBackendAuthenticationConfig.Id.Apply(id =&gt; $"//networksecurity.googleapis.com/{id}"),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

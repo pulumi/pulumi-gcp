@@ -18,7 +18,7 @@ public final class ClusterNodePoolPlacementPolicy {
      */
     private @Nullable String policyName;
     /**
-     * @return TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+     * @return The TPU topology like &#34;2x4&#34; or &#34;2x2x2&#34;. https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
      * 
      */
     private @Nullable String tpuTopology;
@@ -38,7 +38,7 @@ public final class ClusterNodePoolPlacementPolicy {
         return Optional.ofNullable(this.policyName);
     }
     /**
-     * @return TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+     * @return The TPU topology like &#34;2x4&#34; or &#34;2x2x2&#34;. https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
      * 
      */
     public Optional<String> tpuTopology() {

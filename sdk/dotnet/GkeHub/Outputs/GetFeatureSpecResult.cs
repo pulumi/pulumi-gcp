@@ -25,6 +25,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// Multicluster Ingress-specific spec.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureSpecMulticlusteringressResult> Multiclusteringresses;
+        /// <summary>
+        /// RBACRolebinding Actuation feature spec.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFeatureSpecRbacrolebindingactuationResult> Rbacrolebindingactuations;
 
         [OutputConstructor]
         private GetFeatureSpecResult(
@@ -32,11 +36,14 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             ImmutableArray<Outputs.GetFeatureSpecFleetobservabilityResult> fleetobservabilities,
 
-            ImmutableArray<Outputs.GetFeatureSpecMulticlusteringressResult> multiclusteringresses)
+            ImmutableArray<Outputs.GetFeatureSpecMulticlusteringressResult> multiclusteringresses,
+
+            ImmutableArray<Outputs.GetFeatureSpecRbacrolebindingactuationResult> rbacrolebindingactuations)
         {
             Clusterupgrades = clusterupgrades;
             Fleetobservabilities = fleetobservabilities;
             Multiclusteringresses = multiclusteringresses;
+            Rbacrolebindingactuations = rbacrolebindingactuations;
         }
     }
 }

@@ -151,6 +151,7 @@ namespace Pulumi.Gcp.PubSub
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string MessageRetentionDuration;
         public readonly ImmutableArray<Outputs.GetTopicMessageStoragePolicyResult> MessageStoragePolicies;
+        public readonly ImmutableArray<Outputs.GetTopicMessageTransformResult> MessageTransforms;
         public readonly string Name;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
@@ -172,6 +173,8 @@ namespace Pulumi.Gcp.PubSub
 
             ImmutableArray<Outputs.GetTopicMessageStoragePolicyResult> messageStoragePolicies,
 
+            ImmutableArray<Outputs.GetTopicMessageTransformResult> messageTransforms,
+
             string name,
 
             string? project,
@@ -187,6 +190,7 @@ namespace Pulumi.Gcp.PubSub
             Labels = labels;
             MessageRetentionDuration = messageRetentionDuration;
             MessageStoragePolicies = messageStoragePolicies;
+            MessageTransforms = messageTransforms;
             Name = name;
             Project = project;
             PulumiLabels = pulumiLabels;

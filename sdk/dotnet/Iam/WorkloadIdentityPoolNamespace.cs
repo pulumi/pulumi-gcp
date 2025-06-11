@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Iam
     ///     var example = new Gcp.Iam.WorkloadIdentityPoolNamespace("example", new()
     ///     {
     ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
-    ///         WorkloadIdentityPoolNamespaceId = "example-nmspc",
+    ///         WorkloadIdentityPoolNamespaceId = "example-namespace",
     ///     });
     /// 
     /// });
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Iam
     ///     var example = new Gcp.Iam.WorkloadIdentityPoolNamespace("example", new()
     ///     {
     ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
-    ///         WorkloadIdentityPoolNamespaceId = "example-nmspc",
+    ///         WorkloadIdentityPoolNamespaceId = "example-namespace",
     ///         Description = "Example Namespace in a Workload Identity Pool",
     ///         Disabled = true,
     ///     });

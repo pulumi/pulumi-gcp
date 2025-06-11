@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodeConfigFastSocket? FastSocket;
         /// <summary>
-        /// ) Enables Flex Start provisioning model for the node pool.
+        /// Enables Flex Start provisioning model for the node pool.
         /// </summary>
         public readonly bool? FlexStart;
         /// <summary>

@@ -635,6 +635,16 @@ export type InterconnectAttachment = import("./interconnectAttachment").Intercon
 export const InterconnectAttachment: typeof import("./interconnectAttachment").InterconnectAttachment = null as any;
 utilities.lazyLoad(exports, ["InterconnectAttachment"], () => require("./interconnectAttachment"));
 
+export { InterconnectAttachmentGroupArgs, InterconnectAttachmentGroupState } from "./interconnectAttachmentGroup";
+export type InterconnectAttachmentGroup = import("./interconnectAttachmentGroup").InterconnectAttachmentGroup;
+export const InterconnectAttachmentGroup: typeof import("./interconnectAttachmentGroup").InterconnectAttachmentGroup = null as any;
+utilities.lazyLoad(exports, ["InterconnectAttachmentGroup"], () => require("./interconnectAttachmentGroup"));
+
+export { InterconnectGroupArgs, InterconnectGroupState } from "./interconnectGroup";
+export type InterconnectGroup = import("./interconnectGroup").InterconnectGroup;
+export const InterconnectGroup: typeof import("./interconnectGroup").InterconnectGroup = null as any;
+utilities.lazyLoad(exports, ["InterconnectGroup"], () => require("./interconnectGroup"));
+
 export { MachineImageArgs, MachineImageState } from "./machineImage";
 export type MachineImage = import("./machineImage").MachineImage;
 export const MachineImage: typeof import("./machineImage").MachineImage = null as any;
@@ -1055,6 +1065,11 @@ export type SnapshotIamPolicy = import("./snapshotIamPolicy").SnapshotIamPolicy;
 export const SnapshotIamPolicy: typeof import("./snapshotIamPolicy").SnapshotIamPolicy = null as any;
 utilities.lazyLoad(exports, ["SnapshotIamPolicy"], () => require("./snapshotIamPolicy"));
 
+export { SnapshotSettingsArgs, SnapshotSettingsState } from "./snapshotSettings";
+export type SnapshotSettings = import("./snapshotSettings").SnapshotSettings;
+export const SnapshotSettings: typeof import("./snapshotSettings").SnapshotSettings = null as any;
+utilities.lazyLoad(exports, ["SnapshotSettings"], () => require("./snapshotSettings"));
+
 export { SSLCertificateArgs, SSLCertificateState } from "./sslcertificate";
 export type SSLCertificate = import("./sslcertificate").SSLCertificate;
 export const SSLCertificate: typeof import("./sslcertificate").SSLCertificate = null as any;
@@ -1284,6 +1299,10 @@ const _module = {
                 return new Interconnect(name, <any>undefined, { urn })
             case "gcp:compute/interconnectAttachment:InterconnectAttachment":
                 return new InterconnectAttachment(name, <any>undefined, { urn })
+            case "gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup":
+                return new InterconnectAttachmentGroup(name, <any>undefined, { urn })
+            case "gcp:compute/interconnectGroup:InterconnectGroup":
+                return new InterconnectGroup(name, <any>undefined, { urn })
             case "gcp:compute/machineImage:MachineImage":
                 return new MachineImage(name, <any>undefined, { urn })
             case "gcp:compute/machineImageIamBinding:MachineImageIamBinding":
@@ -1454,6 +1473,8 @@ const _module = {
                 return new SnapshotIamMember(name, <any>undefined, { urn })
             case "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy":
                 return new SnapshotIamPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/snapshotSettings:SnapshotSettings":
+                return new SnapshotSettings(name, <any>undefined, { urn })
             case "gcp:compute/storagePool:StoragePool":
                 return new StoragePool(name, <any>undefined, { urn })
             case "gcp:compute/storagePoolIamBinding:StoragePoolIamBinding":
@@ -1557,6 +1578,8 @@ pulumi.runtime.registerResourceModule("gcp", "compute/instantSnapshotIamMember",
 pulumi.runtime.registerResourceModule("gcp", "compute/instantSnapshotIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/interconnect", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/interconnectAttachment", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/interconnectAttachmentGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/interconnectGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/machineImage", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/machineImageIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/machineImageIamMember", _module)
@@ -1642,6 +1665,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/snapshot", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/snapshotSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/storagePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/storagePoolIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/storagePoolIamMember", _module)

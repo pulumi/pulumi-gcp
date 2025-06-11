@@ -496,7 +496,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_59033"),
+//					FilenameSuffix:         pulumi.String("-_10393"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -564,7 +564,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_32081"),
+//					FilenameSuffix:         pulumi.String("-_33052"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -642,7 +642,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_10393"),
+//					FilenameSuffix:         pulumi.String("-_3684"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -768,6 +768,10 @@ type Subscription struct {
 	// A duration in seconds with up to nine fractional digits, terminated
 	// by 's'. Example: `"600.5s"`.
 	MessageRetentionDuration pulumi.StringPtrOutput `pulumi:"messageRetentionDuration"`
+	// Transforms to be applied to messages published to the topic. Transforms are applied in the
+	// order specified.
+	// Structure is documented below.
+	MessageTransforms SubscriptionMessageTransformArrayOutput `pulumi:"messageTransforms"`
 	// Name of the subscription.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -913,6 +917,10 @@ type subscriptionState struct {
 	// A duration in seconds with up to nine fractional digits, terminated
 	// by 's'. Example: `"600.5s"`.
 	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
+	// Transforms to be applied to messages published to the topic. Transforms are applied in the
+	// order specified.
+	// Structure is documented below.
+	MessageTransforms []SubscriptionMessageTransform `pulumi:"messageTransforms"`
 	// Name of the subscription.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -1021,6 +1029,10 @@ type SubscriptionState struct {
 	// A duration in seconds with up to nine fractional digits, terminated
 	// by 's'. Example: `"600.5s"`.
 	MessageRetentionDuration pulumi.StringPtrInput
+	// Transforms to be applied to messages published to the topic. Transforms are applied in the
+	// order specified.
+	// Structure is documented below.
+	MessageTransforms SubscriptionMessageTransformArrayInput
 	// Name of the subscription.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -1131,6 +1143,10 @@ type subscriptionArgs struct {
 	// A duration in seconds with up to nine fractional digits, terminated
 	// by 's'. Example: `"600.5s"`.
 	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
+	// Transforms to be applied to messages published to the topic. Transforms are applied in the
+	// order specified.
+	// Structure is documented below.
+	MessageTransforms []SubscriptionMessageTransform `pulumi:"messageTransforms"`
 	// Name of the subscription.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -1235,6 +1251,10 @@ type SubscriptionArgs struct {
 	// A duration in seconds with up to nine fractional digits, terminated
 	// by 's'. Example: `"600.5s"`.
 	MessageRetentionDuration pulumi.StringPtrInput
+	// Transforms to be applied to messages published to the topic. Transforms are applied in the
+	// order specified.
+	// Structure is documented below.
+	MessageTransforms SubscriptionMessageTransformArrayInput
 	// Name of the subscription.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -1457,6 +1477,13 @@ func (o SubscriptionOutput) Labels() pulumi.StringMapOutput {
 // by 's'. Example: `"600.5s"`.
 func (o SubscriptionOutput) MessageRetentionDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringPtrOutput { return v.MessageRetentionDuration }).(pulumi.StringPtrOutput)
+}
+
+// Transforms to be applied to messages published to the topic. Transforms are applied in the
+// order specified.
+// Structure is documented below.
+func (o SubscriptionOutput) MessageTransforms() SubscriptionMessageTransformArrayOutput {
+	return o.ApplyT(func(v *Subscription) SubscriptionMessageTransformArrayOutput { return v.MessageTransforms }).(SubscriptionMessageTransformArrayOutput)
 }
 
 // Name of the subscription.

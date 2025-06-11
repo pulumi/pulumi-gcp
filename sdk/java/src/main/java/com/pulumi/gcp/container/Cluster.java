@@ -33,6 +33,7 @@ import com.pulumi.gcp.container.outputs.ClusterMasterAuth;
 import com.pulumi.gcp.container.outputs.ClusterMasterAuthorizedNetworksConfig;
 import com.pulumi.gcp.container.outputs.ClusterMeshCertificates;
 import com.pulumi.gcp.container.outputs.ClusterMonitoringConfig;
+import com.pulumi.gcp.container.outputs.ClusterNetworkPerformanceConfig;
 import com.pulumi.gcp.container.outputs.ClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePool;
@@ -1162,6 +1163,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> network() {
         return Codegen.optional(this.network);
+    }
+    /**
+     * Network bandwidth tier configuration.
+     * 
+     */
+    @Export(name="networkPerformanceConfig", refs={ClusterNetworkPerformanceConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterNetworkPerformanceConfig> networkPerformanceConfig;
+
+    /**
+     * @return Network bandwidth tier configuration.
+     * 
+     */
+    public Output<Optional<ClusterNetworkPerformanceConfig>> networkPerformanceConfig() {
+        return Codegen.optional(this.networkPerformanceConfig);
     }
     /**
      * Configuration options for the

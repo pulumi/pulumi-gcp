@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecClusterupgradeArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecMulticlusteringressArgs;
+import com.pulumi.gcp.gkehub.inputs.FeatureSpecRbacrolebindingactuationArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -68,12 +69,30 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.multiclusteringress);
     }
 
+    /**
+     * RBACRolebinding Actuation feature spec.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="rbacrolebindingactuation")
+    private @Nullable Output<FeatureSpecRbacrolebindingactuationArgs> rbacrolebindingactuation;
+
+    /**
+     * @return RBACRolebinding Actuation feature spec.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FeatureSpecRbacrolebindingactuationArgs>> rbacrolebindingactuation() {
+        return Optional.ofNullable(this.rbacrolebindingactuation);
+    }
+
     private FeatureSpecArgs() {}
 
     private FeatureSpecArgs(FeatureSpecArgs $) {
         this.clusterupgrade = $.clusterupgrade;
         this.fleetobservability = $.fleetobservability;
         this.multiclusteringress = $.multiclusteringress;
+        this.rbacrolebindingactuation = $.rbacrolebindingactuation;
     }
 
     public static Builder builder() {
@@ -161,6 +180,29 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder multiclusteringress(FeatureSpecMulticlusteringressArgs multiclusteringress) {
             return multiclusteringress(Output.of(multiclusteringress));
+        }
+
+        /**
+         * @param rbacrolebindingactuation RBACRolebinding Actuation feature spec.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rbacrolebindingactuation(@Nullable Output<FeatureSpecRbacrolebindingactuationArgs> rbacrolebindingactuation) {
+            $.rbacrolebindingactuation = rbacrolebindingactuation;
+            return this;
+        }
+
+        /**
+         * @param rbacrolebindingactuation RBACRolebinding Actuation feature spec.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rbacrolebindingactuation(FeatureSpecRbacrolebindingactuationArgs rbacrolebindingactuation) {
+            return rbacrolebindingactuation(Output.of(rbacrolebindingactuation));
         }
 
         public FeatureSpecArgs build() {

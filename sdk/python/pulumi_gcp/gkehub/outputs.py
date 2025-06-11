@@ -70,6 +70,7 @@ __all__ = [
     'FeatureSpecFleetobservabilityLoggingConfigDefaultConfig',
     'FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig',
     'FeatureSpecMulticlusteringress',
+    'FeatureSpecRbacrolebindingactuation',
     'FeatureState',
     'FeatureStateState',
     'FleetDefaultClusterConfig',
@@ -120,6 +121,7 @@ __all__ = [
     'GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigResult',
     'GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigResult',
     'GetFeatureSpecMulticlusteringressResult',
+    'GetFeatureSpecRbacrolebindingactuationResult',
     'GetFeatureStateResult',
     'GetFeatureStateStateResult',
     'GetMembershipAuthorityResult',
@@ -2813,13 +2815,16 @@ class FeatureSpec(dict):
     def __init__(__self__, *,
                  clusterupgrade: Optional['outputs.FeatureSpecClusterupgrade'] = None,
                  fleetobservability: Optional['outputs.FeatureSpecFleetobservability'] = None,
-                 multiclusteringress: Optional['outputs.FeatureSpecMulticlusteringress'] = None):
+                 multiclusteringress: Optional['outputs.FeatureSpecMulticlusteringress'] = None,
+                 rbacrolebindingactuation: Optional['outputs.FeatureSpecRbacrolebindingactuation'] = None):
         """
         :param 'FeatureSpecClusterupgradeArgs' clusterupgrade: Clusterupgrade feature spec.
                Structure is documented below.
         :param 'FeatureSpecFleetobservabilityArgs' fleetobservability: Fleet Observability feature spec.
                Structure is documented below.
         :param 'FeatureSpecMulticlusteringressArgs' multiclusteringress: Multicluster Ingress-specific spec.
+               Structure is documented below.
+        :param 'FeatureSpecRbacrolebindingactuationArgs' rbacrolebindingactuation: RBACRolebinding Actuation feature spec.
                Structure is documented below.
         """
         if clusterupgrade is not None:
@@ -2828,6 +2833,8 @@ class FeatureSpec(dict):
             pulumi.set(__self__, "fleetobservability", fleetobservability)
         if multiclusteringress is not None:
             pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+        if rbacrolebindingactuation is not None:
+            pulumi.set(__self__, "rbacrolebindingactuation", rbacrolebindingactuation)
 
     @property
     @pulumi.getter
@@ -2855,6 +2862,15 @@ class FeatureSpec(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "multiclusteringress")
+
+    @property
+    @pulumi.getter
+    def rbacrolebindingactuation(self) -> Optional['outputs.FeatureSpecRbacrolebindingactuation']:
+        """
+        RBACRolebinding Actuation feature spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rbacrolebindingactuation")
 
 
 @pulumi.output_type
@@ -3206,6 +3222,42 @@ class FeatureSpecMulticlusteringress(dict):
         Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
         return pulumi.get(self, "config_membership")
+
+
+@pulumi.output_type
+class FeatureSpecRbacrolebindingactuation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedCustomRoles":
+            suggest = "allowed_custom_roles"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureSpecRbacrolebindingactuation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureSpecRbacrolebindingactuation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureSpecRbacrolebindingactuation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_custom_roles: Optional[Sequence[builtins.str]] = None):
+        """
+        :param Sequence[builtins.str] allowed_custom_roles: The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+        """
+        if allowed_custom_roles is not None:
+            pulumi.set(__self__, "allowed_custom_roles", allowed_custom_roles)
+
+    @property
+    @pulumi.getter(name="allowedCustomRoles")
+    def allowed_custom_roles(self) -> Optional[Sequence[builtins.str]]:
+        """
+        The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+        """
+        return pulumi.get(self, "allowed_custom_roles")
 
 
 @pulumi.output_type
@@ -3797,7 +3849,9 @@ class ScopeRbacRoleBindingRole(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "predefinedRole":
+        if key == "customRole":
+            suggest = "custom_role"
+        elif key == "predefinedRole":
             suggest = "predefined_role"
 
         if suggest:
@@ -3812,15 +3866,29 @@ class ScopeRbacRoleBindingRole(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 custom_role: Optional[builtins.str] = None,
                  predefined_role: Optional[builtins.str] = None):
         """
-        :param builtins.str predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
-               Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+        :param builtins.str custom_role: CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
                
                - - -
+        :param builtins.str predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
+               Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
         """
+        if custom_role is not None:
+            pulumi.set(__self__, "custom_role", custom_role)
         if predefined_role is not None:
             pulumi.set(__self__, "predefined_role", predefined_role)
+
+    @property
+    @pulumi.getter(name="customRole")
+    def custom_role(self) -> Optional[builtins.str]:
+        """
+        CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
+
+        - - -
+        """
+        return pulumi.get(self, "custom_role")
 
     @property
     @pulumi.getter(name="predefinedRole")
@@ -3828,8 +3896,6 @@ class ScopeRbacRoleBindingRole(dict):
         """
         PredefinedRole is an ENUM representation of the default Kubernetes Roles
         Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-
-        - - -
         """
         return pulumi.get(self, "predefined_role")
 
@@ -4681,15 +4747,18 @@ class GetFeatureSpecResult(dict):
     def __init__(__self__, *,
                  clusterupgrades: Sequence['outputs.GetFeatureSpecClusterupgradeResult'],
                  fleetobservabilities: Sequence['outputs.GetFeatureSpecFleetobservabilityResult'],
-                 multiclusteringresses: Sequence['outputs.GetFeatureSpecMulticlusteringressResult']):
+                 multiclusteringresses: Sequence['outputs.GetFeatureSpecMulticlusteringressResult'],
+                 rbacrolebindingactuations: Sequence['outputs.GetFeatureSpecRbacrolebindingactuationResult']):
         """
         :param Sequence['GetFeatureSpecClusterupgradeArgs'] clusterupgrades: Clusterupgrade feature spec.
         :param Sequence['GetFeatureSpecFleetobservabilityArgs'] fleetobservabilities: Fleet Observability feature spec.
         :param Sequence['GetFeatureSpecMulticlusteringressArgs'] multiclusteringresses: Multicluster Ingress-specific spec.
+        :param Sequence['GetFeatureSpecRbacrolebindingactuationArgs'] rbacrolebindingactuations: RBACRolebinding Actuation feature spec.
         """
         pulumi.set(__self__, "clusterupgrades", clusterupgrades)
         pulumi.set(__self__, "fleetobservabilities", fleetobservabilities)
         pulumi.set(__self__, "multiclusteringresses", multiclusteringresses)
+        pulumi.set(__self__, "rbacrolebindingactuations", rbacrolebindingactuations)
 
     @property
     @pulumi.getter
@@ -4714,6 +4783,14 @@ class GetFeatureSpecResult(dict):
         Multicluster Ingress-specific spec.
         """
         return pulumi.get(self, "multiclusteringresses")
+
+    @property
+    @pulumi.getter
+    def rbacrolebindingactuations(self) -> Sequence['outputs.GetFeatureSpecRbacrolebindingactuationResult']:
+        """
+        RBACRolebinding Actuation feature spec.
+        """
+        return pulumi.get(self, "rbacrolebindingactuations")
 
 
 @pulumi.output_type
@@ -4949,6 +5026,24 @@ class GetFeatureSpecMulticlusteringressResult(dict):
         Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: 'projects/foo-proj/locations/global/memberships/bar'
         """
         return pulumi.get(self, "config_membership")
+
+
+@pulumi.output_type
+class GetFeatureSpecRbacrolebindingactuationResult(dict):
+    def __init__(__self__, *,
+                 allowed_custom_roles: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] allowed_custom_roles: The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+        """
+        pulumi.set(__self__, "allowed_custom_roles", allowed_custom_roles)
+
+    @property
+    @pulumi.getter(name="allowedCustomRoles")
+    def allowed_custom_roles(self) -> Sequence[builtins.str]:
+        """
+        The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+        """
+        return pulumi.get(self, "allowed_custom_roles")
 
 
 @pulumi.output_type

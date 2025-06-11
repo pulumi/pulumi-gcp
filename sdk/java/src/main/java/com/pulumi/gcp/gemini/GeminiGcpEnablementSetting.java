@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  *             .location("global")
  *             .labels(Map.of("my_key", "my_value"))
  *             .enableCustomerDataSharing(true)
+ *             .disableWebGrounding(true)
  *             .build());
  * 
  *     }
@@ -100,6 +101,20 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether web grounding should be disabled.
+     * 
+     */
+    @Export(name="disableWebGrounding", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disableWebGrounding;
+
+    /**
+     * @return Whether web grounding should be disabled.
+     * 
+     */
+    public Output<Optional<Boolean>> disableWebGrounding() {
+        return Codegen.optional(this.disableWebGrounding);
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

@@ -49,6 +49,12 @@ import * as utilities from "../utilities";
  *     description: "Apigee Environment",
  *     displayName: "environment-1",
  *     orgId: apigeeOrg.id,
+ *     clientIpResolutionConfig: {
+ *         headerIndexAlgorithm: {
+ *             ipHeaderName: "X-Forwarded-For",
+ *             ipHeaderIndex: 1,
+ *         },
+ *     },
  * });
  * ```
  *
@@ -104,6 +110,11 @@ export class Environment extends pulumi.CustomResource {
      * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
      */
     public readonly apiProxyType!: pulumi.Output<string>;
+    /**
+     * The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+     * Structure is documented below.
+     */
+    public readonly clientIpResolutionConfig!: pulumi.Output<outputs.apigee.EnvironmentClientIpResolutionConfig | undefined>;
     /**
      * Optional. Deployment type supported by the environment. The deployment type can be
      * set when creating the environment and cannot be changed. When you enable archive
@@ -172,6 +183,7 @@ export class Environment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
             resourceInputs["apiProxyType"] = state ? state.apiProxyType : undefined;
+            resourceInputs["clientIpResolutionConfig"] = state ? state.clientIpResolutionConfig : undefined;
             resourceInputs["deploymentType"] = state ? state.deploymentType : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -187,6 +199,7 @@ export class Environment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'orgId'");
             }
             resourceInputs["apiProxyType"] = args ? args.apiProxyType : undefined;
+            resourceInputs["clientIpResolutionConfig"] = args ? args.clientIpResolutionConfig : undefined;
             resourceInputs["deploymentType"] = args ? args.deploymentType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -212,6 +225,11 @@ export interface EnvironmentState {
      * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
      */
     apiProxyType?: pulumi.Input<string>;
+    /**
+     * The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+     * Structure is documented below.
+     */
+    clientIpResolutionConfig?: pulumi.Input<inputs.apigee.EnvironmentClientIpResolutionConfig>;
     /**
      * Optional. Deployment type supported by the environment. The deployment type can be
      * set when creating the environment and cannot be changed. When you enable archive
@@ -277,6 +295,11 @@ export interface EnvironmentArgs {
      * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
      */
     apiProxyType?: pulumi.Input<string>;
+    /**
+     * The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+     * Structure is documented below.
+     */
+    clientIpResolutionConfig?: pulumi.Input<inputs.apigee.EnvironmentClientIpResolutionConfig>;
     /**
      * Optional. Deployment type supported by the environment. The deployment type can be
      * set when creating the environment and cannot be changed. When you enable archive

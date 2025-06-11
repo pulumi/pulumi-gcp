@@ -36,6 +36,18 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
             set => _commands = value;
         }
 
+        [Input("dependsOns")]
+        private InputList<string>? _dependsOns;
+
+        /// <summary>
+        /// Names of the containers that must start before this container.
+        /// </summary>
+        public InputList<string> DependsOns
+        {
+            get => _dependsOns ?? (_dependsOns = new InputList<string>());
+            set => _dependsOns = value;
+        }
+
         [Input("envs")]
         private InputList<Inputs.JobTemplateTemplateContainerEnvArgs>? _envs;
 
@@ -81,6 +93,15 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         /// </summary>
         [Input("resources")]
         public Input<Inputs.JobTemplateTemplateContainerResourcesArgs>? Resources { get; set; }
+
+        /// <summary>
+        /// Startup probe of application within the container.
+        /// All other probes are disabled if a startup probe is provided, until it
+        /// succeeds. Container will not be added to service endpoints if the probe fails.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("startupProbe")]
+        public Input<Inputs.JobTemplateTemplateContainerStartupProbeArgs>? StartupProbe { get; set; }
 
         [Input("volumeMounts")]
         private InputList<Inputs.JobTemplateTemplateContainerVolumeMountArgs>? _volumeMounts;

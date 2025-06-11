@@ -28,10 +28,13 @@ class GetSecurityGatewayResult:
     """
     A collection of values returned by getSecurityGateway.
     """
-    def __init__(__self__, create_time=None, display_name=None, external_ips=None, hubs=None, id=None, location=None, name=None, project=None, security_gateway_id=None, state=None, update_time=None):
+    def __init__(__self__, create_time=None, delegating_service_account=None, display_name=None, external_ips=None, hubs=None, id=None, location=None, name=None, project=None, security_gateway_id=None, state=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if delegating_service_account and not isinstance(delegating_service_account, str):
+            raise TypeError("Expected argument 'delegating_service_account' to be a str")
+        pulumi.set(__self__, "delegating_service_account", delegating_service_account)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -67,6 +70,11 @@ class GetSecurityGatewayResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> builtins.str:
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="delegatingServiceAccount")
+    def delegating_service_account(self) -> builtins.str:
+        return pulumi.get(self, "delegating_service_account")
 
     @property
     @pulumi.getter(name="displayName")
@@ -129,6 +137,7 @@ class AwaitableGetSecurityGatewayResult(GetSecurityGatewayResult):
             yield self
         return GetSecurityGatewayResult(
             create_time=self.create_time,
+            delegating_service_account=self.delegating_service_account,
             display_name=self.display_name,
             external_ips=self.external_ips,
             hubs=self.hubs,
@@ -171,6 +180,7 @@ def get_security_gateway(project: Optional[builtins.str] = None,
 
     return AwaitableGetSecurityGatewayResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        delegating_service_account=pulumi.get(__ret__, 'delegating_service_account'),
         display_name=pulumi.get(__ret__, 'display_name'),
         external_ips=pulumi.get(__ret__, 'external_ips'),
         hubs=pulumi.get(__ret__, 'hubs'),
@@ -210,6 +220,7 @@ def get_security_gateway_output(project: Optional[pulumi.Input[Optional[builtins
     __ret__ = pulumi.runtime.invoke_output('gcp:beyondcorp/getSecurityGateway:getSecurityGateway', __args__, opts=opts, typ=GetSecurityGatewayResult)
     return __ret__.apply(lambda __response__: GetSecurityGatewayResult(
         create_time=pulumi.get(__response__, 'create_time'),
+        delegating_service_account=pulumi.get(__response__, 'delegating_service_account'),
         display_name=pulumi.get(__response__, 'display_name'),
         external_ips=pulumi.get(__response__, 'external_ips'),
         hubs=pulumi.get(__response__, 'hubs'),

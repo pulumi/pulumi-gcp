@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *         var example = new WorkloadIdentityPoolNamespace("example", WorkloadIdentityPoolNamespaceArgs.builder()
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
- *             .workloadIdentityPoolNamespaceId("example-nmspc")
+ *             .workloadIdentityPoolNamespaceId("example-namespace")
  *             .build());
  * 
  *     }
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * 
  *         var example = new WorkloadIdentityPoolNamespace("example", WorkloadIdentityPoolNamespaceArgs.builder()
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
- *             .workloadIdentityPoolNamespaceId("example-nmspc")
+ *             .workloadIdentityPoolNamespaceId("example-namespace")
  *             .description("Example Namespace in a Workload Identity Pool")
  *             .disabled(true)
  *             .build());

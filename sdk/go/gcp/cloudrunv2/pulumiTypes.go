@@ -1368,6 +1368,8 @@ type JobTemplateTemplateContainer struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
+	// Names of the containers that must start before this container.
+	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs []JobTemplateTemplateContainerEnv `pulumi:"envs"`
@@ -1382,6 +1384,11 @@ type JobTemplateTemplateContainer struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources *JobTemplateTemplateContainerResources `pulumi:"resources"`
+	// Startup probe of application within the container.
+	// All other probes are disabled if a startup probe is provided, until it
+	// succeeds. Container will not be added to service endpoints if the probe fails.
+	// Structure is documented below.
+	StartupProbe *JobTemplateTemplateContainerStartupProbe `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Structure is documented below.
 	VolumeMounts []JobTemplateTemplateContainerVolumeMount `pulumi:"volumeMounts"`
@@ -1405,6 +1412,8 @@ type JobTemplateTemplateContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Names of the containers that must start before this container.
+	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs JobTemplateTemplateContainerEnvArrayInput `pulumi:"envs"`
@@ -1419,6 +1428,11 @@ type JobTemplateTemplateContainerArgs struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources JobTemplateTemplateContainerResourcesPtrInput `pulumi:"resources"`
+	// Startup probe of application within the container.
+	// All other probes are disabled if a startup probe is provided, until it
+	// succeeds. Container will not be added to service endpoints if the probe fails.
+	// Structure is documented below.
+	StartupProbe JobTemplateTemplateContainerStartupProbePtrInput `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Structure is documented below.
 	VolumeMounts JobTemplateTemplateContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
@@ -1487,6 +1501,11 @@ func (o JobTemplateTemplateContainerOutput) Commands() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v JobTemplateTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
+// Names of the containers that must start before this container.
+func (o JobTemplateTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
+}
+
 // List of environment variables to set in the container.
 // Structure is documented below.
 func (o JobTemplateTemplateContainerOutput) Envs() JobTemplateTemplateContainerEnvArrayOutput {
@@ -1514,6 +1533,14 @@ func (o JobTemplateTemplateContainerOutput) Ports() JobTemplateTemplateContainer
 // Structure is documented below.
 func (o JobTemplateTemplateContainerOutput) Resources() JobTemplateTemplateContainerResourcesPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) *JobTemplateTemplateContainerResources { return v.Resources }).(JobTemplateTemplateContainerResourcesPtrOutput)
+}
+
+// Startup probe of application within the container.
+// All other probes are disabled if a startup probe is provided, until it
+// succeeds. Container will not be added to service endpoints if the probe fails.
+// Structure is documented below.
+func (o JobTemplateTemplateContainerOutput) StartupProbe() JobTemplateTemplateContainerStartupProbePtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainer) *JobTemplateTemplateContainerStartupProbe { return v.StartupProbe }).(JobTemplateTemplateContainerStartupProbePtrOutput)
 }
 
 // Volume to mount into the container's filesystem.
@@ -2207,6 +2234,899 @@ func (o JobTemplateTemplateContainerResourcesPtrOutput) Limits() pulumi.StringMa
 		}
 		return v.Limits
 	}).(pulumi.StringMapOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbe struct {
+	// Minimum consecutive failures for the probe to be considered failed after
+	// having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	// Structure is documented below.
+	Grpc *JobTemplateTemplateContainerStartupProbeGrpc `pulumi:"grpc"`
+	// HttpGet specifies the http request to perform.
+	// Structure is documented below.
+	HttpGet *JobTemplateTemplateContainerStartupProbeHttpGet `pulumi:"httpGet"`
+	// Number of seconds after the container has started before the probe is
+	// initiated.
+	// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe.
+	// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// TcpSocket specifies an action involving a TCP port.
+	// Structure is documented below.
+	TcpSocket *JobTemplateTemplateContainerStartupProbeTcpSocket `pulumi:"tcpSocket"`
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+	// Must be smaller than periodSeconds.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// JobTemplateTemplateContainerStartupProbeInput is an input type that accepts JobTemplateTemplateContainerStartupProbeArgs and JobTemplateTemplateContainerStartupProbeOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateContainerStartupProbeInput` via:
+//
+//	JobTemplateTemplateContainerStartupProbeArgs{...}
+type JobTemplateTemplateContainerStartupProbeInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateContainerStartupProbeOutput() JobTemplateTemplateContainerStartupProbeOutput
+	ToJobTemplateTemplateContainerStartupProbeOutputWithContext(context.Context) JobTemplateTemplateContainerStartupProbeOutput
+}
+
+type JobTemplateTemplateContainerStartupProbeArgs struct {
+	// Minimum consecutive failures for the probe to be considered failed after
+	// having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	// Structure is documented below.
+	Grpc JobTemplateTemplateContainerStartupProbeGrpcPtrInput `pulumi:"grpc"`
+	// HttpGet specifies the http request to perform.
+	// Structure is documented below.
+	HttpGet JobTemplateTemplateContainerStartupProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Number of seconds after the container has started before the probe is
+	// initiated.
+	// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe.
+	// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// TcpSocket specifies an action involving a TCP port.
+	// Structure is documented below.
+	TcpSocket JobTemplateTemplateContainerStartupProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+	// Must be smaller than periodSeconds.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (JobTemplateTemplateContainerStartupProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateContainerStartupProbeArgs) ToJobTemplateTemplateContainerStartupProbeOutput() JobTemplateTemplateContainerStartupProbeOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateContainerStartupProbeArgs) ToJobTemplateTemplateContainerStartupProbeOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeOutput)
+}
+
+func (i JobTemplateTemplateContainerStartupProbeArgs) ToJobTemplateTemplateContainerStartupProbePtrOutput() JobTemplateTemplateContainerStartupProbePtrOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateContainerStartupProbeArgs) ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeOutput).ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(ctx)
+}
+
+// JobTemplateTemplateContainerStartupProbePtrInput is an input type that accepts JobTemplateTemplateContainerStartupProbeArgs, JobTemplateTemplateContainerStartupProbePtr and JobTemplateTemplateContainerStartupProbePtrOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateContainerStartupProbePtrInput` via:
+//
+//	        JobTemplateTemplateContainerStartupProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTemplateTemplateContainerStartupProbePtrInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateContainerStartupProbePtrOutput() JobTemplateTemplateContainerStartupProbePtrOutput
+	ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(context.Context) JobTemplateTemplateContainerStartupProbePtrOutput
+}
+
+type jobTemplateTemplateContainerStartupProbePtrType JobTemplateTemplateContainerStartupProbeArgs
+
+func JobTemplateTemplateContainerStartupProbePtr(v *JobTemplateTemplateContainerStartupProbeArgs) JobTemplateTemplateContainerStartupProbePtrInput {
+	return (*jobTemplateTemplateContainerStartupProbePtrType)(v)
+}
+
+func (*jobTemplateTemplateContainerStartupProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (i *jobTemplateTemplateContainerStartupProbePtrType) ToJobTemplateTemplateContainerStartupProbePtrOutput() JobTemplateTemplateContainerStartupProbePtrOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTemplateTemplateContainerStartupProbePtrType) ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbePtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateContainerStartupProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateContainerStartupProbeOutput) ToJobTemplateTemplateContainerStartupProbeOutput() JobTemplateTemplateContainerStartupProbeOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeOutput) ToJobTemplateTemplateContainerStartupProbeOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeOutput) ToJobTemplateTemplateContainerStartupProbePtrOutput() JobTemplateTemplateContainerStartupProbePtrOutput {
+	return o.ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (o JobTemplateTemplateContainerStartupProbeOutput) ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateContainerStartupProbe) *JobTemplateTemplateContainerStartupProbe {
+		return &v
+	}).(JobTemplateTemplateContainerStartupProbePtrOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after
+// having succeeded. Defaults to 3. Minimum value is 1.
+func (o JobTemplateTemplateContainerStartupProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+// Structure is documented below.
+func (o JobTemplateTemplateContainerStartupProbeOutput) Grpc() JobTemplateTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbe) *JobTemplateTemplateContainerStartupProbeGrpc {
+		return v.Grpc
+	}).(JobTemplateTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
+// HttpGet specifies the http request to perform.
+// Structure is documented below.
+func (o JobTemplateTemplateContainerStartupProbeOutput) HttpGet() JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbe) *JobTemplateTemplateContainerStartupProbeHttpGet {
+		return v.HttpGet
+	}).(JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Number of seconds after the container has started before the probe is
+// initiated.
+// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+func (o JobTemplateTemplateContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe.
+// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+func (o JobTemplateTemplateContainerStartupProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// TcpSocket specifies an action involving a TCP port.
+// Structure is documented below.
+func (o JobTemplateTemplateContainerStartupProbeOutput) TcpSocket() JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbe) *JobTemplateTemplateContainerStartupProbeTcpSocket {
+		return v.TcpSocket
+	}).(JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Number of seconds after which the probe times out.
+// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+// Must be smaller than periodSeconds.
+func (o JobTemplateTemplateContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateContainerStartupProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateContainerStartupProbePtrOutput) ToJobTemplateTemplateContainerStartupProbePtrOutput() JobTemplateTemplateContainerStartupProbePtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbePtrOutput) ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbePtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbePtrOutput) Elem() JobTemplateTemplateContainerStartupProbeOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbe) JobTemplateTemplateContainerStartupProbe {
+		if v != nil {
+			return *v
+		}
+		var ret JobTemplateTemplateContainerStartupProbe
+		return ret
+	}).(JobTemplateTemplateContainerStartupProbeOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after
+// having succeeded. Defaults to 3. Minimum value is 1.
+func (o JobTemplateTemplateContainerStartupProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+// Structure is documented below.
+func (o JobTemplateTemplateContainerStartupProbePtrOutput) Grpc() JobTemplateTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbe) *JobTemplateTemplateContainerStartupProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(JobTemplateTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
+// HttpGet specifies the http request to perform.
+// Structure is documented below.
+func (o JobTemplateTemplateContainerStartupProbePtrOutput) HttpGet() JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbe) *JobTemplateTemplateContainerStartupProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Number of seconds after the container has started before the probe is
+// initiated.
+// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+func (o JobTemplateTemplateContainerStartupProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe.
+// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+func (o JobTemplateTemplateContainerStartupProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// TcpSocket specifies an action involving a TCP port.
+// Structure is documented below.
+func (o JobTemplateTemplateContainerStartupProbePtrOutput) TcpSocket() JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbe) *JobTemplateTemplateContainerStartupProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Number of seconds after which the probe times out.
+// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+// Must be smaller than periodSeconds.
+func (o JobTemplateTemplateContainerStartupProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeGrpc struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// JobTemplateTemplateContainerStartupProbeGrpcInput is an input type that accepts JobTemplateTemplateContainerStartupProbeGrpcArgs and JobTemplateTemplateContainerStartupProbeGrpcOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateContainerStartupProbeGrpcInput` via:
+//
+//	JobTemplateTemplateContainerStartupProbeGrpcArgs{...}
+type JobTemplateTemplateContainerStartupProbeGrpcInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateContainerStartupProbeGrpcOutput() JobTemplateTemplateContainerStartupProbeGrpcOutput
+	ToJobTemplateTemplateContainerStartupProbeGrpcOutputWithContext(context.Context) JobTemplateTemplateContainerStartupProbeGrpcOutput
+}
+
+type JobTemplateTemplateContainerStartupProbeGrpcArgs struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (JobTemplateTemplateContainerStartupProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateContainerStartupProbeGrpcArgs) ToJobTemplateTemplateContainerStartupProbeGrpcOutput() JobTemplateTemplateContainerStartupProbeGrpcOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateContainerStartupProbeGrpcArgs) ToJobTemplateTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeGrpcOutput)
+}
+
+func (i JobTemplateTemplateContainerStartupProbeGrpcArgs) ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutput() JobTemplateTemplateContainerStartupProbeGrpcPtrOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateContainerStartupProbeGrpcArgs) ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeGrpcOutput).ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx)
+}
+
+// JobTemplateTemplateContainerStartupProbeGrpcPtrInput is an input type that accepts JobTemplateTemplateContainerStartupProbeGrpcArgs, JobTemplateTemplateContainerStartupProbeGrpcPtr and JobTemplateTemplateContainerStartupProbeGrpcPtrOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateContainerStartupProbeGrpcPtrInput` via:
+//
+//	        JobTemplateTemplateContainerStartupProbeGrpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTemplateTemplateContainerStartupProbeGrpcPtrInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutput() JobTemplateTemplateContainerStartupProbeGrpcPtrOutput
+	ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Context) JobTemplateTemplateContainerStartupProbeGrpcPtrOutput
+}
+
+type jobTemplateTemplateContainerStartupProbeGrpcPtrType JobTemplateTemplateContainerStartupProbeGrpcArgs
+
+func JobTemplateTemplateContainerStartupProbeGrpcPtr(v *JobTemplateTemplateContainerStartupProbeGrpcArgs) JobTemplateTemplateContainerStartupProbeGrpcPtrInput {
+	return (*jobTemplateTemplateContainerStartupProbeGrpcPtrType)(v)
+}
+
+func (*jobTemplateTemplateContainerStartupProbeGrpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i *jobTemplateTemplateContainerStartupProbeGrpcPtrType) ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutput() JobTemplateTemplateContainerStartupProbeGrpcPtrOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTemplateTemplateContainerStartupProbeGrpcPtrType) ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateContainerStartupProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateContainerStartupProbeGrpcOutput) ToJobTemplateTemplateContainerStartupProbeGrpcOutput() JobTemplateTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeGrpcOutput) ToJobTemplateTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeGrpcOutput) ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutput() JobTemplateTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (o JobTemplateTemplateContainerStartupProbeGrpcOutput) ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateContainerStartupProbeGrpc) *JobTemplateTemplateContainerStartupProbeGrpc {
+		return &v
+	}).(JobTemplateTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o JobTemplateTemplateContainerStartupProbeGrpcOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
+func (o JobTemplateTemplateContainerStartupProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeGrpcPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateContainerStartupProbeGrpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateContainerStartupProbeGrpcPtrOutput) ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutput() JobTemplateTemplateContainerStartupProbeGrpcPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeGrpcPtrOutput) ToJobTemplateTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeGrpcPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeGrpcPtrOutput) Elem() JobTemplateTemplateContainerStartupProbeGrpcOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbeGrpc) JobTemplateTemplateContainerStartupProbeGrpc {
+		if v != nil {
+			return *v
+		}
+		var ret JobTemplateTemplateContainerStartupProbeGrpc
+		return ret
+	}).(JobTemplateTemplateContainerStartupProbeGrpcOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o JobTemplateTemplateContainerStartupProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbeGrpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
+func (o JobTemplateTemplateContainerStartupProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbeGrpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeHttpGet struct {
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders []JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server. If set, it should not be empty string.
+	Path *string `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+}
+
+// JobTemplateTemplateContainerStartupProbeHttpGetInput is an input type that accepts JobTemplateTemplateContainerStartupProbeHttpGetArgs and JobTemplateTemplateContainerStartupProbeHttpGetOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateContainerStartupProbeHttpGetInput` via:
+//
+//	JobTemplateTemplateContainerStartupProbeHttpGetArgs{...}
+type JobTemplateTemplateContainerStartupProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateContainerStartupProbeHttpGetOutput() JobTemplateTemplateContainerStartupProbeHttpGetOutput
+	ToJobTemplateTemplateContainerStartupProbeHttpGetOutputWithContext(context.Context) JobTemplateTemplateContainerStartupProbeHttpGetOutput
+}
+
+type JobTemplateTemplateContainerStartupProbeHttpGetArgs struct {
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server. If set, it should not be empty string.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (JobTemplateTemplateContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateContainerStartupProbeHttpGetArgs) ToJobTemplateTemplateContainerStartupProbeHttpGetOutput() JobTemplateTemplateContainerStartupProbeHttpGetOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateContainerStartupProbeHttpGetArgs) ToJobTemplateTemplateContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeHttpGetOutput)
+}
+
+func (i JobTemplateTemplateContainerStartupProbeHttpGetArgs) ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutput() JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateContainerStartupProbeHttpGetArgs) ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeHttpGetOutput).ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// JobTemplateTemplateContainerStartupProbeHttpGetPtrInput is an input type that accepts JobTemplateTemplateContainerStartupProbeHttpGetArgs, JobTemplateTemplateContainerStartupProbeHttpGetPtr and JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateContainerStartupProbeHttpGetPtrInput` via:
+//
+//	        JobTemplateTemplateContainerStartupProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTemplateTemplateContainerStartupProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutput() JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput
+	ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(context.Context) JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput
+}
+
+type jobTemplateTemplateContainerStartupProbeHttpGetPtrType JobTemplateTemplateContainerStartupProbeHttpGetArgs
+
+func JobTemplateTemplateContainerStartupProbeHttpGetPtr(v *JobTemplateTemplateContainerStartupProbeHttpGetArgs) JobTemplateTemplateContainerStartupProbeHttpGetPtrInput {
+	return (*jobTemplateTemplateContainerStartupProbeHttpGetPtrType)(v)
+}
+
+func (*jobTemplateTemplateContainerStartupProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i *jobTemplateTemplateContainerStartupProbeHttpGetPtrType) ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutput() JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTemplateTemplateContainerStartupProbeHttpGetPtrType) ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetOutput() JobTemplateTemplateContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutput() JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o.ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateContainerStartupProbeHttpGet) *JobTemplateTemplateContainerStartupProbeHttpGet {
+		return &v
+	}).(JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o JobTemplateTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbeHttpGet) []JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server. If set, it should not be empty string.
+func (o JobTemplateTemplateContainerStartupProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o JobTemplateTemplateContainerStartupProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutput() JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) Elem() JobTemplateTemplateContainerStartupProbeHttpGetOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbeHttpGet) JobTemplateTemplateContainerStartupProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret JobTemplateTemplateContainerStartupProbeHttpGet
+		return ret
+	}).(JobTemplateTemplateContainerStartupProbeHttpGetOutput)
+}
+
+// Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) HttpHeaders() JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbeHttpGet) []JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server. If set, it should not be empty string.
+func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader struct {
+	// The header field name.
+	Name string `pulumi:"name"`
+	// The header field value.
+	Value *string `pulumi:"value"`
+}
+
+// JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderInput is an input type that accepts JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs and JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderInput` via:
+//
+//	JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...}
+type JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput() JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput
+	ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput
+}
+
+type JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
+	// The header field name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The header field value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput() JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+// JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray and JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray{ JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...} }
+type JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
+	ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
+}
+
+type JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray []JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderInput
+
+func (JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput() JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The header field name.
+func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The header field value.
+func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
+		return vs[0].([]JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeTcpSocket struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+}
+
+// JobTemplateTemplateContainerStartupProbeTcpSocketInput is an input type that accepts JobTemplateTemplateContainerStartupProbeTcpSocketArgs and JobTemplateTemplateContainerStartupProbeTcpSocketOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateContainerStartupProbeTcpSocketInput` via:
+//
+//	JobTemplateTemplateContainerStartupProbeTcpSocketArgs{...}
+type JobTemplateTemplateContainerStartupProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateContainerStartupProbeTcpSocketOutput() JobTemplateTemplateContainerStartupProbeTcpSocketOutput
+	ToJobTemplateTemplateContainerStartupProbeTcpSocketOutputWithContext(context.Context) JobTemplateTemplateContainerStartupProbeTcpSocketOutput
+}
+
+type JobTemplateTemplateContainerStartupProbeTcpSocketArgs struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (JobTemplateTemplateContainerStartupProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateContainerStartupProbeTcpSocketArgs) ToJobTemplateTemplateContainerStartupProbeTcpSocketOutput() JobTemplateTemplateContainerStartupProbeTcpSocketOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateContainerStartupProbeTcpSocketArgs) ToJobTemplateTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeTcpSocketOutput)
+}
+
+func (i JobTemplateTemplateContainerStartupProbeTcpSocketArgs) ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput() JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateContainerStartupProbeTcpSocketArgs) ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeTcpSocketOutput).ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx)
+}
+
+// JobTemplateTemplateContainerStartupProbeTcpSocketPtrInput is an input type that accepts JobTemplateTemplateContainerStartupProbeTcpSocketArgs, JobTemplateTemplateContainerStartupProbeTcpSocketPtr and JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateContainerStartupProbeTcpSocketPtrInput` via:
+//
+//	        JobTemplateTemplateContainerStartupProbeTcpSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTemplateTemplateContainerStartupProbeTcpSocketPtrInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput() JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput
+	ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(context.Context) JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput
+}
+
+type jobTemplateTemplateContainerStartupProbeTcpSocketPtrType JobTemplateTemplateContainerStartupProbeTcpSocketArgs
+
+func JobTemplateTemplateContainerStartupProbeTcpSocketPtr(v *JobTemplateTemplateContainerStartupProbeTcpSocketArgs) JobTemplateTemplateContainerStartupProbeTcpSocketPtrInput {
+	return (*jobTemplateTemplateContainerStartupProbeTcpSocketPtrType)(v)
+}
+
+func (*jobTemplateTemplateContainerStartupProbeTcpSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i *jobTemplateTemplateContainerStartupProbeTcpSocketPtrType) ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput() JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return i.ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTemplateTemplateContainerStartupProbeTcpSocketPtrType) ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateContainerStartupProbeTcpSocketOutput) ToJobTemplateTemplateContainerStartupProbeTcpSocketOutput() JobTemplateTemplateContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeTcpSocketOutput) ToJobTemplateTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeTcpSocketOutput) ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput() JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o.ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (o JobTemplateTemplateContainerStartupProbeTcpSocketOutput) ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateContainerStartupProbeTcpSocket) *JobTemplateTemplateContainerStartupProbeTcpSocket {
+		return &v
+	}).(JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o JobTemplateTemplateContainerStartupProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput) ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput() JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput) ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput) Elem() JobTemplateTemplateContainerStartupProbeTcpSocketOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbeTcpSocket) JobTemplateTemplateContainerStartupProbeTcpSocket {
+		if v != nil {
+			return *v
+		}
+		var ret JobTemplateTemplateContainerStartupProbeTcpSocket
+		return ret
+	}).(JobTemplateTemplateContainerStartupProbeTcpSocketOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbeTcpSocket) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type JobTemplateTemplateContainerVolumeMount struct {
@@ -15684,6 +16604,8 @@ type GetJobTemplateTemplateContainer struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
+	// Names of the containers that must start before this container.
+	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	Envs []GetJobTemplateTemplateContainerEnv `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
@@ -15696,6 +16618,10 @@ type GetJobTemplateTemplateContainer struct {
 	Ports []GetJobTemplateTemplateContainerPort `pulumi:"ports"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources []GetJobTemplateTemplateContainerResource `pulumi:"resources"`
+	// Startup probe of application within the container.
+	// All other probes are disabled if a startup probe is provided, until it
+	// succeeds. Container will not be added to service endpoints if the probe fails.
+	StartupProbes []GetJobTemplateTemplateContainerStartupProbe `pulumi:"startupProbes"`
 	// Volume to mount into the container's filesystem.
 	VolumeMounts []GetJobTemplateTemplateContainerVolumeMount `pulumi:"volumeMounts"`
 	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -15718,6 +16644,8 @@ type GetJobTemplateTemplateContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Names of the containers that must start before this container.
+	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	Envs GetJobTemplateTemplateContainerEnvArrayInput `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
@@ -15730,6 +16658,10 @@ type GetJobTemplateTemplateContainerArgs struct {
 	Ports GetJobTemplateTemplateContainerPortArrayInput `pulumi:"ports"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources GetJobTemplateTemplateContainerResourceArrayInput `pulumi:"resources"`
+	// Startup probe of application within the container.
+	// All other probes are disabled if a startup probe is provided, until it
+	// succeeds. Container will not be added to service endpoints if the probe fails.
+	StartupProbes GetJobTemplateTemplateContainerStartupProbeArrayInput `pulumi:"startupProbes"`
 	// Volume to mount into the container's filesystem.
 	VolumeMounts GetJobTemplateTemplateContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -15797,6 +16729,11 @@ func (o GetJobTemplateTemplateContainerOutput) Commands() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
+// Names of the containers that must start before this container.
+func (o GetJobTemplateTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
+}
+
 // List of environment variables to set in the container.
 func (o GetJobTemplateTemplateContainerOutput) Envs() GetJobTemplateTemplateContainerEnvArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerEnv { return v.Envs }).(GetJobTemplateTemplateContainerEnvArrayOutput)
@@ -15822,6 +16759,15 @@ func (o GetJobTemplateTemplateContainerOutput) Ports() GetJobTemplateTemplateCon
 // Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o GetJobTemplateTemplateContainerOutput) Resources() GetJobTemplateTemplateContainerResourceArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerResource { return v.Resources }).(GetJobTemplateTemplateContainerResourceArrayOutput)
+}
+
+// Startup probe of application within the container.
+// All other probes are disabled if a startup probe is provided, until it
+// succeeds. Container will not be added to service endpoints if the probe fails.
+func (o GetJobTemplateTemplateContainerOutput) StartupProbes() GetJobTemplateTemplateContainerStartupProbeArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerStartupProbe {
+		return v.StartupProbes
+	}).(GetJobTemplateTemplateContainerStartupProbeArrayOutput)
 }
 
 // Volume to mount into the container's filesystem.
@@ -16379,6 +17325,622 @@ func (o GetJobTemplateTemplateContainerResourceArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerResource {
 		return vs[0].([]GetJobTemplateTemplateContainerResource)[vs[1].(int)]
 	}).(GetJobTemplateTemplateContainerResourceOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbe struct {
+	// Minimum consecutive failures for the probe to be considered failed after
+	// having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold int `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs []GetJobTemplateTemplateContainerStartupProbeGrpc `pulumi:"grpcs"`
+	// HttpGet specifies the http request to perform.
+	HttpGets []GetJobTemplateTemplateContainerStartupProbeHttpGet `pulumi:"httpGets"`
+	// Number of seconds after the container has started before the probe is
+	// initiated.
+	// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe.
+	// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+	PeriodSeconds int `pulumi:"periodSeconds"`
+	// TcpSocket specifies an action involving a TCP port.
+	TcpSockets []GetJobTemplateTemplateContainerStartupProbeTcpSocket `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+	// Must be smaller than periodSeconds.
+	TimeoutSeconds int `pulumi:"timeoutSeconds"`
+}
+
+// GetJobTemplateTemplateContainerStartupProbeInput is an input type that accepts GetJobTemplateTemplateContainerStartupProbeArgs and GetJobTemplateTemplateContainerStartupProbeOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerStartupProbeInput` via:
+//
+//	GetJobTemplateTemplateContainerStartupProbeArgs{...}
+type GetJobTemplateTemplateContainerStartupProbeInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerStartupProbeOutput() GetJobTemplateTemplateContainerStartupProbeOutput
+	ToGetJobTemplateTemplateContainerStartupProbeOutputWithContext(context.Context) GetJobTemplateTemplateContainerStartupProbeOutput
+}
+
+type GetJobTemplateTemplateContainerStartupProbeArgs struct {
+	// Minimum consecutive failures for the probe to be considered failed after
+	// having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs GetJobTemplateTemplateContainerStartupProbeGrpcArrayInput `pulumi:"grpcs"`
+	// HttpGet specifies the http request to perform.
+	HttpGets GetJobTemplateTemplateContainerStartupProbeHttpGetArrayInput `pulumi:"httpGets"`
+	// Number of seconds after the container has started before the probe is
+	// initiated.
+	// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+	InitialDelaySeconds pulumi.IntInput `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe.
+	// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+	PeriodSeconds pulumi.IntInput `pulumi:"periodSeconds"`
+	// TcpSocket specifies an action involving a TCP port.
+	TcpSockets GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+	// Must be smaller than periodSeconds.
+	TimeoutSeconds pulumi.IntInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetJobTemplateTemplateContainerStartupProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeArgs) ToGetJobTemplateTemplateContainerStartupProbeOutput() GetJobTemplateTemplateContainerStartupProbeOutput {
+	return i.ToGetJobTemplateTemplateContainerStartupProbeOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeArgs) ToGetJobTemplateTemplateContainerStartupProbeOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerStartupProbeOutput)
+}
+
+// GetJobTemplateTemplateContainerStartupProbeArrayInput is an input type that accepts GetJobTemplateTemplateContainerStartupProbeArray and GetJobTemplateTemplateContainerStartupProbeArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerStartupProbeArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerStartupProbeArray{ GetJobTemplateTemplateContainerStartupProbeArgs{...} }
+type GetJobTemplateTemplateContainerStartupProbeArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerStartupProbeArrayOutput() GetJobTemplateTemplateContainerStartupProbeArrayOutput
+	ToGetJobTemplateTemplateContainerStartupProbeArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerStartupProbeArrayOutput
+}
+
+type GetJobTemplateTemplateContainerStartupProbeArray []GetJobTemplateTemplateContainerStartupProbeInput
+
+func (GetJobTemplateTemplateContainerStartupProbeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeArray) ToGetJobTemplateTemplateContainerStartupProbeArrayOutput() GetJobTemplateTemplateContainerStartupProbeArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerStartupProbeArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeArray) ToGetJobTemplateTemplateContainerStartupProbeArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerStartupProbeArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerStartupProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeOutput) ToGetJobTemplateTemplateContainerStartupProbeOutput() GetJobTemplateTemplateContainerStartupProbeOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeOutput) ToGetJobTemplateTemplateContainerStartupProbeOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeOutput {
+	return o
+}
+
+// Minimum consecutive failures for the probe to be considered failed after
+// having succeeded. Defaults to 3. Minimum value is 1.
+func (o GetJobTemplateTemplateContainerStartupProbeOutput) FailureThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbe) int { return v.FailureThreshold }).(pulumi.IntOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+func (o GetJobTemplateTemplateContainerStartupProbeOutput) Grpcs() GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbe) []GetJobTemplateTemplateContainerStartupProbeGrpc {
+		return v.Grpcs
+	}).(GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput)
+}
+
+// HttpGet specifies the http request to perform.
+func (o GetJobTemplateTemplateContainerStartupProbeOutput) HttpGets() GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbe) []GetJobTemplateTemplateContainerStartupProbeHttpGet {
+		return v.HttpGets
+	}).(GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput)
+}
+
+// Number of seconds after the container has started before the probe is
+// initiated.
+// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+func (o GetJobTemplateTemplateContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbe) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
+}
+
+// How often (in seconds) to perform the probe.
+// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+func (o GetJobTemplateTemplateContainerStartupProbeOutput) PeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbe) int { return v.PeriodSeconds }).(pulumi.IntOutput)
+}
+
+// TcpSocket specifies an action involving a TCP port.
+func (o GetJobTemplateTemplateContainerStartupProbeOutput) TcpSockets() GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbe) []GetJobTemplateTemplateContainerStartupProbeTcpSocket {
+		return v.TcpSockets
+	}).(GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput)
+}
+
+// Number of seconds after which the probe times out.
+// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+// Must be smaller than periodSeconds.
+func (o GetJobTemplateTemplateContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbe) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerStartupProbeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeArrayOutput) ToGetJobTemplateTemplateContainerStartupProbeArrayOutput() GetJobTemplateTemplateContainerStartupProbeArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeArrayOutput) ToGetJobTemplateTemplateContainerStartupProbeArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerStartupProbeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerStartupProbe {
+		return vs[0].([]GetJobTemplateTemplateContainerStartupProbe)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerStartupProbeOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeGrpc struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service string `pulumi:"service"`
+}
+
+// GetJobTemplateTemplateContainerStartupProbeGrpcInput is an input type that accepts GetJobTemplateTemplateContainerStartupProbeGrpcArgs and GetJobTemplateTemplateContainerStartupProbeGrpcOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerStartupProbeGrpcInput` via:
+//
+//	GetJobTemplateTemplateContainerStartupProbeGrpcArgs{...}
+type GetJobTemplateTemplateContainerStartupProbeGrpcInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerStartupProbeGrpcOutput() GetJobTemplateTemplateContainerStartupProbeGrpcOutput
+	ToGetJobTemplateTemplateContainerStartupProbeGrpcOutputWithContext(context.Context) GetJobTemplateTemplateContainerStartupProbeGrpcOutput
+}
+
+type GetJobTemplateTemplateContainerStartupProbeGrpcArgs struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetJobTemplateTemplateContainerStartupProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeGrpcArgs) ToGetJobTemplateTemplateContainerStartupProbeGrpcOutput() GetJobTemplateTemplateContainerStartupProbeGrpcOutput {
+	return i.ToGetJobTemplateTemplateContainerStartupProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeGrpcArgs) ToGetJobTemplateTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerStartupProbeGrpcOutput)
+}
+
+// GetJobTemplateTemplateContainerStartupProbeGrpcArrayInput is an input type that accepts GetJobTemplateTemplateContainerStartupProbeGrpcArray and GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerStartupProbeGrpcArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerStartupProbeGrpcArray{ GetJobTemplateTemplateContainerStartupProbeGrpcArgs{...} }
+type GetJobTemplateTemplateContainerStartupProbeGrpcArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput() GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput
+	ToGetJobTemplateTemplateContainerStartupProbeGrpcArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput
+}
+
+type GetJobTemplateTemplateContainerStartupProbeGrpcArray []GetJobTemplateTemplateContainerStartupProbeGrpcInput
+
+func (GetJobTemplateTemplateContainerStartupProbeGrpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeGrpcArray) ToGetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput() GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerStartupProbeGrpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeGrpcArray) ToGetJobTemplateTemplateContainerStartupProbeGrpcArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerStartupProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeGrpcOutput) ToGetJobTemplateTemplateContainerStartupProbeGrpcOutput() GetJobTemplateTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeGrpcOutput) ToGetJobTemplateTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o GetJobTemplateTemplateContainerStartupProbeGrpcOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
+func (o GetJobTemplateTemplateContainerStartupProbeGrpcOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbeGrpc) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput) ToGetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput() GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput) ToGetJobTemplateTemplateContainerStartupProbeGrpcArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerStartupProbeGrpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerStartupProbeGrpc {
+		return vs[0].([]GetJobTemplateTemplateContainerStartupProbeGrpc)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerStartupProbeGrpcOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeHttpGet struct {
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	HttpHeaders []GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server. If set, it should not be empty string.
+	Path string `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+}
+
+// GetJobTemplateTemplateContainerStartupProbeHttpGetInput is an input type that accepts GetJobTemplateTemplateContainerStartupProbeHttpGetArgs and GetJobTemplateTemplateContainerStartupProbeHttpGetOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerStartupProbeHttpGetInput` via:
+//
+//	GetJobTemplateTemplateContainerStartupProbeHttpGetArgs{...}
+type GetJobTemplateTemplateContainerStartupProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerStartupProbeHttpGetOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetOutput
+	ToGetJobTemplateTemplateContainerStartupProbeHttpGetOutputWithContext(context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetOutput
+}
+
+type GetJobTemplateTemplateContainerStartupProbeHttpGetArgs struct {
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	HttpHeaders GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server. If set, it should not be empty string.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetJobTemplateTemplateContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeHttpGetArgs) ToGetJobTemplateTemplateContainerStartupProbeHttpGetOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetOutput {
+	return i.ToGetJobTemplateTemplateContainerStartupProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeHttpGetArgs) ToGetJobTemplateTemplateContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerStartupProbeHttpGetOutput)
+}
+
+// GetJobTemplateTemplateContainerStartupProbeHttpGetArrayInput is an input type that accepts GetJobTemplateTemplateContainerStartupProbeHttpGetArray and GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerStartupProbeHttpGetArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerStartupProbeHttpGetArray{ GetJobTemplateTemplateContainerStartupProbeHttpGetArgs{...} }
+type GetJobTemplateTemplateContainerStartupProbeHttpGetArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput
+	ToGetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput
+}
+
+type GetJobTemplateTemplateContainerStartupProbeHttpGetArray []GetJobTemplateTemplateContainerStartupProbeHttpGetInput
+
+func (GetJobTemplateTemplateContainerStartupProbeHttpGetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeHttpGetArray) ToGetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeHttpGetArray) ToGetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetOutput) ToGetJobTemplateTemplateContainerStartupProbeHttpGetOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetOutput) ToGetJobTemplateTemplateContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+// Custom headers to set in the request. HTTP allows repeated headers.
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbeHttpGet) []GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server. If set, it should not be empty string.
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbeHttpGet) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput) ToGetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput) ToGetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerStartupProbeHttpGetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerStartupProbeHttpGet {
+		return vs[0].([]GetJobTemplateTemplateContainerStartupProbeHttpGet)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerStartupProbeHttpGetOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader struct {
+	// The name of the Cloud Run v2 Job.
+	Name string `pulumi:"name"`
+	// The header field value.
+	Value string `pulumi:"value"`
+}
+
+// GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderInput is an input type that accepts GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs and GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderInput` via:
+//
+//	GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...}
+type GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput
+	ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput
+}
+
+type GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
+	// The name of the Cloud Run v2 Job.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The header field value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return i.ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+// GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray and GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray{ GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...} }
+type GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
+	ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
+}
+
+type GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray []GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderInput
+
+func (GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The name of the Cloud Run v2 Job.
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The header field value.
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToGetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
+		return vs[0].([]GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeTcpSocket struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+}
+
+// GetJobTemplateTemplateContainerStartupProbeTcpSocketInput is an input type that accepts GetJobTemplateTemplateContainerStartupProbeTcpSocketArgs and GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerStartupProbeTcpSocketInput` via:
+//
+//	GetJobTemplateTemplateContainerStartupProbeTcpSocketArgs{...}
+type GetJobTemplateTemplateContainerStartupProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerStartupProbeTcpSocketOutput() GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput
+	ToGetJobTemplateTemplateContainerStartupProbeTcpSocketOutputWithContext(context.Context) GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput
+}
+
+type GetJobTemplateTemplateContainerStartupProbeTcpSocketArgs struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetJobTemplateTemplateContainerStartupProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeTcpSocketArgs) ToGetJobTemplateTemplateContainerStartupProbeTcpSocketOutput() GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput {
+	return i.ToGetJobTemplateTemplateContainerStartupProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeTcpSocketArgs) ToGetJobTemplateTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput)
+}
+
+// GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayInput is an input type that accepts GetJobTemplateTemplateContainerStartupProbeTcpSocketArray and GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerStartupProbeTcpSocketArray{ GetJobTemplateTemplateContainerStartupProbeTcpSocketArgs{...} }
+type GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput() GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput
+	ToGetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput
+}
+
+type GetJobTemplateTemplateContainerStartupProbeTcpSocketArray []GetJobTemplateTemplateContainerStartupProbeTcpSocketInput
+
+func (GetJobTemplateTemplateContainerStartupProbeTcpSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeTcpSocketArray) ToGetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput() GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerStartupProbeTcpSocketArray) ToGetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput) ToGetJobTemplateTemplateContainerStartupProbeTcpSocketOutput() GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput) ToGetJobTemplateTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerStartupProbeTcpSocket) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput) ToGetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput() GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput) ToGetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerStartupProbeTcpSocket {
+		return vs[0].([]GetJobTemplateTemplateContainerStartupProbeTcpSocket)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput)
 }
 
 type GetJobTemplateTemplateContainerVolumeMount struct {
@@ -25382,6 +26944,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerPortArrayInput)(nil)).Elem(), JobTemplateTemplateContainerPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerResourcesInput)(nil)).Elem(), JobTemplateTemplateContainerResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerResourcesPtrInput)(nil)).Elem(), JobTemplateTemplateContainerResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeInput)(nil)).Elem(), JobTemplateTemplateContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerStartupProbePtrInput)(nil)).Elem(), JobTemplateTemplateContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeGrpcInput)(nil)).Elem(), JobTemplateTemplateContainerStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeGrpcPtrInput)(nil)).Elem(), JobTemplateTemplateContainerStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeHttpGetInput)(nil)).Elem(), JobTemplateTemplateContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeHttpGetPtrInput)(nil)).Elem(), JobTemplateTemplateContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeTcpSocketInput)(nil)).Elem(), JobTemplateTemplateContainerStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeTcpSocketPtrInput)(nil)).Elem(), JobTemplateTemplateContainerStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerVolumeMountInput)(nil)).Elem(), JobTemplateTemplateContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerVolumeMountArrayInput)(nil)).Elem(), JobTemplateTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeInput)(nil)).Elem(), JobTemplateTemplateVolumeArgs{})
@@ -25556,6 +27128,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerPortArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerResourceInput)(nil)).Elem(), GetJobTemplateTemplateContainerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerResourceArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeInput)(nil)).Elem(), GetJobTemplateTemplateContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerStartupProbeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeGrpcInput)(nil)).Elem(), GetJobTemplateTemplateContainerStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeGrpcArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerStartupProbeGrpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeHttpGetInput)(nil)).Elem(), GetJobTemplateTemplateContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeHttpGetArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerStartupProbeHttpGetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeTcpSocketInput)(nil)).Elem(), GetJobTemplateTemplateContainerStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerStartupProbeTcpSocketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerVolumeMountInput)(nil)).Elem(), GetJobTemplateTemplateContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerVolumeMountArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeInput)(nil)).Elem(), GetJobTemplateTemplateVolumeArgs{})
@@ -25726,6 +27308,16 @@ func init() {
 	pulumi.RegisterOutputType(JobTemplateTemplateContainerPortArrayOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateContainerResourcesOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateContainerResourcesPtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateContainerStartupProbeOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateContainerStartupProbePtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateContainerStartupProbeGrpcOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateContainerStartupProbeGrpcPtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateContainerStartupProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateContainerStartupProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeOutput{})
@@ -25900,6 +27492,16 @@ func init() {
 	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerPortArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerResourceOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerStartupProbeOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerStartupProbeArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerStartupProbeGrpcOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerStartupProbeGrpcArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerStartupProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerStartupProbeHttpGetArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerStartupProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeOutput{})

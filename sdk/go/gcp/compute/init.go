@@ -145,6 +145,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Interconnect{}
 	case "gcp:compute/interconnectAttachment:InterconnectAttachment":
 		r = &InterconnectAttachment{}
+	case "gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup":
+		r = &InterconnectAttachmentGroup{}
+	case "gcp:compute/interconnectGroup:InterconnectGroup":
+		r = &InterconnectGroup{}
 	case "gcp:compute/machineImage:MachineImage":
 		r = &MachineImage{}
 	case "gcp:compute/machineImageIamBinding:MachineImageIamBinding":
@@ -315,6 +319,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SnapshotIamMember{}
 	case "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy":
 		r = &SnapshotIamPolicy{}
+	case "gcp:compute/snapshotSettings:SnapshotSettings":
+		r = &SnapshotSettings{}
 	case "gcp:compute/storagePool:StoragePool":
 		r = &StoragePool{}
 	case "gcp:compute/storagePoolIamBinding:StoragePoolIamBinding":
@@ -672,6 +678,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/interconnectAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/interconnectAttachmentGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/interconnectGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1097,6 +1113,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/snapshotIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/snapshotSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

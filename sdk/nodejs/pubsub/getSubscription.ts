@@ -66,6 +66,7 @@ export interface GetSubscriptionResult {
     readonly id: string;
     readonly labels: {[key: string]: string};
     readonly messageRetentionDuration: string;
+    readonly messageTransforms: outputs.pubsub.GetSubscriptionMessageTransform[];
     readonly name: string;
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};

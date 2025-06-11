@@ -19,6 +19,7 @@ import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterFleet;
 import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterLoadBalancer;
 import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterNetworkConfig;
 import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterPlatformConfig;
+import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterPrivateRegistryConfig;
 import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterStatus;
 import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterVcenter;
 import java.lang.Boolean;
@@ -50,6 +51,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerF5ConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPrivateRegistryConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -102,6 +104,10 @@ import javax.annotation.Nullable;
  *                     .snatPool("test-snat-pool")
  *                     .build())
  *                 .build())
+ *             .privateRegistryConfig(VmwareAdminClusterPrivateRegistryConfigArgs.builder()
+ *                 .address("test-address")
+ *                 .caCert("test-ca-cert")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -137,6 +143,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterAuthorizationArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterAutoRepairConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPlatformConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPrivateRegistryConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -237,6 +244,10 @@ import javax.annotation.Nullable;
  *             .platformConfig(VmwareAdminClusterPlatformConfigArgs.builder()
  *                 .requiredPlatformVersion("1.31.0")
  *                 .build())
+ *             .privateRegistryConfig(VmwareAdminClusterPrivateRegistryConfigArgs.builder()
+ *                 .address("test-address")
+ *                 .caCert("test-ca-cert")
+ *                 .build())
  *             .build());
  * 
  *     }}{@code
@@ -263,6 +274,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerMetalLbConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPrivateRegistryConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -312,6 +324,10 @@ import javax.annotation.Nullable;
  *                 .metalLbConfig(VmwareAdminClusterLoadBalancerMetalLbConfigArgs.builder()
  *                     .enabled(true)
  *                     .build())
+ *                 .build())
+ *             .privateRegistryConfig(VmwareAdminClusterPrivateRegistryConfigArgs.builder()
+ *                 .address("test-address")
+ *                 .caCert("test-ca-cert")
  *                 .build())
  *             .build());
  * 
@@ -687,6 +703,20 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<VmwareAdminClusterPlatformConfig>> platformConfig() {
         return Codegen.optional(this.platformConfig);
+    }
+    /**
+     * Configuration for private registry.
+     * 
+     */
+    @Export(name="privateRegistryConfig", refs={VmwareAdminClusterPrivateRegistryConfig.class}, tree="[0]")
+    private Output</* @Nullable */ VmwareAdminClusterPrivateRegistryConfig> privateRegistryConfig;
+
+    /**
+     * @return Configuration for private registry.
+     * 
+     */
+    public Output<Optional<VmwareAdminClusterPrivateRegistryConfig>> privateRegistryConfig() {
+        return Codegen.optional(this.privateRegistryConfig);
     }
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;

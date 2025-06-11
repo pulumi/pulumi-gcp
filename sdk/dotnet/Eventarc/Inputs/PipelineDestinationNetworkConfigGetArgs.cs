@@ -16,9 +16,11 @@ namespace Pulumi.Gcp.Eventarc.Inputs
         /// Name of the NetworkAttachment that allows access to the consumer VPC.
         /// Format:
         /// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        /// Required for HTTP endpoint destinations. Must not be specified for
+        /// Workflows, MessageBus, or Topic destinations.
         /// </summary>
-        [Input("networkAttachment", required: true)]
-        public Input<string> NetworkAttachment { get; set; } = null!;
+        [Input("networkAttachment")]
+        public Input<string>? NetworkAttachment { get; set; }
 
         public PipelineDestinationNetworkConfigGetArgs()
         {

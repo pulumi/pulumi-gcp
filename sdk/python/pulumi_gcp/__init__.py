@@ -976,6 +976,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apihub/curation",
+  "fqn": "pulumi_gcp.apihub",
+  "classes": {
+   "gcp:apihub/curation:Curation": "Curation"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apihub/hostProjectRegistration",
   "fqn": "pulumi_gcp.apihub",
   "classes": {
@@ -3040,6 +3048,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/interconnectAttachmentGroup",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup": "InterconnectAttachmentGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/interconnectGroup",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/interconnectGroup:InterconnectGroup": "InterconnectGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/machineImage",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -3716,6 +3740,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy": "SnapshotIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/snapshotSettings",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/snapshotSettings:SnapshotSettings": "SnapshotSettings"
   }
  },
  {

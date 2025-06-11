@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apigee.EnvironmentArgs;
 import com.pulumi.gcp.apigee.inputs.EnvironmentState;
+import com.pulumi.gcp.apigee.outputs.EnvironmentClientIpResolutionConfig;
 import com.pulumi.gcp.apigee.outputs.EnvironmentNodeConfig;
 import com.pulumi.gcp.apigee.outputs.EnvironmentProperties;
 import java.lang.String;
@@ -48,6 +49,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
  * import com.pulumi.gcp.apigee.Environment;
  * import com.pulumi.gcp.apigee.EnvironmentArgs;
+ * import com.pulumi.gcp.apigee.inputs.EnvironmentClientIpResolutionConfigArgs;
+ * import com.pulumi.gcp.apigee.inputs.EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -95,6 +98,12 @@ import javax.annotation.Nullable;
  *             .description("Apigee Environment")
  *             .displayName("environment-1")
  *             .orgId(apigeeOrg.id())
+ *             .clientIpResolutionConfig(EnvironmentClientIpResolutionConfigArgs.builder()
+ *                 .headerIndexAlgorithm(EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs.builder()
+ *                     .ipHeaderName("X-Forwarded-For")
+ *                     .ipHeaderIndex(1)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -141,6 +150,22 @@ public class Environment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> apiProxyType() {
         return this.apiProxyType;
+    }
+    /**
+     * The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: &#39;{ &#34;clientIpResolutionConfig&#34; = {} }&#39; For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="clientIpResolutionConfig", refs={EnvironmentClientIpResolutionConfig.class}, tree="[0]")
+    private Output</* @Nullable */ EnvironmentClientIpResolutionConfig> clientIpResolutionConfig;
+
+    /**
+     * @return The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: &#39;{ &#34;clientIpResolutionConfig&#34; = {} }&#39; For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<EnvironmentClientIpResolutionConfig>> clientIpResolutionConfig() {
+        return Codegen.optional(this.clientIpResolutionConfig);
     }
     /**
      * Optional. Deployment type supported by the environment. The deployment type can be

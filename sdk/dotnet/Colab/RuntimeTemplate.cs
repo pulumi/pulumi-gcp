@@ -132,11 +132,11 @@ namespace Pulumi.Gcp.Colab
     ///         },
     ///         EucConfig = new Gcp.Colab.Inputs.RuntimeTemplateEucConfigArgs
     ///         {
-    ///             EucDisabled = true,
+    ///             EucDisabled = false,
     ///         },
     ///         ShieldedVmConfig = new Gcp.Colab.Inputs.RuntimeTemplateShieldedVmConfigArgs
     ///         {
-    ///             EnableSecureBoot = true,
+    ///             EnableSecureBoot = false,
     ///         },
     ///         NetworkTags = new[]
     ///         {
@@ -146,23 +146,6 @@ namespace Pulumi.Gcp.Colab
     ///         EncryptionSpec = new Gcp.Colab.Inputs.RuntimeTemplateEncryptionSpecArgs
     ///         {
     ///             KmsKeyName = "my-crypto-key",
-    ///         },
-    ///         SoftwareConfig = new Gcp.Colab.Inputs.RuntimeTemplateSoftwareConfigArgs
-    ///         {
-    ///             Envs = new[]
-    ///             {
-    ///                 new Gcp.Colab.Inputs.RuntimeTemplateSoftwareConfigEnvArgs
-    ///                 {
-    ///                     Name = "TEST",
-    ///                     Value = "1",
-    ///                 },
-    ///             },
-    ///             PostStartupScriptConfig = new Gcp.Colab.Inputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs
-    ///             {
-    ///                 PostStartupScript = "echo 'hello world'",
-    ///                 PostStartupScriptUrl = "gs://colab-enterprise-pss-secure/secure_pss.sh",
-    ///                 PostStartupScriptBehavior = "RUN_ONCE",
-    ///             },
     ///         },
     ///     });
     /// 

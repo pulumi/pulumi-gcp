@@ -33,6 +33,13 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         [Input("multiclusteringress")]
         public Input<Inputs.FeatureSpecMulticlusteringressArgs>? Multiclusteringress { get; set; }
 
+        /// <summary>
+        /// RBACRolebinding Actuation feature spec.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rbacrolebindingactuation")]
+        public Input<Inputs.FeatureSpecRbacrolebindingactuationArgs>? Rbacrolebindingactuation { get; set; }
+
         public FeatureSpecArgs()
         {
         }

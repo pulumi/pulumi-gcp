@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *         my_key: "my_value",
  *     },
  *     enablePreviewDataSharing: true,
+ *     enableDataSharing: true,
  * });
  * ```
  *
@@ -93,7 +94,11 @@ export class DataSharingWithGoogleSetting extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Whether preview data sharing should be enabled.
+     * Whether data sharing should be enabled in GA products.
+     */
+    public readonly enableDataSharing!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether data sharing should be enabled in Preview products.
      */
     public readonly enablePreviewDataSharing!: pulumi.Output<boolean | undefined>;
     /**
@@ -142,6 +147,7 @@ export class DataSharingWithGoogleSetting extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["dataSharingWithGoogleSettingId"] = state ? state.dataSharingWithGoogleSettingId : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["enableDataSharing"] = state ? state.enableDataSharing : undefined;
             resourceInputs["enablePreviewDataSharing"] = state ? state.enablePreviewDataSharing : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -155,6 +161,7 @@ export class DataSharingWithGoogleSetting extends pulumi.CustomResource {
                 throw new Error("Missing required property 'dataSharingWithGoogleSettingId'");
             }
             resourceInputs["dataSharingWithGoogleSettingId"] = args ? args.dataSharingWithGoogleSettingId : undefined;
+            resourceInputs["enableDataSharing"] = args ? args.enableDataSharing : undefined;
             resourceInputs["enablePreviewDataSharing"] = args ? args.enablePreviewDataSharing : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -192,7 +199,11 @@ export interface DataSharingWithGoogleSettingState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Whether preview data sharing should be enabled.
+     * Whether data sharing should be enabled in GA products.
+     */
+    enableDataSharing?: pulumi.Input<boolean>;
+    /**
+     * Whether data sharing should be enabled in Preview products.
      */
     enablePreviewDataSharing?: pulumi.Input<boolean>;
     /**
@@ -238,7 +249,11 @@ export interface DataSharingWithGoogleSettingArgs {
      */
     dataSharingWithGoogleSettingId: pulumi.Input<string>;
     /**
-     * Whether preview data sharing should be enabled.
+     * Whether data sharing should be enabled in GA products.
+     */
+    enableDataSharing?: pulumi.Input<boolean>;
+    /**
+     * Whether data sharing should be enabled in Preview products.
      */
     enablePreviewDataSharing?: pulumi.Input<boolean>;
     /**

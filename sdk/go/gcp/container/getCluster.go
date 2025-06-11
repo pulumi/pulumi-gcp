@@ -122,6 +122,7 @@ type LookupClusterResult struct {
 	MonitoringService               string                                     `pulumi:"monitoringService"`
 	Name                            string                                     `pulumi:"name"`
 	Network                         string                                     `pulumi:"network"`
+	NetworkPerformanceConfigs       []GetClusterNetworkPerformanceConfig       `pulumi:"networkPerformanceConfigs"`
 	NetworkPolicies                 []GetClusterNetworkPolicy                  `pulumi:"networkPolicies"`
 	NetworkingMode                  string                                     `pulumi:"networkingMode"`
 	NodeConfigs                     []GetClusterNodeConfig                     `pulumi:"nodeConfigs"`
@@ -413,6 +414,10 @@ func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) NetworkPerformanceConfigs() GetClusterNetworkPerformanceConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterNetworkPerformanceConfig { return v.NetworkPerformanceConfigs }).(GetClusterNetworkPerformanceConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) NetworkPolicies() GetClusterNetworkPolicyArrayOutput {

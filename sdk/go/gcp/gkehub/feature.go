@@ -524,6 +524,41 @@ import (
 //	}
 //
 // ```
+// ### Gkehub Feature Rbacrolebinding Actuation
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("rbacrolebindingactuation"),
+//				Location: pulumi.String("global"),
+//				Spec: &gkehub.FeatureSpecArgs{
+//					Rbacrolebindingactuation: &gkehub.FeatureSpecRbacrolebindingactuationArgs{
+//						AllowedCustomRoles: pulumi.StringArray{
+//							pulumi.String("custom-role1"),
+//							pulumi.String("custom-role2"),
+//							pulumi.String("custom-role3"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

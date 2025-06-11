@@ -48,11 +48,59 @@ namespace Pulumi.Gcp.GkeHub
     ///         {
     ///             { "key", "value" },
     ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Gkehub Scope Rbac Custom Role Binding Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var scope = new Gcp.GkeHub.Scope("scope", new()
+    ///     {
+    ///         ScopeId = "tf-test-scope_13293",
+    ///     });
+    /// 
+    ///     var rbacrolebindingactuation = new Gcp.GkeHub.Feature("rbacrolebindingactuation", new()
+    ///     {
+    ///         Name = "rbacrolebindingactuation",
+    ///         Location = "global",
+    ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
+    ///         {
+    ///             Rbacrolebindingactuation = new Gcp.GkeHub.Inputs.FeatureSpecRbacrolebindingactuationArgs
+    ///             {
+    ///                 AllowedCustomRoles = new[]
+    ///                 {
+    ///                     "my-custom-role",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var scopeRbacRoleBinding = new Gcp.GkeHub.ScopeRbacRoleBinding("scope_rbac_role_binding", new()
+    ///     {
+    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_40289",
+    ///         ScopeId = scope.ScopeId,
+    ///         User = "test-email@gmail.com",
+    ///         Role = new Gcp.GkeHub.Inputs.ScopeRbacRoleBindingRoleArgs
+    ///         {
+    ///             CustomRole = "my-custom-role",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
     ///         {
-    ///             scope,
+    ///             rbacrolebindingactuation,
     ///         },
     ///     });
     /// 

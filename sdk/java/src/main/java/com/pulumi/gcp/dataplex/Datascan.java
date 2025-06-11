@@ -284,6 +284,7 @@ import javax.annotation.Nullable;
  *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
  *                 .samplingPercent(5.0)
  *                 .rowFilter("station_id > 1000")
+ *                 .catalogPublishingEnabled(true)
  *                 .postScanActions(DatascanDataQualitySpecPostScanActionsArgs.builder()
  *                     .notificationReport(DatascanDataQualitySpecPostScanActionsNotificationReportArgs.builder()
  *                         .recipients(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs.builder()

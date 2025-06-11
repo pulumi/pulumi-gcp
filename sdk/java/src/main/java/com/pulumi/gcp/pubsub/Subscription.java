@@ -14,6 +14,7 @@ import com.pulumi.gcp.pubsub.outputs.SubscriptionBigqueryConfig;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionCloudStorageConfig;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionDeadLetterPolicy;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionExpirationPolicy;
+import com.pulumi.gcp.pubsub.outputs.SubscriptionMessageTransform;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionPushConfig;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionRetryPolicy;
 import java.lang.Boolean;
@@ -564,7 +565,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_59033")
+ *                 .filenameSuffix("-_10393")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -642,7 +643,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_32081")
+ *                 .filenameSuffix("-_33052")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -727,7 +728,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_10393")
+ *                 .filenameSuffix("-_3684")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -1037,6 +1038,24 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> messageRetentionDuration() {
         return Codegen.optional(this.messageRetentionDuration);
+    }
+    /**
+     * Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="messageTransforms", refs={List.class,SubscriptionMessageTransform.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<SubscriptionMessageTransform>> messageTransforms;
+
+    /**
+     * @return Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<SubscriptionMessageTransform>>> messageTransforms() {
+        return Codegen.optional(this.messageTransforms);
     }
     /**
      * Name of the subscription.
