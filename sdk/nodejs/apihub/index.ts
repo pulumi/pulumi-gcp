@@ -10,6 +10,11 @@ export type ApiHubInstance = import("./apiHubInstance").ApiHubInstance;
 export const ApiHubInstance: typeof import("./apiHubInstance").ApiHubInstance = null as any;
 utilities.lazyLoad(exports, ["ApiHubInstance"], () => require("./apiHubInstance"));
 
+export { CurationArgs, CurationState } from "./curation";
+export type Curation = import("./curation").Curation;
+export const Curation: typeof import("./curation").Curation = null as any;
+utilities.lazyLoad(exports, ["Curation"], () => require("./curation"));
+
 export { HostProjectRegistrationArgs, HostProjectRegistrationState } from "./hostProjectRegistration";
 export type HostProjectRegistration = import("./hostProjectRegistration").HostProjectRegistration;
 export const HostProjectRegistration: typeof import("./hostProjectRegistration").HostProjectRegistration = null as any;
@@ -22,6 +27,8 @@ const _module = {
         switch (type) {
             case "gcp:apihub/apiHubInstance:ApiHubInstance":
                 return new ApiHubInstance(name, <any>undefined, { urn })
+            case "gcp:apihub/curation:Curation":
+                return new Curation(name, <any>undefined, { urn })
             case "gcp:apihub/hostProjectRegistration:HostProjectRegistration":
                 return new HostProjectRegistration(name, <any>undefined, { urn })
             default:
@@ -30,4 +37,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "apihub/apiHubInstance", _module)
+pulumi.runtime.registerResourceModule("gcp", "apihub/curation", _module)
 pulumi.runtime.registerResourceModule("gcp", "apihub/hostProjectRegistration", _module)

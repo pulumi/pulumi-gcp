@@ -339,7 +339,7 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
             mode="TRUST_DOMAIN")
         example = gcp.iam.WorkloadIdentityPoolNamespace("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_namespace_id="example-nmspc")
+            workload_identity_pool_namespace_id="example-namespace")
         ```
         ### Iam Workload Identity Pool Namespace Full
 
@@ -352,7 +352,7 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
             mode="TRUST_DOMAIN")
         example = gcp.iam.WorkloadIdentityPoolNamespace("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_namespace_id="example-nmspc",
+            workload_identity_pool_namespace_id="example-namespace",
             description="Example Namespace in a Workload Identity Pool",
             disabled=True)
         ```
@@ -423,7 +423,7 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
             mode="TRUST_DOMAIN")
         example = gcp.iam.WorkloadIdentityPoolNamespace("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_namespace_id="example-nmspc")
+            workload_identity_pool_namespace_id="example-namespace")
         ```
         ### Iam Workload Identity Pool Namespace Full
 
@@ -436,7 +436,7 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
             mode="TRUST_DOMAIN")
         example = gcp.iam.WorkloadIdentityPoolNamespace("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_namespace_id="example-nmspc",
+            workload_identity_pool_namespace_id="example-namespace",
             description="Example Namespace in a Workload Identity Pool",
             disabled=True)
         ```

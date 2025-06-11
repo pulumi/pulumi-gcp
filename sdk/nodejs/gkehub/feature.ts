@@ -318,6 +318,26 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Gkehub Feature Rbacrolebinding Actuation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "rbacrolebindingactuation",
+ *     location: "global",
+ *     spec: {
+ *         rbacrolebindingactuation: {
+ *             allowedCustomRoles: [
+ *                 "custom-role1",
+ *                 "custom-role2",
+ *                 "custom-role3",
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

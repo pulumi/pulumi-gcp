@@ -28,6 +28,7 @@ import com.pulumi.gcp.container.outputs.GetClusterMasterAuth;
 import com.pulumi.gcp.container.outputs.GetClusterMasterAuthorizedNetworksConfig;
 import com.pulumi.gcp.container.outputs.GetClusterMeshCertificate;
 import com.pulumi.gcp.container.outputs.GetClusterMonitoringConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNetworkPerformanceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePool;
@@ -116,6 +117,7 @@ public final class GetClusterResult {
     private String monitoringService;
     private String name;
     private String network;
+    private List<GetClusterNetworkPerformanceConfig> networkPerformanceConfigs;
     private List<GetClusterNetworkPolicy> networkPolicies;
     private String networkingMode;
     private List<GetClusterNodeConfig> nodeConfigs;
@@ -314,6 +316,9 @@ public final class GetClusterResult {
     public String network() {
         return this.network;
     }
+    public List<GetClusterNetworkPerformanceConfig> networkPerformanceConfigs() {
+        return this.networkPerformanceConfigs;
+    }
     public List<GetClusterNetworkPolicy> networkPolicies() {
         return this.networkPolicies;
     }
@@ -476,6 +481,7 @@ public final class GetClusterResult {
         private String monitoringService;
         private String name;
         private String network;
+        private List<GetClusterNetworkPerformanceConfig> networkPerformanceConfigs;
         private List<GetClusterNetworkPolicy> networkPolicies;
         private String networkingMode;
         private List<GetClusterNodeConfig> nodeConfigs;
@@ -565,6 +571,7 @@ public final class GetClusterResult {
     	      this.monitoringService = defaults.monitoringService;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
     	      this.networkPolicies = defaults.networkPolicies;
     	      this.networkingMode = defaults.networkingMode;
     	      this.nodeConfigs = defaults.nodeConfigs;
@@ -1092,6 +1099,17 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder networkPerformanceConfigs(List<GetClusterNetworkPerformanceConfig> networkPerformanceConfigs) {
+            if (networkPerformanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "networkPerformanceConfigs");
+            }
+            this.networkPerformanceConfigs = networkPerformanceConfigs;
+            return this;
+        }
+        public Builder networkPerformanceConfigs(GetClusterNetworkPerformanceConfig... networkPerformanceConfigs) {
+            return networkPerformanceConfigs(List.of(networkPerformanceConfigs));
+        }
+        @CustomType.Setter
         public Builder networkPolicies(List<GetClusterNetworkPolicy> networkPolicies) {
             if (networkPolicies == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "networkPolicies");
@@ -1471,6 +1489,7 @@ public final class GetClusterResult {
             _resultValue.monitoringService = monitoringService;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.networkPerformanceConfigs = networkPerformanceConfigs;
             _resultValue.networkPolicies = networkPolicies;
             _resultValue.networkingMode = networkingMode;
             _resultValue.nodeConfigs = nodeConfigs;

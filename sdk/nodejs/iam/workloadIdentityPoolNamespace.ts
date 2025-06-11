@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * });
  * const example = new gcp.iam.WorkloadIdentityPoolNamespace("example", {
  *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
- *     workloadIdentityPoolNamespaceId: "example-nmspc",
+ *     workloadIdentityPoolNamespaceId: "example-namespace",
  * });
  * ```
  * ### Iam Workload Identity Pool Namespace Full
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * });
  * const example = new gcp.iam.WorkloadIdentityPoolNamespace("example", {
  *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
- *     workloadIdentityPoolNamespaceId: "example-nmspc",
+ *     workloadIdentityPoolNamespaceId: "example-namespace",
  *     description: "Example Namespace in a Workload Identity Pool",
  *     disabled: true,
  * });

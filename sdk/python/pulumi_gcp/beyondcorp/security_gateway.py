@@ -140,6 +140,7 @@ class SecurityGatewayArgs:
 class _SecurityGatewayState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
+                 delegating_service_account: Optional[pulumi.Input[builtins.str]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  hubs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]] = None,
@@ -152,6 +153,7 @@ class _SecurityGatewayState:
         """
         Input properties used for looking up and filtering SecurityGateway resources.
         :param pulumi.Input[builtins.str] create_time: Output only. Timestamp when the resource was created.
+        :param pulumi.Input[builtins.str] delegating_service_account: Service account used for operations that involve resources in consumer projects.
         :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the SecurityGateway.
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] external_ips: Output only. IP addresses that will be used for establishing
@@ -186,6 +188,8 @@ class _SecurityGatewayState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if delegating_service_account is not None:
+            pulumi.set(__self__, "delegating_service_account", delegating_service_account)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if external_ips is not None:
@@ -219,6 +223,18 @@ class _SecurityGatewayState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="delegatingServiceAccount")
+    def delegating_service_account(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Service account used for operations that involve resources in consumer projects.
+        """
+        return pulumi.get(self, "delegating_service_account")
+
+    @delegating_service_account.setter
+    def delegating_service_account(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "delegating_service_account", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -514,6 +530,7 @@ class SecurityGateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'security_gateway_id'")
             __props__.__dict__["security_gateway_id"] = security_gateway_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["delegating_service_account"] = None
             __props__.__dict__["external_ips"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
@@ -529,6 +546,7 @@ class SecurityGateway(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
+            delegating_service_account: Optional[pulumi.Input[builtins.str]] = None,
             display_name: Optional[pulumi.Input[builtins.str]] = None,
             external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             hubs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
@@ -546,6 +564,7 @@ class SecurityGateway(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] create_time: Output only. Timestamp when the resource was created.
+        :param pulumi.Input[builtins.str] delegating_service_account: Service account used for operations that involve resources in consumer projects.
         :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the SecurityGateway.
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] external_ips: Output only. IP addresses that will be used for establishing
@@ -583,6 +602,7 @@ class SecurityGateway(pulumi.CustomResource):
         __props__ = _SecurityGatewayState.__new__(_SecurityGatewayState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["delegating_service_account"] = delegating_service_account
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["external_ips"] = external_ips
         __props__.__dict__["hubs"] = hubs
@@ -601,6 +621,14 @@ class SecurityGateway(pulumi.CustomResource):
         Output only. Timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="delegatingServiceAccount")
+    def delegating_service_account(self) -> pulumi.Output[builtins.str]:
+        """
+        Service account used for operations that involve resources in consumer projects.
+        """
+        return pulumi.get(self, "delegating_service_account")
 
     @property
     @pulumi.getter(name="displayName")

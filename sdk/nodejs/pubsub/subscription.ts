@@ -243,7 +243,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_59033",
+ *         filenameSuffix: "-_10393",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -280,7 +280,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_32081",
+ *         filenameSuffix: "-_33052",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -324,7 +324,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_10393",
+ *         filenameSuffix: "-_3684",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -491,6 +491,12 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly messageRetentionDuration!: pulumi.Output<string | undefined>;
     /**
+     * Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     */
+    public readonly messageTransforms!: pulumi.Output<outputs.pubsub.SubscriptionMessageTransform[] | undefined>;
+    /**
      * Name of the subscription.
      */
     public readonly name!: pulumi.Output<string>;
@@ -559,6 +565,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["filter"] = state ? state.filter : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
+            resourceInputs["messageTransforms"] = state ? state.messageTransforms : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
@@ -581,6 +588,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
+            resourceInputs["messageTransforms"] = args ? args.messageTransforms : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pushConfig"] = args ? args.pushConfig : undefined;
@@ -699,6 +707,12 @@ export interface SubscriptionState {
      * by 's'. Example: `"600.5s"`.
      */
     messageRetentionDuration?: pulumi.Input<string>;
+    /**
+     * Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     */
+    messageTransforms?: pulumi.Input<pulumi.Input<inputs.pubsub.SubscriptionMessageTransform>[]>;
     /**
      * Name of the subscription.
      */
@@ -843,6 +857,12 @@ export interface SubscriptionArgs {
      * by 's'. Example: `"600.5s"`.
      */
     messageRetentionDuration?: pulumi.Input<string>;
+    /**
+     * Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     */
+    messageTransforms?: pulumi.Input<pulumi.Input<inputs.pubsub.SubscriptionMessageTransform>[]>;
     /**
      * Name of the subscription.
      */

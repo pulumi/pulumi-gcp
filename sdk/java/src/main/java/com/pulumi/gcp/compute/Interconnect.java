@@ -282,6 +282,22 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
         return this.interconnectAttachments;
     }
     /**
+     * URLs of InterconnectGroups that include this Interconnect.
+     * Order is arbitrary and items are unique.
+     * 
+     */
+    @Export(name="interconnectGroups", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> interconnectGroups;
+
+    /**
+     * @return URLs of InterconnectGroups that include this Interconnect.
+     * Order is arbitrary and items are unique.
+     * 
+     */
+    public Output<List<String>> interconnectGroups() {
+        return this.interconnectGroups;
+    }
+    /**
      * Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
      * Can take one of the following values:
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.

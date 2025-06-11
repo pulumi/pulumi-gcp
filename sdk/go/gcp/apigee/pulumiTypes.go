@@ -1478,6 +1478,305 @@ func (o DnsZonePeeringConfigPtrOutput) TargetProjectId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type EnvironmentClientIpResolutionConfig struct {
+	// Resolves the client ip based on a custom header.
+	// Structure is documented below.
+	HeaderIndexAlgorithm *EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm `pulumi:"headerIndexAlgorithm"`
+}
+
+// EnvironmentClientIpResolutionConfigInput is an input type that accepts EnvironmentClientIpResolutionConfigArgs and EnvironmentClientIpResolutionConfigOutput values.
+// You can construct a concrete instance of `EnvironmentClientIpResolutionConfigInput` via:
+//
+//	EnvironmentClientIpResolutionConfigArgs{...}
+type EnvironmentClientIpResolutionConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentClientIpResolutionConfigOutput() EnvironmentClientIpResolutionConfigOutput
+	ToEnvironmentClientIpResolutionConfigOutputWithContext(context.Context) EnvironmentClientIpResolutionConfigOutput
+}
+
+type EnvironmentClientIpResolutionConfigArgs struct {
+	// Resolves the client ip based on a custom header.
+	// Structure is documented below.
+	HeaderIndexAlgorithm EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrInput `pulumi:"headerIndexAlgorithm"`
+}
+
+func (EnvironmentClientIpResolutionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentClientIpResolutionConfig)(nil)).Elem()
+}
+
+func (i EnvironmentClientIpResolutionConfigArgs) ToEnvironmentClientIpResolutionConfigOutput() EnvironmentClientIpResolutionConfigOutput {
+	return i.ToEnvironmentClientIpResolutionConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentClientIpResolutionConfigArgs) ToEnvironmentClientIpResolutionConfigOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentClientIpResolutionConfigOutput)
+}
+
+func (i EnvironmentClientIpResolutionConfigArgs) ToEnvironmentClientIpResolutionConfigPtrOutput() EnvironmentClientIpResolutionConfigPtrOutput {
+	return i.ToEnvironmentClientIpResolutionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentClientIpResolutionConfigArgs) ToEnvironmentClientIpResolutionConfigPtrOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentClientIpResolutionConfigOutput).ToEnvironmentClientIpResolutionConfigPtrOutputWithContext(ctx)
+}
+
+// EnvironmentClientIpResolutionConfigPtrInput is an input type that accepts EnvironmentClientIpResolutionConfigArgs, EnvironmentClientIpResolutionConfigPtr and EnvironmentClientIpResolutionConfigPtrOutput values.
+// You can construct a concrete instance of `EnvironmentClientIpResolutionConfigPtrInput` via:
+//
+//	        EnvironmentClientIpResolutionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentClientIpResolutionConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentClientIpResolutionConfigPtrOutput() EnvironmentClientIpResolutionConfigPtrOutput
+	ToEnvironmentClientIpResolutionConfigPtrOutputWithContext(context.Context) EnvironmentClientIpResolutionConfigPtrOutput
+}
+
+type environmentClientIpResolutionConfigPtrType EnvironmentClientIpResolutionConfigArgs
+
+func EnvironmentClientIpResolutionConfigPtr(v *EnvironmentClientIpResolutionConfigArgs) EnvironmentClientIpResolutionConfigPtrInput {
+	return (*environmentClientIpResolutionConfigPtrType)(v)
+}
+
+func (*environmentClientIpResolutionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentClientIpResolutionConfig)(nil)).Elem()
+}
+
+func (i *environmentClientIpResolutionConfigPtrType) ToEnvironmentClientIpResolutionConfigPtrOutput() EnvironmentClientIpResolutionConfigPtrOutput {
+	return i.ToEnvironmentClientIpResolutionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentClientIpResolutionConfigPtrType) ToEnvironmentClientIpResolutionConfigPtrOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentClientIpResolutionConfigPtrOutput)
+}
+
+type EnvironmentClientIpResolutionConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentClientIpResolutionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentClientIpResolutionConfig)(nil)).Elem()
+}
+
+func (o EnvironmentClientIpResolutionConfigOutput) ToEnvironmentClientIpResolutionConfigOutput() EnvironmentClientIpResolutionConfigOutput {
+	return o
+}
+
+func (o EnvironmentClientIpResolutionConfigOutput) ToEnvironmentClientIpResolutionConfigOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigOutput {
+	return o
+}
+
+func (o EnvironmentClientIpResolutionConfigOutput) ToEnvironmentClientIpResolutionConfigPtrOutput() EnvironmentClientIpResolutionConfigPtrOutput {
+	return o.ToEnvironmentClientIpResolutionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentClientIpResolutionConfigOutput) ToEnvironmentClientIpResolutionConfigPtrOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentClientIpResolutionConfig) *EnvironmentClientIpResolutionConfig {
+		return &v
+	}).(EnvironmentClientIpResolutionConfigPtrOutput)
+}
+
+// Resolves the client ip based on a custom header.
+// Structure is documented below.
+func (o EnvironmentClientIpResolutionConfigOutput) HeaderIndexAlgorithm() EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput {
+	return o.ApplyT(func(v EnvironmentClientIpResolutionConfig) *EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm {
+		return v.HeaderIndexAlgorithm
+	}).(EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput)
+}
+
+type EnvironmentClientIpResolutionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentClientIpResolutionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentClientIpResolutionConfig)(nil)).Elem()
+}
+
+func (o EnvironmentClientIpResolutionConfigPtrOutput) ToEnvironmentClientIpResolutionConfigPtrOutput() EnvironmentClientIpResolutionConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentClientIpResolutionConfigPtrOutput) ToEnvironmentClientIpResolutionConfigPtrOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentClientIpResolutionConfigPtrOutput) Elem() EnvironmentClientIpResolutionConfigOutput {
+	return o.ApplyT(func(v *EnvironmentClientIpResolutionConfig) EnvironmentClientIpResolutionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentClientIpResolutionConfig
+		return ret
+	}).(EnvironmentClientIpResolutionConfigOutput)
+}
+
+// Resolves the client ip based on a custom header.
+// Structure is documented below.
+func (o EnvironmentClientIpResolutionConfigPtrOutput) HeaderIndexAlgorithm() EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput {
+	return o.ApplyT(func(v *EnvironmentClientIpResolutionConfig) *EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderIndexAlgorithm
+	}).(EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput)
+}
+
+type EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm struct {
+	// The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
+	IpHeaderIndex int `pulumi:"ipHeaderIndex"`
+	// The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
+	IpHeaderName string `pulumi:"ipHeaderName"`
+}
+
+// EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmInput is an input type that accepts EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs and EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput values.
+// You can construct a concrete instance of `EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmInput` via:
+//
+//	EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs{...}
+type EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmInput interface {
+	pulumi.Input
+
+	ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput() EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput
+	ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutputWithContext(context.Context) EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput
+}
+
+type EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs struct {
+	// The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
+	IpHeaderIndex pulumi.IntInput `pulumi:"ipHeaderIndex"`
+	// The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
+	IpHeaderName pulumi.StringInput `pulumi:"ipHeaderName"`
+}
+
+func (EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm)(nil)).Elem()
+}
+
+func (i EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput() EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput {
+	return i.ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutputWithContext(context.Background())
+}
+
+func (i EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput)
+}
+
+func (i EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput() EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput {
+	return i.ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput).ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutputWithContext(ctx)
+}
+
+// EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrInput is an input type that accepts EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs, EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtr and EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput values.
+// You can construct a concrete instance of `EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrInput` via:
+//
+//	        EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput() EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput
+	ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutputWithContext(context.Context) EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput
+}
+
+type environmentClientIpResolutionConfigHeaderIndexAlgorithmPtrType EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs
+
+func EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtr(v *EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs) EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrInput {
+	return (*environmentClientIpResolutionConfigHeaderIndexAlgorithmPtrType)(v)
+}
+
+func (*environmentClientIpResolutionConfigHeaderIndexAlgorithmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm)(nil)).Elem()
+}
+
+func (i *environmentClientIpResolutionConfigHeaderIndexAlgorithmPtrType) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput() EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput {
+	return i.ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentClientIpResolutionConfigHeaderIndexAlgorithmPtrType) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput)
+}
+
+type EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm)(nil)).Elem()
+}
+
+func (o EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput() EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput {
+	return o
+}
+
+func (o EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput {
+	return o
+}
+
+func (o EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput() EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput {
+	return o.ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm) *EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm {
+		return &v
+	}).(EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput)
+}
+
+// The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
+func (o EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput) IpHeaderIndex() pulumi.IntOutput {
+	return o.ApplyT(func(v EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm) int { return v.IpHeaderIndex }).(pulumi.IntOutput)
+}
+
+// The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
+func (o EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput) IpHeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm) string { return v.IpHeaderName }).(pulumi.StringOutput)
+}
+
+type EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm)(nil)).Elem()
+}
+
+func (o EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput() EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput {
+	return o
+}
+
+func (o EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput) ToEnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutputWithContext(ctx context.Context) EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput {
+	return o
+}
+
+func (o EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput) Elem() EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput {
+	return o.ApplyT(func(v *EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm) EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm
+		return ret
+	}).(EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput)
+}
+
+// The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
+func (o EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput) IpHeaderIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IpHeaderIndex
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
+func (o EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput) IpHeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpHeaderName
+	}).(pulumi.StringPtrOutput)
+}
+
 type EnvironmentIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -4756,6 +5055,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAttributeArrayInput)(nil)).Elem(), DeveloperAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsZonePeeringConfigInput)(nil)).Elem(), DnsZonePeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsZonePeeringConfigPtrInput)(nil)).Elem(), DnsZonePeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentClientIpResolutionConfigInput)(nil)).Elem(), EnvironmentClientIpResolutionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentClientIpResolutionConfigPtrInput)(nil)).Elem(), EnvironmentClientIpResolutionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmInput)(nil)).Elem(), EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrInput)(nil)).Elem(), EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingConditionInput)(nil)).Elem(), EnvironmentIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingConditionPtrInput)(nil)).Elem(), EnvironmentIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamMemberConditionInput)(nil)).Elem(), EnvironmentIamMemberConditionArgs{})
@@ -4816,6 +5119,10 @@ func init() {
 	pulumi.RegisterOutputType(DeveloperAttributeArrayOutput{})
 	pulumi.RegisterOutputType(DnsZonePeeringConfigOutput{})
 	pulumi.RegisterOutputType(DnsZonePeeringConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentClientIpResolutionConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentClientIpResolutionConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmOutput{})
+	pulumi.RegisterOutputType(EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamMemberConditionOutput{})

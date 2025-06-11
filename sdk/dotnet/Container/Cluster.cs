@@ -574,6 +574,12 @@ namespace Pulumi.Gcp.Container
         public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
+        /// Network bandwidth tier configuration.
+        /// </summary>
+        [Output("networkPerformanceConfig")]
+        public Output<Outputs.ClusterNetworkPerformanceConfig?> NetworkPerformanceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration options for the
         /// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
         /// feature. Structure is documented below.
@@ -1251,6 +1257,12 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// Network bandwidth tier configuration.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.ClusterNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
         /// Configuration options for the
         /// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
         /// feature. Structure is documented below.
@@ -1905,6 +1917,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// Network bandwidth tier configuration.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.ClusterNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// Configuration options for the

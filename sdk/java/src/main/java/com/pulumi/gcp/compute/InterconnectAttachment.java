@@ -270,6 +270,20 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.adminEnabled);
     }
     /**
+     * URL of the AttachmentGroup that includes this Attachment.
+     * 
+     */
+    @Export(name="attachmentGroup", refs={String.class}, tree="[0]")
+    private Output<String> attachmentGroup;
+
+    /**
+     * @return URL of the AttachmentGroup that includes this Attachment.
+     * 
+     */
+    public Output<String> attachmentGroup() {
+        return this.attachmentGroup;
+    }
+    /**
      * Provisioned bandwidth capacity for the interconnect attachment.
      * For attachments of type DEDICATED, the user can set the bandwidth.
      * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.

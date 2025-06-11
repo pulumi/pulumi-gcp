@@ -411,6 +411,10 @@ type Topic struct {
 	// constraints are in effect.
 	// Structure is documented below.
 	MessageStoragePolicy TopicMessageStoragePolicyOutput `pulumi:"messageStoragePolicy"`
+	// Transforms to be applied to messages published to the topic. Transforms are applied in the
+	// order specified.
+	// Structure is documented below.
+	MessageTransforms TopicMessageTransformArrayOutput `pulumi:"messageTransforms"`
 	// Name of the topic.
 	//
 	// ***
@@ -491,6 +495,10 @@ type topicState struct {
 	// constraints are in effect.
 	// Structure is documented below.
 	MessageStoragePolicy *TopicMessageStoragePolicy `pulumi:"messageStoragePolicy"`
+	// Transforms to be applied to messages published to the topic. Transforms are applied in the
+	// order specified.
+	// Structure is documented below.
+	MessageTransforms []TopicMessageTransform `pulumi:"messageTransforms"`
 	// Name of the topic.
 	//
 	// ***
@@ -537,6 +545,10 @@ type TopicState struct {
 	// constraints are in effect.
 	// Structure is documented below.
 	MessageStoragePolicy TopicMessageStoragePolicyPtrInput
+	// Transforms to be applied to messages published to the topic. Transforms are applied in the
+	// order specified.
+	// Structure is documented below.
+	MessageTransforms TopicMessageTransformArrayInput
 	// Name of the topic.
 	//
 	// ***
@@ -585,6 +597,10 @@ type topicArgs struct {
 	// constraints are in effect.
 	// Structure is documented below.
 	MessageStoragePolicy *TopicMessageStoragePolicy `pulumi:"messageStoragePolicy"`
+	// Transforms to be applied to messages published to the topic. Transforms are applied in the
+	// order specified.
+	// Structure is documented below.
+	MessageTransforms []TopicMessageTransform `pulumi:"messageTransforms"`
 	// Name of the topic.
 	//
 	// ***
@@ -627,6 +643,10 @@ type TopicArgs struct {
 	// constraints are in effect.
 	// Structure is documented below.
 	MessageStoragePolicy TopicMessageStoragePolicyPtrInput
+	// Transforms to be applied to messages published to the topic. Transforms are applied in the
+	// order specified.
+	// Structure is documented below.
+	MessageTransforms TopicMessageTransformArrayInput
 	// Name of the topic.
 	//
 	// ***
@@ -772,6 +792,13 @@ func (o TopicOutput) MessageRetentionDuration() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o TopicOutput) MessageStoragePolicy() TopicMessageStoragePolicyOutput {
 	return o.ApplyT(func(v *Topic) TopicMessageStoragePolicyOutput { return v.MessageStoragePolicy }).(TopicMessageStoragePolicyOutput)
+}
+
+// Transforms to be applied to messages published to the topic. Transforms are applied in the
+// order specified.
+// Structure is documented below.
+func (o TopicOutput) MessageTransforms() TopicMessageTransformArrayOutput {
+	return o.ApplyT(func(v *Topic) TopicMessageTransformArrayOutput { return v.MessageTransforms }).(TopicMessageTransformArrayOutput)
 }
 
 // Name of the topic.

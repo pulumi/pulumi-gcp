@@ -3062,6 +3062,25 @@ export namespace apigee {
         targetProjectId: pulumi.Input<string>;
     }
 
+    export interface EnvironmentClientIpResolutionConfig {
+        /**
+         * Resolves the client ip based on a custom header.
+         * Structure is documented below.
+         */
+        headerIndexAlgorithm?: pulumi.Input<inputs.apigee.EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm>;
+    }
+
+    export interface EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm {
+        /**
+         * The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
+         */
+        ipHeaderIndex: pulumi.Input<number>;
+        /**
+         * The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
+         */
+        ipHeaderName: pulumi.Input<string>;
+    }
+
     export interface EnvironmentIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -3496,6 +3515,50 @@ export namespace apihub {
          * - - -
          */
         vertexLocation?: pulumi.Input<string>;
+    }
+
+    export interface CurationEndpoint {
+        /**
+         * The details of the Application Integration endpoint to be triggered for
+         * curation.
+         * Structure is documented below.
+         */
+        applicationIntegrationEndpointDetails: pulumi.Input<inputs.apihub.CurationEndpointApplicationIntegrationEndpointDetails>;
+    }
+
+    export interface CurationEndpointApplicationIntegrationEndpointDetails {
+        /**
+         * The API trigger ID of the Application Integration workflow.
+         */
+        triggerId: pulumi.Input<string>;
+        /**
+         * The endpoint URI should be a valid REST URI for triggering an Application
+         * Integration.
+         * Format:
+         * `https://integrations.googleapis.com/v1/{name=projects/*&#47;locations/*&#47;integrations/*}:execute`
+         * or
+         * `https://{location}-integrations.googleapis.com/v1/{name=projects/*&#47;locations/*&#47;integrations/*}:execute`
+         *
+         * - - -
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface CurationPluginInstanceAction {
+        /**
+         * (Output)
+         * The action ID that is using the curation.
+         * This should map to one of the action IDs specified
+         * in action configs in the plugin.
+         */
+        actionId?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Plugin instance that is using the curation.
+         * Format is
+         * `projects/{project}/locations/{locati on}/plugins/{plugin}/instances/{instance}`
+         */
+        pluginInstance?: pulumi.Input<string>;
     }
 }
 
@@ -15365,6 +15428,10 @@ export namespace cloudrunv2 {
          */
         commands?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Names of the containers that must start before this container.
+         */
+        dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * List of environment variables to set in the container.
          * Structure is documented below.
          */
@@ -15388,6 +15455,13 @@ export namespace cloudrunv2 {
          * Structure is documented below.
          */
         resources?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainerResources>;
+        /**
+         * Startup probe of application within the container.
+         * All other probes are disabled if a startup probe is provided, until it
+         * succeeds. Container will not be added to service endpoints if the probe fails.
+         * Structure is documented below.
+         */
+        startupProbe?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainerStartupProbe>;
         /**
          * Volume to mount into the container's filesystem.
          * Structure is documented below.
@@ -15450,6 +15524,96 @@ export namespace cloudrunv2 {
          * Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          */
         limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface JobTemplateTemplateContainerStartupProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after
+         * having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: pulumi.Input<number>;
+        /**
+         * GRPC specifies an action involving a GRPC port.
+         * Structure is documented below.
+         */
+        grpc?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainerStartupProbeGrpc>;
+        /**
+         * HttpGet specifies the http request to perform.
+         * Structure is documented below.
+         */
+        httpGet?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainerStartupProbeHttpGet>;
+        /**
+         * Number of seconds after the container has started before the probe is
+         * initiated.
+         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+         */
+        initialDelaySeconds?: pulumi.Input<number>;
+        /**
+         * How often (in seconds) to perform the probe.
+         * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+         */
+        periodSeconds?: pulumi.Input<number>;
+        /**
+         * TcpSocket specifies an action involving a TCP port.
+         * Structure is documented below.
+         */
+        tcpSocket?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainerStartupProbeTcpSocket>;
+        /**
+         * Number of seconds after which the probe times out.
+         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+         * Must be smaller than periodSeconds.
+         */
+        timeoutSeconds?: pulumi.Input<number>;
+    }
+
+    export interface JobTemplateTemplateContainerStartupProbeGrpc {
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The name of the service to place in the gRPC HealthCheckRequest
+         * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+         * If this is not specified, the default behavior is defined by gRPC.
+         */
+        service?: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateTemplateContainerStartupProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader>[]>;
+        /**
+         * Path to access on the HTTP server. If set, it should not be empty string.
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
+        port?: pulumi.Input<number>;
+    }
+
+    export interface JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
+        /**
+         * The header field name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The header field value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateTemplateContainerStartupProbeTcpSocket {
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
+        port?: pulumi.Input<number>;
     }
 
     export interface JobTemplateTemplateContainerVolumeMount {
@@ -23848,6 +24012,179 @@ export namespace compute {
         title: pulumi.Input<string>;
     }
 
+    export interface InterconnectAttachmentGroupAttachment {
+        /**
+         * (Optional)
+         */
+        attachment?: pulumi.Input<string>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface InterconnectAttachmentGroupConfigured {
+        /**
+         * (Output)
+         * Which SLA this group is configured to support, and why this
+         * group does or does not meet that SLA's requirements.
+         * Structure is documented below.
+         */
+        availabilitySlas?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupConfiguredAvailabilitySla>[]>;
+    }
+
+    export interface InterconnectAttachmentGroupConfiguredAvailabilitySla {
+        /**
+         * (Output)
+         * Which SLA this group supports. Options are the same as the
+         * intent.
+         */
+        effectiveSla?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Reasons why configuration.availabilitySLA.sla differs from
+         * intent.availabilitySLA. This list is empty if and only if those are the
+         * same.
+         * Structure is documented below.
+         */
+        intendedSlaBlockers?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker>[]>;
+    }
+
+    export interface InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker {
+        /**
+         * (Output)
+         * URLs of any particular Attachments to explain this
+         * blocker in more detail.
+         */
+        attachments?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * The category of an unmet SLA requirement.
+         */
+        blockerType?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The url of Google Cloud public documentation explaining
+         * this requirement. This is set for every type of requirement.
+         */
+        documentationLink?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A human-readable explanation of this requirement and
+         * why it's not met. This is set for every type of requirement.
+         */
+        explanation?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Metros used to explain this blocker in more detail.
+         * These are three-letter lowercase strings like "iad". This will be set
+         * for some blockers (like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does
+         * not apply to others.
+         */
+        metros?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * Regions used to explain this blocker in more
+         * detail. These are region names formatted like "us-central1". This
+         * will be set for some blockers (like INCOMPATIBLE_REGIONS) but does
+         * not apply to others.
+         */
+        regions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * Zones used to explain this blocker in more detail.
+         * Format is "zone1" and/or "zone2". This will be set for some blockers
+         * (like  MISSING_ZONE) but does not apply to others.
+         */
+        zones?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface InterconnectAttachmentGroupIntent {
+        /**
+         * Which SLA the user intends this group to support.
+         * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
+         *
+         * - - -
+         */
+        availabilitySla?: pulumi.Input<string>;
+    }
+
+    export interface InterconnectAttachmentGroupLogicalStructure {
+        /**
+         * (Output)
+         * Regions used to explain this blocker in more
+         * detail. These are region names formatted like "us-central1". This
+         * will be set for some blockers (like INCOMPATIBLE_REGIONS) but does
+         * not apply to others.
+         */
+        regions?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupLogicalStructureRegion>[]>;
+    }
+
+    export interface InterconnectAttachmentGroupLogicalStructureRegion {
+        /**
+         * (Output)
+         * Metros used to explain this blocker in more detail.
+         * These are three-letter lowercase strings like "iad". This will be set
+         * for some blockers (like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does
+         * not apply to others.
+         */
+        metros?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupLogicalStructureRegionMetro>[]>;
+        /**
+         * (Output)
+         * The name of a region, like "us-central1".
+         */
+        region?: pulumi.Input<string>;
+    }
+
+    export interface InterconnectAttachmentGroupLogicalStructureRegionMetro {
+        /**
+         * (Output)
+         * The facilities used for this group's Attachments'
+         * Interconnects.
+         * Structure is documented below.
+         */
+        facilities?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>[]>;
+        /**
+         * (Output)
+         * The name of the metro, as a three-letter lowercase
+         * string like "iad". This is the first component of the location of an
+         * Interconnect.
+         */
+        metro?: pulumi.Input<string>;
+    }
+
+    export interface InterconnectAttachmentGroupLogicalStructureRegionMetroFacility {
+        /**
+         * (Output)
+         * The name of a facility, like "iad-1234".
+         */
+        facility?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Zones used to explain this blocker in more detail.
+         * Format is "zone1" and/or "zone2". This will be set for some blockers
+         * (like  MISSING_ZONE) but does not apply to others.
+         */
+        zones?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>[]>;
+    }
+
+    export interface InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
+        /**
+         * (Output)
+         * URLs of Attachments in the given zone, to the given
+         * region, on Interconnects in the given facility and metro. Every
+         * Attachment in the AG has such an entry.
+         */
+        attachments?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * The zones that Attachments in this group are present
+         * in, in the given facilities.  This is inherited from their
+         * Interconnects.
+         */
+        zone?: pulumi.Input<string>;
+    }
+
     export interface InterconnectAttachmentPrivateInterconnectInfo {
         /**
          * (Output)
@@ -23934,6 +24271,165 @@ export namespace compute {
          * - COMPLETED: The outage associated with this notification is complete.
          */
         state?: pulumi.Input<string>;
+    }
+
+    export interface InterconnectGroupConfigured {
+        /**
+         * (Output)
+         * How reliable this topology is configured to be, and why
+         * this group does or does not meet the requirements for the intended
+         * capability.
+         * Structure is documented below.
+         */
+        topologyCapabilities?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupConfiguredTopologyCapability>[]>;
+    }
+
+    export interface InterconnectGroupConfiguredTopologyCapability {
+        /**
+         * (Output)
+         * Reasons why configuration.topologyCapability.sla differs
+         * from intent.topologyCapability. This list is empty if and only if those
+         * are the same.
+         * Structure is documented below.
+         */
+        intendedCapabilityBlockers?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker>[]>;
+        /**
+         * (Output)
+         * Which level of reliability this group is configured to
+         * support.
+         */
+        supportedSla?: pulumi.Input<string>;
+    }
+
+    export interface InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker {
+        /**
+         * (Output)
+         * The category of an unmet SLA requirement. The Intended
+         * SLA Blockers section below explains this field and how it relates to
+         * other fields in intendedCapabilityBlockers.
+         */
+        blockerType?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The url of Google Cloud public documentation explaining
+         * this requirement. This is set for every type of requirement.
+         */
+        documentationLink?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A human-readable explanation of this requirement and
+         * why it's not met. This is set for every type of requirement.
+         */
+        explanation?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Facilities used to explain this blocker in more detail.
+         * Like physicalStructure.metros.facilities.facility, this is a numeric
+         * string like "5467".
+         */
+        facilities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * Interconnects used to explain this blocker in more
+         * detail.
+         */
+        interconnects?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * Metros used to explain this blocker in more detail.
+         * These are three-letter lowercase strings like "iad". A blocker like
+         * INCOMPATIBLE_METROS will specify the problematic metros in this
+         * field.
+         */
+        metros?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * Zones used to explain this blocker in more detail.
+         * Zone names are "zone1" and/or "zone2".
+         */
+        zones?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface InterconnectGroupIntent {
+        /**
+         * The reliability the user intends this group to be capable of, in terms
+         * of the Interconnect product SLAs.
+         * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
+         *
+         * - - -
+         */
+        topologyCapability?: pulumi.Input<string>;
+    }
+
+    export interface InterconnectGroupInterconnect {
+        /**
+         * The URL of an Interconnect in this group. All Interconnects in the group are unique.
+         */
+        interconnect?: pulumi.Input<string>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface InterconnectGroupPhysicalStructure {
+        /**
+         * (Output)
+         * Metros used to explain this blocker in more detail.
+         * These are three-letter lowercase strings like "iad". A blocker like
+         * INCOMPATIBLE_METROS will specify the problematic metros in this
+         * field.
+         */
+        metros?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupPhysicalStructureMetro>[]>;
+    }
+
+    export interface InterconnectGroupPhysicalStructureMetro {
+        /**
+         * (Output)
+         * Facilities used to explain this blocker in more detail.
+         * Like physicalStructure.metros.facilities.facility, this is a numeric
+         * string like "5467".
+         */
+        facilities?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupPhysicalStructureMetroFacility>[]>;
+        /**
+         * (Output)
+         * The name of the metro, as a three-letter lowercase string
+         * like "iad". This is the first component of the location of
+         * Interconnects underneath this.
+         */
+        metro?: pulumi.Input<string>;
+    }
+
+    export interface InterconnectGroupPhysicalStructureMetroFacility {
+        /**
+         * (Output)
+         * The ID of this facility, as a numeric string like
+         * "5467". This is the third component of the location of Interconnects
+         * in this facility.
+         */
+        facility?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Zones used to explain this blocker in more detail.
+         * Zone names are "zone1" and/or "zone2".
+         */
+        zones?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupPhysicalStructureMetroFacilityZone>[]>;
+    }
+
+    export interface InterconnectGroupPhysicalStructureMetroFacilityZone {
+        /**
+         * (Output)
+         * Interconnects used to explain this blocker in more
+         * detail.
+         */
+        interconnects?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * The name of the zone, either "zone1" or "zone2".
+         * This is the second component of the location of Interconnects in
+         * this facility.
+         */
+        zone?: pulumi.Input<string>;
     }
 
     export interface InterconnectMacsec {
@@ -31908,6 +32404,35 @@ export namespace compute {
         title: pulumi.Input<string>;
     }
 
+    export interface SnapshotSettingsStorageLocation {
+        /**
+         * When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the
+         * locations listed in this field. Keys are Cloud Storage bucket locations.
+         * Only one location can be specified.
+         * Structure is documented below.
+         */
+        locations?: pulumi.Input<pulumi.Input<inputs.compute.SnapshotSettingsStorageLocationLocation>[]>;
+        /**
+         * The chosen location policy
+         * Possible values are: `NEAREST_MULTI_REGION`, `LOCAL_REGION`, `SPECIFIC_LOCATIONS`.
+         */
+        policy: pulumi.Input<string>;
+    }
+
+    export interface SnapshotSettingsStorageLocationLocation {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        location: pulumi.Input<string>;
+        /**
+         * Name of the location. It should be one of the Cloud Storage buckets.
+         * Only one location can be specified. (should match location)
+         *
+         * - - -
+         */
+        name: pulumi.Input<string>;
+    }
+
     export interface SnapshotSnapshotEncryptionKey {
         /**
          * The name of the encryption key that is stored in Google Cloud KMS.
@@ -36269,6 +36794,13 @@ export namespace container {
         scope: pulumi.Input<string>;
     }
 
+    export interface ClusterNetworkPerformanceConfig {
+        /**
+         * Specifies the total network bandwidth tier for NodePools in the cluster.
+         */
+        totalEgressBandwidthTier: pulumi.Input<string>;
+    }
+
     export interface ClusterNetworkPolicy {
         /**
          * Whether network policy is enabled on the cluster.
@@ -36332,7 +36864,7 @@ export namespace container {
          */
         fastSocket?: pulumi.Input<inputs.container.ClusterNodeConfigFastSocket>;
         /**
-         * ) Enables Flex Start provisioning model for the node pool.
+         * Enables Flex Start provisioning model for the node pool.
          */
         flexStart?: pulumi.Input<boolean>;
         /**
@@ -37209,7 +37741,7 @@ export namespace container {
 
     export interface ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
         /**
-         * Specifies the total network bandwidth tier for the NodePool.
+         * Specifies the total network bandwidth tier for NodePools in the cluster.
          */
         totalEgressBandwidthTier: pulumi.Input<string>;
     }
@@ -37275,7 +37807,7 @@ export namespace container {
          */
         fastSocket?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigFastSocket>;
         /**
-         * ) Enables Flex Start provisioning model for the node pool.
+         * Enables Flex Start provisioning model for the node pool.
          */
         flexStart?: pulumi.Input<boolean>;
         /**
@@ -37854,7 +38386,7 @@ export namespace container {
          */
         policyName?: pulumi.Input<string>;
         /**
-         * TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+         * The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
          */
         tpuTopology?: pulumi.Input<string>;
         /**
@@ -38290,7 +38822,7 @@ export namespace container {
 
     export interface NodePoolNetworkConfigNetworkPerformanceConfig {
         /**
-         * Specifies the total network bandwidth tier for the NodePool.
+         * Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
          */
         totalEgressBandwidthTier: pulumi.Input<string>;
     }
@@ -38837,7 +39369,7 @@ export namespace container {
          */
         policyName?: pulumi.Input<string>;
         /**
-         * The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+         * The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `"2x4"` or `"2x2x2"`.
          */
         tpuTopology?: pulumi.Input<string>;
         /**
@@ -46277,6 +46809,10 @@ export namespace dataplex {
     }
 
     export interface DatascanDataQualitySpec {
+        /**
+         * If set, the latest DataScan job result will be published to Dataplex Catalog.
+         */
+        catalogPublishingEnabled?: pulumi.Input<boolean>;
         /**
          * Actions to take upon job completion.
          * Structure is documented below.
@@ -57346,8 +57882,10 @@ export namespace eventarc {
          * Name of the NetworkAttachment that allows access to the consumer VPC.
          * Format:
          * `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+         * Required for HTTP endpoint destinations. Must not be specified for
+         * Workflows, MessageBus, or Topic destinations.
          */
-        networkAttachment: pulumi.Input<string>;
+        networkAttachment?: pulumi.Input<string>;
     }
 
     export interface PipelineDestinationOutputPayloadFormat {
@@ -60585,6 +61123,11 @@ export namespace gkehub {
          * Structure is documented below.
          */
         multiclusteringress?: pulumi.Input<inputs.gkehub.FeatureSpecMulticlusteringress>;
+        /**
+         * RBACRolebinding Actuation feature spec.
+         * Structure is documented below.
+         */
+        rbacrolebindingactuation?: pulumi.Input<inputs.gkehub.FeatureSpecRbacrolebindingactuation>;
     }
 
     export interface FeatureSpecClusterupgrade {
@@ -60684,6 +61227,13 @@ export namespace gkehub {
          * Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
          */
         configMembership: pulumi.Input<string>;
+    }
+
+    export interface FeatureSpecRbacrolebindingactuation {
+        /**
+         * The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+         */
+        allowedCustomRoles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface FeatureState {
@@ -60845,10 +61395,14 @@ export namespace gkehub {
 
     export interface ScopeRbacRoleBindingRole {
         /**
-         * PredefinedRole is an ENUM representation of the default Kubernetes Roles
-         * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+         * CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
          *
          * - - -
+         */
+        customRole?: pulumi.Input<string>;
+        /**
+         * PredefinedRole is an ENUM representation of the default Kubernetes Roles
+         * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
          */
         predefinedRole?: pulumi.Input<string>;
     }
@@ -63225,6 +63779,17 @@ export namespace gkeonprem {
          * (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface VmwareAdminClusterPrivateRegistryConfig {
+        /**
+         * The registry address.
+         */
+        address?: pulumi.Input<string>;
+        /**
+         * The CA certificate public key for private registry.
+         */
+        caCert?: pulumi.Input<string>;
     }
 
     export interface VmwareAdminClusterStatus {
@@ -81440,6 +82005,58 @@ export namespace pubsub {
         title: pulumi.Input<string>;
     }
 
+    export interface SubscriptionMessageTransform {
+        /**
+         * Controls whether or not to use this transform. If not set or `false`,
+         * the transform will be applied to messages. Default: `true`.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
+         * each one must have a unique `functionName`.
+         * Structure is documented below.
+         */
+        javascriptUdf?: pulumi.Input<inputs.pubsub.SubscriptionMessageTransformJavascriptUdf>;
+    }
+
+    export interface SubscriptionMessageTransformJavascriptUdf {
+        /**
+         * JavaScript code that contains a function `functionName` with the
+         * following signature:
+         * ```
+         * /**
+         * * Transforms a Pub/Sub message.
+         * *
+         * * @return {(Object<string, (string | Object<string, string>)>|null)} - To
+         * * filter a message, return `null`. To transform a message return a map
+         * * with the following keys:
+         * *   - (required) 'data' : {string}
+         * *   - (optional) 'attributes' : {Object<string, string>}
+         * * Returning empty `attributes` will remove all attributes from the
+         * * message.
+         * *
+         * * @param  {(Object<string, (string | Object<string, string>)>} Pub/Sub
+         * * message. Keys:
+         * *   - (required) 'data' : {string}
+         * *   - (required) 'attributes' : {Object<string, string>}
+         * *
+         * * @param  {Object<string, any>} metadata - Pub/Sub message metadata.
+         * * Keys:
+         * *   - (required) 'message_id'  : {string}
+         * *   - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format
+         * *   - (optional) 'ordering_key': {string}
+         * *&#47;
+         * function <function_name>(message, metadata) {
+         * }
+         * ```
+         */
+        code: pulumi.Input<string>;
+        /**
+         * Name of the JavaScript function that should be applied to Pub/Sub messages.
+         */
+        functionName: pulumi.Input<string>;
+    }
+
     export interface SubscriptionPushConfig {
         /**
          * Endpoint configuration attributes.
@@ -81758,6 +82375,58 @@ export namespace pubsub {
          * attached to this topic in any region that is not in `allowedPersistenceRegions`.
          */
         enforceInTransit?: pulumi.Input<boolean>;
+    }
+
+    export interface TopicMessageTransform {
+        /**
+         * Controls whether or not to use this transform. If not set or `false`,
+         * the transform will be applied to messages. Default: `true`.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
+         * each one must have a unique `functionName`.
+         * Structure is documented below.
+         */
+        javascriptUdf?: pulumi.Input<inputs.pubsub.TopicMessageTransformJavascriptUdf>;
+    }
+
+    export interface TopicMessageTransformJavascriptUdf {
+        /**
+         * JavaScript code that contains a function `functionName` with the
+         * following signature:
+         * ```
+         * /**
+         * * Transforms a Pub/Sub message.
+         * *
+         * * @return {(Object<string, (string | Object<string, string>)>|null)} - To
+         * * filter a message, return `null`. To transform a message return a map
+         * * with the following keys:
+         * *   - (required) 'data' : {string}
+         * *   - (optional) 'attributes' : {Object<string, string>}
+         * * Returning empty `attributes` will remove all attributes from the
+         * * message.
+         * *
+         * * @param  {(Object<string, (string | Object<string, string>)>} Pub/Sub
+         * * message. Keys:
+         * *   - (required) 'data' : {string}
+         * *   - (required) 'attributes' : {Object<string, string>}
+         * *
+         * * @param  {Object<string, any>} metadata - Pub/Sub message metadata.
+         * * Keys:
+         * *   - (required) 'message_id'  : {string}
+         * *   - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format
+         * *   - (optional) 'ordering_key': {string}
+         * *&#47;
+         * function <function_name>(message, metadata) {
+         * }
+         * ```
+         */
+        code: pulumi.Input<string>;
+        /**
+         * Name of the JavaScript function that should be applied to Pub/Sub messages.
+         */
+        functionName: pulumi.Input<string>;
     }
 
     export interface TopicSchemaSettings {

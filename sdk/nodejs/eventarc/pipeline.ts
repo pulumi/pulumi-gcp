@@ -29,9 +29,6 @@ import * as utilities from "../utilities";
  *     pipelineId: "some-pipeline",
  *     destinations: [{
  *         topic: topic.id,
- *         networkConfig: {
- *             networkAttachment: "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment",
- *         },
  *     }],
  *     labels: {
  *         test_label: "test-eventarc-label",
@@ -103,9 +100,6 @@ import * as utilities from "../utilities";
  *     pipelineId: "some-pipeline",
  *     destinations: [{
  *         workflow: workflow.id,
- *         networkConfig: {
- *             networkAttachment: "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment",
- *         },
  *     }],
  * });
  * ```

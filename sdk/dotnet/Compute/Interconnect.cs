@@ -151,6 +151,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> InterconnectAttachments { get; private set; } = null!;
 
         /// <summary>
+        /// URLs of InterconnectGroups that include this Interconnect.
+        /// Order is arbitrary and items are unique.
+        /// </summary>
+        [Output("interconnectGroups")]
+        public Output<ImmutableArray<string>> InterconnectGroups { get; private set; } = null!;
+
+        /// <summary>
         /// Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
         /// Can take one of the following values:
         /// - PARTNER: A partner-managed interconnection shared between customers though a partner.
@@ -628,6 +635,19 @@ namespace Pulumi.Gcp.Compute
         {
             get => _interconnectAttachments ?? (_interconnectAttachments = new InputList<string>());
             set => _interconnectAttachments = value;
+        }
+
+        [Input("interconnectGroups")]
+        private InputList<string>? _interconnectGroups;
+
+        /// <summary>
+        /// URLs of InterconnectGroups that include this Interconnect.
+        /// Order is arbitrary and items are unique.
+        /// </summary>
+        public InputList<string> InterconnectGroups
+        {
+            get => _interconnectGroups ?? (_interconnectGroups = new InputList<string>());
+            set => _interconnectGroups = value;
         }
 
         /// <summary>

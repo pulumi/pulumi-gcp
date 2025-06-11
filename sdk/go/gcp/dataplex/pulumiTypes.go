@@ -2902,6 +2902,8 @@ func (o DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput) ResultsTa
 }
 
 type DatascanDataQualitySpec struct {
+	// If set, the latest DataScan job result will be published to Dataplex Catalog.
+	CatalogPublishingEnabled *bool `pulumi:"catalogPublishingEnabled"`
 	// Actions to take upon job completion.
 	// Structure is documented below.
 	PostScanActions *DatascanDataQualitySpecPostScanActions `pulumi:"postScanActions"`
@@ -2928,6 +2930,8 @@ type DatascanDataQualitySpecInput interface {
 }
 
 type DatascanDataQualitySpecArgs struct {
+	// If set, the latest DataScan job result will be published to Dataplex Catalog.
+	CatalogPublishingEnabled pulumi.BoolPtrInput `pulumi:"catalogPublishingEnabled"`
 	// Actions to take upon job completion.
 	// Structure is documented below.
 	PostScanActions DatascanDataQualitySpecPostScanActionsPtrInput `pulumi:"postScanActions"`
@@ -3019,6 +3023,11 @@ func (o DatascanDataQualitySpecOutput) ToDatascanDataQualitySpecPtrOutputWithCon
 	}).(DatascanDataQualitySpecPtrOutput)
 }
 
+// If set, the latest DataScan job result will be published to Dataplex Catalog.
+func (o DatascanDataQualitySpecOutput) CatalogPublishingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpec) *bool { return v.CatalogPublishingEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Actions to take upon job completion.
 // Structure is documented below.
 func (o DatascanDataQualitySpecOutput) PostScanActions() DatascanDataQualitySpecPostScanActionsPtrOutput {
@@ -3065,6 +3074,16 @@ func (o DatascanDataQualitySpecPtrOutput) Elem() DatascanDataQualitySpecOutput {
 		var ret DatascanDataQualitySpec
 		return ret
 	}).(DatascanDataQualitySpecOutput)
+}
+
+// If set, the latest DataScan job result will be published to Dataplex Catalog.
+func (o DatascanDataQualitySpecPtrOutput) CatalogPublishingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogPublishingEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Actions to take upon job completion.

@@ -479,6 +479,36 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// ### Gkehub Feature Rbacrolebinding Actuation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Name = "rbacrolebindingactuation",
+    ///         Location = "global",
+    ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
+    ///         {
+    ///             Rbacrolebindingactuation = new Gcp.GkeHub.Inputs.FeatureSpecRbacrolebindingactuationArgs
+    ///             {
+    ///                 AllowedCustomRoles = new[]
+    ///                 {
+    ///                     "custom-role1",
+    ///                     "custom-role2",
+    ///                     "custom-role3",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

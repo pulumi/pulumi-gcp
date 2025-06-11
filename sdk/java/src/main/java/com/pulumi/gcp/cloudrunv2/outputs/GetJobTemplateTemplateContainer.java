@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainerEnv;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainerPort;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainerResource;
+import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainerVolumeMount;
 import java.lang.String;
 import java.util.List;
@@ -25,6 +26,11 @@ public final class GetJobTemplateTemplateContainer {
      * 
      */
     private List<String> commands;
+    /**
+     * @return Names of the containers that must start before this container.
+     * 
+     */
+    private List<String> dependsOns;
     /**
      * @return List of environment variables to set in the container.
      * 
@@ -53,6 +59,13 @@ public final class GetJobTemplateTemplateContainer {
      */
     private List<GetJobTemplateTemplateContainerResource> resources;
     /**
+     * @return Startup probe of application within the container.
+     * All other probes are disabled if a startup probe is provided, until it
+     * succeeds. Container will not be added to service endpoints if the probe fails.
+     * 
+     */
+    private List<GetJobTemplateTemplateContainerStartupProbe> startupProbes;
+    /**
      * @return Volume to mount into the container&#39;s filesystem.
      * 
      */
@@ -77,6 +90,13 @@ public final class GetJobTemplateTemplateContainer {
      */
     public List<String> commands() {
         return this.commands;
+    }
+    /**
+     * @return Names of the containers that must start before this container.
+     * 
+     */
+    public List<String> dependsOns() {
+        return this.dependsOns;
     }
     /**
      * @return List of environment variables to set in the container.
@@ -116,6 +136,15 @@ public final class GetJobTemplateTemplateContainer {
         return this.resources;
     }
     /**
+     * @return Startup probe of application within the container.
+     * All other probes are disabled if a startup probe is provided, until it
+     * succeeds. Container will not be added to service endpoints if the probe fails.
+     * 
+     */
+    public List<GetJobTemplateTemplateContainerStartupProbe> startupProbes() {
+        return this.startupProbes;
+    }
+    /**
      * @return Volume to mount into the container&#39;s filesystem.
      * 
      */
@@ -141,11 +170,13 @@ public final class GetJobTemplateTemplateContainer {
     public static final class Builder {
         private List<String> args;
         private List<String> commands;
+        private List<String> dependsOns;
         private List<GetJobTemplateTemplateContainerEnv> envs;
         private String image;
         private String name;
         private List<GetJobTemplateTemplateContainerPort> ports;
         private List<GetJobTemplateTemplateContainerResource> resources;
+        private List<GetJobTemplateTemplateContainerStartupProbe> startupProbes;
         private List<GetJobTemplateTemplateContainerVolumeMount> volumeMounts;
         private String workingDir;
         public Builder() {}
@@ -153,11 +184,13 @@ public final class GetJobTemplateTemplateContainer {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
     	      this.commands = defaults.commands;
+    	      this.dependsOns = defaults.dependsOns;
     	      this.envs = defaults.envs;
     	      this.image = defaults.image;
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
     	      this.resources = defaults.resources;
+    	      this.startupProbes = defaults.startupProbes;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
         }
@@ -183,6 +216,17 @@ public final class GetJobTemplateTemplateContainer {
         }
         public Builder commands(String... commands) {
             return commands(List.of(commands));
+        }
+        @CustomType.Setter
+        public Builder dependsOns(List<String> dependsOns) {
+            if (dependsOns == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "dependsOns");
+            }
+            this.dependsOns = dependsOns;
+            return this;
+        }
+        public Builder dependsOns(String... dependsOns) {
+            return dependsOns(List.of(dependsOns));
         }
         @CustomType.Setter
         public Builder envs(List<GetJobTemplateTemplateContainerEnv> envs) {
@@ -234,6 +278,17 @@ public final class GetJobTemplateTemplateContainer {
             return resources(List.of(resources));
         }
         @CustomType.Setter
+        public Builder startupProbes(List<GetJobTemplateTemplateContainerStartupProbe> startupProbes) {
+            if (startupProbes == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "startupProbes");
+            }
+            this.startupProbes = startupProbes;
+            return this;
+        }
+        public Builder startupProbes(GetJobTemplateTemplateContainerStartupProbe... startupProbes) {
+            return startupProbes(List.of(startupProbes));
+        }
+        @CustomType.Setter
         public Builder volumeMounts(List<GetJobTemplateTemplateContainerVolumeMount> volumeMounts) {
             if (volumeMounts == null) {
               throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "volumeMounts");
@@ -256,11 +311,13 @@ public final class GetJobTemplateTemplateContainer {
             final var _resultValue = new GetJobTemplateTemplateContainer();
             _resultValue.args = args;
             _resultValue.commands = commands;
+            _resultValue.dependsOns = dependsOns;
             _resultValue.envs = envs;
             _resultValue.image = image;
             _resultValue.name = name;
             _resultValue.ports = ports;
             _resultValue.resources = resources;
+            _resultValue.startupProbes = startupProbes;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;
             return _resultValue;

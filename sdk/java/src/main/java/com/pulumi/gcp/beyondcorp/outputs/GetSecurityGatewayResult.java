@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetSecurityGatewayResult {
     private String createTime;
+    private String delegatingServiceAccount;
     private String displayName;
     private List<String> externalIps;
     private List<GetSecurityGatewayHub> hubs;
@@ -33,6 +34,9 @@ public final class GetSecurityGatewayResult {
     private GetSecurityGatewayResult() {}
     public String createTime() {
         return this.createTime;
+    }
+    public String delegatingServiceAccount() {
+        return this.delegatingServiceAccount;
     }
     public String displayName() {
         return this.displayName;
@@ -79,6 +83,7 @@ public final class GetSecurityGatewayResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String delegatingServiceAccount;
         private String displayName;
         private List<String> externalIps;
         private List<GetSecurityGatewayHub> hubs;
@@ -93,6 +98,7 @@ public final class GetSecurityGatewayResult {
         public Builder(GetSecurityGatewayResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.delegatingServiceAccount = defaults.delegatingServiceAccount;
     	      this.displayName = defaults.displayName;
     	      this.externalIps = defaults.externalIps;
     	      this.hubs = defaults.hubs;
@@ -111,6 +117,14 @@ public final class GetSecurityGatewayResult {
               throw new MissingRequiredPropertyException("GetSecurityGatewayResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder delegatingServiceAccount(String delegatingServiceAccount) {
+            if (delegatingServiceAccount == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGatewayResult", "delegatingServiceAccount");
+            }
+            this.delegatingServiceAccount = delegatingServiceAccount;
             return this;
         }
         @CustomType.Setter
@@ -200,6 +214,7 @@ public final class GetSecurityGatewayResult {
         public GetSecurityGatewayResult build() {
             final var _resultValue = new GetSecurityGatewayResult();
             _resultValue.createTime = createTime;
+            _resultValue.delegatingServiceAccount = delegatingServiceAccount;
             _resultValue.displayName = displayName;
             _resultValue.externalIps = externalIps;
             _resultValue.hubs = hubs;

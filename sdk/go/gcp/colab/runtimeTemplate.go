@@ -147,10 +147,10 @@ import (
 //					IdleTimeout: pulumi.String("3600s"),
 //				},
 //				EucConfig: &colab.RuntimeTemplateEucConfigArgs{
-//					EucDisabled: pulumi.Bool(true),
+//					EucDisabled: pulumi.Bool(false),
 //				},
 //				ShieldedVmConfig: &colab.RuntimeTemplateShieldedVmConfigArgs{
-//					EnableSecureBoot: pulumi.Bool(true),
+//					EnableSecureBoot: pulumi.Bool(false),
 //				},
 //				NetworkTags: pulumi.StringArray{
 //					pulumi.String("abc"),
@@ -158,19 +158,6 @@ import (
 //				},
 //				EncryptionSpec: &colab.RuntimeTemplateEncryptionSpecArgs{
 //					KmsKeyName: pulumi.String("my-crypto-key"),
-//				},
-//				SoftwareConfig: &colab.RuntimeTemplateSoftwareConfigArgs{
-//					Envs: colab.RuntimeTemplateSoftwareConfigEnvArray{
-//						&colab.RuntimeTemplateSoftwareConfigEnvArgs{
-//							Name:  pulumi.String("TEST"),
-//							Value: pulumi.String("1"),
-//						},
-//					},
-//					PostStartupScriptConfig: &colab.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{
-//						PostStartupScript:         pulumi.String("echo 'hello world'"),
-//						PostStartupScriptUrl:      pulumi.String("gs://colab-enterprise-pss-secure/secure_pss.sh"),
-//						PostStartupScriptBehavior: pulumi.String("RUN_ONCE"),
-//					},
 //				},
 //			})
 //			if err != nil {

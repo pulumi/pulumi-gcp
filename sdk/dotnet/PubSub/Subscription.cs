@@ -400,7 +400,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_59033",
+    ///             FilenameSuffix = "-_10393",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -456,7 +456,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_32081",
+    ///             FilenameSuffix = "-_33052",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -521,7 +521,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_10393",
+    ///             FilenameSuffix = "-_3684",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -688,6 +688,14 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Output("messageRetentionDuration")]
         public Output<string?> MessageRetentionDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// Transforms to be applied to messages published to the topic. Transforms are applied in the
+        /// order specified.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("messageTransforms")]
+        public Output<ImmutableArray<Outputs.SubscriptionMessageTransform>> MessageTransforms { get; private set; } = null!;
 
         /// <summary>
         /// Name of the subscription.
@@ -918,6 +926,20 @@ namespace Pulumi.Gcp.PubSub
         [Input("messageRetentionDuration")]
         public Input<string>? MessageRetentionDuration { get; set; }
 
+        [Input("messageTransforms")]
+        private InputList<Inputs.SubscriptionMessageTransformArgs>? _messageTransforms;
+
+        /// <summary>
+        /// Transforms to be applied to messages published to the topic. Transforms are applied in the
+        /// order specified.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.SubscriptionMessageTransformArgs> MessageTransforms
+        {
+            get => _messageTransforms ?? (_messageTransforms = new InputList<Inputs.SubscriptionMessageTransformArgs>());
+            set => _messageTransforms = value;
+        }
+
         /// <summary>
         /// Name of the subscription.
         /// </summary>
@@ -1112,6 +1134,20 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("messageRetentionDuration")]
         public Input<string>? MessageRetentionDuration { get; set; }
+
+        [Input("messageTransforms")]
+        private InputList<Inputs.SubscriptionMessageTransformGetArgs>? _messageTransforms;
+
+        /// <summary>
+        /// Transforms to be applied to messages published to the topic. Transforms are applied in the
+        /// order specified.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.SubscriptionMessageTransformGetArgs> MessageTransforms
+        {
+            get => _messageTransforms ?? (_messageTransforms = new InputList<Inputs.SubscriptionMessageTransformGetArgs>());
+            set => _messageTransforms = value;
+        }
 
         /// <summary>
         /// Name of the subscription.

@@ -52,8 +52,61 @@ import (
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Gkehub Scope Rbac Custom Role Binding Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
+//				ScopeId: pulumi.String("tf-test-scope_13293"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			rbacrolebindingactuation, err := gkehub.NewFeature(ctx, "rbacrolebindingactuation", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("rbacrolebindingactuation"),
+//				Location: pulumi.String("global"),
+//				Spec: &gkehub.FeatureSpecArgs{
+//					Rbacrolebindingactuation: &gkehub.FeatureSpecRbacrolebindingactuationArgs{
+//						AllowedCustomRoles: pulumi.StringArray{
+//							pulumi.String("my-custom-role"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewScopeRbacRoleBinding(ctx, "scope_rbac_role_binding", &gkehub.ScopeRbacRoleBindingArgs{
+//				ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_40289"),
+//				ScopeId:                scope.ScopeId,
+//				User:                   pulumi.String("test-email@gmail.com"),
+//				Role: &gkehub.ScopeRbacRoleBindingRoleArgs{
+//					CustomRole: pulumi.String("my-custom-role"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				scope,
+//				rbacrolebindingactuation,
 //			}))
 //			if err != nil {
 //				return err

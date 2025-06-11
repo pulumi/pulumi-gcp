@@ -54,6 +54,10 @@ import * as utilities from "../utilities";
  *             snatPool: "test-snat-pool",
  *         },
  *     },
+ *     privateRegistryConfig: {
+ *         address: "test-address",
+ *         caCert: "test-ca-cert",
+ *     },
  * });
  * ```
  * ### Gkeonprem Vmware Admin Cluster Full
@@ -148,6 +152,10 @@ import * as utilities from "../utilities";
  *     platformConfig: {
  *         requiredPlatformVersion: "1.31.0",
  *     },
+ *     privateRegistryConfig: {
+ *         address: "test-address",
+ *         caCert: "test-ca-cert",
+ *     },
  * });
  * ```
  * ### Gkeonprem Vmware Admin Cluster Metallb
@@ -192,6 +200,10 @@ import * as utilities from "../utilities";
  *         metalLbConfig: {
  *             enabled: true,
  *         },
+ *     },
+ *     privateRegistryConfig: {
+ *         address: "test-address",
+ *         caCert: "test-ca-cert",
  *     },
  * });
  * ```
@@ -353,6 +365,10 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
      * The VMware platform configuration.
      */
     public readonly platformConfig!: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterPlatformConfig | undefined>;
+    /**
+     * Configuration for private registry.
+     */
+    public readonly privateRegistryConfig!: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterPrivateRegistryConfig | undefined>;
     public readonly project!: pulumi.Output<string>;
     /**
      * If set, there are currently changes in flight to the VMware admin cluster.
@@ -416,6 +432,7 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
             resourceInputs["onPremVersion"] = state ? state.onPremVersion : undefined;
             resourceInputs["platformConfig"] = state ? state.platformConfig : undefined;
+            resourceInputs["privateRegistryConfig"] = state ? state.privateRegistryConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["reconciling"] = state ? state.reconciling : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
@@ -446,6 +463,7 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["onPremVersion"] = args ? args.onPremVersion : undefined;
             resourceInputs["platformConfig"] = args ? args.platformConfig : undefined;
+            resourceInputs["privateRegistryConfig"] = args ? args.privateRegistryConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["vcenter"] = args ? args.vcenter : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -575,6 +593,10 @@ export interface VmwareAdminClusterState {
      * The VMware platform configuration.
      */
     platformConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPlatformConfig>;
+    /**
+     * Configuration for private registry.
+     */
+    privateRegistryConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPrivateRegistryConfig>;
     project?: pulumi.Input<string>;
     /**
      * If set, there are currently changes in flight to the VMware admin cluster.
@@ -674,6 +696,10 @@ export interface VmwareAdminClusterArgs {
      * The VMware platform configuration.
      */
     platformConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPlatformConfig>;
+    /**
+     * Configuration for private registry.
+     */
+    privateRegistryConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPrivateRegistryConfig>;
     project?: pulumi.Input<string>;
     /**
      * Specifies vCenter config for the admin cluster.

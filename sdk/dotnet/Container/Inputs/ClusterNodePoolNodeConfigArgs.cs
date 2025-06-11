@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodePoolNodeConfigFastSocketArgs>? FastSocket { get; set; }
 
         /// <summary>
-        /// ) Enables Flex Start provisioning model for the node pool.
+        /// Enables Flex Start provisioning model for the node pool.
         /// </summary>
         [Input("flexStart")]
         public Input<bool>? FlexStart { get; set; }

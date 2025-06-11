@@ -132,6 +132,8 @@ from .instant_snapshot_iam_member import *
 from .instant_snapshot_iam_policy import *
 from .interconnect import *
 from .interconnect_attachment import *
+from .interconnect_attachment_group import *
+from .interconnect_group import *
 from .machine_image import *
 from .machine_image_iam_binding import *
 from .machine_image_iam_member import *
@@ -216,6 +218,7 @@ from .snapshot import *
 from .snapshot_iam_binding import *
 from .snapshot_iam_member import *
 from .snapshot_iam_policy import *
+from .snapshot_settings import *
 from .ssl_certificate import *
 from .ssl_policy import *
 from .storage_pool import *

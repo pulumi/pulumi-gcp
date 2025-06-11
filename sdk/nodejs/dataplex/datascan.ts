@@ -147,6 +147,7 @@ import * as utilities from "../utilities";
  *     dataQualitySpec: {
  *         samplingPercent: 5,
  *         rowFilter: "station_id > 1000",
+ *         catalogPublishingEnabled: true,
  *         postScanActions: {
  *             notificationReport: {
  *                 recipients: {

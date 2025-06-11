@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkehub.outputs.GetFeatureSpecClusterupgrade;
 import com.pulumi.gcp.gkehub.outputs.GetFeatureSpecFleetobservability;
 import com.pulumi.gcp.gkehub.outputs.GetFeatureSpecMulticlusteringress;
+import com.pulumi.gcp.gkehub.outputs.GetFeatureSpecRbacrolebindingactuation;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,6 +29,11 @@ public final class GetFeatureSpec {
      * 
      */
     private List<GetFeatureSpecMulticlusteringress> multiclusteringresses;
+    /**
+     * @return RBACRolebinding Actuation feature spec.
+     * 
+     */
+    private List<GetFeatureSpecRbacrolebindingactuation> rbacrolebindingactuations;
 
     private GetFeatureSpec() {}
     /**
@@ -51,6 +57,13 @@ public final class GetFeatureSpec {
     public List<GetFeatureSpecMulticlusteringress> multiclusteringresses() {
         return this.multiclusteringresses;
     }
+    /**
+     * @return RBACRolebinding Actuation feature spec.
+     * 
+     */
+    public List<GetFeatureSpecRbacrolebindingactuation> rbacrolebindingactuations() {
+        return this.rbacrolebindingactuations;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,12 +77,14 @@ public final class GetFeatureSpec {
         private List<GetFeatureSpecClusterupgrade> clusterupgrades;
         private List<GetFeatureSpecFleetobservability> fleetobservabilities;
         private List<GetFeatureSpecMulticlusteringress> multiclusteringresses;
+        private List<GetFeatureSpecRbacrolebindingactuation> rbacrolebindingactuations;
         public Builder() {}
         public Builder(GetFeatureSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterupgrades = defaults.clusterupgrades;
     	      this.fleetobservabilities = defaults.fleetobservabilities;
     	      this.multiclusteringresses = defaults.multiclusteringresses;
+    	      this.rbacrolebindingactuations = defaults.rbacrolebindingactuations;
         }
 
         @CustomType.Setter
@@ -105,11 +120,23 @@ public final class GetFeatureSpec {
         public Builder multiclusteringresses(GetFeatureSpecMulticlusteringress... multiclusteringresses) {
             return multiclusteringresses(List.of(multiclusteringresses));
         }
+        @CustomType.Setter
+        public Builder rbacrolebindingactuations(List<GetFeatureSpecRbacrolebindingactuation> rbacrolebindingactuations) {
+            if (rbacrolebindingactuations == null) {
+              throw new MissingRequiredPropertyException("GetFeatureSpec", "rbacrolebindingactuations");
+            }
+            this.rbacrolebindingactuations = rbacrolebindingactuations;
+            return this;
+        }
+        public Builder rbacrolebindingactuations(GetFeatureSpecRbacrolebindingactuation... rbacrolebindingactuations) {
+            return rbacrolebindingactuations(List.of(rbacrolebindingactuations));
+        }
         public GetFeatureSpec build() {
             final var _resultValue = new GetFeatureSpec();
             _resultValue.clusterupgrades = clusterupgrades;
             _resultValue.fleetobservabilities = fleetobservabilities;
             _resultValue.multiclusteringresses = multiclusteringresses;
+            _resultValue.rbacrolebindingactuations = rbacrolebindingactuations;
             return _resultValue;
         }
     }

@@ -202,6 +202,12 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> AdminEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// URL of the AttachmentGroup that includes this Attachment.
+        /// </summary>
+        [Output("attachmentGroup")]
+        public Output<string> AttachmentGroup { get; private set; } = null!;
+
+        /// <summary>
         /// Provisioned bandwidth capacity for the interconnect attachment.
         /// For attachments of type DEDICATED, the user can set the bandwidth.
         /// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
@@ -797,6 +803,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("adminEnabled")]
         public Input<bool>? AdminEnabled { get; set; }
+
+        /// <summary>
+        /// URL of the AttachmentGroup that includes this Attachment.
+        /// </summary>
+        [Input("attachmentGroup")]
+        public Input<string>? AttachmentGroup { get; set; }
 
         /// <summary>
         /// Provisioned bandwidth capacity for the interconnect attachment.

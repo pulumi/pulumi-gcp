@@ -39,8 +39,7 @@ class GeminiGcpEnablementSettingBindingArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[builtins.str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_IN_BIGQUERY`.
+        :param pulumi.Input[builtins.str] product: Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -125,8 +124,7 @@ class GeminiGcpEnablementSettingBindingArgs:
     @pulumi.getter
     def product(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Product type of the setting binding.
-        Possible values are: `GEMINI_IN_BIGQUERY`.
+        Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
         """
         return pulumi.get(self, "product")
 
@@ -174,8 +172,7 @@ class _GeminiGcpEnablementSettingBindingState:
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{setting}/settingBindings/{setting_binding}
-        :param pulumi.Input[builtins.str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_IN_BIGQUERY`.
+        :param pulumi.Input[builtins.str] product: Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -291,8 +288,7 @@ class _GeminiGcpEnablementSettingBindingState:
     @pulumi.getter
     def product(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Product type of the setting binding.
-        Possible values are: `GEMINI_IN_BIGQUERY`.
+        Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
         """
         return pulumi.get(self, "product")
 
@@ -401,7 +397,8 @@ class GeminiGcpEnablementSettingBinding(pulumi.CustomResource):
             labels={
                 "my_key": "my_value",
             },
-            enable_customer_data_sharing=True)
+            enable_customer_data_sharing=True,
+            disable_web_grounding=True)
         example = gcp.gemini.GeminiGcpEnablementSettingBinding("example",
             gemini_gcp_enablement_setting_id=basic.gemini_gcp_enablement_setting_id,
             setting_binding_id="ls-tf1b1",
@@ -440,8 +437,7 @@ class GeminiGcpEnablementSettingBinding(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[builtins.str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_IN_BIGQUERY`.
+        :param pulumi.Input[builtins.str] product: Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] setting_binding_id: Id of the setting binding.
@@ -477,7 +473,8 @@ class GeminiGcpEnablementSettingBinding(pulumi.CustomResource):
             labels={
                 "my_key": "my_value",
             },
-            enable_customer_data_sharing=True)
+            enable_customer_data_sharing=True,
+            disable_web_grounding=True)
         example = gcp.gemini.GeminiGcpEnablementSettingBinding("example",
             gemini_gcp_enablement_setting_id=basic.gemini_gcp_enablement_setting_id,
             setting_binding_id="ls-tf1b1",
@@ -598,8 +595,7 @@ class GeminiGcpEnablementSettingBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{setting}/settingBindings/{setting_binding}
-        :param pulumi.Input[builtins.str] product: Product type of the setting binding.
-               Possible values are: `GEMINI_IN_BIGQUERY`.
+        :param pulumi.Input[builtins.str] product: Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -684,8 +680,7 @@ class GeminiGcpEnablementSettingBinding(pulumi.CustomResource):
     @pulumi.getter
     def product(self) -> pulumi.Output[builtins.str]:
         """
-        Product type of the setting binding.
-        Possible values are: `GEMINI_IN_BIGQUERY`.
+        Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
         """
         return pulumi.get(self, "product")
 

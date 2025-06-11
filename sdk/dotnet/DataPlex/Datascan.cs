@@ -216,6 +216,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         {
     ///             SamplingPercent = 5,
     ///             RowFilter = "station_id &gt; 1000",
+    ///             CatalogPublishingEnabled = true,
     ///             PostScanActions = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecPostScanActionsArgs
     ///             {
     ///                 NotificationReport = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecPostScanActionsNotificationReportArgs

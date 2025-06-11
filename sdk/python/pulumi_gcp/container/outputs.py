@@ -147,6 +147,7 @@ __all__ = [
     'ClusterMonitoringConfigAdvancedDatapathObservabilityConfig',
     'ClusterMonitoringConfigManagedPrometheus',
     'ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig',
+    'ClusterNetworkPerformanceConfig',
     'ClusterNetworkPolicy',
     'ClusterNodeConfig',
     'ClusterNodeConfigAdvancedMachineFeatures',
@@ -355,6 +356,7 @@ __all__ = [
     'GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult',
     'GetClusterMonitoringConfigManagedPrometheusResult',
     'GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigResult',
+    'GetClusterNetworkPerformanceConfigResult',
     'GetClusterNetworkPolicyResult',
     'GetClusterNodeConfigResult',
     'GetClusterNodeConfigAdvancedMachineFeatureResult',
@@ -6938,6 +6940,41 @@ class ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig(dict):
 
 
 @pulumi.output_type
+class ClusterNetworkPerformanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalEgressBandwidthTier":
+            suggest = "total_egress_bandwidth_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNetworkPerformanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNetworkPerformanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNetworkPerformanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: builtins.str):
+        """
+        :param builtins.str total_egress_bandwidth_tier: Specifies the total network bandwidth tier for NodePools in the cluster.
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> builtins.str:
+        """
+        Specifies the total network bandwidth tier for NodePools in the cluster.
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+
+@pulumi.output_type
 class ClusterNetworkPolicy(dict):
     def __init__(__self__, *,
                  enabled: builtins.bool,
@@ -7124,7 +7161,7 @@ class ClusterNodeConfig(dict):
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
                Structure is documented below.
-        :param builtins.bool flex_start: ) Enables Flex Start provisioning model for the node pool.
+        :param builtins.bool flex_start: Enables Flex Start provisioning model for the node pool.
         :param 'ClusterNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -7403,7 +7440,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="flexStart")
     def flex_start(self) -> Optional[builtins.bool]:
         """
-        ) Enables Flex Start provisioning model for the node pool.
+        Enables Flex Start provisioning model for the node pool.
         """
         return pulumi.get(self, "flex_start")
 
@@ -10273,7 +10310,7 @@ class ClusterNodePoolNetworkConfigNetworkPerformanceConfig(dict):
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: builtins.str):
         """
-        :param builtins.str total_egress_bandwidth_tier: Specifies the total network bandwidth tier for the NodePool.
+        :param builtins.str total_egress_bandwidth_tier: Specifies the total network bandwidth tier for NodePools in the cluster.
         """
         pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
 
@@ -10281,7 +10318,7 @@ class ClusterNodePoolNetworkConfigNetworkPerformanceConfig(dict):
     @pulumi.getter(name="totalEgressBandwidthTier")
     def total_egress_bandwidth_tier(self) -> builtins.str:
         """
-        Specifies the total network bandwidth tier for the NodePool.
+        Specifies the total network bandwidth tier for NodePools in the cluster.
         """
         return pulumi.get(self, "total_egress_bandwidth_tier")
 
@@ -10465,7 +10502,7 @@ class ClusterNodePoolNodeConfig(dict):
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
                Structure is documented below.
-        :param builtins.bool flex_start: ) Enables Flex Start provisioning model for the node pool.
+        :param builtins.bool flex_start: Enables Flex Start provisioning model for the node pool.
         :param 'ClusterNodePoolNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -10744,7 +10781,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="flexStart")
     def flex_start(self) -> Optional[builtins.bool]:
         """
-        ) Enables Flex Start provisioning model for the node pool.
+        Enables Flex Start provisioning model for the node pool.
         """
         return pulumi.get(self, "flex_start")
 
@@ -12485,7 +12522,7 @@ class ClusterNodePoolPlacementPolicy(dict):
         :param builtins.str type: Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
                `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
         :param builtins.str policy_name: If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
-        :param builtins.str tpu_topology: TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+        :param builtins.str tpu_topology: The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
         """
         pulumi.set(__self__, "type", type)
         if policy_name is not None:
@@ -12514,7 +12551,7 @@ class ClusterNodePoolPlacementPolicy(dict):
     @pulumi.getter(name="tpuTopology")
     def tpu_topology(self) -> Optional[builtins.str]:
         """
-        TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+        The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
         """
         return pulumi.get(self, "tpu_topology")
 
@@ -14084,7 +14121,7 @@ class NodePoolNetworkConfigNetworkPerformanceConfig(dict):
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: builtins.str):
         """
-        :param builtins.str total_egress_bandwidth_tier: Specifies the total network bandwidth tier for the NodePool.
+        :param builtins.str total_egress_bandwidth_tier: Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
         """
         pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
 
@@ -14092,7 +14129,7 @@ class NodePoolNetworkConfigNetworkPerformanceConfig(dict):
     @pulumi.getter(name="totalEgressBandwidthTier")
     def total_egress_bandwidth_tier(self) -> builtins.str:
         """
-        Specifies the total network bandwidth tier for the NodePool.
+        Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
         """
         return pulumi.get(self, "total_egress_bandwidth_tier")
 
@@ -16099,7 +16136,7 @@ class NodePoolPlacementPolicy(dict):
         :param builtins.str policy_name: If set, refers to the name of a custom resource policy supplied by the user.
                The resource policy must be in the same project and region as the node pool.
                If not found, InvalidArgument error is returned.
-        :param builtins.str tpu_topology: The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+        :param builtins.str tpu_topology: The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `"2x4"` or `"2x2x2"`.
         """
         pulumi.set(__self__, "type", type)
         if policy_name is not None:
@@ -16131,7 +16168,7 @@ class NodePoolPlacementPolicy(dict):
     @pulumi.getter(name="tpuTopology")
     def tpu_topology(self) -> Optional[builtins.str]:
         """
-        The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+        The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `"2x4"` or `"2x2x2"`.
         """
         return pulumi.get(self, "tpu_topology")
 
@@ -18194,6 +18231,24 @@ class GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigResult(dict
         The scope of auto-monitoring.
         """
         return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class GetClusterNetworkPerformanceConfigResult(dict):
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: builtins.str):
+        """
+        :param builtins.str total_egress_bandwidth_tier: Specifies the total network bandwidth tier for NodePools in the cluster.
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> builtins.str:
+        """
+        Specifies the total network bandwidth tier for NodePools in the cluster.
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
 
 
 @pulumi.output_type
@@ -20337,7 +20392,7 @@ class GetClusterNodePoolNetworkConfigNetworkPerformanceConfigResult(dict):
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: builtins.str):
         """
-        :param builtins.str total_egress_bandwidth_tier: Specifies the total network bandwidth tier for the NodePool.
+        :param builtins.str total_egress_bandwidth_tier: Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
         """
         pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
 
@@ -20345,7 +20400,7 @@ class GetClusterNodePoolNetworkConfigNetworkPerformanceConfigResult(dict):
     @pulumi.getter(name="totalEgressBandwidthTier")
     def total_egress_bandwidth_tier(self) -> builtins.str:
         """
-        Specifies the total network bandwidth tier for the NodePool.
+        Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
         """
         return pulumi.get(self, "total_egress_bandwidth_tier")
 
@@ -21757,7 +21812,7 @@ class GetClusterNodePoolPlacementPolicyResult(dict):
                  type: builtins.str):
         """
         :param builtins.str policy_name: If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
-        :param builtins.str tpu_topology: TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+        :param builtins.str tpu_topology: The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
         :param builtins.str type: Type defines the type of placement policy
         """
         pulumi.set(__self__, "policy_name", policy_name)
@@ -21776,7 +21831,7 @@ class GetClusterNodePoolPlacementPolicyResult(dict):
     @pulumi.getter(name="tpuTopology")
     def tpu_topology(self) -> builtins.str:
         """
-        TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+        The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
         """
         return pulumi.get(self, "tpu_topology")
 

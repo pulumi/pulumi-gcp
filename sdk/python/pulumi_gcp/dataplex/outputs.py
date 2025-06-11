@@ -1089,7 +1089,9 @@ class DatascanDataQualitySpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "postScanActions":
+        if key == "catalogPublishingEnabled":
+            suggest = "catalog_publishing_enabled"
+        elif key == "postScanActions":
             suggest = "post_scan_actions"
         elif key == "rowFilter":
             suggest = "row_filter"
@@ -1108,11 +1110,13 @@ class DatascanDataQualitySpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 catalog_publishing_enabled: Optional[builtins.bool] = None,
                  post_scan_actions: Optional['outputs.DatascanDataQualitySpecPostScanActions'] = None,
                  row_filter: Optional[builtins.str] = None,
                  rules: Optional[Sequence['outputs.DatascanDataQualitySpecRule']] = None,
                  sampling_percent: Optional[builtins.float] = None):
         """
+        :param builtins.bool catalog_publishing_enabled: If set, the latest DataScan job result will be published to Dataplex Catalog.
         :param 'DatascanDataQualitySpecPostScanActionsArgs' post_scan_actions: Actions to take upon job completion.
                Structure is documented below.
         :param builtins.str row_filter: A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
@@ -1122,6 +1126,8 @@ class DatascanDataQualitySpec(dict):
                Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
                Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
         """
+        if catalog_publishing_enabled is not None:
+            pulumi.set(__self__, "catalog_publishing_enabled", catalog_publishing_enabled)
         if post_scan_actions is not None:
             pulumi.set(__self__, "post_scan_actions", post_scan_actions)
         if row_filter is not None:
@@ -1130,6 +1136,14 @@ class DatascanDataQualitySpec(dict):
             pulumi.set(__self__, "rules", rules)
         if sampling_percent is not None:
             pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="catalogPublishingEnabled")
+    def catalog_publishing_enabled(self) -> Optional[builtins.bool]:
+        """
+        If set, the latest DataScan job result will be published to Dataplex Catalog.
+        """
+        return pulumi.get(self, "catalog_publishing_enabled")
 
     @property
     @pulumi.getter(name="postScanActions")

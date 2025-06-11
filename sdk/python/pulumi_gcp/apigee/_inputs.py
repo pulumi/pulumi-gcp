@@ -36,6 +36,10 @@ __all__ = [
     'DeveloperAttributeArgsDict',
     'DnsZonePeeringConfigArgs',
     'DnsZonePeeringConfigArgsDict',
+    'EnvironmentClientIpResolutionConfigArgs',
+    'EnvironmentClientIpResolutionConfigArgsDict',
+    'EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs',
+    'EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgsDict',
     'EnvironmentIamBindingConditionArgs',
     'EnvironmentIamBindingConditionArgsDict',
     'EnvironmentIamMemberConditionArgs',
@@ -643,6 +647,91 @@ class DnsZonePeeringConfigArgs:
     @target_project_id.setter
     def target_project_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "target_project_id", value)
+
+
+if not MYPY:
+    class EnvironmentClientIpResolutionConfigArgsDict(TypedDict):
+        header_index_algorithm: NotRequired[pulumi.Input['EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgsDict']]
+        """
+        Resolves the client ip based on a custom header.
+        Structure is documented below.
+        """
+elif False:
+    EnvironmentClientIpResolutionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EnvironmentClientIpResolutionConfigArgs:
+    def __init__(__self__, *,
+                 header_index_algorithm: Optional[pulumi.Input['EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs']] = None):
+        """
+        :param pulumi.Input['EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs'] header_index_algorithm: Resolves the client ip based on a custom header.
+               Structure is documented below.
+        """
+        if header_index_algorithm is not None:
+            pulumi.set(__self__, "header_index_algorithm", header_index_algorithm)
+
+    @property
+    @pulumi.getter(name="headerIndexAlgorithm")
+    def header_index_algorithm(self) -> Optional[pulumi.Input['EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs']]:
+        """
+        Resolves the client ip based on a custom header.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_index_algorithm")
+
+    @header_index_algorithm.setter
+    def header_index_algorithm(self, value: Optional[pulumi.Input['EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs']]):
+        pulumi.set(self, "header_index_algorithm", value)
+
+
+if not MYPY:
+    class EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgsDict(TypedDict):
+        ip_header_index: pulumi.Input[builtins.int]
+        """
+        The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
+        """
+        ip_header_name: pulumi.Input[builtins.str]
+        """
+        The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
+        """
+elif False:
+    EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs:
+    def __init__(__self__, *,
+                 ip_header_index: pulumi.Input[builtins.int],
+                 ip_header_name: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.int] ip_header_index: The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
+        :param pulumi.Input[builtins.str] ip_header_name: The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
+        """
+        pulumi.set(__self__, "ip_header_index", ip_header_index)
+        pulumi.set(__self__, "ip_header_name", ip_header_name)
+
+    @property
+    @pulumi.getter(name="ipHeaderIndex")
+    def ip_header_index(self) -> pulumi.Input[builtins.int]:
+        """
+        The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
+        """
+        return pulumi.get(self, "ip_header_index")
+
+    @ip_header_index.setter
+    def ip_header_index(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "ip_header_index", value)
+
+    @property
+    @pulumi.getter(name="ipHeaderName")
+    def ip_header_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
+        """
+        return pulumi.get(self, "ip_header_name")
+
+    @ip_header_name.setter
+    def ip_header_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "ip_header_name", value)
 
 
 if not MYPY:

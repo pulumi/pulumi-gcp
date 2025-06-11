@@ -297,6 +297,12 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly messageStoragePolicy!: pulumi.Output<outputs.pubsub.TopicMessageStoragePolicy>;
     /**
+     * Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     */
+    public readonly messageTransforms!: pulumi.Output<outputs.pubsub.TopicMessageTransform[] | undefined>;
+    /**
      * Name of the topic.
      *
      *
@@ -338,6 +344,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
             resourceInputs["messageStoragePolicy"] = state ? state.messageStoragePolicy : undefined;
+            resourceInputs["messageTransforms"] = state ? state.messageTransforms : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
@@ -349,6 +356,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
             resourceInputs["messageStoragePolicy"] = args ? args.messageStoragePolicy : undefined;
+            resourceInputs["messageTransforms"] = args ? args.messageTransforms : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["schemaSettings"] = args ? args.schemaSettings : undefined;
@@ -408,6 +416,12 @@ export interface TopicState {
      * Structure is documented below.
      */
     messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
+    /**
+     * Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     */
+    messageTransforms?: pulumi.Input<pulumi.Input<inputs.pubsub.TopicMessageTransform>[]>;
     /**
      * Name of the topic.
      *
@@ -474,6 +488,12 @@ export interface TopicArgs {
      * Structure is documented below.
      */
     messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
+    /**
+     * Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     */
+    messageTransforms?: pulumi.Input<pulumi.Input<inputs.pubsub.TopicMessageTransform>[]>;
     /**
      * Name of the topic.
      *

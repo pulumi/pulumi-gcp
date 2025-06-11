@@ -660,9 +660,6 @@ class Pipeline(pulumi.CustomResource):
             pipeline_id="some-pipeline",
             destinations=[{
                 "topic": topic.id,
-                "network_config": {
-                    "network_attachment": "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment",
-                },
             }],
             labels={
                 "test_label": "test-eventarc-label",
@@ -731,9 +728,6 @@ class Pipeline(pulumi.CustomResource):
             pipeline_id="some-pipeline",
             destinations=[{
                 "workflow": workflow.id,
-                "network_config": {
-                    "network_attachment": "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment",
-                },
             }])
         ```
         ### Eventarc Pipeline With Oidc And Json Format
@@ -979,9 +973,6 @@ class Pipeline(pulumi.CustomResource):
             pipeline_id="some-pipeline",
             destinations=[{
                 "topic": topic.id,
-                "network_config": {
-                    "network_attachment": "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment",
-                },
             }],
             labels={
                 "test_label": "test-eventarc-label",
@@ -1050,9 +1041,6 @@ class Pipeline(pulumi.CustomResource):
             pipeline_id="some-pipeline",
             destinations=[{
                 "workflow": workflow.id,
-                "network_config": {
-                    "network_attachment": "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment",
-                },
             }])
         ```
         ### Eventarc Pipeline With Oidc And Json Format

@@ -691,6 +691,25 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+        ### Gkehub Feature Rbacrolebinding Actuation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            name="rbacrolebindingactuation",
+            location="global",
+            spec={
+                "rbacrolebindingactuation": {
+                    "allowed_custom_roles": [
+                        "custom-role1",
+                        "custom-role2",
+                        "custom-role3",
+                    ],
+                },
+            })
+        ```
 
         ## Import
 
@@ -1034,6 +1053,25 @@ class Feature(pulumi.CustomResource):
                     "post_conditions": {
                         "soaking": "60s",
                     },
+                },
+            })
+        ```
+        ### Gkehub Feature Rbacrolebinding Actuation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            name="rbacrolebindingactuation",
+            location="global",
+            spec={
+                "rbacrolebindingactuation": {
+                    "allowed_custom_roles": [
+                        "custom-role1",
+                        "custom-role2",
+                        "custom-role3",
+                    ],
                 },
             })
         ```

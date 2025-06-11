@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolNetworkConfigNetworkPerformanceConfig
     {
         /// <summary>
-        /// Specifies the total network bandwidth tier for the NodePool.
+        /// Specifies the total network bandwidth tier for NodePools in the cluster.
         /// </summary>
         public readonly string TotalEgressBandwidthTier;
 

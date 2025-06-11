@@ -61,10 +61,11 @@ type LookupSecurityGatewayArgs struct {
 
 // A collection of values returned by getSecurityGateway.
 type LookupSecurityGatewayResult struct {
-	CreateTime  string                  `pulumi:"createTime"`
-	DisplayName string                  `pulumi:"displayName"`
-	ExternalIps []string                `pulumi:"externalIps"`
-	Hubs        []GetSecurityGatewayHub `pulumi:"hubs"`
+	CreateTime               string                  `pulumi:"createTime"`
+	DelegatingServiceAccount string                  `pulumi:"delegatingServiceAccount"`
+	DisplayName              string                  `pulumi:"displayName"`
+	ExternalIps              []string                `pulumi:"externalIps"`
+	Hubs                     []GetSecurityGatewayHub `pulumi:"hubs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                string  `pulumi:"id"`
 	Location          string  `pulumi:"location"`
@@ -116,6 +117,10 @@ func (o LookupSecurityGatewayResultOutput) ToLookupSecurityGatewayResultOutputWi
 
 func (o LookupSecurityGatewayResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityGatewayResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupSecurityGatewayResultOutput) DelegatingServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityGatewayResult) string { return v.DelegatingServiceAccount }).(pulumi.StringOutput)
 }
 
 func (o LookupSecurityGatewayResultOutput) DisplayName() pulumi.StringOutput {

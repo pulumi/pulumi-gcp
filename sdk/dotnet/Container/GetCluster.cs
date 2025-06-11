@@ -227,6 +227,7 @@ namespace Pulumi.Gcp.Container
         public readonly string MonitoringService;
         public readonly string Name;
         public readonly string Network;
+        public readonly ImmutableArray<Outputs.GetClusterNetworkPerformanceConfigResult> NetworkPerformanceConfigs;
         public readonly ImmutableArray<Outputs.GetClusterNetworkPolicyResult> NetworkPolicies;
         public readonly string NetworkingMode;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigResult> NodeConfigs;
@@ -369,6 +370,8 @@ namespace Pulumi.Gcp.Container
 
             string network,
 
+            ImmutableArray<Outputs.GetClusterNetworkPerformanceConfigResult> networkPerformanceConfigs,
+
             ImmutableArray<Outputs.GetClusterNetworkPolicyResult> networkPolicies,
 
             string networkingMode,
@@ -488,6 +491,7 @@ namespace Pulumi.Gcp.Container
             MonitoringService = monitoringService;
             Name = name;
             Network = network;
+            NetworkPerformanceConfigs = networkPerformanceConfigs;
             NetworkPolicies = networkPolicies;
             NetworkingMode = networkingMode;
             NodeConfigs = nodeConfigs;

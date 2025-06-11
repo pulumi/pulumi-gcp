@@ -210,6 +210,23 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * URLs of InterconnectGroups that include this Interconnect.
+     * Order is arbitrary and items are unique.
+     * 
+     */
+    @Import(name="interconnectGroups")
+    private @Nullable Output<List<String>> interconnectGroups;
+
+    /**
+     * @return URLs of InterconnectGroups that include this Interconnect.
+     * Order is arbitrary and items are unique.
+     * 
+     */
+    public Optional<Output<List<String>>> interconnectGroups() {
+        return Optional.ofNullable(this.interconnectGroups);
+    }
+
+    /**
      * Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
      * Can take one of the following values:
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
@@ -616,6 +633,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         this.googleIpAddress = $.googleIpAddress;
         this.googleReferenceId = $.googleReferenceId;
         this.interconnectAttachments = $.interconnectAttachments;
+        this.interconnectGroups = $.interconnectGroups;
         this.interconnectType = $.interconnectType;
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
@@ -951,6 +969,40 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder interconnectAttachments(String... interconnectAttachments) {
             return interconnectAttachments(List.of(interconnectAttachments));
+        }
+
+        /**
+         * @param interconnectGroups URLs of InterconnectGroups that include this Interconnect.
+         * Order is arbitrary and items are unique.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interconnectGroups(@Nullable Output<List<String>> interconnectGroups) {
+            $.interconnectGroups = interconnectGroups;
+            return this;
+        }
+
+        /**
+         * @param interconnectGroups URLs of InterconnectGroups that include this Interconnect.
+         * Order is arbitrary and items are unique.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interconnectGroups(List<String> interconnectGroups) {
+            return interconnectGroups(Output.of(interconnectGroups));
+        }
+
+        /**
+         * @param interconnectGroups URLs of InterconnectGroups that include this Interconnect.
+         * Order is arbitrary and items are unique.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interconnectGroups(String... interconnectGroups) {
+            return interconnectGroups(List.of(interconnectGroups));
         }
 
         /**

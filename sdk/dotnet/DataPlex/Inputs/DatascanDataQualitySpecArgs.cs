@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.DataPlex.Inputs
     public sealed class DatascanDataQualitySpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If set, the latest DataScan job result will be published to Dataplex Catalog.
+        /// </summary>
+        [Input("catalogPublishingEnabled")]
+        public Input<bool>? CatalogPublishingEnabled { get; set; }
+
+        /// <summary>
         /// Actions to take upon job completion.
         /// Structure is documented below.
         /// </summary>

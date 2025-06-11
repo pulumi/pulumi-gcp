@@ -74,6 +74,12 @@ namespace Pulumi.Gcp.Beyondcorp
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Service account used for operations that involve resources in consumer projects.
+        /// </summary>
+        [Output("delegatingServiceAccount")]
+        public Output<string> DelegatingServiceAccount { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. An arbitrary user-provided name for the SecurityGateway.
         /// Cannot exceed 64 characters.
         /// </summary>
@@ -257,6 +263,12 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Service account used for operations that involve resources in consumer projects.
+        /// </summary>
+        [Input("delegatingServiceAccount")]
+        public Input<string>? DelegatingServiceAccount { get; set; }
 
         /// <summary>
         /// Optional. An arbitrary user-provided name for the SecurityGateway.

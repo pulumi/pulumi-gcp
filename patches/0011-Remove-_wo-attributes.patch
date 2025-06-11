@@ -5,7 +5,7 @@ Subject: [PATCH] Remove _wo attributes
 
 
 diff --git a/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go b/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
-index 03064cc02..49ba44998 100644
+index 4b408d90c..c0bb1f9f5 100644
 --- a/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
 +++ b/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
 @@ -29,17 +29,14 @@ import (
@@ -80,7 +80,7 @@ index 03064cc02..49ba44998 100644
  						},
  					},
  				},
-@@ -1081,12 +1049,6 @@ func resourceBigqueryDataTransferConfigEncoder(d *schema.ResourceData, meta inte
+@@ -1090,12 +1058,6 @@ func resourceBigqueryDataTransferConfigEncoder(d *schema.ResourceData, meta inte
  			params[sp] = auth.(string)
  		}
  	}
@@ -93,7 +93,7 @@ index 03064cc02..49ba44998 100644
  
  	obj["params"] = params
  
-@@ -1100,8 +1062,6 @@ func resourceBigqueryDataTransferConfigDecoder(d *schema.ResourceData, meta inte
+@@ -1109,8 +1071,6 @@ func resourceBigqueryDataTransferConfigDecoder(d *schema.ResourceData, meta inte
  			if _, apiOk := params[sp]; apiOk {
  				if _, exists := d.GetOkExists("sensitive_params.0." + sp); exists {
  					delete(params, sp)

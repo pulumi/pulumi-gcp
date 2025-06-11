@@ -42,6 +42,16 @@ __all__ = [
     'JobTemplateTemplateContainerPortArgsDict',
     'JobTemplateTemplateContainerResourcesArgs',
     'JobTemplateTemplateContainerResourcesArgsDict',
+    'JobTemplateTemplateContainerStartupProbeArgs',
+    'JobTemplateTemplateContainerStartupProbeArgsDict',
+    'JobTemplateTemplateContainerStartupProbeGrpcArgs',
+    'JobTemplateTemplateContainerStartupProbeGrpcArgsDict',
+    'JobTemplateTemplateContainerStartupProbeHttpGetArgs',
+    'JobTemplateTemplateContainerStartupProbeHttpGetArgsDict',
+    'JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs',
+    'JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict',
+    'JobTemplateTemplateContainerStartupProbeTcpSocketArgs',
+    'JobTemplateTemplateContainerStartupProbeTcpSocketArgsDict',
     'JobTemplateTemplateContainerVolumeMountArgs',
     'JobTemplateTemplateContainerVolumeMountArgsDict',
     'JobTemplateTemplateVolumeArgs',
@@ -983,6 +993,10 @@ if not MYPY:
         """
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Names of the containers that must start before this container.
+        """
         envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgsDict']]]]
         """
         List of environment variables to set in the container.
@@ -1003,6 +1017,13 @@ if not MYPY:
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         Structure is documented below.
         """
+        startup_probe: NotRequired[pulumi.Input['JobTemplateTemplateContainerStartupProbeArgsDict']]
+        """
+        Startup probe of application within the container.
+        All other probes are disabled if a startup probe is provided, until it
+        succeeds. Container will not be added to service endpoints if the probe fails.
+        Structure is documented below.
+        """
         volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgsDict']]]]
         """
         Volume to mount into the container's filesystem.
@@ -1021,16 +1042,19 @@ class JobTemplateTemplateContainerArgs:
                  image: pulumi.Input[builtins.str],
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  commands: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]]] = None,
                  resources: Optional[pulumi.Input['JobTemplateTemplateContainerResourcesArgs']] = None,
+                 startup_probe: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeArgs']] = None,
                  volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]]] = None,
                  working_dir: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] depends_ons: Names of the containers that must start before this container.
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]] envs: List of environment variables to set in the container.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the container specified as a DNS_LABEL.
@@ -1038,6 +1062,10 @@ class JobTemplateTemplateContainerArgs:
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
                Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateContainerResourcesArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+               Structure is documented below.
+        :param pulumi.Input['JobTemplateTemplateContainerStartupProbeArgs'] startup_probe: Startup probe of application within the container.
+               All other probes are disabled if a startup probe is provided, until it
+               succeeds. Container will not be added to service endpoints if the probe fails.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
                Structure is documented below.
@@ -1048,6 +1076,8 @@ class JobTemplateTemplateContainerArgs:
             pulumi.set(__self__, "args", args)
         if commands is not None:
             pulumi.set(__self__, "commands", commands)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if name is not None:
@@ -1056,6 +1086,8 @@ class JobTemplateTemplateContainerArgs:
             pulumi.set(__self__, "ports", ports)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if startup_probe is not None:
+            pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
             pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
@@ -1096,6 +1128,18 @@ class JobTemplateTemplateContainerArgs:
     @commands.setter
     def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "commands", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Names of the containers that must start before this container.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "depends_ons", value)
 
     @property
     @pulumi.getter
@@ -1148,6 +1192,21 @@ class JobTemplateTemplateContainerArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerResourcesArgs']]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter(name="startupProbe")
+    def startup_probe(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeArgs']]:
+        """
+        Startup probe of application within the container.
+        All other probes are disabled if a startup probe is provided, until it
+        succeeds. Container will not be added to service endpoints if the probe fails.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "startup_probe")
+
+    @startup_probe.setter
+    def startup_probe(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeArgs']]):
+        pulumi.set(self, "startup_probe", value)
 
     @property
     @pulumi.getter(name="volumeMounts")
@@ -1416,6 +1475,410 @@ class JobTemplateTemplateContainerResourcesArgs:
     @limits.setter
     def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "limits", value)
+
+
+if not MYPY:
+    class JobTemplateTemplateContainerStartupProbeArgsDict(TypedDict):
+        failure_threshold: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Minimum consecutive failures for the probe to be considered failed after
+        having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        grpc: NotRequired[pulumi.Input['JobTemplateTemplateContainerStartupProbeGrpcArgsDict']]
+        """
+        GRPC specifies an action involving a GRPC port.
+        Structure is documented below.
+        """
+        http_get: NotRequired[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetArgsDict']]
+        """
+        HttpGet specifies the http request to perform.
+        Structure is documented below.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Number of seconds after the container has started before the probe is
+        initiated.
+        Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+        """
+        period_seconds: NotRequired[pulumi.Input[builtins.int]]
+        """
+        How often (in seconds) to perform the probe.
+        Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+        """
+        tcp_socket: NotRequired[pulumi.Input['JobTemplateTemplateContainerStartupProbeTcpSocketArgsDict']]
+        """
+        TcpSocket specifies an action involving a TCP port.
+        Structure is documented below.
+        """
+        timeout_seconds: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Number of seconds after which the probe times out.
+        Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+        Must be smaller than periodSeconds.
+        """
+elif False:
+    JobTemplateTemplateContainerStartupProbeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTemplateTemplateContainerStartupProbeArgs:
+    def __init__(__self__, *,
+                 failure_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 grpc: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeGrpcArgs']] = None,
+                 http_get: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[builtins.int]] = None,
+                 period_seconds: Optional[pulumi.Input[builtins.int]] = None,
+                 tcp_socket: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']] = None,
+                 timeout_seconds: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after
+               having succeeded. Defaults to 3. Minimum value is 1.
+        :param pulumi.Input['JobTemplateTemplateContainerStartupProbeGrpcArgs'] grpc: GRPC specifies an action involving a GRPC port.
+               Structure is documented below.
+        :param pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetArgs'] http_get: HttpGet specifies the http request to perform.
+               Structure is documented below.
+        :param pulumi.Input[builtins.int] initial_delay_seconds: Number of seconds after the container has started before the probe is
+               initiated.
+               Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+        :param pulumi.Input[builtins.int] period_seconds: How often (in seconds) to perform the probe.
+               Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+        :param pulumi.Input['JobTemplateTemplateContainerStartupProbeTcpSocketArgs'] tcp_socket: TcpSocket specifies an action involving a TCP port.
+               Structure is documented below.
+        :param pulumi.Input[builtins.int] timeout_seconds: Number of seconds after which the probe times out.
+               Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+               Must be smaller than periodSeconds.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after
+        having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpc(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeGrpcArgs']]:
+        """
+        GRPC specifies an action involving a GRPC port.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc")
+
+    @grpc.setter
+    def grpc(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeGrpcArgs']]):
+        pulumi.set(self, "grpc", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetArgs']]:
+        """
+        HttpGet specifies the http request to perform.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Number of seconds after the container has started before the probe is
+        initiated.
+        Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        How often (in seconds) to perform the probe.
+        Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']]:
+        """
+        TcpSocket specifies an action involving a TCP port.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @tcp_socket.setter
+    def tcp_socket(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']]):
+        pulumi.set(self, "tcp_socket", value)
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Number of seconds after which the probe times out.
+        Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+        Must be smaller than periodSeconds.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+if not MYPY:
+    class JobTemplateTemplateContainerStartupProbeGrpcArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        service: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    JobTemplateTemplateContainerStartupProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTemplateTemplateContainerStartupProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: Optional[pulumi.Input[builtins.int]] = None,
+                 service: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        :param pulumi.Input[builtins.str] service: The name of the service to place in the gRPC HealthCheckRequest
+               (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+               If this is not specified, the default behavior is defined by gRPC.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class JobTemplateTemplateContainerStartupProbeHttpGetArgsDict(TypedDict):
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        path: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Path to access on the HTTP server. If set, it should not be empty string.
+        """
+        port: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+elif False:
+    JobTemplateTemplateContainerStartupProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTemplateTemplateContainerStartupProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[builtins.str]] = None,
+                 port: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] path: Path to access on the HTTP server. If set, it should not be empty string.
+        :param pulumi.Input[builtins.int] port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Path to access on the HTTP server. If set, it should not be empty string.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: pulumi.Input[builtins.str]
+        """
+        The header field name.
+        """
+        value: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The header field value.
+        """
+elif False:
+    JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[builtins.str],
+                 value: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] name: The header field name.
+        :param pulumi.Input[builtins.str] value: The header field value.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        The header field name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The header field value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class JobTemplateTemplateContainerStartupProbeTcpSocketArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+elif False:
+    JobTemplateTemplateContainerStartupProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTemplateTemplateContainerStartupProbeTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.int] port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port", value)
 
 
 if not MYPY:

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterNodePoolNetworkConfigNetworkPerformanceConfig {
     /**
-     * @return Specifies the total network bandwidth tier for the NodePool.
+     * @return Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: &#34;TIER_1&#34; and &#34;TIER_UNSPECIFIED&#34;.
      * 
      */
     private String totalEgressBandwidthTier;
 
     private GetClusterNodePoolNetworkConfigNetworkPerformanceConfig() {}
     /**
-     * @return Specifies the total network bandwidth tier for the NodePool.
+     * @return Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: &#34;TIER_1&#34; and &#34;TIER_UNSPECIFIED&#34;.
      * 
      */
     public String totalEgressBandwidthTier() {

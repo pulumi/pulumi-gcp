@@ -71,6 +71,7 @@ type LookupTopicResult struct {
 	Labels                      map[string]string                    `pulumi:"labels"`
 	MessageRetentionDuration    string                               `pulumi:"messageRetentionDuration"`
 	MessageStoragePolicies      []GetTopicMessageStoragePolicy       `pulumi:"messageStoragePolicies"`
+	MessageTransforms           []GetTopicMessageTransform           `pulumi:"messageTransforms"`
 	Name                        string                               `pulumi:"name"`
 	Project                     *string                              `pulumi:"project"`
 	PulumiLabels                map[string]string                    `pulumi:"pulumiLabels"`
@@ -143,6 +144,10 @@ func (o LookupTopicResultOutput) MessageRetentionDuration() pulumi.StringOutput 
 
 func (o LookupTopicResultOutput) MessageStoragePolicies() GetTopicMessageStoragePolicyArrayOutput {
 	return o.ApplyT(func(v LookupTopicResult) []GetTopicMessageStoragePolicy { return v.MessageStoragePolicies }).(GetTopicMessageStoragePolicyArrayOutput)
+}
+
+func (o LookupTopicResultOutput) MessageTransforms() GetTopicMessageTransformArrayOutput {
+	return o.ApplyT(func(v LookupTopicResult) []GetTopicMessageTransform { return v.MessageTransforms }).(GetTopicMessageTransformArrayOutput)
 }
 
 func (o LookupTopicResultOutput) Name() pulumi.StringOutput {

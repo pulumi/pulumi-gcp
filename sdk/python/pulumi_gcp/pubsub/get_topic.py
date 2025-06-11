@@ -28,7 +28,7 @@ class GetTopicResult:
     """
     A collection of values returned by getTopic.
     """
-    def __init__(__self__, effective_labels=None, id=None, ingestion_data_source_settings=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policies=None, name=None, project=None, pulumi_labels=None, schema_settings=None):
+    def __init__(__self__, effective_labels=None, id=None, ingestion_data_source_settings=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policies=None, message_transforms=None, name=None, project=None, pulumi_labels=None, schema_settings=None):
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -50,6 +50,9 @@ class GetTopicResult:
         if message_storage_policies and not isinstance(message_storage_policies, list):
             raise TypeError("Expected argument 'message_storage_policies' to be a list")
         pulumi.set(__self__, "message_storage_policies", message_storage_policies)
+        if message_transforms and not isinstance(message_transforms, list):
+            raise TypeError("Expected argument 'message_transforms' to be a list")
+        pulumi.set(__self__, "message_transforms", message_transforms)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -102,6 +105,11 @@ class GetTopicResult:
         return pulumi.get(self, "message_storage_policies")
 
     @property
+    @pulumi.getter(name="messageTransforms")
+    def message_transforms(self) -> Sequence['outputs.GetTopicMessageTransformResult']:
+        return pulumi.get(self, "message_transforms")
+
+    @property
     @pulumi.getter
     def name(self) -> builtins.str:
         return pulumi.get(self, "name")
@@ -135,6 +143,7 @@ class AwaitableGetTopicResult(GetTopicResult):
             labels=self.labels,
             message_retention_duration=self.message_retention_duration,
             message_storage_policies=self.message_storage_policies,
+            message_transforms=self.message_transforms,
             name=self.name,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
@@ -179,6 +188,7 @@ def get_topic(name: Optional[builtins.str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         message_retention_duration=pulumi.get(__ret__, 'message_retention_duration'),
         message_storage_policies=pulumi.get(__ret__, 'message_storage_policies'),
+        message_transforms=pulumi.get(__ret__, 'message_transforms'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
@@ -220,6 +230,7 @@ def get_topic_output(name: Optional[pulumi.Input[builtins.str]] = None,
         labels=pulumi.get(__response__, 'labels'),
         message_retention_duration=pulumi.get(__response__, 'message_retention_duration'),
         message_storage_policies=pulumi.get(__response__, 'message_storage_policies'),
+        message_transforms=pulumi.get(__response__, 'message_transforms'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),

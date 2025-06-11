@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:apihub/apiHubInstance:ApiHubInstance":
 		r = &ApiHubInstance{}
+	case "gcp:apihub/curation:Curation":
+		r = &Curation{}
 	case "gcp:apihub/hostProjectRegistration:HostProjectRegistration":
 		r = &HostProjectRegistration{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apihub/apiHubInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apihub/curation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

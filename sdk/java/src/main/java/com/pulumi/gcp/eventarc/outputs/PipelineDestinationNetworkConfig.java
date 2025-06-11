@@ -4,9 +4,10 @@
 package com.pulumi.gcp.eventarc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineDestinationNetworkConfig {
@@ -14,19 +15,23 @@ public final class PipelineDestinationNetworkConfig {
      * @return Name of the NetworkAttachment that allows access to the consumer VPC.
      * Format:
      * `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+     * Required for HTTP endpoint destinations. Must not be specified for
+     * Workflows, MessageBus, or Topic destinations.
      * 
      */
-    private String networkAttachment;
+    private @Nullable String networkAttachment;
 
     private PipelineDestinationNetworkConfig() {}
     /**
      * @return Name of the NetworkAttachment that allows access to the consumer VPC.
      * Format:
      * `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+     * Required for HTTP endpoint destinations. Must not be specified for
+     * Workflows, MessageBus, or Topic destinations.
      * 
      */
-    public String networkAttachment() {
-        return this.networkAttachment;
+    public Optional<String> networkAttachment() {
+        return Optional.ofNullable(this.networkAttachment);
     }
 
     public static Builder builder() {
@@ -38,7 +43,7 @@ public final class PipelineDestinationNetworkConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String networkAttachment;
+        private @Nullable String networkAttachment;
         public Builder() {}
         public Builder(PipelineDestinationNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -46,10 +51,8 @@ public final class PipelineDestinationNetworkConfig {
         }
 
         @CustomType.Setter
-        public Builder networkAttachment(String networkAttachment) {
-            if (networkAttachment == null) {
-              throw new MissingRequiredPropertyException("PipelineDestinationNetworkConfig", "networkAttachment");
-            }
+        public Builder networkAttachment(@Nullable String networkAttachment) {
+
             this.networkAttachment = networkAttachment;
             return this;
         }

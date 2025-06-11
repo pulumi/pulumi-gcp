@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.gkehub.outputs.FeatureSpecClusterupgrade;
 import com.pulumi.gcp.gkehub.outputs.FeatureSpecFleetobservability;
 import com.pulumi.gcp.gkehub.outputs.FeatureSpecMulticlusteringress;
+import com.pulumi.gcp.gkehub.outputs.FeatureSpecRbacrolebindingactuation;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +32,12 @@ public final class FeatureSpec {
      * 
      */
     private @Nullable FeatureSpecMulticlusteringress multiclusteringress;
+    /**
+     * @return RBACRolebinding Actuation feature spec.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable FeatureSpecRbacrolebindingactuation rbacrolebindingactuation;
 
     private FeatureSpec() {}
     /**
@@ -57,6 +64,14 @@ public final class FeatureSpec {
     public Optional<FeatureSpecMulticlusteringress> multiclusteringress() {
         return Optional.ofNullable(this.multiclusteringress);
     }
+    /**
+     * @return RBACRolebinding Actuation feature spec.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<FeatureSpecRbacrolebindingactuation> rbacrolebindingactuation() {
+        return Optional.ofNullable(this.rbacrolebindingactuation);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -70,12 +85,14 @@ public final class FeatureSpec {
         private @Nullable FeatureSpecClusterupgrade clusterupgrade;
         private @Nullable FeatureSpecFleetobservability fleetobservability;
         private @Nullable FeatureSpecMulticlusteringress multiclusteringress;
+        private @Nullable FeatureSpecRbacrolebindingactuation rbacrolebindingactuation;
         public Builder() {}
         public Builder(FeatureSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterupgrade = defaults.clusterupgrade;
     	      this.fleetobservability = defaults.fleetobservability;
     	      this.multiclusteringress = defaults.multiclusteringress;
+    	      this.rbacrolebindingactuation = defaults.rbacrolebindingactuation;
         }
 
         @CustomType.Setter
@@ -96,11 +113,18 @@ public final class FeatureSpec {
             this.multiclusteringress = multiclusteringress;
             return this;
         }
+        @CustomType.Setter
+        public Builder rbacrolebindingactuation(@Nullable FeatureSpecRbacrolebindingactuation rbacrolebindingactuation) {
+
+            this.rbacrolebindingactuation = rbacrolebindingactuation;
+            return this;
+        }
         public FeatureSpec build() {
             final var _resultValue = new FeatureSpec();
             _resultValue.clusterupgrade = clusterupgrade;
             _resultValue.fleetobservability = fleetobservability;
             _resultValue.multiclusteringress = multiclusteringress;
+            _resultValue.rbacrolebindingactuation = rbacrolebindingactuation;
             return _resultValue;
         }
     }

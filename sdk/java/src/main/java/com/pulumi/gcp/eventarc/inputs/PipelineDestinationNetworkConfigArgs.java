@@ -5,9 +5,10 @@ package com.pulumi.gcp.eventarc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PipelineDestinationNetworkConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,19 +19,23 @@ public final class PipelineDestinationNetworkConfigArgs extends com.pulumi.resou
      * Name of the NetworkAttachment that allows access to the consumer VPC.
      * Format:
      * `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+     * Required for HTTP endpoint destinations. Must not be specified for
+     * Workflows, MessageBus, or Topic destinations.
      * 
      */
-    @Import(name="networkAttachment", required=true)
-    private Output<String> networkAttachment;
+    @Import(name="networkAttachment")
+    private @Nullable Output<String> networkAttachment;
 
     /**
      * @return Name of the NetworkAttachment that allows access to the consumer VPC.
      * Format:
      * `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+     * Required for HTTP endpoint destinations. Must not be specified for
+     * Workflows, MessageBus, or Topic destinations.
      * 
      */
-    public Output<String> networkAttachment() {
-        return this.networkAttachment;
+    public Optional<Output<String>> networkAttachment() {
+        return Optional.ofNullable(this.networkAttachment);
     }
 
     private PipelineDestinationNetworkConfigArgs() {}
@@ -61,11 +66,13 @@ public final class PipelineDestinationNetworkConfigArgs extends com.pulumi.resou
          * @param networkAttachment Name of the NetworkAttachment that allows access to the consumer VPC.
          * Format:
          * `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+         * Required for HTTP endpoint destinations. Must not be specified for
+         * Workflows, MessageBus, or Topic destinations.
          * 
          * @return builder
          * 
          */
-        public Builder networkAttachment(Output<String> networkAttachment) {
+        public Builder networkAttachment(@Nullable Output<String> networkAttachment) {
             $.networkAttachment = networkAttachment;
             return this;
         }
@@ -74,6 +81,8 @@ public final class PipelineDestinationNetworkConfigArgs extends com.pulumi.resou
          * @param networkAttachment Name of the NetworkAttachment that allows access to the consumer VPC.
          * Format:
          * `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+         * Required for HTTP endpoint destinations. Must not be specified for
+         * Workflows, MessageBus, or Topic destinations.
          * 
          * @return builder
          * 
@@ -83,9 +92,6 @@ public final class PipelineDestinationNetworkConfigArgs extends com.pulumi.resou
         }
 
         public PipelineDestinationNetworkConfigArgs build() {
-            if ($.networkAttachment == null) {
-                throw new MissingRequiredPropertyException("PipelineDestinationNetworkConfigArgs", "networkAttachment");
-            }
             return $;
         }
     }

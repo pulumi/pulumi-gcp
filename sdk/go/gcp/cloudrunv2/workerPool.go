@@ -442,12 +442,6 @@ import (
 //						&cloudrunv2.WorkerPoolTemplateContainerArgs{
 //							Name:  pulumi.String("hello-2"),
 //							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/worker-pool"),
-//							Envs: cloudrunv2.WorkerPoolTemplateContainerEnvArray{
-//								&cloudrunv2.WorkerPoolTemplateContainerEnvArgs{
-//									Name:  pulumi.String("PORT"),
-//									Value: pulumi.String("8081"),
-//								},
-//							},
 //						},
 //					},
 //					Volumes: cloudrunv2.WorkerPoolTemplateVolumeArray{

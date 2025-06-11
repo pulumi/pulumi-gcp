@@ -179,6 +179,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly adminEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * URL of the AttachmentGroup that includes this Attachment.
+     */
+    public /*out*/ readonly attachmentGroup!: pulumi.Output<string>;
+    /**
      * Provisioned bandwidth capacity for the interconnect attachment.
      * For attachments of type DEDICATED, the user can set the bandwidth.
      * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
@@ -426,6 +430,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InterconnectAttachmentState | undefined;
             resourceInputs["adminEnabled"] = state ? state.adminEnabled : undefined;
+            resourceInputs["attachmentGroup"] = state ? state.attachmentGroup : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["candidateCloudRouterIpAddress"] = state ? state.candidateCloudRouterIpAddress : undefined;
             resourceInputs["candidateCloudRouterIpv6Address"] = state ? state.candidateCloudRouterIpv6Address : undefined;
@@ -488,6 +493,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["subnetLength"] = args ? args.subnetLength : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
+            resourceInputs["attachmentGroup"] = undefined /*out*/;
             resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
             resourceInputs["cloudRouterIpv6Address"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -519,6 +525,10 @@ export interface InterconnectAttachmentState {
      * PARTNER type this will Pre-Activate the interconnect attachment
      */
     adminEnabled?: pulumi.Input<boolean>;
+    /**
+     * URL of the AttachmentGroup that includes this Attachment.
+     */
+    attachmentGroup?: pulumi.Input<string>;
     /**
      * Provisioned bandwidth capacity for the interconnect attachment.
      * For attachments of type DEDICATED, the user can set the bandwidth.

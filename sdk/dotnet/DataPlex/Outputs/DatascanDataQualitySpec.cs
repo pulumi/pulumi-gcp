@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     public sealed class DatascanDataQualitySpec
     {
         /// <summary>
+        /// If set, the latest DataScan job result will be published to Dataplex Catalog.
+        /// </summary>
+        public readonly bool? CatalogPublishingEnabled;
+        /// <summary>
         /// Actions to take upon job completion.
         /// Structure is documented below.
         /// </summary>
@@ -36,6 +40,8 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
         [OutputConstructor]
         private DatascanDataQualitySpec(
+            bool? catalogPublishingEnabled,
+
             Outputs.DatascanDataQualitySpecPostScanActions? postScanActions,
 
             string? rowFilter,
@@ -44,6 +50,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
             double? samplingPercent)
         {
+            CatalogPublishingEnabled = catalogPublishingEnabled;
             PostScanActions = postScanActions;
             RowFilter = rowFilter;
             Rules = rules;

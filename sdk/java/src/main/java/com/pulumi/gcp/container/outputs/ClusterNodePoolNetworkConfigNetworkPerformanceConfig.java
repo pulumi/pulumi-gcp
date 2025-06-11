@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
     /**
-     * @return Specifies the total network bandwidth tier for the NodePool.
+     * @return Specifies the total network bandwidth tier for NodePools in the cluster.
      * 
      */
     private String totalEgressBandwidthTier;
 
     private ClusterNodePoolNetworkConfigNetworkPerformanceConfig() {}
     /**
-     * @return Specifies the total network bandwidth tier for the NodePool.
+     * @return Specifies the total network bandwidth tier for NodePools in the cluster.
      * 
      */
     public String totalEgressBandwidthTier() {

@@ -7564,6 +7564,9 @@ type FeatureSpec struct {
 	// Multicluster Ingress-specific spec.
 	// Structure is documented below.
 	Multiclusteringress *FeatureSpecMulticlusteringress `pulumi:"multiclusteringress"`
+	// RBACRolebinding Actuation feature spec.
+	// Structure is documented below.
+	Rbacrolebindingactuation *FeatureSpecRbacrolebindingactuation `pulumi:"rbacrolebindingactuation"`
 }
 
 // FeatureSpecInput is an input type that accepts FeatureSpecArgs and FeatureSpecOutput values.
@@ -7587,6 +7590,9 @@ type FeatureSpecArgs struct {
 	// Multicluster Ingress-specific spec.
 	// Structure is documented below.
 	Multiclusteringress FeatureSpecMulticlusteringressPtrInput `pulumi:"multiclusteringress"`
+	// RBACRolebinding Actuation feature spec.
+	// Structure is documented below.
+	Rbacrolebindingactuation FeatureSpecRbacrolebindingactuationPtrInput `pulumi:"rbacrolebindingactuation"`
 }
 
 func (FeatureSpecArgs) ElementType() reflect.Type {
@@ -7684,6 +7690,12 @@ func (o FeatureSpecOutput) Multiclusteringress() FeatureSpecMulticlusteringressP
 	return o.ApplyT(func(v FeatureSpec) *FeatureSpecMulticlusteringress { return v.Multiclusteringress }).(FeatureSpecMulticlusteringressPtrOutput)
 }
 
+// RBACRolebinding Actuation feature spec.
+// Structure is documented below.
+func (o FeatureSpecOutput) Rbacrolebindingactuation() FeatureSpecRbacrolebindingactuationPtrOutput {
+	return o.ApplyT(func(v FeatureSpec) *FeatureSpecRbacrolebindingactuation { return v.Rbacrolebindingactuation }).(FeatureSpecRbacrolebindingactuationPtrOutput)
+}
+
 type FeatureSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecPtrOutput) ElementType() reflect.Type {
@@ -7739,6 +7751,17 @@ func (o FeatureSpecPtrOutput) Multiclusteringress() FeatureSpecMulticlusteringre
 		}
 		return v.Multiclusteringress
 	}).(FeatureSpecMulticlusteringressPtrOutput)
+}
+
+// RBACRolebinding Actuation feature spec.
+// Structure is documented below.
+func (o FeatureSpecPtrOutput) Rbacrolebindingactuation() FeatureSpecRbacrolebindingactuationPtrOutput {
+	return o.ApplyT(func(v *FeatureSpec) *FeatureSpecRbacrolebindingactuation {
+		if v == nil {
+			return nil
+		}
+		return v.Rbacrolebindingactuation
+	}).(FeatureSpecRbacrolebindingactuationPtrOutput)
 }
 
 type FeatureSpecClusterupgrade struct {
@@ -9020,6 +9043,143 @@ func (o FeatureSpecMulticlusteringressPtrOutput) ConfigMembership() pulumi.Strin
 		}
 		return &v.ConfigMembership
 	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureSpecRbacrolebindingactuation struct {
+	// The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+	AllowedCustomRoles []string `pulumi:"allowedCustomRoles"`
+}
+
+// FeatureSpecRbacrolebindingactuationInput is an input type that accepts FeatureSpecRbacrolebindingactuationArgs and FeatureSpecRbacrolebindingactuationOutput values.
+// You can construct a concrete instance of `FeatureSpecRbacrolebindingactuationInput` via:
+//
+//	FeatureSpecRbacrolebindingactuationArgs{...}
+type FeatureSpecRbacrolebindingactuationInput interface {
+	pulumi.Input
+
+	ToFeatureSpecRbacrolebindingactuationOutput() FeatureSpecRbacrolebindingactuationOutput
+	ToFeatureSpecRbacrolebindingactuationOutputWithContext(context.Context) FeatureSpecRbacrolebindingactuationOutput
+}
+
+type FeatureSpecRbacrolebindingactuationArgs struct {
+	// The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+	AllowedCustomRoles pulumi.StringArrayInput `pulumi:"allowedCustomRoles"`
+}
+
+func (FeatureSpecRbacrolebindingactuationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecRbacrolebindingactuation)(nil)).Elem()
+}
+
+func (i FeatureSpecRbacrolebindingactuationArgs) ToFeatureSpecRbacrolebindingactuationOutput() FeatureSpecRbacrolebindingactuationOutput {
+	return i.ToFeatureSpecRbacrolebindingactuationOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecRbacrolebindingactuationArgs) ToFeatureSpecRbacrolebindingactuationOutputWithContext(ctx context.Context) FeatureSpecRbacrolebindingactuationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecRbacrolebindingactuationOutput)
+}
+
+func (i FeatureSpecRbacrolebindingactuationArgs) ToFeatureSpecRbacrolebindingactuationPtrOutput() FeatureSpecRbacrolebindingactuationPtrOutput {
+	return i.ToFeatureSpecRbacrolebindingactuationPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecRbacrolebindingactuationArgs) ToFeatureSpecRbacrolebindingactuationPtrOutputWithContext(ctx context.Context) FeatureSpecRbacrolebindingactuationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecRbacrolebindingactuationOutput).ToFeatureSpecRbacrolebindingactuationPtrOutputWithContext(ctx)
+}
+
+// FeatureSpecRbacrolebindingactuationPtrInput is an input type that accepts FeatureSpecRbacrolebindingactuationArgs, FeatureSpecRbacrolebindingactuationPtr and FeatureSpecRbacrolebindingactuationPtrOutput values.
+// You can construct a concrete instance of `FeatureSpecRbacrolebindingactuationPtrInput` via:
+//
+//	        FeatureSpecRbacrolebindingactuationArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureSpecRbacrolebindingactuationPtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecRbacrolebindingactuationPtrOutput() FeatureSpecRbacrolebindingactuationPtrOutput
+	ToFeatureSpecRbacrolebindingactuationPtrOutputWithContext(context.Context) FeatureSpecRbacrolebindingactuationPtrOutput
+}
+
+type featureSpecRbacrolebindingactuationPtrType FeatureSpecRbacrolebindingactuationArgs
+
+func FeatureSpecRbacrolebindingactuationPtr(v *FeatureSpecRbacrolebindingactuationArgs) FeatureSpecRbacrolebindingactuationPtrInput {
+	return (*featureSpecRbacrolebindingactuationPtrType)(v)
+}
+
+func (*featureSpecRbacrolebindingactuationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecRbacrolebindingactuation)(nil)).Elem()
+}
+
+func (i *featureSpecRbacrolebindingactuationPtrType) ToFeatureSpecRbacrolebindingactuationPtrOutput() FeatureSpecRbacrolebindingactuationPtrOutput {
+	return i.ToFeatureSpecRbacrolebindingactuationPtrOutputWithContext(context.Background())
+}
+
+func (i *featureSpecRbacrolebindingactuationPtrType) ToFeatureSpecRbacrolebindingactuationPtrOutputWithContext(ctx context.Context) FeatureSpecRbacrolebindingactuationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecRbacrolebindingactuationPtrOutput)
+}
+
+type FeatureSpecRbacrolebindingactuationOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecRbacrolebindingactuationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecRbacrolebindingactuation)(nil)).Elem()
+}
+
+func (o FeatureSpecRbacrolebindingactuationOutput) ToFeatureSpecRbacrolebindingactuationOutput() FeatureSpecRbacrolebindingactuationOutput {
+	return o
+}
+
+func (o FeatureSpecRbacrolebindingactuationOutput) ToFeatureSpecRbacrolebindingactuationOutputWithContext(ctx context.Context) FeatureSpecRbacrolebindingactuationOutput {
+	return o
+}
+
+func (o FeatureSpecRbacrolebindingactuationOutput) ToFeatureSpecRbacrolebindingactuationPtrOutput() FeatureSpecRbacrolebindingactuationPtrOutput {
+	return o.ToFeatureSpecRbacrolebindingactuationPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecRbacrolebindingactuationOutput) ToFeatureSpecRbacrolebindingactuationPtrOutputWithContext(ctx context.Context) FeatureSpecRbacrolebindingactuationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecRbacrolebindingactuation) *FeatureSpecRbacrolebindingactuation {
+		return &v
+	}).(FeatureSpecRbacrolebindingactuationPtrOutput)
+}
+
+// The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+func (o FeatureSpecRbacrolebindingactuationOutput) AllowedCustomRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureSpecRbacrolebindingactuation) []string { return v.AllowedCustomRoles }).(pulumi.StringArrayOutput)
+}
+
+type FeatureSpecRbacrolebindingactuationPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecRbacrolebindingactuationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecRbacrolebindingactuation)(nil)).Elem()
+}
+
+func (o FeatureSpecRbacrolebindingactuationPtrOutput) ToFeatureSpecRbacrolebindingactuationPtrOutput() FeatureSpecRbacrolebindingactuationPtrOutput {
+	return o
+}
+
+func (o FeatureSpecRbacrolebindingactuationPtrOutput) ToFeatureSpecRbacrolebindingactuationPtrOutputWithContext(ctx context.Context) FeatureSpecRbacrolebindingactuationPtrOutput {
+	return o
+}
+
+func (o FeatureSpecRbacrolebindingactuationPtrOutput) Elem() FeatureSpecRbacrolebindingactuationOutput {
+	return o.ApplyT(func(v *FeatureSpecRbacrolebindingactuation) FeatureSpecRbacrolebindingactuation {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpecRbacrolebindingactuation
+		return ret
+	}).(FeatureSpecRbacrolebindingactuationOutput)
+}
+
+// The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+func (o FeatureSpecRbacrolebindingactuationPtrOutput) AllowedCustomRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureSpecRbacrolebindingactuation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedCustomRoles
+	}).(pulumi.StringArrayOutput)
 }
 
 type FeatureStateType struct {
@@ -11459,10 +11619,12 @@ func (o ScopeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type ScopeRbacRoleBindingRole struct {
-	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
-	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+	// CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
 	//
 	// ***
+	CustomRole *string `pulumi:"customRole"`
+	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
 	PredefinedRole *string `pulumi:"predefinedRole"`
 }
 
@@ -11478,10 +11640,12 @@ type ScopeRbacRoleBindingRoleInput interface {
 }
 
 type ScopeRbacRoleBindingRoleArgs struct {
-	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
-	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+	// CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
 	//
 	// ***
+	CustomRole pulumi.StringPtrInput `pulumi:"customRole"`
+	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
 	PredefinedRole pulumi.StringPtrInput `pulumi:"predefinedRole"`
 }
 
@@ -11562,10 +11726,15 @@ func (o ScopeRbacRoleBindingRoleOutput) ToScopeRbacRoleBindingRolePtrOutputWithC
 	}).(ScopeRbacRoleBindingRolePtrOutput)
 }
 
-// PredefinedRole is an ENUM representation of the default Kubernetes Roles
-// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+// CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
 //
 // ***
+func (o ScopeRbacRoleBindingRoleOutput) CustomRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScopeRbacRoleBindingRole) *string { return v.CustomRole }).(pulumi.StringPtrOutput)
+}
+
+// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
 func (o ScopeRbacRoleBindingRoleOutput) PredefinedRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScopeRbacRoleBindingRole) *string { return v.PredefinedRole }).(pulumi.StringPtrOutput)
 }
@@ -11594,10 +11763,20 @@ func (o ScopeRbacRoleBindingRolePtrOutput) Elem() ScopeRbacRoleBindingRoleOutput
 	}).(ScopeRbacRoleBindingRoleOutput)
 }
 
-// PredefinedRole is an ENUM representation of the default Kubernetes Roles
-// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+// CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
 //
 // ***
+func (o ScopeRbacRoleBindingRolePtrOutput) CustomRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeRbacRoleBindingRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
 func (o ScopeRbacRoleBindingRolePtrOutput) PredefinedRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBindingRole) *string {
 		if v == nil {
@@ -14030,6 +14209,8 @@ type GetFeatureSpec struct {
 	Fleetobservabilities []GetFeatureSpecFleetobservability `pulumi:"fleetobservabilities"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringresses []GetFeatureSpecMulticlusteringress `pulumi:"multiclusteringresses"`
+	// RBACRolebinding Actuation feature spec.
+	Rbacrolebindingactuations []GetFeatureSpecRbacrolebindingactuation `pulumi:"rbacrolebindingactuations"`
 }
 
 // GetFeatureSpecInput is an input type that accepts GetFeatureSpecArgs and GetFeatureSpecOutput values.
@@ -14050,6 +14231,8 @@ type GetFeatureSpecArgs struct {
 	Fleetobservabilities GetFeatureSpecFleetobservabilityArrayInput `pulumi:"fleetobservabilities"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringresses GetFeatureSpecMulticlusteringressArrayInput `pulumi:"multiclusteringresses"`
+	// RBACRolebinding Actuation feature spec.
+	Rbacrolebindingactuations GetFeatureSpecRbacrolebindingactuationArrayInput `pulumi:"rbacrolebindingactuations"`
 }
 
 func (GetFeatureSpecArgs) ElementType() reflect.Type {
@@ -14116,6 +14299,11 @@ func (o GetFeatureSpecOutput) Fleetobservabilities() GetFeatureSpecFleetobservab
 // Multicluster Ingress-specific spec.
 func (o GetFeatureSpecOutput) Multiclusteringresses() GetFeatureSpecMulticlusteringressArrayOutput {
 	return o.ApplyT(func(v GetFeatureSpec) []GetFeatureSpecMulticlusteringress { return v.Multiclusteringresses }).(GetFeatureSpecMulticlusteringressArrayOutput)
+}
+
+// RBACRolebinding Actuation feature spec.
+func (o GetFeatureSpecOutput) Rbacrolebindingactuations() GetFeatureSpecRbacrolebindingactuationArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpec) []GetFeatureSpecRbacrolebindingactuation { return v.Rbacrolebindingactuations }).(GetFeatureSpecRbacrolebindingactuationArrayOutput)
 }
 
 type GetFeatureSpecArrayOutput struct{ *pulumi.OutputState }
@@ -15167,6 +15355,103 @@ func (o GetFeatureSpecMulticlusteringressArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetFeatureSpecMulticlusteringressOutput)
 }
 
+type GetFeatureSpecRbacrolebindingactuation struct {
+	// The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+	AllowedCustomRoles []string `pulumi:"allowedCustomRoles"`
+}
+
+// GetFeatureSpecRbacrolebindingactuationInput is an input type that accepts GetFeatureSpecRbacrolebindingactuationArgs and GetFeatureSpecRbacrolebindingactuationOutput values.
+// You can construct a concrete instance of `GetFeatureSpecRbacrolebindingactuationInput` via:
+//
+//	GetFeatureSpecRbacrolebindingactuationArgs{...}
+type GetFeatureSpecRbacrolebindingactuationInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecRbacrolebindingactuationOutput() GetFeatureSpecRbacrolebindingactuationOutput
+	ToGetFeatureSpecRbacrolebindingactuationOutputWithContext(context.Context) GetFeatureSpecRbacrolebindingactuationOutput
+}
+
+type GetFeatureSpecRbacrolebindingactuationArgs struct {
+	// The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+	AllowedCustomRoles pulumi.StringArrayInput `pulumi:"allowedCustomRoles"`
+}
+
+func (GetFeatureSpecRbacrolebindingactuationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecRbacrolebindingactuation)(nil)).Elem()
+}
+
+func (i GetFeatureSpecRbacrolebindingactuationArgs) ToGetFeatureSpecRbacrolebindingactuationOutput() GetFeatureSpecRbacrolebindingactuationOutput {
+	return i.ToGetFeatureSpecRbacrolebindingactuationOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecRbacrolebindingactuationArgs) ToGetFeatureSpecRbacrolebindingactuationOutputWithContext(ctx context.Context) GetFeatureSpecRbacrolebindingactuationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecRbacrolebindingactuationOutput)
+}
+
+// GetFeatureSpecRbacrolebindingactuationArrayInput is an input type that accepts GetFeatureSpecRbacrolebindingactuationArray and GetFeatureSpecRbacrolebindingactuationArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecRbacrolebindingactuationArrayInput` via:
+//
+//	GetFeatureSpecRbacrolebindingactuationArray{ GetFeatureSpecRbacrolebindingactuationArgs{...} }
+type GetFeatureSpecRbacrolebindingactuationArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecRbacrolebindingactuationArrayOutput() GetFeatureSpecRbacrolebindingactuationArrayOutput
+	ToGetFeatureSpecRbacrolebindingactuationArrayOutputWithContext(context.Context) GetFeatureSpecRbacrolebindingactuationArrayOutput
+}
+
+type GetFeatureSpecRbacrolebindingactuationArray []GetFeatureSpecRbacrolebindingactuationInput
+
+func (GetFeatureSpecRbacrolebindingactuationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecRbacrolebindingactuation)(nil)).Elem()
+}
+
+func (i GetFeatureSpecRbacrolebindingactuationArray) ToGetFeatureSpecRbacrolebindingactuationArrayOutput() GetFeatureSpecRbacrolebindingactuationArrayOutput {
+	return i.ToGetFeatureSpecRbacrolebindingactuationArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecRbacrolebindingactuationArray) ToGetFeatureSpecRbacrolebindingactuationArrayOutputWithContext(ctx context.Context) GetFeatureSpecRbacrolebindingactuationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecRbacrolebindingactuationArrayOutput)
+}
+
+type GetFeatureSpecRbacrolebindingactuationOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecRbacrolebindingactuationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecRbacrolebindingactuation)(nil)).Elem()
+}
+
+func (o GetFeatureSpecRbacrolebindingactuationOutput) ToGetFeatureSpecRbacrolebindingactuationOutput() GetFeatureSpecRbacrolebindingactuationOutput {
+	return o
+}
+
+func (o GetFeatureSpecRbacrolebindingactuationOutput) ToGetFeatureSpecRbacrolebindingactuationOutputWithContext(ctx context.Context) GetFeatureSpecRbacrolebindingactuationOutput {
+	return o
+}
+
+// The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
+func (o GetFeatureSpecRbacrolebindingactuationOutput) AllowedCustomRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpecRbacrolebindingactuation) []string { return v.AllowedCustomRoles }).(pulumi.StringArrayOutput)
+}
+
+type GetFeatureSpecRbacrolebindingactuationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecRbacrolebindingactuationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecRbacrolebindingactuation)(nil)).Elem()
+}
+
+func (o GetFeatureSpecRbacrolebindingactuationArrayOutput) ToGetFeatureSpecRbacrolebindingactuationArrayOutput() GetFeatureSpecRbacrolebindingactuationArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecRbacrolebindingactuationArrayOutput) ToGetFeatureSpecRbacrolebindingactuationArrayOutputWithContext(ctx context.Context) GetFeatureSpecRbacrolebindingactuationArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecRbacrolebindingactuationArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecRbacrolebindingactuationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecRbacrolebindingactuation {
+		return vs[0].([]GetFeatureSpecRbacrolebindingactuation)[vs[1].(int)]
+	}).(GetFeatureSpecRbacrolebindingactuationOutput)
+}
+
 type GetFeatureState struct {
 	// Output only. The "running state" of the Feature in this Hub.
 	States []GetFeatureStateState `pulumi:"states"`
@@ -15866,6 +16151,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrInput)(nil)).Elem(), FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecMulticlusteringressInput)(nil)).Elem(), FeatureSpecMulticlusteringressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecMulticlusteringressPtrInput)(nil)).Elem(), FeatureSpecMulticlusteringressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecRbacrolebindingactuationInput)(nil)).Elem(), FeatureSpecRbacrolebindingactuationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecRbacrolebindingactuationPtrInput)(nil)).Elem(), FeatureSpecRbacrolebindingactuationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateTypeInput)(nil)).Elem(), FeatureStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateTypeArrayInput)(nil)).Elem(), FeatureStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateStateInput)(nil)).Elem(), FeatureStateStateArgs{})
@@ -15966,6 +16253,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayInput)(nil)).Elem(), GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecMulticlusteringressInput)(nil)).Elem(), GetFeatureSpecMulticlusteringressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecMulticlusteringressArrayInput)(nil)).Elem(), GetFeatureSpecMulticlusteringressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecRbacrolebindingactuationInput)(nil)).Elem(), GetFeatureSpecRbacrolebindingactuationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecRbacrolebindingactuationArrayInput)(nil)).Elem(), GetFeatureSpecRbacrolebindingactuationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateInput)(nil)).Elem(), GetFeatureStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateArrayInput)(nil)).Elem(), GetFeatureStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateStateInput)(nil)).Elem(), GetFeatureStateStateArgs{})
@@ -16082,6 +16371,8 @@ func init() {
 	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput{})
 	pulumi.RegisterOutputType(FeatureSpecMulticlusteringressOutput{})
 	pulumi.RegisterOutputType(FeatureSpecMulticlusteringressPtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecRbacrolebindingactuationOutput{})
+	pulumi.RegisterOutputType(FeatureSpecRbacrolebindingactuationPtrOutput{})
 	pulumi.RegisterOutputType(FeatureStateTypeOutput{})
 	pulumi.RegisterOutputType(FeatureStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(FeatureStateStateOutput{})
@@ -16182,6 +16473,8 @@ func init() {
 	pulumi.RegisterOutputType(GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureSpecMulticlusteringressOutput{})
 	pulumi.RegisterOutputType(GetFeatureSpecMulticlusteringressArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecRbacrolebindingactuationOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecRbacrolebindingactuationArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureStateOutput{})
 	pulumi.RegisterOutputType(GetFeatureStateArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureStateStateOutput{})

@@ -15,14 +15,14 @@ public final class NodePoolNetworkConfigNetworkPerformanceConfigArgs extends com
     public static final NodePoolNetworkConfigNetworkPerformanceConfigArgs Empty = new NodePoolNetworkConfigNetworkPerformanceConfigArgs();
 
     /**
-     * Specifies the total network bandwidth tier for the NodePool.
+     * Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: &#34;TIER_1&#34; and &#34;TIER_UNSPECIFIED&#34;.
      * 
      */
     @Import(name="totalEgressBandwidthTier", required=true)
     private Output<String> totalEgressBandwidthTier;
 
     /**
-     * @return Specifies the total network bandwidth tier for the NodePool.
+     * @return Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: &#34;TIER_1&#34; and &#34;TIER_UNSPECIFIED&#34;.
      * 
      */
     public Output<String> totalEgressBandwidthTier() {
@@ -54,7 +54,7 @@ public final class NodePoolNetworkConfigNetworkPerformanceConfigArgs extends com
         }
 
         /**
-         * @param totalEgressBandwidthTier Specifies the total network bandwidth tier for the NodePool.
+         * @param totalEgressBandwidthTier Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: &#34;TIER_1&#34; and &#34;TIER_UNSPECIFIED&#34;.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class NodePoolNetworkConfigNetworkPerformanceConfigArgs extends com
         }
 
         /**
-         * @param totalEgressBandwidthTier Specifies the total network bandwidth tier for the NodePool.
+         * @param totalEgressBandwidthTier Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: &#34;TIER_1&#34; and &#34;TIER_UNSPECIFIED&#34;.
          * 
          * @return builder
          * 

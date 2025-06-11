@@ -61,6 +61,7 @@ export interface GetTopicResult {
     readonly labels: {[key: string]: string};
     readonly messageRetentionDuration: string;
     readonly messageStoragePolicies: outputs.pubsub.GetTopicMessageStoragePolicy[];
+    readonly messageTransforms: outputs.pubsub.GetTopicMessageTransform[];
     readonly name: string;
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};

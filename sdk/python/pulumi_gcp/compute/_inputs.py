@@ -512,12 +512,50 @@ __all__ = [
     'InstantSnapshotIamBindingConditionArgsDict',
     'InstantSnapshotIamMemberConditionArgs',
     'InstantSnapshotIamMemberConditionArgsDict',
+    'InterconnectAttachmentGroupAttachmentArgs',
+    'InterconnectAttachmentGroupAttachmentArgsDict',
+    'InterconnectAttachmentGroupConfiguredArgs',
+    'InterconnectAttachmentGroupConfiguredArgsDict',
+    'InterconnectAttachmentGroupConfiguredAvailabilitySlaArgs',
+    'InterconnectAttachmentGroupConfiguredAvailabilitySlaArgsDict',
+    'InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgs',
+    'InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgsDict',
+    'InterconnectAttachmentGroupIntentArgs',
+    'InterconnectAttachmentGroupIntentArgsDict',
+    'InterconnectAttachmentGroupLogicalStructureArgs',
+    'InterconnectAttachmentGroupLogicalStructureArgsDict',
+    'InterconnectAttachmentGroupLogicalStructureRegionArgs',
+    'InterconnectAttachmentGroupLogicalStructureRegionArgsDict',
+    'InterconnectAttachmentGroupLogicalStructureRegionMetroArgs',
+    'InterconnectAttachmentGroupLogicalStructureRegionMetroArgsDict',
+    'InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgs',
+    'InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgsDict',
+    'InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs',
+    'InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict',
     'InterconnectAttachmentPrivateInterconnectInfoArgs',
     'InterconnectAttachmentPrivateInterconnectInfoArgsDict',
     'InterconnectCircuitInfoArgs',
     'InterconnectCircuitInfoArgsDict',
     'InterconnectExpectedOutageArgs',
     'InterconnectExpectedOutageArgsDict',
+    'InterconnectGroupConfiguredArgs',
+    'InterconnectGroupConfiguredArgsDict',
+    'InterconnectGroupConfiguredTopologyCapabilityArgs',
+    'InterconnectGroupConfiguredTopologyCapabilityArgsDict',
+    'InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgs',
+    'InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgsDict',
+    'InterconnectGroupIntentArgs',
+    'InterconnectGroupIntentArgsDict',
+    'InterconnectGroupInterconnectArgs',
+    'InterconnectGroupInterconnectArgsDict',
+    'InterconnectGroupPhysicalStructureArgs',
+    'InterconnectGroupPhysicalStructureArgsDict',
+    'InterconnectGroupPhysicalStructureMetroArgs',
+    'InterconnectGroupPhysicalStructureMetroArgsDict',
+    'InterconnectGroupPhysicalStructureMetroFacilityArgs',
+    'InterconnectGroupPhysicalStructureMetroFacilityArgsDict',
+    'InterconnectGroupPhysicalStructureMetroFacilityZoneArgs',
+    'InterconnectGroupPhysicalStructureMetroFacilityZoneArgsDict',
     'InterconnectMacsecArgs',
     'InterconnectMacsecArgsDict',
     'InterconnectMacsecPreSharedKeyArgs',
@@ -1236,6 +1274,10 @@ __all__ = [
     'SnapshotIamBindingConditionArgsDict',
     'SnapshotIamMemberConditionArgs',
     'SnapshotIamMemberConditionArgsDict',
+    'SnapshotSettingsStorageLocationArgs',
+    'SnapshotSettingsStorageLocationArgsDict',
+    'SnapshotSettingsStorageLocationLocationArgs',
+    'SnapshotSettingsStorageLocationLocationArgsDict',
     'SnapshotSnapshotEncryptionKeyArgs',
     'SnapshotSnapshotEncryptionKeyArgsDict',
     'SnapshotSourceDiskEncryptionKeyArgs',
@@ -27219,6 +27261,730 @@ class InstantSnapshotIamMemberConditionArgs:
 
 
 if not MYPY:
+    class InterconnectAttachmentGroupAttachmentArgsDict(TypedDict):
+        name: pulumi.Input[builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        attachment: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Optional)
+        """
+elif False:
+    InterconnectAttachmentGroupAttachmentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectAttachmentGroupAttachmentArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[builtins.str],
+                 attachment: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] name: The identifier for this object. Format specified above.
+        :param pulumi.Input[builtins.str] attachment: (Optional)
+        """
+        pulumi.set(__self__, "name", name)
+        if attachment is not None:
+            pulumi.set(__self__, "attachment", attachment)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def attachment(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "attachment")
+
+    @attachment.setter
+    def attachment(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "attachment", value)
+
+
+if not MYPY:
+    class InterconnectAttachmentGroupConfiguredArgsDict(TypedDict):
+        availability_slas: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredAvailabilitySlaArgsDict']]]]
+        """
+        (Output)
+        Which SLA this group is configured to support, and why this
+        group does or does not meet that SLA's requirements.
+        Structure is documented below.
+        """
+elif False:
+    InterconnectAttachmentGroupConfiguredArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectAttachmentGroupConfiguredArgs:
+    def __init__(__self__, *,
+                 availability_slas: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredAvailabilitySlaArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredAvailabilitySlaArgs']]] availability_slas: (Output)
+               Which SLA this group is configured to support, and why this
+               group does or does not meet that SLA's requirements.
+               Structure is documented below.
+        """
+        if availability_slas is not None:
+            pulumi.set(__self__, "availability_slas", availability_slas)
+
+    @property
+    @pulumi.getter(name="availabilitySlas")
+    def availability_slas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredAvailabilitySlaArgs']]]]:
+        """
+        (Output)
+        Which SLA this group is configured to support, and why this
+        group does or does not meet that SLA's requirements.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "availability_slas")
+
+    @availability_slas.setter
+    def availability_slas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredAvailabilitySlaArgs']]]]):
+        pulumi.set(self, "availability_slas", value)
+
+
+if not MYPY:
+    class InterconnectAttachmentGroupConfiguredAvailabilitySlaArgsDict(TypedDict):
+        effective_sla: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Which SLA this group supports. Options are the same as the
+        intent.
+        """
+        intended_sla_blockers: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgsDict']]]]
+        """
+        (Output)
+        Reasons why configuration.availabilitySLA.sla differs from
+        intent.availabilitySLA. This list is empty if and only if those are the
+        same.
+        Structure is documented below.
+        """
+elif False:
+    InterconnectAttachmentGroupConfiguredAvailabilitySlaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectAttachmentGroupConfiguredAvailabilitySlaArgs:
+    def __init__(__self__, *,
+                 effective_sla: Optional[pulumi.Input[builtins.str]] = None,
+                 intended_sla_blockers: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgs']]]] = None):
+        """
+        :param pulumi.Input[builtins.str] effective_sla: (Output)
+               Which SLA this group supports. Options are the same as the
+               intent.
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgs']]] intended_sla_blockers: (Output)
+               Reasons why configuration.availabilitySLA.sla differs from
+               intent.availabilitySLA. This list is empty if and only if those are the
+               same.
+               Structure is documented below.
+        """
+        if effective_sla is not None:
+            pulumi.set(__self__, "effective_sla", effective_sla)
+        if intended_sla_blockers is not None:
+            pulumi.set(__self__, "intended_sla_blockers", intended_sla_blockers)
+
+    @property
+    @pulumi.getter(name="effectiveSla")
+    def effective_sla(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Which SLA this group supports. Options are the same as the
+        intent.
+        """
+        return pulumi.get(self, "effective_sla")
+
+    @effective_sla.setter
+    def effective_sla(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "effective_sla", value)
+
+    @property
+    @pulumi.getter(name="intendedSlaBlockers")
+    def intended_sla_blockers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgs']]]]:
+        """
+        (Output)
+        Reasons why configuration.availabilitySLA.sla differs from
+        intent.availabilitySLA. This list is empty if and only if those are the
+        same.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "intended_sla_blockers")
+
+    @intended_sla_blockers.setter
+    def intended_sla_blockers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgs']]]]):
+        pulumi.set(self, "intended_sla_blockers", value)
+
+
+if not MYPY:
+    class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgsDict(TypedDict):
+        attachments: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        URLs of any particular Attachments to explain this
+        blocker in more detail.
+        """
+        blocker_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The category of an unmet SLA requirement.
+        """
+        documentation_link: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The url of Google Cloud public documentation explaining
+        this requirement. This is set for every type of requirement.
+        """
+        explanation: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        A human-readable explanation of this requirement and
+        why it's not met. This is set for every type of requirement.
+        """
+        metros: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        Metros used to explain this blocker in more detail.
+        These are three-letter lowercase strings like "iad". This will be set
+        for some blockers (like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does
+        not apply to others.
+        """
+        regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        Regions used to explain this blocker in more
+        detail. These are region names formatted like "us-central1". This
+        will be set for some blockers (like INCOMPATIBLE_REGIONS) but does
+        not apply to others.
+        """
+        zones: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        Zones used to explain this blocker in more detail.
+        Format is "zone1" and/or "zone2". This will be set for some blockers
+        (like  MISSING_ZONE) but does not apply to others.
+        """
+elif False:
+    InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgs:
+    def __init__(__self__, *,
+                 attachments: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 blocker_type: Optional[pulumi.Input[builtins.str]] = None,
+                 documentation_link: Optional[pulumi.Input[builtins.str]] = None,
+                 explanation: Optional[pulumi.Input[builtins.str]] = None,
+                 metros: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] attachments: (Output)
+               URLs of any particular Attachments to explain this
+               blocker in more detail.
+        :param pulumi.Input[builtins.str] blocker_type: (Output)
+               The category of an unmet SLA requirement.
+        :param pulumi.Input[builtins.str] documentation_link: (Output)
+               The url of Google Cloud public documentation explaining
+               this requirement. This is set for every type of requirement.
+        :param pulumi.Input[builtins.str] explanation: (Output)
+               A human-readable explanation of this requirement and
+               why it's not met. This is set for every type of requirement.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] metros: (Output)
+               Metros used to explain this blocker in more detail.
+               These are three-letter lowercase strings like "iad". This will be set
+               for some blockers (like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does
+               not apply to others.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] regions: (Output)
+               Regions used to explain this blocker in more
+               detail. These are region names formatted like "us-central1". This
+               will be set for some blockers (like INCOMPATIBLE_REGIONS) but does
+               not apply to others.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: (Output)
+               Zones used to explain this blocker in more detail.
+               Format is "zone1" and/or "zone2". This will be set for some blockers
+               (like  MISSING_ZONE) but does not apply to others.
+        """
+        if attachments is not None:
+            pulumi.set(__self__, "attachments", attachments)
+        if blocker_type is not None:
+            pulumi.set(__self__, "blocker_type", blocker_type)
+        if documentation_link is not None:
+            pulumi.set(__self__, "documentation_link", documentation_link)
+        if explanation is not None:
+            pulumi.set(__self__, "explanation", explanation)
+        if metros is not None:
+            pulumi.set(__self__, "metros", metros)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter
+    def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        URLs of any particular Attachments to explain this
+        blocker in more detail.
+        """
+        return pulumi.get(self, "attachments")
+
+    @attachments.setter
+    def attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "attachments", value)
+
+    @property
+    @pulumi.getter(name="blockerType")
+    def blocker_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The category of an unmet SLA requirement.
+        """
+        return pulumi.get(self, "blocker_type")
+
+    @blocker_type.setter
+    def blocker_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "blocker_type", value)
+
+    @property
+    @pulumi.getter(name="documentationLink")
+    def documentation_link(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The url of Google Cloud public documentation explaining
+        this requirement. This is set for every type of requirement.
+        """
+        return pulumi.get(self, "documentation_link")
+
+    @documentation_link.setter
+    def documentation_link(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "documentation_link", value)
+
+    @property
+    @pulumi.getter
+    def explanation(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        A human-readable explanation of this requirement and
+        why it's not met. This is set for every type of requirement.
+        """
+        return pulumi.get(self, "explanation")
+
+    @explanation.setter
+    def explanation(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "explanation", value)
+
+    @property
+    @pulumi.getter
+    def metros(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        Metros used to explain this blocker in more detail.
+        These are three-letter lowercase strings like "iad". This will be set
+        for some blockers (like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does
+        not apply to others.
+        """
+        return pulumi.get(self, "metros")
+
+    @metros.setter
+    def metros(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "metros", value)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        Regions used to explain this blocker in more
+        detail. These are region names formatted like "us-central1". This
+        will be set for some blockers (like INCOMPATIBLE_REGIONS) but does
+        not apply to others.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "regions", value)
+
+    @property
+    @pulumi.getter
+    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        Zones used to explain this blocker in more detail.
+        Format is "zone1" and/or "zone2". This will be set for some blockers
+        (like  MISSING_ZONE) but does not apply to others.
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "zones", value)
+
+
+if not MYPY:
+    class InterconnectAttachmentGroupIntentArgsDict(TypedDict):
+        availability_sla: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Which SLA the user intends this group to support.
+        Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
+
+        - - -
+        """
+elif False:
+    InterconnectAttachmentGroupIntentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectAttachmentGroupIntentArgs:
+    def __init__(__self__, *,
+                 availability_sla: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] availability_sla: Which SLA the user intends this group to support.
+               Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
+               
+               - - -
+        """
+        if availability_sla is not None:
+            pulumi.set(__self__, "availability_sla", availability_sla)
+
+    @property
+    @pulumi.getter(name="availabilitySla")
+    def availability_sla(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Which SLA the user intends this group to support.
+        Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
+
+        - - -
+        """
+        return pulumi.get(self, "availability_sla")
+
+    @availability_sla.setter
+    def availability_sla(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "availability_sla", value)
+
+
+if not MYPY:
+    class InterconnectAttachmentGroupLogicalStructureArgsDict(TypedDict):
+        regions: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionArgsDict']]]]
+        """
+        (Output)
+        Regions used to explain this blocker in more
+        detail. These are region names formatted like "us-central1". This
+        will be set for some blockers (like INCOMPATIBLE_REGIONS) but does
+        not apply to others.
+        """
+elif False:
+    InterconnectAttachmentGroupLogicalStructureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectAttachmentGroupLogicalStructureArgs:
+    def __init__(__self__, *,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionArgs']]] regions: (Output)
+               Regions used to explain this blocker in more
+               detail. These are region names formatted like "us-central1". This
+               will be set for some blockers (like INCOMPATIBLE_REGIONS) but does
+               not apply to others.
+        """
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionArgs']]]]:
+        """
+        (Output)
+        Regions used to explain this blocker in more
+        detail. These are region names formatted like "us-central1". This
+        will be set for some blockers (like INCOMPATIBLE_REGIONS) but does
+        not apply to others.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionArgs']]]]):
+        pulumi.set(self, "regions", value)
+
+
+if not MYPY:
+    class InterconnectAttachmentGroupLogicalStructureRegionArgsDict(TypedDict):
+        metros: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroArgsDict']]]]
+        """
+        (Output)
+        Metros used to explain this blocker in more detail.
+        These are three-letter lowercase strings like "iad". This will be set
+        for some blockers (like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does
+        not apply to others.
+        """
+        region: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The name of a region, like "us-central1".
+        """
+elif False:
+    InterconnectAttachmentGroupLogicalStructureRegionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectAttachmentGroupLogicalStructureRegionArgs:
+    def __init__(__self__, *,
+                 metros: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroArgs']]]] = None,
+                 region: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroArgs']]] metros: (Output)
+               Metros used to explain this blocker in more detail.
+               These are three-letter lowercase strings like "iad". This will be set
+               for some blockers (like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does
+               not apply to others.
+        :param pulumi.Input[builtins.str] region: (Output)
+               The name of a region, like "us-central1".
+        """
+        if metros is not None:
+            pulumi.set(__self__, "metros", metros)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def metros(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroArgs']]]]:
+        """
+        (Output)
+        Metros used to explain this blocker in more detail.
+        These are three-letter lowercase strings like "iad". This will be set
+        for some blockers (like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does
+        not apply to others.
+        """
+        return pulumi.get(self, "metros")
+
+    @metros.setter
+    def metros(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroArgs']]]]):
+        pulumi.set(self, "metros", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The name of a region, like "us-central1".
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class InterconnectAttachmentGroupLogicalStructureRegionMetroArgsDict(TypedDict):
+        facilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgsDict']]]]
+        """
+        (Output)
+        The facilities used for this group's Attachments'
+        Interconnects.
+        Structure is documented below.
+        """
+        metro: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The name of the metro, as a three-letter lowercase
+        string like "iad". This is the first component of the location of an
+        Interconnect.
+        """
+elif False:
+    InterconnectAttachmentGroupLogicalStructureRegionMetroArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectAttachmentGroupLogicalStructureRegionMetroArgs:
+    def __init__(__self__, *,
+                 facilities: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgs']]]] = None,
+                 metro: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgs']]] facilities: (Output)
+               The facilities used for this group's Attachments'
+               Interconnects.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] metro: (Output)
+               The name of the metro, as a three-letter lowercase
+               string like "iad". This is the first component of the location of an
+               Interconnect.
+        """
+        if facilities is not None:
+            pulumi.set(__self__, "facilities", facilities)
+        if metro is not None:
+            pulumi.set(__self__, "metro", metro)
+
+    @property
+    @pulumi.getter
+    def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgs']]]]:
+        """
+        (Output)
+        The facilities used for this group's Attachments'
+        Interconnects.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "facilities")
+
+    @facilities.setter
+    def facilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgs']]]]):
+        pulumi.set(self, "facilities", value)
+
+    @property
+    @pulumi.getter
+    def metro(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The name of the metro, as a three-letter lowercase
+        string like "iad". This is the first component of the location of an
+        Interconnect.
+        """
+        return pulumi.get(self, "metro")
+
+    @metro.setter
+    def metro(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "metro", value)
+
+
+if not MYPY:
+    class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgsDict(TypedDict):
+        facility: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The name of a facility, like "iad-1234".
+        """
+        zones: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict']]]]
+        """
+        (Output)
+        Zones used to explain this blocker in more detail.
+        Format is "zone1" and/or "zone2". This will be set for some blockers
+        (like  MISSING_ZONE) but does not apply to others.
+        """
+elif False:
+    InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgs:
+    def __init__(__self__, *,
+                 facility: Optional[pulumi.Input[builtins.str]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs']]]] = None):
+        """
+        :param pulumi.Input[builtins.str] facility: (Output)
+               The name of a facility, like "iad-1234".
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs']]] zones: (Output)
+               Zones used to explain this blocker in more detail.
+               Format is "zone1" and/or "zone2". This will be set for some blockers
+               (like  MISSING_ZONE) but does not apply to others.
+        """
+        if facility is not None:
+            pulumi.set(__self__, "facility", facility)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter
+    def facility(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The name of a facility, like "iad-1234".
+        """
+        return pulumi.get(self, "facility")
+
+    @facility.setter
+    def facility(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "facility", value)
+
+    @property
+    @pulumi.getter
+    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs']]]]:
+        """
+        (Output)
+        Zones used to explain this blocker in more detail.
+        Format is "zone1" and/or "zone2". This will be set for some blockers
+        (like  MISSING_ZONE) but does not apply to others.
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs']]]]):
+        pulumi.set(self, "zones", value)
+
+
+if not MYPY:
+    class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict(TypedDict):
+        attachments: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        URLs of Attachments in the given zone, to the given
+        region, on Interconnects in the given facility and metro. Every
+        Attachment in the AG has such an entry.
+        """
+        zone: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The zones that Attachments in this group are present
+        in, in the given facilities.  This is inherited from their
+        Interconnects.
+        """
+elif False:
+    InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs:
+    def __init__(__self__, *,
+                 attachments: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 zone: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] attachments: (Output)
+               URLs of Attachments in the given zone, to the given
+               region, on Interconnects in the given facility and metro. Every
+               Attachment in the AG has such an entry.
+        :param pulumi.Input[builtins.str] zone: (Output)
+               The zones that Attachments in this group are present
+               in, in the given facilities.  This is inherited from their
+               Interconnects.
+        """
+        if attachments is not None:
+            pulumi.set(__self__, "attachments", attachments)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        URLs of Attachments in the given zone, to the given
+        region, on Interconnects in the given facility and metro. Every
+        Attachment in the AG has such an entry.
+        """
+        return pulumi.get(self, "attachments")
+
+    @attachments.setter
+    def attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "attachments", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The zones that Attachments in this group are present
+        in, in the given facilities.  This is inherited from their
+        Interconnects.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "zone", value)
+
+
+if not MYPY:
     class InterconnectAttachmentPrivateInterconnectInfoArgsDict(TypedDict):
         tag8021q: NotRequired[pulumi.Input[builtins.int]]
         """
@@ -27585,6 +28351,669 @@ class InterconnectExpectedOutageArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class InterconnectGroupConfiguredArgsDict(TypedDict):
+        topology_capabilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredTopologyCapabilityArgsDict']]]]
+        """
+        (Output)
+        How reliable this topology is configured to be, and why
+        this group does or does not meet the requirements for the intended
+        capability.
+        Structure is documented below.
+        """
+elif False:
+    InterconnectGroupConfiguredArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectGroupConfiguredArgs:
+    def __init__(__self__, *,
+                 topology_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredTopologyCapabilityArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredTopologyCapabilityArgs']]] topology_capabilities: (Output)
+               How reliable this topology is configured to be, and why
+               this group does or does not meet the requirements for the intended
+               capability.
+               Structure is documented below.
+        """
+        if topology_capabilities is not None:
+            pulumi.set(__self__, "topology_capabilities", topology_capabilities)
+
+    @property
+    @pulumi.getter(name="topologyCapabilities")
+    def topology_capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredTopologyCapabilityArgs']]]]:
+        """
+        (Output)
+        How reliable this topology is configured to be, and why
+        this group does or does not meet the requirements for the intended
+        capability.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "topology_capabilities")
+
+    @topology_capabilities.setter
+    def topology_capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredTopologyCapabilityArgs']]]]):
+        pulumi.set(self, "topology_capabilities", value)
+
+
+if not MYPY:
+    class InterconnectGroupConfiguredTopologyCapabilityArgsDict(TypedDict):
+        intended_capability_blockers: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgsDict']]]]
+        """
+        (Output)
+        Reasons why configuration.topologyCapability.sla differs
+        from intent.topologyCapability. This list is empty if and only if those
+        are the same.
+        Structure is documented below.
+        """
+        supported_sla: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Which level of reliability this group is configured to
+        support.
+        """
+elif False:
+    InterconnectGroupConfiguredTopologyCapabilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectGroupConfiguredTopologyCapabilityArgs:
+    def __init__(__self__, *,
+                 intended_capability_blockers: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgs']]]] = None,
+                 supported_sla: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgs']]] intended_capability_blockers: (Output)
+               Reasons why configuration.topologyCapability.sla differs
+               from intent.topologyCapability. This list is empty if and only if those
+               are the same.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] supported_sla: (Output)
+               Which level of reliability this group is configured to
+               support.
+        """
+        if intended_capability_blockers is not None:
+            pulumi.set(__self__, "intended_capability_blockers", intended_capability_blockers)
+        if supported_sla is not None:
+            pulumi.set(__self__, "supported_sla", supported_sla)
+
+    @property
+    @pulumi.getter(name="intendedCapabilityBlockers")
+    def intended_capability_blockers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgs']]]]:
+        """
+        (Output)
+        Reasons why configuration.topologyCapability.sla differs
+        from intent.topologyCapability. This list is empty if and only if those
+        are the same.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "intended_capability_blockers")
+
+    @intended_capability_blockers.setter
+    def intended_capability_blockers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgs']]]]):
+        pulumi.set(self, "intended_capability_blockers", value)
+
+    @property
+    @pulumi.getter(name="supportedSla")
+    def supported_sla(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Which level of reliability this group is configured to
+        support.
+        """
+        return pulumi.get(self, "supported_sla")
+
+    @supported_sla.setter
+    def supported_sla(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "supported_sla", value)
+
+
+if not MYPY:
+    class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgsDict(TypedDict):
+        blocker_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The category of an unmet SLA requirement. The Intended
+        SLA Blockers section below explains this field and how it relates to
+        other fields in intendedCapabilityBlockers.
+        """
+        documentation_link: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The url of Google Cloud public documentation explaining
+        this requirement. This is set for every type of requirement.
+        """
+        explanation: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        A human-readable explanation of this requirement and
+        why it's not met. This is set for every type of requirement.
+        """
+        facilities: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        Facilities used to explain this blocker in more detail.
+        Like physicalStructure.metros.facilities.facility, this is a numeric
+        string like "5467".
+        """
+        interconnects: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        Interconnects used to explain this blocker in more
+        detail.
+        """
+        metros: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        Metros used to explain this blocker in more detail.
+        These are three-letter lowercase strings like "iad". A blocker like
+        INCOMPATIBLE_METROS will specify the problematic metros in this
+        field.
+        """
+        zones: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        Zones used to explain this blocker in more detail.
+        Zone names are "zone1" and/or "zone2".
+        """
+elif False:
+    InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgs:
+    def __init__(__self__, *,
+                 blocker_type: Optional[pulumi.Input[builtins.str]] = None,
+                 documentation_link: Optional[pulumi.Input[builtins.str]] = None,
+                 explanation: Optional[pulumi.Input[builtins.str]] = None,
+                 facilities: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 interconnects: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 metros: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[builtins.str] blocker_type: (Output)
+               The category of an unmet SLA requirement. The Intended
+               SLA Blockers section below explains this field and how it relates to
+               other fields in intendedCapabilityBlockers.
+        :param pulumi.Input[builtins.str] documentation_link: (Output)
+               The url of Google Cloud public documentation explaining
+               this requirement. This is set for every type of requirement.
+        :param pulumi.Input[builtins.str] explanation: (Output)
+               A human-readable explanation of this requirement and
+               why it's not met. This is set for every type of requirement.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] facilities: (Output)
+               Facilities used to explain this blocker in more detail.
+               Like physicalStructure.metros.facilities.facility, this is a numeric
+               string like "5467".
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] interconnects: (Output)
+               Interconnects used to explain this blocker in more
+               detail.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] metros: (Output)
+               Metros used to explain this blocker in more detail.
+               These are three-letter lowercase strings like "iad". A blocker like
+               INCOMPATIBLE_METROS will specify the problematic metros in this
+               field.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: (Output)
+               Zones used to explain this blocker in more detail.
+               Zone names are "zone1" and/or "zone2".
+        """
+        if blocker_type is not None:
+            pulumi.set(__self__, "blocker_type", blocker_type)
+        if documentation_link is not None:
+            pulumi.set(__self__, "documentation_link", documentation_link)
+        if explanation is not None:
+            pulumi.set(__self__, "explanation", explanation)
+        if facilities is not None:
+            pulumi.set(__self__, "facilities", facilities)
+        if interconnects is not None:
+            pulumi.set(__self__, "interconnects", interconnects)
+        if metros is not None:
+            pulumi.set(__self__, "metros", metros)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter(name="blockerType")
+    def blocker_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The category of an unmet SLA requirement. The Intended
+        SLA Blockers section below explains this field and how it relates to
+        other fields in intendedCapabilityBlockers.
+        """
+        return pulumi.get(self, "blocker_type")
+
+    @blocker_type.setter
+    def blocker_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "blocker_type", value)
+
+    @property
+    @pulumi.getter(name="documentationLink")
+    def documentation_link(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The url of Google Cloud public documentation explaining
+        this requirement. This is set for every type of requirement.
+        """
+        return pulumi.get(self, "documentation_link")
+
+    @documentation_link.setter
+    def documentation_link(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "documentation_link", value)
+
+    @property
+    @pulumi.getter
+    def explanation(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        A human-readable explanation of this requirement and
+        why it's not met. This is set for every type of requirement.
+        """
+        return pulumi.get(self, "explanation")
+
+    @explanation.setter
+    def explanation(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "explanation", value)
+
+    @property
+    @pulumi.getter
+    def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        Facilities used to explain this blocker in more detail.
+        Like physicalStructure.metros.facilities.facility, this is a numeric
+        string like "5467".
+        """
+        return pulumi.get(self, "facilities")
+
+    @facilities.setter
+    def facilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "facilities", value)
+
+    @property
+    @pulumi.getter
+    def interconnects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        Interconnects used to explain this blocker in more
+        detail.
+        """
+        return pulumi.get(self, "interconnects")
+
+    @interconnects.setter
+    def interconnects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "interconnects", value)
+
+    @property
+    @pulumi.getter
+    def metros(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        Metros used to explain this blocker in more detail.
+        These are three-letter lowercase strings like "iad". A blocker like
+        INCOMPATIBLE_METROS will specify the problematic metros in this
+        field.
+        """
+        return pulumi.get(self, "metros")
+
+    @metros.setter
+    def metros(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "metros", value)
+
+    @property
+    @pulumi.getter
+    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        Zones used to explain this blocker in more detail.
+        Zone names are "zone1" and/or "zone2".
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "zones", value)
+
+
+if not MYPY:
+    class InterconnectGroupIntentArgsDict(TypedDict):
+        topology_capability: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The reliability the user intends this group to be capable of, in terms
+        of the Interconnect product SLAs.
+        Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
+
+        - - -
+        """
+elif False:
+    InterconnectGroupIntentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectGroupIntentArgs:
+    def __init__(__self__, *,
+                 topology_capability: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] topology_capability: The reliability the user intends this group to be capable of, in terms
+               of the Interconnect product SLAs.
+               Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
+               
+               - - -
+        """
+        if topology_capability is not None:
+            pulumi.set(__self__, "topology_capability", topology_capability)
+
+    @property
+    @pulumi.getter(name="topologyCapability")
+    def topology_capability(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The reliability the user intends this group to be capable of, in terms
+        of the Interconnect product SLAs.
+        Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
+
+        - - -
+        """
+        return pulumi.get(self, "topology_capability")
+
+    @topology_capability.setter
+    def topology_capability(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "topology_capability", value)
+
+
+if not MYPY:
+    class InterconnectGroupInterconnectArgsDict(TypedDict):
+        name: pulumi.Input[builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        interconnect: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The URL of an Interconnect in this group. All Interconnects in the group are unique.
+        """
+elif False:
+    InterconnectGroupInterconnectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectGroupInterconnectArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[builtins.str],
+                 interconnect: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] name: The identifier for this object. Format specified above.
+        :param pulumi.Input[builtins.str] interconnect: The URL of an Interconnect in this group. All Interconnects in the group are unique.
+        """
+        pulumi.set(__self__, "name", name)
+        if interconnect is not None:
+            pulumi.set(__self__, "interconnect", interconnect)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def interconnect(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The URL of an Interconnect in this group. All Interconnects in the group are unique.
+        """
+        return pulumi.get(self, "interconnect")
+
+    @interconnect.setter
+    def interconnect(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "interconnect", value)
+
+
+if not MYPY:
+    class InterconnectGroupPhysicalStructureArgsDict(TypedDict):
+        metros: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroArgsDict']]]]
+        """
+        (Output)
+        Metros used to explain this blocker in more detail.
+        These are three-letter lowercase strings like "iad". A blocker like
+        INCOMPATIBLE_METROS will specify the problematic metros in this
+        field.
+        """
+elif False:
+    InterconnectGroupPhysicalStructureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectGroupPhysicalStructureArgs:
+    def __init__(__self__, *,
+                 metros: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroArgs']]] metros: (Output)
+               Metros used to explain this blocker in more detail.
+               These are three-letter lowercase strings like "iad". A blocker like
+               INCOMPATIBLE_METROS will specify the problematic metros in this
+               field.
+        """
+        if metros is not None:
+            pulumi.set(__self__, "metros", metros)
+
+    @property
+    @pulumi.getter
+    def metros(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroArgs']]]]:
+        """
+        (Output)
+        Metros used to explain this blocker in more detail.
+        These are three-letter lowercase strings like "iad". A blocker like
+        INCOMPATIBLE_METROS will specify the problematic metros in this
+        field.
+        """
+        return pulumi.get(self, "metros")
+
+    @metros.setter
+    def metros(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroArgs']]]]):
+        pulumi.set(self, "metros", value)
+
+
+if not MYPY:
+    class InterconnectGroupPhysicalStructureMetroArgsDict(TypedDict):
+        facilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroFacilityArgsDict']]]]
+        """
+        (Output)
+        Facilities used to explain this blocker in more detail.
+        Like physicalStructure.metros.facilities.facility, this is a numeric
+        string like "5467".
+        """
+        metro: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The name of the metro, as a three-letter lowercase string
+        like "iad". This is the first component of the location of
+        Interconnects underneath this.
+        """
+elif False:
+    InterconnectGroupPhysicalStructureMetroArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectGroupPhysicalStructureMetroArgs:
+    def __init__(__self__, *,
+                 facilities: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroFacilityArgs']]]] = None,
+                 metro: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroFacilityArgs']]] facilities: (Output)
+               Facilities used to explain this blocker in more detail.
+               Like physicalStructure.metros.facilities.facility, this is a numeric
+               string like "5467".
+        :param pulumi.Input[builtins.str] metro: (Output)
+               The name of the metro, as a three-letter lowercase string
+               like "iad". This is the first component of the location of
+               Interconnects underneath this.
+        """
+        if facilities is not None:
+            pulumi.set(__self__, "facilities", facilities)
+        if metro is not None:
+            pulumi.set(__self__, "metro", metro)
+
+    @property
+    @pulumi.getter
+    def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroFacilityArgs']]]]:
+        """
+        (Output)
+        Facilities used to explain this blocker in more detail.
+        Like physicalStructure.metros.facilities.facility, this is a numeric
+        string like "5467".
+        """
+        return pulumi.get(self, "facilities")
+
+    @facilities.setter
+    def facilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroFacilityArgs']]]]):
+        pulumi.set(self, "facilities", value)
+
+    @property
+    @pulumi.getter
+    def metro(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The name of the metro, as a three-letter lowercase string
+        like "iad". This is the first component of the location of
+        Interconnects underneath this.
+        """
+        return pulumi.get(self, "metro")
+
+    @metro.setter
+    def metro(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "metro", value)
+
+
+if not MYPY:
+    class InterconnectGroupPhysicalStructureMetroFacilityArgsDict(TypedDict):
+        facility: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The ID of this facility, as a numeric string like
+        "5467". This is the third component of the location of Interconnects
+        in this facility.
+        """
+        zones: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroFacilityZoneArgsDict']]]]
+        """
+        (Output)
+        Zones used to explain this blocker in more detail.
+        Zone names are "zone1" and/or "zone2".
+        """
+elif False:
+    InterconnectGroupPhysicalStructureMetroFacilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectGroupPhysicalStructureMetroFacilityArgs:
+    def __init__(__self__, *,
+                 facility: Optional[pulumi.Input[builtins.str]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroFacilityZoneArgs']]]] = None):
+        """
+        :param pulumi.Input[builtins.str] facility: (Output)
+               The ID of this facility, as a numeric string like
+               "5467". This is the third component of the location of Interconnects
+               in this facility.
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroFacilityZoneArgs']]] zones: (Output)
+               Zones used to explain this blocker in more detail.
+               Zone names are "zone1" and/or "zone2".
+        """
+        if facility is not None:
+            pulumi.set(__self__, "facility", facility)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter
+    def facility(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The ID of this facility, as a numeric string like
+        "5467". This is the third component of the location of Interconnects
+        in this facility.
+        """
+        return pulumi.get(self, "facility")
+
+    @facility.setter
+    def facility(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "facility", value)
+
+    @property
+    @pulumi.getter
+    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroFacilityZoneArgs']]]]:
+        """
+        (Output)
+        Zones used to explain this blocker in more detail.
+        Zone names are "zone1" and/or "zone2".
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureMetroFacilityZoneArgs']]]]):
+        pulumi.set(self, "zones", value)
+
+
+if not MYPY:
+    class InterconnectGroupPhysicalStructureMetroFacilityZoneArgsDict(TypedDict):
+        interconnects: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        Interconnects used to explain this blocker in more
+        detail.
+        """
+        zone: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The name of the zone, either "zone1" or "zone2".
+        This is the second component of the location of Interconnects in
+        this facility.
+        """
+elif False:
+    InterconnectGroupPhysicalStructureMetroFacilityZoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectGroupPhysicalStructureMetroFacilityZoneArgs:
+    def __init__(__self__, *,
+                 interconnects: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 zone: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] interconnects: (Output)
+               Interconnects used to explain this blocker in more
+               detail.
+        :param pulumi.Input[builtins.str] zone: (Output)
+               The name of the zone, either "zone1" or "zone2".
+               This is the second component of the location of Interconnects in
+               this facility.
+        """
+        if interconnects is not None:
+            pulumi.set(__self__, "interconnects", interconnects)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def interconnects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        Interconnects used to explain this blocker in more
+        detail.
+        """
+        return pulumi.get(self, "interconnects")
+
+    @interconnects.setter
+    def interconnects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "interconnects", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The name of the zone, either "zone1" or "zone2".
+        This is the second component of the location of Interconnects in
+        this facility.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "zone", value)
 
 
 if not MYPY:
@@ -62042,6 +63471,128 @@ class SnapshotIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class SnapshotSettingsStorageLocationArgsDict(TypedDict):
+        policy: pulumi.Input[builtins.str]
+        """
+        The chosen location policy
+        Possible values are: `NEAREST_MULTI_REGION`, `LOCAL_REGION`, `SPECIFIC_LOCATIONS`.
+        """
+        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['SnapshotSettingsStorageLocationLocationArgsDict']]]]
+        """
+        When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the
+        locations listed in this field. Keys are Cloud Storage bucket locations.
+        Only one location can be specified.
+        Structure is documented below.
+        """
+elif False:
+    SnapshotSettingsStorageLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SnapshotSettingsStorageLocationArgs:
+    def __init__(__self__, *,
+                 policy: pulumi.Input[builtins.str],
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotSettingsStorageLocationLocationArgs']]]] = None):
+        """
+        :param pulumi.Input[builtins.str] policy: The chosen location policy
+               Possible values are: `NEAREST_MULTI_REGION`, `LOCAL_REGION`, `SPECIFIC_LOCATIONS`.
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotSettingsStorageLocationLocationArgs']]] locations: When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the
+               locations listed in this field. Keys are Cloud Storage bucket locations.
+               Only one location can be specified.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "policy", policy)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> pulumi.Input[builtins.str]:
+        """
+        The chosen location policy
+        Possible values are: `NEAREST_MULTI_REGION`, `LOCAL_REGION`, `SPECIFIC_LOCATIONS`.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotSettingsStorageLocationLocationArgs']]]]:
+        """
+        When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the
+        locations listed in this field. Keys are Cloud Storage bucket locations.
+        Only one location can be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotSettingsStorageLocationLocationArgs']]]]):
+        pulumi.set(self, "locations", value)
+
+
+if not MYPY:
+    class SnapshotSettingsStorageLocationLocationArgsDict(TypedDict):
+        location: pulumi.Input[builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        name: pulumi.Input[builtins.str]
+        """
+        Name of the location. It should be one of the Cloud Storage buckets.
+        Only one location can be specified. (should match location)
+
+        - - -
+        """
+elif False:
+    SnapshotSettingsStorageLocationLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SnapshotSettingsStorageLocationLocationArgs:
+    def __init__(__self__, *,
+                 location: pulumi.Input[builtins.str],
+                 name: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] location: The identifier for this object. Format specified above.
+        :param pulumi.Input[builtins.str] name: Name of the location. It should be one of the Cloud Storage buckets.
+               Only one location can be specified. (should match location)
+               
+               - - -
+        """
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        Name of the location. It should be one of the Cloud Storage buckets.
+        Only one location can be specified. (should match location)
+
+        - - -
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
 
 
 if not MYPY:

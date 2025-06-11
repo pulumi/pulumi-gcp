@@ -41,6 +41,7 @@ import (
 //					"my_key": pulumi.String("my_value"),
 //				},
 //				EnableCustomerDataSharing: pulumi.Bool(true),
+//				DisableWebGrounding:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -101,8 +102,7 @@ type GeminiGcpEnablementSettingBinding struct {
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{setting}/settingBindings/{setting_binding}
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Product type of the setting binding.
-	// Possible values are: `GEMINI_IN_BIGQUERY`.
+	// Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
 	Product pulumi.StringOutput `pulumi:"product"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -179,8 +179,7 @@ type geminiGcpEnablementSettingBindingState struct {
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{setting}/settingBindings/{setting_binding}
 	Name *string `pulumi:"name"`
-	// Product type of the setting binding.
-	// Possible values are: `GEMINI_IN_BIGQUERY`.
+	// Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
 	Product *string `pulumi:"product"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -214,8 +213,7 @@ type GeminiGcpEnablementSettingBindingState struct {
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{setting}/settingBindings/{setting_binding}
 	Name pulumi.StringPtrInput
-	// Product type of the setting binding.
-	// Possible values are: `GEMINI_IN_BIGQUERY`.
+	// Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
 	Product pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -246,8 +244,7 @@ type geminiGcpEnablementSettingBindingArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
-	// Product type of the setting binding.
-	// Possible values are: `GEMINI_IN_BIGQUERY`.
+	// Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
 	Product *string `pulumi:"product"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -270,8 +267,7 @@ type GeminiGcpEnablementSettingBindingArgs struct {
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
-	// Product type of the setting binding.
-	// Possible values are: `GEMINI_IN_BIGQUERY`.
+	// Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
 	Product pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -404,8 +400,7 @@ func (o GeminiGcpEnablementSettingBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSettingBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Product type of the setting binding.
-// Possible values are: `GEMINI_IN_BIGQUERY`.
+// Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
 func (o GeminiGcpEnablementSettingBindingOutput) Product() pulumi.StringOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSettingBinding) pulumi.StringOutput { return v.Product }).(pulumi.StringOutput)
 }

@@ -13,10 +13,16 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class ScopeRbacRoleBindingRoleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// PredefinedRole is an ENUM representation of the default Kubernetes Roles
-        /// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+        /// CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
         /// 
         /// - - -
+        /// </summary>
+        [Input("customRole")]
+        public Input<string>? CustomRole { get; set; }
+
+        /// <summary>
+        /// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+        /// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
         /// </summary>
         [Input("predefinedRole")]
         public Input<string>? PredefinedRole { get; set; }

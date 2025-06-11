@@ -49,9 +49,6 @@ import (
 //				Destinations: eventarc.PipelineDestinationArray{
 //					&eventarc.PipelineDestinationArgs{
 //						Topic: topic.ID(),
-//						NetworkConfig: &eventarc.PipelineDestinationNetworkConfigArgs{
-//							NetworkAttachment: pulumi.String("projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment"),
-//						},
 //					},
 //				},
 //				Labels: pulumi.StringMap{
@@ -164,9 +161,6 @@ import (
 //				Destinations: eventarc.PipelineDestinationArray{
 //					&eventarc.PipelineDestinationArgs{
 //						Workflow: workflow.ID(),
-//						NetworkConfig: &eventarc.PipelineDestinationNetworkConfigArgs{
-//							NetworkAttachment: pulumi.String("projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment"),
-//						},
 //					},
 //				},
 //			})

@@ -9,11 +9,13 @@ import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionDeadLetterPolicyArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionExpirationPolicyArgs;
+import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionRetryPolicyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,6 +300,25 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="messageTransforms")
+    private @Nullable Output<List<SubscriptionMessageTransformArgs>> messageTransforms;
+
+    /**
+     * @return Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<SubscriptionMessageTransformArgs>>> messageTransforms() {
+        return Optional.ofNullable(this.messageTransforms);
+    }
+
+    /**
      * Name of the subscription.
      * 
      */
@@ -446,6 +467,7 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
         this.filter = $.filter;
         this.labels = $.labels;
         this.messageRetentionDuration = $.messageRetentionDuration;
+        this.messageTransforms = $.messageTransforms;
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
@@ -810,6 +832,43 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder messageRetentionDuration(String messageRetentionDuration) {
             return messageRetentionDuration(Output.of(messageRetentionDuration));
+        }
+
+        /**
+         * @param messageTransforms Transforms to be applied to messages published to the topic. Transforms are applied in the
+         * order specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageTransforms(@Nullable Output<List<SubscriptionMessageTransformArgs>> messageTransforms) {
+            $.messageTransforms = messageTransforms;
+            return this;
+        }
+
+        /**
+         * @param messageTransforms Transforms to be applied to messages published to the topic. Transforms are applied in the
+         * order specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageTransforms(List<SubscriptionMessageTransformArgs> messageTransforms) {
+            return messageTransforms(Output.of(messageTransforms));
+        }
+
+        /**
+         * @param messageTransforms Transforms to be applied to messages published to the topic. Transforms are applied in the
+         * order specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageTransforms(SubscriptionMessageTransformArgs... messageTransforms) {
+            return messageTransforms(List.of(messageTransforms));
         }
 
         /**

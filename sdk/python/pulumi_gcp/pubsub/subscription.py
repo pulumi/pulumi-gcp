@@ -33,6 +33,7 @@ class SubscriptionArgs:
                  filter: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[builtins.str]] = None,
+                 message_transforms: Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
@@ -110,6 +111,9 @@ class SubscriptionArgs:
                than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
                A duration in seconds with up to nine fractional digits, terminated
                by 's'. Example: `"600.5s"`.
+        :param pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]] message_transforms: Transforms to be applied to messages published to the topic. Transforms are applied in the
+               order specified.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the subscription.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -147,6 +151,8 @@ class SubscriptionArgs:
             pulumi.set(__self__, "labels", labels)
         if message_retention_duration is not None:
             pulumi.set(__self__, "message_retention_duration", message_retention_duration)
+        if message_transforms is not None:
+            pulumi.set(__self__, "message_transforms", message_transforms)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -350,6 +356,20 @@ class SubscriptionArgs:
         pulumi.set(self, "message_retention_duration", value)
 
     @property
+    @pulumi.getter(name="messageTransforms")
+    def message_transforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]:
+        """
+        Transforms to be applied to messages published to the topic. Transforms are applied in the
+        order specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "message_transforms")
+
+    @message_transforms.setter
+    def message_transforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]):
+        pulumi.set(self, "message_transforms", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -434,6 +454,7 @@ class _SubscriptionState:
                  filter: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[builtins.str]] = None,
+                 message_transforms: Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -508,6 +529,9 @@ class _SubscriptionState:
                than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
                A duration in seconds with up to nine fractional digits, terminated
                by 's'. Example: `"600.5s"`.
+        :param pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]] message_transforms: Transforms to be applied to messages published to the topic. Transforms are applied in the
+               order specified.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the subscription.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -554,6 +578,8 @@ class _SubscriptionState:
             pulumi.set(__self__, "labels", labels)
         if message_retention_duration is not None:
             pulumi.set(__self__, "message_retention_duration", message_retention_duration)
+        if message_transforms is not None:
+            pulumi.set(__self__, "message_transforms", message_transforms)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -756,6 +782,20 @@ class _SubscriptionState:
         pulumi.set(self, "message_retention_duration", value)
 
     @property
+    @pulumi.getter(name="messageTransforms")
+    def message_transforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]:
+        """
+        Transforms to be applied to messages published to the topic. Transforms are applied in the
+        order specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "message_transforms")
+
+    @message_transforms.setter
+    def message_transforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]):
+        pulumi.set(self, "message_transforms", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -872,6 +912,7 @@ class Subscription(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[builtins.str]] = None,
+                 message_transforms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  push_config: Optional[pulumi.Input[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']]] = None,
@@ -1115,7 +1156,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_59033",
+                "filename_suffix": "-_10393",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1148,7 +1189,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_32081",
+                "filename_suffix": "-_33052",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1187,7 +1228,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_10393",
+                "filename_suffix": "-_3684",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1291,6 +1332,9 @@ class Subscription(pulumi.CustomResource):
                than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
                A duration in seconds with up to nine fractional digits, terminated
                by 's'. Example: `"600.5s"`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict']]]] message_transforms: Transforms to be applied to messages published to the topic. Transforms are applied in the
+               order specified.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the subscription.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1555,7 +1599,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_59033",
+                "filename_suffix": "-_10393",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1588,7 +1632,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_32081",
+                "filename_suffix": "-_33052",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1627,7 +1671,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_10393",
+                "filename_suffix": "-_3684",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1690,6 +1734,7 @@ class Subscription(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[builtins.str]] = None,
+                 message_transforms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  push_config: Optional[pulumi.Input[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']]] = None,
@@ -1715,6 +1760,7 @@ class Subscription(pulumi.CustomResource):
             __props__.__dict__["filter"] = filter
             __props__.__dict__["labels"] = labels
             __props__.__dict__["message_retention_duration"] = message_retention_duration
+            __props__.__dict__["message_transforms"] = message_transforms
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["push_config"] = push_config
@@ -1748,6 +1794,7 @@ class Subscription(pulumi.CustomResource):
             filter: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             message_retention_duration: Optional[pulumi.Input[builtins.str]] = None,
+            message_transforms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict']]]]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -1827,6 +1874,9 @@ class Subscription(pulumi.CustomResource):
                than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
                A duration in seconds with up to nine fractional digits, terminated
                by 's'. Example: `"600.5s"`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict']]]] message_transforms: Transforms to be applied to messages published to the topic. Transforms are applied in the
+               order specified.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the subscription.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1866,6 +1916,7 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["filter"] = filter
         __props__.__dict__["labels"] = labels
         __props__.__dict__["message_retention_duration"] = message_retention_duration
+        __props__.__dict__["message_transforms"] = message_transforms
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -2016,6 +2067,16 @@ class Subscription(pulumi.CustomResource):
         by 's'. Example: `"600.5s"`.
         """
         return pulumi.get(self, "message_retention_duration")
+
+    @property
+    @pulumi.getter(name="messageTransforms")
+    def message_transforms(self) -> pulumi.Output[Optional[Sequence['outputs.SubscriptionMessageTransform']]]:
+        """
+        Transforms to be applied to messages published to the topic. Transforms are applied in the
+        order specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "message_transforms")
 
     @property
     @pulumi.getter

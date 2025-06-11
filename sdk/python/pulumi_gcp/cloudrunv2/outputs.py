@@ -30,6 +30,11 @@ __all__ = [
     'JobTemplateTemplateContainerEnvValueSourceSecretKeyRef',
     'JobTemplateTemplateContainerPort',
     'JobTemplateTemplateContainerResources',
+    'JobTemplateTemplateContainerStartupProbe',
+    'JobTemplateTemplateContainerStartupProbeGrpc',
+    'JobTemplateTemplateContainerStartupProbeHttpGet',
+    'JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader',
+    'JobTemplateTemplateContainerStartupProbeTcpSocket',
     'JobTemplateTemplateContainerVolumeMount',
     'JobTemplateTemplateVolume',
     'JobTemplateTemplateVolumeCloudSqlInstance',
@@ -117,6 +122,11 @@ __all__ = [
     'GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefResult',
     'GetJobTemplateTemplateContainerPortResult',
     'GetJobTemplateTemplateContainerResourceResult',
+    'GetJobTemplateTemplateContainerStartupProbeResult',
+    'GetJobTemplateTemplateContainerStartupProbeGrpcResult',
+    'GetJobTemplateTemplateContainerStartupProbeHttpGetResult',
+    'GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderResult',
+    'GetJobTemplateTemplateContainerStartupProbeTcpSocketResult',
     'GetJobTemplateTemplateContainerVolumeMountResult',
     'GetJobTemplateTemplateVolumeResult',
     'GetJobTemplateTemplateVolumeCloudSqlInstanceResult',
@@ -761,7 +771,11 @@ class JobTemplateTemplateContainer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "volumeMounts":
+        if key == "dependsOns":
+            suggest = "depends_ons"
+        elif key == "startupProbe":
+            suggest = "startup_probe"
+        elif key == "volumeMounts":
             suggest = "volume_mounts"
         elif key == "workingDir":
             suggest = "working_dir"
@@ -781,16 +795,19 @@ class JobTemplateTemplateContainer(dict):
                  image: builtins.str,
                  args: Optional[Sequence[builtins.str]] = None,
                  commands: Optional[Sequence[builtins.str]] = None,
+                 depends_ons: Optional[Sequence[builtins.str]] = None,
                  envs: Optional[Sequence['outputs.JobTemplateTemplateContainerEnv']] = None,
                  name: Optional[builtins.str] = None,
                  ports: Optional[Sequence['outputs.JobTemplateTemplateContainerPort']] = None,
                  resources: Optional['outputs.JobTemplateTemplateContainerResources'] = None,
+                 startup_probe: Optional['outputs.JobTemplateTemplateContainerStartupProbe'] = None,
                  volume_mounts: Optional[Sequence['outputs.JobTemplateTemplateContainerVolumeMount']] = None,
                  working_dir: Optional[builtins.str] = None):
         """
         :param builtins.str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param Sequence[builtins.str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param Sequence[builtins.str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence[builtins.str] depends_ons: Names of the containers that must start before this container.
         :param Sequence['JobTemplateTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
                Structure is documented below.
         :param builtins.str name: Name of the container specified as a DNS_LABEL.
@@ -798,6 +815,10 @@ class JobTemplateTemplateContainer(dict):
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
                Structure is documented below.
         :param 'JobTemplateTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+               Structure is documented below.
+        :param 'JobTemplateTemplateContainerStartupProbeArgs' startup_probe: Startup probe of application within the container.
+               All other probes are disabled if a startup probe is provided, until it
+               succeeds. Container will not be added to service endpoints if the probe fails.
                Structure is documented below.
         :param Sequence['JobTemplateTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
                Structure is documented below.
@@ -808,6 +829,8 @@ class JobTemplateTemplateContainer(dict):
             pulumi.set(__self__, "args", args)
         if commands is not None:
             pulumi.set(__self__, "commands", commands)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if name is not None:
@@ -816,6 +839,8 @@ class JobTemplateTemplateContainer(dict):
             pulumi.set(__self__, "ports", ports)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if startup_probe is not None:
+            pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
             pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
@@ -844,6 +869,14 @@ class JobTemplateTemplateContainer(dict):
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Names of the containers that must start before this container.
+        """
+        return pulumi.get(self, "depends_ons")
 
     @property
     @pulumi.getter
@@ -880,6 +913,17 @@ class JobTemplateTemplateContainer(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter(name="startupProbe")
+    def startup_probe(self) -> Optional['outputs.JobTemplateTemplateContainerStartupProbe']:
+        """
+        Startup probe of application within the container.
+        All other probes are disabled if a startup probe is provided, until it
+        succeeds. Container will not be added to service endpoints if the probe fails.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "startup_probe")
 
     @property
     @pulumi.getter(name="volumeMounts")
@@ -1092,6 +1136,294 @@ class JobTemplateTemplateContainerResources(dict):
         Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
+
+
+@pulumi.output_type
+class JobTemplateTemplateContainerStartupProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGet":
+            suggest = "http_get"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "tcpSocket":
+            suggest = "tcp_socket"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTemplateTemplateContainerStartupProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTemplateTemplateContainerStartupProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTemplateTemplateContainerStartupProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_threshold: Optional[builtins.int] = None,
+                 grpc: Optional['outputs.JobTemplateTemplateContainerStartupProbeGrpc'] = None,
+                 http_get: Optional['outputs.JobTemplateTemplateContainerStartupProbeHttpGet'] = None,
+                 initial_delay_seconds: Optional[builtins.int] = None,
+                 period_seconds: Optional[builtins.int] = None,
+                 tcp_socket: Optional['outputs.JobTemplateTemplateContainerStartupProbeTcpSocket'] = None,
+                 timeout_seconds: Optional[builtins.int] = None):
+        """
+        :param builtins.int failure_threshold: Minimum consecutive failures for the probe to be considered failed after
+               having succeeded. Defaults to 3. Minimum value is 1.
+        :param 'JobTemplateTemplateContainerStartupProbeGrpcArgs' grpc: GRPC specifies an action involving a GRPC port.
+               Structure is documented below.
+        :param 'JobTemplateTemplateContainerStartupProbeHttpGetArgs' http_get: HttpGet specifies the http request to perform.
+               Structure is documented below.
+        :param builtins.int initial_delay_seconds: Number of seconds after the container has started before the probe is
+               initiated.
+               Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+        :param builtins.int period_seconds: How often (in seconds) to perform the probe.
+               Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+        :param 'JobTemplateTemplateContainerStartupProbeTcpSocketArgs' tcp_socket: TcpSocket specifies an action involving a TCP port.
+               Structure is documented below.
+        :param builtins.int timeout_seconds: Number of seconds after which the probe times out.
+               Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+               Must be smaller than periodSeconds.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[builtins.int]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after
+        having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @property
+    @pulumi.getter
+    def grpc(self) -> Optional['outputs.JobTemplateTemplateContainerStartupProbeGrpc']:
+        """
+        GRPC specifies an action involving a GRPC port.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc")
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional['outputs.JobTemplateTemplateContainerStartupProbeHttpGet']:
+        """
+        HttpGet specifies the http request to perform.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[builtins.int]:
+        """
+        Number of seconds after the container has started before the probe is
+        initiated.
+        Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[builtins.int]:
+        """
+        How often (in seconds) to perform the probe.
+        Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional['outputs.JobTemplateTemplateContainerStartupProbeTcpSocket']:
+        """
+        TcpSocket specifies an action involving a TCP port.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[builtins.int]:
+        """
+        Number of seconds after which the probe times out.
+        Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+        Must be smaller than periodSeconds.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class JobTemplateTemplateContainerStartupProbeGrpc(dict):
+    def __init__(__self__, *,
+                 port: Optional[builtins.int] = None,
+                 service: Optional[builtins.str] = None):
+        """
+        :param builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        :param builtins.str service: The name of the service to place in the gRPC HealthCheckRequest
+               (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+               If this is not specified, the default behavior is defined by gRPC.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[builtins.int]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[builtins.str]:
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class JobTemplateTemplateContainerStartupProbeHttpGet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpHeaders":
+            suggest = "http_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTemplateTemplateContainerStartupProbeHttpGet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTemplateTemplateContainerStartupProbeHttpGet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTemplateTemplateContainerStartupProbeHttpGet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 http_headers: Optional[Sequence['outputs.JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader']] = None,
+                 path: Optional[builtins.str] = None,
+                 port: Optional[builtins.int] = None):
+        """
+        :param Sequence['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+               Structure is documented below.
+        :param builtins.str path: Path to access on the HTTP server. If set, it should not be empty string.
+        :param builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[Sequence['outputs.JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader']]:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[builtins.str]:
+        """
+        Path to access on the HTTP server. If set, it should not be empty string.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[builtins.int]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader(dict):
+    def __init__(__self__, *,
+                 name: builtins.str,
+                 value: Optional[builtins.str] = None):
+        """
+        :param builtins.str name: The header field name.
+        :param builtins.str value: The header field value.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The header field name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[builtins.str]:
+        """
+        The header field value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class JobTemplateTemplateContainerStartupProbeTcpSocket(dict):
+    def __init__(__self__, *,
+                 port: Optional[builtins.int] = None):
+        """
+        :param builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[builtins.int]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -6553,16 +6885,19 @@ class GetJobTemplateTemplateContainerResult(dict):
     def __init__(__self__, *,
                  args: Sequence[builtins.str],
                  commands: Sequence[builtins.str],
+                 depends_ons: Sequence[builtins.str],
                  envs: Sequence['outputs.GetJobTemplateTemplateContainerEnvResult'],
                  image: builtins.str,
                  name: builtins.str,
                  ports: Sequence['outputs.GetJobTemplateTemplateContainerPortResult'],
                  resources: Sequence['outputs.GetJobTemplateTemplateContainerResourceResult'],
+                 startup_probes: Sequence['outputs.GetJobTemplateTemplateContainerStartupProbeResult'],
                  volume_mounts: Sequence['outputs.GetJobTemplateTemplateContainerVolumeMountResult'],
                  working_dir: builtins.str):
         """
         :param Sequence[builtins.str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param Sequence[builtins.str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence[builtins.str] depends_ons: Names of the containers that must start before this container.
         :param Sequence['GetJobTemplateTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
         :param builtins.str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param builtins.str name: The name of the Cloud Run v2 Job.
@@ -6570,16 +6905,21 @@ class GetJobTemplateTemplateContainerResult(dict):
                
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
         :param Sequence['GetJobTemplateTemplateContainerResourceArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param Sequence['GetJobTemplateTemplateContainerStartupProbeArgs'] startup_probes: Startup probe of application within the container.
+               All other probes are disabled if a startup probe is provided, until it
+               succeeds. Container will not be added to service endpoints if the probe fails.
         :param Sequence['GetJobTemplateTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
         :param builtins.str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "commands", commands)
+        pulumi.set(__self__, "depends_ons", depends_ons)
         pulumi.set(__self__, "envs", envs)
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "startup_probes", startup_probes)
         pulumi.set(__self__, "volume_mounts", volume_mounts)
         pulumi.set(__self__, "working_dir", working_dir)
 
@@ -6598,6 +6938,14 @@ class GetJobTemplateTemplateContainerResult(dict):
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Sequence[builtins.str]:
+        """
+        Names of the containers that must start before this container.
+        """
+        return pulumi.get(self, "depends_ons")
 
     @property
     @pulumi.getter
@@ -6640,6 +6988,16 @@ class GetJobTemplateTemplateContainerResult(dict):
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         """
         return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter(name="startupProbes")
+    def startup_probes(self) -> Sequence['outputs.GetJobTemplateTemplateContainerStartupProbeResult']:
+        """
+        Startup probe of application within the container.
+        All other probes are disabled if a startup probe is provided, until it
+        succeeds. Container will not be added to service endpoints if the probe fails.
+        """
+        return pulumi.get(self, "startup_probes")
 
     @property
     @pulumi.getter(name="volumeMounts")
@@ -6790,6 +7148,228 @@ class GetJobTemplateTemplateContainerResourceResult(dict):
         Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
+
+
+@pulumi.output_type
+class GetJobTemplateTemplateContainerStartupProbeResult(dict):
+    def __init__(__self__, *,
+                 failure_threshold: builtins.int,
+                 grpcs: Sequence['outputs.GetJobTemplateTemplateContainerStartupProbeGrpcResult'],
+                 http_gets: Sequence['outputs.GetJobTemplateTemplateContainerStartupProbeHttpGetResult'],
+                 initial_delay_seconds: builtins.int,
+                 period_seconds: builtins.int,
+                 tcp_sockets: Sequence['outputs.GetJobTemplateTemplateContainerStartupProbeTcpSocketResult'],
+                 timeout_seconds: builtins.int):
+        """
+        :param builtins.int failure_threshold: Minimum consecutive failures for the probe to be considered failed after
+               having succeeded. Defaults to 3. Minimum value is 1.
+        :param Sequence['GetJobTemplateTemplateContainerStartupProbeGrpcArgs'] grpcs: GRPC specifies an action involving a GRPC port.
+        :param Sequence['GetJobTemplateTemplateContainerStartupProbeHttpGetArgs'] http_gets: HttpGet specifies the http request to perform.
+        :param builtins.int initial_delay_seconds: Number of seconds after the container has started before the probe is
+               initiated.
+               Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+        :param builtins.int period_seconds: How often (in seconds) to perform the probe.
+               Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+        :param Sequence['GetJobTemplateTemplateContainerStartupProbeTcpSocketArgs'] tcp_sockets: TcpSocket specifies an action involving a TCP port.
+        :param builtins.int timeout_seconds: Number of seconds after which the probe times out.
+               Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+               Must be smaller than periodSeconds.
+        """
+        pulumi.set(__self__, "failure_threshold", failure_threshold)
+        pulumi.set(__self__, "grpcs", grpcs)
+        pulumi.set(__self__, "http_gets", http_gets)
+        pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        pulumi.set(__self__, "period_seconds", period_seconds)
+        pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> builtins.int:
+        """
+        Minimum consecutive failures for the probe to be considered failed after
+        having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @property
+    @pulumi.getter
+    def grpcs(self) -> Sequence['outputs.GetJobTemplateTemplateContainerStartupProbeGrpcResult']:
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        return pulumi.get(self, "grpcs")
+
+    @property
+    @pulumi.getter(name="httpGets")
+    def http_gets(self) -> Sequence['outputs.GetJobTemplateTemplateContainerStartupProbeHttpGetResult']:
+        """
+        HttpGet specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_gets")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> builtins.int:
+        """
+        Number of seconds after the container has started before the probe is
+        initiated.
+        Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> builtins.int:
+        """
+        How often (in seconds) to perform the probe.
+        Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Sequence['outputs.GetJobTemplateTemplateContainerStartupProbeTcpSocketResult']:
+        """
+        TcpSocket specifies an action involving a TCP port.
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> builtins.int:
+        """
+        Number of seconds after which the probe times out.
+        Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+        Must be smaller than periodSeconds.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class GetJobTemplateTemplateContainerStartupProbeGrpcResult(dict):
+    def __init__(__self__, *,
+                 port: builtins.int,
+                 service: builtins.str):
+        """
+        :param builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        :param builtins.str service: The name of the service to place in the gRPC HealthCheckRequest
+               (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+               If this is not specified, the default behavior is defined by gRPC.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> builtins.int:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def service(self) -> builtins.str:
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class GetJobTemplateTemplateContainerStartupProbeHttpGetResult(dict):
+    def __init__(__self__, *,
+                 http_headers: Sequence['outputs.GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderResult'],
+                 path: builtins.str,
+                 port: builtins.int):
+        """
+        :param Sequence['GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param builtins.str path: Path to access on the HTTP server. If set, it should not be empty string.
+        :param builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        pulumi.set(__self__, "http_headers", http_headers)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Sequence['outputs.GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderResult']:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @property
+    @pulumi.getter
+    def path(self) -> builtins.str:
+        """
+        Path to access on the HTTP server. If set, it should not be empty string.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> builtins.int:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderResult(dict):
+    def __init__(__self__, *,
+                 name: builtins.str,
+                 value: builtins.str):
+        """
+        :param builtins.str name: The name of the Cloud Run v2 Job.
+        :param builtins.str value: The header field value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The name of the Cloud Run v2 Job.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> builtins.str:
+        """
+        The header field value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetJobTemplateTemplateContainerStartupProbeTcpSocketResult(dict):
+    def __init__(__self__, *,
+                 port: builtins.int):
+        """
+        :param builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> builtins.int:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

@@ -115,6 +115,7 @@ export interface GetClusterResult {
     readonly monitoringService: string;
     readonly name: string;
     readonly network: string;
+    readonly networkPerformanceConfigs: outputs.container.GetClusterNetworkPerformanceConfig[];
     readonly networkPolicies: outputs.container.GetClusterNetworkPolicy[];
     readonly networkingMode: string;
     readonly nodeConfigs: outputs.container.GetClusterNodeConfig[];

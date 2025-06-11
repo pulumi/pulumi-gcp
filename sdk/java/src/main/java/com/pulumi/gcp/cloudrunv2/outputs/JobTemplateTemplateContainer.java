@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerEnv;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerPort;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerResources;
+import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerVolumeMount;
 import java.lang.String;
 import java.util.List;
@@ -27,6 +28,11 @@ public final class JobTemplateTemplateContainer {
      * 
      */
     private @Nullable List<String> commands;
+    /**
+     * @return Names of the containers that must start before this container.
+     * 
+     */
+    private @Nullable List<String> dependsOns;
     /**
      * @return List of environment variables to set in the container.
      * Structure is documented below.
@@ -57,6 +63,14 @@ public final class JobTemplateTemplateContainer {
      */
     private @Nullable JobTemplateTemplateContainerResources resources;
     /**
+     * @return Startup probe of application within the container.
+     * All other probes are disabled if a startup probe is provided, until it
+     * succeeds. Container will not be added to service endpoints if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable JobTemplateTemplateContainerStartupProbe startupProbe;
+    /**
      * @return Volume to mount into the container&#39;s filesystem.
      * Structure is documented below.
      * 
@@ -82,6 +96,13 @@ public final class JobTemplateTemplateContainer {
      */
     public List<String> commands() {
         return this.commands == null ? List.of() : this.commands;
+    }
+    /**
+     * @return Names of the containers that must start before this container.
+     * 
+     */
+    public List<String> dependsOns() {
+        return this.dependsOns == null ? List.of() : this.dependsOns;
     }
     /**
      * @return List of environment variables to set in the container.
@@ -123,6 +144,16 @@ public final class JobTemplateTemplateContainer {
         return Optional.ofNullable(this.resources);
     }
     /**
+     * @return Startup probe of application within the container.
+     * All other probes are disabled if a startup probe is provided, until it
+     * succeeds. Container will not be added to service endpoints if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<JobTemplateTemplateContainerStartupProbe> startupProbe() {
+        return Optional.ofNullable(this.startupProbe);
+    }
+    /**
      * @return Volume to mount into the container&#39;s filesystem.
      * Structure is documented below.
      * 
@@ -149,11 +180,13 @@ public final class JobTemplateTemplateContainer {
     public static final class Builder {
         private @Nullable List<String> args;
         private @Nullable List<String> commands;
+        private @Nullable List<String> dependsOns;
         private @Nullable List<JobTemplateTemplateContainerEnv> envs;
         private String image;
         private @Nullable String name;
         private @Nullable List<JobTemplateTemplateContainerPort> ports;
         private @Nullable JobTemplateTemplateContainerResources resources;
+        private @Nullable JobTemplateTemplateContainerStartupProbe startupProbe;
         private @Nullable List<JobTemplateTemplateContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
         public Builder() {}
@@ -161,11 +194,13 @@ public final class JobTemplateTemplateContainer {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
     	      this.commands = defaults.commands;
+    	      this.dependsOns = defaults.dependsOns;
     	      this.envs = defaults.envs;
     	      this.image = defaults.image;
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
     	      this.resources = defaults.resources;
+    	      this.startupProbe = defaults.startupProbe;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
         }
@@ -187,6 +222,15 @@ public final class JobTemplateTemplateContainer {
         }
         public Builder commands(String... commands) {
             return commands(List.of(commands));
+        }
+        @CustomType.Setter
+        public Builder dependsOns(@Nullable List<String> dependsOns) {
+
+            this.dependsOns = dependsOns;
+            return this;
+        }
+        public Builder dependsOns(String... dependsOns) {
+            return dependsOns(List.of(dependsOns));
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<JobTemplateTemplateContainerEnv> envs) {
@@ -227,6 +271,12 @@ public final class JobTemplateTemplateContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder startupProbe(@Nullable JobTemplateTemplateContainerStartupProbe startupProbe) {
+
+            this.startupProbe = startupProbe;
+            return this;
+        }
+        @CustomType.Setter
         public Builder volumeMounts(@Nullable List<JobTemplateTemplateContainerVolumeMount> volumeMounts) {
 
             this.volumeMounts = volumeMounts;
@@ -245,11 +295,13 @@ public final class JobTemplateTemplateContainer {
             final var _resultValue = new JobTemplateTemplateContainer();
             _resultValue.args = args;
             _resultValue.commands = commands;
+            _resultValue.dependsOns = dependsOns;
             _resultValue.envs = envs;
             _resultValue.image = image;
             _resultValue.name = name;
             _resultValue.ports = ports;
             _resultValue.resources = resources;
+            _resultValue.startupProbe = startupProbe;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;
             return _resultValue;

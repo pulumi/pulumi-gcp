@@ -44,10 +44,6 @@ namespace Pulumi.Gcp.Eventarc
     ///             new Gcp.Eventarc.Inputs.PipelineDestinationArgs
     ///             {
     ///                 Topic = topic.Id,
-    ///                 NetworkConfig = new Gcp.Eventarc.Inputs.PipelineDestinationNetworkConfigArgs
-    ///                 {
-    ///                     NetworkAttachment = "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment",
-    ///                 },
     ///             },
     ///         },
     ///         Labels = 
@@ -147,10 +143,6 @@ namespace Pulumi.Gcp.Eventarc
     ///             new Gcp.Eventarc.Inputs.PipelineDestinationArgs
     ///             {
     ///                 Workflow = workflow.Id,
-    ///                 NetworkConfig = new Gcp.Eventarc.Inputs.PipelineDestinationNetworkConfigArgs
-    ///                 {
-    ///                     NetworkAttachment = "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment",
-    ///                 },
     ///             },
     ///         },
     ///     });

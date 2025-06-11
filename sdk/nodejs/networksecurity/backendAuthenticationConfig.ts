@@ -77,6 +77,41 @@ import * as utilities from "../utilities";
  *     trustConfig: trustConfig.id,
  * });
  * ```
+ * ### Backend Service Tls Settings
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultBackendAuthenticationConfig = new gcp.networksecurity.BackendAuthenticationConfig("default", {
+ *     name: "authentication",
+ *     wellKnownRoots: "PUBLIC_ROOTS",
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: defaultHealthCheck.id,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     protocol: "HTTPS",
+ *     tlsSettings: {
+ *         sni: "example.com",
+ *         subjectAltNames: [
+ *             {
+ *                 dnsName: "example.com",
+ *             },
+ *             {
+ *                 uniformResourceIdentifier: "https://example.com",
+ *             },
+ *         ],
+ *         authenticationConfig: pulumi.interpolate`//networksecurity.googleapis.com/${defaultBackendAuthenticationConfig.id}`,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

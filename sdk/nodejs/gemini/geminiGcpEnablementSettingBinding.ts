@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *         my_key: "my_value",
  *     },
  *     enableCustomerDataSharing: true,
+ *     disableWebGrounding: true,
  * });
  * const example = new gcp.gemini.GeminiGcpEnablementSettingBinding("example", {
  *     geminiGcpEnablementSettingId: basic.geminiGcpEnablementSettingId,
@@ -115,8 +116,7 @@ export class GeminiGcpEnablementSettingBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Product type of the setting binding.
-     * Possible values are: `GEMINI_IN_BIGQUERY`.
+     * Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
      */
     public readonly product!: pulumi.Output<string>;
     /**
@@ -233,8 +233,7 @@ export interface GeminiGcpEnablementSettingBindingState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Product type of the setting binding.
-     * Possible values are: `GEMINI_IN_BIGQUERY`.
+     * Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
      */
     product?: pulumi.Input<string>;
     /**
@@ -283,8 +282,7 @@ export interface GeminiGcpEnablementSettingBindingArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * Product type of the setting binding.
-     * Possible values are: `GEMINI_IN_BIGQUERY`.
+     * Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
      */
     product?: pulumi.Input<string>;
     /**

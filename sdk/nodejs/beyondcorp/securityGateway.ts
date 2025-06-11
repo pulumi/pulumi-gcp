@@ -83,6 +83,10 @@ export class SecurityGateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Service account used for operations that involve resources in consumer projects.
+     */
+    public /*out*/ readonly delegatingServiceAccount!: pulumi.Output<string>;
+    /**
      * Optional. An arbitrary user-provided name for the SecurityGateway.
      * Cannot exceed 64 characters.
      */
@@ -157,6 +161,7 @@ export class SecurityGateway extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SecurityGatewayState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["delegatingServiceAccount"] = state ? state.delegatingServiceAccount : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["externalIps"] = state ? state.externalIps : undefined;
             resourceInputs["hubs"] = state ? state.hubs : undefined;
@@ -177,6 +182,7 @@ export class SecurityGateway extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["securityGatewayId"] = args ? args.securityGatewayId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["delegatingServiceAccount"] = undefined /*out*/;
             resourceInputs["externalIps"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -195,6 +201,10 @@ export interface SecurityGatewayState {
      * Output only. Timestamp when the resource was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Service account used for operations that involve resources in consumer projects.
+     */
+    delegatingServiceAccount?: pulumi.Input<string>;
     /**
      * Optional. An arbitrary user-provided name for the SecurityGateway.
      * Cannot exceed 64 characters.

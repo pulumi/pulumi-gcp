@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.Gemini
     ///             { "my_key", "my_value" },
     ///         },
     ///         EnableCustomerDataSharing = true,
+    ///         DisableWebGrounding = true,
     ///     });
     /// 
     /// });
@@ -70,6 +71,12 @@ namespace Pulumi.Gcp.Gemini
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether web grounding should be disabled.
+        /// </summary>
+        [Output("disableWebGrounding")]
+        public Output<bool?> DisableWebGrounding { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -185,6 +192,12 @@ namespace Pulumi.Gcp.Gemini
     public sealed class GeminiGcpEnablementSettingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether web grounding should be disabled.
+        /// </summary>
+        [Input("disableWebGrounding")]
+        public Input<bool>? DisableWebGrounding { get; set; }
+
+        /// <summary>
         /// Whether customer data sharing should be enabled.
         /// </summary>
         [Input("enableCustomerDataSharing")]
@@ -239,6 +252,12 @@ namespace Pulumi.Gcp.Gemini
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Whether web grounding should be disabled.
+        /// </summary>
+        [Input("disableWebGrounding")]
+        public Input<bool>? DisableWebGrounding { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;

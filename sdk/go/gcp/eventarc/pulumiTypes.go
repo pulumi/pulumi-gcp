@@ -1851,7 +1851,9 @@ type PipelineDestinationNetworkConfig struct {
 	// Name of the NetworkAttachment that allows access to the consumer VPC.
 	// Format:
 	// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-	NetworkAttachment string `pulumi:"networkAttachment"`
+	// Required for HTTP endpoint destinations. Must not be specified for
+	// Workflows, MessageBus, or Topic destinations.
+	NetworkAttachment *string `pulumi:"networkAttachment"`
 }
 
 // PipelineDestinationNetworkConfigInput is an input type that accepts PipelineDestinationNetworkConfigArgs and PipelineDestinationNetworkConfigOutput values.
@@ -1869,7 +1871,9 @@ type PipelineDestinationNetworkConfigArgs struct {
 	// Name of the NetworkAttachment that allows access to the consumer VPC.
 	// Format:
 	// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
+	// Required for HTTP endpoint destinations. Must not be specified for
+	// Workflows, MessageBus, or Topic destinations.
+	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
 }
 
 func (PipelineDestinationNetworkConfigArgs) ElementType() reflect.Type {
@@ -1952,8 +1956,10 @@ func (o PipelineDestinationNetworkConfigOutput) ToPipelineDestinationNetworkConf
 // Name of the NetworkAttachment that allows access to the consumer VPC.
 // Format:
 // `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-func (o PipelineDestinationNetworkConfigOutput) NetworkAttachment() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineDestinationNetworkConfig) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+// Required for HTTP endpoint destinations. Must not be specified for
+// Workflows, MessageBus, or Topic destinations.
+func (o PipelineDestinationNetworkConfigOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineDestinationNetworkConfig) *string { return v.NetworkAttachment }).(pulumi.StringPtrOutput)
 }
 
 type PipelineDestinationNetworkConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1983,12 +1989,14 @@ func (o PipelineDestinationNetworkConfigPtrOutput) Elem() PipelineDestinationNet
 // Name of the NetworkAttachment that allows access to the consumer VPC.
 // Format:
 // `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+// Required for HTTP endpoint destinations. Must not be specified for
+// Workflows, MessageBus, or Topic destinations.
 func (o PipelineDestinationNetworkConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PipelineDestinationNetworkConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.NetworkAttachment
+		return v.NetworkAttachment
 	}).(pulumi.StringPtrOutput)
 }
 
