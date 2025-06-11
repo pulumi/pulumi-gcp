@@ -7,8 +7,8 @@ toolchain go1.24.1
 require (
 	github.com/pulumi/pulumi-gcp/sdk/v6 v6.67.0
 	github.com/pulumi/pulumi-gcp/sdk/v8 v8.0.0-00010101000000-000000000000
-	github.com/pulumi/pulumi/pkg/v3 v3.172.0
-	github.com/pulumi/pulumi/sdk/v3 v3.172.0
+	github.com/pulumi/pulumi/pkg/v3 v3.175.0
+	github.com/pulumi/pulumi/sdk/v3 v3.175.0
 	github.com/stretchr/testify v1.10.0
 )
 
