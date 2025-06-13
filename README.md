@@ -4,7 +4,7 @@
 [![NuGet version](https://badge.fury.io/nu/pulumi.gcp.svg)](https://badge.fury.io/nu/pulumi.gcp)
 [![Python version](https://badge.fury.io/py/pulumi-gcp.svg)](https://pypi.org/project/pulumi-gcp)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-gcp/sdk/v6/go)](https://pkg.go.dev/github.com/pulumi/pulumi-gcp/sdk/v6/go)
-[![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-gcp/blob/master/LICENSE)
+[![License](https://img.shields.io/npm/l/%40pulumi%2Fgcp.svg?color=limegreen)](https://github.com/pulumi/pulumi-gcp/blob/master/LICENSE)
 
 # Google Cloud Platform Resource Provider
 
