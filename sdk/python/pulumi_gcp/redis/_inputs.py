@@ -50,6 +50,10 @@ __all__ = [
     'ClusterMaintenanceScheduleArgsDict',
     'ClusterManagedBackupSourceArgs',
     'ClusterManagedBackupSourceArgsDict',
+    'ClusterManagedServerCaArgs',
+    'ClusterManagedServerCaArgsDict',
+    'ClusterManagedServerCaCaCertArgs',
+    'ClusterManagedServerCaCaCertArgsDict',
     'ClusterPersistenceConfigArgs',
     'ClusterPersistenceConfigArgsDict',
     'ClusterPersistenceConfigAofConfigArgs',
@@ -1223,6 +1227,79 @@ class ClusterManagedBackupSourceArgs:
     @backup.setter
     def backup(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "backup", value)
+
+
+if not MYPY:
+    class ClusterManagedServerCaArgsDict(TypedDict):
+        ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgsDict']]]]
+        """
+        (Output)
+        The PEM encoded CA certificate chains for redis managed server authentication
+        Structure is documented below.
+        """
+elif False:
+    ClusterManagedServerCaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterManagedServerCaArgs:
+    def __init__(__self__, *,
+                 ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]] ca_certs: (Output)
+               The PEM encoded CA certificate chains for redis managed server authentication
+               Structure is documented below.
+        """
+        if ca_certs is not None:
+            pulumi.set(__self__, "ca_certs", ca_certs)
+
+    @property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]]]:
+        """
+        (Output)
+        The PEM encoded CA certificate chains for redis managed server authentication
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ca_certs")
+
+    @ca_certs.setter
+    def ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]]]):
+        pulumi.set(self, "ca_certs", value)
+
+
+if not MYPY:
+    class ClusterManagedServerCaCaCertArgsDict(TypedDict):
+        certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        The certificates that form the CA chain, from leaf to root order
+        """
+elif False:
+    ClusterManagedServerCaCaCertArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterManagedServerCaCaCertArgs:
+    def __init__(__self__, *,
+                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] certificates: (Output)
+               The certificates that form the CA chain, from leaf to root order
+        """
+        if certificates is not None:
+            pulumi.set(__self__, "certificates", certificates)
+
+    @property
+    @pulumi.getter
+    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        The certificates that form the CA chain, from leaf to root order
+        """
+        return pulumi.get(self, "certificates")
+
+    @certificates.setter
+    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "certificates", value)
 
 
 if not MYPY:

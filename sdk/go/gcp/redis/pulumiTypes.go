@@ -2467,6 +2467,209 @@ func (o ClusterManagedBackupSourcePtrOutput) Backup() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterManagedServerCa struct {
+	// (Output)
+	// The PEM encoded CA certificate chains for redis managed server authentication
+	// Structure is documented below.
+	CaCerts []ClusterManagedServerCaCaCert `pulumi:"caCerts"`
+}
+
+// ClusterManagedServerCaInput is an input type that accepts ClusterManagedServerCaArgs and ClusterManagedServerCaOutput values.
+// You can construct a concrete instance of `ClusterManagedServerCaInput` via:
+//
+//	ClusterManagedServerCaArgs{...}
+type ClusterManagedServerCaInput interface {
+	pulumi.Input
+
+	ToClusterManagedServerCaOutput() ClusterManagedServerCaOutput
+	ToClusterManagedServerCaOutputWithContext(context.Context) ClusterManagedServerCaOutput
+}
+
+type ClusterManagedServerCaArgs struct {
+	// (Output)
+	// The PEM encoded CA certificate chains for redis managed server authentication
+	// Structure is documented below.
+	CaCerts ClusterManagedServerCaCaCertArrayInput `pulumi:"caCerts"`
+}
+
+func (ClusterManagedServerCaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterManagedServerCa)(nil)).Elem()
+}
+
+func (i ClusterManagedServerCaArgs) ToClusterManagedServerCaOutput() ClusterManagedServerCaOutput {
+	return i.ToClusterManagedServerCaOutputWithContext(context.Background())
+}
+
+func (i ClusterManagedServerCaArgs) ToClusterManagedServerCaOutputWithContext(ctx context.Context) ClusterManagedServerCaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterManagedServerCaOutput)
+}
+
+// ClusterManagedServerCaArrayInput is an input type that accepts ClusterManagedServerCaArray and ClusterManagedServerCaArrayOutput values.
+// You can construct a concrete instance of `ClusterManagedServerCaArrayInput` via:
+//
+//	ClusterManagedServerCaArray{ ClusterManagedServerCaArgs{...} }
+type ClusterManagedServerCaArrayInput interface {
+	pulumi.Input
+
+	ToClusterManagedServerCaArrayOutput() ClusterManagedServerCaArrayOutput
+	ToClusterManagedServerCaArrayOutputWithContext(context.Context) ClusterManagedServerCaArrayOutput
+}
+
+type ClusterManagedServerCaArray []ClusterManagedServerCaInput
+
+func (ClusterManagedServerCaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterManagedServerCa)(nil)).Elem()
+}
+
+func (i ClusterManagedServerCaArray) ToClusterManagedServerCaArrayOutput() ClusterManagedServerCaArrayOutput {
+	return i.ToClusterManagedServerCaArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterManagedServerCaArray) ToClusterManagedServerCaArrayOutputWithContext(ctx context.Context) ClusterManagedServerCaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterManagedServerCaArrayOutput)
+}
+
+type ClusterManagedServerCaOutput struct{ *pulumi.OutputState }
+
+func (ClusterManagedServerCaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterManagedServerCa)(nil)).Elem()
+}
+
+func (o ClusterManagedServerCaOutput) ToClusterManagedServerCaOutput() ClusterManagedServerCaOutput {
+	return o
+}
+
+func (o ClusterManagedServerCaOutput) ToClusterManagedServerCaOutputWithContext(ctx context.Context) ClusterManagedServerCaOutput {
+	return o
+}
+
+// (Output)
+// The PEM encoded CA certificate chains for redis managed server authentication
+// Structure is documented below.
+func (o ClusterManagedServerCaOutput) CaCerts() ClusterManagedServerCaCaCertArrayOutput {
+	return o.ApplyT(func(v ClusterManagedServerCa) []ClusterManagedServerCaCaCert { return v.CaCerts }).(ClusterManagedServerCaCaCertArrayOutput)
+}
+
+type ClusterManagedServerCaArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterManagedServerCaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterManagedServerCa)(nil)).Elem()
+}
+
+func (o ClusterManagedServerCaArrayOutput) ToClusterManagedServerCaArrayOutput() ClusterManagedServerCaArrayOutput {
+	return o
+}
+
+func (o ClusterManagedServerCaArrayOutput) ToClusterManagedServerCaArrayOutputWithContext(ctx context.Context) ClusterManagedServerCaArrayOutput {
+	return o
+}
+
+func (o ClusterManagedServerCaArrayOutput) Index(i pulumi.IntInput) ClusterManagedServerCaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterManagedServerCa {
+		return vs[0].([]ClusterManagedServerCa)[vs[1].(int)]
+	}).(ClusterManagedServerCaOutput)
+}
+
+type ClusterManagedServerCaCaCert struct {
+	// (Output)
+	// The certificates that form the CA chain, from leaf to root order
+	Certificates []string `pulumi:"certificates"`
+}
+
+// ClusterManagedServerCaCaCertInput is an input type that accepts ClusterManagedServerCaCaCertArgs and ClusterManagedServerCaCaCertOutput values.
+// You can construct a concrete instance of `ClusterManagedServerCaCaCertInput` via:
+//
+//	ClusterManagedServerCaCaCertArgs{...}
+type ClusterManagedServerCaCaCertInput interface {
+	pulumi.Input
+
+	ToClusterManagedServerCaCaCertOutput() ClusterManagedServerCaCaCertOutput
+	ToClusterManagedServerCaCaCertOutputWithContext(context.Context) ClusterManagedServerCaCaCertOutput
+}
+
+type ClusterManagedServerCaCaCertArgs struct {
+	// (Output)
+	// The certificates that form the CA chain, from leaf to root order
+	Certificates pulumi.StringArrayInput `pulumi:"certificates"`
+}
+
+func (ClusterManagedServerCaCaCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (i ClusterManagedServerCaCaCertArgs) ToClusterManagedServerCaCaCertOutput() ClusterManagedServerCaCaCertOutput {
+	return i.ToClusterManagedServerCaCaCertOutputWithContext(context.Background())
+}
+
+func (i ClusterManagedServerCaCaCertArgs) ToClusterManagedServerCaCaCertOutputWithContext(ctx context.Context) ClusterManagedServerCaCaCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterManagedServerCaCaCertOutput)
+}
+
+// ClusterManagedServerCaCaCertArrayInput is an input type that accepts ClusterManagedServerCaCaCertArray and ClusterManagedServerCaCaCertArrayOutput values.
+// You can construct a concrete instance of `ClusterManagedServerCaCaCertArrayInput` via:
+//
+//	ClusterManagedServerCaCaCertArray{ ClusterManagedServerCaCaCertArgs{...} }
+type ClusterManagedServerCaCaCertArrayInput interface {
+	pulumi.Input
+
+	ToClusterManagedServerCaCaCertArrayOutput() ClusterManagedServerCaCaCertArrayOutput
+	ToClusterManagedServerCaCaCertArrayOutputWithContext(context.Context) ClusterManagedServerCaCaCertArrayOutput
+}
+
+type ClusterManagedServerCaCaCertArray []ClusterManagedServerCaCaCertInput
+
+func (ClusterManagedServerCaCaCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (i ClusterManagedServerCaCaCertArray) ToClusterManagedServerCaCaCertArrayOutput() ClusterManagedServerCaCaCertArrayOutput {
+	return i.ToClusterManagedServerCaCaCertArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterManagedServerCaCaCertArray) ToClusterManagedServerCaCaCertArrayOutputWithContext(ctx context.Context) ClusterManagedServerCaCaCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterManagedServerCaCaCertArrayOutput)
+}
+
+type ClusterManagedServerCaCaCertOutput struct{ *pulumi.OutputState }
+
+func (ClusterManagedServerCaCaCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (o ClusterManagedServerCaCaCertOutput) ToClusterManagedServerCaCaCertOutput() ClusterManagedServerCaCaCertOutput {
+	return o
+}
+
+func (o ClusterManagedServerCaCaCertOutput) ToClusterManagedServerCaCaCertOutputWithContext(ctx context.Context) ClusterManagedServerCaCaCertOutput {
+	return o
+}
+
+// (Output)
+// The certificates that form the CA chain, from leaf to root order
+func (o ClusterManagedServerCaCaCertOutput) Certificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterManagedServerCaCaCert) []string { return v.Certificates }).(pulumi.StringArrayOutput)
+}
+
+type ClusterManagedServerCaCaCertArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterManagedServerCaCaCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (o ClusterManagedServerCaCaCertArrayOutput) ToClusterManagedServerCaCaCertArrayOutput() ClusterManagedServerCaCaCertArrayOutput {
+	return o
+}
+
+func (o ClusterManagedServerCaCaCertArrayOutput) ToClusterManagedServerCaCaCertArrayOutputWithContext(ctx context.Context) ClusterManagedServerCaCaCertArrayOutput {
+	return o
+}
+
+func (o ClusterManagedServerCaCaCertArrayOutput) Index(i pulumi.IntInput) ClusterManagedServerCaCaCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterManagedServerCaCaCert {
+		return vs[0].([]ClusterManagedServerCaCaCert)[vs[1].(int)]
+	}).(ClusterManagedServerCaCaCertOutput)
+}
+
 type ClusterPersistenceConfig struct {
 	// AOF configuration. This field will be ignored if mode is not AOF.
 	// Structure is documented below.
@@ -6474,6 +6677,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenanceScheduleArrayInput)(nil)).Elem(), ClusterMaintenanceScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterManagedBackupSourceInput)(nil)).Elem(), ClusterManagedBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterManagedBackupSourcePtrInput)(nil)).Elem(), ClusterManagedBackupSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterManagedServerCaInput)(nil)).Elem(), ClusterManagedServerCaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterManagedServerCaArrayInput)(nil)).Elem(), ClusterManagedServerCaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterManagedServerCaCaCertInput)(nil)).Elem(), ClusterManagedServerCaCaCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterManagedServerCaCaCertArrayInput)(nil)).Elem(), ClusterManagedServerCaCaCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigInput)(nil)).Elem(), ClusterPersistenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigPtrInput)(nil)).Elem(), ClusterPersistenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigAofConfigInput)(nil)).Elem(), ClusterPersistenceConfigAofConfigArgs{})
@@ -6558,6 +6765,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMaintenanceScheduleArrayOutput{})
 	pulumi.RegisterOutputType(ClusterManagedBackupSourceOutput{})
 	pulumi.RegisterOutputType(ClusterManagedBackupSourcePtrOutput{})
+	pulumi.RegisterOutputType(ClusterManagedServerCaOutput{})
+	pulumi.RegisterOutputType(ClusterManagedServerCaArrayOutput{})
+	pulumi.RegisterOutputType(ClusterManagedServerCaCaCertOutput{})
+	pulumi.RegisterOutputType(ClusterManagedServerCaCaCertArrayOutput{})
 	pulumi.RegisterOutputType(ClusterPersistenceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterPersistenceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterPersistenceConfigAofConfigOutput{})

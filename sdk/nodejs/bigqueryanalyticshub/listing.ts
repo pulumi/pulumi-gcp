@@ -140,6 +140,36 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Analyticshub Listing Log Linked Dataset Query User
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const listingLogEmail = new gcp.bigqueryanalyticshub.DataExchange("listing_log_email", {
+ *     location: "US",
+ *     dataExchangeId: "tf_test_log_email_de",
+ *     displayName: "tf_test_log_email_de",
+ *     description: "Example for log email test",
+ * });
+ * const listingLogEmailDataset = new gcp.bigquery.Dataset("listing_log_email", {
+ *     datasetId: "tf_test_log_email_ds",
+ *     friendlyName: "tf_test_log_email_ds",
+ *     description: "Example for log email test",
+ *     location: "US",
+ * });
+ * const listing = new gcp.bigqueryanalyticshub.Listing("listing", {
+ *     location: "US",
+ *     dataExchangeId: listingLogEmail.dataExchangeId,
+ *     listingId: "tf_test_log_email_listing",
+ *     displayName: "tf_test_log_email_listing",
+ *     description: "Example for log email test",
+ *     logLinkedDatasetQueryUserEmail: true,
+ *     bigqueryDataset: {
+ *         dataset: listingLogEmailDataset.id,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -236,6 +266,11 @@ export class Listing extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+     * querying user.
+     */
+    public readonly logLinkedDatasetQueryUserEmail!: pulumi.Output<boolean | undefined>;
+    /**
      * The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -280,6 +315,7 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["listingId"] = state ? state.listingId : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["logLinkedDatasetQueryUserEmail"] = state ? state.logLinkedDatasetQueryUserEmail : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["primaryContact"] = state ? state.primaryContact : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -313,6 +349,7 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["listingId"] = args ? args.listingId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["logLinkedDatasetQueryUserEmail"] = args ? args.logLinkedDatasetQueryUserEmail : undefined;
             resourceInputs["primaryContact"] = args ? args.primaryContact : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["publisher"] = args ? args.publisher : undefined;
@@ -371,6 +408,11 @@ export interface ListingState {
      * The name of the location this data exchange listing.
      */
     location?: pulumi.Input<string>;
+    /**
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+     * querying user.
+     */
+    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
     /**
      * The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
      */
@@ -440,6 +482,11 @@ export interface ListingArgs {
      * The name of the location this data exchange listing.
      */
     location: pulumi.Input<string>;
+    /**
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+     * querying user.
+     */
+    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
     /**
      * Email or URL of the primary point of contact of the listing.
      */

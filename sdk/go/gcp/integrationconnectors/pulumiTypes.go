@@ -5791,6 +5791,9 @@ func (o ConnectionLockConfigPtrOutput) Reason() pulumi.StringPtrOutput {
 type ConnectionLogConfig struct {
 	// Enabled represents whether logging is enabled or not for a connection.
 	Enabled bool `pulumi:"enabled"`
+	// Log configuration level.
+	// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+	Level *string `pulumi:"level"`
 }
 
 // ConnectionLogConfigInput is an input type that accepts ConnectionLogConfigArgs and ConnectionLogConfigOutput values.
@@ -5807,6 +5810,9 @@ type ConnectionLogConfigInput interface {
 type ConnectionLogConfigArgs struct {
 	// Enabled represents whether logging is enabled or not for a connection.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Log configuration level.
+	// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+	Level pulumi.StringPtrInput `pulumi:"level"`
 }
 
 func (ConnectionLogConfigArgs) ElementType() reflect.Type {
@@ -5891,6 +5897,12 @@ func (o ConnectionLogConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConnectionLogConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Log configuration level.
+// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+func (o ConnectionLogConfigOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionLogConfig) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
 type ConnectionLogConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ConnectionLogConfigPtrOutput) ElementType() reflect.Type {
@@ -5923,6 +5935,17 @@ func (o ConnectionLogConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Log configuration level.
+// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+func (o ConnectionLogConfigPtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionNodeConfig struct {

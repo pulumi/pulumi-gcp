@@ -42,6 +42,7 @@ export interface GetBackupPlanResult {
     readonly name: string;
     readonly project?: string;
     readonly resourceType: string;
+    readonly supportedResourceTypes: string[];
     readonly updateTime: string;
 }
 export function getBackupPlanOutput(args: GetBackupPlanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupPlanResult> {

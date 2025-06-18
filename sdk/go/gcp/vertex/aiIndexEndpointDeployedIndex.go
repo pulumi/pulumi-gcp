@@ -40,12 +40,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId: pulumi.String("vertex-sa"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
 //				Name:                     pulumi.String("bucket-name"),
 //				Location:                 pulumi.String("us-central1"),
@@ -55,12 +49,13 @@ import (
 //				return err
 //			}
 //			index, err := vertex.NewAiIndex(ctx, "index", &vertex.AiIndexArgs{
+//				Region:            pulumi.String("us-central1"),
+//				DisplayName:       pulumi.String("test-index"),
+//				Description:       pulumi.String("index for test"),
+//				IndexUpdateMethod: pulumi.String("BATCH_UPDATE"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("test-index"),
-//				Description: pulumi.String("index for test"),
 //				Metadata: &vertex.AiIndexMetadataArgs{
 //					ContentsDeltaUri: bucket.Name.ApplyT(func(name string) (string, error) {
 //						return fmt.Sprintf("gs://%v/contents", name), nil
@@ -78,7 +73,6 @@ import (
 //						},
 //					},
 //				},
-//				IndexUpdateMethod: pulumi.String("BATCH_UPDATE"),
 //			})
 //			if err != nil {
 //				return err
@@ -97,23 +91,30 @@ import (
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Region:      pulumi.String("us-central1"),
+//				Network:     pulumi.Sprintf("projects/%v/global/networks/%v", project.Number, vertexNetwork.Name),
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Network: pulumi.Sprintf("projects/%v/global/networks/%v", project.Number, vertexNetwork.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
+//				AccountId: pulumi.String("vertex-sa"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vertex.NewAiIndexEndpointDeployedIndex(ctx, "basic_deployed_index", &vertex.AiIndexEndpointDeployedIndexArgs{
-//				IndexEndpoint:   vertexIndexEndpointDeployed.ID(),
-//				Index:           index.ID(),
-//				DeployedIndexId: pulumi.String("deployed_index_id"),
+//				DeployedIndexId:     pulumi.String("deployed_index_id"),
+//				DisplayName:         pulumi.String("vertex-deployed-index"),
+//				Region:              pulumi.String("us-central1"),
+//				Index:               index.ID(),
+//				IndexEndpoint:       vertexIndexEndpointDeployed.ID(),
+//				EnableAccessLogging: pulumi.Bool(false),
 //				ReservedIpRanges: pulumi.StringArray{
 //					pulumi.String("vertex-ai-range"),
 //				},
-//				EnableAccessLogging: pulumi.Bool(false),
-//				DisplayName:         pulumi.String("vertex-deployed-index"),
 //				DeployedIndexAuthConfig: &vertex.AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs{
 //					AuthProvider: &vertex.AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs{
 //						Audiences: pulumi.StringArray{
@@ -124,10 +125,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				vertexIndexEndpointDeployed,
-//				sa,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -181,12 +179,13 @@ import (
 //				return err
 //			}
 //			index, err := vertex.NewAiIndex(ctx, "index", &vertex.AiIndexArgs{
+//				Region:            pulumi.String("us-central1"),
+//				DisplayName:       pulumi.String("test-index"),
+//				Description:       pulumi.String("index for test"),
+//				IndexUpdateMethod: pulumi.String("BATCH_UPDATE"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("test-index"),
-//				Description: pulumi.String("index for test"),
 //				Metadata: &vertex.AiIndexMetadataArgs{
 //					ContentsDeltaUri: bucket.Name.ApplyT(func(name string) (string, error) {
 //						return fmt.Sprintf("gs://%v/contents", name), nil
@@ -204,7 +203,6 @@ import (
 //						},
 //					},
 //				},
-//				IndexUpdateMethod: pulumi.String("BATCH_UPDATE"),
 //			})
 //			if err != nil {
 //				return err
@@ -223,23 +221,24 @@ import (
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Region:      pulumi.String("us-central1"),
+//				Network:     pulumi.Sprintf("projects/%v/global/networks/%v", project.Number, vertexNetwork.Name),
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Network: pulumi.Sprintf("projects/%v/global/networks/%v", project.Number, vertexNetwork.Name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vertex.NewAiIndexEndpointDeployedIndex(ctx, "basic_deployed_index", &vertex.AiIndexEndpointDeployedIndexArgs{
-//				IndexEndpoint:   vertexIndexEndpointDeployed.ID(),
-//				Index:           index.ID(),
 //				DeployedIndexId: pulumi.String("deployed_index_id"),
+//				DisplayName:     pulumi.String("vertex-deployed-index"),
+//				Region:          pulumi.String("us-central1"),
+//				Index:           index.ID(),
+//				IndexEndpoint:   vertexIndexEndpointDeployed.ID(),
 //				ReservedIpRanges: pulumi.StringArray{
 //					pulumi.String("vertex-ai-range"),
 //				},
 //				EnableAccessLogging: pulumi.Bool(false),
-//				DisplayName:         pulumi.String("vertex-deployed-index"),
 //				DeployedIndexAuthConfig: &vertex.AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs{
 //					AuthProvider: &vertex.AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs{
 //						Audiences: pulumi.StringArray{
@@ -253,10 +252,7 @@ import (
 //				AutomaticResources: &vertex.AiIndexEndpointDeployedIndexAutomaticResourcesArgs{
 //					MaxReplicaCount: pulumi.Int(4),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				vertexIndexEndpointDeployed,
-//				sa,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -348,6 +344,8 @@ type AiIndexEndpointDeployedIndex struct {
 	// Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if [network](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#IndexEndpoint.FIELDS.network) is configured.
 	// Structure is documented below.
 	PrivateEndpoints AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput `pulumi:"privateEndpoints"`
+	// The region of the index endpoint deployment. eg us-central1
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
 	// If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
 	// The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].
@@ -434,6 +432,8 @@ type aiIndexEndpointDeployedIndexState struct {
 	// Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if [network](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#IndexEndpoint.FIELDS.network) is configured.
 	// Structure is documented below.
 	PrivateEndpoints []AiIndexEndpointDeployedIndexPrivateEndpoint `pulumi:"privateEndpoints"`
+	// The region of the index endpoint deployment. eg us-central1
+	Region *string `pulumi:"region"`
 	// A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
 	// If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
 	// The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].
@@ -482,6 +482,8 @@ type AiIndexEndpointDeployedIndexState struct {
 	// Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if [network](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#IndexEndpoint.FIELDS.network) is configured.
 	// Structure is documented below.
 	PrivateEndpoints AiIndexEndpointDeployedIndexPrivateEndpointArrayInput
+	// The region of the index endpoint deployment. eg us-central1
+	Region pulumi.StringPtrInput
 	// A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
 	// If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
 	// The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].
@@ -524,6 +526,8 @@ type aiIndexEndpointDeployedIndexArgs struct {
 	//
 	// ***
 	IndexEndpoint string `pulumi:"indexEndpoint"`
+	// The region of the index endpoint deployment. eg us-central1
+	Region *string `pulumi:"region"`
 	// A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
 	// If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
 	// The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].
@@ -563,6 +567,8 @@ type AiIndexEndpointDeployedIndexArgs struct {
 	//
 	// ***
 	IndexEndpoint pulumi.StringInput
+	// The region of the index endpoint deployment. eg us-central1
+	Region pulumi.StringPtrInput
 	// A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
 	// If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
 	// The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].
@@ -742,6 +748,11 @@ func (o AiIndexEndpointDeployedIndexOutput) PrivateEndpoints() AiIndexEndpointDe
 	return o.ApplyT(func(v *AiIndexEndpointDeployedIndex) AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput {
 		return v.PrivateEndpoints
 	}).(AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput)
+}
+
+// The region of the index endpoint deployment. eg us-central1
+func (o AiIndexEndpointDeployedIndexOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndex) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.

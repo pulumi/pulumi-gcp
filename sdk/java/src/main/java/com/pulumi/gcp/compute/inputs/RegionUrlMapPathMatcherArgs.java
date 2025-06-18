@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionArgs;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultUrlRedirectArgs;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleArgs;
@@ -19,6 +20,31 @@ import javax.annotation.Nullable;
 public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RegionUrlMapPathMatcherArgs Empty = new RegionUrlMapPathMatcherArgs();
+
+    /**
+     * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="defaultRouteAction")
+    private @Nullable Output<RegionUrlMapPathMatcherDefaultRouteActionArgs> defaultRouteAction;
+
+    /**
+     * @return defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionUrlMapPathMatcherDefaultRouteActionArgs>> defaultRouteAction() {
+        return Optional.ofNullable(this.defaultRouteAction);
+    }
 
     /**
      * A reference to a RegionBackendService resource. This will be used if
@@ -147,6 +173,7 @@ public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.Reso
     private RegionUrlMapPathMatcherArgs() {}
 
     private RegionUrlMapPathMatcherArgs(RegionUrlMapPathMatcherArgs $) {
+        this.defaultRouteAction = $.defaultRouteAction;
         this.defaultService = $.defaultService;
         this.defaultUrlRedirect = $.defaultUrlRedirect;
         this.description = $.description;
@@ -171,6 +198,37 @@ public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.Reso
 
         public Builder(RegionUrlMapPathMatcherArgs defaults) {
             $ = new RegionUrlMapPathMatcherArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param defaultRouteAction defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+         * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+         * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+         * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+         * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultRouteAction(@Nullable Output<RegionUrlMapPathMatcherDefaultRouteActionArgs> defaultRouteAction) {
+            $.defaultRouteAction = defaultRouteAction;
+            return this;
+        }
+
+        /**
+         * @param defaultRouteAction defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+         * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+         * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+         * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+         * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultRouteAction(RegionUrlMapPathMatcherDefaultRouteActionArgs defaultRouteAction) {
+            return defaultRouteAction(Output.of(defaultRouteAction));
         }
 
         /**

@@ -74,6 +74,13 @@ public final class CxAgentArgs extends com.pulumi.resources.ResourceArgs {
         return this.defaultLanguageCode;
     }
 
+    @Import(name="deleteChatEngineOnDestroy")
+    private @Nullable Output<Boolean> deleteChatEngineOnDestroy;
+
+    public Optional<Output<Boolean>> deleteChatEngineOnDestroy() {
+        return Optional.ofNullable(this.deleteChatEngineOnDestroy);
+    }
+
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      * 
@@ -311,6 +318,7 @@ public final class CxAgentArgs extends com.pulumi.resources.ResourceArgs {
         this.advancedSettings = $.advancedSettings;
         this.avatarUri = $.avatarUri;
         this.defaultLanguageCode = $.defaultLanguageCode;
+        this.deleteChatEngineOnDestroy = $.deleteChatEngineOnDestroy;
         this.description = $.description;
         this.displayName = $.displayName;
         this.enableSpellCorrection = $.enableSpellCorrection;
@@ -411,6 +419,15 @@ public final class CxAgentArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultLanguageCode(String defaultLanguageCode) {
             return defaultLanguageCode(Output.of(defaultLanguageCode));
+        }
+
+        public Builder deleteChatEngineOnDestroy(@Nullable Output<Boolean> deleteChatEngineOnDestroy) {
+            $.deleteChatEngineOnDestroy = deleteChatEngineOnDestroy;
+            return this;
+        }
+
+        public Builder deleteChatEngineOnDestroy(Boolean deleteChatEngineOnDestroy) {
+            return deleteChatEngineOnDestroy(Output.of(deleteChatEngineOnDestroy));
         }
 
         /**

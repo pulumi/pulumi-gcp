@@ -243,14 +243,14 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.accessMode;
     }
     /**
-     * (Optional)
+     * The architecture of the disk. Values include `X86_64`, `ARM64`.
      * 
      */
     @Export(name="architecture", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> architecture;
 
     /**
-     * @return (Optional)
+     * @return The architecture of the disk. Values include `X86_64`, `ARM64`.
      * 
      */
     public Output<Optional<String>> architecture() {

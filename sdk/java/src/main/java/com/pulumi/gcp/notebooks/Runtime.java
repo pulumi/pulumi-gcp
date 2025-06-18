@@ -21,6 +21,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** `google_notebook_runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+ * 
  * A Cloud AI Platform Notebook runtime.
  * 
  * &gt; **Note:** Due to limitations of the Notebooks Runtime API, many fields

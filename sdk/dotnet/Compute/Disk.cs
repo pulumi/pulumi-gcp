@@ -179,7 +179,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> AccessMode { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional)
+        /// The architecture of the disk. Values include `X86_64`, `ARM64`.
         /// </summary>
         [Output("architecture")]
         public Output<string?> Architecture { get; private set; } = null!;
@@ -611,7 +611,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? AccessMode { get; set; }
 
         /// <summary>
-        /// (Optional)
+        /// The architecture of the disk. Values include `X86_64`, `ARM64`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -928,7 +928,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? AccessMode { get; set; }
 
         /// <summary>
-        /// (Optional)
+        /// The architecture of the disk. Values include `X86_64`, `ARM64`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }

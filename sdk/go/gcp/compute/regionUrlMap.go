@@ -937,6 +937,232 @@ import (
 //	}
 //
 // ```
+// ### Region Url Map Path Matcher Default Route Action
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Region:           pulumi.String("us-central1"),
+//				Name:             pulumi.String("health-check"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+//					Port:        pulumi.Int(80),
+//					RequestPath: pulumi.String("/"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			login, err := compute.NewRegionBackendService(ctx, "login", &compute.RegionBackendServiceArgs{
+//				Region:              pulumi.String("us-central1"),
+//				Name:                pulumi.String("login"),
+//				Protocol:            pulumi.String("HTTP"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				TimeoutSec:          pulumi.Int(10),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			home, err := compute.NewRegionBackendService(ctx, "home", &compute.RegionBackendServiceArgs{
+//				Region:              pulumi.String("us-central1"),
+//				Name:                pulumi.String("home"),
+//				Protocol:            pulumi.String("HTTP"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				TimeoutSec:          pulumi.Int(10),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionUrlMap(ctx, "regionurlmap", &compute.RegionUrlMapArgs{
+//				Region:         pulumi.String("us-central1"),
+//				Name:           pulumi.String("regionurlmap"),
+//				Description:    pulumi.String("a description"),
+//				DefaultService: home.ID(),
+//				HostRules: compute.RegionUrlMapHostRuleArray{
+//					&compute.RegionUrlMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.RegionUrlMapPathMatcherArray{
+//					&compute.RegionUrlMapPathMatcherArgs{
+//						Name: pulumi.String("allpaths"),
+//						DefaultRouteAction: &compute.RegionUrlMapPathMatcherDefaultRouteActionArgs{
+//							CorsPolicy: &compute.RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgs{
+//								Disabled:         pulumi.Bool(false),
+//								AllowCredentials: pulumi.Bool(true),
+//								AllowHeaders: pulumi.StringArray{
+//									pulumi.String("foobar"),
+//								},
+//								AllowMethods: pulumi.StringArray{
+//									pulumi.String("GET"),
+//									pulumi.String("POST"),
+//								},
+//								AllowOrigins: pulumi.StringArray{
+//									pulumi.String("example.com"),
+//								},
+//								ExposeHeaders: pulumi.StringArray{
+//									pulumi.String("foobar"),
+//								},
+//								MaxAge: pulumi.Int(60),
+//							},
+//							FaultInjectionPolicy: &compute.RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs{
+//								Abort: &compute.RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs{
+//									HttpStatus: pulumi.Int(500),
+//									Percentage: pulumi.Float64(0.5),
+//								},
+//								Delay: &compute.RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs{
+//									FixedDelay: &compute.RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{
+//										Nanos:   pulumi.Int(500),
+//										Seconds: pulumi.String("0"),
+//									},
+//									Percentage: pulumi.Float64(0.5),
+//								},
+//							},
+//							RequestMirrorPolicy: &compute.RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs{
+//								BackendService: home.ID(),
+//							},
+//							RetryPolicy: &compute.RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgs{
+//								NumRetries: pulumi.Int(3),
+//								PerTryTimeout: &compute.RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs{
+//									Nanos:   pulumi.Int(500),
+//									Seconds: pulumi.String("0"),
+//								},
+//								RetryConditions: pulumi.StringArray{
+//									pulumi.String("5xx"),
+//									pulumi.String("gateway-error"),
+//								},
+//							},
+//							Timeout: &compute.RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgs{
+//								Nanos:   pulumi.Int(500),
+//								Seconds: pulumi.String("0"),
+//							},
+//							UrlRewrite: &compute.RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgs{
+//								HostRewrite:       pulumi.String("dev.example.com"),
+//								PathPrefixRewrite: pulumi.String("/v1/api/"),
+//							},
+//							WeightedBackendServices: compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArray{
+//								&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs{
+//									BackendService: home.ID(),
+//									HeaderAction: &compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs{
+//										RequestHeadersToAdds: compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
+//											&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{
+//												HeaderName:  pulumi.String("foo-request-1"),
+//												HeaderValue: pulumi.String("bar"),
+//												Replace:     pulumi.Bool(true),
+//											},
+//											&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{
+//												HeaderName:  pulumi.String("foo-request-2"),
+//												HeaderValue: pulumi.String("bar"),
+//												Replace:     pulumi.Bool(true),
+//											},
+//										},
+//										RequestHeadersToRemoves: pulumi.StringArray{
+//											pulumi.String("fizz"),
+//										},
+//										ResponseHeadersToAdds: compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{
+//											&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{
+//												HeaderName:  pulumi.String("foo-response-1"),
+//												HeaderValue: pulumi.String("bar"),
+//												Replace:     pulumi.Bool(true),
+//											},
+//											&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{
+//												HeaderName:  pulumi.String("foo-response-2"),
+//												HeaderValue: pulumi.String("bar"),
+//												Replace:     pulumi.Bool(true),
+//											},
+//										},
+//										ResponseHeadersToRemoves: pulumi.StringArray{
+//											pulumi.String("buzz"),
+//										},
+//									},
+//									Weight: pulumi.Int(100),
+//								},
+//								&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs{
+//									BackendService: login.ID(),
+//									HeaderAction: &compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs{
+//										RequestHeadersToAdds: compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
+//											&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{
+//												HeaderName:  pulumi.String("foo-request-1"),
+//												HeaderValue: pulumi.String("bar"),
+//												Replace:     pulumi.Bool(true),
+//											},
+//											&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{
+//												HeaderName:  pulumi.String("foo-request-2"),
+//												HeaderValue: pulumi.String("bar"),
+//												Replace:     pulumi.Bool(true),
+//											},
+//										},
+//										RequestHeadersToRemoves: pulumi.StringArray{
+//											pulumi.String("fizz"),
+//										},
+//										ResponseHeadersToAdds: compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{
+//											&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{
+//												HeaderName:  pulumi.String("foo-response-1"),
+//												HeaderValue: pulumi.String("bar"),
+//												Replace:     pulumi.Bool(true),
+//											},
+//											&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{
+//												HeaderName:  pulumi.String("foo-response-2"),
+//												HeaderValue: pulumi.String("bar"),
+//												Replace:     pulumi.Bool(true),
+//											},
+//										},
+//										ResponseHeadersToRemoves: pulumi.StringArray{
+//											pulumi.String("buzz"),
+//										},
+//									},
+//									Weight: pulumi.Int(200),
+//								},
+//							},
+//						},
+//						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
+//							&compute.RegionUrlMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/home"),
+//								},
+//								Service: home.ID(),
+//							},
+//							&compute.RegionUrlMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/login"),
+//								},
+//								Service: login.ID(),
+//							},
+//						},
+//					},
+//				},
+//				Tests: compute.RegionUrlMapTestArray{
+//					&compute.RegionUrlMapTestArgs{
+//						Service: home.ID(),
+//						Host:    pulumi.String("hi.com"),
+//						Path:    pulumi.String("/home"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

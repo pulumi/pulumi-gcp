@@ -1032,8 +1032,22 @@ func (o PolicyBasedRouteWarningArrayOutput) Index(i pulumi.IntInput) PolicyBased
 }
 
 type ServiceConnectionPolicyPscConfig struct {
+	// List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+	// a network administrator can provide both 'organizations/foo' and 'projects/bar' as
+	// allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+	// instance within the 'foo' organization or the 'bar' project. By default,
+	// allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+	// allowedGoogleProducersResourceHierarchyLevel is / where is one of 'projects', 'folders', or 'organizations'
+	// and is either the ID or the number of the resource type. Format for each
+	// allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
+	// [projects/my-project-id, projects/567, folders/891, organizations/123]
+	AllowedGoogleProducersResourceHierarchyLevels []string `pulumi:"allowedGoogleProducersResourceHierarchyLevels"`
 	// Max number of PSC connections for this policy.
 	Limit *string `pulumi:"limit"`
+	// ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+	// the Producer instance can be within.
+	// Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
+	ProducerInstanceLocation *string `pulumi:"producerInstanceLocation"`
 	// IDs of the subnetworks or fully qualified identifiers for the subnetworks
 	Subnetworks []string `pulumi:"subnetworks"`
 }
@@ -1050,8 +1064,22 @@ type ServiceConnectionPolicyPscConfigInput interface {
 }
 
 type ServiceConnectionPolicyPscConfigArgs struct {
+	// List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+	// a network administrator can provide both 'organizations/foo' and 'projects/bar' as
+	// allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+	// instance within the 'foo' organization or the 'bar' project. By default,
+	// allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+	// allowedGoogleProducersResourceHierarchyLevel is / where is one of 'projects', 'folders', or 'organizations'
+	// and is either the ID or the number of the resource type. Format for each
+	// allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
+	// [projects/my-project-id, projects/567, folders/891, organizations/123]
+	AllowedGoogleProducersResourceHierarchyLevels pulumi.StringArrayInput `pulumi:"allowedGoogleProducersResourceHierarchyLevels"`
 	// Max number of PSC connections for this policy.
 	Limit pulumi.StringPtrInput `pulumi:"limit"`
+	// ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+	// the Producer instance can be within.
+	// Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
+	ProducerInstanceLocation pulumi.StringPtrInput `pulumi:"producerInstanceLocation"`
 	// IDs of the subnetworks or fully qualified identifiers for the subnetworks
 	Subnetworks pulumi.StringArrayInput `pulumi:"subnetworks"`
 }
@@ -1133,9 +1161,31 @@ func (o ServiceConnectionPolicyPscConfigOutput) ToServiceConnectionPolicyPscConf
 	}).(ServiceConnectionPolicyPscConfigPtrOutput)
 }
 
+// List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+// a network administrator can provide both 'organizations/foo' and 'projects/bar' as
+// allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+// instance within the 'foo' organization or the 'bar' project. By default,
+// allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+// allowedGoogleProducersResourceHierarchyLevel is / where is one of 'projects', 'folders', or 'organizations'
+// and is either the ID or the number of the resource type. Format for each
+// allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
+// [projects/my-project-id, projects/567, folders/891, organizations/123]
+func (o ServiceConnectionPolicyPscConfigOutput) AllowedGoogleProducersResourceHierarchyLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConfig) []string {
+		return v.AllowedGoogleProducersResourceHierarchyLevels
+	}).(pulumi.StringArrayOutput)
+}
+
 // Max number of PSC connections for this policy.
 func (o ServiceConnectionPolicyPscConfigOutput) Limit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConnectionPolicyPscConfig) *string { return v.Limit }).(pulumi.StringPtrOutput)
+}
+
+// ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+// the Producer instance can be within.
+// Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
+func (o ServiceConnectionPolicyPscConfigOutput) ProducerInstanceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConfig) *string { return v.ProducerInstanceLocation }).(pulumi.StringPtrOutput)
 }
 
 // IDs of the subnetworks or fully qualified identifiers for the subnetworks
@@ -1167,6 +1217,24 @@ func (o ServiceConnectionPolicyPscConfigPtrOutput) Elem() ServiceConnectionPolic
 	}).(ServiceConnectionPolicyPscConfigOutput)
 }
 
+// List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+// a network administrator can provide both 'organizations/foo' and 'projects/bar' as
+// allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+// instance within the 'foo' organization or the 'bar' project. By default,
+// allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+// allowedGoogleProducersResourceHierarchyLevel is / where is one of 'projects', 'folders', or 'organizations'
+// and is either the ID or the number of the resource type. Format for each
+// allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
+// [projects/my-project-id, projects/567, folders/891, organizations/123]
+func (o ServiceConnectionPolicyPscConfigPtrOutput) AllowedGoogleProducersResourceHierarchyLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedGoogleProducersResourceHierarchyLevels
+	}).(pulumi.StringArrayOutput)
+}
+
 // Max number of PSC connections for this policy.
 func (o ServiceConnectionPolicyPscConfigPtrOutput) Limit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicyPscConfig) *string {
@@ -1174,6 +1242,18 @@ func (o ServiceConnectionPolicyPscConfigPtrOutput) Limit() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.Limit
+	}).(pulumi.StringPtrOutput)
+}
+
+// ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+// the Producer instance can be within.
+// Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
+func (o ServiceConnectionPolicyPscConfigPtrOutput) ProducerInstanceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerInstanceLocation
 	}).(pulumi.StringPtrOutput)
 }
 

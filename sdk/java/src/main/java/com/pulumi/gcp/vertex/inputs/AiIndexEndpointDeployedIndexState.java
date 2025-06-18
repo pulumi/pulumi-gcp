@@ -245,6 +245,21 @@ public final class AiIndexEndpointDeployedIndexState extends com.pulumi.resource
     }
 
     /**
+     * The region of the index endpoint deployment. eg us-central1
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region of the index endpoint deployment. eg us-central1
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
      * If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
      * The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: [&#39;vertex-ai-ip-range&#39;].
@@ -281,6 +296,7 @@ public final class AiIndexEndpointDeployedIndexState extends com.pulumi.resource
         this.indexSyncTime = $.indexSyncTime;
         this.name = $.name;
         this.privateEndpoints = $.privateEndpoints;
+        this.region = $.region;
         this.reservedIpRanges = $.reservedIpRanges;
     }
 
@@ -612,6 +628,27 @@ public final class AiIndexEndpointDeployedIndexState extends com.pulumi.resource
          */
         public Builder privateEndpoints(AiIndexEndpointDeployedIndexPrivateEndpointArgs... privateEndpoints) {
             return privateEndpoints(List.of(privateEndpoints));
+        }
+
+        /**
+         * @param region The region of the index endpoint deployment. eg us-central1
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region of the index endpoint deployment. eg us-central1
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

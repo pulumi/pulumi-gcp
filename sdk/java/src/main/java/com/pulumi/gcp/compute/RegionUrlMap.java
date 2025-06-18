@@ -887,6 +887,220 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Url Map Path Matcher Default Route Action
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()
+ *             .region("us-central1")
+ *             .name("health-check")
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .requestPath("/")
+ *                 .build())
+ *             .build());
+ * 
+ *         var login = new RegionBackendService("login", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("login")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .timeoutSec(10)
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var home = new RegionBackendService("home", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("home")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .timeoutSec(10)
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var regionurlmap = new RegionUrlMap("regionurlmap", RegionUrlMapArgs.builder()
+ *             .region("us-central1")
+ *             .name("regionurlmap")
+ *             .description("a description")
+ *             .defaultService(home.id())
+ *             .hostRules(RegionUrlMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultRouteAction(RegionUrlMapPathMatcherDefaultRouteActionArgs.builder()
+ *                     .corsPolicy(RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgs.builder()
+ *                         .disabled(false)
+ *                         .allowCredentials(true)
+ *                         .allowHeaders("foobar")
+ *                         .allowMethods(                        
+ *                             "GET",
+ *                             "POST")
+ *                         .allowOrigins("example.com")
+ *                         .exposeHeaders("foobar")
+ *                         .maxAge(60)
+ *                         .build())
+ *                     .faultInjectionPolicy(RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs.builder()
+ *                         .abort(RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs.builder()
+ *                             .httpStatus(500)
+ *                             .percentage(0.5)
+ *                             .build())
+ *                         .delay(RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs.builder()
+ *                             .fixedDelay(RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs.builder()
+ *                                 .nanos(500)
+ *                                 .seconds("0")
+ *                                 .build())
+ *                             .percentage(0.5)
+ *                             .build())
+ *                         .build())
+ *                     .requestMirrorPolicy(RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs.builder()
+ *                         .backendService(home.id())
+ *                         .build())
+ *                     .retryPolicy(RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgs.builder()
+ *                         .numRetries(3)
+ *                         .perTryTimeout(RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs.builder()
+ *                             .nanos(500)
+ *                             .seconds("0")
+ *                             .build())
+ *                         .retryConditions(                        
+ *                             "5xx",
+ *                             "gateway-error")
+ *                         .build())
+ *                     .timeout(RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgs.builder()
+ *                         .nanos(500)
+ *                         .seconds("0")
+ *                         .build())
+ *                     .urlRewrite(RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgs.builder()
+ *                         .hostRewrite("dev.example.com")
+ *                         .pathPrefixRewrite("/v1/api/")
+ *                         .build())
+ *                     .weightedBackendServices(                    
+ *                         RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs.builder()
+ *                             .backendService(home.id())
+ *                             .headerAction(RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs.builder()
+ *                                 .requestHeadersToAdds(                                
+ *                                     RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
+ *                                         .headerName("foo-request-1")
+ *                                         .headerValue("bar")
+ *                                         .replace(true)
+ *                                         .build(),
+ *                                     RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
+ *                                         .headerName("foo-request-2")
+ *                                         .headerValue("bar")
+ *                                         .replace(true)
+ *                                         .build())
+ *                                 .requestHeadersToRemoves("fizz")
+ *                                 .responseHeadersToAdds(                                
+ *                                     RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
+ *                                         .headerName("foo-response-1")
+ *                                         .headerValue("bar")
+ *                                         .replace(true)
+ *                                         .build(),
+ *                                     RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
+ *                                         .headerName("foo-response-2")
+ *                                         .headerValue("bar")
+ *                                         .replace(true)
+ *                                         .build())
+ *                                 .responseHeadersToRemoves("buzz")
+ *                                 .build())
+ *                             .weight(100)
+ *                             .build(),
+ *                         RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs.builder()
+ *                             .backendService(login.id())
+ *                             .headerAction(RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs.builder()
+ *                                 .requestHeadersToAdds(                                
+ *                                     RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
+ *                                         .headerName("foo-request-1")
+ *                                         .headerValue("bar")
+ *                                         .replace(true)
+ *                                         .build(),
+ *                                     RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
+ *                                         .headerName("foo-request-2")
+ *                                         .headerValue("bar")
+ *                                         .replace(true)
+ *                                         .build())
+ *                                 .requestHeadersToRemoves("fizz")
+ *                                 .responseHeadersToAdds(                                
+ *                                     RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
+ *                                         .headerName("foo-response-1")
+ *                                         .headerValue("bar")
+ *                                         .replace(true)
+ *                                         .build(),
+ *                                     RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
+ *                                         .headerName("foo-response-2")
+ *                                         .headerValue("bar")
+ *                                         .replace(true)
+ *                                         .build())
+ *                                 .responseHeadersToRemoves("buzz")
+ *                                 .build())
+ *                             .weight(200)
+ *                             .build())
+ *                     .build())
+ *                 .pathRules(                
+ *                     RegionUrlMapPathMatcherPathRuleArgs.builder()
+ *                         .paths("/home")
+ *                         .service(home.id())
+ *                         .build(),
+ *                     RegionUrlMapPathMatcherPathRuleArgs.builder()
+ *                         .paths("/login")
+ *                         .service(login.id())
+ *                         .build())
+ *                 .build())
+ *             .tests(RegionUrlMapTestArgs.builder()
+ *                 .service(home.id())
+ *                 .host("hi.com")
+ *                 .path("/home")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

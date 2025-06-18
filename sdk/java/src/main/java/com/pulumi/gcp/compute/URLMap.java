@@ -1148,6 +1148,280 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Test Headers
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapTestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var health_check = new HealthCheck("health-check", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var backend = new BackendService("backend", BackendServiceArgs.builder()
+ *             .name("backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .healthChecks(health_check.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("URL map with test headers")
+ *             .defaultService(backend.id())
+ *             .tests(            
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test with custom headers")
+ *                     .host("example.com")
+ *                     .path("/")
+ *                     .service(backend.id())
+ *                     .headers(                    
+ *                         URLMapTestHeaderArgs.builder()
+ *                             .name("User-Agent")
+ *                             .value("TestBot/1.0")
+ *                             .build(),
+ *                         URLMapTestHeaderArgs.builder()
+ *                             .name("X-Custom-Header")
+ *                             .value("test-value")
+ *                             .build())
+ *                     .build(),
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test with authorization headers")
+ *                     .host("api.example.com")
+ *                     .path("/v1/test")
+ *                     .service(backend.id())
+ *                     .headers(                    
+ *                         URLMapTestHeaderArgs.builder()
+ *                             .name("Authorization")
+ *                             .value("Bearer token123")
+ *                             .build(),
+ *                         URLMapTestHeaderArgs.builder()
+ *                             .name("Content-Type")
+ *                             .value("application/json")
+ *                             .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Test Expected Output Url
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapTestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var health_check = new HealthCheck("health-check", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var backend = new BackendService("backend", BackendServiceArgs.builder()
+ *             .name("backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .healthChecks(health_check.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("URL map with expected output URL tests")
+ *             .defaultService(backend.id())
+ *             .tests(            
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test with expected output URL")
+ *                     .host("example.com")
+ *                     .path("/")
+ *                     .service(backend.id())
+ *                     .headers(URLMapTestHeaderArgs.builder()
+ *                         .name("User-Agent")
+ *                         .value("TestBot/1.0")
+ *                         .build())
+ *                     .expectedOutputUrl("http://example.com/")
+ *                     .build(),
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test API routing with expected output URL")
+ *                     .host("api.example.com")
+ *                     .path("/v1/users")
+ *                     .service(backend.id())
+ *                     .headers(URLMapTestHeaderArgs.builder()
+ *                         .name("Authorization")
+ *                         .value("Bearer token123")
+ *                         .build())
+ *                     .expectedOutputUrl("http://api.example.com/v1/users")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Test Redirect Response Code
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapTestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var health_check = new HealthCheck("health-check", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var backend = new BackendService("backend", BackendServiceArgs.builder()
+ *             .name("backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .healthChecks(health_check.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("URL map with redirect response code tests")
+ *             .defaultService(backend.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("example.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(backend.id())
+ *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
+ *                     .paths("/redirect/*")
+ *                     .urlRedirect(URLMapPathMatcherPathRuleUrlRedirectArgs.builder()
+ *                         .hostRedirect("newsite.com")
+ *                         .pathRedirect("/new-path/")
+ *                         .httpsRedirect(true)
+ *                         .redirectResponseCode("MOVED_PERMANENTLY_DEFAULT")
+ *                         .stripQuery(false)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .tests(            
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test redirect with expected response code")
+ *                     .host("example.com")
+ *                     .path("/redirect/old-page")
+ *                     .headers(URLMapTestHeaderArgs.builder()
+ *                         .name("Referer")
+ *                         .value("https://oldsite.com")
+ *                         .build())
+ *                     .expectedOutputUrl("https://newsite.com/new-path/")
+ *                     .expectedRedirectResponseCode(301)
+ *                     .build(),
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test another redirect scenario")
+ *                     .host("example.com")
+ *                     .path("/redirect/another-page")
+ *                     .headers(URLMapTestHeaderArgs.builder()
+ *                         .name("User-Agent")
+ *                         .value("TestBot/1.0")
+ *                         .build())
+ *                     .expectedOutputUrl("https://newsite.com/new-path/")
+ *                     .expectedRedirectResponseCode(301)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Url Map Path Template Match
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

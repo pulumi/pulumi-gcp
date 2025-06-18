@@ -516,7 +516,7 @@ index 682eef375..611319116 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index b172d4276..7f804746e 100644
+index bf3c3eaf8..3bea5e9ab 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -45,24 +45,21 @@ To get more information about Environments, see:
@@ -627,7 +627,7 @@ index 4c0f23475..e298f9d8e 100644
  ## Example Usage - Backend Service Signed Url Key
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index 8a0a9f896..a9d030759 100644
+index f164e6bc1..b770c7032 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -45,9 +45,6 @@ To get more information about Disk, see:
@@ -1898,7 +1898,7 @@ index 7b99556ac..e7237015b 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
 diff --git a/website/docs/r/compute_vpn_tunnel.html.markdown b/website/docs/r/compute_vpn_tunnel.html.markdown
-index 85fd0b322..177058967 100644
+index 88a87baed..b1bfb7b30 100644
 --- a/website/docs/r/compute_vpn_tunnel.html.markdown
 +++ b/website/docs/r/compute_vpn_tunnel.html.markdown
 @@ -31,9 +31,8 @@ To get more information about VpnTunnel, see:

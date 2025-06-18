@@ -255,6 +255,59 @@ import * as utilities from "../utilities";
  *     certificateManagerCertificates: [pulumi.interpolate`//certificatemanager.googleapis.com/${defaultCertificate.id}`],
  * });
  * ```
+ * ### Target Https Proxy Fingerprint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
+ *     name: "my-certificate",
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map",
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const _default = new gcp.compute.TargetHttpsProxy("default", {
+ *     name: "test-fingerprint-proxy",
+ *     urlMap: defaultURLMap.id,
+ *     sslCertificates: [defaultSSLCertificate.id],
+ * });
+ * export const targetHttpsProxyFingerprint = _default.fingerprint;
+ * ```
  *
  * ## Import
  *
@@ -331,6 +384,14 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
+     * patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet.
+     * To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+     * A base64-encoded string.
+     */
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -442,6 +503,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["certificateMap"] = state ? state.certificateMap : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["httpKeepAliveTimeoutSec"] = state ? state.httpKeepAliveTimeoutSec : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -473,6 +535,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["tlsEarlyData"] = args ? args.tlsEarlyData : undefined;
             resourceInputs["urlMap"] = args ? args.urlMap : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["proxyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
@@ -508,6 +571,14 @@ export interface TargetHttpsProxyState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
+     * patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet.
+     * To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+     * A base64-encoded string.
+     */
+    fingerprint?: pulumi.Input<string>;
     /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is

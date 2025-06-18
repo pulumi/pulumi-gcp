@@ -343,6 +343,7 @@ class _TargetHttpsProxyState:
                  certificate_map: Optional[pulumi.Input[builtins.str]] = None,
                  creation_timestamp: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 fingerprint: Optional[pulumi.Input[builtins.str]] = None,
                  http_keep_alive_timeout_sec: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -368,6 +369,11 @@ class _TargetHttpsProxyState:
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+               This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
+               patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet.
+               To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+               A base64-encoded string.
         :param pulumi.Input[builtins.int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
                while there is no matching traffic (in seconds). If an HTTP keepalive is
                not specified, a default value will be used. For Global
@@ -434,6 +440,8 @@ class _TargetHttpsProxyState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
         if http_keep_alive_timeout_sec is not None:
             pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if name is not None:
@@ -513,6 +521,22 @@ class _TargetHttpsProxyState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
+        patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet.
+        To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter(name="httpKeepAliveTimeoutSec")
@@ -934,6 +958,50 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
         ```
+        ### Target Https Proxy Fingerprint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_ssl_certificate = gcp.compute.SSLCertificate("default",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": default_backend_service.id,
+                "path_rules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
+        default = gcp.compute.TargetHttpsProxy("default",
+            name="test-fingerprint-proxy",
+            url_map=default_url_map.id,
+            ssl_certificates=[default_ssl_certificate.id])
+        pulumi.export("targetHttpsProxyFingerprint", default.fingerprint)
+        ```
 
         ## Import
 
@@ -1243,6 +1311,50 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
         ```
+        ### Target Https Proxy Fingerprint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_ssl_certificate = gcp.compute.SSLCertificate("default",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": default_backend_service.id,
+                "path_rules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
+        default = gcp.compute.TargetHttpsProxy("default",
+            name="test-fingerprint-proxy",
+            url_map=default_url_map.id,
+            ssl_certificates=[default_ssl_certificate.id])
+        pulumi.export("targetHttpsProxyFingerprint", default.fingerprint)
+        ```
 
         ## Import
 
@@ -1321,6 +1433,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'url_map'")
             __props__.__dict__["url_map"] = url_map
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["fingerprint"] = None
             __props__.__dict__["proxy_id"] = None
             __props__.__dict__["self_link"] = None
         super(TargetHttpsProxy, __self__).__init__(
@@ -1337,6 +1450,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             certificate_map: Optional[pulumi.Input[builtins.str]] = None,
             creation_timestamp: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
+            fingerprint: Optional[pulumi.Input[builtins.str]] = None,
             http_keep_alive_timeout_sec: Optional[pulumi.Input[builtins.int]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
@@ -1367,6 +1481,11 @@ class TargetHttpsProxy(pulumi.CustomResource):
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+               This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
+               patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet.
+               To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+               A base64-encoded string.
         :param pulumi.Input[builtins.int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
                while there is no matching traffic (in seconds). If an HTTP keepalive is
                not specified, a default value will be used. For Global
@@ -1433,6 +1552,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["certificate_map"] = certificate_map
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["http_keep_alive_timeout_sec"] = http_keep_alive_timeout_sec
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -1485,6 +1605,18 @@ class TargetHttpsProxy(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Output[builtins.str]:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
+        patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet.
+        To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "fingerprint")
 
     @property
     @pulumi.getter(name="httpKeepAliveTimeoutSec")

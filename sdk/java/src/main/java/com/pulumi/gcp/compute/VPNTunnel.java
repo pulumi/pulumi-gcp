@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.VPNTunnelArgs;
 import com.pulumi.gcp.compute.inputs.VPNTunnelState;
+import com.pulumi.gcp.compute.outputs.VPNTunnelCipherSuite;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -127,6 +128,120 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Vpn Tunnel Cipher Suite
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.VPNGateway;
+ * import com.pulumi.gcp.compute.VPNGatewayArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.VPNTunnel;
+ * import com.pulumi.gcp.compute.VPNTunnelArgs;
+ * import com.pulumi.gcp.compute.inputs.VPNTunnelCipherSuiteArgs;
+ * import com.pulumi.gcp.compute.inputs.VPNTunnelCipherSuitePhase1Args;
+ * import com.pulumi.gcp.compute.inputs.VPNTunnelCipherSuitePhase2Args;
+ * import com.pulumi.gcp.compute.Route;
+ * import com.pulumi.gcp.compute.RouteArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network1 = new Network("network1", NetworkArgs.builder()
+ *             .name("network-1")
+ *             .build());
+ * 
+ *         var targetGateway = new VPNGateway("targetGateway", VPNGatewayArgs.builder()
+ *             .name("vpn-1")
+ *             .network(network1.id())
+ *             .build());
+ * 
+ *         var vpnStaticIp = new Address("vpnStaticIp", AddressArgs.builder()
+ *             .name("vpn-static-ip")
+ *             .build());
+ * 
+ *         var frEsp = new ForwardingRule("frEsp", ForwardingRuleArgs.builder()
+ *             .name("fr-esp")
+ *             .ipProtocol("ESP")
+ *             .ipAddress(vpnStaticIp.address())
+ *             .target(targetGateway.id())
+ *             .build());
+ * 
+ *         var frUdp500 = new ForwardingRule("frUdp500", ForwardingRuleArgs.builder()
+ *             .name("fr-udp500")
+ *             .ipProtocol("UDP")
+ *             .portRange("500")
+ *             .ipAddress(vpnStaticIp.address())
+ *             .target(targetGateway.id())
+ *             .build());
+ * 
+ *         var frUdp4500 = new ForwardingRule("frUdp4500", ForwardingRuleArgs.builder()
+ *             .name("fr-udp4500")
+ *             .ipProtocol("UDP")
+ *             .portRange("4500")
+ *             .ipAddress(vpnStaticIp.address())
+ *             .target(targetGateway.id())
+ *             .build());
+ * 
+ *         var tunnel1 = new VPNTunnel("tunnel1", VPNTunnelArgs.builder()
+ *             .name("tunnel-cipher")
+ *             .peerIp("15.0.0.120")
+ *             .sharedSecret("a secret message")
+ *             .targetVpnGateway(targetGateway.id())
+ *             .cipherSuite(VPNTunnelCipherSuiteArgs.builder()
+ *                 .phase1(VPNTunnelCipherSuitePhase1Args.builder()
+ *                     .encryptions("AES-CBC-256")
+ *                     .integrities("HMAC-SHA2-256-128")
+ *                     .prves("PRF-HMAC-SHA2-256")
+ *                     .dhs("Group-14")
+ *                     .build())
+ *                 .phase2(VPNTunnelCipherSuitePhase2Args.builder()
+ *                     .encryptions("AES-CBC-128")
+ *                     .integrities("HMAC-SHA2-256-128")
+ *                     .pfs("Group-14")
+ *                     .build())
+ *                 .build())
+ *             .labels(Map.of("foo", "bar"))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     frEsp,
+ *                     frUdp500,
+ *                     frUdp4500)
+ *                 .build());
+ * 
+ *         var route1 = new Route("route1", RouteArgs.builder()
+ *             .name("route1")
+ *             .network(network1.name())
+ *             .destRange("15.0.0.0/24")
+ *             .priority(1000)
+ *             .nextHopVpnTunnel(tunnel1.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -161,6 +276,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/vPNTunnel:VPNTunnel")
 public class VPNTunnel extends com.pulumi.resources.CustomResource {
+    /**
+     * User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="cipherSuite", refs={VPNTunnelCipherSuite.class}, tree="[0]")
+    private Output</* @Nullable */ VPNTunnelCipherSuite> cipherSuite;
+
+    /**
+     * @return User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<VPNTunnelCipherSuite>> cipherSuite() {
+        return Codegen.optional(this.cipherSuite);
+    }
     /**
      * Creation timestamp in RFC3339 text format.
      * 

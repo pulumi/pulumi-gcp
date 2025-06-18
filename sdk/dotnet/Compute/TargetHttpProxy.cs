@@ -193,6 +193,81 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Target Http Proxy Fingerprint
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     {
+    ///         Name = "http-health-check",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
+    ///     {
+    ///         Name = "url-map",
+    ///         DefaultService = defaultBackendService.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = defaultBackendService.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = defaultBackendService.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.TargetHttpProxy("default", new()
+    ///     {
+    ///         Name = "test-fingerprint-proxy",
+    ///         UrlMap = defaultURLMap.Id,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["targetHttpProxyFingerprint"] = @default.Fingerprint,
+    ///     };
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -232,6 +307,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        /// This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to
+        /// patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet.
+        /// To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
+        /// A base64-encoded string.
+        /// </summary>
+        [Output("fingerprint")]
+        public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
         /// Specifies how long to keep a connection open, after completing a response,
@@ -416,6 +501,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        /// This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to
+        /// patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet.
+        /// To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
+        /// A base64-encoded string.
+        /// </summary>
+        [Input("fingerprint")]
+        public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
         /// Specifies how long to keep a connection open, after completing a response,

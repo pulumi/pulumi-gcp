@@ -6,7 +6,10 @@ package com.pulumi.gcp.integrationconnectors.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionLogConfig {
@@ -15,6 +18,12 @@ public final class ConnectionLogConfig {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return Log configuration level.
+     * Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+     * 
+     */
+    private @Nullable String level;
 
     private ConnectionLogConfig() {}
     /**
@@ -23,6 +32,14 @@ public final class ConnectionLogConfig {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return Log configuration level.
+     * Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+     * 
+     */
+    public Optional<String> level() {
+        return Optional.ofNullable(this.level);
     }
 
     public static Builder builder() {
@@ -35,10 +52,12 @@ public final class ConnectionLogConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private @Nullable String level;
         public Builder() {}
         public Builder(ConnectionLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.level = defaults.level;
         }
 
         @CustomType.Setter
@@ -49,9 +68,16 @@ public final class ConnectionLogConfig {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder level(@Nullable String level) {
+
+            this.level = level;
+            return this;
+        }
         public ConnectionLogConfig build() {
             final var _resultValue = new ConnectionLogConfig();
             _resultValue.enabled = enabled;
+            _resultValue.level = level;
             return _resultValue;
         }
     }

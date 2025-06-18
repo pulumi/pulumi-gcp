@@ -50,34 +50,32 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs ext
     }
 
     /**
-     * Prior to forwarding the request to the selected origin, if the
-     * request matched a pathTemplateMatch, the matching portion of the
-     * request&#39;s path is replaced re-written using the pattern specified
-     * by pathTemplateRewrite.
-     * pathTemplateRewrite must be between 1 and 255 characters
-     * (inclusive), must start with a &#39;/&#39;, and must only use variables
-     * captured by the route&#39;s pathTemplate matchers.
-     * pathTemplateRewrite may only be used when all of a route&#39;s
-     * MatchRules specify pathTemplate.
-     * Only one of pathPrefixRewrite and pathTemplateRewrite may be
-     * specified.
+     * If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
+     * A corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.
+     * * At least one variable must be specified in the pathTemplateMatch field
+     * * You can omit variables from the rewritten URL
+     * * The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.
+     *   For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
+     *   /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
+     *   rewritten as /content/{format}/{country}/{suffix}.
+     *   At least one non-empty routeRules[].matchRules[].path_template_match is required.
+     *   Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
      * 
      */
     @Import(name="pathTemplateRewrite")
     private @Nullable Output<String> pathTemplateRewrite;
 
     /**
-     * @return Prior to forwarding the request to the selected origin, if the
-     * request matched a pathTemplateMatch, the matching portion of the
-     * request&#39;s path is replaced re-written using the pattern specified
-     * by pathTemplateRewrite.
-     * pathTemplateRewrite must be between 1 and 255 characters
-     * (inclusive), must start with a &#39;/&#39;, and must only use variables
-     * captured by the route&#39;s pathTemplate matchers.
-     * pathTemplateRewrite may only be used when all of a route&#39;s
-     * MatchRules specify pathTemplate.
-     * Only one of pathPrefixRewrite and pathTemplateRewrite may be
-     * specified.
+     * @return If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
+     * A corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.
+     * * At least one variable must be specified in the pathTemplateMatch field
+     * * You can omit variables from the rewritten URL
+     * * The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.
+     *   For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
+     *   /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
+     *   rewritten as /content/{format}/{country}/{suffix}.
+     *   At least one non-empty routeRules[].matchRules[].path_template_match is required.
+     *   Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
      * 
      */
     public Optional<Output<String>> pathTemplateRewrite() {
@@ -157,17 +155,16 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs ext
         }
 
         /**
-         * @param pathTemplateRewrite Prior to forwarding the request to the selected origin, if the
-         * request matched a pathTemplateMatch, the matching portion of the
-         * request&#39;s path is replaced re-written using the pattern specified
-         * by pathTemplateRewrite.
-         * pathTemplateRewrite must be between 1 and 255 characters
-         * (inclusive), must start with a &#39;/&#39;, and must only use variables
-         * captured by the route&#39;s pathTemplate matchers.
-         * pathTemplateRewrite may only be used when all of a route&#39;s
-         * MatchRules specify pathTemplate.
-         * Only one of pathPrefixRewrite and pathTemplateRewrite may be
-         * specified.
+         * @param pathTemplateRewrite If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
+         * A corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.
+         * * At least one variable must be specified in the pathTemplateMatch field
+         * * You can omit variables from the rewritten URL
+         * * The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.
+         *   For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
+         *   /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
+         *   rewritten as /content/{format}/{country}/{suffix}.
+         *   At least one non-empty routeRules[].matchRules[].path_template_match is required.
+         *   Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
          * 
          * @return builder
          * 
@@ -178,17 +175,16 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs ext
         }
 
         /**
-         * @param pathTemplateRewrite Prior to forwarding the request to the selected origin, if the
-         * request matched a pathTemplateMatch, the matching portion of the
-         * request&#39;s path is replaced re-written using the pattern specified
-         * by pathTemplateRewrite.
-         * pathTemplateRewrite must be between 1 and 255 characters
-         * (inclusive), must start with a &#39;/&#39;, and must only use variables
-         * captured by the route&#39;s pathTemplate matchers.
-         * pathTemplateRewrite may only be used when all of a route&#39;s
-         * MatchRules specify pathTemplate.
-         * Only one of pathPrefixRewrite and pathTemplateRewrite may be
-         * specified.
+         * @param pathTemplateRewrite If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
+         * A corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.
+         * * At least one variable must be specified in the pathTemplateMatch field
+         * * You can omit variables from the rewritten URL
+         * * The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.
+         *   For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
+         *   /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
+         *   rewritten as /content/{format}/{country}/{suffix}.
+         *   At least one non-empty routeRules[].matchRules[].path_template_match is required.
+         *   Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
          * 
          * @return builder
          * 

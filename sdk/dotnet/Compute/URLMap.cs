@@ -1262,6 +1262,273 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Url Map Test Headers
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var health_check = new Gcp.Compute.HealthCheck("health-check", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var backend = new Gcp.Compute.BackendService("backend", new()
+    ///     {
+    ///         Name = "backend",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         HealthChecks = health_check.Id,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.URLMap("urlmap", new()
+    ///     {
+    ///         Name = "urlmap",
+    ///         Description = "URL map with test headers",
+    ///         DefaultService = backend.Id,
+    ///         Tests = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapTestArgs
+    ///             {
+    ///                 Description = "Test with custom headers",
+    ///                 Host = "example.com",
+    ///                 Path = "/",
+    ///                 Service = backend.Id,
+    ///                 Headers = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapTestHeaderArgs
+    ///                     {
+    ///                         Name = "User-Agent",
+    ///                         Value = "TestBot/1.0",
+    ///                     },
+    ///                     new Gcp.Compute.Inputs.URLMapTestHeaderArgs
+    ///                     {
+    ///                         Name = "X-Custom-Header",
+    ///                         Value = "test-value",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.URLMapTestArgs
+    ///             {
+    ///                 Description = "Test with authorization headers",
+    ///                 Host = "api.example.com",
+    ///                 Path = "/v1/test",
+    ///                 Service = backend.Id,
+    ///                 Headers = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapTestHeaderArgs
+    ///                     {
+    ///                         Name = "Authorization",
+    ///                         Value = "Bearer token123",
+    ///                     },
+    ///                     new Gcp.Compute.Inputs.URLMapTestHeaderArgs
+    ///                     {
+    ///                         Name = "Content-Type",
+    ///                         Value = "application/json",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Url Map Test Expected Output Url
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var health_check = new Gcp.Compute.HealthCheck("health-check", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var backend = new Gcp.Compute.BackendService("backend", new()
+    ///     {
+    ///         Name = "backend",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         HealthChecks = health_check.Id,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.URLMap("urlmap", new()
+    ///     {
+    ///         Name = "urlmap",
+    ///         Description = "URL map with expected output URL tests",
+    ///         DefaultService = backend.Id,
+    ///         Tests = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapTestArgs
+    ///             {
+    ///                 Description = "Test with expected output URL",
+    ///                 Host = "example.com",
+    ///                 Path = "/",
+    ///                 Service = backend.Id,
+    ///                 Headers = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapTestHeaderArgs
+    ///                     {
+    ///                         Name = "User-Agent",
+    ///                         Value = "TestBot/1.0",
+    ///                     },
+    ///                 },
+    ///                 ExpectedOutputUrl = "http://example.com/",
+    ///             },
+    ///             new Gcp.Compute.Inputs.URLMapTestArgs
+    ///             {
+    ///                 Description = "Test API routing with expected output URL",
+    ///                 Host = "api.example.com",
+    ///                 Path = "/v1/users",
+    ///                 Service = backend.Id,
+    ///                 Headers = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapTestHeaderArgs
+    ///                     {
+    ///                         Name = "Authorization",
+    ///                         Value = "Bearer token123",
+    ///                     },
+    ///                 },
+    ///                 ExpectedOutputUrl = "http://api.example.com/v1/users",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Url Map Test Redirect Response Code
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var health_check = new Gcp.Compute.HealthCheck("health-check", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var backend = new Gcp.Compute.BackendService("backend", new()
+    ///     {
+    ///         Name = "backend",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         HealthChecks = health_check.Id,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.URLMap("urlmap", new()
+    ///     {
+    ///         Name = "urlmap",
+    ///         Description = "URL map with redirect response code tests",
+    ///         DefaultService = backend.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "example.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = backend.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/redirect/*",
+    ///                         },
+    ///                         UrlRedirect = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleUrlRedirectArgs
+    ///                         {
+    ///                             HostRedirect = "newsite.com",
+    ///                             PathRedirect = "/new-path/",
+    ///                             HttpsRedirect = true,
+    ///                             RedirectResponseCode = "MOVED_PERMANENTLY_DEFAULT",
+    ///                             StripQuery = false,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Tests = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapTestArgs
+    ///             {
+    ///                 Description = "Test redirect with expected response code",
+    ///                 Host = "example.com",
+    ///                 Path = "/redirect/old-page",
+    ///                 Headers = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapTestHeaderArgs
+    ///                     {
+    ///                         Name = "Referer",
+    ///                         Value = "https://oldsite.com",
+    ///                     },
+    ///                 },
+    ///                 ExpectedOutputUrl = "https://newsite.com/new-path/",
+    ///                 ExpectedRedirectResponseCode = 301,
+    ///             },
+    ///             new Gcp.Compute.Inputs.URLMapTestArgs
+    ///             {
+    ///                 Description = "Test another redirect scenario",
+    ///                 Host = "example.com",
+    ///                 Path = "/redirect/another-page",
+    ///                 Headers = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapTestHeaderArgs
+    ///                     {
+    ///                         Name = "User-Agent",
+    ///                         Value = "TestBot/1.0",
+    ///                     },
+    ///                 },
+    ///                 ExpectedOutputUrl = "https://newsite.com/new-path/",
+    ///                 ExpectedRedirectResponseCode = 301,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Url Map Path Template Match
     /// 
     /// ```csharp

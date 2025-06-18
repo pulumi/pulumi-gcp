@@ -29,6 +29,7 @@ public final class GetBackupPlanResult {
     private String name;
     private @Nullable String project;
     private String resourceType;
+    private List<String> supportedResourceTypes;
     private String updateTime;
 
     private GetBackupPlanResult() {}
@@ -69,6 +70,9 @@ public final class GetBackupPlanResult {
     public String resourceType() {
         return this.resourceType;
     }
+    public List<String> supportedResourceTypes() {
+        return this.supportedResourceTypes;
+    }
     public String updateTime() {
         return this.updateTime;
     }
@@ -93,6 +97,7 @@ public final class GetBackupPlanResult {
         private String name;
         private @Nullable String project;
         private String resourceType;
+        private List<String> supportedResourceTypes;
         private String updateTime;
         public Builder() {}
         public Builder(GetBackupPlanResult defaults) {
@@ -108,6 +113,7 @@ public final class GetBackupPlanResult {
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.resourceType = defaults.resourceType;
+    	      this.supportedResourceTypes = defaults.supportedResourceTypes;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -201,6 +207,17 @@ public final class GetBackupPlanResult {
             return this;
         }
         @CustomType.Setter
+        public Builder supportedResourceTypes(List<String> supportedResourceTypes) {
+            if (supportedResourceTypes == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanResult", "supportedResourceTypes");
+            }
+            this.supportedResourceTypes = supportedResourceTypes;
+            return this;
+        }
+        public Builder supportedResourceTypes(String... supportedResourceTypes) {
+            return supportedResourceTypes(List.of(supportedResourceTypes));
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetBackupPlanResult", "updateTime");
@@ -221,6 +238,7 @@ public final class GetBackupPlanResult {
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.resourceType = resourceType;
+            _resultValue.supportedResourceTypes = supportedResourceTypes;
             _resultValue.updateTime = updateTime;
             return _resultValue;
         }

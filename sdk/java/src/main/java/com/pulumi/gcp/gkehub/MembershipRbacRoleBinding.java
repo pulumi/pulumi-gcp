@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var membership = new Membership("membership", MembershipArgs.builder()
- *             .membershipId("tf-test-membership_75413")
+ *             .membershipId("tf-test-membership_55138")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
  *                     .resourceLink(primary.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var membershipRbacRoleBinding = new MembershipRbacRoleBinding("membershipRbacRoleBinding", MembershipRbacRoleBindingArgs.builder()
- *             .membershipRbacRoleBindingId("tf-test-membership-rbac-role-binding_55138")
+ *             .membershipRbacRoleBindingId("tf-test-membership-rbac-role-binding_37559")
  *             .membershipId(membership.membershipId())
  *             .user(String.format("service-%s}{@literal @}{@code gcp-sa-anthossupport.iam.gserviceaccount.com", project.number()))
  *             .role(MembershipRbacRoleBindingRoleArgs.builder()

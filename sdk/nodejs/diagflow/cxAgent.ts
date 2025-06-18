@@ -166,6 +166,7 @@ export class CxAgent extends pulumi.CustomResource {
      * for a list of the currently supported language codes. This field cannot be updated after creation.
      */
     public readonly defaultLanguageCode!: pulumi.Output<string>;
+    public readonly deleteChatEngineOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
@@ -260,6 +261,7 @@ export class CxAgent extends pulumi.CustomResource {
             resourceInputs["advancedSettings"] = state ? state.advancedSettings : undefined;
             resourceInputs["avatarUri"] = state ? state.avatarUri : undefined;
             resourceInputs["defaultLanguageCode"] = state ? state.defaultLanguageCode : undefined;
+            resourceInputs["deleteChatEngineOnDestroy"] = state ? state.deleteChatEngineOnDestroy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["enableSpellCorrection"] = state ? state.enableSpellCorrection : undefined;
@@ -292,6 +294,7 @@ export class CxAgent extends pulumi.CustomResource {
             resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
             resourceInputs["avatarUri"] = args ? args.avatarUri : undefined;
             resourceInputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
+            resourceInputs["deleteChatEngineOnDestroy"] = args ? args.deleteChatEngineOnDestroy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
@@ -332,6 +335,7 @@ export interface CxAgentState {
      * for a list of the currently supported language codes. This field cannot be updated after creation.
      */
     defaultLanguageCode?: pulumi.Input<string>;
+    deleteChatEngineOnDestroy?: pulumi.Input<boolean>;
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
@@ -430,6 +434,7 @@ export interface CxAgentArgs {
      * for a list of the currently supported language codes. This field cannot be updated after creation.
      */
     defaultLanguageCode: pulumi.Input<string>;
+    deleteChatEngineOnDestroy?: pulumi.Input<boolean>;
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */

@@ -209,6 +209,81 @@ import (
 //	}
 //
 // ```
+// ### Target Http Proxy Fingerprint
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("http-health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("backend-service"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
+//				Name:           pulumi.String("url-map"),
+//				DefaultService: defaultBackendService.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: defaultBackendService.ID(),
+//						PathRules: compute.URLMapPathMatcherPathRuleArray{
+//							&compute.URLMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/*"),
+//								},
+//								Service: defaultBackendService.ID(),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewTargetHttpProxy(ctx, "default", &compute.TargetHttpProxyArgs{
+//				Name:   pulumi.String("test-fingerprint-proxy"),
+//				UrlMap: defaultURLMap.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("targetHttpProxyFingerprint", _default.Fingerprint)
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -240,6 +315,12 @@ type TargetHttpProxy struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+	// This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to
+	// patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet.
+	// To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
+	// A base64-encoded string.
+	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// Specifies how long to keep a connection open, after completing a response,
 	// while there is no matching traffic (in seconds). If an HTTP keepalive is
 	// not specified, a default value will be used. For Global
@@ -312,6 +393,12 @@ type targetHttpProxyState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+	// This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to
+	// patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet.
+	// To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
+	// A base64-encoded string.
+	Fingerprint *string `pulumi:"fingerprint"`
 	// Specifies how long to keep a connection open, after completing a response,
 	// while there is no matching traffic (in seconds). If an HTTP keepalive is
 	// not specified, a default value will be used. For Global
@@ -352,6 +439,12 @@ type TargetHttpProxyState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+	// This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to
+	// patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet.
+	// To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
+	// A base64-encoded string.
+	Fingerprint pulumi.StringPtrInput
 	// Specifies how long to keep a connection open, after completing a response,
 	// while there is no matching traffic (in seconds). If an HTTP keepalive is
 	// not specified, a default value will be used. For Global
@@ -555,6 +648,15 @@ func (o TargetHttpProxyOutput) CreationTimestamp() pulumi.StringOutput {
 // An optional description of this resource.
 func (o TargetHttpProxyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetHttpProxy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+// This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to
+// patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet.
+// To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
+// A base64-encoded string.
+func (o TargetHttpProxyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetHttpProxy) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
 // Specifies how long to keep a connection open, after completing a response,

@@ -98,6 +98,40 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+     * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+     * 
+     */
+    @Import(name="enableHotTierAutoResize")
+    private @Nullable Output<Boolean> enableHotTierAutoResize;
+
+    /**
+     * @return Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+     * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+     * 
+     */
+    public Optional<Output<Boolean>> enableHotTierAutoResize() {
+        return Optional.ofNullable(this.enableHotTierAutoResize);
+    }
+
+    /**
+     * Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+     * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+     * 
+     */
+    @Import(name="hotTierSizeGib")
+    private @Nullable Output<String> hotTierSizeGib;
+
+    /**
+     * @return Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+     * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+     * 
+     */
+    public Optional<Output<String>> hotTierSizeGib() {
+        return Optional.ofNullable(this.hotTierSizeGib);
+    }
+
+    /**
      * Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
      * The policy needs to be in the same location as the storage pool.
      * 
@@ -309,6 +343,8 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.capacityGib = $.capacityGib;
         this.customPerformanceEnabled = $.customPerformanceEnabled;
         this.description = $.description;
+        this.enableHotTierAutoResize = $.enableHotTierAutoResize;
+        this.hotTierSizeGib = $.hotTierSizeGib;
         this.kmsConfig = $.kmsConfig;
         this.labels = $.labels;
         this.ldapEnabled = $.ldapEnabled;
@@ -448,6 +484,52 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param enableHotTierAutoResize Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+         * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHotTierAutoResize(@Nullable Output<Boolean> enableHotTierAutoResize) {
+            $.enableHotTierAutoResize = enableHotTierAutoResize;
+            return this;
+        }
+
+        /**
+         * @param enableHotTierAutoResize Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+         * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHotTierAutoResize(Boolean enableHotTierAutoResize) {
+            return enableHotTierAutoResize(Output.of(enableHotTierAutoResize));
+        }
+
+        /**
+         * @param hotTierSizeGib Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+         * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTierSizeGib(@Nullable Output<String> hotTierSizeGib) {
+            $.hotTierSizeGib = hotTierSizeGib;
+            return this;
+        }
+
+        /**
+         * @param hotTierSizeGib Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+         * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTierSizeGib(String hotTierSizeGib) {
+            return hotTierSizeGib(Output.of(hotTierSizeGib));
         }
 
         /**

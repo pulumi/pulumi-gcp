@@ -116,6 +116,126 @@ import (
 //	}
 //
 // ```
+// ### Vpn Tunnel Cipher Suite
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := compute.NewNetwork(ctx, "network1", &compute.NetworkArgs{
+//				Name: pulumi.String("network-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetGateway, err := compute.NewVPNGateway(ctx, "target_gateway", &compute.VPNGatewayArgs{
+//				Name:    pulumi.String("vpn-1"),
+//				Network: network1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpnStaticIp, err := compute.NewAddress(ctx, "vpn_static_ip", &compute.AddressArgs{
+//				Name: pulumi.String("vpn-static-ip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			frEsp, err := compute.NewForwardingRule(ctx, "fr_esp", &compute.ForwardingRuleArgs{
+//				Name:       pulumi.String("fr-esp"),
+//				IpProtocol: pulumi.String("ESP"),
+//				IpAddress:  vpnStaticIp.Address,
+//				Target:     targetGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			frUdp500, err := compute.NewForwardingRule(ctx, "fr_udp500", &compute.ForwardingRuleArgs{
+//				Name:       pulumi.String("fr-udp500"),
+//				IpProtocol: pulumi.String("UDP"),
+//				PortRange:  pulumi.String("500"),
+//				IpAddress:  vpnStaticIp.Address,
+//				Target:     targetGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			frUdp4500, err := compute.NewForwardingRule(ctx, "fr_udp4500", &compute.ForwardingRuleArgs{
+//				Name:       pulumi.String("fr-udp4500"),
+//				IpProtocol: pulumi.String("UDP"),
+//				PortRange:  pulumi.String("4500"),
+//				IpAddress:  vpnStaticIp.Address,
+//				Target:     targetGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
+//				Name:             pulumi.String("tunnel-cipher"),
+//				PeerIp:           pulumi.String("15.0.0.120"),
+//				SharedSecret:     pulumi.String("a secret message"),
+//				TargetVpnGateway: targetGateway.ID(),
+//				CipherSuite: &compute.VPNTunnelCipherSuiteArgs{
+//					Phase1: &compute.VPNTunnelCipherSuitePhase1Args{
+//						Encryptions: pulumi.StringArray{
+//							pulumi.String("AES-CBC-256"),
+//						},
+//						Integrities: pulumi.StringArray{
+//							pulumi.String("HMAC-SHA2-256-128"),
+//						},
+//						Prves: pulumi.StringArray{
+//							pulumi.String("PRF-HMAC-SHA2-256"),
+//						},
+//						Dhs: pulumi.StringArray{
+//							pulumi.String("Group-14"),
+//						},
+//					},
+//					Phase2: &compute.VPNTunnelCipherSuitePhase2Args{
+//						Encryptions: pulumi.StringArray{
+//							pulumi.String("AES-CBC-128"),
+//						},
+//						Integrities: pulumi.StringArray{
+//							pulumi.String("HMAC-SHA2-256-128"),
+//						},
+//						Pfs: pulumi.StringArray{
+//							pulumi.String("Group-14"),
+//						},
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				frEsp,
+//				frUdp500,
+//				frUdp4500,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRoute(ctx, "route1", &compute.RouteArgs{
+//				Name:             pulumi.String("route1"),
+//				Network:          network1.Name,
+//				DestRange:        pulumi.String("15.0.0.0/24"),
+//				Priority:         pulumi.Int(1000),
+//				NextHopVpnTunnel: tunnel1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -149,6 +269,9 @@ import (
 type VPNTunnel struct {
 	pulumi.CustomResourceState
 
+	// User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+	// Structure is documented below.
+	CipherSuite VPNTunnelCipherSuitePtrOutput `pulumi:"cipherSuite"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
@@ -272,6 +395,9 @@ func GetVPNTunnel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VPNTunnel resources.
 type vpntunnelState struct {
+	// User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+	// Structure is documented below.
+	CipherSuite *VPNTunnelCipherSuite `pulumi:"cipherSuite"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
@@ -354,6 +480,9 @@ type vpntunnelState struct {
 }
 
 type VPNTunnelState struct {
+	// User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+	// Structure is documented below.
+	CipherSuite VPNTunnelCipherSuitePtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
@@ -440,6 +569,9 @@ func (VPNTunnelState) ElementType() reflect.Type {
 }
 
 type vpntunnelArgs struct {
+	// User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+	// Structure is documented below.
+	CipherSuite *VPNTunnelCipherSuite `pulumi:"cipherSuite"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// IKE protocol version to use when establishing the VPN tunnel with
@@ -505,6 +637,9 @@ type vpntunnelArgs struct {
 
 // The set of arguments for constructing a VPNTunnel resource.
 type VPNTunnelArgs struct {
+	// User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+	// Structure is documented below.
+	CipherSuite VPNTunnelCipherSuitePtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// IKE protocol version to use when establishing the VPN tunnel with
@@ -653,6 +788,12 @@ func (o VPNTunnelOutput) ToVPNTunnelOutput() VPNTunnelOutput {
 
 func (o VPNTunnelOutput) ToVPNTunnelOutputWithContext(ctx context.Context) VPNTunnelOutput {
 	return o
+}
+
+// User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+// Structure is documented below.
+func (o VPNTunnelOutput) CipherSuite() VPNTunnelCipherSuitePtrOutput {
+	return o.ApplyT(func(v *VPNTunnel) VPNTunnelCipherSuitePtrOutput { return v.CipherSuite }).(VPNTunnelCipherSuitePtrOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

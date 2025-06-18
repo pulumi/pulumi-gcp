@@ -14,6 +14,15 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionUrlMapPathMatcher
     {
         /// <summary>
+        /// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+        /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+        /// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+        /// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RegionUrlMapPathMatcherDefaultRouteAction? DefaultRouteAction;
+        /// <summary>
         /// A reference to a RegionBackendService resource. This will be used if
         /// none of the pathRules defined by this PathMatcher is matched by
         /// the URL's path portion.
@@ -57,6 +66,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private RegionUrlMapPathMatcher(
+            Outputs.RegionUrlMapPathMatcherDefaultRouteAction? defaultRouteAction,
+
             string? defaultService,
 
             Outputs.RegionUrlMapPathMatcherDefaultUrlRedirect? defaultUrlRedirect,
@@ -69,6 +80,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.RegionUrlMapPathMatcherRouteRule> routeRules)
         {
+            DefaultRouteAction = defaultRouteAction;
             DefaultService = defaultService;
             DefaultUrlRedirect = defaultUrlRedirect;
             Description = description;

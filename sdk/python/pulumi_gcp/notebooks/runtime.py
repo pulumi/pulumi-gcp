@@ -423,6 +423,8 @@ class Runtime(pulumi.CustomResource):
                  virtual_machine: Optional[pulumi.Input[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']]] = None,
                  __props__=None):
         """
+        > **Warning:** `google_notebook_runtime` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
         A Cloud AI Platform Notebook runtime.
 
         > **Note:** Due to limitations of the Notebooks Runtime API, many fields
@@ -651,6 +653,8 @@ class Runtime(pulumi.CustomResource):
                  args: RuntimeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `google_notebook_runtime` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
         A Cloud AI Platform Notebook runtime.
 
         > **Note:** Due to limitations of the Notebooks Runtime API, many fields

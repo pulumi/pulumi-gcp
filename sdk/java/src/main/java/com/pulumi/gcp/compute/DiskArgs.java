@@ -49,14 +49,14 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional)
+     * The architecture of the disk. Values include `X86_64`, `ARM64`.
      * 
      */
     @Import(name="architecture")
     private @Nullable Output<String> architecture;
 
     /**
-     * @return (Optional)
+     * @return The architecture of the disk. Values include `X86_64`, `ARM64`.
      * 
      */
     public Optional<Output<String>> architecture() {
@@ -778,7 +778,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param architecture (Optional)
+         * @param architecture The architecture of the disk. Values include `X86_64`, `ARM64`.
          * 
          * @return builder
          * 
@@ -789,7 +789,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param architecture (Optional)
+         * @param architecture The architecture of the disk. Values include `X86_64`, `ARM64`.
          * 
          * @return builder
          * 
