@@ -1449,6 +1449,8 @@ class VolumeTieringPolicy(dict):
         suggest = None
         if key == "coolingThresholdDays":
             suggest = "cooling_threshold_days"
+        elif key == "hotTierBypassModeEnabled":
+            suggest = "hot_tier_bypass_mode_enabled"
         elif key == "tierAction":
             suggest = "tier_action"
 
@@ -1465,16 +1467,21 @@ class VolumeTieringPolicy(dict):
 
     def __init__(__self__, *,
                  cooling_threshold_days: Optional[builtins.int] = None,
+                 hot_tier_bypass_mode_enabled: Optional[builtins.bool] = None,
                  tier_action: Optional[builtins.str] = None):
         """
         :param builtins.int cooling_threshold_days: Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
                Default is 31.
+        :param builtins.bool hot_tier_bypass_mode_enabled: Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
+               Only applicable to Flex service level.
         :param builtins.str tier_action: Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
                Default value is `PAUSED`.
                Possible values are: `ENABLED`, `PAUSED`.
         """
         if cooling_threshold_days is not None:
             pulumi.set(__self__, "cooling_threshold_days", cooling_threshold_days)
+        if hot_tier_bypass_mode_enabled is not None:
+            pulumi.set(__self__, "hot_tier_bypass_mode_enabled", hot_tier_bypass_mode_enabled)
         if tier_action is not None:
             pulumi.set(__self__, "tier_action", tier_action)
 
@@ -1486,6 +1493,15 @@ class VolumeTieringPolicy(dict):
         Default is 31.
         """
         return pulumi.get(self, "cooling_threshold_days")
+
+    @property
+    @pulumi.getter(name="hotTierBypassModeEnabled")
+    def hot_tier_bypass_mode_enabled(self) -> Optional[builtins.bool]:
+        """
+        Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
+        Only applicable to Flex service level.
+        """
+        return pulumi.get(self, "hot_tier_bypass_mode_enabled")
 
     @property
     @pulumi.getter(name="tierAction")

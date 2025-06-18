@@ -7,7 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ConnectionLogConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,10 +32,28 @@ public final class ConnectionLogConfigArgs extends com.pulumi.resources.Resource
         return this.enabled;
     }
 
+    /**
+     * Log configuration level.
+     * Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+     * 
+     */
+    @Import(name="level")
+    private @Nullable Output<String> level;
+
+    /**
+     * @return Log configuration level.
+     * Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+     * 
+     */
+    public Optional<Output<String>> level() {
+        return Optional.ofNullable(this.level);
+    }
+
     private ConnectionLogConfigArgs() {}
 
     private ConnectionLogConfigArgs(ConnectionLogConfigArgs $) {
         this.enabled = $.enabled;
+        this.level = $.level;
     }
 
     public static Builder builder() {
@@ -72,6 +93,29 @@ public final class ConnectionLogConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param level Log configuration level.
+         * Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder level(@Nullable Output<String> level) {
+            $.level = level;
+            return this;
+        }
+
+        /**
+         * @param level Log configuration level.
+         * Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder level(String level) {
+            return level(Output.of(level));
         }
 
         public ConnectionLogConfigArgs build() {

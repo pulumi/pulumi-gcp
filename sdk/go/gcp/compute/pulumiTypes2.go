@@ -13,6 +13,3086 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRouterNatRuleAction struct {
+	// A list of URLs of the IP resources used for this NAT rule.
+	// These IP addresses must be valid static external IP addresses assigned to the project.
+	// This field is used for public NAT.
+	SourceNatActiveIps []string `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+	// These subnetworks must have purpose set to PRIVATE_NAT.
+	// This field is used for private NAT.
+	SourceNatActiveRanges []string `pulumi:"sourceNatActiveRanges"`
+	// A list of URLs of the IP resources to be drained.
+	// These IPs must be valid static external IPs that have been assigned to the NAT.
+	// These IPs should be used for updating/patching a NAT rule only.
+	// This field is used for public NAT.
+	SourceNatDrainIps []string `pulumi:"sourceNatDrainIps"`
+	// A list of URLs of subnetworks representing source ranges to be drained.
+	// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+	// This field is used for private NAT.
+	SourceNatDrainRanges []string `pulumi:"sourceNatDrainRanges"`
+}
+
+// GetRouterNatRuleActionInput is an input type that accepts GetRouterNatRuleActionArgs and GetRouterNatRuleActionOutput values.
+// You can construct a concrete instance of `GetRouterNatRuleActionInput` via:
+//
+//	GetRouterNatRuleActionArgs{...}
+type GetRouterNatRuleActionInput interface {
+	pulumi.Input
+
+	ToGetRouterNatRuleActionOutput() GetRouterNatRuleActionOutput
+	ToGetRouterNatRuleActionOutputWithContext(context.Context) GetRouterNatRuleActionOutput
+}
+
+type GetRouterNatRuleActionArgs struct {
+	// A list of URLs of the IP resources used for this NAT rule.
+	// These IP addresses must be valid static external IP addresses assigned to the project.
+	// This field is used for public NAT.
+	SourceNatActiveIps pulumi.StringArrayInput `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+	// These subnetworks must have purpose set to PRIVATE_NAT.
+	// This field is used for private NAT.
+	SourceNatActiveRanges pulumi.StringArrayInput `pulumi:"sourceNatActiveRanges"`
+	// A list of URLs of the IP resources to be drained.
+	// These IPs must be valid static external IPs that have been assigned to the NAT.
+	// These IPs should be used for updating/patching a NAT rule only.
+	// This field is used for public NAT.
+	SourceNatDrainIps pulumi.StringArrayInput `pulumi:"sourceNatDrainIps"`
+	// A list of URLs of subnetworks representing source ranges to be drained.
+	// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+	// This field is used for private NAT.
+	SourceNatDrainRanges pulumi.StringArrayInput `pulumi:"sourceNatDrainRanges"`
+}
+
+func (GetRouterNatRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterNatRuleAction)(nil)).Elem()
+}
+
+func (i GetRouterNatRuleActionArgs) ToGetRouterNatRuleActionOutput() GetRouterNatRuleActionOutput {
+	return i.ToGetRouterNatRuleActionOutputWithContext(context.Background())
+}
+
+func (i GetRouterNatRuleActionArgs) ToGetRouterNatRuleActionOutputWithContext(ctx context.Context) GetRouterNatRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterNatRuleActionOutput)
+}
+
+// GetRouterNatRuleActionArrayInput is an input type that accepts GetRouterNatRuleActionArray and GetRouterNatRuleActionArrayOutput values.
+// You can construct a concrete instance of `GetRouterNatRuleActionArrayInput` via:
+//
+//	GetRouterNatRuleActionArray{ GetRouterNatRuleActionArgs{...} }
+type GetRouterNatRuleActionArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterNatRuleActionArrayOutput() GetRouterNatRuleActionArrayOutput
+	ToGetRouterNatRuleActionArrayOutputWithContext(context.Context) GetRouterNatRuleActionArrayOutput
+}
+
+type GetRouterNatRuleActionArray []GetRouterNatRuleActionInput
+
+func (GetRouterNatRuleActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterNatRuleAction)(nil)).Elem()
+}
+
+func (i GetRouterNatRuleActionArray) ToGetRouterNatRuleActionArrayOutput() GetRouterNatRuleActionArrayOutput {
+	return i.ToGetRouterNatRuleActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterNatRuleActionArray) ToGetRouterNatRuleActionArrayOutputWithContext(ctx context.Context) GetRouterNatRuleActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterNatRuleActionArrayOutput)
+}
+
+type GetRouterNatRuleActionOutput struct{ *pulumi.OutputState }
+
+func (GetRouterNatRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterNatRuleAction)(nil)).Elem()
+}
+
+func (o GetRouterNatRuleActionOutput) ToGetRouterNatRuleActionOutput() GetRouterNatRuleActionOutput {
+	return o
+}
+
+func (o GetRouterNatRuleActionOutput) ToGetRouterNatRuleActionOutputWithContext(ctx context.Context) GetRouterNatRuleActionOutput {
+	return o
+}
+
+// A list of URLs of the IP resources used for this NAT rule.
+// These IP addresses must be valid static external IP addresses assigned to the project.
+// This field is used for public NAT.
+func (o GetRouterNatRuleActionOutput) SourceNatActiveIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatActiveIps }).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+// These subnetworks must have purpose set to PRIVATE_NAT.
+// This field is used for private NAT.
+func (o GetRouterNatRuleActionOutput) SourceNatActiveRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatActiveRanges }).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of the IP resources to be drained.
+// These IPs must be valid static external IPs that have been assigned to the NAT.
+// These IPs should be used for updating/patching a NAT rule only.
+// This field is used for public NAT.
+func (o GetRouterNatRuleActionOutput) SourceNatDrainIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatDrainIps }).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of subnetworks representing source ranges to be drained.
+// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+// This field is used for private NAT.
+func (o GetRouterNatRuleActionOutput) SourceNatDrainRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatDrainRanges }).(pulumi.StringArrayOutput)
+}
+
+type GetRouterNatRuleActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterNatRuleActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterNatRuleAction)(nil)).Elem()
+}
+
+func (o GetRouterNatRuleActionArrayOutput) ToGetRouterNatRuleActionArrayOutput() GetRouterNatRuleActionArrayOutput {
+	return o
+}
+
+func (o GetRouterNatRuleActionArrayOutput) ToGetRouterNatRuleActionArrayOutputWithContext(ctx context.Context) GetRouterNatRuleActionArrayOutput {
+	return o
+}
+
+func (o GetRouterNatRuleActionArrayOutput) Index(i pulumi.IntInput) GetRouterNatRuleActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterNatRuleAction {
+		return vs[0].([]GetRouterNatRuleAction)[vs[1].(int)]
+	}).(GetRouterNatRuleActionOutput)
+}
+
+type GetRouterNatSubnetwork struct {
+	// Name of the NAT service. The name must be 1-63 characters long and
+	// comply with RFC1035.
+	Name string `pulumi:"name"`
+	// List of the secondary ranges of the subnetwork that are allowed
+	// to use NAT. This can be populated only if
+	// 'LIST_OF_SECONDARY_IP_RANGES' is one of the values in
+	// sourceIpRangesToNat
+	SecondaryIpRangeNames []string `pulumi:"secondaryIpRangeNames"`
+	// List of options for which source IPs in the subnetwork
+	// should have NAT enabled. Supported values include:
+	// 'ALL_IP_RANGES', 'LIST_OF_SECONDARY_IP_RANGES',
+	// 'PRIMARY_IP_RANGE'.
+	SourceIpRangesToNats []string `pulumi:"sourceIpRangesToNats"`
+}
+
+// GetRouterNatSubnetworkInput is an input type that accepts GetRouterNatSubnetworkArgs and GetRouterNatSubnetworkOutput values.
+// You can construct a concrete instance of `GetRouterNatSubnetworkInput` via:
+//
+//	GetRouterNatSubnetworkArgs{...}
+type GetRouterNatSubnetworkInput interface {
+	pulumi.Input
+
+	ToGetRouterNatSubnetworkOutput() GetRouterNatSubnetworkOutput
+	ToGetRouterNatSubnetworkOutputWithContext(context.Context) GetRouterNatSubnetworkOutput
+}
+
+type GetRouterNatSubnetworkArgs struct {
+	// Name of the NAT service. The name must be 1-63 characters long and
+	// comply with RFC1035.
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of the secondary ranges of the subnetwork that are allowed
+	// to use NAT. This can be populated only if
+	// 'LIST_OF_SECONDARY_IP_RANGES' is one of the values in
+	// sourceIpRangesToNat
+	SecondaryIpRangeNames pulumi.StringArrayInput `pulumi:"secondaryIpRangeNames"`
+	// List of options for which source IPs in the subnetwork
+	// should have NAT enabled. Supported values include:
+	// 'ALL_IP_RANGES', 'LIST_OF_SECONDARY_IP_RANGES',
+	// 'PRIMARY_IP_RANGE'.
+	SourceIpRangesToNats pulumi.StringArrayInput `pulumi:"sourceIpRangesToNats"`
+}
+
+func (GetRouterNatSubnetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterNatSubnetwork)(nil)).Elem()
+}
+
+func (i GetRouterNatSubnetworkArgs) ToGetRouterNatSubnetworkOutput() GetRouterNatSubnetworkOutput {
+	return i.ToGetRouterNatSubnetworkOutputWithContext(context.Background())
+}
+
+func (i GetRouterNatSubnetworkArgs) ToGetRouterNatSubnetworkOutputWithContext(ctx context.Context) GetRouterNatSubnetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterNatSubnetworkOutput)
+}
+
+// GetRouterNatSubnetworkArrayInput is an input type that accepts GetRouterNatSubnetworkArray and GetRouterNatSubnetworkArrayOutput values.
+// You can construct a concrete instance of `GetRouterNatSubnetworkArrayInput` via:
+//
+//	GetRouterNatSubnetworkArray{ GetRouterNatSubnetworkArgs{...} }
+type GetRouterNatSubnetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterNatSubnetworkArrayOutput() GetRouterNatSubnetworkArrayOutput
+	ToGetRouterNatSubnetworkArrayOutputWithContext(context.Context) GetRouterNatSubnetworkArrayOutput
+}
+
+type GetRouterNatSubnetworkArray []GetRouterNatSubnetworkInput
+
+func (GetRouterNatSubnetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterNatSubnetwork)(nil)).Elem()
+}
+
+func (i GetRouterNatSubnetworkArray) ToGetRouterNatSubnetworkArrayOutput() GetRouterNatSubnetworkArrayOutput {
+	return i.ToGetRouterNatSubnetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterNatSubnetworkArray) ToGetRouterNatSubnetworkArrayOutputWithContext(ctx context.Context) GetRouterNatSubnetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterNatSubnetworkArrayOutput)
+}
+
+type GetRouterNatSubnetworkOutput struct{ *pulumi.OutputState }
+
+func (GetRouterNatSubnetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterNatSubnetwork)(nil)).Elem()
+}
+
+func (o GetRouterNatSubnetworkOutput) ToGetRouterNatSubnetworkOutput() GetRouterNatSubnetworkOutput {
+	return o
+}
+
+func (o GetRouterNatSubnetworkOutput) ToGetRouterNatSubnetworkOutputWithContext(ctx context.Context) GetRouterNatSubnetworkOutput {
+	return o
+}
+
+// Name of the NAT service. The name must be 1-63 characters long and
+// comply with RFC1035.
+func (o GetRouterNatSubnetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterNatSubnetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of the secondary ranges of the subnetwork that are allowed
+// to use NAT. This can be populated only if
+// 'LIST_OF_SECONDARY_IP_RANGES' is one of the values in
+// sourceIpRangesToNat
+func (o GetRouterNatSubnetworkOutput) SecondaryIpRangeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterNatSubnetwork) []string { return v.SecondaryIpRangeNames }).(pulumi.StringArrayOutput)
+}
+
+// List of options for which source IPs in the subnetwork
+// should have NAT enabled. Supported values include:
+// 'ALL_IP_RANGES', 'LIST_OF_SECONDARY_IP_RANGES',
+// 'PRIMARY_IP_RANGE'.
+func (o GetRouterNatSubnetworkOutput) SourceIpRangesToNats() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterNatSubnetwork) []string { return v.SourceIpRangesToNats }).(pulumi.StringArrayOutput)
+}
+
+type GetRouterNatSubnetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterNatSubnetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterNatSubnetwork)(nil)).Elem()
+}
+
+func (o GetRouterNatSubnetworkArrayOutput) ToGetRouterNatSubnetworkArrayOutput() GetRouterNatSubnetworkArrayOutput {
+	return o
+}
+
+func (o GetRouterNatSubnetworkArrayOutput) ToGetRouterNatSubnetworkArrayOutputWithContext(ctx context.Context) GetRouterNatSubnetworkArrayOutput {
+	return o
+}
+
+func (o GetRouterNatSubnetworkArrayOutput) Index(i pulumi.IntInput) GetRouterNatSubnetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterNatSubnetwork {
+		return vs[0].([]GetRouterNatSubnetwork)[vs[1].(int)]
+	}).(GetRouterNatSubnetworkOutput)
+}
+
+type GetRouterStatusBestRoute struct {
+	AsPaths []GetRouterStatusBestRouteAsPath `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
+	Description string `pulumi:"description"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange string `pulumi:"destRange"`
+	// The name of the router.
+	Name string `pulumi:"name"`
+	// The network name or resource link to the parent
+	// network of this subnetwork.
+	Network string `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway string `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub string `pulumi:"nextHopHub"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb string `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance string `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+	NextHopInstanceZone string `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost string `pulumi:"nextHopInterRegionCost"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp string `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed string `pulumi:"nextHopMed"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork string `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin string `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering string `pulumi:"nextHopPeering"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority int `pulumi:"priority"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
+	Project string `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus string `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType string `pulumi:"routeType"`
+	SelfLink  string `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags []string `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings []GetRouterStatusBestRouteWarning `pulumi:"warnings"`
+}
+
+// GetRouterStatusBestRouteInput is an input type that accepts GetRouterStatusBestRouteArgs and GetRouterStatusBestRouteOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteInput` via:
+//
+//	GetRouterStatusBestRouteArgs{...}
+type GetRouterStatusBestRouteInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteOutput() GetRouterStatusBestRouteOutput
+	ToGetRouterStatusBestRouteOutputWithContext(context.Context) GetRouterStatusBestRouteOutput
+}
+
+type GetRouterStatusBestRouteArgs struct {
+	AsPaths GetRouterStatusBestRouteAsPathArrayInput `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange pulumi.StringInput `pulumi:"destRange"`
+	// The name of the router.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The network name or resource link to the parent
+	// network of this subnetwork.
+	Network pulumi.StringInput `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway pulumi.StringInput `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub pulumi.StringInput `pulumi:"nextHopHub"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb pulumi.StringInput `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance pulumi.StringInput `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+	NextHopInstanceZone pulumi.StringInput `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost pulumi.StringInput `pulumi:"nextHopInterRegionCost"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp pulumi.StringInput `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed pulumi.StringInput `pulumi:"nextHopMed"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin pulumi.StringInput `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering pulumi.StringInput `pulumi:"nextHopPeering"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus pulumi.StringInput `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType pulumi.StringInput `pulumi:"routeType"`
+	SelfLink  pulumi.StringInput `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings GetRouterStatusBestRouteWarningArrayInput `pulumi:"warnings"`
+}
+
+func (GetRouterStatusBestRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoute)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteArgs) ToGetRouterStatusBestRouteOutput() GetRouterStatusBestRouteOutput {
+	return i.ToGetRouterStatusBestRouteOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteArgs) ToGetRouterStatusBestRouteOutputWithContext(ctx context.Context) GetRouterStatusBestRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteOutput)
+}
+
+// GetRouterStatusBestRouteArrayInput is an input type that accepts GetRouterStatusBestRouteArray and GetRouterStatusBestRouteArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteArrayInput` via:
+//
+//	GetRouterStatusBestRouteArray{ GetRouterStatusBestRouteArgs{...} }
+type GetRouterStatusBestRouteArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteArrayOutput() GetRouterStatusBestRouteArrayOutput
+	ToGetRouterStatusBestRouteArrayOutputWithContext(context.Context) GetRouterStatusBestRouteArrayOutput
+}
+
+type GetRouterStatusBestRouteArray []GetRouterStatusBestRouteInput
+
+func (GetRouterStatusBestRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoute)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteArray) ToGetRouterStatusBestRouteArrayOutput() GetRouterStatusBestRouteArrayOutput {
+	return i.ToGetRouterStatusBestRouteArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteArray) ToGetRouterStatusBestRouteArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteArrayOutput)
+}
+
+type GetRouterStatusBestRouteOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoute)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteOutput) ToGetRouterStatusBestRouteOutput() GetRouterStatusBestRouteOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteOutput) ToGetRouterStatusBestRouteOutputWithContext(ctx context.Context) GetRouterStatusBestRouteOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteOutput) AsPaths() GetRouterStatusBestRouteAsPathArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) []GetRouterStatusBestRouteAsPath { return v.AsPaths }).(GetRouterStatusBestRouteAsPathArrayOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o GetRouterStatusBestRouteOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property
+// when you create the resource.
+func (o GetRouterStatusBestRouteOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The destination range of outgoing packets that this route applies to.
+// Only IPv4 is supported.
+func (o GetRouterStatusBestRouteOutput) DestRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.DestRange }).(pulumi.StringOutput)
+}
+
+// The name of the router.
+func (o GetRouterStatusBestRouteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network name or resource link to the parent
+// network of this subnetwork.
+func (o GetRouterStatusBestRouteOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// URL to a gateway that should handle matching packets.
+// Currently, you can only specify the internet gateway, using a full or
+// partial valid URL:
+// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+// * 'projects/project/global/gateways/default-internet-gateway'
+// * 'global/gateways/default-internet-gateway'
+// * The string 'default-internet-gateway'.
+func (o GetRouterStatusBestRouteOutput) NextHopGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopGateway }).(pulumi.StringOutput)
+}
+
+// The hub network that should handle matching packets, which should conform to RFC1035.
+func (o GetRouterStatusBestRouteOutput) NextHopHub() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopHub }).(pulumi.StringOutput)
+}
+
+// The IP address or URL to a forwarding rule of type
+// loadBalancingScheme=INTERNAL that should handle matching
+// packets.
+//
+// With the GA provider you can only specify the forwarding
+// rule as a partial or full URL. For example, the following
+// are all valid values:
+// * 10.128.0.56
+// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+// * regions/region/forwardingRules/forwardingRule
+//
+// When the beta provider, you can also specify the IP address
+// of a forwarding rule from the same VPC or any peered VPC.
+//
+// Note that this can only be used when the destinationRange is
+// a public (non-RFC 1918) IP CIDR range.
+func (o GetRouterStatusBestRouteOutput) NextHopIlb() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopIlb }).(pulumi.StringOutput)
+}
+
+// URL to an instance that should handle matching packets.
+// You can specify this as a full or partial URL. For example:
+// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+// * 'projects/project/zones/zone/instances/instance'
+// * 'zones/zone/instances/instance'
+// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+func (o GetRouterStatusBestRouteOutput) NextHopInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopInstance }).(pulumi.StringOutput)
+}
+
+// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+func (o GetRouterStatusBestRouteOutput) NextHopInstanceZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopInstanceZone }).(pulumi.StringOutput)
+}
+
+// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+func (o GetRouterStatusBestRouteOutput) NextHopInterRegionCost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopInterRegionCost }).(pulumi.StringOutput)
+}
+
+// Network IP address of an instance that should handle matching packets.
+func (o GetRouterStatusBestRouteOutput) NextHopIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopIp }).(pulumi.StringOutput)
+}
+
+// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+func (o GetRouterStatusBestRouteOutput) NextHopMed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopMed }).(pulumi.StringOutput)
+}
+
+// URL to a Network that should handle matching packets.
+func (o GetRouterStatusBestRouteOutput) NextHopNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopNetwork }).(pulumi.StringOutput)
+}
+
+// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+func (o GetRouterStatusBestRouteOutput) NextHopOrigin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopOrigin }).(pulumi.StringOutput)
+}
+
+// The network peering name that should handle matching packets, which should conform to RFC1035.
+func (o GetRouterStatusBestRouteOutput) NextHopPeering() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopPeering }).(pulumi.StringOutput)
+}
+
+// URL to a VpnTunnel that should handle matching packets.
+func (o GetRouterStatusBestRouteOutput) NextHopVpnTunnel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
+}
+
+// The priority of this route. Priority is used to break ties in cases
+// where there is more than one matching route of equal prefix length.
+//
+// In the case of two routes with equal prefix length, the one with the
+// lowest-numbered priority value wins.
+//
+// Default value is 1000. Valid range is 0 through 65535.
+func (o GetRouterStatusBestRouteOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The ID of the project in which the resource
+// belongs. If it is not provided, the provider project is used.
+func (o GetRouterStatusBestRouteOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The status of the route, which can be one of the following values:
+// - 'ACTIVE' for an active route
+// - 'INACTIVE' for an inactive route
+func (o GetRouterStatusBestRouteOutput) RouteStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.RouteStatus }).(pulumi.StringOutput)
+}
+
+// The type of this route, which can be one of the following values:
+// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+// - 'SUBNET' for a route from a subnet of the VPC
+// - 'BGP' for a route learned from a BGP peer of this router
+// - 'STATIC' for a static route
+func (o GetRouterStatusBestRouteOutput) RouteType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.RouteType }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRouteOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// A list of instance tags to which this route applies.
+func (o GetRouterStatusBestRouteOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+func (o GetRouterStatusBestRouteOutput) Warnings() GetRouterStatusBestRouteWarningArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) []GetRouterStatusBestRouteWarning { return v.Warnings }).(GetRouterStatusBestRouteWarningArrayOutput)
+}
+
+type GetRouterStatusBestRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoute)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteArrayOutput) ToGetRouterStatusBestRouteArrayOutput() GetRouterStatusBestRouteArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteArrayOutput) ToGetRouterStatusBestRouteArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoute {
+		return vs[0].([]GetRouterStatusBestRoute)[vs[1].(int)]
+	}).(GetRouterStatusBestRouteOutput)
+}
+
+type GetRouterStatusBestRouteAsPath struct {
+	// The AS numbers of the AS Path.
+	AsLists []int `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType string `pulumi:"pathSegmentType"`
+}
+
+// GetRouterStatusBestRouteAsPathInput is an input type that accepts GetRouterStatusBestRouteAsPathArgs and GetRouterStatusBestRouteAsPathOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteAsPathInput` via:
+//
+//	GetRouterStatusBestRouteAsPathArgs{...}
+type GetRouterStatusBestRouteAsPathInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteAsPathOutput() GetRouterStatusBestRouteAsPathOutput
+	ToGetRouterStatusBestRouteAsPathOutputWithContext(context.Context) GetRouterStatusBestRouteAsPathOutput
+}
+
+type GetRouterStatusBestRouteAsPathArgs struct {
+	// The AS numbers of the AS Path.
+	AsLists pulumi.IntArrayInput `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType pulumi.StringInput `pulumi:"pathSegmentType"`
+}
+
+func (GetRouterStatusBestRouteAsPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteAsPathArgs) ToGetRouterStatusBestRouteAsPathOutput() GetRouterStatusBestRouteAsPathOutput {
+	return i.ToGetRouterStatusBestRouteAsPathOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteAsPathArgs) ToGetRouterStatusBestRouteAsPathOutputWithContext(ctx context.Context) GetRouterStatusBestRouteAsPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteAsPathOutput)
+}
+
+// GetRouterStatusBestRouteAsPathArrayInput is an input type that accepts GetRouterStatusBestRouteAsPathArray and GetRouterStatusBestRouteAsPathArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteAsPathArrayInput` via:
+//
+//	GetRouterStatusBestRouteAsPathArray{ GetRouterStatusBestRouteAsPathArgs{...} }
+type GetRouterStatusBestRouteAsPathArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteAsPathArrayOutput() GetRouterStatusBestRouteAsPathArrayOutput
+	ToGetRouterStatusBestRouteAsPathArrayOutputWithContext(context.Context) GetRouterStatusBestRouteAsPathArrayOutput
+}
+
+type GetRouterStatusBestRouteAsPathArray []GetRouterStatusBestRouteAsPathInput
+
+func (GetRouterStatusBestRouteAsPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteAsPathArray) ToGetRouterStatusBestRouteAsPathArrayOutput() GetRouterStatusBestRouteAsPathArrayOutput {
+	return i.ToGetRouterStatusBestRouteAsPathArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteAsPathArray) ToGetRouterStatusBestRouteAsPathArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteAsPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteAsPathArrayOutput)
+}
+
+type GetRouterStatusBestRouteAsPathOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteAsPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteAsPathOutput) ToGetRouterStatusBestRouteAsPathOutput() GetRouterStatusBestRouteAsPathOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteAsPathOutput) ToGetRouterStatusBestRouteAsPathOutputWithContext(ctx context.Context) GetRouterStatusBestRouteAsPathOutput {
+	return o
+}
+
+// The AS numbers of the AS Path.
+func (o GetRouterStatusBestRouteAsPathOutput) AsLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteAsPath) []int { return v.AsLists }).(pulumi.IntArrayOutput)
+}
+
+// The type of the AS Path, which can be one of the following values:
+// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+func (o GetRouterStatusBestRouteAsPathOutput) PathSegmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteAsPath) string { return v.PathSegmentType }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRouteAsPathArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteAsPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteAsPath)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteAsPathArrayOutput) ToGetRouterStatusBestRouteAsPathArrayOutput() GetRouterStatusBestRouteAsPathArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteAsPathArrayOutput) ToGetRouterStatusBestRouteAsPathArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteAsPathArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteAsPathArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRouteAsPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRouteAsPath {
+		return vs[0].([]GetRouterStatusBestRouteAsPath)[vs[1].(int)]
+	}).(GetRouterStatusBestRouteAsPathOutput)
+}
+
+type GetRouterStatusBestRouteWarning struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code string `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas []GetRouterStatusBestRouteWarningData `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message string `pulumi:"message"`
+}
+
+// GetRouterStatusBestRouteWarningInput is an input type that accepts GetRouterStatusBestRouteWarningArgs and GetRouterStatusBestRouteWarningOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteWarningInput` via:
+//
+//	GetRouterStatusBestRouteWarningArgs{...}
+type GetRouterStatusBestRouteWarningInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteWarningOutput() GetRouterStatusBestRouteWarningOutput
+	ToGetRouterStatusBestRouteWarningOutputWithContext(context.Context) GetRouterStatusBestRouteWarningOutput
+}
+
+type GetRouterStatusBestRouteWarningArgs struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringInput `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas GetRouterStatusBestRouteWarningDataArrayInput `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetRouterStatusBestRouteWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteWarningArgs) ToGetRouterStatusBestRouteWarningOutput() GetRouterStatusBestRouteWarningOutput {
+	return i.ToGetRouterStatusBestRouteWarningOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteWarningArgs) ToGetRouterStatusBestRouteWarningOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteWarningOutput)
+}
+
+// GetRouterStatusBestRouteWarningArrayInput is an input type that accepts GetRouterStatusBestRouteWarningArray and GetRouterStatusBestRouteWarningArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteWarningArrayInput` via:
+//
+//	GetRouterStatusBestRouteWarningArray{ GetRouterStatusBestRouteWarningArgs{...} }
+type GetRouterStatusBestRouteWarningArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteWarningArrayOutput() GetRouterStatusBestRouteWarningArrayOutput
+	ToGetRouterStatusBestRouteWarningArrayOutputWithContext(context.Context) GetRouterStatusBestRouteWarningArrayOutput
+}
+
+type GetRouterStatusBestRouteWarningArray []GetRouterStatusBestRouteWarningInput
+
+func (GetRouterStatusBestRouteWarningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteWarningArray) ToGetRouterStatusBestRouteWarningArrayOutput() GetRouterStatusBestRouteWarningArrayOutput {
+	return i.ToGetRouterStatusBestRouteWarningArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteWarningArray) ToGetRouterStatusBestRouteWarningArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteWarningArrayOutput)
+}
+
+type GetRouterStatusBestRouteWarningOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteWarningOutput) ToGetRouterStatusBestRouteWarningOutput() GetRouterStatusBestRouteWarningOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningOutput) ToGetRouterStatusBestRouteWarningOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningOutput {
+	return o
+}
+
+// A warning code, if applicable. For example, Compute Engine returns
+// NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o GetRouterStatusBestRouteWarningOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteWarning) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Metadata about this warning in key: value format. For example:
+// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+func (o GetRouterStatusBestRouteWarningOutput) Datas() GetRouterStatusBestRouteWarningDataArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteWarning) []GetRouterStatusBestRouteWarningData { return v.Datas }).(GetRouterStatusBestRouteWarningDataArrayOutput)
+}
+
+// A human-readable description of the warning code.
+func (o GetRouterStatusBestRouteWarningOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteWarning) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRouteWarningArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteWarningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteWarning)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteWarningArrayOutput) ToGetRouterStatusBestRouteWarningArrayOutput() GetRouterStatusBestRouteWarningArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningArrayOutput) ToGetRouterStatusBestRouteWarningArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRouteWarningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRouteWarning {
+		return vs[0].([]GetRouterStatusBestRouteWarning)[vs[1].(int)]
+	}).(GetRouterStatusBestRouteWarningOutput)
+}
+
+type GetRouterStatusBestRouteWarningData struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key string `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value string `pulumi:"value"`
+}
+
+// GetRouterStatusBestRouteWarningDataInput is an input type that accepts GetRouterStatusBestRouteWarningDataArgs and GetRouterStatusBestRouteWarningDataOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteWarningDataInput` via:
+//
+//	GetRouterStatusBestRouteWarningDataArgs{...}
+type GetRouterStatusBestRouteWarningDataInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteWarningDataOutput() GetRouterStatusBestRouteWarningDataOutput
+	ToGetRouterStatusBestRouteWarningDataOutputWithContext(context.Context) GetRouterStatusBestRouteWarningDataOutput
+}
+
+type GetRouterStatusBestRouteWarningDataArgs struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringInput `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRouterStatusBestRouteWarningDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteWarningDataArgs) ToGetRouterStatusBestRouteWarningDataOutput() GetRouterStatusBestRouteWarningDataOutput {
+	return i.ToGetRouterStatusBestRouteWarningDataOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteWarningDataArgs) ToGetRouterStatusBestRouteWarningDataOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteWarningDataOutput)
+}
+
+// GetRouterStatusBestRouteWarningDataArrayInput is an input type that accepts GetRouterStatusBestRouteWarningDataArray and GetRouterStatusBestRouteWarningDataArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteWarningDataArrayInput` via:
+//
+//	GetRouterStatusBestRouteWarningDataArray{ GetRouterStatusBestRouteWarningDataArgs{...} }
+type GetRouterStatusBestRouteWarningDataArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteWarningDataArrayOutput() GetRouterStatusBestRouteWarningDataArrayOutput
+	ToGetRouterStatusBestRouteWarningDataArrayOutputWithContext(context.Context) GetRouterStatusBestRouteWarningDataArrayOutput
+}
+
+type GetRouterStatusBestRouteWarningDataArray []GetRouterStatusBestRouteWarningDataInput
+
+func (GetRouterStatusBestRouteWarningDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteWarningDataArray) ToGetRouterStatusBestRouteWarningDataArrayOutput() GetRouterStatusBestRouteWarningDataArrayOutput {
+	return i.ToGetRouterStatusBestRouteWarningDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteWarningDataArray) ToGetRouterStatusBestRouteWarningDataArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteWarningDataArrayOutput)
+}
+
+type GetRouterStatusBestRouteWarningDataOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteWarningDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteWarningDataOutput) ToGetRouterStatusBestRouteWarningDataOutput() GetRouterStatusBestRouteWarningDataOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningDataOutput) ToGetRouterStatusBestRouteWarningDataOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningDataOutput {
+	return o
+}
+
+// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o GetRouterStatusBestRouteWarningDataOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteWarningData) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A warning data value corresponding to the key.
+func (o GetRouterStatusBestRouteWarningDataOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteWarningData) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRouteWarningDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteWarningDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteWarningData)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteWarningDataArrayOutput) ToGetRouterStatusBestRouteWarningDataArrayOutput() GetRouterStatusBestRouteWarningDataArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningDataArrayOutput) ToGetRouterStatusBestRouteWarningDataArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteWarningDataArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteWarningDataArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRouteWarningDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRouteWarningData {
+		return vs[0].([]GetRouterStatusBestRouteWarningData)[vs[1].(int)]
+	}).(GetRouterStatusBestRouteWarningDataOutput)
+}
+
+type GetRouterStatusBestRoutesForRouter struct {
+	AsPaths []GetRouterStatusBestRoutesForRouterAsPath `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
+	Description string `pulumi:"description"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange string `pulumi:"destRange"`
+	// The name of the router.
+	Name string `pulumi:"name"`
+	// The network name or resource link to the parent
+	// network of this subnetwork.
+	Network string `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway string `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub string `pulumi:"nextHopHub"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb string `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance string `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+	NextHopInstanceZone string `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost string `pulumi:"nextHopInterRegionCost"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp string `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed string `pulumi:"nextHopMed"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork string `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin string `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering string `pulumi:"nextHopPeering"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority int `pulumi:"priority"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
+	Project string `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus string `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType string `pulumi:"routeType"`
+	SelfLink  string `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags []string `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings []GetRouterStatusBestRoutesForRouterWarning `pulumi:"warnings"`
+}
+
+// GetRouterStatusBestRoutesForRouterInput is an input type that accepts GetRouterStatusBestRoutesForRouterArgs and GetRouterStatusBestRoutesForRouterOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterArgs{...}
+type GetRouterStatusBestRoutesForRouterInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterOutput() GetRouterStatusBestRoutesForRouterOutput
+	ToGetRouterStatusBestRoutesForRouterOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterOutput
+}
+
+type GetRouterStatusBestRoutesForRouterArgs struct {
+	AsPaths GetRouterStatusBestRoutesForRouterAsPathArrayInput `pulumi:"asPaths"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange pulumi.StringInput `pulumi:"destRange"`
+	// The name of the router.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The network name or resource link to the parent
+	// network of this subnetwork.
+	Network pulumi.StringInput `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway pulumi.StringInput `pulumi:"nextHopGateway"`
+	// The hub network that should handle matching packets, which should conform to RFC1035.
+	NextHopHub pulumi.StringInput `pulumi:"nextHopHub"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb pulumi.StringInput `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance pulumi.StringInput `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+	NextHopInstanceZone pulumi.StringInput `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost pulumi.StringInput `pulumi:"nextHopInterRegionCost"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp pulumi.StringInput `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed pulumi.StringInput `pulumi:"nextHopMed"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin pulumi.StringInput `pulumi:"nextHopOrigin"`
+	// The network peering name that should handle matching packets, which should conform to RFC1035.
+	NextHopPeering pulumi.StringInput `pulumi:"nextHopPeering"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The status of the route, which can be one of the following values:
+	// - 'ACTIVE' for an active route
+	// - 'INACTIVE' for an inactive route
+	RouteStatus pulumi.StringInput `pulumi:"routeStatus"`
+	// The type of this route, which can be one of the following values:
+	// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+	// - 'SUBNET' for a route from a subnet of the VPC
+	// - 'BGP' for a route learned from a BGP peer of this router
+	// - 'STATIC' for a static route
+	RouteType pulumi.StringInput `pulumi:"routeType"`
+	SelfLink  pulumi.StringInput `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+	Warnings GetRouterStatusBestRoutesForRouterWarningArrayInput `pulumi:"warnings"`
+}
+
+func (GetRouterStatusBestRoutesForRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterArgs) ToGetRouterStatusBestRoutesForRouterOutput() GetRouterStatusBestRoutesForRouterOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterArgs) ToGetRouterStatusBestRoutesForRouterOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterOutput)
+}
+
+// GetRouterStatusBestRoutesForRouterArrayInput is an input type that accepts GetRouterStatusBestRoutesForRouterArray and GetRouterStatusBestRoutesForRouterArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterArrayInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterArray{ GetRouterStatusBestRoutesForRouterArgs{...} }
+type GetRouterStatusBestRoutesForRouterArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterArrayOutput() GetRouterStatusBestRoutesForRouterArrayOutput
+	ToGetRouterStatusBestRoutesForRouterArrayOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterArrayOutput
+}
+
+type GetRouterStatusBestRoutesForRouterArray []GetRouterStatusBestRoutesForRouterInput
+
+func (GetRouterStatusBestRoutesForRouterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterArray) ToGetRouterStatusBestRoutesForRouterArrayOutput() GetRouterStatusBestRoutesForRouterArrayOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterArray) ToGetRouterStatusBestRoutesForRouterArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterArrayOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) ToGetRouterStatusBestRoutesForRouterOutput() GetRouterStatusBestRoutesForRouterOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) ToGetRouterStatusBestRoutesForRouterOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) AsPaths() GetRouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) []GetRouterStatusBestRoutesForRouterAsPath {
+		return v.AsPaths
+	}).(GetRouterStatusBestRoutesForRouterAsPathArrayOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o GetRouterStatusBestRoutesForRouterOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property
+// when you create the resource.
+func (o GetRouterStatusBestRoutesForRouterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The destination range of outgoing packets that this route applies to.
+// Only IPv4 is supported.
+func (o GetRouterStatusBestRoutesForRouterOutput) DestRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.DestRange }).(pulumi.StringOutput)
+}
+
+// The name of the router.
+func (o GetRouterStatusBestRoutesForRouterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network name or resource link to the parent
+// network of this subnetwork.
+func (o GetRouterStatusBestRoutesForRouterOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// URL to a gateway that should handle matching packets.
+// Currently, you can only specify the internet gateway, using a full or
+// partial valid URL:
+// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+// * 'projects/project/global/gateways/default-internet-gateway'
+// * 'global/gateways/default-internet-gateway'
+// * The string 'default-internet-gateway'.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopGateway }).(pulumi.StringOutput)
+}
+
+// The hub network that should handle matching packets, which should conform to RFC1035.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopHub() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopHub }).(pulumi.StringOutput)
+}
+
+// The IP address or URL to a forwarding rule of type
+// loadBalancingScheme=INTERNAL that should handle matching
+// packets.
+//
+// With the GA provider you can only specify the forwarding
+// rule as a partial or full URL. For example, the following
+// are all valid values:
+// * 10.128.0.56
+// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+// * regions/region/forwardingRules/forwardingRule
+//
+// When the beta provider, you can also specify the IP address
+// of a forwarding rule from the same VPC or any peered VPC.
+//
+// Note that this can only be used when the destinationRange is
+// a public (non-RFC 1918) IP CIDR range.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopIlb() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopIlb }).(pulumi.StringOutput)
+}
+
+// URL to an instance that should handle matching packets.
+// You can specify this as a full or partial URL. For example:
+// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+// * 'projects/project/zones/zone/instances/instance'
+// * 'zones/zone/instances/instance'
+// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopInstance }).(pulumi.StringOutput)
+}
+
+// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopInstanceZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopInstanceZone }).(pulumi.StringOutput)
+}
+
+// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopInterRegionCost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopInterRegionCost }).(pulumi.StringOutput)
+}
+
+// Network IP address of an instance that should handle matching packets.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopIp }).(pulumi.StringOutput)
+}
+
+// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopMed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopMed }).(pulumi.StringOutput)
+}
+
+// URL to a Network that should handle matching packets.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopNetwork }).(pulumi.StringOutput)
+}
+
+// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopOrigin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopOrigin }).(pulumi.StringOutput)
+}
+
+// The network peering name that should handle matching packets, which should conform to RFC1035.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopPeering() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopPeering }).(pulumi.StringOutput)
+}
+
+// URL to a VpnTunnel that should handle matching packets.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopVpnTunnel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
+}
+
+// The priority of this route. Priority is used to break ties in cases
+// where there is more than one matching route of equal prefix length.
+//
+// In the case of two routes with equal prefix length, the one with the
+// lowest-numbered priority value wins.
+//
+// Default value is 1000. Valid range is 0 through 65535.
+func (o GetRouterStatusBestRoutesForRouterOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The ID of the project in which the resource
+// belongs. If it is not provided, the provider project is used.
+func (o GetRouterStatusBestRoutesForRouterOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The status of the route, which can be one of the following values:
+// - 'ACTIVE' for an active route
+// - 'INACTIVE' for an inactive route
+func (o GetRouterStatusBestRoutesForRouterOutput) RouteStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.RouteStatus }).(pulumi.StringOutput)
+}
+
+// The type of this route, which can be one of the following values:
+// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
+// - 'SUBNET' for a route from a subnet of the VPC
+// - 'BGP' for a route learned from a BGP peer of this router
+// - 'STATIC' for a static route
+func (o GetRouterStatusBestRoutesForRouterOutput) RouteType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.RouteType }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// A list of instance tags to which this route applies.
+func (o GetRouterStatusBestRoutesForRouterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+func (o GetRouterStatusBestRoutesForRouterOutput) Warnings() GetRouterStatusBestRoutesForRouterWarningArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) []GetRouterStatusBestRoutesForRouterWarning {
+		return v.Warnings
+	}).(GetRouterStatusBestRoutesForRouterWarningArrayOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterArrayOutput) ToGetRouterStatusBestRoutesForRouterArrayOutput() GetRouterStatusBestRoutesForRouterArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterArrayOutput) ToGetRouterStatusBestRoutesForRouterArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRoutesForRouterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoutesForRouter {
+		return vs[0].([]GetRouterStatusBestRoutesForRouter)[vs[1].(int)]
+	}).(GetRouterStatusBestRoutesForRouterOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterAsPath struct {
+	// The AS numbers of the AS Path.
+	AsLists []int `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType string `pulumi:"pathSegmentType"`
+}
+
+// GetRouterStatusBestRoutesForRouterAsPathInput is an input type that accepts GetRouterStatusBestRoutesForRouterAsPathArgs and GetRouterStatusBestRoutesForRouterAsPathOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterAsPathInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterAsPathArgs{...}
+type GetRouterStatusBestRoutesForRouterAsPathInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterAsPathOutput() GetRouterStatusBestRoutesForRouterAsPathOutput
+	ToGetRouterStatusBestRoutesForRouterAsPathOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterAsPathOutput
+}
+
+type GetRouterStatusBestRoutesForRouterAsPathArgs struct {
+	// The AS numbers of the AS Path.
+	AsLists pulumi.IntArrayInput `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values:
+	// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+	// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+	// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType pulumi.StringInput `pulumi:"pathSegmentType"`
+}
+
+func (GetRouterStatusBestRoutesForRouterAsPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterAsPathArgs) ToGetRouterStatusBestRoutesForRouterAsPathOutput() GetRouterStatusBestRoutesForRouterAsPathOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterAsPathOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterAsPathArgs) ToGetRouterStatusBestRoutesForRouterAsPathOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterAsPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterAsPathOutput)
+}
+
+// GetRouterStatusBestRoutesForRouterAsPathArrayInput is an input type that accepts GetRouterStatusBestRoutesForRouterAsPathArray and GetRouterStatusBestRoutesForRouterAsPathArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterAsPathArrayInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterAsPathArray{ GetRouterStatusBestRoutesForRouterAsPathArgs{...} }
+type GetRouterStatusBestRoutesForRouterAsPathArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterAsPathArrayOutput() GetRouterStatusBestRoutesForRouterAsPathArrayOutput
+	ToGetRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterAsPathArrayOutput
+}
+
+type GetRouterStatusBestRoutesForRouterAsPathArray []GetRouterStatusBestRoutesForRouterAsPathInput
+
+func (GetRouterStatusBestRoutesForRouterAsPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterAsPathArray) ToGetRouterStatusBestRoutesForRouterAsPathArrayOutput() GetRouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterAsPathArray) ToGetRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterAsPathArrayOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterAsPathOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterAsPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterAsPathOutput) ToGetRouterStatusBestRoutesForRouterAsPathOutput() GetRouterStatusBestRoutesForRouterAsPathOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterAsPathOutput) ToGetRouterStatusBestRoutesForRouterAsPathOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterAsPathOutput {
+	return o
+}
+
+// The AS numbers of the AS Path.
+func (o GetRouterStatusBestRoutesForRouterAsPathOutput) AsLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterAsPath) []int { return v.AsLists }).(pulumi.IntArrayOutput)
+}
+
+// The type of the AS Path, which can be one of the following values:
+// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
+// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
+// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
+// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+func (o GetRouterStatusBestRoutesForRouterAsPathOutput) PathSegmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterAsPath) string { return v.PathSegmentType }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterAsPathArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterAsPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterAsPath)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterAsPathArrayOutput) ToGetRouterStatusBestRoutesForRouterAsPathArrayOutput() GetRouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterAsPathArrayOutput) ToGetRouterStatusBestRoutesForRouterAsPathArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterAsPathArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterAsPathArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRoutesForRouterAsPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoutesForRouterAsPath {
+		return vs[0].([]GetRouterStatusBestRoutesForRouterAsPath)[vs[1].(int)]
+	}).(GetRouterStatusBestRoutesForRouterAsPathOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarning struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code string `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas []GetRouterStatusBestRoutesForRouterWarningData `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message string `pulumi:"message"`
+}
+
+// GetRouterStatusBestRoutesForRouterWarningInput is an input type that accepts GetRouterStatusBestRoutesForRouterWarningArgs and GetRouterStatusBestRoutesForRouterWarningOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterWarningInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterWarningArgs{...}
+type GetRouterStatusBestRoutesForRouterWarningInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterWarningOutput() GetRouterStatusBestRoutesForRouterWarningOutput
+	ToGetRouterStatusBestRoutesForRouterWarningOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterWarningOutput
+}
+
+type GetRouterStatusBestRoutesForRouterWarningArgs struct {
+	// A warning code, if applicable. For example, Compute Engine returns
+	// NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringInput `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example:
+	// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+	Datas GetRouterStatusBestRoutesForRouterWarningDataArrayInput `pulumi:"datas"`
+	// A human-readable description of the warning code.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetRouterStatusBestRoutesForRouterWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningArgs) ToGetRouterStatusBestRoutesForRouterWarningOutput() GetRouterStatusBestRoutesForRouterWarningOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterWarningOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningArgs) ToGetRouterStatusBestRoutesForRouterWarningOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterWarningOutput)
+}
+
+// GetRouterStatusBestRoutesForRouterWarningArrayInput is an input type that accepts GetRouterStatusBestRoutesForRouterWarningArray and GetRouterStatusBestRoutesForRouterWarningArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterWarningArrayInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterWarningArray{ GetRouterStatusBestRoutesForRouterWarningArgs{...} }
+type GetRouterStatusBestRoutesForRouterWarningArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterWarningArrayOutput() GetRouterStatusBestRoutesForRouterWarningArrayOutput
+	ToGetRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterWarningArrayOutput
+}
+
+type GetRouterStatusBestRoutesForRouterWarningArray []GetRouterStatusBestRoutesForRouterWarningInput
+
+func (GetRouterStatusBestRoutesForRouterWarningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningArray) ToGetRouterStatusBestRoutesForRouterWarningArrayOutput() GetRouterStatusBestRoutesForRouterWarningArrayOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningArray) ToGetRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterWarningArrayOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarningOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningOutput) ToGetRouterStatusBestRoutesForRouterWarningOutput() GetRouterStatusBestRoutesForRouterWarningOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningOutput) ToGetRouterStatusBestRoutesForRouterWarningOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningOutput {
+	return o
+}
+
+// A warning code, if applicable. For example, Compute Engine returns
+// NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o GetRouterStatusBestRoutesForRouterWarningOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterWarning) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Metadata about this warning in key: value format. For example:
+// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
+func (o GetRouterStatusBestRoutesForRouterWarningOutput) Datas() GetRouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterWarning) []GetRouterStatusBestRoutesForRouterWarningData {
+		return v.Datas
+	}).(GetRouterStatusBestRoutesForRouterWarningDataArrayOutput)
+}
+
+// A human-readable description of the warning code.
+func (o GetRouterStatusBestRoutesForRouterWarningOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterWarning) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarningArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterWarningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterWarning)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningArrayOutput) ToGetRouterStatusBestRoutesForRouterWarningArrayOutput() GetRouterStatusBestRoutesForRouterWarningArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningArrayOutput) ToGetRouterStatusBestRoutesForRouterWarningArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRoutesForRouterWarningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoutesForRouterWarning {
+		return vs[0].([]GetRouterStatusBestRoutesForRouterWarning)[vs[1].(int)]
+	}).(GetRouterStatusBestRoutesForRouterWarningOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarningData struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key string `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value string `pulumi:"value"`
+}
+
+// GetRouterStatusBestRoutesForRouterWarningDataInput is an input type that accepts GetRouterStatusBestRoutesForRouterWarningDataArgs and GetRouterStatusBestRoutesForRouterWarningDataOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterWarningDataInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterWarningDataArgs{...}
+type GetRouterStatusBestRoutesForRouterWarningDataInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterWarningDataOutput() GetRouterStatusBestRoutesForRouterWarningDataOutput
+	ToGetRouterStatusBestRoutesForRouterWarningDataOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterWarningDataOutput
+}
+
+type GetRouterStatusBestRoutesForRouterWarningDataArgs struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringInput `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRouterStatusBestRoutesForRouterWarningDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningDataArgs) ToGetRouterStatusBestRoutesForRouterWarningDataOutput() GetRouterStatusBestRoutesForRouterWarningDataOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterWarningDataOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningDataArgs) ToGetRouterStatusBestRoutesForRouterWarningDataOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterWarningDataOutput)
+}
+
+// GetRouterStatusBestRoutesForRouterWarningDataArrayInput is an input type that accepts GetRouterStatusBestRoutesForRouterWarningDataArray and GetRouterStatusBestRoutesForRouterWarningDataArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterWarningDataArrayInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterWarningDataArray{ GetRouterStatusBestRoutesForRouterWarningDataArgs{...} }
+type GetRouterStatusBestRoutesForRouterWarningDataArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutput() GetRouterStatusBestRoutesForRouterWarningDataArrayOutput
+	ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterWarningDataArrayOutput
+}
+
+type GetRouterStatusBestRoutesForRouterWarningDataArray []GetRouterStatusBestRoutesForRouterWarningDataInput
+
+func (GetRouterStatusBestRoutesForRouterWarningDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningDataArray) ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutput() GetRouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterWarningDataArray) ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterWarningDataArrayOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarningDataOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterWarningDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningDataOutput) ToGetRouterStatusBestRoutesForRouterWarningDataOutput() GetRouterStatusBestRoutesForRouterWarningDataOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningDataOutput) ToGetRouterStatusBestRoutesForRouterWarningDataOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningDataOutput {
+	return o
+}
+
+// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o GetRouterStatusBestRoutesForRouterWarningDataOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterWarningData) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A warning data value corresponding to the key.
+func (o GetRouterStatusBestRoutesForRouterWarningDataOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterWarningData) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterWarningDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterWarningDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterWarningData)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningDataArrayOutput) ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutput() GetRouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningDataArrayOutput) ToGetRouterStatusBestRoutesForRouterWarningDataArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterWarningDataArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterWarningDataArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRoutesForRouterWarningDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoutesForRouterWarningData {
+		return vs[0].([]GetRouterStatusBestRoutesForRouterWarningData)[vs[1].(int)]
+	}).(GetRouterStatusBestRoutesForRouterWarningDataOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfig struct {
+	// Auto Deploy Config of this security policy
+	AutoDeployConfigs []GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig `pulumi:"autoDeployConfigs"`
+	// Layer 7 DDoS Defense Config of this security policy
+	Layer7DdosDefenseConfigs []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig `pulumi:"layer7DdosDefenseConfigs"`
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigArgs and GetSecurityPolicyAdaptiveProtectionConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigArgs{...}
+type GetSecurityPolicyAdaptiveProtectionConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigArgs struct {
+	// Auto Deploy Config of this security policy
+	AutoDeployConfigs GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayInput `pulumi:"autoDeployConfigs"`
+	// Layer 7 DDoS Defense Config of this security policy
+	Layer7DdosDefenseConfigs GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayInput `pulumi:"layer7DdosDefenseConfigs"`
+}
+
+func (GetSecurityPolicyAdaptiveProtectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigOutput)
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigArrayInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigArray and GetSecurityPolicyAdaptiveProtectionConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigArray{ GetSecurityPolicyAdaptiveProtectionConfigArgs{...} }
+type GetSecurityPolicyAdaptiveProtectionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigArrayOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigArrayOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigArray []GetSecurityPolicyAdaptiveProtectionConfigInput
+
+func (GetSecurityPolicyAdaptiveProtectionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigOutput {
+	return o
+}
+
+// Auto Deploy Config of this security policy
+func (o GetSecurityPolicyAdaptiveProtectionConfigOutput) AutoDeployConfigs() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfig) []GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		return v.AutoDeployConfigs
+	}).(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput)
+}
+
+// Layer 7 DDoS Defense Config of this security policy
+func (o GetSecurityPolicyAdaptiveProtectionConfigOutput) Layer7DdosDefenseConfigs() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfig) []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		return v.Layer7DdosDefenseConfigs
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdaptiveProtectionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdaptiveProtectionConfig {
+		return vs[0].([]GetSecurityPolicyAdaptiveProtectionConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdaptiveProtectionConfigOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig struct {
+	// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+	ConfidenceThreshold float64 `pulumi:"confidenceThreshold"`
+	// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+	ExpirationSec int `pulumi:"expirationSec"`
+	// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+	ImpactedBaselineThreshold float64 `pulumi:"impactedBaselineThreshold"`
+	// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+	LoadThreshold float64 `pulumi:"loadThreshold"`
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs and GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{...}
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs struct {
+	// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+	ConfidenceThreshold pulumi.Float64Input `pulumi:"confidenceThreshold"`
+	// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+	ExpirationSec pulumi.IntInput `pulumi:"expirationSec"`
+	// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+	ImpactedBaselineThreshold pulumi.Float64Input `pulumi:"impactedBaselineThreshold"`
+	// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+	LoadThreshold pulumi.Float64Input `pulumi:"loadThreshold"`
+}
+
+func (GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput)
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray and GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray{ GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{...} }
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray []GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput
+
+func (GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return o
+}
+
+// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ConfidenceThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) float64 {
+		return v.ConfidenceThreshold
+	}).(pulumi.Float64Output)
+}
+
+// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ExpirationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) int { return v.ExpirationSec }).(pulumi.IntOutput)
+}
+
+// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ImpactedBaselineThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) float64 {
+		return v.ImpactedBaselineThreshold
+	}).(pulumi.Float64Output)
+}
+
+// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) LoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) float64 { return v.LoadThreshold }).(pulumi.Float64Output)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		return vs[0].([]GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig struct {
+	// If set to true, enables CAAP for L7 DDoS detection.
+	Enable bool `pulumi:"enable"`
+	// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+	RuleVisibility string `pulumi:"ruleVisibility"`
+	// Configuration options for layer7 adaptive protection for various customizable thresholds.
+	ThresholdConfigs []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig `pulumi:"thresholdConfigs"`
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{...}
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs struct {
+	// If set to true, enables CAAP for L7 DDoS detection.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+	RuleVisibility pulumi.StringInput `pulumi:"ruleVisibility"`
+	// Configuration options for layer7 adaptive protection for various customizable thresholds.
+	ThresholdConfigs GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput `pulumi:"thresholdConfigs"`
+}
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray{ GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{...} }
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return o
+}
+
+// If set to true, enables CAAP for L7 DDoS detection.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) RuleVisibility() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) string {
+		return v.RuleVisibility
+	}).(pulumi.StringOutput)
+}
+
+// Configuration options for layer7 adaptive protection for various customizable thresholds.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ThresholdConfigs() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+		return v.ThresholdConfigs
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		return vs[0].([]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig struct {
+	AutoDeployConfidenceThreshold       float64 `pulumi:"autoDeployConfidenceThreshold"`
+	AutoDeployExpirationSec             int     `pulumi:"autoDeployExpirationSec"`
+	AutoDeployImpactedBaselineThreshold float64 `pulumi:"autoDeployImpactedBaselineThreshold"`
+	AutoDeployLoadThreshold             float64 `pulumi:"autoDeployLoadThreshold"`
+	DetectionAbsoluteQps                float64 `pulumi:"detectionAbsoluteQps"`
+	DetectionLoadThreshold              float64 `pulumi:"detectionLoadThreshold"`
+	DetectionRelativeToBaselineQps      float64 `pulumi:"detectionRelativeToBaselineQps"`
+	// The name of the security policy. Provide either this or a `selfLink`.
+	Name                      string                                                                                                    `pulumi:"name"`
+	TrafficGranularityConfigs []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig `pulumi:"trafficGranularityConfigs"`
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{...}
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs struct {
+	AutoDeployConfidenceThreshold       pulumi.Float64Input `pulumi:"autoDeployConfidenceThreshold"`
+	AutoDeployExpirationSec             pulumi.IntInput     `pulumi:"autoDeployExpirationSec"`
+	AutoDeployImpactedBaselineThreshold pulumi.Float64Input `pulumi:"autoDeployImpactedBaselineThreshold"`
+	AutoDeployLoadThreshold             pulumi.Float64Input `pulumi:"autoDeployLoadThreshold"`
+	DetectionAbsoluteQps                pulumi.Float64Input `pulumi:"detectionAbsoluteQps"`
+	DetectionLoadThreshold              pulumi.Float64Input `pulumi:"detectionLoadThreshold"`
+	DetectionRelativeToBaselineQps      pulumi.Float64Input `pulumi:"detectionRelativeToBaselineQps"`
+	// The name of the security policy. Provide either this or a `selfLink`.
+	Name                      pulumi.StringInput                                                                                                `pulumi:"name"`
+	TrafficGranularityConfigs GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput `pulumi:"trafficGranularityConfigs"`
+}
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput)
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray{ GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{...} }
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployConfidenceThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.AutoDeployConfidenceThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployExpirationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) int {
+		return v.AutoDeployExpirationSec
+	}).(pulumi.IntOutput)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployImpactedBaselineThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.AutoDeployImpactedBaselineThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.AutoDeployLoadThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionAbsoluteQps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.DetectionAbsoluteQps
+	}).(pulumi.Float64Output)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.DetectionLoadThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionRelativeToBaselineQps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.DetectionRelativeToBaselineQps
+	}).(pulumi.Float64Output)
+}
+
+// The name of the security policy. Provide either this or a `selfLink`.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) TrafficGranularityConfigs() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
+		return v.TrafficGranularityConfigs
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+		return vs[0].([]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig struct {
+	// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+	EnableEachUniqueValue bool `pulumi:"enableEachUniqueValue"`
+	// Type of this configuration.
+	Type string `pulumi:"type"`
+	// Requests that match this value constitute a granular traffic unit.
+	Value string `pulumi:"value"`
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{...}
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs struct {
+	// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+	EnableEachUniqueValue pulumi.BoolInput `pulumi:"enableEachUniqueValue"`
+	// Type of this configuration.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Requests that match this value constitute a granular traffic unit.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput)
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray{ GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{...} }
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return o
+}
+
+// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) EnableEachUniqueValue() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) bool {
+		return v.EnableEachUniqueValue
+	}).(pulumi.BoolOutput)
+}
+
+// Type of this configuration.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Requests that match this value constitute a granular traffic unit.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
+		return vs[0].([]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfig struct {
+	// Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+	JsonCustomConfigs []GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig `pulumi:"jsonCustomConfigs"`
+	// JSON body parsing. Supported values include: "DISABLED", "STANDARD".
+	JsonParsing string `pulumi:"jsonParsing"`
+	// Logging level. Supported values include: "NORMAL", "VERBOSE".
+	LogLevel string `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders []string `pulumi:"userIpRequestHeaders"`
+}
+
+// GetSecurityPolicyAdvancedOptionsConfigInput is an input type that accepts GetSecurityPolicyAdvancedOptionsConfigArgs and GetSecurityPolicyAdvancedOptionsConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdvancedOptionsConfigInput` via:
+//
+//	GetSecurityPolicyAdvancedOptionsConfigArgs{...}
+type GetSecurityPolicyAdvancedOptionsConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdvancedOptionsConfigOutput() GetSecurityPolicyAdvancedOptionsConfigOutput
+	ToGetSecurityPolicyAdvancedOptionsConfigOutputWithContext(context.Context) GetSecurityPolicyAdvancedOptionsConfigOutput
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigArgs struct {
+	// Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+	JsonCustomConfigs GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput `pulumi:"jsonCustomConfigs"`
+	// JSON body parsing. Supported values include: "DISABLED", "STANDARD".
+	JsonParsing pulumi.StringInput `pulumi:"jsonParsing"`
+	// Logging level. Supported values include: "NORMAL", "VERBOSE".
+	LogLevel pulumi.StringInput `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders pulumi.StringArrayInput `pulumi:"userIpRequestHeaders"`
+}
+
+func (GetSecurityPolicyAdvancedOptionsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigArgs) ToGetSecurityPolicyAdvancedOptionsConfigOutput() GetSecurityPolicyAdvancedOptionsConfigOutput {
+	return i.ToGetSecurityPolicyAdvancedOptionsConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigArgs) ToGetSecurityPolicyAdvancedOptionsConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdvancedOptionsConfigOutput)
+}
+
+// GetSecurityPolicyAdvancedOptionsConfigArrayInput is an input type that accepts GetSecurityPolicyAdvancedOptionsConfigArray and GetSecurityPolicyAdvancedOptionsConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdvancedOptionsConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdvancedOptionsConfigArray{ GetSecurityPolicyAdvancedOptionsConfigArgs{...} }
+type GetSecurityPolicyAdvancedOptionsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdvancedOptionsConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigArrayOutput
+	ToGetSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdvancedOptionsConfigArrayOutput
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigArray []GetSecurityPolicyAdvancedOptionsConfigInput
+
+func (GetSecurityPolicyAdvancedOptionsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigArray) ToGetSecurityPolicyAdvancedOptionsConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigArray) ToGetSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdvancedOptionsConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdvancedOptionsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) ToGetSecurityPolicyAdvancedOptionsConfigOutput() GetSecurityPolicyAdvancedOptionsConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) ToGetSecurityPolicyAdvancedOptionsConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigOutput {
+	return o
+}
+
+// Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) JsonCustomConfigs() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfig) []GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return v.JsonCustomConfigs
+	}).(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput)
+}
+
+// JSON body parsing. Supported values include: "DISABLED", "STANDARD".
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) JsonParsing() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfig) string { return v.JsonParsing }).(pulumi.StringOutput)
+}
+
+// Logging level. Supported values include: "NORMAL", "VERBOSE".
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) LogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfig) string { return v.LogLevel }).(pulumi.StringOutput)
+}
+
+// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) UserIpRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfig) []string { return v.UserIpRequestHeaders }).(pulumi.StringArrayOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdvancedOptionsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigArrayOutput) ToGetSecurityPolicyAdvancedOptionsConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigArrayOutput) ToGetSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdvancedOptionsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdvancedOptionsConfig {
+		return vs[0].([]GetSecurityPolicyAdvancedOptionsConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdvancedOptionsConfigOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig struct {
+	// A list of custom Content-Type header values to apply the JSON parsing.
+	ContentTypes []string `pulumi:"contentTypes"`
+}
+
+// GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput is an input type that accepts GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs and GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput` via:
+//
+//	GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...}
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+	ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs struct {
+	// A list of custom Content-Type header values to apply the JSON parsing.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+}
+
+func (GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return i.ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+// GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput is an input type that accepts GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray and GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray{ GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...} }
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput
+	ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray []GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput
+
+func (GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+// A list of custom Content-Type header values to apply the JSON parsing.
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
+type GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput() GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) ToGetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return vs[0].([]GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+type GetSecurityPolicyRecaptchaOptionsConfig struct {
+	// A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	RedirectSiteKey string `pulumi:"redirectSiteKey"`
+}
+
+// GetSecurityPolicyRecaptchaOptionsConfigInput is an input type that accepts GetSecurityPolicyRecaptchaOptionsConfigArgs and GetSecurityPolicyRecaptchaOptionsConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRecaptchaOptionsConfigInput` via:
+//
+//	GetSecurityPolicyRecaptchaOptionsConfigArgs{...}
+type GetSecurityPolicyRecaptchaOptionsConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRecaptchaOptionsConfigOutput() GetSecurityPolicyRecaptchaOptionsConfigOutput
+	ToGetSecurityPolicyRecaptchaOptionsConfigOutputWithContext(context.Context) GetSecurityPolicyRecaptchaOptionsConfigOutput
+}
+
+type GetSecurityPolicyRecaptchaOptionsConfigArgs struct {
+	// A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	RedirectSiteKey pulumi.StringInput `pulumi:"redirectSiteKey"`
+}
+
+func (GetSecurityPolicyRecaptchaOptionsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRecaptchaOptionsConfigArgs) ToGetSecurityPolicyRecaptchaOptionsConfigOutput() GetSecurityPolicyRecaptchaOptionsConfigOutput {
+	return i.ToGetSecurityPolicyRecaptchaOptionsConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRecaptchaOptionsConfigArgs) ToGetSecurityPolicyRecaptchaOptionsConfigOutputWithContext(ctx context.Context) GetSecurityPolicyRecaptchaOptionsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRecaptchaOptionsConfigOutput)
+}
+
+// GetSecurityPolicyRecaptchaOptionsConfigArrayInput is an input type that accepts GetSecurityPolicyRecaptchaOptionsConfigArray and GetSecurityPolicyRecaptchaOptionsConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRecaptchaOptionsConfigArrayInput` via:
+//
+//	GetSecurityPolicyRecaptchaOptionsConfigArray{ GetSecurityPolicyRecaptchaOptionsConfigArgs{...} }
+type GetSecurityPolicyRecaptchaOptionsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutput() GetSecurityPolicyRecaptchaOptionsConfigArrayOutput
+	ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutputWithContext(context.Context) GetSecurityPolicyRecaptchaOptionsConfigArrayOutput
+}
+
+type GetSecurityPolicyRecaptchaOptionsConfigArray []GetSecurityPolicyRecaptchaOptionsConfigInput
+
+func (GetSecurityPolicyRecaptchaOptionsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRecaptchaOptionsConfigArray) ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutput() GetSecurityPolicyRecaptchaOptionsConfigArrayOutput {
+	return i.ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRecaptchaOptionsConfigArray) ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRecaptchaOptionsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRecaptchaOptionsConfigArrayOutput)
+}
+
+type GetSecurityPolicyRecaptchaOptionsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRecaptchaOptionsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRecaptchaOptionsConfigOutput) ToGetSecurityPolicyRecaptchaOptionsConfigOutput() GetSecurityPolicyRecaptchaOptionsConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRecaptchaOptionsConfigOutput) ToGetSecurityPolicyRecaptchaOptionsConfigOutputWithContext(ctx context.Context) GetSecurityPolicyRecaptchaOptionsConfigOutput {
+	return o
+}
+
+// A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+func (o GetSecurityPolicyRecaptchaOptionsConfigOutput) RedirectSiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRecaptchaOptionsConfig) string { return v.RedirectSiteKey }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRecaptchaOptionsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRecaptchaOptionsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRecaptchaOptionsConfigArrayOutput) ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutput() GetSecurityPolicyRecaptchaOptionsConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRecaptchaOptionsConfigArrayOutput) ToGetSecurityPolicyRecaptchaOptionsConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRecaptchaOptionsConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRecaptchaOptionsConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRecaptchaOptionsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRecaptchaOptionsConfig {
+		return vs[0].([]GetSecurityPolicyRecaptchaOptionsConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyRecaptchaOptionsConfigOutput)
+}
+
+type GetSecurityPolicyRuleType struct {
+	// Action to take when match matches the request.
+	Action string `pulumi:"action"`
+	// An optional description of this rule. Max size is 64.
+	Description string `pulumi:"description"`
+	// Additional actions that are performed on headers.
+	HeaderActions []GetSecurityPolicyRuleHeaderAction `pulumi:"headerActions"`
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.
+	Matches []GetSecurityPolicyRuleMatch `pulumi:"matches"`
+	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfigs []GetSecurityPolicyRulePreconfiguredWafConfig `pulumi:"preconfiguredWafConfigs"`
+	// When set to true, the action specified above is not enforced. Stackdriver logs for requests that trigger a preview action are annotated as such.
+	Preview bool `pulumi:"preview"`
+	// An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+	Priority int `pulumi:"priority"`
+	// Rate limit threshold for this security policy. Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions []GetSecurityPolicyRuleRateLimitOption `pulumi:"rateLimitOptions"`
+	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	RedirectOptions []GetSecurityPolicyRuleRedirectOption `pulumi:"redirectOptions"`
+}
+
+// GetSecurityPolicyRuleTypeInput is an input type that accepts GetSecurityPolicyRuleTypeArgs and GetSecurityPolicyRuleTypeOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleTypeInput` via:
+//
+//	GetSecurityPolicyRuleTypeArgs{...}
+type GetSecurityPolicyRuleTypeInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleTypeOutput() GetSecurityPolicyRuleTypeOutput
+	ToGetSecurityPolicyRuleTypeOutputWithContext(context.Context) GetSecurityPolicyRuleTypeOutput
+}
+
+type GetSecurityPolicyRuleTypeArgs struct {
+	// Action to take when match matches the request.
+	Action pulumi.StringInput `pulumi:"action"`
+	// An optional description of this rule. Max size is 64.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Additional actions that are performed on headers.
+	HeaderActions GetSecurityPolicyRuleHeaderActionArrayInput `pulumi:"headerActions"`
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.
+	Matches GetSecurityPolicyRuleMatchArrayInput `pulumi:"matches"`
+	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfigs GetSecurityPolicyRulePreconfiguredWafConfigArrayInput `pulumi:"preconfiguredWafConfigs"`
+	// When set to true, the action specified above is not enforced. Stackdriver logs for requests that trigger a preview action are annotated as such.
+	Preview pulumi.BoolInput `pulumi:"preview"`
+	// An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// Rate limit threshold for this security policy. Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions GetSecurityPolicyRuleRateLimitOptionArrayInput `pulumi:"rateLimitOptions"`
+	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	RedirectOptions GetSecurityPolicyRuleRedirectOptionArrayInput `pulumi:"redirectOptions"`
+}
+
+func (GetSecurityPolicyRuleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleTypeArgs) ToGetSecurityPolicyRuleTypeOutput() GetSecurityPolicyRuleTypeOutput {
+	return i.ToGetSecurityPolicyRuleTypeOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleTypeArgs) ToGetSecurityPolicyRuleTypeOutputWithContext(ctx context.Context) GetSecurityPolicyRuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleTypeOutput)
+}
+
+// GetSecurityPolicyRuleTypeArrayInput is an input type that accepts GetSecurityPolicyRuleTypeArray and GetSecurityPolicyRuleTypeArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleTypeArrayInput` via:
+//
+//	GetSecurityPolicyRuleTypeArray{ GetSecurityPolicyRuleTypeArgs{...} }
+type GetSecurityPolicyRuleTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleTypeArrayOutput() GetSecurityPolicyRuleTypeArrayOutput
+	ToGetSecurityPolicyRuleTypeArrayOutputWithContext(context.Context) GetSecurityPolicyRuleTypeArrayOutput
+}
+
+type GetSecurityPolicyRuleTypeArray []GetSecurityPolicyRuleTypeInput
+
+func (GetSecurityPolicyRuleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleTypeArray) ToGetSecurityPolicyRuleTypeArrayOutput() GetSecurityPolicyRuleTypeArrayOutput {
+	return i.ToGetSecurityPolicyRuleTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleTypeArray) ToGetSecurityPolicyRuleTypeArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleTypeArrayOutput)
+}
+
+type GetSecurityPolicyRuleTypeOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleTypeOutput) ToGetSecurityPolicyRuleTypeOutput() GetSecurityPolicyRuleTypeOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleTypeOutput) ToGetSecurityPolicyRuleTypeOutputWithContext(ctx context.Context) GetSecurityPolicyRuleTypeOutput {
+	return o
+}
+
+// Action to take when match matches the request.
+func (o GetSecurityPolicyRuleTypeOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// An optional description of this rule. Max size is 64.
+func (o GetSecurityPolicyRuleTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Additional actions that are performed on headers.
+func (o GetSecurityPolicyRuleTypeOutput) HeaderActions() GetSecurityPolicyRuleHeaderActionArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) []GetSecurityPolicyRuleHeaderAction { return v.HeaderActions }).(GetSecurityPolicyRuleHeaderActionArrayOutput)
+}
+
+// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.
+func (o GetSecurityPolicyRuleTypeOutput) Matches() GetSecurityPolicyRuleMatchArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) []GetSecurityPolicyRuleMatch { return v.Matches }).(GetSecurityPolicyRuleMatchArrayOutput)
+}
+
+// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+func (o GetSecurityPolicyRuleTypeOutput) PreconfiguredWafConfigs() GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) []GetSecurityPolicyRulePreconfiguredWafConfig {
+		return v.PreconfiguredWafConfigs
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput)
+}
+
+// When set to true, the action specified above is not enforced. Stackdriver logs for requests that trigger a preview action are annotated as such.
+func (o GetSecurityPolicyRuleTypeOutput) Preview() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) bool { return v.Preview }).(pulumi.BoolOutput)
+}
+
+// An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+func (o GetSecurityPolicyRuleTypeOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Rate limit threshold for this security policy. Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+func (o GetSecurityPolicyRuleTypeOutput) RateLimitOptions() GetSecurityPolicyRuleRateLimitOptionArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) []GetSecurityPolicyRuleRateLimitOption { return v.RateLimitOptions }).(GetSecurityPolicyRuleRateLimitOptionArrayOutput)
+}
+
+// Parameters defining the redirect action. Cannot be specified for any other actions.
+func (o GetSecurityPolicyRuleTypeOutput) RedirectOptions() GetSecurityPolicyRuleRedirectOptionArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleType) []GetSecurityPolicyRuleRedirectOption { return v.RedirectOptions }).(GetSecurityPolicyRuleRedirectOptionArrayOutput)
+}
+
+type GetSecurityPolicyRuleTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleTypeArrayOutput) ToGetSecurityPolicyRuleTypeArrayOutput() GetSecurityPolicyRuleTypeArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleTypeArrayOutput) ToGetSecurityPolicyRuleTypeArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleTypeArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleTypeArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleType {
+		return vs[0].([]GetSecurityPolicyRuleType)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleTypeOutput)
+}
+
+type GetSecurityPolicyRuleHeaderAction struct {
+	// The list of request headers to add or overwrite if they're already present.
+	RequestHeadersToAdds []GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
+}
+
+// GetSecurityPolicyRuleHeaderActionInput is an input type that accepts GetSecurityPolicyRuleHeaderActionArgs and GetSecurityPolicyRuleHeaderActionOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleHeaderActionInput` via:
+//
+//	GetSecurityPolicyRuleHeaderActionArgs{...}
+type GetSecurityPolicyRuleHeaderActionInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleHeaderActionOutput() GetSecurityPolicyRuleHeaderActionOutput
+	ToGetSecurityPolicyRuleHeaderActionOutputWithContext(context.Context) GetSecurityPolicyRuleHeaderActionOutput
+}
+
+type GetSecurityPolicyRuleHeaderActionArgs struct {
+	// The list of request headers to add or overwrite if they're already present.
+	RequestHeadersToAdds GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
+}
+
+func (GetSecurityPolicyRuleHeaderActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleHeaderAction)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleHeaderActionArgs) ToGetSecurityPolicyRuleHeaderActionOutput() GetSecurityPolicyRuleHeaderActionOutput {
+	return i.ToGetSecurityPolicyRuleHeaderActionOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleHeaderActionArgs) ToGetSecurityPolicyRuleHeaderActionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleHeaderActionOutput)
+}
+
+// GetSecurityPolicyRuleHeaderActionArrayInput is an input type that accepts GetSecurityPolicyRuleHeaderActionArray and GetSecurityPolicyRuleHeaderActionArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleHeaderActionArrayInput` via:
+//
+//	GetSecurityPolicyRuleHeaderActionArray{ GetSecurityPolicyRuleHeaderActionArgs{...} }
+type GetSecurityPolicyRuleHeaderActionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleHeaderActionArrayOutput() GetSecurityPolicyRuleHeaderActionArrayOutput
+	ToGetSecurityPolicyRuleHeaderActionArrayOutputWithContext(context.Context) GetSecurityPolicyRuleHeaderActionArrayOutput
+}
+
+type GetSecurityPolicyRuleHeaderActionArray []GetSecurityPolicyRuleHeaderActionInput
+
+func (GetSecurityPolicyRuleHeaderActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleHeaderAction)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleHeaderActionArray) ToGetSecurityPolicyRuleHeaderActionArrayOutput() GetSecurityPolicyRuleHeaderActionArrayOutput {
+	return i.ToGetSecurityPolicyRuleHeaderActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleHeaderActionArray) ToGetSecurityPolicyRuleHeaderActionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleHeaderActionArrayOutput)
+}
+
+type GetSecurityPolicyRuleHeaderActionOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleHeaderActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleHeaderAction)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleHeaderActionOutput) ToGetSecurityPolicyRuleHeaderActionOutput() GetSecurityPolicyRuleHeaderActionOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleHeaderActionOutput) ToGetSecurityPolicyRuleHeaderActionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionOutput {
+	return o
+}
+
+// The list of request headers to add or overwrite if they're already present.
+func (o GetSecurityPolicyRuleHeaderActionOutput) RequestHeadersToAdds() GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleHeaderAction) []GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd {
+		return v.RequestHeadersToAdds
+	}).(GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+type GetSecurityPolicyRuleHeaderActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleHeaderActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleHeaderAction)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleHeaderActionArrayOutput) ToGetSecurityPolicyRuleHeaderActionArrayOutput() GetSecurityPolicyRuleHeaderActionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleHeaderActionArrayOutput) ToGetSecurityPolicyRuleHeaderActionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleHeaderActionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleHeaderActionArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleHeaderActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleHeaderAction {
+		return vs[0].([]GetSecurityPolicyRuleHeaderAction)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleHeaderActionOutput)
+}
+
 type GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd struct {
 	// The name of the header to set.
 	HeaderName string `pulumi:"headerName"`
@@ -2720,6 +5800,46 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatRuleActionInput)(nil)).Elem(), GetRouterNatRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatRuleActionArrayInput)(nil)).Elem(), GetRouterNatRuleActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatSubnetworkInput)(nil)).Elem(), GetRouterNatSubnetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatSubnetworkArrayInput)(nil)).Elem(), GetRouterNatSubnetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteInput)(nil)).Elem(), GetRouterStatusBestRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteArrayInput)(nil)).Elem(), GetRouterStatusBestRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteAsPathInput)(nil)).Elem(), GetRouterStatusBestRouteAsPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteAsPathArrayInput)(nil)).Elem(), GetRouterStatusBestRouteAsPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteWarningInput)(nil)).Elem(), GetRouterStatusBestRouteWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteWarningArrayInput)(nil)).Elem(), GetRouterStatusBestRouteWarningArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteWarningDataInput)(nil)).Elem(), GetRouterStatusBestRouteWarningDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteWarningDataArrayInput)(nil)).Elem(), GetRouterStatusBestRouteWarningDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterAsPathInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterAsPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterAsPathArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterAsPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningDataInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningDataArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), GetSecurityPolicyAdvancedOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdvancedOptionsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput)(nil)).Elem(), GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRecaptchaOptionsConfigInput)(nil)).Elem(), GetSecurityPolicyRecaptchaOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRecaptchaOptionsConfigArrayInput)(nil)).Elem(), GetSecurityPolicyRecaptchaOptionsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleTypeInput)(nil)).Elem(), GetSecurityPolicyRuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleTypeArrayInput)(nil)).Elem(), GetSecurityPolicyRuleTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleHeaderActionInput)(nil)).Elem(), GetSecurityPolicyRuleHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleHeaderActionArrayInput)(nil)).Elem(), GetSecurityPolicyRuleHeaderActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleHeaderActionRequestHeadersToAddInput)(nil)).Elem(), GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayInput)(nil)).Elem(), GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchInput)(nil)).Elem(), GetSecurityPolicyRuleMatchArgs{})
@@ -2766,6 +5886,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRouterNatRuleActionOutput{})
+	pulumi.RegisterOutputType(GetRouterNatRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterNatSubnetworkOutput{})
+	pulumi.RegisterOutputType(GetRouterNatSubnetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteAsPathOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteAsPathArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteWarningOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteWarningArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteWarningDataOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteWarningDataArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterAsPathOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterAsPathArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningDataOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningDataArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdvancedOptionsConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdvancedOptionsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRecaptchaOptionsConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRecaptchaOptionsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleTypeOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleHeaderActionOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleHeaderActionArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRuleHeaderActionRequestHeadersToAddOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchOutput{})

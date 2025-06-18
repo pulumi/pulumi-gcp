@@ -18,6 +18,23 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters.
+        /// For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+        /// For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies httpsRedirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies stripQuery, the test passes only if expectedOutputUrl does not contain any query parameters.
+        /// expectedOutputUrl is optional when service is specified.
+        /// </summary>
+        public readonly string? ExpectedOutputUrl;
+        /// <summary>
+        /// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
+        /// expectedRedirectResponseCode cannot be set when service is set.
+        /// </summary>
+        public readonly int? ExpectedRedirectResponseCode;
+        /// <summary>
+        /// HTTP headers for this request.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.URLMapTestHeader> Headers;
+        /// <summary>
         /// Host portion of the URL.
         /// </summary>
         public readonly string Host;
@@ -28,19 +45,28 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The backend service or backend bucket link that should be matched by this test.
         /// </summary>
-        public readonly string Service;
+        public readonly string? Service;
 
         [OutputConstructor]
         private URLMapTest(
             string? description,
 
+            string? expectedOutputUrl,
+
+            int? expectedRedirectResponseCode,
+
+            ImmutableArray<Outputs.URLMapTestHeader> headers,
+
             string host,
 
             string path,
 
-            string service)
+            string? service)
         {
             Description = description;
+            ExpectedOutputUrl = expectedOutputUrl;
+            ExpectedRedirectResponseCode = expectedRedirectResponseCode;
+            Headers = headers;
             Host = host;
             Path = path;
             Service = service;

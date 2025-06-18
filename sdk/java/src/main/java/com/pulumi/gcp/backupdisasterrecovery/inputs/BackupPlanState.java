@@ -147,18 +147,35 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource type to which the `BackupPlan` will be applied. Examples include, &#34;compute.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+     * The resource type to which the `BackupPlan` will be applied.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The resource type to which the `BackupPlan` will be applied. Examples include, &#34;compute.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+     * @return The resource type to which the `BackupPlan` will be applied.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     public Optional<Output<String>> resourceType() {
         return Optional.ofNullable(this.resourceType);
+    }
+
+    /**
+     * The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+     * 
+     */
+    @Import(name="supportedResourceTypes")
+    private @Nullable Output<List<String>> supportedResourceTypes;
+
+    /**
+     * @return The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+     * 
+     */
+    public Optional<Output<List<String>>> supportedResourceTypes() {
+        return Optional.ofNullable(this.supportedResourceTypes);
     }
 
     /**
@@ -189,6 +206,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.resourceType = $.resourceType;
+        this.supportedResourceTypes = $.supportedResourceTypes;
         this.updateTime = $.updateTime;
     }
 
@@ -401,7 +419,8 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceType The resource type to which the `BackupPlan` will be applied. Examples include, &#34;compute.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+         * @param resourceType The resource type to which the `BackupPlan` will be applied.
+         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
          * 
          * @return builder
          * 
@@ -412,13 +431,45 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceType The resource type to which the `BackupPlan` will be applied. Examples include, &#34;compute.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+         * @param resourceType The resource type to which the `BackupPlan` will be applied.
+         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
          * 
          * @return builder
          * 
          */
         public Builder resourceType(String resourceType) {
             return resourceType(Output.of(resourceType));
+        }
+
+        /**
+         * @param supportedResourceTypes The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedResourceTypes(@Nullable Output<List<String>> supportedResourceTypes) {
+            $.supportedResourceTypes = supportedResourceTypes;
+            return this;
+        }
+
+        /**
+         * @param supportedResourceTypes The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedResourceTypes(List<String> supportedResourceTypes) {
+            return supportedResourceTypes(Output.of(supportedResourceTypes));
+        }
+
+        /**
+         * @param supportedResourceTypes The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedResourceTypes(String... supportedResourceTypes) {
+            return supportedResourceTypes(List.of(supportedResourceTypes));
         }
 
         /**

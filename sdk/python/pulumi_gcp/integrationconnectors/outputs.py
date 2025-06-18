@@ -2149,11 +2149,16 @@ class ConnectionLockConfig(dict):
 @pulumi.output_type
 class ConnectionLogConfig(dict):
     def __init__(__self__, *,
-                 enabled: builtins.bool):
+                 enabled: builtins.bool,
+                 level: Optional[builtins.str] = None):
         """
         :param builtins.bool enabled: Enabled represents whether logging is enabled or not for a connection.
+        :param builtins.str level: Log configuration level.
+               Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
 
     @property
     @pulumi.getter
@@ -2162,6 +2167,15 @@ class ConnectionLogConfig(dict):
         Enabled represents whether logging is enabled or not for a connection.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[builtins.str]:
+        """
+        Log configuration level.
+        Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+        """
+        return pulumi.get(self, "level")
 
 
 @pulumi.output_type

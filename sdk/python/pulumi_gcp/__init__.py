@@ -4984,6 +4984,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/cxTool",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxTool:CxTool": "CxTool"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/cxVersion",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {

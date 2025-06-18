@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.VPNTunnelCipherSuiteArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,23 @@ import javax.annotation.Nullable;
 public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
 
     public static final VPNTunnelState Empty = new VPNTunnelState();
+
+    /**
+     * User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cipherSuite")
+    private @Nullable Output<VPNTunnelCipherSuiteArgs> cipherSuite;
+
+    /**
+     * @return User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VPNTunnelCipherSuiteArgs>> cipherSuite() {
+        return Optional.ofNullable(this.cipherSuite);
+    }
 
     /**
      * Creation timestamp in RFC3339 text format.
@@ -454,6 +472,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
     private VPNTunnelState() {}
 
     private VPNTunnelState(VPNTunnelState $) {
+        this.cipherSuite = $.cipherSuite;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.detailedStatus = $.detailedStatus;
@@ -497,6 +516,29 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(VPNTunnelState defaults) {
             $ = new VPNTunnelState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cipherSuite User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cipherSuite(@Nullable Output<VPNTunnelCipherSuiteArgs> cipherSuite) {
+            $.cipherSuite = cipherSuite;
+            return this;
+        }
+
+        /**
+         * @param cipherSuite User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cipherSuite(VPNTunnelCipherSuiteArgs cipherSuite) {
+            return cipherSuite(Output.of(cipherSuite));
         }
 
         /**

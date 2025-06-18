@@ -28,7 +28,7 @@ class GetBackupPlanResult:
     """
     A collection of values returned by getBackupPlan.
     """
-    def __init__(__self__, backup_plan_id=None, backup_rules=None, backup_vault=None, backup_vault_service_account=None, create_time=None, description=None, id=None, location=None, name=None, project=None, resource_type=None, update_time=None):
+    def __init__(__self__, backup_plan_id=None, backup_rules=None, backup_vault=None, backup_vault_service_account=None, create_time=None, description=None, id=None, location=None, name=None, project=None, resource_type=None, supported_resource_types=None, update_time=None):
         if backup_plan_id and not isinstance(backup_plan_id, str):
             raise TypeError("Expected argument 'backup_plan_id' to be a str")
         pulumi.set(__self__, "backup_plan_id", backup_plan_id)
@@ -62,6 +62,9 @@ class GetBackupPlanResult:
         if resource_type and not isinstance(resource_type, str):
             raise TypeError("Expected argument 'resource_type' to be a str")
         pulumi.set(__self__, "resource_type", resource_type)
+        if supported_resource_types and not isinstance(supported_resource_types, list):
+            raise TypeError("Expected argument 'supported_resource_types' to be a list")
+        pulumi.set(__self__, "supported_resource_types", supported_resource_types)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -125,6 +128,11 @@ class GetBackupPlanResult:
         return pulumi.get(self, "resource_type")
 
     @property
+    @pulumi.getter(name="supportedResourceTypes")
+    def supported_resource_types(self) -> Sequence[builtins.str]:
+        return pulumi.get(self, "supported_resource_types")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> builtins.str:
         return pulumi.get(self, "update_time")
@@ -147,6 +155,7 @@ class AwaitableGetBackupPlanResult(GetBackupPlanResult):
             name=self.name,
             project=self.project,
             resource_type=self.resource_type,
+            supported_resource_types=self.supported_resource_types,
             update_time=self.update_time)
 
 
@@ -176,6 +185,7 @@ def get_backup_plan(backup_plan_id: Optional[builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         resource_type=pulumi.get(__ret__, 'resource_type'),
+        supported_resource_types=pulumi.get(__ret__, 'supported_resource_types'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_backup_plan_output(backup_plan_id: Optional[pulumi.Input[builtins.str]] = None,
                            location: Optional[pulumi.Input[builtins.str]] = None,
@@ -202,4 +212,5 @@ def get_backup_plan_output(backup_plan_id: Optional[pulumi.Input[builtins.str]] 
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
         resource_type=pulumi.get(__response__, 'resource_type'),
+        supported_resource_types=pulumi.get(__response__, 'supported_resource_types'),
         update_time=pulumi.get(__response__, 'update_time')))

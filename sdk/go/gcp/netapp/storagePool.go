@@ -130,8 +130,14 @@ type StoragePool struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+	// The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+	EnableHotTierAutoResize pulumi.BoolPtrOutput `pulumi:"enableHotTierAutoResize"`
 	// Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
 	EncryptionType pulumi.StringOutput `pulumi:"encryptionType"`
+	// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+	// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+	HotTierSizeGib pulumi.StringPtrOutput `pulumi:"hotTierSizeGib"`
 	// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	KmsConfig pulumi.StringPtrOutput `pulumi:"kmsConfig"`
@@ -238,8 +244,14 @@ type storagePoolState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+	// The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+	EnableHotTierAutoResize *bool `pulumi:"enableHotTierAutoResize"`
 	// Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
 	EncryptionType *string `pulumi:"encryptionType"`
+	// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+	// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+	HotTierSizeGib *string `pulumi:"hotTierSizeGib"`
 	// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	KmsConfig *string `pulumi:"kmsConfig"`
@@ -300,8 +312,14 @@ type StoragePoolState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+	// The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+	EnableHotTierAutoResize pulumi.BoolPtrInput
 	// Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
 	EncryptionType pulumi.StringPtrInput
+	// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+	// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+	HotTierSizeGib pulumi.StringPtrInput
 	// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	KmsConfig pulumi.StringPtrInput
@@ -364,6 +382,12 @@ type storagePoolArgs struct {
 	CustomPerformanceEnabled *bool `pulumi:"customPerformanceEnabled"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+	// The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+	EnableHotTierAutoResize *bool `pulumi:"enableHotTierAutoResize"`
+	// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+	// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+	HotTierSizeGib *string `pulumi:"hotTierSizeGib"`
 	// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	KmsConfig *string `pulumi:"kmsConfig"`
@@ -416,6 +440,12 @@ type StoragePoolArgs struct {
 	CustomPerformanceEnabled pulumi.BoolPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+	// The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+	EnableHotTierAutoResize pulumi.BoolPtrInput
+	// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+	// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+	HotTierSizeGib pulumi.StringPtrInput
 	// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	KmsConfig pulumi.StringPtrInput
@@ -573,9 +603,21 @@ func (o StoragePoolOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+// The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+func (o StoragePoolOutput) EnableHotTierAutoResize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.BoolPtrOutput { return v.EnableHotTierAutoResize }).(pulumi.BoolPtrOutput)
+}
+
 // Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
 func (o StoragePoolOutput) EncryptionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.EncryptionType }).(pulumi.StringOutput)
+}
+
+// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+func (o StoragePoolOutput) HotTierSizeGib() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.HotTierSizeGib }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.

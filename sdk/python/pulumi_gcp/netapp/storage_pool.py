@@ -28,6 +28,8 @@ class StoragePoolArgs:
                  allow_auto_tiering: Optional[pulumi.Input[builtins.bool]] = None,
                  custom_performance_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_hot_tier_auto_resize: Optional[pulumi.Input[builtins.bool]] = None,
+                 hot_tier_size_gib: Optional[pulumi.Input[builtins.str]] = None,
                  kms_config: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  ldap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -50,6 +52,10 @@ class StoragePoolArgs:
                Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[builtins.bool] enable_hot_tier_auto_resize: Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+               The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+        :param pulumi.Input[builtins.str] hot_tier_size_gib: Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+               It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
         :param pulumi.Input[builtins.str] kms_config: Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
                The policy needs to be in the same location as the storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -84,6 +90,10 @@ class StoragePoolArgs:
             pulumi.set(__self__, "custom_performance_enabled", custom_performance_enabled)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_hot_tier_auto_resize is not None:
+            pulumi.set(__self__, "enable_hot_tier_auto_resize", enable_hot_tier_auto_resize)
+        if hot_tier_size_gib is not None:
+            pulumi.set(__self__, "hot_tier_size_gib", hot_tier_size_gib)
         if kms_config is not None:
             pulumi.set(__self__, "kms_config", kms_config)
         if labels is not None:
@@ -201,6 +211,32 @@ class StoragePoolArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableHotTierAutoResize")
+    def enable_hot_tier_auto_resize(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+        The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+        """
+        return pulumi.get(self, "enable_hot_tier_auto_resize")
+
+    @enable_hot_tier_auto_resize.setter
+    def enable_hot_tier_auto_resize(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_hot_tier_auto_resize", value)
+
+    @property
+    @pulumi.getter(name="hotTierSizeGib")
+    def hot_tier_size_gib(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+        It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+        """
+        return pulumi.get(self, "hot_tier_size_gib")
+
+    @hot_tier_size_gib.setter
+    def hot_tier_size_gib(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "hot_tier_size_gib", value)
 
     @property
     @pulumi.getter(name="kmsConfig")
@@ -332,7 +368,9 @@ class _StoragePoolState:
                  custom_performance_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 enable_hot_tier_auto_resize: Optional[pulumi.Input[builtins.bool]] = None,
                  encryption_type: Optional[pulumi.Input[builtins.str]] = None,
+                 hot_tier_size_gib: Optional[pulumi.Input[builtins.str]] = None,
                  kms_config: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  ldap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -358,7 +396,11 @@ class _StoragePoolState:
         :param pulumi.Input[builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[builtins.bool] enable_hot_tier_auto_resize: Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+               The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
         :param pulumi.Input[builtins.str] encryption_type: Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
+        :param pulumi.Input[builtins.str] hot_tier_size_gib: Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+               It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
         :param pulumi.Input[builtins.str] kms_config: Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
                The policy needs to be in the same location as the storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -401,8 +443,12 @@ class _StoragePoolState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if enable_hot_tier_auto_resize is not None:
+            pulumi.set(__self__, "enable_hot_tier_auto_resize", enable_hot_tier_auto_resize)
         if encryption_type is not None:
             pulumi.set(__self__, "encryption_type", encryption_type)
+        if hot_tier_size_gib is not None:
+            pulumi.set(__self__, "hot_tier_size_gib", hot_tier_size_gib)
         if kms_config is not None:
             pulumi.set(__self__, "kms_config", kms_config)
         if labels is not None:
@@ -509,6 +555,19 @@ class _StoragePoolState:
         pulumi.set(self, "effective_labels", value)
 
     @property
+    @pulumi.getter(name="enableHotTierAutoResize")
+    def enable_hot_tier_auto_resize(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+        The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+        """
+        return pulumi.get(self, "enable_hot_tier_auto_resize")
+
+    @enable_hot_tier_auto_resize.setter
+    def enable_hot_tier_auto_resize(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_hot_tier_auto_resize", value)
+
+    @property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -519,6 +578,19 @@ class _StoragePoolState:
     @encryption_type.setter
     def encryption_type(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "encryption_type", value)
+
+    @property
+    @pulumi.getter(name="hotTierSizeGib")
+    def hot_tier_size_gib(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+        It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+        """
+        return pulumi.get(self, "hot_tier_size_gib")
+
+    @hot_tier_size_gib.setter
+    def hot_tier_size_gib(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "hot_tier_size_gib", value)
 
     @property
     @pulumi.getter(name="kmsConfig")
@@ -726,6 +798,8 @@ class StoragePool(pulumi.CustomResource):
                  capacity_gib: Optional[pulumi.Input[builtins.str]] = None,
                  custom_performance_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_hot_tier_auto_resize: Optional[pulumi.Input[builtins.bool]] = None,
+                 hot_tier_size_gib: Optional[pulumi.Input[builtins.str]] = None,
                  kms_config: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  ldap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -814,6 +888,10 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] capacity_gib: Capacity of the storage pool (in GiB).
         :param pulumi.Input[builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[builtins.bool] enable_hot_tier_auto_resize: Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+               The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+        :param pulumi.Input[builtins.str] hot_tier_size_gib: Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+               It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
         :param pulumi.Input[builtins.str] kms_config: Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
                The policy needs to be in the same location as the storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -932,6 +1010,8 @@ class StoragePool(pulumi.CustomResource):
                  capacity_gib: Optional[pulumi.Input[builtins.str]] = None,
                  custom_performance_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_hot_tier_auto_resize: Optional[pulumi.Input[builtins.bool]] = None,
+                 hot_tier_size_gib: Optional[pulumi.Input[builtins.str]] = None,
                  kms_config: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  ldap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -960,6 +1040,8 @@ class StoragePool(pulumi.CustomResource):
             __props__.__dict__["capacity_gib"] = capacity_gib
             __props__.__dict__["custom_performance_enabled"] = custom_performance_enabled
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_hot_tier_auto_resize"] = enable_hot_tier_auto_resize
+            __props__.__dict__["hot_tier_size_gib"] = hot_tier_size_gib
             __props__.__dict__["kms_config"] = kms_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["ldap_enabled"] = ldap_enabled
@@ -1001,7 +1083,9 @@ class StoragePool(pulumi.CustomResource):
             custom_performance_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+            enable_hot_tier_auto_resize: Optional[pulumi.Input[builtins.bool]] = None,
             encryption_type: Optional[pulumi.Input[builtins.str]] = None,
+            hot_tier_size_gib: Optional[pulumi.Input[builtins.str]] = None,
             kms_config: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             ldap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1032,7 +1116,11 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[builtins.bool] enable_hot_tier_auto_resize: Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+               The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
         :param pulumi.Input[builtins.str] encryption_type: Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
+        :param pulumi.Input[builtins.str] hot_tier_size_gib: Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+               It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
         :param pulumi.Input[builtins.str] kms_config: Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
                The policy needs to be in the same location as the storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -1073,7 +1161,9 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["custom_performance_enabled"] = custom_performance_enabled
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["enable_hot_tier_auto_resize"] = enable_hot_tier_auto_resize
         __props__.__dict__["encryption_type"] = encryption_type
+        __props__.__dict__["hot_tier_size_gib"] = hot_tier_size_gib
         __props__.__dict__["kms_config"] = kms_config
         __props__.__dict__["labels"] = labels
         __props__.__dict__["ldap_enabled"] = ldap_enabled
@@ -1142,12 +1232,30 @@ class StoragePool(pulumi.CustomResource):
         return pulumi.get(self, "effective_labels")
 
     @property
+    @pulumi.getter(name="enableHotTierAutoResize")
+    def enable_hot_tier_auto_resize(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+        The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+        """
+        return pulumi.get(self, "enable_hot_tier_auto_resize")
+
+    @property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> pulumi.Output[builtins.str]:
         """
         Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
         """
         return pulumi.get(self, "encryption_type")
+
+    @property
+    @pulumi.getter(name="hotTierSizeGib")
+    def hot_tier_size_gib(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+        It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+        """
+        return pulumi.get(self, "hot_tier_size_gib")
 
     @property
     @pulumi.getter(name="kmsConfig")

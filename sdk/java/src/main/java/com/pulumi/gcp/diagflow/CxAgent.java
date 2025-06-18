@@ -227,6 +227,12 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
     public Output<String> defaultLanguageCode() {
         return this.defaultLanguageCode;
     }
+    @Export(name="deleteChatEngineOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deleteChatEngineOnDestroy;
+
+    public Output<Optional<Boolean>> deleteChatEngineOnDestroy() {
+        return Codegen.optional(this.deleteChatEngineOnDestroy);
+    }
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      * 

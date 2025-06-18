@@ -12,11 +12,39 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
 
     public sealed class ServiceConnectionPolicyPscConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedGoogleProducersResourceHierarchyLevels")]
+        private InputList<string>? _allowedGoogleProducersResourceHierarchyLevels;
+
+        /// <summary>
+        /// List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+        /// a network administrator can provide both 'organizations/foo' and 'projects/bar' as
+        /// allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+        /// instance within the 'foo' organization or the 'bar' project. By default,
+        /// allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+        /// allowedGoogleProducersResourceHierarchyLevel is / where is one of 'projects', 'folders', or 'organizations'
+        /// and is either the ID or the number of the resource type. Format for each
+        /// allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
+        /// [projects/my-project-id, projects/567, folders/891, organizations/123]
+        /// </summary>
+        public InputList<string> AllowedGoogleProducersResourceHierarchyLevels
+        {
+            get => _allowedGoogleProducersResourceHierarchyLevels ?? (_allowedGoogleProducersResourceHierarchyLevels = new InputList<string>());
+            set => _allowedGoogleProducersResourceHierarchyLevels = value;
+        }
+
         /// <summary>
         /// Max number of PSC connections for this policy.
         /// </summary>
         [Input("limit")]
         public Input<string>? Limit { get; set; }
+
+        /// <summary>
+        /// ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+        /// the Producer instance can be within.
+        /// Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
+        /// </summary>
+        [Input("producerInstanceLocation")]
+        public Input<string>? ProducerInstanceLocation { get; set; }
 
         [Input("subnetworks", required: true)]
         private InputList<string>? _subnetworks;

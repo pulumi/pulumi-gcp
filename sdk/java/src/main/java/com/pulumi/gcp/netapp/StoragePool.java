@@ -218,6 +218,22 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+     * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+     * 
+     */
+    @Export(name="enableHotTierAutoResize", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableHotTierAutoResize;
+
+    /**
+     * @return Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+     * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+     * 
+     */
+    public Output<Optional<Boolean>> enableHotTierAutoResize() {
+        return Codegen.optional(this.enableHotTierAutoResize);
+    }
+    /**
      * Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
      * 
      */
@@ -230,6 +246,22 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> encryptionType() {
         return this.encryptionType;
+    }
+    /**
+     * Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+     * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+     * 
+     */
+    @Export(name="hotTierSizeGib", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> hotTierSizeGib;
+
+    /**
+     * @return Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+     * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+     * 
+     */
+    public Output<Optional<String>> hotTierSizeGib() {
+        return Codegen.optional(this.hotTierSizeGib);
     }
     /**
      * Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.

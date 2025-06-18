@@ -39,8 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.serviceaccount.Account;
- * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.vertex.AiIndex;
@@ -55,13 +53,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.vertex.AiIndexEndpoint;
  * import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.vertex.AiIndexEndpointDeployedIndex;
  * import com.pulumi.gcp.vertex.AiIndexEndpointDeployedIndexArgs;
  * import com.pulumi.gcp.vertex.inputs.AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs;
  * import com.pulumi.gcp.storage.BucketObject;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -75,10 +74,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("vertex-sa")
- *             .build());
- * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("bucket-name")
  *             .location("us-central1")
@@ -86,10 +81,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var index = new AiIndex("index", AiIndexArgs.builder()
- *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
  *             .displayName("test-index")
  *             .description("index for test")
+ *             .indexUpdateMethod("BATCH_UPDATE")
+ *             .labels(Map.of("foo", "bar"))
  *             .metadata(AiIndexMetadataArgs.builder()
  *                 .contentsDeltaUri(bucket.name().applyValue(_name -> String.format("gs://%s/contents", _name)))
  *                 .config(AiIndexMetadataConfigArgs.builder()
@@ -105,7 +101,6 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .indexUpdateMethod("BATCH_UPDATE")
  *             .build());
  * 
  *         final var vertexNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
@@ -119,28 +114,29 @@ import javax.annotation.Nullable;
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .region("us-central1")
- *             .labels(Map.of("label-one", "value-one"))
  *             .network(String.format("projects/%s/global/networks/%s", project.number(),vertexNetwork.name()))
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .build());
+ * 
+ *         var sa = new Account("sa", AccountArgs.builder()
+ *             .accountId("vertex-sa")
  *             .build());
  * 
  *         var basicDeployedIndex = new AiIndexEndpointDeployedIndex("basicDeployedIndex", AiIndexEndpointDeployedIndexArgs.builder()
- *             .indexEndpoint(vertexIndexEndpointDeployed.id())
- *             .index(index.id())
  *             .deployedIndexId("deployed_index_id")
- *             .reservedIpRanges("vertex-ai-range")
- *             .enableAccessLogging(false)
  *             .displayName("vertex-deployed-index")
+ *             .region("us-central1")
+ *             .index(index.id())
+ *             .indexEndpoint(vertexIndexEndpointDeployed.id())
+ *             .enableAccessLogging(false)
+ *             .reservedIpRanges("vertex-ai-range")
  *             .deployedIndexAuthConfig(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs.builder()
  *                 .authProvider(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs.builder()
  *                     .audiences("123456-my-app")
  *                     .allowedIssuers(sa.email())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     vertexIndexEndpointDeployed,
- *                     sa)
- *                 .build());
+ *             .build());
  * 
  *         // The sample data comes from the following link:
  *         // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
@@ -191,7 +187,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiIndexEndpointDeployedIndexAutomaticResourcesArgs;
  * import com.pulumi.gcp.storage.BucketObject;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -216,10 +211,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var index = new AiIndex("index", AiIndexArgs.builder()
- *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
  *             .displayName("test-index")
  *             .description("index for test")
+ *             .indexUpdateMethod("BATCH_UPDATE")
+ *             .labels(Map.of("foo", "bar"))
  *             .metadata(AiIndexMetadataArgs.builder()
  *                 .contentsDeltaUri(bucket.name().applyValue(_name -> String.format("gs://%s/contents", _name)))
  *                 .config(AiIndexMetadataConfigArgs.builder()
@@ -235,7 +231,6 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .indexUpdateMethod("BATCH_UPDATE")
  *             .build());
  * 
  *         final var vertexNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
@@ -249,17 +244,18 @@ import javax.annotation.Nullable;
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .region("us-central1")
- *             .labels(Map.of("label-one", "value-one"))
  *             .network(String.format("projects/%s/global/networks/%s", project.number(),vertexNetwork.name()))
+ *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
  *         var basicDeployedIndex = new AiIndexEndpointDeployedIndex("basicDeployedIndex", AiIndexEndpointDeployedIndexArgs.builder()
- *             .indexEndpoint(vertexIndexEndpointDeployed.id())
- *             .index(index.id())
  *             .deployedIndexId("deployed_index_id")
+ *             .displayName("vertex-deployed-index")
+ *             .region("us-central1")
+ *             .index(index.id())
+ *             .indexEndpoint(vertexIndexEndpointDeployed.id())
  *             .reservedIpRanges("vertex-ai-range")
  *             .enableAccessLogging(false)
- *             .displayName("vertex-deployed-index")
  *             .deployedIndexAuthConfig(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs.builder()
  *                 .authProvider(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs.builder()
  *                     .audiences("123456-my-app")
@@ -269,11 +265,7 @@ import javax.annotation.Nullable;
  *             .automaticResources(AiIndexEndpointDeployedIndexAutomaticResourcesArgs.builder()
  *                 .maxReplicaCount(4)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     vertexIndexEndpointDeployed,
- *                     sa)
- *                 .build());
+ *             .build());
  * 
  *         // The sample data comes from the following link:
  *         // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
@@ -534,6 +526,20 @@ public class AiIndexEndpointDeployedIndex extends com.pulumi.resources.CustomRes
      */
     public Output<List<AiIndexEndpointDeployedIndexPrivateEndpoint>> privateEndpoints() {
         return this.privateEndpoints;
+    }
+    /**
+     * The region of the index endpoint deployment. eg us-central1
+     * 
+     */
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> region;
+
+    /**
+     * @return The region of the index endpoint deployment. eg us-central1
+     * 
+     */
+    public Output<Optional<String>> region() {
+        return Codegen.optional(this.region);
     }
     /**
      * A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.

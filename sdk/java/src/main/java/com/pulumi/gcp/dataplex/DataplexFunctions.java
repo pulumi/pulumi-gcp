@@ -13,6 +13,8 @@ import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyPlainArgs;
 import com.pulumi.gcp.dataplex.inputs.GetAssetIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetAssetIamPolicyPlainArgs;
+import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
+import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesPlainArgs;
 import com.pulumi.gcp.dataplex.inputs.GetDatascanIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetDatascanIamPolicyPlainArgs;
 import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
@@ -29,6 +31,7 @@ import com.pulumi.gcp.dataplex.inputs.GetZoneIamPolicyArgs;
 import com.pulumi.gcp.dataplex.inputs.GetZoneIamPolicyPlainArgs;
 import com.pulumi.gcp.dataplex.outputs.GetAspectTypeIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetAssetIamPolicyResult;
+import com.pulumi.gcp.dataplex.outputs.GetDataQualityRulesResult;
 import com.pulumi.gcp.dataplex.outputs.GetDatascanIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetEntryGroupIamPolicyResult;
 import com.pulumi.gcp.dataplex.outputs.GetEntryTypeIamPolicyResult;
@@ -488,6 +491,241 @@ public final class DataplexFunctions {
      */
     public static CompletableFuture<GetAssetIamPolicyResult> getAssetIamPolicyPlain(GetAssetIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", TypeShape.of(GetAssetIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the generated data quality rules for the creating a new data quality scan.
+     * For more information see
+     * the [official documentation](https://cloud.google.com/dataplex/docs)
+     * and [API](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataScans/generateDataQualityRules).
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dqrs = DataplexFunctions.getDataQualityRules(GetDataQualityRulesArgs.builder()
+     *             .project("my-project")
+     *             .location("use-central1")
+     *             .dataScanId("my-datascan-profile")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDataQualityRulesResult> getDataQualityRules(GetDataQualityRulesArgs args) {
+        return getDataQualityRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the generated data quality rules for the creating a new data quality scan.
+     * For more information see
+     * the [official documentation](https://cloud.google.com/dataplex/docs)
+     * and [API](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataScans/generateDataQualityRules).
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dqrs = DataplexFunctions.getDataQualityRules(GetDataQualityRulesArgs.builder()
+     *             .project("my-project")
+     *             .location("use-central1")
+     *             .dataScanId("my-datascan-profile")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDataQualityRulesResult> getDataQualityRulesPlain(GetDataQualityRulesPlainArgs args) {
+        return getDataQualityRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the generated data quality rules for the creating a new data quality scan.
+     * For more information see
+     * the [official documentation](https://cloud.google.com/dataplex/docs)
+     * and [API](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataScans/generateDataQualityRules).
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dqrs = DataplexFunctions.getDataQualityRules(GetDataQualityRulesArgs.builder()
+     *             .project("my-project")
+     *             .location("use-central1")
+     *             .dataScanId("my-datascan-profile")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDataQualityRulesResult> getDataQualityRules(GetDataQualityRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataplex/getDataQualityRules:getDataQualityRules", TypeShape.of(GetDataQualityRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the generated data quality rules for the creating a new data quality scan.
+     * For more information see
+     * the [official documentation](https://cloud.google.com/dataplex/docs)
+     * and [API](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataScans/generateDataQualityRules).
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dqrs = DataplexFunctions.getDataQualityRules(GetDataQualityRulesArgs.builder()
+     *             .project("my-project")
+     *             .location("use-central1")
+     *             .dataScanId("my-datascan-profile")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDataQualityRulesResult> getDataQualityRules(GetDataQualityRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataplex/getDataQualityRules:getDataQualityRules", TypeShape.of(GetDataQualityRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the generated data quality rules for the creating a new data quality scan.
+     * For more information see
+     * the [official documentation](https://cloud.google.com/dataplex/docs)
+     * and [API](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataScans/generateDataQualityRules).
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataplex.DataplexFunctions;
+     * import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dqrs = DataplexFunctions.getDataQualityRules(GetDataQualityRulesArgs.builder()
+     *             .project("my-project")
+     *             .location("use-central1")
+     *             .dataScanId("my-datascan-profile")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDataQualityRulesResult> getDataQualityRulesPlain(GetDataQualityRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:dataplex/getDataQualityRules:getDataQualityRules", TypeShape.of(GetDataQualityRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for datascan

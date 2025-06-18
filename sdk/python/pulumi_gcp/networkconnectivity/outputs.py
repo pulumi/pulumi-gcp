@@ -319,16 +319,53 @@ class PolicyBasedRouteWarning(dict):
 
 @pulumi.output_type
 class ServiceConnectionPolicyPscConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedGoogleProducersResourceHierarchyLevels":
+            suggest = "allowed_google_producers_resource_hierarchy_levels"
+        elif key == "producerInstanceLocation":
+            suggest = "producer_instance_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceConnectionPolicyPscConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceConnectionPolicyPscConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceConnectionPolicyPscConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  subnetworks: Sequence[builtins.str],
-                 limit: Optional[builtins.str] = None):
+                 allowed_google_producers_resource_hierarchy_levels: Optional[Sequence[builtins.str]] = None,
+                 limit: Optional[builtins.str] = None,
+                 producer_instance_location: Optional[builtins.str] = None):
         """
         :param Sequence[builtins.str] subnetworks: IDs of the subnetworks or fully qualified identifiers for the subnetworks
+        :param Sequence[builtins.str] allowed_google_producers_resource_hierarchy_levels: List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+               a network administrator can provide both 'organizations/foo' and 'projects/bar' as
+               allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+               instance within the 'foo' organization or the 'bar' project. By default,
+               allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+               allowedGoogleProducersResourceHierarchyLevel is / where is one of 'projects', 'folders', or 'organizations'
+               and is either the ID or the number of the resource type. Format for each
+               allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
+               [projects/my-project-id, projects/567, folders/891, organizations/123]
         :param builtins.str limit: Max number of PSC connections for this policy.
+        :param builtins.str producer_instance_location: ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+               the Producer instance can be within.
+               Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
         """
         pulumi.set(__self__, "subnetworks", subnetworks)
+        if allowed_google_producers_resource_hierarchy_levels is not None:
+            pulumi.set(__self__, "allowed_google_producers_resource_hierarchy_levels", allowed_google_producers_resource_hierarchy_levels)
         if limit is not None:
             pulumi.set(__self__, "limit", limit)
+        if producer_instance_location is not None:
+            pulumi.set(__self__, "producer_instance_location", producer_instance_location)
 
     @property
     @pulumi.getter
@@ -339,12 +376,38 @@ class ServiceConnectionPolicyPscConfig(dict):
         return pulumi.get(self, "subnetworks")
 
     @property
+    @pulumi.getter(name="allowedGoogleProducersResourceHierarchyLevels")
+    def allowed_google_producers_resource_hierarchy_levels(self) -> Optional[Sequence[builtins.str]]:
+        """
+        List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+        a network administrator can provide both 'organizations/foo' and 'projects/bar' as
+        allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+        instance within the 'foo' organization or the 'bar' project. By default,
+        allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+        allowedGoogleProducersResourceHierarchyLevel is / where is one of 'projects', 'folders', or 'organizations'
+        and is either the ID or the number of the resource type. Format for each
+        allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
+        [projects/my-project-id, projects/567, folders/891, organizations/123]
+        """
+        return pulumi.get(self, "allowed_google_producers_resource_hierarchy_levels")
+
+    @property
     @pulumi.getter
     def limit(self) -> Optional[builtins.str]:
         """
         Max number of PSC connections for this policy.
         """
         return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter(name="producerInstanceLocation")
+    def producer_instance_location(self) -> Optional[builtins.str]:
+        """
+        ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+        the Producer instance can be within.
+        Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
+        """
+        return pulumi.get(self, "producer_instance_location")
 
 
 @pulumi.output_type

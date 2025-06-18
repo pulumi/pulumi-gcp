@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.Netapp.Inputs
         public Input<int>? CoolingThresholdDays { get; set; }
 
         /// <summary>
+        /// Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
+        /// Only applicable to Flex service level.
+        /// </summary>
+        [Input("hotTierBypassModeEnabled")]
+        public Input<bool>? HotTierBypassModeEnabled { get; set; }
+
+        /// <summary>
         /// Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
         /// Default value is `PAUSED`.
         /// Possible values are: `ENABLED`, `PAUSED`.

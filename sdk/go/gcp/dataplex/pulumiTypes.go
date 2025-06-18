@@ -13390,6 +13390,1187 @@ func (o ZoneResourceSpecPtrOutput) LocationType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetDataQualityRulesRule struct {
+	// The unnested column which this rule is evaluated against.
+	Column string `pulumi:"column"`
+	// Description of the rule. (The maximum length is 1,024 characters.)
+	Description string `pulumi:"description"`
+	// The dimension a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
+	Dimension string `pulumi:"dimension"`
+	// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing.
+	// 											This field is only valid for the following type of rules: RangeExpectation, RegexExpectation, SetExpectation, UniquenessExpectation
+	IgnoreNull bool `pulumi:"ignoreNull"`
+	// A mutable name for the rule.
+	// 											The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+	// 											The maximum length is 63 characters.
+	// 											Must start with a letter.
+	// 											Must end with a number or a letter.
+	Name string `pulumi:"name"`
+	// Row-level rule which evaluates whether each column value is null.
+	NonNullExpectations []GetDataQualityRulesRuleNonNullExpectation `pulumi:"nonNullExpectations"`
+	// Row-level rule which evaluates whether each column value lies between a specified range.
+	RangeExpectations []GetDataQualityRulesRuleRangeExpectation `pulumi:"rangeExpectations"`
+	// Row-level rule which evaluates whether each column value matches a specified regex.
+	RegexExpectations []GetDataQualityRulesRuleRegexExpectation `pulumi:"regexExpectations"`
+	// Row-level rule which evaluates whether each row in a table passes the specified condition.
+	RowConditionExpectations []GetDataQualityRulesRuleRowConditionExpectation `pulumi:"rowConditionExpectations"`
+	// Row-level rule which evaluates whether each column value is contained by a specified set.
+	SetExpectations []GetDataQualityRulesRuleSetExpectation `pulumi:"setExpectations"`
+	// Aggregate rule which evaluates the number of rows returned for the provided statement. If any rows are returned, this rule fails.
+	SqlAssertions []GetDataQualityRulesRuleSqlAssertion `pulumi:"sqlAssertions"`
+	// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	StatisticRangeExpectations []GetDataQualityRulesRuleStatisticRangeExpectation `pulumi:"statisticRangeExpectations"`
+	// Whether the Rule is active or suspended. Default is false.
+	Suspended bool `pulumi:"suspended"`
+	// Aggregate rule which evaluates whether the provided expression is true for a table.
+	TableConditionExpectations []GetDataQualityRulesRuleTableConditionExpectation `pulumi:"tableConditionExpectations"`
+	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
+	Threshold float64 `pulumi:"threshold"`
+	// Row-level rule which evaluates whether each column value is unique.
+	UniquenessExpectations []GetDataQualityRulesRuleUniquenessExpectation `pulumi:"uniquenessExpectations"`
+}
+
+// GetDataQualityRulesRuleInput is an input type that accepts GetDataQualityRulesRuleArgs and GetDataQualityRulesRuleOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleInput` via:
+//
+//	GetDataQualityRulesRuleArgs{...}
+type GetDataQualityRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleOutput() GetDataQualityRulesRuleOutput
+	ToGetDataQualityRulesRuleOutputWithContext(context.Context) GetDataQualityRulesRuleOutput
+}
+
+type GetDataQualityRulesRuleArgs struct {
+	// The unnested column which this rule is evaluated against.
+	Column pulumi.StringInput `pulumi:"column"`
+	// Description of the rule. (The maximum length is 1,024 characters.)
+	Description pulumi.StringInput `pulumi:"description"`
+	// The dimension a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
+	Dimension pulumi.StringInput `pulumi:"dimension"`
+	// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing.
+	// 											This field is only valid for the following type of rules: RangeExpectation, RegexExpectation, SetExpectation, UniquenessExpectation
+	IgnoreNull pulumi.BoolInput `pulumi:"ignoreNull"`
+	// A mutable name for the rule.
+	// 											The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+	// 											The maximum length is 63 characters.
+	// 											Must start with a letter.
+	// 											Must end with a number or a letter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Row-level rule which evaluates whether each column value is null.
+	NonNullExpectations GetDataQualityRulesRuleNonNullExpectationArrayInput `pulumi:"nonNullExpectations"`
+	// Row-level rule which evaluates whether each column value lies between a specified range.
+	RangeExpectations GetDataQualityRulesRuleRangeExpectationArrayInput `pulumi:"rangeExpectations"`
+	// Row-level rule which evaluates whether each column value matches a specified regex.
+	RegexExpectations GetDataQualityRulesRuleRegexExpectationArrayInput `pulumi:"regexExpectations"`
+	// Row-level rule which evaluates whether each row in a table passes the specified condition.
+	RowConditionExpectations GetDataQualityRulesRuleRowConditionExpectationArrayInput `pulumi:"rowConditionExpectations"`
+	// Row-level rule which evaluates whether each column value is contained by a specified set.
+	SetExpectations GetDataQualityRulesRuleSetExpectationArrayInput `pulumi:"setExpectations"`
+	// Aggregate rule which evaluates the number of rows returned for the provided statement. If any rows are returned, this rule fails.
+	SqlAssertions GetDataQualityRulesRuleSqlAssertionArrayInput `pulumi:"sqlAssertions"`
+	// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	StatisticRangeExpectations GetDataQualityRulesRuleStatisticRangeExpectationArrayInput `pulumi:"statisticRangeExpectations"`
+	// Whether the Rule is active or suspended. Default is false.
+	Suspended pulumi.BoolInput `pulumi:"suspended"`
+	// Aggregate rule which evaluates whether the provided expression is true for a table.
+	TableConditionExpectations GetDataQualityRulesRuleTableConditionExpectationArrayInput `pulumi:"tableConditionExpectations"`
+	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// Row-level rule which evaluates whether each column value is unique.
+	UniquenessExpectations GetDataQualityRulesRuleUniquenessExpectationArrayInput `pulumi:"uniquenessExpectations"`
+}
+
+func (GetDataQualityRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRule)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleArgs) ToGetDataQualityRulesRuleOutput() GetDataQualityRulesRuleOutput {
+	return i.ToGetDataQualityRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleArgs) ToGetDataQualityRulesRuleOutputWithContext(ctx context.Context) GetDataQualityRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleOutput)
+}
+
+// GetDataQualityRulesRuleArrayInput is an input type that accepts GetDataQualityRulesRuleArray and GetDataQualityRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleArrayInput` via:
+//
+//	GetDataQualityRulesRuleArray{ GetDataQualityRulesRuleArgs{...} }
+type GetDataQualityRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleArrayOutput() GetDataQualityRulesRuleArrayOutput
+	ToGetDataQualityRulesRuleArrayOutputWithContext(context.Context) GetDataQualityRulesRuleArrayOutput
+}
+
+type GetDataQualityRulesRuleArray []GetDataQualityRulesRuleInput
+
+func (GetDataQualityRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRule)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleArray) ToGetDataQualityRulesRuleArrayOutput() GetDataQualityRulesRuleArrayOutput {
+	return i.ToGetDataQualityRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleArray) ToGetDataQualityRulesRuleArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleArrayOutput)
+}
+
+type GetDataQualityRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRule)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleOutput) ToGetDataQualityRulesRuleOutput() GetDataQualityRulesRuleOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleOutput) ToGetDataQualityRulesRuleOutputWithContext(ctx context.Context) GetDataQualityRulesRuleOutput {
+	return o
+}
+
+// The unnested column which this rule is evaluated against.
+func (o GetDataQualityRulesRuleOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// Description of the rule. (The maximum length is 1,024 characters.)
+func (o GetDataQualityRulesRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The dimension a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
+func (o GetDataQualityRulesRuleOutput) Dimension() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) string { return v.Dimension }).(pulumi.StringOutput)
+}
+
+// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing.
+//
+//	This field is only valid for the following type of rules: RangeExpectation, RegexExpectation, SetExpectation, UniquenessExpectation
+func (o GetDataQualityRulesRuleOutput) IgnoreNull() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) bool { return v.IgnoreNull }).(pulumi.BoolOutput)
+}
+
+// A mutable name for the rule.
+//
+//	The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+//	The maximum length is 63 characters.
+//	Must start with a letter.
+//	Must end with a number or a letter.
+func (o GetDataQualityRulesRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Row-level rule which evaluates whether each column value is null.
+func (o GetDataQualityRulesRuleOutput) NonNullExpectations() GetDataQualityRulesRuleNonNullExpectationArrayOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) []GetDataQualityRulesRuleNonNullExpectation {
+		return v.NonNullExpectations
+	}).(GetDataQualityRulesRuleNonNullExpectationArrayOutput)
+}
+
+// Row-level rule which evaluates whether each column value lies between a specified range.
+func (o GetDataQualityRulesRuleOutput) RangeExpectations() GetDataQualityRulesRuleRangeExpectationArrayOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) []GetDataQualityRulesRuleRangeExpectation { return v.RangeExpectations }).(GetDataQualityRulesRuleRangeExpectationArrayOutput)
+}
+
+// Row-level rule which evaluates whether each column value matches a specified regex.
+func (o GetDataQualityRulesRuleOutput) RegexExpectations() GetDataQualityRulesRuleRegexExpectationArrayOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) []GetDataQualityRulesRuleRegexExpectation { return v.RegexExpectations }).(GetDataQualityRulesRuleRegexExpectationArrayOutput)
+}
+
+// Row-level rule which evaluates whether each row in a table passes the specified condition.
+func (o GetDataQualityRulesRuleOutput) RowConditionExpectations() GetDataQualityRulesRuleRowConditionExpectationArrayOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) []GetDataQualityRulesRuleRowConditionExpectation {
+		return v.RowConditionExpectations
+	}).(GetDataQualityRulesRuleRowConditionExpectationArrayOutput)
+}
+
+// Row-level rule which evaluates whether each column value is contained by a specified set.
+func (o GetDataQualityRulesRuleOutput) SetExpectations() GetDataQualityRulesRuleSetExpectationArrayOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) []GetDataQualityRulesRuleSetExpectation { return v.SetExpectations }).(GetDataQualityRulesRuleSetExpectationArrayOutput)
+}
+
+// Aggregate rule which evaluates the number of rows returned for the provided statement. If any rows are returned, this rule fails.
+func (o GetDataQualityRulesRuleOutput) SqlAssertions() GetDataQualityRulesRuleSqlAssertionArrayOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) []GetDataQualityRulesRuleSqlAssertion { return v.SqlAssertions }).(GetDataQualityRulesRuleSqlAssertionArrayOutput)
+}
+
+// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+func (o GetDataQualityRulesRuleOutput) StatisticRangeExpectations() GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) []GetDataQualityRulesRuleStatisticRangeExpectation {
+		return v.StatisticRangeExpectations
+	}).(GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput)
+}
+
+// Whether the Rule is active or suspended. Default is false.
+func (o GetDataQualityRulesRuleOutput) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) bool { return v.Suspended }).(pulumi.BoolOutput)
+}
+
+// Aggregate rule which evaluates whether the provided expression is true for a table.
+func (o GetDataQualityRulesRuleOutput) TableConditionExpectations() GetDataQualityRulesRuleTableConditionExpectationArrayOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) []GetDataQualityRulesRuleTableConditionExpectation {
+		return v.TableConditionExpectations
+	}).(GetDataQualityRulesRuleTableConditionExpectationArrayOutput)
+}
+
+// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
+func (o GetDataQualityRulesRuleOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDataQualityRulesRule) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// Row-level rule which evaluates whether each column value is unique.
+func (o GetDataQualityRulesRuleOutput) UniquenessExpectations() GetDataQualityRulesRuleUniquenessExpectationArrayOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRule) []GetDataQualityRulesRuleUniquenessExpectation {
+		return v.UniquenessExpectations
+	}).(GetDataQualityRulesRuleUniquenessExpectationArrayOutput)
+}
+
+type GetDataQualityRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRule)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleArrayOutput) ToGetDataQualityRulesRuleArrayOutput() GetDataQualityRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleArrayOutput) ToGetDataQualityRulesRuleArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleArrayOutput) Index(i pulumi.IntInput) GetDataQualityRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataQualityRulesRule {
+		return vs[0].([]GetDataQualityRulesRule)[vs[1].(int)]
+	}).(GetDataQualityRulesRuleOutput)
+}
+
+type GetDataQualityRulesRuleNonNullExpectation struct {
+}
+
+// GetDataQualityRulesRuleNonNullExpectationInput is an input type that accepts GetDataQualityRulesRuleNonNullExpectationArgs and GetDataQualityRulesRuleNonNullExpectationOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleNonNullExpectationInput` via:
+//
+//	GetDataQualityRulesRuleNonNullExpectationArgs{...}
+type GetDataQualityRulesRuleNonNullExpectationInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleNonNullExpectationOutput() GetDataQualityRulesRuleNonNullExpectationOutput
+	ToGetDataQualityRulesRuleNonNullExpectationOutputWithContext(context.Context) GetDataQualityRulesRuleNonNullExpectationOutput
+}
+
+type GetDataQualityRulesRuleNonNullExpectationArgs struct {
+}
+
+func (GetDataQualityRulesRuleNonNullExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleNonNullExpectationArgs) ToGetDataQualityRulesRuleNonNullExpectationOutput() GetDataQualityRulesRuleNonNullExpectationOutput {
+	return i.ToGetDataQualityRulesRuleNonNullExpectationOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleNonNullExpectationArgs) ToGetDataQualityRulesRuleNonNullExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleNonNullExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleNonNullExpectationOutput)
+}
+
+// GetDataQualityRulesRuleNonNullExpectationArrayInput is an input type that accepts GetDataQualityRulesRuleNonNullExpectationArray and GetDataQualityRulesRuleNonNullExpectationArrayOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleNonNullExpectationArrayInput` via:
+//
+//	GetDataQualityRulesRuleNonNullExpectationArray{ GetDataQualityRulesRuleNonNullExpectationArgs{...} }
+type GetDataQualityRulesRuleNonNullExpectationArrayInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleNonNullExpectationArrayOutput() GetDataQualityRulesRuleNonNullExpectationArrayOutput
+	ToGetDataQualityRulesRuleNonNullExpectationArrayOutputWithContext(context.Context) GetDataQualityRulesRuleNonNullExpectationArrayOutput
+}
+
+type GetDataQualityRulesRuleNonNullExpectationArray []GetDataQualityRulesRuleNonNullExpectationInput
+
+func (GetDataQualityRulesRuleNonNullExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleNonNullExpectationArray) ToGetDataQualityRulesRuleNonNullExpectationArrayOutput() GetDataQualityRulesRuleNonNullExpectationArrayOutput {
+	return i.ToGetDataQualityRulesRuleNonNullExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleNonNullExpectationArray) ToGetDataQualityRulesRuleNonNullExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleNonNullExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleNonNullExpectationArrayOutput)
+}
+
+type GetDataQualityRulesRuleNonNullExpectationOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleNonNullExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleNonNullExpectationOutput) ToGetDataQualityRulesRuleNonNullExpectationOutput() GetDataQualityRulesRuleNonNullExpectationOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleNonNullExpectationOutput) ToGetDataQualityRulesRuleNonNullExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleNonNullExpectationOutput {
+	return o
+}
+
+type GetDataQualityRulesRuleNonNullExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleNonNullExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleNonNullExpectationArrayOutput) ToGetDataQualityRulesRuleNonNullExpectationArrayOutput() GetDataQualityRulesRuleNonNullExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleNonNullExpectationArrayOutput) ToGetDataQualityRulesRuleNonNullExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleNonNullExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleNonNullExpectationArrayOutput) Index(i pulumi.IntInput) GetDataQualityRulesRuleNonNullExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataQualityRulesRuleNonNullExpectation {
+		return vs[0].([]GetDataQualityRulesRuleNonNullExpectation)[vs[1].(int)]
+	}).(GetDataQualityRulesRuleNonNullExpectationOutput)
+}
+
+type GetDataQualityRulesRuleRangeExpectation struct {
+	// The maximum column value allowed for a row to pass this validation.
+	MaxValue string `pulumi:"maxValue"`
+	// The minimum column value allowed for a row to pass this validation.
+	MinValue string `pulumi:"minValue"`
+	// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	StrictMaxEnabled bool `pulumi:"strictMaxEnabled"`
+	// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	StrictMinEnabled bool `pulumi:"strictMinEnabled"`
+}
+
+// GetDataQualityRulesRuleRangeExpectationInput is an input type that accepts GetDataQualityRulesRuleRangeExpectationArgs and GetDataQualityRulesRuleRangeExpectationOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleRangeExpectationInput` via:
+//
+//	GetDataQualityRulesRuleRangeExpectationArgs{...}
+type GetDataQualityRulesRuleRangeExpectationInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleRangeExpectationOutput() GetDataQualityRulesRuleRangeExpectationOutput
+	ToGetDataQualityRulesRuleRangeExpectationOutputWithContext(context.Context) GetDataQualityRulesRuleRangeExpectationOutput
+}
+
+type GetDataQualityRulesRuleRangeExpectationArgs struct {
+	// The maximum column value allowed for a row to pass this validation.
+	MaxValue pulumi.StringInput `pulumi:"maxValue"`
+	// The minimum column value allowed for a row to pass this validation.
+	MinValue pulumi.StringInput `pulumi:"minValue"`
+	// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	StrictMaxEnabled pulumi.BoolInput `pulumi:"strictMaxEnabled"`
+	// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	StrictMinEnabled pulumi.BoolInput `pulumi:"strictMinEnabled"`
+}
+
+func (GetDataQualityRulesRuleRangeExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleRangeExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleRangeExpectationArgs) ToGetDataQualityRulesRuleRangeExpectationOutput() GetDataQualityRulesRuleRangeExpectationOutput {
+	return i.ToGetDataQualityRulesRuleRangeExpectationOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleRangeExpectationArgs) ToGetDataQualityRulesRuleRangeExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRangeExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleRangeExpectationOutput)
+}
+
+// GetDataQualityRulesRuleRangeExpectationArrayInput is an input type that accepts GetDataQualityRulesRuleRangeExpectationArray and GetDataQualityRulesRuleRangeExpectationArrayOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleRangeExpectationArrayInput` via:
+//
+//	GetDataQualityRulesRuleRangeExpectationArray{ GetDataQualityRulesRuleRangeExpectationArgs{...} }
+type GetDataQualityRulesRuleRangeExpectationArrayInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleRangeExpectationArrayOutput() GetDataQualityRulesRuleRangeExpectationArrayOutput
+	ToGetDataQualityRulesRuleRangeExpectationArrayOutputWithContext(context.Context) GetDataQualityRulesRuleRangeExpectationArrayOutput
+}
+
+type GetDataQualityRulesRuleRangeExpectationArray []GetDataQualityRulesRuleRangeExpectationInput
+
+func (GetDataQualityRulesRuleRangeExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleRangeExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleRangeExpectationArray) ToGetDataQualityRulesRuleRangeExpectationArrayOutput() GetDataQualityRulesRuleRangeExpectationArrayOutput {
+	return i.ToGetDataQualityRulesRuleRangeExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleRangeExpectationArray) ToGetDataQualityRulesRuleRangeExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRangeExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleRangeExpectationArrayOutput)
+}
+
+type GetDataQualityRulesRuleRangeExpectationOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleRangeExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleRangeExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleRangeExpectationOutput) ToGetDataQualityRulesRuleRangeExpectationOutput() GetDataQualityRulesRuleRangeExpectationOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleRangeExpectationOutput) ToGetDataQualityRulesRuleRangeExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRangeExpectationOutput {
+	return o
+}
+
+// The maximum column value allowed for a row to pass this validation.
+func (o GetDataQualityRulesRuleRangeExpectationOutput) MaxValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleRangeExpectation) string { return v.MaxValue }).(pulumi.StringOutput)
+}
+
+// The minimum column value allowed for a row to pass this validation.
+func (o GetDataQualityRulesRuleRangeExpectationOutput) MinValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleRangeExpectation) string { return v.MinValue }).(pulumi.StringOutput)
+}
+
+// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+func (o GetDataQualityRulesRuleRangeExpectationOutput) StrictMaxEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleRangeExpectation) bool { return v.StrictMaxEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+func (o GetDataQualityRulesRuleRangeExpectationOutput) StrictMinEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleRangeExpectation) bool { return v.StrictMinEnabled }).(pulumi.BoolOutput)
+}
+
+type GetDataQualityRulesRuleRangeExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleRangeExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleRangeExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleRangeExpectationArrayOutput) ToGetDataQualityRulesRuleRangeExpectationArrayOutput() GetDataQualityRulesRuleRangeExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleRangeExpectationArrayOutput) ToGetDataQualityRulesRuleRangeExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRangeExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleRangeExpectationArrayOutput) Index(i pulumi.IntInput) GetDataQualityRulesRuleRangeExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataQualityRulesRuleRangeExpectation {
+		return vs[0].([]GetDataQualityRulesRuleRangeExpectation)[vs[1].(int)]
+	}).(GetDataQualityRulesRuleRangeExpectationOutput)
+}
+
+type GetDataQualityRulesRuleRegexExpectation struct {
+	// A regular expression the column value is expected to match.
+	Regex string `pulumi:"regex"`
+}
+
+// GetDataQualityRulesRuleRegexExpectationInput is an input type that accepts GetDataQualityRulesRuleRegexExpectationArgs and GetDataQualityRulesRuleRegexExpectationOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleRegexExpectationInput` via:
+//
+//	GetDataQualityRulesRuleRegexExpectationArgs{...}
+type GetDataQualityRulesRuleRegexExpectationInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleRegexExpectationOutput() GetDataQualityRulesRuleRegexExpectationOutput
+	ToGetDataQualityRulesRuleRegexExpectationOutputWithContext(context.Context) GetDataQualityRulesRuleRegexExpectationOutput
+}
+
+type GetDataQualityRulesRuleRegexExpectationArgs struct {
+	// A regular expression the column value is expected to match.
+	Regex pulumi.StringInput `pulumi:"regex"`
+}
+
+func (GetDataQualityRulesRuleRegexExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleRegexExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleRegexExpectationArgs) ToGetDataQualityRulesRuleRegexExpectationOutput() GetDataQualityRulesRuleRegexExpectationOutput {
+	return i.ToGetDataQualityRulesRuleRegexExpectationOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleRegexExpectationArgs) ToGetDataQualityRulesRuleRegexExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRegexExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleRegexExpectationOutput)
+}
+
+// GetDataQualityRulesRuleRegexExpectationArrayInput is an input type that accepts GetDataQualityRulesRuleRegexExpectationArray and GetDataQualityRulesRuleRegexExpectationArrayOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleRegexExpectationArrayInput` via:
+//
+//	GetDataQualityRulesRuleRegexExpectationArray{ GetDataQualityRulesRuleRegexExpectationArgs{...} }
+type GetDataQualityRulesRuleRegexExpectationArrayInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleRegexExpectationArrayOutput() GetDataQualityRulesRuleRegexExpectationArrayOutput
+	ToGetDataQualityRulesRuleRegexExpectationArrayOutputWithContext(context.Context) GetDataQualityRulesRuleRegexExpectationArrayOutput
+}
+
+type GetDataQualityRulesRuleRegexExpectationArray []GetDataQualityRulesRuleRegexExpectationInput
+
+func (GetDataQualityRulesRuleRegexExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleRegexExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleRegexExpectationArray) ToGetDataQualityRulesRuleRegexExpectationArrayOutput() GetDataQualityRulesRuleRegexExpectationArrayOutput {
+	return i.ToGetDataQualityRulesRuleRegexExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleRegexExpectationArray) ToGetDataQualityRulesRuleRegexExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRegexExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleRegexExpectationArrayOutput)
+}
+
+type GetDataQualityRulesRuleRegexExpectationOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleRegexExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleRegexExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleRegexExpectationOutput) ToGetDataQualityRulesRuleRegexExpectationOutput() GetDataQualityRulesRuleRegexExpectationOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleRegexExpectationOutput) ToGetDataQualityRulesRuleRegexExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRegexExpectationOutput {
+	return o
+}
+
+// A regular expression the column value is expected to match.
+func (o GetDataQualityRulesRuleRegexExpectationOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleRegexExpectation) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+type GetDataQualityRulesRuleRegexExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleRegexExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleRegexExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleRegexExpectationArrayOutput) ToGetDataQualityRulesRuleRegexExpectationArrayOutput() GetDataQualityRulesRuleRegexExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleRegexExpectationArrayOutput) ToGetDataQualityRulesRuleRegexExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRegexExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleRegexExpectationArrayOutput) Index(i pulumi.IntInput) GetDataQualityRulesRuleRegexExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataQualityRulesRuleRegexExpectation {
+		return vs[0].([]GetDataQualityRulesRuleRegexExpectation)[vs[1].(int)]
+	}).(GetDataQualityRulesRuleRegexExpectationOutput)
+}
+
+type GetDataQualityRulesRuleRowConditionExpectation struct {
+	// The SQL expression.
+	SqlExpression string `pulumi:"sqlExpression"`
+}
+
+// GetDataQualityRulesRuleRowConditionExpectationInput is an input type that accepts GetDataQualityRulesRuleRowConditionExpectationArgs and GetDataQualityRulesRuleRowConditionExpectationOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleRowConditionExpectationInput` via:
+//
+//	GetDataQualityRulesRuleRowConditionExpectationArgs{...}
+type GetDataQualityRulesRuleRowConditionExpectationInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleRowConditionExpectationOutput() GetDataQualityRulesRuleRowConditionExpectationOutput
+	ToGetDataQualityRulesRuleRowConditionExpectationOutputWithContext(context.Context) GetDataQualityRulesRuleRowConditionExpectationOutput
+}
+
+type GetDataQualityRulesRuleRowConditionExpectationArgs struct {
+	// The SQL expression.
+	SqlExpression pulumi.StringInput `pulumi:"sqlExpression"`
+}
+
+func (GetDataQualityRulesRuleRowConditionExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleRowConditionExpectationArgs) ToGetDataQualityRulesRuleRowConditionExpectationOutput() GetDataQualityRulesRuleRowConditionExpectationOutput {
+	return i.ToGetDataQualityRulesRuleRowConditionExpectationOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleRowConditionExpectationArgs) ToGetDataQualityRulesRuleRowConditionExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRowConditionExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleRowConditionExpectationOutput)
+}
+
+// GetDataQualityRulesRuleRowConditionExpectationArrayInput is an input type that accepts GetDataQualityRulesRuleRowConditionExpectationArray and GetDataQualityRulesRuleRowConditionExpectationArrayOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleRowConditionExpectationArrayInput` via:
+//
+//	GetDataQualityRulesRuleRowConditionExpectationArray{ GetDataQualityRulesRuleRowConditionExpectationArgs{...} }
+type GetDataQualityRulesRuleRowConditionExpectationArrayInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleRowConditionExpectationArrayOutput() GetDataQualityRulesRuleRowConditionExpectationArrayOutput
+	ToGetDataQualityRulesRuleRowConditionExpectationArrayOutputWithContext(context.Context) GetDataQualityRulesRuleRowConditionExpectationArrayOutput
+}
+
+type GetDataQualityRulesRuleRowConditionExpectationArray []GetDataQualityRulesRuleRowConditionExpectationInput
+
+func (GetDataQualityRulesRuleRowConditionExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleRowConditionExpectationArray) ToGetDataQualityRulesRuleRowConditionExpectationArrayOutput() GetDataQualityRulesRuleRowConditionExpectationArrayOutput {
+	return i.ToGetDataQualityRulesRuleRowConditionExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleRowConditionExpectationArray) ToGetDataQualityRulesRuleRowConditionExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRowConditionExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleRowConditionExpectationArrayOutput)
+}
+
+type GetDataQualityRulesRuleRowConditionExpectationOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleRowConditionExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleRowConditionExpectationOutput) ToGetDataQualityRulesRuleRowConditionExpectationOutput() GetDataQualityRulesRuleRowConditionExpectationOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleRowConditionExpectationOutput) ToGetDataQualityRulesRuleRowConditionExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRowConditionExpectationOutput {
+	return o
+}
+
+// The SQL expression.
+func (o GetDataQualityRulesRuleRowConditionExpectationOutput) SqlExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleRowConditionExpectation) string { return v.SqlExpression }).(pulumi.StringOutput)
+}
+
+type GetDataQualityRulesRuleRowConditionExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleRowConditionExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleRowConditionExpectationArrayOutput) ToGetDataQualityRulesRuleRowConditionExpectationArrayOutput() GetDataQualityRulesRuleRowConditionExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleRowConditionExpectationArrayOutput) ToGetDataQualityRulesRuleRowConditionExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleRowConditionExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleRowConditionExpectationArrayOutput) Index(i pulumi.IntInput) GetDataQualityRulesRuleRowConditionExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataQualityRulesRuleRowConditionExpectation {
+		return vs[0].([]GetDataQualityRulesRuleRowConditionExpectation)[vs[1].(int)]
+	}).(GetDataQualityRulesRuleRowConditionExpectationOutput)
+}
+
+type GetDataQualityRulesRuleSetExpectation struct {
+	// Expected values for the column value.
+	Values []string `pulumi:"values"`
+}
+
+// GetDataQualityRulesRuleSetExpectationInput is an input type that accepts GetDataQualityRulesRuleSetExpectationArgs and GetDataQualityRulesRuleSetExpectationOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleSetExpectationInput` via:
+//
+//	GetDataQualityRulesRuleSetExpectationArgs{...}
+type GetDataQualityRulesRuleSetExpectationInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleSetExpectationOutput() GetDataQualityRulesRuleSetExpectationOutput
+	ToGetDataQualityRulesRuleSetExpectationOutputWithContext(context.Context) GetDataQualityRulesRuleSetExpectationOutput
+}
+
+type GetDataQualityRulesRuleSetExpectationArgs struct {
+	// Expected values for the column value.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetDataQualityRulesRuleSetExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleSetExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleSetExpectationArgs) ToGetDataQualityRulesRuleSetExpectationOutput() GetDataQualityRulesRuleSetExpectationOutput {
+	return i.ToGetDataQualityRulesRuleSetExpectationOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleSetExpectationArgs) ToGetDataQualityRulesRuleSetExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleSetExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleSetExpectationOutput)
+}
+
+// GetDataQualityRulesRuleSetExpectationArrayInput is an input type that accepts GetDataQualityRulesRuleSetExpectationArray and GetDataQualityRulesRuleSetExpectationArrayOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleSetExpectationArrayInput` via:
+//
+//	GetDataQualityRulesRuleSetExpectationArray{ GetDataQualityRulesRuleSetExpectationArgs{...} }
+type GetDataQualityRulesRuleSetExpectationArrayInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleSetExpectationArrayOutput() GetDataQualityRulesRuleSetExpectationArrayOutput
+	ToGetDataQualityRulesRuleSetExpectationArrayOutputWithContext(context.Context) GetDataQualityRulesRuleSetExpectationArrayOutput
+}
+
+type GetDataQualityRulesRuleSetExpectationArray []GetDataQualityRulesRuleSetExpectationInput
+
+func (GetDataQualityRulesRuleSetExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleSetExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleSetExpectationArray) ToGetDataQualityRulesRuleSetExpectationArrayOutput() GetDataQualityRulesRuleSetExpectationArrayOutput {
+	return i.ToGetDataQualityRulesRuleSetExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleSetExpectationArray) ToGetDataQualityRulesRuleSetExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleSetExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleSetExpectationArrayOutput)
+}
+
+type GetDataQualityRulesRuleSetExpectationOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleSetExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleSetExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleSetExpectationOutput) ToGetDataQualityRulesRuleSetExpectationOutput() GetDataQualityRulesRuleSetExpectationOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleSetExpectationOutput) ToGetDataQualityRulesRuleSetExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleSetExpectationOutput {
+	return o
+}
+
+// Expected values for the column value.
+func (o GetDataQualityRulesRuleSetExpectationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleSetExpectation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetDataQualityRulesRuleSetExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleSetExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleSetExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleSetExpectationArrayOutput) ToGetDataQualityRulesRuleSetExpectationArrayOutput() GetDataQualityRulesRuleSetExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleSetExpectationArrayOutput) ToGetDataQualityRulesRuleSetExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleSetExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleSetExpectationArrayOutput) Index(i pulumi.IntInput) GetDataQualityRulesRuleSetExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataQualityRulesRuleSetExpectation {
+		return vs[0].([]GetDataQualityRulesRuleSetExpectation)[vs[1].(int)]
+	}).(GetDataQualityRulesRuleSetExpectationOutput)
+}
+
+type GetDataQualityRulesRuleSqlAssertion struct {
+	// The SQL expression.
+	SqlStatement string `pulumi:"sqlStatement"`
+}
+
+// GetDataQualityRulesRuleSqlAssertionInput is an input type that accepts GetDataQualityRulesRuleSqlAssertionArgs and GetDataQualityRulesRuleSqlAssertionOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleSqlAssertionInput` via:
+//
+//	GetDataQualityRulesRuleSqlAssertionArgs{...}
+type GetDataQualityRulesRuleSqlAssertionInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleSqlAssertionOutput() GetDataQualityRulesRuleSqlAssertionOutput
+	ToGetDataQualityRulesRuleSqlAssertionOutputWithContext(context.Context) GetDataQualityRulesRuleSqlAssertionOutput
+}
+
+type GetDataQualityRulesRuleSqlAssertionArgs struct {
+	// The SQL expression.
+	SqlStatement pulumi.StringInput `pulumi:"sqlStatement"`
+}
+
+func (GetDataQualityRulesRuleSqlAssertionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleSqlAssertion)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleSqlAssertionArgs) ToGetDataQualityRulesRuleSqlAssertionOutput() GetDataQualityRulesRuleSqlAssertionOutput {
+	return i.ToGetDataQualityRulesRuleSqlAssertionOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleSqlAssertionArgs) ToGetDataQualityRulesRuleSqlAssertionOutputWithContext(ctx context.Context) GetDataQualityRulesRuleSqlAssertionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleSqlAssertionOutput)
+}
+
+// GetDataQualityRulesRuleSqlAssertionArrayInput is an input type that accepts GetDataQualityRulesRuleSqlAssertionArray and GetDataQualityRulesRuleSqlAssertionArrayOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleSqlAssertionArrayInput` via:
+//
+//	GetDataQualityRulesRuleSqlAssertionArray{ GetDataQualityRulesRuleSqlAssertionArgs{...} }
+type GetDataQualityRulesRuleSqlAssertionArrayInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleSqlAssertionArrayOutput() GetDataQualityRulesRuleSqlAssertionArrayOutput
+	ToGetDataQualityRulesRuleSqlAssertionArrayOutputWithContext(context.Context) GetDataQualityRulesRuleSqlAssertionArrayOutput
+}
+
+type GetDataQualityRulesRuleSqlAssertionArray []GetDataQualityRulesRuleSqlAssertionInput
+
+func (GetDataQualityRulesRuleSqlAssertionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleSqlAssertion)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleSqlAssertionArray) ToGetDataQualityRulesRuleSqlAssertionArrayOutput() GetDataQualityRulesRuleSqlAssertionArrayOutput {
+	return i.ToGetDataQualityRulesRuleSqlAssertionArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleSqlAssertionArray) ToGetDataQualityRulesRuleSqlAssertionArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleSqlAssertionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleSqlAssertionArrayOutput)
+}
+
+type GetDataQualityRulesRuleSqlAssertionOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleSqlAssertionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleSqlAssertion)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleSqlAssertionOutput) ToGetDataQualityRulesRuleSqlAssertionOutput() GetDataQualityRulesRuleSqlAssertionOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleSqlAssertionOutput) ToGetDataQualityRulesRuleSqlAssertionOutputWithContext(ctx context.Context) GetDataQualityRulesRuleSqlAssertionOutput {
+	return o
+}
+
+// The SQL expression.
+func (o GetDataQualityRulesRuleSqlAssertionOutput) SqlStatement() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleSqlAssertion) string { return v.SqlStatement }).(pulumi.StringOutput)
+}
+
+type GetDataQualityRulesRuleSqlAssertionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleSqlAssertionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleSqlAssertion)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleSqlAssertionArrayOutput) ToGetDataQualityRulesRuleSqlAssertionArrayOutput() GetDataQualityRulesRuleSqlAssertionArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleSqlAssertionArrayOutput) ToGetDataQualityRulesRuleSqlAssertionArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleSqlAssertionArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleSqlAssertionArrayOutput) Index(i pulumi.IntInput) GetDataQualityRulesRuleSqlAssertionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataQualityRulesRuleSqlAssertion {
+		return vs[0].([]GetDataQualityRulesRuleSqlAssertion)[vs[1].(int)]
+	}).(GetDataQualityRulesRuleSqlAssertionOutput)
+}
+
+type GetDataQualityRulesRuleStatisticRangeExpectation struct {
+	// The maximum column value allowed for a row to pass this validation.
+	MaxValue string `pulumi:"maxValue"`
+	// The minimum column value allowed for a row to pass this validation.
+	MinValue string `pulumi:"minValue"`
+	// The list of aggregate metrics a rule can be evaluated against.
+	// 																	Possible values: ["STATISTIC_UNDEFINED", "MEAN", "MIN", "MAX"]
+	Statistic string `pulumi:"statistic"`
+	// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	StrictMaxEnabled bool `pulumi:"strictMaxEnabled"`
+	// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	StrictMinEnabled bool `pulumi:"strictMinEnabled"`
+}
+
+// GetDataQualityRulesRuleStatisticRangeExpectationInput is an input type that accepts GetDataQualityRulesRuleStatisticRangeExpectationArgs and GetDataQualityRulesRuleStatisticRangeExpectationOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleStatisticRangeExpectationInput` via:
+//
+//	GetDataQualityRulesRuleStatisticRangeExpectationArgs{...}
+type GetDataQualityRulesRuleStatisticRangeExpectationInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleStatisticRangeExpectationOutput() GetDataQualityRulesRuleStatisticRangeExpectationOutput
+	ToGetDataQualityRulesRuleStatisticRangeExpectationOutputWithContext(context.Context) GetDataQualityRulesRuleStatisticRangeExpectationOutput
+}
+
+type GetDataQualityRulesRuleStatisticRangeExpectationArgs struct {
+	// The maximum column value allowed for a row to pass this validation.
+	MaxValue pulumi.StringInput `pulumi:"maxValue"`
+	// The minimum column value allowed for a row to pass this validation.
+	MinValue pulumi.StringInput `pulumi:"minValue"`
+	// The list of aggregate metrics a rule can be evaluated against.
+	// 																	Possible values: ["STATISTIC_UNDEFINED", "MEAN", "MIN", "MAX"]
+	Statistic pulumi.StringInput `pulumi:"statistic"`
+	// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	StrictMaxEnabled pulumi.BoolInput `pulumi:"strictMaxEnabled"`
+	// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	StrictMinEnabled pulumi.BoolInput `pulumi:"strictMinEnabled"`
+}
+
+func (GetDataQualityRulesRuleStatisticRangeExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleStatisticRangeExpectationArgs) ToGetDataQualityRulesRuleStatisticRangeExpectationOutput() GetDataQualityRulesRuleStatisticRangeExpectationOutput {
+	return i.ToGetDataQualityRulesRuleStatisticRangeExpectationOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleStatisticRangeExpectationArgs) ToGetDataQualityRulesRuleStatisticRangeExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleStatisticRangeExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleStatisticRangeExpectationOutput)
+}
+
+// GetDataQualityRulesRuleStatisticRangeExpectationArrayInput is an input type that accepts GetDataQualityRulesRuleStatisticRangeExpectationArray and GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleStatisticRangeExpectationArrayInput` via:
+//
+//	GetDataQualityRulesRuleStatisticRangeExpectationArray{ GetDataQualityRulesRuleStatisticRangeExpectationArgs{...} }
+type GetDataQualityRulesRuleStatisticRangeExpectationArrayInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleStatisticRangeExpectationArrayOutput() GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput
+	ToGetDataQualityRulesRuleStatisticRangeExpectationArrayOutputWithContext(context.Context) GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput
+}
+
+type GetDataQualityRulesRuleStatisticRangeExpectationArray []GetDataQualityRulesRuleStatisticRangeExpectationInput
+
+func (GetDataQualityRulesRuleStatisticRangeExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleStatisticRangeExpectationArray) ToGetDataQualityRulesRuleStatisticRangeExpectationArrayOutput() GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput {
+	return i.ToGetDataQualityRulesRuleStatisticRangeExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleStatisticRangeExpectationArray) ToGetDataQualityRulesRuleStatisticRangeExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput)
+}
+
+type GetDataQualityRulesRuleStatisticRangeExpectationOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleStatisticRangeExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleStatisticRangeExpectationOutput) ToGetDataQualityRulesRuleStatisticRangeExpectationOutput() GetDataQualityRulesRuleStatisticRangeExpectationOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleStatisticRangeExpectationOutput) ToGetDataQualityRulesRuleStatisticRangeExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleStatisticRangeExpectationOutput {
+	return o
+}
+
+// The maximum column value allowed for a row to pass this validation.
+func (o GetDataQualityRulesRuleStatisticRangeExpectationOutput) MaxValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleStatisticRangeExpectation) string { return v.MaxValue }).(pulumi.StringOutput)
+}
+
+// The minimum column value allowed for a row to pass this validation.
+func (o GetDataQualityRulesRuleStatisticRangeExpectationOutput) MinValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleStatisticRangeExpectation) string { return v.MinValue }).(pulumi.StringOutput)
+}
+
+// The list of aggregate metrics a rule can be evaluated against.
+//
+//	Possible values: ["STATISTIC_UNDEFINED", "MEAN", "MIN", "MAX"]
+func (o GetDataQualityRulesRuleStatisticRangeExpectationOutput) Statistic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleStatisticRangeExpectation) string { return v.Statistic }).(pulumi.StringOutput)
+}
+
+// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+func (o GetDataQualityRulesRuleStatisticRangeExpectationOutput) StrictMaxEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleStatisticRangeExpectation) bool { return v.StrictMaxEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+func (o GetDataQualityRulesRuleStatisticRangeExpectationOutput) StrictMinEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleStatisticRangeExpectation) bool { return v.StrictMinEnabled }).(pulumi.BoolOutput)
+}
+
+type GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput) ToGetDataQualityRulesRuleStatisticRangeExpectationArrayOutput() GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput) ToGetDataQualityRulesRuleStatisticRangeExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput) Index(i pulumi.IntInput) GetDataQualityRulesRuleStatisticRangeExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataQualityRulesRuleStatisticRangeExpectation {
+		return vs[0].([]GetDataQualityRulesRuleStatisticRangeExpectation)[vs[1].(int)]
+	}).(GetDataQualityRulesRuleStatisticRangeExpectationOutput)
+}
+
+type GetDataQualityRulesRuleTableConditionExpectation struct {
+	// The SQL expression.
+	SqlExpression string `pulumi:"sqlExpression"`
+}
+
+// GetDataQualityRulesRuleTableConditionExpectationInput is an input type that accepts GetDataQualityRulesRuleTableConditionExpectationArgs and GetDataQualityRulesRuleTableConditionExpectationOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleTableConditionExpectationInput` via:
+//
+//	GetDataQualityRulesRuleTableConditionExpectationArgs{...}
+type GetDataQualityRulesRuleTableConditionExpectationInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleTableConditionExpectationOutput() GetDataQualityRulesRuleTableConditionExpectationOutput
+	ToGetDataQualityRulesRuleTableConditionExpectationOutputWithContext(context.Context) GetDataQualityRulesRuleTableConditionExpectationOutput
+}
+
+type GetDataQualityRulesRuleTableConditionExpectationArgs struct {
+	// The SQL expression.
+	SqlExpression pulumi.StringInput `pulumi:"sqlExpression"`
+}
+
+func (GetDataQualityRulesRuleTableConditionExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleTableConditionExpectationArgs) ToGetDataQualityRulesRuleTableConditionExpectationOutput() GetDataQualityRulesRuleTableConditionExpectationOutput {
+	return i.ToGetDataQualityRulesRuleTableConditionExpectationOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleTableConditionExpectationArgs) ToGetDataQualityRulesRuleTableConditionExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleTableConditionExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleTableConditionExpectationOutput)
+}
+
+// GetDataQualityRulesRuleTableConditionExpectationArrayInput is an input type that accepts GetDataQualityRulesRuleTableConditionExpectationArray and GetDataQualityRulesRuleTableConditionExpectationArrayOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleTableConditionExpectationArrayInput` via:
+//
+//	GetDataQualityRulesRuleTableConditionExpectationArray{ GetDataQualityRulesRuleTableConditionExpectationArgs{...} }
+type GetDataQualityRulesRuleTableConditionExpectationArrayInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleTableConditionExpectationArrayOutput() GetDataQualityRulesRuleTableConditionExpectationArrayOutput
+	ToGetDataQualityRulesRuleTableConditionExpectationArrayOutputWithContext(context.Context) GetDataQualityRulesRuleTableConditionExpectationArrayOutput
+}
+
+type GetDataQualityRulesRuleTableConditionExpectationArray []GetDataQualityRulesRuleTableConditionExpectationInput
+
+func (GetDataQualityRulesRuleTableConditionExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleTableConditionExpectationArray) ToGetDataQualityRulesRuleTableConditionExpectationArrayOutput() GetDataQualityRulesRuleTableConditionExpectationArrayOutput {
+	return i.ToGetDataQualityRulesRuleTableConditionExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleTableConditionExpectationArray) ToGetDataQualityRulesRuleTableConditionExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleTableConditionExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleTableConditionExpectationArrayOutput)
+}
+
+type GetDataQualityRulesRuleTableConditionExpectationOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleTableConditionExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleTableConditionExpectationOutput) ToGetDataQualityRulesRuleTableConditionExpectationOutput() GetDataQualityRulesRuleTableConditionExpectationOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleTableConditionExpectationOutput) ToGetDataQualityRulesRuleTableConditionExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleTableConditionExpectationOutput {
+	return o
+}
+
+// The SQL expression.
+func (o GetDataQualityRulesRuleTableConditionExpectationOutput) SqlExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataQualityRulesRuleTableConditionExpectation) string { return v.SqlExpression }).(pulumi.StringOutput)
+}
+
+type GetDataQualityRulesRuleTableConditionExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleTableConditionExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleTableConditionExpectationArrayOutput) ToGetDataQualityRulesRuleTableConditionExpectationArrayOutput() GetDataQualityRulesRuleTableConditionExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleTableConditionExpectationArrayOutput) ToGetDataQualityRulesRuleTableConditionExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleTableConditionExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleTableConditionExpectationArrayOutput) Index(i pulumi.IntInput) GetDataQualityRulesRuleTableConditionExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataQualityRulesRuleTableConditionExpectation {
+		return vs[0].([]GetDataQualityRulesRuleTableConditionExpectation)[vs[1].(int)]
+	}).(GetDataQualityRulesRuleTableConditionExpectationOutput)
+}
+
+type GetDataQualityRulesRuleUniquenessExpectation struct {
+}
+
+// GetDataQualityRulesRuleUniquenessExpectationInput is an input type that accepts GetDataQualityRulesRuleUniquenessExpectationArgs and GetDataQualityRulesRuleUniquenessExpectationOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleUniquenessExpectationInput` via:
+//
+//	GetDataQualityRulesRuleUniquenessExpectationArgs{...}
+type GetDataQualityRulesRuleUniquenessExpectationInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleUniquenessExpectationOutput() GetDataQualityRulesRuleUniquenessExpectationOutput
+	ToGetDataQualityRulesRuleUniquenessExpectationOutputWithContext(context.Context) GetDataQualityRulesRuleUniquenessExpectationOutput
+}
+
+type GetDataQualityRulesRuleUniquenessExpectationArgs struct {
+}
+
+func (GetDataQualityRulesRuleUniquenessExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleUniquenessExpectationArgs) ToGetDataQualityRulesRuleUniquenessExpectationOutput() GetDataQualityRulesRuleUniquenessExpectationOutput {
+	return i.ToGetDataQualityRulesRuleUniquenessExpectationOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleUniquenessExpectationArgs) ToGetDataQualityRulesRuleUniquenessExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleUniquenessExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleUniquenessExpectationOutput)
+}
+
+// GetDataQualityRulesRuleUniquenessExpectationArrayInput is an input type that accepts GetDataQualityRulesRuleUniquenessExpectationArray and GetDataQualityRulesRuleUniquenessExpectationArrayOutput values.
+// You can construct a concrete instance of `GetDataQualityRulesRuleUniquenessExpectationArrayInput` via:
+//
+//	GetDataQualityRulesRuleUniquenessExpectationArray{ GetDataQualityRulesRuleUniquenessExpectationArgs{...} }
+type GetDataQualityRulesRuleUniquenessExpectationArrayInput interface {
+	pulumi.Input
+
+	ToGetDataQualityRulesRuleUniquenessExpectationArrayOutput() GetDataQualityRulesRuleUniquenessExpectationArrayOutput
+	ToGetDataQualityRulesRuleUniquenessExpectationArrayOutputWithContext(context.Context) GetDataQualityRulesRuleUniquenessExpectationArrayOutput
+}
+
+type GetDataQualityRulesRuleUniquenessExpectationArray []GetDataQualityRulesRuleUniquenessExpectationInput
+
+func (GetDataQualityRulesRuleUniquenessExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (i GetDataQualityRulesRuleUniquenessExpectationArray) ToGetDataQualityRulesRuleUniquenessExpectationArrayOutput() GetDataQualityRulesRuleUniquenessExpectationArrayOutput {
+	return i.ToGetDataQualityRulesRuleUniquenessExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataQualityRulesRuleUniquenessExpectationArray) ToGetDataQualityRulesRuleUniquenessExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleUniquenessExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataQualityRulesRuleUniquenessExpectationArrayOutput)
+}
+
+type GetDataQualityRulesRuleUniquenessExpectationOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleUniquenessExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataQualityRulesRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleUniquenessExpectationOutput) ToGetDataQualityRulesRuleUniquenessExpectationOutput() GetDataQualityRulesRuleUniquenessExpectationOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleUniquenessExpectationOutput) ToGetDataQualityRulesRuleUniquenessExpectationOutputWithContext(ctx context.Context) GetDataQualityRulesRuleUniquenessExpectationOutput {
+	return o
+}
+
+type GetDataQualityRulesRuleUniquenessExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataQualityRulesRuleUniquenessExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataQualityRulesRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (o GetDataQualityRulesRuleUniquenessExpectationArrayOutput) ToGetDataQualityRulesRuleUniquenessExpectationArrayOutput() GetDataQualityRulesRuleUniquenessExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleUniquenessExpectationArrayOutput) ToGetDataQualityRulesRuleUniquenessExpectationArrayOutputWithContext(ctx context.Context) GetDataQualityRulesRuleUniquenessExpectationArrayOutput {
+	return o
+}
+
+func (o GetDataQualityRulesRuleUniquenessExpectationArrayOutput) Index(i pulumi.IntInput) GetDataQualityRulesRuleUniquenessExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataQualityRulesRuleUniquenessExpectation {
+		return vs[0].([]GetDataQualityRulesRuleUniquenessExpectation)[vs[1].(int)]
+	}).(GetDataQualityRulesRuleUniquenessExpectationOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AspectTypeIamBindingConditionInput)(nil)).Elem(), AspectTypeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AspectTypeIamBindingConditionPtrInput)(nil)).Elem(), AspectTypeIamBindingConditionArgs{})
@@ -13554,6 +14735,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneIamMemberConditionPtrInput)(nil)).Elem(), ZoneIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneResourceSpecInput)(nil)).Elem(), ZoneResourceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneResourceSpecPtrInput)(nil)).Elem(), ZoneResourceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleInput)(nil)).Elem(), GetDataQualityRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleArrayInput)(nil)).Elem(), GetDataQualityRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleNonNullExpectationInput)(nil)).Elem(), GetDataQualityRulesRuleNonNullExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleNonNullExpectationArrayInput)(nil)).Elem(), GetDataQualityRulesRuleNonNullExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleRangeExpectationInput)(nil)).Elem(), GetDataQualityRulesRuleRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleRangeExpectationArrayInput)(nil)).Elem(), GetDataQualityRulesRuleRangeExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleRegexExpectationInput)(nil)).Elem(), GetDataQualityRulesRuleRegexExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleRegexExpectationArrayInput)(nil)).Elem(), GetDataQualityRulesRuleRegexExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleRowConditionExpectationInput)(nil)).Elem(), GetDataQualityRulesRuleRowConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleRowConditionExpectationArrayInput)(nil)).Elem(), GetDataQualityRulesRuleRowConditionExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleSetExpectationInput)(nil)).Elem(), GetDataQualityRulesRuleSetExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleSetExpectationArrayInput)(nil)).Elem(), GetDataQualityRulesRuleSetExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleSqlAssertionInput)(nil)).Elem(), GetDataQualityRulesRuleSqlAssertionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleSqlAssertionArrayInput)(nil)).Elem(), GetDataQualityRulesRuleSqlAssertionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleStatisticRangeExpectationInput)(nil)).Elem(), GetDataQualityRulesRuleStatisticRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleStatisticRangeExpectationArrayInput)(nil)).Elem(), GetDataQualityRulesRuleStatisticRangeExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleTableConditionExpectationInput)(nil)).Elem(), GetDataQualityRulesRuleTableConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleTableConditionExpectationArrayInput)(nil)).Elem(), GetDataQualityRulesRuleTableConditionExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleUniquenessExpectationInput)(nil)).Elem(), GetDataQualityRulesRuleUniquenessExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataQualityRulesRuleUniquenessExpectationArrayInput)(nil)).Elem(), GetDataQualityRulesRuleUniquenessExpectationArray{})
 	pulumi.RegisterOutputType(AspectTypeIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(AspectTypeIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AspectTypeIamMemberConditionOutput{})
@@ -13717,4 +14918,24 @@ func init() {
 	pulumi.RegisterOutputType(ZoneIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ZoneResourceSpecOutput{})
 	pulumi.RegisterOutputType(ZoneResourceSpecPtrOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleNonNullExpectationOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleNonNullExpectationArrayOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleRangeExpectationOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleRangeExpectationArrayOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleRegexExpectationOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleRegexExpectationArrayOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleRowConditionExpectationOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleRowConditionExpectationArrayOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleSetExpectationOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleSetExpectationArrayOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleSqlAssertionOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleSqlAssertionArrayOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleStatisticRangeExpectationOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleStatisticRangeExpectationArrayOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleTableConditionExpectationOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleTableConditionExpectationArrayOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleUniquenessExpectationOutput{})
+	pulumi.RegisterOutputType(GetDataQualityRulesRuleUniquenessExpectationArrayOutput{})
 }

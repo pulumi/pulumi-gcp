@@ -180,6 +180,9 @@ namespace Pulumi.Gcp.Diagflow
         [Output("defaultLanguageCode")]
         public Output<string> DefaultLanguageCode { get; private set; } = null!;
 
+        [Output("deleteChatEngineOnDestroy")]
+        public Output<bool?> DeleteChatEngineOnDestroy { get; private set; } = null!;
+
         /// <summary>
         /// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         /// </summary>
@@ -352,6 +355,9 @@ namespace Pulumi.Gcp.Diagflow
         [Input("defaultLanguageCode", required: true)]
         public Input<string> DefaultLanguageCode { get; set; } = null!;
 
+        [Input("deleteChatEngineOnDestroy")]
+        public Input<bool>? DeleteChatEngineOnDestroy { get; set; }
+
         /// <summary>
         /// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         /// </summary>
@@ -479,6 +485,9 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("defaultLanguageCode")]
         public Input<string>? DefaultLanguageCode { get; set; }
+
+        [Input("deleteChatEngineOnDestroy")]
+        public Input<bool>? DeleteChatEngineOnDestroy { get; set; }
 
         /// <summary>
         /// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.

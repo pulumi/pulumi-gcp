@@ -1310,6 +1310,178 @@ class URLMap(pulumi.CustomResource):
                 }],
             }])
         ```
+        ### Url Map Test Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health-check",
+            name="health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        backend = gcp.compute.BackendService("backend",
+            name="backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="URL map with test headers",
+            default_service=backend.id,
+            tests=[
+                {
+                    "description": "Test with custom headers",
+                    "host": "example.com",
+                    "path": "/",
+                    "service": backend.id,
+                    "headers": [
+                        {
+                            "name": "User-Agent",
+                            "value": "TestBot/1.0",
+                        },
+                        {
+                            "name": "X-Custom-Header",
+                            "value": "test-value",
+                        },
+                    ],
+                },
+                {
+                    "description": "Test with authorization headers",
+                    "host": "api.example.com",
+                    "path": "/v1/test",
+                    "service": backend.id,
+                    "headers": [
+                        {
+                            "name": "Authorization",
+                            "value": "Bearer token123",
+                        },
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json",
+                        },
+                    ],
+                },
+            ])
+        ```
+        ### Url Map Test Expected Output Url
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health-check",
+            name="health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        backend = gcp.compute.BackendService("backend",
+            name="backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="URL map with expected output URL tests",
+            default_service=backend.id,
+            tests=[
+                {
+                    "description": "Test with expected output URL",
+                    "host": "example.com",
+                    "path": "/",
+                    "service": backend.id,
+                    "headers": [{
+                        "name": "User-Agent",
+                        "value": "TestBot/1.0",
+                    }],
+                    "expected_output_url": "http://example.com/",
+                },
+                {
+                    "description": "Test API routing with expected output URL",
+                    "host": "api.example.com",
+                    "path": "/v1/users",
+                    "service": backend.id,
+                    "headers": [{
+                        "name": "Authorization",
+                        "value": "Bearer token123",
+                    }],
+                    "expected_output_url": "http://api.example.com/v1/users",
+                },
+            ])
+        ```
+        ### Url Map Test Redirect Response Code
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health-check",
+            name="health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        backend = gcp.compute.BackendService("backend",
+            name="backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="URL map with redirect response code tests",
+            default_service=backend.id,
+            host_rules=[{
+                "hosts": ["example.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": backend.id,
+                "path_rules": [{
+                    "paths": ["/redirect/*"],
+                    "url_redirect": {
+                        "host_redirect": "newsite.com",
+                        "path_redirect": "/new-path/",
+                        "https_redirect": True,
+                        "redirect_response_code": "MOVED_PERMANENTLY_DEFAULT",
+                        "strip_query": False,
+                    },
+                }],
+            }],
+            tests=[
+                {
+                    "description": "Test redirect with expected response code",
+                    "host": "example.com",
+                    "path": "/redirect/old-page",
+                    "headers": [{
+                        "name": "Referer",
+                        "value": "https://oldsite.com",
+                    }],
+                    "expected_output_url": "https://newsite.com/new-path/",
+                    "expected_redirect_response_code": 301,
+                },
+                {
+                    "description": "Test another redirect scenario",
+                    "host": "example.com",
+                    "path": "/redirect/another-page",
+                    "headers": [{
+                        "name": "User-Agent",
+                        "value": "TestBot/1.0",
+                    }],
+                    "expected_output_url": "https://newsite.com/new-path/",
+                    "expected_redirect_response_code": 301,
+                },
+            ])
+        ```
         ### Url Map Path Template Match
 
         ```python
@@ -2402,6 +2574,178 @@ class URLMap(pulumi.CustomResource):
                     },
                 }],
             }])
+        ```
+        ### Url Map Test Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health-check",
+            name="health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        backend = gcp.compute.BackendService("backend",
+            name="backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="URL map with test headers",
+            default_service=backend.id,
+            tests=[
+                {
+                    "description": "Test with custom headers",
+                    "host": "example.com",
+                    "path": "/",
+                    "service": backend.id,
+                    "headers": [
+                        {
+                            "name": "User-Agent",
+                            "value": "TestBot/1.0",
+                        },
+                        {
+                            "name": "X-Custom-Header",
+                            "value": "test-value",
+                        },
+                    ],
+                },
+                {
+                    "description": "Test with authorization headers",
+                    "host": "api.example.com",
+                    "path": "/v1/test",
+                    "service": backend.id,
+                    "headers": [
+                        {
+                            "name": "Authorization",
+                            "value": "Bearer token123",
+                        },
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json",
+                        },
+                    ],
+                },
+            ])
+        ```
+        ### Url Map Test Expected Output Url
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health-check",
+            name="health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        backend = gcp.compute.BackendService("backend",
+            name="backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="URL map with expected output URL tests",
+            default_service=backend.id,
+            tests=[
+                {
+                    "description": "Test with expected output URL",
+                    "host": "example.com",
+                    "path": "/",
+                    "service": backend.id,
+                    "headers": [{
+                        "name": "User-Agent",
+                        "value": "TestBot/1.0",
+                    }],
+                    "expected_output_url": "http://example.com/",
+                },
+                {
+                    "description": "Test API routing with expected output URL",
+                    "host": "api.example.com",
+                    "path": "/v1/users",
+                    "service": backend.id,
+                    "headers": [{
+                        "name": "Authorization",
+                        "value": "Bearer token123",
+                    }],
+                    "expected_output_url": "http://api.example.com/v1/users",
+                },
+            ])
+        ```
+        ### Url Map Test Redirect Response Code
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health-check",
+            name="health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        backend = gcp.compute.BackendService("backend",
+            name="backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="URL map with redirect response code tests",
+            default_service=backend.id,
+            host_rules=[{
+                "hosts": ["example.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": backend.id,
+                "path_rules": [{
+                    "paths": ["/redirect/*"],
+                    "url_redirect": {
+                        "host_redirect": "newsite.com",
+                        "path_redirect": "/new-path/",
+                        "https_redirect": True,
+                        "redirect_response_code": "MOVED_PERMANENTLY_DEFAULT",
+                        "strip_query": False,
+                    },
+                }],
+            }],
+            tests=[
+                {
+                    "description": "Test redirect with expected response code",
+                    "host": "example.com",
+                    "path": "/redirect/old-page",
+                    "headers": [{
+                        "name": "Referer",
+                        "value": "https://oldsite.com",
+                    }],
+                    "expected_output_url": "https://newsite.com/new-path/",
+                    "expected_redirect_response_code": 301,
+                },
+                {
+                    "description": "Test another redirect scenario",
+                    "host": "example.com",
+                    "path": "/redirect/another-page",
+                    "headers": [{
+                        "name": "User-Agent",
+                        "value": "TestBot/1.0",
+                    }],
+                    "expected_output_url": "https://newsite.com/new-path/",
+                    "expected_redirect_response_code": 301,
+                },
+            ])
         ```
         ### Url Map Path Template Match
 

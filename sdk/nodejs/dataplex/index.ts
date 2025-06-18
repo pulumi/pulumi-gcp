@@ -120,6 +120,11 @@ export const getAssetIamPolicy: typeof import("./getAssetIamPolicy").getAssetIam
 export const getAssetIamPolicyOutput: typeof import("./getAssetIamPolicy").getAssetIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAssetIamPolicy","getAssetIamPolicyOutput"], () => require("./getAssetIamPolicy"));
 
+export { GetDataQualityRulesArgs, GetDataQualityRulesResult, GetDataQualityRulesOutputArgs } from "./getDataQualityRules";
+export const getDataQualityRules: typeof import("./getDataQualityRules").getDataQualityRules = null as any;
+export const getDataQualityRulesOutput: typeof import("./getDataQualityRules").getDataQualityRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getDataQualityRules","getDataQualityRulesOutput"], () => require("./getDataQualityRules"));
+
 export { GetDatascanIamPolicyArgs, GetDatascanIamPolicyResult, GetDatascanIamPolicyOutputArgs } from "./getDatascanIamPolicy";
 export const getDatascanIamPolicy: typeof import("./getDatascanIamPolicy").getDatascanIamPolicy = null as any;
 export const getDatascanIamPolicyOutput: typeof import("./getDatascanIamPolicy").getDatascanIamPolicyOutput = null as any;

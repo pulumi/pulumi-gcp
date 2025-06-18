@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherDefaultRouteAction;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherDefaultUrlRedirect;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherPathRule;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherRouteRule;
@@ -16,6 +17,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RegionUrlMapPathMatcher {
+    /**
+     * @return defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RegionUrlMapPathMatcherDefaultRouteAction defaultRouteAction;
     /**
      * @return A reference to a RegionBackendService resource. This will be used if
      * none of the pathRules defined by this PathMatcher is matched by
@@ -65,6 +76,18 @@ public final class RegionUrlMapPathMatcher {
     private @Nullable List<RegionUrlMapPathMatcherRouteRule> routeRules;
 
     private RegionUrlMapPathMatcher() {}
+    /**
+     * @return defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RegionUrlMapPathMatcherDefaultRouteAction> defaultRouteAction() {
+        return Optional.ofNullable(this.defaultRouteAction);
+    }
     /**
      * @return A reference to a RegionBackendService resource. This will be used if
      * none of the pathRules defined by this PathMatcher is matched by
@@ -134,6 +157,7 @@ public final class RegionUrlMapPathMatcher {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable RegionUrlMapPathMatcherDefaultRouteAction defaultRouteAction;
         private @Nullable String defaultService;
         private @Nullable RegionUrlMapPathMatcherDefaultUrlRedirect defaultUrlRedirect;
         private @Nullable String description;
@@ -143,6 +167,7 @@ public final class RegionUrlMapPathMatcher {
         public Builder() {}
         public Builder(RegionUrlMapPathMatcher defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.defaultRouteAction = defaults.defaultRouteAction;
     	      this.defaultService = defaults.defaultService;
     	      this.defaultUrlRedirect = defaults.defaultUrlRedirect;
     	      this.description = defaults.description;
@@ -151,6 +176,12 @@ public final class RegionUrlMapPathMatcher {
     	      this.routeRules = defaults.routeRules;
         }
 
+        @CustomType.Setter
+        public Builder defaultRouteAction(@Nullable RegionUrlMapPathMatcherDefaultRouteAction defaultRouteAction) {
+
+            this.defaultRouteAction = defaultRouteAction;
+            return this;
+        }
         @CustomType.Setter
         public Builder defaultService(@Nullable String defaultService) {
 
@@ -197,6 +228,7 @@ public final class RegionUrlMapPathMatcher {
         }
         public RegionUrlMapPathMatcher build() {
             final var _resultValue = new RegionUrlMapPathMatcher();
+            _resultValue.defaultRouteAction = defaultRouteAction;
             _resultValue.defaultService = defaultService;
             _resultValue.defaultUrlRedirect = defaultUrlRedirect;
             _resultValue.description = description;

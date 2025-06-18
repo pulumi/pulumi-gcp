@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -53,6 +55,74 @@ import * as utilities from "../utilities";
  *     peerIp: "15.0.0.120",
  *     sharedSecret: "a secret message",
  *     targetVpnGateway: targetGateway.id,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         frEsp,
+ *         frUdp500,
+ *         frUdp4500,
+ *     ],
+ * });
+ * const route1 = new gcp.compute.Route("route1", {
+ *     name: "route1",
+ *     network: network1.name,
+ *     destRange: "15.0.0.0/24",
+ *     priority: 1000,
+ *     nextHopVpnTunnel: tunnel1.id,
+ * });
+ * ```
+ * ### Vpn Tunnel Cipher Suite
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network1 = new gcp.compute.Network("network1", {name: "network-1"});
+ * const targetGateway = new gcp.compute.VPNGateway("target_gateway", {
+ *     name: "vpn-1",
+ *     network: network1.id,
+ * });
+ * const vpnStaticIp = new gcp.compute.Address("vpn_static_ip", {name: "vpn-static-ip"});
+ * const frEsp = new gcp.compute.ForwardingRule("fr_esp", {
+ *     name: "fr-esp",
+ *     ipProtocol: "ESP",
+ *     ipAddress: vpnStaticIp.address,
+ *     target: targetGateway.id,
+ * });
+ * const frUdp500 = new gcp.compute.ForwardingRule("fr_udp500", {
+ *     name: "fr-udp500",
+ *     ipProtocol: "UDP",
+ *     portRange: "500",
+ *     ipAddress: vpnStaticIp.address,
+ *     target: targetGateway.id,
+ * });
+ * const frUdp4500 = new gcp.compute.ForwardingRule("fr_udp4500", {
+ *     name: "fr-udp4500",
+ *     ipProtocol: "UDP",
+ *     portRange: "4500",
+ *     ipAddress: vpnStaticIp.address,
+ *     target: targetGateway.id,
+ * });
+ * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
+ *     name: "tunnel-cipher",
+ *     peerIp: "15.0.0.120",
+ *     sharedSecret: "a secret message",
+ *     targetVpnGateway: targetGateway.id,
+ *     cipherSuite: {
+ *         phase1: {
+ *             encryptions: ["AES-CBC-256"],
+ *             integrities: ["HMAC-SHA2-256-128"],
+ *             prves: ["PRF-HMAC-SHA2-256"],
+ *             dhs: ["Group-14"],
+ *         },
+ *         phase2: {
+ *             encryptions: ["AES-CBC-128"],
+ *             integrities: ["HMAC-SHA2-256-128"],
+ *             pfs: ["Group-14"],
+ *         },
+ *     },
  *     labels: {
  *         foo: "bar",
  *     },
@@ -130,6 +200,11 @@ export class VPNTunnel extends pulumi.CustomResource {
         return obj['__pulumiType'] === VPNTunnel.__pulumiType;
     }
 
+    /**
+     * User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+     * Structure is documented below.
+     */
+    public readonly cipherSuite!: pulumi.Output<outputs.compute.VPNTunnelCipherSuite | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -274,6 +349,7 @@ export class VPNTunnel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VPNTunnelState | undefined;
+            resourceInputs["cipherSuite"] = state ? state.cipherSuite : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["detailedStatus"] = state ? state.detailedStatus : undefined;
@@ -304,6 +380,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             if ((!args || args.sharedSecret === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sharedSecret'");
             }
+            resourceInputs["cipherSuite"] = args ? args.cipherSuite : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ikeVersion"] = args ? args.ikeVersion : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -341,6 +418,11 @@ export class VPNTunnel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VPNTunnel resources.
  */
 export interface VPNTunnelState {
+    /**
+     * User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+     * Structure is documented below.
+     */
+    cipherSuite?: pulumi.Input<inputs.compute.VPNTunnelCipherSuite>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -477,6 +559,11 @@ export interface VPNTunnelState {
  * The set of arguments for constructing a VPNTunnel resource.
  */
 export interface VPNTunnelArgs {
+    /**
+     * User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+     * Structure is documented below.
+     */
+    cipherSuite?: pulumi.Input<inputs.compute.VPNTunnelCipherSuite>;
     /**
      * An optional description of this resource.
      */

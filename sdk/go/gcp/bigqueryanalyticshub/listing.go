@@ -218,6 +218,58 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Listing Log Linked Dataset Query User
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			listingLogEmail, err := bigqueryanalyticshub.NewDataExchange(ctx, "listing_log_email", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: pulumi.String("tf_test_log_email_de"),
+//				DisplayName:    pulumi.String("tf_test_log_email_de"),
+//				Description:    pulumi.String("Example for log email test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			listingLogEmailDataset, err := bigquery.NewDataset(ctx, "listing_log_email", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("tf_test_log_email_ds"),
+//				FriendlyName: pulumi.String("tf_test_log_email_ds"),
+//				Description:  pulumi.String("Example for log email test"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewListing(ctx, "listing", &bigqueryanalyticshub.ListingArgs{
+//				Location:                       pulumi.String("US"),
+//				DataExchangeId:                 listingLogEmail.DataExchangeId,
+//				ListingId:                      pulumi.String("tf_test_log_email_listing"),
+//				DisplayName:                    pulumi.String("tf_test_log_email_listing"),
+//				Description:                    pulumi.String("Example for log email test"),
+//				LogLinkedDatasetQueryUserEmail: pulumi.Bool(true),
+//				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
+//					Dataset: listingLogEmailDataset.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -267,6 +319,9 @@ type Listing struct {
 	ListingId pulumi.StringOutput `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+	// querying user.
+	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrOutput `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Email or URL of the primary point of contact of the listing.
@@ -347,6 +402,9 @@ type listingState struct {
 	ListingId *string `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	Location *string `pulumi:"location"`
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+	// querying user.
+	LogLinkedDatasetQueryUserEmail *bool `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name *string `pulumi:"name"`
 	// Email or URL of the primary point of contact of the listing.
@@ -383,6 +441,9 @@ type ListingState struct {
 	ListingId pulumi.StringPtrInput
 	// The name of the location this data exchange listing.
 	Location pulumi.StringPtrInput
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+	// querying user.
+	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrInput
 	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name pulumi.StringPtrInput
 	// Email or URL of the primary point of contact of the listing.
@@ -423,6 +484,9 @@ type listingArgs struct {
 	ListingId string `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	Location string `pulumi:"location"`
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+	// querying user.
+	LogLinkedDatasetQueryUserEmail *bool `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact *string `pulumi:"primaryContact"`
 	Project        *string `pulumi:"project"`
@@ -458,6 +522,9 @@ type ListingArgs struct {
 	ListingId pulumi.StringInput
 	// The name of the location this data exchange listing.
 	Location pulumi.StringInput
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+	// querying user.
+	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrInput
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact pulumi.StringPtrInput
 	Project        pulumi.StringPtrInput
@@ -606,6 +673,12 @@ func (o ListingOutput) ListingId() pulumi.StringOutput {
 // The name of the location this data exchange listing.
 func (o ListingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+// querying user.
+func (o ListingOutput) LogLinkedDatasetQueryUserEmail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Listing) pulumi.BoolPtrOutput { return v.LogLinkedDatasetQueryUserEmail }).(pulumi.BoolPtrOutput)
 }
 
 // The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"

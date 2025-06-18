@@ -169,7 +169,8 @@ type CxAgent struct {
 	AvatarUri pulumi.StringPtrOutput `pulumi:"avatarUri"`
 	// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
 	// for a list of the currently supported language codes. This field cannot be updated after creation.
-	DefaultLanguageCode pulumi.StringOutput `pulumi:"defaultLanguageCode"`
+	DefaultLanguageCode       pulumi.StringOutput  `pulumi:"defaultLanguageCode"`
+	DeleteChatEngineOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteChatEngineOnDestroy"`
 	// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The human-readable name of the agent, unique within the location.
@@ -268,7 +269,8 @@ type cxAgentState struct {
 	AvatarUri *string `pulumi:"avatarUri"`
 	// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
 	// for a list of the currently supported language codes. This field cannot be updated after creation.
-	DefaultLanguageCode *string `pulumi:"defaultLanguageCode"`
+	DefaultLanguageCode       *string `pulumi:"defaultLanguageCode"`
+	DeleteChatEngineOnDestroy *bool   `pulumi:"deleteChatEngineOnDestroy"`
 	// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the agent, unique within the location.
@@ -326,7 +328,8 @@ type CxAgentState struct {
 	AvatarUri pulumi.StringPtrInput
 	// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
 	// for a list of the currently supported language codes. This field cannot be updated after creation.
-	DefaultLanguageCode pulumi.StringPtrInput
+	DefaultLanguageCode       pulumi.StringPtrInput
+	DeleteChatEngineOnDestroy pulumi.BoolPtrInput
 	// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the agent, unique within the location.
@@ -388,7 +391,8 @@ type cxAgentArgs struct {
 	AvatarUri *string `pulumi:"avatarUri"`
 	// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
 	// for a list of the currently supported language codes. This field cannot be updated after creation.
-	DefaultLanguageCode string `pulumi:"defaultLanguageCode"`
+	DefaultLanguageCode       string `pulumi:"defaultLanguageCode"`
+	DeleteChatEngineOnDestroy *bool  `pulumi:"deleteChatEngineOnDestroy"`
 	// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the agent, unique within the location.
@@ -443,7 +447,8 @@ type CxAgentArgs struct {
 	AvatarUri pulumi.StringPtrInput
 	// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
 	// for a list of the currently supported language codes. This field cannot be updated after creation.
-	DefaultLanguageCode pulumi.StringInput
+	DefaultLanguageCode       pulumi.StringInput
+	DeleteChatEngineOnDestroy pulumi.BoolPtrInput
 	// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the agent, unique within the location.
@@ -591,6 +596,10 @@ func (o CxAgentOutput) AvatarUri() pulumi.StringPtrOutput {
 // for a list of the currently supported language codes. This field cannot be updated after creation.
 func (o CxAgentOutput) DefaultLanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxAgent) pulumi.StringOutput { return v.DefaultLanguageCode }).(pulumi.StringOutput)
+}
+
+func (o CxAgentOutput) DeleteChatEngineOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxAgent) pulumi.BoolPtrOutput { return v.DeleteChatEngineOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.

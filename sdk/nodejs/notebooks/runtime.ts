@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `googleNotebookRuntime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+ *
  * A Cloud AI Platform Notebook runtime.
  *
  * > **Note:** Due to limitations of the Notebooks Runtime API, many fields

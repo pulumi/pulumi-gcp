@@ -28,6 +28,7 @@ class CxAgentArgs:
                  time_zone: pulumi.Input[builtins.str],
                  advanced_settings: Optional[pulumi.Input['CxAgentAdvancedSettingsArgs']] = None,
                  avatar_uri: Optional[pulumi.Input[builtins.str]] = None,
+                 delete_chat_engine_on_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[builtins.bool]] = None,
@@ -83,6 +84,8 @@ class CxAgentArgs:
             pulumi.set(__self__, "advanced_settings", advanced_settings)
         if avatar_uri is not None:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
+        if delete_chat_engine_on_destroy is not None:
+            pulumi.set(__self__, "delete_chat_engine_on_destroy", delete_chat_engine_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_spell_correction is not None:
@@ -188,6 +191,15 @@ class CxAgentArgs:
     @avatar_uri.setter
     def avatar_uri(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "avatar_uri", value)
+
+    @property
+    @pulumi.getter(name="deleteChatEngineOnDestroy")
+    def delete_chat_engine_on_destroy(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "delete_chat_engine_on_destroy")
+
+    @delete_chat_engine_on_destroy.setter
+    def delete_chat_engine_on_destroy(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "delete_chat_engine_on_destroy", value)
 
     @property
     @pulumi.getter
@@ -325,6 +337,7 @@ class _CxAgentState:
                  advanced_settings: Optional[pulumi.Input['CxAgentAdvancedSettingsArgs']] = None,
                  avatar_uri: Optional[pulumi.Input[builtins.str]] = None,
                  default_language_code: Optional[pulumi.Input[builtins.str]] = None,
+                 delete_chat_engine_on_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[builtins.bool]] = None,
@@ -385,6 +398,8 @@ class _CxAgentState:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
         if default_language_code is not None:
             pulumi.set(__self__, "default_language_code", default_language_code)
+        if delete_chat_engine_on_destroy is not None:
+            pulumi.set(__self__, "delete_chat_engine_on_destroy", delete_chat_engine_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -457,6 +472,15 @@ class _CxAgentState:
     @default_language_code.setter
     def default_language_code(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "default_language_code", value)
+
+    @property
+    @pulumi.getter(name="deleteChatEngineOnDestroy")
+    def delete_chat_engine_on_destroy(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "delete_chat_engine_on_destroy")
+
+    @delete_chat_engine_on_destroy.setter
+    def delete_chat_engine_on_destroy(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "delete_chat_engine_on_destroy", value)
 
     @property
     @pulumi.getter
@@ -664,6 +688,7 @@ class CxAgent(pulumi.CustomResource):
                  advanced_settings: Optional[pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']]] = None,
                  avatar_uri: Optional[pulumi.Input[builtins.str]] = None,
                  default_language_code: Optional[pulumi.Input[builtins.str]] = None,
+                 delete_chat_engine_on_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[builtins.bool]] = None,
@@ -971,6 +996,7 @@ class CxAgent(pulumi.CustomResource):
                  advanced_settings: Optional[pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']]] = None,
                  avatar_uri: Optional[pulumi.Input[builtins.str]] = None,
                  default_language_code: Optional[pulumi.Input[builtins.str]] = None,
+                 delete_chat_engine_on_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[builtins.bool]] = None,
@@ -998,6 +1024,7 @@ class CxAgent(pulumi.CustomResource):
             if default_language_code is None and not opts.urn:
                 raise TypeError("Missing required property 'default_language_code'")
             __props__.__dict__["default_language_code"] = default_language_code
+            __props__.__dict__["delete_chat_engine_on_destroy"] = delete_chat_engine_on_destroy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1032,6 +1059,7 @@ class CxAgent(pulumi.CustomResource):
             advanced_settings: Optional[pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']]] = None,
             avatar_uri: Optional[pulumi.Input[builtins.str]] = None,
             default_language_code: Optional[pulumi.Input[builtins.str]] = None,
+            delete_chat_engine_on_destroy: Optional[pulumi.Input[builtins.bool]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             display_name: Optional[pulumi.Input[builtins.str]] = None,
             enable_spell_correction: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1098,6 +1126,7 @@ class CxAgent(pulumi.CustomResource):
         __props__.__dict__["advanced_settings"] = advanced_settings
         __props__.__dict__["avatar_uri"] = avatar_uri
         __props__.__dict__["default_language_code"] = default_language_code
+        __props__.__dict__["delete_chat_engine_on_destroy"] = delete_chat_engine_on_destroy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enable_spell_correction"] = enable_spell_correction
@@ -1141,6 +1170,11 @@ class CxAgent(pulumi.CustomResource):
         for a list of the currently supported language codes. This field cannot be updated after creation.
         """
         return pulumi.get(self, "default_language_code")
+
+    @property
+    @pulumi.getter(name="deleteChatEngineOnDestroy")
+    def delete_chat_engine_on_destroy(self) -> pulumi.Output[Optional[builtins.bool]]:
+        return pulumi.get(self, "delete_chat_engine_on_destroy")
 
     @property
     @pulumi.getter

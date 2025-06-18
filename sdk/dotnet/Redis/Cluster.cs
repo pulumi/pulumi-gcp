@@ -773,6 +773,13 @@ namespace Pulumi.Gcp.Redis
         public Output<Outputs.ClusterManagedBackupSource?> ManagedBackupSource { get; private set; } = null!;
 
         /// <summary>
+        /// Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+        /// Structure is documented below.
+        /// </summary>
+        [Output("managedServerCas")]
+        public Output<ImmutableArray<Outputs.ClusterManagedServerCa>> ManagedServerCas { get; private set; } = null!;
+
+        /// <summary>
         /// Unique name of the resource in this scope including project and location using the form:
         /// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         /// 
@@ -1205,6 +1212,19 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("managedBackupSource")]
         public Input<Inputs.ClusterManagedBackupSourceGetArgs>? ManagedBackupSource { get; set; }
+
+        [Input("managedServerCas")]
+        private InputList<Inputs.ClusterManagedServerCaGetArgs>? _managedServerCas;
+
+        /// <summary>
+        /// Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterManagedServerCaGetArgs> ManagedServerCas
+        {
+            get => _managedServerCas ?? (_managedServerCas = new InputList<Inputs.ClusterManagedServerCaGetArgs>());
+            set => _managedServerCas = value;
+        }
 
         /// <summary>
         /// Unique name of the resource in this scope including project and location using the form:

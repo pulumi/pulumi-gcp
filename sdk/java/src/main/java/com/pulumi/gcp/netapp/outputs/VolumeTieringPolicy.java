@@ -4,6 +4,7 @@
 package com.pulumi.gcp.netapp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -18,6 +19,12 @@ public final class VolumeTieringPolicy {
      * 
      */
     private @Nullable Integer coolingThresholdDays;
+    /**
+     * @return Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
+     * Only applicable to Flex service level.
+     * 
+     */
+    private @Nullable Boolean hotTierBypassModeEnabled;
     /**
      * @return Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
      * Default value is `PAUSED`.
@@ -34,6 +41,14 @@ public final class VolumeTieringPolicy {
      */
     public Optional<Integer> coolingThresholdDays() {
         return Optional.ofNullable(this.coolingThresholdDays);
+    }
+    /**
+     * @return Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
+     * Only applicable to Flex service level.
+     * 
+     */
+    public Optional<Boolean> hotTierBypassModeEnabled() {
+        return Optional.ofNullable(this.hotTierBypassModeEnabled);
     }
     /**
      * @return Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
@@ -55,11 +70,13 @@ public final class VolumeTieringPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer coolingThresholdDays;
+        private @Nullable Boolean hotTierBypassModeEnabled;
         private @Nullable String tierAction;
         public Builder() {}
         public Builder(VolumeTieringPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.coolingThresholdDays = defaults.coolingThresholdDays;
+    	      this.hotTierBypassModeEnabled = defaults.hotTierBypassModeEnabled;
     	      this.tierAction = defaults.tierAction;
         }
 
@@ -67,6 +84,12 @@ public final class VolumeTieringPolicy {
         public Builder coolingThresholdDays(@Nullable Integer coolingThresholdDays) {
 
             this.coolingThresholdDays = coolingThresholdDays;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hotTierBypassModeEnabled(@Nullable Boolean hotTierBypassModeEnabled) {
+
+            this.hotTierBypassModeEnabled = hotTierBypassModeEnabled;
             return this;
         }
         @CustomType.Setter
@@ -78,6 +101,7 @@ public final class VolumeTieringPolicy {
         public VolumeTieringPolicy build() {
             final var _resultValue = new VolumeTieringPolicy();
             _resultValue.coolingThresholdDays = coolingThresholdDays;
+            _resultValue.hotTierBypassModeEnabled = hotTierBypassModeEnabled;
             _resultValue.tierAction = tierAction;
             return _resultValue;
         }

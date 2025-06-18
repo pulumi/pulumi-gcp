@@ -141,10 +141,24 @@ namespace Pulumi.Gcp.Netapp
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+        /// The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+        /// </summary>
+        [Output("enableHotTierAutoResize")]
+        public Output<bool?> EnableHotTierAutoResize { get; private set; } = null!;
+
+        /// <summary>
         /// Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
         /// </summary>
         [Output("encryptionType")]
         public Output<string> EncryptionType { get; private set; } = null!;
+
+        /// <summary>
+        /// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+        /// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+        /// </summary>
+        [Output("hotTierSizeGib")]
+        public Output<string?> HotTierSizeGib { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
@@ -334,6 +348,20 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+        /// The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+        /// </summary>
+        [Input("enableHotTierAutoResize")]
+        public Input<bool>? EnableHotTierAutoResize { get; set; }
+
+        /// <summary>
+        /// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+        /// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+        /// </summary>
+        [Input("hotTierSizeGib")]
+        public Input<string>? HotTierSizeGib { get; set; }
+
+        /// <summary>
         /// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
         /// The policy needs to be in the same location as the storage pool.
         /// </summary>
@@ -481,10 +509,24 @@ namespace Pulumi.Gcp.Netapp
         }
 
         /// <summary>
+        /// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+        /// The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+        /// </summary>
+        [Input("enableHotTierAutoResize")]
+        public Input<bool>? EnableHotTierAutoResize { get; set; }
+
+        /// <summary>
         /// Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
         /// </summary>
         [Input("encryptionType")]
         public Input<string>? EncryptionType { get; set; }
+
+        /// <summary>
+        /// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+        /// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+        /// </summary>
+        [Input("hotTierSizeGib")]
+        public Input<string>? HotTierSizeGib { get; set; }
 
         /// <summary>
         /// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.

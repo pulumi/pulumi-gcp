@@ -752,6 +752,187 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Url Map Test Headers
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const health_check = new gcp.compute.HealthCheck("health-check", {
+ *     name: "health-check",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const backend = new gcp.compute.BackendService("backend", {
+ *     name: "backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: health_check.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     description: "URL map with test headers",
+ *     defaultService: backend.id,
+ *     tests: [
+ *         {
+ *             description: "Test with custom headers",
+ *             host: "example.com",
+ *             path: "/",
+ *             service: backend.id,
+ *             headers: [
+ *                 {
+ *                     name: "User-Agent",
+ *                     value: "TestBot/1.0",
+ *                 },
+ *                 {
+ *                     name: "X-Custom-Header",
+ *                     value: "test-value",
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             description: "Test with authorization headers",
+ *             host: "api.example.com",
+ *             path: "/v1/test",
+ *             service: backend.id,
+ *             headers: [
+ *                 {
+ *                     name: "Authorization",
+ *                     value: "Bearer token123",
+ *                 },
+ *                 {
+ *                     name: "Content-Type",
+ *                     value: "application/json",
+ *                 },
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Url Map Test Expected Output Url
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const health_check = new gcp.compute.HealthCheck("health-check", {
+ *     name: "health-check",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const backend = new gcp.compute.BackendService("backend", {
+ *     name: "backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: health_check.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     description: "URL map with expected output URL tests",
+ *     defaultService: backend.id,
+ *     tests: [
+ *         {
+ *             description: "Test with expected output URL",
+ *             host: "example.com",
+ *             path: "/",
+ *             service: backend.id,
+ *             headers: [{
+ *                 name: "User-Agent",
+ *                 value: "TestBot/1.0",
+ *             }],
+ *             expectedOutputUrl: "http://example.com/",
+ *         },
+ *         {
+ *             description: "Test API routing with expected output URL",
+ *             host: "api.example.com",
+ *             path: "/v1/users",
+ *             service: backend.id,
+ *             headers: [{
+ *                 name: "Authorization",
+ *                 value: "Bearer token123",
+ *             }],
+ *             expectedOutputUrl: "http://api.example.com/v1/users",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Url Map Test Redirect Response Code
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const health_check = new gcp.compute.HealthCheck("health-check", {
+ *     name: "health-check",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const backend = new gcp.compute.BackendService("backend", {
+ *     name: "backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: health_check.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     description: "URL map with redirect response code tests",
+ *     defaultService: backend.id,
+ *     hostRules: [{
+ *         hosts: ["example.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: backend.id,
+ *         pathRules: [{
+ *             paths: ["/redirect/*"],
+ *             urlRedirect: {
+ *                 hostRedirect: "newsite.com",
+ *                 pathRedirect: "/new-path/",
+ *                 httpsRedirect: true,
+ *                 redirectResponseCode: "MOVED_PERMANENTLY_DEFAULT",
+ *                 stripQuery: false,
+ *             },
+ *         }],
+ *     }],
+ *     tests: [
+ *         {
+ *             description: "Test redirect with expected response code",
+ *             host: "example.com",
+ *             path: "/redirect/old-page",
+ *             headers: [{
+ *                 name: "Referer",
+ *                 value: "https://oldsite.com",
+ *             }],
+ *             expectedOutputUrl: "https://newsite.com/new-path/",
+ *             expectedRedirectResponseCode: 301,
+ *         },
+ *         {
+ *             description: "Test another redirect scenario",
+ *             host: "example.com",
+ *             path: "/redirect/another-page",
+ *             headers: [{
+ *                 name: "User-Agent",
+ *                 value: "TestBot/1.0",
+ *             }],
+ *             expectedOutputUrl: "https://newsite.com/new-path/",
+ *             expectedRedirectResponseCode: 301,
+ *         },
+ *     ],
+ * });
+ * ```
  * ### Url Map Path Template Match
  *
  * ```typescript

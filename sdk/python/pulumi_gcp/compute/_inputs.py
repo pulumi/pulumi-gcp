@@ -998,6 +998,38 @@ __all__ = [
     'RegionUrlMapHostRuleArgsDict',
     'RegionUrlMapPathMatcherArgs',
     'RegionUrlMapPathMatcherArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDurationArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDurationArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict',
+    'RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
+    'RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict',
     'RegionUrlMapPathMatcherDefaultUrlRedirectArgs',
     'RegionUrlMapPathMatcherDefaultUrlRedirectArgsDict',
     'RegionUrlMapPathMatcherPathRuleArgs',
@@ -1494,6 +1526,14 @@ __all__ = [
     'URLMapPathMatcherRouteRuleUrlRedirectArgsDict',
     'URLMapTestArgs',
     'URLMapTestArgsDict',
+    'URLMapTestHeaderArgs',
+    'URLMapTestHeaderArgsDict',
+    'VPNTunnelCipherSuiteArgs',
+    'VPNTunnelCipherSuiteArgsDict',
+    'VPNTunnelCipherSuitePhase1Args',
+    'VPNTunnelCipherSuitePhase1ArgsDict',
+    'VPNTunnelCipherSuitePhase2Args',
+    'VPNTunnelCipherSuitePhase2ArgsDict',
 ]
 
 MYPY = False
@@ -51348,6 +51388,15 @@ if not MYPY:
         """
         The name to which this PathMatcher is referred by the HostRule.
         """
+        default_route_action: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionArgsDict']]
+        """
+        defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+        advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+        to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+        Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        Structure is documented below.
+        """
         default_service: NotRequired[pulumi.Input[builtins.str]]
         """
         A reference to a RegionBackendService resource. This will be used if
@@ -51392,6 +51441,7 @@ elif False:
 class RegionUrlMapPathMatcherArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[builtins.str],
+                 default_route_action: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionArgs']] = None,
                  default_service: Optional[pulumi.Input[builtins.str]] = None,
                  default_url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArgs']] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
@@ -51399,6 +51449,12 @@ class RegionUrlMapPathMatcherArgs:
                  route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArgs']]]] = None):
         """
         :param pulumi.Input[builtins.str] name: The name to which this PathMatcher is referred by the HostRule.
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+               advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+               to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+               Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+               Only one of defaultRouteAction or defaultUrlRedirect must be set.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] default_service: A reference to a RegionBackendService resource. This will be used if
                none of the pathRules defined by this PathMatcher is matched by
                the URL's path portion.
@@ -51423,6 +51479,8 @@ class RegionUrlMapPathMatcherArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
+        if default_route_action is not None:
+            pulumi.set(__self__, "default_route_action", default_route_action)
         if default_service is not None:
             pulumi.set(__self__, "default_service", default_service)
         if default_url_redirect is not None:
@@ -51445,6 +51503,23 @@ class RegionUrlMapPathMatcherArgs:
     @name.setter
     def name(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="defaultRouteAction")
+    def default_route_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionArgs']]:
+        """
+        defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+        advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+        to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+        Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_route_action")
+
+    @default_route_action.setter
+    def default_route_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionArgs']]):
+        pulumi.set(self, "default_route_action", value)
 
     @property
     @pulumi.getter(name="defaultService")
@@ -51522,6 +51597,1430 @@ class RegionUrlMapPathMatcherArgs:
     @route_rules.setter
     def route_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArgs']]]]):
         pulumi.set(self, "route_rules", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionArgsDict(TypedDict):
+        cors_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgsDict']]
+        """
+        The specification for allowing client side cross-origin requests. Please see
+        [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+        Structure is documented below.
+        """
+        fault_injection_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgsDict']]
+        """
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+        Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+        timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+        Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
+        Structure is documented below.
+        """
+        max_stream_duration: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDurationArgsDict']]
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
+        request_mirror_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict']]
+        """
+        Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+        The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+        Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        retry_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgsDict']]
+        """
+        Specifies the retry policy associated with this route.
+        Structure is documented below.
+        """
+        timeout: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgsDict']]
+        """
+        Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+        If not specified, this field uses the largest timeout among all backend services associated with the route.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        url_rewrite: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgsDict']]
+        """
+        The spec to modify the URL of the request, before forwarding the request to the matched service.
+        urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+        Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        weighted_backend_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgsDict']]]]
+        """
+        A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
+        After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionArgs:
+    def __init__(__self__, *,
+                 cors_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgs']] = None,
+                 fault_injection_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs']] = None,
+                 max_stream_duration: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDurationArgs']] = None,
+                 request_mirror_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs']] = None,
+                 retry_policy: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgs']] = None,
+                 timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgs']] = None,
+                 url_rewrite: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgs']] = None,
+                 weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs']]]] = None):
+        """
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see
+               [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+               Structure is documented below.
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+               As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+               Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+               timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+               Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
+               Structure is documented below.
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
+               Unlike the `Timeout` field where the timeout duration starts from the time the request
+               has been fully processed (known as end-of-stream), the duration in this field
+               is computed from the beginning of the stream until the response has been processed,
+               including all retries. A stream that does not complete in this duration is closed.
+               Structure is documented below.
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+               The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+               Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+               Structure is documented below.
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+               Structure is documented below.
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgs'] timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+               If not specified, this field uses the largest timeout among all backend services associated with the route.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+               Structure is documented below.
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgs'] url_rewrite: The spec to modify the URL of the request, before forwarding the request to the matched service.
+               urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+               Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs']]] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
+               After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+               Structure is documented below.
+        """
+        if cors_policy is not None:
+            pulumi.set(__self__, "cors_policy", cors_policy)
+        if fault_injection_policy is not None:
+            pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
+        if request_mirror_policy is not None:
+            pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
+        if retry_policy is not None:
+            pulumi.set(__self__, "retry_policy", retry_policy)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if url_rewrite is not None:
+            pulumi.set(__self__, "url_rewrite", url_rewrite)
+        if weighted_backend_services is not None:
+            pulumi.set(__self__, "weighted_backend_services", weighted_backend_services)
+
+    @property
+    @pulumi.getter(name="corsPolicy")
+    def cors_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgs']]:
+        """
+        The specification for allowing client side cross-origin requests. Please see
+        [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cors_policy")
+
+    @cors_policy.setter
+    def cors_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgs']]):
+        pulumi.set(self, "cors_policy", value)
+
+    @property
+    @pulumi.getter(name="faultInjectionPolicy")
+    def fault_injection_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs']]:
+        """
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+        Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+        timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+        Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fault_injection_policy")
+
+    @fault_injection_policy.setter
+    def fault_injection_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs']]):
+        pulumi.set(self, "fault_injection_policy", value)
+
+    @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDurationArgs']]:
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route.
+        Unlike the `Timeout` field where the timeout duration starts from the time the request
+        has been fully processed (known as end-of-stream), the duration in this field
+        is computed from the beginning of the stream until the response has been processed,
+        including all retries. A stream that does not complete in this duration is closed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
+
+    @max_stream_duration.setter
+    def max_stream_duration(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDurationArgs']]):
+        pulumi.set(self, "max_stream_duration", value)
+
+    @property
+    @pulumi.getter(name="requestMirrorPolicy")
+    def request_mirror_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs']]:
+        """
+        Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+        The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+        Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_mirror_policy")
+
+    @request_mirror_policy.setter
+    def request_mirror_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs']]):
+        pulumi.set(self, "request_mirror_policy", value)
+
+    @property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgs']]:
+        """
+        Specifies the retry policy associated with this route.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @retry_policy.setter
+    def retry_policy(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgs']]):
+        pulumi.set(self, "retry_policy", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgs']]:
+        """
+        Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+        If not specified, this field uses the largest timeout among all backend services associated with the route.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgs']]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter(name="urlRewrite")
+    def url_rewrite(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgs']]:
+        """
+        The spec to modify the URL of the request, before forwarding the request to the matched service.
+        urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+        Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "url_rewrite")
+
+    @url_rewrite.setter
+    def url_rewrite(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgs']]):
+        pulumi.set(self, "url_rewrite", value)
+
+    @property
+    @pulumi.getter(name="weightedBackendServices")
+    def weighted_backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs']]]]:
+        """
+        A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
+        After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "weighted_backend_services")
+
+    @weighted_backend_services.setter
+    def weighted_backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs']]]]):
+        pulumi.set(self, "weighted_backend_services", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgsDict(TypedDict):
+        allow_credentials: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+        Default is false.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Headers header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Methods header.
+        """
+        allow_origin_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        disabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Specifies the content for the Access-Control-Expose-Headers header.
+        """
+        max_age: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionCorsPolicyArgs:
+    def __init__(__self__, *,
+                 allow_credentials: Optional[pulumi.Input[builtins.bool]] = None,
+                 allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 allow_origin_regexes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 allow_origins: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 disabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 max_age: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.bool] allow_credentials: In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+               Default is false.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+               please see en.cppreference.com/w/cpp/regex/ecmascript
+               An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
+               An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        :param pulumi.Input[builtins.bool] disabled: If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] expose_headers: Specifies the content for the Access-Control-Expose-Headers header.
+        :param pulumi.Input[builtins.int] max_age: Specifies how long results of a preflight request can be cached in seconds.
+               This translates to the Access-Control-Max-Age header.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origin_regexes is not None:
+            pulumi.set(__self__, "allow_origin_regexes", allow_origin_regexes)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+        Default is false.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @allow_credentials.setter
+    def allow_credentials(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "allow_credentials", value)
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Specifies the content for the Access-Control-Allow-Headers header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @allow_headers.setter
+    def allow_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "allow_headers", value)
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Specifies the content for the Access-Control-Allow-Methods header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @allow_methods.setter
+    def allow_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "allow_methods", value)
+
+    @property
+    @pulumi.getter(name="allowOriginRegexes")
+    def allow_origin_regexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        return pulumi.get(self, "allow_origin_regexes")
+
+    @allow_origin_regexes.setter
+    def allow_origin_regexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "allow_origin_regexes", value)
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @allow_origins.setter
+    def allow_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "allow_origins", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Specifies the content for the Access-Control-Expose-Headers header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @expose_headers.setter
+    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "expose_headers", value)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "max_age", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgsDict(TypedDict):
+        abort: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgsDict']]
+        """
+        The specification for how client requests are aborted as part of fault injection.
+        Structure is documented below.
+        """
+        delay: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgsDict']]
+        """
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs:
+    def __init__(__self__, *,
+                 abort: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs']] = None,
+                 delay: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs']] = None):
+        """
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs'] abort: The specification for how client requests are aborted as part of fault injection.
+               Structure is documented below.
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs'] delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+               Structure is documented below.
+        """
+        if abort is not None:
+            pulumi.set(__self__, "abort", abort)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+
+    @property
+    @pulumi.getter
+    def abort(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs']]:
+        """
+        The specification for how client requests are aborted as part of fault injection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "abort")
+
+    @abort.setter
+    def abort(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs']]):
+        pulumi.set(self, "abort", value)
+
+    @property
+    @pulumi.getter
+    def delay(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs']]:
+        """
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs']]):
+        pulumi.set(self, "delay", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgsDict(TypedDict):
+        http_status: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
+        """
+        percentage: NotRequired[pulumi.Input[builtins.float]]
+        """
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs:
+    def __init__(__self__, *,
+                 http_status: Optional[pulumi.Input[builtins.int]] = None,
+                 percentage: Optional[pulumi.Input[builtins.float]] = None):
+        """
+        :param pulumi.Input[builtins.int] http_status: The HTTP status code used to abort the request.
+               The value must be between 200 and 599 inclusive.
+        :param pulumi.Input[builtins.float] percentage: The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+               The value must be between 0.0 and 100.0 inclusive.
+        """
+        if http_status is not None:
+            pulumi.set(__self__, "http_status", http_status)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="httpStatus")
+    def http_status(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
+        """
+        return pulumi.get(self, "http_status")
+
+    @http_status.setter
+    def http_status(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "http_status", value)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "percentage", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgsDict(TypedDict):
+        fixed_delay: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict']]
+        """
+        Specifies the value of the fixed delay interval.
+        Structure is documented below.
+        """
+        percentage: NotRequired[pulumi.Input[builtins.float]]
+        """
+        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs:
+    def __init__(__self__, *,
+                 fixed_delay: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']] = None,
+                 percentage: Optional[pulumi.Input[builtins.float]] = None):
+        """
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs'] fixed_delay: Specifies the value of the fixed delay interval.
+               Structure is documented below.
+        :param pulumi.Input[builtins.float] percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+               The value must be between 0.0 and 100.0 inclusive.
+        """
+        if fixed_delay is not None:
+            pulumi.set(__self__, "fixed_delay", fixed_delay)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="fixedDelay")
+    def fixed_delay(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]:
+        """
+        Specifies the value of the fixed delay interval.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fixed_delay")
+
+    @fixed_delay.setter
+    def fixed_delay(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs']]):
+        pulumi.set(self, "fixed_delay", value)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "percentage", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
+    def __init__(__self__, *,
+                 nanos: Optional[pulumi.Input[builtins.int]] = None,
+                 seconds: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+               represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        :param pulumi.Input[builtins.str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "seconds", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[builtins.str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDurationArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[builtins.str],
+                 nanos: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        :param pulumi.Input[builtins.int] nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[builtins.str]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict(TypedDict):
+        backend_service: pulumi.Input[builtins.str]
+        """
+        The full or partial URL to the RegionBackendService resource being mirrored to.
+        The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+        Serverless NEG backends are not currently supported as a mirrored backend service.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs:
+    def __init__(__self__, *,
+                 backend_service: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
+               The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+               Serverless NEG backends are not currently supported as a mirrored backend service.
+        """
+        pulumi.set(__self__, "backend_service", backend_service)
+
+    @property
+    @pulumi.getter(name="backendService")
+    def backend_service(self) -> pulumi.Input[builtins.str]:
+        """
+        The full or partial URL to the RegionBackendService resource being mirrored to.
+        The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+        Serverless NEG backends are not currently supported as a mirrored backend service.
+        """
+        return pulumi.get(self, "backend_service")
+
+    @backend_service.setter
+    def backend_service(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "backend_service", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgsDict(TypedDict):
+        num_retries: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        """
+        per_try_timeout: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict']]
+        """
+        Specifies a non-zero timeout per retry attempt.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+        will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
+        """
+        retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Specifies one or more conditions when this retry policy applies.
+        Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
+        - 5xx : retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams.
+        - gateway-error : Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        - connect-failure : a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts.
+        - retriable-4xx : a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409.
+        - refused-stream : a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+        - cancelled : a retry is attempted if the gRPC status code in the response header is set to cancelled.
+        - deadline-exceeded : a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded.
+        - internal :  a retry is attempted if the gRPC status code in the response header is set to internal.
+        - resource-exhausted : a retry is attempted if the gRPC status code in the response header is set to resource-exhausted.
+        - unavailable : a retry is attempted if the gRPC status code in the response header is set to unavailable.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgs:
+    def __init__(__self__, *,
+                 num_retries: Optional[pulumi.Input[builtins.int]] = None,
+                 per_try_timeout: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs']] = None,
+                 retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[builtins.int] num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs'] per_try_timeout: Specifies a non-zero timeout per retry attempt.
+               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+               will use the largest timeout among all backend services associated with the route.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] retry_conditions: Specifies one or more conditions when this retry policy applies.
+               Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
+               - 5xx : retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams.
+               - gateway-error : Similar to 5xx, but only applies to response codes 502, 503 or 504.
+               - connect-failure : a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts.
+               - retriable-4xx : a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409.
+               - refused-stream : a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+               - cancelled : a retry is attempted if the gRPC status code in the response header is set to cancelled.
+               - deadline-exceeded : a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded.
+               - internal :  a retry is attempted if the gRPC status code in the response header is set to internal.
+               - resource-exhausted : a retry is attempted if the gRPC status code in the response header is set to resource-exhausted.
+               - unavailable : a retry is attempted if the gRPC status code in the response header is set to unavailable.
+        """
+        if num_retries is not None:
+            pulumi.set(__self__, "num_retries", num_retries)
+        if per_try_timeout is not None:
+            pulumi.set(__self__, "per_try_timeout", per_try_timeout)
+        if retry_conditions is not None:
+            pulumi.set(__self__, "retry_conditions", retry_conditions)
+
+    @property
+    @pulumi.getter(name="numRetries")
+    def num_retries(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        """
+        return pulumi.get(self, "num_retries")
+
+    @num_retries.setter
+    def num_retries(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "num_retries", value)
+
+    @property
+    @pulumi.getter(name="perTryTimeout")
+    def per_try_timeout(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs']]:
+        """
+        Specifies a non-zero timeout per retry attempt.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+        will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "per_try_timeout")
+
+    @per_try_timeout.setter
+    def per_try_timeout(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs']]):
+        pulumi.set(self, "per_try_timeout", value)
+
+    @property
+    @pulumi.getter(name="retryConditions")
+    def retry_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Specifies one or more conditions when this retry policy applies.
+        Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
+        - 5xx : retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams.
+        - gateway-error : Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        - connect-failure : a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts.
+        - retriable-4xx : a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409.
+        - refused-stream : a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+        - cancelled : a retry is attempted if the gRPC status code in the response header is set to cancelled.
+        - deadline-exceeded : a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded.
+        - internal :  a retry is attempted if the gRPC status code in the response header is set to internal.
+        - resource-exhausted : a retry is attempted if the gRPC status code in the response header is set to resource-exhausted.
+        - unavailable : a retry is attempted if the gRPC status code in the response header is set to unavailable.
+        """
+        return pulumi.get(self, "retry_conditions")
+
+    @retry_conditions.setter
+    def retry_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "retry_conditions", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
+    def __init__(__self__, *,
+                 nanos: Optional[pulumi.Input[builtins.int]] = None,
+                 seconds: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+               represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        :param pulumi.Input[builtins.str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "seconds", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgs:
+    def __init__(__self__, *,
+                 nanos: Optional[pulumi.Input[builtins.int]] = None,
+                 seconds: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        :param pulumi.Input[builtins.str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "seconds", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgsDict(TypedDict):
+        host_rewrite: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+        The value must be from 1 to 255 characters.
+        """
+        path_prefix_rewrite: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+        The value must be from 1 to 1024 characters.
+        """
+        path_template_rewrite: NotRequired[pulumi.Input[builtins.str]]
+        """
+        If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
+        A corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.
+        * At least one variable must be specified in the pathTemplateMatch field
+        * You can omit variables from the rewritten URL
+        * The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.
+        For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
+        /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
+        rewritten as /content/{format}/{country}/{suffix}.
+        At least one non-empty routeRules[].matchRules[].path_template_match is required.
+        Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgs:
+    def __init__(__self__, *,
+                 host_rewrite: Optional[pulumi.Input[builtins.str]] = None,
+                 path_prefix_rewrite: Optional[pulumi.Input[builtins.str]] = None,
+                 path_template_rewrite: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] host_rewrite: Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+               The value must be from 1 to 255 characters.
+        :param pulumi.Input[builtins.str] path_prefix_rewrite: Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+               The value must be from 1 to 1024 characters.
+        :param pulumi.Input[builtins.str] path_template_rewrite: If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
+               A corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.
+               * At least one variable must be specified in the pathTemplateMatch field
+               * You can omit variables from the rewritten URL
+               * The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.
+               For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
+               /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
+               rewritten as /content/{format}/{country}/{suffix}.
+               At least one non-empty routeRules[].matchRules[].path_template_match is required.
+               Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
+        """
+        if host_rewrite is not None:
+            pulumi.set(__self__, "host_rewrite", host_rewrite)
+        if path_prefix_rewrite is not None:
+            pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
+        if path_template_rewrite is not None:
+            pulumi.set(__self__, "path_template_rewrite", path_template_rewrite)
+
+    @property
+    @pulumi.getter(name="hostRewrite")
+    def host_rewrite(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+        The value must be from 1 to 255 characters.
+        """
+        return pulumi.get(self, "host_rewrite")
+
+    @host_rewrite.setter
+    def host_rewrite(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "host_rewrite", value)
+
+    @property
+    @pulumi.getter(name="pathPrefixRewrite")
+    def path_prefix_rewrite(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+        The value must be from 1 to 1024 characters.
+        """
+        return pulumi.get(self, "path_prefix_rewrite")
+
+    @path_prefix_rewrite.setter
+    def path_prefix_rewrite(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "path_prefix_rewrite", value)
+
+    @property
+    @pulumi.getter(name="pathTemplateRewrite")
+    def path_template_rewrite(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
+        A corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.
+        * At least one variable must be specified in the pathTemplateMatch field
+        * You can omit variables from the rewritten URL
+        * The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.
+        For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
+        /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
+        rewritten as /content/{format}/{country}/{suffix}.
+        At least one non-empty routeRules[].matchRules[].path_template_match is required.
+        Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
+        """
+        return pulumi.get(self, "path_template_rewrite")
+
+    @path_template_rewrite.setter
+    def path_template_rewrite(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "path_template_rewrite", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgsDict(TypedDict):
+        backend_service: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
+        """
+        header_action: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        weight: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
+        The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
+        The value must be from 0 to 1000.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs:
+    def __init__(__self__, *,
+                 backend_service: Optional[pulumi.Input[builtins.str]] = None,
+                 header_action: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs']] = None,
+                 weight: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.str] backend_service: The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
+        :param pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+               headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+               headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+               Structure is documented below.
+        :param pulumi.Input[builtins.int] weight: Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
+               The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
+               The value must be from 0 to 1000.
+        """
+        if backend_service is not None:
+            pulumi.set(__self__, "backend_service", backend_service)
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="backendService")
+    def backend_service(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
+        """
+        return pulumi.get(self, "backend_service")
+
+    @backend_service.setter
+    def backend_service(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "backend_service", value)
+
+    @property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs']]:
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @header_action.setter
+    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs']]):
+        pulumi.set(self, "header_action", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
+        The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
+        The value must be from 0 to 1000.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
+    def __init__(__self__, *,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+        if request_headers_to_adds is not None:
+            pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
+        if request_headers_to_removes is not None:
+            pulumi.set(__self__, "request_headers_to_removes", request_headers_to_removes)
+        if response_headers_to_adds is not None:
+            pulumi.set(__self__, "response_headers_to_adds", response_headers_to_adds)
+        if response_headers_to_removes is not None:
+            pulumi.set(__self__, "response_headers_to_removes", response_headers_to_removes)
+
+    @property
+    @pulumi.getter(name="requestHeadersToAdds")
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]:
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_headers_to_adds")
+
+    @request_headers_to_adds.setter
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs']]]]):
+        pulumi.set(self, "request_headers_to_adds", value)
+
+    @property
+    @pulumi.getter(name="requestHeadersToRemoves")
+    def request_headers_to_removes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        return pulumi.get(self, "request_headers_to_removes")
+
+    @request_headers_to_removes.setter
+    def request_headers_to_removes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "request_headers_to_removes", value)
+
+    @property
+    @pulumi.getter(name="responseHeadersToAdds")
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]:
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "response_headers_to_adds")
+
+    @response_headers_to_adds.setter
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs']]]]):
+        pulumi.set(self, "response_headers_to_adds", value)
+
+    @property
+    @pulumi.getter(name="responseHeadersToRemoves")
+    def response_headers_to_removes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+        return pulumi.get(self, "response_headers_to_removes")
+
+    @response_headers_to_removes.setter
+    def response_headers_to_removes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "response_headers_to_removes", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the header.
+        """
+        header_value: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
+    def __init__(__self__, *,
+                 header_name: Optional[pulumi.Input[builtins.str]] = None,
+                 header_value: Optional[pulumi.Input[builtins.str]] = None,
+                 replace: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.str] header_name: The name of the header.
+        :param pulumi.Input[builtins.str] header_value: The value of the header to add.
+        :param pulumi.Input[builtins.bool] replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+               The default value is false.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the header.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "header_name", value)
+
+    @property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @header_value.setter
+    def header_value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "header_value", value)
+
+    @property
+    @pulumi.getter
+    def replace(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+        return pulumi.get(self, "replace")
+
+    @replace.setter
+    def replace(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "replace", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the header.
+        """
+        header_value: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
+    def __init__(__self__, *,
+                 header_name: Optional[pulumi.Input[builtins.str]] = None,
+                 header_value: Optional[pulumi.Input[builtins.str]] = None,
+                 replace: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.str] header_name: The name of the header.
+        :param pulumi.Input[builtins.str] header_value: The value of the header to add.
+        :param pulumi.Input[builtins.bool] replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+               The default value is false.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the header.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "header_name", value)
+
+    @property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @header_value.setter
+    def header_value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "header_value", value)
+
+    @property
+    @pulumi.getter
+    def replace(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+        return pulumi.get(self, "replace")
+
+    @replace.setter
+    def replace(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "replace", value)
 
 
 if not MYPY:
@@ -55584,17 +57083,16 @@ if not MYPY:
         """
         path_template_rewrite: NotRequired[pulumi.Input[builtins.str]]
         """
-        Prior to forwarding the request to the selected origin, if the
-        request matched a pathTemplateMatch, the matching portion of the
-        request's path is replaced re-written using the pattern specified
-        by pathTemplateRewrite.
-        pathTemplateRewrite must be between 1 and 255 characters
-        (inclusive), must start with a '/', and must only use variables
-        captured by the route's pathTemplate matchers.
-        pathTemplateRewrite may only be used when all of a route's
-        MatchRules specify pathTemplate.
-        Only one of pathPrefixRewrite and pathTemplateRewrite may be
-        specified.
+        If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
+        A corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.
+        * At least one variable must be specified in the pathTemplateMatch field
+        * You can omit variables from the rewritten URL
+        * The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.
+        For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
+        /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
+        rewritten as /content/{format}/{country}/{suffix}.
+        At least one non-empty routeRules[].matchRules[].path_template_match is required.
+        Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
         """
 elif False:
     RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
@@ -55610,17 +57108,16 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
                The value must be from 1 to 255 characters.
         :param pulumi.Input[builtins.str] path_prefix_rewrite: Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
                The value must be from 1 to 1024 characters.
-        :param pulumi.Input[builtins.str] path_template_rewrite: Prior to forwarding the request to the selected origin, if the
-               request matched a pathTemplateMatch, the matching portion of the
-               request's path is replaced re-written using the pattern specified
-               by pathTemplateRewrite.
-               pathTemplateRewrite must be between 1 and 255 characters
-               (inclusive), must start with a '/', and must only use variables
-               captured by the route's pathTemplate matchers.
-               pathTemplateRewrite may only be used when all of a route's
-               MatchRules specify pathTemplate.
-               Only one of pathPrefixRewrite and pathTemplateRewrite may be
-               specified.
+        :param pulumi.Input[builtins.str] path_template_rewrite: If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
+               A corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.
+               * At least one variable must be specified in the pathTemplateMatch field
+               * You can omit variables from the rewritten URL
+               * The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.
+               For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
+               /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
+               rewritten as /content/{format}/{country}/{suffix}.
+               At least one non-empty routeRules[].matchRules[].path_template_match is required.
+               Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
         """
         if host_rewrite is not None:
             pulumi.set(__self__, "host_rewrite", host_rewrite)
@@ -55659,17 +57156,16 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
     @pulumi.getter(name="pathTemplateRewrite")
     def path_template_rewrite(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Prior to forwarding the request to the selected origin, if the
-        request matched a pathTemplateMatch, the matching portion of the
-        request's path is replaced re-written using the pattern specified
-        by pathTemplateRewrite.
-        pathTemplateRewrite must be between 1 and 255 characters
-        (inclusive), must start with a '/', and must only use variables
-        captured by the route's pathTemplate matchers.
-        pathTemplateRewrite may only be used when all of a route's
-        MatchRules specify pathTemplate.
-        Only one of pathPrefixRewrite and pathTemplateRewrite may be
-        specified.
+        If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
+        A corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.
+        * At least one variable must be specified in the pathTemplateMatch field
+        * You can omit variables from the rewritten URL
+        * The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.
+        For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
+        /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
+        rewritten as /content/{format}/{country}/{suffix}.
+        At least one non-empty routeRules[].matchRules[].path_template_match is required.
+        Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
         """
         return pulumi.get(self, "path_template_rewrite")
 
@@ -74740,13 +76236,30 @@ if not MYPY:
         """
         Path portion of the URL.
         """
-        service: pulumi.Input[builtins.str]
-        """
-        The backend service or backend bucket link that should be matched by this test.
-        """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
         Description of this test case.
+        """
+        expected_output_url: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters.
+        For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+        For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies httpsRedirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies stripQuery, the test passes only if expectedOutputUrl does not contain any query parameters.
+        expectedOutputUrl is optional when service is specified.
+        """
+        expected_redirect_response_code: NotRequired[pulumi.Input[builtins.int]]
+        """
+        For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
+        expectedRedirectResponseCode cannot be set when service is set.
+        """
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapTestHeaderArgsDict']]]]
+        """
+        HTTP headers for this request.
+        Structure is documented below.
+        """
+        service: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The backend service or backend bucket link that should be matched by this test.
         """
 elif False:
     URLMapTestArgsDict: TypeAlias = Mapping[str, Any]
@@ -74756,19 +76269,37 @@ class URLMapTestArgs:
     def __init__(__self__, *,
                  host: pulumi.Input[builtins.str],
                  path: pulumi.Input[builtins.str],
-                 service: pulumi.Input[builtins.str],
-                 description: Optional[pulumi.Input[builtins.str]] = None):
+                 description: Optional[pulumi.Input[builtins.str]] = None,
+                 expected_output_url: Optional[pulumi.Input[builtins.str]] = None,
+                 expected_redirect_response_code: Optional[pulumi.Input[builtins.int]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestHeaderArgs']]]] = None,
+                 service: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] host: Host portion of the URL.
         :param pulumi.Input[builtins.str] path: Path portion of the URL.
-        :param pulumi.Input[builtins.str] service: The backend service or backend bucket link that should be matched by this test.
         :param pulumi.Input[builtins.str] description: Description of this test case.
+        :param pulumi.Input[builtins.str] expected_output_url: The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters.
+               For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+               For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies httpsRedirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies stripQuery, the test passes only if expectedOutputUrl does not contain any query parameters.
+               expectedOutputUrl is optional when service is specified.
+        :param pulumi.Input[builtins.int] expected_redirect_response_code: For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
+               expectedRedirectResponseCode cannot be set when service is set.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapTestHeaderArgs']]] headers: HTTP headers for this request.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] service: The backend service or backend bucket link that should be matched by this test.
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "service", service)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expected_output_url is not None:
+            pulumi.set(__self__, "expected_output_url", expected_output_url)
+        if expected_redirect_response_code is not None:
+            pulumi.set(__self__, "expected_redirect_response_code", expected_redirect_response_code)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
@@ -74796,18 +76327,6 @@ class URLMapTestArgs:
 
     @property
     @pulumi.getter
-    def service(self) -> pulumi.Input[builtins.str]:
-        """
-        The backend service or backend bucket link that should be matched by this test.
-        """
-        return pulumi.get(self, "service")
-
-    @service.setter
-    def service(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "service", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Description of this test case.
@@ -74817,5 +76336,339 @@ class URLMapTestArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="expectedOutputUrl")
+    def expected_output_url(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters.
+        For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+        For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies httpsRedirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies stripQuery, the test passes only if expectedOutputUrl does not contain any query parameters.
+        expectedOutputUrl is optional when service is specified.
+        """
+        return pulumi.get(self, "expected_output_url")
+
+    @expected_output_url.setter
+    def expected_output_url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "expected_output_url", value)
+
+    @property
+    @pulumi.getter(name="expectedRedirectResponseCode")
+    def expected_redirect_response_code(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
+        expectedRedirectResponseCode cannot be set when service is set.
+        """
+        return pulumi.get(self, "expected_redirect_response_code")
+
+    @expected_redirect_response_code.setter
+    def expected_redirect_response_code(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "expected_redirect_response_code", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestHeaderArgs']]]]:
+        """
+        HTTP headers for this request.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestHeaderArgs']]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The backend service or backend bucket link that should be matched by this test.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class URLMapTestHeaderArgsDict(TypedDict):
+        name: pulumi.Input[builtins.str]
+        """
+        Header name.
+        """
+        value: pulumi.Input[builtins.str]
+        """
+        Header value.
+        """
+elif False:
+    URLMapTestHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class URLMapTestHeaderArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[builtins.str],
+                 value: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] name: Header name.
+        :param pulumi.Input[builtins.str] value: Header value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        Header name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[builtins.str]:
+        """
+        Header value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class VPNTunnelCipherSuiteArgsDict(TypedDict):
+        phase1: NotRequired[pulumi.Input['VPNTunnelCipherSuitePhase1ArgsDict']]
+        """
+        Cipher configuration for phase 1 of the IKE protocol.
+        Structure is documented below.
+        """
+        phase2: NotRequired[pulumi.Input['VPNTunnelCipherSuitePhase2ArgsDict']]
+        """
+        Cipher configuration for phase 2 of the IKE protocol.
+        Structure is documented below.
+
+
+        <a name="nested_cipher_suite_phase1"></a>The `phase1` block supports:
+        """
+elif False:
+    VPNTunnelCipherSuiteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VPNTunnelCipherSuiteArgs:
+    def __init__(__self__, *,
+                 phase1: Optional[pulumi.Input['VPNTunnelCipherSuitePhase1Args']] = None,
+                 phase2: Optional[pulumi.Input['VPNTunnelCipherSuitePhase2Args']] = None):
+        """
+        :param pulumi.Input['VPNTunnelCipherSuitePhase1Args'] phase1: Cipher configuration for phase 1 of the IKE protocol.
+               Structure is documented below.
+        :param pulumi.Input['VPNTunnelCipherSuitePhase2Args'] phase2: Cipher configuration for phase 2 of the IKE protocol.
+               Structure is documented below.
+               
+               
+               <a name="nested_cipher_suite_phase1"></a>The `phase1` block supports:
+        """
+        if phase1 is not None:
+            pulumi.set(__self__, "phase1", phase1)
+        if phase2 is not None:
+            pulumi.set(__self__, "phase2", phase2)
+
+    @property
+    @pulumi.getter
+    def phase1(self) -> Optional[pulumi.Input['VPNTunnelCipherSuitePhase1Args']]:
+        """
+        Cipher configuration for phase 1 of the IKE protocol.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "phase1")
+
+    @phase1.setter
+    def phase1(self, value: Optional[pulumi.Input['VPNTunnelCipherSuitePhase1Args']]):
+        pulumi.set(self, "phase1", value)
+
+    @property
+    @pulumi.getter
+    def phase2(self) -> Optional[pulumi.Input['VPNTunnelCipherSuitePhase2Args']]:
+        """
+        Cipher configuration for phase 2 of the IKE protocol.
+        Structure is documented below.
+
+
+        <a name="nested_cipher_suite_phase1"></a>The `phase1` block supports:
+        """
+        return pulumi.get(self, "phase2")
+
+    @phase2.setter
+    def phase2(self, value: Optional[pulumi.Input['VPNTunnelCipherSuitePhase2Args']]):
+        pulumi.set(self, "phase2", value)
+
+
+if not MYPY:
+    class VPNTunnelCipherSuitePhase1ArgsDict(TypedDict):
+        dhs: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Diffie-Hellman groups.
+        """
+        encryptions: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Encryption algorithms.
+        """
+        integrities: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Integrity algorithms.
+        """
+        prves: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Pseudo-random functions.
+        """
+elif False:
+    VPNTunnelCipherSuitePhase1ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VPNTunnelCipherSuitePhase1Args:
+    def __init__(__self__, *,
+                 dhs: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 encryptions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 integrities: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 prves: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dhs: Diffie-Hellman groups.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] encryptions: Encryption algorithms.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] integrities: Integrity algorithms.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] prves: Pseudo-random functions.
+        """
+        if dhs is not None:
+            pulumi.set(__self__, "dhs", dhs)
+        if encryptions is not None:
+            pulumi.set(__self__, "encryptions", encryptions)
+        if integrities is not None:
+            pulumi.set(__self__, "integrities", integrities)
+        if prves is not None:
+            pulumi.set(__self__, "prves", prves)
+
+    @property
+    @pulumi.getter
+    def dhs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Diffie-Hellman groups.
+        """
+        return pulumi.get(self, "dhs")
+
+    @dhs.setter
+    def dhs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "dhs", value)
+
+    @property
+    @pulumi.getter
+    def encryptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Encryption algorithms.
+        """
+        return pulumi.get(self, "encryptions")
+
+    @encryptions.setter
+    def encryptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "encryptions", value)
+
+    @property
+    @pulumi.getter
+    def integrities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Integrity algorithms.
+        """
+        return pulumi.get(self, "integrities")
+
+    @integrities.setter
+    def integrities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "integrities", value)
+
+    @property
+    @pulumi.getter
+    def prves(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Pseudo-random functions.
+        """
+        return pulumi.get(self, "prves")
+
+    @prves.setter
+    def prves(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "prves", value)
+
+
+if not MYPY:
+    class VPNTunnelCipherSuitePhase2ArgsDict(TypedDict):
+        encryptions: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Encryption algorithms.
+        """
+        integrities: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Integrity algorithms.
+        """
+        pfs: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Perfect forward secrecy groups.
+        """
+elif False:
+    VPNTunnelCipherSuitePhase2ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VPNTunnelCipherSuitePhase2Args:
+    def __init__(__self__, *,
+                 encryptions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 integrities: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 pfs: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] encryptions: Encryption algorithms.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] integrities: Integrity algorithms.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] pfs: Perfect forward secrecy groups.
+        """
+        if encryptions is not None:
+            pulumi.set(__self__, "encryptions", encryptions)
+        if integrities is not None:
+            pulumi.set(__self__, "integrities", integrities)
+        if pfs is not None:
+            pulumi.set(__self__, "pfs", pfs)
+
+    @property
+    @pulumi.getter
+    def encryptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Encryption algorithms.
+        """
+        return pulumi.get(self, "encryptions")
+
+    @encryptions.setter
+    def encryptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "encryptions", value)
+
+    @property
+    @pulumi.getter
+    def integrities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Integrity algorithms.
+        """
+        return pulumi.get(self, "integrities")
+
+    @integrities.setter
+    def integrities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "integrities", value)
+
+    @property
+    @pulumi.getter
+    def pfs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Perfect forward secrecy groups.
+        """
+        return pulumi.get(self, "pfs")
+
+    @pfs.setter
+    def pfs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "pfs", value)
 
 

@@ -12,6 +12,7 @@ import com.pulumi.gcp.redis.inputs.ClusterGcsSourceArgs;
 import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
 import com.pulumi.gcp.redis.inputs.ClusterMaintenanceScheduleArgs;
 import com.pulumi.gcp.redis.inputs.ClusterManagedBackupSourceArgs;
+import com.pulumi.gcp.redis.inputs.ClusterManagedServerCaArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConnectionArgs;
@@ -243,6 +244,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterManagedBackupSourceArgs>> managedBackupSource() {
         return Optional.ofNullable(this.managedBackupSource);
+    }
+
+    /**
+     * Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="managedServerCas")
+    private @Nullable Output<List<ClusterManagedServerCaArgs>> managedServerCas;
+
+    /**
+     * @return Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterManagedServerCaArgs>>> managedServerCas() {
+        return Optional.ofNullable(this.managedServerCas);
     }
 
     /**
@@ -568,6 +586,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.maintenancePolicy = $.maintenancePolicy;
         this.maintenanceSchedules = $.maintenanceSchedules;
         this.managedBackupSource = $.managedBackupSource;
+        this.managedServerCas = $.managedServerCas;
         this.name = $.name;
         this.nodeType = $.nodeType;
         this.persistenceConfig = $.persistenceConfig;
@@ -912,6 +931,40 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder managedBackupSource(ClusterManagedBackupSourceArgs managedBackupSource) {
             return managedBackupSource(Output.of(managedBackupSource));
+        }
+
+        /**
+         * @param managedServerCas Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedServerCas(@Nullable Output<List<ClusterManagedServerCaArgs>> managedServerCas) {
+            $.managedServerCas = managedServerCas;
+            return this;
+        }
+
+        /**
+         * @param managedServerCas Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedServerCas(List<ClusterManagedServerCaArgs> managedServerCas) {
+            return managedServerCas(Output.of(managedServerCas));
+        }
+
+        /**
+         * @param managedServerCas Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedServerCas(ClusterManagedServerCaArgs... managedServerCas) {
+            return managedServerCas(List.of(managedServerCas));
         }
 
         /**

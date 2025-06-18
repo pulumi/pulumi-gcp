@@ -166,7 +166,7 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly accessMode!: pulumi.Output<string>;
     /**
-     * (Optional)
+     * The architecture of the disk. Values include `X86_64`, `ARM64`.
      */
     public readonly architecture!: pulumi.Output<string | undefined>;
     /**
@@ -577,7 +577,7 @@ export interface DiskState {
      */
     accessMode?: pulumi.Input<string>;
     /**
-     * (Optional)
+     * The architecture of the disk. Values include `X86_64`, `ARM64`.
      */
     architecture?: pulumi.Input<string>;
     /**
@@ -878,7 +878,7 @@ export interface DiskArgs {
      */
     accessMode?: pulumi.Input<string>;
     /**
-     * (Optional)
+     * The architecture of the disk. Values include `X86_64`, `ARM64`.
      */
     architecture?: pulumi.Input<string>;
     /**

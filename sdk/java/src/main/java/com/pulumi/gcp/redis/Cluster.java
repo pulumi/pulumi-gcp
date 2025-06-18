@@ -17,6 +17,7 @@ import com.pulumi.gcp.redis.outputs.ClusterGcsSource;
 import com.pulumi.gcp.redis.outputs.ClusterMaintenancePolicy;
 import com.pulumi.gcp.redis.outputs.ClusterMaintenanceSchedule;
 import com.pulumi.gcp.redis.outputs.ClusterManagedBackupSource;
+import com.pulumi.gcp.redis.outputs.ClusterManagedServerCa;
 import com.pulumi.gcp.redis.outputs.ClusterPersistenceConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConnection;
@@ -911,6 +912,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterManagedBackupSource>> managedBackupSource() {
         return Codegen.optional(this.managedBackupSource);
+    }
+    /**
+     * Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="managedServerCas", refs={List.class,ClusterManagedServerCa.class}, tree="[0,1]")
+    private Output<List<ClusterManagedServerCa>> managedServerCas;
+
+    /**
+     * @return Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ClusterManagedServerCa>> managedServerCas() {
+        return this.managedServerCas;
     }
     /**
      * Unique name of the resource in this scope including project and location using the form:

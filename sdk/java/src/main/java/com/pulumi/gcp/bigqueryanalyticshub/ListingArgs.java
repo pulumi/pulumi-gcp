@@ -10,6 +10,7 @@ import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingDataProviderArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingPublisherArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingRestrictedExportConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -176,6 +177,23 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+     * querying user.
+     * 
+     */
+    @Import(name="logLinkedDatasetQueryUserEmail")
+    private @Nullable Output<Boolean> logLinkedDatasetQueryUserEmail;
+
+    /**
+     * @return If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+     * querying user.
+     * 
+     */
+    public Optional<Output<Boolean>> logLinkedDatasetQueryUserEmail() {
+        return Optional.ofNullable(this.logLinkedDatasetQueryUserEmail);
+    }
+
+    /**
      * Email or URL of the primary point of contact of the listing.
      * 
      */
@@ -255,6 +273,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         this.icon = $.icon;
         this.listingId = $.listingId;
         this.location = $.location;
+        this.logLinkedDatasetQueryUserEmail = $.logLinkedDatasetQueryUserEmail;
         this.primaryContact = $.primaryContact;
         this.project = $.project;
         this.publisher = $.publisher;
@@ -502,6 +521,29 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param logLinkedDatasetQueryUserEmail If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+         * querying user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logLinkedDatasetQueryUserEmail(@Nullable Output<Boolean> logLinkedDatasetQueryUserEmail) {
+            $.logLinkedDatasetQueryUserEmail = logLinkedDatasetQueryUserEmail;
+            return this;
+        }
+
+        /**
+         * @param logLinkedDatasetQueryUserEmail If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+         * querying user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logLinkedDatasetQueryUserEmail(Boolean logLinkedDatasetQueryUserEmail) {
+            return logLinkedDatasetQueryUserEmail(Output.of(logLinkedDatasetQueryUserEmail));
         }
 
         /**

@@ -2628,17 +2628,27 @@ if not MYPY:
         """
         Enabled represents whether logging is enabled or not for a connection.
         """
+        level: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Log configuration level.
+        Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+        """
 elif False:
     ConnectionLogConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionLogConfigArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[builtins.bool]):
+                 enabled: pulumi.Input[builtins.bool],
+                 level: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.bool] enabled: Enabled represents whether logging is enabled or not for a connection.
+        :param pulumi.Input[builtins.str] level: Log configuration level.
+               Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
 
     @property
     @pulumi.getter
@@ -2651,6 +2661,19 @@ class ConnectionLogConfigArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[builtins.bool]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Log configuration level.
+        Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "level", value)
 
 
 if not MYPY:

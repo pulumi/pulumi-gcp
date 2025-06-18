@@ -1192,6 +1192,268 @@ import (
 //	}
 //
 // ```
+// ### Url Map Test Headers
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			health_check, err := compute.NewHealthCheck(ctx, "health-check", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				TimeoutSec:       pulumi.Int(1),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			backend, err := compute.NewBackendService(ctx, "backend", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("backend"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: health_check.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("URL map with test headers"),
+//				DefaultService: backend.ID(),
+//				Tests: compute.URLMapTestArray{
+//					&compute.URLMapTestArgs{
+//						Description: pulumi.String("Test with custom headers"),
+//						Host:        pulumi.String("example.com"),
+//						Path:        pulumi.String("/"),
+//						Service:     backend.ID(),
+//						Headers: compute.URLMapTestHeaderArray{
+//							&compute.URLMapTestHeaderArgs{
+//								Name:  pulumi.String("User-Agent"),
+//								Value: pulumi.String("TestBot/1.0"),
+//							},
+//							&compute.URLMapTestHeaderArgs{
+//								Name:  pulumi.String("X-Custom-Header"),
+//								Value: pulumi.String("test-value"),
+//							},
+//						},
+//					},
+//					&compute.URLMapTestArgs{
+//						Description: pulumi.String("Test with authorization headers"),
+//						Host:        pulumi.String("api.example.com"),
+//						Path:        pulumi.String("/v1/test"),
+//						Service:     backend.ID(),
+//						Headers: compute.URLMapTestHeaderArray{
+//							&compute.URLMapTestHeaderArgs{
+//								Name:  pulumi.String("Authorization"),
+//								Value: pulumi.String("Bearer token123"),
+//							},
+//							&compute.URLMapTestHeaderArgs{
+//								Name:  pulumi.String("Content-Type"),
+//								Value: pulumi.String("application/json"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Test Expected Output Url
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			health_check, err := compute.NewHealthCheck(ctx, "health-check", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				TimeoutSec:       pulumi.Int(1),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			backend, err := compute.NewBackendService(ctx, "backend", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("backend"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: health_check.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("URL map with expected output URL tests"),
+//				DefaultService: backend.ID(),
+//				Tests: compute.URLMapTestArray{
+//					&compute.URLMapTestArgs{
+//						Description: pulumi.String("Test with expected output URL"),
+//						Host:        pulumi.String("example.com"),
+//						Path:        pulumi.String("/"),
+//						Service:     backend.ID(),
+//						Headers: compute.URLMapTestHeaderArray{
+//							&compute.URLMapTestHeaderArgs{
+//								Name:  pulumi.String("User-Agent"),
+//								Value: pulumi.String("TestBot/1.0"),
+//							},
+//						},
+//						ExpectedOutputUrl: pulumi.String("http://example.com/"),
+//					},
+//					&compute.URLMapTestArgs{
+//						Description: pulumi.String("Test API routing with expected output URL"),
+//						Host:        pulumi.String("api.example.com"),
+//						Path:        pulumi.String("/v1/users"),
+//						Service:     backend.ID(),
+//						Headers: compute.URLMapTestHeaderArray{
+//							&compute.URLMapTestHeaderArgs{
+//								Name:  pulumi.String("Authorization"),
+//								Value: pulumi.String("Bearer token123"),
+//							},
+//						},
+//						ExpectedOutputUrl: pulumi.String("http://api.example.com/v1/users"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Test Redirect Response Code
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			health_check, err := compute.NewHealthCheck(ctx, "health-check", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				TimeoutSec:       pulumi.Int(1),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			backend, err := compute.NewBackendService(ctx, "backend", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("backend"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: health_check.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("URL map with redirect response code tests"),
+//				DefaultService: backend.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("example.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: backend.ID(),
+//						PathRules: compute.URLMapPathMatcherPathRuleArray{
+//							&compute.URLMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/redirect/*"),
+//								},
+//								UrlRedirect: &compute.URLMapPathMatcherPathRuleUrlRedirectArgs{
+//									HostRedirect:         pulumi.String("newsite.com"),
+//									PathRedirect:         pulumi.String("/new-path/"),
+//									HttpsRedirect:        pulumi.Bool(true),
+//									RedirectResponseCode: pulumi.String("MOVED_PERMANENTLY_DEFAULT"),
+//									StripQuery:           pulumi.Bool(false),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Tests: compute.URLMapTestArray{
+//					&compute.URLMapTestArgs{
+//						Description: pulumi.String("Test redirect with expected response code"),
+//						Host:        pulumi.String("example.com"),
+//						Path:        pulumi.String("/redirect/old-page"),
+//						Headers: compute.URLMapTestHeaderArray{
+//							&compute.URLMapTestHeaderArgs{
+//								Name:  pulumi.String("Referer"),
+//								Value: pulumi.String("https://oldsite.com"),
+//							},
+//						},
+//						ExpectedOutputUrl:            pulumi.String("https://newsite.com/new-path/"),
+//						ExpectedRedirectResponseCode: pulumi.Int(301),
+//					},
+//					&compute.URLMapTestArgs{
+//						Description: pulumi.String("Test another redirect scenario"),
+//						Host:        pulumi.String("example.com"),
+//						Path:        pulumi.String("/redirect/another-page"),
+//						Headers: compute.URLMapTestHeaderArray{
+//							&compute.URLMapTestHeaderArgs{
+//								Name:  pulumi.String("User-Agent"),
+//								Value: pulumi.String("TestBot/1.0"),
+//							},
+//						},
+//						ExpectedOutputUrl:            pulumi.String("https://newsite.com/new-path/"),
+//						ExpectedRedirectResponseCode: pulumi.Int(301),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Url Map Path Template Match
 //
 // ```go

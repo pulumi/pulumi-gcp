@@ -29,6 +29,7 @@ from .entry_type_iam_member import *
 from .entry_type_iam_policy import *
 from .get_aspect_type_iam_policy import *
 from .get_asset_iam_policy import *
+from .get_data_quality_rules import *
 from .get_datascan_iam_policy import *
 from .get_entry_group_iam_policy import *
 from .get_entry_type_iam_policy import *

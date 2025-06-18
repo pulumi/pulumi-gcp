@@ -18,6 +18,13 @@ namespace Pulumi.Gcp.IntegrationConnectors.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// Log configuration level.
+        /// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
+        /// </summary>
+        [Input("level")]
+        public Input<string>? Level { get; set; }
+
         public ConnectionLogConfigGetArgs()
         {
         }

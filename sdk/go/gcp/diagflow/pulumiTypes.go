@@ -28058,6 +28058,2191 @@ func (o CxTestCaseTestConfigPtrOutput) TrackingParameters() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+type CxToolDataStoreSpec struct {
+	// List of data stores to search.
+	// Structure is documented below.
+	DataStoreConnections []CxToolDataStoreSpecDataStoreConnection `pulumi:"dataStoreConnections"`
+	// Fallback prompt configurations to use.
+	FallbackPrompt CxToolDataStoreSpecFallbackPrompt `pulumi:"fallbackPrompt"`
+}
+
+// CxToolDataStoreSpecInput is an input type that accepts CxToolDataStoreSpecArgs and CxToolDataStoreSpecOutput values.
+// You can construct a concrete instance of `CxToolDataStoreSpecInput` via:
+//
+//	CxToolDataStoreSpecArgs{...}
+type CxToolDataStoreSpecInput interface {
+	pulumi.Input
+
+	ToCxToolDataStoreSpecOutput() CxToolDataStoreSpecOutput
+	ToCxToolDataStoreSpecOutputWithContext(context.Context) CxToolDataStoreSpecOutput
+}
+
+type CxToolDataStoreSpecArgs struct {
+	// List of data stores to search.
+	// Structure is documented below.
+	DataStoreConnections CxToolDataStoreSpecDataStoreConnectionArrayInput `pulumi:"dataStoreConnections"`
+	// Fallback prompt configurations to use.
+	FallbackPrompt CxToolDataStoreSpecFallbackPromptInput `pulumi:"fallbackPrompt"`
+}
+
+func (CxToolDataStoreSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolDataStoreSpec)(nil)).Elem()
+}
+
+func (i CxToolDataStoreSpecArgs) ToCxToolDataStoreSpecOutput() CxToolDataStoreSpecOutput {
+	return i.ToCxToolDataStoreSpecOutputWithContext(context.Background())
+}
+
+func (i CxToolDataStoreSpecArgs) ToCxToolDataStoreSpecOutputWithContext(ctx context.Context) CxToolDataStoreSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolDataStoreSpecOutput)
+}
+
+func (i CxToolDataStoreSpecArgs) ToCxToolDataStoreSpecPtrOutput() CxToolDataStoreSpecPtrOutput {
+	return i.ToCxToolDataStoreSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolDataStoreSpecArgs) ToCxToolDataStoreSpecPtrOutputWithContext(ctx context.Context) CxToolDataStoreSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolDataStoreSpecOutput).ToCxToolDataStoreSpecPtrOutputWithContext(ctx)
+}
+
+// CxToolDataStoreSpecPtrInput is an input type that accepts CxToolDataStoreSpecArgs, CxToolDataStoreSpecPtr and CxToolDataStoreSpecPtrOutput values.
+// You can construct a concrete instance of `CxToolDataStoreSpecPtrInput` via:
+//
+//	        CxToolDataStoreSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolDataStoreSpecPtrInput interface {
+	pulumi.Input
+
+	ToCxToolDataStoreSpecPtrOutput() CxToolDataStoreSpecPtrOutput
+	ToCxToolDataStoreSpecPtrOutputWithContext(context.Context) CxToolDataStoreSpecPtrOutput
+}
+
+type cxToolDataStoreSpecPtrType CxToolDataStoreSpecArgs
+
+func CxToolDataStoreSpecPtr(v *CxToolDataStoreSpecArgs) CxToolDataStoreSpecPtrInput {
+	return (*cxToolDataStoreSpecPtrType)(v)
+}
+
+func (*cxToolDataStoreSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolDataStoreSpec)(nil)).Elem()
+}
+
+func (i *cxToolDataStoreSpecPtrType) ToCxToolDataStoreSpecPtrOutput() CxToolDataStoreSpecPtrOutput {
+	return i.ToCxToolDataStoreSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolDataStoreSpecPtrType) ToCxToolDataStoreSpecPtrOutputWithContext(ctx context.Context) CxToolDataStoreSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolDataStoreSpecPtrOutput)
+}
+
+type CxToolDataStoreSpecOutput struct{ *pulumi.OutputState }
+
+func (CxToolDataStoreSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolDataStoreSpec)(nil)).Elem()
+}
+
+func (o CxToolDataStoreSpecOutput) ToCxToolDataStoreSpecOutput() CxToolDataStoreSpecOutput {
+	return o
+}
+
+func (o CxToolDataStoreSpecOutput) ToCxToolDataStoreSpecOutputWithContext(ctx context.Context) CxToolDataStoreSpecOutput {
+	return o
+}
+
+func (o CxToolDataStoreSpecOutput) ToCxToolDataStoreSpecPtrOutput() CxToolDataStoreSpecPtrOutput {
+	return o.ToCxToolDataStoreSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolDataStoreSpecOutput) ToCxToolDataStoreSpecPtrOutputWithContext(ctx context.Context) CxToolDataStoreSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolDataStoreSpec) *CxToolDataStoreSpec {
+		return &v
+	}).(CxToolDataStoreSpecPtrOutput)
+}
+
+// List of data stores to search.
+// Structure is documented below.
+func (o CxToolDataStoreSpecOutput) DataStoreConnections() CxToolDataStoreSpecDataStoreConnectionArrayOutput {
+	return o.ApplyT(func(v CxToolDataStoreSpec) []CxToolDataStoreSpecDataStoreConnection { return v.DataStoreConnections }).(CxToolDataStoreSpecDataStoreConnectionArrayOutput)
+}
+
+// Fallback prompt configurations to use.
+func (o CxToolDataStoreSpecOutput) FallbackPrompt() CxToolDataStoreSpecFallbackPromptOutput {
+	return o.ApplyT(func(v CxToolDataStoreSpec) CxToolDataStoreSpecFallbackPrompt { return v.FallbackPrompt }).(CxToolDataStoreSpecFallbackPromptOutput)
+}
+
+type CxToolDataStoreSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolDataStoreSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolDataStoreSpec)(nil)).Elem()
+}
+
+func (o CxToolDataStoreSpecPtrOutput) ToCxToolDataStoreSpecPtrOutput() CxToolDataStoreSpecPtrOutput {
+	return o
+}
+
+func (o CxToolDataStoreSpecPtrOutput) ToCxToolDataStoreSpecPtrOutputWithContext(ctx context.Context) CxToolDataStoreSpecPtrOutput {
+	return o
+}
+
+func (o CxToolDataStoreSpecPtrOutput) Elem() CxToolDataStoreSpecOutput {
+	return o.ApplyT(func(v *CxToolDataStoreSpec) CxToolDataStoreSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolDataStoreSpec
+		return ret
+	}).(CxToolDataStoreSpecOutput)
+}
+
+// List of data stores to search.
+// Structure is documented below.
+func (o CxToolDataStoreSpecPtrOutput) DataStoreConnections() CxToolDataStoreSpecDataStoreConnectionArrayOutput {
+	return o.ApplyT(func(v *CxToolDataStoreSpec) []CxToolDataStoreSpecDataStoreConnection {
+		if v == nil {
+			return nil
+		}
+		return v.DataStoreConnections
+	}).(CxToolDataStoreSpecDataStoreConnectionArrayOutput)
+}
+
+// Fallback prompt configurations to use.
+func (o CxToolDataStoreSpecPtrOutput) FallbackPrompt() CxToolDataStoreSpecFallbackPromptPtrOutput {
+	return o.ApplyT(func(v *CxToolDataStoreSpec) *CxToolDataStoreSpecFallbackPrompt {
+		if v == nil {
+			return nil
+		}
+		return &v.FallbackPrompt
+	}).(CxToolDataStoreSpecFallbackPromptPtrOutput)
+}
+
+type CxToolDataStoreSpecDataStoreConnection struct {
+	// The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+	DataStore *string `pulumi:"dataStore"`
+	// The type of the connected data store.
+	// See [DataStoreType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#datastoretype) for valid values.
+	DataStoreType *string `pulumi:"dataStoreType"`
+	// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+	// See [DocumentProcessingMode](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#documentprocessingmode) for valid values.
+	DocumentProcessingMode *string `pulumi:"documentProcessingMode"`
+}
+
+// CxToolDataStoreSpecDataStoreConnectionInput is an input type that accepts CxToolDataStoreSpecDataStoreConnectionArgs and CxToolDataStoreSpecDataStoreConnectionOutput values.
+// You can construct a concrete instance of `CxToolDataStoreSpecDataStoreConnectionInput` via:
+//
+//	CxToolDataStoreSpecDataStoreConnectionArgs{...}
+type CxToolDataStoreSpecDataStoreConnectionInput interface {
+	pulumi.Input
+
+	ToCxToolDataStoreSpecDataStoreConnectionOutput() CxToolDataStoreSpecDataStoreConnectionOutput
+	ToCxToolDataStoreSpecDataStoreConnectionOutputWithContext(context.Context) CxToolDataStoreSpecDataStoreConnectionOutput
+}
+
+type CxToolDataStoreSpecDataStoreConnectionArgs struct {
+	// The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+	DataStore pulumi.StringPtrInput `pulumi:"dataStore"`
+	// The type of the connected data store.
+	// See [DataStoreType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#datastoretype) for valid values.
+	DataStoreType pulumi.StringPtrInput `pulumi:"dataStoreType"`
+	// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+	// See [DocumentProcessingMode](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#documentprocessingmode) for valid values.
+	DocumentProcessingMode pulumi.StringPtrInput `pulumi:"documentProcessingMode"`
+}
+
+func (CxToolDataStoreSpecDataStoreConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolDataStoreSpecDataStoreConnection)(nil)).Elem()
+}
+
+func (i CxToolDataStoreSpecDataStoreConnectionArgs) ToCxToolDataStoreSpecDataStoreConnectionOutput() CxToolDataStoreSpecDataStoreConnectionOutput {
+	return i.ToCxToolDataStoreSpecDataStoreConnectionOutputWithContext(context.Background())
+}
+
+func (i CxToolDataStoreSpecDataStoreConnectionArgs) ToCxToolDataStoreSpecDataStoreConnectionOutputWithContext(ctx context.Context) CxToolDataStoreSpecDataStoreConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolDataStoreSpecDataStoreConnectionOutput)
+}
+
+// CxToolDataStoreSpecDataStoreConnectionArrayInput is an input type that accepts CxToolDataStoreSpecDataStoreConnectionArray and CxToolDataStoreSpecDataStoreConnectionArrayOutput values.
+// You can construct a concrete instance of `CxToolDataStoreSpecDataStoreConnectionArrayInput` via:
+//
+//	CxToolDataStoreSpecDataStoreConnectionArray{ CxToolDataStoreSpecDataStoreConnectionArgs{...} }
+type CxToolDataStoreSpecDataStoreConnectionArrayInput interface {
+	pulumi.Input
+
+	ToCxToolDataStoreSpecDataStoreConnectionArrayOutput() CxToolDataStoreSpecDataStoreConnectionArrayOutput
+	ToCxToolDataStoreSpecDataStoreConnectionArrayOutputWithContext(context.Context) CxToolDataStoreSpecDataStoreConnectionArrayOutput
+}
+
+type CxToolDataStoreSpecDataStoreConnectionArray []CxToolDataStoreSpecDataStoreConnectionInput
+
+func (CxToolDataStoreSpecDataStoreConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxToolDataStoreSpecDataStoreConnection)(nil)).Elem()
+}
+
+func (i CxToolDataStoreSpecDataStoreConnectionArray) ToCxToolDataStoreSpecDataStoreConnectionArrayOutput() CxToolDataStoreSpecDataStoreConnectionArrayOutput {
+	return i.ToCxToolDataStoreSpecDataStoreConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i CxToolDataStoreSpecDataStoreConnectionArray) ToCxToolDataStoreSpecDataStoreConnectionArrayOutputWithContext(ctx context.Context) CxToolDataStoreSpecDataStoreConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolDataStoreSpecDataStoreConnectionArrayOutput)
+}
+
+type CxToolDataStoreSpecDataStoreConnectionOutput struct{ *pulumi.OutputState }
+
+func (CxToolDataStoreSpecDataStoreConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolDataStoreSpecDataStoreConnection)(nil)).Elem()
+}
+
+func (o CxToolDataStoreSpecDataStoreConnectionOutput) ToCxToolDataStoreSpecDataStoreConnectionOutput() CxToolDataStoreSpecDataStoreConnectionOutput {
+	return o
+}
+
+func (o CxToolDataStoreSpecDataStoreConnectionOutput) ToCxToolDataStoreSpecDataStoreConnectionOutputWithContext(ctx context.Context) CxToolDataStoreSpecDataStoreConnectionOutput {
+	return o
+}
+
+// The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+func (o CxToolDataStoreSpecDataStoreConnectionOutput) DataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolDataStoreSpecDataStoreConnection) *string { return v.DataStore }).(pulumi.StringPtrOutput)
+}
+
+// The type of the connected data store.
+// See [DataStoreType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#datastoretype) for valid values.
+func (o CxToolDataStoreSpecDataStoreConnectionOutput) DataStoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolDataStoreSpecDataStoreConnection) *string { return v.DataStoreType }).(pulumi.StringPtrOutput)
+}
+
+// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+// See [DocumentProcessingMode](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#documentprocessingmode) for valid values.
+func (o CxToolDataStoreSpecDataStoreConnectionOutput) DocumentProcessingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolDataStoreSpecDataStoreConnection) *string { return v.DocumentProcessingMode }).(pulumi.StringPtrOutput)
+}
+
+type CxToolDataStoreSpecDataStoreConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxToolDataStoreSpecDataStoreConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxToolDataStoreSpecDataStoreConnection)(nil)).Elem()
+}
+
+func (o CxToolDataStoreSpecDataStoreConnectionArrayOutput) ToCxToolDataStoreSpecDataStoreConnectionArrayOutput() CxToolDataStoreSpecDataStoreConnectionArrayOutput {
+	return o
+}
+
+func (o CxToolDataStoreSpecDataStoreConnectionArrayOutput) ToCxToolDataStoreSpecDataStoreConnectionArrayOutputWithContext(ctx context.Context) CxToolDataStoreSpecDataStoreConnectionArrayOutput {
+	return o
+}
+
+func (o CxToolDataStoreSpecDataStoreConnectionArrayOutput) Index(i pulumi.IntInput) CxToolDataStoreSpecDataStoreConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxToolDataStoreSpecDataStoreConnection {
+		return vs[0].([]CxToolDataStoreSpecDataStoreConnection)[vs[1].(int)]
+	}).(CxToolDataStoreSpecDataStoreConnectionOutput)
+}
+
+type CxToolDataStoreSpecFallbackPrompt struct {
+}
+
+// CxToolDataStoreSpecFallbackPromptInput is an input type that accepts CxToolDataStoreSpecFallbackPromptArgs and CxToolDataStoreSpecFallbackPromptOutput values.
+// You can construct a concrete instance of `CxToolDataStoreSpecFallbackPromptInput` via:
+//
+//	CxToolDataStoreSpecFallbackPromptArgs{...}
+type CxToolDataStoreSpecFallbackPromptInput interface {
+	pulumi.Input
+
+	ToCxToolDataStoreSpecFallbackPromptOutput() CxToolDataStoreSpecFallbackPromptOutput
+	ToCxToolDataStoreSpecFallbackPromptOutputWithContext(context.Context) CxToolDataStoreSpecFallbackPromptOutput
+}
+
+type CxToolDataStoreSpecFallbackPromptArgs struct {
+}
+
+func (CxToolDataStoreSpecFallbackPromptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolDataStoreSpecFallbackPrompt)(nil)).Elem()
+}
+
+func (i CxToolDataStoreSpecFallbackPromptArgs) ToCxToolDataStoreSpecFallbackPromptOutput() CxToolDataStoreSpecFallbackPromptOutput {
+	return i.ToCxToolDataStoreSpecFallbackPromptOutputWithContext(context.Background())
+}
+
+func (i CxToolDataStoreSpecFallbackPromptArgs) ToCxToolDataStoreSpecFallbackPromptOutputWithContext(ctx context.Context) CxToolDataStoreSpecFallbackPromptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolDataStoreSpecFallbackPromptOutput)
+}
+
+func (i CxToolDataStoreSpecFallbackPromptArgs) ToCxToolDataStoreSpecFallbackPromptPtrOutput() CxToolDataStoreSpecFallbackPromptPtrOutput {
+	return i.ToCxToolDataStoreSpecFallbackPromptPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolDataStoreSpecFallbackPromptArgs) ToCxToolDataStoreSpecFallbackPromptPtrOutputWithContext(ctx context.Context) CxToolDataStoreSpecFallbackPromptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolDataStoreSpecFallbackPromptOutput).ToCxToolDataStoreSpecFallbackPromptPtrOutputWithContext(ctx)
+}
+
+// CxToolDataStoreSpecFallbackPromptPtrInput is an input type that accepts CxToolDataStoreSpecFallbackPromptArgs, CxToolDataStoreSpecFallbackPromptPtr and CxToolDataStoreSpecFallbackPromptPtrOutput values.
+// You can construct a concrete instance of `CxToolDataStoreSpecFallbackPromptPtrInput` via:
+//
+//	        CxToolDataStoreSpecFallbackPromptArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolDataStoreSpecFallbackPromptPtrInput interface {
+	pulumi.Input
+
+	ToCxToolDataStoreSpecFallbackPromptPtrOutput() CxToolDataStoreSpecFallbackPromptPtrOutput
+	ToCxToolDataStoreSpecFallbackPromptPtrOutputWithContext(context.Context) CxToolDataStoreSpecFallbackPromptPtrOutput
+}
+
+type cxToolDataStoreSpecFallbackPromptPtrType CxToolDataStoreSpecFallbackPromptArgs
+
+func CxToolDataStoreSpecFallbackPromptPtr(v *CxToolDataStoreSpecFallbackPromptArgs) CxToolDataStoreSpecFallbackPromptPtrInput {
+	return (*cxToolDataStoreSpecFallbackPromptPtrType)(v)
+}
+
+func (*cxToolDataStoreSpecFallbackPromptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolDataStoreSpecFallbackPrompt)(nil)).Elem()
+}
+
+func (i *cxToolDataStoreSpecFallbackPromptPtrType) ToCxToolDataStoreSpecFallbackPromptPtrOutput() CxToolDataStoreSpecFallbackPromptPtrOutput {
+	return i.ToCxToolDataStoreSpecFallbackPromptPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolDataStoreSpecFallbackPromptPtrType) ToCxToolDataStoreSpecFallbackPromptPtrOutputWithContext(ctx context.Context) CxToolDataStoreSpecFallbackPromptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolDataStoreSpecFallbackPromptPtrOutput)
+}
+
+type CxToolDataStoreSpecFallbackPromptOutput struct{ *pulumi.OutputState }
+
+func (CxToolDataStoreSpecFallbackPromptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolDataStoreSpecFallbackPrompt)(nil)).Elem()
+}
+
+func (o CxToolDataStoreSpecFallbackPromptOutput) ToCxToolDataStoreSpecFallbackPromptOutput() CxToolDataStoreSpecFallbackPromptOutput {
+	return o
+}
+
+func (o CxToolDataStoreSpecFallbackPromptOutput) ToCxToolDataStoreSpecFallbackPromptOutputWithContext(ctx context.Context) CxToolDataStoreSpecFallbackPromptOutput {
+	return o
+}
+
+func (o CxToolDataStoreSpecFallbackPromptOutput) ToCxToolDataStoreSpecFallbackPromptPtrOutput() CxToolDataStoreSpecFallbackPromptPtrOutput {
+	return o.ToCxToolDataStoreSpecFallbackPromptPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolDataStoreSpecFallbackPromptOutput) ToCxToolDataStoreSpecFallbackPromptPtrOutputWithContext(ctx context.Context) CxToolDataStoreSpecFallbackPromptPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolDataStoreSpecFallbackPrompt) *CxToolDataStoreSpecFallbackPrompt {
+		return &v
+	}).(CxToolDataStoreSpecFallbackPromptPtrOutput)
+}
+
+type CxToolDataStoreSpecFallbackPromptPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolDataStoreSpecFallbackPromptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolDataStoreSpecFallbackPrompt)(nil)).Elem()
+}
+
+func (o CxToolDataStoreSpecFallbackPromptPtrOutput) ToCxToolDataStoreSpecFallbackPromptPtrOutput() CxToolDataStoreSpecFallbackPromptPtrOutput {
+	return o
+}
+
+func (o CxToolDataStoreSpecFallbackPromptPtrOutput) ToCxToolDataStoreSpecFallbackPromptPtrOutputWithContext(ctx context.Context) CxToolDataStoreSpecFallbackPromptPtrOutput {
+	return o
+}
+
+func (o CxToolDataStoreSpecFallbackPromptPtrOutput) Elem() CxToolDataStoreSpecFallbackPromptOutput {
+	return o.ApplyT(func(v *CxToolDataStoreSpecFallbackPrompt) CxToolDataStoreSpecFallbackPrompt {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolDataStoreSpecFallbackPrompt
+		return ret
+	}).(CxToolDataStoreSpecFallbackPromptOutput)
+}
+
+type CxToolFunctionSpec struct {
+	// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+	// This input is a JSON object that contains the function's parameters as properties of the object
+	InputSchema *string `pulumi:"inputSchema"`
+	// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+	// This output is a JSON object that contains the function's parameters as properties of the object
+	OutputSchema *string `pulumi:"outputSchema"`
+}
+
+// CxToolFunctionSpecInput is an input type that accepts CxToolFunctionSpecArgs and CxToolFunctionSpecOutput values.
+// You can construct a concrete instance of `CxToolFunctionSpecInput` via:
+//
+//	CxToolFunctionSpecArgs{...}
+type CxToolFunctionSpecInput interface {
+	pulumi.Input
+
+	ToCxToolFunctionSpecOutput() CxToolFunctionSpecOutput
+	ToCxToolFunctionSpecOutputWithContext(context.Context) CxToolFunctionSpecOutput
+}
+
+type CxToolFunctionSpecArgs struct {
+	// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+	// This input is a JSON object that contains the function's parameters as properties of the object
+	InputSchema pulumi.StringPtrInput `pulumi:"inputSchema"`
+	// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+	// This output is a JSON object that contains the function's parameters as properties of the object
+	OutputSchema pulumi.StringPtrInput `pulumi:"outputSchema"`
+}
+
+func (CxToolFunctionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolFunctionSpec)(nil)).Elem()
+}
+
+func (i CxToolFunctionSpecArgs) ToCxToolFunctionSpecOutput() CxToolFunctionSpecOutput {
+	return i.ToCxToolFunctionSpecOutputWithContext(context.Background())
+}
+
+func (i CxToolFunctionSpecArgs) ToCxToolFunctionSpecOutputWithContext(ctx context.Context) CxToolFunctionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolFunctionSpecOutput)
+}
+
+func (i CxToolFunctionSpecArgs) ToCxToolFunctionSpecPtrOutput() CxToolFunctionSpecPtrOutput {
+	return i.ToCxToolFunctionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolFunctionSpecArgs) ToCxToolFunctionSpecPtrOutputWithContext(ctx context.Context) CxToolFunctionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolFunctionSpecOutput).ToCxToolFunctionSpecPtrOutputWithContext(ctx)
+}
+
+// CxToolFunctionSpecPtrInput is an input type that accepts CxToolFunctionSpecArgs, CxToolFunctionSpecPtr and CxToolFunctionSpecPtrOutput values.
+// You can construct a concrete instance of `CxToolFunctionSpecPtrInput` via:
+//
+//	        CxToolFunctionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolFunctionSpecPtrInput interface {
+	pulumi.Input
+
+	ToCxToolFunctionSpecPtrOutput() CxToolFunctionSpecPtrOutput
+	ToCxToolFunctionSpecPtrOutputWithContext(context.Context) CxToolFunctionSpecPtrOutput
+}
+
+type cxToolFunctionSpecPtrType CxToolFunctionSpecArgs
+
+func CxToolFunctionSpecPtr(v *CxToolFunctionSpecArgs) CxToolFunctionSpecPtrInput {
+	return (*cxToolFunctionSpecPtrType)(v)
+}
+
+func (*cxToolFunctionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolFunctionSpec)(nil)).Elem()
+}
+
+func (i *cxToolFunctionSpecPtrType) ToCxToolFunctionSpecPtrOutput() CxToolFunctionSpecPtrOutput {
+	return i.ToCxToolFunctionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolFunctionSpecPtrType) ToCxToolFunctionSpecPtrOutputWithContext(ctx context.Context) CxToolFunctionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolFunctionSpecPtrOutput)
+}
+
+type CxToolFunctionSpecOutput struct{ *pulumi.OutputState }
+
+func (CxToolFunctionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolFunctionSpec)(nil)).Elem()
+}
+
+func (o CxToolFunctionSpecOutput) ToCxToolFunctionSpecOutput() CxToolFunctionSpecOutput {
+	return o
+}
+
+func (o CxToolFunctionSpecOutput) ToCxToolFunctionSpecOutputWithContext(ctx context.Context) CxToolFunctionSpecOutput {
+	return o
+}
+
+func (o CxToolFunctionSpecOutput) ToCxToolFunctionSpecPtrOutput() CxToolFunctionSpecPtrOutput {
+	return o.ToCxToolFunctionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolFunctionSpecOutput) ToCxToolFunctionSpecPtrOutputWithContext(ctx context.Context) CxToolFunctionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolFunctionSpec) *CxToolFunctionSpec {
+		return &v
+	}).(CxToolFunctionSpecPtrOutput)
+}
+
+// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+// This input is a JSON object that contains the function's parameters as properties of the object
+func (o CxToolFunctionSpecOutput) InputSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolFunctionSpec) *string { return v.InputSchema }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+// This output is a JSON object that contains the function's parameters as properties of the object
+func (o CxToolFunctionSpecOutput) OutputSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolFunctionSpec) *string { return v.OutputSchema }).(pulumi.StringPtrOutput)
+}
+
+type CxToolFunctionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolFunctionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolFunctionSpec)(nil)).Elem()
+}
+
+func (o CxToolFunctionSpecPtrOutput) ToCxToolFunctionSpecPtrOutput() CxToolFunctionSpecPtrOutput {
+	return o
+}
+
+func (o CxToolFunctionSpecPtrOutput) ToCxToolFunctionSpecPtrOutputWithContext(ctx context.Context) CxToolFunctionSpecPtrOutput {
+	return o
+}
+
+func (o CxToolFunctionSpecPtrOutput) Elem() CxToolFunctionSpecOutput {
+	return o.ApplyT(func(v *CxToolFunctionSpec) CxToolFunctionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolFunctionSpec
+		return ret
+	}).(CxToolFunctionSpecOutput)
+}
+
+// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+// This input is a JSON object that contains the function's parameters as properties of the object
+func (o CxToolFunctionSpecPtrOutput) InputSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolFunctionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+// This output is a JSON object that contains the function's parameters as properties of the object
+func (o CxToolFunctionSpecPtrOutput) OutputSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolFunctionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxToolOpenApiSpec struct {
+	// Optional. Authentication information required by the API.
+	// Structure is documented below.
+	Authentication *CxToolOpenApiSpecAuthentication `pulumi:"authentication"`
+	// Optional. Service Directory configuration.
+	// Structure is documented below.
+	ServiceDirectoryConfig *CxToolOpenApiSpecServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
+	// The OpenAPI schema specified as a text.
+	// This field is part of a union field `schema`: only one of `textSchema` may be set.
+	TextSchema string `pulumi:"textSchema"`
+	// Optional. TLS configuration for the HTTPS verification.
+	// Structure is documented below.
+	TlsConfig *CxToolOpenApiSpecTlsConfig `pulumi:"tlsConfig"`
+}
+
+// CxToolOpenApiSpecInput is an input type that accepts CxToolOpenApiSpecArgs and CxToolOpenApiSpecOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecInput` via:
+//
+//	CxToolOpenApiSpecArgs{...}
+type CxToolOpenApiSpecInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecOutput() CxToolOpenApiSpecOutput
+	ToCxToolOpenApiSpecOutputWithContext(context.Context) CxToolOpenApiSpecOutput
+}
+
+type CxToolOpenApiSpecArgs struct {
+	// Optional. Authentication information required by the API.
+	// Structure is documented below.
+	Authentication CxToolOpenApiSpecAuthenticationPtrInput `pulumi:"authentication"`
+	// Optional. Service Directory configuration.
+	// Structure is documented below.
+	ServiceDirectoryConfig CxToolOpenApiSpecServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
+	// The OpenAPI schema specified as a text.
+	// This field is part of a union field `schema`: only one of `textSchema` may be set.
+	TextSchema pulumi.StringInput `pulumi:"textSchema"`
+	// Optional. TLS configuration for the HTTPS verification.
+	// Structure is documented below.
+	TlsConfig CxToolOpenApiSpecTlsConfigPtrInput `pulumi:"tlsConfig"`
+}
+
+func (CxToolOpenApiSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpec)(nil)).Elem()
+}
+
+func (i CxToolOpenApiSpecArgs) ToCxToolOpenApiSpecOutput() CxToolOpenApiSpecOutput {
+	return i.ToCxToolOpenApiSpecOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecArgs) ToCxToolOpenApiSpecOutputWithContext(ctx context.Context) CxToolOpenApiSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecOutput)
+}
+
+func (i CxToolOpenApiSpecArgs) ToCxToolOpenApiSpecPtrOutput() CxToolOpenApiSpecPtrOutput {
+	return i.ToCxToolOpenApiSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecArgs) ToCxToolOpenApiSpecPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecOutput).ToCxToolOpenApiSpecPtrOutputWithContext(ctx)
+}
+
+// CxToolOpenApiSpecPtrInput is an input type that accepts CxToolOpenApiSpecArgs, CxToolOpenApiSpecPtr and CxToolOpenApiSpecPtrOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecPtrInput` via:
+//
+//	        CxToolOpenApiSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolOpenApiSpecPtrInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecPtrOutput() CxToolOpenApiSpecPtrOutput
+	ToCxToolOpenApiSpecPtrOutputWithContext(context.Context) CxToolOpenApiSpecPtrOutput
+}
+
+type cxToolOpenApiSpecPtrType CxToolOpenApiSpecArgs
+
+func CxToolOpenApiSpecPtr(v *CxToolOpenApiSpecArgs) CxToolOpenApiSpecPtrInput {
+	return (*cxToolOpenApiSpecPtrType)(v)
+}
+
+func (*cxToolOpenApiSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpec)(nil)).Elem()
+}
+
+func (i *cxToolOpenApiSpecPtrType) ToCxToolOpenApiSpecPtrOutput() CxToolOpenApiSpecPtrOutput {
+	return i.ToCxToolOpenApiSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolOpenApiSpecPtrType) ToCxToolOpenApiSpecPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecPtrOutput)
+}
+
+type CxToolOpenApiSpecOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpec)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecOutput) ToCxToolOpenApiSpecOutput() CxToolOpenApiSpecOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecOutput) ToCxToolOpenApiSpecOutputWithContext(ctx context.Context) CxToolOpenApiSpecOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecOutput) ToCxToolOpenApiSpecPtrOutput() CxToolOpenApiSpecPtrOutput {
+	return o.ToCxToolOpenApiSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolOpenApiSpecOutput) ToCxToolOpenApiSpecPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolOpenApiSpec) *CxToolOpenApiSpec {
+		return &v
+	}).(CxToolOpenApiSpecPtrOutput)
+}
+
+// Optional. Authentication information required by the API.
+// Structure is documented below.
+func (o CxToolOpenApiSpecOutput) Authentication() CxToolOpenApiSpecAuthenticationPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpec) *CxToolOpenApiSpecAuthentication { return v.Authentication }).(CxToolOpenApiSpecAuthenticationPtrOutput)
+}
+
+// Optional. Service Directory configuration.
+// Structure is documented below.
+func (o CxToolOpenApiSpecOutput) ServiceDirectoryConfig() CxToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpec) *CxToolOpenApiSpecServiceDirectoryConfig { return v.ServiceDirectoryConfig }).(CxToolOpenApiSpecServiceDirectoryConfigPtrOutput)
+}
+
+// The OpenAPI schema specified as a text.
+// This field is part of a union field `schema`: only one of `textSchema` may be set.
+func (o CxToolOpenApiSpecOutput) TextSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpec) string { return v.TextSchema }).(pulumi.StringOutput)
+}
+
+// Optional. TLS configuration for the HTTPS verification.
+// Structure is documented below.
+func (o CxToolOpenApiSpecOutput) TlsConfig() CxToolOpenApiSpecTlsConfigPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpec) *CxToolOpenApiSpecTlsConfig { return v.TlsConfig }).(CxToolOpenApiSpecTlsConfigPtrOutput)
+}
+
+type CxToolOpenApiSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpec)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecPtrOutput) ToCxToolOpenApiSpecPtrOutput() CxToolOpenApiSpecPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecPtrOutput) ToCxToolOpenApiSpecPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecPtrOutput) Elem() CxToolOpenApiSpecOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpec) CxToolOpenApiSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolOpenApiSpec
+		return ret
+	}).(CxToolOpenApiSpecOutput)
+}
+
+// Optional. Authentication information required by the API.
+// Structure is documented below.
+func (o CxToolOpenApiSpecPtrOutput) Authentication() CxToolOpenApiSpecAuthenticationPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpec) *CxToolOpenApiSpecAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(CxToolOpenApiSpecAuthenticationPtrOutput)
+}
+
+// Optional. Service Directory configuration.
+// Structure is documented below.
+func (o CxToolOpenApiSpecPtrOutput) ServiceDirectoryConfig() CxToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpec) *CxToolOpenApiSpecServiceDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDirectoryConfig
+	}).(CxToolOpenApiSpecServiceDirectoryConfigPtrOutput)
+}
+
+// The OpenAPI schema specified as a text.
+// This field is part of a union field `schema`: only one of `textSchema` may be set.
+func (o CxToolOpenApiSpecPtrOutput) TextSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TextSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. TLS configuration for the HTTPS verification.
+// Structure is documented below.
+func (o CxToolOpenApiSpecPtrOutput) TlsConfig() CxToolOpenApiSpecTlsConfigPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpec) *CxToolOpenApiSpecTlsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TlsConfig
+	}).(CxToolOpenApiSpecTlsConfigPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthentication struct {
+	// Config for API key auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	ApiKeyConfig *CxToolOpenApiSpecAuthenticationApiKeyConfig `pulumi:"apiKeyConfig"`
+	// Config for bearer token auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	BearerTokenConfig *CxToolOpenApiSpecAuthenticationBearerTokenConfig `pulumi:"bearerTokenConfig"`
+	// Config for OAuth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	OauthConfig *CxToolOpenApiSpecAuthenticationOauthConfig `pulumi:"oauthConfig"`
+	// Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	ServiceAgentAuthConfig *CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig `pulumi:"serviceAgentAuthConfig"`
+}
+
+// CxToolOpenApiSpecAuthenticationInput is an input type that accepts CxToolOpenApiSpecAuthenticationArgs and CxToolOpenApiSpecAuthenticationOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecAuthenticationInput` via:
+//
+//	CxToolOpenApiSpecAuthenticationArgs{...}
+type CxToolOpenApiSpecAuthenticationInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecAuthenticationOutput() CxToolOpenApiSpecAuthenticationOutput
+	ToCxToolOpenApiSpecAuthenticationOutputWithContext(context.Context) CxToolOpenApiSpecAuthenticationOutput
+}
+
+type CxToolOpenApiSpecAuthenticationArgs struct {
+	// Config for API key auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	ApiKeyConfig CxToolOpenApiSpecAuthenticationApiKeyConfigPtrInput `pulumi:"apiKeyConfig"`
+	// Config for bearer token auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	BearerTokenConfig CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput `pulumi:"bearerTokenConfig"`
+	// Config for OAuth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	OauthConfig CxToolOpenApiSpecAuthenticationOauthConfigPtrInput `pulumi:"oauthConfig"`
+	// Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	ServiceAgentAuthConfig CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput `pulumi:"serviceAgentAuthConfig"`
+}
+
+func (CxToolOpenApiSpecAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecAuthentication)(nil)).Elem()
+}
+
+func (i CxToolOpenApiSpecAuthenticationArgs) ToCxToolOpenApiSpecAuthenticationOutput() CxToolOpenApiSpecAuthenticationOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecAuthenticationArgs) ToCxToolOpenApiSpecAuthenticationOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationOutput)
+}
+
+func (i CxToolOpenApiSpecAuthenticationArgs) ToCxToolOpenApiSpecAuthenticationPtrOutput() CxToolOpenApiSpecAuthenticationPtrOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecAuthenticationArgs) ToCxToolOpenApiSpecAuthenticationPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationOutput).ToCxToolOpenApiSpecAuthenticationPtrOutputWithContext(ctx)
+}
+
+// CxToolOpenApiSpecAuthenticationPtrInput is an input type that accepts CxToolOpenApiSpecAuthenticationArgs, CxToolOpenApiSpecAuthenticationPtr and CxToolOpenApiSpecAuthenticationPtrOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecAuthenticationPtrInput` via:
+//
+//	        CxToolOpenApiSpecAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolOpenApiSpecAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecAuthenticationPtrOutput() CxToolOpenApiSpecAuthenticationPtrOutput
+	ToCxToolOpenApiSpecAuthenticationPtrOutputWithContext(context.Context) CxToolOpenApiSpecAuthenticationPtrOutput
+}
+
+type cxToolOpenApiSpecAuthenticationPtrType CxToolOpenApiSpecAuthenticationArgs
+
+func CxToolOpenApiSpecAuthenticationPtr(v *CxToolOpenApiSpecAuthenticationArgs) CxToolOpenApiSpecAuthenticationPtrInput {
+	return (*cxToolOpenApiSpecAuthenticationPtrType)(v)
+}
+
+func (*cxToolOpenApiSpecAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecAuthentication)(nil)).Elem()
+}
+
+func (i *cxToolOpenApiSpecAuthenticationPtrType) ToCxToolOpenApiSpecAuthenticationPtrOutput() CxToolOpenApiSpecAuthenticationPtrOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolOpenApiSpecAuthenticationPtrType) ToCxToolOpenApiSpecAuthenticationPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecAuthentication)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecAuthenticationOutput) ToCxToolOpenApiSpecAuthenticationOutput() CxToolOpenApiSpecAuthenticationOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationOutput) ToCxToolOpenApiSpecAuthenticationOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationOutput) ToCxToolOpenApiSpecAuthenticationPtrOutput() CxToolOpenApiSpecAuthenticationPtrOutput {
+	return o.ToCxToolOpenApiSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolOpenApiSpecAuthenticationOutput) ToCxToolOpenApiSpecAuthenticationPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolOpenApiSpecAuthentication) *CxToolOpenApiSpecAuthentication {
+		return &v
+	}).(CxToolOpenApiSpecAuthenticationPtrOutput)
+}
+
+// Config for API key auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o CxToolOpenApiSpecAuthenticationOutput) ApiKeyConfig() CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthentication) *CxToolOpenApiSpecAuthenticationApiKeyConfig {
+		return v.ApiKeyConfig
+	}).(CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput)
+}
+
+// Config for bearer token auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o CxToolOpenApiSpecAuthenticationOutput) BearerTokenConfig() CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthentication) *CxToolOpenApiSpecAuthenticationBearerTokenConfig {
+		return v.BearerTokenConfig
+	}).(CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput)
+}
+
+// Config for OAuth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o CxToolOpenApiSpecAuthenticationOutput) OauthConfig() CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthentication) *CxToolOpenApiSpecAuthenticationOauthConfig {
+		return v.OauthConfig
+	}).(CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput)
+}
+
+// Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o CxToolOpenApiSpecAuthenticationOutput) ServiceAgentAuthConfig() CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthentication) *CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
+		return v.ServiceAgentAuthConfig
+	}).(CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecAuthentication)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecAuthenticationPtrOutput) ToCxToolOpenApiSpecAuthenticationPtrOutput() CxToolOpenApiSpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationPtrOutput) ToCxToolOpenApiSpecAuthenticationPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationPtrOutput) Elem() CxToolOpenApiSpecAuthenticationOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthentication) CxToolOpenApiSpecAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolOpenApiSpecAuthentication
+		return ret
+	}).(CxToolOpenApiSpecAuthenticationOutput)
+}
+
+// Config for API key auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o CxToolOpenApiSpecAuthenticationPtrOutput) ApiKeyConfig() CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthentication) *CxToolOpenApiSpecAuthenticationApiKeyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyConfig
+	}).(CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput)
+}
+
+// Config for bearer token auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o CxToolOpenApiSpecAuthenticationPtrOutput) BearerTokenConfig() CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthentication) *CxToolOpenApiSpecAuthenticationBearerTokenConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BearerTokenConfig
+	}).(CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput)
+}
+
+// Config for OAuth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o CxToolOpenApiSpecAuthenticationPtrOutput) OauthConfig() CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthentication) *CxToolOpenApiSpecAuthenticationOauthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OauthConfig
+	}).(CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput)
+}
+
+// Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o CxToolOpenApiSpecAuthenticationPtrOutput) ServiceAgentAuthConfig() CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthentication) *CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAgentAuthConfig
+	}).(CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationApiKeyConfig struct {
+	// Optional. The API key. If the `secretVersionForApiKey`` field is set, this field will be ignored.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ApiKey *string `pulumi:"apiKey"`
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName string `pulumi:"keyName"`
+	// Key location in the request.
+	// See [RequestLocation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#requestlocation) for valid values.
+	RequestLocation string `pulumi:"requestLocation"`
+	// Optional. The name of the SecretManager secret version resource storing the API key.
+	// If this field is set, the apiKey field will be ignored.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}
+	SecretVersionForApiKey *string `pulumi:"secretVersionForApiKey"`
+}
+
+// CxToolOpenApiSpecAuthenticationApiKeyConfigInput is an input type that accepts CxToolOpenApiSpecAuthenticationApiKeyConfigArgs and CxToolOpenApiSpecAuthenticationApiKeyConfigOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecAuthenticationApiKeyConfigInput` via:
+//
+//	CxToolOpenApiSpecAuthenticationApiKeyConfigArgs{...}
+type CxToolOpenApiSpecAuthenticationApiKeyConfigInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecAuthenticationApiKeyConfigOutput() CxToolOpenApiSpecAuthenticationApiKeyConfigOutput
+	ToCxToolOpenApiSpecAuthenticationApiKeyConfigOutputWithContext(context.Context) CxToolOpenApiSpecAuthenticationApiKeyConfigOutput
+}
+
+type CxToolOpenApiSpecAuthenticationApiKeyConfigArgs struct {
+	// Optional. The API key. If the `secretVersionForApiKey`` field is set, this field will be ignored.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// Key location in the request.
+	// See [RequestLocation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#requestlocation) for valid values.
+	RequestLocation pulumi.StringInput `pulumi:"requestLocation"`
+	// Optional. The name of the SecretManager secret version resource storing the API key.
+	// If this field is set, the apiKey field will be ignored.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}
+	SecretVersionForApiKey pulumi.StringPtrInput `pulumi:"secretVersionForApiKey"`
+}
+
+func (CxToolOpenApiSpecAuthenticationApiKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i CxToolOpenApiSpecAuthenticationApiKeyConfigArgs) ToCxToolOpenApiSpecAuthenticationApiKeyConfigOutput() CxToolOpenApiSpecAuthenticationApiKeyConfigOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationApiKeyConfigOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecAuthenticationApiKeyConfigArgs) ToCxToolOpenApiSpecAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationApiKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationApiKeyConfigOutput)
+}
+
+func (i CxToolOpenApiSpecAuthenticationApiKeyConfigArgs) ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput() CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecAuthenticationApiKeyConfigArgs) ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationApiKeyConfigOutput).ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(ctx)
+}
+
+// CxToolOpenApiSpecAuthenticationApiKeyConfigPtrInput is an input type that accepts CxToolOpenApiSpecAuthenticationApiKeyConfigArgs, CxToolOpenApiSpecAuthenticationApiKeyConfigPtr and CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecAuthenticationApiKeyConfigPtrInput` via:
+//
+//	        CxToolOpenApiSpecAuthenticationApiKeyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolOpenApiSpecAuthenticationApiKeyConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput() CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput
+	ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(context.Context) CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput
+}
+
+type cxToolOpenApiSpecAuthenticationApiKeyConfigPtrType CxToolOpenApiSpecAuthenticationApiKeyConfigArgs
+
+func CxToolOpenApiSpecAuthenticationApiKeyConfigPtr(v *CxToolOpenApiSpecAuthenticationApiKeyConfigArgs) CxToolOpenApiSpecAuthenticationApiKeyConfigPtrInput {
+	return (*cxToolOpenApiSpecAuthenticationApiKeyConfigPtrType)(v)
+}
+
+func (*cxToolOpenApiSpecAuthenticationApiKeyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i *cxToolOpenApiSpecAuthenticationApiKeyConfigPtrType) ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput() CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolOpenApiSpecAuthenticationApiKeyConfigPtrType) ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationApiKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecAuthenticationApiKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigOutput) ToCxToolOpenApiSpecAuthenticationApiKeyConfigOutput() CxToolOpenApiSpecAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigOutput) ToCxToolOpenApiSpecAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigOutput) ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput() CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o.ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigOutput) ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolOpenApiSpecAuthenticationApiKeyConfig) *CxToolOpenApiSpecAuthenticationApiKeyConfig {
+		return &v
+	}).(CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput)
+}
+
+// Optional. The API key. If the `secretVersionForApiKey“ field is set, this field will be ignored.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationApiKeyConfig) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// The parameter name or the header name of the API key.
+// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationApiKeyConfig) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// Key location in the request.
+// See [RequestLocation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#requestlocation) for valid values.
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigOutput) RequestLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationApiKeyConfig) string { return v.RequestLocation }).(pulumi.StringOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the API key.
+// If this field is set, the apiKey field will be ignored.
+// Format: projects/{project}/secrets/{secret}/versions/{version}
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigOutput) SecretVersionForApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationApiKeyConfig) *string { return v.SecretVersionForApiKey }).(pulumi.StringPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput() CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) ToCxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) Elem() CxToolOpenApiSpecAuthenticationApiKeyConfigOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationApiKeyConfig) CxToolOpenApiSpecAuthenticationApiKeyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolOpenApiSpecAuthenticationApiKeyConfig
+		return ret
+	}).(CxToolOpenApiSpecAuthenticationApiKeyConfigOutput)
+}
+
+// Optional. The API key. If the `secretVersionForApiKey“ field is set, this field will be ignored.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The parameter name or the header name of the API key.
+// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key location in the request.
+// See [RequestLocation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#requestlocation) for valid values.
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) RequestLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RequestLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the API key.
+// If this field is set, the apiKey field will be ignored.
+// Format: projects/{project}/secrets/{secret}/versions/{version}
+func (o CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) SecretVersionForApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionForApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationBearerTokenConfig struct {
+	// Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}
+	SecretVersionForToken *string `pulumi:"secretVersionForToken"`
+	// Optional. The text token appended to the text Bearer to the request Authorization header.
+	// [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the token dynamically, e.g. `$session.params.parameter-id`.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Token *string `pulumi:"token"`
+}
+
+// CxToolOpenApiSpecAuthenticationBearerTokenConfigInput is an input type that accepts CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs and CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecAuthenticationBearerTokenConfigInput` via:
+//
+//	CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs{...}
+type CxToolOpenApiSpecAuthenticationBearerTokenConfigInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecAuthenticationBearerTokenConfigOutput() CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput
+	ToCxToolOpenApiSpecAuthenticationBearerTokenConfigOutputWithContext(context.Context) CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput
+}
+
+type CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs struct {
+	// Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}
+	SecretVersionForToken pulumi.StringPtrInput `pulumi:"secretVersionForToken"`
+	// Optional. The text token appended to the text Bearer to the request Authorization header.
+	// [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the token dynamically, e.g. `$session.params.parameter-id`.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+}
+
+func (CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigOutput() CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationBearerTokenConfigOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput)
+}
+
+func (i CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput() CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput).ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(ctx)
+}
+
+// CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput is an input type that accepts CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs, CxToolOpenApiSpecAuthenticationBearerTokenConfigPtr and CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput` via:
+//
+//	        CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput() CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput
+	ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(context.Context) CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput
+}
+
+type cxToolOpenApiSpecAuthenticationBearerTokenConfigPtrType CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs
+
+func CxToolOpenApiSpecAuthenticationBearerTokenConfigPtr(v *CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs) CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput {
+	return (*cxToolOpenApiSpecAuthenticationBearerTokenConfigPtrType)(v)
+}
+
+func (*cxToolOpenApiSpecAuthenticationBearerTokenConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i *cxToolOpenApiSpecAuthenticationBearerTokenConfigPtrType) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput() CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolOpenApiSpecAuthenticationBearerTokenConfigPtrType) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigOutput() CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput() CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o.ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolOpenApiSpecAuthenticationBearerTokenConfig) *CxToolOpenApiSpecAuthenticationBearerTokenConfig {
+		return &v
+	}).(CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
+// Format: projects/{project}/secrets/{secret}/versions/{version}
+func (o CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput) SecretVersionForToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationBearerTokenConfig) *string { return v.SecretVersionForToken }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The text token appended to the text Bearer to the request Authorization header.
+// [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the token dynamically, e.g. `$session.params.parameter-id`.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationBearerTokenConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput() CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) ToCxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) Elem() CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationBearerTokenConfig) CxToolOpenApiSpecAuthenticationBearerTokenConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolOpenApiSpecAuthenticationBearerTokenConfig
+		return ret
+	}).(CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
+// Format: projects/{project}/secrets/{secret}/versions/{version}
+func (o CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) SecretVersionForToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationBearerTokenConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionForToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The text token appended to the text Bearer to the request Authorization header.
+// [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the token dynamically, e.g. `$session.params.parameter-id`.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationBearerTokenConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationOauthConfig struct {
+	// The client ID from the OAuth provider.
+	ClientId string `pulumi:"clientId"`
+	// Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// OAuth grant types.
+	// See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
+	OauthGrantType string `pulumi:"oauthGrantType"`
+	// Optional. The OAuth scopes to grant.
+	Scopes []string `pulumi:"scopes"`
+	// Optional. The name of the SecretManager secret version resource storing the client secret.
+	// If this field is set, the clientSecret field will be ignored.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}
+	SecretVersionForClientSecret *string `pulumi:"secretVersionForClientSecret"`
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint string `pulumi:"tokenEndpoint"`
+}
+
+// CxToolOpenApiSpecAuthenticationOauthConfigInput is an input type that accepts CxToolOpenApiSpecAuthenticationOauthConfigArgs and CxToolOpenApiSpecAuthenticationOauthConfigOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecAuthenticationOauthConfigInput` via:
+//
+//	CxToolOpenApiSpecAuthenticationOauthConfigArgs{...}
+type CxToolOpenApiSpecAuthenticationOauthConfigInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecAuthenticationOauthConfigOutput() CxToolOpenApiSpecAuthenticationOauthConfigOutput
+	ToCxToolOpenApiSpecAuthenticationOauthConfigOutputWithContext(context.Context) CxToolOpenApiSpecAuthenticationOauthConfigOutput
+}
+
+type CxToolOpenApiSpecAuthenticationOauthConfigArgs struct {
+	// The client ID from the OAuth provider.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// OAuth grant types.
+	// See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
+	OauthGrantType pulumi.StringInput `pulumi:"oauthGrantType"`
+	// Optional. The OAuth scopes to grant.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Optional. The name of the SecretManager secret version resource storing the client secret.
+	// If this field is set, the clientSecret field will be ignored.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}
+	SecretVersionForClientSecret pulumi.StringPtrInput `pulumi:"secretVersionForClientSecret"`
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint pulumi.StringInput `pulumi:"tokenEndpoint"`
+}
+
+func (CxToolOpenApiSpecAuthenticationOauthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i CxToolOpenApiSpecAuthenticationOauthConfigArgs) ToCxToolOpenApiSpecAuthenticationOauthConfigOutput() CxToolOpenApiSpecAuthenticationOauthConfigOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationOauthConfigOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecAuthenticationOauthConfigArgs) ToCxToolOpenApiSpecAuthenticationOauthConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationOauthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationOauthConfigOutput)
+}
+
+func (i CxToolOpenApiSpecAuthenticationOauthConfigArgs) ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutput() CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecAuthenticationOauthConfigArgs) ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationOauthConfigOutput).ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(ctx)
+}
+
+// CxToolOpenApiSpecAuthenticationOauthConfigPtrInput is an input type that accepts CxToolOpenApiSpecAuthenticationOauthConfigArgs, CxToolOpenApiSpecAuthenticationOauthConfigPtr and CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecAuthenticationOauthConfigPtrInput` via:
+//
+//	        CxToolOpenApiSpecAuthenticationOauthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolOpenApiSpecAuthenticationOauthConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutput() CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput
+	ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(context.Context) CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput
+}
+
+type cxToolOpenApiSpecAuthenticationOauthConfigPtrType CxToolOpenApiSpecAuthenticationOauthConfigArgs
+
+func CxToolOpenApiSpecAuthenticationOauthConfigPtr(v *CxToolOpenApiSpecAuthenticationOauthConfigArgs) CxToolOpenApiSpecAuthenticationOauthConfigPtrInput {
+	return (*cxToolOpenApiSpecAuthenticationOauthConfigPtrType)(v)
+}
+
+func (*cxToolOpenApiSpecAuthenticationOauthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i *cxToolOpenApiSpecAuthenticationOauthConfigPtrType) ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutput() CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolOpenApiSpecAuthenticationOauthConfigPtrType) ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationOauthConfigOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecAuthenticationOauthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecAuthenticationOauthConfigOutput) ToCxToolOpenApiSpecAuthenticationOauthConfigOutput() CxToolOpenApiSpecAuthenticationOauthConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationOauthConfigOutput) ToCxToolOpenApiSpecAuthenticationOauthConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationOauthConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationOauthConfigOutput) ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutput() CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o.ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolOpenApiSpecAuthenticationOauthConfigOutput) ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolOpenApiSpecAuthenticationOauthConfig) *CxToolOpenApiSpecAuthenticationOauthConfig {
+		return &v
+	}).(CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput)
+}
+
+// The client ID from the OAuth provider.
+func (o CxToolOpenApiSpecAuthenticationOauthConfigOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationOauthConfig) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o CxToolOpenApiSpecAuthenticationOauthConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationOauthConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// OAuth grant types.
+// See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
+func (o CxToolOpenApiSpecAuthenticationOauthConfigOutput) OauthGrantType() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationOauthConfig) string { return v.OauthGrantType }).(pulumi.StringOutput)
+}
+
+// Optional. The OAuth scopes to grant.
+func (o CxToolOpenApiSpecAuthenticationOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the client secret.
+// If this field is set, the clientSecret field will be ignored.
+// Format: projects/{project}/secrets/{secret}/versions/{version}
+func (o CxToolOpenApiSpecAuthenticationOauthConfigOutput) SecretVersionForClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationOauthConfig) *string { return v.SecretVersionForClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// The token endpoint in the OAuth provider to exchange for an access token.
+func (o CxToolOpenApiSpecAuthenticationOauthConfigOutput) TokenEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationOauthConfig) string { return v.TokenEndpoint }).(pulumi.StringOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput) ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutput() CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput) ToCxToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput) Elem() CxToolOpenApiSpecAuthenticationOauthConfigOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationOauthConfig) CxToolOpenApiSpecAuthenticationOauthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolOpenApiSpecAuthenticationOauthConfig
+		return ret
+	}).(CxToolOpenApiSpecAuthenticationOauthConfigOutput)
+}
+
+// The client ID from the OAuth provider.
+func (o CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// OAuth grant types.
+// See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
+func (o CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput) OauthGrantType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OauthGrantType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The OAuth scopes to grant.
+func (o CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationOauthConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the client secret.
+// If this field is set, the clientSecret field will be ignored.
+// Format: projects/{project}/secrets/{secret}/versions/{version}
+func (o CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput) SecretVersionForClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionForClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The token endpoint in the OAuth provider to exchange for an access token.
+func (o CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig struct {
+	// Optional. Indicate the auth token type generated from the Diglogflow service agent.
+	// The generated token is sent in the Authorization header.
+	// See [ServiceAgentAuth](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#serviceagentauth) for valid values.
+	ServiceAgentAuth *string `pulumi:"serviceAgentAuth"`
+}
+
+// CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigInput is an input type that accepts CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs and CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigInput` via:
+//
+//	CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs{...}
+type CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput() CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput
+	ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutputWithContext(context.Context) CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput
+}
+
+type CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs struct {
+	// Optional. Indicate the auth token type generated from the Diglogflow service agent.
+	// The generated token is sent in the Authorization header.
+	// See [ServiceAgentAuth](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#serviceagentauth) for valid values.
+	ServiceAgentAuth pulumi.StringPtrInput `pulumi:"serviceAgentAuth"`
+}
+
+func (CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig)(nil)).Elem()
+}
+
+func (i CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput() CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput)
+}
+
+func (i CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput() CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput).ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(ctx)
+}
+
+// CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput is an input type that accepts CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs, CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtr and CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput` via:
+//
+//	        CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput() CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput
+	ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(context.Context) CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput
+}
+
+type cxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrType CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs
+
+func CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtr(v *CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput {
+	return (*cxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrType)(v)
+}
+
+func (*cxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig)(nil)).Elem()
+}
+
+func (i *cxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrType) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput() CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrType) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput() CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput() CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o.ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig) *CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
+		return &v
+	}).(CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput)
+}
+
+// Optional. Indicate the auth token type generated from the Diglogflow service agent.
+// The generated token is sent in the Authorization header.
+// See [ServiceAgentAuth](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#serviceagentauth) for valid values.
+func (o CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ServiceAgentAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig) *string { return v.ServiceAgentAuth }).(pulumi.StringPtrOutput)
+}
+
+type CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput() CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput) ToCxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput) Elem() CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig) CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig
+		return ret
+	}).(CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput)
+}
+
+// Optional. Indicate the auth token type generated from the Diglogflow service agent.
+// The generated token is sent in the Authorization header.
+// See [ServiceAgentAuth](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#serviceagentauth) for valid values.
+func (o CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput) ServiceAgentAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAgentAuth
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxToolOpenApiSpecServiceDirectoryConfig struct {
+	// The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+	// Format: projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>. LocationID of the service directory must be the same as the location of the agent.
+	Service string `pulumi:"service"`
+}
+
+// CxToolOpenApiSpecServiceDirectoryConfigInput is an input type that accepts CxToolOpenApiSpecServiceDirectoryConfigArgs and CxToolOpenApiSpecServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecServiceDirectoryConfigInput` via:
+//
+//	CxToolOpenApiSpecServiceDirectoryConfigArgs{...}
+type CxToolOpenApiSpecServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecServiceDirectoryConfigOutput() CxToolOpenApiSpecServiceDirectoryConfigOutput
+	ToCxToolOpenApiSpecServiceDirectoryConfigOutputWithContext(context.Context) CxToolOpenApiSpecServiceDirectoryConfigOutput
+}
+
+type CxToolOpenApiSpecServiceDirectoryConfigArgs struct {
+	// The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+	// Format: projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>. LocationID of the service directory must be the same as the location of the agent.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (CxToolOpenApiSpecServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i CxToolOpenApiSpecServiceDirectoryConfigArgs) ToCxToolOpenApiSpecServiceDirectoryConfigOutput() CxToolOpenApiSpecServiceDirectoryConfigOutput {
+	return i.ToCxToolOpenApiSpecServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecServiceDirectoryConfigArgs) ToCxToolOpenApiSpecServiceDirectoryConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecServiceDirectoryConfigOutput)
+}
+
+func (i CxToolOpenApiSpecServiceDirectoryConfigArgs) ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutput() CxToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecServiceDirectoryConfigArgs) ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecServiceDirectoryConfigOutput).ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// CxToolOpenApiSpecServiceDirectoryConfigPtrInput is an input type that accepts CxToolOpenApiSpecServiceDirectoryConfigArgs, CxToolOpenApiSpecServiceDirectoryConfigPtr and CxToolOpenApiSpecServiceDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecServiceDirectoryConfigPtrInput` via:
+//
+//	        CxToolOpenApiSpecServiceDirectoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolOpenApiSpecServiceDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutput() CxToolOpenApiSpecServiceDirectoryConfigPtrOutput
+	ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(context.Context) CxToolOpenApiSpecServiceDirectoryConfigPtrOutput
+}
+
+type cxToolOpenApiSpecServiceDirectoryConfigPtrType CxToolOpenApiSpecServiceDirectoryConfigArgs
+
+func CxToolOpenApiSpecServiceDirectoryConfigPtr(v *CxToolOpenApiSpecServiceDirectoryConfigArgs) CxToolOpenApiSpecServiceDirectoryConfigPtrInput {
+	return (*cxToolOpenApiSpecServiceDirectoryConfigPtrType)(v)
+}
+
+func (*cxToolOpenApiSpecServiceDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i *cxToolOpenApiSpecServiceDirectoryConfigPtrType) ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutput() CxToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolOpenApiSpecServiceDirectoryConfigPtrType) ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecServiceDirectoryConfigPtrOutput)
+}
+
+type CxToolOpenApiSpecServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecServiceDirectoryConfigOutput) ToCxToolOpenApiSpecServiceDirectoryConfigOutput() CxToolOpenApiSpecServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecServiceDirectoryConfigOutput) ToCxToolOpenApiSpecServiceDirectoryConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecServiceDirectoryConfigOutput) ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutput() CxToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o.ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolOpenApiSpecServiceDirectoryConfigOutput) ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolOpenApiSpecServiceDirectoryConfig) *CxToolOpenApiSpecServiceDirectoryConfig {
+		return &v
+	}).(CxToolOpenApiSpecServiceDirectoryConfigPtrOutput)
+}
+
+// The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+// Format: projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>. LocationID of the service directory must be the same as the location of the agent.
+func (o CxToolOpenApiSpecServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type CxToolOpenApiSpecServiceDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecServiceDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecServiceDirectoryConfigPtrOutput) ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutput() CxToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecServiceDirectoryConfigPtrOutput) ToCxToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecServiceDirectoryConfigPtrOutput) Elem() CxToolOpenApiSpecServiceDirectoryConfigOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecServiceDirectoryConfig) CxToolOpenApiSpecServiceDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolOpenApiSpecServiceDirectoryConfig
+		return ret
+	}).(CxToolOpenApiSpecServiceDirectoryConfigOutput)
+}
+
+// The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+// Format: projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>. LocationID of the service directory must be the same as the location of the agent.
+func (o CxToolOpenApiSpecServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecServiceDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxToolOpenApiSpecTlsConfig struct {
+	// Specifies a list of allowed custom CA certificates for HTTPS verification.
+	// Structure is documented below.
+	CaCerts []CxToolOpenApiSpecTlsConfigCaCert `pulumi:"caCerts"`
+}
+
+// CxToolOpenApiSpecTlsConfigInput is an input type that accepts CxToolOpenApiSpecTlsConfigArgs and CxToolOpenApiSpecTlsConfigOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecTlsConfigInput` via:
+//
+//	CxToolOpenApiSpecTlsConfigArgs{...}
+type CxToolOpenApiSpecTlsConfigInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecTlsConfigOutput() CxToolOpenApiSpecTlsConfigOutput
+	ToCxToolOpenApiSpecTlsConfigOutputWithContext(context.Context) CxToolOpenApiSpecTlsConfigOutput
+}
+
+type CxToolOpenApiSpecTlsConfigArgs struct {
+	// Specifies a list of allowed custom CA certificates for HTTPS verification.
+	// Structure is documented below.
+	CaCerts CxToolOpenApiSpecTlsConfigCaCertArrayInput `pulumi:"caCerts"`
+}
+
+func (CxToolOpenApiSpecTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecTlsConfig)(nil)).Elem()
+}
+
+func (i CxToolOpenApiSpecTlsConfigArgs) ToCxToolOpenApiSpecTlsConfigOutput() CxToolOpenApiSpecTlsConfigOutput {
+	return i.ToCxToolOpenApiSpecTlsConfigOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecTlsConfigArgs) ToCxToolOpenApiSpecTlsConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecTlsConfigOutput)
+}
+
+func (i CxToolOpenApiSpecTlsConfigArgs) ToCxToolOpenApiSpecTlsConfigPtrOutput() CxToolOpenApiSpecTlsConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecTlsConfigArgs) ToCxToolOpenApiSpecTlsConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecTlsConfigOutput).ToCxToolOpenApiSpecTlsConfigPtrOutputWithContext(ctx)
+}
+
+// CxToolOpenApiSpecTlsConfigPtrInput is an input type that accepts CxToolOpenApiSpecTlsConfigArgs, CxToolOpenApiSpecTlsConfigPtr and CxToolOpenApiSpecTlsConfigPtrOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecTlsConfigPtrInput` via:
+//
+//	        CxToolOpenApiSpecTlsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolOpenApiSpecTlsConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecTlsConfigPtrOutput() CxToolOpenApiSpecTlsConfigPtrOutput
+	ToCxToolOpenApiSpecTlsConfigPtrOutputWithContext(context.Context) CxToolOpenApiSpecTlsConfigPtrOutput
+}
+
+type cxToolOpenApiSpecTlsConfigPtrType CxToolOpenApiSpecTlsConfigArgs
+
+func CxToolOpenApiSpecTlsConfigPtr(v *CxToolOpenApiSpecTlsConfigArgs) CxToolOpenApiSpecTlsConfigPtrInput {
+	return (*cxToolOpenApiSpecTlsConfigPtrType)(v)
+}
+
+func (*cxToolOpenApiSpecTlsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecTlsConfig)(nil)).Elem()
+}
+
+func (i *cxToolOpenApiSpecTlsConfigPtrType) ToCxToolOpenApiSpecTlsConfigPtrOutput() CxToolOpenApiSpecTlsConfigPtrOutput {
+	return i.ToCxToolOpenApiSpecTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolOpenApiSpecTlsConfigPtrType) ToCxToolOpenApiSpecTlsConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecTlsConfigPtrOutput)
+}
+
+type CxToolOpenApiSpecTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecTlsConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecTlsConfigOutput) ToCxToolOpenApiSpecTlsConfigOutput() CxToolOpenApiSpecTlsConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecTlsConfigOutput) ToCxToolOpenApiSpecTlsConfigOutputWithContext(ctx context.Context) CxToolOpenApiSpecTlsConfigOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecTlsConfigOutput) ToCxToolOpenApiSpecTlsConfigPtrOutput() CxToolOpenApiSpecTlsConfigPtrOutput {
+	return o.ToCxToolOpenApiSpecTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolOpenApiSpecTlsConfigOutput) ToCxToolOpenApiSpecTlsConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecTlsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolOpenApiSpecTlsConfig) *CxToolOpenApiSpecTlsConfig {
+		return &v
+	}).(CxToolOpenApiSpecTlsConfigPtrOutput)
+}
+
+// Specifies a list of allowed custom CA certificates for HTTPS verification.
+// Structure is documented below.
+func (o CxToolOpenApiSpecTlsConfigOutput) CaCerts() CxToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecTlsConfig) []CxToolOpenApiSpecTlsConfigCaCert { return v.CaCerts }).(CxToolOpenApiSpecTlsConfigCaCertArrayOutput)
+}
+
+type CxToolOpenApiSpecTlsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecTlsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolOpenApiSpecTlsConfig)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecTlsConfigPtrOutput) ToCxToolOpenApiSpecTlsConfigPtrOutput() CxToolOpenApiSpecTlsConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecTlsConfigPtrOutput) ToCxToolOpenApiSpecTlsConfigPtrOutputWithContext(ctx context.Context) CxToolOpenApiSpecTlsConfigPtrOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecTlsConfigPtrOutput) Elem() CxToolOpenApiSpecTlsConfigOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecTlsConfig) CxToolOpenApiSpecTlsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolOpenApiSpecTlsConfig
+		return ret
+	}).(CxToolOpenApiSpecTlsConfigOutput)
+}
+
+// Specifies a list of allowed custom CA certificates for HTTPS verification.
+// Structure is documented below.
+func (o CxToolOpenApiSpecTlsConfigPtrOutput) CaCerts() CxToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return o.ApplyT(func(v *CxToolOpenApiSpecTlsConfig) []CxToolOpenApiSpecTlsConfigCaCert {
+		if v == nil {
+			return nil
+		}
+		return v.CaCerts
+	}).(CxToolOpenApiSpecTlsConfigCaCertArrayOutput)
+}
+
+type CxToolOpenApiSpecTlsConfigCaCert struct {
+	// The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+	// If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+	// N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+	// For instance a certificate can be self-signed using the following command:
+	//
+	// A base64-encoded string.
+	Cert string `pulumi:"cert"`
+	// The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// CxToolOpenApiSpecTlsConfigCaCertInput is an input type that accepts CxToolOpenApiSpecTlsConfigCaCertArgs and CxToolOpenApiSpecTlsConfigCaCertOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecTlsConfigCaCertInput` via:
+//
+//	CxToolOpenApiSpecTlsConfigCaCertArgs{...}
+type CxToolOpenApiSpecTlsConfigCaCertInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecTlsConfigCaCertOutput() CxToolOpenApiSpecTlsConfigCaCertOutput
+	ToCxToolOpenApiSpecTlsConfigCaCertOutputWithContext(context.Context) CxToolOpenApiSpecTlsConfigCaCertOutput
+}
+
+type CxToolOpenApiSpecTlsConfigCaCertArgs struct {
+	// The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+	// If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+	// N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+	// For instance a certificate can be self-signed using the following command:
+	//
+	// A base64-encoded string.
+	Cert pulumi.StringInput `pulumi:"cert"`
+	// The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+}
+
+func (CxToolOpenApiSpecTlsConfigCaCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecTlsConfigCaCert)(nil)).Elem()
+}
+
+func (i CxToolOpenApiSpecTlsConfigCaCertArgs) ToCxToolOpenApiSpecTlsConfigCaCertOutput() CxToolOpenApiSpecTlsConfigCaCertOutput {
+	return i.ToCxToolOpenApiSpecTlsConfigCaCertOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecTlsConfigCaCertArgs) ToCxToolOpenApiSpecTlsConfigCaCertOutputWithContext(ctx context.Context) CxToolOpenApiSpecTlsConfigCaCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecTlsConfigCaCertOutput)
+}
+
+// CxToolOpenApiSpecTlsConfigCaCertArrayInput is an input type that accepts CxToolOpenApiSpecTlsConfigCaCertArray and CxToolOpenApiSpecTlsConfigCaCertArrayOutput values.
+// You can construct a concrete instance of `CxToolOpenApiSpecTlsConfigCaCertArrayInput` via:
+//
+//	CxToolOpenApiSpecTlsConfigCaCertArray{ CxToolOpenApiSpecTlsConfigCaCertArgs{...} }
+type CxToolOpenApiSpecTlsConfigCaCertArrayInput interface {
+	pulumi.Input
+
+	ToCxToolOpenApiSpecTlsConfigCaCertArrayOutput() CxToolOpenApiSpecTlsConfigCaCertArrayOutput
+	ToCxToolOpenApiSpecTlsConfigCaCertArrayOutputWithContext(context.Context) CxToolOpenApiSpecTlsConfigCaCertArrayOutput
+}
+
+type CxToolOpenApiSpecTlsConfigCaCertArray []CxToolOpenApiSpecTlsConfigCaCertInput
+
+func (CxToolOpenApiSpecTlsConfigCaCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxToolOpenApiSpecTlsConfigCaCert)(nil)).Elem()
+}
+
+func (i CxToolOpenApiSpecTlsConfigCaCertArray) ToCxToolOpenApiSpecTlsConfigCaCertArrayOutput() CxToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return i.ToCxToolOpenApiSpecTlsConfigCaCertArrayOutputWithContext(context.Background())
+}
+
+func (i CxToolOpenApiSpecTlsConfigCaCertArray) ToCxToolOpenApiSpecTlsConfigCaCertArrayOutputWithContext(ctx context.Context) CxToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolOpenApiSpecTlsConfigCaCertArrayOutput)
+}
+
+type CxToolOpenApiSpecTlsConfigCaCertOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecTlsConfigCaCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolOpenApiSpecTlsConfigCaCert)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecTlsConfigCaCertOutput) ToCxToolOpenApiSpecTlsConfigCaCertOutput() CxToolOpenApiSpecTlsConfigCaCertOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecTlsConfigCaCertOutput) ToCxToolOpenApiSpecTlsConfigCaCertOutputWithContext(ctx context.Context) CxToolOpenApiSpecTlsConfigCaCertOutput {
+	return o
+}
+
+// The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+// If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+// N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+// For instance a certificate can be self-signed using the following command:
+//
+// A base64-encoded string.
+func (o CxToolOpenApiSpecTlsConfigCaCertOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecTlsConfigCaCert) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+// The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+func (o CxToolOpenApiSpecTlsConfigCaCertOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolOpenApiSpecTlsConfigCaCert) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+type CxToolOpenApiSpecTlsConfigCaCertArrayOutput struct{ *pulumi.OutputState }
+
+func (CxToolOpenApiSpecTlsConfigCaCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxToolOpenApiSpecTlsConfigCaCert)(nil)).Elem()
+}
+
+func (o CxToolOpenApiSpecTlsConfigCaCertArrayOutput) ToCxToolOpenApiSpecTlsConfigCaCertArrayOutput() CxToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecTlsConfigCaCertArrayOutput) ToCxToolOpenApiSpecTlsConfigCaCertArrayOutputWithContext(ctx context.Context) CxToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return o
+}
+
+func (o CxToolOpenApiSpecTlsConfigCaCertArrayOutput) Index(i pulumi.IntInput) CxToolOpenApiSpecTlsConfigCaCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxToolOpenApiSpecTlsConfigCaCert {
+		return vs[0].([]CxToolOpenApiSpecTlsConfigCaCert)[vs[1].(int)]
+	}).(CxToolOpenApiSpecTlsConfigCaCertOutput)
+}
+
 type CxVersionNluSetting struct {
 	// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered.
 	// The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
@@ -29586,6 +31771,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestConfigInput)(nil)).Elem(), CxTestCaseTestConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestConfigPtrInput)(nil)).Elem(), CxTestCaseTestConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolDataStoreSpecInput)(nil)).Elem(), CxToolDataStoreSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolDataStoreSpecPtrInput)(nil)).Elem(), CxToolDataStoreSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolDataStoreSpecDataStoreConnectionInput)(nil)).Elem(), CxToolDataStoreSpecDataStoreConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolDataStoreSpecDataStoreConnectionArrayInput)(nil)).Elem(), CxToolDataStoreSpecDataStoreConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolDataStoreSpecFallbackPromptInput)(nil)).Elem(), CxToolDataStoreSpecFallbackPromptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolDataStoreSpecFallbackPromptPtrInput)(nil)).Elem(), CxToolDataStoreSpecFallbackPromptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolFunctionSpecInput)(nil)).Elem(), CxToolFunctionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolFunctionSpecPtrInput)(nil)).Elem(), CxToolFunctionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecInput)(nil)).Elem(), CxToolOpenApiSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecPtrInput)(nil)).Elem(), CxToolOpenApiSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecAuthenticationInput)(nil)).Elem(), CxToolOpenApiSpecAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecAuthenticationPtrInput)(nil)).Elem(), CxToolOpenApiSpecAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecAuthenticationApiKeyConfigInput)(nil)).Elem(), CxToolOpenApiSpecAuthenticationApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecAuthenticationApiKeyConfigPtrInput)(nil)).Elem(), CxToolOpenApiSpecAuthenticationApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecAuthenticationBearerTokenConfigInput)(nil)).Elem(), CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput)(nil)).Elem(), CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecAuthenticationOauthConfigInput)(nil)).Elem(), CxToolOpenApiSpecAuthenticationOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecAuthenticationOauthConfigPtrInput)(nil)).Elem(), CxToolOpenApiSpecAuthenticationOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigInput)(nil)).Elem(), CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput)(nil)).Elem(), CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecServiceDirectoryConfigInput)(nil)).Elem(), CxToolOpenApiSpecServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecServiceDirectoryConfigPtrInput)(nil)).Elem(), CxToolOpenApiSpecServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecTlsConfigInput)(nil)).Elem(), CxToolOpenApiSpecTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecTlsConfigPtrInput)(nil)).Elem(), CxToolOpenApiSpecTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecTlsConfigCaCertInput)(nil)).Elem(), CxToolOpenApiSpecTlsConfigCaCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolOpenApiSpecTlsConfigCaCertArrayInput)(nil)).Elem(), CxToolOpenApiSpecTlsConfigCaCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionNluSettingInput)(nil)).Elem(), CxVersionNluSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionNluSettingArrayInput)(nil)).Elem(), CxVersionNluSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookGenericWebServiceInput)(nil)).Elem(), CxWebhookGenericWebServiceArgs{})
@@ -29942,6 +32153,32 @@ func init() {
 	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput{})
 	pulumi.RegisterOutputType(CxTestCaseTestConfigOutput{})
 	pulumi.RegisterOutputType(CxTestCaseTestConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxToolDataStoreSpecOutput{})
+	pulumi.RegisterOutputType(CxToolDataStoreSpecPtrOutput{})
+	pulumi.RegisterOutputType(CxToolDataStoreSpecDataStoreConnectionOutput{})
+	pulumi.RegisterOutputType(CxToolDataStoreSpecDataStoreConnectionArrayOutput{})
+	pulumi.RegisterOutputType(CxToolDataStoreSpecFallbackPromptOutput{})
+	pulumi.RegisterOutputType(CxToolDataStoreSpecFallbackPromptPtrOutput{})
+	pulumi.RegisterOutputType(CxToolFunctionSpecOutput{})
+	pulumi.RegisterOutputType(CxToolFunctionSpecPtrOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecPtrOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecAuthenticationOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecAuthenticationApiKeyConfigOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecAuthenticationBearerTokenConfigOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecAuthenticationOauthConfigOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecAuthenticationOauthConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecServiceDirectoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecTlsConfigOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecTlsConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecTlsConfigCaCertOutput{})
+	pulumi.RegisterOutputType(CxToolOpenApiSpecTlsConfigCaCertArrayOutput{})
 	pulumi.RegisterOutputType(CxVersionNluSettingOutput{})
 	pulumi.RegisterOutputType(CxVersionNluSettingArrayOutput{})
 	pulumi.RegisterOutputType(CxWebhookGenericWebServiceOutput{})

@@ -99,6 +99,16 @@ __all__ = [
     'ZoneIamBindingCondition',
     'ZoneIamMemberCondition',
     'ZoneResourceSpec',
+    'GetDataQualityRulesRuleResult',
+    'GetDataQualityRulesRuleNonNullExpectationResult',
+    'GetDataQualityRulesRuleRangeExpectationResult',
+    'GetDataQualityRulesRuleRegexExpectationResult',
+    'GetDataQualityRulesRuleRowConditionExpectationResult',
+    'GetDataQualityRulesRuleSetExpectationResult',
+    'GetDataQualityRulesRuleSqlAssertionResult',
+    'GetDataQualityRulesRuleStatisticRangeExpectationResult',
+    'GetDataQualityRulesRuleTableConditionExpectationResult',
+    'GetDataQualityRulesRuleUniquenessExpectationResult',
 ]
 
 @pulumi.output_type
@@ -4490,5 +4500,415 @@ class ZoneResourceSpec(dict):
         - - -
         """
         return pulumi.get(self, "location_type")
+
+
+@pulumi.output_type
+class GetDataQualityRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 column: builtins.str,
+                 description: builtins.str,
+                 dimension: builtins.str,
+                 ignore_null: builtins.bool,
+                 name: builtins.str,
+                 non_null_expectations: Sequence['outputs.GetDataQualityRulesRuleNonNullExpectationResult'],
+                 range_expectations: Sequence['outputs.GetDataQualityRulesRuleRangeExpectationResult'],
+                 regex_expectations: Sequence['outputs.GetDataQualityRulesRuleRegexExpectationResult'],
+                 row_condition_expectations: Sequence['outputs.GetDataQualityRulesRuleRowConditionExpectationResult'],
+                 set_expectations: Sequence['outputs.GetDataQualityRulesRuleSetExpectationResult'],
+                 sql_assertions: Sequence['outputs.GetDataQualityRulesRuleSqlAssertionResult'],
+                 statistic_range_expectations: Sequence['outputs.GetDataQualityRulesRuleStatisticRangeExpectationResult'],
+                 suspended: builtins.bool,
+                 table_condition_expectations: Sequence['outputs.GetDataQualityRulesRuleTableConditionExpectationResult'],
+                 threshold: builtins.float,
+                 uniqueness_expectations: Sequence['outputs.GetDataQualityRulesRuleUniquenessExpectationResult']):
+        """
+        :param builtins.str column: The unnested column which this rule is evaluated against.
+        :param builtins.str description: Description of the rule. (The maximum length is 1,024 characters.)
+        :param builtins.str dimension: The dimension a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
+        :param builtins.bool ignore_null: Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. 
+               											This field is only valid for the following type of rules: RangeExpectation, RegexExpectation, SetExpectation, UniquenessExpectation
+        :param builtins.str name: A mutable name for the rule. 
+               											The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+               											The maximum length is 63 characters.
+               											Must start with a letter.
+               											Must end with a number or a letter.
+        :param Sequence['GetDataQualityRulesRuleNonNullExpectationArgs'] non_null_expectations: Row-level rule which evaluates whether each column value is null.
+        :param Sequence['GetDataQualityRulesRuleRangeExpectationArgs'] range_expectations: Row-level rule which evaluates whether each column value lies between a specified range.
+        :param Sequence['GetDataQualityRulesRuleRegexExpectationArgs'] regex_expectations: Row-level rule which evaluates whether each column value matches a specified regex.
+        :param Sequence['GetDataQualityRulesRuleRowConditionExpectationArgs'] row_condition_expectations: Row-level rule which evaluates whether each row in a table passes the specified condition.
+        :param Sequence['GetDataQualityRulesRuleSetExpectationArgs'] set_expectations: Row-level rule which evaluates whether each column value is contained by a specified set.
+        :param Sequence['GetDataQualityRulesRuleSqlAssertionArgs'] sql_assertions: Aggregate rule which evaluates the number of rows returned for the provided statement. If any rows are returned, this rule fails.
+        :param Sequence['GetDataQualityRulesRuleStatisticRangeExpectationArgs'] statistic_range_expectations: Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        :param builtins.bool suspended: Whether the Rule is active or suspended. Default is false.
+        :param Sequence['GetDataQualityRulesRuleTableConditionExpectationArgs'] table_condition_expectations: Aggregate rule which evaluates whether the provided expression is true for a table.
+        :param builtins.float threshold: The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
+        :param Sequence['GetDataQualityRulesRuleUniquenessExpectationArgs'] uniqueness_expectations: Row-level rule which evaluates whether each column value is unique.
+        """
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dimension", dimension)
+        pulumi.set(__self__, "ignore_null", ignore_null)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "non_null_expectations", non_null_expectations)
+        pulumi.set(__self__, "range_expectations", range_expectations)
+        pulumi.set(__self__, "regex_expectations", regex_expectations)
+        pulumi.set(__self__, "row_condition_expectations", row_condition_expectations)
+        pulumi.set(__self__, "set_expectations", set_expectations)
+        pulumi.set(__self__, "sql_assertions", sql_assertions)
+        pulumi.set(__self__, "statistic_range_expectations", statistic_range_expectations)
+        pulumi.set(__self__, "suspended", suspended)
+        pulumi.set(__self__, "table_condition_expectations", table_condition_expectations)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "uniqueness_expectations", uniqueness_expectations)
+
+    @property
+    @pulumi.getter
+    def column(self) -> builtins.str:
+        """
+        The unnested column which this rule is evaluated against.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        """
+        Description of the rule. (The maximum length is 1,024 characters.)
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def dimension(self) -> builtins.str:
+        """
+        The dimension a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
+        """
+        return pulumi.get(self, "dimension")
+
+    @property
+    @pulumi.getter(name="ignoreNull")
+    def ignore_null(self) -> builtins.bool:
+        """
+        Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. 
+        											This field is only valid for the following type of rules: RangeExpectation, RegexExpectation, SetExpectation, UniquenessExpectation
+        """
+        return pulumi.get(self, "ignore_null")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        A mutable name for the rule. 
+        											The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+        											The maximum length is 63 characters.
+        											Must start with a letter.
+        											Must end with a number or a letter.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nonNullExpectations")
+    def non_null_expectations(self) -> Sequence['outputs.GetDataQualityRulesRuleNonNullExpectationResult']:
+        """
+        Row-level rule which evaluates whether each column value is null.
+        """
+        return pulumi.get(self, "non_null_expectations")
+
+    @property
+    @pulumi.getter(name="rangeExpectations")
+    def range_expectations(self) -> Sequence['outputs.GetDataQualityRulesRuleRangeExpectationResult']:
+        """
+        Row-level rule which evaluates whether each column value lies between a specified range.
+        """
+        return pulumi.get(self, "range_expectations")
+
+    @property
+    @pulumi.getter(name="regexExpectations")
+    def regex_expectations(self) -> Sequence['outputs.GetDataQualityRulesRuleRegexExpectationResult']:
+        """
+        Row-level rule which evaluates whether each column value matches a specified regex.
+        """
+        return pulumi.get(self, "regex_expectations")
+
+    @property
+    @pulumi.getter(name="rowConditionExpectations")
+    def row_condition_expectations(self) -> Sequence['outputs.GetDataQualityRulesRuleRowConditionExpectationResult']:
+        """
+        Row-level rule which evaluates whether each row in a table passes the specified condition.
+        """
+        return pulumi.get(self, "row_condition_expectations")
+
+    @property
+    @pulumi.getter(name="setExpectations")
+    def set_expectations(self) -> Sequence['outputs.GetDataQualityRulesRuleSetExpectationResult']:
+        """
+        Row-level rule which evaluates whether each column value is contained by a specified set.
+        """
+        return pulumi.get(self, "set_expectations")
+
+    @property
+    @pulumi.getter(name="sqlAssertions")
+    def sql_assertions(self) -> Sequence['outputs.GetDataQualityRulesRuleSqlAssertionResult']:
+        """
+        Aggregate rule which evaluates the number of rows returned for the provided statement. If any rows are returned, this rule fails.
+        """
+        return pulumi.get(self, "sql_assertions")
+
+    @property
+    @pulumi.getter(name="statisticRangeExpectations")
+    def statistic_range_expectations(self) -> Sequence['outputs.GetDataQualityRulesRuleStatisticRangeExpectationResult']:
+        """
+        Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        """
+        return pulumi.get(self, "statistic_range_expectations")
+
+    @property
+    @pulumi.getter
+    def suspended(self) -> builtins.bool:
+        """
+        Whether the Rule is active or suspended. Default is false.
+        """
+        return pulumi.get(self, "suspended")
+
+    @property
+    @pulumi.getter(name="tableConditionExpectations")
+    def table_condition_expectations(self) -> Sequence['outputs.GetDataQualityRulesRuleTableConditionExpectationResult']:
+        """
+        Aggregate rule which evaluates whether the provided expression is true for a table.
+        """
+        return pulumi.get(self, "table_condition_expectations")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> builtins.float:
+        """
+        The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
+        """
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter(name="uniquenessExpectations")
+    def uniqueness_expectations(self) -> Sequence['outputs.GetDataQualityRulesRuleUniquenessExpectationResult']:
+        """
+        Row-level rule which evaluates whether each column value is unique.
+        """
+        return pulumi.get(self, "uniqueness_expectations")
+
+
+@pulumi.output_type
+class GetDataQualityRulesRuleNonNullExpectationResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetDataQualityRulesRuleRangeExpectationResult(dict):
+    def __init__(__self__, *,
+                 max_value: builtins.str,
+                 min_value: builtins.str,
+                 strict_max_enabled: builtins.bool,
+                 strict_min_enabled: builtins.bool):
+        """
+        :param builtins.str max_value: The maximum column value allowed for a row to pass this validation.
+        :param builtins.str min_value: The minimum column value allowed for a row to pass this validation.
+        :param builtins.bool strict_max_enabled: Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+        :param builtins.bool strict_min_enabled: Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+        """
+        pulumi.set(__self__, "max_value", max_value)
+        pulumi.set(__self__, "min_value", min_value)
+        pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
+        pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> builtins.str:
+        """
+        The maximum column value allowed for a row to pass this validation.
+        """
+        return pulumi.get(self, "max_value")
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> builtins.str:
+        """
+        The minimum column value allowed for a row to pass this validation.
+        """
+        return pulumi.get(self, "min_value")
+
+    @property
+    @pulumi.getter(name="strictMaxEnabled")
+    def strict_max_enabled(self) -> builtins.bool:
+        """
+        Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+        """
+        return pulumi.get(self, "strict_max_enabled")
+
+    @property
+    @pulumi.getter(name="strictMinEnabled")
+    def strict_min_enabled(self) -> builtins.bool:
+        """
+        Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+        """
+        return pulumi.get(self, "strict_min_enabled")
+
+
+@pulumi.output_type
+class GetDataQualityRulesRuleRegexExpectationResult(dict):
+    def __init__(__self__, *,
+                 regex: builtins.str):
+        """
+        :param builtins.str regex: A regular expression the column value is expected to match.
+        """
+        pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> builtins.str:
+        """
+        A regular expression the column value is expected to match.
+        """
+        return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
+class GetDataQualityRulesRuleRowConditionExpectationResult(dict):
+    def __init__(__self__, *,
+                 sql_expression: builtins.str):
+        """
+        :param builtins.str sql_expression: The SQL expression.
+        """
+        pulumi.set(__self__, "sql_expression", sql_expression)
+
+    @property
+    @pulumi.getter(name="sqlExpression")
+    def sql_expression(self) -> builtins.str:
+        """
+        The SQL expression.
+        """
+        return pulumi.get(self, "sql_expression")
+
+
+@pulumi.output_type
+class GetDataQualityRulesRuleSetExpectationResult(dict):
+    def __init__(__self__, *,
+                 values: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] values: Expected values for the column value.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[builtins.str]:
+        """
+        Expected values for the column value.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetDataQualityRulesRuleSqlAssertionResult(dict):
+    def __init__(__self__, *,
+                 sql_statement: builtins.str):
+        """
+        :param builtins.str sql_statement: The SQL expression.
+        """
+        pulumi.set(__self__, "sql_statement", sql_statement)
+
+    @property
+    @pulumi.getter(name="sqlStatement")
+    def sql_statement(self) -> builtins.str:
+        """
+        The SQL expression.
+        """
+        return pulumi.get(self, "sql_statement")
+
+
+@pulumi.output_type
+class GetDataQualityRulesRuleStatisticRangeExpectationResult(dict):
+    def __init__(__self__, *,
+                 max_value: builtins.str,
+                 min_value: builtins.str,
+                 statistic: builtins.str,
+                 strict_max_enabled: builtins.bool,
+                 strict_min_enabled: builtins.bool):
+        """
+        :param builtins.str max_value: The maximum column value allowed for a row to pass this validation.
+        :param builtins.str min_value: The minimum column value allowed for a row to pass this validation.
+        :param builtins.str statistic: The list of aggregate metrics a rule can be evaluated against. 
+               																	Possible values: ["STATISTIC_UNDEFINED", "MEAN", "MIN", "MAX"]
+        :param builtins.bool strict_max_enabled: Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+        :param builtins.bool strict_min_enabled: Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+        """
+        pulumi.set(__self__, "max_value", max_value)
+        pulumi.set(__self__, "min_value", min_value)
+        pulumi.set(__self__, "statistic", statistic)
+        pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
+        pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> builtins.str:
+        """
+        The maximum column value allowed for a row to pass this validation.
+        """
+        return pulumi.get(self, "max_value")
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> builtins.str:
+        """
+        The minimum column value allowed for a row to pass this validation.
+        """
+        return pulumi.get(self, "min_value")
+
+    @property
+    @pulumi.getter
+    def statistic(self) -> builtins.str:
+        """
+        The list of aggregate metrics a rule can be evaluated against. 
+        																	Possible values: ["STATISTIC_UNDEFINED", "MEAN", "MIN", "MAX"]
+        """
+        return pulumi.get(self, "statistic")
+
+    @property
+    @pulumi.getter(name="strictMaxEnabled")
+    def strict_max_enabled(self) -> builtins.bool:
+        """
+        Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+        """
+        return pulumi.get(self, "strict_max_enabled")
+
+    @property
+    @pulumi.getter(name="strictMinEnabled")
+    def strict_min_enabled(self) -> builtins.bool:
+        """
+        Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+        """
+        return pulumi.get(self, "strict_min_enabled")
+
+
+@pulumi.output_type
+class GetDataQualityRulesRuleTableConditionExpectationResult(dict):
+    def __init__(__self__, *,
+                 sql_expression: builtins.str):
+        """
+        :param builtins.str sql_expression: The SQL expression.
+        """
+        pulumi.set(__self__, "sql_expression", sql_expression)
+
+    @property
+    @pulumi.getter(name="sqlExpression")
+    def sql_expression(self) -> builtins.str:
+        """
+        The SQL expression.
+        """
+        return pulumi.get(self, "sql_expression")
+
+
+@pulumi.output_type
+class GetDataQualityRulesRuleUniquenessExpectationResult(dict):
+    def __init__(__self__):
+        pass
 
 
