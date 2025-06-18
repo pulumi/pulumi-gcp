@@ -27,7 +27,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -62,7 +61,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewAppProfile(ctx, "ap", &bigquery.AppProfileArgs{
+//			_, err = bigtable.NewAppProfile(ctx, "ap", &bigtable.AppProfileArgs{
 //				Instance:                  instance.Name,
 //				AppProfileId:              pulumi.String("bt-profile"),
 //				MultiClusterRoutingUseAny: pulumi.Bool(true),
@@ -83,7 +82,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -106,10 +104,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewAppProfile(ctx, "ap", &bigquery.AppProfileArgs{
+//			_, err = bigtable.NewAppProfile(ctx, "ap", &bigtable.AppProfileArgs{
 //				Instance:     instance.Name,
 //				AppProfileId: pulumi.String("bt-profile"),
-//				SingleClusterRouting: &bigquery.AppProfileSingleClusterRoutingArgs{
+//				SingleClusterRouting: &bigtable.AppProfileSingleClusterRoutingArgs{
 //					ClusterId:                pulumi.String("cluster-1"),
 //					AllowTransactionalWrites: pulumi.Bool(true),
 //				},
@@ -130,7 +128,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -165,7 +162,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewAppProfile(ctx, "ap", &bigquery.AppProfileArgs{
+//			_, err = bigtable.NewAppProfile(ctx, "ap", &bigtable.AppProfileArgs{
 //				Instance:                  instance.Name,
 //				AppProfileId:              pulumi.String("bt-profile"),
 //				MultiClusterRoutingUseAny: pulumi.Bool(true),
@@ -190,7 +187,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -213,14 +209,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewAppProfile(ctx, "ap", &bigquery.AppProfileArgs{
+//			_, err = bigtable.NewAppProfile(ctx, "ap", &bigtable.AppProfileArgs{
 //				Instance:     instance.Name,
 //				AppProfileId: pulumi.String("bt-profile"),
-//				SingleClusterRouting: &bigquery.AppProfileSingleClusterRoutingArgs{
+//				SingleClusterRouting: &bigtable.AppProfileSingleClusterRoutingArgs{
 //					ClusterId:                pulumi.String("cluster-1"),
 //					AllowTransactionalWrites: pulumi.Bool(true),
 //				},
-//				StandardIsolation: &bigquery.AppProfileStandardIsolationArgs{
+//				StandardIsolation: &bigtable.AppProfileStandardIsolationArgs{
 //					Priority: pulumi.String("PRIORITY_LOW"),
 //				},
 //				IgnoreWarnings: pulumi.Bool(true),
@@ -257,6 +253,8 @@ import (
 // ```sh
 // $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
 // ```
+//
+// Deprecated: gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile
 type AppProfile struct {
 	pulumi.CustomResourceState
 
@@ -309,6 +307,12 @@ func NewAppProfile(ctx *pulumi.Context,
 	if args.AppProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'AppProfileId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("gcp:bigquery/appProfile:AppProfile"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppProfile
 	err := ctx.RegisterResource("gcp:bigquery/appProfile:AppProfile", name, args, &resource, opts...)

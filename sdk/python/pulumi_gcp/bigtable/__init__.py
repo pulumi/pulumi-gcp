@@ -6,6 +6,7 @@ import builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .app_profile import *
 from .authorized_view import *
 from .gc_policy import *
 from .get_instance_iam_policy import *

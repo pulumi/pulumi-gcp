@@ -226,6 +226,7 @@
         "bigquerydatapolicy/dataPolicyIamPolicy.ts",
         "bigquerydatapolicy/getIamPolicy.ts",
         "bigquerydatapolicy/index.ts",
+        "bigtable/appProfile.ts",
         "bigtable/authorizedView.ts",
         "bigtable/gcpolicy.ts",
         "bigtable/getInstanceIamPolicy.ts",

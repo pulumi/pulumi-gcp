@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         DeletionProtection = true,
     ///     });
     /// 
-    ///     var ap = new Gcp.BigQuery.AppProfile("ap", new()
+    ///     var ap = new Gcp.BigTable.AppProfile("ap", new()
     ///     {
     ///         Instance = instance.Name,
     ///         AppProfileId = "bt-profile",
@@ -94,11 +94,11 @@ namespace Pulumi.Gcp.BigQuery
     ///         DeletionProtection = true,
     ///     });
     /// 
-    ///     var ap = new Gcp.BigQuery.AppProfile("ap", new()
+    ///     var ap = new Gcp.BigTable.AppProfile("ap", new()
     ///     {
     ///         Instance = instance.Name,
     ///         AppProfileId = "bt-profile",
-    ///         SingleClusterRouting = new Gcp.BigQuery.Inputs.AppProfileSingleClusterRoutingArgs
+    ///         SingleClusterRouting = new Gcp.BigTable.Inputs.AppProfileSingleClusterRoutingArgs
     ///         {
     ///             ClusterId = "cluster-1",
     ///             AllowTransactionalWrites = true,
@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         DeletionProtection = true,
     ///     });
     /// 
-    ///     var ap = new Gcp.BigQuery.AppProfile("ap", new()
+    ///     var ap = new Gcp.BigTable.AppProfile("ap", new()
     ///     {
     ///         Instance = instance.Name,
     ///         AppProfileId = "bt-profile",
@@ -189,16 +189,16 @@ namespace Pulumi.Gcp.BigQuery
     ///         DeletionProtection = true,
     ///     });
     /// 
-    ///     var ap = new Gcp.BigQuery.AppProfile("ap", new()
+    ///     var ap = new Gcp.BigTable.AppProfile("ap", new()
     ///     {
     ///         Instance = instance.Name,
     ///         AppProfileId = "bt-profile",
-    ///         SingleClusterRouting = new Gcp.BigQuery.Inputs.AppProfileSingleClusterRoutingArgs
+    ///         SingleClusterRouting = new Gcp.BigTable.Inputs.AppProfileSingleClusterRoutingArgs
     ///         {
     ///             ClusterId = "cluster-1",
     ///             AllowTransactionalWrites = true,
     ///         },
-    ///         StandardIsolation = new Gcp.BigQuery.Inputs.AppProfileStandardIsolationArgs
+    ///         StandardIsolation = new Gcp.BigTable.Inputs.AppProfileStandardIsolationArgs
     ///         {
     ///             Priority = "PRIORITY_LOW",
     ///         },
@@ -232,6 +232,7 @@ namespace Pulumi.Gcp.BigQuery
     /// $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
     /// ```
     /// </summary>
+    [Obsolete(@"gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile")]
     [GcpResourceType("gcp:bigquery/appProfile:AppProfile")]
     public partial class AppProfile : global::Pulumi.CustomResource
     {
@@ -344,6 +345,10 @@ namespace Pulumi.Gcp.BigQuery
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "gcp:bigquery/appProfile:AppProfile" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

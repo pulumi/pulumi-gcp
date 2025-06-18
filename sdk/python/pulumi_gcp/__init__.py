@@ -1608,6 +1608,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigtable/appProfile",
+  "fqn": "pulumi_gcp.bigtable",
+  "classes": {
+   "gcp:bigtable/appProfile:AppProfile": "AppProfile"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigtable/authorizedView",
   "fqn": "pulumi_gcp.bigtable",
   "classes": {

@@ -16,6 +16,12 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AppProfileDataBoostIsolationReadOnlyArgs',
+    'AppProfileDataBoostIsolationReadOnlyArgsDict',
+    'AppProfileSingleClusterRoutingArgs',
+    'AppProfileSingleClusterRoutingArgsDict',
+    'AppProfileStandardIsolationArgs',
+    'AppProfileStandardIsolationArgsDict',
     'AuthorizedViewSubsetViewArgs',
     'AuthorizedViewSubsetViewArgsDict',
     'AuthorizedViewSubsetViewFamilySubsetArgs',
@@ -43,6 +49,128 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class AppProfileDataBoostIsolationReadOnlyArgsDict(TypedDict):
+        compute_billing_owner: pulumi.Input[builtins.str]
+        """
+        The Compute Billing Owner for this Data Boost App Profile.
+        Possible values are: `HOST_PAYS`.
+        """
+elif False:
+    AppProfileDataBoostIsolationReadOnlyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppProfileDataBoostIsolationReadOnlyArgs:
+    def __init__(__self__, *,
+                 compute_billing_owner: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] compute_billing_owner: The Compute Billing Owner for this Data Boost App Profile.
+               Possible values are: `HOST_PAYS`.
+        """
+        pulumi.set(__self__, "compute_billing_owner", compute_billing_owner)
+
+    @property
+    @pulumi.getter(name="computeBillingOwner")
+    def compute_billing_owner(self) -> pulumi.Input[builtins.str]:
+        """
+        The Compute Billing Owner for this Data Boost App Profile.
+        Possible values are: `HOST_PAYS`.
+        """
+        return pulumi.get(self, "compute_billing_owner")
+
+    @compute_billing_owner.setter
+    def compute_billing_owner(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "compute_billing_owner", value)
+
+
+if not MYPY:
+    class AppProfileSingleClusterRoutingArgsDict(TypedDict):
+        cluster_id: pulumi.Input[builtins.str]
+        """
+        The cluster to which read/write requests should be routed.
+        """
+        allow_transactional_writes: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
+        It is unsafe to send these requests to the same table/row/column in multiple clusters.
+        """
+elif False:
+    AppProfileSingleClusterRoutingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppProfileSingleClusterRoutingArgs:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[builtins.str],
+                 allow_transactional_writes: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.str] cluster_id: The cluster to which read/write requests should be routed.
+        :param pulumi.Input[builtins.bool] allow_transactional_writes: If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
+               It is unsafe to send these requests to the same table/row/column in multiple clusters.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if allow_transactional_writes is not None:
+            pulumi.set(__self__, "allow_transactional_writes", allow_transactional_writes)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[builtins.str]:
+        """
+        The cluster to which read/write requests should be routed.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="allowTransactionalWrites")
+    def allow_transactional_writes(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
+        It is unsafe to send these requests to the same table/row/column in multiple clusters.
+        """
+        return pulumi.get(self, "allow_transactional_writes")
+
+    @allow_transactional_writes.setter
+    def allow_transactional_writes(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "allow_transactional_writes", value)
+
+
+if not MYPY:
+    class AppProfileStandardIsolationArgsDict(TypedDict):
+        priority: pulumi.Input[builtins.str]
+        """
+        The priority of requests sent using this app profile.
+        Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        """
+elif False:
+    AppProfileStandardIsolationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppProfileStandardIsolationArgs:
+    def __init__(__self__, *,
+                 priority: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] priority: The priority of requests sent using this app profile.
+               Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        """
+        pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[builtins.str]:
+        """
+        The priority of requests sent using this app profile.
+        Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "priority", value)
+
 
 if not MYPY:
     class AuthorizedViewSubsetViewArgsDict(TypedDict):

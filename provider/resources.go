@@ -644,9 +644,6 @@ func Provider() tfbridge.ProviderInfo {
 
 			// BigQuery
 
-			// Note: the TF type token says bigtable (not bigquery) so this token cannot be auto-mapped.
-			"google_bigtable_app_profile": {Tok: gcpResource(gcpBigQuery, "AppProfile")},
-
 			"google_bigquery_dataset_access": {
 				Tok: gcpResource(gcpBigQuery, "DatasetAccess"),
 				// The upstream provider has nested attributes, both called "dataset", which causes a panic in the
@@ -2873,6 +2870,10 @@ func Provider() tfbridge.ProviderInfo {
 				Source: "compute_managed_ssl_certificate.html.markdown",
 			},
 		})
+
+	prov.RenameResourceWithAlias("google_bigtable_app_profile", gcpResource(gcpBigQuery, "AppProfile"),
+		gcpResource(gcpBigTable, "AppProfile"), gcpBigQuery, gcpBigTable,
+		&tfbridge.ResourceInfo{})
 
 	prov.RenameDataSource("google_secret_manager_secret_version", gcpDataSource(gcpMonitoring, "getSecretVersion"),
 		gcpDataSource(gcpSecretManager, "getSecretVersion"), gcpMonitoring, gcpSecretManager,
