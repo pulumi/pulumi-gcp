@@ -3323,6 +3323,31 @@
                 "majorVersion": 8
             },
             "google_bigtable_app_profile": {
+                "current": "gcp:bigtable/appProfile:AppProfile",
+                "past": [
+                    {
+                        "name": "gcp:bigquery/appProfile:AppProfile",
+                        "inCodegen": true,
+                        "majorVersion": 8
+                    }
+                ],
+                "majorVersion": 8,
+                "fields": {
+                    "data_boost_isolation_read_only": {
+                        "maxItemsOne": true
+                    },
+                    "multi_cluster_routing_cluster_ids": {
+                        "maxItemsOne": false
+                    },
+                    "single_cluster_routing": {
+                        "maxItemsOne": true
+                    },
+                    "standard_isolation": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_bigtable_app_profile_legacy": {
                 "current": "gcp:bigquery/appProfile:AppProfile",
                 "majorVersion": 8,
                 "fields": {
@@ -43140,6 +43165,11 @@
     },
     "auto-settings": {
         "resources": {
+            "google_bigtable_app_profile": {
+                "aliases": [
+                    "gcp:bigquery/appProfile:AppProfile"
+                ]
+            },
             "google_compute_autoscaler": {
                 "renames": [
                     "gcp:compute/autoscalar:Autoscalar"
@@ -44601,6 +44631,7 @@
             "gcp:bigquerydatapolicy/dataPolicyIamBinding:DataPolicyIamBinding": 0,
             "gcp:bigquerydatapolicy/dataPolicyIamMember:DataPolicyIamMember": 0,
             "gcp:bigquerydatapolicy/dataPolicyIamPolicy:DataPolicyIamPolicy": 0,
+            "gcp:bigtable/appProfile:AppProfile": 0,
             "gcp:bigtable/authorizedView:AuthorizedView": 0,
             "gcp:bigtable/gCPolicy:GCPolicy": 0,
             "gcp:bigtable/instance:Instance": 0,

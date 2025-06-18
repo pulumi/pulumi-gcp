@@ -7905,6 +7905,34 @@ export namespace bigquerydatapolicy {
 }
 
 export namespace bigtable {
+    export interface AppProfileDataBoostIsolationReadOnly {
+        /**
+         * The Compute Billing Owner for this Data Boost App Profile.
+         * Possible values are: `HOST_PAYS`.
+         */
+        computeBillingOwner: pulumi.Input<string>;
+    }
+
+    export interface AppProfileSingleClusterRouting {
+        /**
+         * If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
+         * It is unsafe to send these requests to the same table/row/column in multiple clusters.
+         */
+        allowTransactionalWrites?: pulumi.Input<boolean>;
+        /**
+         * The cluster to which read/write requests should be routed.
+         */
+        clusterId: pulumi.Input<string>;
+    }
+
+    export interface AppProfileStandardIsolation {
+        /**
+         * The priority of requests sent using this app profile.
+         * Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+         */
+        priority: pulumi.Input<string>;
+    }
+
     export interface AuthorizedViewSubsetView {
         /**
          * A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.

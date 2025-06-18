@@ -17,6 +17,9 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AppProfileDataBoostIsolationReadOnly',
+    'AppProfileSingleClusterRouting',
+    'AppProfileStandardIsolation',
     'AuthorizedViewSubsetView',
     'AuthorizedViewSubsetViewFamilySubset',
     'GCPolicyMaxAge',
@@ -30,6 +33,114 @@ __all__ = [
     'TableIamBindingCondition',
     'TableIamMemberCondition',
 ]
+
+@pulumi.output_type
+class AppProfileDataBoostIsolationReadOnly(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "computeBillingOwner":
+            suggest = "compute_billing_owner"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppProfileDataBoostIsolationReadOnly. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppProfileDataBoostIsolationReadOnly.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppProfileDataBoostIsolationReadOnly.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compute_billing_owner: builtins.str):
+        """
+        :param builtins.str compute_billing_owner: The Compute Billing Owner for this Data Boost App Profile.
+               Possible values are: `HOST_PAYS`.
+        """
+        pulumi.set(__self__, "compute_billing_owner", compute_billing_owner)
+
+    @property
+    @pulumi.getter(name="computeBillingOwner")
+    def compute_billing_owner(self) -> builtins.str:
+        """
+        The Compute Billing Owner for this Data Boost App Profile.
+        Possible values are: `HOST_PAYS`.
+        """
+        return pulumi.get(self, "compute_billing_owner")
+
+
+@pulumi.output_type
+class AppProfileSingleClusterRouting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterId":
+            suggest = "cluster_id"
+        elif key == "allowTransactionalWrites":
+            suggest = "allow_transactional_writes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppProfileSingleClusterRouting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppProfileSingleClusterRouting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppProfileSingleClusterRouting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_id: builtins.str,
+                 allow_transactional_writes: Optional[builtins.bool] = None):
+        """
+        :param builtins.str cluster_id: The cluster to which read/write requests should be routed.
+        :param builtins.bool allow_transactional_writes: If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
+               It is unsafe to send these requests to the same table/row/column in multiple clusters.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if allow_transactional_writes is not None:
+            pulumi.set(__self__, "allow_transactional_writes", allow_transactional_writes)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> builtins.str:
+        """
+        The cluster to which read/write requests should be routed.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="allowTransactionalWrites")
+    def allow_transactional_writes(self) -> Optional[builtins.bool]:
+        """
+        If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
+        It is unsafe to send these requests to the same table/row/column in multiple clusters.
+        """
+        return pulumi.get(self, "allow_transactional_writes")
+
+
+@pulumi.output_type
+class AppProfileStandardIsolation(dict):
+    def __init__(__self__, *,
+                 priority: builtins.str):
+        """
+        :param builtins.str priority: The priority of requests sent using this app profile.
+               Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        """
+        pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> builtins.str:
+        """
+        The priority of requests sent using this app profile.
+        Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        """
+        return pulumi.get(self, "priority")
+
 
 @pulumi.output_type
 class AuthorizedViewSubsetView(dict):
