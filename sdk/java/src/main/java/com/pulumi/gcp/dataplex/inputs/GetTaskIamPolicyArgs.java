@@ -71,9 +71,17 @@ public final class GetTaskIamPolicyArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="taskId", required=true)
     private Output<String> taskId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> taskId() {
         return this.taskId;
     }
@@ -178,11 +186,23 @@ public final class GetTaskIamPolicyArgs extends com.pulumi.resources.InvokeArgs 
             return project(Output.of(project));
         }
 
+        /**
+         * @param taskId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskId(Output<String> taskId) {
             $.taskId = taskId;
             return this;
         }
 
+        /**
+         * @param taskId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskId(String taskId) {
             return taskId(Output.of(taskId));
         }

@@ -25,9 +25,17 @@ public final class MetastoreFederationIamBindingArgs extends com.pulumi.resource
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="federationId", required=true)
     private Output<String> federationId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> federationId() {
         return this.federationId;
     }
@@ -162,11 +170,23 @@ public final class MetastoreFederationIamBindingArgs extends com.pulumi.resource
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param federationId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder federationId(Output<String> federationId) {
             $.federationId = federationId;
             return this;
         }
 
+        /**
+         * @param federationId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder federationId(String federationId) {
             return federationId(Output.of(federationId));
         }

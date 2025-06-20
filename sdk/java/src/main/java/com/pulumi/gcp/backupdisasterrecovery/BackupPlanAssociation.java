@@ -166,6 +166,9 @@ import javax.annotation.Nullable;
 public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
     /**
      * The BP with which resource needs to be created
+     * Note:
+     * - A Backup Plan configured for &#39;compute.googleapis.com/Instance&#39;, can only protect instance type resources.
+     * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
      * 
      */
     @Export(name="backupPlan", refs={String.class}, tree="[0]")
@@ -173,6 +176,9 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The BP with which resource needs to be created
+     * Note:
+     * - A Backup Plan configured for &#39;compute.googleapis.com/Instance&#39;, can only protect instance type resources.
+     * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
      * 
      */
     public Output<String> backupPlan() {
@@ -297,14 +303,16 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
         return this.resource;
     }
     /**
-     * The resource type of workload on which backupplan is applied
+     * The resource type of workload on which backupplan is applied.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;compute.googleapis.com/RegionDisk&#34;
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
-     * @return The resource type of workload on which backupplan is applied
+     * @return The resource type of workload on which backupplan is applied.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;compute.googleapis.com/RegionDisk&#34;
      * 
      */
     public Output<String> resourceType() {

@@ -17,16 +17,12 @@ public final class PrivateConnectionVpcPeeringConfigArgs extends com.pulumi.reso
     /**
      * A free subnet for peering. (CIDR of /29)
      * 
-     * ***
-     * 
      */
     @Import(name="subnet", required=true)
     private Output<String> subnet;
 
     /**
      * @return A free subnet for peering. (CIDR of /29)
-     * 
-     * ***
      * 
      */
     public Output<String> subnet() {
@@ -78,8 +74,6 @@ public final class PrivateConnectionVpcPeeringConfigArgs extends com.pulumi.reso
         /**
          * @param subnet A free subnet for peering. (CIDR of /29)
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -90,8 +84,6 @@ public final class PrivateConnectionVpcPeeringConfigArgs extends com.pulumi.reso
 
         /**
          * @param subnet A free subnet for peering. (CIDR of /29)
-         * 
-         * ***
          * 
          * @return builder
          * 

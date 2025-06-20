@@ -5,8 +5,11 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
@@ -15,6 +18,12 @@ public final class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
      * 
      */
     private String backendService;
+    /**
+     * @return The percentage of requests to be mirrored to backendService.
+     * The value must be between 0.0 and 100.0 inclusive.
+     * 
+     */
+    private @Nullable Double mirrorPercent;
 
     private URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy() {}
     /**
@@ -23,6 +32,14 @@ public final class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
      */
     public String backendService() {
         return this.backendService;
+    }
+    /**
+     * @return The percentage of requests to be mirrored to backendService.
+     * The value must be between 0.0 and 100.0 inclusive.
+     * 
+     */
+    public Optional<Double> mirrorPercent() {
+        return Optional.ofNullable(this.mirrorPercent);
     }
 
     public static Builder builder() {
@@ -35,10 +52,12 @@ public final class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
     @CustomType.Builder
     public static final class Builder {
         private String backendService;
+        private @Nullable Double mirrorPercent;
         public Builder() {}
         public Builder(URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendService = defaults.backendService;
+    	      this.mirrorPercent = defaults.mirrorPercent;
         }
 
         @CustomType.Setter
@@ -49,9 +68,16 @@ public final class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
             this.backendService = backendService;
             return this;
         }
+        @CustomType.Setter
+        public Builder mirrorPercent(@Nullable Double mirrorPercent) {
+
+            this.mirrorPercent = mirrorPercent;
+            return this;
+        }
         public URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy build() {
             final var _resultValue = new URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy();
             _resultValue.backendService = backendService;
+            _resultValue.mirrorPercent = mirrorPercent;
             return _resultValue;
         }
     }

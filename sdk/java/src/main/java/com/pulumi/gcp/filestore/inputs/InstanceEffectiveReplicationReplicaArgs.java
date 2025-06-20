@@ -38,6 +38,21 @@ public final class InstanceEffectiveReplicationReplicaArgs extends com.pulumi.re
     }
 
     /**
+     * The peer instance.
+     * 
+     */
+    @Import(name="peerInstance")
+    private @Nullable Output<String> peerInstance;
+
+    /**
+     * @return The peer instance.
+     * 
+     */
+    public Optional<Output<String>> peerInstance() {
+        return Optional.ofNullable(this.peerInstance);
+    }
+
+    /**
      * (Output)
      * Output only. The replica state
      * 
@@ -75,6 +90,7 @@ public final class InstanceEffectiveReplicationReplicaArgs extends com.pulumi.re
 
     private InstanceEffectiveReplicationReplicaArgs(InstanceEffectiveReplicationReplicaArgs $) {
         this.lastActiveSyncTime = $.lastActiveSyncTime;
+        this.peerInstance = $.peerInstance;
         this.state = $.state;
         this.stateReasons = $.stateReasons;
     }
@@ -122,6 +138,27 @@ public final class InstanceEffectiveReplicationReplicaArgs extends com.pulumi.re
          */
         public Builder lastActiveSyncTime(String lastActiveSyncTime) {
             return lastActiveSyncTime(Output.of(lastActiveSyncTime));
+        }
+
+        /**
+         * @param peerInstance The peer instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerInstance(@Nullable Output<String> peerInstance) {
+            $.peerInstance = peerInstance;
+            return this;
+        }
+
+        /**
+         * @param peerInstance The peer instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerInstance(String peerInstance) {
+            return peerInstance(Output.of(peerInstance));
         }
 
         /**

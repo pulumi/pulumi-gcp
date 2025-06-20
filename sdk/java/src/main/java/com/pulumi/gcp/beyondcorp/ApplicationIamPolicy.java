@@ -622,9 +622,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:beyondcorp/applicationIamPolicy:ApplicationIamPolicy")
 public class ApplicationIamPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> applicationId() {
         return this.applicationId;
     }
@@ -674,9 +682,17 @@ public class ApplicationIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="securityGatewaysId", refs={String.class}, tree="[0]")
     private Output<String> securityGatewaysId;
 
+    /**
+     * @return Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> securityGatewaysId() {
         return this.securityGatewaysId;
     }

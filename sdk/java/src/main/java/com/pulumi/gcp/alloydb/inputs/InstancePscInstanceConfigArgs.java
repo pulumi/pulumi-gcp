@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.alloydb.inputs.InstancePscInstanceConfigPscAutoConnectionArgs;
 import com.pulumi.gcp.alloydb.inputs.InstancePscInstanceConfigPscInterfaceConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -32,6 +33,23 @@ public final class InstancePscInstanceConfigArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<List<String>>> allowedConsumerProjects() {
         return Optional.ofNullable(this.allowedConsumerProjects);
+    }
+
+    /**
+     * Configurations for setting up PSC service automation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscAutoConnections")
+    private @Nullable Output<List<InstancePscInstanceConfigPscAutoConnectionArgs>> pscAutoConnections;
+
+    /**
+     * @return Configurations for setting up PSC service automation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InstancePscInstanceConfigPscAutoConnectionArgs>>> pscAutoConnections() {
+        return Optional.ofNullable(this.pscAutoConnections);
     }
 
     /**
@@ -97,6 +115,7 @@ public final class InstancePscInstanceConfigArgs extends com.pulumi.resources.Re
 
     private InstancePscInstanceConfigArgs(InstancePscInstanceConfigArgs $) {
         this.allowedConsumerProjects = $.allowedConsumerProjects;
+        this.pscAutoConnections = $.pscAutoConnections;
         this.pscDnsName = $.pscDnsName;
         this.pscInterfaceConfigs = $.pscInterfaceConfigs;
         this.serviceAttachmentLink = $.serviceAttachmentLink;
@@ -152,6 +171,40 @@ public final class InstancePscInstanceConfigArgs extends com.pulumi.resources.Re
          */
         public Builder allowedConsumerProjects(String... allowedConsumerProjects) {
             return allowedConsumerProjects(List.of(allowedConsumerProjects));
+        }
+
+        /**
+         * @param pscAutoConnections Configurations for setting up PSC service automation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutoConnections(@Nullable Output<List<InstancePscInstanceConfigPscAutoConnectionArgs>> pscAutoConnections) {
+            $.pscAutoConnections = pscAutoConnections;
+            return this;
+        }
+
+        /**
+         * @param pscAutoConnections Configurations for setting up PSC service automation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutoConnections(List<InstancePscInstanceConfigPscAutoConnectionArgs> pscAutoConnections) {
+            return pscAutoConnections(Output.of(pscAutoConnections));
+        }
+
+        /**
+         * @param pscAutoConnections Configurations for setting up PSC service automation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutoConnections(InstancePscInstanceConfigPscAutoConnectionArgs... pscAutoConnections) {
+            return pscAutoConnections(List.of(pscAutoConnections));
         }
 
         /**

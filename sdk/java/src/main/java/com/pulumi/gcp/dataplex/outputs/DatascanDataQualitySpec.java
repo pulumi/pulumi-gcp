@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataplex.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecPostScanActions;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRule;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -15,6 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatascanDataQualitySpec {
+    /**
+     * @return If set, the latest DataScan job result will be published to Dataplex Catalog.
+     * 
+     */
+    private @Nullable Boolean catalogPublishingEnabled;
     /**
      * @return Actions to take upon job completion.
      * Structure is documented below.
@@ -41,6 +47,13 @@ public final class DatascanDataQualitySpec {
     private @Nullable Double samplingPercent;
 
     private DatascanDataQualitySpec() {}
+    /**
+     * @return If set, the latest DataScan job result will be published to Dataplex Catalog.
+     * 
+     */
+    public Optional<Boolean> catalogPublishingEnabled() {
+        return Optional.ofNullable(this.catalogPublishingEnabled);
+    }
     /**
      * @return Actions to take upon job completion.
      * Structure is documented below.
@@ -83,6 +96,7 @@ public final class DatascanDataQualitySpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean catalogPublishingEnabled;
         private @Nullable DatascanDataQualitySpecPostScanActions postScanActions;
         private @Nullable String rowFilter;
         private @Nullable List<DatascanDataQualitySpecRule> rules;
@@ -90,12 +104,19 @@ public final class DatascanDataQualitySpec {
         public Builder() {}
         public Builder(DatascanDataQualitySpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.catalogPublishingEnabled = defaults.catalogPublishingEnabled;
     	      this.postScanActions = defaults.postScanActions;
     	      this.rowFilter = defaults.rowFilter;
     	      this.rules = defaults.rules;
     	      this.samplingPercent = defaults.samplingPercent;
         }
 
+        @CustomType.Setter
+        public Builder catalogPublishingEnabled(@Nullable Boolean catalogPublishingEnabled) {
+
+            this.catalogPublishingEnabled = catalogPublishingEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder postScanActions(@Nullable DatascanDataQualitySpecPostScanActions postScanActions) {
 
@@ -125,6 +146,7 @@ public final class DatascanDataQualitySpec {
         }
         public DatascanDataQualitySpec build() {
             final var _resultValue = new DatascanDataQualitySpec();
+            _resultValue.catalogPublishingEnabled = catalogPublishingEnabled;
             _resultValue.postScanActions = postScanActions;
             _resultValue.rowFilter = rowFilter;
             _resultValue.rules = rules;

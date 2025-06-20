@@ -15,14 +15,14 @@ public final class InstanceManagedBackupSourceArgs extends com.pulumi.resources.
     public static final InstanceManagedBackupSourceArgs Empty = new InstanceManagedBackupSourceArgs();
 
     /**
-     * Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+     * Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
      * 
      */
     @Import(name="backup", required=true)
     private Output<String> backup;
 
     /**
-     * @return Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+     * @return Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
      * 
      */
     public Output<String> backup() {
@@ -54,7 +54,7 @@ public final class InstanceManagedBackupSourceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param backup Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+         * @param backup Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class InstanceManagedBackupSourceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param backup Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+         * @param backup Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
          * 
          * @return builder
          * 

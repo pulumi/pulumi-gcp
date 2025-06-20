@@ -6,7 +6,10 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.URLMapTestHeaderArgs;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,6 +32,61 @@ public final class URLMapTestArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters.
+     * For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+     * For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer&#39;s redirect response. If urlRedirect specifies httpsRedirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies stripQuery, the test passes only if expectedOutputUrl does not contain any query parameters.
+     * expectedOutputUrl is optional when service is specified.
+     * 
+     */
+    @Import(name="expectedOutputUrl")
+    private @Nullable Output<String> expectedOutputUrl;
+
+    /**
+     * @return The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters.
+     * For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+     * For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer&#39;s redirect response. If urlRedirect specifies httpsRedirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies stripQuery, the test passes only if expectedOutputUrl does not contain any query parameters.
+     * expectedOutputUrl is optional when service is specified.
+     * 
+     */
+    public Optional<Output<String>> expectedOutputUrl() {
+        return Optional.ofNullable(this.expectedOutputUrl);
+    }
+
+    /**
+     * For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer&#39;s redirect response.
+     * expectedRedirectResponseCode cannot be set when service is set.
+     * 
+     */
+    @Import(name="expectedRedirectResponseCode")
+    private @Nullable Output<Integer> expectedRedirectResponseCode;
+
+    /**
+     * @return For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer&#39;s redirect response.
+     * expectedRedirectResponseCode cannot be set when service is set.
+     * 
+     */
+    public Optional<Output<Integer>> expectedRedirectResponseCode() {
+        return Optional.ofNullable(this.expectedRedirectResponseCode);
+    }
+
+    /**
+     * HTTP headers for this request.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="headers")
+    private @Nullable Output<List<URLMapTestHeaderArgs>> headers;
+
+    /**
+     * @return HTTP headers for this request.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<URLMapTestHeaderArgs>>> headers() {
+        return Optional.ofNullable(this.headers);
     }
 
     /**
@@ -65,21 +123,24 @@ public final class URLMapTestArgs extends com.pulumi.resources.ResourceArgs {
      * The backend service or backend bucket link that should be matched by this test.
      * 
      */
-    @Import(name="service", required=true)
-    private Output<String> service;
+    @Import(name="service")
+    private @Nullable Output<String> service;
 
     /**
      * @return The backend service or backend bucket link that should be matched by this test.
      * 
      */
-    public Output<String> service() {
-        return this.service;
+    public Optional<Output<String>> service() {
+        return Optional.ofNullable(this.service);
     }
 
     private URLMapTestArgs() {}
 
     private URLMapTestArgs(URLMapTestArgs $) {
         this.description = $.description;
+        this.expectedOutputUrl = $.expectedOutputUrl;
+        this.expectedRedirectResponseCode = $.expectedRedirectResponseCode;
+        this.headers = $.headers;
         this.host = $.host;
         this.path = $.path;
         this.service = $.service;
@@ -122,6 +183,90 @@ public final class URLMapTestArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param expectedOutputUrl The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters.
+         * For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+         * For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer&#39;s redirect response. If urlRedirect specifies httpsRedirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies stripQuery, the test passes only if expectedOutputUrl does not contain any query parameters.
+         * expectedOutputUrl is optional when service is specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expectedOutputUrl(@Nullable Output<String> expectedOutputUrl) {
+            $.expectedOutputUrl = expectedOutputUrl;
+            return this;
+        }
+
+        /**
+         * @param expectedOutputUrl The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters.
+         * For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+         * For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer&#39;s redirect response. If urlRedirect specifies httpsRedirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies stripQuery, the test passes only if expectedOutputUrl does not contain any query parameters.
+         * expectedOutputUrl is optional when service is specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expectedOutputUrl(String expectedOutputUrl) {
+            return expectedOutputUrl(Output.of(expectedOutputUrl));
+        }
+
+        /**
+         * @param expectedRedirectResponseCode For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer&#39;s redirect response.
+         * expectedRedirectResponseCode cannot be set when service is set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expectedRedirectResponseCode(@Nullable Output<Integer> expectedRedirectResponseCode) {
+            $.expectedRedirectResponseCode = expectedRedirectResponseCode;
+            return this;
+        }
+
+        /**
+         * @param expectedRedirectResponseCode For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer&#39;s redirect response.
+         * expectedRedirectResponseCode cannot be set when service is set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expectedRedirectResponseCode(Integer expectedRedirectResponseCode) {
+            return expectedRedirectResponseCode(Output.of(expectedRedirectResponseCode));
+        }
+
+        /**
+         * @param headers HTTP headers for this request.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headers(@Nullable Output<List<URLMapTestHeaderArgs>> headers) {
+            $.headers = headers;
+            return this;
+        }
+
+        /**
+         * @param headers HTTP headers for this request.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headers(List<URLMapTestHeaderArgs> headers) {
+            return headers(Output.of(headers));
+        }
+
+        /**
+         * @param headers HTTP headers for this request.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headers(URLMapTestHeaderArgs... headers) {
+            return headers(List.of(headers));
         }
 
         /**
@@ -172,7 +317,7 @@ public final class URLMapTestArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder service(Output<String> service) {
+        public Builder service(@Nullable Output<String> service) {
             $.service = service;
             return this;
         }
@@ -193,9 +338,6 @@ public final class URLMapTestArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.path == null) {
                 throw new MissingRequiredPropertyException("URLMapTestArgs", "path");
-            }
-            if ($.service == null) {
-                throw new MissingRequiredPropertyException("URLMapTestArgs", "service");
             }
             return $;
         }

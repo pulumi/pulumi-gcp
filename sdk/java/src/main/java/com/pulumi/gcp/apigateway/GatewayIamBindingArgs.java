@@ -25,9 +25,17 @@ public final class GatewayIamBindingArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="gateway", required=true)
     private Output<String> gateway;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> gateway() {
         return this.gateway;
     }
@@ -162,11 +170,23 @@ public final class GatewayIamBindingArgs extends com.pulumi.resources.ResourceAr
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param gateway Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway(Output<String> gateway) {
             $.gateway = gateway;
             return this;
         }
 
+        /**
+         * @param gateway Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway(String gateway) {
             return gateway(Output.of(gateway));
         }

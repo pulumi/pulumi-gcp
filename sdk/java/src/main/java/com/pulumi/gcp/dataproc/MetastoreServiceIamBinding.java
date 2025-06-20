@@ -451,9 +451,17 @@ public class MetastoreServiceIamBinding extends com.pulumi.resources.CustomResou
     public Output<String> role() {
         return this.role;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> serviceId() {
         return this.serviceId;
     }

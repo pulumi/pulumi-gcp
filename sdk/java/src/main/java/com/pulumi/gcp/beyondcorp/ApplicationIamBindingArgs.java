@@ -18,9 +18,17 @@ public final class ApplicationIamBindingArgs extends com.pulumi.resources.Resour
 
     public static final ApplicationIamBindingArgs Empty = new ApplicationIamBindingArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="applicationId", required=true)
     private Output<String> applicationId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> applicationId() {
         return this.applicationId;
     }
@@ -113,9 +121,17 @@ public final class ApplicationIamBindingArgs extends com.pulumi.resources.Resour
         return this.role;
     }
 
+    /**
+     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="securityGatewaysId", required=true)
     private Output<String> securityGatewaysId;
 
+    /**
+     * @return Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> securityGatewaysId() {
         return this.securityGatewaysId;
     }
@@ -149,11 +165,23 @@ public final class ApplicationIamBindingArgs extends com.pulumi.resources.Resour
             $ = new ApplicationIamBindingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param applicationId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationId(Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
 
+        /**
+         * @param applicationId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
         }
@@ -290,11 +318,23 @@ public final class ApplicationIamBindingArgs extends com.pulumi.resources.Resour
             return role(Output.of(role));
         }
 
+        /**
+         * @param securityGatewaysId Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGatewaysId(Output<String> securityGatewaysId) {
             $.securityGatewaysId = securityGatewaysId;
             return this;
         }
 
+        /**
+         * @param securityGatewaysId Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGatewaysId(String securityGatewaysId) {
             return securityGatewaysId(Output.of(securityGatewaysId));
         }

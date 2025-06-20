@@ -18,11 +18,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** `gcp.beyondcorp.Application` is deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+ * 
  * Specifies application endpoint(s) to protect behind a Security Gateway.
  * 
  * ## Example Usage
  * 
- * ### Beyondcorp Security Gateway Application Basic
+ * ### Beyondcorp Application Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -72,7 +74,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Beyondcorp Security Gateway Application Vpc
+ * ### Beyondcorp Application Vpc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dns.PolicyArgs;
 import com.pulumi.gcp.dns.inputs.PolicyState;
 import com.pulumi.gcp.dns.outputs.PolicyAlternativeNameServerConfig;
+import com.pulumi.gcp.dns.outputs.PolicyDns64Config;
 import com.pulumi.gcp.dns.outputs.PolicyNetwork;
 import java.lang.Boolean;
 import java.lang.String;
@@ -158,6 +159,22 @@ public class Policy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Configurations related to DNS64 for this Policy.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dns64Config", refs={PolicyDns64Config.class}, tree="[0]")
+    private Output<PolicyDns64Config> dns64Config;
+
+    /**
+     * @return Configurations related to DNS64 for this Policy.
+     * Structure is documented below.
+     * 
+     */
+    public Output<PolicyDns64Config> dns64Config() {
+        return this.dns64Config;
     }
     /**
      * Allows networks bound to this policy to receive DNS queries sent

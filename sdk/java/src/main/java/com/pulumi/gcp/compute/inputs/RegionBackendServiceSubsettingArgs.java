@@ -6,8 +6,11 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RegionBackendServiceSubsettingArgs extends com.pulumi.resources.ResourceArgs {
@@ -31,10 +34,38 @@ public final class RegionBackendServiceSubsettingArgs extends com.pulumi.resourc
         return this.policy;
     }
 
+    /**
+     * The number of backends per backend group assigned to each proxy instance or each service mesh client.
+     * An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+     * CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+     * subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+     * If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+     * of proxies/clients visible to each backend and vice versa.
+     * Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+     * 
+     */
+    @Import(name="subsetSize")
+    private @Nullable Output<Integer> subsetSize;
+
+    /**
+     * @return The number of backends per backend group assigned to each proxy instance or each service mesh client.
+     * An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+     * CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+     * subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+     * If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+     * of proxies/clients visible to each backend and vice versa.
+     * Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+     * 
+     */
+    public Optional<Output<Integer>> subsetSize() {
+        return Optional.ofNullable(this.subsetSize);
+    }
+
     private RegionBackendServiceSubsettingArgs() {}
 
     private RegionBackendServiceSubsettingArgs(RegionBackendServiceSubsettingArgs $) {
         this.policy = $.policy;
+        this.subsetSize = $.subsetSize;
     }
 
     public static Builder builder() {
@@ -76,6 +107,39 @@ public final class RegionBackendServiceSubsettingArgs extends com.pulumi.resourc
          */
         public Builder policy(String policy) {
             return policy(Output.of(policy));
+        }
+
+        /**
+         * @param subsetSize The number of backends per backend group assigned to each proxy instance or each service mesh client.
+         * An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+         * CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+         * subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+         * If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+         * of proxies/clients visible to each backend and vice versa.
+         * Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subsetSize(@Nullable Output<Integer> subsetSize) {
+            $.subsetSize = subsetSize;
+            return this;
+        }
+
+        /**
+         * @param subsetSize The number of backends per backend group assigned to each proxy instance or each service mesh client.
+         * An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+         * CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+         * subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+         * If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+         * of proxies/clients visible to each backend and vice versa.
+         * Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subsetSize(Integer subsetSize) {
+            return subsetSize(Output.of(subsetSize));
         }
 
         public RegionBackendServiceSubsettingArgs build() {

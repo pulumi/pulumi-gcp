@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PolicyBasedRouteFilter {
     /**
-     * @return The destination IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34; if protocol version is IPv4.
+     * @return The destination IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34;.
      * 
      * ***
      * 
@@ -26,19 +26,19 @@ public final class PolicyBasedRouteFilter {
     private @Nullable String ipProtocol;
     /**
      * @return Internet protocol versions this policy-based route applies to.
-     * Possible values are: `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
      * 
      */
     private String protocolVersion;
     /**
-     * @return The source IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34; if protocol version is IPv4.
+     * @return The source IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34;.
      * 
      */
     private @Nullable String srcRange;
 
     private PolicyBasedRouteFilter() {}
     /**
-     * @return The destination IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34; if protocol version is IPv4.
+     * @return The destination IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34;.
      * 
      * ***
      * 
@@ -55,14 +55,14 @@ public final class PolicyBasedRouteFilter {
     }
     /**
      * @return Internet protocol versions this policy-based route applies to.
-     * Possible values are: `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
      * 
      */
     public String protocolVersion() {
         return this.protocolVersion;
     }
     /**
-     * @return The source IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34; if protocol version is IPv4.
+     * @return The source IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34;.
      * 
      */
     public Optional<String> srcRange() {

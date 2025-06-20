@@ -48,6 +48,29 @@ public final class TargetHttpProxyState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to
+     * patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet.
+     * To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
+     * A base64-encoded string.
+     * 
+     */
+    @Import(name="fingerprint")
+    private @Nullable Output<String> fingerprint;
+
+    /**
+     * @return Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to
+     * patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet.
+     * To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
+     * A base64-encoded string.
+     * 
+     */
+    public Optional<Output<String>> fingerprint() {
+        return Optional.ofNullable(this.fingerprint);
+    }
+
+    /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is
      * not specified, a default value will be used. For Global
@@ -195,6 +218,7 @@ public final class TargetHttpProxyState extends com.pulumi.resources.ResourceArg
     private TargetHttpProxyState(TargetHttpProxyState $) {
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
+        this.fingerprint = $.fingerprint;
         this.httpKeepAliveTimeoutSec = $.httpKeepAliveTimeoutSec;
         this.name = $.name;
         this.project = $.project;
@@ -262,6 +286,35 @@ public final class TargetHttpProxyState extends com.pulumi.resources.ResourceArg
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param fingerprint Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+         * This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to
+         * patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet.
+         * To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
+         * A base64-encoded string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fingerprint(@Nullable Output<String> fingerprint) {
+            $.fingerprint = fingerprint;
+            return this;
+        }
+
+        /**
+         * @param fingerprint Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+         * This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to
+         * patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet.
+         * To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
+         * A base64-encoded string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fingerprint(String fingerprint) {
+            return fingerprint(Output.of(fingerprint));
         }
 
         /**

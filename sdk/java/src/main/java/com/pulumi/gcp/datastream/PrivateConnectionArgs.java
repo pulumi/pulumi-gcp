@@ -6,6 +6,7 @@ package com.pulumi.gcp.datastream;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.datastream.inputs.PrivateConnectionPscInterfaceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.PrivateConnectionVpcPeeringConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -50,16 +51,18 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -69,12 +72,16 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
     /**
      * The name of the location this private connection is located in.
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The name of the location this private connection is located in.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -96,11 +103,40 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
         return this.privateConnectionId;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * The PSC Interface configuration is used to create PSC Interface
+     * between Datastream and the consumer&#39;s PSC.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscInterfaceConfig")
+    private @Nullable Output<PrivateConnectionPscInterfaceConfigArgs> pscInterfaceConfig;
+
+    /**
+     * @return The PSC Interface configuration is used to create PSC Interface
+     * between Datastream and the consumer&#39;s PSC.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PrivateConnectionPscInterfaceConfigArgs>> pscInterfaceConfig() {
+        return Optional.ofNullable(this.pscInterfaceConfig);
     }
 
     /**
@@ -109,8 +145,8 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
      * Structure is documented below.
      * 
      */
-    @Import(name="vpcPeeringConfig", required=true)
-    private Output<PrivateConnectionVpcPeeringConfigArgs> vpcPeeringConfig;
+    @Import(name="vpcPeeringConfig")
+    private @Nullable Output<PrivateConnectionVpcPeeringConfigArgs> vpcPeeringConfig;
 
     /**
      * @return The VPC Peering configuration is used to create VPC peering
@@ -118,8 +154,8 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
      * Structure is documented below.
      * 
      */
-    public Output<PrivateConnectionVpcPeeringConfigArgs> vpcPeeringConfig() {
-        return this.vpcPeeringConfig;
+    public Optional<Output<PrivateConnectionVpcPeeringConfigArgs>> vpcPeeringConfig() {
+        return Optional.ofNullable(this.vpcPeeringConfig);
     }
 
     private PrivateConnectionArgs() {}
@@ -131,6 +167,7 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
         this.location = $.location;
         this.privateConnectionId = $.privateConnectionId;
         this.project = $.project;
+        this.pscInterfaceConfig = $.pscInterfaceConfig;
         this.vpcPeeringConfig = $.vpcPeeringConfig;
     }
 
@@ -195,8 +232,9 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-         * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels Labels.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -207,8 +245,9 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-         * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels Labels.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -220,6 +259,8 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param location The name of the location this private connection is located in.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -230,6 +271,8 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param location The name of the location this private connection is located in.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -259,13 +302,52 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
             return privateConnectionId(Output.of(privateConnectionId));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pscInterfaceConfig The PSC Interface configuration is used to create PSC Interface
+         * between Datastream and the consumer&#39;s PSC.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInterfaceConfig(@Nullable Output<PrivateConnectionPscInterfaceConfigArgs> pscInterfaceConfig) {
+            $.pscInterfaceConfig = pscInterfaceConfig;
+            return this;
+        }
+
+        /**
+         * @param pscInterfaceConfig The PSC Interface configuration is used to create PSC Interface
+         * between Datastream and the consumer&#39;s PSC.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInterfaceConfig(PrivateConnectionPscInterfaceConfigArgs pscInterfaceConfig) {
+            return pscInterfaceConfig(Output.of(pscInterfaceConfig));
         }
 
         /**
@@ -276,7 +358,7 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder vpcPeeringConfig(Output<PrivateConnectionVpcPeeringConfigArgs> vpcPeeringConfig) {
+        public Builder vpcPeeringConfig(@Nullable Output<PrivateConnectionVpcPeeringConfigArgs> vpcPeeringConfig) {
             $.vpcPeeringConfig = vpcPeeringConfig;
             return this;
         }
@@ -302,9 +384,6 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
             }
             if ($.privateConnectionId == null) {
                 throw new MissingRequiredPropertyException("PrivateConnectionArgs", "privateConnectionId");
-            }
-            if ($.vpcPeeringConfig == null) {
-                throw new MissingRequiredPropertyException("PrivateConnectionArgs", "vpcPeeringConfig");
             }
             return $;
         }

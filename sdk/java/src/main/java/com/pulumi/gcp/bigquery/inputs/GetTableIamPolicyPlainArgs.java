@@ -15,9 +15,17 @@ public final class GetTableIamPolicyPlainArgs extends com.pulumi.resources.Invok
 
     public static final GetTableIamPolicyPlainArgs Empty = new GetTableIamPolicyPlainArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="datasetId", required=true)
     private String datasetId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String datasetId() {
         return this.datasetId;
     }
@@ -39,9 +47,17 @@ public final class GetTableIamPolicyPlainArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="tableId", required=true)
     private String tableId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String tableId() {
         return this.tableId;
     }
@@ -72,6 +88,12 @@ public final class GetTableIamPolicyPlainArgs extends com.pulumi.resources.Invok
             $ = new GetTableIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param datasetId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder datasetId(String datasetId) {
             $.datasetId = datasetId;
             return this;
@@ -89,6 +111,12 @@ public final class GetTableIamPolicyPlainArgs extends com.pulumi.resources.Invok
             return this;
         }
 
+        /**
+         * @param tableId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableId(String tableId) {
             $.tableId = tableId;
             return this;

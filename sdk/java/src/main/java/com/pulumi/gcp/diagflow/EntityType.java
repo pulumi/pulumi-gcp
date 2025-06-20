@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicEntityType = new EntityType("basicEntityType", EntityTypeArgs.builder()
- *             .displayName("")
+ *             .displayName("basic-entity-type")
  *             .kind("KIND_MAP")
  *             .entities(            
  *                 EntityTypeEntityArgs.builder()

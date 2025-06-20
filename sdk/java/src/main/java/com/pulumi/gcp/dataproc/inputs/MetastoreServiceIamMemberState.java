@@ -132,9 +132,17 @@ public final class MetastoreServiceIamMemberState extends com.pulumi.resources.R
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> serviceId() {
         return Optional.ofNullable(this.serviceId);
     }
@@ -317,11 +325,23 @@ public final class MetastoreServiceIamMemberState extends com.pulumi.resources.R
             return role(Output.of(role));
         }
 
+        /**
+         * @param serviceId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceId(@Nullable Output<String> serviceId) {
             $.serviceId = serviceId;
             return this;
         }
 
+        /**
+         * @param serviceId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceId(String serviceId) {
             return serviceId(Output.of(serviceId));
         }

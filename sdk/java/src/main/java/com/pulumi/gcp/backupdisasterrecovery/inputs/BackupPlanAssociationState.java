@@ -19,6 +19,9 @@ public final class BackupPlanAssociationState extends com.pulumi.resources.Resou
 
     /**
      * The BP with which resource needs to be created
+     * Note:
+     * - A Backup Plan configured for &#39;compute.googleapis.com/Instance&#39;, can only protect instance type resources.
+     * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
      * 
      */
     @Import(name="backupPlan")
@@ -26,6 +29,9 @@ public final class BackupPlanAssociationState extends com.pulumi.resources.Resou
 
     /**
      * @return The BP with which resource needs to be created
+     * Note:
+     * - A Backup Plan configured for &#39;compute.googleapis.com/Instance&#39;, can only protect instance type resources.
+     * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
      * 
      */
     public Optional<Output<String>> backupPlan() {
@@ -159,14 +165,16 @@ public final class BackupPlanAssociationState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The resource type of workload on which backupplan is applied
+     * The resource type of workload on which backupplan is applied.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;compute.googleapis.com/RegionDisk&#34;
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The resource type of workload on which backupplan is applied
+     * @return The resource type of workload on which backupplan is applied.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;compute.googleapis.com/RegionDisk&#34;
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -242,6 +250,9 @@ public final class BackupPlanAssociationState extends com.pulumi.resources.Resou
 
         /**
          * @param backupPlan The BP with which resource needs to be created
+         * Note:
+         * - A Backup Plan configured for &#39;compute.googleapis.com/Instance&#39;, can only protect instance type resources.
+         * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
          * 
          * @return builder
          * 
@@ -253,6 +264,9 @@ public final class BackupPlanAssociationState extends com.pulumi.resources.Resou
 
         /**
          * @param backupPlan The BP with which resource needs to be created
+         * Note:
+         * - A Backup Plan configured for &#39;compute.googleapis.com/Instance&#39;, can only protect instance type resources.
+         * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
          * 
          * @return builder
          * 
@@ -436,7 +450,8 @@ public final class BackupPlanAssociationState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceType The resource type of workload on which backupplan is applied
+         * @param resourceType The resource type of workload on which backupplan is applied.
+         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;compute.googleapis.com/RegionDisk&#34;
          * 
          * @return builder
          * 
@@ -447,7 +462,8 @@ public final class BackupPlanAssociationState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceType The resource type of workload on which backupplan is applied
+         * @param resourceType The resource type of workload on which backupplan is applied.
+         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;compute.googleapis.com/RegionDisk&#34;
          * 
          * @return builder
          * 

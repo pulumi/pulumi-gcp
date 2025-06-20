@@ -15,6 +15,7 @@ import com.pulumi.gcp.storage.outputs.BucketCor;
 import com.pulumi.gcp.storage.outputs.BucketCustomPlacementConfig;
 import com.pulumi.gcp.storage.outputs.BucketEncryption;
 import com.pulumi.gcp.storage.outputs.BucketHierarchicalNamespace;
+import com.pulumi.gcp.storage.outputs.BucketIpFilter;
 import com.pulumi.gcp.storage.outputs.BucketLifecycleRule;
 import com.pulumi.gcp.storage.outputs.BucketLogging;
 import com.pulumi.gcp.storage.outputs.BucketRetentionPolicy;
@@ -230,7 +231,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var auto_expire = new Bucket("auto-expire", BucketArgs.builder()
+ *         var no_public_access = new Bucket("no-public-access", BucketArgs.builder()
  *             .name("no-public-access-bucket")
  *             .location("US")
  *             .forceDestroy(true)
@@ -269,7 +270,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var auto_expire = new Bucket("auto-expire", BucketArgs.builder()
+ *         var hns_enabled = new Bucket("hns-enabled", BucketArgs.builder()
  *             .name("hns-enabled-bucket")
  *             .location("US")
  *             .forceDestroy(true)
@@ -438,6 +439,20 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<BucketHierarchicalNamespace>> hierarchicalNamespace() {
         return Codegen.optional(this.hierarchicalNamespace);
+    }
+    /**
+     * The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+     * 
+     */
+    @Export(name="ipFilter", refs={BucketIpFilter.class}, tree="[0]")
+    private Output</* @Nullable */ BucketIpFilter> ipFilter;
+
+    /**
+     * @return The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
+     * 
+     */
+    public Output<Optional<BucketIpFilter>> ipFilter() {
+        return Codegen.optional(this.ipFilter);
     }
     /**
      * A map of key/value label pairs to assign to the bucket.

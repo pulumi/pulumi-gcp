@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.memorystore.inputs.InstanceAutomatedBackupConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceCrossInstanceReplicationConfigArgs;
+import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceGcsSourceArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
@@ -97,16 +98,39 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Immutable. User inputs for the auto-created PSC connections.
+     * Immutable. User inputs for the auto-created endpoints connections.
      * 
      */
+    @Import(name="desiredAutoCreatedEndpoints")
+    private @Nullable Output<List<InstanceDesiredAutoCreatedEndpointArgs>> desiredAutoCreatedEndpoints;
+
+    /**
+     * @return Immutable. User inputs for the auto-created endpoints connections.
+     * 
+     */
+    public Optional<Output<List<InstanceDesiredAutoCreatedEndpointArgs>>> desiredAutoCreatedEndpoints() {
+        return Optional.ofNullable(this.desiredAutoCreatedEndpoints);
+    }
+
+    /**
+     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * 
+     * @deprecated
+     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * 
+     */
+    @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
     @Import(name="desiredPscAutoConnections")
     private @Nullable Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections;
 
     /**
-     * @return Immutable. User inputs for the auto-created PSC connections.
+     * @return `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * 
+     * @deprecated
+     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
      * 
      */
+    @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
     public Optional<Output<List<InstanceDesiredPscAutoConnectionArgs>>> desiredPscAutoConnections() {
         return Optional.ofNullable(this.desiredPscAutoConnections);
     }
@@ -416,6 +440,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.automatedBackupConfig = $.automatedBackupConfig;
         this.crossInstanceReplicationConfig = $.crossInstanceReplicationConfig;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
+        this.desiredAutoCreatedEndpoints = $.desiredAutoCreatedEndpoints;
         this.desiredPscAutoConnections = $.desiredPscAutoConnections;
         this.engineConfigs = $.engineConfigs;
         this.engineVersion = $.engineVersion;
@@ -546,32 +571,75 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredPscAutoConnections Immutable. User inputs for the auto-created PSC connections.
+         * @param desiredAutoCreatedEndpoints Immutable. User inputs for the auto-created endpoints connections.
          * 
          * @return builder
          * 
          */
+        public Builder desiredAutoCreatedEndpoints(@Nullable Output<List<InstanceDesiredAutoCreatedEndpointArgs>> desiredAutoCreatedEndpoints) {
+            $.desiredAutoCreatedEndpoints = desiredAutoCreatedEndpoints;
+            return this;
+        }
+
+        /**
+         * @param desiredAutoCreatedEndpoints Immutable. User inputs for the auto-created endpoints connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredAutoCreatedEndpoints(List<InstanceDesiredAutoCreatedEndpointArgs> desiredAutoCreatedEndpoints) {
+            return desiredAutoCreatedEndpoints(Output.of(desiredAutoCreatedEndpoints));
+        }
+
+        /**
+         * @param desiredAutoCreatedEndpoints Immutable. User inputs for the auto-created endpoints connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs... desiredAutoCreatedEndpoints) {
+            return desiredAutoCreatedEndpoints(List.of(desiredAutoCreatedEndpoints));
+        }
+
+        /**
+         * @param desiredPscAutoConnections `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+         * 
+         */
+        @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
         public Builder desiredPscAutoConnections(@Nullable Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections) {
             $.desiredPscAutoConnections = desiredPscAutoConnections;
             return this;
         }
 
         /**
-         * @param desiredPscAutoConnections Immutable. User inputs for the auto-created PSC connections.
+         * @param desiredPscAutoConnections `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+         * 
          */
+        @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
         public Builder desiredPscAutoConnections(List<InstanceDesiredPscAutoConnectionArgs> desiredPscAutoConnections) {
             return desiredPscAutoConnections(Output.of(desiredPscAutoConnections));
         }
 
         /**
-         * @param desiredPscAutoConnections Immutable. User inputs for the auto-created PSC connections.
+         * @param desiredPscAutoConnections `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+         * 
          */
+        @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
         public Builder desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs... desiredPscAutoConnections) {
             return desiredPscAutoConnections(List.of(desiredPscAutoConnections));
         }

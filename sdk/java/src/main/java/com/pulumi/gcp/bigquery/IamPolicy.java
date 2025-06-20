@@ -338,9 +338,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigquery/iamPolicy:IamPolicy")
 public class IamPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="datasetId", refs={String.class}, tree="[0]")
     private Output<String> datasetId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> datasetId() {
         return this.datasetId;
     }
@@ -390,9 +398,17 @@ public class IamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="tableId", refs={String.class}, tree="[0]")
     private Output<String> tableId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> tableId() {
         return this.tableId;
     }

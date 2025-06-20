@@ -5,6 +5,7 @@ package com.pulumi.gcp.filestore.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.filestore.inputs.InstanceDirectoryServicesArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceEffectiveReplicationArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceInitialReplicationArgs;
@@ -84,6 +85,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * 
+     */
+    @Import(name="directoryServices")
+    private @Nullable Output<InstanceDirectoryServicesArgs> directoryServices;
+
+    /**
+     * @return Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * 
+     */
+    public Optional<Output<InstanceDirectoryServicesArgs>> directoryServices() {
+        return Optional.ofNullable(this.directoryServices);
+    }
+
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -152,7 +168,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
      * instance only, indicating the active as the peer_instance
      * 
      */
@@ -160,7 +176,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<InstanceInitialReplicationArgs> initialReplication;
 
     /**
-     * @return Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * @return Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
      * instance only, indicating the active as the peer_instance
      * 
      */
@@ -379,6 +395,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.deletionProtectionReason = $.deletionProtectionReason;
         this.description = $.description;
+        this.directoryServices = $.directoryServices;
         this.effectiveLabels = $.effectiveLabels;
         this.effectiveReplications = $.effectiveReplications;
         this.etag = $.etag;
@@ -501,6 +518,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param directoryServices Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directoryServices(@Nullable Output<InstanceDirectoryServicesArgs> directoryServices) {
+            $.directoryServices = directoryServices;
+            return this;
+        }
+
+        /**
+         * @param directoryServices Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directoryServices(InstanceDirectoryServicesArgs directoryServices) {
+            return directoryServices(Output.of(directoryServices));
+        }
+
+        /**
          * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
          * 
          * @return builder
@@ -604,7 +642,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialReplication Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+         * @param initialReplication Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
          * instance only, indicating the active as the peer_instance
          * 
          * @return builder
@@ -616,7 +654,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialReplication Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+         * @param initialReplication Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
          * instance only, indicating the active as the peer_instance
          * 
          * @return builder

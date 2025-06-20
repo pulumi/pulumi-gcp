@@ -609,14 +609,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:iap/webTypeAppEngingIamPolicy:WebTypeAppEngingIamPolicy")
 public class WebTypeAppEngingIamPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
-     * @return Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> appId() {

@@ -28,6 +28,7 @@ import com.pulumi.gcp.container.outputs.GetClusterMasterAuth;
 import com.pulumi.gcp.container.outputs.GetClusterMasterAuthorizedNetworksConfig;
 import com.pulumi.gcp.container.outputs.GetClusterMeshCertificate;
 import com.pulumi.gcp.container.outputs.GetClusterMonitoringConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNetworkPerformanceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePool;
@@ -99,6 +100,7 @@ public final class GetClusterResult {
      */
     private String id;
     private List<GetClusterIdentityServiceConfig> identityServiceConfigs;
+    private String inTransitEncryptionConfig;
     private Integer initialNodeCount;
     private List<GetClusterIpAllocationPolicy> ipAllocationPolicies;
     private String labelFingerprint;
@@ -115,6 +117,7 @@ public final class GetClusterResult {
     private String monitoringService;
     private String name;
     private String network;
+    private List<GetClusterNetworkPerformanceConfig> networkPerformanceConfigs;
     private List<GetClusterNetworkPolicy> networkPolicies;
     private String networkingMode;
     private List<GetClusterNodeConfig> nodeConfigs;
@@ -262,6 +265,9 @@ public final class GetClusterResult {
     public List<GetClusterIdentityServiceConfig> identityServiceConfigs() {
         return this.identityServiceConfigs;
     }
+    public String inTransitEncryptionConfig() {
+        return this.inTransitEncryptionConfig;
+    }
     public Integer initialNodeCount() {
         return this.initialNodeCount;
     }
@@ -309,6 +315,9 @@ public final class GetClusterResult {
     }
     public String network() {
         return this.network;
+    }
+    public List<GetClusterNetworkPerformanceConfig> networkPerformanceConfigs() {
+        return this.networkPerformanceConfigs;
     }
     public List<GetClusterNetworkPolicy> networkPolicies() {
         return this.networkPolicies;
@@ -455,6 +464,7 @@ public final class GetClusterResult {
         private List<GetClusterGatewayApiConfig> gatewayApiConfigs;
         private String id;
         private List<GetClusterIdentityServiceConfig> identityServiceConfigs;
+        private String inTransitEncryptionConfig;
         private Integer initialNodeCount;
         private List<GetClusterIpAllocationPolicy> ipAllocationPolicies;
         private String labelFingerprint;
@@ -471,6 +481,7 @@ public final class GetClusterResult {
         private String monitoringService;
         private String name;
         private String network;
+        private List<GetClusterNetworkPerformanceConfig> networkPerformanceConfigs;
         private List<GetClusterNetworkPolicy> networkPolicies;
         private String networkingMode;
         private List<GetClusterNodeConfig> nodeConfigs;
@@ -543,6 +554,7 @@ public final class GetClusterResult {
     	      this.gatewayApiConfigs = defaults.gatewayApiConfigs;
     	      this.id = defaults.id;
     	      this.identityServiceConfigs = defaults.identityServiceConfigs;
+    	      this.inTransitEncryptionConfig = defaults.inTransitEncryptionConfig;
     	      this.initialNodeCount = defaults.initialNodeCount;
     	      this.ipAllocationPolicies = defaults.ipAllocationPolicies;
     	      this.labelFingerprint = defaults.labelFingerprint;
@@ -559,6 +571,7 @@ public final class GetClusterResult {
     	      this.monitoringService = defaults.monitoringService;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
     	      this.networkPolicies = defaults.networkPolicies;
     	      this.networkingMode = defaults.networkingMode;
     	      this.nodeConfigs = defaults.nodeConfigs;
@@ -931,6 +944,14 @@ public final class GetClusterResult {
             return identityServiceConfigs(List.of(identityServiceConfigs));
         }
         @CustomType.Setter
+        public Builder inTransitEncryptionConfig(String inTransitEncryptionConfig) {
+            if (inTransitEncryptionConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "inTransitEncryptionConfig");
+            }
+            this.inTransitEncryptionConfig = inTransitEncryptionConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder initialNodeCount(Integer initialNodeCount) {
             if (initialNodeCount == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "initialNodeCount");
@@ -1076,6 +1097,17 @@ public final class GetClusterResult {
             }
             this.network = network;
             return this;
+        }
+        @CustomType.Setter
+        public Builder networkPerformanceConfigs(List<GetClusterNetworkPerformanceConfig> networkPerformanceConfigs) {
+            if (networkPerformanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "networkPerformanceConfigs");
+            }
+            this.networkPerformanceConfigs = networkPerformanceConfigs;
+            return this;
+        }
+        public Builder networkPerformanceConfigs(GetClusterNetworkPerformanceConfig... networkPerformanceConfigs) {
+            return networkPerformanceConfigs(List.of(networkPerformanceConfigs));
         }
         @CustomType.Setter
         public Builder networkPolicies(List<GetClusterNetworkPolicy> networkPolicies) {
@@ -1440,6 +1472,7 @@ public final class GetClusterResult {
             _resultValue.gatewayApiConfigs = gatewayApiConfigs;
             _resultValue.id = id;
             _resultValue.identityServiceConfigs = identityServiceConfigs;
+            _resultValue.inTransitEncryptionConfig = inTransitEncryptionConfig;
             _resultValue.initialNodeCount = initialNodeCount;
             _resultValue.ipAllocationPolicies = ipAllocationPolicies;
             _resultValue.labelFingerprint = labelFingerprint;
@@ -1456,6 +1489,7 @@ public final class GetClusterResult {
             _resultValue.monitoringService = monitoringService;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.networkPerformanceConfigs = networkPerformanceConfigs;
             _resultValue.networkPolicies = networkPolicies;
             _resultValue.networkingMode = networkingMode;
             _resultValue.nodeConfigs = nodeConfigs;

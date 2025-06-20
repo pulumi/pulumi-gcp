@@ -14,6 +14,7 @@ import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingBigqueryDataset;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingDataProvider;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingPublisher;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingRestrictedExportConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -255,6 +256,67 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquery Analyticshub Listing Log Linked Dataset Query User
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.Listing;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var listingLogEmail = new DataExchange("listingLogEmail", DataExchangeArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId("tf_test_log_email_de")
+ *             .displayName("tf_test_log_email_de")
+ *             .description("Example for log email test")
+ *             .build());
+ * 
+ *         var listingLogEmailDataset = new Dataset("listingLogEmailDataset", DatasetArgs.builder()
+ *             .datasetId("tf_test_log_email_ds")
+ *             .friendlyName("tf_test_log_email_ds")
+ *             .description("Example for log email test")
+ *             .location("US")
+ *             .build());
+ * 
+ *         var listing = new Listing("listing", ListingArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId(listingLogEmail.dataExchangeId())
+ *             .listingId("tf_test_log_email_listing")
+ *             .displayName("tf_test_log_email_listing")
+ *             .description("Example for log email test")
+ *             .logLinkedDatasetQueryUserEmail(true)
+ *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
+ *                 .dataset(listingLogEmailDataset.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -426,6 +488,22 @@ public class Listing extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+     * querying user.
+     * 
+     */
+    @Export(name="logLinkedDatasetQueryUserEmail", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> logLinkedDatasetQueryUserEmail;
+
+    /**
+     * @return If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
+     * querying user.
+     * 
+     */
+    public Output<Optional<Boolean>> logLinkedDatasetQueryUserEmail() {
+        return Codegen.optional(this.logLinkedDatasetQueryUserEmail);
     }
     /**
      * The resource name of the listing. e.g. &#34;projects/myproject/locations/US/dataExchanges/123/listings/456&#34;

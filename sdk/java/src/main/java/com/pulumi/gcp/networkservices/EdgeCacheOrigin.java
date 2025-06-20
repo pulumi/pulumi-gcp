@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkservices.EdgeCacheOriginArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginState;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheOriginAwsV4Authentication;
+import com.pulumi.gcp.networkservices.outputs.EdgeCacheOriginFlexShielding;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheOriginOriginOverrideAction;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheOriginOriginRedirect;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheOriginTimeout;
@@ -305,6 +306,24 @@ public class EdgeCacheOrigin extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> failoverOrigin() {
         return Codegen.optional(this.failoverOrigin);
+    }
+    /**
+     * The FlexShieldingOptions to be used for all routes to this origin.
+     * If not set, defaults to a global caching layer in front of the origin.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="flexShielding", refs={EdgeCacheOriginFlexShielding.class}, tree="[0]")
+    private Output</* @Nullable */ EdgeCacheOriginFlexShielding> flexShielding;
+
+    /**
+     * @return The FlexShieldingOptions to be used for all routes to this origin.
+     * If not set, defaults to a global caching layer in front of the origin.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<EdgeCacheOriginFlexShielding>> flexShielding() {
+        return Codegen.optional(this.flexShielding);
     }
     /**
      * Set of label tags associated with the EdgeCache resource.

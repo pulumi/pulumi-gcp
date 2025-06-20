@@ -236,7 +236,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.memorystore.Instance;
  * import com.pulumi.gcp.memorystore.InstanceArgs;
- * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
  * import com.pulumi.gcp.compute.ForwardingRule;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
  * import com.pulumi.gcp.memorystore.InstanceDesiredUserCreatedEndpoints;
@@ -306,7 +306,7 @@ import javax.annotation.Nullable;
  *         var instance_user_auto_connInstance = new Instance("instance-user-auto-connInstance", InstanceArgs.builder()
  *             .instanceId("instance-user-auto-conn")
  *             .shardCount(1)
- *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
+ *             .desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs.builder()
  *                 .network(network1.id())
  *                 .projectId(project.projectId())
  *                 .build())

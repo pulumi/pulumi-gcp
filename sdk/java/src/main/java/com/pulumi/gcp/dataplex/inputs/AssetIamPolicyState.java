@@ -30,9 +30,17 @@ public final class AssetIamPolicyState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.asset);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="dataplexZone")
     private @Nullable Output<String> dataplexZone;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> dataplexZone() {
         return Optional.ofNullable(this.dataplexZone);
     }
@@ -52,16 +60,36 @@ public final class AssetIamPolicyState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.etag);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="lake")
     private @Nullable Output<String> lake;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> lake() {
         return Optional.ofNullable(this.lake);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     * 
+     */
     @Import(name="location")
     private @Nullable Output<String> location;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     * 
+     */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
@@ -151,11 +179,23 @@ public final class AssetIamPolicyState extends com.pulumi.resources.ResourceArgs
             return asset(Output.of(asset));
         }
 
+        /**
+         * @param dataplexZone Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataplexZone(@Nullable Output<String> dataplexZone) {
             $.dataplexZone = dataplexZone;
             return this;
         }
 
+        /**
+         * @param dataplexZone Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataplexZone(String dataplexZone) {
             return dataplexZone(Output.of(dataplexZone));
         }
@@ -181,20 +221,48 @@ public final class AssetIamPolicyState extends com.pulumi.resources.ResourceArgs
             return etag(Output.of(etag));
         }
 
+        /**
+         * @param lake Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder lake(@Nullable Output<String> lake) {
             $.lake = lake;
             return this;
         }
 
+        /**
+         * @param lake Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder lake(String lake) {
             return lake(Output.of(lake));
         }
 
+        /**
+         * @param location Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(@Nullable Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }

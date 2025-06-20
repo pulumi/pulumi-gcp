@@ -16,9 +16,17 @@ public final class DatascanIamPolicyArgs extends com.pulumi.resources.ResourceAr
 
     public static final DatascanIamPolicyArgs Empty = new DatascanIamPolicyArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="dataScanId", required=true)
     private Output<String> dataScanId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> dataScanId() {
         return this.dataScanId;
     }
@@ -105,11 +113,23 @@ public final class DatascanIamPolicyArgs extends com.pulumi.resources.ResourceAr
             $ = new DatascanIamPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dataScanId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataScanId(Output<String> dataScanId) {
             $.dataScanId = dataScanId;
             return this;
         }
 
+        /**
+         * @param dataScanId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataScanId(String dataScanId) {
             return dataScanId(Output.of(dataScanId));
         }

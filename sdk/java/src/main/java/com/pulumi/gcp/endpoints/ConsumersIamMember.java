@@ -75,9 +75,17 @@ public class ConsumersIamMember extends com.pulumi.resources.CustomResource {
     public Output<Optional<ConsumersIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="consumerProject", refs={String.class}, tree="[0]")
     private Output<String> consumerProject;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> consumerProject() {
         return this.consumerProject;
     }
@@ -147,9 +155,17 @@ public class ConsumersIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> role() {
         return this.role;
     }
+    /**
+     * The name of the service. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
+    /**
+     * @return The name of the service. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> serviceName() {
         return this.serviceName;
     }

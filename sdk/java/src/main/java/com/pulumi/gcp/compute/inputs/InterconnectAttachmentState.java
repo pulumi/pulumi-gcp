@@ -38,6 +38,21 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
+     * URL of the AttachmentGroup that includes this Attachment.
+     * 
+     */
+    @Import(name="attachmentGroup")
+    private @Nullable Output<String> attachmentGroup;
+
+    /**
+     * @return URL of the AttachmentGroup that includes this Attachment.
+     * 
+     */
+    public Optional<Output<String>> attachmentGroup() {
+        return Optional.ofNullable(this.attachmentGroup);
+    }
+
+    /**
      * Provisioned bandwidth capacity for the interconnect attachment.
      * For attachments of type DEDICATED, the user can set the bandwidth.
      * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
@@ -60,6 +75,74 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> bandwidth() {
         return Optional.ofNullable(this.bandwidth);
+    }
+
+    /**
+     * Single IPv4 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 203.0.113.1/29
+     * 
+     */
+    @Import(name="candidateCloudRouterIpAddress")
+    private @Nullable Output<String> candidateCloudRouterIpAddress;
+
+    /**
+     * @return Single IPv4 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 203.0.113.1/29
+     * 
+     */
+    public Optional<Output<String>> candidateCloudRouterIpAddress() {
+        return Optional.ofNullable(this.candidateCloudRouterIpAddress);
+    }
+
+    /**
+     * Single IPv6 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 2001:db8::1/125
+     * 
+     */
+    @Import(name="candidateCloudRouterIpv6Address")
+    private @Nullable Output<String> candidateCloudRouterIpv6Address;
+
+    /**
+     * @return Single IPv6 address + prefix length to be configured on the cloud router interface for this
+     * interconnect attachment. Example: 2001:db8::1/125
+     * 
+     */
+    public Optional<Output<String>> candidateCloudRouterIpv6Address() {
+        return Optional.ofNullable(this.candidateCloudRouterIpv6Address);
+    }
+
+    /**
+     * Single IPv4 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 203.0.113.2/29
+     * 
+     */
+    @Import(name="candidateCustomerRouterIpAddress")
+    private @Nullable Output<String> candidateCustomerRouterIpAddress;
+
+    /**
+     * @return Single IPv4 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 203.0.113.2/29
+     * 
+     */
+    public Optional<Output<String>> candidateCustomerRouterIpAddress() {
+        return Optional.ofNullable(this.candidateCustomerRouterIpAddress);
+    }
+
+    /**
+     * Single IPv6 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 2001:db8::2/125
+     * 
+     */
+    @Import(name="candidateCustomerRouterIpv6Address")
+    private @Nullable Output<String> candidateCustomerRouterIpv6Address;
+
+    /**
+     * @return Single IPv6 address + prefix length to be configured on the customer router interface for this
+     * interconnect attachment. Example: 2001:db8::2/125
+     * 
+     */
+    public Optional<Output<String>> candidateCustomerRouterIpv6Address() {
+        return Optional.ofNullable(this.candidateCustomerRouterIpv6Address);
     }
 
     /**
@@ -392,16 +475,16 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Maximum Transmission Unit (MTU), in bytes, of packets passing through
-     * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+     * Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+     * Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
      * 
      */
     @Import(name="mtu")
     private @Nullable Output<String> mtu;
 
     /**
-     * @return Maximum Transmission Unit (MTU), in bytes, of packets passing through
-     * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+     * @return Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+     * Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
      * 
      */
     public Optional<Output<String>> mtu() {
@@ -682,7 +765,12 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
 
     private InterconnectAttachmentState(InterconnectAttachmentState $) {
         this.adminEnabled = $.adminEnabled;
+        this.attachmentGroup = $.attachmentGroup;
         this.bandwidth = $.bandwidth;
+        this.candidateCloudRouterIpAddress = $.candidateCloudRouterIpAddress;
+        this.candidateCloudRouterIpv6Address = $.candidateCloudRouterIpv6Address;
+        this.candidateCustomerRouterIpAddress = $.candidateCustomerRouterIpAddress;
+        this.candidateCustomerRouterIpv6Address = $.candidateCustomerRouterIpv6Address;
         this.candidateSubnets = $.candidateSubnets;
         this.cloudRouterIpAddress = $.cloudRouterIpAddress;
         this.cloudRouterIpv6Address = $.cloudRouterIpv6Address;
@@ -757,6 +845,27 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param attachmentGroup URL of the AttachmentGroup that includes this Attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachmentGroup(@Nullable Output<String> attachmentGroup) {
+            $.attachmentGroup = attachmentGroup;
+            return this;
+        }
+
+        /**
+         * @param attachmentGroup URL of the AttachmentGroup that includes this Attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachmentGroup(String attachmentGroup) {
+            return attachmentGroup(Output.of(attachmentGroup));
+        }
+
+        /**
          * @param bandwidth Provisioned bandwidth capacity for the interconnect attachment.
          * For attachments of type DEDICATED, the user can set the bandwidth.
          * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
@@ -785,6 +894,98 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
          */
         public Builder bandwidth(String bandwidth) {
             return bandwidth(Output.of(bandwidth));
+        }
+
+        /**
+         * @param candidateCloudRouterIpAddress Single IPv4 address + prefix length to be configured on the cloud router interface for this
+         * interconnect attachment. Example: 203.0.113.1/29
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCloudRouterIpAddress(@Nullable Output<String> candidateCloudRouterIpAddress) {
+            $.candidateCloudRouterIpAddress = candidateCloudRouterIpAddress;
+            return this;
+        }
+
+        /**
+         * @param candidateCloudRouterIpAddress Single IPv4 address + prefix length to be configured on the cloud router interface for this
+         * interconnect attachment. Example: 203.0.113.1/29
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCloudRouterIpAddress(String candidateCloudRouterIpAddress) {
+            return candidateCloudRouterIpAddress(Output.of(candidateCloudRouterIpAddress));
+        }
+
+        /**
+         * @param candidateCloudRouterIpv6Address Single IPv6 address + prefix length to be configured on the cloud router interface for this
+         * interconnect attachment. Example: 2001:db8::1/125
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCloudRouterIpv6Address(@Nullable Output<String> candidateCloudRouterIpv6Address) {
+            $.candidateCloudRouterIpv6Address = candidateCloudRouterIpv6Address;
+            return this;
+        }
+
+        /**
+         * @param candidateCloudRouterIpv6Address Single IPv6 address + prefix length to be configured on the cloud router interface for this
+         * interconnect attachment. Example: 2001:db8::1/125
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCloudRouterIpv6Address(String candidateCloudRouterIpv6Address) {
+            return candidateCloudRouterIpv6Address(Output.of(candidateCloudRouterIpv6Address));
+        }
+
+        /**
+         * @param candidateCustomerRouterIpAddress Single IPv4 address + prefix length to be configured on the customer router interface for this
+         * interconnect attachment. Example: 203.0.113.2/29
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCustomerRouterIpAddress(@Nullable Output<String> candidateCustomerRouterIpAddress) {
+            $.candidateCustomerRouterIpAddress = candidateCustomerRouterIpAddress;
+            return this;
+        }
+
+        /**
+         * @param candidateCustomerRouterIpAddress Single IPv4 address + prefix length to be configured on the customer router interface for this
+         * interconnect attachment. Example: 203.0.113.2/29
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCustomerRouterIpAddress(String candidateCustomerRouterIpAddress) {
+            return candidateCustomerRouterIpAddress(Output.of(candidateCustomerRouterIpAddress));
+        }
+
+        /**
+         * @param candidateCustomerRouterIpv6Address Single IPv6 address + prefix length to be configured on the customer router interface for this
+         * interconnect attachment. Example: 2001:db8::2/125
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCustomerRouterIpv6Address(@Nullable Output<String> candidateCustomerRouterIpv6Address) {
+            $.candidateCustomerRouterIpv6Address = candidateCustomerRouterIpv6Address;
+            return this;
+        }
+
+        /**
+         * @param candidateCustomerRouterIpv6Address Single IPv6 address + prefix length to be configured on the customer router interface for this
+         * interconnect attachment. Example: 2001:db8::2/125
+         * 
+         * @return builder
+         * 
+         */
+        public Builder candidateCustomerRouterIpv6Address(String candidateCustomerRouterIpv6Address) {
+            return candidateCustomerRouterIpv6Address(Output.of(candidateCustomerRouterIpv6Address));
         }
 
         /**
@@ -1247,8 +1448,8 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mtu Maximum Transmission Unit (MTU), in bytes, of packets passing through
-         * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+         * @param mtu Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+         * Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
          * 
          * @return builder
          * 
@@ -1259,8 +1460,8 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mtu Maximum Transmission Unit (MTU), in bytes, of packets passing through
-         * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+         * @param mtu Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
+         * Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
          * 
          * @return builder
          * 

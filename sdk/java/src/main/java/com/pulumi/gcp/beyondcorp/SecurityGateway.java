@@ -103,6 +103,20 @@ public class SecurityGateway extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * Service account used for operations that involve resources in consumer projects.
+     * 
+     */
+    @Export(name="delegatingServiceAccount", refs={String.class}, tree="[0]")
+    private Output<String> delegatingServiceAccount;
+
+    /**
+     * @return Service account used for operations that involve resources in consumer projects.
+     * 
+     */
+    public Output<String> delegatingServiceAccount() {
+        return this.delegatingServiceAccount;
+    }
+    /**
      * Optional. An arbitrary user-provided name for the SecurityGateway.
      * Cannot exceed 64 characters.
      * 

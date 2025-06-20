@@ -34,9 +34,17 @@ public final class ApiConfigIamMemberArgs extends com.pulumi.resources.ResourceA
         return this.api;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="apiConfig", required=true)
     private Output<String> apiConfig;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> apiConfig() {
         return this.apiConfig;
     }
@@ -171,11 +179,23 @@ public final class ApiConfigIamMemberArgs extends com.pulumi.resources.ResourceA
             return api(Output.of(api));
         }
 
+        /**
+         * @param apiConfig Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiConfig(Output<String> apiConfig) {
             $.apiConfig = apiConfig;
             return this;
         }
 
+        /**
+         * @param apiConfig Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiConfig(String apiConfig) {
             return apiConfig(Output.of(apiConfig));
         }

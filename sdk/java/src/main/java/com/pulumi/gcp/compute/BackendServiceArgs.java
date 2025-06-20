@@ -10,15 +10,18 @@ import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceCircuitBreakersArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceConsistentHashArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceCustomMetricArgs;
+import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceIapArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceLocalityLbPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceLogConfigArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceMaxStreamDurationArgs;
+import com.pulumi.gcp.compute.inputs.BackendServiceNetworkPassThroughLbTrafficPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceOutlierDetectionArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceSecuritySettingsArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceStrongSessionAffinityCookieArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsArgs;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -239,6 +242,25 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dynamicForwarding")
+    private @Nullable Output<BackendServiceDynamicForwardingArgs> dynamicForwarding;
+
+    /**
+     * @return Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackendServiceDynamicForwardingArgs>> dynamicForwarding() {
+        return Optional.ofNullable(this.dynamicForwarding);
+    }
+
+    /**
      * The resource URL for the edge security policy associated with this backend service.
      * 
      */
@@ -266,6 +288,68 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<Boolean>> enableCdn() {
         return Optional.ofNullable(this.enableCdn);
+    }
+
+    /**
+     * Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+     * TEST_ALL_TRAFFIC.
+     * To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+     * PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+     * changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+     * traffic by percentage using externalManagedMigrationTestingPercentage.
+     * Rolling back a migration requires the states to be set in reverse order. So changing the
+     * scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+     * the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+     * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+     * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+     * 
+     */
+    @Import(name="externalManagedMigrationState")
+    private @Nullable Output<String> externalManagedMigrationState;
+
+    /**
+     * @return Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+     * TEST_ALL_TRAFFIC.
+     * To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+     * PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+     * changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+     * traffic by percentage using externalManagedMigrationTestingPercentage.
+     * Rolling back a migration requires the states to be set in reverse order. So changing the
+     * scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+     * the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+     * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+     * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+     * 
+     */
+    public Optional<Output<String>> externalManagedMigrationState() {
+        return Optional.ofNullable(this.externalManagedMigrationState);
+    }
+
+    /**
+     * Determines the fraction of requests that should be processed by the Global external
+     * Application Load Balancer.
+     * The value of this field must be in the range [0, 100].
+     * Session affinity options will slightly affect this routing behavior, for more details,
+     * see: Session Affinity.
+     * This value can only be set if the loadBalancingScheme in the backend service is set to
+     * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+     * 
+     */
+    @Import(name="externalManagedMigrationTestingPercentage")
+    private @Nullable Output<Double> externalManagedMigrationTestingPercentage;
+
+    /**
+     * @return Determines the fraction of requests that should be processed by the Global external
+     * Application Load Balancer.
+     * The value of this field must be in the range [0, 100].
+     * Session affinity options will slightly affect this routing behavior, for more details,
+     * see: Session Affinity.
+     * This value can only be set if the loadBalancingScheme in the backend service is set to
+     * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+     * 
+     */
+    public Optional<Output<Double>> externalManagedMigrationTestingPercentage() {
+        return Optional.ofNullable(this.externalManagedMigrationTestingPercentage);
     }
 
     /**
@@ -422,7 +506,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
      *   to use for computing the weights are specified via the
      *   backends[].customMetrics fields.
      *   locality_lb_policy is applicable to either:
-     * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+     * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
      * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -480,7 +564,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
      *   to use for computing the weights are specified via the
      *   backends[].customMetrics fields.
      *   locality_lb_policy is applicable to either:
-     * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+     * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
      * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -576,6 +660,23 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkPassThroughLbTrafficPolicy")
+    private @Nullable Output<BackendServiceNetworkPassThroughLbTrafficPolicyArgs> networkPassThroughLbTrafficPolicy;
+
+    /**
+     * @return Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackendServiceNetworkPassThroughLbTrafficPolicyArgs>> networkPassThroughLbTrafficPolicy() {
+        return Optional.ofNullable(this.networkPassThroughLbTrafficPolicy);
+    }
+
+    /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * Applicable backend service types can be a global backend service with the
      * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -634,11 +735,11 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The protocol this BackendService uses to communicate with backends.
-     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-     * types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
-     * the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
-     * with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
-     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
+     * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+     * or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+     * for more information. Must be set to GRPC when the backend service is referenced
+     * by a URL map that is bound to target gRPC proxy.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
      * 
      */
     @Import(name="protocol")
@@ -646,11 +747,11 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The protocol this BackendService uses to communicate with backends.
-     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-     * types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
-     * the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
-     * with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
-     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
+     * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+     * or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+     * for more information. Must be set to GRPC when the backend service is referenced
+     * by a URL map that is bound to target gRPC proxy.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -674,7 +775,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The security settings that apply to this backend service. This field is applicable to either
-     * a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+     * a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
      * load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
      * load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
@@ -685,7 +786,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The security settings that apply to this backend service. This field is applicable to either
-     * a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+     * a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
      * load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
      * load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
@@ -800,8 +901,11 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         this.customRequestHeaders = $.customRequestHeaders;
         this.customResponseHeaders = $.customResponseHeaders;
         this.description = $.description;
+        this.dynamicForwarding = $.dynamicForwarding;
         this.edgeSecurityPolicy = $.edgeSecurityPolicy;
         this.enableCdn = $.enableCdn;
+        this.externalManagedMigrationState = $.externalManagedMigrationState;
+        this.externalManagedMigrationTestingPercentage = $.externalManagedMigrationTestingPercentage;
         this.healthChecks = $.healthChecks;
         this.iap = $.iap;
         this.ipAddressSelectionPolicy = $.ipAddressSelectionPolicy;
@@ -811,6 +915,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         this.logConfig = $.logConfig;
         this.maxStreamDuration = $.maxStreamDuration;
         this.name = $.name;
+        this.networkPassThroughLbTrafficPolicy = $.networkPassThroughLbTrafficPolicy;
         this.outlierDetection = $.outlierDetection;
         this.portName = $.portName;
         this.project = $.project;
@@ -1160,6 +1265,31 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * feature which together with Service Extension allows customized and complex routing logic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicForwarding(@Nullable Output<BackendServiceDynamicForwardingArgs> dynamicForwarding) {
+            $.dynamicForwarding = dynamicForwarding;
+            return this;
+        }
+
+        /**
+         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * feature which together with Service Extension allows customized and complex routing logic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicForwarding(BackendServiceDynamicForwardingArgs dynamicForwarding) {
+            return dynamicForwarding(Output.of(dynamicForwarding));
+        }
+
+        /**
          * @param edgeSecurityPolicy The resource URL for the edge security policy associated with this backend service.
          * 
          * @return builder
@@ -1199,6 +1329,80 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder enableCdn(Boolean enableCdn) {
             return enableCdn(Output.of(enableCdn));
+        }
+
+        /**
+         * @param externalManagedMigrationState Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+         * TEST_ALL_TRAFFIC.
+         * To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+         * PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+         * changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+         * traffic by percentage using externalManagedMigrationTestingPercentage.
+         * Rolling back a migration requires the states to be set in reverse order. So changing the
+         * scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+         * the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+         * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+         * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalManagedMigrationState(@Nullable Output<String> externalManagedMigrationState) {
+            $.externalManagedMigrationState = externalManagedMigrationState;
+            return this;
+        }
+
+        /**
+         * @param externalManagedMigrationState Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+         * TEST_ALL_TRAFFIC.
+         * To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+         * PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be
+         * changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate
+         * traffic by percentage using externalManagedMigrationTestingPercentage.
+         * Rolling back a migration requires the states to be set in reverse order. So changing the
+         * scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at
+         * the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
+         * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+         * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalManagedMigrationState(String externalManagedMigrationState) {
+            return externalManagedMigrationState(Output.of(externalManagedMigrationState));
+        }
+
+        /**
+         * @param externalManagedMigrationTestingPercentage Determines the fraction of requests that should be processed by the Global external
+         * Application Load Balancer.
+         * The value of this field must be in the range [0, 100].
+         * Session affinity options will slightly affect this routing behavior, for more details,
+         * see: Session Affinity.
+         * This value can only be set if the loadBalancingScheme in the backend service is set to
+         * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalManagedMigrationTestingPercentage(@Nullable Output<Double> externalManagedMigrationTestingPercentage) {
+            $.externalManagedMigrationTestingPercentage = externalManagedMigrationTestingPercentage;
+            return this;
+        }
+
+        /**
+         * @param externalManagedMigrationTestingPercentage Determines the fraction of requests that should be processed by the Global external
+         * Application Load Balancer.
+         * The value of this field must be in the range [0, 100].
+         * Session affinity options will slightly affect this routing behavior, for more details,
+         * see: Session Affinity.
+         * This value can only be set if the loadBalancingScheme in the backend service is set to
+         * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalManagedMigrationTestingPercentage(Double externalManagedMigrationTestingPercentage) {
+            return externalManagedMigrationTestingPercentage(Output.of(externalManagedMigrationTestingPercentage));
         }
 
         /**
@@ -1401,7 +1605,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
          *   to use for computing the weights are specified via the
          *   backends[].customMetrics fields.
          *   locality_lb_policy is applicable to either:
-         * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+         * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
          *   and loadBalancingScheme set to INTERNAL_MANAGED.
          * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
          * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1463,7 +1667,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
          *   to use for computing the weights are specified via the
          *   backends[].customMetrics fields.
          *   locality_lb_policy is applicable to either:
-         * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+         * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
          *   and loadBalancingScheme set to INTERNAL_MANAGED.
          * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
          * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1579,6 +1783,29 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPassThroughLbTrafficPolicy(@Nullable Output<BackendServiceNetworkPassThroughLbTrafficPolicyArgs> networkPassThroughLbTrafficPolicy) {
+            $.networkPassThroughLbTrafficPolicy = networkPassThroughLbTrafficPolicy;
+            return this;
+        }
+
+        /**
+         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPassThroughLbTrafficPolicy(BackendServiceNetworkPassThroughLbTrafficPolicyArgs networkPassThroughLbTrafficPolicy) {
+            return networkPassThroughLbTrafficPolicy(Output.of(networkPassThroughLbTrafficPolicy));
+        }
+
+        /**
          * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
          * Applicable backend service types can be a global backend service with the
          * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
@@ -1655,11 +1882,11 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param protocol The protocol this BackendService uses to communicate with backends.
-         * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-         * types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
-         * the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
-         * with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
-         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
+         * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+         * or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+         * for more information. Must be set to GRPC when the backend service is referenced
+         * by a URL map that is bound to target gRPC proxy.
+         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
          * 
          * @return builder
          * 
@@ -1671,11 +1898,11 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param protocol The protocol this BackendService uses to communicate with backends.
-         * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-         * types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
-         * the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
-         * with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
-         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
+         * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+         * or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+         * for more information. Must be set to GRPC when the backend service is referenced
+         * by a URL map that is bound to target gRPC proxy.
+         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
          * 
          * @return builder
          * 
@@ -1707,7 +1934,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param securitySettings The security settings that apply to this backend service. This field is applicable to either
-         * a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+         * a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
          * load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
          * load_balancing_scheme set to INTERNAL_SELF_MANAGED.
          * Structure is documented below.
@@ -1722,7 +1949,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param securitySettings The security settings that apply to this backend service. This field is applicable to either
-         * a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+         * a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
          * load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
          * load_balancing_scheme set to INTERNAL_SELF_MANAGED.
          * Structure is documented below.

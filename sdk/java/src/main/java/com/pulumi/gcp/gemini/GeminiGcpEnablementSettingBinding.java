@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  *             .location("global")
  *             .labels(Map.of("my_key", "my_value"))
  *             .enableCustomerDataSharing(true)
+ *             .disableWebGrounding(true)
  *             .build());
  * 
  *         var example = new GeminiGcpEnablementSettingBinding("example", GeminiGcpEnablementSettingBindingArgs.builder()
@@ -190,16 +191,14 @@ public class GeminiGcpEnablementSettingBinding extends com.pulumi.resources.Cust
         return this.name;
     }
     /**
-     * Product type of the setting binding.
-     * Possible values are: `GEMINI_IN_BIGQUERY`.
+     * Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
      * 
      */
     @Export(name="product", refs={String.class}, tree="[0]")
     private Output<String> product;
 
     /**
-     * @return Product type of the setting binding.
-     * Possible values are: `GEMINI_IN_BIGQUERY`.
+     * @return Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
      * 
      */
     public Output<String> product() {

@@ -642,9 +642,17 @@ public class TunnelDestGroupIamMember extends com.pulumi.resources.CustomResourc
     public Output<Optional<TunnelDestGroupIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="destGroup", refs={String.class}, tree="[0]")
     private Output<String> destGroup;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> destGroup() {
         return this.destGroup;
     }

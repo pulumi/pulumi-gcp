@@ -35,14 +35,16 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageTextArgs extends c
     }
 
     /**
-     * A collection of text responses.
+     * A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+     * required: true
      * 
      */
     @Import(name="texts")
     private @Nullable Output<List<String>> texts;
 
     /**
-     * @return A collection of text responses.
+     * @return A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+     * required: true
      * 
      */
     public Optional<Output<List<String>>> texts() {
@@ -98,7 +100,8 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageTextArgs extends c
         }
 
         /**
-         * @param texts A collection of text responses.
+         * @param texts A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
          * 
          * @return builder
          * 
@@ -109,7 +112,8 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageTextArgs extends c
         }
 
         /**
-         * @param texts A collection of text responses.
+         * @param texts A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
          * 
          * @return builder
          * 
@@ -119,7 +123,8 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageTextArgs extends c
         }
 
         /**
-         * @param texts A collection of text responses.
+         * @param texts A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
          * 
          * @return builder
          * 

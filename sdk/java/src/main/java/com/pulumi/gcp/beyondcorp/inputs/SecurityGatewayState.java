@@ -33,6 +33,21 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Service account used for operations that involve resources in consumer projects.
+     * 
+     */
+    @Import(name="delegatingServiceAccount")
+    private @Nullable Output<String> delegatingServiceAccount;
+
+    /**
+     * @return Service account used for operations that involve resources in consumer projects.
+     * 
+     */
+    public Optional<Output<String>> delegatingServiceAccount() {
+        return Optional.ofNullable(this.delegatingServiceAccount);
+    }
+
+    /**
      * Optional. An arbitrary user-provided name for the SecurityGateway.
      * Cannot exceed 64 characters.
      * 
@@ -221,6 +236,7 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
 
     private SecurityGatewayState(SecurityGatewayState $) {
         this.createTime = $.createTime;
+        this.delegatingServiceAccount = $.delegatingServiceAccount;
         this.displayName = $.displayName;
         this.externalIps = $.externalIps;
         this.hubs = $.hubs;
@@ -269,6 +285,27 @@ public final class SecurityGatewayState extends com.pulumi.resources.ResourceArg
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param delegatingServiceAccount Service account used for operations that involve resources in consumer projects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delegatingServiceAccount(@Nullable Output<String> delegatingServiceAccount) {
+            $.delegatingServiceAccount = delegatingServiceAccount;
+            return this;
+        }
+
+        /**
+         * @param delegatingServiceAccount Service account used for operations that involve resources in consumer projects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delegatingServiceAccount(String delegatingServiceAccount) {
+            return delegatingServiceAccount(Output.of(delegatingServiceAccount));
         }
 
         /**

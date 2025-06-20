@@ -14,11 +14,14 @@ import com.pulumi.gcp.iam.inputs.GetRulePlainArgs;
 import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
 import com.pulumi.gcp.iam.inputs.GetTestablePermissionsPlainArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
+import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
+import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyPlainArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolPlainArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderPlainArgs;
 import com.pulumi.gcp.iam.outputs.GetRuleResult;
 import com.pulumi.gcp.iam.outputs.GetTestablePermissionsResult;
+import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolIamPolicyResult;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderResult;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolResult;
 import java.util.concurrent.CompletableFuture;
@@ -673,6 +676,211 @@ public final class IamFunctions {
      */
     public static CompletableFuture<GetWorkloadIdentityPoolResult> getWorkloadIdentityPoolPlain(GetWorkloadIdentityPoolPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", TypeShape.of(GetWorkloadIdentityPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IamFunctions.getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs args) {
+        return getWorkloadIdentityPoolIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IamFunctions.getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIamPolicyPlain(GetWorkloadIdentityPoolIamPolicyPlainArgs args) {
+        return getWorkloadIdentityPoolIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IamFunctions.getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy", TypeShape.of(GetWorkloadIdentityPoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IamFunctions.getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy", TypeShape.of(GetWorkloadIdentityPoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IamFunctions.getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIamPolicyPlain(GetWorkloadIdentityPoolIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy", TypeShape.of(GetWorkloadIdentityPoolIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a IAM workload identity provider from Google Cloud by its id.

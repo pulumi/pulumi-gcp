@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.filestore.InstanceArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceState;
+import com.pulumi.gcp.filestore.outputs.InstanceDirectoryServices;
 import com.pulumi.gcp.filestore.outputs.InstanceEffectiveReplication;
 import com.pulumi.gcp.filestore.outputs.InstanceFileShares;
 import com.pulumi.gcp.filestore.outputs.InstanceInitialReplication;
@@ -334,6 +335,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * 
+     */
+    @Export(name="directoryServices", refs={InstanceDirectoryServices.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceDirectoryServices> directoryServices;
+
+    /**
+     * @return Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * 
+     */
+    public Output<Optional<InstanceDirectoryServices>> directoryServices() {
+        return Codegen.optional(this.directoryServices);
+    }
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -398,7 +413,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.fileShares;
     }
     /**
-     * Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
      * instance only, indicating the active as the peer_instance
      * 
      */
@@ -406,7 +421,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ InstanceInitialReplication> initialReplication;
 
     /**
-     * @return Replication configuration, once set, this cannot be updated. Addtionally this should be specified on the replica
+     * @return Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
      * instance only, indicating the active as the peer_instance
      * 
      */

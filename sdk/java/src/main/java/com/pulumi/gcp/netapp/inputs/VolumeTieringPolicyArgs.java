@@ -5,6 +5,7 @@ package com.pulumi.gcp.netapp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -34,6 +35,23 @@ public final class VolumeTieringPolicyArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
+     * Only applicable to Flex service level.
+     * 
+     */
+    @Import(name="hotTierBypassModeEnabled")
+    private @Nullable Output<Boolean> hotTierBypassModeEnabled;
+
+    /**
+     * @return Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
+     * Only applicable to Flex service level.
+     * 
+     */
+    public Optional<Output<Boolean>> hotTierBypassModeEnabled() {
+        return Optional.ofNullable(this.hotTierBypassModeEnabled);
+    }
+
+    /**
      * Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
      * Default value is `PAUSED`.
      * Possible values are: `ENABLED`, `PAUSED`.
@@ -56,6 +74,7 @@ public final class VolumeTieringPolicyArgs extends com.pulumi.resources.Resource
 
     private VolumeTieringPolicyArgs(VolumeTieringPolicyArgs $) {
         this.coolingThresholdDays = $.coolingThresholdDays;
+        this.hotTierBypassModeEnabled = $.hotTierBypassModeEnabled;
         this.tierAction = $.tierAction;
     }
 
@@ -98,6 +117,29 @@ public final class VolumeTieringPolicyArgs extends com.pulumi.resources.Resource
          */
         public Builder coolingThresholdDays(Integer coolingThresholdDays) {
             return coolingThresholdDays(Output.of(coolingThresholdDays));
+        }
+
+        /**
+         * @param hotTierBypassModeEnabled Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
+         * Only applicable to Flex service level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTierBypassModeEnabled(@Nullable Output<Boolean> hotTierBypassModeEnabled) {
+            $.hotTierBypassModeEnabled = hotTierBypassModeEnabled;
+            return this;
+        }
+
+        /**
+         * @param hotTierBypassModeEnabled Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
+         * Only applicable to Flex service level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTierBypassModeEnabled(Boolean hotTierBypassModeEnabled) {
+            return hotTierBypassModeEnabled(Output.of(hotTierBypassModeEnabled));
         }
 
         /**

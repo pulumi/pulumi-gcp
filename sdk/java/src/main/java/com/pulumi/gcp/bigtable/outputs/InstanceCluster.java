@@ -27,6 +27,11 @@ public final class InstanceCluster {
     /**
      * @return Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
      * 
+     */
+    private @Nullable String kmsKeyName;
+    /**
+     * @return The node scaling factor for this cluster. One of `&#34;NodeScalingFactor1X&#34;` or `&#34;NodeScalingFactor2X&#34;`. Defaults to `&#34;NodeScalingFactor1X&#34;`. If `&#34;NodeScalingFactor2X&#34;` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
+     * 
      * &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
      * 
      * !&gt; **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
@@ -37,7 +42,7 @@ public final class InstanceCluster {
      * `cluster_id`.
      * 
      */
-    private @Nullable String kmsKeyName;
+    private @Nullable String nodeScalingFactor;
     /**
      * @return The number of nodes in the cluster.
      * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
@@ -81,6 +86,13 @@ public final class InstanceCluster {
     /**
      * @return Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
      * 
+     */
+    public Optional<String> kmsKeyName() {
+        return Optional.ofNullable(this.kmsKeyName);
+    }
+    /**
+     * @return The node scaling factor for this cluster. One of `&#34;NodeScalingFactor1X&#34;` or `&#34;NodeScalingFactor2X&#34;`. Defaults to `&#34;NodeScalingFactor1X&#34;`. If `&#34;NodeScalingFactor2X&#34;` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
+     * 
      * &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
      * 
      * !&gt; **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
@@ -91,8 +103,8 @@ public final class InstanceCluster {
      * `cluster_id`.
      * 
      */
-    public Optional<String> kmsKeyName() {
-        return Optional.ofNullable(this.kmsKeyName);
+    public Optional<String> nodeScalingFactor() {
+        return Optional.ofNullable(this.nodeScalingFactor);
     }
     /**
      * @return The number of nodes in the cluster.
@@ -139,6 +151,7 @@ public final class InstanceCluster {
         private @Nullable InstanceClusterAutoscalingConfig autoscalingConfig;
         private String clusterId;
         private @Nullable String kmsKeyName;
+        private @Nullable String nodeScalingFactor;
         private @Nullable Integer numNodes;
         private @Nullable String state;
         private @Nullable String storageType;
@@ -149,6 +162,7 @@ public final class InstanceCluster {
     	      this.autoscalingConfig = defaults.autoscalingConfig;
     	      this.clusterId = defaults.clusterId;
     	      this.kmsKeyName = defaults.kmsKeyName;
+    	      this.nodeScalingFactor = defaults.nodeScalingFactor;
     	      this.numNodes = defaults.numNodes;
     	      this.state = defaults.state;
     	      this.storageType = defaults.storageType;
@@ -173,6 +187,12 @@ public final class InstanceCluster {
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
 
             this.kmsKeyName = kmsKeyName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nodeScalingFactor(@Nullable String nodeScalingFactor) {
+
+            this.nodeScalingFactor = nodeScalingFactor;
             return this;
         }
         @CustomType.Setter
@@ -204,6 +224,7 @@ public final class InstanceCluster {
             _resultValue.autoscalingConfig = autoscalingConfig;
             _resultValue.clusterId = clusterId;
             _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.nodeScalingFactor = nodeScalingFactor;
             _resultValue.numNodes = numNodes;
             _resultValue.state = state;
             _resultValue.storageType = storageType;

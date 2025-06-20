@@ -347,7 +347,6 @@ public class ConnectionIamMember extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.condition);
     }
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
@@ -355,8 +354,7 @@ public class ConnectionIamMember extends com.pulumi.resources.CustomResource {
     private Output<String> connectionId;
 
     /**
-     * @return Optional connection id that should be assigned to the created connection.
-     * Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> connectionId() {

@@ -113,6 +113,23 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+     * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+     * 
+     */
+    @Import(name="enableHotTierAutoResize")
+    private @Nullable Output<Boolean> enableHotTierAutoResize;
+
+    /**
+     * @return Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+     * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+     * 
+     */
+    public Optional<Output<Boolean>> enableHotTierAutoResize() {
+        return Optional.ofNullable(this.enableHotTierAutoResize);
+    }
+
+    /**
      * Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
      * 
      */
@@ -125,6 +142,23 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> encryptionType() {
         return Optional.ofNullable(this.encryptionType);
+    }
+
+    /**
+     * Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+     * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+     * 
+     */
+    @Import(name="hotTierSizeGib")
+    private @Nullable Output<String> hotTierSizeGib;
+
+    /**
+     * @return Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+     * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+     * 
+     */
+    public Optional<Output<String>> hotTierSizeGib() {
+        return Optional.ofNullable(this.hotTierSizeGib);
     }
 
     /**
@@ -387,7 +421,9 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         this.customPerformanceEnabled = $.customPerformanceEnabled;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
+        this.enableHotTierAutoResize = $.enableHotTierAutoResize;
         this.encryptionType = $.encryptionType;
+        this.hotTierSizeGib = $.hotTierSizeGib;
         this.kmsConfig = $.kmsConfig;
         this.labels = $.labels;
         this.ldapEnabled = $.ldapEnabled;
@@ -554,6 +590,29 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param enableHotTierAutoResize Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+         * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHotTierAutoResize(@Nullable Output<Boolean> enableHotTierAutoResize) {
+            $.enableHotTierAutoResize = enableHotTierAutoResize;
+            return this;
+        }
+
+        /**
+         * @param enableHotTierAutoResize Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
+         * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHotTierAutoResize(Boolean enableHotTierAutoResize) {
+            return enableHotTierAutoResize(Output.of(enableHotTierAutoResize));
+        }
+
+        /**
          * @param encryptionType Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
          * 
          * @return builder
@@ -572,6 +631,29 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder encryptionType(String encryptionType) {
             return encryptionType(Output.of(encryptionType));
+        }
+
+        /**
+         * @param hotTierSizeGib Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+         * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTierSizeGib(@Nullable Output<String> hotTierSizeGib) {
+            $.hotTierSizeGib = hotTierSizeGib;
+            return this;
+        }
+
+        /**
+         * @param hotTierSizeGib Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
+         * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTierSizeGib(String hotTierSizeGib) {
+            return hotTierSizeGib(Output.of(hotTierSizeGib));
         }
 
         /**

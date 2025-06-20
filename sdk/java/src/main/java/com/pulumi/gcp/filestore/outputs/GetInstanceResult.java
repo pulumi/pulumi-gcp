@@ -5,6 +5,7 @@ package com.pulumi.gcp.filestore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.filestore.outputs.GetInstanceDirectoryService;
 import com.pulumi.gcp.filestore.outputs.GetInstanceEffectiveReplication;
 import com.pulumi.gcp.filestore.outputs.GetInstanceFileShare;
 import com.pulumi.gcp.filestore.outputs.GetInstanceInitialReplication;
@@ -24,6 +25,7 @@ public final class GetInstanceResult {
     private Boolean deletionProtectionEnabled;
     private String deletionProtectionReason;
     private String description;
+    private List<GetInstanceDirectoryService> directoryServices;
     private Map<String,String> effectiveLabels;
     private List<GetInstanceEffectiveReplication> effectiveReplications;
     private String etag;
@@ -59,6 +61,9 @@ public final class GetInstanceResult {
     }
     public String description() {
         return this.description;
+    }
+    public List<GetInstanceDirectoryService> directoryServices() {
+        return this.directoryServices;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -132,6 +137,7 @@ public final class GetInstanceResult {
         private Boolean deletionProtectionEnabled;
         private String deletionProtectionReason;
         private String description;
+        private List<GetInstanceDirectoryService> directoryServices;
         private Map<String,String> effectiveLabels;
         private List<GetInstanceEffectiveReplication> effectiveReplications;
         private String etag;
@@ -157,6 +163,7 @@ public final class GetInstanceResult {
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.deletionProtectionReason = defaults.deletionProtectionReason;
     	      this.description = defaults.description;
+    	      this.directoryServices = defaults.directoryServices;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.effectiveReplications = defaults.effectiveReplications;
     	      this.etag = defaults.etag;
@@ -208,6 +215,17 @@ public final class GetInstanceResult {
             }
             this.description = description;
             return this;
+        }
+        @CustomType.Setter
+        public Builder directoryServices(List<GetInstanceDirectoryService> directoryServices) {
+            if (directoryServices == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "directoryServices");
+            }
+            this.directoryServices = directoryServices;
+            return this;
+        }
+        public Builder directoryServices(GetInstanceDirectoryService... directoryServices) {
+            return directoryServices(List.of(directoryServices));
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
@@ -370,6 +388,7 @@ public final class GetInstanceResult {
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
             _resultValue.deletionProtectionReason = deletionProtectionReason;
             _resultValue.description = description;
+            _resultValue.directoryServices = directoryServices;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.effectiveReplications = effectiveReplications;
             _resultValue.etag = etag;

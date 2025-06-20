@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerEnvArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerPortArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerResourcesArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerStartupProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerVolumeMountArgs;
 import java.lang.String;
 import java.util.List;
@@ -49,6 +50,21 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
      */
     public Optional<Output<List<String>>> commands() {
         return Optional.ofNullable(this.commands);
+    }
+
+    /**
+     * Names of the containers that must start before this container.
+     * 
+     */
+    @Import(name="dependsOns")
+    private @Nullable Output<List<String>> dependsOns;
+
+    /**
+     * @return Names of the containers that must start before this container.
+     * 
+     */
+    public Optional<Output<List<String>>> dependsOns() {
+        return Optional.ofNullable(this.dependsOns);
     }
 
     /**
@@ -135,6 +151,27 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
     }
 
     /**
+     * Startup probe of application within the container.
+     * All other probes are disabled if a startup probe is provided, until it
+     * succeeds. Container will not be added to service endpoints if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="startupProbe")
+    private @Nullable Output<JobTemplateTemplateContainerStartupProbeArgs> startupProbe;
+
+    /**
+     * @return Startup probe of application within the container.
+     * All other probes are disabled if a startup probe is provided, until it
+     * succeeds. Container will not be added to service endpoints if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<JobTemplateTemplateContainerStartupProbeArgs>> startupProbe() {
+        return Optional.ofNullable(this.startupProbe);
+    }
+
+    /**
      * Volume to mount into the container&#39;s filesystem.
      * Structure is documented below.
      * 
@@ -171,11 +208,13 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
     private JobTemplateTemplateContainerArgs(JobTemplateTemplateContainerArgs $) {
         this.args = $.args;
         this.commands = $.commands;
+        this.dependsOns = $.dependsOns;
         this.envs = $.envs;
         this.image = $.image;
         this.name = $.name;
         this.ports = $.ports;
         this.resources = $.resources;
+        this.startupProbe = $.startupProbe;
         this.volumeMounts = $.volumeMounts;
         this.workingDir = $.workingDir;
     }
@@ -258,6 +297,37 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
          */
         public Builder commands(String... commands) {
             return commands(List.of(commands));
+        }
+
+        /**
+         * @param dependsOns Names of the containers that must start before this container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dependsOns(@Nullable Output<List<String>> dependsOns) {
+            $.dependsOns = dependsOns;
+            return this;
+        }
+
+        /**
+         * @param dependsOns Names of the containers that must start before this container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dependsOns(List<String> dependsOns) {
+            return dependsOns(Output.of(dependsOns));
+        }
+
+        /**
+         * @param dependsOns Names of the containers that must start before this container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dependsOns(String... dependsOns) {
+            return dependsOns(List.of(dependsOns));
         }
 
         /**
@@ -394,6 +464,33 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
          */
         public Builder resources(JobTemplateTemplateContainerResourcesArgs resources) {
             return resources(Output.of(resources));
+        }
+
+        /**
+         * @param startupProbe Startup probe of application within the container.
+         * All other probes are disabled if a startup probe is provided, until it
+         * succeeds. Container will not be added to service endpoints if the probe fails.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupProbe(@Nullable Output<JobTemplateTemplateContainerStartupProbeArgs> startupProbe) {
+            $.startupProbe = startupProbe;
+            return this;
+        }
+
+        /**
+         * @param startupProbe Startup probe of application within the container.
+         * All other probes are disabled if a startup probe is provided, until it
+         * succeeds. Container will not be added to service endpoints if the probe fails.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupProbe(JobTemplateTemplateContainerStartupProbeArgs startupProbe) {
+            return startupProbe(Output.of(startupProbe));
         }
 
         /**

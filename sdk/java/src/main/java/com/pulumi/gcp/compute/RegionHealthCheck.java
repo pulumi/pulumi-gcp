@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RegionHealthCheckArgs;
 import com.pulumi.gcp.compute.inputs.RegionHealthCheckState;
 import com.pulumi.gcp.compute.outputs.RegionHealthCheckGrpcHealthCheck;
+import com.pulumi.gcp.compute.outputs.RegionHealthCheckGrpcTlsHealthCheck;
 import com.pulumi.gcp.compute.outputs.RegionHealthCheckHttp2HealthCheck;
 import com.pulumi.gcp.compute.outputs.RegionHealthCheckHttpHealthCheck;
 import com.pulumi.gcp.compute.outputs.RegionHealthCheckHttpsHealthCheck;
@@ -607,6 +608,91 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Health Check Grpc With Tls
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckGrpcTlsHealthCheckArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var grpc_with_tls_region_health_check = new RegionHealthCheck("grpc-with-tls-region-health-check", RegionHealthCheckArgs.builder()
+ *             .name("grpc-with-tls-region-health-check")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .grpcTlsHealthCheck(RegionHealthCheckGrpcTlsHealthCheckArgs.builder()
+ *                 .port(443)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Health Check Grpc With Tls Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckGrpcTlsHealthCheckArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var grpc_with_tls_region_health_check = new RegionHealthCheck("grpc-with-tls-region-health-check", RegionHealthCheckArgs.builder()
+ *             .name("grpc-with-tls-region-health-check")
+ *             .description("regional health check via GRPC with TLS")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .healthyThreshold(4)
+ *             .unhealthyThreshold(5)
+ *             .grpcTlsHealthCheck(RegionHealthCheckGrpcTlsHealthCheckArgs.builder()
+ *                 .portSpecification("USE_FIXED_PORT")
+ *                 .port(443)
+ *                 .grpcServiceName("testservice")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -702,6 +788,22 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<RegionHealthCheckGrpcHealthCheck>> grpcHealthCheck() {
         return Codegen.optional(this.grpcHealthCheck);
+    }
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="grpcTlsHealthCheck", refs={RegionHealthCheckGrpcTlsHealthCheck.class}, tree="[0]")
+    private Output</* @Nullable */ RegionHealthCheckGrpcTlsHealthCheck> grpcTlsHealthCheck;
+
+    /**
+     * @return A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionHealthCheckGrpcTlsHealthCheck>> grpcTlsHealthCheck() {
+        return Codegen.optional(this.grpcTlsHealthCheck);
     }
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.

@@ -15,14 +15,14 @@ public final class ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs exte
     public static final ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs Empty = new ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs();
 
     /**
-     * Specifies the total network bandwidth tier for the NodePool.
+     * Specifies the total network bandwidth tier for NodePools in the cluster.
      * 
      */
     @Import(name="totalEgressBandwidthTier", required=true)
     private Output<String> totalEgressBandwidthTier;
 
     /**
-     * @return Specifies the total network bandwidth tier for the NodePool.
+     * @return Specifies the total network bandwidth tier for NodePools in the cluster.
      * 
      */
     public Output<String> totalEgressBandwidthTier() {
@@ -54,7 +54,7 @@ public final class ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs exte
         }
 
         /**
-         * @param totalEgressBandwidthTier Specifies the total network bandwidth tier for the NodePool.
+         * @param totalEgressBandwidthTier Specifies the total network bandwidth tier for NodePools in the cluster.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs exte
         }
 
         /**
-         * @param totalEgressBandwidthTier Specifies the total network bandwidth tier for the NodePool.
+         * @param totalEgressBandwidthTier Specifies the total network bandwidth tier for NodePools in the cluster.
          * 
          * @return builder
          * 

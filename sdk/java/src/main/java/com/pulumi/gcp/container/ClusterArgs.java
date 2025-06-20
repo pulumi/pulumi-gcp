@@ -28,6 +28,7 @@ import com.pulumi.gcp.container.inputs.ClusterMasterAuthArgs;
 import com.pulumi.gcp.container.inputs.ClusterMasterAuthorizedNetworksConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterMeshCertificatesArgs;
 import com.pulumi.gcp.container.inputs.ClusterMonitoringConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNetworkPerformanceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNetworkPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolArgs;
@@ -616,6 +617,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+     * 
+     */
+    @Import(name="inTransitEncryptionConfig")
+    private @Nullable Output<String> inTransitEncryptionConfig;
+
+    /**
+     * @return Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+     * 
+     */
+    public Optional<Output<String>> inTransitEncryptionConfig() {
+        return Optional.ofNullable(this.inTransitEncryptionConfig);
+    }
+
+    /**
      * The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
      * number of nodes per zone. Must be set if `node_pool` is not set. If you&#39;re using
@@ -921,6 +937,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * Network bandwidth tier configuration.
+     * 
+     */
+    @Import(name="networkPerformanceConfig")
+    private @Nullable Output<ClusterNetworkPerformanceConfigArgs> networkPerformanceConfig;
+
+    /**
+     * @return Network bandwidth tier configuration.
+     * 
+     */
+    public Optional<Output<ClusterNetworkPerformanceConfigArgs>> networkPerformanceConfig() {
+        return Optional.ofNullable(this.networkPerformanceConfig);
     }
 
     /**
@@ -1394,14 +1425,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The custom keys configuration of the cluster.
+     * The custom keys configuration of the cluster Structure is documented below.
      * 
      */
     @Import(name="userManagedKeysConfig")
     private @Nullable Output<ClusterUserManagedKeysConfigArgs> userManagedKeysConfig;
 
     /**
-     * @return The custom keys configuration of the cluster.
+     * @return The custom keys configuration of the cluster Structure is documented below.
      * 
      */
     public Optional<Output<ClusterUserManagedKeysConfigArgs>> userManagedKeysConfig() {
@@ -1495,6 +1526,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.fleet = $.fleet;
         this.gatewayApiConfig = $.gatewayApiConfig;
         this.identityServiceConfig = $.identityServiceConfig;
+        this.inTransitEncryptionConfig = $.inTransitEncryptionConfig;
         this.initialNodeCount = $.initialNodeCount;
         this.ipAllocationPolicy = $.ipAllocationPolicy;
         this.location = $.location;
@@ -1509,6 +1541,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.monitoringService = $.monitoringService;
         this.name = $.name;
         this.network = $.network;
+        this.networkPerformanceConfig = $.networkPerformanceConfig;
         this.networkPolicy = $.networkPolicy;
         this.networkingMode = $.networkingMode;
         this.nodeConfig = $.nodeConfig;
@@ -2305,6 +2338,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param inTransitEncryptionConfig Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inTransitEncryptionConfig(@Nullable Output<String> inTransitEncryptionConfig) {
+            $.inTransitEncryptionConfig = inTransitEncryptionConfig;
+            return this;
+        }
+
+        /**
+         * @param inTransitEncryptionConfig Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inTransitEncryptionConfig(String inTransitEncryptionConfig) {
+            return inTransitEncryptionConfig(Output.of(inTransitEncryptionConfig));
+        }
+
+        /**
          * @param initialNodeCount The number of nodes to create in this
          * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
          * number of nodes per zone. Must be set if `node_pool` is not set. If you&#39;re using
@@ -2694,6 +2748,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPerformanceConfig(@Nullable Output<ClusterNetworkPerformanceConfigArgs> networkPerformanceConfig) {
+            $.networkPerformanceConfig = networkPerformanceConfig;
+            return this;
+        }
+
+        /**
+         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPerformanceConfig(ClusterNetworkPerformanceConfigArgs networkPerformanceConfig) {
+            return networkPerformanceConfig(Output.of(networkPerformanceConfig));
         }
 
         /**
@@ -3346,7 +3421,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userManagedKeysConfig The custom keys configuration of the cluster.
+         * @param userManagedKeysConfig The custom keys configuration of the cluster Structure is documented below.
          * 
          * @return builder
          * 
@@ -3357,7 +3432,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userManagedKeysConfig The custom keys configuration of the cluster.
+         * @param userManagedKeysConfig The custom keys configuration of the cluster Structure is documented below.
          * 
          * @return builder
          * 

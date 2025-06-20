@@ -15,9 +15,17 @@ public final class GetMetastoreFederationIamPolicyPlainArgs extends com.pulumi.r
 
     public static final GetMetastoreFederationIamPolicyPlainArgs Empty = new GetMetastoreFederationIamPolicyPlainArgs();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="federationId", required=true)
     private String federationId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String federationId() {
         return this.federationId;
     }
@@ -86,6 +94,12 @@ public final class GetMetastoreFederationIamPolicyPlainArgs extends com.pulumi.r
             $ = new GetMetastoreFederationIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param federationId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder federationId(String federationId) {
             $.federationId = federationId;
             return this;

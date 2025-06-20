@@ -6,6 +6,7 @@ package com.pulumi.gcp.netapp;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.netapp.inputs.BackupVaultBackupRetentionPolicyArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,6 +17,55 @@ import javax.annotation.Nullable;
 public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BackupVaultArgs Empty = new BackupVaultArgs();
+
+    /**
+     * Region in which backup is stored.
+     * 
+     */
+    @Import(name="backupRegion")
+    private @Nullable Output<String> backupRegion;
+
+    /**
+     * @return Region in which backup is stored.
+     * 
+     */
+    public Optional<Output<String>> backupRegion() {
+        return Optional.ofNullable(this.backupRegion);
+    }
+
+    /**
+     * Backup retention policy defining the retention of the backups.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="backupRetentionPolicy")
+    private @Nullable Output<BackupVaultBackupRetentionPolicyArgs> backupRetentionPolicy;
+
+    /**
+     * @return Backup retention policy defining the retention of the backups.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackupVaultBackupRetentionPolicyArgs>> backupRetentionPolicy() {
+        return Optional.ofNullable(this.backupRetentionPolicy);
+    }
+
+    /**
+     * Type of the backup vault to be created. Default is IN_REGION.
+     * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+     * 
+     */
+    @Import(name="backupVaultType")
+    private @Nullable Output<String> backupVaultType;
+
+    /**
+     * @return Type of the backup vault to be created. Default is IN_REGION.
+     * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+     * 
+     */
+    public Optional<Output<String>> backupVaultType() {
+        return Optional.ofNullable(this.backupVaultType);
+    }
 
     /**
      * An optional description of this resource.
@@ -107,6 +157,9 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
     private BackupVaultArgs() {}
 
     private BackupVaultArgs(BackupVaultArgs $) {
+        this.backupRegion = $.backupRegion;
+        this.backupRetentionPolicy = $.backupRetentionPolicy;
+        this.backupVaultType = $.backupVaultType;
         this.description = $.description;
         this.labels = $.labels;
         this.location = $.location;
@@ -130,6 +183,73 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BackupVaultArgs defaults) {
             $ = new BackupVaultArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backupRegion Region in which backup is stored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRegion(@Nullable Output<String> backupRegion) {
+            $.backupRegion = backupRegion;
+            return this;
+        }
+
+        /**
+         * @param backupRegion Region in which backup is stored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRegion(String backupRegion) {
+            return backupRegion(Output.of(backupRegion));
+        }
+
+        /**
+         * @param backupRetentionPolicy Backup retention policy defining the retention of the backups.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPolicy(@Nullable Output<BackupVaultBackupRetentionPolicyArgs> backupRetentionPolicy) {
+            $.backupRetentionPolicy = backupRetentionPolicy;
+            return this;
+        }
+
+        /**
+         * @param backupRetentionPolicy Backup retention policy defining the retention of the backups.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPolicy(BackupVaultBackupRetentionPolicyArgs backupRetentionPolicy) {
+            return backupRetentionPolicy(Output.of(backupRetentionPolicy));
+        }
+
+        /**
+         * @param backupVaultType Type of the backup vault to be created. Default is IN_REGION.
+         * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupVaultType(@Nullable Output<String> backupVaultType) {
+            $.backupVaultType = backupVaultType;
+            return this;
+        }
+
+        /**
+         * @param backupVaultType Type of the backup vault to be created. Default is IN_REGION.
+         * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupVaultType(String backupVaultType) {
+            return backupVaultType(Output.of(backupVaultType));
         }
 
         /**

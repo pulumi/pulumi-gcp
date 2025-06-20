@@ -398,9 +398,17 @@ public class ServiceIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> role() {
         return this.role;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> serviceName() {
         return this.serviceName;
     }

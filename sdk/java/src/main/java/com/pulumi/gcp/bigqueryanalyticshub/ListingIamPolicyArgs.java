@@ -32,14 +32,14 @@ public final class ListingIamPolicyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="listingId", required=true)
     private Output<String> listingId;
 
     /**
-     * @return The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> listingId() {
@@ -151,7 +151,7 @@ public final class ListingIamPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param listingId The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+         * @param listingId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class ListingIamPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param listingId The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+         * @param listingId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

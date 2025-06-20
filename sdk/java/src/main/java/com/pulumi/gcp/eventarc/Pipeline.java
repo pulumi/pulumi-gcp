@@ -47,7 +47,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.eventarc.Pipeline;
  * import com.pulumi.gcp.eventarc.PipelineArgs;
  * import com.pulumi.gcp.eventarc.inputs.PipelineDestinationArgs;
- * import com.pulumi.gcp.eventarc.inputs.PipelineDestinationNetworkConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -70,9 +69,6 @@ import javax.annotation.Nullable;
  *             .pipelineId("some-pipeline")
  *             .destinations(PipelineDestinationArgs.builder()
  *                 .topic(topic.id())
- *                 .networkConfig(PipelineDestinationNetworkConfigArgs.builder()
- *                     .networkAttachment("projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment")
- *                     .build())
  *                 .build())
  *             .labels(Map.of("test_label", "test-eventarc-label"))
  *             .annotations(Map.of("test_annotation", "test-eventarc-annotation"))
@@ -145,7 +141,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.eventarc.Pipeline;
  * import com.pulumi.gcp.eventarc.PipelineArgs;
  * import com.pulumi.gcp.eventarc.inputs.PipelineDestinationArgs;
- * import com.pulumi.gcp.eventarc.inputs.PipelineDestinationNetworkConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -197,9 +192,6 @@ import javax.annotation.Nullable;
  *             .pipelineId("some-pipeline")
  *             .destinations(PipelineDestinationArgs.builder()
  *                 .workflow(workflow.id())
- *                 .networkConfig(PipelineDestinationNetworkConfigArgs.builder()
- *                     .networkAttachment("projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment")
- *                     .build())
  *                 .build())
  *             .build());
  * 

@@ -32,9 +32,23 @@ public final class GetTagTemplateIamPolicyPlainArgs extends com.pulumi.resources
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Template location region.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return Template location region.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -92,6 +106,15 @@ public final class GetTagTemplateIamPolicyPlainArgs extends com.pulumi.resources
             return this;
         }
 
+        /**
+         * @param region Template location region.
+         * Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+         * region is specified, it is taken from the provider configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;

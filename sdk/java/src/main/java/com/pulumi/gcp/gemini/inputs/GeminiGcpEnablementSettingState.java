@@ -33,6 +33,21 @@ public final class GeminiGcpEnablementSettingState extends com.pulumi.resources.
     }
 
     /**
+     * Whether web grounding should be disabled.
+     * 
+     */
+    @Import(name="disableWebGrounding")
+    private @Nullable Output<Boolean> disableWebGrounding;
+
+    /**
+     * @return Whether web grounding should be disabled.
+     * 
+     */
+    public Optional<Output<Boolean>> disableWebGrounding() {
+        return Optional.ofNullable(this.disableWebGrounding);
+    }
+
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -185,6 +200,7 @@ public final class GeminiGcpEnablementSettingState extends com.pulumi.resources.
 
     private GeminiGcpEnablementSettingState(GeminiGcpEnablementSettingState $) {
         this.createTime = $.createTime;
+        this.disableWebGrounding = $.disableWebGrounding;
         this.effectiveLabels = $.effectiveLabels;
         this.enableCustomerDataSharing = $.enableCustomerDataSharing;
         this.geminiGcpEnablementSettingId = $.geminiGcpEnablementSettingId;
@@ -233,6 +249,27 @@ public final class GeminiGcpEnablementSettingState extends com.pulumi.resources.
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param disableWebGrounding Whether web grounding should be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableWebGrounding(@Nullable Output<Boolean> disableWebGrounding) {
+            $.disableWebGrounding = disableWebGrounding;
+            return this;
+        }
+
+        /**
+         * @param disableWebGrounding Whether web grounding should be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableWebGrounding(Boolean disableWebGrounding) {
+            return disableWebGrounding(Output.of(disableWebGrounding));
         }
 
         /**

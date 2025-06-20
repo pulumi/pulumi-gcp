@@ -30,23 +30,51 @@ public final class GetAssetIamPolicyPlainArgs extends com.pulumi.resources.Invok
         return this.asset;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="dataplexZone", required=true)
     private String dataplexZone;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String dataplexZone() {
         return this.dataplexZone;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="lake", required=true)
     private String lake;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String lake() {
         return this.lake;
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     * 
+     */
     @Import(name="location")
     private @Nullable String location;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
+     * 
+     */
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }
@@ -107,16 +135,36 @@ public final class GetAssetIamPolicyPlainArgs extends com.pulumi.resources.Invok
             return this;
         }
 
+        /**
+         * @param dataplexZone Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataplexZone(String dataplexZone) {
             $.dataplexZone = dataplexZone;
             return this;
         }
 
+        /**
+         * @param lake Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder lake(String lake) {
             $.lake = lake;
             return this;
         }
 
+        /**
+         * @param location Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(@Nullable String location) {
             $.location = location;
             return this;

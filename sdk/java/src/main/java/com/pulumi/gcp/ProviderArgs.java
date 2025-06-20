@@ -1085,6 +1085,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.requestTimeout);
     }
 
+    @Import(name="resourceManager3CustomEndpoint")
+    private @Nullable Output<String> resourceManager3CustomEndpoint;
+
+    public Optional<Output<String>> resourceManager3CustomEndpoint() {
+        return Optional.ofNullable(this.resourceManager3CustomEndpoint);
+    }
+
     @Import(name="resourceManagerCustomEndpoint")
     private @Nullable Output<String> resourceManagerCustomEndpoint;
 
@@ -1520,6 +1527,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.requestReason = $.requestReason;
         this.requestTimeout = $.requestTimeout;
+        this.resourceManager3CustomEndpoint = $.resourceManager3CustomEndpoint;
         this.resourceManagerCustomEndpoint = $.resourceManagerCustomEndpoint;
         this.resourceManagerV3CustomEndpoint = $.resourceManagerV3CustomEndpoint;
         this.runtimeConfigCustomEndpoint = $.runtimeConfigCustomEndpoint;
@@ -2950,6 +2958,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder requestTimeout(String requestTimeout) {
             return requestTimeout(Output.of(requestTimeout));
+        }
+
+        public Builder resourceManager3CustomEndpoint(@Nullable Output<String> resourceManager3CustomEndpoint) {
+            $.resourceManager3CustomEndpoint = resourceManager3CustomEndpoint;
+            return this;
+        }
+
+        public Builder resourceManager3CustomEndpoint(String resourceManager3CustomEndpoint) {
+            return resourceManager3CustomEndpoint(Output.of(resourceManager3CustomEndpoint));
         }
 
         public Builder resourceManagerCustomEndpoint(@Nullable Output<String> resourceManagerCustomEndpoint) {

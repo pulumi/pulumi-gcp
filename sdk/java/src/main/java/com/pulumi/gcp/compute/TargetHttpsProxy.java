@@ -432,6 +432,98 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Target Https Proxy Fingerprint
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.SSLCertificate;
+ * import com.pulumi.gcp.compute.SSLCertificateArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import com.pulumi.gcp.compute.HttpHealthCheck;
+ * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.TargetHttpsProxy;
+ * import com.pulumi.gcp.compute.TargetHttpsProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultSSLCertificate = new SSLCertificate("defaultSSLCertificate", SSLCertificateArgs.builder()
+ *             .name("my-certificate")
+ *             .privateKey(StdFunctions.file(FileArgs.builder()
+ *                 .input("path/to/private.key")
+ *                 .build()).result())
+ *             .certificate(StdFunctions.file(FileArgs.builder()
+ *                 .input("path/to/certificate.crt")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *             .name("http-health-check")
+ *             .requestPath("/")
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .build());
+ * 
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .build());
+ * 
+ *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
+ *             .name("url-map")
+ *             .description("a description")
+ *             .defaultService(defaultBackendService.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(defaultBackendService.id())
+ *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
+ *                     .paths("/*")
+ *                     .service(defaultBackendService.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()
+ *             .name("test-fingerprint-proxy")
+ *             .urlMap(defaultURLMap.id())
+ *             .sslCertificates(defaultSSLCertificate.id())
+ *             .build());
+ * 
+ *         ctx.export("targetHttpsProxyFingerprint", default_.fingerprint());
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -529,6 +621,28 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
+     * patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet.
+     * To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+     * A base64-encoded string.
+     * 
+     */
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
+    private Output<String> fingerprint;
+
+    /**
+     * @return Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
+     * patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet.
+     * To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+     * A base64-encoded string.
+     * 
+     */
+    public Output<String> fingerprint() {
+        return this.fingerprint;
     }
     /**
      * Specifies how long to keep a connection open, after completing a response,

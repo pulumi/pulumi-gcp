@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var external_address_pc = new PrivateCloud("external-address-pc", PrivateCloudArgs.builder()
- *             .location("-a")
+ *             .location("us-west1-a")
  *             .name("sample-pc")
  *             .description("Sample test PC.")
  *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var external_address_np = new NetworkPolicy("external-address-np", NetworkPolicyArgs.builder()
- *             .location("")
+ *             .location("us-west1")
  *             .name("sample-np")
  *             .edgeServicesCidr("192.168.30.0/26")
  *             .vmwareEngineNetwork(external_address_nw.id())

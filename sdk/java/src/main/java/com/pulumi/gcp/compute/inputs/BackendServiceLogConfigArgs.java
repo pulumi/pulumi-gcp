@@ -37,6 +37,7 @@ public final class BackendServiceLogConfigArgs extends com.pulumi.resources.Reso
      * This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
      * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
      * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+     * For example: orca_load_report, tls.protocol
      * 
      */
     @Import(name="optionalFields")
@@ -46,6 +47,7 @@ public final class BackendServiceLogConfigArgs extends com.pulumi.resources.Reso
      * @return This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
      * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
      * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+     * For example: orca_load_report, tls.protocol
      * 
      */
     public Optional<Output<List<String>>> optionalFields() {
@@ -144,6 +146,7 @@ public final class BackendServiceLogConfigArgs extends com.pulumi.resources.Reso
          * @param optionalFields This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
          * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
          * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+         * For example: orca_load_report, tls.protocol
          * 
          * @return builder
          * 
@@ -157,6 +160,7 @@ public final class BackendServiceLogConfigArgs extends com.pulumi.resources.Reso
          * @param optionalFields This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
          * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
          * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+         * For example: orca_load_report, tls.protocol
          * 
          * @return builder
          * 
@@ -169,6 +173,7 @@ public final class BackendServiceLogConfigArgs extends com.pulumi.resources.Reso
          * @param optionalFields This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
          * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
          * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+         * For example: orca_load_report, tls.protocol
          * 
          * @return builder
          * 

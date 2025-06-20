@@ -810,6 +810,618 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Default Mirror Percent
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionRequestMirrorPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var home = new BackendService("home", BackendServiceArgs.builder()
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var mirror = new BackendService("mirror", BackendServiceArgs.builder()
+ *             .name("mirror")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("Test for default route action mirror percent")
+ *             .defaultService(home.id())
+ *             .defaultRouteAction(URLMapDefaultRouteActionArgs.builder()
+ *                 .requestMirrorPolicy(URLMapDefaultRouteActionRequestMirrorPolicyArgs.builder()
+ *                     .backendService(mirror.id())
+ *                     .mirrorPercent(50.0)
+ *                     .build())
+ *                 .build())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(home.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Path Matcher Default Mirror Percent
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionRequestMirrorPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var home = new BackendService("home", BackendServiceArgs.builder()
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var mirror = new BackendService("mirror", BackendServiceArgs.builder()
+ *             .name("mirror")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("Test for default route action mirror percent")
+ *             .defaultService(home.id())
+ *             .defaultRouteAction(URLMapDefaultRouteActionArgs.builder()
+ *                 .requestMirrorPolicy(URLMapDefaultRouteActionRequestMirrorPolicyArgs.builder()
+ *                     .backendService(mirror.id())
+ *                     .mirrorPercent(50.0)
+ *                     .build())
+ *                 .build())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(home.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Path Rule Mirror Percent
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var home = new BackendService("home", BackendServiceArgs.builder()
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var mirror = new BackendService("mirror", BackendServiceArgs.builder()
+ *             .name("mirror")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("Test for path matcher default route action mirror percent")
+ *             .defaultService(home.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(home.id())
+ *                 .defaultRouteAction(URLMapPathMatcherDefaultRouteActionArgs.builder()
+ *                     .requestMirrorPolicy(URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs.builder()
+ *                         .backendService(mirror.id())
+ *                         .mirrorPercent(75.0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Route Rule Mirror Percent
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var home = new BackendService("home", BackendServiceArgs.builder()
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var mirror = new BackendService("mirror", BackendServiceArgs.builder()
+ *             .name("mirror")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("Test for path rule route action mirror percent")
+ *             .defaultService(home.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(home.id())
+ *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
+ *                     .paths("/home")
+ *                     .service(home.id())
+ *                     .routeAction(URLMapPathMatcherPathRuleRouteActionArgs.builder()
+ *                         .requestMirrorPolicy(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs.builder()
+ *                             .backendService(mirror.id())
+ *                             .mirrorPercent(25.0)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Test Headers
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapTestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var health_check = new HealthCheck("health-check", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var backend = new BackendService("backend", BackendServiceArgs.builder()
+ *             .name("backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .healthChecks(health_check.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("URL map with test headers")
+ *             .defaultService(backend.id())
+ *             .tests(            
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test with custom headers")
+ *                     .host("example.com")
+ *                     .path("/")
+ *                     .service(backend.id())
+ *                     .headers(                    
+ *                         URLMapTestHeaderArgs.builder()
+ *                             .name("User-Agent")
+ *                             .value("TestBot/1.0")
+ *                             .build(),
+ *                         URLMapTestHeaderArgs.builder()
+ *                             .name("X-Custom-Header")
+ *                             .value("test-value")
+ *                             .build())
+ *                     .build(),
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test with authorization headers")
+ *                     .host("api.example.com")
+ *                     .path("/v1/test")
+ *                     .service(backend.id())
+ *                     .headers(                    
+ *                         URLMapTestHeaderArgs.builder()
+ *                             .name("Authorization")
+ *                             .value("Bearer token123")
+ *                             .build(),
+ *                         URLMapTestHeaderArgs.builder()
+ *                             .name("Content-Type")
+ *                             .value("application/json")
+ *                             .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Test Expected Output Url
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapTestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var health_check = new HealthCheck("health-check", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var backend = new BackendService("backend", BackendServiceArgs.builder()
+ *             .name("backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .healthChecks(health_check.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("URL map with expected output URL tests")
+ *             .defaultService(backend.id())
+ *             .tests(            
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test with expected output URL")
+ *                     .host("example.com")
+ *                     .path("/")
+ *                     .service(backend.id())
+ *                     .headers(URLMapTestHeaderArgs.builder()
+ *                         .name("User-Agent")
+ *                         .value("TestBot/1.0")
+ *                         .build())
+ *                     .expectedOutputUrl("http://example.com/")
+ *                     .build(),
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test API routing with expected output URL")
+ *                     .host("api.example.com")
+ *                     .path("/v1/users")
+ *                     .service(backend.id())
+ *                     .headers(URLMapTestHeaderArgs.builder()
+ *                         .name("Authorization")
+ *                         .value("Bearer token123")
+ *                         .build())
+ *                     .expectedOutputUrl("http://api.example.com/v1/users")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Test Redirect Response Code
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapTestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var health_check = new HealthCheck("health-check", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var backend = new BackendService("backend", BackendServiceArgs.builder()
+ *             .name("backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .healthChecks(health_check.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("URL map with redirect response code tests")
+ *             .defaultService(backend.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("example.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(backend.id())
+ *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
+ *                     .paths("/redirect/*")
+ *                     .urlRedirect(URLMapPathMatcherPathRuleUrlRedirectArgs.builder()
+ *                         .hostRedirect("newsite.com")
+ *                         .pathRedirect("/new-path/")
+ *                         .httpsRedirect(true)
+ *                         .redirectResponseCode("MOVED_PERMANENTLY_DEFAULT")
+ *                         .stripQuery(false)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .tests(            
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test redirect with expected response code")
+ *                     .host("example.com")
+ *                     .path("/redirect/old-page")
+ *                     .headers(URLMapTestHeaderArgs.builder()
+ *                         .name("Referer")
+ *                         .value("https://oldsite.com")
+ *                         .build())
+ *                     .expectedOutputUrl("https://newsite.com/new-path/")
+ *                     .expectedRedirectResponseCode(301)
+ *                     .build(),
+ *                 URLMapTestArgs.builder()
+ *                     .description("Test another redirect scenario")
+ *                     .host("example.com")
+ *                     .path("/redirect/another-page")
+ *                     .headers(URLMapTestHeaderArgs.builder()
+ *                         .name("User-Agent")
+ *                         .value("TestBot/1.0")
+ *                         .build())
+ *                     .expectedOutputUrl("https://newsite.com/new-path/")
+ *                     .expectedRedirectResponseCode(301)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Url Map Path Template Match
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1031,6 +1643,257 @@ import javax.annotation.Nullable;
  *                         .errorService(error.id())
  *                         .build())
  *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Http Filter Configs
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapTestArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("default-backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var service_a = new BackendService("service-a", BackendServiceArgs.builder()
+ *             .name("service-a-backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("Test for httpFilterConfigs in route rules")
+ *             .defaultService(default_.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(default_.id())
+ *                 .routeRules(URLMapPathMatcherRouteRuleArgs.builder()
+ *                     .priority(1)
+ *                     .service(service_a.id())
+ *                     .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                         .prefixMatch("/")
+ *                         .ignoreCase(true)
+ *                         .build())
+ *                     .httpFilterConfigs(URLMapPathMatcherRouteRuleHttpFilterConfigArgs.builder()
+ *                         .filterName("envoy.wasm")
+ *                         .configTypeUrl("type.googleapis.com/google.protobuf.Struct")
+ *                         .config(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("name", "my-filter"),
+ *                                 jsonProperty("root_id", "my_root_id"),
+ *                                 jsonProperty("vm_config", jsonObject(
+ *                                     jsonProperty("vm_id", "my_vm_id"),
+ *                                     jsonProperty("runtime", "envoy.wasm.runtime.v8"),
+ *                                     jsonProperty("code", jsonObject(
+ *                                         jsonProperty("local", jsonObject(
+ *                                             jsonProperty("inline_string", "const WASM_BINARY = '...'")
+ *                                         ))
+ *                                     ))
+ *                                 ))
+ *                             )))
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .tests(URLMapTestArgs.builder()
+ *                 .service(default_.id())
+ *                 .host("mysite.com")
+ *                 .path("/")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Http Filter Metadata
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapTestArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("default-backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var service_a = new BackendService("service-a", BackendServiceArgs.builder()
+ *             .name("service-a-backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var service_b = new BackendService("service-b", BackendServiceArgs.builder()
+ *             .name("service-b-backend")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("Test for httpFilterMetadata in route rules")
+ *             .defaultService(default_.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(default_.id())
+ *                 .routeRules(                
+ *                     URLMapPathMatcherRouteRuleArgs.builder()
+ *                         .priority(1)
+ *                         .service(service_a.id())
+ *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                             .prefixMatch("/")
+ *                             .ignoreCase(true)
+ *                             .build())
+ *                         .httpFilterMetadatas(URLMapPathMatcherRouteRuleHttpFilterMetadataArgs.builder()
+ *                             .filterName("envoy.wasm")
+ *                             .configTypeUrl("type.googleapis.com/google.protobuf.Struct")
+ *                             .config(serializeJson(
+ *                                 jsonObject(
+ *                                     jsonProperty("fields", jsonObject(
+ *                                         jsonProperty("timeout", jsonObject(
+ *                                             jsonProperty("string_value", "30s")
+ *                                         )),
+ *                                         jsonProperty("retries", jsonObject(
+ *                                             jsonProperty("number_value", 3)
+ *                                         )),
+ *                                         jsonProperty("debug", jsonObject(
+ *                                             jsonProperty("bool_value", true)
+ *                                         ))
+ *                                     ))
+ *                                 )))
+ *                             .build())
+ *                         .build(),
+ *                     URLMapPathMatcherRouteRuleArgs.builder()
+ *                         .priority(2)
+ *                         .service(service_b.id())
+ *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                             .prefixMatch("/api")
+ *                             .ignoreCase(true)
+ *                             .build())
+ *                         .httpFilterMetadatas(URLMapPathMatcherRouteRuleHttpFilterMetadataArgs.builder()
+ *                             .filterName("envoy.rate_limit")
+ *                             .configTypeUrl("type.googleapis.com/google.protobuf.Struct")
+ *                             .config(serializeJson(
+ *                                 jsonObject(
+ *                                     jsonProperty("fields", jsonObject(
+ *                                         jsonProperty("requests_per_unit", jsonObject(
+ *                                             jsonProperty("number_value", 100)
+ *                                         )),
+ *                                         jsonProperty("unit", jsonObject(
+ *                                             jsonProperty("string_value", "MINUTE")
+ *                                         ))
+ *                                     ))
+ *                                 )))
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .tests(URLMapTestArgs.builder()
+ *                 .service(default_.id())
+ *                 .host("mysite.com")
+ *                 .path("/")
  *                 .build())
  *             .build());
  * 

@@ -5,8 +5,11 @@ package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolInlineCertificateIssuanceConfig;
+import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolInlineTrustConfig;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,6 +24,9 @@ public final class GetWorkloadIdentityPoolResult {
      * 
      */
     private String id;
+    private List<GetWorkloadIdentityPoolInlineCertificateIssuanceConfig> inlineCertificateIssuanceConfigs;
+    private List<GetWorkloadIdentityPoolInlineTrustConfig> inlineTrustConfigs;
+    private String mode;
     private String name;
     private @Nullable String project;
     private String state;
@@ -42,6 +48,15 @@ public final class GetWorkloadIdentityPoolResult {
      */
     public String id() {
         return this.id;
+    }
+    public List<GetWorkloadIdentityPoolInlineCertificateIssuanceConfig> inlineCertificateIssuanceConfigs() {
+        return this.inlineCertificateIssuanceConfigs;
+    }
+    public List<GetWorkloadIdentityPoolInlineTrustConfig> inlineTrustConfigs() {
+        return this.inlineTrustConfigs;
+    }
+    public String mode() {
+        return this.mode;
     }
     public String name() {
         return this.name;
@@ -69,6 +84,9 @@ public final class GetWorkloadIdentityPoolResult {
         private Boolean disabled;
         private String displayName;
         private String id;
+        private List<GetWorkloadIdentityPoolInlineCertificateIssuanceConfig> inlineCertificateIssuanceConfigs;
+        private List<GetWorkloadIdentityPoolInlineTrustConfig> inlineTrustConfigs;
+        private String mode;
         private String name;
         private @Nullable String project;
         private String state;
@@ -80,6 +98,9 @@ public final class GetWorkloadIdentityPoolResult {
     	      this.disabled = defaults.disabled;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
+    	      this.inlineCertificateIssuanceConfigs = defaults.inlineCertificateIssuanceConfigs;
+    	      this.inlineTrustConfigs = defaults.inlineTrustConfigs;
+    	      this.mode = defaults.mode;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.state = defaults.state;
@@ -119,6 +140,36 @@ public final class GetWorkloadIdentityPoolResult {
             return this;
         }
         @CustomType.Setter
+        public Builder inlineCertificateIssuanceConfigs(List<GetWorkloadIdentityPoolInlineCertificateIssuanceConfig> inlineCertificateIssuanceConfigs) {
+            if (inlineCertificateIssuanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolResult", "inlineCertificateIssuanceConfigs");
+            }
+            this.inlineCertificateIssuanceConfigs = inlineCertificateIssuanceConfigs;
+            return this;
+        }
+        public Builder inlineCertificateIssuanceConfigs(GetWorkloadIdentityPoolInlineCertificateIssuanceConfig... inlineCertificateIssuanceConfigs) {
+            return inlineCertificateIssuanceConfigs(List.of(inlineCertificateIssuanceConfigs));
+        }
+        @CustomType.Setter
+        public Builder inlineTrustConfigs(List<GetWorkloadIdentityPoolInlineTrustConfig> inlineTrustConfigs) {
+            if (inlineTrustConfigs == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolResult", "inlineTrustConfigs");
+            }
+            this.inlineTrustConfigs = inlineTrustConfigs;
+            return this;
+        }
+        public Builder inlineTrustConfigs(GetWorkloadIdentityPoolInlineTrustConfig... inlineTrustConfigs) {
+            return inlineTrustConfigs(List.of(inlineTrustConfigs));
+        }
+        @CustomType.Setter
+        public Builder mode(String mode) {
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolResult", "mode");
+            }
+            this.mode = mode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolResult", "name");
@@ -154,6 +205,9 @@ public final class GetWorkloadIdentityPoolResult {
             _resultValue.disabled = disabled;
             _resultValue.displayName = displayName;
             _resultValue.id = id;
+            _resultValue.inlineCertificateIssuanceConfigs = inlineCertificateIssuanceConfigs;
+            _resultValue.inlineTrustConfigs = inlineTrustConfigs;
+            _resultValue.mode = mode;
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.state = state;

@@ -88,6 +88,67 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Backup Dr Backup Plan For Disk Resource
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVault;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlan;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlanArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleBackupWindowArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myBackupVault = new BackupVault("myBackupVault", BackupVaultArgs.builder()
+ *             .location("us-central1")
+ *             .backupVaultId("backup-vault-disk-test")
+ *             .backupMinimumEnforcedRetentionDuration("100000s")
+ *             .build());
+ * 
+ *         var my_disk_backup_plan_1 = new BackupPlan("my-disk-backup-plan-1", BackupPlanArgs.builder()
+ *             .location("us-central1")
+ *             .backupPlanId("backup-plan-disk-test")
+ *             .resourceType("compute.googleapis.com/Disk")
+ *             .backupVault(myBackupVault.id())
+ *             .backupRules(BackupPlanBackupRuleArgs.builder()
+ *                 .ruleId("rule-1")
+ *                 .backupRetentionDays(5)
+ *                 .standardSchedule(BackupPlanBackupRuleStandardScheduleArgs.builder()
+ *                     .recurrenceType("HOURLY")
+ *                     .hourlyFrequency(1)
+ *                     .timeZone("UTC")
+ *                     .backupWindow(BackupPlanBackupRuleStandardScheduleBackupWindowArgs.builder()
+ *                         .startHourOfDay(0)
+ *                         .endHourOfDay(6)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -237,18 +298,34 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The resource type to which the `BackupPlan` will be applied. Examples include, &#34;compute.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+     * The resource type to which the `BackupPlan` will be applied.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
-     * @return The resource type to which the `BackupPlan` will be applied. Examples include, &#34;compute.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+     * @return The resource type to which the `BackupPlan` will be applied.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     public Output<String> resourceType() {
         return this.resourceType;
+    }
+    /**
+     * The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+     * 
+     */
+    @Export(name="supportedResourceTypes", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> supportedResourceTypes;
+
+    /**
+     * @return The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+     * 
+     */
+    public Output<List<String>> supportedResourceTypes() {
+        return this.supportedResourceTypes;
     }
     /**
      * When the `BackupPlan` was last updated.

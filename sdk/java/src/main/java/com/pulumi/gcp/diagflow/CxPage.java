@@ -14,6 +14,7 @@ import com.pulumi.gcp.diagflow.outputs.CxPageAdvancedSettings;
 import com.pulumi.gcp.diagflow.outputs.CxPageEntryFulfillment;
 import com.pulumi.gcp.diagflow.outputs.CxPageEventHandler;
 import com.pulumi.gcp.diagflow.outputs.CxPageForm;
+import com.pulumi.gcp.diagflow.outputs.CxPageKnowledgeConnectorSettings;
 import com.pulumi.gcp.diagflow.outputs.CxPageTransitionRoute;
 import java.lang.String;
 import java.util.List;
@@ -49,6 +50,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.CxWebhook;
  * import com.pulumi.gcp.diagflow.CxWebhookArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxPageEntryFulfillmentArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerTriggerFulfillmentArgs;
@@ -57,6 +60,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteTriggerFulfillmentArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxPageAdvancedSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxPageAdvancedSettingsDtmfSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageKnowledgeConnectorSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs;
+ * import com.pulumi.gcp.discoveryengine.DataStore;
+ * import com.pulumi.gcp.discoveryengine.DataStoreArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -100,6 +111,9 @@ import javax.annotation.Nullable;
  *             .genericWebService(CxWebhookGenericWebServiceArgs.builder()
  *                 .uri("https://example.com")
  *                 .build())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
  *         var basicPage = new CxPage("basicPage", CxPageArgs.builder()
@@ -679,6 +693,134 @@ import javax.annotation.Nullable;
  *                     .finishDigit("#")
  *                     .build())
  *                 .build())
+ *             .knowledgeConnectorSettings(CxPageKnowledgeConnectorSettingsArgs.builder()
+ *                 .enabled(true)
+ *                 .triggerFulfillment(CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs.builder()
+ *                     .messages(                    
+ *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .channel("some-channel")
+ *                             .knowledgeInfoCard(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs.builder()
+ *                                 .build())
+ *                             .build(),
+ *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .channel("some-channel")
+ *                             .text(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs.builder()
+ *                                 .texts("information completed, navigating to page 2")
+ *                                 .build())
+ *                             .build(),
+ *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .payload("""
+ *           {"some-key": "some-value", "other-key": ["other-value"]}
+ *                             """)
+ *                             .build(),
+ *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .conversationSuccess(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs.builder()
+ *                                 .metadata("""
+ *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *                                 """)
+ *                                 .build())
+ *                             .build(),
+ *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .outputAudioText(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs.builder()
+ *                                 .text("some output text")
+ *                                 .build())
+ *                             .build(),
+ *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .outputAudioText(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs.builder()
+ *                                 .ssml("""
+ *             <speak>Some example <say-as interpret-as="characters">SSML XML</say-as></speak>
+ *                                 """)
+ *                                 .build())
+ *                             .build(),
+ *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .liveAgentHandoff(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
+ *                                 .metadata("""
+ *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *                                 """)
+ *                                 .build())
+ *                             .build(),
+ *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .playAudio(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs.builder()
+ *                                 .audioUri("http://example.com/some-audio-file.mp3")
+ *                                 .build())
+ *                             .build(),
+ *                         CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .telephonyTransferCall(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs.builder()
+ *                                 .phoneNumber("1-234-567-8902")
+ *                                 .build())
+ *                             .build())
+ *                     .webhook(myWebhook.id())
+ *                     .returnPartialResponses(true)
+ *                     .tag("some-tag")
+ *                     .setParameterActions(CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs.builder()
+ *                         .parameter("some-param")
+ *                         .value("123.45")
+ *                         .build())
+ *                     .conditionalCases(CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs.builder()
+ *                         .cases(serializeJson(
+ *                             jsonArray(
+ *                                 jsonObject(
+ *                                     jsonProperty("condition", "$sys.func.RAND() < 0.5"),
+ *                                     jsonProperty("caseContent", jsonArray(jsonObject(
+ *                                         jsonProperty("message", jsonObject(
+ *                                             jsonProperty("text", jsonObject(
+ *                                                 jsonProperty("text", jsonArray("First case"))
+ *                                             ))
+ *                                         ))
+ *                                     )))
+ *                                 ), 
+ *                                 jsonObject(
+ *                                     jsonProperty("caseContent", jsonArray(jsonObject(
+ *                                         jsonProperty("message", jsonObject(
+ *                                             jsonProperty("text", jsonObject(
+ *                                                 jsonProperty("text", jsonArray("Final case"))
+ *                                             ))
+ *                                         ))
+ *                                     )))
+ *                                 )
+ *                             )))
+ *                         .build())
+ *                     .advancedSettings(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs.builder()
+ *                         .speechSettings(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs.builder()
+ *                             .endpointerSensitivity(30)
+ *                             .noSpeechTimeout("3.500s")
+ *                             .useTimeoutBasedEndpointing(true)
+ *                             .models(Map.ofEntries(
+ *                                 Map.entry("name", "wrench"),
+ *                                 Map.entry("mass", "1.3kg"),
+ *                                 Map.entry("count", "3")
+ *                             ))
+ *                             .build())
+ *                         .dtmfSettings(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs.builder()
+ *                             .enabled(true)
+ *                             .maxDigits(1)
+ *                             .finishDigit("#")
+ *                             .interdigitTimeoutDuration("3.500s")
+ *                             .endpointingTimeoutDuration("3.500s")
+ *                             .build())
+ *                         .loggingSettings(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs.builder()
+ *                             .enableStackdriverLogging(true)
+ *                             .enableInteractionLogging(true)
+ *                             .enableConsentBasedRedaction(true)
+ *                             .build())
+ *                         .build())
+ *                     .enableGenerativeFallback(true)
+ *                     .build())
+ *                 .dataStoreConnections(CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs.builder()
+ *                     .dataStoreType("PUBLIC_WEB")
+ *                     .dataStore(agent.location().applyValue(_location -> String.format("projects/%s/locations/%s/collections/default_collection/dataStores/datastore-page-full", project.number(),_location)))
+ *                     .documentProcessingMode("CHUNKS")
+ *                     .build())
+ *                 .targetPage(myPage2.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var myDatastore = new DataStore("myDatastore", DataStoreArgs.builder()
+ *             .location("global")
+ *             .dataStoreId("datastore-page-full")
+ *             .displayName("datastore-page-full")
+ *             .industryVertical("GENERIC")
+ *             .contentConfig("NO_CONTENT")
  *             .build());
  * 
  *     }
@@ -791,6 +933,22 @@ public class CxPage extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<CxPageForm>> form() {
         return Codegen.optional(this.form);
+    }
+    /**
+     * Knowledge connector configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="knowledgeConnectorSettings", refs={CxPageKnowledgeConnectorSettings.class}, tree="[0]")
+    private Output</* @Nullable */ CxPageKnowledgeConnectorSettings> knowledgeConnectorSettings;
+
+    /**
+     * @return Knowledge connector configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CxPageKnowledgeConnectorSettings>> knowledgeConnectorSettings() {
+        return Codegen.optional(this.knowledgeConnectorSettings);
     }
     /**
      * The language of the following fields in page:

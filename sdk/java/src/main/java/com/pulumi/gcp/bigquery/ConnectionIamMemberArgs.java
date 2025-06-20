@@ -25,7 +25,6 @@ public final class ConnectionIamMemberArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional connection id that should be assigned to the created connection.
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
@@ -33,8 +32,7 @@ public final class ConnectionIamMemberArgs extends com.pulumi.resources.Resource
     private Output<String> connectionId;
 
     /**
-     * @return Optional connection id that should be assigned to the created connection.
-     * Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> connectionId() {
@@ -182,8 +180,7 @@ public final class ConnectionIamMemberArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param connectionId Optional connection id that should be assigned to the created connection.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param connectionId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -194,8 +191,7 @@ public final class ConnectionIamMemberArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param connectionId Optional connection id that should be assigned to the created connection.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param connectionId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

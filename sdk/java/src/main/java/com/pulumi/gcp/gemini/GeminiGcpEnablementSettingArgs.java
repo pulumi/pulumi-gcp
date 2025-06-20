@@ -19,6 +19,21 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
     public static final GeminiGcpEnablementSettingArgs Empty = new GeminiGcpEnablementSettingArgs();
 
     /**
+     * Whether web grounding should be disabled.
+     * 
+     */
+    @Import(name="disableWebGrounding")
+    private @Nullable Output<Boolean> disableWebGrounding;
+
+    /**
+     * @return Whether web grounding should be disabled.
+     * 
+     */
+    public Optional<Output<Boolean>> disableWebGrounding() {
+        return Optional.ofNullable(this.disableWebGrounding);
+    }
+
+    /**
      * Whether customer data sharing should be enabled.
      * 
      */
@@ -106,6 +121,7 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
     private GeminiGcpEnablementSettingArgs() {}
 
     private GeminiGcpEnablementSettingArgs(GeminiGcpEnablementSettingArgs $) {
+        this.disableWebGrounding = $.disableWebGrounding;
         this.enableCustomerDataSharing = $.enableCustomerDataSharing;
         this.geminiGcpEnablementSettingId = $.geminiGcpEnablementSettingId;
         this.labels = $.labels;
@@ -129,6 +145,27 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
 
         public Builder(GeminiGcpEnablementSettingArgs defaults) {
             $ = new GeminiGcpEnablementSettingArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param disableWebGrounding Whether web grounding should be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableWebGrounding(@Nullable Output<Boolean> disableWebGrounding) {
+            $.disableWebGrounding = disableWebGrounding;
+            return this;
+        }
+
+        /**
+         * @param disableWebGrounding Whether web grounding should be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableWebGrounding(Boolean disableWebGrounding) {
+            return disableWebGrounding(Output.of(disableWebGrounding));
         }
 
         /**

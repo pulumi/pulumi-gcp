@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.outputs.InstanceTemplateDiskSourceSnapshotEncrypti
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceTemplateDisk {
+    /**
+     * @return The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * 
+     */
+    private @Nullable String architecture;
     /**
      * @return Whether or not the disk should be auto-deleted.
      * This defaults to true.
@@ -67,6 +73,11 @@ public final class InstanceTemplateDisk {
      * 
      */
     private @Nullable String diskType;
+    /**
+     * @return A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+     * 
+     */
+    private @Nullable List<String> guestOsFeatures;
     /**
      * @return Specifies the disk interface to use for attaching this disk,
      * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
@@ -163,6 +174,13 @@ public final class InstanceTemplateDisk {
 
     private InstanceTemplateDisk() {}
     /**
+     * @return The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * 
+     */
+    public Optional<String> architecture() {
+        return Optional.ofNullable(this.architecture);
+    }
+    /**
      * @return Whether or not the disk should be auto-deleted.
      * This defaults to true.
      * 
@@ -225,6 +243,13 @@ public final class InstanceTemplateDisk {
      */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
+    }
+    /**
+     * @return A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+     * 
+     */
+    public List<String> guestOsFeatures() {
+        return this.guestOsFeatures == null ? List.of() : this.guestOsFeatures;
     }
     /**
      * @return Specifies the disk interface to use for attaching this disk,
@@ -355,6 +380,7 @@ public final class InstanceTemplateDisk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String architecture;
         private @Nullable Boolean autoDelete;
         private @Nullable Boolean boot;
         private @Nullable String deviceName;
@@ -362,6 +388,7 @@ public final class InstanceTemplateDisk {
         private @Nullable String diskName;
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
+        private @Nullable List<String> guestOsFeatures;
         private @Nullable String interface_;
         private @Nullable Map<String,String> labels;
         private @Nullable String mode;
@@ -378,6 +405,7 @@ public final class InstanceTemplateDisk {
         public Builder() {}
         public Builder(InstanceTemplateDisk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.architecture = defaults.architecture;
     	      this.autoDelete = defaults.autoDelete;
     	      this.boot = defaults.boot;
     	      this.deviceName = defaults.deviceName;
@@ -385,6 +413,7 @@ public final class InstanceTemplateDisk {
     	      this.diskName = defaults.diskName;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
+    	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.interface_ = defaults.interface_;
     	      this.labels = defaults.labels;
     	      this.mode = defaults.mode;
@@ -400,6 +429,12 @@ public final class InstanceTemplateDisk {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder architecture(@Nullable String architecture) {
+
+            this.architecture = architecture;
+            return this;
+        }
         @CustomType.Setter
         public Builder autoDelete(@Nullable Boolean autoDelete) {
 
@@ -441,6 +476,15 @@ public final class InstanceTemplateDisk {
 
             this.diskType = diskType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder guestOsFeatures(@Nullable List<String> guestOsFeatures) {
+
+            this.guestOsFeatures = guestOsFeatures;
+            return this;
+        }
+        public Builder guestOsFeatures(String... guestOsFeatures) {
+            return guestOsFeatures(List.of(guestOsFeatures));
         }
         @CustomType.Setter("interface")
         public Builder interface_(@Nullable String interface_) {
@@ -522,6 +566,7 @@ public final class InstanceTemplateDisk {
         }
         public InstanceTemplateDisk build() {
             final var _resultValue = new InstanceTemplateDisk();
+            _resultValue.architecture = architecture;
             _resultValue.autoDelete = autoDelete;
             _resultValue.boot = boot;
             _resultValue.deviceName = deviceName;
@@ -529,6 +574,7 @@ public final class InstanceTemplateDisk {
             _resultValue.diskName = diskName;
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.diskType = diskType;
+            _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.interface_ = interface_;
             _resultValue.labels = labels;
             _resultValue.mode = mode;

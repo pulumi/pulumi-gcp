@@ -6,23 +6,48 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetServiceScaling {
     /**
+     * @return Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+     * 
+     */
+    private Integer manualInstanceCount;
+    /**
      * @return Minimum number of instances for the service, to be divided among all revisions receiving traffic.
      * 
      */
     private Integer minInstanceCount;
+    /**
+     * @return The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: [&#34;AUTOMATIC&#34;, &#34;MANUAL&#34;]
+     * 
+     */
+    private String scalingMode;
 
     private GetServiceScaling() {}
+    /**
+     * @return Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+     * 
+     */
+    public Integer manualInstanceCount() {
+        return this.manualInstanceCount;
+    }
     /**
      * @return Minimum number of instances for the service, to be divided among all revisions receiving traffic.
      * 
      */
     public Integer minInstanceCount() {
         return this.minInstanceCount;
+    }
+    /**
+     * @return The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: [&#34;AUTOMATIC&#34;, &#34;MANUAL&#34;]
+     * 
+     */
+    public String scalingMode() {
+        return this.scalingMode;
     }
 
     public static Builder builder() {
@@ -34,13 +59,25 @@ public final class GetServiceScaling {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer manualInstanceCount;
         private Integer minInstanceCount;
+        private String scalingMode;
         public Builder() {}
         public Builder(GetServiceScaling defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.manualInstanceCount = defaults.manualInstanceCount;
     	      this.minInstanceCount = defaults.minInstanceCount;
+    	      this.scalingMode = defaults.scalingMode;
         }
 
+        @CustomType.Setter
+        public Builder manualInstanceCount(Integer manualInstanceCount) {
+            if (manualInstanceCount == null) {
+              throw new MissingRequiredPropertyException("GetServiceScaling", "manualInstanceCount");
+            }
+            this.manualInstanceCount = manualInstanceCount;
+            return this;
+        }
         @CustomType.Setter
         public Builder minInstanceCount(Integer minInstanceCount) {
             if (minInstanceCount == null) {
@@ -49,9 +86,19 @@ public final class GetServiceScaling {
             this.minInstanceCount = minInstanceCount;
             return this;
         }
+        @CustomType.Setter
+        public Builder scalingMode(String scalingMode) {
+            if (scalingMode == null) {
+              throw new MissingRequiredPropertyException("GetServiceScaling", "scalingMode");
+            }
+            this.scalingMode = scalingMode;
+            return this;
+        }
         public GetServiceScaling build() {
             final var _resultValue = new GetServiceScaling();
+            _resultValue.manualInstanceCount = manualInstanceCount;
             _resultValue.minInstanceCount = minInstanceCount;
+            _resultValue.scalingMode = scalingMode;
             return _resultValue;
         }
     }

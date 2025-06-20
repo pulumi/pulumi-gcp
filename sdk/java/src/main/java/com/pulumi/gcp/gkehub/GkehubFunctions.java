@@ -13,32 +13,235 @@ import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
 import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyArgs;
 import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyPlainArgs;
 import com.pulumi.gcp.gkehub.inputs.GetFeaturePlainArgs;
+import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
 import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
 import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingPlainArgs;
 import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyArgs;
 import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyPlainArgs;
+import com.pulumi.gcp.gkehub.inputs.GetMembershipPlainArgs;
 import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
 import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyPlainArgs;
 import com.pulumi.gcp.gkehub.outputs.GetFeatureIamPolicyResult;
 import com.pulumi.gcp.gkehub.outputs.GetFeatureResult;
 import com.pulumi.gcp.gkehub.outputs.GetMembershipBindingResult;
 import com.pulumi.gcp.gkehub.outputs.GetMembershipIamPolicyResult;
+import com.pulumi.gcp.gkehub.outputs.GetMembershipResult;
 import com.pulumi.gcp.gkehub.outputs.GetScopeIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class GkehubFunctions {
+    /**
+     * Retrieves the details of a specific GKE Hub Feature. Use this data source to retrieve the feature&#39;s configuration and state.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getFeature(GetFeatureArgs.builder()
+     *             .location("global")
+     *             .name("servicemesh")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetFeatureResult> getFeature(GetFeatureArgs args) {
         return getFeature(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the details of a specific GKE Hub Feature. Use this data source to retrieve the feature&#39;s configuration and state.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getFeature(GetFeatureArgs.builder()
+     *             .location("global")
+     *             .name("servicemesh")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFeatureResult> getFeaturePlain(GetFeaturePlainArgs args) {
         return getFeaturePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the details of a specific GKE Hub Feature. Use this data source to retrieve the feature&#39;s configuration and state.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getFeature(GetFeatureArgs.builder()
+     *             .location("global")
+     *             .name("servicemesh")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetFeatureResult> getFeature(GetFeatureArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:gkehub/getFeature:getFeature", TypeShape.of(GetFeatureResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the details of a specific GKE Hub Feature. Use this data source to retrieve the feature&#39;s configuration and state.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getFeature(GetFeatureArgs.builder()
+     *             .location("global")
+     *             .name("servicemesh")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetFeatureResult> getFeature(GetFeatureArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:gkehub/getFeature:getFeature", TypeShape.of(GetFeatureResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the details of a specific GKE Hub Feature. Use this data source to retrieve the feature&#39;s configuration and state.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getFeature(GetFeatureArgs.builder()
+     *             .location("global")
+     *             .name("servicemesh")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFeatureResult> getFeaturePlain(GetFeaturePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:gkehub/getFeature:getFeature", TypeShape.of(GetFeatureResult.class), args, Utilities.withVersion(options));
     }
@@ -261,6 +464,226 @@ public final class GkehubFunctions {
      */
     public static CompletableFuture<GetFeatureIamPolicyResult> getFeatureIamPolicyPlain(GetFeatureIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy", TypeShape.of(GetFeatureIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the details of a specific GKE Hub Membership. Use this data source to retrieve the membership&#39;s configuration and state.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getMembership(GetMembershipArgs.builder()
+     *             .project("my-project-id")
+     *             .location("global")
+     *             .membershipId("my-membership-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMembershipResult> getMembership(GetMembershipArgs args) {
+        return getMembership(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the details of a specific GKE Hub Membership. Use this data source to retrieve the membership&#39;s configuration and state.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getMembership(GetMembershipArgs.builder()
+     *             .project("my-project-id")
+     *             .location("global")
+     *             .membershipId("my-membership-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMembershipResult> getMembershipPlain(GetMembershipPlainArgs args) {
+        return getMembershipPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the details of a specific GKE Hub Membership. Use this data source to retrieve the membership&#39;s configuration and state.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getMembership(GetMembershipArgs.builder()
+     *             .project("my-project-id")
+     *             .location("global")
+     *             .membershipId("my-membership-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMembershipResult> getMembership(GetMembershipArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:gkehub/getMembership:getMembership", TypeShape.of(GetMembershipResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the details of a specific GKE Hub Membership. Use this data source to retrieve the membership&#39;s configuration and state.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getMembership(GetMembershipArgs.builder()
+     *             .project("my-project-id")
+     *             .location("global")
+     *             .membershipId("my-membership-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMembershipResult> getMembership(GetMembershipArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:gkehub/getMembership:getMembership", TypeShape.of(GetMembershipResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the details of a specific GKE Hub Membership. Use this data source to retrieve the membership&#39;s configuration and state.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getMembership(GetMembershipArgs.builder()
+     *             .project("my-project-id")
+     *             .location("global")
+     *             .membershipId("my-membership-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMembershipResult> getMembershipPlain(GetMembershipPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:gkehub/getMembership:getMembership", TypeShape.of(GetMembershipResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetMembershipBindingResult> getMembershipBinding(GetMembershipBindingArgs args) {
         return getMembershipBinding(args, InvokeOptions.Empty);

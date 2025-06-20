@@ -16,9 +16,17 @@ public final class AspectTypeIamMemberState extends com.pulumi.resources.Resourc
 
     public static final AspectTypeIamMemberState Empty = new AspectTypeIamMemberState();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="aspectTypeId")
     private @Nullable Output<String> aspectTypeId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> aspectTypeId() {
         return Optional.ofNullable(this.aspectTypeId);
     }
@@ -167,11 +175,23 @@ public final class AspectTypeIamMemberState extends com.pulumi.resources.Resourc
             $ = new AspectTypeIamMemberState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aspectTypeId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder aspectTypeId(@Nullable Output<String> aspectTypeId) {
             $.aspectTypeId = aspectTypeId;
             return this;
         }
 
+        /**
+         * @param aspectTypeId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder aspectTypeId(String aspectTypeId) {
             return aspectTypeId(Output.of(aspectTypeId));
         }

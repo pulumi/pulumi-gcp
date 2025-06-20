@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var queryConfigCmek = new DataTransferConfig("queryConfigCmek", DataTransferConfigArgs.builder()
- *             .displayName("")
+ *             .displayName("display-name")
  *             .location("asia-northeast1")
  *             .dataSourceId("scheduled_query")
  *             .schedule("first sunday of quarter 00:00")

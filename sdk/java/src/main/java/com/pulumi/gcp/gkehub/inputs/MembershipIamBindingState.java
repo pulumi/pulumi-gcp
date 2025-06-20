@@ -97,9 +97,17 @@ public final class MembershipIamBindingState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.members);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="membershipId")
     private @Nullable Output<String> membershipId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> membershipId() {
         return Optional.ofNullable(this.membershipId);
     }
@@ -290,11 +298,23 @@ public final class MembershipIamBindingState extends com.pulumi.resources.Resour
             return members(List.of(members));
         }
 
+        /**
+         * @param membershipId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder membershipId(@Nullable Output<String> membershipId) {
             $.membershipId = membershipId;
             return this;
         }
 
+        /**
+         * @param membershipId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder membershipId(String membershipId) {
             return membershipId(Output.of(membershipId));
         }

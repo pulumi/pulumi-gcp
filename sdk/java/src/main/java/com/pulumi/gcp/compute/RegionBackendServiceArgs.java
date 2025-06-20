@@ -11,6 +11,7 @@ import com.pulumi.gcp.compute.inputs.RegionBackendServiceCircuitBreakersArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceConnectionTrackingPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceConsistentHashArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceCustomMetricArgs;
+import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceFailoverPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceIapArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceLogConfigArgs;
@@ -90,7 +91,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-     * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
      */
@@ -100,7 +101,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     /**
      * @return Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-     * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
      */
@@ -203,6 +204,25 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dynamicForwarding")
+    private @Nullable Output<RegionBackendServiceDynamicForwardingArgs> dynamicForwarding;
+
+    /**
+     * @return Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionBackendServiceDynamicForwardingArgs>> dynamicForwarding() {
+        return Optional.ofNullable(this.dynamicForwarding);
     }
 
     /**
@@ -362,7 +382,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
      *   to use for computing the weights are specified via the
      *   backends[].customMetrics fields.
      *   locality_lb_policy is applicable to either:
-     * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+     * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
      * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -420,7 +440,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
      *   to use for computing the weights are specified via the
      *   backends[].customMetrics fields.
      *   locality_lb_policy is applicable to either:
-     * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+     * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
      * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -508,7 +528,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `load_balancing_scheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
      */
@@ -518,7 +538,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     /**
      * @return Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `load_balancing_scheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
      */
@@ -571,20 +591,22 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The protocol this RegionBackendService uses to communicate with backends.
-     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-     * types and may result in errors if used with the GA API.
-     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+     * The protocol this BackendService uses to communicate with backends.
+     * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+     * or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+     * for more information.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The protocol this RegionBackendService uses to communicate with backends.
-     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-     * types and may result in errors if used with the GA API.
-     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+     * @return The protocol this BackendService uses to communicate with backends.
+     * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+     * or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+     * for more information.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -709,6 +731,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         this.consistentHash = $.consistentHash;
         this.customMetrics = $.customMetrics;
         this.description = $.description;
+        this.dynamicForwarding = $.dynamicForwarding;
         this.enableCdn = $.enableCdn;
         this.failoverPolicy = $.failoverPolicy;
         this.healthChecks = $.healthChecks;
@@ -838,7 +861,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         /**
          * @param circuitBreakers Settings controlling the volume of connections to a backend service. This field
          * is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-         * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+         * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
          * Structure is documented below.
          * 
          * @return builder
@@ -852,7 +875,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         /**
          * @param circuitBreakers Settings controlling the volume of connections to a backend service. This field
          * is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-         * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+         * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
          * Structure is documented below.
          * 
          * @return builder
@@ -998,6 +1021,31 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * feature which together with Service Extension allows customized and complex routing logic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicForwarding(@Nullable Output<RegionBackendServiceDynamicForwardingArgs> dynamicForwarding) {
+            $.dynamicForwarding = dynamicForwarding;
+            return this;
+        }
+
+        /**
+         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * feature which together with Service Extension allows customized and complex routing logic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicForwarding(RegionBackendServiceDynamicForwardingArgs dynamicForwarding) {
+            return dynamicForwarding(Output.of(dynamicForwarding));
         }
 
         /**
@@ -1193,7 +1241,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
          *   to use for computing the weights are specified via the
          *   backends[].customMetrics fields.
          *   locality_lb_policy is applicable to either:
-         * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+         * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
          *   and loadBalancingScheme set to INTERNAL_MANAGED.
          * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
          * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1255,7 +1303,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
          *   to use for computing the weights are specified via the
          *   backends[].customMetrics fields.
          *   locality_lb_policy is applicable to either:
-         * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+         * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
          *   and loadBalancingScheme set to INTERNAL_MANAGED.
          * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
          * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1363,7 +1411,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         /**
          * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
          * This field is applicable only when the `load_balancing_scheme` is set
-         * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+         * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
          * Structure is documented below.
          * 
          * @return builder
@@ -1377,7 +1425,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         /**
          * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
          * This field is applicable only when the `load_balancing_scheme` is set
-         * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+         * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
          * Structure is documented below.
          * 
          * @return builder
@@ -1444,10 +1492,11 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param protocol The protocol this RegionBackendService uses to communicate with backends.
-         * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-         * types and may result in errors if used with the GA API.
-         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+         * @param protocol The protocol this BackendService uses to communicate with backends.
+         * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+         * or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+         * for more information.
+         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
          * 
          * @return builder
          * 
@@ -1458,10 +1507,11 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param protocol The protocol this RegionBackendService uses to communicate with backends.
-         * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-         * types and may result in errors if used with the GA API.
-         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+         * @param protocol The protocol this BackendService uses to communicate with backends.
+         * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+         * or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+         * for more information.
+         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
          * 
          * @return builder
          * 

@@ -37,6 +37,11 @@ public final class TargetServerSSlInfo {
      */
     private Boolean enabled;
     /**
+     * @return If true, TLS is strictly enforced.
+     * 
+     */
+    private @Nullable Boolean enforce;
+    /**
      * @return If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
      * 
      */
@@ -93,6 +98,13 @@ public final class TargetServerSSlInfo {
         return this.enabled;
     }
     /**
+     * @return If true, TLS is strictly enforced.
+     * 
+     */
+    public Optional<Boolean> enforce() {
+        return Optional.ofNullable(this.enforce);
+    }
+    /**
      * @return If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
      * 
      */
@@ -141,6 +153,7 @@ public final class TargetServerSSlInfo {
         private @Nullable Boolean clientAuthEnabled;
         private @Nullable TargetServerSSlInfoCommonName commonName;
         private Boolean enabled;
+        private @Nullable Boolean enforce;
         private @Nullable Boolean ignoreValidationErrors;
         private @Nullable String keyAlias;
         private @Nullable String keyStore;
@@ -153,6 +166,7 @@ public final class TargetServerSSlInfo {
     	      this.clientAuthEnabled = defaults.clientAuthEnabled;
     	      this.commonName = defaults.commonName;
     	      this.enabled = defaults.enabled;
+    	      this.enforce = defaults.enforce;
     	      this.ignoreValidationErrors = defaults.ignoreValidationErrors;
     	      this.keyAlias = defaults.keyAlias;
     	      this.keyStore = defaults.keyStore;
@@ -187,6 +201,12 @@ public final class TargetServerSSlInfo {
               throw new MissingRequiredPropertyException("TargetServerSSlInfo", "enabled");
             }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enforce(@Nullable Boolean enforce) {
+
+            this.enforce = enforce;
             return this;
         }
         @CustomType.Setter
@@ -228,6 +248,7 @@ public final class TargetServerSSlInfo {
             _resultValue.clientAuthEnabled = clientAuthEnabled;
             _resultValue.commonName = commonName;
             _resultValue.enabled = enabled;
+            _resultValue.enforce = enforce;
             _resultValue.ignoreValidationErrors = ignoreValidationErrors;
             _resultValue.keyAlias = keyAlias;
             _resultValue.keyStore = keyStore;

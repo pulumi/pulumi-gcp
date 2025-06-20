@@ -88,9 +88,21 @@ public final class EnvironmentIamMemberState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.member);
     }
 
+    /**
+     * The Apigee Organization associated with the Apigee environment,
+     * in the format `organizations/{{org_name}}`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return The Apigee Organization associated with the Apigee environment,
+     * in the format `organizations/{{org_name}}`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
@@ -235,11 +247,27 @@ public final class EnvironmentIamMemberState extends com.pulumi.resources.Resour
             return member(Output.of(member));
         }
 
+        /**
+         * @param orgId The Apigee Organization associated with the Apigee environment,
+         * in the format `organizations/{{org_name}}`.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId The Apigee Organization associated with the Apigee environment,
+         * in the format `organizations/{{org_name}}`.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }

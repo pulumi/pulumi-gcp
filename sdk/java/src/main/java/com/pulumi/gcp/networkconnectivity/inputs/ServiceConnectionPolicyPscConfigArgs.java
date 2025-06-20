@@ -18,6 +18,37 @@ public final class ServiceConnectionPolicyPscConfigArgs extends com.pulumi.resou
     public static final ServiceConnectionPolicyPscConfigArgs Empty = new ServiceConnectionPolicyPscConfigArgs();
 
     /**
+     * List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+     * a network administrator can provide both &#39;organizations/foo&#39; and &#39;projects/bar&#39; as
+     * allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+     * instance within the &#39;foo&#39; organization or the &#39;bar&#39; project. By default,
+     * allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+     * allowedGoogleProducersResourceHierarchyLevel is / where is one of &#39;projects&#39;, &#39;folders&#39;, or &#39;organizations&#39;
+     * and is either the ID or the number of the resource type. Format for each
+     * allowedGoogleProducersResourceHierarchyLevel value: &#39;projects/&#39; or &#39;folders/&#39; or &#39;organizations/&#39; Eg.
+     * [projects/my-project-id, projects/567, folders/891, organizations/123]
+     * 
+     */
+    @Import(name="allowedGoogleProducersResourceHierarchyLevels")
+    private @Nullable Output<List<String>> allowedGoogleProducersResourceHierarchyLevels;
+
+    /**
+     * @return List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+     * a network administrator can provide both &#39;organizations/foo&#39; and &#39;projects/bar&#39; as
+     * allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+     * instance within the &#39;foo&#39; organization or the &#39;bar&#39; project. By default,
+     * allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+     * allowedGoogleProducersResourceHierarchyLevel is / where is one of &#39;projects&#39;, &#39;folders&#39;, or &#39;organizations&#39;
+     * and is either the ID or the number of the resource type. Format for each
+     * allowedGoogleProducersResourceHierarchyLevel value: &#39;projects/&#39; or &#39;folders/&#39; or &#39;organizations/&#39; Eg.
+     * [projects/my-project-id, projects/567, folders/891, organizations/123]
+     * 
+     */
+    public Optional<Output<List<String>>> allowedGoogleProducersResourceHierarchyLevels() {
+        return Optional.ofNullable(this.allowedGoogleProducersResourceHierarchyLevels);
+    }
+
+    /**
      * Max number of PSC connections for this policy.
      * 
      */
@@ -30,6 +61,25 @@ public final class ServiceConnectionPolicyPscConfigArgs extends com.pulumi.resou
      */
     public Optional<Output<String>> limit() {
         return Optional.ofNullable(this.limit);
+    }
+
+    /**
+     * ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+     * the Producer instance can be within.
+     * Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
+     * 
+     */
+    @Import(name="producerInstanceLocation")
+    private @Nullable Output<String> producerInstanceLocation;
+
+    /**
+     * @return ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+     * the Producer instance can be within.
+     * Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
+     * 
+     */
+    public Optional<Output<String>> producerInstanceLocation() {
+        return Optional.ofNullable(this.producerInstanceLocation);
     }
 
     /**
@@ -50,7 +100,9 @@ public final class ServiceConnectionPolicyPscConfigArgs extends com.pulumi.resou
     private ServiceConnectionPolicyPscConfigArgs() {}
 
     private ServiceConnectionPolicyPscConfigArgs(ServiceConnectionPolicyPscConfigArgs $) {
+        this.allowedGoogleProducersResourceHierarchyLevels = $.allowedGoogleProducersResourceHierarchyLevels;
         this.limit = $.limit;
+        this.producerInstanceLocation = $.producerInstanceLocation;
         this.subnetworks = $.subnetworks;
     }
 
@@ -73,6 +125,61 @@ public final class ServiceConnectionPolicyPscConfigArgs extends com.pulumi.resou
         }
 
         /**
+         * @param allowedGoogleProducersResourceHierarchyLevels List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+         * a network administrator can provide both &#39;organizations/foo&#39; and &#39;projects/bar&#39; as
+         * allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+         * instance within the &#39;foo&#39; organization or the &#39;bar&#39; project. By default,
+         * allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+         * allowedGoogleProducersResourceHierarchyLevel is / where is one of &#39;projects&#39;, &#39;folders&#39;, or &#39;organizations&#39;
+         * and is either the ID or the number of the resource type. Format for each
+         * allowedGoogleProducersResourceHierarchyLevel value: &#39;projects/&#39; or &#39;folders/&#39; or &#39;organizations/&#39; Eg.
+         * [projects/my-project-id, projects/567, folders/891, organizations/123]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedGoogleProducersResourceHierarchyLevels(@Nullable Output<List<String>> allowedGoogleProducersResourceHierarchyLevels) {
+            $.allowedGoogleProducersResourceHierarchyLevels = allowedGoogleProducersResourceHierarchyLevels;
+            return this;
+        }
+
+        /**
+         * @param allowedGoogleProducersResourceHierarchyLevels List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+         * a network administrator can provide both &#39;organizations/foo&#39; and &#39;projects/bar&#39; as
+         * allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+         * instance within the &#39;foo&#39; organization or the &#39;bar&#39; project. By default,
+         * allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+         * allowedGoogleProducersResourceHierarchyLevel is / where is one of &#39;projects&#39;, &#39;folders&#39;, or &#39;organizations&#39;
+         * and is either the ID or the number of the resource type. Format for each
+         * allowedGoogleProducersResourceHierarchyLevel value: &#39;projects/&#39; or &#39;folders/&#39; or &#39;organizations/&#39; Eg.
+         * [projects/my-project-id, projects/567, folders/891, organizations/123]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedGoogleProducersResourceHierarchyLevels(List<String> allowedGoogleProducersResourceHierarchyLevels) {
+            return allowedGoogleProducersResourceHierarchyLevels(Output.of(allowedGoogleProducersResourceHierarchyLevels));
+        }
+
+        /**
+         * @param allowedGoogleProducersResourceHierarchyLevels List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
+         * a network administrator can provide both &#39;organizations/foo&#39; and &#39;projects/bar&#39; as
+         * allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer
+         * instance within the &#39;foo&#39; organization or the &#39;bar&#39; project. By default,
+         * allowedGoogleProducersResourceHierarchyLevel is empty. The format for each
+         * allowedGoogleProducersResourceHierarchyLevel is / where is one of &#39;projects&#39;, &#39;folders&#39;, or &#39;organizations&#39;
+         * and is either the ID or the number of the resource type. Format for each
+         * allowedGoogleProducersResourceHierarchyLevel value: &#39;projects/&#39; or &#39;folders/&#39; or &#39;organizations/&#39; Eg.
+         * [projects/my-project-id, projects/567, folders/891, organizations/123]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedGoogleProducersResourceHierarchyLevels(String... allowedGoogleProducersResourceHierarchyLevels) {
+            return allowedGoogleProducersResourceHierarchyLevels(List.of(allowedGoogleProducersResourceHierarchyLevels));
+        }
+
+        /**
          * @param limit Max number of PSC connections for this policy.
          * 
          * @return builder
@@ -91,6 +198,31 @@ public final class ServiceConnectionPolicyPscConfigArgs extends com.pulumi.resou
          */
         public Builder limit(String limit) {
             return limit(Output.of(limit));
+        }
+
+        /**
+         * @param producerInstanceLocation ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+         * the Producer instance can be within.
+         * Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerInstanceLocation(@Nullable Output<String> producerInstanceLocation) {
+            $.producerInstanceLocation = producerInstanceLocation;
+            return this;
+        }
+
+        /**
+         * @param producerInstanceLocation ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
+         * the Producer instance can be within.
+         * Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerInstanceLocation(String producerInstanceLocation) {
+            return producerInstanceLocation(Output.of(producerInstanceLocation));
         }
 
         /**

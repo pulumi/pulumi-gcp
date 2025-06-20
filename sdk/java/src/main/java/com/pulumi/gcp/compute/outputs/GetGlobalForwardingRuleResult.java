@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleMetadataFilter;
 import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleServiceDirectoryRegistration;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -22,6 +23,8 @@ public final class GetGlobalForwardingRuleResult {
     private String baseForwardingRule;
     private String description;
     private Map<String,String> effectiveLabels;
+    private String externalManagedBackendBucketMigrationState;
+    private Double externalManagedBackendBucketMigrationTestingPercentage;
     private Integer forwardingRuleId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -62,6 +65,12 @@ public final class GetGlobalForwardingRuleResult {
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    public String externalManagedBackendBucketMigrationState() {
+        return this.externalManagedBackendBucketMigrationState;
+    }
+    public Double externalManagedBackendBucketMigrationTestingPercentage() {
+        return this.externalManagedBackendBucketMigrationTestingPercentage;
     }
     public Integer forwardingRuleId() {
         return this.forwardingRuleId;
@@ -150,6 +159,8 @@ public final class GetGlobalForwardingRuleResult {
         private String baseForwardingRule;
         private String description;
         private Map<String,String> effectiveLabels;
+        private String externalManagedBackendBucketMigrationState;
+        private Double externalManagedBackendBucketMigrationTestingPercentage;
         private Integer forwardingRuleId;
         private String id;
         private String ipAddress;
@@ -180,6 +191,8 @@ public final class GetGlobalForwardingRuleResult {
     	      this.baseForwardingRule = defaults.baseForwardingRule;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
+    	      this.externalManagedBackendBucketMigrationState = defaults.externalManagedBackendBucketMigrationState;
+    	      this.externalManagedBackendBucketMigrationTestingPercentage = defaults.externalManagedBackendBucketMigrationTestingPercentage;
     	      this.forwardingRuleId = defaults.forwardingRuleId;
     	      this.id = defaults.id;
     	      this.ipAddress = defaults.ipAddress;
@@ -235,6 +248,22 @@ public final class GetGlobalForwardingRuleResult {
               throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "effectiveLabels");
             }
             this.effectiveLabels = effectiveLabels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalManagedBackendBucketMigrationState(String externalManagedBackendBucketMigrationState) {
+            if (externalManagedBackendBucketMigrationState == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "externalManagedBackendBucketMigrationState");
+            }
+            this.externalManagedBackendBucketMigrationState = externalManagedBackendBucketMigrationState;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalManagedBackendBucketMigrationTestingPercentage(Double externalManagedBackendBucketMigrationTestingPercentage) {
+            if (externalManagedBackendBucketMigrationTestingPercentage == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "externalManagedBackendBucketMigrationTestingPercentage");
+            }
+            this.externalManagedBackendBucketMigrationTestingPercentage = externalManagedBackendBucketMigrationTestingPercentage;
             return this;
         }
         @CustomType.Setter
@@ -434,6 +463,8 @@ public final class GetGlobalForwardingRuleResult {
             _resultValue.baseForwardingRule = baseForwardingRule;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.externalManagedBackendBucketMigrationState = externalManagedBackendBucketMigrationState;
+            _resultValue.externalManagedBackendBucketMigrationTestingPercentage = externalManagedBackendBucketMigrationTestingPercentage;
             _resultValue.forwardingRuleId = forwardingRuleId;
             _resultValue.id = id;
             _resultValue.ipAddress = ipAddress;

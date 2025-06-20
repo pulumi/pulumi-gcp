@@ -16,9 +16,17 @@ public final class GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs extends com.p
 
     public static final GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs Empty = new GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs();
 
+    /**
+     * The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="featureOnlineStore", required=true)
     private Output<String> featureOnlineStore;
 
+    /**
+     * @return The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> featureOnlineStore() {
         return this.featureOnlineStore;
     }
@@ -101,11 +109,23 @@ public final class GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs extends com.p
             $ = new GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param featureOnlineStore The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder featureOnlineStore(Output<String> featureOnlineStore) {
             $.featureOnlineStore = featureOnlineStore;
             return this;
         }
 
+        /**
+         * @param featureOnlineStore The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder featureOnlineStore(String featureOnlineStore) {
             return featureOnlineStore(Output.of(featureOnlineStore));
         }

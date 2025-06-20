@@ -562,7 +562,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var manual_ghe_trigger = new Trigger("manual-ghe-trigger", TriggerArgs.builder()
- *             .name("")
+ *             .name("my-trigger")
  *             .sourceToBuild(TriggerSourceToBuildArgs.builder()
  *                 .uri("https://hashicorp/terraform-provider-google-beta")
  *                 .ref("refs/heads/main")

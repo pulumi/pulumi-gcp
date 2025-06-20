@@ -43,6 +43,57 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.ScopeRbacRoleBinding;
  * import com.pulumi.gcp.gkehub.ScopeRbacRoleBindingArgs;
  * import com.pulumi.gcp.gkehub.inputs.ScopeRbacRoleBindingRoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var scope = new Scope("scope", ScopeArgs.builder()
+ *             .scopeId("tf-test-scope_80332")
+ *             .build());
+ * 
+ *         var scopeRbacRoleBinding = new ScopeRbacRoleBinding("scopeRbacRoleBinding", ScopeRbacRoleBindingArgs.builder()
+ *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_13293")
+ *             .scopeId(scope.scopeId())
+ *             .user("test-email}{@literal @}{@code gmail.com")
+ *             .role(ScopeRbacRoleBindingRoleArgs.builder()
+ *                 .predefinedRole("ADMIN")
+ *                 .build())
+ *             .labels(Map.of("key", "value"))
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Gkehub Scope Rbac Custom Role Binding Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Scope;
+ * import com.pulumi.gcp.gkehub.ScopeArgs;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecRbacrolebindingactuationArgs;
+ * import com.pulumi.gcp.gkehub.ScopeRbacRoleBinding;
+ * import com.pulumi.gcp.gkehub.ScopeRbacRoleBindingArgs;
+ * import com.pulumi.gcp.gkehub.inputs.ScopeRbacRoleBindingRoleArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -58,19 +109,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var scope = new Scope("scope", ScopeArgs.builder()
- *             .scopeId("tf-test-scope_2067")
+ *             .scopeId("tf-test-scope_40289")
+ *             .build());
+ * 
+ *         var rbacrolebindingactuation = new Feature("rbacrolebindingactuation", FeatureArgs.builder()
+ *             .name("rbacrolebindingactuation")
+ *             .location("global")
+ *             .spec(FeatureSpecArgs.builder()
+ *                 .rbacrolebindingactuation(FeatureSpecRbacrolebindingactuationArgs.builder()
+ *                     .allowedCustomRoles("my-custom-role")
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *         var scopeRbacRoleBinding = new ScopeRbacRoleBinding("scopeRbacRoleBinding", ScopeRbacRoleBindingArgs.builder()
- *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_40785")
+ *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_33395")
  *             .scopeId(scope.scopeId())
  *             .user("test-email}{@literal @}{@code gmail.com")
  *             .role(ScopeRbacRoleBindingRoleArgs.builder()
- *                 .predefinedRole("ADMIN")
+ *                 .customRole("my-custom-role")
  *                 .build())
  *             .labels(Map.of("key", "value"))
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(scope)
+ *                 .dependsOn(rbacrolebindingactuation)
  *                 .build());
  * 
  *     }}{@code

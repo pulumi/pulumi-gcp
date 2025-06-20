@@ -1172,7 +1172,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudfunctions2 Abiu
+ * ### Cloudfunctions2 Automatic Base Image Update
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -1277,7 +1277,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudfunctions2 Abiu On Deploy
+ * ### Cloudfunctions2 On Deploy Base Image Update
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

@@ -6,6 +6,7 @@ package com.pulumi.gcp.diagflow.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsArgs;
+import com.pulumi.gcp.diagflow.inputs.CxAgentGenAppBuilderSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentGitIntegrationSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentTextToSpeechSettingsArgs;
@@ -70,6 +71,13 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> defaultLanguageCode() {
         return Optional.ofNullable(this.defaultLanguageCode);
+    }
+
+    @Import(name="deleteChatEngineOnDestroy")
+    private @Nullable Output<Boolean> deleteChatEngineOnDestroy;
+
+    public Optional<Output<Boolean>> deleteChatEngineOnDestroy() {
+        return Optional.ofNullable(this.deleteChatEngineOnDestroy);
     }
 
     /**
@@ -144,6 +152,23 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
     public Optional<Output<Boolean>> enableStackdriverLogging() {
         return Optional.ofNullable(this.enableStackdriverLogging);
+    }
+
+    /**
+     * Gen App Builder-related agent-level settings.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="genAppBuilderSettings")
+    private @Nullable Output<CxAgentGenAppBuilderSettingsArgs> genAppBuilderSettings;
+
+    /**
+     * @return Gen App Builder-related agent-level settings.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxAgentGenAppBuilderSettingsArgs>> genAppBuilderSettings() {
+        return Optional.ofNullable(this.genAppBuilderSettings);
     }
 
     /**
@@ -322,10 +347,12 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
         this.advancedSettings = $.advancedSettings;
         this.avatarUri = $.avatarUri;
         this.defaultLanguageCode = $.defaultLanguageCode;
+        this.deleteChatEngineOnDestroy = $.deleteChatEngineOnDestroy;
         this.description = $.description;
         this.displayName = $.displayName;
         this.enableSpellCorrection = $.enableSpellCorrection;
         this.enableStackdriverLogging = $.enableStackdriverLogging;
+        this.genAppBuilderSettings = $.genAppBuilderSettings;
         this.gitIntegrationSettings = $.gitIntegrationSettings;
         this.location = $.location;
         this.name = $.name;
@@ -425,6 +452,15 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
             return defaultLanguageCode(Output.of(defaultLanguageCode));
         }
 
+        public Builder deleteChatEngineOnDestroy(@Nullable Output<Boolean> deleteChatEngineOnDestroy) {
+            $.deleteChatEngineOnDestroy = deleteChatEngineOnDestroy;
+            return this;
+        }
+
+        public Builder deleteChatEngineOnDestroy(Boolean deleteChatEngineOnDestroy) {
+            return deleteChatEngineOnDestroy(Output.of(deleteChatEngineOnDestroy));
+        }
+
         /**
          * @param description The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
          * 
@@ -521,6 +557,29 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
         public Builder enableStackdriverLogging(Boolean enableStackdriverLogging) {
             return enableStackdriverLogging(Output.of(enableStackdriverLogging));
+        }
+
+        /**
+         * @param genAppBuilderSettings Gen App Builder-related agent-level settings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder genAppBuilderSettings(@Nullable Output<CxAgentGenAppBuilderSettingsArgs> genAppBuilderSettings) {
+            $.genAppBuilderSettings = genAppBuilderSettings;
+            return this;
+        }
+
+        /**
+         * @param genAppBuilderSettings Gen App Builder-related agent-level settings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder genAppBuilderSettings(CxAgentGenAppBuilderSettingsArgs genAppBuilderSettings) {
+            return genAppBuilderSettings(Output.of(genAppBuilderSettings));
         }
 
         /**

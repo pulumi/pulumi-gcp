@@ -16,14 +16,14 @@ public final class GetWebTypeAppEngineIamPolicyPlainArgs extends com.pulumi.reso
     public static final GetWebTypeAppEngineIamPolicyPlainArgs Empty = new GetWebTypeAppEngineIamPolicyPlainArgs();
 
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="appId", required=true)
     private String appId;
 
     /**
-     * @return Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public String appId() {
@@ -73,7 +73,7 @@ public final class GetWebTypeAppEngineIamPolicyPlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param appId Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+         * @param appId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

@@ -14,6 +14,7 @@ import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterFleetArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterNetworkConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPlatformConfigArgs;
+import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPrivateRegistryConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterStatusArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterVcenterArgs;
 import java.lang.Boolean;
@@ -391,6 +392,21 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.platformConfig);
     }
 
+    /**
+     * Configuration for private registry.
+     * 
+     */
+    @Import(name="privateRegistryConfig")
+    private @Nullable Output<VmwareAdminClusterPrivateRegistryConfigArgs> privateRegistryConfig;
+
+    /**
+     * @return Configuration for private registry.
+     * 
+     */
+    public Optional<Output<VmwareAdminClusterPrivateRegistryConfigArgs>> privateRegistryConfig() {
+        return Optional.ofNullable(this.privateRegistryConfig);
+    }
+
     @Import(name="project")
     private @Nullable Output<String> project;
 
@@ -517,6 +533,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
         this.networkConfig = $.networkConfig;
         this.onPremVersion = $.onPremVersion;
         this.platformConfig = $.platformConfig;
+        this.privateRegistryConfig = $.privateRegistryConfig;
         this.project = $.project;
         this.reconciling = $.reconciling;
         this.state = $.state;
@@ -1043,6 +1060,27 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
          */
         public Builder platformConfig(VmwareAdminClusterPlatformConfigArgs platformConfig) {
             return platformConfig(Output.of(platformConfig));
+        }
+
+        /**
+         * @param privateRegistryConfig Configuration for private registry.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateRegistryConfig(@Nullable Output<VmwareAdminClusterPrivateRegistryConfigArgs> privateRegistryConfig) {
+            $.privateRegistryConfig = privateRegistryConfig;
+            return this;
+        }
+
+        /**
+         * @param privateRegistryConfig Configuration for private registry.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateRegistryConfig(VmwareAdminClusterPrivateRegistryConfigArgs privateRegistryConfig) {
+            return privateRegistryConfig(Output.of(privateRegistryConfig));
         }
 
         public Builder project(@Nullable Output<String> project) {

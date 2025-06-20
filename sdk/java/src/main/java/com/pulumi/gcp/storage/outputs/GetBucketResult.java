@@ -10,6 +10,7 @@ import com.pulumi.gcp.storage.outputs.GetBucketCor;
 import com.pulumi.gcp.storage.outputs.GetBucketCustomPlacementConfig;
 import com.pulumi.gcp.storage.outputs.GetBucketEncryption;
 import com.pulumi.gcp.storage.outputs.GetBucketHierarchicalNamespace;
+import com.pulumi.gcp.storage.outputs.GetBucketIpFilter;
 import com.pulumi.gcp.storage.outputs.GetBucketLifecycleRule;
 import com.pulumi.gcp.storage.outputs.GetBucketLogging;
 import com.pulumi.gcp.storage.outputs.GetBucketRetentionPolicy;
@@ -41,6 +42,7 @@ public final class GetBucketResult {
      * 
      */
     private String id;
+    private List<GetBucketIpFilter> ipFilters;
     private Map<String,String> labels;
     private List<GetBucketLifecycleRule> lifecycleRules;
     private String location;
@@ -97,6 +99,9 @@ public final class GetBucketResult {
      */
     public String id() {
         return this.id;
+    }
+    public List<GetBucketIpFilter> ipFilters() {
+        return this.ipFilters;
     }
     public Map<String,String> labels() {
         return this.labels;
@@ -181,6 +186,7 @@ public final class GetBucketResult {
         private Boolean forceDestroy;
         private List<GetBucketHierarchicalNamespace> hierarchicalNamespaces;
         private String id;
+        private List<GetBucketIpFilter> ipFilters;
         private Map<String,String> labels;
         private List<GetBucketLifecycleRule> lifecycleRules;
         private String location;
@@ -215,6 +221,7 @@ public final class GetBucketResult {
     	      this.forceDestroy = defaults.forceDestroy;
     	      this.hierarchicalNamespaces = defaults.hierarchicalNamespaces;
     	      this.id = defaults.id;
+    	      this.ipFilters = defaults.ipFilters;
     	      this.labels = defaults.labels;
     	      this.lifecycleRules = defaults.lifecycleRules;
     	      this.location = defaults.location;
@@ -332,6 +339,17 @@ public final class GetBucketResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipFilters(List<GetBucketIpFilter> ipFilters) {
+            if (ipFilters == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "ipFilters");
+            }
+            this.ipFilters = ipFilters;
+            return this;
+        }
+        public Builder ipFilters(GetBucketIpFilter... ipFilters) {
+            return ipFilters(List.of(ipFilters));
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
@@ -529,6 +547,7 @@ public final class GetBucketResult {
             _resultValue.forceDestroy = forceDestroy;
             _resultValue.hierarchicalNamespaces = hierarchicalNamespaces;
             _resultValue.id = id;
+            _resultValue.ipFilters = ipFilters;
             _resultValue.labels = labels;
             _resultValue.lifecycleRules = lifecycleRules;
             _resultValue.location = location;

@@ -16,6 +16,7 @@ import com.pulumi.gcp.compute.outputs.RegionBackendServiceCircuitBreakers;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceConnectionTrackingPolicy;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceConsistentHash;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceCustomMetric;
+import com.pulumi.gcp.compute.outputs.RegionBackendServiceDynamicForwarding;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceFailoverPolicy;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceLogConfig;
@@ -578,7 +579,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .region("us-central1")
  *             .name("region-service")
- *             .protocol("HTTP")
+ *             .protocol("H2C")
  *             .timeoutSec(10)
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .build());
@@ -781,6 +782,50 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Backend Service Dynamic Forwarding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingIpPortSelectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+ *             .name("region-service")
+ *             .region("us-central1")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .dynamicForwarding(RegionBackendServiceDynamicForwardingArgs.builder()
+ *                 .ipPortSelection(RegionBackendServiceDynamicForwardingIpPortSelectionArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * RegionBackendService can be imported using any of these accepted formats:
@@ -871,7 +916,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-     * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
      */
@@ -881,7 +926,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     /**
      * @return Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-     * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
      */
@@ -993,6 +1038,24 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dynamicForwarding", refs={RegionBackendServiceDynamicForwarding.class}, tree="[0]")
+    private Output</* @Nullable */ RegionBackendServiceDynamicForwarding> dynamicForwarding;
+
+    /**
+     * @return Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * feature which together with Service Extension allows customized and complex routing logic.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionBackendServiceDynamicForwarding>> dynamicForwarding() {
+        return Codegen.optional(this.dynamicForwarding);
     }
     /**
      * If true, enable Cloud CDN for this RegionBackendService.
@@ -1175,7 +1238,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      *   to use for computing the weights are specified via the
      *   backends[].customMetrics fields.
      *   locality_lb_policy is applicable to either:
-     * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+     * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
      * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1233,7 +1296,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      *   to use for computing the weights are specified via the
      *   backends[].customMetrics fields.
      *   locality_lb_policy is applicable to either:
-     * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+     * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
      * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
@@ -1317,7 +1380,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `load_balancing_scheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
      */
@@ -1327,7 +1390,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     /**
      * @return Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `load_balancing_scheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
      */
@@ -1377,20 +1440,22 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The protocol this RegionBackendService uses to communicate with backends.
-     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-     * types and may result in errors if used with the GA API.
-     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+     * The protocol this BackendService uses to communicate with backends.
+     * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+     * or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+     * for more information.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
-     * @return The protocol this RegionBackendService uses to communicate with backends.
-     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-     * types and may result in errors if used with the GA API.
-     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
+     * @return The protocol this BackendService uses to communicate with backends.
+     * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
+     * or GRPC. Refer to the documentation for the load balancers or for Traffic Director
+     * for more information.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
      * 
      */
     public Output<String> protocol() {

@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,6 +93,21 @@ public final class InstanceFromTemplateAttachedDiskArgs extends com.pulumi.resou
     }
 
     /**
+     * Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    @Import(name="forceAttach")
+    private @Nullable Output<Boolean> forceAttach;
+
+    /**
+     * @return Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    public Optional<Output<Boolean>> forceAttach() {
+        return Optional.ofNullable(this.forceAttach);
+    }
+
+    /**
      * The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
@@ -144,6 +160,7 @@ public final class InstanceFromTemplateAttachedDiskArgs extends com.pulumi.resou
         this.diskEncryptionKeyRsa = $.diskEncryptionKeyRsa;
         this.diskEncryptionKeySha256 = $.diskEncryptionKeySha256;
         this.diskEncryptionServiceAccount = $.diskEncryptionServiceAccount;
+        this.forceAttach = $.forceAttach;
         this.kmsKeySelfLink = $.kmsKeySelfLink;
         this.mode = $.mode;
         this.source = $.source;
@@ -270,6 +287,27 @@ public final class InstanceFromTemplateAttachedDiskArgs extends com.pulumi.resou
          */
         public Builder diskEncryptionServiceAccount(String diskEncryptionServiceAccount) {
             return diskEncryptionServiceAccount(Output.of(diskEncryptionServiceAccount));
+        }
+
+        /**
+         * @param forceAttach Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceAttach(@Nullable Output<Boolean> forceAttach) {
+            $.forceAttach = forceAttach;
+            return this;
+        }
+
+        /**
+         * @param forceAttach Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceAttach(Boolean forceAttach) {
+            return forceAttach(Output.of(forceAttach));
         }
 
         /**

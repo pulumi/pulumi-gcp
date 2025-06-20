@@ -17,10 +17,16 @@ import com.pulumi.gcp.cloudrunv2.inputs.GetServiceArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetServiceIamPolicyArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetServiceIamPolicyPlainArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetServicePlainArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolIamPolicyArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolIamPolicyPlainArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolPlainArgs;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobIamPolicyResult;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobResult;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceIamPolicyResult;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceResult;
+import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolIamPolicyResult;
+import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class Cloudrunv2Functions {
@@ -913,5 +919,450 @@ public final class Cloudrunv2Functions {
      */
     public static CompletableFuture<GetServiceIamPolicyResult> getServiceIamPolicyPlain(GetServiceIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudrunv2/getServiceIamPolicy:getServiceIamPolicy", TypeShape.of(GetServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Worker Pool. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myWorkerPool = Cloudrunv2Functions.getWorkerPool(GetWorkerPoolArgs.builder()
+     *             .name("my-worker-pool")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkerPoolResult> getWorkerPool(GetWorkerPoolArgs args) {
+        return getWorkerPool(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Worker Pool. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myWorkerPool = Cloudrunv2Functions.getWorkerPool(GetWorkerPoolArgs.builder()
+     *             .name("my-worker-pool")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWorkerPoolResult> getWorkerPoolPlain(GetWorkerPoolPlainArgs args) {
+        return getWorkerPoolPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Worker Pool. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myWorkerPool = Cloudrunv2Functions.getWorkerPool(GetWorkerPoolArgs.builder()
+     *             .name("my-worker-pool")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkerPoolResult> getWorkerPool(GetWorkerPoolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudrunv2/getWorkerPool:getWorkerPool", TypeShape.of(GetWorkerPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Worker Pool. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myWorkerPool = Cloudrunv2Functions.getWorkerPool(GetWorkerPoolArgs.builder()
+     *             .name("my-worker-pool")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkerPoolResult> getWorkerPool(GetWorkerPoolArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudrunv2/getWorkerPool:getWorkerPool", TypeShape.of(GetWorkerPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Worker Pool. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myWorkerPool = Cloudrunv2Functions.getWorkerPool(GetWorkerPoolArgs.builder()
+     *             .name("my-worker-pool")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWorkerPoolResult> getWorkerPoolPlain(GetWorkerPoolPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudrunv2/getWorkerPool:getWorkerPool", TypeShape.of(GetWorkerPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for workerpool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudrunv2Functions.getWorkerPoolIamPolicy(GetWorkerPoolIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkerPoolIamPolicyResult> getWorkerPoolIamPolicy(GetWorkerPoolIamPolicyArgs args) {
+        return getWorkerPoolIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for workerpool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudrunv2Functions.getWorkerPoolIamPolicy(GetWorkerPoolIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWorkerPoolIamPolicyResult> getWorkerPoolIamPolicyPlain(GetWorkerPoolIamPolicyPlainArgs args) {
+        return getWorkerPoolIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for workerpool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudrunv2Functions.getWorkerPoolIamPolicy(GetWorkerPoolIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkerPoolIamPolicyResult> getWorkerPoolIamPolicy(GetWorkerPoolIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudrunv2/getWorkerPoolIamPolicy:getWorkerPoolIamPolicy", TypeShape.of(GetWorkerPoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for workerpool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudrunv2Functions.getWorkerPoolIamPolicy(GetWorkerPoolIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkerPoolIamPolicyResult> getWorkerPoolIamPolicy(GetWorkerPoolIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudrunv2/getWorkerPoolIamPolicy:getWorkerPoolIamPolicy", TypeShape.of(GetWorkerPoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for workerpool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetWorkerPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudrunv2Functions.getWorkerPoolIamPolicy(GetWorkerPoolIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWorkerPoolIamPolicyResult> getWorkerPoolIamPolicyPlain(GetWorkerPoolIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudrunv2/getWorkerPoolIamPolicy:getWorkerPoolIamPolicy", TypeShape.of(GetWorkerPoolIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

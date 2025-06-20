@@ -34,7 +34,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
     /**
      * The project where Backups will be restored.
      * The format is `projects/{project}`.
-     * {project} can only be a project number.
+     * {project} can be project number or project id.
      * 
      */
     @Import(name="destinationProject")
@@ -43,7 +43,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
     /**
      * @return The project where Backups will be restored.
      * The format is `projects/{project}`.
-     * {project} can only be a project number.
+     * {project} can be project number or project id.
      * 
      */
     public Optional<Output<String>> destinationProject() {
@@ -273,7 +273,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
         /**
          * @param destinationProject The project where Backups will be restored.
          * The format is `projects/{project}`.
-         * {project} can only be a project number.
+         * {project} can be project number or project id.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
         /**
          * @param destinationProject The project where Backups will be restored.
          * The format is `projects/{project}`.
-         * {project} can only be a project number.
+         * {project} can be project number or project id.
          * 
          * @return builder
          * 

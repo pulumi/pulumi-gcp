@@ -19,6 +19,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The Compute FirewallPolicy with rules resource. It declaratively manges all
+ * rules in the firewall policy.
+ * 
  * ## Example Usage
  * 
  * ### Compute Firewall Policy With Rules Full
@@ -101,7 +104,7 @@ import javax.annotation.Nullable;
  *                     .enableLogging(true)
  *                     .action("allow")
  *                     .direction("EGRESS")
- *                     .targetResources(String.format("https://www.googleapis.com/compute/beta/projects/%s/global/networks/default", project.projectId()))
+ *                     .targetResources(network.selfLink())
  *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
  *                         .destIpRanges("11.100.0.1/32")
  *                         .destFqdns(                        
@@ -160,39 +163,6 @@ import javax.annotation.Nullable;
  *                         .srcIpRanges("0.0.0.0/0")
  *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
- *                             .build())
- *                         .build())
- *                     .build(),
- *                 FirewallPolicyWithRulesRuleArgs.builder()
- *                     .description("network scope rule 1")
- *                     .ruleName("network scope 1")
- *                     .priority(4000)
- *                     .enableLogging(false)
- *                     .action("allow")
- *                     .direction("INGRESS")
- *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
- *                         .srcIpRanges("11.100.0.1/32")
- *                         .srcNetworkScope("VPC_NETWORKS")
- *                         .srcNetworks(network.id())
- *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
- *                             .ipProtocol("tcp")
- *                             .ports("8080")
- *                             .build())
- *                         .build())
- *                     .build(),
- *                 FirewallPolicyWithRulesRuleArgs.builder()
- *                     .description("network scope rule 2")
- *                     .ruleName("network scope 2")
- *                     .priority(5000)
- *                     .enableLogging(false)
- *                     .action("allow")
- *                     .direction("EGRESS")
- *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
- *                         .destIpRanges("0.0.0.0/0")
- *                         .destNetworkScope("INTERNET")
- *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
- *                             .ipProtocol("tcp")
- *                             .ports("8080")
  *                             .build())
  *                         .build())
  *                     .build())

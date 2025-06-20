@@ -52,7 +52,7 @@ public final class CxFlowAdvancedSettingsSpeechSettingsArgs extends com.pulumi.r
 
     /**
      * Timeout before detecting no speech.
-     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.500s&#34;.
      * 
      */
     @Import(name="noSpeechTimeout")
@@ -60,7 +60,7 @@ public final class CxFlowAdvancedSettingsSpeechSettingsArgs extends com.pulumi.r
 
     /**
      * @return Timeout before detecting no speech.
-     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.500s&#34;.
      * 
      */
     public Optional<Output<String>> noSpeechTimeout() {
@@ -155,7 +155,7 @@ public final class CxFlowAdvancedSettingsSpeechSettingsArgs extends com.pulumi.r
 
         /**
          * @param noSpeechTimeout Timeout before detecting no speech.
-         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.500s&#34;.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class CxFlowAdvancedSettingsSpeechSettingsArgs extends com.pulumi.r
 
         /**
          * @param noSpeechTimeout Timeout before detecting no speech.
-         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.500s&#34;.
          * 
          * @return builder
          * 

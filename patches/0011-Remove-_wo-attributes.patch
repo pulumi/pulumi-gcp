@@ -5,7 +5,7 @@ Subject: [PATCH] Remove _wo attributes
 
 
 diff --git a/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go b/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
-index 03064cc02..49ba44998 100644
+index 4b408d90c..c0bb1f9f5 100644
 --- a/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
 +++ b/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
 @@ -29,17 +29,14 @@ import (
@@ -80,7 +80,7 @@ index 03064cc02..49ba44998 100644
  						},
  					},
  				},
-@@ -1081,12 +1049,6 @@ func resourceBigqueryDataTransferConfigEncoder(d *schema.ResourceData, meta inte
+@@ -1090,12 +1058,6 @@ func resourceBigqueryDataTransferConfigEncoder(d *schema.ResourceData, meta inte
  			params[sp] = auth.(string)
  		}
  	}
@@ -93,7 +93,7 @@ index 03064cc02..49ba44998 100644
  
  	obj["params"] = params
  
-@@ -1100,8 +1062,6 @@ func resourceBigqueryDataTransferConfigDecoder(d *schema.ResourceData, meta inte
+@@ -1109,8 +1071,6 @@ func resourceBigqueryDataTransferConfigDecoder(d *schema.ResourceData, meta inte
  			if _, apiOk := params[sp]; apiOk {
  				if _, exists := d.GetOkExists("sensitive_params.0." + sp); exists {
  					delete(params, sp)
@@ -117,7 +117,7 @@ index 5336d0218..827d90369 100644
    - field: 'service_account_name'
      provider_only: true
 diff --git a/google-beta/services/secretmanager/resource_secret_manager_secret_version.go b/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
-index 15e900dd7..c939dfb55 100644
+index d7087a839..bfee43be7 100644
 --- a/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
 +++ b/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
 @@ -29,9 +29,7 @@ import (
@@ -130,7 +130,7 @@ index 15e900dd7..c939dfb55 100644
  
  	"github.com/hashicorp/terraform-provider-google-beta/google-beta/tpgresource"
  	transport_tpg "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
-@@ -56,10 +54,6 @@ func ResourceSecretManagerSecretVersion() *schema.Resource {
+@@ -90,10 +88,6 @@ func ResourceSecretManagerSecretVersion() *schema.Resource {
  			Delete: schema.DefaultTimeout(20 * time.Minute),
  		},
  
@@ -141,7 +141,7 @@ index 15e900dd7..c939dfb55 100644
  		Schema: map[string]*schema.Schema{
  			"secret_data_wo_version": {
  				Type:        schema.TypeInt,
-@@ -76,15 +70,6 @@ func ResourceSecretManagerSecretVersion() *schema.Resource {
+@@ -110,15 +104,6 @@ func ResourceSecretManagerSecretVersion() *schema.Resource {
  				Sensitive:     true,
  				ConflictsWith: []string{},
  			},
@@ -157,7 +157,7 @@ index 15e900dd7..c939dfb55 100644
  			"secret": {
  				Type:             schema.TypeString,
  				Required:         true,
-@@ -539,12 +524,6 @@ func expandSecretManagerSecretVersionPayload(v interface{}, d tpgresource.Terraf
+@@ -538,12 +523,6 @@ func expandSecretManagerSecretVersionPayload(v interface{}, d tpgresource.Terraf
  	} else if val := reflect.ValueOf(transformedSecretData); val.IsValid() && !tpgresource.IsEmptyValue(val) {
  		transformed["data"] = transformedSecretData
  	}
@@ -170,7 +170,7 @@ index 15e900dd7..c939dfb55 100644
  	return transformed, nil
  }
  
-@@ -558,17 +537,6 @@ func expandSecretManagerSecretVersionPayloadSecretData(v interface{}, d tpgresou
+@@ -557,17 +536,6 @@ func expandSecretManagerSecretVersionPayloadSecretData(v interface{}, d tpgresou
  	}
  	return base64.StdEncoding.EncodeToString([]byte(v.(string))), nil
  }
@@ -189,10 +189,10 @@ index 15e900dd7..c939dfb55 100644
  func resourceSecretManagerSecretVersionDecoder(d *schema.ResourceData, meta interface{}, res map[string]interface{}) (map[string]interface{}, error) {
  	if v := res["state"]; v == "DESTROYED" {
 diff --git a/google-beta/services/sql/resource_sql_user.go b/google-beta/services/sql/resource_sql_user.go
-index 58e1ecb2a..bd0084f13 100644
+index e96ca93ef..6fa280eb3 100644
 --- a/google-beta/services/sql/resource_sql_user.go
 +++ b/google-beta/services/sql/resource_sql_user.go
-@@ -8,7 +8,6 @@ import (
+@@ -22,7 +22,6 @@ import (
  	"strings"
  	"time"
  
@@ -200,7 +200,7 @@ index 58e1ecb2a..bd0084f13 100644
  	"github.com/hashicorp/terraform-provider-google-beta/google-beta/tpgresource"
  	transport_tpg "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
  
-@@ -64,10 +63,6 @@ func ResourceSqlUser() *schema.Resource {
+@@ -78,10 +77,6 @@ func ResourceSqlUser() *schema.Resource {
  			tpgresource.DefaultProviderProject,
  		),
  
@@ -211,7 +211,7 @@ index 58e1ecb2a..bd0084f13 100644
  		SchemaVersion: 1,
  		MigrateState:  resourceSqlUserMigrateState,
  
-@@ -96,30 +91,13 @@ func ResourceSqlUser() *schema.Resource {
+@@ -110,30 +105,13 @@ func ResourceSqlUser() *schema.Resource {
  			},
  
  			"password": {
@@ -245,7 +245,7 @@ index 58e1ecb2a..bd0084f13 100644
  			"type": {
  				Type:             schema.TypeString,
  				Optional:         true,
-@@ -270,8 +248,6 @@ func resourceSqlUserCreate(d *schema.ResourceData, meta interface{}) error {
+@@ -284,8 +262,6 @@ func resourceSqlUserCreate(d *schema.ResourceData, meta interface{}) error {
  	var password string
  	if pw, ok := d.GetOk("password"); ok {
  		password = pw.(string)
@@ -254,7 +254,7 @@ index 58e1ecb2a..bd0084f13 100644
  	}
  
  	user := &sqladmin.User{
-@@ -490,8 +466,6 @@ func resourceSqlUserUpdate(d *schema.ResourceData, meta interface{}) error {
+@@ -504,8 +480,6 @@ func resourceSqlUserUpdate(d *schema.ResourceData, meta interface{}) error {
  		var password string
  		if pw, ok := d.GetOk("password"); ok {
  			password = pw.(string)

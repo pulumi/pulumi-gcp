@@ -12,6 +12,7 @@ import com.pulumi.gcp.pubsub.TopicArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicState;
 import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettings;
 import com.pulumi.gcp.pubsub.outputs.TopicMessageStoragePolicy;
+import com.pulumi.gcp.pubsub.outputs.TopicMessageTransform;
 import com.pulumi.gcp.pubsub.outputs.TopicSchemaSettings;
 import java.lang.String;
 import java.util.List;
@@ -600,6 +601,24 @@ public class Topic extends com.pulumi.resources.CustomResource {
      */
     public Output<TopicMessageStoragePolicy> messageStoragePolicy() {
         return this.messageStoragePolicy;
+    }
+    /**
+     * Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="messageTransforms", refs={List.class,TopicMessageTransform.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<TopicMessageTransform>> messageTransforms;
+
+    /**
+     * @return Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<TopicMessageTransform>>> messageTransforms() {
+        return Codegen.optional(this.messageTransforms);
     }
     /**
      * Name of the topic.

@@ -139,9 +139,17 @@ public final class SecurityGatewayIamBindingState extends com.pulumi.resources.R
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="securityGatewayId")
     private @Nullable Output<String> securityGatewayId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> securityGatewayId() {
         return Optional.ofNullable(this.securityGatewayId);
     }
@@ -354,11 +362,23 @@ public final class SecurityGatewayIamBindingState extends com.pulumi.resources.R
             return role(Output.of(role));
         }
 
+        /**
+         * @param securityGatewayId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGatewayId(@Nullable Output<String> securityGatewayId) {
             $.securityGatewayId = securityGatewayId;
             return this;
         }
 
+        /**
+         * @param securityGatewayId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGatewayId(String securityGatewayId) {
             return securityGatewayId(Output.of(securityGatewayId));
         }

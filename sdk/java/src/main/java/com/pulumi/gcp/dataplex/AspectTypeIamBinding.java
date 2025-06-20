@@ -341,9 +341,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding")
 public class AspectTypeIamBinding extends com.pulumi.resources.CustomResource {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="aspectTypeId", refs={String.class}, tree="[0]")
     private Output<String> aspectTypeId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> aspectTypeId() {
         return this.aspectTypeId;
     }

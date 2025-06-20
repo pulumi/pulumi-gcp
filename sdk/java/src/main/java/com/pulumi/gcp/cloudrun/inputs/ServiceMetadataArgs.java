@@ -36,6 +36,9 @@ public final class ServiceMetadataArgs extends com.pulumi.resources.ResourceArgs
      *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
      * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
      *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
+     * - `run.googleapis.com/minScale` sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
+     * - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are &#34;manual&#34; and &#34;automatic&#34;. If not provided, it defaults to &#34;automatic&#34;.
+     * - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
      *   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      *   Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -62,6 +65,9 @@ public final class ServiceMetadataArgs extends com.pulumi.resources.ResourceArgs
      *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
      * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
      *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
+     * - `run.googleapis.com/minScale` sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
+     * - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are &#34;manual&#34; and &#34;automatic&#34;. If not provided, it defaults to &#34;automatic&#34;.
+     * - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
      *   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      *   Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -283,6 +289,9 @@ public final class ServiceMetadataArgs extends com.pulumi.resources.ResourceArgs
          *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
          * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
          *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
+         * - `run.googleapis.com/minScale` sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
+         * - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are &#34;manual&#34; and &#34;automatic&#34;. If not provided, it defaults to &#34;automatic&#34;.
+         * - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
          *   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          *   Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -313,6 +322,9 @@ public final class ServiceMetadataArgs extends com.pulumi.resources.ResourceArgs
          *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
          * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
          *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
+         * - `run.googleapis.com/minScale` sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
+         * - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are &#34;manual&#34; and &#34;automatic&#34;. If not provided, it defaults to &#34;automatic&#34;.
+         * - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
          *   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          *   Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 

@@ -73,13 +73,13 @@ import javax.annotation.Nullable;
  *                     Map.entry("IMG_BUCKET", images.name())
  *                 ))
  *                 .systemParams(Map.ofEntries(
- *                     Map.entry("firebaseextensions.v1beta.function/location", ""),
+ *                     Map.entry("firebaseextensions.v1beta.function/location", "us-central1"),
  *                     Map.entry("firebaseextensions.v1beta.function/maxInstances", "3000"),
  *                     Map.entry("firebaseextensions.v1beta.function/minInstances", "0"),
  *                     Map.entry("firebaseextensions.v1beta.function/vpcConnectorEgressSettings", "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED")
  *                 ))
  *                 .allowedEventTypes("firebase.extensions.storage-resize-images.v1.onCompletion")
- *                 .eventarcChannel("projects/my-project-name/locations//channels/firebase")
+ *                 .eventarcChannel("projects/my-project-name/locations/us-central1/channels/firebase")
  *                 .build())
  *             .build());
  * 

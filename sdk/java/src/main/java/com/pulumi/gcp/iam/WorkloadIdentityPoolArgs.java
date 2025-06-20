@@ -6,6 +6,8 @@ package com.pulumi.gcp.iam;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs;
+import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -67,6 +69,101 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+     * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
+     * required for issuance and rotation of mTLS workload certificates.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="inlineCertificateIssuanceConfig")
+    private @Nullable Output<WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs> inlineCertificateIssuanceConfig;
+
+    /**
+     * @return Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+     * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
+     * required for issuance and rotation of mTLS workload certificates.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs>> inlineCertificateIssuanceConfig() {
+        return Optional.ofNullable(this.inlineCertificateIssuanceConfig);
+    }
+
+    /**
+     * Represents config to add additional trusted trust domains. Defines configuration for extending
+     * trust to additional trust domains. By establishing trust with another domain, the current
+     * domain will recognize and accept certificates issued by entities within the trusted domains.
+     * Note that a trust domain automatically trusts itself, eliminating the need for explicit
+     * configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="inlineTrustConfig")
+    private @Nullable Output<WorkloadIdentityPoolInlineTrustConfigArgs> inlineTrustConfig;
+
+    /**
+     * @return Represents config to add additional trusted trust domains. Defines configuration for extending
+     * trust to additional trust domains. By establishing trust with another domain, the current
+     * domain will recognize and accept certificates issued by entities within the trusted domains.
+     * Note that a trust domain automatically trusts itself, eliminating the need for explicit
+     * configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkloadIdentityPoolInlineTrustConfigArgs>> inlineTrustConfig() {
+        return Optional.ofNullable(this.inlineTrustConfig);
+    }
+
+    /**
+     * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+     * are in `FEDERATION_ONLY` mode.
+     * 
+     * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
+     * `pulumi preview` may show an update if you change this field&#39;s value, `pulumi up`
+     * **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
+     * To specify a different `mode`, please create a new Workload Identity Pool resource.
+     * * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
+     *   Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+     *   workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+     *   within the pool besides providers.
+     * * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
+     *   identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+     *   workload identifier. The subject identifier for all identities must conform to the following
+     *   format: `ns/&lt;namespace&gt;/sa/&lt;workload_identifier&gt;`.
+     *   `gcp.iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+     *   mode pools.
+     *   Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+     * are in `FEDERATION_ONLY` mode.
+     * 
+     * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
+     * `pulumi preview` may show an update if you change this field&#39;s value, `pulumi up`
+     * **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
+     * To specify a different `mode`, please create a new Workload Identity Pool resource.
+     * * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
+     *   Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+     *   workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+     *   within the pool besides providers.
+     * * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
+     *   identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+     *   workload identifier. The subject identifier for all identities must conform to the following
+     *   format: `ns/&lt;namespace&gt;/sa/&lt;workload_identifier&gt;`.
+     *   `gcp.iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+     *   mode pools.
+     *   Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -112,6 +209,9 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
         this.description = $.description;
         this.disabled = $.disabled;
         this.displayName = $.displayName;
+        this.inlineCertificateIssuanceConfig = $.inlineCertificateIssuanceConfig;
+        this.inlineTrustConfig = $.inlineTrustConfig;
+        this.mode = $.mode;
         this.project = $.project;
         this.workloadIdentityPoolId = $.workloadIdentityPoolId;
     }
@@ -199,6 +299,119 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param inlineCertificateIssuanceConfig Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+         * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
+         * required for issuance and rotation of mTLS workload certificates.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inlineCertificateIssuanceConfig(@Nullable Output<WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs> inlineCertificateIssuanceConfig) {
+            $.inlineCertificateIssuanceConfig = inlineCertificateIssuanceConfig;
+            return this;
+        }
+
+        /**
+         * @param inlineCertificateIssuanceConfig Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+         * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
+         * required for issuance and rotation of mTLS workload certificates.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inlineCertificateIssuanceConfig(WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs inlineCertificateIssuanceConfig) {
+            return inlineCertificateIssuanceConfig(Output.of(inlineCertificateIssuanceConfig));
+        }
+
+        /**
+         * @param inlineTrustConfig Represents config to add additional trusted trust domains. Defines configuration for extending
+         * trust to additional trust domains. By establishing trust with another domain, the current
+         * domain will recognize and accept certificates issued by entities within the trusted domains.
+         * Note that a trust domain automatically trusts itself, eliminating the need for explicit
+         * configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inlineTrustConfig(@Nullable Output<WorkloadIdentityPoolInlineTrustConfigArgs> inlineTrustConfig) {
+            $.inlineTrustConfig = inlineTrustConfig;
+            return this;
+        }
+
+        /**
+         * @param inlineTrustConfig Represents config to add additional trusted trust domains. Defines configuration for extending
+         * trust to additional trust domains. By establishing trust with another domain, the current
+         * domain will recognize and accept certificates issued by entities within the trusted domains.
+         * Note that a trust domain automatically trusts itself, eliminating the need for explicit
+         * configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inlineTrustConfig(WorkloadIdentityPoolInlineTrustConfigArgs inlineTrustConfig) {
+            return inlineTrustConfig(Output.of(inlineTrustConfig));
+        }
+
+        /**
+         * @param mode The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+         * are in `FEDERATION_ONLY` mode.
+         * 
+         * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
+         * `pulumi preview` may show an update if you change this field&#39;s value, `pulumi up`
+         * **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
+         * To specify a different `mode`, please create a new Workload Identity Pool resource.
+         * * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
+         *   Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+         *   workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+         *   within the pool besides providers.
+         * * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
+         *   identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+         *   workload identifier. The subject identifier for all identities must conform to the following
+         *   format: `ns/&lt;namespace&gt;/sa/&lt;workload_identifier&gt;`.
+         *   `gcp.iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+         *   mode pools.
+         *   Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+         * are in `FEDERATION_ONLY` mode.
+         * 
+         * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
+         * `pulumi preview` may show an update if you change this field&#39;s value, `pulumi up`
+         * **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
+         * To specify a different `mode`, please create a new Workload Identity Pool resource.
+         * * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
+         *   Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+         *   workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+         *   within the pool besides providers.
+         * * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
+         *   identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+         *   workload identifier. The subject identifier for all identities must conform to the following
+         *   format: `ns/&lt;namespace&gt;/sa/&lt;workload_identifier&gt;`.
+         *   `gcp.iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+         *   mode pools.
+         *   Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         /**

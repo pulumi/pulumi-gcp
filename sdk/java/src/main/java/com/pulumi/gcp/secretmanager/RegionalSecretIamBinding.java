@@ -743,9 +743,17 @@ public class RegionalSecretIamBinding extends com.pulumi.resources.CustomResourc
     public Output<String> role() {
         return this.role;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="secretId", refs={String.class}, tree="[0]")
     private Output<String> secretId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> secretId() {
         return this.secretId;
     }

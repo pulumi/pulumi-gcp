@@ -899,6 +899,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> requestTimeout() {
         return Codegen.optional(this.requestTimeout);
     }
+    @Export(name="resourceManager3CustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> resourceManager3CustomEndpoint;
+
+    public Output<Optional<String>> resourceManager3CustomEndpoint() {
+        return Codegen.optional(this.resourceManager3CustomEndpoint);
+    }
     @Export(name="resourceManagerCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceManagerCustomEndpoint;
 

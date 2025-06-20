@@ -143,6 +143,147 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Privateca Template Zero Max Issuer Path Length Null Ca
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CertificateTemplate;
+ * import com.pulumi.gcp.certificateauthority.CertificateTemplateArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIdentityConstraintsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIdentityConstraintsCelExpressionArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePassthroughExtensionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesNameConstraintsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new CertificateTemplate("default", CertificateTemplateArgs.builder()
+ *             .name("my-template")
+ *             .location("us-central1")
+ *             .description("A sample certificate template")
+ *             .identityConstraints(CertificateTemplateIdentityConstraintsArgs.builder()
+ *                 .allowSubjectAltNamesPassthrough(true)
+ *                 .allowSubjectPassthrough(true)
+ *                 .celExpression(CertificateTemplateIdentityConstraintsCelExpressionArgs.builder()
+ *                     .description("Always true")
+ *                     .expression("true")
+ *                     .location("any.file.anywhere")
+ *                     .title("Sample expression")
+ *                     .build())
+ *                 .build())
+ *             .maximumLifetime("86400s")
+ *             .passthroughExtensions(CertificateTemplatePassthroughExtensionsArgs.builder()
+ *                 .additionalExtensions(CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs.builder()
+ *                     .objectIdPaths(                    
+ *                         1,
+ *                         6)
+ *                     .build())
+ *                 .knownExtensions("EXTENDED_KEY_USAGE")
+ *                 .build())
+ *             .predefinedValues(CertificateTemplatePredefinedValuesArgs.builder()
+ *                 .additionalExtensions(CertificateTemplatePredefinedValuesAdditionalExtensionArgs.builder()
+ *                     .objectId(CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs.builder()
+ *                         .objectIdPaths(                        
+ *                             1,
+ *                             6)
+ *                         .build())
+ *                     .value("c3RyaW5nCg==")
+ *                     .critical(true)
+ *                     .build())
+ *                 .aiaOcspServers("string")
+ *                 .caOptions(CertificateTemplatePredefinedValuesCaOptionsArgs.builder()
+ *                     .isCa(false)
+ *                     .nullCa(true)
+ *                     .zeroMaxIssuerPathLength(true)
+ *                     .maxIssuerPathLength(0)
+ *                     .build())
+ *                 .keyUsage(CertificateTemplatePredefinedValuesKeyUsageArgs.builder()
+ *                     .baseKeyUsage(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs.builder()
+ *                         .certSign(false)
+ *                         .contentCommitment(true)
+ *                         .crlSign(false)
+ *                         .dataEncipherment(true)
+ *                         .decipherOnly(true)
+ *                         .digitalSignature(true)
+ *                         .encipherOnly(true)
+ *                         .keyAgreement(true)
+ *                         .keyEncipherment(true)
+ *                         .build())
+ *                     .extendedKeyUsage(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs.builder()
+ *                         .clientAuth(true)
+ *                         .codeSigning(true)
+ *                         .emailProtection(true)
+ *                         .ocspSigning(true)
+ *                         .serverAuth(true)
+ *                         .timeStamping(true)
+ *                         .build())
+ *                     .unknownExtendedKeyUsages(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs.builder()
+ *                         .objectIdPaths(                        
+ *                             1,
+ *                             6)
+ *                         .build())
+ *                     .build())
+ *                 .policyIds(CertificateTemplatePredefinedValuesPolicyIdArgs.builder()
+ *                     .objectIdPaths(                    
+ *                         1,
+ *                         6)
+ *                     .build())
+ *                 .nameConstraints(CertificateTemplatePredefinedValuesNameConstraintsArgs.builder()
+ *                     .critical(true)
+ *                     .permittedDnsNames(                    
+ *                         "*.example1.com",
+ *                         "*.example2.com")
+ *                     .excludedDnsNames(                    
+ *                         "*.deny.example1.com",
+ *                         "*.deny.example2.com")
+ *                     .permittedIpRanges(                    
+ *                         "10.0.0.0/8",
+ *                         "11.0.0.0/8")
+ *                     .excludedIpRanges(                    
+ *                         "10.1.1.0/24",
+ *                         "11.1.1.0/24")
+ *                     .permittedEmailAddresses(                    
+ *                         ".example1.com",
+ *                         ".example2.com")
+ *                     .excludedEmailAddresses(                    
+ *                         ".deny.example1.com",
+ *                         ".deny.example2.com")
+ *                     .permittedUris(                    
+ *                         ".example1.com",
+ *                         ".example2.com")
+ *                     .excludedUris(                    
+ *                         ".deny.example1.com",
+ *                         ".deny.example2.com")
+ *                     .build())
+ *                 .build())
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

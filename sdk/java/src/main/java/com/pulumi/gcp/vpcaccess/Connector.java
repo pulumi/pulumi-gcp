@@ -194,7 +194,7 @@ public class Connector extends com.pulumi.resources.CustomResource {
     }
     /**
      * Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
-     * higher than the value specified by min_instances.
+     * higher than the value specified by min_instances. Required alongside `min_instances` if not using `min_throughput`/`max_throughput`.
      * 
      */
     @Export(name="maxInstances", refs={Integer.class}, tree="[0]")
@@ -202,7 +202,7 @@ public class Connector extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
-     * higher than the value specified by min_instances.
+     * higher than the value specified by min_instances. Required alongside `min_instances` if not using `min_throughput`/`max_throughput`.
      * 
      */
     public Output<Integer> maxInstances() {
@@ -228,7 +228,7 @@ public class Connector extends com.pulumi.resources.CustomResource {
     }
     /**
      * Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
-     * lower than the value specified by max_instances.
+     * lower than the value specified by max_instances. Required alongside `max_instances` if not using `min_throughput`/`max_throughput`.
      * 
      */
     @Export(name="minInstances", refs={Integer.class}, tree="[0]")
@@ -236,7 +236,7 @@ public class Connector extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
-     * lower than the value specified by max_instances.
+     * lower than the value specified by max_instances. Required alongside `max_instances` if not using `min_throughput`/`max_throughput`.
      * 
      */
     public Output<Integer> minInstances() {

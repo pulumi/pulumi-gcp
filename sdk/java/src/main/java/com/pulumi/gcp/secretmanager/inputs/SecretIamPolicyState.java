@@ -64,9 +64,17 @@ public final class SecretIamPolicyState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="secretId")
     private @Nullable Output<String> secretId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> secretId() {
         return Optional.ofNullable(this.secretId);
     }
@@ -165,11 +173,23 @@ public final class SecretIamPolicyState extends com.pulumi.resources.ResourceArg
             return project(Output.of(project));
         }
 
+        /**
+         * @param secretId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretId(@Nullable Output<String> secretId) {
             $.secretId = secretId;
             return this;
         }
 
+        /**
+         * @param secretId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretId(String secretId) {
             return secretId(Output.of(secretId));
         }

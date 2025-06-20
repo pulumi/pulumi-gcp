@@ -12,6 +12,7 @@ import com.pulumi.gcp.databasemigrationservice.PrivateConnectionArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionState;
 import com.pulumi.gcp.databasemigrationservice.outputs.PrivateConnectionError;
 import com.pulumi.gcp.databasemigrationservice.outputs.PrivateConnectionVpcPeeringConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -66,6 +67,7 @@ import javax.annotation.Nullable;
  *                 .vpcName(googleComputeNetwork.default().id())
  *                 .subnet("10.0.0.0/29")
  *                 .build())
+ *             .createWithoutValidation(false)
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -106,6 +108,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:databasemigrationservice/privateConnection:PrivateConnection")
 public class PrivateConnection extends com.pulumi.resources.CustomResource {
+    /**
+     * If set to true, will skip validations.
+     * 
+     */
+    @Export(name="createWithoutValidation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> createWithoutValidation;
+
+    /**
+     * @return If set to true, will skip validations.
+     * 
+     */
+    public Output<Optional<Boolean>> createWithoutValidation() {
+        return Codegen.optional(this.createWithoutValidation);
+    }
     /**
      * Display name.
      * 

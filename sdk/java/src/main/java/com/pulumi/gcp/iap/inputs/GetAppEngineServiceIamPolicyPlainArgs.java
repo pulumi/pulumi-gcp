@@ -16,14 +16,14 @@ public final class GetAppEngineServiceIamPolicyPlainArgs extends com.pulumi.reso
     public static final GetAppEngineServiceIamPolicyPlainArgs Empty = new GetAppEngineServiceIamPolicyPlainArgs();
 
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="appId", required=true)
     private String appId;
 
     /**
-     * @return Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public String appId() {
@@ -48,14 +48,14 @@ public final class GetAppEngineServiceIamPolicyPlainArgs extends com.pulumi.reso
     }
 
     /**
-     * Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="service", required=true)
     private String service;
 
     /**
-     * @return Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public String service() {
@@ -89,7 +89,7 @@ public final class GetAppEngineServiceIamPolicyPlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param appId Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+         * @param appId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class GetAppEngineServiceIamPolicyPlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param service Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+         * @param service Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

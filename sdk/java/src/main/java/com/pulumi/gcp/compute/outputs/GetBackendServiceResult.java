@@ -10,15 +10,18 @@ import com.pulumi.gcp.compute.outputs.GetBackendServiceCdnPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCircuitBreaker;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceConsistentHash;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCustomMetric;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceDynamicForwarding;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceLocalityLbPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceMaxStreamDuration;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceNetworkPassThroughLbTrafficPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceSecuritySetting;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceStrongSessionAffinityCooky;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceTlsSetting;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -52,12 +55,15 @@ public final class GetBackendServiceResult {
      * 
      */
     private String description;
+    private List<GetBackendServiceDynamicForwarding> dynamicForwardings;
     private String edgeSecurityPolicy;
     /**
      * @return Whether or not Cloud CDN is enabled on the Backend Service.
      * 
      */
     private Boolean enableCdn;
+    private String externalManagedMigrationState;
+    private Double externalManagedMigrationTestingPercentage;
     /**
      * @return The fingerprint of the Backend Service.
      * 
@@ -86,6 +92,7 @@ public final class GetBackendServiceResult {
     private List<GetBackendServiceLogConfig> logConfigs;
     private List<GetBackendServiceMaxStreamDuration> maxStreamDurations;
     private String name;
+    private List<GetBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies;
     private List<GetBackendServiceOutlierDetection> outlierDetections;
     /**
      * @return The name of a service that has been added to an instance group in this backend.
@@ -168,6 +175,9 @@ public final class GetBackendServiceResult {
     public String description() {
         return this.description;
     }
+    public List<GetBackendServiceDynamicForwarding> dynamicForwardings() {
+        return this.dynamicForwardings;
+    }
     public String edgeSecurityPolicy() {
         return this.edgeSecurityPolicy;
     }
@@ -177,6 +187,12 @@ public final class GetBackendServiceResult {
      */
     public Boolean enableCdn() {
         return this.enableCdn;
+    }
+    public String externalManagedMigrationState() {
+        return this.externalManagedMigrationState;
+    }
+    public Double externalManagedMigrationTestingPercentage() {
+        return this.externalManagedMigrationTestingPercentage;
     }
     /**
      * @return The fingerprint of the Backend Service.
@@ -229,6 +245,9 @@ public final class GetBackendServiceResult {
     }
     public String name() {
         return this.name;
+    }
+    public List<GetBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies() {
+        return this.networkPassThroughLbTrafficPolicies;
     }
     public List<GetBackendServiceOutlierDetection> outlierDetections() {
         return this.outlierDetections;
@@ -308,8 +327,11 @@ public final class GetBackendServiceResult {
         private List<String> customRequestHeaders;
         private List<String> customResponseHeaders;
         private String description;
+        private List<GetBackendServiceDynamicForwarding> dynamicForwardings;
         private String edgeSecurityPolicy;
         private Boolean enableCdn;
+        private String externalManagedMigrationState;
+        private Double externalManagedMigrationTestingPercentage;
         private String fingerprint;
         private Integer generatedId;
         private List<String> healthChecks;
@@ -322,6 +344,7 @@ public final class GetBackendServiceResult {
         private List<GetBackendServiceLogConfig> logConfigs;
         private List<GetBackendServiceMaxStreamDuration> maxStreamDurations;
         private String name;
+        private List<GetBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies;
         private List<GetBackendServiceOutlierDetection> outlierDetections;
         private String portName;
         private @Nullable String project;
@@ -349,8 +372,11 @@ public final class GetBackendServiceResult {
     	      this.customRequestHeaders = defaults.customRequestHeaders;
     	      this.customResponseHeaders = defaults.customResponseHeaders;
     	      this.description = defaults.description;
+    	      this.dynamicForwardings = defaults.dynamicForwardings;
     	      this.edgeSecurityPolicy = defaults.edgeSecurityPolicy;
     	      this.enableCdn = defaults.enableCdn;
+    	      this.externalManagedMigrationState = defaults.externalManagedMigrationState;
+    	      this.externalManagedMigrationTestingPercentage = defaults.externalManagedMigrationTestingPercentage;
     	      this.fingerprint = defaults.fingerprint;
     	      this.generatedId = defaults.generatedId;
     	      this.healthChecks = defaults.healthChecks;
@@ -363,6 +389,7 @@ public final class GetBackendServiceResult {
     	      this.logConfigs = defaults.logConfigs;
     	      this.maxStreamDurations = defaults.maxStreamDurations;
     	      this.name = defaults.name;
+    	      this.networkPassThroughLbTrafficPolicies = defaults.networkPassThroughLbTrafficPolicies;
     	      this.outlierDetections = defaults.outlierDetections;
     	      this.portName = defaults.portName;
     	      this.project = defaults.project;
@@ -495,6 +522,17 @@ public final class GetBackendServiceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder dynamicForwardings(List<GetBackendServiceDynamicForwarding> dynamicForwardings) {
+            if (dynamicForwardings == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "dynamicForwardings");
+            }
+            this.dynamicForwardings = dynamicForwardings;
+            return this;
+        }
+        public Builder dynamicForwardings(GetBackendServiceDynamicForwarding... dynamicForwardings) {
+            return dynamicForwardings(List.of(dynamicForwardings));
+        }
+        @CustomType.Setter
         public Builder edgeSecurityPolicy(String edgeSecurityPolicy) {
             if (edgeSecurityPolicy == null) {
               throw new MissingRequiredPropertyException("GetBackendServiceResult", "edgeSecurityPolicy");
@@ -508,6 +546,22 @@ public final class GetBackendServiceResult {
               throw new MissingRequiredPropertyException("GetBackendServiceResult", "enableCdn");
             }
             this.enableCdn = enableCdn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalManagedMigrationState(String externalManagedMigrationState) {
+            if (externalManagedMigrationState == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "externalManagedMigrationState");
+            }
+            this.externalManagedMigrationState = externalManagedMigrationState;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalManagedMigrationTestingPercentage(Double externalManagedMigrationTestingPercentage) {
+            if (externalManagedMigrationTestingPercentage == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "externalManagedMigrationTestingPercentage");
+            }
+            this.externalManagedMigrationTestingPercentage = externalManagedMigrationTestingPercentage;
             return this;
         }
         @CustomType.Setter
@@ -620,6 +674,17 @@ public final class GetBackendServiceResult {
             }
             this.name = name;
             return this;
+        }
+        @CustomType.Setter
+        public Builder networkPassThroughLbTrafficPolicies(List<GetBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies) {
+            if (networkPassThroughLbTrafficPolicies == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "networkPassThroughLbTrafficPolicies");
+            }
+            this.networkPassThroughLbTrafficPolicies = networkPassThroughLbTrafficPolicies;
+            return this;
+        }
+        public Builder networkPassThroughLbTrafficPolicies(GetBackendServiceNetworkPassThroughLbTrafficPolicy... networkPassThroughLbTrafficPolicies) {
+            return networkPassThroughLbTrafficPolicies(List.of(networkPassThroughLbTrafficPolicies));
         }
         @CustomType.Setter
         public Builder outlierDetections(List<GetBackendServiceOutlierDetection> outlierDetections) {
@@ -741,8 +806,11 @@ public final class GetBackendServiceResult {
             _resultValue.customRequestHeaders = customRequestHeaders;
             _resultValue.customResponseHeaders = customResponseHeaders;
             _resultValue.description = description;
+            _resultValue.dynamicForwardings = dynamicForwardings;
             _resultValue.edgeSecurityPolicy = edgeSecurityPolicy;
             _resultValue.enableCdn = enableCdn;
+            _resultValue.externalManagedMigrationState = externalManagedMigrationState;
+            _resultValue.externalManagedMigrationTestingPercentage = externalManagedMigrationTestingPercentage;
             _resultValue.fingerprint = fingerprint;
             _resultValue.generatedId = generatedId;
             _resultValue.healthChecks = healthChecks;
@@ -755,6 +823,7 @@ public final class GetBackendServiceResult {
             _resultValue.logConfigs = logConfigs;
             _resultValue.maxStreamDurations = maxStreamDurations;
             _resultValue.name = name;
+            _resultValue.networkPassThroughLbTrafficPolicies = networkPassThroughLbTrafficPolicies;
             _resultValue.outlierDetections = outlierDetections;
             _resultValue.portName = portName;
             _resultValue.project = project;

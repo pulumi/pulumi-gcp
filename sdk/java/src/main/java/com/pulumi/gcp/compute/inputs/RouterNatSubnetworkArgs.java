@@ -18,14 +18,14 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
     public static final RouterNatSubnetworkArgs Empty = new RouterNatSubnetworkArgs();
 
     /**
-     * Self-link of subnetwork to NAT
+     * Self-link of the subnetwork resource that will use NAT64
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Self-link of subnetwork to NAT
+     * @return Self-link of the subnetwork resource that will use NAT64
      * 
      */
     public Output<String> name() {
@@ -38,6 +38,8 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
      * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
      * sourceIpRangesToNat
      * 
+     * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
+     * 
      */
     @Import(name="secondaryIpRangeNames")
     private @Nullable Output<List<String>> secondaryIpRangeNames;
@@ -47,6 +49,8 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
      * to use NAT. This can be populated only if
      * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
      * sourceIpRangesToNat
+     * 
+     * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
      * 
      */
     public Optional<Output<List<String>>> secondaryIpRangeNames() {
@@ -101,7 +105,7 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Self-link of subnetwork to NAT
+         * @param name Self-link of the subnetwork resource that will use NAT64
          * 
          * @return builder
          * 
@@ -112,7 +116,7 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Self-link of subnetwork to NAT
+         * @param name Self-link of the subnetwork resource that will use NAT64
          * 
          * @return builder
          * 
@@ -126,6 +130,8 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
          * to use NAT. This can be populated only if
          * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
          * sourceIpRangesToNat
+         * 
+         * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
          * 
          * @return builder
          * 
@@ -141,6 +147,8 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
          * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
          * sourceIpRangesToNat
          * 
+         * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
+         * 
          * @return builder
          * 
          */
@@ -153,6 +161,8 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
          * to use NAT. This can be populated only if
          * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
          * sourceIpRangesToNat
+         * 
+         * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
          * 
          * @return builder
          * 

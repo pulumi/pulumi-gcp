@@ -109,6 +109,21 @@ public final class InstanceFromTemplateBootDiskArgs extends com.pulumi.resources
     }
 
     /**
+     * Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    @Import(name="forceAttach")
+    private @Nullable Output<Boolean> forceAttach;
+
+    /**
+     * @return Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * 
+     */
+    public Optional<Output<Boolean>> forceAttach() {
+        return Optional.ofNullable(this.forceAttach);
+    }
+
+    /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images.
      * 
      */
@@ -207,6 +222,7 @@ public final class InstanceFromTemplateBootDiskArgs extends com.pulumi.resources
         this.diskEncryptionKeyRsa = $.diskEncryptionKeyRsa;
         this.diskEncryptionKeySha256 = $.diskEncryptionKeySha256;
         this.diskEncryptionServiceAccount = $.diskEncryptionServiceAccount;
+        this.forceAttach = $.forceAttach;
         this.guestOsFeatures = $.guestOsFeatures;
         this.initializeParams = $.initializeParams;
         this.interface_ = $.interface_;
@@ -357,6 +373,27 @@ public final class InstanceFromTemplateBootDiskArgs extends com.pulumi.resources
          */
         public Builder diskEncryptionServiceAccount(String diskEncryptionServiceAccount) {
             return diskEncryptionServiceAccount(Output.of(diskEncryptionServiceAccount));
+        }
+
+        /**
+         * @param forceAttach Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceAttach(@Nullable Output<Boolean> forceAttach) {
+            $.forceAttach = forceAttach;
+            return this;
+        }
+
+        /**
+         * @param forceAttach Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceAttach(Boolean forceAttach) {
+            return forceAttach(Output.of(forceAttach));
         }
 
         /**

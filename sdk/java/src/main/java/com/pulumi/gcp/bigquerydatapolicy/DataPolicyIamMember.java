@@ -346,9 +346,17 @@ public class DataPolicyIamMember extends com.pulumi.resources.CustomResource {
     public Output<Optional<DataPolicyIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="dataPolicyId", refs={String.class}, tree="[0]")
     private Output<String> dataPolicyId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> dataPolicyId() {
         return this.dataPolicyId;
     }

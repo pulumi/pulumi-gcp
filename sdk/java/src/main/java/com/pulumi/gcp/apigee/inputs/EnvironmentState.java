@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.apigee.inputs.EnvironmentClientIpResolutionConfigArgs;
 import com.pulumi.gcp.apigee.inputs.EnvironmentNodeConfigArgs;
 import com.pulumi.gcp.apigee.inputs.EnvironmentPropertiesArgs;
 import java.lang.String;
@@ -34,6 +35,23 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> apiProxyType() {
         return Optional.ofNullable(this.apiProxyType);
+    }
+
+    /**
+     * The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: &#39;{ &#34;clientIpResolutionConfig&#34; = {} }&#39; For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="clientIpResolutionConfig")
+    private @Nullable Output<EnvironmentClientIpResolutionConfigArgs> clientIpResolutionConfig;
+
+    /**
+     * @return The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: &#39;{ &#34;clientIpResolutionConfig&#34; = {} }&#39; For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EnvironmentClientIpResolutionConfigArgs>> clientIpResolutionConfig() {
+        return Optional.ofNullable(this.clientIpResolutionConfig);
     }
 
     /**
@@ -207,6 +225,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
 
     private EnvironmentState(EnvironmentState $) {
         this.apiProxyType = $.apiProxyType;
+        this.clientIpResolutionConfig = $.clientIpResolutionConfig;
         this.deploymentType = $.deploymentType;
         this.description = $.description;
         this.displayName = $.displayName;
@@ -259,6 +278,29 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder apiProxyType(String apiProxyType) {
             return apiProxyType(Output.of(apiProxyType));
+        }
+
+        /**
+         * @param clientIpResolutionConfig The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: &#39;{ &#34;clientIpResolutionConfig&#34; = {} }&#39; For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientIpResolutionConfig(@Nullable Output<EnvironmentClientIpResolutionConfigArgs> clientIpResolutionConfig) {
+            $.clientIpResolutionConfig = clientIpResolutionConfig;
+            return this;
+        }
+
+        /**
+         * @param clientIpResolutionConfig The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: &#39;{ &#34;clientIpResolutionConfig&#34; = {} }&#39; For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientIpResolutionConfig(EnvironmentClientIpResolutionConfigArgs clientIpResolutionConfig) {
+            return clientIpResolutionConfig(Output.of(clientIpResolutionConfig));
         }
 
         /**

@@ -13,20 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AddonsConfigAddonsConfigApiSecurityConfig {
     /**
-     * @return Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * @return Flag that specifies whether the API security add-on is enabled.
      * 
      */
     private @Nullable Boolean enabled;
     /**
      * @return (Output)
-     * Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
      * 
      */
     private @Nullable String expiresAt;
 
     private AddonsConfigAddonsConfigApiSecurityConfig() {}
     /**
-     * @return Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * @return Flag that specifies whether the API security add-on is enabled.
      * 
      */
     public Optional<Boolean> enabled() {
@@ -34,7 +34,7 @@ public final class AddonsConfigAddonsConfigApiSecurityConfig {
     }
     /**
      * @return (Output)
-     * Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
      * 
      */
     public Optional<String> expiresAt() {

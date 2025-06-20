@@ -33,6 +33,7 @@ import com.pulumi.gcp.container.outputs.ClusterMasterAuth;
 import com.pulumi.gcp.container.outputs.ClusterMasterAuthorizedNetworksConfig;
 import com.pulumi.gcp.container.outputs.ClusterMeshCertificates;
 import com.pulumi.gcp.container.outputs.ClusterMonitoringConfig;
+import com.pulumi.gcp.container.outputs.ClusterNetworkPerformanceConfig;
 import com.pulumi.gcp.container.outputs.ClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePool;
@@ -824,6 +825,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.identityServiceConfig;
     }
     /**
+     * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+     * 
+     */
+    @Export(name="inTransitEncryptionConfig", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> inTransitEncryptionConfig;
+
+    /**
+     * @return Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
+     * 
+     */
+    public Output<Optional<String>> inTransitEncryptionConfig() {
+        return Codegen.optional(this.inTransitEncryptionConfig);
+    }
+    /**
      * The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
      * number of nodes per zone. Must be set if `node_pool` is not set. If you&#39;re using
@@ -1148,6 +1163,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> network() {
         return Codegen.optional(this.network);
+    }
+    /**
+     * Network bandwidth tier configuration.
+     * 
+     */
+    @Export(name="networkPerformanceConfig", refs={ClusterNetworkPerformanceConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterNetworkPerformanceConfig> networkPerformanceConfig;
+
+    /**
+     * @return Network bandwidth tier configuration.
+     * 
+     */
+    public Output<Optional<ClusterNetworkPerformanceConfig>> networkPerformanceConfig() {
+        return Codegen.optional(this.networkPerformanceConfig);
     }
     /**
      * Configuration options for the
@@ -1668,14 +1697,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.tpuIpv4CidrBlock;
     }
     /**
-     * The custom keys configuration of the cluster.
+     * The custom keys configuration of the cluster Structure is documented below.
      * 
      */
     @Export(name="userManagedKeysConfig", refs={ClusterUserManagedKeysConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterUserManagedKeysConfig> userManagedKeysConfig;
 
     /**
-     * @return The custom keys configuration of the cluster.
+     * @return The custom keys configuration of the cluster Structure is documented below.
      * 
      */
     public Output<Optional<ClusterUserManagedKeysConfig>> userManagedKeysConfig() {

@@ -12,6 +12,7 @@ import com.pulumi.gcp.memorystore.InstanceArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceState;
 import com.pulumi.gcp.memorystore.outputs.InstanceAutomatedBackupConfig;
 import com.pulumi.gcp.memorystore.outputs.InstanceCrossInstanceReplicationConfig;
+import com.pulumi.gcp.memorystore.outputs.InstanceDesiredAutoCreatedEndpoint;
 import com.pulumi.gcp.memorystore.outputs.InstanceDesiredPscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.InstanceDiscoveryEndpoint;
 import com.pulumi.gcp.memorystore.outputs.InstanceEndpoint;
@@ -65,7 +66,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.memorystore.Instance;
  * import com.pulumi.gcp.memorystore.InstanceArgs;
- * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
@@ -109,8 +110,8 @@ import javax.annotation.Nullable;
  * 
  *         var instance_basic = new Instance("instance-basic", InstanceArgs.builder()
  *             .instanceId("basic-instance")
- *             .shardCount(3)
- *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
+ *             .shardCount(1)
+ *             .desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs.builder()
  *                 .network(producerNet.id())
  *                 .projectId(project.projectId())
  *                 .build())
@@ -157,7 +158,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.memorystore.Instance;
  * import com.pulumi.gcp.memorystore.InstanceArgs;
- * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
@@ -204,13 +205,13 @@ import javax.annotation.Nullable;
  * 
  *         var instance_full = new Instance("instance-full", InstanceArgs.builder()
  *             .instanceId("full-instance")
- *             .shardCount(3)
- *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
+ *             .shardCount(1)
+ *             .desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs.builder()
  *                 .network(producerNet.id())
  *                 .projectId(project.projectId())
  *                 .build())
  *             .location("us-central1")
- *             .replicaCount(2)
+ *             .replicaCount(1)
  *             .nodeType("SHARED_CORE_NANO")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_DISABLED")
  *             .authorizationMode("AUTH_DISABLED")
@@ -271,7 +272,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.memorystore.Instance;
  * import com.pulumi.gcp.memorystore.InstanceArgs;
- * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigAofConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -316,8 +317,8 @@ import javax.annotation.Nullable;
  * 
  *         var instance_persistence_aof = new Instance("instance-persistence-aof", InstanceArgs.builder()
  *             .instanceId("aof-instance")
- *             .shardCount(3)
- *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
+ *             .shardCount(1)
+ *             .desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs.builder()
  *                 .network(producerNet.id())
  *                 .projectId(project.projectId())
  *                 .build())
@@ -359,7 +360,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.memorystore.Instance;
  * import com.pulumi.gcp.memorystore.InstanceArgs;
- * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigRdbConfigArgs;
@@ -409,7 +410,7 @@ import javax.annotation.Nullable;
  *         var primaryInstance = new Instance("primaryInstance", InstanceArgs.builder()
  *             .instanceId("primary-instance")
  *             .shardCount(1)
- *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
+ *             .desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs.builder()
  *                 .network(primaryProducerNet.id())
  *                 .projectId(project.projectId())
  *                 .build())
@@ -463,7 +464,7 @@ import javax.annotation.Nullable;
  *         var secondaryInstance = new Instance("secondaryInstance", InstanceArgs.builder()
  *             .instanceId("secondary-instance")
  *             .shardCount(1)
- *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
+ *             .desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs.builder()
  *                 .network(secondaryProducerNet.id())
  *                 .projectId(project.projectId())
  *                 .build())
@@ -624,30 +625,54 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtectionEnabled);
     }
     /**
-     * Immutable. User inputs for the auto-created PSC connections.
+     * Immutable. User inputs for the auto-created endpoints connections.
      * 
      */
+    @Export(name="desiredAutoCreatedEndpoints", refs={List.class,InstanceDesiredAutoCreatedEndpoint.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<InstanceDesiredAutoCreatedEndpoint>> desiredAutoCreatedEndpoints;
+
+    /**
+     * @return Immutable. User inputs for the auto-created endpoints connections.
+     * 
+     */
+    public Output<Optional<List<InstanceDesiredAutoCreatedEndpoint>>> desiredAutoCreatedEndpoints() {
+        return Codegen.optional(this.desiredAutoCreatedEndpoints);
+    }
+    /**
+     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * 
+     * @deprecated
+     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * 
+     */
+    @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
     @Export(name="desiredPscAutoConnections", refs={List.class,InstanceDesiredPscAutoConnection.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceDesiredPscAutoConnection>> desiredPscAutoConnections;
 
     /**
-     * @return Immutable. User inputs for the auto-created PSC connections.
+     * @return `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
      * 
      */
     public Output<Optional<List<InstanceDesiredPscAutoConnection>>> desiredPscAutoConnections() {
         return Codegen.optional(this.desiredPscAutoConnections);
     }
     /**
+     * (Deprecated)
      * Output only. Endpoints clients can connect to the instance through. Currently only one
      * discovery endpoint is supported.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `discovery_endpoints` is deprecated  Use `endpoints` instead.
+     * 
      */
+    @Deprecated /* `discovery_endpoints` is deprecated  Use `endpoints` instead. */
     @Export(name="discoveryEndpoints", refs={List.class,InstanceDiscoveryEndpoint.class}, tree="[0,1]")
     private Output<List<InstanceDiscoveryEndpoint>> discoveryEndpoints;
 
     /**
-     * @return Output only. Endpoints clients can connect to the instance through. Currently only one
+     * @return (Deprecated)
+     * Output only. Endpoints clients can connect to the instance through. Currently only one
      * discovery endpoint is supported.
      * Structure is documented below.
      * 
@@ -968,15 +993,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.pscAttachmentDetails;
     }
     /**
+     * (Deprecated)
      * Output only. User inputs and resource details of the auto-created PSC connections.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `psc_auto_connections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
+     * 
      */
+    @Deprecated /* `psc_auto_connections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead. */
     @Export(name="pscAutoConnections", refs={List.class,InstancePscAutoConnection.class}, tree="[0,1]")
     private Output<List<InstancePscAutoConnection>> pscAutoConnections;
 
     /**
-     * @return Output only. User inputs and resource details of the auto-created PSC connections.
+     * @return (Deprecated)
+     * Output only. User inputs and resource details of the auto-created PSC connections.
      * Structure is documented below.
      * 
      */

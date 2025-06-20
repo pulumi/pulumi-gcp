@@ -7,8 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicMessageStoragePolicyArgs;
+import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicSchemaSettingsArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -131,6 +133,25 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="messageTransforms")
+    private @Nullable Output<List<TopicMessageTransformArgs>> messageTransforms;
+
+    /**
+     * @return Transforms to be applied to messages published to the topic. Transforms are applied in the
+     * order specified.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<TopicMessageTransformArgs>>> messageTransforms() {
+        return Optional.ofNullable(this.messageTransforms);
+    }
+
+    /**
      * Name of the topic.
      * 
      * ***
@@ -191,6 +212,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.messageRetentionDuration = $.messageRetentionDuration;
         this.messageStoragePolicy = $.messageStoragePolicy;
+        this.messageTransforms = $.messageTransforms;
         this.name = $.name;
         this.project = $.project;
         this.schemaSettings = $.schemaSettings;
@@ -353,6 +375,43 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder messageStoragePolicy(TopicMessageStoragePolicyArgs messageStoragePolicy) {
             return messageStoragePolicy(Output.of(messageStoragePolicy));
+        }
+
+        /**
+         * @param messageTransforms Transforms to be applied to messages published to the topic. Transforms are applied in the
+         * order specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageTransforms(@Nullable Output<List<TopicMessageTransformArgs>> messageTransforms) {
+            $.messageTransforms = messageTransforms;
+            return this;
+        }
+
+        /**
+         * @param messageTransforms Transforms to be applied to messages published to the topic. Transforms are applied in the
+         * order specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageTransforms(List<TopicMessageTransformArgs> messageTransforms) {
+            return messageTransforms(Output.of(messageTransforms));
+        }
+
+        /**
+         * @param messageTransforms Transforms to be applied to messages published to the topic. Transforms are applied in the
+         * order specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageTransforms(TopicMessageTransformArgs... messageTransforms) {
+            return messageTransforms(List.of(messageTransforms));
         }
 
         /**

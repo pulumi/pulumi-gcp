@@ -19,9 +19,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## +---
+ * ## subcategory: &#34;Cloud Bigtable&#34;
  * 
- * subcategory: &#34;Cloud Bigtable&#34;
  * description: |-
  *   Creates a Google Bigtable instance.
  * ---

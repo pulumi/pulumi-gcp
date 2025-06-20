@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AddonsConfigAddonsConfigIntegrationConfig {
     /**
-     * @return Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * @return Flag that specifies whether the Integration add-on is enabled.
      * 
      */
     private @Nullable Boolean enabled;
 
     private AddonsConfigAddonsConfigIntegrationConfig() {}
     /**
-     * @return Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * @return Flag that specifies whether the Integration add-on is enabled.
      * 
      */
     public Optional<Boolean> enabled() {

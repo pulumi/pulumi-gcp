@@ -17,14 +17,14 @@ public final class WebTypeAppEngingIamMemberState extends com.pulumi.resources.R
     public static final WebTypeAppEngingIamMemberState Empty = new WebTypeAppEngingIamMemberState();
 
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Optional<Output<String>> appId() {
@@ -164,7 +164,7 @@ public final class WebTypeAppEngingIamMemberState extends com.pulumi.resources.R
         }
 
         /**
-         * @param appId Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+         * @param appId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class WebTypeAppEngingIamMemberState extends com.pulumi.resources.R
         }
 
         /**
-         * @param appId Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+         * @param appId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

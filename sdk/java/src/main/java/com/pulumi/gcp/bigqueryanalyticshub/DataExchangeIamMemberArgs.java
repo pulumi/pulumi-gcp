@@ -25,14 +25,14 @@ public final class DataExchangeIamMemberArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="dataExchangeId", required=true)
     private Output<String> dataExchangeId;
 
     /**
-     * @return The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> dataExchangeId() {
@@ -170,7 +170,7 @@ public final class DataExchangeIamMemberArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dataExchangeId The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+         * @param dataExchangeId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class DataExchangeIamMemberArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dataExchangeId The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
+         * @param dataExchangeId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

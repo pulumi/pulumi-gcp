@@ -24,9 +24,17 @@ public final class DataPolicyIamBindingState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="dataPolicyId")
     private @Nullable Output<String> dataPolicyId;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> dataPolicyId() {
         return Optional.ofNullable(this.dataPolicyId);
     }
@@ -177,11 +185,23 @@ public final class DataPolicyIamBindingState extends com.pulumi.resources.Resour
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param dataPolicyId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataPolicyId(@Nullable Output<String> dataPolicyId) {
             $.dataPolicyId = dataPolicyId;
             return this;
         }
 
+        /**
+         * @param dataPolicyId Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataPolicyId(String dataPolicyId) {
             return dataPolicyId(Output.of(dataPolicyId));
         }

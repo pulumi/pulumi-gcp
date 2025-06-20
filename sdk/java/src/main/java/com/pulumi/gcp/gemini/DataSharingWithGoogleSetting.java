@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  *             .location("global")
  *             .labels(Map.of("my_key", "my_value"))
  *             .enablePreviewDataSharing(true)
+ *             .enableDataSharing(true)
  *             .build());
  * 
  *     }
@@ -134,14 +135,28 @@ public class DataSharingWithGoogleSetting extends com.pulumi.resources.CustomRes
         return this.effectiveLabels;
     }
     /**
-     * Whether preview data sharing should be enabled.
+     * Whether data sharing should be enabled in GA products.
+     * 
+     */
+    @Export(name="enableDataSharing", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableDataSharing;
+
+    /**
+     * @return Whether data sharing should be enabled in GA products.
+     * 
+     */
+    public Output<Optional<Boolean>> enableDataSharing() {
+        return Codegen.optional(this.enableDataSharing);
+    }
+    /**
+     * Whether data sharing should be enabled in Preview products.
      * 
      */
     @Export(name="enablePreviewDataSharing", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enablePreviewDataSharing;
 
     /**
-     * @return Whether preview data sharing should be enabled.
+     * @return Whether data sharing should be enabled in Preview products.
      * 
      */
     public Output<Optional<Boolean>> enablePreviewDataSharing() {

@@ -18,14 +18,14 @@ public final class AppEngineVersionIamMemberArgs extends com.pulumi.resources.Re
     public static final AppEngineVersionIamMemberArgs Empty = new AppEngineVersionIamMemberArgs();
 
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
 
     /**
-     * @return Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> appId() {
@@ -136,14 +136,14 @@ public final class AppEngineVersionIamMemberArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="versionId", required=true)
     private Output<String> versionId;
 
     /**
-     * @return Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> versionId() {
@@ -181,7 +181,7 @@ public final class AppEngineVersionIamMemberArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param appId Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+         * @param appId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class AppEngineVersionIamMemberArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param appId Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+         * @param appId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class AppEngineVersionIamMemberArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param versionId Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+         * @param versionId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class AppEngineVersionIamMemberArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param versionId Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
+         * @param versionId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

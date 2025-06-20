@@ -181,15 +181,15 @@ public class ReleaseChannelSettingBinding extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="product", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> product;
+    private Output<String> product;
 
     /**
      * @return Product type of the setting binding.
      * Possible values are: `GEMINI_CLOUD_ASSIST`, `GEMINI_CODE_ASSIST`.
      * 
      */
-    public Output<Optional<String>> product() {
-        return Codegen.optional(this.product);
+    public Output<String> product() {
+        return this.product;
     }
     /**
      * The ID of the project in which the resource belongs.

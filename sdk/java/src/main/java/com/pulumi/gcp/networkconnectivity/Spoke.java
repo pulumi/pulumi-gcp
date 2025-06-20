@@ -15,6 +15,7 @@ import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedProducerVpcNetwork;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedRouterApplianceInstances;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpcNetwork;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpnTunnels;
+import com.pulumi.gcp.networkconnectivity.outputs.SpokeReason;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -205,19 +206,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network("network", NetworkArgs.builder()
- *             .name("tf-test-network_40289")
+ *             .name("tf-test-network_62793")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
- *             .name("tf-test-subnet_33395")
+ *             .name("tf-test-subnet_55438")
  *             .ipCidrRange("10.0.0.0/28")
  *             .region("us-central1")
  *             .network(network.selfLink())
  *             .build());
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .name("tf-test-instance_76044")
+ *             .name("tf-test-instance_32706")
  *             .machineType("e2-medium")
  *             .canIpForward(true)
  *             .zone("us-central1-a")
@@ -236,13 +237,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicHub = new Hub("basicHub", HubArgs.builder()
- *             .name("tf-test-hub_69391")
+ *             .name("tf-test-hub_49082")
  *             .description("A sample hub")
  *             .labels(Map.of("label-two", "value-one"))
  *             .build());
  * 
  *         var primary = new Spoke("primary", SpokeArgs.builder()
- *             .name("tf-test-name_8270")
+ *             .name("tf-test-name_60365")
  *             .location("us-central1")
  *             .description("A sample spoke with a linked routher appliance instance")
  *             .labels(Map.of("label-one", "value-one"))
@@ -659,8 +660,8 @@ import javax.annotation.Nullable;
  *             .hub(starHub.id())
  *             .autoAccept(GroupAutoAcceptArgs.builder()
  *                 .autoAcceptProjects(                
- *                     "foo_41150",
- *                     "bar_89313")
+ *                     "foo_80215",
+ *                     "bar_59033")
  *                 .build())
  *             .build());
  * 
@@ -1000,6 +1001,22 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * The reasons for the current state in the lifecycle
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="reasons", refs={List.class,SpokeReason.class}, tree="[0,1]")
+    private Output<List<SpokeReason>> reasons;
+
+    /**
+     * @return The reasons for the current state in the lifecycle
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<SpokeReason>> reasons() {
+        return this.reasons;
     }
     /**
      * Output only. The current lifecycle state of this spoke.

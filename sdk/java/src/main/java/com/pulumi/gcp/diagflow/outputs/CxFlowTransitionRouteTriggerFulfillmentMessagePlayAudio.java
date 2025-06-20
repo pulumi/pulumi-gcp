@@ -17,6 +17,8 @@ public final class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio {
      * @return (Output)
      * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
      * 
+     * &lt;a name=&#34;nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio&#34;&gt;&lt;/a&gt;The `mixed_audio` block contains:
+     * 
      */
     private @Nullable Boolean allowPlaybackInterruption;
     /**
@@ -29,6 +31,8 @@ public final class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio {
     /**
      * @return (Output)
      * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
+     * 
+     * &lt;a name=&#34;nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio&#34;&gt;&lt;/a&gt;The `mixed_audio` block contains:
      * 
      */
     public Optional<Boolean> allowPlaybackInterruption() {

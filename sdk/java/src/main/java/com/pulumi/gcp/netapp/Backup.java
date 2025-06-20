@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name("")
+ *             .name("network")
  *             .build());
  * 
  *         var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()
@@ -144,6 +144,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:netapp/backup:Backup")
 public class Backup extends com.pulumi.resources.CustomResource {
+    /**
+     * Region in which backup is stored.
+     * 
+     */
+    @Export(name="backupRegion", refs={String.class}, tree="[0]")
+    private Output<String> backupRegion;
+
+    /**
+     * @return Region in which backup is stored.
+     * 
+     */
+    public Output<String> backupRegion() {
+        return this.backupRegion;
+    }
     /**
      * Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
      * 
@@ -359,6 +373,20 @@ public class Backup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> vaultName() {
         return this.vaultName;
+    }
+    /**
+     * Region of the volume from which the backup was created.
+     * 
+     */
+    @Export(name="volumeRegion", refs={String.class}, tree="[0]")
+    private Output<String> volumeRegion;
+
+    /**
+     * @return Region of the volume from which the backup was created.
+     * 
+     */
+    public Output<String> volumeRegion() {
+        return this.volumeRegion;
     }
     /**
      * Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big.

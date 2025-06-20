@@ -67,14 +67,29 @@ public final class DataSharingWithGoogleSettingState extends com.pulumi.resource
     }
 
     /**
-     * Whether preview data sharing should be enabled.
+     * Whether data sharing should be enabled in GA products.
+     * 
+     */
+    @Import(name="enableDataSharing")
+    private @Nullable Output<Boolean> enableDataSharing;
+
+    /**
+     * @return Whether data sharing should be enabled in GA products.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDataSharing() {
+        return Optional.ofNullable(this.enableDataSharing);
+    }
+
+    /**
+     * Whether data sharing should be enabled in Preview products.
      * 
      */
     @Import(name="enablePreviewDataSharing")
     private @Nullable Output<Boolean> enablePreviewDataSharing;
 
     /**
-     * @return Whether preview data sharing should be enabled.
+     * @return Whether data sharing should be enabled in Preview products.
      * 
      */
     public Optional<Output<Boolean>> enablePreviewDataSharing() {
@@ -187,6 +202,7 @@ public final class DataSharingWithGoogleSettingState extends com.pulumi.resource
         this.createTime = $.createTime;
         this.dataSharingWithGoogleSettingId = $.dataSharingWithGoogleSettingId;
         this.effectiveLabels = $.effectiveLabels;
+        this.enableDataSharing = $.enableDataSharing;
         this.enablePreviewDataSharing = $.enablePreviewDataSharing;
         this.labels = $.labels;
         this.location = $.location;
@@ -282,7 +298,28 @@ public final class DataSharingWithGoogleSettingState extends com.pulumi.resource
         }
 
         /**
-         * @param enablePreviewDataSharing Whether preview data sharing should be enabled.
+         * @param enableDataSharing Whether data sharing should be enabled in GA products.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDataSharing(@Nullable Output<Boolean> enableDataSharing) {
+            $.enableDataSharing = enableDataSharing;
+            return this;
+        }
+
+        /**
+         * @param enableDataSharing Whether data sharing should be enabled in GA products.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDataSharing(Boolean enableDataSharing) {
+            return enableDataSharing(Output.of(enableDataSharing));
+        }
+
+        /**
+         * @param enablePreviewDataSharing Whether data sharing should be enabled in Preview products.
          * 
          * @return builder
          * 
@@ -293,7 +330,7 @@ public final class DataSharingWithGoogleSettingState extends com.pulumi.resource
         }
 
         /**
-         * @param enablePreviewDataSharing Whether preview data sharing should be enabled.
+         * @param enablePreviewDataSharing Whether data sharing should be enabled in Preview products.
          * 
          * @return builder
          * 

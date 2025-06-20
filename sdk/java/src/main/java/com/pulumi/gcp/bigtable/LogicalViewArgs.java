@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigtable;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class LogicalViewArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final LogicalViewArgs Empty = new LogicalViewArgs();
+
+    /**
+     * Set to true to make the logical view protected against deletion.
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    /**
+     * @return Set to true to make the logical view protected against deletion.
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
 
     /**
      * The name of the instance to create the logical view within.
@@ -85,6 +101,7 @@ public final class LogicalViewArgs extends com.pulumi.resources.ResourceArgs {
     private LogicalViewArgs() {}
 
     private LogicalViewArgs(LogicalViewArgs $) {
+        this.deletionProtection = $.deletionProtection;
         this.instance = $.instance;
         this.logicalViewId = $.logicalViewId;
         this.project = $.project;
@@ -107,6 +124,27 @@ public final class LogicalViewArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(LogicalViewArgs defaults) {
             $ = new LogicalViewArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionProtection Set to true to make the logical view protected against deletion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection Set to true to make the logical view protected against deletion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

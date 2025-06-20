@@ -15,9 +15,17 @@ public final class TunnelDestGroupIamPolicyState extends com.pulumi.resources.Re
 
     public static final TunnelDestGroupIamPolicyState Empty = new TunnelDestGroupIamPolicyState();
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="destGroup")
     private @Nullable Output<String> destGroup;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> destGroup() {
         return Optional.ofNullable(this.destGroup);
     }
@@ -120,11 +128,23 @@ public final class TunnelDestGroupIamPolicyState extends com.pulumi.resources.Re
             $ = new TunnelDestGroupIamPolicyState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destGroup Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder destGroup(@Nullable Output<String> destGroup) {
             $.destGroup = destGroup;
             return this;
         }
 
+        /**
+         * @param destGroup Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder destGroup(String destGroup) {
             return destGroup(Output.of(destGroup));
         }

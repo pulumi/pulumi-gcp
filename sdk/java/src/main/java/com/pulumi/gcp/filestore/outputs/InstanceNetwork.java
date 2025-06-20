@@ -5,6 +5,7 @@ package com.pulumi.gcp.filestore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.filestore.outputs.InstanceNetworkPscConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,9 +19,7 @@ public final class InstanceNetwork {
      * If not provided, the connect mode defaults to
      * DIRECT_PEERING.
      * Default value is `DIRECT_PEERING`.
-     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-     * 
-     * ***
+     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     private @Nullable String connectMode;
@@ -44,6 +43,13 @@ public final class InstanceNetwork {
      */
     private String network;
     /**
+     * @return Private Service Connect configuration.
+     * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable InstanceNetworkPscConfig pscConfig;
+    /**
      * @return A /29 CIDR block that identifies the range of IP
      * addresses reserved for this instance.
      * 
@@ -56,9 +62,7 @@ public final class InstanceNetwork {
      * If not provided, the connect mode defaults to
      * DIRECT_PEERING.
      * Default value is `DIRECT_PEERING`.
-     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-     * 
-     * ***
+     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     public Optional<String> connectMode() {
@@ -90,6 +94,15 @@ public final class InstanceNetwork {
         return this.network;
     }
     /**
+     * @return Private Service Connect configuration.
+     * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<InstanceNetworkPscConfig> pscConfig() {
+        return Optional.ofNullable(this.pscConfig);
+    }
+    /**
      * @return A /29 CIDR block that identifies the range of IP
      * addresses reserved for this instance.
      * 
@@ -111,6 +124,7 @@ public final class InstanceNetwork {
         private @Nullable List<String> ipAddresses;
         private List<String> modes;
         private String network;
+        private @Nullable InstanceNetworkPscConfig pscConfig;
         private @Nullable String reservedIpRange;
         public Builder() {}
         public Builder(InstanceNetwork defaults) {
@@ -119,6 +133,7 @@ public final class InstanceNetwork {
     	      this.ipAddresses = defaults.ipAddresses;
     	      this.modes = defaults.modes;
     	      this.network = defaults.network;
+    	      this.pscConfig = defaults.pscConfig;
     	      this.reservedIpRange = defaults.reservedIpRange;
         }
 
@@ -157,6 +172,12 @@ public final class InstanceNetwork {
             return this;
         }
         @CustomType.Setter
+        public Builder pscConfig(@Nullable InstanceNetworkPscConfig pscConfig) {
+
+            this.pscConfig = pscConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder reservedIpRange(@Nullable String reservedIpRange) {
 
             this.reservedIpRange = reservedIpRange;
@@ -168,6 +189,7 @@ public final class InstanceNetwork {
             _resultValue.ipAddresses = ipAddresses;
             _resultValue.modes = modes;
             _resultValue.network = network;
+            _resultValue.pscConfig = pscConfig;
             _resultValue.reservedIpRange = reservedIpRange;
             return _resultValue;
         }

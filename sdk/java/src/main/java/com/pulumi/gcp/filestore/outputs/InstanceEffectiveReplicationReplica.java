@@ -21,6 +21,11 @@ public final class InstanceEffectiveReplicationReplica {
      */
     private @Nullable String lastActiveSyncTime;
     /**
+     * @return The peer instance.
+     * 
+     */
+    private @Nullable String peerInstance;
+    /**
      * @return (Output)
      * Output only. The replica state
      * 
@@ -43,6 +48,13 @@ public final class InstanceEffectiveReplicationReplica {
      */
     public Optional<String> lastActiveSyncTime() {
         return Optional.ofNullable(this.lastActiveSyncTime);
+    }
+    /**
+     * @return The peer instance.
+     * 
+     */
+    public Optional<String> peerInstance() {
+        return Optional.ofNullable(this.peerInstance);
     }
     /**
      * @return (Output)
@@ -71,12 +83,14 @@ public final class InstanceEffectiveReplicationReplica {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String lastActiveSyncTime;
+        private @Nullable String peerInstance;
         private @Nullable String state;
         private @Nullable List<String> stateReasons;
         public Builder() {}
         public Builder(InstanceEffectiveReplicationReplica defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lastActiveSyncTime = defaults.lastActiveSyncTime;
+    	      this.peerInstance = defaults.peerInstance;
     	      this.state = defaults.state;
     	      this.stateReasons = defaults.stateReasons;
         }
@@ -85,6 +99,12 @@ public final class InstanceEffectiveReplicationReplica {
         public Builder lastActiveSyncTime(@Nullable String lastActiveSyncTime) {
 
             this.lastActiveSyncTime = lastActiveSyncTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder peerInstance(@Nullable String peerInstance) {
+
+            this.peerInstance = peerInstance;
             return this;
         }
         @CustomType.Setter
@@ -105,6 +125,7 @@ public final class InstanceEffectiveReplicationReplica {
         public InstanceEffectiveReplicationReplica build() {
             final var _resultValue = new InstanceEffectiveReplicationReplica();
             _resultValue.lastActiveSyncTime = lastActiveSyncTime;
+            _resultValue.peerInstance = peerInstance;
             _resultValue.state = state;
             _resultValue.stateReasons = stateReasons;
             return _resultValue;

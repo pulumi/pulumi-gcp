@@ -12,6 +12,7 @@ import com.pulumi.gcp.netapp.VolumeArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeState;
 import com.pulumi.gcp.netapp.outputs.VolumeBackupConfig;
 import com.pulumi.gcp.netapp.outputs.VolumeExportPolicy;
+import com.pulumi.gcp.netapp.outputs.VolumeHybridReplicationParameters;
 import com.pulumi.gcp.netapp.outputs.VolumeMountOption;
 import com.pulumi.gcp.netapp.outputs.VolumeRestoreParameters;
 import com.pulumi.gcp.netapp.outputs.VolumeSnapshotPolicy;
@@ -286,6 +287,22 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> hasReplication() {
         return this.hasReplication;
+    }
+    /**
+     * The Hybrid Replication parameters for the volume.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="hybridReplicationParameters", refs={VolumeHybridReplicationParameters.class}, tree="[0]")
+    private Output</* @Nullable */ VolumeHybridReplicationParameters> hybridReplicationParameters;
+
+    /**
+     * @return The Hybrid Replication parameters for the volume.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<VolumeHybridReplicationParameters>> hybridReplicationParameters() {
+        return Codegen.optional(this.hybridReplicationParameters);
     }
     /**
      * Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.diagflow.CxAgentArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentState;
 import com.pulumi.gcp.diagflow.outputs.CxAgentAdvancedSettings;
+import com.pulumi.gcp.diagflow.outputs.CxAgentGenAppBuilderSettings;
 import com.pulumi.gcp.diagflow.outputs.CxAgentGitIntegrationSettings;
 import com.pulumi.gcp.diagflow.outputs.CxAgentSpeechToTextSettings;
 import com.pulumi.gcp.diagflow.outputs.CxAgentTextToSpeechSettings;
@@ -54,6 +55,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentGitIntegrationSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentGitIntegrationSettingsGithubSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentTextToSpeechSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentGenAppBuilderSettingsArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -139,6 +141,9 @@ import javax.annotation.Nullable;
  *                         ))
  *                     )))
  *                 .build())
+ *             .genAppBuilderSettings(CxAgentGenAppBuilderSettingsArgs.builder()
+ *                 .engine("projects/-/locations/-/collections/-/engines/-")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -222,6 +227,12 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
     public Output<String> defaultLanguageCode() {
         return this.defaultLanguageCode;
     }
+    @Export(name="deleteChatEngineOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deleteChatEngineOnDestroy;
+
+    public Output<Optional<Boolean>> deleteChatEngineOnDestroy() {
+        return Codegen.optional(this.deleteChatEngineOnDestroy);
+    }
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      * 
@@ -287,6 +298,22 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableStackdriverLogging() {
         return Codegen.optional(this.enableStackdriverLogging);
+    }
+    /**
+     * Gen App Builder-related agent-level settings.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="genAppBuilderSettings", refs={CxAgentGenAppBuilderSettings.class}, tree="[0]")
+    private Output<CxAgentGenAppBuilderSettings> genAppBuilderSettings;
+
+    /**
+     * @return Gen App Builder-related agent-level settings.
+     * Structure is documented below.
+     * 
+     */
+    public Output<CxAgentGenAppBuilderSettings> genAppBuilderSettings() {
+        return this.genAppBuilderSettings;
     }
     /**
      * Git integration settings for this agent.

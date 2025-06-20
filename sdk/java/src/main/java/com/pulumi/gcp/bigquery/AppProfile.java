@@ -3,6 +3,7 @@
 
 package com.pulumi.gcp.bigquery;
 
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -41,8 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigtable.Instance;
  * import com.pulumi.gcp.bigtable.InstanceArgs;
  * import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
- * import com.pulumi.gcp.bigquery.AppProfile;
- * import com.pulumi.gcp.bigquery.AppProfileArgs;
+ * import com.pulumi.gcp.bigtable.AppProfile;
+ * import com.pulumi.gcp.bigtable.AppProfileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -105,9 +106,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigtable.Instance;
  * import com.pulumi.gcp.bigtable.InstanceArgs;
  * import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
- * import com.pulumi.gcp.bigquery.AppProfile;
- * import com.pulumi.gcp.bigquery.AppProfileArgs;
- * import com.pulumi.gcp.bigquery.inputs.AppProfileSingleClusterRoutingArgs;
+ * import com.pulumi.gcp.bigtable.AppProfile;
+ * import com.pulumi.gcp.bigtable.AppProfileArgs;
+ * import com.pulumi.gcp.bigtable.inputs.AppProfileSingleClusterRoutingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -160,8 +161,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigtable.Instance;
  * import com.pulumi.gcp.bigtable.InstanceArgs;
  * import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
- * import com.pulumi.gcp.bigquery.AppProfile;
- * import com.pulumi.gcp.bigquery.AppProfileArgs;
+ * import com.pulumi.gcp.bigtable.AppProfile;
+ * import com.pulumi.gcp.bigtable.AppProfileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -227,10 +228,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigtable.Instance;
  * import com.pulumi.gcp.bigtable.InstanceArgs;
  * import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
- * import com.pulumi.gcp.bigquery.AppProfile;
- * import com.pulumi.gcp.bigquery.AppProfileArgs;
- * import com.pulumi.gcp.bigquery.inputs.AppProfileSingleClusterRoutingArgs;
- * import com.pulumi.gcp.bigquery.inputs.AppProfileStandardIsolationArgs;
+ * import com.pulumi.gcp.bigtable.AppProfile;
+ * import com.pulumi.gcp.bigtable.AppProfileArgs;
+ * import com.pulumi.gcp.bigtable.inputs.AppProfileSingleClusterRoutingArgs;
+ * import com.pulumi.gcp.bigtable.inputs.AppProfileStandardIsolationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -298,7 +299,11 @@ import javax.annotation.Nullable;
  * $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
  * ```
  * 
+ * @deprecated
+ * gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile
+ * 
  */
+@Deprecated /* gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile */
 @ResourceType(type="gcp:bigquery/appProfile:AppProfile")
 public class AppProfile extends com.pulumi.resources.CustomResource {
     /**
@@ -535,6 +540,9 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("gcp:bigquery/appProfile:AppProfile").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

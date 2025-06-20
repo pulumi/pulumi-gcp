@@ -38,9 +38,17 @@ public final class AiFeatureOnlineStoreFeatureviewIamMemberState extends com.pul
         return Optional.ofNullable(this.etag);
     }
 
+    /**
+     * The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="featureOnlineStore")
     private @Nullable Output<String> featureOnlineStore;
 
+    /**
+     * @return The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> featureOnlineStore() {
         return Optional.ofNullable(this.featureOnlineStore);
     }
@@ -211,11 +219,23 @@ public final class AiFeatureOnlineStoreFeatureviewIamMemberState extends com.pul
             return etag(Output.of(etag));
         }
 
+        /**
+         * @param featureOnlineStore The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder featureOnlineStore(@Nullable Output<String> featureOnlineStore) {
             $.featureOnlineStore = featureOnlineStore;
             return this;
         }
 
+        /**
+         * @param featureOnlineStore The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder featureOnlineStore(String featureOnlineStore) {
             return featureOnlineStore(Output.of(featureOnlineStore));
         }

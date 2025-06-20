@@ -18,14 +18,14 @@ public final class AppEngineServiceIamBindingState extends com.pulumi.resources.
     public static final AppEngineServiceIamBindingState Empty = new AppEngineServiceIamBindingState();
 
     /**
-     * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Optional<Output<String>> appId() {
@@ -136,14 +136,14 @@ public final class AppEngineServiceIamBindingState extends com.pulumi.resources.
     }
 
     /**
-     * Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Optional<Output<String>> service() {
@@ -181,7 +181,7 @@ public final class AppEngineServiceIamBindingState extends com.pulumi.resources.
         }
 
         /**
-         * @param appId Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+         * @param appId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class AppEngineServiceIamBindingState extends com.pulumi.resources.
         }
 
         /**
-         * @param appId Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+         * @param appId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class AppEngineServiceIamBindingState extends com.pulumi.resources.
         }
 
         /**
-         * @param service Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+         * @param service Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class AppEngineServiceIamBindingState extends com.pulumi.resources.
         }
 
         /**
-         * @param service Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+         * @param service Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

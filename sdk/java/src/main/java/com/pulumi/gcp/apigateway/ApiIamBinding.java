@@ -333,9 +333,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:apigateway/apiIamBinding:ApiIamBinding")
 public class ApiIamBinding extends com.pulumi.resources.CustomResource {
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="api", refs={String.class}, tree="[0]")
     private Output<String> api;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> api() {
         return this.api;
     }

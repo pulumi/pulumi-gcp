@@ -113,7 +113,6 @@ public final class RepositoryIamBindingState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID for the Repository.
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
@@ -121,8 +120,7 @@ public final class RepositoryIamBindingState extends com.pulumi.resources.Resour
     private @Nullable Output<String> repositoryId;
 
     /**
-     * @return The ID for the Repository.
-     * Used to find the parent resource to bind the IAM policy to
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Optional<Output<String>> repositoryId() {
@@ -320,8 +318,7 @@ public final class RepositoryIamBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param repositoryId The ID for the Repository.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param repositoryId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -332,8 +329,7 @@ public final class RepositoryIamBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param repositoryId The ID for the Repository.
-         * Used to find the parent resource to bind the IAM policy to
+         * @param repositoryId Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
