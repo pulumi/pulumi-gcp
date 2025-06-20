@@ -2861,6 +2861,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		EnableZeroDefaultSchemaVersion: true,
 		EnableAccurateBridgePreview:    true,
+		EnableRawStateDelta:            true,
 	}
 
 	prov.RenameResourceWithAlias("google_compute_managed_ssl_certificate", gcpResource(gcpCompute,
