@@ -230,6 +230,49 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Listing Pubsub
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var listing = new Gcp.BigQueryAnalyticsHub.DataExchange("listing", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = "tf_test_pubsub_data_exchange",
+    ///         DisplayName = "tf_test_pubsub_data_exchange",
+    ///         Description = "Example for pubsub topic source",
+    ///     });
+    /// 
+    ///     var tfTestPubsubTopic = new Gcp.PubSub.Topic("tf_test_pubsub_topic", new()
+    ///     {
+    ///         Name = "test_pubsub",
+    ///     });
+    /// 
+    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listing", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = listing.DataExchangeId,
+    ///         ListingId = "tf_test_pubsub_listing",
+    ///         DisplayName = "tf_test_pubsub_listing",
+    ///         Description = "Example for pubsub topic source",
+    ///         PubsubTopic = new Gcp.BigQueryAnalyticsHub.Inputs.ListingPubsubTopicArgs
+    ///         {
+    ///             Topic = tfTestPubsubTopic.Id,
+    ///             DataAffinityRegions = new[]
+    ///             {
+    ///                 "us-central1",
+    ///                 "europe-west1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -263,7 +306,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// Structure is documented below.
         /// </summary>
         [Output("bigqueryDataset")]
-        public Output<Outputs.ListingBigqueryDataset> BigqueryDataset { get; private set; } = null!;
+        public Output<Outputs.ListingBigqueryDataset?> BigqueryDataset { get; private set; } = null!;
 
         /// <summary>
         /// Categories of the listing. Up to two categories are allowed.
@@ -279,19 +322,22 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Details of the data provider who owns the source data.
+        /// Structure is documented below.
         /// </summary>
         [Output("dataProvider")]
         public Output<Outputs.ListingDataProvider?> DataProvider { get; private set; } = null!;
 
         /// <summary>
-        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-        /// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can't start or end with spaces.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -321,8 +367,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-        /// querying user.
+        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
         /// </summary>
         [Output("logLinkedDatasetQueryUserEmail")]
         public Output<bool?> LogLinkedDatasetQueryUserEmail { get; private set; } = null!;
@@ -339,14 +384,26 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Output("primaryContact")]
         public Output<string?> PrimaryContact { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Details of the publisher who owns the listing and who can share the source data.
+        /// Structure is documented below.
         /// </summary>
         [Output("publisher")]
         public Output<Outputs.ListingPublisher?> Publisher { get; private set; } = null!;
+
+        /// <summary>
+        /// Pub/Sub topic source.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("pubsubTopic")]
+        public Output<Outputs.ListingPubsubTopic?> PubsubTopic { get; private set; } = null!;
 
         /// <summary>
         /// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
@@ -356,6 +413,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        /// Structure is documented below.
         /// </summary>
         [Output("restrictedExportConfig")]
         public Output<Outputs.ListingRestrictedExportConfig?> RestrictedExportConfig { get; private set; } = null!;
@@ -410,8 +468,8 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// Shared dataset i.e. BigQuery dataset source.
         /// Structure is documented below.
         /// </summary>
-        [Input("bigqueryDataset", required: true)]
-        public Input<Inputs.ListingBigqueryDatasetArgs> BigqueryDataset { get; set; } = null!;
+        [Input("bigqueryDataset")]
+        public Input<Inputs.ListingBigqueryDatasetArgs>? BigqueryDataset { get; set; }
 
         [Input("categories")]
         private InputList<string>? _categories;
@@ -433,19 +491,22 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Details of the data provider who owns the source data.
+        /// Structure is documented below.
         /// </summary>
         [Input("dataProvider")]
         public Input<Inputs.ListingDataProviderArgs>? DataProvider { get; set; }
 
         /// <summary>
-        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-        /// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can't start or end with spaces.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -475,8 +536,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-        /// querying user.
+        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
         /// </summary>
         [Input("logLinkedDatasetQueryUserEmail")]
         public Input<bool>? LogLinkedDatasetQueryUserEmail { get; set; }
@@ -487,14 +547,26 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Input("primaryContact")]
         public Input<string>? PrimaryContact { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Details of the publisher who owns the listing and who can share the source data.
+        /// Structure is documented below.
         /// </summary>
         [Input("publisher")]
         public Input<Inputs.ListingPublisherArgs>? Publisher { get; set; }
+
+        /// <summary>
+        /// Pub/Sub topic source.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pubsubTopic")]
+        public Input<Inputs.ListingPubsubTopicArgs>? PubsubTopic { get; set; }
 
         /// <summary>
         /// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
@@ -504,6 +576,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        /// Structure is documented below.
         /// </summary>
         [Input("restrictedExportConfig")]
         public Input<Inputs.ListingRestrictedExportConfigArgs>? RestrictedExportConfig { get; set; }
@@ -543,19 +616,22 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Details of the data provider who owns the source data.
+        /// Structure is documented below.
         /// </summary>
         [Input("dataProvider")]
         public Input<Inputs.ListingDataProviderGetArgs>? DataProvider { get; set; }
 
         /// <summary>
-        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-        /// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can't start or end with spaces.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -585,8 +661,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-        /// querying user.
+        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
         /// </summary>
         [Input("logLinkedDatasetQueryUserEmail")]
         public Input<bool>? LogLinkedDatasetQueryUserEmail { get; set; }
@@ -603,14 +678,26 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Input("primaryContact")]
         public Input<string>? PrimaryContact { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Details of the publisher who owns the listing and who can share the source data.
+        /// Structure is documented below.
         /// </summary>
         [Input("publisher")]
         public Input<Inputs.ListingPublisherGetArgs>? Publisher { get; set; }
+
+        /// <summary>
+        /// Pub/Sub topic source.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pubsubTopic")]
+        public Input<Inputs.ListingPubsubTopicGetArgs>? PubsubTopic { get; set; }
 
         /// <summary>
         /// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
@@ -620,6 +707,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        /// Structure is documented below.
         /// </summary>
         [Input("restrictedExportConfig")]
         public Input<Inputs.ListingRestrictedExportConfigGetArgs>? RestrictedExportConfig { get; set; }

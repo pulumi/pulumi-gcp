@@ -104,6 +104,10 @@ export interface GetEngineVersionsResult {
      */
     readonly releaseChannelLatestVersion: {[key: string]: string};
     /**
+     * A map from a release channel name to the channel's auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
+     */
+    readonly releaseChannelUpgradeTargetVersion: {[key: string]: string};
+    /**
      * A list of versions available in the given zone for use with master instances.
      */
     readonly validMasterVersions: string[];

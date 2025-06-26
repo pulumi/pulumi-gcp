@@ -98,8 +98,9 @@ type LookupBucketObjectResult struct {
 	OutputName string                     `pulumi:"outputName"`
 	Retentions []GetBucketObjectRetention `pulumi:"retentions"`
 	// (Computed) A url reference to this object.
-	SelfLink string `pulumi:"selfLink"`
-	Source   string `pulumi:"source"`
+	SelfLink      string `pulumi:"selfLink"`
+	Source        string `pulumi:"source"`
+	SourceMd5hash string `pulumi:"sourceMd5hash"`
 	// (Computed) The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -247,6 +248,10 @@ func (o LookupBucketObjectResultOutput) SelfLink() pulumi.StringOutput {
 
 func (o LookupBucketObjectResultOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Source }).(pulumi.StringOutput)
+}
+
+func (o LookupBucketObjectResultOutput) SourceMd5hash() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.SourceMd5hash }).(pulumi.StringOutput)
 }
 
 // (Computed) The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.

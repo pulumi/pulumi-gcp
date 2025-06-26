@@ -81,6 +81,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MetastoreTableIamMember{}
 	case "gcp:dataproc/metastoreTableIamPolicy:MetastoreTableIamPolicy":
 		r = &MetastoreTableIamPolicy{}
+	case "gcp:dataproc/sessionTemplate:SessionTemplate":
+		r = &SessionTemplate{}
 	case "gcp:dataproc/workflowTemplate:WorkflowTemplate":
 		r = &WorkflowTemplate{}
 	default:
@@ -244,6 +246,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataproc/metastoreTableIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/sessionTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

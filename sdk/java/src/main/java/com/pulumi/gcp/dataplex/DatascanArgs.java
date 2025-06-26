@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+import com.pulumi.gcp.dataplex.inputs.DatascanDataDiscoverySpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
@@ -36,6 +37,21 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<DatascanDataArgs> data() {
         return this.data;
+    }
+
+    /**
+     * DataDiscoveryScan related setting.
+     * 
+     */
+    @Import(name="dataDiscoverySpec")
+    private @Nullable Output<DatascanDataDiscoverySpecArgs> dataDiscoverySpec;
+
+    /**
+     * @return DataDiscoveryScan related setting.
+     * 
+     */
+    public Optional<Output<DatascanDataDiscoverySpecArgs>> dataDiscoverySpec() {
+        return Optional.ofNullable(this.dataDiscoverySpec);
     }
 
     /**
@@ -175,6 +191,7 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
 
     private DatascanArgs(DatascanArgs $) {
         this.data = $.data;
+        this.dataDiscoverySpec = $.dataDiscoverySpec;
         this.dataProfileSpec = $.dataProfileSpec;
         this.dataQualitySpec = $.dataQualitySpec;
         this.dataScanId = $.dataScanId;
@@ -225,6 +242,27 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder data(DatascanDataArgs data) {
             return data(Output.of(data));
+        }
+
+        /**
+         * @param dataDiscoverySpec DataDiscoveryScan related setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDiscoverySpec(@Nullable Output<DatascanDataDiscoverySpecArgs> dataDiscoverySpec) {
+            $.dataDiscoverySpec = dataDiscoverySpec;
+            return this;
+        }
+
+        /**
+         * @param dataDiscoverySpec DataDiscoveryScan related setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDiscoverySpec(DatascanDataDiscoverySpecArgs dataDiscoverySpec) {
+            return dataDiscoverySpec(Output.of(dataDiscoverySpec));
         }
 
         /**

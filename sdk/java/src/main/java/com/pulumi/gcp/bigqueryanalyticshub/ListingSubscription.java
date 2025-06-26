@@ -13,6 +13,7 @@ import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionState;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionDestinationDataset;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionLinkedDatasetMap;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionLinkedResource;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -257,6 +258,20 @@ public class ListingSubscription extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+     * 
+     */
+    @Export(name="logLinkedDatasetQueryUserEmail", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> logLinkedDatasetQueryUserEmail;
+
+    /**
+     * @return Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+     * 
+     */
+    public Output<Boolean> logLinkedDatasetQueryUserEmail() {
+        return this.logLinkedDatasetQueryUserEmail;
     }
     /**
      * The resource name of the subscription. e.g. &#34;projects/myproject/locations/US/subscriptions/123&#34;

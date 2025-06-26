@@ -46,6 +46,9 @@ class NodeTemplateArgs:
                node template
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] node_affinity_labels: Labels to use for node affinity, which will be used in
                instance scheduling.
         :param pulumi.Input[builtins.str] node_type: Node type to use for nodes group that are created from this template.
@@ -145,6 +148,9 @@ class NodeTemplateArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -265,6 +271,9 @@ class _NodeTemplateState:
                node template
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] node_affinity_labels: Labels to use for node affinity, which will be used in
                instance scheduling.
         :param pulumi.Input[builtins.str] node_type: Node type to use for nodes group that are created from this template.
@@ -381,6 +390,9 @@ class _NodeTemplateState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -620,6 +632,9 @@ class NodeTemplate(pulumi.CustomResource):
                node template
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] node_affinity_labels: Labels to use for node affinity, which will be used in
                instance scheduling.
         :param pulumi.Input[builtins.str] node_type: Node type to use for nodes group that are created from this template.
@@ -839,6 +854,9 @@ class NodeTemplate(pulumi.CustomResource):
                node template
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] node_affinity_labels: Labels to use for node affinity, which will be used in
                instance scheduling.
         :param pulumi.Input[builtins.str] node_type: Node type to use for nodes group that are created from this template.
@@ -927,6 +945,9 @@ class NodeTemplate(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         Name of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

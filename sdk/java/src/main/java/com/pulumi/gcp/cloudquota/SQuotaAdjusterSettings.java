@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudquota.SQuotaAdjusterSettingsArgs;
 import com.pulumi.gcp.cloudquota.inputs.SQuotaAdjusterSettingsState;
+import java.lang.Boolean;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -69,7 +70,6 @@ import javax.annotation.Nullable;
 public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource {
     /**
      * The resource container that determines if the quota adjuster is set for this project.
-     * Expect this field to be empty currently.
      * 
      */
     @Export(name="effectiveContainer", refs={String.class}, tree="[0]")
@@ -77,7 +77,6 @@ public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource 
 
     /**
      * @return The resource container that determines if the quota adjuster is set for this project.
-     * Expect this field to be empty currently.
      * 
      */
     public Output<String> effectiveContainer() {
@@ -85,7 +84,6 @@ public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource 
     }
     /**
      * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-     * Expect this field to be empty currently.
      * 
      */
     @Export(name="effectiveEnablement", refs={String.class}, tree="[0]")
@@ -93,7 +91,6 @@ public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource 
 
     /**
      * @return Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-     * Expect this field to be empty currently.
      * 
      */
     public Output<String> effectiveEnablement() {
@@ -114,6 +111,38 @@ public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource 
      */
     public Output<String> enablement() {
         return this.enablement;
+    }
+    /**
+     * Indicates whether the setting is inherited or explicitly specified.
+     * 
+     */
+    @Export(name="inherited", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> inherited;
+
+    /**
+     * @return Indicates whether the setting is inherited or explicitly specified.
+     * 
+     */
+    public Output<Boolean> inherited() {
+        return this.inherited;
+    }
+    /**
+     * The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+     * The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+     * The value will be empty when `enablement` is specified on this resource container.
+     * 
+     */
+    @Export(name="inheritedFrom", refs={String.class}, tree="[0]")
+    private Output<String> inheritedFrom;
+
+    /**
+     * @return The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+     * The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+     * The value will be empty when `enablement` is specified on this resource container.
+     * 
+     */
+    public Output<String> inheritedFrom() {
+        return this.inheritedFrom;
     }
     /**
      * The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.

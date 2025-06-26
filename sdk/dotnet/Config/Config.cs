@@ -389,6 +389,13 @@ namespace Pulumi.Gcp
             set => _computeCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _contactCenterInsightsCustomEndpoint = new __Value<string?>(() => __config.Get("contactCenterInsightsCustomEndpoint"));
+        public static string? ContactCenterInsightsCustomEndpoint
+        {
+            get => _contactCenterInsightsCustomEndpoint.Get();
+            set => _contactCenterInsightsCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _containerAnalysisCustomEndpoint = new __Value<string?>(() => __config.Get("containerAnalysisCustomEndpoint"));
         public static string? ContainerAnalysisCustomEndpoint
         {

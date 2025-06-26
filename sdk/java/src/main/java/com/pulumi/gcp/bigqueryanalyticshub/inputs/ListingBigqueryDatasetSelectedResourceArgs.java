@@ -18,16 +18,12 @@ public final class ListingBigqueryDatasetSelectedResourceArgs extends com.pulumi
     /**
      * Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:&#34;projects/test_project/datasets/test_dataset/tables/test_table&#34;
      * 
-     * ***
-     * 
      */
     @Import(name="table")
     private @Nullable Output<String> table;
 
     /**
      * @return Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:&#34;projects/test_project/datasets/test_dataset/tables/test_table&#34;
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> table() {
@@ -61,8 +57,6 @@ public final class ListingBigqueryDatasetSelectedResourceArgs extends com.pulumi
         /**
          * @param table Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:&#34;projects/test_project/datasets/test_dataset/tables/test_table&#34;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -73,8 +67,6 @@ public final class ListingBigqueryDatasetSelectedResourceArgs extends com.pulumi
 
         /**
          * @param table Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:&#34;projects/test_project/datasets/test_dataset/tables/test_table&#34;
-         * 
-         * ***
          * 
          * @return builder
          * 

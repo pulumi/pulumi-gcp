@@ -54,6 +54,7 @@ import * as colab from "./colab";
 import * as composer from "./composer";
 import * as compute from "./compute";
 import * as config from "./config";
+import * as contactcenterinsights from "./contactcenterinsights";
 import * as container from "./container";
 import * as containeranalysis from "./containeranalysis";
 import * as databasemigrationservice from "./databasemigrationservice";
@@ -187,6 +188,7 @@ export {
     composer,
     compute,
     config,
+    contactcenterinsights,
     container,
     containeranalysis,
     databasemigrationservice,

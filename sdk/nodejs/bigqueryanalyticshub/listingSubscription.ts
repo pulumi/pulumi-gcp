@@ -155,6 +155,10 @@ export class ListingSubscription extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+     */
+    public /*out*/ readonly logLinkedDatasetQueryUserEmail!: pulumi.Output<boolean>;
+    /**
      * The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -205,6 +209,7 @@ export class ListingSubscription extends pulumi.CustomResource {
             resourceInputs["linkedResources"] = state ? state.linkedResources : undefined;
             resourceInputs["listingId"] = state ? state.listingId : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["logLinkedDatasetQueryUserEmail"] = state ? state.logLinkedDatasetQueryUserEmail : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["organizationDisplayName"] = state ? state.organizationDisplayName : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
@@ -236,6 +241,7 @@ export class ListingSubscription extends pulumi.CustomResource {
             resourceInputs["lastModifyTime"] = undefined /*out*/;
             resourceInputs["linkedDatasetMaps"] = undefined /*out*/;
             resourceInputs["linkedResources"] = undefined /*out*/;
+            resourceInputs["logLinkedDatasetQueryUserEmail"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["organizationDisplayName"] = undefined /*out*/;
             resourceInputs["organizationId"] = undefined /*out*/;
@@ -289,6 +295,10 @@ export interface ListingSubscriptionState {
      * The name of the location of the data exchange. Distinct from the location of the destination data set.
      */
     location?: pulumi.Input<string>;
+    /**
+     * Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+     */
+    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
     /**
      * The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
      */

@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  *     },
  *     bootDisk: {
  *         initializeParams: {
- *             image: "ubuntu-os-cloud/ubuntu-2004-lts",
+ *             image: "ubuntu-os-cloud/ubuntu-2204-lts",
  *             labels: {
  *                 my_label: "value",
  *             },

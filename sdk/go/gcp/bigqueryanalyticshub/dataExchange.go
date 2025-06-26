@@ -81,6 +81,35 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Data Exchange Log Linked Dataset Query User
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigqueryanalyticshub.NewDataExchange(ctx, "data_exchange", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:                       pulumi.String("US"),
+//				DataExchangeId:                 pulumi.String("tf_test_log_email_data_exchange"),
+//				DisplayName:                    pulumi.String("tf_test_log_email_data_exchange"),
+//				Description:                    pulumi.String("Example for log email test for data exchange"),
+//				LogLinkedDatasetQueryUserEmail: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -130,6 +159,8 @@ type DataExchange struct {
 	ListingCount pulumi.IntOutput `pulumi:"listingCount"`
 	// The name of the location this data exchange.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrOutput `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// The resource name of the data exchange, for example:
 	// "projects/myproject/locations/US/dataExchanges/123"
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -199,6 +230,8 @@ type dataExchangeState struct {
 	ListingCount *int `pulumi:"listingCount"`
 	// The name of the location this data exchange.
 	Location *string `pulumi:"location"`
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+	LogLinkedDatasetQueryUserEmail *bool `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// The resource name of the data exchange, for example:
 	// "projects/myproject/locations/US/dataExchanges/123"
 	Name *string `pulumi:"name"`
@@ -230,6 +263,8 @@ type DataExchangeState struct {
 	ListingCount pulumi.IntPtrInput
 	// The name of the location this data exchange.
 	Location pulumi.StringPtrInput
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrInput
 	// The resource name of the data exchange, for example:
 	// "projects/myproject/locations/US/dataExchanges/123"
 	Name pulumi.StringPtrInput
@@ -263,6 +298,8 @@ type dataExchangeArgs struct {
 	Icon *string `pulumi:"icon"`
 	// The name of the location this data exchange.
 	Location string `pulumi:"location"`
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+	LogLinkedDatasetQueryUserEmail *bool `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// Email or URL of the primary point of contact of the data exchange.
 	PrimaryContact *string `pulumi:"primaryContact"`
 	// The ID of the project in which the resource belongs.
@@ -290,6 +327,8 @@ type DataExchangeArgs struct {
 	Icon pulumi.StringPtrInput
 	// The name of the location this data exchange.
 	Location pulumi.StringInput
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrInput
 	// Email or URL of the primary point of contact of the data exchange.
 	PrimaryContact pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -423,6 +462,11 @@ func (o DataExchangeOutput) ListingCount() pulumi.IntOutput {
 // The name of the location this data exchange.
 func (o DataExchangeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+func (o DataExchangeOutput) LogLinkedDatasetQueryUserEmail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataExchange) pulumi.BoolPtrOutput { return v.LogLinkedDatasetQueryUserEmail }).(pulumi.BoolPtrOutput)
 }
 
 // The resource name of the data exchange, for example:

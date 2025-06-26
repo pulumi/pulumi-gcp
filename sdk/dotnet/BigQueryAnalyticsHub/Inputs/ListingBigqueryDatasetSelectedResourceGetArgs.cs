@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
     {
         /// <summary>
         /// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-        /// 
-        /// - - -
         /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }

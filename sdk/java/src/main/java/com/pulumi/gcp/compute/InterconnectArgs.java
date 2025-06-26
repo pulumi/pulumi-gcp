@@ -288,7 +288,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
      * specified, the default value is false, which allocates non-MACsec capable ports first if
      * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
      * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
      * 
      */
     @Import(name="requestedFeatures")
@@ -300,7 +300,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
      * specified, the default value is false, which allocates non-MACsec capable ports first if
      * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
      * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
      * 
      */
     public Optional<Output<List<String>>> requestedFeatures() {
@@ -705,7 +705,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
          * specified, the default value is false, which allocates non-MACsec capable ports first if
          * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
          * does not work with the API, and will be removed in an upcoming major version.
-         * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+         * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
          * 
          * @return builder
          * 
@@ -721,7 +721,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
          * specified, the default value is false, which allocates non-MACsec capable ports first if
          * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
          * does not work with the API, and will be removed in an upcoming major version.
-         * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+         * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
          * 
          * @return builder
          * 
@@ -736,7 +736,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
          * specified, the default value is false, which allocates non-MACsec capable ports first if
          * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
          * does not work with the API, and will be removed in an upcoming major version.
-         * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+         * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
          * 
          * @return builder
          * 

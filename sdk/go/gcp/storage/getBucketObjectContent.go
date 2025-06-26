@@ -101,6 +101,7 @@ type GetBucketObjectContentResult struct {
 	Retentions    []GetBucketObjectContentRetention `pulumi:"retentions"`
 	SelfLink      string                            `pulumi:"selfLink"`
 	Source        string                            `pulumi:"source"`
+	SourceMd5hash string                            `pulumi:"sourceMd5hash"`
 	StorageClass  string                            `pulumi:"storageClass"`
 	TemporaryHold bool                              `pulumi:"temporaryHold"`
 }
@@ -253,6 +254,10 @@ func (o GetBucketObjectContentResultOutput) SelfLink() pulumi.StringOutput {
 
 func (o GetBucketObjectContentResultOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.Source }).(pulumi.StringOutput)
+}
+
+func (o GetBucketObjectContentResultOutput) SourceMd5hash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.SourceMd5hash }).(pulumi.StringOutput)
 }
 
 func (o GetBucketObjectContentResultOutput) StorageClass() pulumi.StringOutput {

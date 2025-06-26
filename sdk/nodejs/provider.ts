@@ -76,6 +76,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly colabCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly composerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly computeCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly contactCenterInsightsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerAnalysisCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerAttachedCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerAwsCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -275,6 +276,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["colabCustomEndpoint"] = args ? args.colabCustomEndpoint : undefined;
             resourceInputs["composerCustomEndpoint"] = args ? args.composerCustomEndpoint : undefined;
             resourceInputs["computeCustomEndpoint"] = args ? args.computeCustomEndpoint : undefined;
+            resourceInputs["contactCenterInsightsCustomEndpoint"] = args ? args.contactCenterInsightsCustomEndpoint : undefined;
             resourceInputs["containerAnalysisCustomEndpoint"] = args ? args.containerAnalysisCustomEndpoint : undefined;
             resourceInputs["containerAttachedCustomEndpoint"] = args ? args.containerAttachedCustomEndpoint : undefined;
             resourceInputs["containerAwsCustomEndpoint"] = args ? args.containerAwsCustomEndpoint : undefined;
@@ -489,6 +491,7 @@ export interface ProviderArgs {
     colabCustomEndpoint?: pulumi.Input<string>;
     composerCustomEndpoint?: pulumi.Input<string>;
     computeCustomEndpoint?: pulumi.Input<string>;
+    contactCenterInsightsCustomEndpoint?: pulumi.Input<string>;
     containerAnalysisCustomEndpoint?: pulumi.Input<string>;
     containerAttachedCustomEndpoint?: pulumi.Input<string>;
     containerAwsCustomEndpoint?: pulumi.Input<string>;

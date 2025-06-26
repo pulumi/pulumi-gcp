@@ -67,6 +67,7 @@ type Provider struct {
 	ColabCustomEndpoint                    pulumi.StringPtrOutput `pulumi:"colabCustomEndpoint"`
 	ComposerCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"computeCustomEndpoint"`
+	ContactCenterInsightsCustomEndpoint    pulumi.StringPtrOutput `pulumi:"contactCenterInsightsCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint        pulumi.StringPtrOutput `pulumi:"containerAnalysisCustomEndpoint"`
 	ContainerAttachedCustomEndpoint        pulumi.StringPtrOutput `pulumi:"containerAttachedCustomEndpoint"`
 	ContainerAwsCustomEndpoint             pulumi.StringPtrOutput `pulumi:"containerAwsCustomEndpoint"`
@@ -295,6 +296,7 @@ type providerArgs struct {
 	ColabCustomEndpoint                    *string                      `pulumi:"colabCustomEndpoint"`
 	ComposerCustomEndpoint                 *string                      `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint                  *string                      `pulumi:"computeCustomEndpoint"`
+	ContactCenterInsightsCustomEndpoint    *string                      `pulumi:"contactCenterInsightsCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint        *string                      `pulumi:"containerAnalysisCustomEndpoint"`
 	ContainerAttachedCustomEndpoint        *string                      `pulumi:"containerAttachedCustomEndpoint"`
 	ContainerAwsCustomEndpoint             *string                      `pulumi:"containerAwsCustomEndpoint"`
@@ -492,6 +494,7 @@ type ProviderArgs struct {
 	ColabCustomEndpoint                    pulumi.StringPtrInput
 	ComposerCustomEndpoint                 pulumi.StringPtrInput
 	ComputeCustomEndpoint                  pulumi.StringPtrInput
+	ContactCenterInsightsCustomEndpoint    pulumi.StringPtrInput
 	ContainerAnalysisCustomEndpoint        pulumi.StringPtrInput
 	ContainerAttachedCustomEndpoint        pulumi.StringPtrInput
 	ContainerAwsCustomEndpoint             pulumi.StringPtrInput
@@ -890,6 +893,10 @@ func (o ProviderOutput) ComposerCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) ComputeCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ComputeCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ContactCenterInsightsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ContactCenterInsightsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) ContainerAnalysisCustomEndpoint() pulumi.StringPtrOutput {

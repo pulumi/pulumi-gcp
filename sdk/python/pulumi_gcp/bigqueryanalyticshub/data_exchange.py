@@ -28,6 +28,7 @@ class DataExchangeArgs:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  documentation: Optional[pulumi.Input[builtins.str]] = None,
                  icon: Optional[pulumi.Input[builtins.str]] = None,
+                 log_linked_dataset_query_user_email: Optional[pulumi.Input[builtins.bool]] = None,
                  primary_contact: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  sharing_environment_config: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']] = None):
@@ -42,6 +43,7 @@ class DataExchangeArgs:
         :param pulumi.Input[builtins.str] description: Description of the data exchange.
         :param pulumi.Input[builtins.str] documentation: Documentation describing the data exchange.
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the data exchange.
+        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
         :param pulumi.Input[builtins.str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -58,6 +60,8 @@ class DataExchangeArgs:
             pulumi.set(__self__, "documentation", documentation)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if log_linked_dataset_query_user_email is not None:
+            pulumi.set(__self__, "log_linked_dataset_query_user_email", log_linked_dataset_query_user_email)
         if primary_contact is not None:
             pulumi.set(__self__, "primary_contact", primary_contact)
         if project is not None:
@@ -141,6 +145,18 @@ class DataExchangeArgs:
         pulumi.set(self, "icon", value)
 
     @property
+    @pulumi.getter(name="logLinkedDatasetQueryUserEmail")
+    def log_linked_dataset_query_user_email(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        """
+        return pulumi.get(self, "log_linked_dataset_query_user_email")
+
+    @log_linked_dataset_query_user_email.setter
+    def log_linked_dataset_query_user_email(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_linked_dataset_query_user_email", value)
+
+    @property
     @pulumi.getter(name="primaryContact")
     def primary_contact(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -190,6 +206,7 @@ class _DataExchangeState:
                  icon: Optional[pulumi.Input[builtins.str]] = None,
                  listing_count: Optional[pulumi.Input[builtins.int]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
+                 log_linked_dataset_query_user_email: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  primary_contact: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -206,6 +223,7 @@ class _DataExchangeState:
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[builtins.int] listing_count: Number of listings contained in the data exchange.
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange.
+        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
         :param pulumi.Input[builtins.str] name: The resource name of the data exchange, for example:
                "projects/myproject/locations/US/dataExchanges/123"
         :param pulumi.Input[builtins.str] primary_contact: Email or URL of the primary point of contact of the data exchange.
@@ -229,6 +247,8 @@ class _DataExchangeState:
             pulumi.set(__self__, "listing_count", listing_count)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if log_linked_dataset_query_user_email is not None:
+            pulumi.set(__self__, "log_linked_dataset_query_user_email", log_linked_dataset_query_user_email)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if primary_contact is not None:
@@ -326,6 +346,18 @@ class _DataExchangeState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="logLinkedDatasetQueryUserEmail")
+    def log_linked_dataset_query_user_email(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        """
+        return pulumi.get(self, "log_linked_dataset_query_user_email")
+
+    @log_linked_dataset_query_user_email.setter
+    def log_linked_dataset_query_user_email(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_linked_dataset_query_user_email", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -390,6 +422,7 @@ class DataExchange(pulumi.CustomResource):
                  documentation: Optional[pulumi.Input[builtins.str]] = None,
                  icon: Optional[pulumi.Input[builtins.str]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
+                 log_linked_dataset_query_user_email: Optional[pulumi.Input[builtins.bool]] = None,
                  primary_contact: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  sharing_environment_config: Optional[pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None,
@@ -431,6 +464,19 @@ class DataExchange(pulumi.CustomResource):
             sharing_environment_config={
                 "dcr_exchange_config": {},
             })
+        ```
+        ### Bigquery Analyticshub Data Exchange Log Linked Dataset Query User
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_exchange = gcp.bigqueryanalyticshub.DataExchange("data_exchange",
+            location="US",
+            data_exchange_id="tf_test_log_email_data_exchange",
+            display_name="tf_test_log_email_data_exchange",
+            description="Example for log email test for data exchange",
+            log_linked_dataset_query_user_email=True)
         ```
 
         ## Import
@@ -474,6 +520,7 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] documentation: Documentation describing the data exchange.
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange.
+        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
         :param pulumi.Input[builtins.str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -524,6 +571,19 @@ class DataExchange(pulumi.CustomResource):
             sharing_environment_config={
                 "dcr_exchange_config": {},
             })
+        ```
+        ### Bigquery Analyticshub Data Exchange Log Linked Dataset Query User
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_exchange = gcp.bigqueryanalyticshub.DataExchange("data_exchange",
+            location="US",
+            data_exchange_id="tf_test_log_email_data_exchange",
+            display_name="tf_test_log_email_data_exchange",
+            description="Example for log email test for data exchange",
+            log_linked_dataset_query_user_email=True)
         ```
 
         ## Import
@@ -577,6 +637,7 @@ class DataExchange(pulumi.CustomResource):
                  documentation: Optional[pulumi.Input[builtins.str]] = None,
                  icon: Optional[pulumi.Input[builtins.str]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
+                 log_linked_dataset_query_user_email: Optional[pulumi.Input[builtins.bool]] = None,
                  primary_contact: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  sharing_environment_config: Optional[pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None,
@@ -601,6 +662,7 @@ class DataExchange(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["log_linked_dataset_query_user_email"] = log_linked_dataset_query_user_email
             __props__.__dict__["primary_contact"] = primary_contact
             __props__.__dict__["project"] = project
             __props__.__dict__["sharing_environment_config"] = sharing_environment_config
@@ -623,6 +685,7 @@ class DataExchange(pulumi.CustomResource):
             icon: Optional[pulumi.Input[builtins.str]] = None,
             listing_count: Optional[pulumi.Input[builtins.int]] = None,
             location: Optional[pulumi.Input[builtins.str]] = None,
+            log_linked_dataset_query_user_email: Optional[pulumi.Input[builtins.bool]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             primary_contact: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
@@ -644,6 +707,7 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[builtins.int] listing_count: Number of listings contained in the data exchange.
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange.
+        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
         :param pulumi.Input[builtins.str] name: The resource name of the data exchange, for example:
                "projects/myproject/locations/US/dataExchanges/123"
         :param pulumi.Input[builtins.str] primary_contact: Email or URL of the primary point of contact of the data exchange.
@@ -664,6 +728,7 @@ class DataExchange(pulumi.CustomResource):
         __props__.__dict__["icon"] = icon
         __props__.__dict__["listing_count"] = listing_count
         __props__.__dict__["location"] = location
+        __props__.__dict__["log_linked_dataset_query_user_email"] = log_linked_dataset_query_user_email
         __props__.__dict__["name"] = name
         __props__.__dict__["primary_contact"] = primary_contact
         __props__.__dict__["project"] = project
@@ -728,6 +793,14 @@ class DataExchange(pulumi.CustomResource):
         The name of the location this data exchange.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="logLinkedDatasetQueryUserEmail")
+    def log_linked_dataset_query_user_email(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        """
+        return pulumi.get(self, "log_linked_dataset_query_user_email")
 
     @property
     @pulumi.getter

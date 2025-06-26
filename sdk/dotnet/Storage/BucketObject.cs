@@ -208,6 +208,12 @@ namespace Pulumi.Gcp.Storage
         public Output<AssetOrArchive?> Source { get; private set; } = null!;
 
         /// <summary>
+        /// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+        /// </summary>
+        [Output("sourceMd5hash")]
+        public Output<string?> SourceMd5hash { get; private set; } = null!;
+
+        /// <summary>
         /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
         /// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
         /// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -393,6 +399,12 @@ namespace Pulumi.Gcp.Storage
         public Input<AssetOrArchive>? Source { get; set; }
 
         /// <summary>
+        /// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+        /// </summary>
+        [Input("sourceMd5hash")]
+        public Input<string>? SourceMd5hash { get; set; }
+
+        /// <summary>
         /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
         /// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
         /// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -576,6 +588,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("source")]
         public Input<AssetOrArchive>? Source { get; set; }
+
+        /// <summary>
+        /// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+        /// </summary>
+        [Input("sourceMd5hash")]
+        public Input<string>? SourceMd5hash { get; set; }
 
         /// <summary>
         /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.

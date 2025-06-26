@@ -104,6 +104,8 @@ type GetEngineVersionsResult struct {
 	ReleaseChannelDefaultVersion map[string]string `pulumi:"releaseChannelDefaultVersion"`
 	// A map from a release channel name to the channel's latest version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
 	ReleaseChannelLatestVersion map[string]string `pulumi:"releaseChannelLatestVersion"`
+	// A map from a release channel name to the channel's auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
+	ReleaseChannelUpgradeTargetVersion map[string]string `pulumi:"releaseChannelUpgradeTargetVersion"`
 	// A list of versions available in the given zone for use with master instances.
 	ValidMasterVersions []string `pulumi:"validMasterVersions"`
 	// A list of versions available in the given zone for use with node instances.
@@ -194,6 +196,11 @@ func (o GetEngineVersionsResultOutput) ReleaseChannelDefaultVersion() pulumi.Str
 // A map from a release channel name to the channel's latest version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
 func (o GetEngineVersionsResultOutput) ReleaseChannelLatestVersion() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEngineVersionsResult) map[string]string { return v.ReleaseChannelLatestVersion }).(pulumi.StringMapOutput)
+}
+
+// A map from a release channel name to the channel's auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
+func (o GetEngineVersionsResultOutput) ReleaseChannelUpgradeTargetVersion() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEngineVersionsResult) map[string]string { return v.ReleaseChannelUpgradeTargetVersion }).(pulumi.StringMapOutput)
 }
 
 // A list of versions available in the given zone for use with master instances.

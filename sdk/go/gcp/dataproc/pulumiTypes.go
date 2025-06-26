@@ -21789,6 +21789,1227 @@ func (o MetastoreTableIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+type SessionTemplateEnvironmentConfig struct {
+	// Execution configuration for a workload.
+	// Structure is documented below.
+	ExecutionConfig *SessionTemplateEnvironmentConfigExecutionConfig `pulumi:"executionConfig"`
+	// Peripherals configuration that workload has access to.
+	// Structure is documented below.
+	PeripheralsConfig *SessionTemplateEnvironmentConfigPeripheralsConfig `pulumi:"peripheralsConfig"`
+}
+
+// SessionTemplateEnvironmentConfigInput is an input type that accepts SessionTemplateEnvironmentConfigArgs and SessionTemplateEnvironmentConfigOutput values.
+// You can construct a concrete instance of `SessionTemplateEnvironmentConfigInput` via:
+//
+//	SessionTemplateEnvironmentConfigArgs{...}
+type SessionTemplateEnvironmentConfigInput interface {
+	pulumi.Input
+
+	ToSessionTemplateEnvironmentConfigOutput() SessionTemplateEnvironmentConfigOutput
+	ToSessionTemplateEnvironmentConfigOutputWithContext(context.Context) SessionTemplateEnvironmentConfigOutput
+}
+
+type SessionTemplateEnvironmentConfigArgs struct {
+	// Execution configuration for a workload.
+	// Structure is documented below.
+	ExecutionConfig SessionTemplateEnvironmentConfigExecutionConfigPtrInput `pulumi:"executionConfig"`
+	// Peripherals configuration that workload has access to.
+	// Structure is documented below.
+	PeripheralsConfig SessionTemplateEnvironmentConfigPeripheralsConfigPtrInput `pulumi:"peripheralsConfig"`
+}
+
+func (SessionTemplateEnvironmentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateEnvironmentConfig)(nil)).Elem()
+}
+
+func (i SessionTemplateEnvironmentConfigArgs) ToSessionTemplateEnvironmentConfigOutput() SessionTemplateEnvironmentConfigOutput {
+	return i.ToSessionTemplateEnvironmentConfigOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateEnvironmentConfigArgs) ToSessionTemplateEnvironmentConfigOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigOutput)
+}
+
+func (i SessionTemplateEnvironmentConfigArgs) ToSessionTemplateEnvironmentConfigPtrOutput() SessionTemplateEnvironmentConfigPtrOutput {
+	return i.ToSessionTemplateEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateEnvironmentConfigArgs) ToSessionTemplateEnvironmentConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigOutput).ToSessionTemplateEnvironmentConfigPtrOutputWithContext(ctx)
+}
+
+// SessionTemplateEnvironmentConfigPtrInput is an input type that accepts SessionTemplateEnvironmentConfigArgs, SessionTemplateEnvironmentConfigPtr and SessionTemplateEnvironmentConfigPtrOutput values.
+// You can construct a concrete instance of `SessionTemplateEnvironmentConfigPtrInput` via:
+//
+//	        SessionTemplateEnvironmentConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionTemplateEnvironmentConfigPtrInput interface {
+	pulumi.Input
+
+	ToSessionTemplateEnvironmentConfigPtrOutput() SessionTemplateEnvironmentConfigPtrOutput
+	ToSessionTemplateEnvironmentConfigPtrOutputWithContext(context.Context) SessionTemplateEnvironmentConfigPtrOutput
+}
+
+type sessionTemplateEnvironmentConfigPtrType SessionTemplateEnvironmentConfigArgs
+
+func SessionTemplateEnvironmentConfigPtr(v *SessionTemplateEnvironmentConfigArgs) SessionTemplateEnvironmentConfigPtrInput {
+	return (*sessionTemplateEnvironmentConfigPtrType)(v)
+}
+
+func (*sessionTemplateEnvironmentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateEnvironmentConfig)(nil)).Elem()
+}
+
+func (i *sessionTemplateEnvironmentConfigPtrType) ToSessionTemplateEnvironmentConfigPtrOutput() SessionTemplateEnvironmentConfigPtrOutput {
+	return i.ToSessionTemplateEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionTemplateEnvironmentConfigPtrType) ToSessionTemplateEnvironmentConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateEnvironmentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateEnvironmentConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateEnvironmentConfigOutput) ToSessionTemplateEnvironmentConfigOutput() SessionTemplateEnvironmentConfigOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigOutput) ToSessionTemplateEnvironmentConfigOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigOutput) ToSessionTemplateEnvironmentConfigPtrOutput() SessionTemplateEnvironmentConfigPtrOutput {
+	return o.ToSessionTemplateEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SessionTemplateEnvironmentConfigOutput) ToSessionTemplateEnvironmentConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionTemplateEnvironmentConfig) *SessionTemplateEnvironmentConfig {
+		return &v
+	}).(SessionTemplateEnvironmentConfigPtrOutput)
+}
+
+// Execution configuration for a workload.
+// Structure is documented below.
+func (o SessionTemplateEnvironmentConfigOutput) ExecutionConfig() SessionTemplateEnvironmentConfigExecutionConfigPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfig) *SessionTemplateEnvironmentConfigExecutionConfig {
+		return v.ExecutionConfig
+	}).(SessionTemplateEnvironmentConfigExecutionConfigPtrOutput)
+}
+
+// Peripherals configuration that workload has access to.
+// Structure is documented below.
+func (o SessionTemplateEnvironmentConfigOutput) PeripheralsConfig() SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfig) *SessionTemplateEnvironmentConfigPeripheralsConfig {
+		return v.PeripheralsConfig
+	}).(SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateEnvironmentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateEnvironmentConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateEnvironmentConfigPtrOutput) ToSessionTemplateEnvironmentConfigPtrOutput() SessionTemplateEnvironmentConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigPtrOutput) ToSessionTemplateEnvironmentConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigPtrOutput) Elem() SessionTemplateEnvironmentConfigOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfig) SessionTemplateEnvironmentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SessionTemplateEnvironmentConfig
+		return ret
+	}).(SessionTemplateEnvironmentConfigOutput)
+}
+
+// Execution configuration for a workload.
+// Structure is documented below.
+func (o SessionTemplateEnvironmentConfigPtrOutput) ExecutionConfig() SessionTemplateEnvironmentConfigExecutionConfigPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfig) *SessionTemplateEnvironmentConfigExecutionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutionConfig
+	}).(SessionTemplateEnvironmentConfigExecutionConfigPtrOutput)
+}
+
+// Peripherals configuration that workload has access to.
+// Structure is documented below.
+func (o SessionTemplateEnvironmentConfigPtrOutput) PeripheralsConfig() SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfig) *SessionTemplateEnvironmentConfigPeripheralsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PeripheralsConfig
+	}).(SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigExecutionConfig struct {
+	// The Cloud KMS key to use for encryption.
+	KmsKey *string `pulumi:"kmsKey"`
+	// Tags used for network traffic control.
+	NetworkTags []string `pulumi:"networkTags"`
+	// Service account that used to execute workload.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// A Cloud Storage bucket used to stage workload dependencies, config files, and store
+	// workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+	// Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+	// and then create and manage project-level, per-location staging and temporary buckets.
+	// This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+	StagingBucket *string `pulumi:"stagingBucket"`
+	// Subnetwork configuration for workload execution.
+	SubnetworkUri *string `pulumi:"subnetworkUri"`
+	// The duration after which the workload will be terminated.
+	// When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+	// work to finish. If ttl is not specified for a session workload, the workload will be allowed to run until it
+	// exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+	// it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+	// Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+	// the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+	// when ttl has been exceeded, whichever occurs first.
+	Ttl *string `pulumi:"ttl"`
+}
+
+// SessionTemplateEnvironmentConfigExecutionConfigInput is an input type that accepts SessionTemplateEnvironmentConfigExecutionConfigArgs and SessionTemplateEnvironmentConfigExecutionConfigOutput values.
+// You can construct a concrete instance of `SessionTemplateEnvironmentConfigExecutionConfigInput` via:
+//
+//	SessionTemplateEnvironmentConfigExecutionConfigArgs{...}
+type SessionTemplateEnvironmentConfigExecutionConfigInput interface {
+	pulumi.Input
+
+	ToSessionTemplateEnvironmentConfigExecutionConfigOutput() SessionTemplateEnvironmentConfigExecutionConfigOutput
+	ToSessionTemplateEnvironmentConfigExecutionConfigOutputWithContext(context.Context) SessionTemplateEnvironmentConfigExecutionConfigOutput
+}
+
+type SessionTemplateEnvironmentConfigExecutionConfigArgs struct {
+	// The Cloud KMS key to use for encryption.
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+	// Tags used for network traffic control.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
+	// Service account that used to execute workload.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// A Cloud Storage bucket used to stage workload dependencies, config files, and store
+	// workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+	// Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+	// and then create and manage project-level, per-location staging and temporary buckets.
+	// This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+	StagingBucket pulumi.StringPtrInput `pulumi:"stagingBucket"`
+	// Subnetwork configuration for workload execution.
+	SubnetworkUri pulumi.StringPtrInput `pulumi:"subnetworkUri"`
+	// The duration after which the workload will be terminated.
+	// When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+	// work to finish. If ttl is not specified for a session workload, the workload will be allowed to run until it
+	// exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+	// it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+	// Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+	// the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+	// when ttl has been exceeded, whichever occurs first.
+	Ttl pulumi.StringPtrInput `pulumi:"ttl"`
+}
+
+func (SessionTemplateEnvironmentConfigExecutionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateEnvironmentConfigExecutionConfig)(nil)).Elem()
+}
+
+func (i SessionTemplateEnvironmentConfigExecutionConfigArgs) ToSessionTemplateEnvironmentConfigExecutionConfigOutput() SessionTemplateEnvironmentConfigExecutionConfigOutput {
+	return i.ToSessionTemplateEnvironmentConfigExecutionConfigOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateEnvironmentConfigExecutionConfigArgs) ToSessionTemplateEnvironmentConfigExecutionConfigOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigExecutionConfigOutput)
+}
+
+func (i SessionTemplateEnvironmentConfigExecutionConfigArgs) ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutput() SessionTemplateEnvironmentConfigExecutionConfigPtrOutput {
+	return i.ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateEnvironmentConfigExecutionConfigArgs) ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigExecutionConfigOutput).ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutputWithContext(ctx)
+}
+
+// SessionTemplateEnvironmentConfigExecutionConfigPtrInput is an input type that accepts SessionTemplateEnvironmentConfigExecutionConfigArgs, SessionTemplateEnvironmentConfigExecutionConfigPtr and SessionTemplateEnvironmentConfigExecutionConfigPtrOutput values.
+// You can construct a concrete instance of `SessionTemplateEnvironmentConfigExecutionConfigPtrInput` via:
+//
+//	        SessionTemplateEnvironmentConfigExecutionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionTemplateEnvironmentConfigExecutionConfigPtrInput interface {
+	pulumi.Input
+
+	ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutput() SessionTemplateEnvironmentConfigExecutionConfigPtrOutput
+	ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutputWithContext(context.Context) SessionTemplateEnvironmentConfigExecutionConfigPtrOutput
+}
+
+type sessionTemplateEnvironmentConfigExecutionConfigPtrType SessionTemplateEnvironmentConfigExecutionConfigArgs
+
+func SessionTemplateEnvironmentConfigExecutionConfigPtr(v *SessionTemplateEnvironmentConfigExecutionConfigArgs) SessionTemplateEnvironmentConfigExecutionConfigPtrInput {
+	return (*sessionTemplateEnvironmentConfigExecutionConfigPtrType)(v)
+}
+
+func (*sessionTemplateEnvironmentConfigExecutionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateEnvironmentConfigExecutionConfig)(nil)).Elem()
+}
+
+func (i *sessionTemplateEnvironmentConfigExecutionConfigPtrType) ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutput() SessionTemplateEnvironmentConfigExecutionConfigPtrOutput {
+	return i.ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionTemplateEnvironmentConfigExecutionConfigPtrType) ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigExecutionConfigPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigExecutionConfigOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateEnvironmentConfigExecutionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateEnvironmentConfigExecutionConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) ToSessionTemplateEnvironmentConfigExecutionConfigOutput() SessionTemplateEnvironmentConfigExecutionConfigOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) ToSessionTemplateEnvironmentConfigExecutionConfigOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutput() SessionTemplateEnvironmentConfigExecutionConfigPtrOutput {
+	return o.ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionTemplateEnvironmentConfigExecutionConfig) *SessionTemplateEnvironmentConfigExecutionConfig {
+		return &v
+	}).(SessionTemplateEnvironmentConfigExecutionConfigPtrOutput)
+}
+
+// The Cloud KMS key to use for encryption.
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigExecutionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+// Tags used for network traffic control.
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigExecutionConfig) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
+// Service account that used to execute workload.
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigExecutionConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// A Cloud Storage bucket used to stage workload dependencies, config files, and store
+// workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+// Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+// and then create and manage project-level, per-location staging and temporary buckets.
+// This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) StagingBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigExecutionConfig) *string { return v.StagingBucket }).(pulumi.StringPtrOutput)
+}
+
+// Subnetwork configuration for workload execution.
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) SubnetworkUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigExecutionConfig) *string { return v.SubnetworkUri }).(pulumi.StringPtrOutput)
+}
+
+// The duration after which the workload will be terminated.
+// When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+// work to finish. If ttl is not specified for a session workload, the workload will be allowed to run until it
+// exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+// it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+// Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+// the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+// when ttl has been exceeded, whichever occurs first.
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigExecutionConfig) *string { return v.Ttl }).(pulumi.StringPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigExecutionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateEnvironmentConfigExecutionConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutput() SessionTemplateEnvironmentConfigExecutionConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) ToSessionTemplateEnvironmentConfigExecutionConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) Elem() SessionTemplateEnvironmentConfigExecutionConfigOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigExecutionConfig) SessionTemplateEnvironmentConfigExecutionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SessionTemplateEnvironmentConfigExecutionConfig
+		return ret
+	}).(SessionTemplateEnvironmentConfigExecutionConfigOutput)
+}
+
+// The Cloud KMS key to use for encryption.
+func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigExecutionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags used for network traffic control.
+func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigExecutionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Service account that used to execute workload.
+func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigExecutionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// A Cloud Storage bucket used to stage workload dependencies, config files, and store
+// workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+// Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+// and then create and manage project-level, per-location staging and temporary buckets.
+// This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) StagingBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigExecutionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StagingBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnetwork configuration for workload execution.
+func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) SubnetworkUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigExecutionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetworkUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration after which the workload will be terminated.
+// When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+// work to finish. If ttl is not specified for a session workload, the workload will be allowed to run until it
+// exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+// it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+// Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+// the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+// when ttl has been exceeded, whichever occurs first.
+func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigExecutionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ttl
+	}).(pulumi.StringPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigPeripheralsConfig struct {
+	// Resource name of an existing Dataproc Metastore service.
+	MetastoreService *string `pulumi:"metastoreService"`
+	// The Spark History Server configuration for the workload.
+	// Structure is documented below.
+	SparkHistoryServerConfig *SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig `pulumi:"sparkHistoryServerConfig"`
+}
+
+// SessionTemplateEnvironmentConfigPeripheralsConfigInput is an input type that accepts SessionTemplateEnvironmentConfigPeripheralsConfigArgs and SessionTemplateEnvironmentConfigPeripheralsConfigOutput values.
+// You can construct a concrete instance of `SessionTemplateEnvironmentConfigPeripheralsConfigInput` via:
+//
+//	SessionTemplateEnvironmentConfigPeripheralsConfigArgs{...}
+type SessionTemplateEnvironmentConfigPeripheralsConfigInput interface {
+	pulumi.Input
+
+	ToSessionTemplateEnvironmentConfigPeripheralsConfigOutput() SessionTemplateEnvironmentConfigPeripheralsConfigOutput
+	ToSessionTemplateEnvironmentConfigPeripheralsConfigOutputWithContext(context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigOutput
+}
+
+type SessionTemplateEnvironmentConfigPeripheralsConfigArgs struct {
+	// Resource name of an existing Dataproc Metastore service.
+	MetastoreService pulumi.StringPtrInput `pulumi:"metastoreService"`
+	// The Spark History Server configuration for the workload.
+	// Structure is documented below.
+	SparkHistoryServerConfig SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrInput `pulumi:"sparkHistoryServerConfig"`
+}
+
+func (SessionTemplateEnvironmentConfigPeripheralsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateEnvironmentConfigPeripheralsConfig)(nil)).Elem()
+}
+
+func (i SessionTemplateEnvironmentConfigPeripheralsConfigArgs) ToSessionTemplateEnvironmentConfigPeripheralsConfigOutput() SessionTemplateEnvironmentConfigPeripheralsConfigOutput {
+	return i.ToSessionTemplateEnvironmentConfigPeripheralsConfigOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateEnvironmentConfigPeripheralsConfigArgs) ToSessionTemplateEnvironmentConfigPeripheralsConfigOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigPeripheralsConfigOutput)
+}
+
+func (i SessionTemplateEnvironmentConfigPeripheralsConfigArgs) ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput() SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput {
+	return i.ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateEnvironmentConfigPeripheralsConfigArgs) ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigPeripheralsConfigOutput).ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutputWithContext(ctx)
+}
+
+// SessionTemplateEnvironmentConfigPeripheralsConfigPtrInput is an input type that accepts SessionTemplateEnvironmentConfigPeripheralsConfigArgs, SessionTemplateEnvironmentConfigPeripheralsConfigPtr and SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput values.
+// You can construct a concrete instance of `SessionTemplateEnvironmentConfigPeripheralsConfigPtrInput` via:
+//
+//	        SessionTemplateEnvironmentConfigPeripheralsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionTemplateEnvironmentConfigPeripheralsConfigPtrInput interface {
+	pulumi.Input
+
+	ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput() SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput
+	ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutputWithContext(context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput
+}
+
+type sessionTemplateEnvironmentConfigPeripheralsConfigPtrType SessionTemplateEnvironmentConfigPeripheralsConfigArgs
+
+func SessionTemplateEnvironmentConfigPeripheralsConfigPtr(v *SessionTemplateEnvironmentConfigPeripheralsConfigArgs) SessionTemplateEnvironmentConfigPeripheralsConfigPtrInput {
+	return (*sessionTemplateEnvironmentConfigPeripheralsConfigPtrType)(v)
+}
+
+func (*sessionTemplateEnvironmentConfigPeripheralsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateEnvironmentConfigPeripheralsConfig)(nil)).Elem()
+}
+
+func (i *sessionTemplateEnvironmentConfigPeripheralsConfigPtrType) ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput() SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput {
+	return i.ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionTemplateEnvironmentConfigPeripheralsConfigPtrType) ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigPeripheralsConfigOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateEnvironmentConfigPeripheralsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateEnvironmentConfigPeripheralsConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigOutput() SessionTemplateEnvironmentConfigPeripheralsConfigOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput() SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput {
+	return o.ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionTemplateEnvironmentConfigPeripheralsConfig) *SessionTemplateEnvironmentConfigPeripheralsConfig {
+		return &v
+	}).(SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput)
+}
+
+// Resource name of an existing Dataproc Metastore service.
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigOutput) MetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigPeripheralsConfig) *string { return v.MetastoreService }).(pulumi.StringPtrOutput)
+}
+
+// The Spark History Server configuration for the workload.
+// Structure is documented below.
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigOutput) SparkHistoryServerConfig() SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigPeripheralsConfig) *SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig {
+		return v.SparkHistoryServerConfig
+	}).(SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateEnvironmentConfigPeripheralsConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput() SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput) Elem() SessionTemplateEnvironmentConfigPeripheralsConfigOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigPeripheralsConfig) SessionTemplateEnvironmentConfigPeripheralsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SessionTemplateEnvironmentConfigPeripheralsConfig
+		return ret
+	}).(SessionTemplateEnvironmentConfigPeripheralsConfigOutput)
+}
+
+// Resource name of an existing Dataproc Metastore service.
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput) MetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigPeripheralsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreService
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Spark History Server configuration for the workload.
+// Structure is documented below.
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput) SparkHistoryServerConfig() SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigPeripheralsConfig) *SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SparkHistoryServerConfig
+	}).(SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig struct {
+	// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+	DataprocCluster *string `pulumi:"dataprocCluster"`
+}
+
+// SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigInput is an input type that accepts SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs and SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput values.
+// You can construct a concrete instance of `SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigInput` via:
+//
+//	SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs{...}
+type SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigInput interface {
+	pulumi.Input
+
+	ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput() SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput
+	ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutputWithContext(context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput
+}
+
+type SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs struct {
+	// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+	DataprocCluster pulumi.StringPtrInput `pulumi:"dataprocCluster"`
+}
+
+func (SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (i SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput() SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput {
+	return i.ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput)
+}
+
+func (i SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput() SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput {
+	return i.ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput).ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutputWithContext(ctx)
+}
+
+// SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrInput is an input type that accepts SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs, SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtr and SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput values.
+// You can construct a concrete instance of `SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrInput` via:
+//
+//	        SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrInput interface {
+	pulumi.Input
+
+	ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput() SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput
+	ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutputWithContext(context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput
+}
+
+type sessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrType SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs
+
+func SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtr(v *SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs) SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrInput {
+	return (*sessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrType)(v)
+}
+
+func (*sessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (i *sessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrType) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput() SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput {
+	return i.ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrType) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput() SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput() SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput {
+	return o.ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig) *SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig {
+		return &v
+	}).(SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput)
+}
+
+// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput) DataprocCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig) *string {
+		return v.DataprocCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput() SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput) ToSessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput) Elem() SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig) SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig
+		return ret
+	}).(SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput)
+}
+
+// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+func (o SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput) DataprocCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataprocCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+type SessionTemplateJupyterSession struct {
+	// Display name, shown in the Jupyter kernelspec card.
+	DisplayName *string `pulumi:"displayName"`
+	// Kernel to be used with Jupyter interactive session.
+	// Possible values are: `PYTHON`, `SCALA`.
+	Kernel *string `pulumi:"kernel"`
+}
+
+// SessionTemplateJupyterSessionInput is an input type that accepts SessionTemplateJupyterSessionArgs and SessionTemplateJupyterSessionOutput values.
+// You can construct a concrete instance of `SessionTemplateJupyterSessionInput` via:
+//
+//	SessionTemplateJupyterSessionArgs{...}
+type SessionTemplateJupyterSessionInput interface {
+	pulumi.Input
+
+	ToSessionTemplateJupyterSessionOutput() SessionTemplateJupyterSessionOutput
+	ToSessionTemplateJupyterSessionOutputWithContext(context.Context) SessionTemplateJupyterSessionOutput
+}
+
+type SessionTemplateJupyterSessionArgs struct {
+	// Display name, shown in the Jupyter kernelspec card.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Kernel to be used with Jupyter interactive session.
+	// Possible values are: `PYTHON`, `SCALA`.
+	Kernel pulumi.StringPtrInput `pulumi:"kernel"`
+}
+
+func (SessionTemplateJupyterSessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateJupyterSession)(nil)).Elem()
+}
+
+func (i SessionTemplateJupyterSessionArgs) ToSessionTemplateJupyterSessionOutput() SessionTemplateJupyterSessionOutput {
+	return i.ToSessionTemplateJupyterSessionOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateJupyterSessionArgs) ToSessionTemplateJupyterSessionOutputWithContext(ctx context.Context) SessionTemplateJupyterSessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateJupyterSessionOutput)
+}
+
+func (i SessionTemplateJupyterSessionArgs) ToSessionTemplateJupyterSessionPtrOutput() SessionTemplateJupyterSessionPtrOutput {
+	return i.ToSessionTemplateJupyterSessionPtrOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateJupyterSessionArgs) ToSessionTemplateJupyterSessionPtrOutputWithContext(ctx context.Context) SessionTemplateJupyterSessionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateJupyterSessionOutput).ToSessionTemplateJupyterSessionPtrOutputWithContext(ctx)
+}
+
+// SessionTemplateJupyterSessionPtrInput is an input type that accepts SessionTemplateJupyterSessionArgs, SessionTemplateJupyterSessionPtr and SessionTemplateJupyterSessionPtrOutput values.
+// You can construct a concrete instance of `SessionTemplateJupyterSessionPtrInput` via:
+//
+//	        SessionTemplateJupyterSessionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionTemplateJupyterSessionPtrInput interface {
+	pulumi.Input
+
+	ToSessionTemplateJupyterSessionPtrOutput() SessionTemplateJupyterSessionPtrOutput
+	ToSessionTemplateJupyterSessionPtrOutputWithContext(context.Context) SessionTemplateJupyterSessionPtrOutput
+}
+
+type sessionTemplateJupyterSessionPtrType SessionTemplateJupyterSessionArgs
+
+func SessionTemplateJupyterSessionPtr(v *SessionTemplateJupyterSessionArgs) SessionTemplateJupyterSessionPtrInput {
+	return (*sessionTemplateJupyterSessionPtrType)(v)
+}
+
+func (*sessionTemplateJupyterSessionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateJupyterSession)(nil)).Elem()
+}
+
+func (i *sessionTemplateJupyterSessionPtrType) ToSessionTemplateJupyterSessionPtrOutput() SessionTemplateJupyterSessionPtrOutput {
+	return i.ToSessionTemplateJupyterSessionPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionTemplateJupyterSessionPtrType) ToSessionTemplateJupyterSessionPtrOutputWithContext(ctx context.Context) SessionTemplateJupyterSessionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateJupyterSessionPtrOutput)
+}
+
+type SessionTemplateJupyterSessionOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateJupyterSessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateJupyterSession)(nil)).Elem()
+}
+
+func (o SessionTemplateJupyterSessionOutput) ToSessionTemplateJupyterSessionOutput() SessionTemplateJupyterSessionOutput {
+	return o
+}
+
+func (o SessionTemplateJupyterSessionOutput) ToSessionTemplateJupyterSessionOutputWithContext(ctx context.Context) SessionTemplateJupyterSessionOutput {
+	return o
+}
+
+func (o SessionTemplateJupyterSessionOutput) ToSessionTemplateJupyterSessionPtrOutput() SessionTemplateJupyterSessionPtrOutput {
+	return o.ToSessionTemplateJupyterSessionPtrOutputWithContext(context.Background())
+}
+
+func (o SessionTemplateJupyterSessionOutput) ToSessionTemplateJupyterSessionPtrOutputWithContext(ctx context.Context) SessionTemplateJupyterSessionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionTemplateJupyterSession) *SessionTemplateJupyterSession {
+		return &v
+	}).(SessionTemplateJupyterSessionPtrOutput)
+}
+
+// Display name, shown in the Jupyter kernelspec card.
+func (o SessionTemplateJupyterSessionOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateJupyterSession) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Kernel to be used with Jupyter interactive session.
+// Possible values are: `PYTHON`, `SCALA`.
+func (o SessionTemplateJupyterSessionOutput) Kernel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateJupyterSession) *string { return v.Kernel }).(pulumi.StringPtrOutput)
+}
+
+type SessionTemplateJupyterSessionPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateJupyterSessionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateJupyterSession)(nil)).Elem()
+}
+
+func (o SessionTemplateJupyterSessionPtrOutput) ToSessionTemplateJupyterSessionPtrOutput() SessionTemplateJupyterSessionPtrOutput {
+	return o
+}
+
+func (o SessionTemplateJupyterSessionPtrOutput) ToSessionTemplateJupyterSessionPtrOutputWithContext(ctx context.Context) SessionTemplateJupyterSessionPtrOutput {
+	return o
+}
+
+func (o SessionTemplateJupyterSessionPtrOutput) Elem() SessionTemplateJupyterSessionOutput {
+	return o.ApplyT(func(v *SessionTemplateJupyterSession) SessionTemplateJupyterSession {
+		if v != nil {
+			return *v
+		}
+		var ret SessionTemplateJupyterSession
+		return ret
+	}).(SessionTemplateJupyterSessionOutput)
+}
+
+// Display name, shown in the Jupyter kernelspec card.
+func (o SessionTemplateJupyterSessionPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateJupyterSession) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kernel to be used with Jupyter interactive session.
+// Possible values are: `PYTHON`, `SCALA`.
+func (o SessionTemplateJupyterSessionPtrOutput) Kernel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateJupyterSession) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kernel
+	}).(pulumi.StringPtrOutput)
+}
+
+type SessionTemplateRuntimeConfig struct {
+	// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+	ContainerImage *string `pulumi:"containerImage"`
+	// (Output)
+	// A mapping of property names to values, which are used to configure workload execution.
+	EffectiveProperties map[string]string `pulumi:"effectiveProperties"`
+	// A mapping of property names to values, which are used to configure workload execution.
+	Properties map[string]string `pulumi:"properties"`
+	// Version of the session runtime.
+	Version *string `pulumi:"version"`
+}
+
+// SessionTemplateRuntimeConfigInput is an input type that accepts SessionTemplateRuntimeConfigArgs and SessionTemplateRuntimeConfigOutput values.
+// You can construct a concrete instance of `SessionTemplateRuntimeConfigInput` via:
+//
+//	SessionTemplateRuntimeConfigArgs{...}
+type SessionTemplateRuntimeConfigInput interface {
+	pulumi.Input
+
+	ToSessionTemplateRuntimeConfigOutput() SessionTemplateRuntimeConfigOutput
+	ToSessionTemplateRuntimeConfigOutputWithContext(context.Context) SessionTemplateRuntimeConfigOutput
+}
+
+type SessionTemplateRuntimeConfigArgs struct {
+	// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
+	// (Output)
+	// A mapping of property names to values, which are used to configure workload execution.
+	EffectiveProperties pulumi.StringMapInput `pulumi:"effectiveProperties"`
+	// A mapping of property names to values, which are used to configure workload execution.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Version of the session runtime.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (SessionTemplateRuntimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateRuntimeConfig)(nil)).Elem()
+}
+
+func (i SessionTemplateRuntimeConfigArgs) ToSessionTemplateRuntimeConfigOutput() SessionTemplateRuntimeConfigOutput {
+	return i.ToSessionTemplateRuntimeConfigOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateRuntimeConfigArgs) ToSessionTemplateRuntimeConfigOutputWithContext(ctx context.Context) SessionTemplateRuntimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateRuntimeConfigOutput)
+}
+
+func (i SessionTemplateRuntimeConfigArgs) ToSessionTemplateRuntimeConfigPtrOutput() SessionTemplateRuntimeConfigPtrOutput {
+	return i.ToSessionTemplateRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateRuntimeConfigArgs) ToSessionTemplateRuntimeConfigPtrOutputWithContext(ctx context.Context) SessionTemplateRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateRuntimeConfigOutput).ToSessionTemplateRuntimeConfigPtrOutputWithContext(ctx)
+}
+
+// SessionTemplateRuntimeConfigPtrInput is an input type that accepts SessionTemplateRuntimeConfigArgs, SessionTemplateRuntimeConfigPtr and SessionTemplateRuntimeConfigPtrOutput values.
+// You can construct a concrete instance of `SessionTemplateRuntimeConfigPtrInput` via:
+//
+//	        SessionTemplateRuntimeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionTemplateRuntimeConfigPtrInput interface {
+	pulumi.Input
+
+	ToSessionTemplateRuntimeConfigPtrOutput() SessionTemplateRuntimeConfigPtrOutput
+	ToSessionTemplateRuntimeConfigPtrOutputWithContext(context.Context) SessionTemplateRuntimeConfigPtrOutput
+}
+
+type sessionTemplateRuntimeConfigPtrType SessionTemplateRuntimeConfigArgs
+
+func SessionTemplateRuntimeConfigPtr(v *SessionTemplateRuntimeConfigArgs) SessionTemplateRuntimeConfigPtrInput {
+	return (*sessionTemplateRuntimeConfigPtrType)(v)
+}
+
+func (*sessionTemplateRuntimeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateRuntimeConfig)(nil)).Elem()
+}
+
+func (i *sessionTemplateRuntimeConfigPtrType) ToSessionTemplateRuntimeConfigPtrOutput() SessionTemplateRuntimeConfigPtrOutput {
+	return i.ToSessionTemplateRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionTemplateRuntimeConfigPtrType) ToSessionTemplateRuntimeConfigPtrOutputWithContext(ctx context.Context) SessionTemplateRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateRuntimeConfigPtrOutput)
+}
+
+type SessionTemplateRuntimeConfigOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateRuntimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateRuntimeConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateRuntimeConfigOutput) ToSessionTemplateRuntimeConfigOutput() SessionTemplateRuntimeConfigOutput {
+	return o
+}
+
+func (o SessionTemplateRuntimeConfigOutput) ToSessionTemplateRuntimeConfigOutputWithContext(ctx context.Context) SessionTemplateRuntimeConfigOutput {
+	return o
+}
+
+func (o SessionTemplateRuntimeConfigOutput) ToSessionTemplateRuntimeConfigPtrOutput() SessionTemplateRuntimeConfigPtrOutput {
+	return o.ToSessionTemplateRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SessionTemplateRuntimeConfigOutput) ToSessionTemplateRuntimeConfigPtrOutputWithContext(ctx context.Context) SessionTemplateRuntimeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionTemplateRuntimeConfig) *SessionTemplateRuntimeConfig {
+		return &v
+	}).(SessionTemplateRuntimeConfigPtrOutput)
+}
+
+// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+func (o SessionTemplateRuntimeConfigOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateRuntimeConfig) *string { return v.ContainerImage }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A mapping of property names to values, which are used to configure workload execution.
+func (o SessionTemplateRuntimeConfigOutput) EffectiveProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SessionTemplateRuntimeConfig) map[string]string { return v.EffectiveProperties }).(pulumi.StringMapOutput)
+}
+
+// A mapping of property names to values, which are used to configure workload execution.
+func (o SessionTemplateRuntimeConfigOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SessionTemplateRuntimeConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Version of the session runtime.
+func (o SessionTemplateRuntimeConfigOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateRuntimeConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type SessionTemplateRuntimeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateRuntimeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateRuntimeConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateRuntimeConfigPtrOutput) ToSessionTemplateRuntimeConfigPtrOutput() SessionTemplateRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateRuntimeConfigPtrOutput) ToSessionTemplateRuntimeConfigPtrOutputWithContext(ctx context.Context) SessionTemplateRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateRuntimeConfigPtrOutput) Elem() SessionTemplateRuntimeConfigOutput {
+	return o.ApplyT(func(v *SessionTemplateRuntimeConfig) SessionTemplateRuntimeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SessionTemplateRuntimeConfig
+		return ret
+	}).(SessionTemplateRuntimeConfigOutput)
+}
+
+// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+func (o SessionTemplateRuntimeConfigPtrOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateRuntimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A mapping of property names to values, which are used to configure workload execution.
+func (o SessionTemplateRuntimeConfigPtrOutput) EffectiveProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SessionTemplateRuntimeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveProperties
+	}).(pulumi.StringMapOutput)
+}
+
+// A mapping of property names to values, which are used to configure workload execution.
+func (o SessionTemplateRuntimeConfigPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SessionTemplateRuntimeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// Version of the session runtime.
+func (o SessionTemplateRuntimeConfigPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateRuntimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type SessionTemplateSparkConnectSession struct {
+}
+
+// SessionTemplateSparkConnectSessionInput is an input type that accepts SessionTemplateSparkConnectSessionArgs and SessionTemplateSparkConnectSessionOutput values.
+// You can construct a concrete instance of `SessionTemplateSparkConnectSessionInput` via:
+//
+//	SessionTemplateSparkConnectSessionArgs{...}
+type SessionTemplateSparkConnectSessionInput interface {
+	pulumi.Input
+
+	ToSessionTemplateSparkConnectSessionOutput() SessionTemplateSparkConnectSessionOutput
+	ToSessionTemplateSparkConnectSessionOutputWithContext(context.Context) SessionTemplateSparkConnectSessionOutput
+}
+
+type SessionTemplateSparkConnectSessionArgs struct {
+}
+
+func (SessionTemplateSparkConnectSessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateSparkConnectSession)(nil)).Elem()
+}
+
+func (i SessionTemplateSparkConnectSessionArgs) ToSessionTemplateSparkConnectSessionOutput() SessionTemplateSparkConnectSessionOutput {
+	return i.ToSessionTemplateSparkConnectSessionOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateSparkConnectSessionArgs) ToSessionTemplateSparkConnectSessionOutputWithContext(ctx context.Context) SessionTemplateSparkConnectSessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateSparkConnectSessionOutput)
+}
+
+func (i SessionTemplateSparkConnectSessionArgs) ToSessionTemplateSparkConnectSessionPtrOutput() SessionTemplateSparkConnectSessionPtrOutput {
+	return i.ToSessionTemplateSparkConnectSessionPtrOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateSparkConnectSessionArgs) ToSessionTemplateSparkConnectSessionPtrOutputWithContext(ctx context.Context) SessionTemplateSparkConnectSessionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateSparkConnectSessionOutput).ToSessionTemplateSparkConnectSessionPtrOutputWithContext(ctx)
+}
+
+// SessionTemplateSparkConnectSessionPtrInput is an input type that accepts SessionTemplateSparkConnectSessionArgs, SessionTemplateSparkConnectSessionPtr and SessionTemplateSparkConnectSessionPtrOutput values.
+// You can construct a concrete instance of `SessionTemplateSparkConnectSessionPtrInput` via:
+//
+//	        SessionTemplateSparkConnectSessionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionTemplateSparkConnectSessionPtrInput interface {
+	pulumi.Input
+
+	ToSessionTemplateSparkConnectSessionPtrOutput() SessionTemplateSparkConnectSessionPtrOutput
+	ToSessionTemplateSparkConnectSessionPtrOutputWithContext(context.Context) SessionTemplateSparkConnectSessionPtrOutput
+}
+
+type sessionTemplateSparkConnectSessionPtrType SessionTemplateSparkConnectSessionArgs
+
+func SessionTemplateSparkConnectSessionPtr(v *SessionTemplateSparkConnectSessionArgs) SessionTemplateSparkConnectSessionPtrInput {
+	return (*sessionTemplateSparkConnectSessionPtrType)(v)
+}
+
+func (*sessionTemplateSparkConnectSessionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateSparkConnectSession)(nil)).Elem()
+}
+
+func (i *sessionTemplateSparkConnectSessionPtrType) ToSessionTemplateSparkConnectSessionPtrOutput() SessionTemplateSparkConnectSessionPtrOutput {
+	return i.ToSessionTemplateSparkConnectSessionPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionTemplateSparkConnectSessionPtrType) ToSessionTemplateSparkConnectSessionPtrOutputWithContext(ctx context.Context) SessionTemplateSparkConnectSessionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateSparkConnectSessionPtrOutput)
+}
+
+type SessionTemplateSparkConnectSessionOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateSparkConnectSessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateSparkConnectSession)(nil)).Elem()
+}
+
+func (o SessionTemplateSparkConnectSessionOutput) ToSessionTemplateSparkConnectSessionOutput() SessionTemplateSparkConnectSessionOutput {
+	return o
+}
+
+func (o SessionTemplateSparkConnectSessionOutput) ToSessionTemplateSparkConnectSessionOutputWithContext(ctx context.Context) SessionTemplateSparkConnectSessionOutput {
+	return o
+}
+
+func (o SessionTemplateSparkConnectSessionOutput) ToSessionTemplateSparkConnectSessionPtrOutput() SessionTemplateSparkConnectSessionPtrOutput {
+	return o.ToSessionTemplateSparkConnectSessionPtrOutputWithContext(context.Background())
+}
+
+func (o SessionTemplateSparkConnectSessionOutput) ToSessionTemplateSparkConnectSessionPtrOutputWithContext(ctx context.Context) SessionTemplateSparkConnectSessionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionTemplateSparkConnectSession) *SessionTemplateSparkConnectSession {
+		return &v
+	}).(SessionTemplateSparkConnectSessionPtrOutput)
+}
+
+type SessionTemplateSparkConnectSessionPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateSparkConnectSessionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateSparkConnectSession)(nil)).Elem()
+}
+
+func (o SessionTemplateSparkConnectSessionPtrOutput) ToSessionTemplateSparkConnectSessionPtrOutput() SessionTemplateSparkConnectSessionPtrOutput {
+	return o
+}
+
+func (o SessionTemplateSparkConnectSessionPtrOutput) ToSessionTemplateSparkConnectSessionPtrOutputWithContext(ctx context.Context) SessionTemplateSparkConnectSessionPtrOutput {
+	return o
+}
+
+func (o SessionTemplateSparkConnectSessionPtrOutput) Elem() SessionTemplateSparkConnectSessionOutput {
+	return o.ApplyT(func(v *SessionTemplateSparkConnectSession) SessionTemplateSparkConnectSession {
+		if v != nil {
+			return *v
+		}
+		var ret SessionTemplateSparkConnectSession
+		return ret
+	}).(SessionTemplateSparkConnectSessionOutput)
+}
+
 type WorkflowTemplateEncryptionConfig struct {
 	// Optional. The Cloud KMS key name to use for encryption.
 	KmsKey *string `pulumi:"kmsKey"`
@@ -34200,6 +35421,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreTableIamBindingConditionPtrInput)(nil)).Elem(), MetastoreTableIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreTableIamMemberConditionInput)(nil)).Elem(), MetastoreTableIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreTableIamMemberConditionPtrInput)(nil)).Elem(), MetastoreTableIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigInput)(nil)).Elem(), SessionTemplateEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigPtrInput)(nil)).Elem(), SessionTemplateEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigExecutionConfigInput)(nil)).Elem(), SessionTemplateEnvironmentConfigExecutionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigExecutionConfigPtrInput)(nil)).Elem(), SessionTemplateEnvironmentConfigExecutionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigPeripheralsConfigInput)(nil)).Elem(), SessionTemplateEnvironmentConfigPeripheralsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigPeripheralsConfigPtrInput)(nil)).Elem(), SessionTemplateEnvironmentConfigPeripheralsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigInput)(nil)).Elem(), SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrInput)(nil)).Elem(), SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateJupyterSessionInput)(nil)).Elem(), SessionTemplateJupyterSessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateJupyterSessionPtrInput)(nil)).Elem(), SessionTemplateJupyterSessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateRuntimeConfigInput)(nil)).Elem(), SessionTemplateRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateRuntimeConfigPtrInput)(nil)).Elem(), SessionTemplateRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateSparkConnectSessionInput)(nil)).Elem(), SessionTemplateSparkConnectSessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateSparkConnectSessionPtrInput)(nil)).Elem(), SessionTemplateSparkConnectSessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateEncryptionConfigInput)(nil)).Elem(), WorkflowTemplateEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateEncryptionConfigPtrInput)(nil)).Elem(), WorkflowTemplateEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobInput)(nil)).Elem(), WorkflowTemplateJobArgs{})
@@ -34580,6 +35815,20 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreTableIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreTableIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(MetastoreTableIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigOutput{})
+	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigPtrOutput{})
+	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigExecutionConfigOutput{})
+	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigExecutionConfigPtrOutput{})
+	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigPeripheralsConfigOutput{})
+	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput{})
+	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput{})
+	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigPtrOutput{})
+	pulumi.RegisterOutputType(SessionTemplateJupyterSessionOutput{})
+	pulumi.RegisterOutputType(SessionTemplateJupyterSessionPtrOutput{})
+	pulumi.RegisterOutputType(SessionTemplateRuntimeConfigOutput{})
+	pulumi.RegisterOutputType(SessionTemplateRuntimeConfigPtrOutput{})
+	pulumi.RegisterOutputType(SessionTemplateSparkConnectSessionOutput{})
+	pulumi.RegisterOutputType(SessionTemplateSparkConnectSessionPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobOutput{})

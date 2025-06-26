@@ -60,14 +60,14 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
     }
 
     /**
-     * The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are [&#34;COMPLETENESS&#34;, &#34;ACCURACY&#34;, &#34;CONSISTENCY&#34;, &#34;VALIDITY&#34;, &#34;UNIQUENESS&#34;, &#34;INTEGRITY&#34;]
+     * The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
      * 
      */
     @Import(name="dimension", required=true)
     private Output<String> dimension;
 
     /**
-     * @return The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are [&#34;COMPLETENESS&#34;, &#34;ACCURACY&#34;, &#34;CONSISTENCY&#34;, &#34;VALIDITY&#34;, &#34;UNIQUENESS&#34;, &#34;INTEGRITY&#34;]
+     * @return The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
      * 
      */
     public Output<String> dimension() {
@@ -359,7 +359,7 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param dimension The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are [&#34;COMPLETENESS&#34;, &#34;ACCURACY&#34;, &#34;CONSISTENCY&#34;, &#34;VALIDITY&#34;, &#34;UNIQUENESS&#34;, &#34;INTEGRITY&#34;]
+         * @param dimension The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param dimension The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are [&#34;COMPLETENESS&#34;, &#34;ACCURACY&#34;, &#34;CONSISTENCY&#34;, &#34;VALIDITY&#34;, &#34;UNIQUENESS&#34;, &#34;INTEGRITY&#34;]
+         * @param dimension The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
          * 
          * @return builder
          * 

@@ -30,6 +30,11 @@ __all__ = [
     'AssetResourceStatus',
     'AssetSecurityStatus',
     'DatascanData',
+    'DatascanDataDiscoverySpec',
+    'DatascanDataDiscoverySpecBigqueryPublishingConfig',
+    'DatascanDataDiscoverySpecStorageConfig',
+    'DatascanDataDiscoverySpecStorageConfigCsvOptions',
+    'DatascanDataDiscoverySpecStorageConfigJsonOptions',
     'DatascanDataProfileSpec',
     'DatascanDataProfileSpecExcludeFields',
     'DatascanDataProfileSpecIncludeFields',
@@ -807,7 +812,7 @@ class DatascanData(dict):
         """
         :param builtins.str entity: The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
         :param builtins.str resource: The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-               (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+               Cloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type "TABLE" (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.
         """
         if entity is not None:
             pulumi.set(__self__, "entity", entity)
@@ -827,9 +832,353 @@ class DatascanData(dict):
     def resource(self) -> Optional[builtins.str]:
         """
         The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-        (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+        Cloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type "TABLE" (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.
         """
         return pulumi.get(self, "resource")
+
+
+@pulumi.output_type
+class DatascanDataDiscoverySpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryPublishingConfig":
+            suggest = "bigquery_publishing_config"
+        elif key == "storageConfig":
+            suggest = "storage_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatascanDataDiscoverySpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatascanDataDiscoverySpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatascanDataDiscoverySpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bigquery_publishing_config: Optional['outputs.DatascanDataDiscoverySpecBigqueryPublishingConfig'] = None,
+                 storage_config: Optional['outputs.DatascanDataDiscoverySpecStorageConfig'] = None):
+        """
+        :param 'DatascanDataDiscoverySpecBigqueryPublishingConfigArgs' bigquery_publishing_config: Configuration for metadata publishing.
+               Structure is documented below.
+        :param 'DatascanDataDiscoverySpecStorageConfigArgs' storage_config: Configurations related to Cloud Storage as the data source.
+               Structure is documented below.
+        """
+        if bigquery_publishing_config is not None:
+            pulumi.set(__self__, "bigquery_publishing_config", bigquery_publishing_config)
+        if storage_config is not None:
+            pulumi.set(__self__, "storage_config", storage_config)
+
+    @property
+    @pulumi.getter(name="bigqueryPublishingConfig")
+    def bigquery_publishing_config(self) -> Optional['outputs.DatascanDataDiscoverySpecBigqueryPublishingConfig']:
+        """
+        Configuration for metadata publishing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_publishing_config")
+
+    @property
+    @pulumi.getter(name="storageConfig")
+    def storage_config(self) -> Optional['outputs.DatascanDataDiscoverySpecStorageConfig']:
+        """
+        Configurations related to Cloud Storage as the data source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage_config")
+
+
+@pulumi.output_type
+class DatascanDataDiscoverySpecBigqueryPublishingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableType":
+            suggest = "table_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatascanDataDiscoverySpecBigqueryPublishingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatascanDataDiscoverySpecBigqueryPublishingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatascanDataDiscoverySpecBigqueryPublishingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection: Optional[builtins.str] = None,
+                 location: Optional[builtins.str] = None,
+                 project: Optional[builtins.str] = None,
+                 table_type: Optional[builtins.str] = None):
+        """
+        :param builtins.str connection: The BigQuery connection used to create BigLake tables. Must be in the form `projects/{projectId}/locations/{locationId}/connections/{connection_id}`.
+        :param builtins.str location: The location of the BigQuery dataset to publish BigLake external or non-BigLake external tables to.
+        :param builtins.str project: The project of the BigQuery dataset to publish BigLake external or non-BigLake external tables to. If not specified, the project of the Cloud Storage bucket will be used. The format is "projects/{project_id_or_number}".
+        :param builtins.str table_type: Determines whether to publish discovered tables as BigLake external tables or non-BigLake external tables.
+               Possible values are: `TABLE_TYPE_UNSPECIFIED`, `EXTERNAL`, `BIGLAKE`.
+        """
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if table_type is not None:
+            pulumi.set(__self__, "table_type", table_type)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> Optional[builtins.str]:
+        """
+        The BigQuery connection used to create BigLake tables. Must be in the form `projects/{projectId}/locations/{locationId}/connections/{connection_id}`.
+        """
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[builtins.str]:
+        """
+        The location of the BigQuery dataset to publish BigLake external or non-BigLake external tables to.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[builtins.str]:
+        """
+        The project of the BigQuery dataset to publish BigLake external or non-BigLake external tables to. If not specified, the project of the Cloud Storage bucket will be used. The format is "projects/{project_id_or_number}".
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="tableType")
+    def table_type(self) -> Optional[builtins.str]:
+        """
+        Determines whether to publish discovered tables as BigLake external tables or non-BigLake external tables.
+        Possible values are: `TABLE_TYPE_UNSPECIFIED`, `EXTERNAL`, `BIGLAKE`.
+        """
+        return pulumi.get(self, "table_type")
+
+
+@pulumi.output_type
+class DatascanDataDiscoverySpecStorageConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "csvOptions":
+            suggest = "csv_options"
+        elif key == "excludePatterns":
+            suggest = "exclude_patterns"
+        elif key == "includePatterns":
+            suggest = "include_patterns"
+        elif key == "jsonOptions":
+            suggest = "json_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatascanDataDiscoverySpecStorageConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatascanDataDiscoverySpecStorageConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatascanDataDiscoverySpecStorageConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 csv_options: Optional['outputs.DatascanDataDiscoverySpecStorageConfigCsvOptions'] = None,
+                 exclude_patterns: Optional[Sequence[builtins.str]] = None,
+                 include_patterns: Optional[Sequence[builtins.str]] = None,
+                 json_options: Optional['outputs.DatascanDataDiscoverySpecStorageConfigJsonOptions'] = None):
+        """
+        :param 'DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs' csv_options: Configuration for CSV data.
+               Structure is documented below.
+        :param Sequence[builtins.str] exclude_patterns: Defines the data to exclude during discovery. Provide a list of patterns that identify the data to exclude. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+        :param Sequence[builtins.str] include_patterns: Defines the data to include during discovery when only a subset of the data should be considered. Provide a list of patterns that identify the data to include. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+        :param 'DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs' json_options: Configuration for JSON data.
+               Structure is documented below.
+        """
+        if csv_options is not None:
+            pulumi.set(__self__, "csv_options", csv_options)
+        if exclude_patterns is not None:
+            pulumi.set(__self__, "exclude_patterns", exclude_patterns)
+        if include_patterns is not None:
+            pulumi.set(__self__, "include_patterns", include_patterns)
+        if json_options is not None:
+            pulumi.set(__self__, "json_options", json_options)
+
+    @property
+    @pulumi.getter(name="csvOptions")
+    def csv_options(self) -> Optional['outputs.DatascanDataDiscoverySpecStorageConfigCsvOptions']:
+        """
+        Configuration for CSV data.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csv_options")
+
+    @property
+    @pulumi.getter(name="excludePatterns")
+    def exclude_patterns(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Defines the data to exclude during discovery. Provide a list of patterns that identify the data to exclude. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+        """
+        return pulumi.get(self, "exclude_patterns")
+
+    @property
+    @pulumi.getter(name="includePatterns")
+    def include_patterns(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Defines the data to include during discovery when only a subset of the data should be considered. Provide a list of patterns that identify the data to include. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+        """
+        return pulumi.get(self, "include_patterns")
+
+    @property
+    @pulumi.getter(name="jsonOptions")
+    def json_options(self) -> Optional['outputs.DatascanDataDiscoverySpecStorageConfigJsonOptions']:
+        """
+        Configuration for JSON data.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "json_options")
+
+
+@pulumi.output_type
+class DatascanDataDiscoverySpecStorageConfigCsvOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerRows":
+            suggest = "header_rows"
+        elif key == "typeInferenceDisabled":
+            suggest = "type_inference_disabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatascanDataDiscoverySpecStorageConfigCsvOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatascanDataDiscoverySpecStorageConfigCsvOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatascanDataDiscoverySpecStorageConfigCsvOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delimiter: Optional[builtins.str] = None,
+                 encoding: Optional[builtins.str] = None,
+                 header_rows: Optional[builtins.int] = None,
+                 quote: Optional[builtins.str] = None,
+                 type_inference_disabled: Optional[builtins.bool] = None):
+        """
+        :param builtins.str delimiter: The delimiter that is used to separate values. The default is `,` (comma).
+        :param builtins.str encoding: The character encoding of the data. The default is UTF-8.
+        :param builtins.int header_rows: The number of rows to interpret as header rows that should be skipped when reading data rows.
+        :param builtins.str quote: The character used to quote column values. Accepts `"` (double quotation mark) or `'` (single quotation mark). If unspecified, defaults to `"` (double quotation mark).
+        :param builtins.bool type_inference_disabled: Whether to disable the inference of data types for CSV data. If true, all columns are registered as strings.
+        """
+        if delimiter is not None:
+            pulumi.set(__self__, "delimiter", delimiter)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if header_rows is not None:
+            pulumi.set(__self__, "header_rows", header_rows)
+        if quote is not None:
+            pulumi.set(__self__, "quote", quote)
+        if type_inference_disabled is not None:
+            pulumi.set(__self__, "type_inference_disabled", type_inference_disabled)
+
+    @property
+    @pulumi.getter
+    def delimiter(self) -> Optional[builtins.str]:
+        """
+        The delimiter that is used to separate values. The default is `,` (comma).
+        """
+        return pulumi.get(self, "delimiter")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[builtins.str]:
+        """
+        The character encoding of the data. The default is UTF-8.
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="headerRows")
+    def header_rows(self) -> Optional[builtins.int]:
+        """
+        The number of rows to interpret as header rows that should be skipped when reading data rows.
+        """
+        return pulumi.get(self, "header_rows")
+
+    @property
+    @pulumi.getter
+    def quote(self) -> Optional[builtins.str]:
+        """
+        The character used to quote column values. Accepts `"` (double quotation mark) or `'` (single quotation mark). If unspecified, defaults to `"` (double quotation mark).
+        """
+        return pulumi.get(self, "quote")
+
+    @property
+    @pulumi.getter(name="typeInferenceDisabled")
+    def type_inference_disabled(self) -> Optional[builtins.bool]:
+        """
+        Whether to disable the inference of data types for CSV data. If true, all columns are registered as strings.
+        """
+        return pulumi.get(self, "type_inference_disabled")
+
+
+@pulumi.output_type
+class DatascanDataDiscoverySpecStorageConfigJsonOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "typeInferenceDisabled":
+            suggest = "type_inference_disabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatascanDataDiscoverySpecStorageConfigJsonOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatascanDataDiscoverySpecStorageConfigJsonOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatascanDataDiscoverySpecStorageConfigJsonOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encoding: Optional[builtins.str] = None,
+                 type_inference_disabled: Optional[builtins.bool] = None):
+        """
+        :param builtins.str encoding: The character encoding of the data. The default is UTF-8.
+        :param builtins.bool type_inference_disabled: Whether to disable the inference of data types for JSON data. If true, all columns are registered as their primitive types (strings, number, or boolean).
+        """
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if type_inference_disabled is not None:
+            pulumi.set(__self__, "type_inference_disabled", type_inference_disabled)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[builtins.str]:
+        """
+        The character encoding of the data. The default is UTF-8.
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="typeInferenceDisabled")
+    def type_inference_disabled(self) -> Optional[builtins.bool]:
+        """
+        Whether to disable the inference of data types for JSON data. If true, all columns are registered as their primitive types (strings, number, or boolean).
+        """
+        return pulumi.get(self, "type_inference_disabled")
 
 
 @pulumi.output_type
@@ -1484,7 +1833,7 @@ class DatascanDataQualitySpecRule(dict):
                  threshold: Optional[builtins.float] = None,
                  uniqueness_expectation: Optional['outputs.DatascanDataQualitySpecRuleUniquenessExpectation'] = None):
         """
-        :param builtins.str dimension: The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+        :param builtins.str dimension: The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
         :param builtins.str column: The unnested column which this rule is evaluated against.
         :param builtins.str description: Description of the rule.
                The maximum length is 1,024 characters.
@@ -1546,7 +1895,7 @@ class DatascanDataQualitySpecRule(dict):
     @pulumi.getter
     def dimension(self) -> builtins.str:
         """
-        The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+        The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
         """
         return pulumi.get(self, "dimension")
 

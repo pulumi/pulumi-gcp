@@ -28,6 +28,7 @@ __all__ = [
     'ListingIamBindingCondition',
     'ListingIamMemberCondition',
     'ListingPublisher',
+    'ListingPubsubTopic',
     'ListingRestrictedExportConfig',
     'ListingSubscriptionDestinationDataset',
     'ListingSubscriptionDestinationDatasetDatasetReference',
@@ -206,8 +207,6 @@ class ListingBigqueryDatasetSelectedResource(dict):
                  table: Optional[builtins.str] = None):
         """
         :param builtins.str table: Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-               
-               - - -
         """
         if table is not None:
             pulumi.set(__self__, "table", table)
@@ -217,8 +216,6 @@ class ListingBigqueryDatasetSelectedResource(dict):
     def table(self) -> Optional[builtins.str]:
         """
         Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-
-        - - -
         """
         return pulumi.get(self, "table")
 
@@ -369,6 +366,55 @@ class ListingPublisher(dict):
         Email or URL of the listing publisher.
         """
         return pulumi.get(self, "primary_contact")
+
+
+@pulumi.output_type
+class ListingPubsubTopic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataAffinityRegions":
+            suggest = "data_affinity_regions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListingPubsubTopic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListingPubsubTopic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListingPubsubTopic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 topic: builtins.str,
+                 data_affinity_regions: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.str topic: Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
+        :param Sequence[builtins.str] data_affinity_regions: Region hint on where the data might be published. Data affinity regions are modifiable.
+               See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
+        """
+        pulumi.set(__self__, "topic", topic)
+        if data_affinity_regions is not None:
+            pulumi.set(__self__, "data_affinity_regions", data_affinity_regions)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> builtins.str:
+        """
+        Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
+        """
+        return pulumi.get(self, "topic")
+
+    @property
+    @pulumi.getter(name="dataAffinityRegions")
+    def data_affinity_regions(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Region hint on where the data might be published. Data affinity regions are modifiable.
+        See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
+        """
+        return pulumi.get(self, "data_affinity_regions")
 
 
 @pulumi.output_type

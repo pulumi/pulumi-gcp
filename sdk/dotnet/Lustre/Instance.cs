@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Lustre
     ///         Filesystem = "testfs",
     ///         CapacityGib = "18000",
     ///         Network = lustre_network.Apply(lustre_network =&gt; lustre_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         PerUnitStorageThroughput = "1000",
     ///         Labels = 
     ///         {
     ///             { "test", "value" },
@@ -88,20 +89,20 @@ namespace Pulumi.Gcp.Lustre
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-        /// are from 18000 to 954000, in increments of 9000.
+        /// The storage capacity of the instance in gibibytes (GiB). Allowed values
+        /// are from `18000` to `954000`, in increments of 9000.
         /// </summary>
         [Output("capacityGib")]
         public Output<string> CapacityGib { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Timestamp when the instance was created.
+        /// Timestamp when the instance was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. A user-readable description of the instance.
+        /// A user-readable description of the instance.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -113,22 +114,22 @@ namespace Pulumi.Gcp.Lustre
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The filesystem name for this instance. This name is used by client-side
-        /// tools, including when mounting the instance. Must be 8 characters or less
-        /// and may only contain letters and numbers.
+        /// The filesystem name for this instance. This name is used by client-side
+        /// tools, including when mounting the instance. Must be eight characters or
+        /// less and can only contain letters and numbers.
         /// </summary>
         [Output("filesystem")]
         public Output<string> Filesystem { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Indicates whether you want to enable support for GKE clients. By default,
+        /// Indicates whether you want to enable support for GKE clients. By default,
         /// GKE clients are not supported.
         /// </summary>
         [Output("gkeSupportEnabled")]
         public Output<bool?> GkeSupportEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The name of the Managed Lustre instance.
+        /// The name of the Managed Lustre instance.
         /// * Must contain only lowercase letters, numbers, and hyphens.
         /// * Must start with a letter.
         /// * Must be between 1-63 characters.
@@ -141,7 +142,7 @@ namespace Pulumi.Gcp.Lustre
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels as key value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -155,7 +156,7 @@ namespace Pulumi.Gcp.Lustre
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+        /// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         /// </summary>
         [Output("mountPoint")]
         public Output<string> MountPoint { get; private set; } = null!;
@@ -167,12 +168,19 @@ namespace Pulumi.Gcp.Lustre
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The full name of the VPC network to which the instance is connected.
+        /// The full name of the VPC network to which the instance is connected.
         /// Must be in the format
         /// `projects/{project_id}/global/networks/{network_name}`.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// The throughput of the instance in MB/s/TiB.
+        /// Valid values are 125, 250, 500, 1000.
+        /// </summary>
+        [Output("perUnitStorageThroughput")]
+        public Output<string> PerUnitStorageThroughput { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -189,7 +197,7 @@ namespace Pulumi.Gcp.Lustre
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The state of the instance.
+        /// The state of the instance.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
@@ -203,7 +211,7 @@ namespace Pulumi.Gcp.Lustre
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Timestamp when the instance was last updated.
+        /// Timestamp when the instance was last updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -260,35 +268,35 @@ namespace Pulumi.Gcp.Lustre
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-        /// are from 18000 to 954000, in increments of 9000.
+        /// The storage capacity of the instance in gibibytes (GiB). Allowed values
+        /// are from `18000` to `954000`, in increments of 9000.
         /// </summary>
         [Input("capacityGib", required: true)]
         public Input<string> CapacityGib { get; set; } = null!;
 
         /// <summary>
-        /// Optional. A user-readable description of the instance.
+        /// A user-readable description of the instance.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The filesystem name for this instance. This name is used by client-side
-        /// tools, including when mounting the instance. Must be 8 characters or less
-        /// and may only contain letters and numbers.
+        /// The filesystem name for this instance. This name is used by client-side
+        /// tools, including when mounting the instance. Must be eight characters or
+        /// less and can only contain letters and numbers.
         /// </summary>
         [Input("filesystem", required: true)]
         public Input<string> Filesystem { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Indicates whether you want to enable support for GKE clients. By default,
+        /// Indicates whether you want to enable support for GKE clients. By default,
         /// GKE clients are not supported.
         /// </summary>
         [Input("gkeSupportEnabled")]
         public Input<bool>? GkeSupportEnabled { get; set; }
 
         /// <summary>
-        /// Required. The name of the Managed Lustre instance.
+        /// The name of the Managed Lustre instance.
         /// * Must contain only lowercase letters, numbers, and hyphens.
         /// * Must start with a letter.
         /// * Must be between 1-63 characters.
@@ -304,7 +312,7 @@ namespace Pulumi.Gcp.Lustre
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels as key value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -321,12 +329,19 @@ namespace Pulumi.Gcp.Lustre
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The full name of the VPC network to which the instance is connected.
+        /// The full name of the VPC network to which the instance is connected.
         /// Must be in the format
         /// `projects/{project_id}/global/networks/{network_name}`.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
+
+        /// <summary>
+        /// The throughput of the instance in MB/s/TiB.
+        /// Valid values are 125, 250, 500, 1000.
+        /// </summary>
+        [Input("perUnitStorageThroughput", required: true)]
+        public Input<string> PerUnitStorageThroughput { get; set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -344,20 +359,20 @@ namespace Pulumi.Gcp.Lustre
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-        /// are from 18000 to 954000, in increments of 9000.
+        /// The storage capacity of the instance in gibibytes (GiB). Allowed values
+        /// are from `18000` to `954000`, in increments of 9000.
         /// </summary>
         [Input("capacityGib")]
         public Input<string>? CapacityGib { get; set; }
 
         /// <summary>
-        /// Output only. Timestamp when the instance was created.
+        /// Timestamp when the instance was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. A user-readable description of the instance.
+        /// A user-readable description of the instance.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -379,22 +394,22 @@ namespace Pulumi.Gcp.Lustre
         }
 
         /// <summary>
-        /// Required. Immutable. The filesystem name for this instance. This name is used by client-side
-        /// tools, including when mounting the instance. Must be 8 characters or less
-        /// and may only contain letters and numbers.
+        /// The filesystem name for this instance. This name is used by client-side
+        /// tools, including when mounting the instance. Must be eight characters or
+        /// less and can only contain letters and numbers.
         /// </summary>
         [Input("filesystem")]
         public Input<string>? Filesystem { get; set; }
 
         /// <summary>
-        /// Optional. Indicates whether you want to enable support for GKE clients. By default,
+        /// Indicates whether you want to enable support for GKE clients. By default,
         /// GKE clients are not supported.
         /// </summary>
         [Input("gkeSupportEnabled")]
         public Input<bool>? GkeSupportEnabled { get; set; }
 
         /// <summary>
-        /// Required. The name of the Managed Lustre instance.
+        /// The name of the Managed Lustre instance.
         /// * Must contain only lowercase letters, numbers, and hyphens.
         /// * Must start with a letter.
         /// * Must be between 1-63 characters.
@@ -410,7 +425,7 @@ namespace Pulumi.Gcp.Lustre
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs.
+        /// Labels as key value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -427,7 +442,7 @@ namespace Pulumi.Gcp.Lustre
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+        /// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         /// </summary>
         [Input("mountPoint")]
         public Input<string>? MountPoint { get; set; }
@@ -439,12 +454,19 @@ namespace Pulumi.Gcp.Lustre
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The full name of the VPC network to which the instance is connected.
+        /// The full name of the VPC network to which the instance is connected.
         /// Must be in the format
         /// `projects/{project_id}/global/networks/{network_name}`.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// The throughput of the instance in MB/s/TiB.
+        /// Valid values are 125, 250, 500, 1000.
+        /// </summary>
+        [Input("perUnitStorageThroughput")]
+        public Input<string>? PerUnitStorageThroughput { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -471,7 +493,7 @@ namespace Pulumi.Gcp.Lustre
         }
 
         /// <summary>
-        /// Output only. The state of the instance.
+        /// The state of the instance.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
@@ -485,7 +507,7 @@ namespace Pulumi.Gcp.Lustre
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. Timestamp when the instance was last updated.
+        /// Timestamp when the instance was last updated.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

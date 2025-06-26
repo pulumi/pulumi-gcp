@@ -378,6 +378,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.computeCustomEndpoint);
     }
 
+    @Import(name="contactCenterInsightsCustomEndpoint")
+    private @Nullable Output<String> contactCenterInsightsCustomEndpoint;
+
+    public Optional<Output<String>> contactCenterInsightsCustomEndpoint() {
+        return Optional.ofNullable(this.contactCenterInsightsCustomEndpoint);
+    }
+
     @Import(name="containerAnalysisCustomEndpoint")
     private @Nullable Output<String> containerAnalysisCustomEndpoint;
 
@@ -1426,6 +1433,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.colabCustomEndpoint = $.colabCustomEndpoint;
         this.composerCustomEndpoint = $.composerCustomEndpoint;
         this.computeCustomEndpoint = $.computeCustomEndpoint;
+        this.contactCenterInsightsCustomEndpoint = $.contactCenterInsightsCustomEndpoint;
         this.containerAnalysisCustomEndpoint = $.containerAnalysisCustomEndpoint;
         this.containerAttachedCustomEndpoint = $.containerAttachedCustomEndpoint;
         this.containerAwsCustomEndpoint = $.containerAwsCustomEndpoint;
@@ -2045,6 +2053,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder computeCustomEndpoint(String computeCustomEndpoint) {
             return computeCustomEndpoint(Output.of(computeCustomEndpoint));
+        }
+
+        public Builder contactCenterInsightsCustomEndpoint(@Nullable Output<String> contactCenterInsightsCustomEndpoint) {
+            $.contactCenterInsightsCustomEndpoint = contactCenterInsightsCustomEndpoint;
+            return this;
+        }
+
+        public Builder contactCenterInsightsCustomEndpoint(String contactCenterInsightsCustomEndpoint) {
+            return contactCenterInsightsCustomEndpoint(Output.of(contactCenterInsightsCustomEndpoint));
         }
 
         public Builder containerAnalysisCustomEndpoint(@Nullable Output<String> containerAnalysisCustomEndpoint) {

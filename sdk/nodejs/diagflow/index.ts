@@ -65,6 +65,11 @@ export type CxWebhook = import("./cxWebhook").CxWebhook;
 export const CxWebhook: typeof import("./cxWebhook").CxWebhook = null as any;
 utilities.lazyLoad(exports, ["CxWebhook"], () => require("./cxWebhook"));
 
+export { EncryptionSpecArgs, EncryptionSpecState } from "./encryptionSpec";
+export type EncryptionSpec = import("./encryptionSpec").EncryptionSpec;
+export const EncryptionSpec: typeof import("./encryptionSpec").EncryptionSpec = null as any;
+utilities.lazyLoad(exports, ["EncryptionSpec"], () => require("./encryptionSpec"));
+
 export { EntityTypeArgs, EntityTypeState } from "./entityType";
 export type EntityType = import("./entityType").EntityType;
 export const EntityType: typeof import("./entityType").EntityType = null as any;
@@ -109,6 +114,8 @@ const _module = {
                 return new CxVersion(name, <any>undefined, { urn })
             case "gcp:diagflow/cxWebhook:CxWebhook":
                 return new CxWebhook(name, <any>undefined, { urn })
+            case "gcp:diagflow/encryptionSpec:EncryptionSpec":
+                return new EncryptionSpec(name, <any>undefined, { urn })
             case "gcp:diagflow/entityType:EntityType":
                 return new EntityType(name, <any>undefined, { urn })
             case "gcp:diagflow/fulfillment:Fulfillment":
@@ -132,6 +139,7 @@ pulumi.runtime.registerResourceModule("gcp", "diagflow/cxTestCase", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxTool", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxWebhook", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/encryptionSpec", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/entityType", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/fulfillment", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/intent", _module)

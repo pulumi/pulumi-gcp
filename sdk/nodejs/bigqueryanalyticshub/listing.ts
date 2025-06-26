@@ -170,6 +170,34 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Analyticshub Listing Pubsub
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const listing = new gcp.bigqueryanalyticshub.DataExchange("listing", {
+ *     location: "US",
+ *     dataExchangeId: "tf_test_pubsub_data_exchange",
+ *     displayName: "tf_test_pubsub_data_exchange",
+ *     description: "Example for pubsub topic source",
+ * });
+ * const tfTestPubsubTopic = new gcp.pubsub.Topic("tf_test_pubsub_topic", {name: "test_pubsub"});
+ * const listingListing = new gcp.bigqueryanalyticshub.Listing("listing", {
+ *     location: "US",
+ *     dataExchangeId: listing.dataExchangeId,
+ *     listingId: "tf_test_pubsub_listing",
+ *     displayName: "tf_test_pubsub_listing",
+ *     description: "Example for pubsub topic source",
+ *     pubsubTopic: {
+ *         topic: tfTestPubsubTopic.id,
+ *         dataAffinityRegions: [
+ *             "us-central1",
+ *             "europe-west1",
+ *         ],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -227,7 +255,7 @@ export class Listing extends pulumi.CustomResource {
      * Shared dataset i.e. BigQuery dataset source.
      * Structure is documented below.
      */
-    public readonly bigqueryDataset!: pulumi.Output<outputs.bigqueryanalyticshub.ListingBigqueryDataset>;
+    public readonly bigqueryDataset!: pulumi.Output<outputs.bigqueryanalyticshub.ListingBigqueryDataset | undefined>;
     /**
      * Categories of the listing. Up to two categories are allowed.
      */
@@ -238,15 +266,18 @@ export class Listing extends pulumi.CustomResource {
     public readonly dataExchangeId!: pulumi.Output<string>;
     /**
      * Details of the data provider who owns the source data.
+     * Structure is documented below.
      */
     public readonly dataProvider!: pulumi.Output<outputs.bigqueryanalyticshub.ListingDataProvider | undefined>;
     /**
-     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
+     *
+     *
+     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -266,8 +297,7 @@ export class Listing extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-     * querying user.
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
      */
     public readonly logLinkedDatasetQueryUserEmail!: pulumi.Output<boolean | undefined>;
     /**
@@ -278,17 +308,28 @@ export class Listing extends pulumi.CustomResource {
      * Email or URL of the primary point of contact of the listing.
      */
     public readonly primaryContact!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Details of the publisher who owns the listing and who can share the source data.
+     * Structure is documented below.
      */
     public readonly publisher!: pulumi.Output<outputs.bigqueryanalyticshub.ListingPublisher | undefined>;
+    /**
+     * Pub/Sub topic source.
+     * Structure is documented below.
+     */
+    public readonly pubsubTopic!: pulumi.Output<outputs.bigqueryanalyticshub.ListingPubsubTopic | undefined>;
     /**
      * Email or URL of the request access of the listing. Subscribers can use this reference to request access.
      */
     public readonly requestAccess!: pulumi.Output<string | undefined>;
     /**
      * If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
      */
     public readonly restrictedExportConfig!: pulumi.Output<outputs.bigqueryanalyticshub.ListingRestrictedExportConfig | undefined>;
 
@@ -320,13 +361,11 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["primaryContact"] = state ? state.primaryContact : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["publisher"] = state ? state.publisher : undefined;
+            resourceInputs["pubsubTopic"] = state ? state.pubsubTopic : undefined;
             resourceInputs["requestAccess"] = state ? state.requestAccess : undefined;
             resourceInputs["restrictedExportConfig"] = state ? state.restrictedExportConfig : undefined;
         } else {
             const args = argsOrState as ListingArgs | undefined;
-            if ((!args || args.bigqueryDataset === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'bigqueryDataset'");
-            }
             if ((!args || args.dataExchangeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataExchangeId'");
             }
@@ -353,6 +392,7 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["primaryContact"] = args ? args.primaryContact : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["publisher"] = args ? args.publisher : undefined;
+            resourceInputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
             resourceInputs["requestAccess"] = args ? args.requestAccess : undefined;
             resourceInputs["restrictedExportConfig"] = args ? args.restrictedExportConfig : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -381,15 +421,18 @@ export interface ListingState {
     dataExchangeId?: pulumi.Input<string>;
     /**
      * Details of the data provider who owns the source data.
+     * Structure is documented below.
      */
     dataProvider?: pulumi.Input<inputs.bigqueryanalyticshub.ListingDataProvider>;
     /**
-     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
     description?: pulumi.Input<string>;
     /**
      * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
+     *
+     *
+     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -409,8 +452,7 @@ export interface ListingState {
      */
     location?: pulumi.Input<string>;
     /**
-     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-     * querying user.
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
      */
     logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
     /**
@@ -421,17 +463,28 @@ export interface ListingState {
      * Email or URL of the primary point of contact of the listing.
      */
     primaryContact?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Details of the publisher who owns the listing and who can share the source data.
+     * Structure is documented below.
      */
     publisher?: pulumi.Input<inputs.bigqueryanalyticshub.ListingPublisher>;
+    /**
+     * Pub/Sub topic source.
+     * Structure is documented below.
+     */
+    pubsubTopic?: pulumi.Input<inputs.bigqueryanalyticshub.ListingPubsubTopic>;
     /**
      * Email or URL of the request access of the listing. Subscribers can use this reference to request access.
      */
     requestAccess?: pulumi.Input<string>;
     /**
      * If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
      */
     restrictedExportConfig?: pulumi.Input<inputs.bigqueryanalyticshub.ListingRestrictedExportConfig>;
 }
@@ -444,7 +497,7 @@ export interface ListingArgs {
      * Shared dataset i.e. BigQuery dataset source.
      * Structure is documented below.
      */
-    bigqueryDataset: pulumi.Input<inputs.bigqueryanalyticshub.ListingBigqueryDataset>;
+    bigqueryDataset?: pulumi.Input<inputs.bigqueryanalyticshub.ListingBigqueryDataset>;
     /**
      * Categories of the listing. Up to two categories are allowed.
      */
@@ -455,15 +508,18 @@ export interface ListingArgs {
     dataExchangeId: pulumi.Input<string>;
     /**
      * Details of the data provider who owns the source data.
+     * Structure is documented below.
      */
     dataProvider?: pulumi.Input<inputs.bigqueryanalyticshub.ListingDataProvider>;
     /**
-     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
     description?: pulumi.Input<string>;
     /**
      * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
+     *
+     *
+     * - - -
      */
     displayName: pulumi.Input<string>;
     /**
@@ -483,25 +539,35 @@ export interface ListingArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-     * querying user.
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
      */
     logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
     /**
      * Email or URL of the primary point of contact of the listing.
      */
     primaryContact?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Details of the publisher who owns the listing and who can share the source data.
+     * Structure is documented below.
      */
     publisher?: pulumi.Input<inputs.bigqueryanalyticshub.ListingPublisher>;
+    /**
+     * Pub/Sub topic source.
+     * Structure is documented below.
+     */
+    pubsubTopic?: pulumi.Input<inputs.bigqueryanalyticshub.ListingPubsubTopic>;
     /**
      * Email or URL of the request access of the listing. Subscribers can use this reference to request access.
      */
     requestAccess?: pulumi.Input<string>;
     /**
      * If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
      */
     restrictedExportConfig?: pulumi.Input<inputs.bigqueryanalyticshub.ListingRestrictedExportConfig>;
 }

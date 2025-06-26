@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.InstanceNetworkConfigAuthorizedExternalNetworkArgs;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,25 @@ import javax.annotation.Nullable;
 public final class InstanceNetworkConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceNetworkConfigArgs Empty = new InstanceNetworkConfigArgs();
+
+    /**
+     * Name of the allocated IP range for the private IP AlloyDB instance, for example: &#34;google-managed-services-default&#34;.
+     * If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+     * The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+     * 
+     */
+    @Import(name="allocatedIpRangeOverride")
+    private @Nullable Output<String> allocatedIpRangeOverride;
+
+    /**
+     * @return Name of the allocated IP range for the private IP AlloyDB instance, for example: &#34;google-managed-services-default&#34;.
+     * If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+     * The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+     * 
+     */
+    public Optional<Output<String>> allocatedIpRangeOverride() {
+        return Optional.ofNullable(this.allocatedIpRangeOverride);
+    }
 
     /**
      * A list of external networks authorized to access this instance. This
@@ -75,6 +95,7 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
     private InstanceNetworkConfigArgs() {}
 
     private InstanceNetworkConfigArgs(InstanceNetworkConfigArgs $) {
+        this.allocatedIpRangeOverride = $.allocatedIpRangeOverride;
         this.authorizedExternalNetworks = $.authorizedExternalNetworks;
         this.enableOutboundPublicIp = $.enableOutboundPublicIp;
         this.enablePublicIp = $.enablePublicIp;
@@ -96,6 +117,31 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
 
         public Builder(InstanceNetworkConfigArgs defaults) {
             $ = new InstanceNetworkConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allocatedIpRangeOverride Name of the allocated IP range for the private IP AlloyDB instance, for example: &#34;google-managed-services-default&#34;.
+         * If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+         * The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocatedIpRangeOverride(@Nullable Output<String> allocatedIpRangeOverride) {
+            $.allocatedIpRangeOverride = allocatedIpRangeOverride;
+            return this;
+        }
+
+        /**
+         * @param allocatedIpRangeOverride Name of the allocated IP range for the private IP AlloyDB instance, for example: &#34;google-managed-services-default&#34;.
+         * If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+         * The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocatedIpRangeOverride(String allocatedIpRangeOverride) {
+            return allocatedIpRangeOverride(Output.of(allocatedIpRangeOverride));
         }
 
         /**

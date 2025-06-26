@@ -37,6 +37,7 @@ class BucketObjectArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  retention: Optional[pulumi.Input['BucketObjectRetentionArgs']] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
+                 source_md5hash: Optional[pulumi.Input[builtins.str]] = None,
                  storage_class: Optional[pulumi.Input[builtins.str]] = None,
                  temporary_hold: Optional[pulumi.Input[builtins.bool]] = None):
         """
@@ -62,6 +63,7 @@ class BucketObjectArgs:
                if `content` is not.
                
                - - -
+        :param pulumi.Input[builtins.str] source_md5hash: User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
         :param pulumi.Input[builtins.str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -83,6 +85,9 @@ class BucketObjectArgs:
         if customer_encryption is not None:
             pulumi.set(__self__, "customer_encryption", customer_encryption)
         if detect_md5hash is not None:
+            warnings.warn("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""", DeprecationWarning)
+            pulumi.log.warn("""detect_md5hash is deprecated: `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
+        if detect_md5hash is not None:
             pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if event_based_hold is not None:
             pulumi.set(__self__, "event_based_hold", event_based_hold)
@@ -96,6 +101,8 @@ class BucketObjectArgs:
             pulumi.set(__self__, "retention", retention)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if source_md5hash is not None:
+            pulumi.set(__self__, "source_md5hash", source_md5hash)
         if storage_class is not None:
             pulumi.set(__self__, "storage_class", storage_class)
         if temporary_hold is not None:
@@ -201,6 +208,7 @@ class BucketObjectArgs:
 
     @property
     @pulumi.getter(name="detectMd5hash")
+    @_utilities.deprecated("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
     def detect_md5hash(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "detect_md5hash")
 
@@ -286,6 +294,18 @@ class BucketObjectArgs:
         pulumi.set(self, "source", value)
 
     @property
+    @pulumi.getter(name="sourceMd5hash")
+    def source_md5hash(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+        """
+        return pulumi.get(self, "source_md5hash")
+
+    @source_md5hash.setter
+    def source_md5hash(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "source_md5hash", value)
+
+    @property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -337,6 +357,7 @@ class _BucketObjectState:
                  retention: Optional[pulumi.Input['BucketObjectRetentionArgs']] = None,
                  self_link: Optional[pulumi.Input[builtins.str]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
+                 source_md5hash: Optional[pulumi.Input[builtins.str]] = None,
                  storage_class: Optional[pulumi.Input[builtins.str]] = None,
                  temporary_hold: Optional[pulumi.Input[builtins.bool]] = None):
         """
@@ -370,6 +391,7 @@ class _BucketObjectState:
                if `content` is not.
                
                - - -
+        :param pulumi.Input[builtins.str] source_md5hash: User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
         :param pulumi.Input[builtins.str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -393,6 +415,9 @@ class _BucketObjectState:
             pulumi.set(__self__, "crc32c", crc32c)
         if customer_encryption is not None:
             pulumi.set(__self__, "customer_encryption", customer_encryption)
+        if detect_md5hash is not None:
+            warnings.warn("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""", DeprecationWarning)
+            pulumi.log.warn("""detect_md5hash is deprecated: `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
         if detect_md5hash is not None:
             pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if event_based_hold is not None:
@@ -419,6 +444,8 @@ class _BucketObjectState:
             pulumi.set(__self__, "self_link", self_link)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if source_md5hash is not None:
+            pulumi.set(__self__, "source_md5hash", source_md5hash)
         if storage_class is not None:
             pulumi.set(__self__, "storage_class", storage_class)
         if temporary_hold is not None:
@@ -536,6 +563,7 @@ class _BucketObjectState:
 
     @property
     @pulumi.getter(name="detectMd5hash")
+    @_utilities.deprecated("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
     def detect_md5hash(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "detect_md5hash")
 
@@ -694,6 +722,18 @@ class _BucketObjectState:
         pulumi.set(self, "source", value)
 
     @property
+    @pulumi.getter(name="sourceMd5hash")
+    def source_md5hash(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+        """
+        return pulumi.get(self, "source_md5hash")
+
+    @source_md5hash.setter
+    def source_md5hash(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "source_md5hash", value)
+
+    @property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -741,6 +781,7 @@ class BucketObject(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  retention: Optional[pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
+                 source_md5hash: Optional[pulumi.Input[builtins.str]] = None,
                  storage_class: Optional[pulumi.Input[builtins.str]] = None,
                  temporary_hold: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
@@ -809,6 +850,7 @@ class BucketObject(pulumi.CustomResource):
                if `content` is not.
                
                - - -
+        :param pulumi.Input[builtins.str] source_md5hash: User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
         :param pulumi.Input[builtins.str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -892,6 +934,7 @@ class BucketObject(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  retention: Optional[pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
+                 source_md5hash: Optional[pulumi.Input[builtins.str]] = None,
                  storage_class: Optional[pulumi.Input[builtins.str]] = None,
                  temporary_hold: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
@@ -920,6 +963,7 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["retention"] = retention
             __props__.__dict__["source"] = source
+            __props__.__dict__["source_md5hash"] = source_md5hash
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["temporary_hold"] = temporary_hold
             __props__.__dict__["crc32c"] = None
@@ -963,6 +1007,7 @@ class BucketObject(pulumi.CustomResource):
             retention: Optional[pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
             self_link: Optional[pulumi.Input[builtins.str]] = None,
             source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
+            source_md5hash: Optional[pulumi.Input[builtins.str]] = None,
             storage_class: Optional[pulumi.Input[builtins.str]] = None,
             temporary_hold: Optional[pulumi.Input[builtins.bool]] = None) -> 'BucketObject':
         """
@@ -1001,6 +1046,7 @@ class BucketObject(pulumi.CustomResource):
                if `content` is not.
                
                - - -
+        :param pulumi.Input[builtins.str] source_md5hash: User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
         :param pulumi.Input[builtins.str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -1032,6 +1078,7 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["retention"] = retention
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["source"] = source
+        __props__.__dict__["source_md5hash"] = source_md5hash
         __props__.__dict__["storage_class"] = storage_class
         __props__.__dict__["temporary_hold"] = temporary_hold
         return BucketObject(resource_name, opts=opts, __props__=__props__)
@@ -1112,6 +1159,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="detectMd5hash")
+    @_utilities.deprecated("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
     def detect_md5hash(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "detect_md5hash")
 
@@ -1216,6 +1264,14 @@ class BucketObject(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="sourceMd5hash")
+    def source_md5hash(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+        """
+        return pulumi.get(self, "source_md5hash")
 
     @property
     @pulumi.getter(name="storageClass")

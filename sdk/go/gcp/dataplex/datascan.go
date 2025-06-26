@@ -313,6 +313,161 @@ import (
 //	}
 //
 // ```
+// ### Dataplex Datascan Basic Discovery
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("tf-test-bucket-name-_91042"),
+//				Location:                 pulumi.String("us-west1"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewDatascan(ctx, "basic_discovery", &dataplex.DatascanArgs{
+//				Location:   pulumi.String("us-central1"),
+//				DataScanId: pulumi.String("datadiscovery-basic"),
+//				Data: &dataplex.DatascanDataArgs{
+//					Resource: pulumi.All(tfTestBucket.Project, tfTestBucket.Name).ApplyT(func(_args []interface{}) (string, error) {
+//						project := _args[0].(string)
+//						name := _args[1].(string)
+//						return fmt.Sprintf("//storage.googleapis.com/projects/%v/buckets/%v", project, name), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						OnDemand: &dataplex.DatascanExecutionSpecTriggerOnDemandArgs{},
+//					},
+//				},
+//				DataDiscoverySpec: &dataplex.DatascanDataDiscoverySpecArgs{},
+//				Project:           pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataplex Datascan Full Discovery
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("tf-test-bucket-name-_72490"),
+//				Location:                 pulumi.String("us-west1"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tfTestConnection, err := bigquery.NewConnection(ctx, "tf_test_connection", &bigquery.ConnectionArgs{
+//				ConnectionId:  pulumi.String("tf-test-connection-_89605"),
+//				Location:      pulumi.String("us-central1"),
+//				FriendlyName:  pulumi.String("tf-test-connection-_56730"),
+//				Description:   pulumi.String("a bigquery connection for tf test"),
+//				CloudResource: &bigquery.ConnectionCloudResourceArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewDatascan(ctx, "full_discovery", &dataplex.DatascanArgs{
+//				Location:    pulumi.String("us-central1"),
+//				DisplayName: pulumi.String("Full Datascan Discovery"),
+//				DataScanId:  pulumi.String("datadiscovery-full"),
+//				Description: pulumi.String("Example resource - Full Datascan Discovery"),
+//				Labels: pulumi.StringMap{
+//					"author": pulumi.String("billing"),
+//				},
+//				Data: &dataplex.DatascanDataArgs{
+//					Resource: pulumi.All(tfTestBucket.Project, tfTestBucket.Name).ApplyT(func(_args []interface{}) (string, error) {
+//						project := _args[0].(string)
+//						name := _args[1].(string)
+//						return fmt.Sprintf("//storage.googleapis.com/projects/%v/buckets/%v", project, name), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						Schedule: &dataplex.DatascanExecutionSpecTriggerScheduleArgs{
+//							Cron: pulumi.String("TZ=America/New_York 1 1 * * *"),
+//						},
+//					},
+//				},
+//				DataDiscoverySpec: &dataplex.DatascanDataDiscoverySpecArgs{
+//					BigqueryPublishingConfig: &dataplex.DatascanDataDiscoverySpecBigqueryPublishingConfigArgs{
+//						TableType: pulumi.String("BIGLAKE"),
+//						Connection: pulumi.All(tfTestConnection.Project, tfTestConnection.Location, tfTestConnection.ConnectionId).ApplyT(func(_args []interface{}) (string, error) {
+//							project := _args[0].(string)
+//							location := _args[1].(*string)
+//							connectionId := _args[2].(string)
+//							return fmt.Sprintf("projects/%v/locations/%v/connections/%v", project, location, connectionId), nil
+//						}).(pulumi.StringOutput),
+//						Location: tfTestBucket.Location,
+//						Project: tfTestBucket.Project.ApplyT(func(project string) (string, error) {
+//							return fmt.Sprintf("projects/%v", project), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					StorageConfig: &dataplex.DatascanDataDiscoverySpecStorageConfigArgs{
+//						IncludePatterns: pulumi.StringArray{
+//							pulumi.String("ai*"),
+//							pulumi.String("ml*"),
+//						},
+//						ExcludePatterns: pulumi.StringArray{
+//							pulumi.String("doc*"),
+//							pulumi.String("gen*"),
+//						},
+//						CsvOptions: &dataplex.DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs{
+//							HeaderRows:            pulumi.Int(5),
+//							Delimiter:             pulumi.String(","),
+//							Encoding:              pulumi.String("UTF-8"),
+//							TypeInferenceDisabled: pulumi.Bool(false),
+//							Quote:                 pulumi.String("'"),
+//						},
+//						JsonOptions: &dataplex.DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs{
+//							Encoding:              pulumi.String("UTF-8"),
+//							TypeInferenceDisabled: pulumi.Bool(false),
+//						},
+//					},
+//				},
+//				Project: pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -351,6 +506,8 @@ type Datascan struct {
 	// The data source for DataScan.
 	// Structure is documented below.
 	Data DatascanDataOutput `pulumi:"data"`
+	// DataDiscoveryScan related setting.
+	DataDiscoverySpec DatascanDataDiscoverySpecPtrOutput `pulumi:"dataDiscoverySpec"`
 	// DataProfileScan related setting.
 	DataProfileSpec DatascanDataProfileSpecPtrOutput `pulumi:"dataProfileSpec"`
 	// DataQualityScan related setting.
@@ -443,6 +600,8 @@ type datascanState struct {
 	// The data source for DataScan.
 	// Structure is documented below.
 	Data *DatascanData `pulumi:"data"`
+	// DataDiscoveryScan related setting.
+	DataDiscoverySpec *DatascanDataDiscoverySpec `pulumi:"dataDiscoverySpec"`
 	// DataProfileScan related setting.
 	DataProfileSpec *DatascanDataProfileSpec `pulumi:"dataProfileSpec"`
 	// DataQualityScan related setting.
@@ -489,6 +648,8 @@ type DatascanState struct {
 	// The data source for DataScan.
 	// Structure is documented below.
 	Data DatascanDataPtrInput
+	// DataDiscoveryScan related setting.
+	DataDiscoverySpec DatascanDataDiscoverySpecPtrInput
 	// DataProfileScan related setting.
 	DataProfileSpec DatascanDataProfileSpecPtrInput
 	// DataQualityScan related setting.
@@ -537,6 +698,8 @@ type datascanArgs struct {
 	// The data source for DataScan.
 	// Structure is documented below.
 	Data DatascanData `pulumi:"data"`
+	// DataDiscoveryScan related setting.
+	DataDiscoverySpec *DatascanDataDiscoverySpec `pulumi:"dataDiscoverySpec"`
 	// DataProfileScan related setting.
 	DataProfileSpec *DatascanDataProfileSpec `pulumi:"dataProfileSpec"`
 	// DataQualityScan related setting.
@@ -564,6 +727,8 @@ type DatascanArgs struct {
 	// The data source for DataScan.
 	// Structure is documented below.
 	Data DatascanDataInput
+	// DataDiscoveryScan related setting.
+	DataDiscoverySpec DatascanDataDiscoverySpecPtrInput
 	// DataProfileScan related setting.
 	DataProfileSpec DatascanDataProfileSpecPtrInput
 	// DataQualityScan related setting.
@@ -682,6 +847,11 @@ func (o DatascanOutput) CreateTime() pulumi.StringOutput {
 // Structure is documented below.
 func (o DatascanOutput) Data() DatascanDataOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataOutput { return v.Data }).(DatascanDataOutput)
+}
+
+// DataDiscoveryScan related setting.
+func (o DatascanOutput) DataDiscoverySpec() DatascanDataDiscoverySpecPtrOutput {
+	return o.ApplyT(func(v *Datascan) DatascanDataDiscoverySpecPtrOutput { return v.DataDiscoverySpec }).(DatascanDataDiscoverySpecPtrOutput)
 }
 
 // DataProfileScan related setting.

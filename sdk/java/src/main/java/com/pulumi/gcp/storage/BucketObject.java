@@ -247,6 +247,12 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
     public Output<Optional<BucketObjectCustomerEncryption>> customerEncryption() {
         return Codegen.optional(this.customerEncryption);
     }
+    /**
+     * @deprecated
+     * `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead
+     * 
+     */
+    @Deprecated /* `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead */
     @Export(name="detectMd5hash", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> detectMd5hash;
 
@@ -432,6 +438,20 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<AssetOrArchive>> source() {
         return Codegen.optional(this.source);
+    }
+    /**
+     * User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5(&#34;file.zip&#34;), where &#34;file.zip&#34; is the local filename
+     * 
+     */
+    @Export(name="sourceMd5hash", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sourceMd5hash;
+
+    /**
+     * @return User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5(&#34;file.zip&#34;), where &#34;file.zip&#34; is the local filename
+     * 
+     */
+    public Output<Optional<String>> sourceMd5hash() {
+        return Codegen.optional(this.sourceMd5hash);
     }
     /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.

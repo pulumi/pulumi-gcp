@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
     {
         /// <summary>
         /// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Table;
 

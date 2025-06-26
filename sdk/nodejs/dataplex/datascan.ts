@@ -236,6 +236,100 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ * ### Dataplex Datascan Basic Discovery
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
+ *     name: "tf-test-bucket-name-_91042",
+ *     location: "us-west1",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const basicDiscovery = new gcp.dataplex.Datascan("basic_discovery", {
+ *     location: "us-central1",
+ *     dataScanId: "datadiscovery-basic",
+ *     data: {
+ *         resource: pulumi.interpolate`//storage.googleapis.com/projects/${tfTestBucket.project}/buckets/${tfTestBucket.name}`,
+ *     },
+ *     executionSpec: {
+ *         trigger: {
+ *             onDemand: {},
+ *         },
+ *     },
+ *     dataDiscoverySpec: {},
+ *     project: "my-project-name",
+ * });
+ * ```
+ * ### Dataplex Datascan Full Discovery
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
+ *     name: "tf-test-bucket-name-_72490",
+ *     location: "us-west1",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const tfTestConnection = new gcp.bigquery.Connection("tf_test_connection", {
+ *     connectionId: "tf-test-connection-_89605",
+ *     location: "us-central1",
+ *     friendlyName: "tf-test-connection-_56730",
+ *     description: "a bigquery connection for tf test",
+ *     cloudResource: {},
+ * });
+ * const fullDiscovery = new gcp.dataplex.Datascan("full_discovery", {
+ *     location: "us-central1",
+ *     displayName: "Full Datascan Discovery",
+ *     dataScanId: "datadiscovery-full",
+ *     description: "Example resource - Full Datascan Discovery",
+ *     labels: {
+ *         author: "billing",
+ *     },
+ *     data: {
+ *         resource: pulumi.interpolate`//storage.googleapis.com/projects/${tfTestBucket.project}/buckets/${tfTestBucket.name}`,
+ *     },
+ *     executionSpec: {
+ *         trigger: {
+ *             schedule: {
+ *                 cron: "TZ=America/New_York 1 1 * * *",
+ *             },
+ *         },
+ *     },
+ *     dataDiscoverySpec: {
+ *         bigqueryPublishingConfig: {
+ *             tableType: "BIGLAKE",
+ *             connection: pulumi.all([tfTestConnection.project, tfTestConnection.location, tfTestConnection.connectionId]).apply(([project, location, connectionId]) => `projects/${project}/locations/${location}/connections/${connectionId}`),
+ *             location: tfTestBucket.location,
+ *             project: pulumi.interpolate`projects/${tfTestBucket.project}`,
+ *         },
+ *         storageConfig: {
+ *             includePatterns: [
+ *                 "ai*",
+ *                 "ml*",
+ *             ],
+ *             excludePatterns: [
+ *                 "doc*",
+ *                 "gen*",
+ *             ],
+ *             csvOptions: {
+ *                 headerRows: 5,
+ *                 delimiter: ",",
+ *                 encoding: "UTF-8",
+ *                 typeInferenceDisabled: false,
+ *                 quote: "'",
+ *             },
+ *             jsonOptions: {
+ *                 encoding: "UTF-8",
+ *                 typeInferenceDisabled: false,
+ *             },
+ *         },
+ *     },
+ *     project: "my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -304,6 +398,10 @@ export class Datascan extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly data!: pulumi.Output<outputs.dataplex.DatascanData>;
+    /**
+     * DataDiscoveryScan related setting.
+     */
+    public readonly dataDiscoverySpec!: pulumi.Output<outputs.dataplex.DatascanDataDiscoverySpec | undefined>;
     /**
      * DataProfileScan related setting.
      */
@@ -390,6 +488,7 @@ export class Datascan extends pulumi.CustomResource {
             const state = argsOrState as DatascanState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["data"] = state ? state.data : undefined;
+            resourceInputs["dataDiscoverySpec"] = state ? state.dataDiscoverySpec : undefined;
             resourceInputs["dataProfileSpec"] = state ? state.dataProfileSpec : undefined;
             resourceInputs["dataQualitySpec"] = state ? state.dataQualitySpec : undefined;
             resourceInputs["dataScanId"] = state ? state.dataScanId : undefined;
@@ -422,6 +521,7 @@ export class Datascan extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["dataDiscoverySpec"] = args ? args.dataDiscoverySpec : undefined;
             resourceInputs["dataProfileSpec"] = args ? args.dataProfileSpec : undefined;
             resourceInputs["dataQualitySpec"] = args ? args.dataQualitySpec : undefined;
             resourceInputs["dataScanId"] = args ? args.dataScanId : undefined;
@@ -461,6 +561,10 @@ export interface DatascanState {
      * Structure is documented below.
      */
     data?: pulumi.Input<inputs.dataplex.DatascanData>;
+    /**
+     * DataDiscoveryScan related setting.
+     */
+    dataDiscoverySpec?: pulumi.Input<inputs.dataplex.DatascanDataDiscoverySpec>;
     /**
      * DataProfileScan related setting.
      */
@@ -542,6 +646,10 @@ export interface DatascanArgs {
      * Structure is documented below.
      */
     data: pulumi.Input<inputs.dataplex.DatascanData>;
+    /**
+     * DataDiscoveryScan related setting.
+     */
+    dataDiscoverySpec?: pulumi.Input<inputs.dataplex.DatascanDataDiscoverySpec>;
     /**
      * DataProfileScan related setting.
      */

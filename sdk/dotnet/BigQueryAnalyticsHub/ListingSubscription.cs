@@ -166,6 +166,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+        /// </summary>
+        [Output("logLinkedDatasetQueryUserEmail")]
+        public Output<bool> LogLinkedDatasetQueryUserEmail { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
         /// </summary>
         [Output("name")]
@@ -355,6 +361,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+        /// </summary>
+        [Input("logLinkedDatasetQueryUserEmail")]
+        public Input<bool>? LogLinkedDatasetQueryUserEmail { get; set; }
 
         /// <summary>
         /// The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"

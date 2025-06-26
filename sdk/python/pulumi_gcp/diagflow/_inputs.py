@@ -390,6 +390,8 @@ __all__ = [
     'CxWebhookServiceDirectoryArgsDict',
     'CxWebhookServiceDirectoryGenericWebServiceArgs',
     'CxWebhookServiceDirectoryGenericWebServiceArgsDict',
+    'EncryptionSpecEncryptionSpecArgs',
+    'EncryptionSpecEncryptionSpecArgsDict',
     'EntityTypeEntityArgs',
     'EntityTypeEntityArgsDict',
     'FulfillmentFeatureArgs',
@@ -14777,6 +14779,52 @@ class CxWebhookServiceDirectoryGenericWebServiceArgs:
     @request_headers.setter
     def request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "request_headers", value)
+
+
+if not MYPY:
+    class EncryptionSpecEncryptionSpecArgsDict(TypedDict):
+        kms_key: pulumi.Input[builtins.str]
+        """
+        The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
+        If empty, the resource is secured by the default Google encryption key.
+        Only the key in the same location as this resource is allowed to be used for encryption.
+        Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
+
+        - - -
+        """
+elif False:
+    EncryptionSpecEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EncryptionSpecEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] kms_key: The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
+               If empty, the resource is secured by the default Google encryption key.
+               Only the key in the same location as this resource is allowed to be used for encryption.
+               Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
+               
+               - - -
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
+        If empty, the resource is secured by the default Google encryption key.
+        Only the key in the same location as this resource is allowed to be used for encryption.
+        Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
+
+        - - -
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "kms_key", value)
 
 
 if not MYPY:

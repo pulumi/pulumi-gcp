@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudquota.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,7 +18,6 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
 
     /**
      * The resource container that determines if the quota adjuster is set for this project.
-     * Expect this field to be empty currently.
      * 
      */
     @Import(name="effectiveContainer")
@@ -25,7 +25,6 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
 
     /**
      * @return The resource container that determines if the quota adjuster is set for this project.
-     * Expect this field to be empty currently.
      * 
      */
     public Optional<Output<String>> effectiveContainer() {
@@ -34,7 +33,6 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
 
     /**
      * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-     * Expect this field to be empty currently.
      * 
      */
     @Import(name="effectiveEnablement")
@@ -42,7 +40,6 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
 
     /**
      * @return Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-     * Expect this field to be empty currently.
      * 
      */
     public Optional<Output<String>> effectiveEnablement() {
@@ -64,6 +61,40 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> enablement() {
         return Optional.ofNullable(this.enablement);
+    }
+
+    /**
+     * Indicates whether the setting is inherited or explicitly specified.
+     * 
+     */
+    @Import(name="inherited")
+    private @Nullable Output<Boolean> inherited;
+
+    /**
+     * @return Indicates whether the setting is inherited or explicitly specified.
+     * 
+     */
+    public Optional<Output<Boolean>> inherited() {
+        return Optional.ofNullable(this.inherited);
+    }
+
+    /**
+     * The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+     * The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+     * The value will be empty when `enablement` is specified on this resource container.
+     * 
+     */
+    @Import(name="inheritedFrom")
+    private @Nullable Output<String> inheritedFrom;
+
+    /**
+     * @return The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+     * The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+     * The value will be empty when `enablement` is specified on this resource container.
+     * 
+     */
+    public Optional<Output<String>> inheritedFrom() {
+        return Optional.ofNullable(this.inheritedFrom);
     }
 
     /**
@@ -91,6 +122,8 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
         this.effectiveContainer = $.effectiveContainer;
         this.effectiveEnablement = $.effectiveEnablement;
         this.enablement = $.enablement;
+        this.inherited = $.inherited;
+        this.inheritedFrom = $.inheritedFrom;
         this.parent = $.parent;
     }
 
@@ -114,7 +147,6 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
 
         /**
          * @param effectiveContainer The resource container that determines if the quota adjuster is set for this project.
-         * Expect this field to be empty currently.
          * 
          * @return builder
          * 
@@ -126,7 +158,6 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
 
         /**
          * @param effectiveContainer The resource container that determines if the quota adjuster is set for this project.
-         * Expect this field to be empty currently.
          * 
          * @return builder
          * 
@@ -137,7 +168,6 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
 
         /**
          * @param effectiveEnablement Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-         * Expect this field to be empty currently.
          * 
          * @return builder
          * 
@@ -149,7 +179,6 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
 
         /**
          * @param effectiveEnablement Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-         * Expect this field to be empty currently.
          * 
          * @return builder
          * 
@@ -179,6 +208,52 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
          */
         public Builder enablement(String enablement) {
             return enablement(Output.of(enablement));
+        }
+
+        /**
+         * @param inherited Indicates whether the setting is inherited or explicitly specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inherited(@Nullable Output<Boolean> inherited) {
+            $.inherited = inherited;
+            return this;
+        }
+
+        /**
+         * @param inherited Indicates whether the setting is inherited or explicitly specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inherited(Boolean inherited) {
+            return inherited(Output.of(inherited));
+        }
+
+        /**
+         * @param inheritedFrom The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+         * The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+         * The value will be empty when `enablement` is specified on this resource container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritedFrom(@Nullable Output<String> inheritedFrom) {
+            $.inheritedFrom = inheritedFrom;
+            return this;
+        }
+
+        /**
+         * @param inheritedFrom The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+         * The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+         * The value will be empty when `enablement` is specified on this resource container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritedFrom(String inheritedFrom) {
+            return inheritedFrom(Output.of(inheritedFrom));
         }
 
         /**

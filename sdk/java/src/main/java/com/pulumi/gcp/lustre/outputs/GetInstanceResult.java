@@ -31,6 +31,7 @@ public final class GetInstanceResult {
     private String mountPoint;
     private String name;
     private String network;
+    private String perUnitStorageThroughput;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private String state;
@@ -81,6 +82,9 @@ public final class GetInstanceResult {
     public String network() {
         return this.network;
     }
+    public String perUnitStorageThroughput() {
+        return this.perUnitStorageThroughput;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -119,6 +123,7 @@ public final class GetInstanceResult {
         private String mountPoint;
         private String name;
         private String network;
+        private String perUnitStorageThroughput;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private String state;
@@ -140,6 +145,7 @@ public final class GetInstanceResult {
     	      this.mountPoint = defaults.mountPoint;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.perUnitStorageThroughput = defaults.perUnitStorageThroughput;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.state = defaults.state;
@@ -252,6 +258,14 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder perUnitStorageThroughput(String perUnitStorageThroughput) {
+            if (perUnitStorageThroughput == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "perUnitStorageThroughput");
+            }
+            this.perUnitStorageThroughput = perUnitStorageThroughput;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -302,6 +316,7 @@ public final class GetInstanceResult {
             _resultValue.mountPoint = mountPoint;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.perUnitStorageThroughput = perUnitStorageThroughput;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.state = state;

@@ -165,7 +165,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image("ubuntu-os-cloud/ubuntu-2004-lts")
+ *                     .image("ubuntu-os-cloud/ubuntu-2204-lts")
  *                     .labels(Map.of("my_label", "value"))
  *                     .build())
  *                 .build())

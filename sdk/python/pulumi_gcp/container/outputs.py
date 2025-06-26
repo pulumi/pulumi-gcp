@@ -7773,6 +7773,8 @@ class ClusterNodeConfigAdvancedMachineFeatures(dict):
             suggest = "threads_per_core"
         elif key == "enableNestedVirtualization":
             suggest = "enable_nested_virtualization"
+        elif key == "performanceMonitoringUnit":
+            suggest = "performance_monitoring_unit"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
@@ -7787,14 +7789,18 @@ class ClusterNodeConfigAdvancedMachineFeatures(dict):
 
     def __init__(__self__, *,
                  threads_per_core: builtins.int,
-                 enable_nested_virtualization: Optional[builtins.bool] = None):
+                 enable_nested_virtualization: Optional[builtins.bool] = None,
+                 performance_monitoring_unit: Optional[builtins.str] = None):
         """
         :param builtins.int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param builtins.bool enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        :param builtins.str performance_monitoring_unit: Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -7811,6 +7817,14 @@ class ClusterNodeConfigAdvancedMachineFeatures(dict):
         Defines whether the instance should have nested virtualization enabled. Defaults to false.
         """
         return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[builtins.str]:
+        """
+        Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
 
 
 @pulumi.output_type
@@ -10098,12 +10112,12 @@ class ClusterNodePoolNetworkConfig(dict):
         """
         :param Sequence['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
         :param Sequence['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
-        :param builtins.bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        :param builtins.bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
         :param builtins.bool enable_private_nodes: Whether nodes have internal IP addresses only.
         :param 'ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs' network_performance_config: Network bandwidth tier configuration.
         :param 'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs' pod_cidr_overprovision_config: Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
-        :param builtins.str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
-        :param builtins.str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        :param builtins.str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        :param builtins.str pod_range: The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         """
         if additional_node_network_configs is not None:
             pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
@@ -10142,7 +10156,7 @@ class ClusterNodePoolNetworkConfig(dict):
     @pulumi.getter(name="createPodRange")
     def create_pod_range(self) -> Optional[builtins.bool]:
         """
-        Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
         """
         return pulumi.get(self, "create_pod_range")
 
@@ -10174,7 +10188,7 @@ class ClusterNodePoolNetworkConfig(dict):
     @pulumi.getter(name="podIpv4CidrBlock")
     def pod_ipv4_cidr_block(self) -> Optional[builtins.str]:
         """
-        The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         """
         return pulumi.get(self, "pod_ipv4_cidr_block")
 
@@ -10182,7 +10196,7 @@ class ClusterNodePoolNetworkConfig(dict):
     @pulumi.getter(name="podRange")
     def pod_range(self) -> Optional[builtins.str]:
         """
-        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         """
         return pulumi.get(self, "pod_range")
 
@@ -11114,6 +11128,8 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
             suggest = "threads_per_core"
         elif key == "enableNestedVirtualization":
             suggest = "enable_nested_virtualization"
+        elif key == "performanceMonitoringUnit":
+            suggest = "performance_monitoring_unit"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
@@ -11128,14 +11144,18 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
 
     def __init__(__self__, *,
                  threads_per_core: builtins.int,
-                 enable_nested_virtualization: Optional[builtins.bool] = None):
+                 enable_nested_virtualization: Optional[builtins.bool] = None,
+                 performance_monitoring_unit: Optional[builtins.str] = None):
         """
         :param builtins.int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param builtins.bool enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        :param builtins.str performance_monitoring_unit: Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -11152,6 +11172,14 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
         Defines whether the instance should have nested virtualization enabled. Defaults to false.
         """
         return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[builtins.str]:
+        """
+        Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
 
 
 @pulumi.output_type
@@ -14805,6 +14833,8 @@ class NodePoolNodeConfigAdvancedMachineFeatures(dict):
             suggest = "threads_per_core"
         elif key == "enableNestedVirtualization":
             suggest = "enable_nested_virtualization"
+        elif key == "performanceMonitoringUnit":
+            suggest = "performance_monitoring_unit"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
@@ -14819,14 +14849,18 @@ class NodePoolNodeConfigAdvancedMachineFeatures(dict):
 
     def __init__(__self__, *,
                  threads_per_core: builtins.int,
-                 enable_nested_virtualization: Optional[builtins.bool] = None):
+                 enable_nested_virtualization: Optional[builtins.bool] = None,
+                 performance_monitoring_unit: Optional[builtins.str] = None):
         """
         :param builtins.int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param builtins.bool enable_nested_virtualization: Whether the node should have nested virtualization enabled.
+        :param builtins.str performance_monitoring_unit: Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -14843,6 +14877,14 @@ class NodePoolNodeConfigAdvancedMachineFeatures(dict):
         Whether the node should have nested virtualization enabled.
         """
         return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[builtins.str]:
+        """
+        Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
 
 
 @pulumi.output_type
@@ -18786,12 +18828,15 @@ class GetClusterNodeConfigResult(dict):
 class GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: builtins.bool,
+                 performance_monitoring_unit: builtins.str,
                  threads_per_core: builtins.int):
         """
         :param builtins.bool enable_nested_virtualization: Whether the node should have nested virtualization enabled.
+        :param builtins.str performance_monitoring_unit: Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
         :param builtins.int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
         pulumi.set(__self__, "threads_per_core", threads_per_core)
 
     @property
@@ -18801,6 +18846,14 @@ class GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
         Whether the node should have nested virtualization enabled.
         """
         return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> builtins.str:
+        """
+        Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -20923,12 +20976,15 @@ class GetClusterNodePoolNodeConfigResult(dict):
 class GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: builtins.bool,
+                 performance_monitoring_unit: builtins.str,
                  threads_per_core: builtins.int):
         """
         :param builtins.bool enable_nested_virtualization: Whether the node should have nested virtualization enabled.
+        :param builtins.str performance_monitoring_unit: Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
         :param builtins.int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
         pulumi.set(__self__, "threads_per_core", threads_per_core)
 
     @property
@@ -20938,6 +20994,14 @@ class GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
         Whether the node should have nested virtualization enabled.
         """
         return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> builtins.str:
+        """
+        Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
 
     @property
     @pulumi.getter(name="threadsPerCore")

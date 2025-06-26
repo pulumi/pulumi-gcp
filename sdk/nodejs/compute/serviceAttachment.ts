@@ -443,7 +443,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
      * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
      * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-     * If unspecified, the default propagated connection limit is 250.
+     * If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
      */
     public readonly propagatedConnectionLimit!: pulumi.Output<number>;
     /**
@@ -460,6 +460,13 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Controls the behavior of propagated_connection_limit.
+     * When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+     * When true, the provider will set propagatedConnectionLimit to zero.
+     * Defaults to false.
+     */
+    public readonly sendPropagatedConnectionLimitIfZero!: pulumi.Output<boolean | undefined>;
     /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */
@@ -493,6 +500,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["reconcileConnections"] = state ? state.reconcileConnections : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["sendPropagatedConnectionLimitIfZero"] = state ? state.sendPropagatedConnectionLimitIfZero : undefined;
             resourceInputs["targetService"] = state ? state.targetService : undefined;
         } else {
             const args = argsOrState as ServiceAttachmentArgs | undefined;
@@ -520,6 +528,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["propagatedConnectionLimit"] = args ? args.propagatedConnectionLimit : undefined;
             resourceInputs["reconcileConnections"] = args ? args.reconcileConnections : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["sendPropagatedConnectionLimitIfZero"] = args ? args.sendPropagatedConnectionLimitIfZero : undefined;
             resourceInputs["targetService"] = args ? args.targetService : undefined;
             resourceInputs["connectedEndpoints"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -604,7 +613,7 @@ export interface ServiceAttachmentState {
      * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
      * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
      * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-     * If unspecified, the default propagated connection limit is 250.
+     * If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
      */
     propagatedConnectionLimit?: pulumi.Input<number>;
     /**
@@ -621,6 +630,13 @@ export interface ServiceAttachmentState {
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * Controls the behavior of propagated_connection_limit.
+     * When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+     * When true, the provider will set propagatedConnectionLimit to zero.
+     * Defaults to false.
+     */
+    sendPropagatedConnectionLimitIfZero?: pulumi.Input<boolean>;
     /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */
@@ -690,7 +706,7 @@ export interface ServiceAttachmentArgs {
      * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
      * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
      * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-     * If unspecified, the default propagated connection limit is 250.
+     * If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
      */
     propagatedConnectionLimit?: pulumi.Input<number>;
     /**
@@ -703,6 +719,13 @@ export interface ServiceAttachmentArgs {
      * URL of the region where the resource resides.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Controls the behavior of propagated_connection_limit.
+     * When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+     * When true, the provider will set propagatedConnectionLimit to zero.
+     * Defaults to false.
+     */
+    sendPropagatedConnectionLimitIfZero?: pulumi.Input<boolean>;
     /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */

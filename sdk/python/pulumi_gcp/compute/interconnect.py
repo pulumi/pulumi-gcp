@@ -92,7 +92,7 @@ class InterconnectArgs:
                specified, the default value is false, which allocates non-MACsec capable ports first if
                available). Note that MACSEC is still technically allowed for compatibility reasons, but it
                does not work with the API, and will be removed in an upcoming major version.
-               Each value may be one of: `MACSEC`, `IF_MACSEC`.
+               Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
         """
         pulumi.set(__self__, "interconnect_type", interconnect_type)
         pulumi.set(__self__, "link_type", link_type)
@@ -332,7 +332,7 @@ class InterconnectArgs:
         specified, the default value is false, which allocates non-MACsec capable ports first if
         available). Note that MACSEC is still technically allowed for compatibility reasons, but it
         does not work with the API, and will be removed in an upcoming major version.
-        Each value may be one of: `MACSEC`, `IF_MACSEC`.
+        Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
         """
         return pulumi.get(self, "requested_features")
 
@@ -374,7 +374,8 @@ class _InterconnectState:
                  requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  requested_link_count: Optional[pulumi.Input[builtins.int]] = None,
                  satisfies_pzs: Optional[pulumi.Input[builtins.bool]] = None,
-                 state: Optional[pulumi.Input[builtins.str]] = None):
+                 state: Optional[pulumi.Input[builtins.str]] = None,
+                 wire_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Interconnect resources.
         :param pulumi.Input[builtins.bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is
@@ -464,7 +465,7 @@ class _InterconnectState:
                specified, the default value is false, which allocates non-MACsec capable ports first if
                available). Note that MACSEC is still technically allowed for compatibility reasons, but it
                does not work with the API, and will be removed in an upcoming major version.
-               Each value may be one of: `MACSEC`, `IF_MACSEC`.
+               Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
         :param pulumi.Input[builtins.int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[builtins.bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[builtins.str] state: (Output)
@@ -475,6 +476,8 @@ class _InterconnectState:
                - CANCELLED: The outage associated with this notification was cancelled before the
                outage was due to start.
                - COMPLETED: The outage associated with this notification is complete.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] wire_groups: A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+               deleted if this list is non-empty.
         """
         if admin_enabled is not None:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -538,6 +541,8 @@ class _InterconnectState:
             pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if wire_groups is not None:
+            pulumi.set(__self__, "wire_groups", wire_groups)
 
     @property
     @pulumi.getter(name="adminEnabled")
@@ -927,7 +932,7 @@ class _InterconnectState:
         specified, the default value is false, which allocates non-MACsec capable ports first if
         available). Note that MACSEC is still technically allowed for compatibility reasons, but it
         does not work with the API, and will be removed in an upcoming major version.
-        Each value may be one of: `MACSEC`, `IF_MACSEC`.
+        Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
         """
         return pulumi.get(self, "requested_features")
 
@@ -978,6 +983,19 @@ class _InterconnectState:
     def state(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "state", value)
 
+    @property
+    @pulumi.getter(name="wireGroups")
+    def wire_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+        deleted if this list is non-empty.
+        """
+        return pulumi.get(self, "wire_groups")
+
+    @wire_groups.setter
+    def wire_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "wire_groups", value)
+
 
 @pulumi.type_token("gcp:compute/interconnect:Interconnect")
 class Interconnect(pulumi.CustomResource):
@@ -1025,7 +1043,7 @@ class Interconnect(pulumi.CustomResource):
             customer_name="example_customer",
             interconnect_type="DEDICATED",
             link_type="LINK_TYPE_ETHERNET_10G_LR",
-            location=f"https://www.googleapis.com/compute/v1/projects/{project.name}/global/interconnectLocations/iad-zone1-1",
+            location=f"https://www.googleapis.com/compute/v1/{project.id}/global/interconnectLocations/iad-zone1-1",
             requested_link_count=1)
         ```
 
@@ -1107,7 +1125,7 @@ class Interconnect(pulumi.CustomResource):
                specified, the default value is false, which allocates non-MACsec capable ports first if
                available). Note that MACSEC is still technically allowed for compatibility reasons, but it
                does not work with the API, and will be removed in an upcoming major version.
-               Each value may be one of: `MACSEC`, `IF_MACSEC`.
+               Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
         :param pulumi.Input[builtins.int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
         ...
@@ -1140,7 +1158,7 @@ class Interconnect(pulumi.CustomResource):
             customer_name="example_customer",
             interconnect_type="DEDICATED",
             link_type="LINK_TYPE_ETHERNET_10G_LR",
-            location=f"https://www.googleapis.com/compute/v1/projects/{project.name}/global/interconnectLocations/iad-zone1-1",
+            location=f"https://www.googleapis.com/compute/v1/{project.id}/global/interconnectLocations/iad-zone1-1",
             requested_link_count=1)
         ```
 
@@ -1246,6 +1264,7 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["wire_groups"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Interconnect, __self__).__init__(
@@ -1288,7 +1307,8 @@ class Interconnect(pulumi.CustomResource):
             requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             requested_link_count: Optional[pulumi.Input[builtins.int]] = None,
             satisfies_pzs: Optional[pulumi.Input[builtins.bool]] = None,
-            state: Optional[pulumi.Input[builtins.str]] = None) -> 'Interconnect':
+            state: Optional[pulumi.Input[builtins.str]] = None,
+            wire_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None) -> 'Interconnect':
         """
         Get an existing Interconnect resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1383,7 +1403,7 @@ class Interconnect(pulumi.CustomResource):
                specified, the default value is false, which allocates non-MACsec capable ports first if
                available). Note that MACSEC is still technically allowed for compatibility reasons, but it
                does not work with the API, and will be removed in an upcoming major version.
-               Each value may be one of: `MACSEC`, `IF_MACSEC`.
+               Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
         :param pulumi.Input[builtins.int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[builtins.bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[builtins.str] state: (Output)
@@ -1394,6 +1414,8 @@ class Interconnect(pulumi.CustomResource):
                - CANCELLED: The outage associated with this notification was cancelled before the
                outage was due to start.
                - COMPLETED: The outage associated with this notification is complete.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] wire_groups: A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+               deleted if this list is non-empty.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1430,6 +1452,7 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["requested_link_count"] = requested_link_count
         __props__.__dict__["satisfies_pzs"] = satisfies_pzs
         __props__.__dict__["state"] = state
+        __props__.__dict__["wire_groups"] = wire_groups
         return Interconnect(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1712,7 +1735,7 @@ class Interconnect(pulumi.CustomResource):
         specified, the default value is false, which allocates non-MACsec capable ports first if
         available). Note that MACSEC is still technically allowed for compatibility reasons, but it
         does not work with the API, and will be removed in an upcoming major version.
-        Each value may be one of: `MACSEC`, `IF_MACSEC`.
+        Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
         """
         return pulumi.get(self, "requested_features")
 
@@ -1746,4 +1769,13 @@ class Interconnect(pulumi.CustomResource):
         - COMPLETED: The outage associated with this notification is complete.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="wireGroups")
+    def wire_groups(self) -> pulumi.Output[Sequence[builtins.str]]:
+        """
+        A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+        deleted if this list is non-empty.
+        """
+        return pulumi.get(self, "wire_groups")
 

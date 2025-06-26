@@ -164,6 +164,17 @@ namespace Pulumi.Gcp.BigTable
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+        /// that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+        /// schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
+        /// valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+        /// delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+        /// byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+        /// </summary>
+        [Output("rowKeySchema")]
+        public Output<string?> RowKeySchema { get; private set; } = null!;
+
+        /// <summary>
         /// A list of predefined keys to split the table on.
         /// !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
         /// to delete/recreate the entire `gcp.bigtable.Table` resource.
@@ -268,6 +279,17 @@ namespace Pulumi.Gcp.BigTable
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+        /// that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+        /// schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
+        /// valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+        /// delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+        /// byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+        /// </summary>
+        [Input("rowKeySchema")]
+        public Input<string>? RowKeySchema { get; set; }
+
         [Input("splitKeys")]
         private InputList<string>? _splitKeys;
 
@@ -340,6 +362,17 @@ namespace Pulumi.Gcp.BigTable
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+        /// that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+        /// schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
+        /// valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+        /// delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+        /// byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+        /// </summary>
+        [Input("rowKeySchema")]
+        public Input<string>? RowKeySchema { get; set; }
 
         [Input("splitKeys")]
         private InputList<string>? _splitKeys;

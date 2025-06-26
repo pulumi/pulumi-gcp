@@ -54,6 +54,7 @@ export interface GetInstanceResult {
     readonly mountPoint: string;
     readonly name: string;
     readonly network: string;
+    readonly perUnitStorageThroughput: string;
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly state: string;

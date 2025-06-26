@@ -29,6 +29,7 @@ class TableArgs:
                  deletion_protection: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 row_key_schema: Optional[pulumi.Input[builtins.str]] = None,
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a Table resource.
@@ -42,6 +43,12 @@ class TableArgs:
         :param pulumi.Input[builtins.str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] row_key_schema: Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+               that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+               schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n The schema must be a
+               valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+               delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+               byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] split_keys: A list of predefined keys to split the table on.
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
@@ -59,6 +66,8 @@ class TableArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if row_key_schema is not None:
+            pulumi.set(__self__, "row_key_schema", row_key_schema)
         if split_keys is not None:
             pulumi.set(__self__, "split_keys", split_keys)
 
@@ -150,6 +159,23 @@ class TableArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="rowKeySchema")
+    def row_key_schema(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+        that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+        schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n The schema must be a
+        valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+        delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+        byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+        """
+        return pulumi.get(self, "row_key_schema")
+
+    @row_key_schema.setter
+    def row_key_schema(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "row_key_schema", value)
+
+    @property
     @pulumi.getter(name="splitKeys")
     def split_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
@@ -174,6 +200,7 @@ class _TableState:
                  instance_name: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 row_key_schema: Optional[pulumi.Input[builtins.str]] = None,
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Table resources.
@@ -187,6 +214,12 @@ class _TableState:
         :param pulumi.Input[builtins.str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] row_key_schema: Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+               that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+               schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n The schema must be a
+               valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+               delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+               byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] split_keys: A list of predefined keys to split the table on.
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
@@ -205,6 +238,8 @@ class _TableState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if row_key_schema is not None:
+            pulumi.set(__self__, "row_key_schema", row_key_schema)
         if split_keys is not None:
             pulumi.set(__self__, "split_keys", split_keys)
 
@@ -296,6 +331,23 @@ class _TableState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="rowKeySchema")
+    def row_key_schema(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+        that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+        schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n The schema must be a
+        valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+        delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+        byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+        """
+        return pulumi.get(self, "row_key_schema")
+
+    @row_key_schema.setter
+    def row_key_schema(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "row_key_schema", value)
+
+    @property
     @pulumi.getter(name="splitKeys")
     def split_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
@@ -323,6 +375,7 @@ class Table(pulumi.CustomResource):
                  instance_name: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 row_key_schema: Optional[pulumi.Input[builtins.str]] = None,
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  __props__=None):
         """
@@ -422,6 +475,12 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] row_key_schema: Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+               that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+               schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n The schema must be a
+               valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+               delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+               byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] split_keys: A list of predefined keys to split the table on.
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
@@ -539,6 +598,7 @@ class Table(pulumi.CustomResource):
                  instance_name: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 row_key_schema: Optional[pulumi.Input[builtins.str]] = None,
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -558,6 +618,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["row_key_schema"] = row_key_schema
             __props__.__dict__["split_keys"] = split_keys
         super(Table, __self__).__init__(
             'gcp:bigtable/table:Table',
@@ -576,6 +637,7 @@ class Table(pulumi.CustomResource):
             instance_name: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
+            row_key_schema: Optional[pulumi.Input[builtins.str]] = None,
             split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None) -> 'Table':
         """
         Get an existing Table resource's state with the given name, id, and optional extra
@@ -594,6 +656,12 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] row_key_schema: Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+               that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+               schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n The schema must be a
+               valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+               delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+               byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] split_keys: A list of predefined keys to split the table on.
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
@@ -609,6 +677,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["row_key_schema"] = row_key_schema
         __props__.__dict__["split_keys"] = split_keys
         return Table(resource_name, opts=opts, __props__=__props__)
 
@@ -670,6 +739,19 @@ class Table(pulumi.CustomResource):
         is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="rowKeySchema")
+    def row_key_schema(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+        that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+        schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n The schema must be a
+        valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+        delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+        byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+        """
+        return pulumi.get(self, "row_key_schema")
 
     @property
     @pulumi.getter(name="splitKeys")

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataplex.DatascanArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanState;
 import com.pulumi.gcp.dataplex.outputs.DatascanData;
+import com.pulumi.gcp.dataplex.outputs.DatascanDataDiscoverySpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataProfileSpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanExecutionSpec;
@@ -378,6 +379,184 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dataplex Datascan Basic Discovery
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.dataplex.Datascan;
+ * import com.pulumi.gcp.dataplex.DatascanArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOnDemandArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataDiscoverySpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
+ *             .name("tf-test-bucket-name-_91042")
+ *             .location("us-west1")
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var basicDiscovery = new Datascan("basicDiscovery", DatascanArgs.builder()
+ *             .location("us-central1")
+ *             .dataScanId("datadiscovery-basic")
+ *             .data(DatascanDataArgs.builder()
+ *                 .resource(Output.tuple(tfTestBucket.project(), tfTestBucket.name()).applyValue(values -> {
+ *                     var project = values.t1;
+ *                     var name = values.t2;
+ *                     return String.format("//storage.googleapis.com/projects/%s/buckets/%s", project,name);
+ *                 }))
+ *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .onDemand(DatascanExecutionSpecTriggerOnDemandArgs.builder()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .dataDiscoverySpec(DatascanDataDiscoverySpecArgs.builder()
+ *                 .build())
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dataplex Datascan Full Discovery
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudResourceArgs;
+ * import com.pulumi.gcp.dataplex.Datascan;
+ * import com.pulumi.gcp.dataplex.DatascanArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerScheduleArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataDiscoverySpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataDiscoverySpecBigqueryPublishingConfigArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataDiscoverySpecStorageConfigArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
+ *             .name("tf-test-bucket-name-_72490")
+ *             .location("us-west1")
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var tfTestConnection = new Connection("tfTestConnection", ConnectionArgs.builder()
+ *             .connectionId("tf-test-connection-_89605")
+ *             .location("us-central1")
+ *             .friendlyName("tf-test-connection-_56730")
+ *             .description("a bigquery connection for tf test")
+ *             .cloudResource(ConnectionCloudResourceArgs.builder()
+ *                 .build())
+ *             .build());
+ * 
+ *         var fullDiscovery = new Datascan("fullDiscovery", DatascanArgs.builder()
+ *             .location("us-central1")
+ *             .displayName("Full Datascan Discovery")
+ *             .dataScanId("datadiscovery-full")
+ *             .description("Example resource - Full Datascan Discovery")
+ *             .labels(Map.of("author", "billing"))
+ *             .data(DatascanDataArgs.builder()
+ *                 .resource(Output.tuple(tfTestBucket.project(), tfTestBucket.name()).applyValue(values -> {
+ *                     var project = values.t1;
+ *                     var name = values.t2;
+ *                     return String.format("//storage.googleapis.com/projects/%s/buckets/%s", project,name);
+ *                 }))
+ *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .schedule(DatascanExecutionSpecTriggerScheduleArgs.builder()
+ *                         .cron("TZ=America/New_York 1 1 * * *")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .dataDiscoverySpec(DatascanDataDiscoverySpecArgs.builder()
+ *                 .bigqueryPublishingConfig(DatascanDataDiscoverySpecBigqueryPublishingConfigArgs.builder()
+ *                     .tableType("BIGLAKE")
+ *                     .connection(Output.tuple(tfTestConnection.project(), tfTestConnection.location(), tfTestConnection.connectionId()).applyValue(values -> {
+ *                         var project = values.t1;
+ *                         var location = values.t2;
+ *                         var connectionId = values.t3;
+ *                         return String.format("projects/%s/locations/%s/connections/%s", project,location,connectionId);
+ *                     }))
+ *                     .location(tfTestBucket.location())
+ *                     .project(tfTestBucket.project().applyValue(_project -> String.format("projects/%s", _project)))
+ *                     .build())
+ *                 .storageConfig(DatascanDataDiscoverySpecStorageConfigArgs.builder()
+ *                     .includePatterns(                    
+ *                         "ai*",
+ *                         "ml*")
+ *                     .excludePatterns(                    
+ *                         "doc*",
+ *                         "gen*")
+ *                     .csvOptions(DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs.builder()
+ *                         .headerRows(5)
+ *                         .delimiter(",")
+ *                         .encoding("UTF-8")
+ *                         .typeInferenceDisabled(false)
+ *                         .quote("'")
+ *                         .build())
+ *                     .jsonOptions(DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs.builder()
+ *                         .encoding("UTF-8")
+ *                         .typeInferenceDisabled(false)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -441,6 +620,20 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      */
     public Output<DatascanData> data() {
         return this.data;
+    }
+    /**
+     * DataDiscoveryScan related setting.
+     * 
+     */
+    @Export(name="dataDiscoverySpec", refs={DatascanDataDiscoverySpec.class}, tree="[0]")
+    private Output</* @Nullable */ DatascanDataDiscoverySpec> dataDiscoverySpec;
+
+    /**
+     * @return DataDiscoveryScan related setting.
+     * 
+     */
+    public Output<Optional<DatascanDataDiscoverySpec>> dataDiscoverySpec() {
+        return Codegen.optional(this.dataDiscoverySpec);
     }
     /**
      * DataProfileScan related setting.

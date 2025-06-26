@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,6 +34,21 @@ public final class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs extends 
     }
 
     /**
+     * Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+     * 
+     */
+    @Import(name="performanceMonitoringUnit")
+    private @Nullable Output<String> performanceMonitoringUnit;
+
+    /**
+     * @return Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+     * 
+     */
+    public Optional<Output<String>> performanceMonitoringUnit() {
+        return Optional.ofNullable(this.performanceMonitoringUnit);
+    }
+
+    /**
      * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
      * 
      */
@@ -51,6 +67,7 @@ public final class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs extends 
 
     private ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs(ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs $) {
         this.enableNestedVirtualization = $.enableNestedVirtualization;
+        this.performanceMonitoringUnit = $.performanceMonitoringUnit;
         this.threadsPerCore = $.threadsPerCore;
     }
 
@@ -91,6 +108,27 @@ public final class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs extends 
          */
         public Builder enableNestedVirtualization(Boolean enableNestedVirtualization) {
             return enableNestedVirtualization(Output.of(enableNestedVirtualization));
+        }
+
+        /**
+         * @param performanceMonitoringUnit Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceMonitoringUnit(@Nullable Output<String> performanceMonitoringUnit) {
+            $.performanceMonitoringUnit = performanceMonitoringUnit;
+            return this;
+        }
+
+        /**
+         * @param performanceMonitoringUnit Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceMonitoringUnit(String performanceMonitoringUnit) {
+            return performanceMonitoringUnit(Output.of(performanceMonitoringUnit));
         }
 
         /**

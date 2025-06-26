@@ -27,7 +27,7 @@ class GetEngineVersionsResult:
     """
     A collection of values returned by getEngineVersions.
     """
-    def __init__(__self__, default_cluster_version=None, id=None, latest_master_version=None, latest_node_version=None, location=None, project=None, release_channel_default_version=None, release_channel_latest_version=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None):
+    def __init__(__self__, default_cluster_version=None, id=None, latest_master_version=None, latest_node_version=None, location=None, project=None, release_channel_default_version=None, release_channel_latest_version=None, release_channel_upgrade_target_version=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None):
         if default_cluster_version and not isinstance(default_cluster_version, str):
             raise TypeError("Expected argument 'default_cluster_version' to be a str")
         pulumi.set(__self__, "default_cluster_version", default_cluster_version)
@@ -52,6 +52,9 @@ class GetEngineVersionsResult:
         if release_channel_latest_version and not isinstance(release_channel_latest_version, dict):
             raise TypeError("Expected argument 'release_channel_latest_version' to be a dict")
         pulumi.set(__self__, "release_channel_latest_version", release_channel_latest_version)
+        if release_channel_upgrade_target_version and not isinstance(release_channel_upgrade_target_version, dict):
+            raise TypeError("Expected argument 'release_channel_upgrade_target_version' to be a dict")
+        pulumi.set(__self__, "release_channel_upgrade_target_version", release_channel_upgrade_target_version)
         if valid_master_versions and not isinstance(valid_master_versions, list):
             raise TypeError("Expected argument 'valid_master_versions' to be a list")
         pulumi.set(__self__, "valid_master_versions", valid_master_versions)
@@ -121,6 +124,14 @@ class GetEngineVersionsResult:
         return pulumi.get(self, "release_channel_latest_version")
 
     @property
+    @pulumi.getter(name="releaseChannelUpgradeTargetVersion")
+    def release_channel_upgrade_target_version(self) -> Mapping[str, builtins.str]:
+        """
+        A map from a release channel name to the channel's auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
+        """
+        return pulumi.get(self, "release_channel_upgrade_target_version")
+
+    @property
     @pulumi.getter(name="validMasterVersions")
     def valid_master_versions(self) -> Sequence[builtins.str]:
         """
@@ -156,6 +167,7 @@ class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
             project=self.project,
             release_channel_default_version=self.release_channel_default_version,
             release_channel_latest_version=self.release_channel_latest_version,
+            release_channel_upgrade_target_version=self.release_channel_upgrade_target_version,
             valid_master_versions=self.valid_master_versions,
             valid_node_versions=self.valid_node_versions,
             version_prefix=self.version_prefix)
@@ -224,6 +236,7 @@ def get_engine_versions(location: Optional[builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         release_channel_default_version=pulumi.get(__ret__, 'release_channel_default_version'),
         release_channel_latest_version=pulumi.get(__ret__, 'release_channel_latest_version'),
+        release_channel_upgrade_target_version=pulumi.get(__ret__, 'release_channel_upgrade_target_version'),
         valid_master_versions=pulumi.get(__ret__, 'valid_master_versions'),
         valid_node_versions=pulumi.get(__ret__, 'valid_node_versions'),
         version_prefix=pulumi.get(__ret__, 'version_prefix'))
@@ -289,6 +302,7 @@ def get_engine_versions_output(location: Optional[pulumi.Input[Optional[builtins
         project=pulumi.get(__response__, 'project'),
         release_channel_default_version=pulumi.get(__response__, 'release_channel_default_version'),
         release_channel_latest_version=pulumi.get(__response__, 'release_channel_latest_version'),
+        release_channel_upgrade_target_version=pulumi.get(__response__, 'release_channel_upgrade_target_version'),
         valid_master_versions=pulumi.get(__response__, 'valid_master_versions'),
         valid_node_versions=pulumi.get(__response__, 'valid_node_versions'),
         version_prefix=pulumi.get(__response__, 'version_prefix')))

@@ -714,6 +714,2167 @@ func (o CurationPluginInstanceActionArrayOutput) Index(i pulumi.IntInput) Curati
 	}).(CurationPluginInstanceActionOutput)
 }
 
+type PluginInstanceAction struct {
+	// This should map to one of the action id specified
+	// in actionsConfig in the plugin.
+	ActionId string `pulumi:"actionId"`
+	// The curation information for this plugin instance.
+	// Structure is documented below.
+	CurationConfig *PluginInstanceActionCurationConfig `pulumi:"curationConfig"`
+	// (Output)
+	// The execution status for the plugin instance.
+	// Structure is documented below.
+	HubInstanceActions []PluginInstanceActionHubInstanceAction `pulumi:"hubInstanceActions"`
+	// The schedule for this plugin instance action. This can only be set if the
+	// plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
+	ScheduleCronExpression *string `pulumi:"scheduleCronExpression"`
+	// The time zone for the schedule cron expression. If not provided, UTC will
+	// be used.
+	//
+	// <a name="nestedActionsActionsHubInstanceAction"></a>The `hubInstanceAction` block contains:
+	ScheduleTimeZone *string `pulumi:"scheduleTimeZone"`
+	// (Output)
+	// The current state of the plugin action in the plugin instance.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ENABLED
+	// DISABLED
+	// ENABLING
+	// DISABLING
+	// ERROR
+	State *string `pulumi:"state"`
+}
+
+// PluginInstanceActionInput is an input type that accepts PluginInstanceActionArgs and PluginInstanceActionOutput values.
+// You can construct a concrete instance of `PluginInstanceActionInput` via:
+//
+//	PluginInstanceActionArgs{...}
+type PluginInstanceActionInput interface {
+	pulumi.Input
+
+	ToPluginInstanceActionOutput() PluginInstanceActionOutput
+	ToPluginInstanceActionOutputWithContext(context.Context) PluginInstanceActionOutput
+}
+
+type PluginInstanceActionArgs struct {
+	// This should map to one of the action id specified
+	// in actionsConfig in the plugin.
+	ActionId pulumi.StringInput `pulumi:"actionId"`
+	// The curation information for this plugin instance.
+	// Structure is documented below.
+	CurationConfig PluginInstanceActionCurationConfigPtrInput `pulumi:"curationConfig"`
+	// (Output)
+	// The execution status for the plugin instance.
+	// Structure is documented below.
+	HubInstanceActions PluginInstanceActionHubInstanceActionArrayInput `pulumi:"hubInstanceActions"`
+	// The schedule for this plugin instance action. This can only be set if the
+	// plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
+	ScheduleCronExpression pulumi.StringPtrInput `pulumi:"scheduleCronExpression"`
+	// The time zone for the schedule cron expression. If not provided, UTC will
+	// be used.
+	//
+	// <a name="nestedActionsActionsHubInstanceAction"></a>The `hubInstanceAction` block contains:
+	ScheduleTimeZone pulumi.StringPtrInput `pulumi:"scheduleTimeZone"`
+	// (Output)
+	// The current state of the plugin action in the plugin instance.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ENABLED
+	// DISABLED
+	// ENABLING
+	// DISABLING
+	// ERROR
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (PluginInstanceActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAction)(nil)).Elem()
+}
+
+func (i PluginInstanceActionArgs) ToPluginInstanceActionOutput() PluginInstanceActionOutput {
+	return i.ToPluginInstanceActionOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceActionArgs) ToPluginInstanceActionOutputWithContext(ctx context.Context) PluginInstanceActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionOutput)
+}
+
+// PluginInstanceActionArrayInput is an input type that accepts PluginInstanceActionArray and PluginInstanceActionArrayOutput values.
+// You can construct a concrete instance of `PluginInstanceActionArrayInput` via:
+//
+//	PluginInstanceActionArray{ PluginInstanceActionArgs{...} }
+type PluginInstanceActionArrayInput interface {
+	pulumi.Input
+
+	ToPluginInstanceActionArrayOutput() PluginInstanceActionArrayOutput
+	ToPluginInstanceActionArrayOutputWithContext(context.Context) PluginInstanceActionArrayOutput
+}
+
+type PluginInstanceActionArray []PluginInstanceActionInput
+
+func (PluginInstanceActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginInstanceAction)(nil)).Elem()
+}
+
+func (i PluginInstanceActionArray) ToPluginInstanceActionArrayOutput() PluginInstanceActionArrayOutput {
+	return i.ToPluginInstanceActionArrayOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceActionArray) ToPluginInstanceActionArrayOutputWithContext(ctx context.Context) PluginInstanceActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionArrayOutput)
+}
+
+type PluginInstanceActionOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAction)(nil)).Elem()
+}
+
+func (o PluginInstanceActionOutput) ToPluginInstanceActionOutput() PluginInstanceActionOutput {
+	return o
+}
+
+func (o PluginInstanceActionOutput) ToPluginInstanceActionOutputWithContext(ctx context.Context) PluginInstanceActionOutput {
+	return o
+}
+
+// This should map to one of the action id specified
+// in actionsConfig in the plugin.
+func (o PluginInstanceActionOutput) ActionId() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginInstanceAction) string { return v.ActionId }).(pulumi.StringOutput)
+}
+
+// The curation information for this plugin instance.
+// Structure is documented below.
+func (o PluginInstanceActionOutput) CurationConfig() PluginInstanceActionCurationConfigPtrOutput {
+	return o.ApplyT(func(v PluginInstanceAction) *PluginInstanceActionCurationConfig { return v.CurationConfig }).(PluginInstanceActionCurationConfigPtrOutput)
+}
+
+// (Output)
+// The execution status for the plugin instance.
+// Structure is documented below.
+func (o PluginInstanceActionOutput) HubInstanceActions() PluginInstanceActionHubInstanceActionArrayOutput {
+	return o.ApplyT(func(v PluginInstanceAction) []PluginInstanceActionHubInstanceAction { return v.HubInstanceActions }).(PluginInstanceActionHubInstanceActionArrayOutput)
+}
+
+// The schedule for this plugin instance action. This can only be set if the
+// plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
+func (o PluginInstanceActionOutput) ScheduleCronExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginInstanceAction) *string { return v.ScheduleCronExpression }).(pulumi.StringPtrOutput)
+}
+
+// The time zone for the schedule cron expression. If not provided, UTC will
+// be used.
+//
+// <a name="nestedActionsActionsHubInstanceAction"></a>The `hubInstanceAction` block contains:
+func (o PluginInstanceActionOutput) ScheduleTimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginInstanceAction) *string { return v.ScheduleTimeZone }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The current state of the plugin action in the plugin instance.
+// Possible values:
+// STATE_UNSPECIFIED
+// ENABLED
+// DISABLED
+// ENABLING
+// DISABLING
+// ERROR
+func (o PluginInstanceActionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginInstanceAction) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type PluginInstanceActionArrayOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginInstanceAction)(nil)).Elem()
+}
+
+func (o PluginInstanceActionArrayOutput) ToPluginInstanceActionArrayOutput() PluginInstanceActionArrayOutput {
+	return o
+}
+
+func (o PluginInstanceActionArrayOutput) ToPluginInstanceActionArrayOutputWithContext(ctx context.Context) PluginInstanceActionArrayOutput {
+	return o
+}
+
+func (o PluginInstanceActionArrayOutput) Index(i pulumi.IntInput) PluginInstanceActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PluginInstanceAction {
+		return vs[0].([]PluginInstanceAction)[vs[1].(int)]
+	}).(PluginInstanceActionOutput)
+}
+
+type PluginInstanceActionCurationConfig struct {
+	// Possible values:
+	// CURATION_TYPE_UNSPECIFIED
+	// DEFAULT_CURATION_FOR_API_METADATA
+	// CUSTOM_CURATION_FOR_API_METADATA
+	CurationType *string `pulumi:"curationType"`
+	// Custom curation information for this plugin instance.
+	// Structure is documented below.
+	CustomCuration *PluginInstanceActionCurationConfigCustomCuration `pulumi:"customCuration"`
+}
+
+// PluginInstanceActionCurationConfigInput is an input type that accepts PluginInstanceActionCurationConfigArgs and PluginInstanceActionCurationConfigOutput values.
+// You can construct a concrete instance of `PluginInstanceActionCurationConfigInput` via:
+//
+//	PluginInstanceActionCurationConfigArgs{...}
+type PluginInstanceActionCurationConfigInput interface {
+	pulumi.Input
+
+	ToPluginInstanceActionCurationConfigOutput() PluginInstanceActionCurationConfigOutput
+	ToPluginInstanceActionCurationConfigOutputWithContext(context.Context) PluginInstanceActionCurationConfigOutput
+}
+
+type PluginInstanceActionCurationConfigArgs struct {
+	// Possible values:
+	// CURATION_TYPE_UNSPECIFIED
+	// DEFAULT_CURATION_FOR_API_METADATA
+	// CUSTOM_CURATION_FOR_API_METADATA
+	CurationType pulumi.StringPtrInput `pulumi:"curationType"`
+	// Custom curation information for this plugin instance.
+	// Structure is documented below.
+	CustomCuration PluginInstanceActionCurationConfigCustomCurationPtrInput `pulumi:"customCuration"`
+}
+
+func (PluginInstanceActionCurationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceActionCurationConfig)(nil)).Elem()
+}
+
+func (i PluginInstanceActionCurationConfigArgs) ToPluginInstanceActionCurationConfigOutput() PluginInstanceActionCurationConfigOutput {
+	return i.ToPluginInstanceActionCurationConfigOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceActionCurationConfigArgs) ToPluginInstanceActionCurationConfigOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionCurationConfigOutput)
+}
+
+func (i PluginInstanceActionCurationConfigArgs) ToPluginInstanceActionCurationConfigPtrOutput() PluginInstanceActionCurationConfigPtrOutput {
+	return i.ToPluginInstanceActionCurationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceActionCurationConfigArgs) ToPluginInstanceActionCurationConfigPtrOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionCurationConfigOutput).ToPluginInstanceActionCurationConfigPtrOutputWithContext(ctx)
+}
+
+// PluginInstanceActionCurationConfigPtrInput is an input type that accepts PluginInstanceActionCurationConfigArgs, PluginInstanceActionCurationConfigPtr and PluginInstanceActionCurationConfigPtrOutput values.
+// You can construct a concrete instance of `PluginInstanceActionCurationConfigPtrInput` via:
+//
+//	        PluginInstanceActionCurationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginInstanceActionCurationConfigPtrInput interface {
+	pulumi.Input
+
+	ToPluginInstanceActionCurationConfigPtrOutput() PluginInstanceActionCurationConfigPtrOutput
+	ToPluginInstanceActionCurationConfigPtrOutputWithContext(context.Context) PluginInstanceActionCurationConfigPtrOutput
+}
+
+type pluginInstanceActionCurationConfigPtrType PluginInstanceActionCurationConfigArgs
+
+func PluginInstanceActionCurationConfigPtr(v *PluginInstanceActionCurationConfigArgs) PluginInstanceActionCurationConfigPtrInput {
+	return (*pluginInstanceActionCurationConfigPtrType)(v)
+}
+
+func (*pluginInstanceActionCurationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceActionCurationConfig)(nil)).Elem()
+}
+
+func (i *pluginInstanceActionCurationConfigPtrType) ToPluginInstanceActionCurationConfigPtrOutput() PluginInstanceActionCurationConfigPtrOutput {
+	return i.ToPluginInstanceActionCurationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginInstanceActionCurationConfigPtrType) ToPluginInstanceActionCurationConfigPtrOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionCurationConfigPtrOutput)
+}
+
+type PluginInstanceActionCurationConfigOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceActionCurationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceActionCurationConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceActionCurationConfigOutput) ToPluginInstanceActionCurationConfigOutput() PluginInstanceActionCurationConfigOutput {
+	return o
+}
+
+func (o PluginInstanceActionCurationConfigOutput) ToPluginInstanceActionCurationConfigOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigOutput {
+	return o
+}
+
+func (o PluginInstanceActionCurationConfigOutput) ToPluginInstanceActionCurationConfigPtrOutput() PluginInstanceActionCurationConfigPtrOutput {
+	return o.ToPluginInstanceActionCurationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PluginInstanceActionCurationConfigOutput) ToPluginInstanceActionCurationConfigPtrOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginInstanceActionCurationConfig) *PluginInstanceActionCurationConfig {
+		return &v
+	}).(PluginInstanceActionCurationConfigPtrOutput)
+}
+
+// Possible values:
+// CURATION_TYPE_UNSPECIFIED
+// DEFAULT_CURATION_FOR_API_METADATA
+// CUSTOM_CURATION_FOR_API_METADATA
+func (o PluginInstanceActionCurationConfigOutput) CurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginInstanceActionCurationConfig) *string { return v.CurationType }).(pulumi.StringPtrOutput)
+}
+
+// Custom curation information for this plugin instance.
+// Structure is documented below.
+func (o PluginInstanceActionCurationConfigOutput) CustomCuration() PluginInstanceActionCurationConfigCustomCurationPtrOutput {
+	return o.ApplyT(func(v PluginInstanceActionCurationConfig) *PluginInstanceActionCurationConfigCustomCuration {
+		return v.CustomCuration
+	}).(PluginInstanceActionCurationConfigCustomCurationPtrOutput)
+}
+
+type PluginInstanceActionCurationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceActionCurationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceActionCurationConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceActionCurationConfigPtrOutput) ToPluginInstanceActionCurationConfigPtrOutput() PluginInstanceActionCurationConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceActionCurationConfigPtrOutput) ToPluginInstanceActionCurationConfigPtrOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceActionCurationConfigPtrOutput) Elem() PluginInstanceActionCurationConfigOutput {
+	return o.ApplyT(func(v *PluginInstanceActionCurationConfig) PluginInstanceActionCurationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PluginInstanceActionCurationConfig
+		return ret
+	}).(PluginInstanceActionCurationConfigOutput)
+}
+
+// Possible values:
+// CURATION_TYPE_UNSPECIFIED
+// DEFAULT_CURATION_FOR_API_METADATA
+// CUSTOM_CURATION_FOR_API_METADATA
+func (o PluginInstanceActionCurationConfigPtrOutput) CurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceActionCurationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom curation information for this plugin instance.
+// Structure is documented below.
+func (o PluginInstanceActionCurationConfigPtrOutput) CustomCuration() PluginInstanceActionCurationConfigCustomCurationPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceActionCurationConfig) *PluginInstanceActionCurationConfigCustomCuration {
+		if v == nil {
+			return nil
+		}
+		return v.CustomCuration
+	}).(PluginInstanceActionCurationConfigCustomCurationPtrOutput)
+}
+
+type PluginInstanceActionCurationConfigCustomCuration struct {
+	// The unique name of the curation resource. This will be the name of the
+	// curation resource in the format:
+	// `projects/{project}/locations/{location}/curations/{curation}`
+	//
+	// ***
+	Curation string `pulumi:"curation"`
+}
+
+// PluginInstanceActionCurationConfigCustomCurationInput is an input type that accepts PluginInstanceActionCurationConfigCustomCurationArgs and PluginInstanceActionCurationConfigCustomCurationOutput values.
+// You can construct a concrete instance of `PluginInstanceActionCurationConfigCustomCurationInput` via:
+//
+//	PluginInstanceActionCurationConfigCustomCurationArgs{...}
+type PluginInstanceActionCurationConfigCustomCurationInput interface {
+	pulumi.Input
+
+	ToPluginInstanceActionCurationConfigCustomCurationOutput() PluginInstanceActionCurationConfigCustomCurationOutput
+	ToPluginInstanceActionCurationConfigCustomCurationOutputWithContext(context.Context) PluginInstanceActionCurationConfigCustomCurationOutput
+}
+
+type PluginInstanceActionCurationConfigCustomCurationArgs struct {
+	// The unique name of the curation resource. This will be the name of the
+	// curation resource in the format:
+	// `projects/{project}/locations/{location}/curations/{curation}`
+	//
+	// ***
+	Curation pulumi.StringInput `pulumi:"curation"`
+}
+
+func (PluginInstanceActionCurationConfigCustomCurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceActionCurationConfigCustomCuration)(nil)).Elem()
+}
+
+func (i PluginInstanceActionCurationConfigCustomCurationArgs) ToPluginInstanceActionCurationConfigCustomCurationOutput() PluginInstanceActionCurationConfigCustomCurationOutput {
+	return i.ToPluginInstanceActionCurationConfigCustomCurationOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceActionCurationConfigCustomCurationArgs) ToPluginInstanceActionCurationConfigCustomCurationOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigCustomCurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionCurationConfigCustomCurationOutput)
+}
+
+func (i PluginInstanceActionCurationConfigCustomCurationArgs) ToPluginInstanceActionCurationConfigCustomCurationPtrOutput() PluginInstanceActionCurationConfigCustomCurationPtrOutput {
+	return i.ToPluginInstanceActionCurationConfigCustomCurationPtrOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceActionCurationConfigCustomCurationArgs) ToPluginInstanceActionCurationConfigCustomCurationPtrOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigCustomCurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionCurationConfigCustomCurationOutput).ToPluginInstanceActionCurationConfigCustomCurationPtrOutputWithContext(ctx)
+}
+
+// PluginInstanceActionCurationConfigCustomCurationPtrInput is an input type that accepts PluginInstanceActionCurationConfigCustomCurationArgs, PluginInstanceActionCurationConfigCustomCurationPtr and PluginInstanceActionCurationConfigCustomCurationPtrOutput values.
+// You can construct a concrete instance of `PluginInstanceActionCurationConfigCustomCurationPtrInput` via:
+//
+//	        PluginInstanceActionCurationConfigCustomCurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginInstanceActionCurationConfigCustomCurationPtrInput interface {
+	pulumi.Input
+
+	ToPluginInstanceActionCurationConfigCustomCurationPtrOutput() PluginInstanceActionCurationConfigCustomCurationPtrOutput
+	ToPluginInstanceActionCurationConfigCustomCurationPtrOutputWithContext(context.Context) PluginInstanceActionCurationConfigCustomCurationPtrOutput
+}
+
+type pluginInstanceActionCurationConfigCustomCurationPtrType PluginInstanceActionCurationConfigCustomCurationArgs
+
+func PluginInstanceActionCurationConfigCustomCurationPtr(v *PluginInstanceActionCurationConfigCustomCurationArgs) PluginInstanceActionCurationConfigCustomCurationPtrInput {
+	return (*pluginInstanceActionCurationConfigCustomCurationPtrType)(v)
+}
+
+func (*pluginInstanceActionCurationConfigCustomCurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceActionCurationConfigCustomCuration)(nil)).Elem()
+}
+
+func (i *pluginInstanceActionCurationConfigCustomCurationPtrType) ToPluginInstanceActionCurationConfigCustomCurationPtrOutput() PluginInstanceActionCurationConfigCustomCurationPtrOutput {
+	return i.ToPluginInstanceActionCurationConfigCustomCurationPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginInstanceActionCurationConfigCustomCurationPtrType) ToPluginInstanceActionCurationConfigCustomCurationPtrOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigCustomCurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionCurationConfigCustomCurationPtrOutput)
+}
+
+type PluginInstanceActionCurationConfigCustomCurationOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceActionCurationConfigCustomCurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceActionCurationConfigCustomCuration)(nil)).Elem()
+}
+
+func (o PluginInstanceActionCurationConfigCustomCurationOutput) ToPluginInstanceActionCurationConfigCustomCurationOutput() PluginInstanceActionCurationConfigCustomCurationOutput {
+	return o
+}
+
+func (o PluginInstanceActionCurationConfigCustomCurationOutput) ToPluginInstanceActionCurationConfigCustomCurationOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigCustomCurationOutput {
+	return o
+}
+
+func (o PluginInstanceActionCurationConfigCustomCurationOutput) ToPluginInstanceActionCurationConfigCustomCurationPtrOutput() PluginInstanceActionCurationConfigCustomCurationPtrOutput {
+	return o.ToPluginInstanceActionCurationConfigCustomCurationPtrOutputWithContext(context.Background())
+}
+
+func (o PluginInstanceActionCurationConfigCustomCurationOutput) ToPluginInstanceActionCurationConfigCustomCurationPtrOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigCustomCurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginInstanceActionCurationConfigCustomCuration) *PluginInstanceActionCurationConfigCustomCuration {
+		return &v
+	}).(PluginInstanceActionCurationConfigCustomCurationPtrOutput)
+}
+
+// The unique name of the curation resource. This will be the name of the
+// curation resource in the format:
+// `projects/{project}/locations/{location}/curations/{curation}`
+//
+// ***
+func (o PluginInstanceActionCurationConfigCustomCurationOutput) Curation() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginInstanceActionCurationConfigCustomCuration) string { return v.Curation }).(pulumi.StringOutput)
+}
+
+type PluginInstanceActionCurationConfigCustomCurationPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceActionCurationConfigCustomCurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceActionCurationConfigCustomCuration)(nil)).Elem()
+}
+
+func (o PluginInstanceActionCurationConfigCustomCurationPtrOutput) ToPluginInstanceActionCurationConfigCustomCurationPtrOutput() PluginInstanceActionCurationConfigCustomCurationPtrOutput {
+	return o
+}
+
+func (o PluginInstanceActionCurationConfigCustomCurationPtrOutput) ToPluginInstanceActionCurationConfigCustomCurationPtrOutputWithContext(ctx context.Context) PluginInstanceActionCurationConfigCustomCurationPtrOutput {
+	return o
+}
+
+func (o PluginInstanceActionCurationConfigCustomCurationPtrOutput) Elem() PluginInstanceActionCurationConfigCustomCurationOutput {
+	return o.ApplyT(func(v *PluginInstanceActionCurationConfigCustomCuration) PluginInstanceActionCurationConfigCustomCuration {
+		if v != nil {
+			return *v
+		}
+		var ret PluginInstanceActionCurationConfigCustomCuration
+		return ret
+	}).(PluginInstanceActionCurationConfigCustomCurationOutput)
+}
+
+// The unique name of the curation resource. This will be the name of the
+// curation resource in the format:
+// `projects/{project}/locations/{location}/curations/{curation}`
+//
+// ***
+func (o PluginInstanceActionCurationConfigCustomCurationPtrOutput) Curation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceActionCurationConfigCustomCuration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Curation
+	}).(pulumi.StringPtrOutput)
+}
+
+type PluginInstanceActionHubInstanceAction struct {
+	// The current state of the execution.
+	// Possible values:
+	// CURRENT_EXECUTION_STATE_UNSPECIFIED
+	// RUNNING
+	// NOT_RUNNING
+	CurrentExecutionState *string `pulumi:"currentExecutionState"`
+	// The result of the last execution of the plugin instance.
+	LastExecutions []PluginInstanceActionHubInstanceActionLastExecution `pulumi:"lastExecutions"`
+}
+
+// PluginInstanceActionHubInstanceActionInput is an input type that accepts PluginInstanceActionHubInstanceActionArgs and PluginInstanceActionHubInstanceActionOutput values.
+// You can construct a concrete instance of `PluginInstanceActionHubInstanceActionInput` via:
+//
+//	PluginInstanceActionHubInstanceActionArgs{...}
+type PluginInstanceActionHubInstanceActionInput interface {
+	pulumi.Input
+
+	ToPluginInstanceActionHubInstanceActionOutput() PluginInstanceActionHubInstanceActionOutput
+	ToPluginInstanceActionHubInstanceActionOutputWithContext(context.Context) PluginInstanceActionHubInstanceActionOutput
+}
+
+type PluginInstanceActionHubInstanceActionArgs struct {
+	// The current state of the execution.
+	// Possible values:
+	// CURRENT_EXECUTION_STATE_UNSPECIFIED
+	// RUNNING
+	// NOT_RUNNING
+	CurrentExecutionState pulumi.StringPtrInput `pulumi:"currentExecutionState"`
+	// The result of the last execution of the plugin instance.
+	LastExecutions PluginInstanceActionHubInstanceActionLastExecutionArrayInput `pulumi:"lastExecutions"`
+}
+
+func (PluginInstanceActionHubInstanceActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceActionHubInstanceAction)(nil)).Elem()
+}
+
+func (i PluginInstanceActionHubInstanceActionArgs) ToPluginInstanceActionHubInstanceActionOutput() PluginInstanceActionHubInstanceActionOutput {
+	return i.ToPluginInstanceActionHubInstanceActionOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceActionHubInstanceActionArgs) ToPluginInstanceActionHubInstanceActionOutputWithContext(ctx context.Context) PluginInstanceActionHubInstanceActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionHubInstanceActionOutput)
+}
+
+// PluginInstanceActionHubInstanceActionArrayInput is an input type that accepts PluginInstanceActionHubInstanceActionArray and PluginInstanceActionHubInstanceActionArrayOutput values.
+// You can construct a concrete instance of `PluginInstanceActionHubInstanceActionArrayInput` via:
+//
+//	PluginInstanceActionHubInstanceActionArray{ PluginInstanceActionHubInstanceActionArgs{...} }
+type PluginInstanceActionHubInstanceActionArrayInput interface {
+	pulumi.Input
+
+	ToPluginInstanceActionHubInstanceActionArrayOutput() PluginInstanceActionHubInstanceActionArrayOutput
+	ToPluginInstanceActionHubInstanceActionArrayOutputWithContext(context.Context) PluginInstanceActionHubInstanceActionArrayOutput
+}
+
+type PluginInstanceActionHubInstanceActionArray []PluginInstanceActionHubInstanceActionInput
+
+func (PluginInstanceActionHubInstanceActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginInstanceActionHubInstanceAction)(nil)).Elem()
+}
+
+func (i PluginInstanceActionHubInstanceActionArray) ToPluginInstanceActionHubInstanceActionArrayOutput() PluginInstanceActionHubInstanceActionArrayOutput {
+	return i.ToPluginInstanceActionHubInstanceActionArrayOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceActionHubInstanceActionArray) ToPluginInstanceActionHubInstanceActionArrayOutputWithContext(ctx context.Context) PluginInstanceActionHubInstanceActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionHubInstanceActionArrayOutput)
+}
+
+type PluginInstanceActionHubInstanceActionOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceActionHubInstanceActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceActionHubInstanceAction)(nil)).Elem()
+}
+
+func (o PluginInstanceActionHubInstanceActionOutput) ToPluginInstanceActionHubInstanceActionOutput() PluginInstanceActionHubInstanceActionOutput {
+	return o
+}
+
+func (o PluginInstanceActionHubInstanceActionOutput) ToPluginInstanceActionHubInstanceActionOutputWithContext(ctx context.Context) PluginInstanceActionHubInstanceActionOutput {
+	return o
+}
+
+// The current state of the execution.
+// Possible values:
+// CURRENT_EXECUTION_STATE_UNSPECIFIED
+// RUNNING
+// NOT_RUNNING
+func (o PluginInstanceActionHubInstanceActionOutput) CurrentExecutionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginInstanceActionHubInstanceAction) *string { return v.CurrentExecutionState }).(pulumi.StringPtrOutput)
+}
+
+// The result of the last execution of the plugin instance.
+func (o PluginInstanceActionHubInstanceActionOutput) LastExecutions() PluginInstanceActionHubInstanceActionLastExecutionArrayOutput {
+	return o.ApplyT(func(v PluginInstanceActionHubInstanceAction) []PluginInstanceActionHubInstanceActionLastExecution {
+		return v.LastExecutions
+	}).(PluginInstanceActionHubInstanceActionLastExecutionArrayOutput)
+}
+
+type PluginInstanceActionHubInstanceActionArrayOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceActionHubInstanceActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginInstanceActionHubInstanceAction)(nil)).Elem()
+}
+
+func (o PluginInstanceActionHubInstanceActionArrayOutput) ToPluginInstanceActionHubInstanceActionArrayOutput() PluginInstanceActionHubInstanceActionArrayOutput {
+	return o
+}
+
+func (o PluginInstanceActionHubInstanceActionArrayOutput) ToPluginInstanceActionHubInstanceActionArrayOutputWithContext(ctx context.Context) PluginInstanceActionHubInstanceActionArrayOutput {
+	return o
+}
+
+func (o PluginInstanceActionHubInstanceActionArrayOutput) Index(i pulumi.IntInput) PluginInstanceActionHubInstanceActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PluginInstanceActionHubInstanceAction {
+		return vs[0].([]PluginInstanceActionHubInstanceAction)[vs[1].(int)]
+	}).(PluginInstanceActionHubInstanceActionOutput)
+}
+
+type PluginInstanceActionHubInstanceActionLastExecution struct {
+	// The last execution end time of the plugin instance.
+	EndTime *string `pulumi:"endTime"`
+	// Error message describing the failure, if any, during Create, Delete or
+	// ApplyConfig operation corresponding to the plugin instance.This field will
+	// only be populated if the plugin instance is in the ERROR or FAILED state.
+	ErrorMessage *string `pulumi:"errorMessage"`
+	// The result of the last execution of the plugin instance.
+	// Possible values:
+	// RESULT_UNSPECIFIED
+	// SUCCEEDED
+	// FAILED
+	Result *string `pulumi:"result"`
+	// The last execution start time of the plugin instance.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// PluginInstanceActionHubInstanceActionLastExecutionInput is an input type that accepts PluginInstanceActionHubInstanceActionLastExecutionArgs and PluginInstanceActionHubInstanceActionLastExecutionOutput values.
+// You can construct a concrete instance of `PluginInstanceActionHubInstanceActionLastExecutionInput` via:
+//
+//	PluginInstanceActionHubInstanceActionLastExecutionArgs{...}
+type PluginInstanceActionHubInstanceActionLastExecutionInput interface {
+	pulumi.Input
+
+	ToPluginInstanceActionHubInstanceActionLastExecutionOutput() PluginInstanceActionHubInstanceActionLastExecutionOutput
+	ToPluginInstanceActionHubInstanceActionLastExecutionOutputWithContext(context.Context) PluginInstanceActionHubInstanceActionLastExecutionOutput
+}
+
+type PluginInstanceActionHubInstanceActionLastExecutionArgs struct {
+	// The last execution end time of the plugin instance.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Error message describing the failure, if any, during Create, Delete or
+	// ApplyConfig operation corresponding to the plugin instance.This field will
+	// only be populated if the plugin instance is in the ERROR or FAILED state.
+	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
+	// The result of the last execution of the plugin instance.
+	// Possible values:
+	// RESULT_UNSPECIFIED
+	// SUCCEEDED
+	// FAILED
+	Result pulumi.StringPtrInput `pulumi:"result"`
+	// The last execution start time of the plugin instance.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (PluginInstanceActionHubInstanceActionLastExecutionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceActionHubInstanceActionLastExecution)(nil)).Elem()
+}
+
+func (i PluginInstanceActionHubInstanceActionLastExecutionArgs) ToPluginInstanceActionHubInstanceActionLastExecutionOutput() PluginInstanceActionHubInstanceActionLastExecutionOutput {
+	return i.ToPluginInstanceActionHubInstanceActionLastExecutionOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceActionHubInstanceActionLastExecutionArgs) ToPluginInstanceActionHubInstanceActionLastExecutionOutputWithContext(ctx context.Context) PluginInstanceActionHubInstanceActionLastExecutionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionHubInstanceActionLastExecutionOutput)
+}
+
+// PluginInstanceActionHubInstanceActionLastExecutionArrayInput is an input type that accepts PluginInstanceActionHubInstanceActionLastExecutionArray and PluginInstanceActionHubInstanceActionLastExecutionArrayOutput values.
+// You can construct a concrete instance of `PluginInstanceActionHubInstanceActionLastExecutionArrayInput` via:
+//
+//	PluginInstanceActionHubInstanceActionLastExecutionArray{ PluginInstanceActionHubInstanceActionLastExecutionArgs{...} }
+type PluginInstanceActionHubInstanceActionLastExecutionArrayInput interface {
+	pulumi.Input
+
+	ToPluginInstanceActionHubInstanceActionLastExecutionArrayOutput() PluginInstanceActionHubInstanceActionLastExecutionArrayOutput
+	ToPluginInstanceActionHubInstanceActionLastExecutionArrayOutputWithContext(context.Context) PluginInstanceActionHubInstanceActionLastExecutionArrayOutput
+}
+
+type PluginInstanceActionHubInstanceActionLastExecutionArray []PluginInstanceActionHubInstanceActionLastExecutionInput
+
+func (PluginInstanceActionHubInstanceActionLastExecutionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginInstanceActionHubInstanceActionLastExecution)(nil)).Elem()
+}
+
+func (i PluginInstanceActionHubInstanceActionLastExecutionArray) ToPluginInstanceActionHubInstanceActionLastExecutionArrayOutput() PluginInstanceActionHubInstanceActionLastExecutionArrayOutput {
+	return i.ToPluginInstanceActionHubInstanceActionLastExecutionArrayOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceActionHubInstanceActionLastExecutionArray) ToPluginInstanceActionHubInstanceActionLastExecutionArrayOutputWithContext(ctx context.Context) PluginInstanceActionHubInstanceActionLastExecutionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceActionHubInstanceActionLastExecutionArrayOutput)
+}
+
+type PluginInstanceActionHubInstanceActionLastExecutionOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceActionHubInstanceActionLastExecutionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceActionHubInstanceActionLastExecution)(nil)).Elem()
+}
+
+func (o PluginInstanceActionHubInstanceActionLastExecutionOutput) ToPluginInstanceActionHubInstanceActionLastExecutionOutput() PluginInstanceActionHubInstanceActionLastExecutionOutput {
+	return o
+}
+
+func (o PluginInstanceActionHubInstanceActionLastExecutionOutput) ToPluginInstanceActionHubInstanceActionLastExecutionOutputWithContext(ctx context.Context) PluginInstanceActionHubInstanceActionLastExecutionOutput {
+	return o
+}
+
+// The last execution end time of the plugin instance.
+func (o PluginInstanceActionHubInstanceActionLastExecutionOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginInstanceActionHubInstanceActionLastExecution) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Error message describing the failure, if any, during Create, Delete or
+// ApplyConfig operation corresponding to the plugin instance.This field will
+// only be populated if the plugin instance is in the ERROR or FAILED state.
+func (o PluginInstanceActionHubInstanceActionLastExecutionOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginInstanceActionHubInstanceActionLastExecution) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// The result of the last execution of the plugin instance.
+// Possible values:
+// RESULT_UNSPECIFIED
+// SUCCEEDED
+// FAILED
+func (o PluginInstanceActionHubInstanceActionLastExecutionOutput) Result() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginInstanceActionHubInstanceActionLastExecution) *string { return v.Result }).(pulumi.StringPtrOutput)
+}
+
+// The last execution start time of the plugin instance.
+func (o PluginInstanceActionHubInstanceActionLastExecutionOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginInstanceActionHubInstanceActionLastExecution) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type PluginInstanceActionHubInstanceActionLastExecutionArrayOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceActionHubInstanceActionLastExecutionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginInstanceActionHubInstanceActionLastExecution)(nil)).Elem()
+}
+
+func (o PluginInstanceActionHubInstanceActionLastExecutionArrayOutput) ToPluginInstanceActionHubInstanceActionLastExecutionArrayOutput() PluginInstanceActionHubInstanceActionLastExecutionArrayOutput {
+	return o
+}
+
+func (o PluginInstanceActionHubInstanceActionLastExecutionArrayOutput) ToPluginInstanceActionHubInstanceActionLastExecutionArrayOutputWithContext(ctx context.Context) PluginInstanceActionHubInstanceActionLastExecutionArrayOutput {
+	return o
+}
+
+func (o PluginInstanceActionHubInstanceActionLastExecutionArrayOutput) Index(i pulumi.IntInput) PluginInstanceActionHubInstanceActionLastExecutionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PluginInstanceActionHubInstanceActionLastExecution {
+		return vs[0].([]PluginInstanceActionHubInstanceActionLastExecution)[vs[1].(int)]
+	}).(PluginInstanceActionHubInstanceActionLastExecutionOutput)
+}
+
+type PluginInstanceAuthConfig struct {
+	// Config for authentication with API key.
+	// Structure is documented below.
+	ApiKeyConfig *PluginInstanceAuthConfigApiKeyConfig `pulumi:"apiKeyConfig"`
+	// Possible values:
+	// AUTH_TYPE_UNSPECIFIED
+	// NO_AUTH
+	// GOOGLE_SERVICE_ACCOUNT
+	// USER_PASSWORD
+	// API_KEY
+	// OAUTH2_CLIENT_CREDENTIALS
+	AuthType string `pulumi:"authType"`
+	// Config for Google service account authentication.
+	// Structure is documented below.
+	GoogleServiceAccountConfig *PluginInstanceAuthConfigGoogleServiceAccountConfig `pulumi:"googleServiceAccountConfig"`
+	// Parameters to support Oauth 2.0 client credentials grant authentication.
+	// See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
+	// Structure is documented below.
+	Oauth2ClientCredentialsConfig *PluginInstanceAuthConfigOauth2ClientCredentialsConfig `pulumi:"oauth2ClientCredentialsConfig"`
+	// Parameters to support Username and Password Authentication.
+	// Structure is documented below.
+	UserPasswordConfig *PluginInstanceAuthConfigUserPasswordConfig `pulumi:"userPasswordConfig"`
+}
+
+// PluginInstanceAuthConfigInput is an input type that accepts PluginInstanceAuthConfigArgs and PluginInstanceAuthConfigOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigInput` via:
+//
+//	PluginInstanceAuthConfigArgs{...}
+type PluginInstanceAuthConfigInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigOutput() PluginInstanceAuthConfigOutput
+	ToPluginInstanceAuthConfigOutputWithContext(context.Context) PluginInstanceAuthConfigOutput
+}
+
+type PluginInstanceAuthConfigArgs struct {
+	// Config for authentication with API key.
+	// Structure is documented below.
+	ApiKeyConfig PluginInstanceAuthConfigApiKeyConfigPtrInput `pulumi:"apiKeyConfig"`
+	// Possible values:
+	// AUTH_TYPE_UNSPECIFIED
+	// NO_AUTH
+	// GOOGLE_SERVICE_ACCOUNT
+	// USER_PASSWORD
+	// API_KEY
+	// OAUTH2_CLIENT_CREDENTIALS
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Config for Google service account authentication.
+	// Structure is documented below.
+	GoogleServiceAccountConfig PluginInstanceAuthConfigGoogleServiceAccountConfigPtrInput `pulumi:"googleServiceAccountConfig"`
+	// Parameters to support Oauth 2.0 client credentials grant authentication.
+	// See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
+	// Structure is documented below.
+	Oauth2ClientCredentialsConfig PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrInput `pulumi:"oauth2ClientCredentialsConfig"`
+	// Parameters to support Username and Password Authentication.
+	// Structure is documented below.
+	UserPasswordConfig PluginInstanceAuthConfigUserPasswordConfigPtrInput `pulumi:"userPasswordConfig"`
+}
+
+func (PluginInstanceAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfig)(nil)).Elem()
+}
+
+func (i PluginInstanceAuthConfigArgs) ToPluginInstanceAuthConfigOutput() PluginInstanceAuthConfigOutput {
+	return i.ToPluginInstanceAuthConfigOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigArgs) ToPluginInstanceAuthConfigOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigOutput)
+}
+
+func (i PluginInstanceAuthConfigArgs) ToPluginInstanceAuthConfigPtrOutput() PluginInstanceAuthConfigPtrOutput {
+	return i.ToPluginInstanceAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigArgs) ToPluginInstanceAuthConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigOutput).ToPluginInstanceAuthConfigPtrOutputWithContext(ctx)
+}
+
+// PluginInstanceAuthConfigPtrInput is an input type that accepts PluginInstanceAuthConfigArgs, PluginInstanceAuthConfigPtr and PluginInstanceAuthConfigPtrOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigPtrInput` via:
+//
+//	        PluginInstanceAuthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginInstanceAuthConfigPtrInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigPtrOutput() PluginInstanceAuthConfigPtrOutput
+	ToPluginInstanceAuthConfigPtrOutputWithContext(context.Context) PluginInstanceAuthConfigPtrOutput
+}
+
+type pluginInstanceAuthConfigPtrType PluginInstanceAuthConfigArgs
+
+func PluginInstanceAuthConfigPtr(v *PluginInstanceAuthConfigArgs) PluginInstanceAuthConfigPtrInput {
+	return (*pluginInstanceAuthConfigPtrType)(v)
+}
+
+func (*pluginInstanceAuthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfig)(nil)).Elem()
+}
+
+func (i *pluginInstanceAuthConfigPtrType) ToPluginInstanceAuthConfigPtrOutput() PluginInstanceAuthConfigPtrOutput {
+	return i.ToPluginInstanceAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginInstanceAuthConfigPtrType) ToPluginInstanceAuthConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigPtrOutput)
+}
+
+type PluginInstanceAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigOutput) ToPluginInstanceAuthConfigOutput() PluginInstanceAuthConfigOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigOutput) ToPluginInstanceAuthConfigOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigOutput) ToPluginInstanceAuthConfigPtrOutput() PluginInstanceAuthConfigPtrOutput {
+	return o.ToPluginInstanceAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PluginInstanceAuthConfigOutput) ToPluginInstanceAuthConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginInstanceAuthConfig) *PluginInstanceAuthConfig {
+		return &v
+	}).(PluginInstanceAuthConfigPtrOutput)
+}
+
+// Config for authentication with API key.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigOutput) ApiKeyConfig() PluginInstanceAuthConfigApiKeyConfigPtrOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfig) *PluginInstanceAuthConfigApiKeyConfig { return v.ApiKeyConfig }).(PluginInstanceAuthConfigApiKeyConfigPtrOutput)
+}
+
+// Possible values:
+// AUTH_TYPE_UNSPECIFIED
+// NO_AUTH
+// GOOGLE_SERVICE_ACCOUNT
+// USER_PASSWORD
+// API_KEY
+// OAUTH2_CLIENT_CREDENTIALS
+func (o PluginInstanceAuthConfigOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfig) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Config for Google service account authentication.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigOutput) GoogleServiceAccountConfig() PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfig) *PluginInstanceAuthConfigGoogleServiceAccountConfig {
+		return v.GoogleServiceAccountConfig
+	}).(PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput)
+}
+
+// Parameters to support Oauth 2.0 client credentials grant authentication.
+// See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigOutput) Oauth2ClientCredentialsConfig() PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfig) *PluginInstanceAuthConfigOauth2ClientCredentialsConfig {
+		return v.Oauth2ClientCredentialsConfig
+	}).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput)
+}
+
+// Parameters to support Username and Password Authentication.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigOutput) UserPasswordConfig() PluginInstanceAuthConfigUserPasswordConfigPtrOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfig) *PluginInstanceAuthConfigUserPasswordConfig {
+		return v.UserPasswordConfig
+	}).(PluginInstanceAuthConfigUserPasswordConfigPtrOutput)
+}
+
+type PluginInstanceAuthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigPtrOutput) ToPluginInstanceAuthConfigPtrOutput() PluginInstanceAuthConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigPtrOutput) ToPluginInstanceAuthConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigPtrOutput) Elem() PluginInstanceAuthConfigOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfig) PluginInstanceAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PluginInstanceAuthConfig
+		return ret
+	}).(PluginInstanceAuthConfigOutput)
+}
+
+// Config for authentication with API key.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigPtrOutput) ApiKeyConfig() PluginInstanceAuthConfigApiKeyConfigPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfig) *PluginInstanceAuthConfigApiKeyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyConfig
+	}).(PluginInstanceAuthConfigApiKeyConfigPtrOutput)
+}
+
+// Possible values:
+// AUTH_TYPE_UNSPECIFIED
+// NO_AUTH
+// GOOGLE_SERVICE_ACCOUNT
+// USER_PASSWORD
+// API_KEY
+// OAUTH2_CLIENT_CREDENTIALS
+func (o PluginInstanceAuthConfigPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Config for Google service account authentication.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigPtrOutput) GoogleServiceAccountConfig() PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfig) *PluginInstanceAuthConfigGoogleServiceAccountConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleServiceAccountConfig
+	}).(PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput)
+}
+
+// Parameters to support Oauth 2.0 client credentials grant authentication.
+// See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigPtrOutput) Oauth2ClientCredentialsConfig() PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfig) *PluginInstanceAuthConfigOauth2ClientCredentialsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2ClientCredentialsConfig
+	}).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput)
+}
+
+// Parameters to support Username and Password Authentication.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigPtrOutput) UserPasswordConfig() PluginInstanceAuthConfigUserPasswordConfigPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfig) *PluginInstanceAuthConfigUserPasswordConfig {
+		if v == nil {
+			return nil
+		}
+		return v.UserPasswordConfig
+	}).(PluginInstanceAuthConfigUserPasswordConfigPtrOutput)
+}
+
+type PluginInstanceAuthConfigApiKeyConfig struct {
+	// Secret provides a reference to entries in Secret Manager.
+	// Structure is documented below.
+	ApiKey PluginInstanceAuthConfigApiKeyConfigApiKey `pulumi:"apiKey"`
+	// The location of the API key.
+	// The default value is QUERY.
+	// Possible values:
+	// HTTP_ELEMENT_LOCATION_UNSPECIFIED
+	// QUERY
+	// HEADER
+	// PATH
+	// BODY
+	// COOKIE
+	HttpElementLocation string `pulumi:"httpElementLocation"`
+	// The parameter name of the API key.
+	// E.g. If the API request is "https://example.com/act?api_key=",
+	// "apiKey" would be the parameter name.
+	Name string `pulumi:"name"`
+}
+
+// PluginInstanceAuthConfigApiKeyConfigInput is an input type that accepts PluginInstanceAuthConfigApiKeyConfigArgs and PluginInstanceAuthConfigApiKeyConfigOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigApiKeyConfigInput` via:
+//
+//	PluginInstanceAuthConfigApiKeyConfigArgs{...}
+type PluginInstanceAuthConfigApiKeyConfigInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigApiKeyConfigOutput() PluginInstanceAuthConfigApiKeyConfigOutput
+	ToPluginInstanceAuthConfigApiKeyConfigOutputWithContext(context.Context) PluginInstanceAuthConfigApiKeyConfigOutput
+}
+
+type PluginInstanceAuthConfigApiKeyConfigArgs struct {
+	// Secret provides a reference to entries in Secret Manager.
+	// Structure is documented below.
+	ApiKey PluginInstanceAuthConfigApiKeyConfigApiKeyInput `pulumi:"apiKey"`
+	// The location of the API key.
+	// The default value is QUERY.
+	// Possible values:
+	// HTTP_ELEMENT_LOCATION_UNSPECIFIED
+	// QUERY
+	// HEADER
+	// PATH
+	// BODY
+	// COOKIE
+	HttpElementLocation pulumi.StringInput `pulumi:"httpElementLocation"`
+	// The parameter name of the API key.
+	// E.g. If the API request is "https://example.com/act?api_key=",
+	// "apiKey" would be the parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PluginInstanceAuthConfigApiKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigApiKeyConfig)(nil)).Elem()
+}
+
+func (i PluginInstanceAuthConfigApiKeyConfigArgs) ToPluginInstanceAuthConfigApiKeyConfigOutput() PluginInstanceAuthConfigApiKeyConfigOutput {
+	return i.ToPluginInstanceAuthConfigApiKeyConfigOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigApiKeyConfigArgs) ToPluginInstanceAuthConfigApiKeyConfigOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigApiKeyConfigOutput)
+}
+
+func (i PluginInstanceAuthConfigApiKeyConfigArgs) ToPluginInstanceAuthConfigApiKeyConfigPtrOutput() PluginInstanceAuthConfigApiKeyConfigPtrOutput {
+	return i.ToPluginInstanceAuthConfigApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigApiKeyConfigArgs) ToPluginInstanceAuthConfigApiKeyConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigApiKeyConfigOutput).ToPluginInstanceAuthConfigApiKeyConfigPtrOutputWithContext(ctx)
+}
+
+// PluginInstanceAuthConfigApiKeyConfigPtrInput is an input type that accepts PluginInstanceAuthConfigApiKeyConfigArgs, PluginInstanceAuthConfigApiKeyConfigPtr and PluginInstanceAuthConfigApiKeyConfigPtrOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigApiKeyConfigPtrInput` via:
+//
+//	        PluginInstanceAuthConfigApiKeyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginInstanceAuthConfigApiKeyConfigPtrInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigApiKeyConfigPtrOutput() PluginInstanceAuthConfigApiKeyConfigPtrOutput
+	ToPluginInstanceAuthConfigApiKeyConfigPtrOutputWithContext(context.Context) PluginInstanceAuthConfigApiKeyConfigPtrOutput
+}
+
+type pluginInstanceAuthConfigApiKeyConfigPtrType PluginInstanceAuthConfigApiKeyConfigArgs
+
+func PluginInstanceAuthConfigApiKeyConfigPtr(v *PluginInstanceAuthConfigApiKeyConfigArgs) PluginInstanceAuthConfigApiKeyConfigPtrInput {
+	return (*pluginInstanceAuthConfigApiKeyConfigPtrType)(v)
+}
+
+func (*pluginInstanceAuthConfigApiKeyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigApiKeyConfig)(nil)).Elem()
+}
+
+func (i *pluginInstanceAuthConfigApiKeyConfigPtrType) ToPluginInstanceAuthConfigApiKeyConfigPtrOutput() PluginInstanceAuthConfigApiKeyConfigPtrOutput {
+	return i.ToPluginInstanceAuthConfigApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginInstanceAuthConfigApiKeyConfigPtrType) ToPluginInstanceAuthConfigApiKeyConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigApiKeyConfigPtrOutput)
+}
+
+type PluginInstanceAuthConfigApiKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigApiKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigApiKeyConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigOutput) ToPluginInstanceAuthConfigApiKeyConfigOutput() PluginInstanceAuthConfigApiKeyConfigOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigOutput) ToPluginInstanceAuthConfigApiKeyConfigOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigOutput) ToPluginInstanceAuthConfigApiKeyConfigPtrOutput() PluginInstanceAuthConfigApiKeyConfigPtrOutput {
+	return o.ToPluginInstanceAuthConfigApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigOutput) ToPluginInstanceAuthConfigApiKeyConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginInstanceAuthConfigApiKeyConfig) *PluginInstanceAuthConfigApiKeyConfig {
+		return &v
+	}).(PluginInstanceAuthConfigApiKeyConfigPtrOutput)
+}
+
+// Secret provides a reference to entries in Secret Manager.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigApiKeyConfigOutput) ApiKey() PluginInstanceAuthConfigApiKeyConfigApiKeyOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfigApiKeyConfig) PluginInstanceAuthConfigApiKeyConfigApiKey {
+		return v.ApiKey
+	}).(PluginInstanceAuthConfigApiKeyConfigApiKeyOutput)
+}
+
+// The location of the API key.
+// The default value is QUERY.
+// Possible values:
+// HTTP_ELEMENT_LOCATION_UNSPECIFIED
+// QUERY
+// HEADER
+// PATH
+// BODY
+// COOKIE
+func (o PluginInstanceAuthConfigApiKeyConfigOutput) HttpElementLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfigApiKeyConfig) string { return v.HttpElementLocation }).(pulumi.StringOutput)
+}
+
+// The parameter name of the API key.
+// E.g. If the API request is "https://example.com/act?api_key=",
+// "apiKey" would be the parameter name.
+func (o PluginInstanceAuthConfigApiKeyConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfigApiKeyConfig) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PluginInstanceAuthConfigApiKeyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigApiKeyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigApiKeyConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigPtrOutput) ToPluginInstanceAuthConfigApiKeyConfigPtrOutput() PluginInstanceAuthConfigApiKeyConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigPtrOutput) ToPluginInstanceAuthConfigApiKeyConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigPtrOutput) Elem() PluginInstanceAuthConfigApiKeyConfigOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigApiKeyConfig) PluginInstanceAuthConfigApiKeyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PluginInstanceAuthConfigApiKeyConfig
+		return ret
+	}).(PluginInstanceAuthConfigApiKeyConfigOutput)
+}
+
+// Secret provides a reference to entries in Secret Manager.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigApiKeyConfigPtrOutput) ApiKey() PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigApiKeyConfig) *PluginInstanceAuthConfigApiKeyConfigApiKey {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput)
+}
+
+// The location of the API key.
+// The default value is QUERY.
+// Possible values:
+// HTTP_ELEMENT_LOCATION_UNSPECIFIED
+// QUERY
+// HEADER
+// PATH
+// BODY
+// COOKIE
+func (o PluginInstanceAuthConfigApiKeyConfigPtrOutput) HttpElementLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HttpElementLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The parameter name of the API key.
+// E.g. If the API request is "https://example.com/act?api_key=",
+// "apiKey" would be the parameter name.
+func (o PluginInstanceAuthConfigApiKeyConfigPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type PluginInstanceAuthConfigApiKeyConfigApiKey struct {
+	// The resource name of the secret version in the format,
+	// format as: `projects/*/secrets/*/versions/*`.
+	//
+	// <a name="nestedAuthConfigOauth2ClientCredentialsConfig"></a>The `oauth2ClientCredentialsConfig` block supports:
+	SecretVersion string `pulumi:"secretVersion"`
+}
+
+// PluginInstanceAuthConfigApiKeyConfigApiKeyInput is an input type that accepts PluginInstanceAuthConfigApiKeyConfigApiKeyArgs and PluginInstanceAuthConfigApiKeyConfigApiKeyOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigApiKeyConfigApiKeyInput` via:
+//
+//	PluginInstanceAuthConfigApiKeyConfigApiKeyArgs{...}
+type PluginInstanceAuthConfigApiKeyConfigApiKeyInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigApiKeyConfigApiKeyOutput() PluginInstanceAuthConfigApiKeyConfigApiKeyOutput
+	ToPluginInstanceAuthConfigApiKeyConfigApiKeyOutputWithContext(context.Context) PluginInstanceAuthConfigApiKeyConfigApiKeyOutput
+}
+
+type PluginInstanceAuthConfigApiKeyConfigApiKeyArgs struct {
+	// The resource name of the secret version in the format,
+	// format as: `projects/*/secrets/*/versions/*`.
+	//
+	// <a name="nestedAuthConfigOauth2ClientCredentialsConfig"></a>The `oauth2ClientCredentialsConfig` block supports:
+	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
+}
+
+func (PluginInstanceAuthConfigApiKeyConfigApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigApiKeyConfigApiKey)(nil)).Elem()
+}
+
+func (i PluginInstanceAuthConfigApiKeyConfigApiKeyArgs) ToPluginInstanceAuthConfigApiKeyConfigApiKeyOutput() PluginInstanceAuthConfigApiKeyConfigApiKeyOutput {
+	return i.ToPluginInstanceAuthConfigApiKeyConfigApiKeyOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigApiKeyConfigApiKeyArgs) ToPluginInstanceAuthConfigApiKeyConfigApiKeyOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigApiKeyConfigApiKeyOutput)
+}
+
+func (i PluginInstanceAuthConfigApiKeyConfigApiKeyArgs) ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput() PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput {
+	return i.ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigApiKeyConfigApiKeyArgs) ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigApiKeyConfigApiKeyOutput).ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutputWithContext(ctx)
+}
+
+// PluginInstanceAuthConfigApiKeyConfigApiKeyPtrInput is an input type that accepts PluginInstanceAuthConfigApiKeyConfigApiKeyArgs, PluginInstanceAuthConfigApiKeyConfigApiKeyPtr and PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigApiKeyConfigApiKeyPtrInput` via:
+//
+//	        PluginInstanceAuthConfigApiKeyConfigApiKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginInstanceAuthConfigApiKeyConfigApiKeyPtrInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput() PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput
+	ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutputWithContext(context.Context) PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput
+}
+
+type pluginInstanceAuthConfigApiKeyConfigApiKeyPtrType PluginInstanceAuthConfigApiKeyConfigApiKeyArgs
+
+func PluginInstanceAuthConfigApiKeyConfigApiKeyPtr(v *PluginInstanceAuthConfigApiKeyConfigApiKeyArgs) PluginInstanceAuthConfigApiKeyConfigApiKeyPtrInput {
+	return (*pluginInstanceAuthConfigApiKeyConfigApiKeyPtrType)(v)
+}
+
+func (*pluginInstanceAuthConfigApiKeyConfigApiKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigApiKeyConfigApiKey)(nil)).Elem()
+}
+
+func (i *pluginInstanceAuthConfigApiKeyConfigApiKeyPtrType) ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput() PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput {
+	return i.ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginInstanceAuthConfigApiKeyConfigApiKeyPtrType) ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput)
+}
+
+type PluginInstanceAuthConfigApiKeyConfigApiKeyOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigApiKeyConfigApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigApiKeyConfigApiKey)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigApiKeyOutput) ToPluginInstanceAuthConfigApiKeyConfigApiKeyOutput() PluginInstanceAuthConfigApiKeyConfigApiKeyOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigApiKeyOutput) ToPluginInstanceAuthConfigApiKeyConfigApiKeyOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigApiKeyOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigApiKeyOutput) ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput() PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput {
+	return o.ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigApiKeyOutput) ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginInstanceAuthConfigApiKeyConfigApiKey) *PluginInstanceAuthConfigApiKeyConfigApiKey {
+		return &v
+	}).(PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput)
+}
+
+// The resource name of the secret version in the format,
+// format as: `projects/*/secrets/*/versions/*`.
+//
+// <a name="nestedAuthConfigOauth2ClientCredentialsConfig"></a>The `oauth2ClientCredentialsConfig` block supports:
+func (o PluginInstanceAuthConfigApiKeyConfigApiKeyOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfigApiKeyConfigApiKey) string { return v.SecretVersion }).(pulumi.StringOutput)
+}
+
+type PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigApiKeyConfigApiKey)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput) ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput() PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput) ToPluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput) Elem() PluginInstanceAuthConfigApiKeyConfigApiKeyOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigApiKeyConfigApiKey) PluginInstanceAuthConfigApiKeyConfigApiKey {
+		if v != nil {
+			return *v
+		}
+		var ret PluginInstanceAuthConfigApiKeyConfigApiKey
+		return ret
+	}).(PluginInstanceAuthConfigApiKeyConfigApiKeyOutput)
+}
+
+// The resource name of the secret version in the format,
+// format as: `projects/*/secrets/*/versions/*`.
+//
+// <a name="nestedAuthConfigOauth2ClientCredentialsConfig"></a>The `oauth2ClientCredentialsConfig` block supports:
+func (o PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigApiKeyConfigApiKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type PluginInstanceAuthConfigGoogleServiceAccountConfig struct {
+	// The service account to be used for authenticating request.
+	// The `iam.serviceAccounts.getAccessToken` permission should be granted on
+	// this service account to the impersonator service account.
+	ServiceAccount string `pulumi:"serviceAccount"`
+}
+
+// PluginInstanceAuthConfigGoogleServiceAccountConfigInput is an input type that accepts PluginInstanceAuthConfigGoogleServiceAccountConfigArgs and PluginInstanceAuthConfigGoogleServiceAccountConfigOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigGoogleServiceAccountConfigInput` via:
+//
+//	PluginInstanceAuthConfigGoogleServiceAccountConfigArgs{...}
+type PluginInstanceAuthConfigGoogleServiceAccountConfigInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigGoogleServiceAccountConfigOutput() PluginInstanceAuthConfigGoogleServiceAccountConfigOutput
+	ToPluginInstanceAuthConfigGoogleServiceAccountConfigOutputWithContext(context.Context) PluginInstanceAuthConfigGoogleServiceAccountConfigOutput
+}
+
+type PluginInstanceAuthConfigGoogleServiceAccountConfigArgs struct {
+	// The service account to be used for authenticating request.
+	// The `iam.serviceAccounts.getAccessToken` permission should be granted on
+	// this service account to the impersonator service account.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+}
+
+func (PluginInstanceAuthConfigGoogleServiceAccountConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigGoogleServiceAccountConfig)(nil)).Elem()
+}
+
+func (i PluginInstanceAuthConfigGoogleServiceAccountConfigArgs) ToPluginInstanceAuthConfigGoogleServiceAccountConfigOutput() PluginInstanceAuthConfigGoogleServiceAccountConfigOutput {
+	return i.ToPluginInstanceAuthConfigGoogleServiceAccountConfigOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigGoogleServiceAccountConfigArgs) ToPluginInstanceAuthConfigGoogleServiceAccountConfigOutputWithContext(ctx context.Context) PluginInstanceAuthConfigGoogleServiceAccountConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigGoogleServiceAccountConfigOutput)
+}
+
+func (i PluginInstanceAuthConfigGoogleServiceAccountConfigArgs) ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput() PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput {
+	return i.ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigGoogleServiceAccountConfigArgs) ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigGoogleServiceAccountConfigOutput).ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutputWithContext(ctx)
+}
+
+// PluginInstanceAuthConfigGoogleServiceAccountConfigPtrInput is an input type that accepts PluginInstanceAuthConfigGoogleServiceAccountConfigArgs, PluginInstanceAuthConfigGoogleServiceAccountConfigPtr and PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigGoogleServiceAccountConfigPtrInput` via:
+//
+//	        PluginInstanceAuthConfigGoogleServiceAccountConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginInstanceAuthConfigGoogleServiceAccountConfigPtrInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput() PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput
+	ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutputWithContext(context.Context) PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput
+}
+
+type pluginInstanceAuthConfigGoogleServiceAccountConfigPtrType PluginInstanceAuthConfigGoogleServiceAccountConfigArgs
+
+func PluginInstanceAuthConfigGoogleServiceAccountConfigPtr(v *PluginInstanceAuthConfigGoogleServiceAccountConfigArgs) PluginInstanceAuthConfigGoogleServiceAccountConfigPtrInput {
+	return (*pluginInstanceAuthConfigGoogleServiceAccountConfigPtrType)(v)
+}
+
+func (*pluginInstanceAuthConfigGoogleServiceAccountConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigGoogleServiceAccountConfig)(nil)).Elem()
+}
+
+func (i *pluginInstanceAuthConfigGoogleServiceAccountConfigPtrType) ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput() PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput {
+	return i.ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginInstanceAuthConfigGoogleServiceAccountConfigPtrType) ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput)
+}
+
+type PluginInstanceAuthConfigGoogleServiceAccountConfigOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigGoogleServiceAccountConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigGoogleServiceAccountConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigGoogleServiceAccountConfigOutput) ToPluginInstanceAuthConfigGoogleServiceAccountConfigOutput() PluginInstanceAuthConfigGoogleServiceAccountConfigOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigGoogleServiceAccountConfigOutput) ToPluginInstanceAuthConfigGoogleServiceAccountConfigOutputWithContext(ctx context.Context) PluginInstanceAuthConfigGoogleServiceAccountConfigOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigGoogleServiceAccountConfigOutput) ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput() PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput {
+	return o.ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PluginInstanceAuthConfigGoogleServiceAccountConfigOutput) ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginInstanceAuthConfigGoogleServiceAccountConfig) *PluginInstanceAuthConfigGoogleServiceAccountConfig {
+		return &v
+	}).(PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput)
+}
+
+// The service account to be used for authenticating request.
+// The `iam.serviceAccounts.getAccessToken` permission should be granted on
+// this service account to the impersonator service account.
+func (o PluginInstanceAuthConfigGoogleServiceAccountConfigOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfigGoogleServiceAccountConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+type PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigGoogleServiceAccountConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput) ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput() PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput) ToPluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput) Elem() PluginInstanceAuthConfigGoogleServiceAccountConfigOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigGoogleServiceAccountConfig) PluginInstanceAuthConfigGoogleServiceAccountConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PluginInstanceAuthConfigGoogleServiceAccountConfig
+		return ret
+	}).(PluginInstanceAuthConfigGoogleServiceAccountConfigOutput)
+}
+
+// The service account to be used for authenticating request.
+// The `iam.serviceAccounts.getAccessToken` permission should be granted on
+// this service account to the impersonator service account.
+func (o PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigGoogleServiceAccountConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfig struct {
+	// The client identifier.
+	ClientId string `pulumi:"clientId"`
+	// Secret provides a reference to entries in Secret Manager.
+	ClientSecret PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret `pulumi:"clientSecret"`
+}
+
+// PluginInstanceAuthConfigOauth2ClientCredentialsConfigInput is an input type that accepts PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs and PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigOauth2ClientCredentialsConfigInput` via:
+//
+//	PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs{...}
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfigInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput
+	ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigOutputWithContext(context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput
+}
+
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs struct {
+	// The client identifier.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Secret provides a reference to entries in Secret Manager.
+	ClientSecret PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretInput `pulumi:"clientSecret"`
+}
+
+func (PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigOauth2ClientCredentialsConfig)(nil)).Elem()
+}
+
+func (i PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput {
+	return i.ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput)
+}
+
+func (i PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput {
+	return i.ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput).ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutputWithContext(ctx)
+}
+
+// PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrInput is an input type that accepts PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs, PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtr and PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrInput` via:
+//
+//	        PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput
+	ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutputWithContext(context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput
+}
+
+type pluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrType PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs
+
+func PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtr(v *PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs) PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrInput {
+	return (*pluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrType)(v)
+}
+
+func (*pluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigOauth2ClientCredentialsConfig)(nil)).Elem()
+}
+
+func (i *pluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrType) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput {
+	return i.ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrType) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput)
+}
+
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigOauth2ClientCredentialsConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput {
+	return o.ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginInstanceAuthConfigOauth2ClientCredentialsConfig) *PluginInstanceAuthConfigOauth2ClientCredentialsConfig {
+		return &v
+	}).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput)
+}
+
+// The client identifier.
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfigOauth2ClientCredentialsConfig) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Secret provides a reference to entries in Secret Manager.
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput) ClientSecret() PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfigOauth2ClientCredentialsConfig) PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret {
+		return v.ClientSecret
+	}).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput)
+}
+
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigOauth2ClientCredentialsConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput) Elem() PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigOauth2ClientCredentialsConfig) PluginInstanceAuthConfigOauth2ClientCredentialsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PluginInstanceAuthConfigOauth2ClientCredentialsConfig
+		return ret
+	}).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput)
+}
+
+// The client identifier.
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigOauth2ClientCredentialsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret provides a reference to entries in Secret Manager.
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput) ClientSecret() PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigOauth2ClientCredentialsConfig) *PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecret
+	}).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput)
+}
+
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret struct {
+	// The resource name of the secret version in the format,
+	// format as: `projects/*/secrets/*/versions/*`.
+	SecretVersion string `pulumi:"secretVersion"`
+}
+
+// PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretInput is an input type that accepts PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs and PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretInput` via:
+//
+//	PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs{...}
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput
+	ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutputWithContext(context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput
+}
+
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs struct {
+	// The resource name of the secret version in the format,
+	// format as: `projects/*/secrets/*/versions/*`.
+	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
+}
+
+func (PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret)(nil)).Elem()
+}
+
+func (i PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput {
+	return i.ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput)
+}
+
+func (i PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput {
+	return i.ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput).ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutputWithContext(ctx)
+}
+
+// PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrInput is an input type that accepts PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs, PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtr and PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrInput` via:
+//
+//	        PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput
+	ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutputWithContext(context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput
+}
+
+type pluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrType PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs
+
+func PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtr(v *PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs) PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrInput {
+	return (*pluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrType)(v)
+}
+
+func (*pluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret)(nil)).Elem()
+}
+
+func (i *pluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrType) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput {
+	return i.ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrType) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput)
+}
+
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput {
+	return o.ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutputWithContext(context.Background())
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret) *PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret {
+		return &v
+	}).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput)
+}
+
+// The resource name of the secret version in the format,
+// format as: `projects/*/secrets/*/versions/*`.
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret) string {
+		return v.SecretVersion
+	}).(pulumi.StringOutput)
+}
+
+type PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput() PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput) ToPluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput) Elem() PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret) PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret {
+		if v != nil {
+			return *v
+		}
+		var ret PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret
+		return ret
+	}).(PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput)
+}
+
+// The resource name of the secret version in the format,
+// format as: `projects/*/secrets/*/versions/*`.
+func (o PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type PluginInstanceAuthConfigUserPasswordConfig struct {
+	// Secret provides a reference to entries in Secret Manager.
+	// Structure is documented below.
+	Password PluginInstanceAuthConfigUserPasswordConfigPassword `pulumi:"password"`
+	// Username.
+	Username string `pulumi:"username"`
+}
+
+// PluginInstanceAuthConfigUserPasswordConfigInput is an input type that accepts PluginInstanceAuthConfigUserPasswordConfigArgs and PluginInstanceAuthConfigUserPasswordConfigOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigUserPasswordConfigInput` via:
+//
+//	PluginInstanceAuthConfigUserPasswordConfigArgs{...}
+type PluginInstanceAuthConfigUserPasswordConfigInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigUserPasswordConfigOutput() PluginInstanceAuthConfigUserPasswordConfigOutput
+	ToPluginInstanceAuthConfigUserPasswordConfigOutputWithContext(context.Context) PluginInstanceAuthConfigUserPasswordConfigOutput
+}
+
+type PluginInstanceAuthConfigUserPasswordConfigArgs struct {
+	// Secret provides a reference to entries in Secret Manager.
+	// Structure is documented below.
+	Password PluginInstanceAuthConfigUserPasswordConfigPasswordInput `pulumi:"password"`
+	// Username.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (PluginInstanceAuthConfigUserPasswordConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigUserPasswordConfig)(nil)).Elem()
+}
+
+func (i PluginInstanceAuthConfigUserPasswordConfigArgs) ToPluginInstanceAuthConfigUserPasswordConfigOutput() PluginInstanceAuthConfigUserPasswordConfigOutput {
+	return i.ToPluginInstanceAuthConfigUserPasswordConfigOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigUserPasswordConfigArgs) ToPluginInstanceAuthConfigUserPasswordConfigOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigUserPasswordConfigOutput)
+}
+
+func (i PluginInstanceAuthConfigUserPasswordConfigArgs) ToPluginInstanceAuthConfigUserPasswordConfigPtrOutput() PluginInstanceAuthConfigUserPasswordConfigPtrOutput {
+	return i.ToPluginInstanceAuthConfigUserPasswordConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigUserPasswordConfigArgs) ToPluginInstanceAuthConfigUserPasswordConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigUserPasswordConfigOutput).ToPluginInstanceAuthConfigUserPasswordConfigPtrOutputWithContext(ctx)
+}
+
+// PluginInstanceAuthConfigUserPasswordConfigPtrInput is an input type that accepts PluginInstanceAuthConfigUserPasswordConfigArgs, PluginInstanceAuthConfigUserPasswordConfigPtr and PluginInstanceAuthConfigUserPasswordConfigPtrOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigUserPasswordConfigPtrInput` via:
+//
+//	        PluginInstanceAuthConfigUserPasswordConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginInstanceAuthConfigUserPasswordConfigPtrInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigUserPasswordConfigPtrOutput() PluginInstanceAuthConfigUserPasswordConfigPtrOutput
+	ToPluginInstanceAuthConfigUserPasswordConfigPtrOutputWithContext(context.Context) PluginInstanceAuthConfigUserPasswordConfigPtrOutput
+}
+
+type pluginInstanceAuthConfigUserPasswordConfigPtrType PluginInstanceAuthConfigUserPasswordConfigArgs
+
+func PluginInstanceAuthConfigUserPasswordConfigPtr(v *PluginInstanceAuthConfigUserPasswordConfigArgs) PluginInstanceAuthConfigUserPasswordConfigPtrInput {
+	return (*pluginInstanceAuthConfigUserPasswordConfigPtrType)(v)
+}
+
+func (*pluginInstanceAuthConfigUserPasswordConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigUserPasswordConfig)(nil)).Elem()
+}
+
+func (i *pluginInstanceAuthConfigUserPasswordConfigPtrType) ToPluginInstanceAuthConfigUserPasswordConfigPtrOutput() PluginInstanceAuthConfigUserPasswordConfigPtrOutput {
+	return i.ToPluginInstanceAuthConfigUserPasswordConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginInstanceAuthConfigUserPasswordConfigPtrType) ToPluginInstanceAuthConfigUserPasswordConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigUserPasswordConfigPtrOutput)
+}
+
+type PluginInstanceAuthConfigUserPasswordConfigOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigUserPasswordConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigUserPasswordConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigOutput) ToPluginInstanceAuthConfigUserPasswordConfigOutput() PluginInstanceAuthConfigUserPasswordConfigOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigOutput) ToPluginInstanceAuthConfigUserPasswordConfigOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigOutput) ToPluginInstanceAuthConfigUserPasswordConfigPtrOutput() PluginInstanceAuthConfigUserPasswordConfigPtrOutput {
+	return o.ToPluginInstanceAuthConfigUserPasswordConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigOutput) ToPluginInstanceAuthConfigUserPasswordConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginInstanceAuthConfigUserPasswordConfig) *PluginInstanceAuthConfigUserPasswordConfig {
+		return &v
+	}).(PluginInstanceAuthConfigUserPasswordConfigPtrOutput)
+}
+
+// Secret provides a reference to entries in Secret Manager.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigUserPasswordConfigOutput) Password() PluginInstanceAuthConfigUserPasswordConfigPasswordOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfigUserPasswordConfig) PluginInstanceAuthConfigUserPasswordConfigPassword {
+		return v.Password
+	}).(PluginInstanceAuthConfigUserPasswordConfigPasswordOutput)
+}
+
+// Username.
+func (o PluginInstanceAuthConfigUserPasswordConfigOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfigUserPasswordConfig) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type PluginInstanceAuthConfigUserPasswordConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigUserPasswordConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigUserPasswordConfig)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigPtrOutput) ToPluginInstanceAuthConfigUserPasswordConfigPtrOutput() PluginInstanceAuthConfigUserPasswordConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigPtrOutput) ToPluginInstanceAuthConfigUserPasswordConfigPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigPtrOutput) Elem() PluginInstanceAuthConfigUserPasswordConfigOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigUserPasswordConfig) PluginInstanceAuthConfigUserPasswordConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PluginInstanceAuthConfigUserPasswordConfig
+		return ret
+	}).(PluginInstanceAuthConfigUserPasswordConfigOutput)
+}
+
+// Secret provides a reference to entries in Secret Manager.
+// Structure is documented below.
+func (o PluginInstanceAuthConfigUserPasswordConfigPtrOutput) Password() PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigUserPasswordConfig) *PluginInstanceAuthConfigUserPasswordConfigPassword {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput)
+}
+
+// Username.
+func (o PluginInstanceAuthConfigUserPasswordConfigPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigUserPasswordConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type PluginInstanceAuthConfigUserPasswordConfigPassword struct {
+	// The resource name of the secret version in the format,
+	// format as: `projects/*/secrets/*/versions/*`.
+	SecretVersion string `pulumi:"secretVersion"`
+}
+
+// PluginInstanceAuthConfigUserPasswordConfigPasswordInput is an input type that accepts PluginInstanceAuthConfigUserPasswordConfigPasswordArgs and PluginInstanceAuthConfigUserPasswordConfigPasswordOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigUserPasswordConfigPasswordInput` via:
+//
+//	PluginInstanceAuthConfigUserPasswordConfigPasswordArgs{...}
+type PluginInstanceAuthConfigUserPasswordConfigPasswordInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigUserPasswordConfigPasswordOutput() PluginInstanceAuthConfigUserPasswordConfigPasswordOutput
+	ToPluginInstanceAuthConfigUserPasswordConfigPasswordOutputWithContext(context.Context) PluginInstanceAuthConfigUserPasswordConfigPasswordOutput
+}
+
+type PluginInstanceAuthConfigUserPasswordConfigPasswordArgs struct {
+	// The resource name of the secret version in the format,
+	// format as: `projects/*/secrets/*/versions/*`.
+	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
+}
+
+func (PluginInstanceAuthConfigUserPasswordConfigPasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigUserPasswordConfigPassword)(nil)).Elem()
+}
+
+func (i PluginInstanceAuthConfigUserPasswordConfigPasswordArgs) ToPluginInstanceAuthConfigUserPasswordConfigPasswordOutput() PluginInstanceAuthConfigUserPasswordConfigPasswordOutput {
+	return i.ToPluginInstanceAuthConfigUserPasswordConfigPasswordOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigUserPasswordConfigPasswordArgs) ToPluginInstanceAuthConfigUserPasswordConfigPasswordOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigUserPasswordConfigPasswordOutput)
+}
+
+func (i PluginInstanceAuthConfigUserPasswordConfigPasswordArgs) ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput() PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput {
+	return i.ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i PluginInstanceAuthConfigUserPasswordConfigPasswordArgs) ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigUserPasswordConfigPasswordOutput).ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutputWithContext(ctx)
+}
+
+// PluginInstanceAuthConfigUserPasswordConfigPasswordPtrInput is an input type that accepts PluginInstanceAuthConfigUserPasswordConfigPasswordArgs, PluginInstanceAuthConfigUserPasswordConfigPasswordPtr and PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput values.
+// You can construct a concrete instance of `PluginInstanceAuthConfigUserPasswordConfigPasswordPtrInput` via:
+//
+//	        PluginInstanceAuthConfigUserPasswordConfigPasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginInstanceAuthConfigUserPasswordConfigPasswordPtrInput interface {
+	pulumi.Input
+
+	ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput() PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput
+	ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutputWithContext(context.Context) PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput
+}
+
+type pluginInstanceAuthConfigUserPasswordConfigPasswordPtrType PluginInstanceAuthConfigUserPasswordConfigPasswordArgs
+
+func PluginInstanceAuthConfigUserPasswordConfigPasswordPtr(v *PluginInstanceAuthConfigUserPasswordConfigPasswordArgs) PluginInstanceAuthConfigUserPasswordConfigPasswordPtrInput {
+	return (*pluginInstanceAuthConfigUserPasswordConfigPasswordPtrType)(v)
+}
+
+func (*pluginInstanceAuthConfigUserPasswordConfigPasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigUserPasswordConfigPassword)(nil)).Elem()
+}
+
+func (i *pluginInstanceAuthConfigUserPasswordConfigPasswordPtrType) ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput() PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput {
+	return i.ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginInstanceAuthConfigUserPasswordConfigPasswordPtrType) ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput)
+}
+
+type PluginInstanceAuthConfigUserPasswordConfigPasswordOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigUserPasswordConfigPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginInstanceAuthConfigUserPasswordConfigPassword)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigPasswordOutput) ToPluginInstanceAuthConfigUserPasswordConfigPasswordOutput() PluginInstanceAuthConfigUserPasswordConfigPasswordOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigPasswordOutput) ToPluginInstanceAuthConfigUserPasswordConfigPasswordOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigPasswordOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigPasswordOutput) ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput() PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput {
+	return o.ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutputWithContext(context.Background())
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigPasswordOutput) ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginInstanceAuthConfigUserPasswordConfigPassword) *PluginInstanceAuthConfigUserPasswordConfigPassword {
+		return &v
+	}).(PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput)
+}
+
+// The resource name of the secret version in the format,
+// format as: `projects/*/secrets/*/versions/*`.
+func (o PluginInstanceAuthConfigUserPasswordConfigPasswordOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginInstanceAuthConfigUserPasswordConfigPassword) string { return v.SecretVersion }).(pulumi.StringOutput)
+}
+
+type PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginInstanceAuthConfigUserPasswordConfigPassword)(nil)).Elem()
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput) ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput() PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput) ToPluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutputWithContext(ctx context.Context) PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput {
+	return o
+}
+
+func (o PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput) Elem() PluginInstanceAuthConfigUserPasswordConfigPasswordOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigUserPasswordConfigPassword) PluginInstanceAuthConfigUserPasswordConfigPassword {
+		if v != nil {
+			return *v
+		}
+		var ret PluginInstanceAuthConfigUserPasswordConfigPassword
+		return ret
+	}).(PluginInstanceAuthConfigUserPasswordConfigPasswordOutput)
+}
+
+// The resource name of the secret version in the format,
+// format as: `projects/*/secrets/*/versions/*`.
+func (o PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstanceAuthConfigUserPasswordConfigPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiHubInstanceConfigInput)(nil)).Elem(), ApiHubInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiHubInstanceConfigPtrInput)(nil)).Elem(), ApiHubInstanceConfigArgs{})
@@ -723,6 +2884,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CurationEndpointApplicationIntegrationEndpointDetailsPtrInput)(nil)).Elem(), CurationEndpointApplicationIntegrationEndpointDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CurationPluginInstanceActionInput)(nil)).Elem(), CurationPluginInstanceActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CurationPluginInstanceActionArrayInput)(nil)).Elem(), CurationPluginInstanceActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionInput)(nil)).Elem(), PluginInstanceActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionArrayInput)(nil)).Elem(), PluginInstanceActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionCurationConfigInput)(nil)).Elem(), PluginInstanceActionCurationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionCurationConfigPtrInput)(nil)).Elem(), PluginInstanceActionCurationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionCurationConfigCustomCurationInput)(nil)).Elem(), PluginInstanceActionCurationConfigCustomCurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionCurationConfigCustomCurationPtrInput)(nil)).Elem(), PluginInstanceActionCurationConfigCustomCurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionHubInstanceActionInput)(nil)).Elem(), PluginInstanceActionHubInstanceActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionHubInstanceActionArrayInput)(nil)).Elem(), PluginInstanceActionHubInstanceActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionHubInstanceActionLastExecutionInput)(nil)).Elem(), PluginInstanceActionHubInstanceActionLastExecutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionHubInstanceActionLastExecutionArrayInput)(nil)).Elem(), PluginInstanceActionHubInstanceActionLastExecutionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigInput)(nil)).Elem(), PluginInstanceAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigPtrInput)(nil)).Elem(), PluginInstanceAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigApiKeyConfigInput)(nil)).Elem(), PluginInstanceAuthConfigApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigApiKeyConfigPtrInput)(nil)).Elem(), PluginInstanceAuthConfigApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigApiKeyConfigApiKeyInput)(nil)).Elem(), PluginInstanceAuthConfigApiKeyConfigApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigApiKeyConfigApiKeyPtrInput)(nil)).Elem(), PluginInstanceAuthConfigApiKeyConfigApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigGoogleServiceAccountConfigInput)(nil)).Elem(), PluginInstanceAuthConfigGoogleServiceAccountConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigGoogleServiceAccountConfigPtrInput)(nil)).Elem(), PluginInstanceAuthConfigGoogleServiceAccountConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigOauth2ClientCredentialsConfigInput)(nil)).Elem(), PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrInput)(nil)).Elem(), PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretInput)(nil)).Elem(), PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrInput)(nil)).Elem(), PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigUserPasswordConfigInput)(nil)).Elem(), PluginInstanceAuthConfigUserPasswordConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigUserPasswordConfigPtrInput)(nil)).Elem(), PluginInstanceAuthConfigUserPasswordConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigUserPasswordConfigPasswordInput)(nil)).Elem(), PluginInstanceAuthConfigUserPasswordConfigPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigUserPasswordConfigPasswordPtrInput)(nil)).Elem(), PluginInstanceAuthConfigUserPasswordConfigPasswordArgs{})
 	pulumi.RegisterOutputType(ApiHubInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ApiHubInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(CurationEndpointOutput{})
@@ -731,4 +2918,30 @@ func init() {
 	pulumi.RegisterOutputType(CurationEndpointApplicationIntegrationEndpointDetailsPtrOutput{})
 	pulumi.RegisterOutputType(CurationPluginInstanceActionOutput{})
 	pulumi.RegisterOutputType(CurationPluginInstanceActionArrayOutput{})
+	pulumi.RegisterOutputType(PluginInstanceActionOutput{})
+	pulumi.RegisterOutputType(PluginInstanceActionArrayOutput{})
+	pulumi.RegisterOutputType(PluginInstanceActionCurationConfigOutput{})
+	pulumi.RegisterOutputType(PluginInstanceActionCurationConfigPtrOutput{})
+	pulumi.RegisterOutputType(PluginInstanceActionCurationConfigCustomCurationOutput{})
+	pulumi.RegisterOutputType(PluginInstanceActionCurationConfigCustomCurationPtrOutput{})
+	pulumi.RegisterOutputType(PluginInstanceActionHubInstanceActionOutput{})
+	pulumi.RegisterOutputType(PluginInstanceActionHubInstanceActionArrayOutput{})
+	pulumi.RegisterOutputType(PluginInstanceActionHubInstanceActionLastExecutionOutput{})
+	pulumi.RegisterOutputType(PluginInstanceActionHubInstanceActionLastExecutionArrayOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigPtrOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigApiKeyConfigOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigApiKeyConfigPtrOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigApiKeyConfigApiKeyOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigApiKeyConfigApiKeyPtrOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigGoogleServiceAccountConfigOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigGoogleServiceAccountConfigPtrOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigOauth2ClientCredentialsConfigOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigOauth2ClientCredentialsConfigPtrOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretPtrOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigUserPasswordConfigOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigUserPasswordConfigPtrOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigUserPasswordConfigPasswordOutput{})
+	pulumi.RegisterOutputType(PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput{})
 }

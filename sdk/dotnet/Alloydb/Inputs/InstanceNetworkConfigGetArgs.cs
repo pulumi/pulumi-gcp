@@ -12,6 +12,14 @@ namespace Pulumi.Gcp.Alloydb.Inputs
 
     public sealed class InstanceNetworkConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+        /// If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+        /// The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        /// </summary>
+        [Input("allocatedIpRangeOverride")]
+        public Input<string>? AllocatedIpRangeOverride { get; set; }
+
         [Input("authorizedExternalNetworks")]
         private InputList<Inputs.InstanceNetworkConfigAuthorizedExternalNetworkGetArgs>? _authorizedExternalNetworks;
 

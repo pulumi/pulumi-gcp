@@ -52,12 +52,13 @@ import (
 //				return err
 //			}
 //			_, err = lustre.NewInstance(ctx, "instance", &lustre.InstanceArgs{
-//				InstanceId:  pulumi.String("my-instance"),
-//				Location:    pulumi.String("us-central1-a"),
-//				Description: pulumi.String("test lustre instance"),
-//				Filesystem:  pulumi.String("testfs"),
-//				CapacityGib: pulumi.String("18000"),
-//				Network:     pulumi.String(lustre_network.Id),
+//				InstanceId:               pulumi.String("my-instance"),
+//				Location:                 pulumi.String("us-central1-a"),
+//				Description:              pulumi.String("test lustre instance"),
+//				Filesystem:               pulumi.String("testfs"),
+//				CapacityGib:              pulumi.String("18000"),
+//				Network:                  pulumi.String(lustre_network.Id),
+//				PerUnitStorageThroughput: pulumi.String("1000"),
 //				Labels: pulumi.StringMap{
 //					"test": pulumi.String("value"),
 //				},
@@ -97,23 +98,23 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-	// are from 18000 to 954000, in increments of 9000.
+	// The storage capacity of the instance in gibibytes (GiB). Allowed values
+	// are from `18000` to `954000`, in increments of 9000.
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
-	// Output only. Timestamp when the instance was created.
+	// Timestamp when the instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Optional. A user-readable description of the instance.
+	// A user-readable description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Required. Immutable. The filesystem name for this instance. This name is used by client-side
-	// tools, including when mounting the instance. Must be 8 characters or less
-	// and may only contain letters and numbers.
+	// The filesystem name for this instance. This name is used by client-side
+	// tools, including when mounting the instance. Must be eight characters or
+	// less and can only contain letters and numbers.
 	Filesystem pulumi.StringOutput `pulumi:"filesystem"`
-	// Optional. Indicates whether you want to enable support for GKE clients. By default,
+	// Indicates whether you want to enable support for GKE clients. By default,
 	// GKE clients are not supported.
 	GkeSupportEnabled pulumi.BoolPtrOutput `pulumi:"gkeSupportEnabled"`
-	// Required. The name of the Managed Lustre instance.
+	// The name of the Managed Lustre instance.
 	// * Must contain only lowercase letters, numbers, and hyphens.
 	// * Must start with a letter.
 	// * Must be between 1-63 characters.
@@ -121,27 +122,30 @@ type Instance struct {
 	//
 	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+	// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
 	MountPoint pulumi.StringOutput `pulumi:"mountPoint"`
 	// Identifier. The name of the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Immutable. The full name of the VPC network to which the instance is connected.
+	// The full name of the VPC network to which the instance is connected.
 	// Must be in the format
 	// `projects/{project_id}/global/networks/{network_name}`.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// The throughput of the instance in MB/s/TiB.
+	// Valid values are 125, 250, 500, 1000.
+	PerUnitStorageThroughput pulumi.StringOutput `pulumi:"perUnitStorageThroughput"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Output only. The state of the instance.
+	// The state of the instance.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
@@ -151,7 +155,7 @@ type Instance struct {
 	// REPAIRING
 	// STOPPED
 	State pulumi.StringOutput `pulumi:"state"`
-	// Output only. Timestamp when the instance was last updated.
+	// Timestamp when the instance was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -176,6 +180,9 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	if args.Network == nil {
 		return nil, errors.New("invalid value for required argument 'Network'")
+	}
+	if args.PerUnitStorageThroughput == nil {
+		return nil, errors.New("invalid value for required argument 'PerUnitStorageThroughput'")
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
@@ -205,23 +212,23 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-	// are from 18000 to 954000, in increments of 9000.
+	// The storage capacity of the instance in gibibytes (GiB). Allowed values
+	// are from `18000` to `954000`, in increments of 9000.
 	CapacityGib *string `pulumi:"capacityGib"`
-	// Output only. Timestamp when the instance was created.
+	// Timestamp when the instance was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Optional. A user-readable description of the instance.
+	// A user-readable description of the instance.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Required. Immutable. The filesystem name for this instance. This name is used by client-side
-	// tools, including when mounting the instance. Must be 8 characters or less
-	// and may only contain letters and numbers.
+	// The filesystem name for this instance. This name is used by client-side
+	// tools, including when mounting the instance. Must be eight characters or
+	// less and can only contain letters and numbers.
 	Filesystem *string `pulumi:"filesystem"`
-	// Optional. Indicates whether you want to enable support for GKE clients. By default,
+	// Indicates whether you want to enable support for GKE clients. By default,
 	// GKE clients are not supported.
 	GkeSupportEnabled *bool `pulumi:"gkeSupportEnabled"`
-	// Required. The name of the Managed Lustre instance.
+	// The name of the Managed Lustre instance.
 	// * Must contain only lowercase letters, numbers, and hyphens.
 	// * Must start with a letter.
 	// * Must be between 1-63 characters.
@@ -229,27 +236,30 @@ type instanceState struct {
 	//
 	// ***
 	InstanceId *string `pulumi:"instanceId"`
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
-	// Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+	// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
 	MountPoint *string `pulumi:"mountPoint"`
 	// Identifier. The name of the instance.
 	Name *string `pulumi:"name"`
-	// Required. Immutable. The full name of the VPC network to which the instance is connected.
+	// The full name of the VPC network to which the instance is connected.
 	// Must be in the format
 	// `projects/{project_id}/global/networks/{network_name}`.
 	Network *string `pulumi:"network"`
+	// The throughput of the instance in MB/s/TiB.
+	// Valid values are 125, 250, 500, 1000.
+	PerUnitStorageThroughput *string `pulumi:"perUnitStorageThroughput"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Output only. The state of the instance.
+	// The state of the instance.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
@@ -259,28 +269,28 @@ type instanceState struct {
 	// REPAIRING
 	// STOPPED
 	State *string `pulumi:"state"`
-	// Output only. Timestamp when the instance was last updated.
+	// Timestamp when the instance was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type InstanceState struct {
-	// Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-	// are from 18000 to 954000, in increments of 9000.
+	// The storage capacity of the instance in gibibytes (GiB). Allowed values
+	// are from `18000` to `954000`, in increments of 9000.
 	CapacityGib pulumi.StringPtrInput
-	// Output only. Timestamp when the instance was created.
+	// Timestamp when the instance was created.
 	CreateTime pulumi.StringPtrInput
-	// Optional. A user-readable description of the instance.
+	// A user-readable description of the instance.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Required. Immutable. The filesystem name for this instance. This name is used by client-side
-	// tools, including when mounting the instance. Must be 8 characters or less
-	// and may only contain letters and numbers.
+	// The filesystem name for this instance. This name is used by client-side
+	// tools, including when mounting the instance. Must be eight characters or
+	// less and can only contain letters and numbers.
 	Filesystem pulumi.StringPtrInput
-	// Optional. Indicates whether you want to enable support for GKE clients. By default,
+	// Indicates whether you want to enable support for GKE clients. By default,
 	// GKE clients are not supported.
 	GkeSupportEnabled pulumi.BoolPtrInput
-	// Required. The name of the Managed Lustre instance.
+	// The name of the Managed Lustre instance.
 	// * Must contain only lowercase letters, numbers, and hyphens.
 	// * Must start with a letter.
 	// * Must be between 1-63 characters.
@@ -288,27 +298,30 @@ type InstanceState struct {
 	//
 	// ***
 	InstanceId pulumi.StringPtrInput
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
-	// Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+	// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
 	MountPoint pulumi.StringPtrInput
 	// Identifier. The name of the instance.
 	Name pulumi.StringPtrInput
-	// Required. Immutable. The full name of the VPC network to which the instance is connected.
+	// The full name of the VPC network to which the instance is connected.
 	// Must be in the format
 	// `projects/{project_id}/global/networks/{network_name}`.
 	Network pulumi.StringPtrInput
+	// The throughput of the instance in MB/s/TiB.
+	// Valid values are 125, 250, 500, 1000.
+	PerUnitStorageThroughput pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Output only. The state of the instance.
+	// The state of the instance.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
@@ -318,7 +331,7 @@ type InstanceState struct {
 	// REPAIRING
 	// STOPPED
 	State pulumi.StringPtrInput
-	// Output only. Timestamp when the instance was last updated.
+	// Timestamp when the instance was last updated.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -327,19 +340,19 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-	// are from 18000 to 954000, in increments of 9000.
+	// The storage capacity of the instance in gibibytes (GiB). Allowed values
+	// are from `18000` to `954000`, in increments of 9000.
 	CapacityGib string `pulumi:"capacityGib"`
-	// Optional. A user-readable description of the instance.
+	// A user-readable description of the instance.
 	Description *string `pulumi:"description"`
-	// Required. Immutable. The filesystem name for this instance. This name is used by client-side
-	// tools, including when mounting the instance. Must be 8 characters or less
-	// and may only contain letters and numbers.
+	// The filesystem name for this instance. This name is used by client-side
+	// tools, including when mounting the instance. Must be eight characters or
+	// less and can only contain letters and numbers.
 	Filesystem string `pulumi:"filesystem"`
-	// Optional. Indicates whether you want to enable support for GKE clients. By default,
+	// Indicates whether you want to enable support for GKE clients. By default,
 	// GKE clients are not supported.
 	GkeSupportEnabled *bool `pulumi:"gkeSupportEnabled"`
-	// Required. The name of the Managed Lustre instance.
+	// The name of the Managed Lustre instance.
 	// * Must contain only lowercase letters, numbers, and hyphens.
 	// * Must start with a letter.
 	// * Must be between 1-63 characters.
@@ -347,16 +360,19 @@ type instanceArgs struct {
 	//
 	// ***
 	InstanceId string `pulumi:"instanceId"`
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
-	// Required. Immutable. The full name of the VPC network to which the instance is connected.
+	// The full name of the VPC network to which the instance is connected.
 	// Must be in the format
 	// `projects/{project_id}/global/networks/{network_name}`.
 	Network string `pulumi:"network"`
+	// The throughput of the instance in MB/s/TiB.
+	// Valid values are 125, 250, 500, 1000.
+	PerUnitStorageThroughput string `pulumi:"perUnitStorageThroughput"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -364,19 +380,19 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-	// are from 18000 to 954000, in increments of 9000.
+	// The storage capacity of the instance in gibibytes (GiB). Allowed values
+	// are from `18000` to `954000`, in increments of 9000.
 	CapacityGib pulumi.StringInput
-	// Optional. A user-readable description of the instance.
+	// A user-readable description of the instance.
 	Description pulumi.StringPtrInput
-	// Required. Immutable. The filesystem name for this instance. This name is used by client-side
-	// tools, including when mounting the instance. Must be 8 characters or less
-	// and may only contain letters and numbers.
+	// The filesystem name for this instance. This name is used by client-side
+	// tools, including when mounting the instance. Must be eight characters or
+	// less and can only contain letters and numbers.
 	Filesystem pulumi.StringInput
-	// Optional. Indicates whether you want to enable support for GKE clients. By default,
+	// Indicates whether you want to enable support for GKE clients. By default,
 	// GKE clients are not supported.
 	GkeSupportEnabled pulumi.BoolPtrInput
-	// Required. The name of the Managed Lustre instance.
+	// The name of the Managed Lustre instance.
 	// * Must contain only lowercase letters, numbers, and hyphens.
 	// * Must start with a letter.
 	// * Must be between 1-63 characters.
@@ -384,16 +400,19 @@ type InstanceArgs struct {
 	//
 	// ***
 	InstanceId pulumi.StringInput
-	// Optional. Labels as key value pairs.
+	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
-	// Required. Immutable. The full name of the VPC network to which the instance is connected.
+	// The full name of the VPC network to which the instance is connected.
 	// Must be in the format
 	// `projects/{project_id}/global/networks/{network_name}`.
 	Network pulumi.StringInput
+	// The throughput of the instance in MB/s/TiB.
+	// Valid values are 125, 250, 500, 1000.
+	PerUnitStorageThroughput pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -486,18 +505,18 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-// are from 18000 to 954000, in increments of 9000.
+// The storage capacity of the instance in gibibytes (GiB). Allowed values
+// are from `18000` to `954000`, in increments of 9000.
 func (o InstanceOutput) CapacityGib() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CapacityGib }).(pulumi.StringOutput)
 }
 
-// Output only. Timestamp when the instance was created.
+// Timestamp when the instance was created.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Optional. A user-readable description of the instance.
+// A user-readable description of the instance.
 func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -507,20 +526,20 @@ func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Required. Immutable. The filesystem name for this instance. This name is used by client-side
-// tools, including when mounting the instance. Must be 8 characters or less
-// and may only contain letters and numbers.
+// The filesystem name for this instance. This name is used by client-side
+// tools, including when mounting the instance. Must be eight characters or
+// less and can only contain letters and numbers.
 func (o InstanceOutput) Filesystem() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Filesystem }).(pulumi.StringOutput)
 }
 
-// Optional. Indicates whether you want to enable support for GKE clients. By default,
+// Indicates whether you want to enable support for GKE clients. By default,
 // GKE clients are not supported.
 func (o InstanceOutput) GkeSupportEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.GkeSupportEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Required. The name of the Managed Lustre instance.
+// The name of the Managed Lustre instance.
 // * Must contain only lowercase letters, numbers, and hyphens.
 // * Must start with a letter.
 // * Must be between 1-63 characters.
@@ -531,7 +550,7 @@ func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Optional. Labels as key value pairs.
+// Labels as key value pairs.
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
@@ -543,7 +562,7 @@ func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
 func (o InstanceOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MountPoint }).(pulumi.StringOutput)
 }
@@ -553,11 +572,17 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required. Immutable. The full name of the VPC network to which the instance is connected.
+// The full name of the VPC network to which the instance is connected.
 // Must be in the format
 // `projects/{project_id}/global/networks/{network_name}`.
 func (o InstanceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// The throughput of the instance in MB/s/TiB.
+// Valid values are 125, 250, 500, 1000.
+func (o InstanceOutput) PerUnitStorageThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PerUnitStorageThroughput }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.
@@ -572,7 +597,7 @@ func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Output only. The state of the instance.
+// The state of the instance.
 // Possible values:
 // STATE_UNSPECIFIED
 // ACTIVE
@@ -585,7 +610,7 @@ func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. Timestamp when the instance was last updated.
+// Timestamp when the instance was last updated.
 func (o InstanceOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

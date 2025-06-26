@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? EnableNestedVirtualization { get; set; }
 
         /// <summary>
+        /// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        /// </summary>
+        [Input("performanceMonitoringUnit")]
+        public Input<string>? PerformanceMonitoringUnit { get; set; }
+
+        /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         /// </summary>
         [Input("threadsPerCore", required: true)]

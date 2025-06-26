@@ -574,7 +574,7 @@ type ServiceAttachment struct {
 	// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
 	// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
 	// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-	// If unspecified, the default propagated connection limit is 250.
+	// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
 	PropagatedConnectionLimit pulumi.IntOutput `pulumi:"propagatedConnectionLimit"`
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
@@ -584,6 +584,11 @@ type ServiceAttachment struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Controls the behavior of propagated_connection_limit.
+	// When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+	// When true, the provider will set propagatedConnectionLimit to zero.
+	// Defaults to false.
+	SendPropagatedConnectionLimitIfZero pulumi.BoolPtrOutput `pulumi:"sendPropagatedConnectionLimitIfZero"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringOutput `pulumi:"targetService"`
 }
@@ -676,7 +681,7 @@ type serviceAttachmentState struct {
 	// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
 	// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
 	// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-	// If unspecified, the default propagated connection limit is 250.
+	// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
 	PropagatedConnectionLimit *int `pulumi:"propagatedConnectionLimit"`
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
@@ -686,6 +691,11 @@ type serviceAttachmentState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// Controls the behavior of propagated_connection_limit.
+	// When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+	// When true, the provider will set propagatedConnectionLimit to zero.
+	// Defaults to false.
+	SendPropagatedConnectionLimitIfZero *bool `pulumi:"sendPropagatedConnectionLimitIfZero"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService *string `pulumi:"targetService"`
 }
@@ -737,7 +747,7 @@ type ServiceAttachmentState struct {
 	// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
 	// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
 	// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-	// If unspecified, the default propagated connection limit is 250.
+	// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
 	PropagatedConnectionLimit pulumi.IntPtrInput
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
@@ -747,6 +757,11 @@ type ServiceAttachmentState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// Controls the behavior of propagated_connection_limit.
+	// When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+	// When true, the provider will set propagatedConnectionLimit to zero.
+	// Defaults to false.
+	SendPropagatedConnectionLimitIfZero pulumi.BoolPtrInput
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringPtrInput
 }
@@ -795,7 +810,7 @@ type serviceAttachmentArgs struct {
 	// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
 	// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
 	// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-	// If unspecified, the default propagated connection limit is 250.
+	// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
 	PropagatedConnectionLimit *int `pulumi:"propagatedConnectionLimit"`
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
@@ -803,6 +818,11 @@ type serviceAttachmentArgs struct {
 	ReconcileConnections *bool `pulumi:"reconcileConnections"`
 	// URL of the region where the resource resides.
 	Region *string `pulumi:"region"`
+	// Controls the behavior of propagated_connection_limit.
+	// When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+	// When true, the provider will set propagatedConnectionLimit to zero.
+	// Defaults to false.
+	SendPropagatedConnectionLimitIfZero *bool `pulumi:"sendPropagatedConnectionLimitIfZero"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService string `pulumi:"targetService"`
 }
@@ -848,7 +868,7 @@ type ServiceAttachmentArgs struct {
 	// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
 	// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
 	// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-	// If unspecified, the default propagated connection limit is 250.
+	// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
 	PropagatedConnectionLimit pulumi.IntPtrInput
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
@@ -856,6 +876,11 @@ type ServiceAttachmentArgs struct {
 	ReconcileConnections pulumi.BoolPtrInput
 	// URL of the region where the resource resides.
 	Region pulumi.StringPtrInput
+	// Controls the behavior of propagated_connection_limit.
+	// When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+	// When true, the provider will set propagatedConnectionLimit to zero.
+	// Defaults to false.
+	SendPropagatedConnectionLimitIfZero pulumi.BoolPtrInput
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringInput
 }
@@ -1028,7 +1053,7 @@ func (o ServiceAttachmentOutput) Project() pulumi.StringOutput {
 // This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
 // If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
 // If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-// If unspecified, the default propagated connection limit is 250.
+// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
 func (o ServiceAttachmentOutput) PropagatedConnectionLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.IntOutput { return v.PropagatedConnectionLimit }).(pulumi.IntOutput)
 }
@@ -1048,6 +1073,14 @@ func (o ServiceAttachmentOutput) Region() pulumi.StringOutput {
 // The URI of the created resource.
 func (o ServiceAttachmentOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Controls the behavior of propagated_connection_limit.
+// When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+// When true, the provider will set propagatedConnectionLimit to zero.
+// Defaults to false.
+func (o ServiceAttachmentOutput) SendPropagatedConnectionLimitIfZero() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.BoolPtrOutput { return v.SendPropagatedConnectionLimitIfZero }).(pulumi.BoolPtrOutput)
 }
 
 // The URL of a service serving the endpoint identified by this service attachment.

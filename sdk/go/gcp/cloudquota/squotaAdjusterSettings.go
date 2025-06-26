@@ -56,14 +56,18 @@ type SQuotaAdjusterSettings struct {
 	pulumi.CustomResourceState
 
 	// The resource container that determines if the quota adjuster is set for this project.
-	// Expect this field to be empty currently.
 	EffectiveContainer pulumi.StringOutput `pulumi:"effectiveContainer"`
 	// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-	// Expect this field to be empty currently.
 	EffectiveEnablement pulumi.StringOutput `pulumi:"effectiveEnablement"`
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	Enablement pulumi.StringOutput `pulumi:"enablement"`
+	// Indicates whether the setting is inherited or explicitly specified.
+	Inherited pulumi.BoolOutput `pulumi:"inherited"`
+	// The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+	// The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+	// The value will be empty when `enablement` is specified on this resource container.
+	InheritedFrom pulumi.StringOutput `pulumi:"inheritedFrom"`
 	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 	//
 	// ***
@@ -104,14 +108,18 @@ func GetSQuotaAdjusterSettings(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SQuotaAdjusterSettings resources.
 type squotaAdjusterSettingsState struct {
 	// The resource container that determines if the quota adjuster is set for this project.
-	// Expect this field to be empty currently.
 	EffectiveContainer *string `pulumi:"effectiveContainer"`
 	// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-	// Expect this field to be empty currently.
 	EffectiveEnablement *string `pulumi:"effectiveEnablement"`
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	Enablement *string `pulumi:"enablement"`
+	// Indicates whether the setting is inherited or explicitly specified.
+	Inherited *bool `pulumi:"inherited"`
+	// The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+	// The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+	// The value will be empty when `enablement` is specified on this resource container.
+	InheritedFrom *string `pulumi:"inheritedFrom"`
 	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 	//
 	// ***
@@ -120,14 +128,18 @@ type squotaAdjusterSettingsState struct {
 
 type SQuotaAdjusterSettingsState struct {
 	// The resource container that determines if the quota adjuster is set for this project.
-	// Expect this field to be empty currently.
 	EffectiveContainer pulumi.StringPtrInput
 	// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-	// Expect this field to be empty currently.
 	EffectiveEnablement pulumi.StringPtrInput
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	Enablement pulumi.StringPtrInput
+	// Indicates whether the setting is inherited or explicitly specified.
+	Inherited pulumi.BoolPtrInput
+	// The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+	// The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+	// The value will be empty when `enablement` is specified on this resource container.
+	InheritedFrom pulumi.StringPtrInput
 	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
 	//
 	// ***
@@ -247,13 +259,11 @@ func (o SQuotaAdjusterSettingsOutput) ToSQuotaAdjusterSettingsOutputWithContext(
 }
 
 // The resource container that determines if the quota adjuster is set for this project.
-// Expect this field to be empty currently.
 func (o SQuotaAdjusterSettingsOutput) EffectiveContainer() pulumi.StringOutput {
 	return o.ApplyT(func(v *SQuotaAdjusterSettings) pulumi.StringOutput { return v.EffectiveContainer }).(pulumi.StringOutput)
 }
 
 // Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-// Expect this field to be empty currently.
 func (o SQuotaAdjusterSettingsOutput) EffectiveEnablement() pulumi.StringOutput {
 	return o.ApplyT(func(v *SQuotaAdjusterSettings) pulumi.StringOutput { return v.EffectiveEnablement }).(pulumi.StringOutput)
 }
@@ -262,6 +272,18 @@ func (o SQuotaAdjusterSettingsOutput) EffectiveEnablement() pulumi.StringOutput 
 // Possible values are: `ENABLED`, `DISABLED`.
 func (o SQuotaAdjusterSettingsOutput) Enablement() pulumi.StringOutput {
 	return o.ApplyT(func(v *SQuotaAdjusterSettings) pulumi.StringOutput { return v.Enablement }).(pulumi.StringOutput)
+}
+
+// Indicates whether the setting is inherited or explicitly specified.
+func (o SQuotaAdjusterSettingsOutput) Inherited() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SQuotaAdjusterSettings) pulumi.BoolOutput { return v.Inherited }).(pulumi.BoolOutput)
+}
+
+// The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+// The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+// The value will be empty when `enablement` is specified on this resource container.
+func (o SQuotaAdjusterSettingsOutput) InheritedFrom() pulumi.StringOutput {
+	return o.ApplyT(func(v *SQuotaAdjusterSettings) pulumi.StringOutput { return v.InheritedFrom }).(pulumi.StringOutput)
 }
 
 // The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".

@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
     ///             {
-    ///                 Image = "ubuntu-os-cloud/ubuntu-2004-lts",
+    ///                 Image = "ubuntu-os-cloud/ubuntu-2204-lts",
     ///                 Labels = 
     ///                 {
     ///                     { "my_label", "value" },

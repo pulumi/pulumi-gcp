@@ -1428,7 +1428,7 @@ class InstanceTemplate(pulumi.CustomResource):
                 "confidential_instance_type": "SEV",
             },
             disks=[{
-                "source_image": "ubuntu-os-cloud/ubuntu-2004-lts",
+                "source_image": "ubuntu-os-cloud/ubuntu-2204-lts",
             }],
             service_account={
                 "email": default.email,
@@ -1760,7 +1760,7 @@ class InstanceTemplate(pulumi.CustomResource):
                 "confidential_instance_type": "SEV",
             },
             disks=[{
-                "source_image": "ubuntu-os-cloud/ubuntu-2004-lts",
+                "source_image": "ubuntu-os-cloud/ubuntu-2204-lts",
             }],
             service_account={
                 "email": default.email,

@@ -112,6 +112,7 @@ class _ListingSubscriptionState:
                  linked_resources: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionLinkedResourceArgs']]]] = None,
                  listing_id: Optional[pulumi.Input[builtins.str]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
+                 log_linked_dataset_query_user_email: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  organization_display_name: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -134,6 +135,7 @@ class _ListingSubscriptionState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[builtins.str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.
+        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
         :param pulumi.Input[builtins.str] name: The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
         :param pulumi.Input[builtins.str] organization_display_name: Display name of the project of this subscription.
         :param pulumi.Input[builtins.str] organization_id: Organization of the project this subscription belongs to.
@@ -158,6 +160,8 @@ class _ListingSubscriptionState:
             pulumi.set(__self__, "listing_id", listing_id)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if log_linked_dataset_query_user_email is not None:
+            pulumi.set(__self__, "log_linked_dataset_query_user_email", log_linked_dataset_query_user_email)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if organization_display_name is not None:
@@ -274,6 +278,18 @@ class _ListingSubscriptionState:
     @location.setter
     def location(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="logLinkedDatasetQueryUserEmail")
+    def log_linked_dataset_query_user_email(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+        """
+        return pulumi.get(self, "log_linked_dataset_query_user_email")
+
+    @log_linked_dataset_query_user_email.setter
+    def log_linked_dataset_query_user_email(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_linked_dataset_query_user_email", value)
 
     @property
     @pulumi.getter
@@ -601,6 +617,7 @@ class ListingSubscription(pulumi.CustomResource):
             __props__.__dict__["last_modify_time"] = None
             __props__.__dict__["linked_dataset_maps"] = None
             __props__.__dict__["linked_resources"] = None
+            __props__.__dict__["log_linked_dataset_query_user_email"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["organization_display_name"] = None
             __props__.__dict__["organization_id"] = None
@@ -626,6 +643,7 @@ class ListingSubscription(pulumi.CustomResource):
             linked_resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedResourceArgs', 'ListingSubscriptionLinkedResourceArgsDict']]]]] = None,
             listing_id: Optional[pulumi.Input[builtins.str]] = None,
             location: Optional[pulumi.Input[builtins.str]] = None,
+            log_linked_dataset_query_user_email: Optional[pulumi.Input[builtins.bool]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             organization_display_name: Optional[pulumi.Input[builtins.str]] = None,
             organization_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -653,6 +671,7 @@ class ListingSubscription(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[builtins.str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.
+        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
         :param pulumi.Input[builtins.str] name: The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
         :param pulumi.Input[builtins.str] organization_display_name: Display name of the project of this subscription.
         :param pulumi.Input[builtins.str] organization_id: Organization of the project this subscription belongs to.
@@ -673,6 +692,7 @@ class ListingSubscription(pulumi.CustomResource):
         __props__.__dict__["linked_resources"] = linked_resources
         __props__.__dict__["listing_id"] = listing_id
         __props__.__dict__["location"] = location
+        __props__.__dict__["log_linked_dataset_query_user_email"] = log_linked_dataset_query_user_email
         __props__.__dict__["name"] = name
         __props__.__dict__["organization_display_name"] = organization_display_name
         __props__.__dict__["organization_id"] = organization_id
@@ -750,6 +770,14 @@ class ListingSubscription(pulumi.CustomResource):
         The name of the location of the data exchange. Distinct from the location of the destination data set.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="logLinkedDatasetQueryUserEmail")
+    def log_linked_dataset_query_user_email(self) -> pulumi.Output[builtins.bool]:
+        """
+        Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+        """
+        return pulumi.get(self, "log_linked_dataset_query_user_email")
 
     @property
     @pulumi.getter

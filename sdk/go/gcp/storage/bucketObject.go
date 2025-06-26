@@ -109,7 +109,8 @@ type BucketObject struct {
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrOutput `pulumi:"customerEncryption"`
-	DetectMd5hash      pulumi.StringPtrOutput                  `pulumi:"detectMd5hash"`
+	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
+	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold pulumi.BoolPtrOutput `pulumi:"eventBasedHold"`
 	// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
@@ -140,6 +141,8 @@ type BucketObject struct {
 	//
 	// ***
 	Source pulumi.AssetOrArchiveOutput `pulumi:"source"`
+	// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+	SourceMd5hash pulumi.StringPtrOutput `pulumi:"sourceMd5hash"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -212,7 +215,8 @@ type bucketObjectState struct {
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
-	DetectMd5hash      *string                         `pulumi:"detectMd5hash"`
+	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
+	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold *bool `pulumi:"eventBasedHold"`
 	// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
@@ -243,6 +247,8 @@ type bucketObjectState struct {
 	//
 	// ***
 	Source pulumi.AssetOrArchive `pulumi:"source"`
+	// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+	SourceMd5hash *string `pulumi:"sourceMd5hash"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -272,7 +278,8 @@ type BucketObjectState struct {
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
-	DetectMd5hash      pulumi.StringPtrInput
+	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
+	DetectMd5hash pulumi.StringPtrInput
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold pulumi.BoolPtrInput
 	// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
@@ -303,6 +310,8 @@ type BucketObjectState struct {
 	//
 	// ***
 	Source pulumi.AssetOrArchiveInput
+	// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+	SourceMd5hash pulumi.StringPtrInput
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -334,7 +343,8 @@ type bucketObjectArgs struct {
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
-	DetectMd5hash      *string                         `pulumi:"detectMd5hash"`
+	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
+	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold *bool `pulumi:"eventBasedHold"`
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
@@ -352,6 +362,8 @@ type bucketObjectArgs struct {
 	//
 	// ***
 	Source pulumi.AssetOrArchive `pulumi:"source"`
+	// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+	SourceMd5hash *string `pulumi:"sourceMd5hash"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -380,7 +392,8 @@ type BucketObjectArgs struct {
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
-	DetectMd5hash      pulumi.StringPtrInput
+	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
+	DetectMd5hash pulumi.StringPtrInput
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold pulumi.BoolPtrInput
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
@@ -398,6 +411,8 @@ type BucketObjectArgs struct {
 	//
 	// ***
 	Source pulumi.AssetOrArchiveInput
+	// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+	SourceMd5hash pulumi.StringPtrInput
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -540,6 +555,7 @@ func (o BucketObjectOutput) CustomerEncryption() BucketObjectCustomerEncryptionP
 	return o.ApplyT(func(v *BucketObject) BucketObjectCustomerEncryptionPtrOutput { return v.CustomerEncryption }).(BucketObjectCustomerEncryptionPtrOutput)
 }
 
+// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
 func (o BucketObjectOutput) DetectMd5hash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.DetectMd5hash }).(pulumi.StringPtrOutput)
 }
@@ -608,6 +624,11 @@ func (o BucketObjectOutput) SelfLink() pulumi.StringOutput {
 // ***
 func (o BucketObjectOutput) Source() pulumi.AssetOrArchiveOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.AssetOrArchiveOutput { return v.Source }).(pulumi.AssetOrArchiveOutput)
+}
+
+// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+func (o BucketObjectOutput) SourceMd5hash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.SourceMd5hash }).(pulumi.StringPtrOutput)
 }
 
 // The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.

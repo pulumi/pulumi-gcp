@@ -47,6 +47,11 @@ public final class GetEngineVersionsResult {
      */
     private Map<String,String> releaseChannelLatestVersion;
     /**
+     * @return A map from a release channel name to the channel&#39;s auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
+     * 
+     */
+    private Map<String,String> releaseChannelUpgradeTargetVersion;
+    /**
      * @return A list of versions available in the given zone for use with master instances.
      * 
      */
@@ -108,6 +113,13 @@ public final class GetEngineVersionsResult {
         return this.releaseChannelLatestVersion;
     }
     /**
+     * @return A map from a release channel name to the channel&#39;s auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
+     * 
+     */
+    public Map<String,String> releaseChannelUpgradeTargetVersion() {
+        return this.releaseChannelUpgradeTargetVersion;
+    }
+    /**
      * @return A list of versions available in the given zone for use with master instances.
      * 
      */
@@ -142,6 +154,7 @@ public final class GetEngineVersionsResult {
         private @Nullable String project;
         private Map<String,String> releaseChannelDefaultVersion;
         private Map<String,String> releaseChannelLatestVersion;
+        private Map<String,String> releaseChannelUpgradeTargetVersion;
         private List<String> validMasterVersions;
         private List<String> validNodeVersions;
         private @Nullable String versionPrefix;
@@ -156,6 +169,7 @@ public final class GetEngineVersionsResult {
     	      this.project = defaults.project;
     	      this.releaseChannelDefaultVersion = defaults.releaseChannelDefaultVersion;
     	      this.releaseChannelLatestVersion = defaults.releaseChannelLatestVersion;
+    	      this.releaseChannelUpgradeTargetVersion = defaults.releaseChannelUpgradeTargetVersion;
     	      this.validMasterVersions = defaults.validMasterVersions;
     	      this.validNodeVersions = defaults.validNodeVersions;
     	      this.versionPrefix = defaults.versionPrefix;
@@ -222,6 +236,14 @@ public final class GetEngineVersionsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder releaseChannelUpgradeTargetVersion(Map<String,String> releaseChannelUpgradeTargetVersion) {
+            if (releaseChannelUpgradeTargetVersion == null) {
+              throw new MissingRequiredPropertyException("GetEngineVersionsResult", "releaseChannelUpgradeTargetVersion");
+            }
+            this.releaseChannelUpgradeTargetVersion = releaseChannelUpgradeTargetVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder validMasterVersions(List<String> validMasterVersions) {
             if (validMasterVersions == null) {
               throw new MissingRequiredPropertyException("GetEngineVersionsResult", "validMasterVersions");
@@ -259,6 +281,7 @@ public final class GetEngineVersionsResult {
             _resultValue.project = project;
             _resultValue.releaseChannelDefaultVersion = releaseChannelDefaultVersion;
             _resultValue.releaseChannelLatestVersion = releaseChannelLatestVersion;
+            _resultValue.releaseChannelUpgradeTargetVersion = releaseChannelUpgradeTargetVersion;
             _resultValue.validMasterVersions = validMasterVersions;
             _resultValue.validNodeVersions = validNodeVersions;
             _resultValue.versionPrefix = versionPrefix;

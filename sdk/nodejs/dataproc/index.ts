@@ -195,6 +195,11 @@ export type MetastoreTableIamPolicy = import("./metastoreTableIamPolicy").Metast
 export const MetastoreTableIamPolicy: typeof import("./metastoreTableIamPolicy").MetastoreTableIamPolicy = null as any;
 utilities.lazyLoad(exports, ["MetastoreTableIamPolicy"], () => require("./metastoreTableIamPolicy"));
 
+export { SessionTemplateArgs, SessionTemplateState } from "./sessionTemplate";
+export type SessionTemplate = import("./sessionTemplate").SessionTemplate;
+export const SessionTemplate: typeof import("./sessionTemplate").SessionTemplate = null as any;
+utilities.lazyLoad(exports, ["SessionTemplate"], () => require("./sessionTemplate"));
+
 export { WorkflowTemplateArgs, WorkflowTemplateState } from "./workflowTemplate";
 export type WorkflowTemplate = import("./workflowTemplate").WorkflowTemplate;
 export const WorkflowTemplate: typeof import("./workflowTemplate").WorkflowTemplate = null as any;
@@ -265,6 +270,8 @@ const _module = {
                 return new MetastoreTableIamMember(name, <any>undefined, { urn })
             case "gcp:dataproc/metastoreTableIamPolicy:MetastoreTableIamPolicy":
                 return new MetastoreTableIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataproc/sessionTemplate:SessionTemplate":
+                return new SessionTemplate(name, <any>undefined, { urn })
             case "gcp:dataproc/workflowTemplate:WorkflowTemplate":
                 return new WorkflowTemplate(name, <any>undefined, { urn })
             default:
@@ -302,4 +309,5 @@ pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreServiceIamPolicy
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreTableIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreTableIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreTableIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/sessionTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/workflowTemplate", _module)

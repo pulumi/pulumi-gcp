@@ -64,6 +64,27 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Data Exchange Log Linked Dataset Query User
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataExchange = new Gcp.BigQueryAnalyticsHub.DataExchange("data_exchange", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = "tf_test_log_email_data_exchange",
+    ///         DisplayName = "tf_test_log_email_data_exchange",
+    ///         Description = "Example for log email test for data exchange",
+    ///         LogLinkedDatasetQueryUserEmail = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -142,6 +163,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        /// </summary>
+        [Output("logLinkedDatasetQueryUserEmail")]
+        public Output<bool?> LogLinkedDatasetQueryUserEmail { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the data exchange, for example:
@@ -257,6 +284,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        /// </summary>
+        [Input("logLinkedDatasetQueryUserEmail")]
+        public Input<bool>? LogLinkedDatasetQueryUserEmail { get; set; }
+
+        /// <summary>
         /// Email or URL of the primary point of contact of the data exchange.
         /// </summary>
         [Input("primaryContact")]
@@ -329,6 +362,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        /// </summary>
+        [Input("logLinkedDatasetQueryUserEmail")]
+        public Input<bool>? LogLinkedDatasetQueryUserEmail { get; set; }
 
         /// <summary>
         /// The resource name of the data exchange, for example:

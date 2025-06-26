@@ -248,9 +248,10 @@ public class Table extends com.pulumi.resources.CustomResource {
      * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
      * string will create a diff, even if the JSON itself hasn&#39;t changed.
      * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced `STRUCT` field type with `RECORD`
-     * field type, we currently cannot suppress the recurring diff this causes.
-     * As a workaround, we recommend using the schema as returned by the API.
+     * switched the order of values or replaced a field data type (`STRUCT` with
+     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+     * the recurring diff this causes. As a workaround, we recommend using the
+     * schema as returned by the API.
      * 
      * ~&gt;**NOTE:**  If you use `external_data_configuration`
      * documented below and do **not** set
@@ -270,9 +271,10 @@ public class Table extends com.pulumi.resources.CustomResource {
      * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
      * string will create a diff, even if the JSON itself hasn&#39;t changed.
      * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced `STRUCT` field type with `RECORD`
-     * field type, we currently cannot suppress the recurring diff this causes.
-     * As a workaround, we recommend using the schema as returned by the API.
+     * switched the order of values or replaced a field data type (`STRUCT` with
+     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+     * the recurring diff this causes. As a workaround, we recommend using the
+     * schema as returned by the API.
      * 
      * ~&gt;**NOTE:**  If you use `external_data_configuration`
      * documented below and do **not** set

@@ -1930,7 +1930,7 @@ type DatascanData struct {
 	// The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
 	Entity *string `pulumi:"entity"`
 	// The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-	// (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+	// Cloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type "TABLE" (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.
 	Resource *string `pulumi:"resource"`
 }
 
@@ -1949,7 +1949,7 @@ type DatascanDataArgs struct {
 	// The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
 	Entity pulumi.StringPtrInput `pulumi:"entity"`
 	// The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-	// (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+	// Cloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type "TABLE" (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
@@ -2036,7 +2036,7 @@ func (o DatascanDataOutput) Entity() pulumi.StringPtrOutput {
 }
 
 // The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-// (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+// Cloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type "TABLE" (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.
 func (o DatascanDataOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatascanData) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
@@ -2076,7 +2076,7 @@ func (o DatascanDataPtrOutput) Entity() pulumi.StringPtrOutput {
 }
 
 // The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-// (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+// Cloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type "TABLE" (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.
 func (o DatascanDataPtrOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatascanData) *string {
 		if v == nil {
@@ -2084,6 +2084,945 @@ func (o DatascanDataPtrOutput) Resource() pulumi.StringPtrOutput {
 		}
 		return v.Resource
 	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataDiscoverySpec struct {
+	// Configuration for metadata publishing.
+	// Structure is documented below.
+	BigqueryPublishingConfig *DatascanDataDiscoverySpecBigqueryPublishingConfig `pulumi:"bigqueryPublishingConfig"`
+	// Configurations related to Cloud Storage as the data source.
+	// Structure is documented below.
+	StorageConfig *DatascanDataDiscoverySpecStorageConfig `pulumi:"storageConfig"`
+}
+
+// DatascanDataDiscoverySpecInput is an input type that accepts DatascanDataDiscoverySpecArgs and DatascanDataDiscoverySpecOutput values.
+// You can construct a concrete instance of `DatascanDataDiscoverySpecInput` via:
+//
+//	DatascanDataDiscoverySpecArgs{...}
+type DatascanDataDiscoverySpecInput interface {
+	pulumi.Input
+
+	ToDatascanDataDiscoverySpecOutput() DatascanDataDiscoverySpecOutput
+	ToDatascanDataDiscoverySpecOutputWithContext(context.Context) DatascanDataDiscoverySpecOutput
+}
+
+type DatascanDataDiscoverySpecArgs struct {
+	// Configuration for metadata publishing.
+	// Structure is documented below.
+	BigqueryPublishingConfig DatascanDataDiscoverySpecBigqueryPublishingConfigPtrInput `pulumi:"bigqueryPublishingConfig"`
+	// Configurations related to Cloud Storage as the data source.
+	// Structure is documented below.
+	StorageConfig DatascanDataDiscoverySpecStorageConfigPtrInput `pulumi:"storageConfig"`
+}
+
+func (DatascanDataDiscoverySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDiscoverySpec)(nil)).Elem()
+}
+
+func (i DatascanDataDiscoverySpecArgs) ToDatascanDataDiscoverySpecOutput() DatascanDataDiscoverySpecOutput {
+	return i.ToDatascanDataDiscoverySpecOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDiscoverySpecArgs) ToDatascanDataDiscoverySpecOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecOutput)
+}
+
+func (i DatascanDataDiscoverySpecArgs) ToDatascanDataDiscoverySpecPtrOutput() DatascanDataDiscoverySpecPtrOutput {
+	return i.ToDatascanDataDiscoverySpecPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDiscoverySpecArgs) ToDatascanDataDiscoverySpecPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecOutput).ToDatascanDataDiscoverySpecPtrOutputWithContext(ctx)
+}
+
+// DatascanDataDiscoverySpecPtrInput is an input type that accepts DatascanDataDiscoverySpecArgs, DatascanDataDiscoverySpecPtr and DatascanDataDiscoverySpecPtrOutput values.
+// You can construct a concrete instance of `DatascanDataDiscoverySpecPtrInput` via:
+//
+//	        DatascanDataDiscoverySpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataDiscoverySpecPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataDiscoverySpecPtrOutput() DatascanDataDiscoverySpecPtrOutput
+	ToDatascanDataDiscoverySpecPtrOutputWithContext(context.Context) DatascanDataDiscoverySpecPtrOutput
+}
+
+type datascanDataDiscoverySpecPtrType DatascanDataDiscoverySpecArgs
+
+func DatascanDataDiscoverySpecPtr(v *DatascanDataDiscoverySpecArgs) DatascanDataDiscoverySpecPtrInput {
+	return (*datascanDataDiscoverySpecPtrType)(v)
+}
+
+func (*datascanDataDiscoverySpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDiscoverySpec)(nil)).Elem()
+}
+
+func (i *datascanDataDiscoverySpecPtrType) ToDatascanDataDiscoverySpecPtrOutput() DatascanDataDiscoverySpecPtrOutput {
+	return i.ToDatascanDataDiscoverySpecPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataDiscoverySpecPtrType) ToDatascanDataDiscoverySpecPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecPtrOutput)
+}
+
+type DatascanDataDiscoverySpecOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDiscoverySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDiscoverySpec)(nil)).Elem()
+}
+
+func (o DatascanDataDiscoverySpecOutput) ToDatascanDataDiscoverySpecOutput() DatascanDataDiscoverySpecOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecOutput) ToDatascanDataDiscoverySpecOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecOutput) ToDatascanDataDiscoverySpecPtrOutput() DatascanDataDiscoverySpecPtrOutput {
+	return o.ToDatascanDataDiscoverySpecPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataDiscoverySpecOutput) ToDatascanDataDiscoverySpecPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataDiscoverySpec) *DatascanDataDiscoverySpec {
+		return &v
+	}).(DatascanDataDiscoverySpecPtrOutput)
+}
+
+// Configuration for metadata publishing.
+// Structure is documented below.
+func (o DatascanDataDiscoverySpecOutput) BigqueryPublishingConfig() DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpec) *DatascanDataDiscoverySpecBigqueryPublishingConfig {
+		return v.BigqueryPublishingConfig
+	}).(DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput)
+}
+
+// Configurations related to Cloud Storage as the data source.
+// Structure is documented below.
+func (o DatascanDataDiscoverySpecOutput) StorageConfig() DatascanDataDiscoverySpecStorageConfigPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpec) *DatascanDataDiscoverySpecStorageConfig { return v.StorageConfig }).(DatascanDataDiscoverySpecStorageConfigPtrOutput)
+}
+
+type DatascanDataDiscoverySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDiscoverySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDiscoverySpec)(nil)).Elem()
+}
+
+func (o DatascanDataDiscoverySpecPtrOutput) ToDatascanDataDiscoverySpecPtrOutput() DatascanDataDiscoverySpecPtrOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecPtrOutput) ToDatascanDataDiscoverySpecPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecPtrOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecPtrOutput) Elem() DatascanDataDiscoverySpecOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpec) DatascanDataDiscoverySpec {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataDiscoverySpec
+		return ret
+	}).(DatascanDataDiscoverySpecOutput)
+}
+
+// Configuration for metadata publishing.
+// Structure is documented below.
+func (o DatascanDataDiscoverySpecPtrOutput) BigqueryPublishingConfig() DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpec) *DatascanDataDiscoverySpecBigqueryPublishingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BigqueryPublishingConfig
+	}).(DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput)
+}
+
+// Configurations related to Cloud Storage as the data source.
+// Structure is documented below.
+func (o DatascanDataDiscoverySpecPtrOutput) StorageConfig() DatascanDataDiscoverySpecStorageConfigPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpec) *DatascanDataDiscoverySpecStorageConfig {
+		if v == nil {
+			return nil
+		}
+		return v.StorageConfig
+	}).(DatascanDataDiscoverySpecStorageConfigPtrOutput)
+}
+
+type DatascanDataDiscoverySpecBigqueryPublishingConfig struct {
+	// The BigQuery connection used to create BigLake tables. Must be in the form `projects/{projectId}/locations/{locationId}/connections/{connection_id}`.
+	Connection *string `pulumi:"connection"`
+	// The location of the BigQuery dataset to publish BigLake external or non-BigLake external tables to.
+	Location *string `pulumi:"location"`
+	// The project of the BigQuery dataset to publish BigLake external or non-BigLake external tables to. If not specified, the project of the Cloud Storage bucket will be used. The format is "projects/{project_id_or_number}".
+	Project *string `pulumi:"project"`
+	// Determines whether to publish discovered tables as BigLake external tables or non-BigLake external tables.
+	// Possible values are: `TABLE_TYPE_UNSPECIFIED`, `EXTERNAL`, `BIGLAKE`.
+	TableType *string `pulumi:"tableType"`
+}
+
+// DatascanDataDiscoverySpecBigqueryPublishingConfigInput is an input type that accepts DatascanDataDiscoverySpecBigqueryPublishingConfigArgs and DatascanDataDiscoverySpecBigqueryPublishingConfigOutput values.
+// You can construct a concrete instance of `DatascanDataDiscoverySpecBigqueryPublishingConfigInput` via:
+//
+//	DatascanDataDiscoverySpecBigqueryPublishingConfigArgs{...}
+type DatascanDataDiscoverySpecBigqueryPublishingConfigInput interface {
+	pulumi.Input
+
+	ToDatascanDataDiscoverySpecBigqueryPublishingConfigOutput() DatascanDataDiscoverySpecBigqueryPublishingConfigOutput
+	ToDatascanDataDiscoverySpecBigqueryPublishingConfigOutputWithContext(context.Context) DatascanDataDiscoverySpecBigqueryPublishingConfigOutput
+}
+
+type DatascanDataDiscoverySpecBigqueryPublishingConfigArgs struct {
+	// The BigQuery connection used to create BigLake tables. Must be in the form `projects/{projectId}/locations/{locationId}/connections/{connection_id}`.
+	Connection pulumi.StringPtrInput `pulumi:"connection"`
+	// The location of the BigQuery dataset to publish BigLake external or non-BigLake external tables to.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The project of the BigQuery dataset to publish BigLake external or non-BigLake external tables to. If not specified, the project of the Cloud Storage bucket will be used. The format is "projects/{project_id_or_number}".
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Determines whether to publish discovered tables as BigLake external tables or non-BigLake external tables.
+	// Possible values are: `TABLE_TYPE_UNSPECIFIED`, `EXTERNAL`, `BIGLAKE`.
+	TableType pulumi.StringPtrInput `pulumi:"tableType"`
+}
+
+func (DatascanDataDiscoverySpecBigqueryPublishingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDiscoverySpecBigqueryPublishingConfig)(nil)).Elem()
+}
+
+func (i DatascanDataDiscoverySpecBigqueryPublishingConfigArgs) ToDatascanDataDiscoverySpecBigqueryPublishingConfigOutput() DatascanDataDiscoverySpecBigqueryPublishingConfigOutput {
+	return i.ToDatascanDataDiscoverySpecBigqueryPublishingConfigOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDiscoverySpecBigqueryPublishingConfigArgs) ToDatascanDataDiscoverySpecBigqueryPublishingConfigOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecBigqueryPublishingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecBigqueryPublishingConfigOutput)
+}
+
+func (i DatascanDataDiscoverySpecBigqueryPublishingConfigArgs) ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput() DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput {
+	return i.ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDiscoverySpecBigqueryPublishingConfigArgs) ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecBigqueryPublishingConfigOutput).ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutputWithContext(ctx)
+}
+
+// DatascanDataDiscoverySpecBigqueryPublishingConfigPtrInput is an input type that accepts DatascanDataDiscoverySpecBigqueryPublishingConfigArgs, DatascanDataDiscoverySpecBigqueryPublishingConfigPtr and DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput values.
+// You can construct a concrete instance of `DatascanDataDiscoverySpecBigqueryPublishingConfigPtrInput` via:
+//
+//	        DatascanDataDiscoverySpecBigqueryPublishingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataDiscoverySpecBigqueryPublishingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput() DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput
+	ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutputWithContext(context.Context) DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput
+}
+
+type datascanDataDiscoverySpecBigqueryPublishingConfigPtrType DatascanDataDiscoverySpecBigqueryPublishingConfigArgs
+
+func DatascanDataDiscoverySpecBigqueryPublishingConfigPtr(v *DatascanDataDiscoverySpecBigqueryPublishingConfigArgs) DatascanDataDiscoverySpecBigqueryPublishingConfigPtrInput {
+	return (*datascanDataDiscoverySpecBigqueryPublishingConfigPtrType)(v)
+}
+
+func (*datascanDataDiscoverySpecBigqueryPublishingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDiscoverySpecBigqueryPublishingConfig)(nil)).Elem()
+}
+
+func (i *datascanDataDiscoverySpecBigqueryPublishingConfigPtrType) ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput() DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput {
+	return i.ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataDiscoverySpecBigqueryPublishingConfigPtrType) ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput)
+}
+
+type DatascanDataDiscoverySpecBigqueryPublishingConfigOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDiscoverySpecBigqueryPublishingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDiscoverySpecBigqueryPublishingConfig)(nil)).Elem()
+}
+
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigOutput) ToDatascanDataDiscoverySpecBigqueryPublishingConfigOutput() DatascanDataDiscoverySpecBigqueryPublishingConfigOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigOutput) ToDatascanDataDiscoverySpecBigqueryPublishingConfigOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecBigqueryPublishingConfigOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigOutput) ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput() DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput {
+	return o.ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigOutput) ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataDiscoverySpecBigqueryPublishingConfig) *DatascanDataDiscoverySpecBigqueryPublishingConfig {
+		return &v
+	}).(DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput)
+}
+
+// The BigQuery connection used to create BigLake tables. Must be in the form `projects/{projectId}/locations/{locationId}/connections/{connection_id}`.
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecBigqueryPublishingConfig) *string { return v.Connection }).(pulumi.StringPtrOutput)
+}
+
+// The location of the BigQuery dataset to publish BigLake external or non-BigLake external tables to.
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecBigqueryPublishingConfig) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The project of the BigQuery dataset to publish BigLake external or non-BigLake external tables to. If not specified, the project of the Cloud Storage bucket will be used. The format is "projects/{project_id_or_number}".
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecBigqueryPublishingConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Determines whether to publish discovered tables as BigLake external tables or non-BigLake external tables.
+// Possible values are: `TABLE_TYPE_UNSPECIFIED`, `EXTERNAL`, `BIGLAKE`.
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigOutput) TableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecBigqueryPublishingConfig) *string { return v.TableType }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDiscoverySpecBigqueryPublishingConfig)(nil)).Elem()
+}
+
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput) ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput() DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput) ToDatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput) Elem() DatascanDataDiscoverySpecBigqueryPublishingConfigOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecBigqueryPublishingConfig) DatascanDataDiscoverySpecBigqueryPublishingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataDiscoverySpecBigqueryPublishingConfig
+		return ret
+	}).(DatascanDataDiscoverySpecBigqueryPublishingConfigOutput)
+}
+
+// The BigQuery connection used to create BigLake tables. Must be in the form `projects/{projectId}/locations/{locationId}/connections/{connection_id}`.
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecBigqueryPublishingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Connection
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location of the BigQuery dataset to publish BigLake external or non-BigLake external tables to.
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecBigqueryPublishingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The project of the BigQuery dataset to publish BigLake external or non-BigLake external tables to. If not specified, the project of the Cloud Storage bucket will be used. The format is "projects/{project_id_or_number}".
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecBigqueryPublishingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines whether to publish discovered tables as BigLake external tables or non-BigLake external tables.
+// Possible values are: `TABLE_TYPE_UNSPECIFIED`, `EXTERNAL`, `BIGLAKE`.
+func (o DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput) TableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecBigqueryPublishingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TableType
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataDiscoverySpecStorageConfig struct {
+	// Configuration for CSV data.
+	// Structure is documented below.
+	CsvOptions *DatascanDataDiscoverySpecStorageConfigCsvOptions `pulumi:"csvOptions"`
+	// Defines the data to exclude during discovery. Provide a list of patterns that identify the data to exclude. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+	ExcludePatterns []string `pulumi:"excludePatterns"`
+	// Defines the data to include during discovery when only a subset of the data should be considered. Provide a list of patterns that identify the data to include. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+	IncludePatterns []string `pulumi:"includePatterns"`
+	// Configuration for JSON data.
+	// Structure is documented below.
+	JsonOptions *DatascanDataDiscoverySpecStorageConfigJsonOptions `pulumi:"jsonOptions"`
+}
+
+// DatascanDataDiscoverySpecStorageConfigInput is an input type that accepts DatascanDataDiscoverySpecStorageConfigArgs and DatascanDataDiscoverySpecStorageConfigOutput values.
+// You can construct a concrete instance of `DatascanDataDiscoverySpecStorageConfigInput` via:
+//
+//	DatascanDataDiscoverySpecStorageConfigArgs{...}
+type DatascanDataDiscoverySpecStorageConfigInput interface {
+	pulumi.Input
+
+	ToDatascanDataDiscoverySpecStorageConfigOutput() DatascanDataDiscoverySpecStorageConfigOutput
+	ToDatascanDataDiscoverySpecStorageConfigOutputWithContext(context.Context) DatascanDataDiscoverySpecStorageConfigOutput
+}
+
+type DatascanDataDiscoverySpecStorageConfigArgs struct {
+	// Configuration for CSV data.
+	// Structure is documented below.
+	CsvOptions DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrInput `pulumi:"csvOptions"`
+	// Defines the data to exclude during discovery. Provide a list of patterns that identify the data to exclude. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+	ExcludePatterns pulumi.StringArrayInput `pulumi:"excludePatterns"`
+	// Defines the data to include during discovery when only a subset of the data should be considered. Provide a list of patterns that identify the data to include. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+	IncludePatterns pulumi.StringArrayInput `pulumi:"includePatterns"`
+	// Configuration for JSON data.
+	// Structure is documented below.
+	JsonOptions DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrInput `pulumi:"jsonOptions"`
+}
+
+func (DatascanDataDiscoverySpecStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfig)(nil)).Elem()
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigArgs) ToDatascanDataDiscoverySpecStorageConfigOutput() DatascanDataDiscoverySpecStorageConfigOutput {
+	return i.ToDatascanDataDiscoverySpecStorageConfigOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigArgs) ToDatascanDataDiscoverySpecStorageConfigOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecStorageConfigOutput)
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigArgs) ToDatascanDataDiscoverySpecStorageConfigPtrOutput() DatascanDataDiscoverySpecStorageConfigPtrOutput {
+	return i.ToDatascanDataDiscoverySpecStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigArgs) ToDatascanDataDiscoverySpecStorageConfigPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecStorageConfigOutput).ToDatascanDataDiscoverySpecStorageConfigPtrOutputWithContext(ctx)
+}
+
+// DatascanDataDiscoverySpecStorageConfigPtrInput is an input type that accepts DatascanDataDiscoverySpecStorageConfigArgs, DatascanDataDiscoverySpecStorageConfigPtr and DatascanDataDiscoverySpecStorageConfigPtrOutput values.
+// You can construct a concrete instance of `DatascanDataDiscoverySpecStorageConfigPtrInput` via:
+//
+//	        DatascanDataDiscoverySpecStorageConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataDiscoverySpecStorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataDiscoverySpecStorageConfigPtrOutput() DatascanDataDiscoverySpecStorageConfigPtrOutput
+	ToDatascanDataDiscoverySpecStorageConfigPtrOutputWithContext(context.Context) DatascanDataDiscoverySpecStorageConfigPtrOutput
+}
+
+type datascanDataDiscoverySpecStorageConfigPtrType DatascanDataDiscoverySpecStorageConfigArgs
+
+func DatascanDataDiscoverySpecStorageConfigPtr(v *DatascanDataDiscoverySpecStorageConfigArgs) DatascanDataDiscoverySpecStorageConfigPtrInput {
+	return (*datascanDataDiscoverySpecStorageConfigPtrType)(v)
+}
+
+func (*datascanDataDiscoverySpecStorageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDiscoverySpecStorageConfig)(nil)).Elem()
+}
+
+func (i *datascanDataDiscoverySpecStorageConfigPtrType) ToDatascanDataDiscoverySpecStorageConfigPtrOutput() DatascanDataDiscoverySpecStorageConfigPtrOutput {
+	return i.ToDatascanDataDiscoverySpecStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataDiscoverySpecStorageConfigPtrType) ToDatascanDataDiscoverySpecStorageConfigPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecStorageConfigPtrOutput)
+}
+
+type DatascanDataDiscoverySpecStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDiscoverySpecStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfig)(nil)).Elem()
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigOutput) ToDatascanDataDiscoverySpecStorageConfigOutput() DatascanDataDiscoverySpecStorageConfigOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigOutput) ToDatascanDataDiscoverySpecStorageConfigOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigOutput) ToDatascanDataDiscoverySpecStorageConfigPtrOutput() DatascanDataDiscoverySpecStorageConfigPtrOutput {
+	return o.ToDatascanDataDiscoverySpecStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigOutput) ToDatascanDataDiscoverySpecStorageConfigPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataDiscoverySpecStorageConfig) *DatascanDataDiscoverySpecStorageConfig {
+		return &v
+	}).(DatascanDataDiscoverySpecStorageConfigPtrOutput)
+}
+
+// Configuration for CSV data.
+// Structure is documented below.
+func (o DatascanDataDiscoverySpecStorageConfigOutput) CsvOptions() DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecStorageConfig) *DatascanDataDiscoverySpecStorageConfigCsvOptions {
+		return v.CsvOptions
+	}).(DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput)
+}
+
+// Defines the data to exclude during discovery. Provide a list of patterns that identify the data to exclude. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+func (o DatascanDataDiscoverySpecStorageConfigOutput) ExcludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecStorageConfig) []string { return v.ExcludePatterns }).(pulumi.StringArrayOutput)
+}
+
+// Defines the data to include during discovery when only a subset of the data should be considered. Provide a list of patterns that identify the data to include. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+func (o DatascanDataDiscoverySpecStorageConfigOutput) IncludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecStorageConfig) []string { return v.IncludePatterns }).(pulumi.StringArrayOutput)
+}
+
+// Configuration for JSON data.
+// Structure is documented below.
+func (o DatascanDataDiscoverySpecStorageConfigOutput) JsonOptions() DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecStorageConfig) *DatascanDataDiscoverySpecStorageConfigJsonOptions {
+		return v.JsonOptions
+	}).(DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput)
+}
+
+type DatascanDataDiscoverySpecStorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDiscoverySpecStorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDiscoverySpecStorageConfig)(nil)).Elem()
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigPtrOutput) ToDatascanDataDiscoverySpecStorageConfigPtrOutput() DatascanDataDiscoverySpecStorageConfigPtrOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigPtrOutput) ToDatascanDataDiscoverySpecStorageConfigPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigPtrOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigPtrOutput) Elem() DatascanDataDiscoverySpecStorageConfigOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfig) DatascanDataDiscoverySpecStorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataDiscoverySpecStorageConfig
+		return ret
+	}).(DatascanDataDiscoverySpecStorageConfigOutput)
+}
+
+// Configuration for CSV data.
+// Structure is documented below.
+func (o DatascanDataDiscoverySpecStorageConfigPtrOutput) CsvOptions() DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfig) *DatascanDataDiscoverySpecStorageConfigCsvOptions {
+		if v == nil {
+			return nil
+		}
+		return v.CsvOptions
+	}).(DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput)
+}
+
+// Defines the data to exclude during discovery. Provide a list of patterns that identify the data to exclude. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+func (o DatascanDataDiscoverySpecStorageConfigPtrOutput) ExcludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludePatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines the data to include during discovery when only a subset of the data should be considered. Provide a list of patterns that identify the data to include. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+func (o DatascanDataDiscoverySpecStorageConfigPtrOutput) IncludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludePatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configuration for JSON data.
+// Structure is documented below.
+func (o DatascanDataDiscoverySpecStorageConfigPtrOutput) JsonOptions() DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfig) *DatascanDataDiscoverySpecStorageConfigJsonOptions {
+		if v == nil {
+			return nil
+		}
+		return v.JsonOptions
+	}).(DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput)
+}
+
+type DatascanDataDiscoverySpecStorageConfigCsvOptions struct {
+	// The delimiter that is used to separate values. The default is `,` (comma).
+	Delimiter *string `pulumi:"delimiter"`
+	// The character encoding of the data. The default is UTF-8.
+	Encoding *string `pulumi:"encoding"`
+	// The number of rows to interpret as header rows that should be skipped when reading data rows.
+	HeaderRows *int `pulumi:"headerRows"`
+	// The character used to quote column values. Accepts `"` (double quotation mark) or `'` (single quotation mark). If unspecified, defaults to `"` (double quotation mark).
+	Quote *string `pulumi:"quote"`
+	// Whether to disable the inference of data types for CSV data. If true, all columns are registered as strings.
+	TypeInferenceDisabled *bool `pulumi:"typeInferenceDisabled"`
+}
+
+// DatascanDataDiscoverySpecStorageConfigCsvOptionsInput is an input type that accepts DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs and DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput values.
+// You can construct a concrete instance of `DatascanDataDiscoverySpecStorageConfigCsvOptionsInput` via:
+//
+//	DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs{...}
+type DatascanDataDiscoverySpecStorageConfigCsvOptionsInput interface {
+	pulumi.Input
+
+	ToDatascanDataDiscoverySpecStorageConfigCsvOptionsOutput() DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput
+	ToDatascanDataDiscoverySpecStorageConfigCsvOptionsOutputWithContext(context.Context) DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput
+}
+
+type DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs struct {
+	// The delimiter that is used to separate values. The default is `,` (comma).
+	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
+	// The character encoding of the data. The default is UTF-8.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// The number of rows to interpret as header rows that should be skipped when reading data rows.
+	HeaderRows pulumi.IntPtrInput `pulumi:"headerRows"`
+	// The character used to quote column values. Accepts `"` (double quotation mark) or `'` (single quotation mark). If unspecified, defaults to `"` (double quotation mark).
+	Quote pulumi.StringPtrInput `pulumi:"quote"`
+	// Whether to disable the inference of data types for CSV data. If true, all columns are registered as strings.
+	TypeInferenceDisabled pulumi.BoolPtrInput `pulumi:"typeInferenceDisabled"`
+}
+
+func (DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigCsvOptions)(nil)).Elem()
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsOutput() DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput {
+	return i.ToDatascanDataDiscoverySpecStorageConfigCsvOptionsOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput)
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput() DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput {
+	return i.ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput).ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutputWithContext(ctx)
+}
+
+// DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrInput is an input type that accepts DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs, DatascanDataDiscoverySpecStorageConfigCsvOptionsPtr and DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput values.
+// You can construct a concrete instance of `DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrInput` via:
+//
+//	        DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput() DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput
+	ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutputWithContext(context.Context) DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput
+}
+
+type datascanDataDiscoverySpecStorageConfigCsvOptionsPtrType DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs
+
+func DatascanDataDiscoverySpecStorageConfigCsvOptionsPtr(v *DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs) DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrInput {
+	return (*datascanDataDiscoverySpecStorageConfigCsvOptionsPtrType)(v)
+}
+
+func (*datascanDataDiscoverySpecStorageConfigCsvOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDiscoverySpecStorageConfigCsvOptions)(nil)).Elem()
+}
+
+func (i *datascanDataDiscoverySpecStorageConfigCsvOptionsPtrType) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput() DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput {
+	return i.ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataDiscoverySpecStorageConfigCsvOptionsPtrType) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput)
+}
+
+type DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigCsvOptions)(nil)).Elem()
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsOutput() DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput() DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput {
+	return o.ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataDiscoverySpecStorageConfigCsvOptions) *DatascanDataDiscoverySpecStorageConfigCsvOptions {
+		return &v
+	}).(DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput)
+}
+
+// The delimiter that is used to separate values. The default is `,` (comma).
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecStorageConfigCsvOptions) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+// The character encoding of the data. The default is UTF-8.
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecStorageConfigCsvOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// The number of rows to interpret as header rows that should be skipped when reading data rows.
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput) HeaderRows() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecStorageConfigCsvOptions) *int { return v.HeaderRows }).(pulumi.IntPtrOutput)
+}
+
+// The character used to quote column values. Accepts `"` (double quotation mark) or `'` (single quotation mark). If unspecified, defaults to `"` (double quotation mark).
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput) Quote() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecStorageConfigCsvOptions) *string { return v.Quote }).(pulumi.StringPtrOutput)
+}
+
+// Whether to disable the inference of data types for CSV data. If true, all columns are registered as strings.
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput) TypeInferenceDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecStorageConfigCsvOptions) *bool { return v.TypeInferenceDisabled }).(pulumi.BoolPtrOutput)
+}
+
+type DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDiscoverySpecStorageConfigCsvOptions)(nil)).Elem()
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput() DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput) ToDatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput) Elem() DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfigCsvOptions) DatascanDataDiscoverySpecStorageConfigCsvOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataDiscoverySpecStorageConfigCsvOptions
+		return ret
+	}).(DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput)
+}
+
+// The delimiter that is used to separate values. The default is `,` (comma).
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfigCsvOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The character encoding of the data. The default is UTF-8.
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfigCsvOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of rows to interpret as header rows that should be skipped when reading data rows.
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput) HeaderRows() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfigCsvOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderRows
+	}).(pulumi.IntPtrOutput)
+}
+
+// The character used to quote column values. Accepts `"` (double quotation mark) or `'` (single quotation mark). If unspecified, defaults to `"` (double quotation mark).
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput) Quote() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfigCsvOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Quote
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to disable the inference of data types for CSV data. If true, all columns are registered as strings.
+func (o DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput) TypeInferenceDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfigCsvOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TypeInferenceDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DatascanDataDiscoverySpecStorageConfigJsonOptions struct {
+	// The character encoding of the data. The default is UTF-8.
+	Encoding *string `pulumi:"encoding"`
+	// Whether to disable the inference of data types for JSON data. If true, all columns are registered as their primitive types (strings, number, or boolean).
+	TypeInferenceDisabled *bool `pulumi:"typeInferenceDisabled"`
+}
+
+// DatascanDataDiscoverySpecStorageConfigJsonOptionsInput is an input type that accepts DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs and DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput values.
+// You can construct a concrete instance of `DatascanDataDiscoverySpecStorageConfigJsonOptionsInput` via:
+//
+//	DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs{...}
+type DatascanDataDiscoverySpecStorageConfigJsonOptionsInput interface {
+	pulumi.Input
+
+	ToDatascanDataDiscoverySpecStorageConfigJsonOptionsOutput() DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput
+	ToDatascanDataDiscoverySpecStorageConfigJsonOptionsOutputWithContext(context.Context) DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput
+}
+
+type DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs struct {
+	// The character encoding of the data. The default is UTF-8.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// Whether to disable the inference of data types for JSON data. If true, all columns are registered as their primitive types (strings, number, or boolean).
+	TypeInferenceDisabled pulumi.BoolPtrInput `pulumi:"typeInferenceDisabled"`
+}
+
+func (DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigJsonOptions)(nil)).Elem()
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsOutput() DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput {
+	return i.ToDatascanDataDiscoverySpecStorageConfigJsonOptionsOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput)
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput() DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput {
+	return i.ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput).ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutputWithContext(ctx)
+}
+
+// DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrInput is an input type that accepts DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs, DatascanDataDiscoverySpecStorageConfigJsonOptionsPtr and DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput values.
+// You can construct a concrete instance of `DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrInput` via:
+//
+//	        DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput() DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput
+	ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutputWithContext(context.Context) DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput
+}
+
+type datascanDataDiscoverySpecStorageConfigJsonOptionsPtrType DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs
+
+func DatascanDataDiscoverySpecStorageConfigJsonOptionsPtr(v *DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs) DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrInput {
+	return (*datascanDataDiscoverySpecStorageConfigJsonOptionsPtrType)(v)
+}
+
+func (*datascanDataDiscoverySpecStorageConfigJsonOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDiscoverySpecStorageConfigJsonOptions)(nil)).Elem()
+}
+
+func (i *datascanDataDiscoverySpecStorageConfigJsonOptionsPtrType) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput() DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput {
+	return i.ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataDiscoverySpecStorageConfigJsonOptionsPtrType) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput)
+}
+
+type DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigJsonOptions)(nil)).Elem()
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsOutput() DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput() DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput {
+	return o.ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataDiscoverySpecStorageConfigJsonOptions) *DatascanDataDiscoverySpecStorageConfigJsonOptions {
+		return &v
+	}).(DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput)
+}
+
+// The character encoding of the data. The default is UTF-8.
+func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecStorageConfigJsonOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// Whether to disable the inference of data types for JSON data. If true, all columns are registered as their primitive types (strings, number, or boolean).
+func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput) TypeInferenceDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataDiscoverySpecStorageConfigJsonOptions) *bool { return v.TypeInferenceDisabled }).(pulumi.BoolPtrOutput)
+}
+
+type DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDiscoverySpecStorageConfigJsonOptions)(nil)).Elem()
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput() DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput) ToDatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutputWithContext(ctx context.Context) DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput {
+	return o
+}
+
+func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput) Elem() DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfigJsonOptions) DatascanDataDiscoverySpecStorageConfigJsonOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataDiscoverySpecStorageConfigJsonOptions
+		return ret
+	}).(DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput)
+}
+
+// The character encoding of the data. The default is UTF-8.
+func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfigJsonOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to disable the inference of data types for JSON data. If true, all columns are registered as their primitive types (strings, number, or boolean).
+func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput) TypeInferenceDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDiscoverySpecStorageConfigJsonOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TypeInferenceDisabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type DatascanDataProfileSpec struct {
@@ -4167,7 +5106,7 @@ type DatascanDataQualitySpecRule struct {
 	// Description of the rule.
 	// The maximum length is 1,024 characters.
 	Description *string `pulumi:"description"`
-	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+	// The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
 	Dimension string `pulumi:"dimension"`
 	// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
 	IgnoreNull *bool `pulumi:"ignoreNull"`
@@ -4223,7 +5162,7 @@ type DatascanDataQualitySpecRuleArgs struct {
 	// Description of the rule.
 	// The maximum length is 1,024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+	// The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
 	Dimension pulumi.StringInput `pulumi:"dimension"`
 	// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
 	IgnoreNull pulumi.BoolPtrInput `pulumi:"ignoreNull"`
@@ -4324,7 +5263,7 @@ func (o DatascanDataQualitySpecRuleOutput) Description() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v DatascanDataQualitySpecRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+// The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
 func (o DatascanDataQualitySpecRuleOutput) Dimension() pulumi.StringOutput {
 	return o.ApplyT(func(v DatascanDataQualitySpecRule) string { return v.Dimension }).(pulumi.StringOutput)
 }
@@ -14598,6 +15537,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetSecurityStatusArrayInput)(nil)).Elem(), AssetSecurityStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataInput)(nil)).Elem(), DatascanDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataPtrInput)(nil)).Elem(), DatascanDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecInput)(nil)).Elem(), DatascanDataDiscoverySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecPtrInput)(nil)).Elem(), DatascanDataDiscoverySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecBigqueryPublishingConfigInput)(nil)).Elem(), DatascanDataDiscoverySpecBigqueryPublishingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecBigqueryPublishingConfigPtrInput)(nil)).Elem(), DatascanDataDiscoverySpecBigqueryPublishingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigInput)(nil)).Elem(), DatascanDataDiscoverySpecStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigPtrInput)(nil)).Elem(), DatascanDataDiscoverySpecStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigCsvOptionsInput)(nil)).Elem(), DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrInput)(nil)).Elem(), DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigJsonOptionsInput)(nil)).Elem(), DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrInput)(nil)).Elem(), DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecInput)(nil)).Elem(), DatascanDataProfileSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecPtrInput)(nil)).Elem(), DatascanDataProfileSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecExcludeFieldsInput)(nil)).Elem(), DatascanDataProfileSpecExcludeFieldsArgs{})
@@ -14781,6 +15730,16 @@ func init() {
 	pulumi.RegisterOutputType(AssetSecurityStatusArrayOutput{})
 	pulumi.RegisterOutputType(DatascanDataOutput{})
 	pulumi.RegisterOutputType(DatascanDataPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataDiscoverySpecOutput{})
+	pulumi.RegisterOutputType(DatascanDataDiscoverySpecPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataDiscoverySpecBigqueryPublishingConfigOutput{})
+	pulumi.RegisterOutputType(DatascanDataDiscoverySpecBigqueryPublishingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataDiscoverySpecStorageConfigOutput{})
+	pulumi.RegisterOutputType(DatascanDataDiscoverySpecStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataDiscoverySpecStorageConfigCsvOptionsOutput{})
+	pulumi.RegisterOutputType(DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput{})
+	pulumi.RegisterOutputType(DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataProfileSpecOutput{})
 	pulumi.RegisterOutputType(DatascanDataProfileSpecPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataProfileSpecExcludeFieldsOutput{})

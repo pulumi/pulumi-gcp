@@ -252,6 +252,20 @@ __all__ = [
     'MetastoreTableIamBindingConditionArgsDict',
     'MetastoreTableIamMemberConditionArgs',
     'MetastoreTableIamMemberConditionArgsDict',
+    'SessionTemplateEnvironmentConfigArgs',
+    'SessionTemplateEnvironmentConfigArgsDict',
+    'SessionTemplateEnvironmentConfigExecutionConfigArgs',
+    'SessionTemplateEnvironmentConfigExecutionConfigArgsDict',
+    'SessionTemplateEnvironmentConfigPeripheralsConfigArgs',
+    'SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict',
+    'SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs',
+    'SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict',
+    'SessionTemplateJupyterSessionArgs',
+    'SessionTemplateJupyterSessionArgsDict',
+    'SessionTemplateRuntimeConfigArgs',
+    'SessionTemplateRuntimeConfigArgsDict',
+    'SessionTemplateSparkConnectSessionArgs',
+    'SessionTemplateSparkConnectSessionArgsDict',
     'WorkflowTemplateEncryptionConfigArgs',
     'WorkflowTemplateEncryptionConfigArgsDict',
     'WorkflowTemplateJobArgs',
@@ -10404,6 +10418,478 @@ class MetastoreTableIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class SessionTemplateEnvironmentConfigArgsDict(TypedDict):
+        execution_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigArgsDict']]
+        """
+        Execution configuration for a workload.
+        Structure is documented below.
+        """
+        peripherals_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict']]
+        """
+        Peripherals configuration that workload has access to.
+        Structure is documented below.
+        """
+elif False:
+    SessionTemplateEnvironmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SessionTemplateEnvironmentConfigArgs:
+    def __init__(__self__, *,
+                 execution_config: Optional[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigArgs']] = None,
+                 peripherals_config: Optional[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigArgs']] = None):
+        """
+        :param pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigArgs'] execution_config: Execution configuration for a workload.
+               Structure is documented below.
+        :param pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigArgs'] peripherals_config: Peripherals configuration that workload has access to.
+               Structure is documented below.
+        """
+        if execution_config is not None:
+            pulumi.set(__self__, "execution_config", execution_config)
+        if peripherals_config is not None:
+            pulumi.set(__self__, "peripherals_config", peripherals_config)
+
+    @property
+    @pulumi.getter(name="executionConfig")
+    def execution_config(self) -> Optional[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigArgs']]:
+        """
+        Execution configuration for a workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "execution_config")
+
+    @execution_config.setter
+    def execution_config(self, value: Optional[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigArgs']]):
+        pulumi.set(self, "execution_config", value)
+
+    @property
+    @pulumi.getter(name="peripheralsConfig")
+    def peripherals_config(self) -> Optional[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigArgs']]:
+        """
+        Peripherals configuration that workload has access to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "peripherals_config")
+
+    @peripherals_config.setter
+    def peripherals_config(self, value: Optional[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigArgs']]):
+        pulumi.set(self, "peripherals_config", value)
+
+
+if not MYPY:
+    class SessionTemplateEnvironmentConfigExecutionConfigArgsDict(TypedDict):
+        kms_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The Cloud KMS key to use for encryption.
+        """
+        network_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Tags used for network traffic control.
+        """
+        service_account: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Service account that used to execute workload.
+        """
+        staging_bucket: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A Cloud Storage bucket used to stage workload dependencies, config files, and store
+        workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+        Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+        and then create and manage project-level, per-location staging and temporary buckets.
+        This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        """
+        subnetwork_uri: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Subnetwork configuration for workload execution.
+        """
+        ttl: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The duration after which the workload will be terminated.
+        When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+        work to finish. If ttl is not specified for a session workload, the workload will be allowed to run until it
+        exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+        it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+        Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+        the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+        when ttl has been exceeded, whichever occurs first.
+        """
+elif False:
+    SessionTemplateEnvironmentConfigExecutionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SessionTemplateEnvironmentConfigExecutionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key: Optional[pulumi.Input[builtins.str]] = None,
+                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 service_account: Optional[pulumi.Input[builtins.str]] = None,
+                 staging_bucket: Optional[pulumi.Input[builtins.str]] = None,
+                 subnetwork_uri: Optional[pulumi.Input[builtins.str]] = None,
+                 ttl: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] kms_key: The Cloud KMS key to use for encryption.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] network_tags: Tags used for network traffic control.
+        :param pulumi.Input[builtins.str] service_account: Service account that used to execute workload.
+        :param pulumi.Input[builtins.str] staging_bucket: A Cloud Storage bucket used to stage workload dependencies, config files, and store
+               workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+               Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+               and then create and manage project-level, per-location staging and temporary buckets.
+               This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        :param pulumi.Input[builtins.str] subnetwork_uri: Subnetwork configuration for workload execution.
+        :param pulumi.Input[builtins.str] ttl: The duration after which the workload will be terminated.
+               When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+               work to finish. If ttl is not specified for a session workload, the workload will be allowed to run until it
+               exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+               it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+               Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+               the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+               when ttl has been exceeded, whichever occurs first.
+        """
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if staging_bucket is not None:
+            pulumi.set(__self__, "staging_bucket", staging_bucket)
+        if subnetwork_uri is not None:
+            pulumi.set(__self__, "subnetwork_uri", subnetwork_uri)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The Cloud KMS key to use for encryption.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key", value)
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Tags used for network traffic control.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "network_tags", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Service account that used to execute workload.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="stagingBucket")
+    def staging_bucket(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A Cloud Storage bucket used to stage workload dependencies, config files, and store
+        workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+        Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+        and then create and manage project-level, per-location staging and temporary buckets.
+        This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        """
+        return pulumi.get(self, "staging_bucket")
+
+    @staging_bucket.setter
+    def staging_bucket(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "staging_bucket", value)
+
+    @property
+    @pulumi.getter(name="subnetworkUri")
+    def subnetwork_uri(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Subnetwork configuration for workload execution.
+        """
+        return pulumi.get(self, "subnetwork_uri")
+
+    @subnetwork_uri.setter
+    def subnetwork_uri(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subnetwork_uri", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The duration after which the workload will be terminated.
+        When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+        work to finish. If ttl is not specified for a session workload, the workload will be allowed to run until it
+        exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+        it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+        Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+        the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+        when ttl has been exceeded, whichever occurs first.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "ttl", value)
+
+
+if not MYPY:
+    class SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict(TypedDict):
+        metastore_service: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Resource name of an existing Dataproc Metastore service.
+        """
+        spark_history_server_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict']]
+        """
+        The Spark History Server configuration for the workload.
+        Structure is documented below.
+        """
+elif False:
+    SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SessionTemplateEnvironmentConfigPeripheralsConfigArgs:
+    def __init__(__self__, *,
+                 metastore_service: Optional[pulumi.Input[builtins.str]] = None,
+                 spark_history_server_config: Optional[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs']] = None):
+        """
+        :param pulumi.Input[builtins.str] metastore_service: Resource name of an existing Dataproc Metastore service.
+        :param pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs'] spark_history_server_config: The Spark History Server configuration for the workload.
+               Structure is documented below.
+        """
+        if metastore_service is not None:
+            pulumi.set(__self__, "metastore_service", metastore_service)
+        if spark_history_server_config is not None:
+            pulumi.set(__self__, "spark_history_server_config", spark_history_server_config)
+
+    @property
+    @pulumi.getter(name="metastoreService")
+    def metastore_service(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Resource name of an existing Dataproc Metastore service.
+        """
+        return pulumi.get(self, "metastore_service")
+
+    @metastore_service.setter
+    def metastore_service(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "metastore_service", value)
+
+    @property
+    @pulumi.getter(name="sparkHistoryServerConfig")
+    def spark_history_server_config(self) -> Optional[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs']]:
+        """
+        The Spark History Server configuration for the workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spark_history_server_config")
+
+    @spark_history_server_config.setter
+    def spark_history_server_config(self, value: Optional[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs']]):
+        pulumi.set(self, "spark_history_server_config", value)
+
+
+if not MYPY:
+    class SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict(TypedDict):
+        dataproc_cluster: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+        """
+elif False:
+    SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs:
+    def __init__(__self__, *,
+                 dataproc_cluster: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] dataproc_cluster: Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+        """
+        if dataproc_cluster is not None:
+            pulumi.set(__self__, "dataproc_cluster", dataproc_cluster)
+
+    @property
+    @pulumi.getter(name="dataprocCluster")
+    def dataproc_cluster(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+        """
+        return pulumi.get(self, "dataproc_cluster")
+
+    @dataproc_cluster.setter
+    def dataproc_cluster(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "dataproc_cluster", value)
+
+
+if not MYPY:
+    class SessionTemplateJupyterSessionArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Display name, shown in the Jupyter kernelspec card.
+        """
+        kernel: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kernel to be used with Jupyter interactive session.
+        Possible values are: `PYTHON`, `SCALA`.
+        """
+elif False:
+    SessionTemplateJupyterSessionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SessionTemplateJupyterSessionArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[builtins.str]] = None,
+                 kernel: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] display_name: Display name, shown in the Jupyter kernelspec card.
+        :param pulumi.Input[builtins.str] kernel: Kernel to be used with Jupyter interactive session.
+               Possible values are: `PYTHON`, `SCALA`.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if kernel is not None:
+            pulumi.set(__self__, "kernel", kernel)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Display name, shown in the Jupyter kernelspec card.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def kernel(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kernel to be used with Jupyter interactive session.
+        Possible values are: `PYTHON`, `SCALA`.
+        """
+        return pulumi.get(self, "kernel")
+
+    @kernel.setter
+    def kernel(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kernel", value)
+
+
+if not MYPY:
+    class SessionTemplateRuntimeConfigArgsDict(TypedDict):
+        container_image: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+        """
+        effective_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        A mapping of property names to values, which are used to configure workload execution.
+        """
+        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        A mapping of property names to values, which are used to configure workload execution.
+        """
+        version: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Version of the session runtime.
+        """
+elif False:
+    SessionTemplateRuntimeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SessionTemplateRuntimeConfigArgs:
+    def __init__(__self__, *,
+                 container_image: Optional[pulumi.Input[builtins.str]] = None,
+                 effective_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 version: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] container_image: Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_properties: (Output)
+               A mapping of property names to values, which are used to configure workload execution.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] properties: A mapping of property names to values, which are used to configure workload execution.
+        :param pulumi.Input[builtins.str] version: Version of the session runtime.
+        """
+        if container_image is not None:
+            pulumi.set(__self__, "container_image", container_image)
+        if effective_properties is not None:
+            pulumi.set(__self__, "effective_properties", effective_properties)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+        """
+        return pulumi.get(self, "container_image")
+
+    @container_image.setter
+    def container_image(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "container_image", value)
+
+    @property
+    @pulumi.getter(name="effectiveProperties")
+    def effective_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        A mapping of property names to values, which are used to configure workload execution.
+        """
+        return pulumi.get(self, "effective_properties")
+
+    @effective_properties.setter
+    def effective_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "effective_properties", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        A mapping of property names to values, which are used to configure workload execution.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Version of the session runtime.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class SessionTemplateSparkConnectSessionArgsDict(TypedDict):
+        pass
+elif False:
+    SessionTemplateSparkConnectSessionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SessionTemplateSparkConnectSessionArgs:
+    def __init__(__self__):
+        pass
 
 
 if not MYPY:

@@ -140,7 +140,7 @@ namespace Pulumi.Gcp.Diagflow
     ///     var myDatastore = new Gcp.DiscoveryEngine.DataStore("my_datastore", new()
     ///     {
     ///         Location = "global",
-    ///         DataStoreId = "datastore-tool-test-_29439",
+    ///         DataStoreId = "datastore-tool-test-_79169",
     ///         DisplayName = "datastore for Tool test",
     ///         IndustryVertical = "GENERIC",
     ///         ContentConfig = "NO_CONTENT",

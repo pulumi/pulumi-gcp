@@ -46,6 +46,20 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Analyticshub Data Exchange Log Linked Dataset Query User
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataExchange = new gcp.bigqueryanalyticshub.DataExchange("data_exchange", {
+ *     location: "US",
+ *     dataExchangeId: "tf_test_log_email_data_exchange",
+ *     displayName: "tf_test_log_email_data_exchange",
+ *     description: "Example for log email test for data exchange",
+ *     logLinkedDatasetQueryUserEmail: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -137,6 +151,10 @@ export class DataExchange extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+     */
+    public readonly logLinkedDatasetQueryUserEmail!: pulumi.Output<boolean | undefined>;
+    /**
      * The resource name of the data exchange, for example:
      * "projects/myproject/locations/US/dataExchanges/123"
      */
@@ -177,6 +195,7 @@ export class DataExchange extends pulumi.CustomResource {
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["listingCount"] = state ? state.listingCount : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["logLinkedDatasetQueryUserEmail"] = state ? state.logLinkedDatasetQueryUserEmail : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["primaryContact"] = state ? state.primaryContact : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -198,6 +217,7 @@ export class DataExchange extends pulumi.CustomResource {
             resourceInputs["documentation"] = args ? args.documentation : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["logLinkedDatasetQueryUserEmail"] = args ? args.logLinkedDatasetQueryUserEmail : undefined;
             resourceInputs["primaryContact"] = args ? args.primaryContact : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["sharingEnvironmentConfig"] = args ? args.sharingEnvironmentConfig : undefined;
@@ -244,6 +264,10 @@ export interface DataExchangeState {
      * The name of the location this data exchange.
      */
     location?: pulumi.Input<string>;
+    /**
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+     */
+    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
     /**
      * The resource name of the data exchange, for example:
      * "projects/myproject/locations/US/dataExchanges/123"
@@ -297,6 +321,10 @@ export interface DataExchangeArgs {
      * The name of the location this data exchange.
      */
     location: pulumi.Input<string>;
+    /**
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+     */
+    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
     /**
      * Email or URL of the primary point of contact of the data exchange.
      */
