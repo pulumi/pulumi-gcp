@@ -212,6 +212,7 @@ var moduleMapping = map[string]string{
 	"colab":                           "Colab",
 	"composer":                        gcpComposer,
 	"compute":                         gcpCompute,
+	"contact_center_insights":         "ContactCenterInsights",
 	"container":                       gcpKubernetes,
 	"container_analysis":              gcpContainerAnalysis,
 	"data_catalog":                    gcpDataCatalog,

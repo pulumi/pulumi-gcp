@@ -201,7 +201,7 @@ index b74348a5f..6a1d260f5 100644
 -See [google_container_cluster](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster) resource for details of the available attributes.
 +See `google_container_cluster` resource for details of the available attributes.
 diff --git a/website/docs/d/container_engine_versions.html.markdown b/website/docs/d/container_engine_versions.html.markdown
-index 543a9f7db..ae10414e0 100644
+index e3cf0ee23..7d5958b90 100644
 --- a/website/docs/d/container_engine_versions.html.markdown
 +++ b/website/docs/d/container_engine_versions.html.markdown
 @@ -41,7 +41,7 @@ data "google_container_engine_versions" "central1b" {
