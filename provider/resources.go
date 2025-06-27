@@ -744,6 +744,14 @@ func Provider() tfbridge.ProviderInfo {
 					"name": tfbridge.AutoName("name", 63, "-"),
 				},
 			},
+			// Dialogflow
+			"google_dialogflow_encryption_spec": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"encryption_spec": {
+						CSharpName: "EncryptionSpecName",
+					},
+				},
+			},
 			// Core functions
 			"google_folder": {
 				Tok: gcpResource(gcpOrganization, "Folder"),

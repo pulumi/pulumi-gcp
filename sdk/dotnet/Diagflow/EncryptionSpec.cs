@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.Diagflow
     ///     {
     ///         Project = project.ProjectId,
     ///         Location = "us-central1",
-    ///         EncryptionSpec = new Gcp.Diagflow.Inputs.EncryptionSpecEncryptionSpecArgs
+    ///         EncryptionSpecName = new Gcp.Diagflow.Inputs.EncryptionSpecEncryptionSpecArgs
     ///         {
     ///             KmsKey = key.Id,
     ///         },
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Structure is documented below.
         /// </summary>
         [Output("encryptionSpec")]
-        public Output<Outputs.EncryptionSpecEncryptionSpec> EncryptionSpec { get; private set; } = null!;
+        public Output<Outputs.EncryptionSpecEncryptionSpec> EncryptionSpecName { get; private set; } = null!;
 
         /// <summary>
         /// The location in which the encryptionSpec is to be initialized.
@@ -220,7 +220,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Structure is documented below.
         /// </summary>
         [Input("encryptionSpec", required: true)]
-        public Input<Inputs.EncryptionSpecEncryptionSpecArgs> EncryptionSpec { get; set; } = null!;
+        public Input<Inputs.EncryptionSpecEncryptionSpecArgs> EncryptionSpecName { get; set; } = null!;
 
         /// <summary>
         /// The location in which the encryptionSpec is to be initialized.
@@ -244,7 +244,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Structure is documented below.
         /// </summary>
         [Input("encryptionSpec")]
-        public Input<Inputs.EncryptionSpecEncryptionSpecGetArgs>? EncryptionSpec { get; set; }
+        public Input<Inputs.EncryptionSpecEncryptionSpecGetArgs>? EncryptionSpecName { get; set; }
 
         /// <summary>
         /// The location in which the encryptionSpec is to be initialized.
