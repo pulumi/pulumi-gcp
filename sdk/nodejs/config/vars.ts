@@ -417,6 +417,14 @@ Object.defineProperty(exports, "computeCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const contactCenterInsightsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "contactCenterInsightsCustomEndpoint", {
+    get() {
+        return __config.get("contactCenterInsightsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const containerAnalysisCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "containerAnalysisCustomEndpoint", {
     get() {

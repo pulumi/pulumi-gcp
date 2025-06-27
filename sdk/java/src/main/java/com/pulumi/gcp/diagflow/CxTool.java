@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myDatastore = new DataStore("myDatastore", DataStoreArgs.builder()
  *             .location("global")
- *             .dataStoreId("datastore-tool-test-_29439")
+ *             .dataStoreId("datastore-tool-test-_79169")
  *             .displayName("datastore for Tool test")
  *             .industryVertical("GENERIC")
  *             .contentConfig("NO_CONTENT")

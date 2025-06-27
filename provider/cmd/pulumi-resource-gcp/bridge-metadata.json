@@ -1724,6 +1724,79 @@
                 "current": "gcp:apihub/hostProjectRegistration:HostProjectRegistration",
                 "majorVersion": 8
             },
+            "google_apihub_plugin_instance": {
+                "current": "gcp:apihub/pluginInstance:PluginInstance",
+                "majorVersion": 8,
+                "fields": {
+                    "actions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "curation_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_curation": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "hub_instance_action": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "last_execution": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "auth_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "api_key_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "api_key": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "google_service_account_config": {
+                                    "maxItemsOne": true
+                                },
+                                "oauth2_client_credentials_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "client_secret": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "user_password_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "password": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_apikeys_key": {
                 "current": "gcp:projects/apiKey:ApiKey",
                 "majorVersion": 8,
@@ -2707,6 +2780,16 @@
                     },
                     "publisher": {
                         "maxItemsOne": true
+                    },
+                    "pubsub_topic": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "data_affinity_regions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "restricted_export_config": {
                         "maxItemsOne": true
@@ -8094,6 +8177,9 @@
                     },
                     "requested_features": {
                         "maxItemsOne": false
+                    },
+                    "wire_groups": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -12055,6 +12141,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_contact_center_insights_view": {
+                "current": "gcp:contactcenterinsights/view:View",
+                "majorVersion": 8
             },
             "google_container_analysis_note": {
                 "current": "gcp:containeranalysis/note:Note",
@@ -16223,6 +16313,35 @@
                     "data": {
                         "maxItemsOne": true
                     },
+                    "data_discovery_spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "bigquery_publishing_config": {
+                                    "maxItemsOne": true
+                                },
+                                "storage_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "csv_options": {
+                                                "maxItemsOne": true
+                                            },
+                                            "exclude_patterns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "include_patterns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "json_options": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "data_profile_spec": {
                         "maxItemsOne": true,
                         "elem": {
@@ -17690,6 +17809,48 @@
             "google_dataproc_metastore_table_iam_policy": {
                 "current": "gcp:dataproc/metastoreTableIamPolicy:MetastoreTableIamPolicy",
                 "majorVersion": 8
+            },
+            "google_dataproc_session_template": {
+                "current": "gcp:dataproc/sessionTemplate:SessionTemplate",
+                "majorVersion": 8,
+                "fields": {
+                    "environment_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "execution_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "network_tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "peripherals_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "spark_history_server_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "jupyter_session": {
+                        "maxItemsOne": true
+                    },
+                    "runtime_config": {
+                        "maxItemsOne": true
+                    },
+                    "spark_connect_session": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "google_dataproc_workflow_template": {
                 "current": "gcp:dataproc/workflowTemplate:WorkflowTemplate",
@@ -19721,6 +19882,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "google_dialogflow_encryption_spec": {
+                "current": "gcp:diagflow/encryptionSpec:EncryptionSpec",
+                "majorVersion": 8,
+                "fields": {
+                    "encryption_spec": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -43552,6 +43722,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_dataproc_session_template": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_dataproc_workflow_template": [
                 "effective_labels",
                 "terraform_labels"
@@ -44554,6 +44728,7 @@
             "gcp:apihub/apiHubInstance:ApiHubInstance": 0,
             "gcp:apihub/curation:Curation": 0,
             "gcp:apihub/hostProjectRegistration:HostProjectRegistration": 0,
+            "gcp:apihub/pluginInstance:PluginInstance": 0,
             "gcp:appengine/application:Application": 0,
             "gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules": 0,
             "gcp:appengine/domainMapping:DomainMapping": 0,
@@ -44918,6 +45093,7 @@
             "gcp:compute/uRLMap:URLMap": 0,
             "gcp:compute/vPNGateway:VPNGateway": 0,
             "gcp:compute/vPNTunnel:VPNTunnel": 0,
+            "gcp:contactcenterinsights/view:View": 0,
             "gcp:container/attachedCluster:AttachedCluster": 0,
             "gcp:container/awsCluster:AwsCluster": 0,
             "gcp:container/awsNodePool:AwsNodePool": 0,
@@ -45037,6 +45213,7 @@
             "gcp:dataproc/metastoreTableIamBinding:MetastoreTableIamBinding": 0,
             "gcp:dataproc/metastoreTableIamMember:MetastoreTableIamMember": 0,
             "gcp:dataproc/metastoreTableIamPolicy:MetastoreTableIamPolicy": 0,
+            "gcp:dataproc/sessionTemplate:SessionTemplate": 0,
             "gcp:dataproc/workflowTemplate:WorkflowTemplate": 0,
             "gcp:datastream/connectionProfile:ConnectionProfile": 0,
             "gcp:datastream/privateConnection:PrivateConnection": 0,
@@ -45057,6 +45234,7 @@
             "gcp:diagflow/cxTool:CxTool": 0,
             "gcp:diagflow/cxVersion:CxVersion": 0,
             "gcp:diagflow/cxWebhook:CxWebhook": 0,
+            "gcp:diagflow/encryptionSpec:EncryptionSpec": 0,
             "gcp:diagflow/entityType:EntityType": 0,
             "gcp:diagflow/fulfillment:Fulfillment": 0,
             "gcp:diagflow/intent:Intent": 0,

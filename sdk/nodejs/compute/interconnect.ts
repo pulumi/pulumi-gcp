@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     customerName: "example_customer",
  *     interconnectType: "DEDICATED",
  *     linkType: "LINK_TYPE_ETHERNET_10G_LR",
- *     location: project.then(project => `https://www.googleapis.com/compute/v1/projects/${project.name}/global/interconnectLocations/iad-zone1-1`),
+ *     location: project.then(project => `https://www.googleapis.com/compute/v1/${project.id}/global/interconnectLocations/iad-zone1-1`),
  *     requestedLinkCount: 1,
  * });
  * ```
@@ -256,7 +256,7 @@ export class Interconnect extends pulumi.CustomResource {
      * specified, the default value is false, which allocates non-MACsec capable ports first if
      * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
      * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
      */
     public readonly requestedFeatures!: pulumi.Output<string[] | undefined>;
     /**
@@ -278,6 +278,11 @@ export class Interconnect extends pulumi.CustomResource {
      * - COMPLETED: The outage associated with this notification is complete.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+     * deleted if this list is non-empty.
+     */
+    public /*out*/ readonly wireGroups!: pulumi.Output<string[]>;
 
     /**
      * Create a Interconnect resource with the given unique name, arguments, and options.
@@ -323,6 +328,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["requestedLinkCount"] = state ? state.requestedLinkCount : undefined;
             resourceInputs["satisfiesPzs"] = state ? state.satisfiesPzs : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["wireGroups"] = state ? state.wireGroups : undefined;
         } else {
             const args = argsOrState as InterconnectArgs | undefined;
             if ((!args || args.interconnectType === undefined) && !opts.urn) {
@@ -368,6 +374,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["wireGroups"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
@@ -549,7 +556,7 @@ export interface InterconnectState {
      * specified, the default value is false, which allocates non-MACsec capable ports first if
      * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
      * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
      */
     requestedFeatures?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -571,6 +578,11 @@ export interface InterconnectState {
      * - COMPLETED: The outage associated with this notification is complete.
      */
     state?: pulumi.Input<string>;
+    /**
+     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+     * deleted if this list is non-empty.
+     */
+    wireGroups?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -669,7 +681,7 @@ export interface InterconnectArgs {
      * specified, the default value is false, which allocates non-MACsec capable ports first if
      * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
      * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
      */
     requestedFeatures?: pulumi.Input<pulumi.Input<string>[]>;
     /**

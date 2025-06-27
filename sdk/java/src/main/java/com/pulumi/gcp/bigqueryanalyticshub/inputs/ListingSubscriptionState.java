@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationDatasetArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionLinkedDatasetMapArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionLinkedResourceArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -148,6 +149,21 @@ public final class ListingSubscriptionState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+     * 
+     */
+    @Import(name="logLinkedDatasetQueryUserEmail")
+    private @Nullable Output<Boolean> logLinkedDatasetQueryUserEmail;
+
+    /**
+     * @return Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+     * 
+     */
+    public Optional<Output<Boolean>> logLinkedDatasetQueryUserEmail() {
+        return Optional.ofNullable(this.logLinkedDatasetQueryUserEmail);
+    }
+
+    /**
      * The resource name of the subscription. e.g. &#34;projects/myproject/locations/US/subscriptions/123&#34;
      * 
      */
@@ -270,6 +286,7 @@ public final class ListingSubscriptionState extends com.pulumi.resources.Resourc
         this.linkedResources = $.linkedResources;
         this.listingId = $.listingId;
         this.location = $.location;
+        this.logLinkedDatasetQueryUserEmail = $.logLinkedDatasetQueryUserEmail;
         this.name = $.name;
         this.organizationDisplayName = $.organizationDisplayName;
         this.organizationId = $.organizationId;
@@ -495,6 +512,27 @@ public final class ListingSubscriptionState extends com.pulumi.resources.Resourc
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param logLinkedDatasetQueryUserEmail Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logLinkedDatasetQueryUserEmail(@Nullable Output<Boolean> logLinkedDatasetQueryUserEmail) {
+            $.logLinkedDatasetQueryUserEmail = logLinkedDatasetQueryUserEmail;
+            return this;
+        }
+
+        /**
+         * @param logLinkedDatasetQueryUserEmail Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logLinkedDatasetQueryUserEmail(Boolean logLinkedDatasetQueryUserEmail) {
+            return logLinkedDatasetQueryUserEmail(Output.of(logLinkedDatasetQueryUserEmail));
         }
 
         /**

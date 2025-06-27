@@ -9612,6 +9612,10 @@ if not MYPY:
         """
         Defines whether the instance should have nested virtualization enabled. Defaults to false.
         """
+        performance_monitoring_unit: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+        """
 elif False:
     ClusterNodeConfigAdvancedMachineFeaturesArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -9619,14 +9623,18 @@ elif False:
 class ClusterNodeConfigAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
                  threads_per_core: pulumi.Input[builtins.int],
-                 enable_nested_virtualization: Optional[pulumi.Input[builtins.bool]] = None):
+                 enable_nested_virtualization: Optional[pulumi.Input[builtins.bool]] = None,
+                 performance_monitoring_unit: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param pulumi.Input[builtins.bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        :param pulumi.Input[builtins.str] performance_monitoring_unit: Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -9651,6 +9659,18 @@ class ClusterNodeConfigAdvancedMachineFeaturesArgs:
     @enable_nested_virtualization.setter
     def enable_nested_virtualization(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
+
+    @performance_monitoring_unit.setter
+    def performance_monitoring_unit(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "performance_monitoring_unit", value)
 
 
 if not MYPY:
@@ -12397,7 +12417,7 @@ if not MYPY:
         """
         create_pod_range: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
         """
         enable_private_nodes: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -12413,11 +12433,11 @@ if not MYPY:
         """
         pod_ipv4_cidr_block: NotRequired[pulumi.Input[builtins.str]]
         """
-        The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         """
         pod_range: NotRequired[pulumi.Input[builtins.str]]
         """
-        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         """
 elif False:
     ClusterNodePoolNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -12436,12 +12456,12 @@ class ClusterNodePoolNetworkConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
-        :param pulumi.Input[builtins.bool] create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        :param pulumi.Input[builtins.bool] create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
         :param pulumi.Input[builtins.bool] enable_private_nodes: Whether nodes have internal IP addresses only.
         :param pulumi.Input['ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs'] network_performance_config: Network bandwidth tier configuration.
         :param pulumi.Input['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs'] pod_cidr_overprovision_config: Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
-        :param pulumi.Input[builtins.str] pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
-        :param pulumi.Input[builtins.str] pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        :param pulumi.Input[builtins.str] pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        :param pulumi.Input[builtins.str] pod_range: The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         """
         if additional_node_network_configs is not None:
             pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
@@ -12488,7 +12508,7 @@ class ClusterNodePoolNetworkConfigArgs:
     @pulumi.getter(name="createPodRange")
     def create_pod_range(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
         """
         return pulumi.get(self, "create_pod_range")
 
@@ -12536,7 +12556,7 @@ class ClusterNodePoolNetworkConfigArgs:
     @pulumi.getter(name="podIpv4CidrBlock")
     def pod_ipv4_cidr_block(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         """
         return pulumi.get(self, "pod_ipv4_cidr_block")
 
@@ -12548,7 +12568,7 @@ class ClusterNodePoolNetworkConfigArgs:
     @pulumi.getter(name="podRange")
     def pod_range(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         """
         return pulumi.get(self, "pod_range")
 
@@ -13866,6 +13886,10 @@ if not MYPY:
         """
         Defines whether the instance should have nested virtualization enabled. Defaults to false.
         """
+        performance_monitoring_unit: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+        """
 elif False:
     ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -13873,14 +13897,18 @@ elif False:
 class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
                  threads_per_core: pulumi.Input[builtins.int],
-                 enable_nested_virtualization: Optional[pulumi.Input[builtins.bool]] = None):
+                 enable_nested_virtualization: Optional[pulumi.Input[builtins.bool]] = None,
+                 performance_monitoring_unit: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param pulumi.Input[builtins.bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        :param pulumi.Input[builtins.str] performance_monitoring_unit: Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -13905,6 +13933,18 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs:
     @enable_nested_virtualization.setter
     def enable_nested_virtualization(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
+
+    @performance_monitoring_unit.setter
+    def performance_monitoring_unit(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "performance_monitoring_unit", value)
 
 
 if not MYPY:
@@ -18538,6 +18578,10 @@ if not MYPY:
         """
         Whether the node should have nested virtualization enabled.
         """
+        performance_monitoring_unit: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        """
 elif False:
     NodePoolNodeConfigAdvancedMachineFeaturesArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -18545,14 +18589,18 @@ elif False:
 class NodePoolNodeConfigAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
                  threads_per_core: pulumi.Input[builtins.int],
-                 enable_nested_virtualization: Optional[pulumi.Input[builtins.bool]] = None):
+                 enable_nested_virtualization: Optional[pulumi.Input[builtins.bool]] = None,
+                 performance_monitoring_unit: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param pulumi.Input[builtins.bool] enable_nested_virtualization: Whether the node should have nested virtualization enabled.
+        :param pulumi.Input[builtins.str] performance_monitoring_unit: Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -18577,6 +18625,18 @@ class NodePoolNodeConfigAdvancedMachineFeaturesArgs:
     @enable_nested_virtualization.setter
     def enable_nested_virtualization(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
+
+    @performance_monitoring_unit.setter
+    def performance_monitoring_unit(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "performance_monitoring_unit", value)
 
 
 if not MYPY:

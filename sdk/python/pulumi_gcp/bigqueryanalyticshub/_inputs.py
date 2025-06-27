@@ -38,6 +38,8 @@ __all__ = [
     'ListingIamMemberConditionArgsDict',
     'ListingPublisherArgs',
     'ListingPublisherArgsDict',
+    'ListingPubsubTopicArgs',
+    'ListingPubsubTopicArgsDict',
     'ListingRestrictedExportConfigArgs',
     'ListingRestrictedExportConfigArgsDict',
     'ListingSubscriptionDestinationDatasetArgs',
@@ -281,8 +283,6 @@ if not MYPY:
         table: NotRequired[pulumi.Input[builtins.str]]
         """
         Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-
-        - - -
         """
 elif False:
     ListingBigqueryDatasetSelectedResourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -293,8 +293,6 @@ class ListingBigqueryDatasetSelectedResourceArgs:
                  table: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] table: Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-               
-               - - -
         """
         if table is not None:
             pulumi.set(__self__, "table", table)
@@ -304,8 +302,6 @@ class ListingBigqueryDatasetSelectedResourceArgs:
     def table(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-
-        - - -
         """
         return pulumi.get(self, "table")
 
@@ -508,6 +504,60 @@ class ListingPublisherArgs:
     @primary_contact.setter
     def primary_contact(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "primary_contact", value)
+
+
+if not MYPY:
+    class ListingPubsubTopicArgsDict(TypedDict):
+        topic: pulumi.Input[builtins.str]
+        """
+        Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
+        """
+        data_affinity_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Region hint on where the data might be published. Data affinity regions are modifiable.
+        See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
+        """
+elif False:
+    ListingPubsubTopicArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ListingPubsubTopicArgs:
+    def __init__(__self__, *,
+                 topic: pulumi.Input[builtins.str],
+                 data_affinity_regions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[builtins.str] topic: Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] data_affinity_regions: Region hint on where the data might be published. Data affinity regions are modifiable.
+               See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
+        """
+        pulumi.set(__self__, "topic", topic)
+        if data_affinity_regions is not None:
+            pulumi.set(__self__, "data_affinity_regions", data_affinity_regions)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Input[builtins.str]:
+        """
+        Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "topic", value)
+
+    @property
+    @pulumi.getter(name="dataAffinityRegions")
+    def data_affinity_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Region hint on where the data might be published. Data affinity regions are modifiable.
+        See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
+        """
+        return pulumi.get(self, "data_affinity_regions")
+
+    @data_affinity_regions.setter
+    def data_affinity_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "data_affinity_regions", value)
 
 
 if not MYPY:

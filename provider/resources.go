@@ -212,6 +212,7 @@ var moduleMapping = map[string]string{
 	"colab":                           "Colab",
 	"composer":                        gcpComposer,
 	"compute":                         gcpCompute,
+	"contact_center_insights":         "ContactCenterInsights",
 	"container":                       gcpKubernetes,
 	"container_analysis":              gcpContainerAnalysis,
 	"data_catalog":                    gcpDataCatalog,
@@ -741,6 +742,14 @@ func Provider() tfbridge.ProviderInfo {
 					// Name must start with a letter followed by up to 62 letters, numbers, or
 					// hyphens, and cannot end with a hyphen
 					"name": tfbridge.AutoName("name", 63, "-"),
+				},
+			},
+			// Dialogflow
+			"google_dialogflow_encryption_spec": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"encryption_spec": {
+						CSharpName: "EncryptionSpecName",
+					},
 				},
 			},
 			// Core functions

@@ -210,6 +210,7 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public readonly string SelfLink;
         public readonly string Source;
+        public readonly string SourceMd5hash;
         /// <summary>
         /// (Computed) The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
         /// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -269,6 +270,8 @@ namespace Pulumi.Gcp.Storage
 
             string source,
 
+            string sourceMd5hash,
+
             string storageClass,
 
             bool temporaryHold)
@@ -296,6 +299,7 @@ namespace Pulumi.Gcp.Storage
             Retentions = retentions;
             SelfLink = selfLink;
             Source = source;
+            SourceMd5hash = sourceMd5hash;
             StorageClass = storageClass;
             TemporaryHold = temporaryHold;
         }

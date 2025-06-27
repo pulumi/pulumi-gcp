@@ -116,6 +116,9 @@ export class BucketObject extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly customerEncryption!: pulumi.Output<outputs.storage.BucketObjectCustomerEncryption | undefined>;
+    /**
+     * @deprecated `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
+     */
     public readonly detectMd5hash!: pulumi.Output<string | undefined>;
     /**
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -172,6 +175,10 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly source!: pulumi.Output<pulumi.asset.Asset | pulumi.asset.Archive | undefined>;
     /**
+     * User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+     */
+    public readonly sourceMd5hash!: pulumi.Output<string | undefined>;
+    /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -217,6 +224,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["retention"] = state ? state.retention : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["sourceMd5hash"] = state ? state.sourceMd5hash : undefined;
             resourceInputs["storageClass"] = state ? state.storageClass : undefined;
             resourceInputs["temporaryHold"] = state ? state.temporaryHold : undefined;
         } else {
@@ -239,6 +247,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["retention"] = args ? args.retention : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["sourceMd5hash"] = args ? args.sourceMd5hash : undefined;
             resourceInputs["storageClass"] = args ? args.storageClass : undefined;
             resourceInputs["temporaryHold"] = args ? args.temporaryHold : undefined;
             resourceInputs["crc32c"] = undefined /*out*/;
@@ -298,6 +307,9 @@ export interface BucketObjectState {
      * Structure is documented below.
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
+    /**
+     * @deprecated `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
+     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -354,6 +366,10 @@ export interface BucketObjectState {
      */
     source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
+     * User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+     */
+    sourceMd5hash?: pulumi.Input<string>;
+    /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -403,6 +419,9 @@ export interface BucketObjectArgs {
      * Structure is documented below.
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
+    /**
+     * @deprecated `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
+     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -433,6 +452,10 @@ export interface BucketObjectArgs {
      * - - -
      */
     source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
+    /**
+     * User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
+     */
+    sourceMd5hash?: pulumi.Input<string>;
     /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default

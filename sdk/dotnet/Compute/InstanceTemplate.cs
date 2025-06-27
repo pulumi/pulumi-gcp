@@ -270,7 +270,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
     ///             {
-    ///                 SourceImage = "ubuntu-os-cloud/ubuntu-2004-lts",
+    ///                 SourceImage = "ubuntu-os-cloud/ubuntu-2204-lts",
     ///             },
     ///         },
     ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs

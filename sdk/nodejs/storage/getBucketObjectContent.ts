@@ -102,6 +102,7 @@ export interface GetBucketObjectContentResult {
     readonly retentions: outputs.storage.GetBucketObjectContentRetention[];
     readonly selfLink: string;
     readonly source: string;
+    readonly sourceMd5hash: string;
     readonly storageClass: string;
     readonly temporaryHold: boolean;
 }

@@ -190,7 +190,7 @@ import * as utilities from "../utilities";
  *         confidentialInstanceType: "SEV",
  *     },
  *     disks: [{
- *         sourceImage: "ubuntu-os-cloud/ubuntu-2004-lts",
+ *         sourceImage: "ubuntu-os-cloud/ubuntu-2204-lts",
  *     }],
  *     serviceAccount: {
  *         email: _default.email,

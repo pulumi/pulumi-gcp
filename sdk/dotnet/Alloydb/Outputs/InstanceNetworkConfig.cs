@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Alloydb.Outputs
     public sealed class InstanceNetworkConfig
     {
         /// <summary>
+        /// Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+        /// If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+        /// The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        /// </summary>
+        public readonly string? AllocatedIpRangeOverride;
+        /// <summary>
         /// A list of external networks authorized to access this instance. This
         /// field is only allowed to be set when `enable_public_ip` is set to
         /// true.
@@ -33,12 +39,15 @@ namespace Pulumi.Gcp.Alloydb.Outputs
 
         [OutputConstructor]
         private InstanceNetworkConfig(
+            string? allocatedIpRangeOverride,
+
             ImmutableArray<Outputs.InstanceNetworkConfigAuthorizedExternalNetwork> authorizedExternalNetworks,
 
             bool? enableOutboundPublicIp,
 
             bool? enablePublicIp)
         {
+            AllocatedIpRangeOverride = allocatedIpRangeOverride;
             AuthorizedExternalNetworks = authorizedExternalNetworks;
             EnableOutboundPublicIp = enableOutboundPublicIp;
             EnablePublicIp = enablePublicIp;

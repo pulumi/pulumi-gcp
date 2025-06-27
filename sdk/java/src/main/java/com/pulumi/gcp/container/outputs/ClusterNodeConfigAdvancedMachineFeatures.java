@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +19,11 @@ public final class ClusterNodeConfigAdvancedMachineFeatures {
      * 
      */
     private @Nullable Boolean enableNestedVirtualization;
+    /**
+     * @return Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+     * 
+     */
+    private @Nullable String performanceMonitoringUnit;
     /**
      * @return The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
      * 
@@ -31,6 +37,13 @@ public final class ClusterNodeConfigAdvancedMachineFeatures {
      */
     public Optional<Boolean> enableNestedVirtualization() {
         return Optional.ofNullable(this.enableNestedVirtualization);
+    }
+    /**
+     * @return Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+     * 
+     */
+    public Optional<String> performanceMonitoringUnit() {
+        return Optional.ofNullable(this.performanceMonitoringUnit);
     }
     /**
      * @return The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -50,11 +63,13 @@ public final class ClusterNodeConfigAdvancedMachineFeatures {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableNestedVirtualization;
+        private @Nullable String performanceMonitoringUnit;
         private Integer threadsPerCore;
         public Builder() {}
         public Builder(ClusterNodeConfigAdvancedMachineFeatures defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
+    	      this.performanceMonitoringUnit = defaults.performanceMonitoringUnit;
     	      this.threadsPerCore = defaults.threadsPerCore;
         }
 
@@ -62,6 +77,12 @@ public final class ClusterNodeConfigAdvancedMachineFeatures {
         public Builder enableNestedVirtualization(@Nullable Boolean enableNestedVirtualization) {
 
             this.enableNestedVirtualization = enableNestedVirtualization;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder performanceMonitoringUnit(@Nullable String performanceMonitoringUnit) {
+
+            this.performanceMonitoringUnit = performanceMonitoringUnit;
             return this;
         }
         @CustomType.Setter
@@ -75,6 +96,7 @@ public final class ClusterNodeConfigAdvancedMachineFeatures {
         public ClusterNodeConfigAdvancedMachineFeatures build() {
             final var _resultValue = new ClusterNodeConfigAdvancedMachineFeatures();
             _resultValue.enableNestedVirtualization = enableNestedVirtualization;
+            _resultValue.performanceMonitoringUnit = performanceMonitoringUnit;
             _resultValue.threadsPerCore = threadsPerCore;
             return _resultValue;
         }

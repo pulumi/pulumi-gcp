@@ -135,6 +135,13 @@ __all__ = [
     'MetastoreServiceTelemetryConfig',
     'MetastoreTableIamBindingCondition',
     'MetastoreTableIamMemberCondition',
+    'SessionTemplateEnvironmentConfig',
+    'SessionTemplateEnvironmentConfigExecutionConfig',
+    'SessionTemplateEnvironmentConfigPeripheralsConfig',
+    'SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig',
+    'SessionTemplateJupyterSession',
+    'SessionTemplateRuntimeConfig',
+    'SessionTemplateSparkConnectSession',
     'WorkflowTemplateEncryptionConfig',
     'WorkflowTemplateJob',
     'WorkflowTemplateJobHadoopJob',
@@ -8286,6 +8293,406 @@ class MetastoreTableIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class SessionTemplateEnvironmentConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executionConfig":
+            suggest = "execution_config"
+        elif key == "peripheralsConfig":
+            suggest = "peripherals_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SessionTemplateEnvironmentConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SessionTemplateEnvironmentConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SessionTemplateEnvironmentConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 execution_config: Optional['outputs.SessionTemplateEnvironmentConfigExecutionConfig'] = None,
+                 peripherals_config: Optional['outputs.SessionTemplateEnvironmentConfigPeripheralsConfig'] = None):
+        """
+        :param 'SessionTemplateEnvironmentConfigExecutionConfigArgs' execution_config: Execution configuration for a workload.
+               Structure is documented below.
+        :param 'SessionTemplateEnvironmentConfigPeripheralsConfigArgs' peripherals_config: Peripherals configuration that workload has access to.
+               Structure is documented below.
+        """
+        if execution_config is not None:
+            pulumi.set(__self__, "execution_config", execution_config)
+        if peripherals_config is not None:
+            pulumi.set(__self__, "peripherals_config", peripherals_config)
+
+    @property
+    @pulumi.getter(name="executionConfig")
+    def execution_config(self) -> Optional['outputs.SessionTemplateEnvironmentConfigExecutionConfig']:
+        """
+        Execution configuration for a workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "execution_config")
+
+    @property
+    @pulumi.getter(name="peripheralsConfig")
+    def peripherals_config(self) -> Optional['outputs.SessionTemplateEnvironmentConfigPeripheralsConfig']:
+        """
+        Peripherals configuration that workload has access to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "peripherals_config")
+
+
+@pulumi.output_type
+class SessionTemplateEnvironmentConfigExecutionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+        elif key == "networkTags":
+            suggest = "network_tags"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "stagingBucket":
+            suggest = "staging_bucket"
+        elif key == "subnetworkUri":
+            suggest = "subnetwork_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SessionTemplateEnvironmentConfigExecutionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SessionTemplateEnvironmentConfigExecutionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SessionTemplateEnvironmentConfigExecutionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key: Optional[builtins.str] = None,
+                 network_tags: Optional[Sequence[builtins.str]] = None,
+                 service_account: Optional[builtins.str] = None,
+                 staging_bucket: Optional[builtins.str] = None,
+                 subnetwork_uri: Optional[builtins.str] = None,
+                 ttl: Optional[builtins.str] = None):
+        """
+        :param builtins.str kms_key: The Cloud KMS key to use for encryption.
+        :param Sequence[builtins.str] network_tags: Tags used for network traffic control.
+        :param builtins.str service_account: Service account that used to execute workload.
+        :param builtins.str staging_bucket: A Cloud Storage bucket used to stage workload dependencies, config files, and store
+               workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+               Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+               and then create and manage project-level, per-location staging and temporary buckets.
+               This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        :param builtins.str subnetwork_uri: Subnetwork configuration for workload execution.
+        :param builtins.str ttl: The duration after which the workload will be terminated.
+               When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+               work to finish. If ttl is not specified for a session workload, the workload will be allowed to run until it
+               exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+               it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+               Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+               the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+               when ttl has been exceeded, whichever occurs first.
+        """
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if staging_bucket is not None:
+            pulumi.set(__self__, "staging_bucket", staging_bucket)
+        if subnetwork_uri is not None:
+            pulumi.set(__self__, "subnetwork_uri", subnetwork_uri)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[builtins.str]:
+        """
+        The Cloud KMS key to use for encryption.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Tags used for network traffic control.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[builtins.str]:
+        """
+        Service account that used to execute workload.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="stagingBucket")
+    def staging_bucket(self) -> Optional[builtins.str]:
+        """
+        A Cloud Storage bucket used to stage workload dependencies, config files, and store
+        workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+        Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+        and then create and manage project-level, per-location staging and temporary buckets.
+        This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        """
+        return pulumi.get(self, "staging_bucket")
+
+    @property
+    @pulumi.getter(name="subnetworkUri")
+    def subnetwork_uri(self) -> Optional[builtins.str]:
+        """
+        Subnetwork configuration for workload execution.
+        """
+        return pulumi.get(self, "subnetwork_uri")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[builtins.str]:
+        """
+        The duration after which the workload will be terminated.
+        When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+        work to finish. If ttl is not specified for a session workload, the workload will be allowed to run until it
+        exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+        it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+        Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+        the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+        when ttl has been exceeded, whichever occurs first.
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class SessionTemplateEnvironmentConfigPeripheralsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metastoreService":
+            suggest = "metastore_service"
+        elif key == "sparkHistoryServerConfig":
+            suggest = "spark_history_server_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SessionTemplateEnvironmentConfigPeripheralsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SessionTemplateEnvironmentConfigPeripheralsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SessionTemplateEnvironmentConfigPeripheralsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metastore_service: Optional[builtins.str] = None,
+                 spark_history_server_config: Optional['outputs.SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig'] = None):
+        """
+        :param builtins.str metastore_service: Resource name of an existing Dataproc Metastore service.
+        :param 'SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs' spark_history_server_config: The Spark History Server configuration for the workload.
+               Structure is documented below.
+        """
+        if metastore_service is not None:
+            pulumi.set(__self__, "metastore_service", metastore_service)
+        if spark_history_server_config is not None:
+            pulumi.set(__self__, "spark_history_server_config", spark_history_server_config)
+
+    @property
+    @pulumi.getter(name="metastoreService")
+    def metastore_service(self) -> Optional[builtins.str]:
+        """
+        Resource name of an existing Dataproc Metastore service.
+        """
+        return pulumi.get(self, "metastore_service")
+
+    @property
+    @pulumi.getter(name="sparkHistoryServerConfig")
+    def spark_history_server_config(self) -> Optional['outputs.SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig']:
+        """
+        The Spark History Server configuration for the workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spark_history_server_config")
+
+
+@pulumi.output_type
+class SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataprocCluster":
+            suggest = "dataproc_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataproc_cluster: Optional[builtins.str] = None):
+        """
+        :param builtins.str dataproc_cluster: Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+        """
+        if dataproc_cluster is not None:
+            pulumi.set(__self__, "dataproc_cluster", dataproc_cluster)
+
+    @property
+    @pulumi.getter(name="dataprocCluster")
+    def dataproc_cluster(self) -> Optional[builtins.str]:
+        """
+        Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+        """
+        return pulumi.get(self, "dataproc_cluster")
+
+
+@pulumi.output_type
+class SessionTemplateJupyterSession(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SessionTemplateJupyterSession. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SessionTemplateJupyterSession.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SessionTemplateJupyterSession.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[builtins.str] = None,
+                 kernel: Optional[builtins.str] = None):
+        """
+        :param builtins.str display_name: Display name, shown in the Jupyter kernelspec card.
+        :param builtins.str kernel: Kernel to be used with Jupyter interactive session.
+               Possible values are: `PYTHON`, `SCALA`.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if kernel is not None:
+            pulumi.set(__self__, "kernel", kernel)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[builtins.str]:
+        """
+        Display name, shown in the Jupyter kernelspec card.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def kernel(self) -> Optional[builtins.str]:
+        """
+        Kernel to be used with Jupyter interactive session.
+        Possible values are: `PYTHON`, `SCALA`.
+        """
+        return pulumi.get(self, "kernel")
+
+
+@pulumi.output_type
+class SessionTemplateRuntimeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerImage":
+            suggest = "container_image"
+        elif key == "effectiveProperties":
+            suggest = "effective_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SessionTemplateRuntimeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SessionTemplateRuntimeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SessionTemplateRuntimeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_image: Optional[builtins.str] = None,
+                 effective_properties: Optional[Mapping[str, builtins.str]] = None,
+                 properties: Optional[Mapping[str, builtins.str]] = None,
+                 version: Optional[builtins.str] = None):
+        """
+        :param builtins.str container_image: Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+        :param Mapping[str, builtins.str] effective_properties: (Output)
+               A mapping of property names to values, which are used to configure workload execution.
+        :param Mapping[str, builtins.str] properties: A mapping of property names to values, which are used to configure workload execution.
+        :param builtins.str version: Version of the session runtime.
+        """
+        if container_image is not None:
+            pulumi.set(__self__, "container_image", container_image)
+        if effective_properties is not None:
+            pulumi.set(__self__, "effective_properties", effective_properties)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> Optional[builtins.str]:
+        """
+        Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+        """
+        return pulumi.get(self, "container_image")
+
+    @property
+    @pulumi.getter(name="effectiveProperties")
+    def effective_properties(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        (Output)
+        A mapping of property names to values, which are used to configure workload execution.
+        """
+        return pulumi.get(self, "effective_properties")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        A mapping of property names to values, which are used to configure workload execution.
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[builtins.str]:
+        """
+        Version of the session runtime.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class SessionTemplateSparkConnectSession(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

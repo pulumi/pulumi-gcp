@@ -34,7 +34,8 @@ class ServiceAttachmentArgs:
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  propagated_connection_limit: Optional[pulumi.Input[builtins.int]] = None,
                  reconcile_connections: Optional[pulumi.Input[builtins.bool]] = None,
-                 region: Optional[pulumi.Input[builtins.str]] = None):
+                 region: Optional[pulumi.Input[builtins.str]] = None,
+                 send_propagated_connection_limit_if_zero: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a ServiceAttachment resource.
         :param pulumi.Input[builtins.str] connection_preference: The connection preference to use for this service attachment. Valid
@@ -69,11 +70,15 @@ class ServiceAttachmentArgs:
                This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
                If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
                If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-               If unspecified, the default propagated connection limit is 250.
+               If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
         :param pulumi.Input[builtins.bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
         :param pulumi.Input[builtins.str] region: URL of the region where the resource resides.
+        :param pulumi.Input[builtins.bool] send_propagated_connection_limit_if_zero: Controls the behavior of propagated_connection_limit.
+               When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
+               When true, the provider will set propagated_connection_limit to zero.
+               Defaults to false.
         """
         pulumi.set(__self__, "connection_preference", connection_preference)
         pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
@@ -97,6 +102,8 @@ class ServiceAttachmentArgs:
             pulumi.set(__self__, "reconcile_connections", reconcile_connections)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if send_propagated_connection_limit_if_zero is not None:
+            pulumi.set(__self__, "send_propagated_connection_limit_if_zero", send_propagated_connection_limit_if_zero)
 
     @property
     @pulumi.getter(name="connectionPreference")
@@ -244,7 +251,7 @@ class ServiceAttachmentArgs:
         This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
         If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
         If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-        If unspecified, the default propagated connection limit is 250.
+        If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
         """
         return pulumi.get(self, "propagated_connection_limit")
 
@@ -278,6 +285,21 @@ class ServiceAttachmentArgs:
     def region(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter(name="sendPropagatedConnectionLimitIfZero")
+    def send_propagated_connection_limit_if_zero(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Controls the behavior of propagated_connection_limit.
+        When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
+        When true, the provider will set propagated_connection_limit to zero.
+        Defaults to false.
+        """
+        return pulumi.get(self, "send_propagated_connection_limit_if_zero")
+
+    @send_propagated_connection_limit_if_zero.setter
+    def send_propagated_connection_limit_if_zero(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "send_propagated_connection_limit_if_zero", value)
+
 
 @pulumi.input_type
 class _ServiceAttachmentState:
@@ -297,6 +319,7 @@ class _ServiceAttachmentState:
                  reconcile_connections: Optional[pulumi.Input[builtins.bool]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  self_link: Optional[pulumi.Input[builtins.str]] = None,
+                 send_propagated_connection_limit_if_zero: Optional[pulumi.Input[builtins.bool]] = None,
                  target_service: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceAttachment resources.
@@ -336,12 +359,16 @@ class _ServiceAttachmentState:
                This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
                If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
                If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-               If unspecified, the default propagated connection limit is 250.
+               If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
         :param pulumi.Input[builtins.bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
         :param pulumi.Input[builtins.str] region: URL of the region where the resource resides.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
+        :param pulumi.Input[builtins.bool] send_propagated_connection_limit_if_zero: Controls the behavior of propagated_connection_limit.
+               When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
+               When true, the provider will set propagated_connection_limit to zero.
+               Defaults to false.
         :param pulumi.Input[builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         """
         if connected_endpoints is not None:
@@ -374,6 +401,8 @@ class _ServiceAttachmentState:
             pulumi.set(__self__, "region", region)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if send_propagated_connection_limit_if_zero is not None:
+            pulumi.set(__self__, "send_propagated_connection_limit_if_zero", send_propagated_connection_limit_if_zero)
         if target_service is not None:
             pulumi.set(__self__, "target_service", target_service)
 
@@ -538,7 +567,7 @@ class _ServiceAttachmentState:
         This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
         If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
         If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-        If unspecified, the default propagated connection limit is 250.
+        If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
         """
         return pulumi.get(self, "propagated_connection_limit")
 
@@ -585,6 +614,21 @@ class _ServiceAttachmentState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="sendPropagatedConnectionLimitIfZero")
+    def send_propagated_connection_limit_if_zero(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Controls the behavior of propagated_connection_limit.
+        When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
+        When true, the provider will set propagated_connection_limit to zero.
+        Defaults to false.
+        """
+        return pulumi.get(self, "send_propagated_connection_limit_if_zero")
+
+    @send_propagated_connection_limit_if_zero.setter
+    def send_propagated_connection_limit_if_zero(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "send_propagated_connection_limit_if_zero", value)
+
+    @property
     @pulumi.getter(name="targetService")
     def target_service(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -615,6 +659,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  propagated_connection_limit: Optional[pulumi.Input[builtins.int]] = None,
                  reconcile_connections: Optional[pulumi.Input[builtins.bool]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 send_propagated_connection_limit_if_zero: Optional[pulumi.Input[builtins.bool]] = None,
                  target_service: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
@@ -953,11 +998,15 @@ class ServiceAttachment(pulumi.CustomResource):
                This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
                If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
                If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-               If unspecified, the default propagated connection limit is 250.
+               If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
         :param pulumi.Input[builtins.bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
         :param pulumi.Input[builtins.str] region: URL of the region where the resource resides.
+        :param pulumi.Input[builtins.bool] send_propagated_connection_limit_if_zero: Controls the behavior of propagated_connection_limit.
+               When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
+               When true, the provider will set propagated_connection_limit to zero.
+               Defaults to false.
         :param pulumi.Input[builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         """
         ...
@@ -1296,6 +1345,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  propagated_connection_limit: Optional[pulumi.Input[builtins.int]] = None,
                  reconcile_connections: Optional[pulumi.Input[builtins.bool]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 send_propagated_connection_limit_if_zero: Optional[pulumi.Input[builtins.bool]] = None,
                  target_service: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1324,6 +1374,7 @@ class ServiceAttachment(pulumi.CustomResource):
             __props__.__dict__["propagated_connection_limit"] = propagated_connection_limit
             __props__.__dict__["reconcile_connections"] = reconcile_connections
             __props__.__dict__["region"] = region
+            __props__.__dict__["send_propagated_connection_limit_if_zero"] = send_propagated_connection_limit_if_zero
             if target_service is None and not opts.urn:
                 raise TypeError("Missing required property 'target_service'")
             __props__.__dict__["target_service"] = target_service
@@ -1355,6 +1406,7 @@ class ServiceAttachment(pulumi.CustomResource):
             reconcile_connections: Optional[pulumi.Input[builtins.bool]] = None,
             region: Optional[pulumi.Input[builtins.str]] = None,
             self_link: Optional[pulumi.Input[builtins.str]] = None,
+            send_propagated_connection_limit_if_zero: Optional[pulumi.Input[builtins.bool]] = None,
             target_service: Optional[pulumi.Input[builtins.str]] = None) -> 'ServiceAttachment':
         """
         Get an existing ServiceAttachment resource's state with the given name, id, and optional extra
@@ -1399,12 +1451,16 @@ class ServiceAttachment(pulumi.CustomResource):
                This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
                If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
                If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-               If unspecified, the default propagated connection limit is 250.
+               If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
         :param pulumi.Input[builtins.bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
         :param pulumi.Input[builtins.str] region: URL of the region where the resource resides.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
+        :param pulumi.Input[builtins.bool] send_propagated_connection_limit_if_zero: Controls the behavior of propagated_connection_limit.
+               When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
+               When true, the provider will set propagated_connection_limit to zero.
+               Defaults to false.
         :param pulumi.Input[builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1426,6 +1482,7 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["reconcile_connections"] = reconcile_connections
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["send_propagated_connection_limit_if_zero"] = send_propagated_connection_limit_if_zero
         __props__.__dict__["target_service"] = target_service
         return ServiceAttachment(resource_name, opts=opts, __props__=__props__)
 
@@ -1546,7 +1603,7 @@ class ServiceAttachment(pulumi.CustomResource):
         This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
         If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
         If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-        If unspecified, the default propagated connection limit is 250.
+        If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
         """
         return pulumi.get(self, "propagated_connection_limit")
 
@@ -1575,6 +1632,17 @@ class ServiceAttachment(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="sendPropagatedConnectionLimitIfZero")
+    def send_propagated_connection_limit_if_zero(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Controls the behavior of propagated_connection_limit.
+        When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
+        When true, the provider will set propagated_connection_limit to zero.
+        Defaults to false.
+        """
+        return pulumi.get(self, "send_propagated_connection_limit_if_zero")
 
     @property
     @pulumi.getter(name="targetService")

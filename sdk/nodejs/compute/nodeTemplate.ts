@@ -178,6 +178,9 @@ export class NodeTemplate extends pulumi.CustomResource {
     public readonly disks!: pulumi.Output<outputs.compute.NodeTemplateDisk[] | undefined>;
     /**
      * Name of the resource.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -298,6 +301,9 @@ export interface NodeTemplateState {
     disks?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateDisk>[]>;
     /**
      * Name of the resource.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -368,6 +374,9 @@ export interface NodeTemplateArgs {
     disks?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateDisk>[]>;
     /**
      * Name of the resource.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

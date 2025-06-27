@@ -142,6 +142,8 @@ type ListingSubscription struct {
 	ListingId pulumi.StringOutput `pulumi:"listingId"`
 	// The name of the location of the data exchange. Distinct from the location of the destination data set.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+	LogLinkedDatasetQueryUserEmail pulumi.BoolOutput `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Display name of the project of this subscription.
@@ -221,6 +223,8 @@ type listingSubscriptionState struct {
 	ListingId *string `pulumi:"listingId"`
 	// The name of the location of the data exchange. Distinct from the location of the destination data set.
 	Location *string `pulumi:"location"`
+	// Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+	LogLinkedDatasetQueryUserEmail *bool `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
 	Name *string `pulumi:"name"`
 	// Display name of the project of this subscription.
@@ -259,6 +263,8 @@ type ListingSubscriptionState struct {
 	ListingId pulumi.StringPtrInput
 	// The name of the location of the data exchange. Distinct from the location of the destination data set.
 	Location pulumi.StringPtrInput
+	// Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrInput
 	// The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
 	Name pulumi.StringPtrInput
 	// Display name of the project of this subscription.
@@ -438,6 +444,11 @@ func (o ListingSubscriptionOutput) ListingId() pulumi.StringOutput {
 // The name of the location of the data exchange. Distinct from the location of the destination data set.
 func (o ListingSubscriptionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListingSubscription) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
+func (o ListingSubscriptionOutput) LogLinkedDatasetQueryUserEmail() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ListingSubscription) pulumi.BoolOutput { return v.LogLinkedDatasetQueryUserEmail }).(pulumi.BoolOutput)
 }
 
 // The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"

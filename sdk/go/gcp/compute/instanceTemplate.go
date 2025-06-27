@@ -275,7 +275,7 @@ import (
 //				},
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String("ubuntu-os-cloud/ubuntu-2004-lts"),
+//						SourceImage: pulumi.String("ubuntu-os-cloud/ubuntu-2204-lts"),
 //					},
 //				},
 //				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{

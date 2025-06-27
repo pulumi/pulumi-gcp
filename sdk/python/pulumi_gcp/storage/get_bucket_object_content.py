@@ -28,7 +28,7 @@ class GetBucketObjectContentResult:
     """
     A collection of values returned by getBucketObjectContent.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_base64=None, content_base64sha512=None, content_disposition=None, content_encoding=None, content_hexsha512=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, generation=None, id=None, kms_key_name=None, md5hash=None, md5hexhash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_base64=None, content_base64sha512=None, content_disposition=None, content_encoding=None, content_hexsha512=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, generation=None, id=None, kms_key_name=None, md5hash=None, md5hexhash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, source_md5hash=None, storage_class=None, temporary_hold=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -107,6 +107,9 @@ class GetBucketObjectContentResult:
         if source and not isinstance(source, str):
             raise TypeError("Expected argument 'source' to be a str")
         pulumi.set(__self__, "source", source)
+        if source_md5hash and not isinstance(source_md5hash, str):
+            raise TypeError("Expected argument 'source_md5hash' to be a str")
+        pulumi.set(__self__, "source_md5hash", source_md5hash)
         if storage_class and not isinstance(storage_class, str):
             raise TypeError("Expected argument 'storage_class' to be a str")
         pulumi.set(__self__, "storage_class", storage_class)
@@ -261,6 +264,11 @@ class GetBucketObjectContentResult:
         return pulumi.get(self, "source")
 
     @property
+    @pulumi.getter(name="sourceMd5hash")
+    def source_md5hash(self) -> builtins.str:
+        return pulumi.get(self, "source_md5hash")
+
+    @property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> builtins.str:
         return pulumi.get(self, "storage_class")
@@ -303,6 +311,7 @@ class AwaitableGetBucketObjectContentResult(GetBucketObjectContentResult):
             retentions=self.retentions,
             self_link=self.self_link,
             source=self.source,
+            source_md5hash=self.source_md5hash,
             storage_class=self.storage_class,
             temporary_hold=self.temporary_hold)
 
@@ -371,6 +380,7 @@ def get_bucket_object_content(bucket: Optional[builtins.str] = None,
         retentions=pulumi.get(__ret__, 'retentions'),
         self_link=pulumi.get(__ret__, 'self_link'),
         source=pulumi.get(__ret__, 'source'),
+        source_md5hash=pulumi.get(__ret__, 'source_md5hash'),
         storage_class=pulumi.get(__ret__, 'storage_class'),
         temporary_hold=pulumi.get(__ret__, 'temporary_hold'))
 def get_bucket_object_content_output(bucket: Optional[pulumi.Input[builtins.str]] = None,
@@ -436,5 +446,6 @@ def get_bucket_object_content_output(bucket: Optional[pulumi.Input[builtins.str]
         retentions=pulumi.get(__response__, 'retentions'),
         self_link=pulumi.get(__response__, 'self_link'),
         source=pulumi.get(__response__, 'source'),
+        source_md5hash=pulumi.get(__response__, 'source_md5hash'),
         storage_class=pulumi.get(__response__, 'storage_class'),
         temporary_hold=pulumi.get(__response__, 'temporary_hold')))

@@ -44,6 +44,7 @@ from .metastore_service_iam_policy import *
 from .metastore_table_iam_binding import *
 from .metastore_table_iam_member import *
 from .metastore_table_iam_policy import *
+from .session_template import *
 from .workflow_template import *
 from ._inputs import *
 from . import outputs

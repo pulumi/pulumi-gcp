@@ -270,6 +270,58 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Listing Pubsub
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			listing, err := bigqueryanalyticshub.NewDataExchange(ctx, "listing", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: pulumi.String("tf_test_pubsub_data_exchange"),
+//				DisplayName:    pulumi.String("tf_test_pubsub_data_exchange"),
+//				Description:    pulumi.String("Example for pubsub topic source"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tfTestPubsubTopic, err := pubsub.NewTopic(ctx, "tf_test_pubsub_topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("test_pubsub"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewListing(ctx, "listing", &bigqueryanalyticshub.ListingArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: listing.DataExchangeId,
+//				ListingId:      pulumi.String("tf_test_pubsub_listing"),
+//				DisplayName:    pulumi.String("tf_test_pubsub_listing"),
+//				Description:    pulumi.String("Example for pubsub topic source"),
+//				PubsubTopic: &bigqueryanalyticshub.ListingPubsubTopicArgs{
+//					Topic: tfTestPubsubTopic.ID(),
+//					DataAffinityRegions: pulumi.StringArray{
+//						pulumi.String("us-central1"),
+//						pulumi.String("europe-west1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -299,17 +351,19 @@ type Listing struct {
 
 	// Shared dataset i.e. BigQuery dataset source.
 	// Structure is documented below.
-	BigqueryDataset ListingBigqueryDatasetOutput `pulumi:"bigqueryDataset"`
+	BigqueryDataset ListingBigqueryDatasetPtrOutput `pulumi:"bigqueryDataset"`
 	// Categories of the listing. Up to two categories are allowed.
 	Categories pulumi.StringArrayOutput `pulumi:"categories"`
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId pulumi.StringOutput `pulumi:"dataExchangeId"`
 	// Details of the data provider who owns the source data.
+	// Structure is documented below.
 	DataProvider ListingDataProviderPtrOutput `pulumi:"dataProvider"`
-	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-	// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
+	//
+	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Documentation describing the listing.
 	Documentation pulumi.StringPtrOutput `pulumi:"documentation"`
@@ -319,19 +373,25 @@ type Listing struct {
 	ListingId pulumi.StringOutput `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-	// querying user.
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
 	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrOutput `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact pulumi.StringPtrOutput `pulumi:"primaryContact"`
-	Project        pulumi.StringOutput    `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Details of the publisher who owns the listing and who can share the source data.
+	// Structure is documented below.
 	Publisher ListingPublisherPtrOutput `pulumi:"publisher"`
+	// Pub/Sub topic source.
+	// Structure is documented below.
+	PubsubTopic ListingPubsubTopicPtrOutput `pulumi:"pubsubTopic"`
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess pulumi.StringPtrOutput `pulumi:"requestAccess"`
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+	// Structure is documented below.
 	RestrictedExportConfig ListingRestrictedExportConfigPtrOutput `pulumi:"restrictedExportConfig"`
 }
 
@@ -342,9 +402,6 @@ func NewListing(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BigqueryDataset == nil {
-		return nil, errors.New("invalid value for required argument 'BigqueryDataset'")
-	}
 	if args.DataExchangeId == nil {
 		return nil, errors.New("invalid value for required argument 'DataExchangeId'")
 	}
@@ -388,11 +445,13 @@ type listingState struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId *string `pulumi:"dataExchangeId"`
 	// Details of the data provider who owns the source data.
+	// Structure is documented below.
 	DataProvider *ListingDataProvider `pulumi:"dataProvider"`
-	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-	// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description *string `pulumi:"description"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
+	//
+	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// Documentation describing the listing.
 	Documentation *string `pulumi:"documentation"`
@@ -402,19 +461,25 @@ type listingState struct {
 	ListingId *string `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	Location *string `pulumi:"location"`
-	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-	// querying user.
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
 	LogLinkedDatasetQueryUserEmail *bool `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name *string `pulumi:"name"`
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact *string `pulumi:"primaryContact"`
-	Project        *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Details of the publisher who owns the listing and who can share the source data.
+	// Structure is documented below.
 	Publisher *ListingPublisher `pulumi:"publisher"`
+	// Pub/Sub topic source.
+	// Structure is documented below.
+	PubsubTopic *ListingPubsubTopic `pulumi:"pubsubTopic"`
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess *string `pulumi:"requestAccess"`
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+	// Structure is documented below.
 	RestrictedExportConfig *ListingRestrictedExportConfig `pulumi:"restrictedExportConfig"`
 }
 
@@ -427,11 +492,13 @@ type ListingState struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId pulumi.StringPtrInput
 	// Details of the data provider who owns the source data.
+	// Structure is documented below.
 	DataProvider ListingDataProviderPtrInput
-	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-	// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrInput
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
+	//
+	// ***
 	DisplayName pulumi.StringPtrInput
 	// Documentation describing the listing.
 	Documentation pulumi.StringPtrInput
@@ -441,19 +508,25 @@ type ListingState struct {
 	ListingId pulumi.StringPtrInput
 	// The name of the location this data exchange listing.
 	Location pulumi.StringPtrInput
-	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-	// querying user.
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
 	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrInput
 	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name pulumi.StringPtrInput
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact pulumi.StringPtrInput
-	Project        pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Details of the publisher who owns the listing and who can share the source data.
+	// Structure is documented below.
 	Publisher ListingPublisherPtrInput
+	// Pub/Sub topic source.
+	// Structure is documented below.
+	PubsubTopic ListingPubsubTopicPtrInput
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess pulumi.StringPtrInput
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+	// Structure is documented below.
 	RestrictedExportConfig ListingRestrictedExportConfigPtrInput
 }
 
@@ -464,17 +537,19 @@ func (ListingState) ElementType() reflect.Type {
 type listingArgs struct {
 	// Shared dataset i.e. BigQuery dataset source.
 	// Structure is documented below.
-	BigqueryDataset ListingBigqueryDataset `pulumi:"bigqueryDataset"`
+	BigqueryDataset *ListingBigqueryDataset `pulumi:"bigqueryDataset"`
 	// Categories of the listing. Up to two categories are allowed.
 	Categories []string `pulumi:"categories"`
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId string `pulumi:"dataExchangeId"`
 	// Details of the data provider who owns the source data.
+	// Structure is documented below.
 	DataProvider *ListingDataProvider `pulumi:"dataProvider"`
-	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-	// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description *string `pulumi:"description"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
+	//
+	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Documentation describing the listing.
 	Documentation *string `pulumi:"documentation"`
@@ -484,17 +559,23 @@ type listingArgs struct {
 	ListingId string `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	Location string `pulumi:"location"`
-	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-	// querying user.
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
 	LogLinkedDatasetQueryUserEmail *bool `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact *string `pulumi:"primaryContact"`
-	Project        *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Details of the publisher who owns the listing and who can share the source data.
+	// Structure is documented below.
 	Publisher *ListingPublisher `pulumi:"publisher"`
+	// Pub/Sub topic source.
+	// Structure is documented below.
+	PubsubTopic *ListingPubsubTopic `pulumi:"pubsubTopic"`
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess *string `pulumi:"requestAccess"`
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+	// Structure is documented below.
 	RestrictedExportConfig *ListingRestrictedExportConfig `pulumi:"restrictedExportConfig"`
 }
 
@@ -502,17 +583,19 @@ type listingArgs struct {
 type ListingArgs struct {
 	// Shared dataset i.e. BigQuery dataset source.
 	// Structure is documented below.
-	BigqueryDataset ListingBigqueryDatasetInput
+	BigqueryDataset ListingBigqueryDatasetPtrInput
 	// Categories of the listing. Up to two categories are allowed.
 	Categories pulumi.StringArrayInput
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId pulumi.StringInput
 	// Details of the data provider who owns the source data.
+	// Structure is documented below.
 	DataProvider ListingDataProviderPtrInput
-	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-	// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrInput
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
+	//
+	// ***
 	DisplayName pulumi.StringInput
 	// Documentation describing the listing.
 	Documentation pulumi.StringPtrInput
@@ -522,17 +605,23 @@ type ListingArgs struct {
 	ListingId pulumi.StringInput
 	// The name of the location this data exchange listing.
 	Location pulumi.StringInput
-	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-	// querying user.
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
 	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrInput
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact pulumi.StringPtrInput
-	Project        pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Details of the publisher who owns the listing and who can share the source data.
+	// Structure is documented below.
 	Publisher ListingPublisherPtrInput
+	// Pub/Sub topic source.
+	// Structure is documented below.
+	PubsubTopic ListingPubsubTopicPtrInput
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess pulumi.StringPtrInput
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+	// Structure is documented below.
 	RestrictedExportConfig ListingRestrictedExportConfigPtrInput
 }
 
@@ -625,8 +714,8 @@ func (o ListingOutput) ToListingOutputWithContext(ctx context.Context) ListingOu
 
 // Shared dataset i.e. BigQuery dataset source.
 // Structure is documented below.
-func (o ListingOutput) BigqueryDataset() ListingBigqueryDatasetOutput {
-	return o.ApplyT(func(v *Listing) ListingBigqueryDatasetOutput { return v.BigqueryDataset }).(ListingBigqueryDatasetOutput)
+func (o ListingOutput) BigqueryDataset() ListingBigqueryDatasetPtrOutput {
+	return o.ApplyT(func(v *Listing) ListingBigqueryDatasetPtrOutput { return v.BigqueryDataset }).(ListingBigqueryDatasetPtrOutput)
 }
 
 // Categories of the listing. Up to two categories are allowed.
@@ -640,17 +729,19 @@ func (o ListingOutput) DataExchangeId() pulumi.StringOutput {
 }
 
 // Details of the data provider who owns the source data.
+// Structure is documented below.
 func (o ListingOutput) DataProvider() ListingDataProviderPtrOutput {
 	return o.ApplyT(func(v *Listing) ListingDataProviderPtrOutput { return v.DataProvider }).(ListingDataProviderPtrOutput)
 }
 
-// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-// except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 func (o ListingOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
+//
+// ***
 func (o ListingOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -675,8 +766,7 @@ func (o ListingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-// querying user.
+// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
 func (o ListingOutput) LogLinkedDatasetQueryUserEmail() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Listing) pulumi.BoolPtrOutput { return v.LogLinkedDatasetQueryUserEmail }).(pulumi.BoolPtrOutput)
 }
@@ -691,13 +781,22 @@ func (o ListingOutput) PrimaryContact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringPtrOutput { return v.PrimaryContact }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ListingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Details of the publisher who owns the listing and who can share the source data.
+// Structure is documented below.
 func (o ListingOutput) Publisher() ListingPublisherPtrOutput {
 	return o.ApplyT(func(v *Listing) ListingPublisherPtrOutput { return v.Publisher }).(ListingPublisherPtrOutput)
+}
+
+// Pub/Sub topic source.
+// Structure is documented below.
+func (o ListingOutput) PubsubTopic() ListingPubsubTopicPtrOutput {
+	return o.ApplyT(func(v *Listing) ListingPubsubTopicPtrOutput { return v.PubsubTopic }).(ListingPubsubTopicPtrOutput)
 }
 
 // Email or URL of the request access of the listing. Subscribers can use this reference to request access.
@@ -706,6 +805,7 @@ func (o ListingOutput) RequestAccess() pulumi.StringPtrOutput {
 }
 
 // If set, restricted export configuration will be propagated and enforced on the linked dataset.
+// Structure is documented below.
 func (o ListingOutput) RestrictedExportConfig() ListingRestrictedExportConfigPtrOutput {
 	return o.ApplyT(func(v *Listing) ListingRestrictedExportConfigPtrOutput { return v.RestrictedExportConfig }).(ListingRestrictedExportConfigPtrOutput)
 }

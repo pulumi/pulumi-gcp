@@ -18,16 +18,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from 18000 to 954000, in increments of 9000.
+     * The storage capacity of the instance in gibibytes (GiB). Allowed values
+     * are from `18000` to `954000`, in increments of 9000.
      * 
      */
     @Import(name="capacityGib")
     private @Nullable Output<String> capacityGib;
 
     /**
-     * @return Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from 18000 to 954000, in increments of 9000.
+     * @return The storage capacity of the instance in gibibytes (GiB). Allowed values
+     * are from `18000` to `954000`, in increments of 9000.
      * 
      */
     public Optional<Output<String>> capacityGib() {
@@ -35,14 +35,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Timestamp when the instance was created.
+     * Timestamp when the instance was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. Timestamp when the instance was created.
+     * @return Timestamp when the instance was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -50,14 +50,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. A user-readable description of the instance.
+     * A user-readable description of the instance.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Optional. A user-readable description of the instance.
+     * @return A user-readable description of the instance.
      * 
      */
     public Optional<Output<String>> description() {
@@ -80,18 +80,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. Immutable. The filesystem name for this instance. This name is used by client-side
-     * tools, including when mounting the instance. Must be 8 characters or less
-     * and may only contain letters and numbers.
+     * The filesystem name for this instance. This name is used by client-side
+     * tools, including when mounting the instance. Must be eight characters or
+     * less and can only contain letters and numbers.
      * 
      */
     @Import(name="filesystem")
     private @Nullable Output<String> filesystem;
 
     /**
-     * @return Required. Immutable. The filesystem name for this instance. This name is used by client-side
-     * tools, including when mounting the instance. Must be 8 characters or less
-     * and may only contain letters and numbers.
+     * @return The filesystem name for this instance. This name is used by client-side
+     * tools, including when mounting the instance. Must be eight characters or
+     * less and can only contain letters and numbers.
      * 
      */
     public Optional<Output<String>> filesystem() {
@@ -99,7 +99,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Indicates whether you want to enable support for GKE clients. By default,
+     * Indicates whether you want to enable support for GKE clients. By default,
      * GKE clients are not supported.
      * 
      */
@@ -107,7 +107,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> gkeSupportEnabled;
 
     /**
-     * @return Optional. Indicates whether you want to enable support for GKE clients. By default,
+     * @return Indicates whether you want to enable support for GKE clients. By default,
      * GKE clients are not supported.
      * 
      */
@@ -116,7 +116,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. The name of the Managed Lustre instance.
+     * The name of the Managed Lustre instance.
      * * Must contain only lowercase letters, numbers, and hyphens.
      * * Must start with a letter.
      * * Must be between 1-63 characters.
@@ -129,7 +129,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return Required. The name of the Managed Lustre instance.
+     * @return The name of the Managed Lustre instance.
      * * Must contain only lowercase letters, numbers, and hyphens.
      * * Must start with a letter.
      * * Must be between 1-63 characters.
@@ -143,7 +143,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -152,7 +152,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs.
+     * @return Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -177,14 +177,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
+     * Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
      * 
      */
     @Import(name="mountPoint")
     private @Nullable Output<String> mountPoint;
 
     /**
-     * @return Output only. Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
+     * @return Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
      * 
      */
     public Optional<Output<String>> mountPoint() {
@@ -207,7 +207,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. Immutable. The full name of the VPC network to which the instance is connected.
+     * The full name of the VPC network to which the instance is connected.
      * Must be in the format
      * `projects/{project_id}/global/networks/{network_name}`.
      * 
@@ -216,13 +216,30 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> network;
 
     /**
-     * @return Required. Immutable. The full name of the VPC network to which the instance is connected.
+     * @return The full name of the VPC network to which the instance is connected.
      * Must be in the format
      * `projects/{project_id}/global/networks/{network_name}`.
      * 
      */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * The throughput of the instance in MB/s/TiB.
+     * Valid values are 125, 250, 500, 1000.
+     * 
+     */
+    @Import(name="perUnitStorageThroughput")
+    private @Nullable Output<String> perUnitStorageThroughput;
+
+    /**
+     * @return The throughput of the instance in MB/s/TiB.
+     * Valid values are 125, 250, 500, 1000.
+     * 
+     */
+    public Optional<Output<String>> perUnitStorageThroughput() {
+        return Optional.ofNullable(this.perUnitStorageThroughput);
     }
 
     /**
@@ -260,7 +277,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The state of the instance.
+     * The state of the instance.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -275,7 +292,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> state;
 
     /**
-     * @return Output only. The state of the instance.
+     * @return The state of the instance.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -291,14 +308,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Timestamp when the instance was last updated.
+     * Timestamp when the instance was last updated.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. Timestamp when the instance was last updated.
+     * @return Timestamp when the instance was last updated.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -320,6 +337,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.mountPoint = $.mountPoint;
         this.name = $.name;
         this.network = $.network;
+        this.perUnitStorageThroughput = $.perUnitStorageThroughput;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.state = $.state;
@@ -345,8 +363,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param capacityGib Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-         * are from 18000 to 954000, in increments of 9000.
+         * @param capacityGib The storage capacity of the instance in gibibytes (GiB). Allowed values
+         * are from `18000` to `954000`, in increments of 9000.
          * 
          * @return builder
          * 
@@ -357,8 +375,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param capacityGib Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-         * are from 18000 to 954000, in increments of 9000.
+         * @param capacityGib The storage capacity of the instance in gibibytes (GiB). Allowed values
+         * are from `18000` to `954000`, in increments of 9000.
          * 
          * @return builder
          * 
@@ -368,7 +386,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. Timestamp when the instance was created.
+         * @param createTime Timestamp when the instance was created.
          * 
          * @return builder
          * 
@@ -379,7 +397,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. Timestamp when the instance was created.
+         * @param createTime Timestamp when the instance was created.
          * 
          * @return builder
          * 
@@ -389,7 +407,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Optional. A user-readable description of the instance.
+         * @param description A user-readable description of the instance.
          * 
          * @return builder
          * 
@@ -400,7 +418,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Optional. A user-readable description of the instance.
+         * @param description A user-readable description of the instance.
          * 
          * @return builder
          * 
@@ -431,9 +449,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filesystem Required. Immutable. The filesystem name for this instance. This name is used by client-side
-         * tools, including when mounting the instance. Must be 8 characters or less
-         * and may only contain letters and numbers.
+         * @param filesystem The filesystem name for this instance. This name is used by client-side
+         * tools, including when mounting the instance. Must be eight characters or
+         * less and can only contain letters and numbers.
          * 
          * @return builder
          * 
@@ -444,9 +462,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filesystem Required. Immutable. The filesystem name for this instance. This name is used by client-side
-         * tools, including when mounting the instance. Must be 8 characters or less
-         * and may only contain letters and numbers.
+         * @param filesystem The filesystem name for this instance. This name is used by client-side
+         * tools, including when mounting the instance. Must be eight characters or
+         * less and can only contain letters and numbers.
          * 
          * @return builder
          * 
@@ -456,7 +474,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gkeSupportEnabled Optional. Indicates whether you want to enable support for GKE clients. By default,
+         * @param gkeSupportEnabled Indicates whether you want to enable support for GKE clients. By default,
          * GKE clients are not supported.
          * 
          * @return builder
@@ -468,7 +486,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gkeSupportEnabled Optional. Indicates whether you want to enable support for GKE clients. By default,
+         * @param gkeSupportEnabled Indicates whether you want to enable support for GKE clients. By default,
          * GKE clients are not supported.
          * 
          * @return builder
@@ -479,7 +497,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId Required. The name of the Managed Lustre instance.
+         * @param instanceId The name of the Managed Lustre instance.
          * * Must contain only lowercase letters, numbers, and hyphens.
          * * Must start with a letter.
          * * Must be between 1-63 characters.
@@ -496,7 +514,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId Required. The name of the Managed Lustre instance.
+         * @param instanceId The name of the Managed Lustre instance.
          * * Must contain only lowercase letters, numbers, and hyphens.
          * * Must start with a letter.
          * * Must be between 1-63 characters.
@@ -512,7 +530,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs.
+         * @param labels Labels as key value pairs.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -525,7 +543,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs.
+         * @param labels Labels as key value pairs.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -558,7 +576,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mountPoint Output only. Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
+         * @param mountPoint Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
          * 
          * @return builder
          * 
@@ -569,7 +587,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mountPoint Output only. Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
+         * @param mountPoint Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
          * 
          * @return builder
          * 
@@ -600,7 +618,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network Required. Immutable. The full name of the VPC network to which the instance is connected.
+         * @param network The full name of the VPC network to which the instance is connected.
          * Must be in the format
          * `projects/{project_id}/global/networks/{network_name}`.
          * 
@@ -613,7 +631,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network Required. Immutable. The full name of the VPC network to which the instance is connected.
+         * @param network The full name of the VPC network to which the instance is connected.
          * Must be in the format
          * `projects/{project_id}/global/networks/{network_name}`.
          * 
@@ -622,6 +640,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param perUnitStorageThroughput The throughput of the instance in MB/s/TiB.
+         * Valid values are 125, 250, 500, 1000.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perUnitStorageThroughput(@Nullable Output<String> perUnitStorageThroughput) {
+            $.perUnitStorageThroughput = perUnitStorageThroughput;
+            return this;
+        }
+
+        /**
+         * @param perUnitStorageThroughput The throughput of the instance in MB/s/TiB.
+         * Valid values are 125, 250, 500, 1000.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perUnitStorageThroughput(String perUnitStorageThroughput) {
+            return perUnitStorageThroughput(Output.of(perUnitStorageThroughput));
         }
 
         /**
@@ -671,7 +712,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output only. The state of the instance.
+         * @param state The state of the instance.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -690,7 +731,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output only. The state of the instance.
+         * @param state The state of the instance.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
@@ -708,7 +749,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. Timestamp when the instance was last updated.
+         * @param updateTime Timestamp when the instance was last updated.
          * 
          * @return builder
          * 
@@ -719,7 +760,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. Timestamp when the instance was last updated.
+         * @param updateTime Timestamp when the instance was last updated.
          * 
          * @return builder
          * 

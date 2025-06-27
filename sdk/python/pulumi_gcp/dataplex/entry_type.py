@@ -513,7 +513,7 @@ class EntryType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_entry_type_full = gcp.dataplex.AspectType("test_entry_type_full",
-            aspect_type_id="tf-test-aspect-type_91042",
+            aspect_type_id="tf-test-aspect-type_95154",
             location="us-central1",
             project="my-project-name",
             metadata_template=\"\"\"{
@@ -632,7 +632,7 @@ class EntryType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_entry_type_full = gcp.dataplex.AspectType("test_entry_type_full",
-            aspect_type_id="tf-test-aspect-type_91042",
+            aspect_type_id="tf-test-aspect-type_95154",
             location="us-central1",
             project="my-project-name",
             metadata_template=\"\"\"{

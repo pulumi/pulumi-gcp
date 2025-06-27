@@ -175,7 +175,7 @@ index 5edc367eb..4ae1f733f 100644
    an empty value.
  
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
-index b04cb3c82..5e6bb88eb 100644
+index 55f4150f9..13d46cc1c 100644
 --- a/website/docs/r/bigquery_table.html.markdown
 +++ b/website/docs/r/bigquery_table.html.markdown
 @@ -25,7 +25,7 @@ Creates a table resource in a dataset for Google BigQuery. For more information
@@ -187,7 +187,7 @@ index b04cb3c82..5e6bb88eb 100644
  It is recommended to not set this field (or set it to true) until you're ready to destroy.
  
  ## Example Usage
-@@ -180,10 +180,8 @@ The following arguments are supported:
+@@ -181,10 +181,8 @@ The following arguments are supported:
  * `materialized_view` - (Optional) If specified, configures this table as a materialized view.
      Structure is [documented below](#nested_materialized_view).
  
@@ -200,7 +200,7 @@ index b04cb3c82..5e6bb88eb 100644
  
  * `table_constraints` - (Optional) Defines the primary key and foreign keys. 
      Structure is [documented below](#nested_table_constraints).
-@@ -296,8 +294,8 @@ The following arguments are supported:
+@@ -297,8 +295,8 @@ The following arguments are supported:
      CSV file. If your data does not contain quoted sections, set the
      property value to an empty string. If your data contains quoted newline
      characters, you must also set the `allow_quoted_newlines` property to true.
@@ -691,7 +691,7 @@ index c02f73582..1f47b804b 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index e7c0243d3..68748c6bd 100644
+index e446141ea..fe14db4ac 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -154,7 +154,7 @@ The following arguments are supported:
@@ -847,7 +847,7 @@ index 8f8057095..c22f1931c 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index d3a66ec7a..133780ec6 100644
+index 3a9a31c7c..b98d8f475 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -197,12 +197,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -962,7 +962,7 @@ index 6f161afa2..5e1ba2322 100644
  
  In addition to the arguments listed above, the following computed attributes are
 diff --git a/website/docs/r/compute_node_group.html.markdown b/website/docs/r/compute_node_group.html.markdown
-index 2abee99a7..457df2332 100644
+index 9d26bb898..09810c768 100644
 --- a/website/docs/r/compute_node_group.html.markdown
 +++ b/website/docs/r/compute_node_group.html.markdown
 @@ -30,6 +30,11 @@ To get more information about NodeGroup, see:
@@ -1791,7 +1791,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 2d5065e7e..c8af0fbe2 100644
+index b34723435..17041f9a7 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -24,7 +24,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1914,7 +1914,7 @@ index 88a87baed..b1bfb7b30 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index e43a8f04c..8ebfc2085 100644
+index 8c12ecf32..91012b9b9 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
@@ -2059,28 +2059,7 @@ index e43a8f04c..8ebfc2085 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1080,6 +1092,20 @@ sole_tenant_config {
- 
- * `enable_nested_virtualization`- (Optional) Defines whether the instance should have nested virtualization enabled. Defaults to false.
- 
-+* `network_performance_config` - (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)) Network bandwidth tier configuration.
-+
-+<a name="network_performance_config"></a>The `network_performance_config` block supports:
-+
-+* `total_egress_bandwidth_tier` (Required) - Specifies the total network bandwidth tier for the NodePool.
-+
-+<a name="nested_network_config"></a>The `network_config` block supports:
-+
-+* `create_pod_range` - (Optional) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
-+
-+* `pod_ipv4_cidr_block` - (Optional) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
-+
-+* `pod_range` - (Optional) The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
-+
- <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
- 
- * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -1291,7 +1317,7 @@ for more details. This field only applies to private clusters, when
+@@ -1293,7 +1305,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -2089,7 +2068,7 @@ index e43a8f04c..8ebfc2085 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1393,9 +1419,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1395,9 +1407,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2418,7 +2397,7 @@ index 2e45d69a2..4441e1055 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/dns_managed_zone.html.markdown b/website/docs/r/dns_managed_zone.html.markdown
-index 16263d664..39b825f3b 100644
+index c9774d542..2de914822 100644
 --- a/website/docs/r/dns_managed_zone.html.markdown
 +++ b/website/docs/r/dns_managed_zone.html.markdown
 @@ -44,16 +44,12 @@ To get more information about ManagedZone, see:
@@ -4091,7 +4070,7 @@ index 548939a08..8217b9e28 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/storage_bucket_object.html.markdown b/website/docs/r/storage_bucket_object.html.markdown
-index a624a892a..a2f8b1f68 100644
+index 0d4553498..8939e7729 100644
 --- a/website/docs/r/storage_bucket_object.html.markdown
 +++ b/website/docs/r/storage_bucket_object.html.markdown
 @@ -66,7 +66,7 @@ The following arguments are supported:

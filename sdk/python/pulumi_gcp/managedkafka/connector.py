@@ -300,8 +300,8 @@ class Connector(pulumi.CustomResource):
         import pulumi_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_11380",
-            name="tf-test_35305",
+            project_id="tf-test_32706",
+            name="tf-test_49082",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -459,8 +459,8 @@ class Connector(pulumi.CustomResource):
         import pulumi_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_11380",
-            name="tf-test_35305",
+            project_id="tf-test_32706",
+            name="tf-test_49082",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")

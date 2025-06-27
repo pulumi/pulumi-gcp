@@ -153,6 +153,15 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+     * that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+     * schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
+     * valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+     * delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+     * byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+     */
+    public readonly rowKeySchema!: pulumi.Output<string | undefined>;
+    /**
      * A list of predefined keys to split the table on.
      * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
@@ -179,6 +188,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["rowKeySchema"] = state ? state.rowKeySchema : undefined;
             resourceInputs["splitKeys"] = state ? state.splitKeys : undefined;
         } else {
             const args = argsOrState as TableArgs | undefined;
@@ -192,6 +202,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rowKeySchema"] = args ? args.rowKeySchema : undefined;
             resourceInputs["splitKeys"] = args ? args.splitKeys : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -235,6 +246,15 @@ export interface TableState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+     * that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+     * schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
+     * valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+     * delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+     * byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+     */
+    rowKeySchema?: pulumi.Input<string>;
+    /**
      * A list of predefined keys to split the table on.
      * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
@@ -277,6 +297,15 @@ export interface TableArgs {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
+     * that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
+     * schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
+     * valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
+     * delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
+     * byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+     */
+    rowKeySchema?: pulumi.Input<string>;
     /**
      * A list of predefined keys to split the table on.
      * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider

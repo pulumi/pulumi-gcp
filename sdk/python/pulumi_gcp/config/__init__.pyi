@@ -118,6 +118,8 @@ composerCustomEndpoint: Optional[str]
 
 computeCustomEndpoint: Optional[str]
 
+contactCenterInsightsCustomEndpoint: Optional[str]
+
 containerAnalysisCustomEndpoint: Optional[str]
 
 containerAttachedCustomEndpoint: Optional[str]

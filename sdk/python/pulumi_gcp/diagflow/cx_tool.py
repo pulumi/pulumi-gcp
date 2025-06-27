@@ -412,7 +412,7 @@ class CxTool(pulumi.CustomResource):
 
         my_datastore = gcp.discoveryengine.DataStore("my_datastore",
             location="global",
-            data_store_id="datastore-tool-test-_29439",
+            data_store_id="datastore-tool-test-_79169",
             display_name="datastore for Tool test",
             industry_vertical="GENERIC",
             content_config="NO_CONTENT",
@@ -629,7 +629,7 @@ class CxTool(pulumi.CustomResource):
 
         my_datastore = gcp.discoveryengine.DataStore("my_datastore",
             location="global",
-            data_store_id="datastore-tool-test-_29439",
+            data_store_id="datastore-tool-test-_79169",
             display_name="datastore for Tool test",
             industry_vertical="GENERIC",
             content_config="NO_CONTENT",

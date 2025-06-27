@@ -131,7 +131,7 @@ import (
 //				},
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String("ubuntu-os-cloud/ubuntu-2004-lts"),
+//						Image: pulumi.String("ubuntu-os-cloud/ubuntu-2204-lts"),
 //						Labels: pulumi.StringMap{
 //							"my_label": pulumi.String("value"),
 //						},

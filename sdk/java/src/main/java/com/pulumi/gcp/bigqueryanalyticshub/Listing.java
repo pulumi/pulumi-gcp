@@ -13,6 +13,7 @@ import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingState;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingBigqueryDataset;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingDataProvider;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingPublisher;
+import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingPubsubTopic;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingRestrictedExportConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -317,6 +318,66 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquery Analyticshub Listing Pubsub
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.Listing;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingPubsubTopicArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var listing = new DataExchange("listing", DataExchangeArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId("tf_test_pubsub_data_exchange")
+ *             .displayName("tf_test_pubsub_data_exchange")
+ *             .description("Example for pubsub topic source")
+ *             .build());
+ * 
+ *         var tfTestPubsubTopic = new Topic("tfTestPubsubTopic", TopicArgs.builder()
+ *             .name("test_pubsub")
+ *             .build());
+ * 
+ *         var listingListing = new Listing("listingListing", ListingArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId(listing.dataExchangeId())
+ *             .listingId("tf_test_pubsub_listing")
+ *             .displayName("tf_test_pubsub_listing")
+ *             .description("Example for pubsub topic source")
+ *             .pubsubTopic(ListingPubsubTopicArgs.builder()
+ *                 .topic(tfTestPubsubTopic.id())
+ *                 .dataAffinityRegions(                
+ *                     "us-central1",
+ *                     "europe-west1")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -351,15 +412,15 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bigqueryDataset", refs={ListingBigqueryDataset.class}, tree="[0]")
-    private Output<ListingBigqueryDataset> bigqueryDataset;
+    private Output</* @Nullable */ ListingBigqueryDataset> bigqueryDataset;
 
     /**
      * @return Shared dataset i.e. BigQuery dataset source.
      * Structure is documented below.
      * 
      */
-    public Output<ListingBigqueryDataset> bigqueryDataset() {
-        return this.bigqueryDataset;
+    public Output<Optional<ListingBigqueryDataset>> bigqueryDataset() {
+        return Codegen.optional(this.bigqueryDataset);
     }
     /**
      * Categories of the listing. Up to two categories are allowed.
@@ -391,6 +452,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
     }
     /**
      * Details of the data provider who owns the source data.
+     * Structure is documented below.
      * 
      */
     @Export(name="dataProvider", refs={ListingDataProvider.class}, tree="[0]")
@@ -398,22 +460,21 @@ public class Listing extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Details of the data provider who owns the source data.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<ListingDataProvider>> dataProvider() {
         return Codegen.optional(this.dataProvider);
     }
     /**
-     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * @return Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      * 
      */
     public Output<Optional<String>> description() {
@@ -422,12 +483,16 @@ public class Listing extends com.pulumi.resources.CustomResource {
     /**
      * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can&#39;t start or end with spaces.
      * 
+     * ***
+     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can&#39;t start or end with spaces.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {
@@ -490,16 +555,14 @@ public class Listing extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-     * querying user.
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
      * 
      */
     @Export(name="logLinkedDatasetQueryUserEmail", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> logLinkedDatasetQueryUserEmail;
 
     /**
-     * @return If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-     * querying user.
+     * @return If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
      * 
      */
     public Output<Optional<Boolean>> logLinkedDatasetQueryUserEmail() {
@@ -533,14 +596,25 @@ public class Listing extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> primaryContact() {
         return Codegen.optional(this.primaryContact);
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
     /**
      * Details of the publisher who owns the listing and who can share the source data.
+     * Structure is documented below.
      * 
      */
     @Export(name="publisher", refs={ListingPublisher.class}, tree="[0]")
@@ -548,10 +622,27 @@ public class Listing extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Details of the publisher who owns the listing and who can share the source data.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<ListingPublisher>> publisher() {
         return Codegen.optional(this.publisher);
+    }
+    /**
+     * Pub/Sub topic source.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="pubsubTopic", refs={ListingPubsubTopic.class}, tree="[0]")
+    private Output</* @Nullable */ ListingPubsubTopic> pubsubTopic;
+
+    /**
+     * @return Pub/Sub topic source.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ListingPubsubTopic>> pubsubTopic() {
+        return Codegen.optional(this.pubsubTopic);
     }
     /**
      * Email or URL of the request access of the listing. Subscribers can use this reference to request access.
@@ -569,6 +660,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
     }
     /**
      * If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
      * 
      */
     @Export(name="restrictedExportConfig", refs={ListingRestrictedExportConfig.class}, tree="[0]")
@@ -576,6 +668,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<ListingRestrictedExportConfig>> restrictedExportConfig() {

@@ -204,6 +204,7 @@ __all__ = [
     'CxWebhookGenericWebService',
     'CxWebhookServiceDirectory',
     'CxWebhookServiceDirectoryGenericWebService',
+    'EncryptionSpecEncryptionSpec',
     'EntityTypeEntity',
     'FulfillmentFeature',
     'FulfillmentGenericWebService',
@@ -11429,6 +11430,51 @@ class CxWebhookServiceDirectoryGenericWebService(dict):
         The HTTP request headers to send together with webhook requests.
         """
         return pulumi.get(self, "request_headers")
+
+
+@pulumi.output_type
+class EncryptionSpecEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionSpecEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionSpecEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionSpecEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key: builtins.str):
+        """
+        :param builtins.str kms_key: The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
+               If empty, the resource is secured by the default Google encryption key.
+               Only the key in the same location as this resource is allowed to be used for encryption.
+               Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
+               
+               - - -
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> builtins.str:
+        """
+        The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
+        If empty, the resource is secured by the default Google encryption key.
+        Only the key in the same location as this resource is allowed to be used for encryption.
+        Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
+
+        - - -
+        """
+        return pulumi.get(self, "kms_key")
 
 
 @pulumi.output_type

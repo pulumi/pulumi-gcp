@@ -308,7 +308,7 @@ import javax.annotation.Nullable;
  *                 .confidentialInstanceType("SEV")
  *                 .build())
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage("ubuntu-os-cloud/ubuntu-2004-lts")
+ *                 .sourceImage("ubuntu-os-cloud/ubuntu-2204-lts")
  *                 .build())
  *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
  *                 .email(default_.email())

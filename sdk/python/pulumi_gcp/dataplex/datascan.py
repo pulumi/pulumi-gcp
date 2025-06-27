@@ -26,6 +26,7 @@ class DatascanArgs:
                  data_scan_id: pulumi.Input[builtins.str],
                  execution_spec: pulumi.Input['DatascanExecutionSpecArgs'],
                  location: pulumi.Input[builtins.str],
+                 data_discovery_spec: Optional[pulumi.Input['DatascanDataDiscoverySpecArgs']] = None,
                  data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArgs']] = None,
                  data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
@@ -40,6 +41,7 @@ class DatascanArgs:
         :param pulumi.Input['DatascanExecutionSpecArgs'] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location where the data scan should reside.
+        :param pulumi.Input['DatascanDataDiscoverySpecArgs'] data_discovery_spec: DataDiscoveryScan related setting.
         :param pulumi.Input['DatascanDataProfileSpecArgs'] data_profile_spec: DataProfileScan related setting.
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
         :param pulumi.Input[builtins.str] description: Description of the scan.
@@ -52,6 +54,8 @@ class DatascanArgs:
         pulumi.set(__self__, "data_scan_id", data_scan_id)
         pulumi.set(__self__, "execution_spec", execution_spec)
         pulumi.set(__self__, "location", location)
+        if data_discovery_spec is not None:
+            pulumi.set(__self__, "data_discovery_spec", data_discovery_spec)
         if data_profile_spec is not None:
             pulumi.set(__self__, "data_profile_spec", data_profile_spec)
         if data_quality_spec is not None:
@@ -114,6 +118,18 @@ class DatascanArgs:
     @location.setter
     def location(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="dataDiscoverySpec")
+    def data_discovery_spec(self) -> Optional[pulumi.Input['DatascanDataDiscoverySpecArgs']]:
+        """
+        DataDiscoveryScan related setting.
+        """
+        return pulumi.get(self, "data_discovery_spec")
+
+    @data_discovery_spec.setter
+    def data_discovery_spec(self, value: Optional[pulumi.Input['DatascanDataDiscoverySpecArgs']]):
+        pulumi.set(self, "data_discovery_spec", value)
 
     @property
     @pulumi.getter(name="dataProfileSpec")
@@ -192,6 +208,7 @@ class _DatascanState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
                  data: Optional[pulumi.Input['DatascanDataArgs']] = None,
+                 data_discovery_spec: Optional[pulumi.Input['DatascanDataDiscoverySpecArgs']] = None,
                  data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArgs']] = None,
                  data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
                  data_scan_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -214,6 +231,7 @@ class _DatascanState:
         :param pulumi.Input[builtins.str] create_time: The time when the scan was created.
         :param pulumi.Input['DatascanDataArgs'] data: The data source for DataScan.
                Structure is documented below.
+        :param pulumi.Input['DatascanDataDiscoverySpecArgs'] data_discovery_spec: DataDiscoveryScan related setting.
         :param pulumi.Input['DatascanDataProfileSpecArgs'] data_profile_spec: DataProfileScan related setting.
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
         :param pulumi.Input[builtins.str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
@@ -240,6 +258,8 @@ class _DatascanState:
             pulumi.set(__self__, "create_time", create_time)
         if data is not None:
             pulumi.set(__self__, "data", data)
+        if data_discovery_spec is not None:
+            pulumi.set(__self__, "data_discovery_spec", data_discovery_spec)
         if data_profile_spec is not None:
             pulumi.set(__self__, "data_profile_spec", data_profile_spec)
         if data_quality_spec is not None:
@@ -299,6 +319,18 @@ class _DatascanState:
     @data.setter
     def data(self, value: Optional[pulumi.Input['DatascanDataArgs']]):
         pulumi.set(self, "data", value)
+
+    @property
+    @pulumi.getter(name="dataDiscoverySpec")
+    def data_discovery_spec(self) -> Optional[pulumi.Input['DatascanDataDiscoverySpecArgs']]:
+        """
+        DataDiscoveryScan related setting.
+        """
+        return pulumi.get(self, "data_discovery_spec")
+
+    @data_discovery_spec.setter
+    def data_discovery_spec(self, value: Optional[pulumi.Input['DatascanDataDiscoverySpecArgs']]):
+        pulumi.set(self, "data_discovery_spec", value)
 
     @property
     @pulumi.getter(name="dataProfileSpec")
@@ -514,6 +546,7 @@ class Datascan(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data: Optional[pulumi.Input[Union['DatascanDataArgs', 'DatascanDataArgsDict']]] = None,
+                 data_discovery_spec: Optional[pulumi.Input[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']]] = None,
                  data_profile_spec: Optional[pulumi.Input[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']]] = None,
                  data_quality_spec: Optional[pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']]] = None,
                  data_scan_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -748,6 +781,108 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        ### Dataplex Datascan Basic Discovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
+            name="tf-test-bucket-name-_91042",
+            location="us-west1",
+            uniform_bucket_level_access=True)
+        basic_discovery = gcp.dataplex.Datascan("basic_discovery",
+            location="us-central1",
+            data_scan_id="datadiscovery-basic",
+            data={
+                "resource": pulumi.Output.all(
+                    project=tf_test_bucket.project,
+                    name=tf_test_bucket.name
+        ).apply(lambda resolved_outputs: f"//storage.googleapis.com/projects/{resolved_outputs['project']}/buckets/{resolved_outputs['name']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "on_demand": {},
+                },
+            },
+            data_discovery_spec={},
+            project="my-project-name")
+        ```
+        ### Dataplex Datascan Full Discovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
+            name="tf-test-bucket-name-_72490",
+            location="us-west1",
+            uniform_bucket_level_access=True)
+        tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
+            connection_id="tf-test-connection-_89605",
+            location="us-central1",
+            friendly_name="tf-test-connection-_56730",
+            description="a bigquery connection for tf test",
+            cloud_resource={})
+        full_discovery = gcp.dataplex.Datascan("full_discovery",
+            location="us-central1",
+            display_name="Full Datascan Discovery",
+            data_scan_id="datadiscovery-full",
+            description="Example resource - Full Datascan Discovery",
+            labels={
+                "author": "billing",
+            },
+            data={
+                "resource": pulumi.Output.all(
+                    project=tf_test_bucket.project,
+                    name=tf_test_bucket.name
+        ).apply(lambda resolved_outputs: f"//storage.googleapis.com/projects/{resolved_outputs['project']}/buckets/{resolved_outputs['name']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "schedule": {
+                        "cron": "TZ=America/New_York 1 1 * * *",
+                    },
+                },
+            },
+            data_discovery_spec={
+                "bigquery_publishing_config": {
+                    "table_type": "BIGLAKE",
+                    "connection": pulumi.Output.all(
+                        project=tf_test_connection.project,
+                        location=tf_test_connection.location,
+                        connection_id=tf_test_connection.connection_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/{resolved_outputs['location']}/connections/{resolved_outputs['connection_id']}")
+        ,
+                    "location": tf_test_bucket.location,
+                    "project": tf_test_bucket.project.apply(lambda project: f"projects/{project}"),
+                },
+                "storage_config": {
+                    "include_patterns": [
+                        "ai*",
+                        "ml*",
+                    ],
+                    "exclude_patterns": [
+                        "doc*",
+                        "gen*",
+                    ],
+                    "csv_options": {
+                        "header_rows": 5,
+                        "delimiter": ",",
+                        "encoding": "UTF-8",
+                        "type_inference_disabled": False,
+                        "quote": "'",
+                    },
+                    "json_options": {
+                        "encoding": "UTF-8",
+                        "type_inference_disabled": False,
+                    },
+                },
+            },
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -783,6 +918,7 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DatascanDataArgs', 'DatascanDataArgsDict']] data: The data source for DataScan.
                Structure is documented below.
+        :param pulumi.Input[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']] data_discovery_spec: DataDiscoveryScan related setting.
         :param pulumi.Input[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']] data_profile_spec: DataProfileScan related setting.
         :param pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']] data_quality_spec: DataQualityScan related setting.
         :param pulumi.Input[builtins.str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
@@ -1025,6 +1161,108 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        ### Dataplex Datascan Basic Discovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
+            name="tf-test-bucket-name-_91042",
+            location="us-west1",
+            uniform_bucket_level_access=True)
+        basic_discovery = gcp.dataplex.Datascan("basic_discovery",
+            location="us-central1",
+            data_scan_id="datadiscovery-basic",
+            data={
+                "resource": pulumi.Output.all(
+                    project=tf_test_bucket.project,
+                    name=tf_test_bucket.name
+        ).apply(lambda resolved_outputs: f"//storage.googleapis.com/projects/{resolved_outputs['project']}/buckets/{resolved_outputs['name']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "on_demand": {},
+                },
+            },
+            data_discovery_spec={},
+            project="my-project-name")
+        ```
+        ### Dataplex Datascan Full Discovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
+            name="tf-test-bucket-name-_72490",
+            location="us-west1",
+            uniform_bucket_level_access=True)
+        tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
+            connection_id="tf-test-connection-_89605",
+            location="us-central1",
+            friendly_name="tf-test-connection-_56730",
+            description="a bigquery connection for tf test",
+            cloud_resource={})
+        full_discovery = gcp.dataplex.Datascan("full_discovery",
+            location="us-central1",
+            display_name="Full Datascan Discovery",
+            data_scan_id="datadiscovery-full",
+            description="Example resource - Full Datascan Discovery",
+            labels={
+                "author": "billing",
+            },
+            data={
+                "resource": pulumi.Output.all(
+                    project=tf_test_bucket.project,
+                    name=tf_test_bucket.name
+        ).apply(lambda resolved_outputs: f"//storage.googleapis.com/projects/{resolved_outputs['project']}/buckets/{resolved_outputs['name']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "schedule": {
+                        "cron": "TZ=America/New_York 1 1 * * *",
+                    },
+                },
+            },
+            data_discovery_spec={
+                "bigquery_publishing_config": {
+                    "table_type": "BIGLAKE",
+                    "connection": pulumi.Output.all(
+                        project=tf_test_connection.project,
+                        location=tf_test_connection.location,
+                        connection_id=tf_test_connection.connection_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/{resolved_outputs['location']}/connections/{resolved_outputs['connection_id']}")
+        ,
+                    "location": tf_test_bucket.location,
+                    "project": tf_test_bucket.project.apply(lambda project: f"projects/{project}"),
+                },
+                "storage_config": {
+                    "include_patterns": [
+                        "ai*",
+                        "ml*",
+                    ],
+                    "exclude_patterns": [
+                        "doc*",
+                        "gen*",
+                    ],
+                    "csv_options": {
+                        "header_rows": 5,
+                        "delimiter": ",",
+                        "encoding": "UTF-8",
+                        "type_inference_disabled": False,
+                        "quote": "'",
+                    },
+                    "json_options": {
+                        "encoding": "UTF-8",
+                        "type_inference_disabled": False,
+                    },
+                },
+            },
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -1072,6 +1310,7 @@ class Datascan(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data: Optional[pulumi.Input[Union['DatascanDataArgs', 'DatascanDataArgsDict']]] = None,
+                 data_discovery_spec: Optional[pulumi.Input[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']]] = None,
                  data_profile_spec: Optional[pulumi.Input[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']]] = None,
                  data_quality_spec: Optional[pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']]] = None,
                  data_scan_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1093,6 +1332,7 @@ class Datascan(pulumi.CustomResource):
             if data is None and not opts.urn:
                 raise TypeError("Missing required property 'data'")
             __props__.__dict__["data"] = data
+            __props__.__dict__["data_discovery_spec"] = data_discovery_spec
             __props__.__dict__["data_profile_spec"] = data_profile_spec
             __props__.__dict__["data_quality_spec"] = data_quality_spec
             if data_scan_id is None and not opts.urn:
@@ -1131,6 +1371,7 @@ class Datascan(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
             data: Optional[pulumi.Input[Union['DatascanDataArgs', 'DatascanDataArgsDict']]] = None,
+            data_discovery_spec: Optional[pulumi.Input[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']]] = None,
             data_profile_spec: Optional[pulumi.Input[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']]] = None,
             data_quality_spec: Optional[pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']]] = None,
             data_scan_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1158,6 +1399,7 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] create_time: The time when the scan was created.
         :param pulumi.Input[Union['DatascanDataArgs', 'DatascanDataArgsDict']] data: The data source for DataScan.
                Structure is documented below.
+        :param pulumi.Input[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']] data_discovery_spec: DataDiscoveryScan related setting.
         :param pulumi.Input[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']] data_profile_spec: DataProfileScan related setting.
         :param pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']] data_quality_spec: DataQualityScan related setting.
         :param pulumi.Input[builtins.str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
@@ -1186,6 +1428,7 @@ class Datascan(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data"] = data
+        __props__.__dict__["data_discovery_spec"] = data_discovery_spec
         __props__.__dict__["data_profile_spec"] = data_profile_spec
         __props__.__dict__["data_quality_spec"] = data_quality_spec
         __props__.__dict__["data_scan_id"] = data_scan_id
@@ -1221,6 +1464,14 @@ class Datascan(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter(name="dataDiscoverySpec")
+    def data_discovery_spec(self) -> pulumi.Output[Optional['outputs.DatascanDataDiscoverySpec']]:
+        """
+        DataDiscoveryScan related setting.
+        """
+        return pulumi.get(self, "data_discovery_spec")
 
     @property
     @pulumi.getter(name="dataProfileSpec")

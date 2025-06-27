@@ -230,7 +230,7 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
      * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
      * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
      * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-     * If unspecified, the default propagated connection limit is 250.
+     * If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
      * 
      */
     @Import(name="propagatedConnectionLimit")
@@ -241,7 +241,7 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
      * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
      * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
      * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-     * If unspecified, the default propagated connection limit is 250.
+     * If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
      * 
      */
     public Optional<Output<Integer>> propagatedConnectionLimit() {
@@ -298,6 +298,27 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Controls the behavior of propagated_connection_limit.
+     * When false, setting propagated_connection_limit to zero causes the provider to use to the API&#39;s default value.
+     * When true, the provider will set propagated_connection_limit to zero.
+     * Defaults to false.
+     * 
+     */
+    @Import(name="sendPropagatedConnectionLimitIfZero")
+    private @Nullable Output<Boolean> sendPropagatedConnectionLimitIfZero;
+
+    /**
+     * @return Controls the behavior of propagated_connection_limit.
+     * When false, setting propagated_connection_limit to zero causes the provider to use to the API&#39;s default value.
+     * When true, the provider will set propagated_connection_limit to zero.
+     * Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> sendPropagatedConnectionLimitIfZero() {
+        return Optional.ofNullable(this.sendPropagatedConnectionLimitIfZero);
+    }
+
+    /**
      * The URL of a service serving the endpoint identified by this service attachment.
      * 
      */
@@ -330,6 +351,7 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
         this.reconcileConnections = $.reconcileConnections;
         this.region = $.region;
         this.selfLink = $.selfLink;
+        this.sendPropagatedConnectionLimitIfZero = $.sendPropagatedConnectionLimitIfZero;
         this.targetService = $.targetService;
     }
 
@@ -685,7 +707,7 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
          * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
          * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
          * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-         * If unspecified, the default propagated connection limit is 250.
+         * If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
          * 
          * @return builder
          * 
@@ -700,7 +722,7 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
          * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
          * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
          * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-         * If unspecified, the default propagated connection limit is 250.
+         * If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
          * 
          * @return builder
          * 
@@ -774,6 +796,33 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param sendPropagatedConnectionLimitIfZero Controls the behavior of propagated_connection_limit.
+         * When false, setting propagated_connection_limit to zero causes the provider to use to the API&#39;s default value.
+         * When true, the provider will set propagated_connection_limit to zero.
+         * Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendPropagatedConnectionLimitIfZero(@Nullable Output<Boolean> sendPropagatedConnectionLimitIfZero) {
+            $.sendPropagatedConnectionLimitIfZero = sendPropagatedConnectionLimitIfZero;
+            return this;
+        }
+
+        /**
+         * @param sendPropagatedConnectionLimitIfZero Controls the behavior of propagated_connection_limit.
+         * When false, setting propagated_connection_limit to zero causes the provider to use to the API&#39;s default value.
+         * When true, the provider will set propagated_connection_limit to zero.
+         * Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendPropagatedConnectionLimitIfZero(Boolean sendPropagatedConnectionLimitIfZero) {
+            return sendPropagatedConnectionLimitIfZero(Output.of(sendPropagatedConnectionLimitIfZero));
         }
 
         /**

@@ -4265,6 +4265,10 @@ func (o InstanceMachineConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 }
 
 type InstanceNetworkConfig struct {
+	// Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+	// If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+	// The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRangeOverride *string `pulumi:"allocatedIpRangeOverride"`
 	// A list of external networks authorized to access this instance. This
 	// field is only allowed to be set when `enablePublicIp` is set to
 	// true.
@@ -4290,6 +4294,10 @@ type InstanceNetworkConfigInput interface {
 }
 
 type InstanceNetworkConfigArgs struct {
+	// Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+	// If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+	// The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRangeOverride pulumi.StringPtrInput `pulumi:"allocatedIpRangeOverride"`
 	// A list of external networks authorized to access this instance. This
 	// field is only allowed to be set when `enablePublicIp` is set to
 	// true.
@@ -4380,6 +4388,13 @@ func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutputWithContext
 	}).(InstanceNetworkConfigPtrOutput)
 }
 
+// Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+// If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+// The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+func (o InstanceNetworkConfigOutput) AllocatedIpRangeOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) *string { return v.AllocatedIpRangeOverride }).(pulumi.StringPtrOutput)
+}
+
 // A list of external networks authorized to access this instance. This
 // field is only allowed to be set when `enablePublicIp` is set to
 // true.
@@ -4424,6 +4439,18 @@ func (o InstanceNetworkConfigPtrOutput) Elem() InstanceNetworkConfigOutput {
 		var ret InstanceNetworkConfig
 		return ret
 	}).(InstanceNetworkConfigOutput)
+}
+
+// Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+// If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+// The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+func (o InstanceNetworkConfigPtrOutput) AllocatedIpRangeOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllocatedIpRangeOverride
+	}).(pulumi.StringPtrOutput)
 }
 
 // A list of external networks authorized to access this instance. This
@@ -8673,6 +8700,10 @@ func (o GetInstanceMachineConfigArrayOutput) Index(i pulumi.IntInput) GetInstanc
 }
 
 type GetInstanceNetworkConfig struct {
+	// Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+	// If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+	// The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRangeOverride string `pulumi:"allocatedIpRangeOverride"`
 	// A list of external networks authorized to access this instance. This
 	// field is only allowed to be set when 'enable_public_ip' is set to
 	// true.
@@ -8697,6 +8728,10 @@ type GetInstanceNetworkConfigInput interface {
 }
 
 type GetInstanceNetworkConfigArgs struct {
+	// Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+	// If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+	// The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRangeOverride pulumi.StringInput `pulumi:"allocatedIpRangeOverride"`
 	// A list of external networks authorized to access this instance. This
 	// field is only allowed to be set when 'enable_public_ip' is set to
 	// true.
@@ -8758,6 +8793,13 @@ func (o GetInstanceNetworkConfigOutput) ToGetInstanceNetworkConfigOutput() GetIn
 
 func (o GetInstanceNetworkConfigOutput) ToGetInstanceNetworkConfigOutputWithContext(ctx context.Context) GetInstanceNetworkConfigOutput {
 	return o
+}
+
+// Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+// If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+// The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+func (o GetInstanceNetworkConfigOutput) AllocatedIpRangeOverride() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkConfig) string { return v.AllocatedIpRangeOverride }).(pulumi.StringOutput)
 }
 
 // A list of external networks authorized to access this instance. This

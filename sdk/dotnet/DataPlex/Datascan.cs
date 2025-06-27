@@ -332,6 +332,151 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// ### Dataplex Datascan Basic Discovery
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
+    ///     {
+    ///         Name = "tf-test-bucket-name-_91042",
+    ///         Location = "us-west1",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var basicDiscovery = new Gcp.DataPlex.Datascan("basic_discovery", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DataScanId = "datadiscovery-basic",
+    ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
+    ///         {
+    ///             Resource = Output.Tuple(tfTestBucket.Project, tfTestBucket.Name).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var name = values.Item2;
+    ///                 return $"//storage.googleapis.com/projects/{project}/buckets/{name}";
+    ///             }),
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 OnDemand = null,
+    ///             },
+    ///         },
+    ///         DataDiscoverySpec = null,
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataplex Datascan Full Discovery
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
+    ///     {
+    ///         Name = "tf-test-bucket-name-_72490",
+    ///         Location = "us-west1",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var tfTestConnection = new Gcp.BigQuery.Connection("tf_test_connection", new()
+    ///     {
+    ///         ConnectionId = "tf-test-connection-_89605",
+    ///         Location = "us-central1",
+    ///         FriendlyName = "tf-test-connection-_56730",
+    ///         Description = "a bigquery connection for tf test",
+    ///         CloudResource = null,
+    ///     });
+    /// 
+    ///     var fullDiscovery = new Gcp.DataPlex.Datascan("full_discovery", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DisplayName = "Full Datascan Discovery",
+    ///         DataScanId = "datadiscovery-full",
+    ///         Description = "Example resource - Full Datascan Discovery",
+    ///         Labels = 
+    ///         {
+    ///             { "author", "billing" },
+    ///         },
+    ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
+    ///         {
+    ///             Resource = Output.Tuple(tfTestBucket.Project, tfTestBucket.Name).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var name = values.Item2;
+    ///                 return $"//storage.googleapis.com/projects/{project}/buckets/{name}";
+    ///             }),
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerScheduleArgs
+    ///                 {
+    ///                     Cron = "TZ=America/New_York 1 1 * * *",
+    ///                 },
+    ///             },
+    ///         },
+    ///         DataDiscoverySpec = new Gcp.DataPlex.Inputs.DatascanDataDiscoverySpecArgs
+    ///         {
+    ///             BigqueryPublishingConfig = new Gcp.DataPlex.Inputs.DatascanDataDiscoverySpecBigqueryPublishingConfigArgs
+    ///             {
+    ///                 TableType = "BIGLAKE",
+    ///                 Connection = Output.Tuple(tfTestConnection.Project, tfTestConnection.Location, tfTestConnection.ConnectionId).Apply(values =&gt;
+    ///                 {
+    ///                     var project = values.Item1;
+    ///                     var location = values.Item2;
+    ///                     var connectionId = values.Item3;
+    ///                     return $"projects/{project}/locations/{location}/connections/{connectionId}";
+    ///                 }),
+    ///                 Location = tfTestBucket.Location,
+    ///                 Project = tfTestBucket.Project.Apply(project =&gt; $"projects/{project}"),
+    ///             },
+    ///             StorageConfig = new Gcp.DataPlex.Inputs.DatascanDataDiscoverySpecStorageConfigArgs
+    ///             {
+    ///                 IncludePatterns = new[]
+    ///                 {
+    ///                     "ai*",
+    ///                     "ml*",
+    ///                 },
+    ///                 ExcludePatterns = new[]
+    ///                 {
+    ///                     "doc*",
+    ///                     "gen*",
+    ///                 },
+    ///                 CsvOptions = new Gcp.DataPlex.Inputs.DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs
+    ///                 {
+    ///                     HeaderRows = 5,
+    ///                     Delimiter = ",",
+    ///                     Encoding = "UTF-8",
+    ///                     TypeInferenceDisabled = false,
+    ///                     Quote = "'",
+    ///                 },
+    ///                 JsonOptions = new Gcp.DataPlex.Inputs.DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs
+    ///                 {
+    ///                     Encoding = "UTF-8",
+    ///                     TypeInferenceDisabled = false,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -378,6 +523,12 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Output("data")]
         public Output<Outputs.DatascanData> Data { get; private set; } = null!;
+
+        /// <summary>
+        /// DataDiscoveryScan related setting.
+        /// </summary>
+        [Output("dataDiscoverySpec")]
+        public Output<Outputs.DatascanDataDiscoverySpec?> DataDiscoverySpec { get; private set; } = null!;
 
         /// <summary>
         /// DataProfileScan related setting.
@@ -542,6 +693,12 @@ namespace Pulumi.Gcp.DataPlex
         public Input<Inputs.DatascanDataArgs> Data { get; set; } = null!;
 
         /// <summary>
+        /// DataDiscoveryScan related setting.
+        /// </summary>
+        [Input("dataDiscoverySpec")]
+        public Input<Inputs.DatascanDataDiscoverySpecArgs>? DataDiscoverySpec { get; set; }
+
+        /// <summary>
         /// DataProfileScan related setting.
         /// </summary>
         [Input("dataProfileSpec")]
@@ -621,6 +778,12 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Input("data")]
         public Input<Inputs.DatascanDataGetArgs>? Data { get; set; }
+
+        /// <summary>
+        /// DataDiscoveryScan related setting.
+        /// </summary>
+        [Input("dataDiscoverySpec")]
+        public Input<Inputs.DatascanDataDiscoverySpecGetArgs>? DataDiscoverySpec { get; set; }
 
         /// <summary>
         /// DataProfileScan related setting.

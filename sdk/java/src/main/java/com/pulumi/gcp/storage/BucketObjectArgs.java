@@ -145,9 +145,21 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.customerEncryption);
     }
 
+    /**
+     * @deprecated
+     * `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead
+     * 
+     */
+    @Deprecated /* `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead */
     @Import(name="detectMd5hash")
     private @Nullable Output<String> detectMd5hash;
 
+    /**
+     * @deprecated
+     * `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead
+     * 
+     */
+    @Deprecated /* `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead */
     public Optional<Output<String>> detectMd5hash() {
         return Optional.ofNullable(this.detectMd5hash);
     }
@@ -253,6 +265,21 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5(&#34;file.zip&#34;), where &#34;file.zip&#34; is the local filename
+     * 
+     */
+    @Import(name="sourceMd5hash")
+    private @Nullable Output<String> sourceMd5hash;
+
+    /**
+     * @return User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5(&#34;file.zip&#34;), where &#34;file.zip&#34; is the local filename
+     * 
+     */
+    public Optional<Output<String>> sourceMd5hash() {
+        return Optional.ofNullable(this.sourceMd5hash);
+    }
+
+    /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket&#39;s default
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -304,6 +331,7 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.retention = $.retention;
         this.source = $.source;
+        this.sourceMd5hash = $.sourceMd5hash;
         this.storageClass = $.storageClass;
         this.temporaryHold = $.temporaryHold;
     }
@@ -498,11 +526,27 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
             return customerEncryption(Output.of(customerEncryption));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead
+         * 
+         */
+        @Deprecated /* `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead */
         public Builder detectMd5hash(@Nullable Output<String> detectMd5hash) {
             $.detectMd5hash = detectMd5hash;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead
+         * 
+         */
+        @Deprecated /* `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead */
         public Builder detectMd5hash(String detectMd5hash) {
             return detectMd5hash(Output.of(detectMd5hash));
         }
@@ -641,6 +685,27 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder source(AssetOrArchive source) {
             return source(Output.of(source));
+        }
+
+        /**
+         * @param sourceMd5hash User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5(&#34;file.zip&#34;), where &#34;file.zip&#34; is the local filename
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceMd5hash(@Nullable Output<String> sourceMd5hash) {
+            $.sourceMd5hash = sourceMd5hash;
+            return this;
+        }
+
+        /**
+         * @param sourceMd5hash User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5(&#34;file.zip&#34;), where &#34;file.zip&#34; is the local filename
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceMd5hash(String sourceMd5hash) {
+            return sourceMd5hash(Output.of(sourceMd5hash));
         }
 
         /**

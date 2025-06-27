@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool? EnableNestedVirtualization;
         /// <summary>
+        /// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        /// </summary>
+        public readonly string? PerformanceMonitoringUnit;
+        /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         /// </summary>
         public readonly int ThreadsPerCore;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private NodePoolNodeConfigAdvancedMachineFeatures(
             bool? enableNestedVirtualization,
 
+            string? performanceMonitoringUnit,
+
             int threadsPerCore)
         {
             EnableNestedVirtualization = enableNestedVirtualization;
+            PerformanceMonitoringUnit = performanceMonitoringUnit;
             ThreadsPerCore = threadsPerCore;
         }
     }

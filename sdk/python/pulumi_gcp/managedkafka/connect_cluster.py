@@ -389,8 +389,8 @@ class ConnectCluster(pulumi.CustomResource):
         import pulumi_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_60646",
-            name="tf-test_9394",
+            project_id="tf-test_62793",
+            name="tf-test_55438",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -516,8 +516,8 @@ class ConnectCluster(pulumi.CustomResource):
         import pulumi_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_60646",
-            name="tf-test_9394",
+            project_id="tf-test_62793",
+            name="tf-test_55438",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")

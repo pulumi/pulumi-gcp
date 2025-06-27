@@ -255,6 +255,10 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public readonly ImmutableDictionary<string, string> ReleaseChannelLatestVersion;
         /// <summary>
+        /// A map from a release channel name to the channel's auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ReleaseChannelUpgradeTargetVersion;
+        /// <summary>
         /// A list of versions available in the given zone for use with master instances.
         /// </summary>
         public readonly ImmutableArray<string> ValidMasterVersions;
@@ -282,6 +286,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableDictionary<string, string> releaseChannelLatestVersion,
 
+            ImmutableDictionary<string, string> releaseChannelUpgradeTargetVersion,
+
             ImmutableArray<string> validMasterVersions,
 
             ImmutableArray<string> validNodeVersions,
@@ -296,6 +302,7 @@ namespace Pulumi.Gcp.Container
             Project = project;
             ReleaseChannelDefaultVersion = releaseChannelDefaultVersion;
             ReleaseChannelLatestVersion = releaseChannelLatestVersion;
+            ReleaseChannelUpgradeTargetVersion = releaseChannelUpgradeTargetVersion;
             ValidMasterVersions = validMasterVersions;
             ValidNodeVersions = validNodeVersions;
             VersionPrefix = versionPrefix;

@@ -48,14 +48,12 @@ namespace Pulumi.Gcp.CloudQuota
     {
         /// <summary>
         /// The resource container that determines if the quota adjuster is set for this project.
-        /// Expect this field to be empty currently.
         /// </summary>
         [Output("effectiveContainer")]
         public Output<string> EffectiveContainer { get; private set; } = null!;
 
         /// <summary>
         /// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-        /// Expect this field to be empty currently.
         /// </summary>
         [Output("effectiveEnablement")]
         public Output<string> EffectiveEnablement { get; private set; } = null!;
@@ -66,6 +64,20 @@ namespace Pulumi.Gcp.CloudQuota
         /// </summary>
         [Output("enablement")]
         public Output<string> Enablement { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the setting is inherited or explicitly specified.
+        /// </summary>
+        [Output("inherited")]
+        public Output<bool> Inherited { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+        /// The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+        /// The value will be empty when `enablement` is specified on this resource container.
+        /// </summary>
+        [Output("inheritedFrom")]
+        public Output<string> InheritedFrom { get; private set; } = null!;
 
         /// <summary>
         /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
@@ -148,14 +160,12 @@ namespace Pulumi.Gcp.CloudQuota
     {
         /// <summary>
         /// The resource container that determines if the quota adjuster is set for this project.
-        /// Expect this field to be empty currently.
         /// </summary>
         [Input("effectiveContainer")]
         public Input<string>? EffectiveContainer { get; set; }
 
         /// <summary>
         /// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-        /// Expect this field to be empty currently.
         /// </summary>
         [Input("effectiveEnablement")]
         public Input<string>? EffectiveEnablement { get; set; }
@@ -166,6 +176,20 @@ namespace Pulumi.Gcp.CloudQuota
         /// </summary>
         [Input("enablement")]
         public Input<string>? Enablement { get; set; }
+
+        /// <summary>
+        /// Indicates whether the setting is inherited or explicitly specified.
+        /// </summary>
+        [Input("inherited")]
+        public Input<bool>? Inherited { get; set; }
+
+        /// <summary>
+        /// The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+        /// The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+        /// The value will be empty when `enablement` is specified on this resource container.
+        /// </summary>
+        [Input("inheritedFrom")]
+        public Input<string>? InheritedFrom { get; set; }
 
         /// <summary>
         /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".

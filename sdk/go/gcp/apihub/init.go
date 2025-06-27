@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Curation{}
 	case "gcp:apihub/hostProjectRegistration:HostProjectRegistration":
 		r = &HostProjectRegistration{}
+	case "gcp:apihub/pluginInstance:PluginInstance":
+		r = &PluginInstance{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apihub/hostProjectRegistration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apihub/pluginInstance",
 		&module{version},
 	)
 }

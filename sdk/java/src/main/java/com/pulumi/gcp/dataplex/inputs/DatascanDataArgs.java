@@ -32,7 +32,7 @@ public final class DatascanDataArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-     * (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type &#34;TABLE&#34; for DataProfileScan/DataQualityScan.
+     * Cloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type &#34;TABLE&#34; (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.
      * 
      */
     @Import(name="resource")
@@ -40,7 +40,7 @@ public final class DatascanDataArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-     * (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type &#34;TABLE&#34; for DataProfileScan/DataQualityScan.
+     * Cloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type &#34;TABLE&#34; (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.
      * 
      */
     public Optional<Output<String>> resource() {
@@ -95,7 +95,7 @@ public final class DatascanDataArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resource The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-         * (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type &#34;TABLE&#34; for DataProfileScan/DataQualityScan.
+         * Cloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type &#34;TABLE&#34; (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class DatascanDataArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resource The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-         * (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type &#34;TABLE&#34; for DataProfileScan/DataQualityScan.
+         * Cloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type &#34;TABLE&#34; (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.
          * 
          * @return builder
          * 

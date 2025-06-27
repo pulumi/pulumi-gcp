@@ -1638,7 +1638,9 @@ class InstanceNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "authorizedExternalNetworks":
+        if key == "allocatedIpRangeOverride":
+            suggest = "allocated_ip_range_override"
+        elif key == "authorizedExternalNetworks":
             suggest = "authorized_external_networks"
         elif key == "enableOutboundPublicIp":
             suggest = "enable_outbound_public_ip"
@@ -1657,10 +1659,14 @@ class InstanceNetworkConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allocated_ip_range_override: Optional[builtins.str] = None,
                  authorized_external_networks: Optional[Sequence['outputs.InstanceNetworkConfigAuthorizedExternalNetwork']] = None,
                  enable_outbound_public_ip: Optional[builtins.bool] = None,
                  enable_public_ip: Optional[builtins.bool] = None):
         """
+        :param builtins.str allocated_ip_range_override: Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+               If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+               The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         :param Sequence['InstanceNetworkConfigAuthorizedExternalNetworkArgs'] authorized_external_networks: A list of external networks authorized to access this instance. This
                field is only allowed to be set when `enable_public_ip` is set to
                true.
@@ -1670,12 +1676,24 @@ class InstanceNetworkConfig(dict):
                please also clear the list of the authorized external networks set on
                the same instance.
         """
+        if allocated_ip_range_override is not None:
+            pulumi.set(__self__, "allocated_ip_range_override", allocated_ip_range_override)
         if authorized_external_networks is not None:
             pulumi.set(__self__, "authorized_external_networks", authorized_external_networks)
         if enable_outbound_public_ip is not None:
             pulumi.set(__self__, "enable_outbound_public_ip", enable_outbound_public_ip)
         if enable_public_ip is not None:
             pulumi.set(__self__, "enable_public_ip", enable_public_ip)
+
+    @property
+    @pulumi.getter(name="allocatedIpRangeOverride")
+    def allocated_ip_range_override(self) -> Optional[builtins.str]:
+        """
+        Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+        If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+        The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
+        return pulumi.get(self, "allocated_ip_range_override")
 
     @property
     @pulumi.getter(name="authorizedExternalNetworks")
@@ -3141,10 +3159,14 @@ class GetInstanceMachineConfigResult(dict):
 @pulumi.output_type
 class GetInstanceNetworkConfigResult(dict):
     def __init__(__self__, *,
+                 allocated_ip_range_override: builtins.str,
                  authorized_external_networks: Sequence['outputs.GetInstanceNetworkConfigAuthorizedExternalNetworkResult'],
                  enable_outbound_public_ip: builtins.bool,
                  enable_public_ip: builtins.bool):
         """
+        :param builtins.str allocated_ip_range_override: Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+               If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+               The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         :param Sequence['GetInstanceNetworkConfigAuthorizedExternalNetworkArgs'] authorized_external_networks: A list of external networks authorized to access this instance. This
                field is only allowed to be set when 'enable_public_ip' is set to
                true.
@@ -3153,9 +3175,20 @@ class GetInstanceNetworkConfigResult(dict):
                please also clear the list of the authorized external networks set on
                the same instance.
         """
+        pulumi.set(__self__, "allocated_ip_range_override", allocated_ip_range_override)
         pulumi.set(__self__, "authorized_external_networks", authorized_external_networks)
         pulumi.set(__self__, "enable_outbound_public_ip", enable_outbound_public_ip)
         pulumi.set(__self__, "enable_public_ip", enable_public_ip)
+
+    @property
+    @pulumi.getter(name="allocatedIpRangeOverride")
+    def allocated_ip_range_override(self) -> builtins.str:
+        """
+        Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+        If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+        The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
+        return pulumi.get(self, "allocated_ip_range_override")
 
     @property
     @pulumi.getter(name="authorizedExternalNetworks")

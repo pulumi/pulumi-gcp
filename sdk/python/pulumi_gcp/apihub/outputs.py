@@ -21,6 +21,19 @@ __all__ = [
     'CurationEndpoint',
     'CurationEndpointApplicationIntegrationEndpointDetails',
     'CurationPluginInstanceAction',
+    'PluginInstanceAction',
+    'PluginInstanceActionCurationConfig',
+    'PluginInstanceActionCurationConfigCustomCuration',
+    'PluginInstanceActionHubInstanceAction',
+    'PluginInstanceActionHubInstanceActionLastExecution',
+    'PluginInstanceAuthConfig',
+    'PluginInstanceAuthConfigApiKeyConfig',
+    'PluginInstanceAuthConfigApiKeyConfigApiKey',
+    'PluginInstanceAuthConfigGoogleServiceAccountConfig',
+    'PluginInstanceAuthConfigOauth2ClientCredentialsConfig',
+    'PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret',
+    'PluginInstanceAuthConfigUserPasswordConfig',
+    'PluginInstanceAuthConfigUserPasswordConfigPassword',
 ]
 
 @pulumi.output_type
@@ -286,5 +299,799 @@ class CurationPluginInstanceAction(dict):
         `projects/{project}/locations/{locati on}/plugins/{plugin}/instances/{instance}`
         """
         return pulumi.get(self, "plugin_instance")
+
+
+@pulumi.output_type
+class PluginInstanceAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionId":
+            suggest = "action_id"
+        elif key == "curationConfig":
+            suggest = "curation_config"
+        elif key == "hubInstanceActions":
+            suggest = "hub_instance_actions"
+        elif key == "scheduleCronExpression":
+            suggest = "schedule_cron_expression"
+        elif key == "scheduleTimeZone":
+            suggest = "schedule_time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginInstanceAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginInstanceAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginInstanceAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action_id: builtins.str,
+                 curation_config: Optional['outputs.PluginInstanceActionCurationConfig'] = None,
+                 hub_instance_actions: Optional[Sequence['outputs.PluginInstanceActionHubInstanceAction']] = None,
+                 schedule_cron_expression: Optional[builtins.str] = None,
+                 schedule_time_zone: Optional[builtins.str] = None,
+                 state: Optional[builtins.str] = None):
+        """
+        :param builtins.str action_id: This should map to one of the action id specified
+               in actions_config in the plugin.
+        :param 'PluginInstanceActionCurationConfigArgs' curation_config: The curation information for this plugin instance.
+               Structure is documented below.
+        :param Sequence['PluginInstanceActionHubInstanceActionArgs'] hub_instance_actions: (Output)
+               The execution status for the plugin instance.
+               Structure is documented below.
+        :param builtins.str schedule_cron_expression: The schedule for this plugin instance action. This can only be set if the
+               plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
+        :param builtins.str schedule_time_zone: The time zone for the schedule cron expression. If not provided, UTC will
+               be used.
+               
+               
+               <a name="nested_actions_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
+        :param builtins.str state: (Output)
+               The current state of the plugin action in the plugin instance.
+               Possible values:
+               STATE_UNSPECIFIED
+               ENABLED
+               DISABLED
+               ENABLING
+               DISABLING
+               ERROR
+        """
+        pulumi.set(__self__, "action_id", action_id)
+        if curation_config is not None:
+            pulumi.set(__self__, "curation_config", curation_config)
+        if hub_instance_actions is not None:
+            pulumi.set(__self__, "hub_instance_actions", hub_instance_actions)
+        if schedule_cron_expression is not None:
+            pulumi.set(__self__, "schedule_cron_expression", schedule_cron_expression)
+        if schedule_time_zone is not None:
+            pulumi.set(__self__, "schedule_time_zone", schedule_time_zone)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="actionId")
+    def action_id(self) -> builtins.str:
+        """
+        This should map to one of the action id specified
+        in actions_config in the plugin.
+        """
+        return pulumi.get(self, "action_id")
+
+    @property
+    @pulumi.getter(name="curationConfig")
+    def curation_config(self) -> Optional['outputs.PluginInstanceActionCurationConfig']:
+        """
+        The curation information for this plugin instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "curation_config")
+
+    @property
+    @pulumi.getter(name="hubInstanceActions")
+    def hub_instance_actions(self) -> Optional[Sequence['outputs.PluginInstanceActionHubInstanceAction']]:
+        """
+        (Output)
+        The execution status for the plugin instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hub_instance_actions")
+
+    @property
+    @pulumi.getter(name="scheduleCronExpression")
+    def schedule_cron_expression(self) -> Optional[builtins.str]:
+        """
+        The schedule for this plugin instance action. This can only be set if the
+        plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
+        """
+        return pulumi.get(self, "schedule_cron_expression")
+
+    @property
+    @pulumi.getter(name="scheduleTimeZone")
+    def schedule_time_zone(self) -> Optional[builtins.str]:
+        """
+        The time zone for the schedule cron expression. If not provided, UTC will
+        be used.
+
+
+        <a name="nested_actions_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
+        """
+        return pulumi.get(self, "schedule_time_zone")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        The current state of the plugin action in the plugin instance.
+        Possible values:
+        STATE_UNSPECIFIED
+        ENABLED
+        DISABLED
+        ENABLING
+        DISABLING
+        ERROR
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class PluginInstanceActionCurationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "curationType":
+            suggest = "curation_type"
+        elif key == "customCuration":
+            suggest = "custom_curation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginInstanceActionCurationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginInstanceActionCurationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginInstanceActionCurationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 curation_type: Optional[builtins.str] = None,
+                 custom_curation: Optional['outputs.PluginInstanceActionCurationConfigCustomCuration'] = None):
+        """
+        :param builtins.str curation_type: Possible values:
+               CURATION_TYPE_UNSPECIFIED
+               DEFAULT_CURATION_FOR_API_METADATA
+               CUSTOM_CURATION_FOR_API_METADATA
+        :param 'PluginInstanceActionCurationConfigCustomCurationArgs' custom_curation: Custom curation information for this plugin instance.
+               Structure is documented below.
+        """
+        if curation_type is not None:
+            pulumi.set(__self__, "curation_type", curation_type)
+        if custom_curation is not None:
+            pulumi.set(__self__, "custom_curation", custom_curation)
+
+    @property
+    @pulumi.getter(name="curationType")
+    def curation_type(self) -> Optional[builtins.str]:
+        """
+        Possible values:
+        CURATION_TYPE_UNSPECIFIED
+        DEFAULT_CURATION_FOR_API_METADATA
+        CUSTOM_CURATION_FOR_API_METADATA
+        """
+        return pulumi.get(self, "curation_type")
+
+    @property
+    @pulumi.getter(name="customCuration")
+    def custom_curation(self) -> Optional['outputs.PluginInstanceActionCurationConfigCustomCuration']:
+        """
+        Custom curation information for this plugin instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_curation")
+
+
+@pulumi.output_type
+class PluginInstanceActionCurationConfigCustomCuration(dict):
+    def __init__(__self__, *,
+                 curation: builtins.str):
+        """
+        :param builtins.str curation: The unique name of the curation resource. This will be the name of the
+               curation resource in the format:
+               `projects/{project}/locations/{location}/curations/{curation}`
+               
+               - - -
+        """
+        pulumi.set(__self__, "curation", curation)
+
+    @property
+    @pulumi.getter
+    def curation(self) -> builtins.str:
+        """
+        The unique name of the curation resource. This will be the name of the
+        curation resource in the format:
+        `projects/{project}/locations/{location}/curations/{curation}`
+
+        - - -
+        """
+        return pulumi.get(self, "curation")
+
+
+@pulumi.output_type
+class PluginInstanceActionHubInstanceAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currentExecutionState":
+            suggest = "current_execution_state"
+        elif key == "lastExecutions":
+            suggest = "last_executions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginInstanceActionHubInstanceAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginInstanceActionHubInstanceAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginInstanceActionHubInstanceAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 current_execution_state: Optional[builtins.str] = None,
+                 last_executions: Optional[Sequence['outputs.PluginInstanceActionHubInstanceActionLastExecution']] = None):
+        """
+        :param builtins.str current_execution_state: The current state of the execution.
+               Possible values:
+               CURRENT_EXECUTION_STATE_UNSPECIFIED
+               RUNNING
+               NOT_RUNNING
+        :param Sequence['PluginInstanceActionHubInstanceActionLastExecutionArgs'] last_executions: The result of the last execution of the plugin instance.
+        """
+        if current_execution_state is not None:
+            pulumi.set(__self__, "current_execution_state", current_execution_state)
+        if last_executions is not None:
+            pulumi.set(__self__, "last_executions", last_executions)
+
+    @property
+    @pulumi.getter(name="currentExecutionState")
+    def current_execution_state(self) -> Optional[builtins.str]:
+        """
+        The current state of the execution.
+        Possible values:
+        CURRENT_EXECUTION_STATE_UNSPECIFIED
+        RUNNING
+        NOT_RUNNING
+        """
+        return pulumi.get(self, "current_execution_state")
+
+    @property
+    @pulumi.getter(name="lastExecutions")
+    def last_executions(self) -> Optional[Sequence['outputs.PluginInstanceActionHubInstanceActionLastExecution']]:
+        """
+        The result of the last execution of the plugin instance.
+        """
+        return pulumi.get(self, "last_executions")
+
+
+@pulumi.output_type
+class PluginInstanceActionHubInstanceActionLastExecution(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "errorMessage":
+            suggest = "error_message"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginInstanceActionHubInstanceActionLastExecution. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginInstanceActionHubInstanceActionLastExecution.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginInstanceActionHubInstanceActionLastExecution.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: Optional[builtins.str] = None,
+                 error_message: Optional[builtins.str] = None,
+                 result: Optional[builtins.str] = None,
+                 start_time: Optional[builtins.str] = None):
+        """
+        :param builtins.str end_time: The last execution end time of the plugin instance.
+        :param builtins.str error_message: Error message describing the failure, if any, during Create, Delete or
+               ApplyConfig operation corresponding to the plugin instance.This field will
+               only be populated if the plugin instance is in the ERROR or FAILED state.
+        :param builtins.str result: The result of the last execution of the plugin instance.
+               Possible values:
+               RESULT_UNSPECIFIED
+               SUCCEEDED
+               FAILED
+        :param builtins.str start_time: The last execution start time of the plugin instance.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
+        if result is not None:
+            pulumi.set(__self__, "result", result)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[builtins.str]:
+        """
+        The last execution end time of the plugin instance.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[builtins.str]:
+        """
+        Error message describing the failure, if any, during Create, Delete or
+        ApplyConfig operation corresponding to the plugin instance.This field will
+        only be populated if the plugin instance is in the ERROR or FAILED state.
+        """
+        return pulumi.get(self, "error_message")
+
+    @property
+    @pulumi.getter
+    def result(self) -> Optional[builtins.str]:
+        """
+        The result of the last execution of the plugin instance.
+        Possible values:
+        RESULT_UNSPECIFIED
+        SUCCEEDED
+        FAILED
+        """
+        return pulumi.get(self, "result")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[builtins.str]:
+        """
+        The last execution start time of the plugin instance.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class PluginInstanceAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authType":
+            suggest = "auth_type"
+        elif key == "apiKeyConfig":
+            suggest = "api_key_config"
+        elif key == "googleServiceAccountConfig":
+            suggest = "google_service_account_config"
+        elif key == "oauth2ClientCredentialsConfig":
+            suggest = "oauth2_client_credentials_config"
+        elif key == "userPasswordConfig":
+            suggest = "user_password_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginInstanceAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginInstanceAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginInstanceAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_type: builtins.str,
+                 api_key_config: Optional['outputs.PluginInstanceAuthConfigApiKeyConfig'] = None,
+                 google_service_account_config: Optional['outputs.PluginInstanceAuthConfigGoogleServiceAccountConfig'] = None,
+                 oauth2_client_credentials_config: Optional['outputs.PluginInstanceAuthConfigOauth2ClientCredentialsConfig'] = None,
+                 user_password_config: Optional['outputs.PluginInstanceAuthConfigUserPasswordConfig'] = None):
+        """
+        :param builtins.str auth_type: Possible values:
+               AUTH_TYPE_UNSPECIFIED
+               NO_AUTH
+               GOOGLE_SERVICE_ACCOUNT
+               USER_PASSWORD
+               API_KEY
+               OAUTH2_CLIENT_CREDENTIALS
+        :param 'PluginInstanceAuthConfigApiKeyConfigArgs' api_key_config: Config for authentication with API key.
+               Structure is documented below.
+        :param 'PluginInstanceAuthConfigGoogleServiceAccountConfigArgs' google_service_account_config: Config for Google service account authentication.
+               Structure is documented below.
+        :param 'PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs' oauth2_client_credentials_config: Parameters to support Oauth 2.0 client credentials grant authentication.
+               See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
+               Structure is documented below.
+        :param 'PluginInstanceAuthConfigUserPasswordConfigArgs' user_password_config: Parameters to support Username and Password Authentication.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        if api_key_config is not None:
+            pulumi.set(__self__, "api_key_config", api_key_config)
+        if google_service_account_config is not None:
+            pulumi.set(__self__, "google_service_account_config", google_service_account_config)
+        if oauth2_client_credentials_config is not None:
+            pulumi.set(__self__, "oauth2_client_credentials_config", oauth2_client_credentials_config)
+        if user_password_config is not None:
+            pulumi.set(__self__, "user_password_config", user_password_config)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> builtins.str:
+        """
+        Possible values:
+        AUTH_TYPE_UNSPECIFIED
+        NO_AUTH
+        GOOGLE_SERVICE_ACCOUNT
+        USER_PASSWORD
+        API_KEY
+        OAUTH2_CLIENT_CREDENTIALS
+        """
+        return pulumi.get(self, "auth_type")
+
+    @property
+    @pulumi.getter(name="apiKeyConfig")
+    def api_key_config(self) -> Optional['outputs.PluginInstanceAuthConfigApiKeyConfig']:
+        """
+        Config for authentication with API key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_key_config")
+
+    @property
+    @pulumi.getter(name="googleServiceAccountConfig")
+    def google_service_account_config(self) -> Optional['outputs.PluginInstanceAuthConfigGoogleServiceAccountConfig']:
+        """
+        Config for Google service account authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_service_account_config")
+
+    @property
+    @pulumi.getter(name="oauth2ClientCredentialsConfig")
+    def oauth2_client_credentials_config(self) -> Optional['outputs.PluginInstanceAuthConfigOauth2ClientCredentialsConfig']:
+        """
+        Parameters to support Oauth 2.0 client credentials grant authentication.
+        See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth2_client_credentials_config")
+
+    @property
+    @pulumi.getter(name="userPasswordConfig")
+    def user_password_config(self) -> Optional['outputs.PluginInstanceAuthConfigUserPasswordConfig']:
+        """
+        Parameters to support Username and Password Authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_password_config")
+
+
+@pulumi.output_type
+class PluginInstanceAuthConfigApiKeyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+        elif key == "httpElementLocation":
+            suggest = "http_element_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginInstanceAuthConfigApiKeyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginInstanceAuthConfigApiKeyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginInstanceAuthConfigApiKeyConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: 'outputs.PluginInstanceAuthConfigApiKeyConfigApiKey',
+                 http_element_location: builtins.str,
+                 name: builtins.str):
+        """
+        :param 'PluginInstanceAuthConfigApiKeyConfigApiKeyArgs' api_key: Secret provides a reference to entries in Secret Manager.
+               Structure is documented below.
+        :param builtins.str http_element_location: The location of the API key.
+               The default value is QUERY.
+               Possible values:
+               HTTP_ELEMENT_LOCATION_UNSPECIFIED
+               QUERY
+               HEADER
+               PATH
+               BODY
+               COOKIE
+        :param builtins.str name: The parameter name of the API key.
+               E.g. If the API request is "https://example.com/act?api_key=",
+               "api_key" would be the parameter name.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        pulumi.set(__self__, "http_element_location", http_element_location)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> 'outputs.PluginInstanceAuthConfigApiKeyConfigApiKey':
+        """
+        Secret provides a reference to entries in Secret Manager.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="httpElementLocation")
+    def http_element_location(self) -> builtins.str:
+        """
+        The location of the API key.
+        The default value is QUERY.
+        Possible values:
+        HTTP_ELEMENT_LOCATION_UNSPECIFIED
+        QUERY
+        HEADER
+        PATH
+        BODY
+        COOKIE
+        """
+        return pulumi.get(self, "http_element_location")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The parameter name of the API key.
+        E.g. If the API request is "https://example.com/act?api_key=",
+        "api_key" would be the parameter name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class PluginInstanceAuthConfigApiKeyConfigApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretVersion":
+            suggest = "secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginInstanceAuthConfigApiKeyConfigApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginInstanceAuthConfigApiKeyConfigApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginInstanceAuthConfigApiKeyConfigApiKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_version: builtins.str):
+        """
+        :param builtins.str secret_version: The resource name of the secret version in the format,
+               format as: `projects/*/secrets/*/versions/*`.
+               
+               <a name="nested_auth_config_oauth2_client_credentials_config"></a>The `oauth2_client_credentials_config` block supports:
+        """
+        pulumi.set(__self__, "secret_version", secret_version)
+
+    @property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> builtins.str:
+        """
+        The resource name of the secret version in the format,
+        format as: `projects/*/secrets/*/versions/*`.
+
+        <a name="nested_auth_config_oauth2_client_credentials_config"></a>The `oauth2_client_credentials_config` block supports:
+        """
+        return pulumi.get(self, "secret_version")
+
+
+@pulumi.output_type
+class PluginInstanceAuthConfigGoogleServiceAccountConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginInstanceAuthConfigGoogleServiceAccountConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginInstanceAuthConfigGoogleServiceAccountConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginInstanceAuthConfigGoogleServiceAccountConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account: builtins.str):
+        """
+        :param builtins.str service_account: The service account to be used for authenticating request.
+               The `iam.serviceAccounts.getAccessToken` permission should be granted on
+               this service account to the impersonator service account.
+        """
+        pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> builtins.str:
+        """
+        The service account to be used for authenticating request.
+        The `iam.serviceAccounts.getAccessToken` permission should be granted on
+        this service account to the impersonator service account.
+        """
+        return pulumi.get(self, "service_account")
+
+
+@pulumi.output_type
+class PluginInstanceAuthConfigOauth2ClientCredentialsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginInstanceAuthConfigOauth2ClientCredentialsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginInstanceAuthConfigOauth2ClientCredentialsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginInstanceAuthConfigOauth2ClientCredentialsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: builtins.str,
+                 client_secret: 'outputs.PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret'):
+        """
+        :param builtins.str client_id: The client identifier.
+        :param 'PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs' client_secret: Secret provides a reference to entries in Secret Manager.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> builtins.str:
+        """
+        The client identifier.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> 'outputs.PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret':
+        """
+        Secret provides a reference to entries in Secret Manager.
+        """
+        return pulumi.get(self, "client_secret")
+
+
+@pulumi.output_type
+class PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretVersion":
+            suggest = "secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_version: builtins.str):
+        """
+        :param builtins.str secret_version: The resource name of the secret version in the format,
+               format as: `projects/*/secrets/*/versions/*`.
+        """
+        pulumi.set(__self__, "secret_version", secret_version)
+
+    @property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> builtins.str:
+        """
+        The resource name of the secret version in the format,
+        format as: `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "secret_version")
+
+
+@pulumi.output_type
+class PluginInstanceAuthConfigUserPasswordConfig(dict):
+    def __init__(__self__, *,
+                 password: 'outputs.PluginInstanceAuthConfigUserPasswordConfigPassword',
+                 username: builtins.str):
+        """
+        :param 'PluginInstanceAuthConfigUserPasswordConfigPasswordArgs' password: Secret provides a reference to entries in Secret Manager.
+               Structure is documented below.
+        :param builtins.str username: Username.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def password(self) -> 'outputs.PluginInstanceAuthConfigUserPasswordConfigPassword':
+        """
+        Secret provides a reference to entries in Secret Manager.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def username(self) -> builtins.str:
+        """
+        Username.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class PluginInstanceAuthConfigUserPasswordConfigPassword(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretVersion":
+            suggest = "secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginInstanceAuthConfigUserPasswordConfigPassword. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginInstanceAuthConfigUserPasswordConfigPassword.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginInstanceAuthConfigUserPasswordConfigPassword.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_version: builtins.str):
+        """
+        :param builtins.str secret_version: The resource name of the secret version in the format,
+               format as: `projects/*/secrets/*/versions/*`.
+        """
+        pulumi.set(__self__, "secret_version", secret_version)
+
+    @property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> builtins.str:
+        """
+        The resource name of the secret version in the format,
+        format as: `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "secret_version")
 
 

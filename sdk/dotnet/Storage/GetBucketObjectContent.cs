@@ -219,6 +219,7 @@ namespace Pulumi.Gcp.Storage
         public readonly ImmutableArray<Outputs.GetBucketObjectContentRetentionResult> Retentions;
         public readonly string SelfLink;
         public readonly string Source;
+        public readonly string SourceMd5hash;
         public readonly string StorageClass;
         public readonly bool TemporaryHold;
 
@@ -276,6 +277,8 @@ namespace Pulumi.Gcp.Storage
 
             string source,
 
+            string sourceMd5hash,
+
             string storageClass,
 
             bool temporaryHold)
@@ -306,6 +309,7 @@ namespace Pulumi.Gcp.Storage
             Retentions = retentions;
             SelfLink = selfLink;
             Source = source;
+            SourceMd5hash = sourceMd5hash;
             StorageClass = storageClass;
             TemporaryHold = temporaryHold;
         }

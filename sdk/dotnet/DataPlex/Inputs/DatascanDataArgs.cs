@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.DataPlex.Inputs
 
         /// <summary>
         /// The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-        /// (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+        /// Cloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type "TABLE" (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }

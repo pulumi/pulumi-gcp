@@ -49,7 +49,7 @@ import (
 //				CustomerName:       pulumi.String("example_customer"),
 //				InterconnectType:   pulumi.String("DEDICATED"),
 //				LinkType:           pulumi.String("LINK_TYPE_ETHERNET_10G_LR"),
-//				Location:           pulumi.Sprintf("https://www.googleapis.com/compute/v1/projects/%v/global/interconnectLocations/iad-zone1-1", project.Name),
+//				Location:           pulumi.Sprintf("https://www.googleapis.com/compute/v1/%v/global/interconnectLocations/iad-zone1-1", project.Id),
 //				RequestedLinkCount: pulumi.Int(1),
 //			})
 //			if err != nil {
@@ -200,7 +200,7 @@ type Interconnect struct {
 	// specified, the default value is false, which allocates non-MACsec capable ports first if
 	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
 	// does not work with the API, and will be removed in an upcoming major version.
-	// Each value may be one of: `MACSEC`, `IF_MACSEC`.
+	// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
 	RequestedFeatures pulumi.StringArrayOutput `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntOutput `pulumi:"requestedLinkCount"`
@@ -215,6 +215,9 @@ type Interconnect struct {
 	//   outage was due to start.
 	// - COMPLETED: The outage associated with this notification is complete.
 	State pulumi.StringOutput `pulumi:"state"`
+	// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+	// deleted if this list is non-empty.
+	WireGroups pulumi.StringArrayOutput `pulumi:"wireGroups"`
 }
 
 // NewInterconnect registers a new resource with the given unique name, arguments, and options.
@@ -377,7 +380,7 @@ type interconnectState struct {
 	// specified, the default value is false, which allocates non-MACsec capable ports first if
 	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
 	// does not work with the API, and will be removed in an upcoming major version.
-	// Each value may be one of: `MACSEC`, `IF_MACSEC`.
+	// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
 	RequestedFeatures []string `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount *int `pulumi:"requestedLinkCount"`
@@ -392,6 +395,9 @@ type interconnectState struct {
 	//   outage was due to start.
 	// - COMPLETED: The outage associated with this notification is complete.
 	State *string `pulumi:"state"`
+	// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+	// deleted if this list is non-empty.
+	WireGroups []string `pulumi:"wireGroups"`
 }
 
 type InterconnectState struct {
@@ -508,7 +514,7 @@ type InterconnectState struct {
 	// specified, the default value is false, which allocates non-MACsec capable ports first if
 	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
 	// does not work with the API, and will be removed in an upcoming major version.
-	// Each value may be one of: `MACSEC`, `IF_MACSEC`.
+	// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
 	RequestedFeatures pulumi.StringArrayInput
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntPtrInput
@@ -523,6 +529,9 @@ type InterconnectState struct {
 	//   outage was due to start.
 	// - COMPLETED: The outage associated with this notification is complete.
 	State pulumi.StringPtrInput
+	// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+	// deleted if this list is non-empty.
+	WireGroups pulumi.StringArrayInput
 }
 
 func (InterconnectState) ElementType() reflect.Type {
@@ -594,7 +603,7 @@ type interconnectArgs struct {
 	// specified, the default value is false, which allocates non-MACsec capable ports first if
 	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
 	// does not work with the API, and will be removed in an upcoming major version.
-	// Each value may be one of: `MACSEC`, `IF_MACSEC`.
+	// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
 	RequestedFeatures []string `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount int `pulumi:"requestedLinkCount"`
@@ -666,7 +675,7 @@ type InterconnectArgs struct {
 	// specified, the default value is false, which allocates non-MACsec capable ports first if
 	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
 	// does not work with the API, and will be removed in an upcoming major version.
-	// Each value may be one of: `MACSEC`, `IF_MACSEC`.
+	// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
 	RequestedFeatures pulumi.StringArrayInput
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntInput
@@ -953,7 +962,7 @@ func (o InterconnectOutput) RemoteLocation() pulumi.StringPtrOutput {
 // specified, the default value is false, which allocates non-MACsec capable ports first if
 // available). Note that MACSEC is still technically allowed for compatibility reasons, but it
 // does not work with the API, and will be removed in an upcoming major version.
-// Each value may be one of: `MACSEC`, `IF_MACSEC`.
+// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
 func (o InterconnectOutput) RequestedFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringArrayOutput { return v.RequestedFeatures }).(pulumi.StringArrayOutput)
 }
@@ -978,6 +987,12 @@ func (o InterconnectOutput) SatisfiesPzs() pulumi.BoolOutput {
 //   - COMPLETED: The outage associated with this notification is complete.
 func (o InterconnectOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+// deleted if this list is non-empty.
+func (o InterconnectOutput) WireGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Interconnect) pulumi.StringArrayOutput { return v.WireGroups }).(pulumi.StringArrayOutput)
 }
 
 type InterconnectArrayOutput struct{ *pulumi.OutputState }

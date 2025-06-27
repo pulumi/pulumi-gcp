@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  *             .filesystem("testfs")
  *             .capacityGib("18000")
  *             .network(lustre_network.id())
+ *             .perUnitStorageThroughput("1000")
  *             .labels(Map.of("test", "value"))
  *             .build());
  * 
@@ -111,44 +112,44 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:lustre/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from 18000 to 954000, in increments of 9000.
+     * The storage capacity of the instance in gibibytes (GiB). Allowed values
+     * are from `18000` to `954000`, in increments of 9000.
      * 
      */
     @Export(name="capacityGib", refs={String.class}, tree="[0]")
     private Output<String> capacityGib;
 
     /**
-     * @return Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from 18000 to 954000, in increments of 9000.
+     * @return The storage capacity of the instance in gibibytes (GiB). Allowed values
+     * are from `18000` to `954000`, in increments of 9000.
      * 
      */
     public Output<String> capacityGib() {
         return this.capacityGib;
     }
     /**
-     * Output only. Timestamp when the instance was created.
+     * Timestamp when the instance was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Output only. Timestamp when the instance was created.
+     * @return Timestamp when the instance was created.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Optional. A user-readable description of the instance.
+     * A user-readable description of the instance.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Optional. A user-readable description of the instance.
+     * @return A user-readable description of the instance.
      * 
      */
     public Output<Optional<String>> description() {
@@ -169,25 +170,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Required. Immutable. The filesystem name for this instance. This name is used by client-side
-     * tools, including when mounting the instance. Must be 8 characters or less
-     * and may only contain letters and numbers.
+     * The filesystem name for this instance. This name is used by client-side
+     * tools, including when mounting the instance. Must be eight characters or
+     * less and can only contain letters and numbers.
      * 
      */
     @Export(name="filesystem", refs={String.class}, tree="[0]")
     private Output<String> filesystem;
 
     /**
-     * @return Required. Immutable. The filesystem name for this instance. This name is used by client-side
-     * tools, including when mounting the instance. Must be 8 characters or less
-     * and may only contain letters and numbers.
+     * @return The filesystem name for this instance. This name is used by client-side
+     * tools, including when mounting the instance. Must be eight characters or
+     * less and can only contain letters and numbers.
      * 
      */
     public Output<String> filesystem() {
         return this.filesystem;
     }
     /**
-     * Optional. Indicates whether you want to enable support for GKE clients. By default,
+     * Indicates whether you want to enable support for GKE clients. By default,
      * GKE clients are not supported.
      * 
      */
@@ -195,7 +196,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> gkeSupportEnabled;
 
     /**
-     * @return Optional. Indicates whether you want to enable support for GKE clients. By default,
+     * @return Indicates whether you want to enable support for GKE clients. By default,
      * GKE clients are not supported.
      * 
      */
@@ -203,7 +204,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gkeSupportEnabled);
     }
     /**
-     * Required. The name of the Managed Lustre instance.
+     * The name of the Managed Lustre instance.
      * * Must contain only lowercase letters, numbers, and hyphens.
      * * Must start with a letter.
      * * Must be between 1-63 characters.
@@ -216,7 +217,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> instanceId;
 
     /**
-     * @return Required. The name of the Managed Lustre instance.
+     * @return The name of the Managed Lustre instance.
      * * Must contain only lowercase letters, numbers, and hyphens.
      * * Must start with a letter.
      * * Must be between 1-63 characters.
@@ -229,7 +230,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -238,7 +239,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs.
+     * @return Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -261,14 +262,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Output only. Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
+     * Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
      * 
      */
     @Export(name="mountPoint", refs={String.class}, tree="[0]")
     private Output<String> mountPoint;
 
     /**
-     * @return Output only. Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
+     * @return Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.
      * 
      */
     public Output<String> mountPoint() {
@@ -289,7 +290,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Required. Immutable. The full name of the VPC network to which the instance is connected.
+     * The full name of the VPC network to which the instance is connected.
      * Must be in the format
      * `projects/{project_id}/global/networks/{network_name}`.
      * 
@@ -298,13 +299,29 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> network;
 
     /**
-     * @return Required. Immutable. The full name of the VPC network to which the instance is connected.
+     * @return The full name of the VPC network to which the instance is connected.
      * Must be in the format
      * `projects/{project_id}/global/networks/{network_name}`.
      * 
      */
     public Output<String> network() {
         return this.network;
+    }
+    /**
+     * The throughput of the instance in MB/s/TiB.
+     * Valid values are 125, 250, 500, 1000.
+     * 
+     */
+    @Export(name="perUnitStorageThroughput", refs={String.class}, tree="[0]")
+    private Output<String> perUnitStorageThroughput;
+
+    /**
+     * @return The throughput of the instance in MB/s/TiB.
+     * Valid values are 125, 250, 500, 1000.
+     * 
+     */
+    public Output<String> perUnitStorageThroughput() {
+        return this.perUnitStorageThroughput;
     }
     /**
      * The ID of the project in which the resource belongs.
@@ -339,7 +356,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Output only. The state of the instance.
+     * The state of the instance.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -354,7 +371,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> state;
 
     /**
-     * @return Output only. The state of the instance.
+     * @return The state of the instance.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -369,14 +386,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Output only. Timestamp when the instance was last updated.
+     * Timestamp when the instance was last updated.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Output only. Timestamp when the instance was last updated.
+     * @return Timestamp when the instance was last updated.
      * 
      */
     public Output<String> updateTime() {

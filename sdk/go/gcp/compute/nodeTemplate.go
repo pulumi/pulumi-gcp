@@ -218,6 +218,8 @@ type NodeTemplate struct {
 	// Structure is documented below.
 	Disks NodeTemplateDiskArrayOutput `pulumi:"disks"`
 	// Name of the resource.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Labels to use for node affinity, which will be used in
 	// instance scheduling.
@@ -292,6 +294,8 @@ type nodeTemplateState struct {
 	// Structure is documented below.
 	Disks []NodeTemplateDisk `pulumi:"disks"`
 	// Name of the resource.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Labels to use for node affinity, which will be used in
 	// instance scheduling.
@@ -337,6 +341,8 @@ type NodeTemplateState struct {
 	// Structure is documented below.
 	Disks NodeTemplateDiskArrayInput
 	// Name of the resource.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Labels to use for node affinity, which will be used in
 	// instance scheduling.
@@ -384,6 +390,8 @@ type nodeTemplateArgs struct {
 	// Structure is documented below.
 	Disks []NodeTemplateDisk `pulumi:"disks"`
 	// Name of the resource.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Labels to use for node affinity, which will be used in
 	// instance scheduling.
@@ -426,6 +434,8 @@ type NodeTemplateArgs struct {
 	// Structure is documented below.
 	Disks NodeTemplateDiskArrayInput
 	// Name of the resource.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Labels to use for node affinity, which will be used in
 	// instance scheduling.
@@ -570,6 +580,8 @@ func (o NodeTemplateOutput) Disks() NodeTemplateDiskArrayOutput {
 }
 
 // Name of the resource.
+//
+// ***
 func (o NodeTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

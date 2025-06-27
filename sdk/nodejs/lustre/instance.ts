@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  *     filesystem: "testfs",
  *     capacityGib: "18000",
  *     network: lustre_network.then(lustre_network => lustre_network.id),
+ *     perUnitStorageThroughput: "1000",
  *     labels: {
  *         test: "value",
  *     },
@@ -98,16 +99,16 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from 18000 to 954000, in increments of 9000.
+     * The storage capacity of the instance in gibibytes (GiB). Allowed values
+     * are from `18000` to `954000`, in increments of 9000.
      */
     public readonly capacityGib!: pulumi.Output<string>;
     /**
-     * Output only. Timestamp when the instance was created.
+     * Timestamp when the instance was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Optional. A user-readable description of the instance.
+     * A user-readable description of the instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -115,18 +116,18 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Required. Immutable. The filesystem name for this instance. This name is used by client-side
-     * tools, including when mounting the instance. Must be 8 characters or less
-     * and may only contain letters and numbers.
+     * The filesystem name for this instance. This name is used by client-side
+     * tools, including when mounting the instance. Must be eight characters or
+     * less and can only contain letters and numbers.
      */
     public readonly filesystem!: pulumi.Output<string>;
     /**
-     * Optional. Indicates whether you want to enable support for GKE clients. By default,
+     * Indicates whether you want to enable support for GKE clients. By default,
      * GKE clients are not supported.
      */
     public readonly gkeSupportEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Required. The name of the Managed Lustre instance.
+     * The name of the Managed Lustre instance.
      * * Must contain only lowercase letters, numbers, and hyphens.
      * * Must start with a letter.
      * * Must be between 1-63 characters.
@@ -137,7 +138,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -147,7 +148,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+     * Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
      */
     public /*out*/ readonly mountPoint!: pulumi.Output<string>;
     /**
@@ -155,11 +156,16 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The full name of the VPC network to which the instance is connected.
+     * The full name of the VPC network to which the instance is connected.
      * Must be in the format
      * `projects/{project_id}/global/networks/{network_name}`.
      */
     public readonly network!: pulumi.Output<string>;
+    /**
+     * The throughput of the instance in MB/s/TiB.
+     * Valid values are 125, 250, 500, 1000.
+     */
+    public readonly perUnitStorageThroughput!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -171,7 +177,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Output only. The state of the instance.
+     * The state of the instance.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -183,7 +189,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Output only. Timestamp when the instance was last updated.
+     * Timestamp when the instance was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -212,6 +218,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["mountPoint"] = state ? state.mountPoint : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["perUnitStorageThroughput"] = state ? state.perUnitStorageThroughput : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
@@ -233,6 +240,9 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
+            if ((!args || args.perUnitStorageThroughput === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'perUnitStorageThroughput'");
+            }
             resourceInputs["capacityGib"] = args ? args.capacityGib : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["filesystem"] = args ? args.filesystem : undefined;
@@ -241,6 +251,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["perUnitStorageThroughput"] = args ? args.perUnitStorageThroughput : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -262,16 +273,16 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from 18000 to 954000, in increments of 9000.
+     * The storage capacity of the instance in gibibytes (GiB). Allowed values
+     * are from `18000` to `954000`, in increments of 9000.
      */
     capacityGib?: pulumi.Input<string>;
     /**
-     * Output only. Timestamp when the instance was created.
+     * Timestamp when the instance was created.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Optional. A user-readable description of the instance.
+     * A user-readable description of the instance.
      */
     description?: pulumi.Input<string>;
     /**
@@ -279,18 +290,18 @@ export interface InstanceState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Immutable. The filesystem name for this instance. This name is used by client-side
-     * tools, including when mounting the instance. Must be 8 characters or less
-     * and may only contain letters and numbers.
+     * The filesystem name for this instance. This name is used by client-side
+     * tools, including when mounting the instance. Must be eight characters or
+     * less and can only contain letters and numbers.
      */
     filesystem?: pulumi.Input<string>;
     /**
-     * Optional. Indicates whether you want to enable support for GKE clients. By default,
+     * Indicates whether you want to enable support for GKE clients. By default,
      * GKE clients are not supported.
      */
     gkeSupportEnabled?: pulumi.Input<boolean>;
     /**
-     * Required. The name of the Managed Lustre instance.
+     * The name of the Managed Lustre instance.
      * * Must contain only lowercase letters, numbers, and hyphens.
      * * Must start with a letter.
      * * Must be between 1-63 characters.
@@ -301,7 +312,7 @@ export interface InstanceState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -311,7 +322,7 @@ export interface InstanceState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+     * Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
      */
     mountPoint?: pulumi.Input<string>;
     /**
@@ -319,11 +330,16 @@ export interface InstanceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Required. Immutable. The full name of the VPC network to which the instance is connected.
+     * The full name of the VPC network to which the instance is connected.
      * Must be in the format
      * `projects/{project_id}/global/networks/{network_name}`.
      */
     network?: pulumi.Input<string>;
+    /**
+     * The throughput of the instance in MB/s/TiB.
+     * Valid values are 125, 250, 500, 1000.
+     */
+    perUnitStorageThroughput?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -335,7 +351,7 @@ export interface InstanceState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Output only. The state of the instance.
+     * The state of the instance.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
@@ -347,7 +363,7 @@ export interface InstanceState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Output only. Timestamp when the instance was last updated.
+     * Timestamp when the instance was last updated.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -357,27 +373,27 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from 18000 to 954000, in increments of 9000.
+     * The storage capacity of the instance in gibibytes (GiB). Allowed values
+     * are from `18000` to `954000`, in increments of 9000.
      */
     capacityGib: pulumi.Input<string>;
     /**
-     * Optional. A user-readable description of the instance.
+     * A user-readable description of the instance.
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. Immutable. The filesystem name for this instance. This name is used by client-side
-     * tools, including when mounting the instance. Must be 8 characters or less
-     * and may only contain letters and numbers.
+     * The filesystem name for this instance. This name is used by client-side
+     * tools, including when mounting the instance. Must be eight characters or
+     * less and can only contain letters and numbers.
      */
     filesystem: pulumi.Input<string>;
     /**
-     * Optional. Indicates whether you want to enable support for GKE clients. By default,
+     * Indicates whether you want to enable support for GKE clients. By default,
      * GKE clients are not supported.
      */
     gkeSupportEnabled?: pulumi.Input<boolean>;
     /**
-     * Required. The name of the Managed Lustre instance.
+     * The name of the Managed Lustre instance.
      * * Must contain only lowercase letters, numbers, and hyphens.
      * * Must start with a letter.
      * * Must be between 1-63 characters.
@@ -388,7 +404,7 @@ export interface InstanceArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs.
+     * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -398,11 +414,16 @@ export interface InstanceArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Required. Immutable. The full name of the VPC network to which the instance is connected.
+     * The full name of the VPC network to which the instance is connected.
      * Must be in the format
      * `projects/{project_id}/global/networks/{network_name}`.
      */
     network: pulumi.Input<string>;
+    /**
+     * The throughput of the instance in MB/s/TiB.
+     * Valid values are 125, 250, 500, 1000.
+     */
+    perUnitStorageThroughput: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

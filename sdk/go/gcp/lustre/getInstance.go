@@ -41,18 +41,19 @@ type LookupInstanceResult struct {
 	Filesystem        string            `pulumi:"filesystem"`
 	GkeSupportEnabled bool              `pulumi:"gkeSupportEnabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string            `pulumi:"id"`
-	InstanceId   string            `pulumi:"instanceId"`
-	Labels       map[string]string `pulumi:"labels"`
-	Location     string            `pulumi:"location"`
-	MountPoint   string            `pulumi:"mountPoint"`
-	Name         string            `pulumi:"name"`
-	Network      string            `pulumi:"network"`
-	Project      *string           `pulumi:"project"`
-	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	State        string            `pulumi:"state"`
-	UpdateTime   string            `pulumi:"updateTime"`
-	Zone         *string           `pulumi:"zone"`
+	Id                       string            `pulumi:"id"`
+	InstanceId               string            `pulumi:"instanceId"`
+	Labels                   map[string]string `pulumi:"labels"`
+	Location                 string            `pulumi:"location"`
+	MountPoint               string            `pulumi:"mountPoint"`
+	Name                     string            `pulumi:"name"`
+	Network                  string            `pulumi:"network"`
+	PerUnitStorageThroughput string            `pulumi:"perUnitStorageThroughput"`
+	Project                  *string           `pulumi:"project"`
+	PulumiLabels             map[string]string `pulumi:"pulumiLabels"`
+	State                    string            `pulumi:"state"`
+	UpdateTime               string            `pulumi:"updateTime"`
+	Zone                     *string           `pulumi:"zone"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -144,6 +145,10 @@ func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) PerUnitStorageThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.PerUnitStorageThroughput }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {

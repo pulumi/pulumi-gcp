@@ -25,18 +25,19 @@ class InstanceArgs:
                  instance_id: pulumi.Input[builtins.str],
                  location: pulumi.Input[builtins.str],
                  network: pulumi.Input[builtins.str],
+                 per_unit_storage_throughput: pulumi.Input[builtins.str],
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  gke_support_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[builtins.str] capacity_gib: Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-               are from 18000 to 954000, in increments of 9000.
-        :param pulumi.Input[builtins.str] filesystem: Required. Immutable. The filesystem name for this instance. This name is used by client-side
-               tools, including when mounting the instance. Must be 8 characters or less
-               and may only contain letters and numbers.
-        :param pulumi.Input[builtins.str] instance_id: Required. The name of the Managed Lustre instance.
+        :param pulumi.Input[builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
+               are from `18000` to `954000`, in increments of 9000.
+        :param pulumi.Input[builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
+               tools, including when mounting the instance. Must be eight characters or
+               less and can only contain letters and numbers.
+        :param pulumi.Input[builtins.str] instance_id: The name of the Managed Lustre instance.
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
                * Must be between 1-63 characters.
@@ -45,13 +46,15 @@ class InstanceArgs:
                
                - - -
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[builtins.str] network: Required. Immutable. The full name of the VPC network to which the instance is connected.
+        :param pulumi.Input[builtins.str] network: The full name of the VPC network to which the instance is connected.
                Must be in the format
                `projects/{project_id}/global/networks/{network_name}`.
-        :param pulumi.Input[builtins.str] description: Optional. A user-readable description of the instance.
-        :param pulumi.Input[builtins.bool] gke_support_enabled: Optional. Indicates whether you want to enable support for GKE clients. By default,
+        :param pulumi.Input[builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
+               Valid values are 125, 250, 500, 1000.
+        :param pulumi.Input[builtins.str] description: A user-readable description of the instance.
+        :param pulumi.Input[builtins.bool] gke_support_enabled: Indicates whether you want to enable support for GKE clients. By default,
                GKE clients are not supported.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -62,6 +65,7 @@ class InstanceArgs:
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "per_unit_storage_throughput", per_unit_storage_throughput)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if gke_support_enabled is not None:
@@ -75,8 +79,8 @@ class InstanceArgs:
     @pulumi.getter(name="capacityGib")
     def capacity_gib(self) -> pulumi.Input[builtins.str]:
         """
-        Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-        are from 18000 to 954000, in increments of 9000.
+        The storage capacity of the instance in gibibytes (GiB). Allowed values
+        are from `18000` to `954000`, in increments of 9000.
         """
         return pulumi.get(self, "capacity_gib")
 
@@ -88,9 +92,9 @@ class InstanceArgs:
     @pulumi.getter
     def filesystem(self) -> pulumi.Input[builtins.str]:
         """
-        Required. Immutable. The filesystem name for this instance. This name is used by client-side
-        tools, including when mounting the instance. Must be 8 characters or less
-        and may only contain letters and numbers.
+        The filesystem name for this instance. This name is used by client-side
+        tools, including when mounting the instance. Must be eight characters or
+        less and can only contain letters and numbers.
         """
         return pulumi.get(self, "filesystem")
 
@@ -102,7 +106,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[builtins.str]:
         """
-        Required. The name of the Managed Lustre instance.
+        The name of the Managed Lustre instance.
         * Must contain only lowercase letters, numbers, and hyphens.
         * Must start with a letter.
         * Must be between 1-63 characters.
@@ -133,7 +137,7 @@ class InstanceArgs:
     @pulumi.getter
     def network(self) -> pulumi.Input[builtins.str]:
         """
-        Required. Immutable. The full name of the VPC network to which the instance is connected.
+        The full name of the VPC network to which the instance is connected.
         Must be in the format
         `projects/{project_id}/global/networks/{network_name}`.
         """
@@ -144,10 +148,23 @@ class InstanceArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="perUnitStorageThroughput")
+    def per_unit_storage_throughput(self) -> pulumi.Input[builtins.str]:
+        """
+        The throughput of the instance in MB/s/TiB.
+        Valid values are 125, 250, 500, 1000.
+        """
+        return pulumi.get(self, "per_unit_storage_throughput")
+
+    @per_unit_storage_throughput.setter
+    def per_unit_storage_throughput(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "per_unit_storage_throughput", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional. A user-readable description of the instance.
+        A user-readable description of the instance.
         """
         return pulumi.get(self, "description")
 
@@ -159,7 +176,7 @@ class InstanceArgs:
     @pulumi.getter(name="gkeSupportEnabled")
     def gke_support_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Optional. Indicates whether you want to enable support for GKE clients. By default,
+        Indicates whether you want to enable support for GKE clients. By default,
         GKE clients are not supported.
         """
         return pulumi.get(self, "gke_support_enabled")
@@ -172,7 +189,7 @@ class InstanceArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. Labels as key value pairs.
+        Labels as key value pairs.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -211,23 +228,24 @@ class _InstanceState:
                  mount_point: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
+                 per_unit_storage_throughput: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[builtins.str] capacity_gib: Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-               are from 18000 to 954000, in increments of 9000.
-        :param pulumi.Input[builtins.str] create_time: Output only. Timestamp when the instance was created.
-        :param pulumi.Input[builtins.str] description: Optional. A user-readable description of the instance.
+        :param pulumi.Input[builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
+               are from `18000` to `954000`, in increments of 9000.
+        :param pulumi.Input[builtins.str] create_time: Timestamp when the instance was created.
+        :param pulumi.Input[builtins.str] description: A user-readable description of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[builtins.str] filesystem: Required. Immutable. The filesystem name for this instance. This name is used by client-side
-               tools, including when mounting the instance. Must be 8 characters or less
-               and may only contain letters and numbers.
-        :param pulumi.Input[builtins.bool] gke_support_enabled: Optional. Indicates whether you want to enable support for GKE clients. By default,
+        :param pulumi.Input[builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
+               tools, including when mounting the instance. Must be eight characters or
+               less and can only contain letters and numbers.
+        :param pulumi.Input[builtins.bool] gke_support_enabled: Indicates whether you want to enable support for GKE clients. By default,
                GKE clients are not supported.
-        :param pulumi.Input[builtins.str] instance_id: Required. The name of the Managed Lustre instance.
+        :param pulumi.Input[builtins.str] instance_id: The name of the Managed Lustre instance.
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
                * Must be between 1-63 characters.
@@ -235,20 +253,22 @@ class _InstanceState:
                
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[builtins.str] mount_point: Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+        :param pulumi.Input[builtins.str] mount_point: Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         :param pulumi.Input[builtins.str] name: Identifier. The name of the instance.
-        :param pulumi.Input[builtins.str] network: Required. Immutable. The full name of the VPC network to which the instance is connected.
+        :param pulumi.Input[builtins.str] network: The full name of the VPC network to which the instance is connected.
                Must be in the format
                `projects/{project_id}/global/networks/{network_name}`.
+        :param pulumi.Input[builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
+               Valid values are 125, 250, 500, 1000.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[builtins.str] state: Output only. The state of the instance.
+        :param pulumi.Input[builtins.str] state: The state of the instance.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
@@ -257,7 +277,7 @@ class _InstanceState:
                UPGRADING
                REPAIRING
                STOPPED
-        :param pulumi.Input[builtins.str] update_time: Output only. Timestamp when the instance was last updated.
+        :param pulumi.Input[builtins.str] update_time: Timestamp when the instance was last updated.
         """
         if capacity_gib is not None:
             pulumi.set(__self__, "capacity_gib", capacity_gib)
@@ -283,6 +303,8 @@ class _InstanceState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if per_unit_storage_throughput is not None:
+            pulumi.set(__self__, "per_unit_storage_throughput", per_unit_storage_throughput)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -296,8 +318,8 @@ class _InstanceState:
     @pulumi.getter(name="capacityGib")
     def capacity_gib(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-        are from 18000 to 954000, in increments of 9000.
+        The storage capacity of the instance in gibibytes (GiB). Allowed values
+        are from `18000` to `954000`, in increments of 9000.
         """
         return pulumi.get(self, "capacity_gib")
 
@@ -309,7 +331,7 @@ class _InstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Output only. Timestamp when the instance was created.
+        Timestamp when the instance was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -321,7 +343,7 @@ class _InstanceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional. A user-readable description of the instance.
+        A user-readable description of the instance.
         """
         return pulumi.get(self, "description")
 
@@ -345,9 +367,9 @@ class _InstanceState:
     @pulumi.getter
     def filesystem(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Required. Immutable. The filesystem name for this instance. This name is used by client-side
-        tools, including when mounting the instance. Must be 8 characters or less
-        and may only contain letters and numbers.
+        The filesystem name for this instance. This name is used by client-side
+        tools, including when mounting the instance. Must be eight characters or
+        less and can only contain letters and numbers.
         """
         return pulumi.get(self, "filesystem")
 
@@ -359,7 +381,7 @@ class _InstanceState:
     @pulumi.getter(name="gkeSupportEnabled")
     def gke_support_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Optional. Indicates whether you want to enable support for GKE clients. By default,
+        Indicates whether you want to enable support for GKE clients. By default,
         GKE clients are not supported.
         """
         return pulumi.get(self, "gke_support_enabled")
@@ -372,7 +394,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Required. The name of the Managed Lustre instance.
+        The name of the Managed Lustre instance.
         * Must contain only lowercase letters, numbers, and hyphens.
         * Must start with a letter.
         * Must be between 1-63 characters.
@@ -391,7 +413,7 @@ class _InstanceState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. Labels as key value pairs.
+        Labels as key value pairs.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -417,7 +439,7 @@ class _InstanceState:
     @pulumi.getter(name="mountPoint")
     def mount_point(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+        Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         """
         return pulumi.get(self, "mount_point")
 
@@ -441,7 +463,7 @@ class _InstanceState:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Required. Immutable. The full name of the VPC network to which the instance is connected.
+        The full name of the VPC network to which the instance is connected.
         Must be in the format
         `projects/{project_id}/global/networks/{network_name}`.
         """
@@ -450,6 +472,19 @@ class _InstanceState:
     @network.setter
     def network(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="perUnitStorageThroughput")
+    def per_unit_storage_throughput(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The throughput of the instance in MB/s/TiB.
+        Valid values are 125, 250, 500, 1000.
+        """
+        return pulumi.get(self, "per_unit_storage_throughput")
+
+    @per_unit_storage_throughput.setter
+    def per_unit_storage_throughput(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "per_unit_storage_throughput", value)
 
     @property
     @pulumi.getter
@@ -481,7 +516,7 @@ class _InstanceState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Output only. The state of the instance.
+        The state of the instance.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
@@ -501,7 +536,7 @@ class _InstanceState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Output only. Timestamp when the instance was last updated.
+        Timestamp when the instance was last updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -524,6 +559,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
+                 per_unit_storage_throughput: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
@@ -559,6 +595,7 @@ class Instance(pulumi.CustomResource):
             filesystem="testfs",
             capacity_gib="18000",
             network=lustre_network.id,
+            per_unit_storage_throughput="1000",
             labels={
                 "test": "value",
             })
@@ -590,15 +627,15 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] capacity_gib: Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-               are from 18000 to 954000, in increments of 9000.
-        :param pulumi.Input[builtins.str] description: Optional. A user-readable description of the instance.
-        :param pulumi.Input[builtins.str] filesystem: Required. Immutable. The filesystem name for this instance. This name is used by client-side
-               tools, including when mounting the instance. Must be 8 characters or less
-               and may only contain letters and numbers.
-        :param pulumi.Input[builtins.bool] gke_support_enabled: Optional. Indicates whether you want to enable support for GKE clients. By default,
+        :param pulumi.Input[builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
+               are from `18000` to `954000`, in increments of 9000.
+        :param pulumi.Input[builtins.str] description: A user-readable description of the instance.
+        :param pulumi.Input[builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
+               tools, including when mounting the instance. Must be eight characters or
+               less and can only contain letters and numbers.
+        :param pulumi.Input[builtins.bool] gke_support_enabled: Indicates whether you want to enable support for GKE clients. By default,
                GKE clients are not supported.
-        :param pulumi.Input[builtins.str] instance_id: Required. The name of the Managed Lustre instance.
+        :param pulumi.Input[builtins.str] instance_id: The name of the Managed Lustre instance.
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
                * Must be between 1-63 characters.
@@ -606,13 +643,15 @@ class Instance(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[builtins.str] network: Required. Immutable. The full name of the VPC network to which the instance is connected.
+        :param pulumi.Input[builtins.str] network: The full name of the VPC network to which the instance is connected.
                Must be in the format
                `projects/{project_id}/global/networks/{network_name}`.
+        :param pulumi.Input[builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
+               Valid values are 125, 250, 500, 1000.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -655,6 +694,7 @@ class Instance(pulumi.CustomResource):
             filesystem="testfs",
             capacity_gib="18000",
             network=lustre_network.id,
+            per_unit_storage_throughput="1000",
             labels={
                 "test": "value",
             })
@@ -707,6 +747,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
+                 per_unit_storage_throughput: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -735,6 +776,9 @@ class Instance(pulumi.CustomResource):
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
+            if per_unit_storage_throughput is None and not opts.urn:
+                raise TypeError("Missing required property 'per_unit_storage_throughput'")
+            __props__.__dict__["per_unit_storage_throughput"] = per_unit_storage_throughput
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
@@ -767,6 +811,7 @@ class Instance(pulumi.CustomResource):
             mount_point: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             network: Optional[pulumi.Input[builtins.str]] = None,
+            per_unit_storage_throughput: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None,
@@ -778,17 +823,17 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] capacity_gib: Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-               are from 18000 to 954000, in increments of 9000.
-        :param pulumi.Input[builtins.str] create_time: Output only. Timestamp when the instance was created.
-        :param pulumi.Input[builtins.str] description: Optional. A user-readable description of the instance.
+        :param pulumi.Input[builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
+               are from `18000` to `954000`, in increments of 9000.
+        :param pulumi.Input[builtins.str] create_time: Timestamp when the instance was created.
+        :param pulumi.Input[builtins.str] description: A user-readable description of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[builtins.str] filesystem: Required. Immutable. The filesystem name for this instance. This name is used by client-side
-               tools, including when mounting the instance. Must be 8 characters or less
-               and may only contain letters and numbers.
-        :param pulumi.Input[builtins.bool] gke_support_enabled: Optional. Indicates whether you want to enable support for GKE clients. By default,
+        :param pulumi.Input[builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
+               tools, including when mounting the instance. Must be eight characters or
+               less and can only contain letters and numbers.
+        :param pulumi.Input[builtins.bool] gke_support_enabled: Indicates whether you want to enable support for GKE clients. By default,
                GKE clients are not supported.
-        :param pulumi.Input[builtins.str] instance_id: Required. The name of the Managed Lustre instance.
+        :param pulumi.Input[builtins.str] instance_id: The name of the Managed Lustre instance.
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
                * Must be between 1-63 characters.
@@ -796,20 +841,22 @@ class Instance(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[builtins.str] mount_point: Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+        :param pulumi.Input[builtins.str] mount_point: Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         :param pulumi.Input[builtins.str] name: Identifier. The name of the instance.
-        :param pulumi.Input[builtins.str] network: Required. Immutable. The full name of the VPC network to which the instance is connected.
+        :param pulumi.Input[builtins.str] network: The full name of the VPC network to which the instance is connected.
                Must be in the format
                `projects/{project_id}/global/networks/{network_name}`.
+        :param pulumi.Input[builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
+               Valid values are 125, 250, 500, 1000.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[builtins.str] state: Output only. The state of the instance.
+        :param pulumi.Input[builtins.str] state: The state of the instance.
                Possible values:
                STATE_UNSPECIFIED
                ACTIVE
@@ -818,7 +865,7 @@ class Instance(pulumi.CustomResource):
                UPGRADING
                REPAIRING
                STOPPED
-        :param pulumi.Input[builtins.str] update_time: Output only. Timestamp when the instance was last updated.
+        :param pulumi.Input[builtins.str] update_time: Timestamp when the instance was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -836,6 +883,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["mount_point"] = mount_point
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["per_unit_storage_throughput"] = per_unit_storage_throughput
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
@@ -846,8 +894,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="capacityGib")
     def capacity_gib(self) -> pulumi.Output[builtins.str]:
         """
-        Required. The storage capacity of the instance in gibibytes (GiB). Allowed values
-        are from 18000 to 954000, in increments of 9000.
+        The storage capacity of the instance in gibibytes (GiB). Allowed values
+        are from `18000` to `954000`, in increments of 9000.
         """
         return pulumi.get(self, "capacity_gib")
 
@@ -855,7 +903,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[builtins.str]:
         """
-        Output only. Timestamp when the instance was created.
+        Timestamp when the instance was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -863,7 +911,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Optional. A user-readable description of the instance.
+        A user-readable description of the instance.
         """
         return pulumi.get(self, "description")
 
@@ -879,9 +927,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def filesystem(self) -> pulumi.Output[builtins.str]:
         """
-        Required. Immutable. The filesystem name for this instance. This name is used by client-side
-        tools, including when mounting the instance. Must be 8 characters or less
-        and may only contain letters and numbers.
+        The filesystem name for this instance. This name is used by client-side
+        tools, including when mounting the instance. Must be eight characters or
+        less and can only contain letters and numbers.
         """
         return pulumi.get(self, "filesystem")
 
@@ -889,7 +937,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="gkeSupportEnabled")
     def gke_support_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Optional. Indicates whether you want to enable support for GKE clients. By default,
+        Indicates whether you want to enable support for GKE clients. By default,
         GKE clients are not supported.
         """
         return pulumi.get(self, "gke_support_enabled")
@@ -898,7 +946,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[builtins.str]:
         """
-        Required. The name of the Managed Lustre instance.
+        The name of the Managed Lustre instance.
         * Must contain only lowercase letters, numbers, and hyphens.
         * Must start with a letter.
         * Must be between 1-63 characters.
@@ -913,7 +961,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Optional. Labels as key value pairs.
+        Labels as key value pairs.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -931,7 +979,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="mountPoint")
     def mount_point(self) -> pulumi.Output[builtins.str]:
         """
-        Output only. Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
+        Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         """
         return pulumi.get(self, "mount_point")
 
@@ -947,11 +995,20 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[builtins.str]:
         """
-        Required. Immutable. The full name of the VPC network to which the instance is connected.
+        The full name of the VPC network to which the instance is connected.
         Must be in the format
         `projects/{project_id}/global/networks/{network_name}`.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="perUnitStorageThroughput")
+    def per_unit_storage_throughput(self) -> pulumi.Output[builtins.str]:
+        """
+        The throughput of the instance in MB/s/TiB.
+        Valid values are 125, 250, 500, 1000.
+        """
+        return pulumi.get(self, "per_unit_storage_throughput")
 
     @property
     @pulumi.getter
@@ -975,7 +1032,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[builtins.str]:
         """
-        Output only. The state of the instance.
+        The state of the instance.
         Possible values:
         STATE_UNSPECIFIED
         ACTIVE
@@ -991,7 +1048,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[builtins.str]:
         """
-        Output only. Timestamp when the instance was last updated.
+        Timestamp when the instance was last updated.
         """
         return pulumi.get(self, "update_time")
 

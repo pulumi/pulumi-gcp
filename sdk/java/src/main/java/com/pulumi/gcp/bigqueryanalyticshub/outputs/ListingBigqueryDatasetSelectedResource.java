@@ -14,16 +14,12 @@ public final class ListingBigqueryDatasetSelectedResource {
     /**
      * @return Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:&#34;projects/test_project/datasets/test_dataset/tables/test_table&#34;
      * 
-     * ***
-     * 
      */
     private @Nullable String table;
 
     private ListingBigqueryDatasetSelectedResource() {}
     /**
      * @return Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:&#34;projects/test_project/datasets/test_dataset/tables/test_table&#34;
-     * 
-     * ***
      * 
      */
     public Optional<String> table() {

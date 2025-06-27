@@ -155,7 +155,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myDatastore, err := discoveryengine.NewDataStore(ctx, "my_datastore", &discoveryengine.DataStoreArgs{
 //				Location:         pulumi.String("global"),
-//				DataStoreId:      pulumi.String("datastore-tool-test-_29439"),
+//				DataStoreId:      pulumi.String("datastore-tool-test-_79169"),
 //				DisplayName:      pulumi.String("datastore for Tool test"),
 //				IndustryVertical: pulumi.String("GENERIC"),
 //				ContentConfig:    pulumi.String("NO_CONTENT"),

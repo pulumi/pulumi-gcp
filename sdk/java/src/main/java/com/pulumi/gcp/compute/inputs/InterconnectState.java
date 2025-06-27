@@ -541,7 +541,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
      * specified, the default value is false, which allocates non-MACsec capable ports first if
      * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
      * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
      * 
      */
     @Import(name="requestedFeatures")
@@ -553,7 +553,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
      * specified, the default value is false, which allocates non-MACsec capable ports first if
      * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
      * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
      * 
      */
     public Optional<Output<List<String>>> requestedFeatures() {
@@ -619,6 +619,23 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+     * deleted if this list is non-empty.
+     * 
+     */
+    @Import(name="wireGroups")
+    private @Nullable Output<List<String>> wireGroups;
+
+    /**
+     * @return A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+     * deleted if this list is non-empty.
+     * 
+     */
+    public Optional<Output<List<String>>> wireGroups() {
+        return Optional.ofNullable(this.wireGroups);
+    }
+
     private InterconnectState() {}
 
     private InterconnectState(InterconnectState $) {
@@ -653,6 +670,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         this.requestedLinkCount = $.requestedLinkCount;
         this.satisfiesPzs = $.satisfiesPzs;
         this.state = $.state;
+        this.wireGroups = $.wireGroups;
     }
 
     public static Builder builder() {
@@ -1410,7 +1428,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          * specified, the default value is false, which allocates non-MACsec capable ports first if
          * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
          * does not work with the API, and will be removed in an upcoming major version.
-         * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+         * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
          * 
          * @return builder
          * 
@@ -1426,7 +1444,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          * specified, the default value is false, which allocates non-MACsec capable ports first if
          * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
          * does not work with the API, and will be removed in an upcoming major version.
-         * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+         * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
          * 
          * @return builder
          * 
@@ -1441,7 +1459,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          * specified, the default value is false, which allocates non-MACsec capable ports first if
          * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
          * does not work with the API, and will be removed in an upcoming major version.
-         * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+         * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
          * 
          * @return builder
          * 
@@ -1525,6 +1543,40 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param wireGroups A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+         * deleted if this list is non-empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wireGroups(@Nullable Output<List<String>> wireGroups) {
+            $.wireGroups = wireGroups;
+            return this;
+        }
+
+        /**
+         * @param wireGroups A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+         * deleted if this list is non-empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wireGroups(List<String> wireGroups) {
+            return wireGroups(Output.of(wireGroups));
+        }
+
+        /**
+         * @param wireGroups A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+         * deleted if this list is non-empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wireGroups(String... wireGroups) {
+            return wireGroups(List.of(wireGroups));
         }
 
         public InterconnectState build() {

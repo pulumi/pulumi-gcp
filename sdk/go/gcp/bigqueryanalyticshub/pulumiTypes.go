@@ -897,8 +897,6 @@ func (o ListingBigqueryDatasetPtrOutput) SelectedResources() ListingBigqueryData
 
 type ListingBigqueryDatasetSelectedResource struct {
 	// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-	//
-	// ***
 	Table *string `pulumi:"table"`
 }
 
@@ -915,8 +913,6 @@ type ListingBigqueryDatasetSelectedResourceInput interface {
 
 type ListingBigqueryDatasetSelectedResourceArgs struct {
 	// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-	//
-	// ***
 	Table pulumi.StringPtrInput `pulumi:"table"`
 }
 
@@ -972,8 +968,6 @@ func (o ListingBigqueryDatasetSelectedResourceOutput) ToListingBigqueryDatasetSe
 }
 
 // Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-//
-// ***
 func (o ListingBigqueryDatasetSelectedResourceOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListingBigqueryDatasetSelectedResource) *string { return v.Table }).(pulumi.StringPtrOutput)
 }
@@ -1633,6 +1627,166 @@ func (o ListingPublisherPtrOutput) PrimaryContact() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PrimaryContact
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingPubsubTopic struct {
+	// Region hint on where the data might be published. Data affinity regions are modifiable.
+	// See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
+	DataAffinityRegions []string `pulumi:"dataAffinityRegions"`
+	// Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
+	Topic string `pulumi:"topic"`
+}
+
+// ListingPubsubTopicInput is an input type that accepts ListingPubsubTopicArgs and ListingPubsubTopicOutput values.
+// You can construct a concrete instance of `ListingPubsubTopicInput` via:
+//
+//	ListingPubsubTopicArgs{...}
+type ListingPubsubTopicInput interface {
+	pulumi.Input
+
+	ToListingPubsubTopicOutput() ListingPubsubTopicOutput
+	ToListingPubsubTopicOutputWithContext(context.Context) ListingPubsubTopicOutput
+}
+
+type ListingPubsubTopicArgs struct {
+	// Region hint on where the data might be published. Data affinity regions are modifiable.
+	// See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
+	DataAffinityRegions pulumi.StringArrayInput `pulumi:"dataAffinityRegions"`
+	// Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (ListingPubsubTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingPubsubTopic)(nil)).Elem()
+}
+
+func (i ListingPubsubTopicArgs) ToListingPubsubTopicOutput() ListingPubsubTopicOutput {
+	return i.ToListingPubsubTopicOutputWithContext(context.Background())
+}
+
+func (i ListingPubsubTopicArgs) ToListingPubsubTopicOutputWithContext(ctx context.Context) ListingPubsubTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingPubsubTopicOutput)
+}
+
+func (i ListingPubsubTopicArgs) ToListingPubsubTopicPtrOutput() ListingPubsubTopicPtrOutput {
+	return i.ToListingPubsubTopicPtrOutputWithContext(context.Background())
+}
+
+func (i ListingPubsubTopicArgs) ToListingPubsubTopicPtrOutputWithContext(ctx context.Context) ListingPubsubTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingPubsubTopicOutput).ToListingPubsubTopicPtrOutputWithContext(ctx)
+}
+
+// ListingPubsubTopicPtrInput is an input type that accepts ListingPubsubTopicArgs, ListingPubsubTopicPtr and ListingPubsubTopicPtrOutput values.
+// You can construct a concrete instance of `ListingPubsubTopicPtrInput` via:
+//
+//	        ListingPubsubTopicArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingPubsubTopicPtrInput interface {
+	pulumi.Input
+
+	ToListingPubsubTopicPtrOutput() ListingPubsubTopicPtrOutput
+	ToListingPubsubTopicPtrOutputWithContext(context.Context) ListingPubsubTopicPtrOutput
+}
+
+type listingPubsubTopicPtrType ListingPubsubTopicArgs
+
+func ListingPubsubTopicPtr(v *ListingPubsubTopicArgs) ListingPubsubTopicPtrInput {
+	return (*listingPubsubTopicPtrType)(v)
+}
+
+func (*listingPubsubTopicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingPubsubTopic)(nil)).Elem()
+}
+
+func (i *listingPubsubTopicPtrType) ToListingPubsubTopicPtrOutput() ListingPubsubTopicPtrOutput {
+	return i.ToListingPubsubTopicPtrOutputWithContext(context.Background())
+}
+
+func (i *listingPubsubTopicPtrType) ToListingPubsubTopicPtrOutputWithContext(ctx context.Context) ListingPubsubTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingPubsubTopicPtrOutput)
+}
+
+type ListingPubsubTopicOutput struct{ *pulumi.OutputState }
+
+func (ListingPubsubTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingPubsubTopic)(nil)).Elem()
+}
+
+func (o ListingPubsubTopicOutput) ToListingPubsubTopicOutput() ListingPubsubTopicOutput {
+	return o
+}
+
+func (o ListingPubsubTopicOutput) ToListingPubsubTopicOutputWithContext(ctx context.Context) ListingPubsubTopicOutput {
+	return o
+}
+
+func (o ListingPubsubTopicOutput) ToListingPubsubTopicPtrOutput() ListingPubsubTopicPtrOutput {
+	return o.ToListingPubsubTopicPtrOutputWithContext(context.Background())
+}
+
+func (o ListingPubsubTopicOutput) ToListingPubsubTopicPtrOutputWithContext(ctx context.Context) ListingPubsubTopicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingPubsubTopic) *ListingPubsubTopic {
+		return &v
+	}).(ListingPubsubTopicPtrOutput)
+}
+
+// Region hint on where the data might be published. Data affinity regions are modifiable.
+// See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
+func (o ListingPubsubTopicOutput) DataAffinityRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ListingPubsubTopic) []string { return v.DataAffinityRegions }).(pulumi.StringArrayOutput)
+}
+
+// Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
+func (o ListingPubsubTopicOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingPubsubTopic) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type ListingPubsubTopicPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingPubsubTopicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingPubsubTopic)(nil)).Elem()
+}
+
+func (o ListingPubsubTopicPtrOutput) ToListingPubsubTopicPtrOutput() ListingPubsubTopicPtrOutput {
+	return o
+}
+
+func (o ListingPubsubTopicPtrOutput) ToListingPubsubTopicPtrOutputWithContext(ctx context.Context) ListingPubsubTopicPtrOutput {
+	return o
+}
+
+func (o ListingPubsubTopicPtrOutput) Elem() ListingPubsubTopicOutput {
+	return o.ApplyT(func(v *ListingPubsubTopic) ListingPubsubTopic {
+		if v != nil {
+			return *v
+		}
+		var ret ListingPubsubTopic
+		return ret
+	}).(ListingPubsubTopicOutput)
+}
+
+// Region hint on where the data might be published. Data affinity regions are modifiable.
+// See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
+func (o ListingPubsubTopicPtrOutput) DataAffinityRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ListingPubsubTopic) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DataAffinityRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
+func (o ListingPubsubTopicPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingPubsubTopic) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topic
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2462,6 +2616,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingIamMemberConditionPtrInput)(nil)).Elem(), ListingIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingPublisherInput)(nil)).Elem(), ListingPublisherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingPublisherPtrInput)(nil)).Elem(), ListingPublisherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingPubsubTopicInput)(nil)).Elem(), ListingPubsubTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingPubsubTopicPtrInput)(nil)).Elem(), ListingPubsubTopicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingRestrictedExportConfigInput)(nil)).Elem(), ListingRestrictedExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingRestrictedExportConfigPtrInput)(nil)).Elem(), ListingRestrictedExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationDatasetInput)(nil)).Elem(), ListingSubscriptionDestinationDatasetArgs{})
@@ -2494,6 +2650,8 @@ func init() {
 	pulumi.RegisterOutputType(ListingIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ListingPublisherOutput{})
 	pulumi.RegisterOutputType(ListingPublisherPtrOutput{})
+	pulumi.RegisterOutputType(ListingPubsubTopicOutput{})
+	pulumi.RegisterOutputType(ListingPubsubTopicPtrOutput{})
 	pulumi.RegisterOutputType(ListingRestrictedExportConfigOutput{})
 	pulumi.RegisterOutputType(ListingRestrictedExportConfigPtrOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionDestinationDatasetOutput{})

@@ -7,11 +7,19 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.outputs.GetInstanceNetworkConfigAuthorizedExternalNetwork;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstanceNetworkConfig {
+    /**
+     * @return Name of the allocated IP range for the private IP AlloyDB instance, for example: &#34;google-managed-services-default&#34;.
+     * If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+     * The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+     * 
+     */
+    private String allocatedIpRangeOverride;
     /**
      * @return A list of external networks authorized to access this instance. This
      * field is only allowed to be set when &#39;enable_public_ip&#39; is set to
@@ -33,6 +41,15 @@ public final class GetInstanceNetworkConfig {
     private Boolean enablePublicIp;
 
     private GetInstanceNetworkConfig() {}
+    /**
+     * @return Name of the allocated IP range for the private IP AlloyDB instance, for example: &#34;google-managed-services-default&#34;.
+     * If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+     * The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+     * 
+     */
+    public String allocatedIpRangeOverride() {
+        return this.allocatedIpRangeOverride;
+    }
     /**
      * @return A list of external networks authorized to access this instance. This
      * field is only allowed to be set when &#39;enable_public_ip&#39; is set to
@@ -68,17 +85,27 @@ public final class GetInstanceNetworkConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String allocatedIpRangeOverride;
         private List<GetInstanceNetworkConfigAuthorizedExternalNetwork> authorizedExternalNetworks;
         private Boolean enableOutboundPublicIp;
         private Boolean enablePublicIp;
         public Builder() {}
         public Builder(GetInstanceNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allocatedIpRangeOverride = defaults.allocatedIpRangeOverride;
     	      this.authorizedExternalNetworks = defaults.authorizedExternalNetworks;
     	      this.enableOutboundPublicIp = defaults.enableOutboundPublicIp;
     	      this.enablePublicIp = defaults.enablePublicIp;
         }
 
+        @CustomType.Setter
+        public Builder allocatedIpRangeOverride(String allocatedIpRangeOverride) {
+            if (allocatedIpRangeOverride == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkConfig", "allocatedIpRangeOverride");
+            }
+            this.allocatedIpRangeOverride = allocatedIpRangeOverride;
+            return this;
+        }
         @CustomType.Setter
         public Builder authorizedExternalNetworks(List<GetInstanceNetworkConfigAuthorizedExternalNetwork> authorizedExternalNetworks) {
             if (authorizedExternalNetworks == null) {
@@ -108,6 +135,7 @@ public final class GetInstanceNetworkConfig {
         }
         public GetInstanceNetworkConfig build() {
             final var _resultValue = new GetInstanceNetworkConfig();
+            _resultValue.allocatedIpRangeOverride = allocatedIpRangeOverride;
             _resultValue.authorizedExternalNetworks = authorizedExternalNetworks;
             _resultValue.enableOutboundPublicIp = enableOutboundPublicIp;
             _resultValue.enablePublicIp = enablePublicIp;

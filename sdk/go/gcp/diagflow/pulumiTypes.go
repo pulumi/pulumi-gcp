@@ -30891,6 +30891,163 @@ func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) Uri() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+type EncryptionSpecEncryptionSpec struct {
+	// The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
+	// If empty, the resource is secured by the default Google encryption key.
+	// Only the key in the same location as this resource is allowed to be used for encryption.
+	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
+	//
+	// ***
+	KmsKey string `pulumi:"kmsKey"`
+}
+
+// EncryptionSpecEncryptionSpecInput is an input type that accepts EncryptionSpecEncryptionSpecArgs and EncryptionSpecEncryptionSpecOutput values.
+// You can construct a concrete instance of `EncryptionSpecEncryptionSpecInput` via:
+//
+//	EncryptionSpecEncryptionSpecArgs{...}
+type EncryptionSpecEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToEncryptionSpecEncryptionSpecOutput() EncryptionSpecEncryptionSpecOutput
+	ToEncryptionSpecEncryptionSpecOutputWithContext(context.Context) EncryptionSpecEncryptionSpecOutput
+}
+
+type EncryptionSpecEncryptionSpecArgs struct {
+	// The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
+	// If empty, the resource is secured by the default Google encryption key.
+	// Only the key in the same location as this resource is allowed to be used for encryption.
+	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
+	//
+	// ***
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
+}
+
+func (EncryptionSpecEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionSpecEncryptionSpec)(nil)).Elem()
+}
+
+func (i EncryptionSpecEncryptionSpecArgs) ToEncryptionSpecEncryptionSpecOutput() EncryptionSpecEncryptionSpecOutput {
+	return i.ToEncryptionSpecEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i EncryptionSpecEncryptionSpecArgs) ToEncryptionSpecEncryptionSpecOutputWithContext(ctx context.Context) EncryptionSpecEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSpecEncryptionSpecOutput)
+}
+
+func (i EncryptionSpecEncryptionSpecArgs) ToEncryptionSpecEncryptionSpecPtrOutput() EncryptionSpecEncryptionSpecPtrOutput {
+	return i.ToEncryptionSpecEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionSpecEncryptionSpecArgs) ToEncryptionSpecEncryptionSpecPtrOutputWithContext(ctx context.Context) EncryptionSpecEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSpecEncryptionSpecOutput).ToEncryptionSpecEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// EncryptionSpecEncryptionSpecPtrInput is an input type that accepts EncryptionSpecEncryptionSpecArgs, EncryptionSpecEncryptionSpecPtr and EncryptionSpecEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `EncryptionSpecEncryptionSpecPtrInput` via:
+//
+//	        EncryptionSpecEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionSpecEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionSpecEncryptionSpecPtrOutput() EncryptionSpecEncryptionSpecPtrOutput
+	ToEncryptionSpecEncryptionSpecPtrOutputWithContext(context.Context) EncryptionSpecEncryptionSpecPtrOutput
+}
+
+type encryptionSpecEncryptionSpecPtrType EncryptionSpecEncryptionSpecArgs
+
+func EncryptionSpecEncryptionSpecPtr(v *EncryptionSpecEncryptionSpecArgs) EncryptionSpecEncryptionSpecPtrInput {
+	return (*encryptionSpecEncryptionSpecPtrType)(v)
+}
+
+func (*encryptionSpecEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionSpecEncryptionSpec)(nil)).Elem()
+}
+
+func (i *encryptionSpecEncryptionSpecPtrType) ToEncryptionSpecEncryptionSpecPtrOutput() EncryptionSpecEncryptionSpecPtrOutput {
+	return i.ToEncryptionSpecEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionSpecEncryptionSpecPtrType) ToEncryptionSpecEncryptionSpecPtrOutputWithContext(ctx context.Context) EncryptionSpecEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSpecEncryptionSpecPtrOutput)
+}
+
+type EncryptionSpecEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (EncryptionSpecEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionSpecEncryptionSpec)(nil)).Elem()
+}
+
+func (o EncryptionSpecEncryptionSpecOutput) ToEncryptionSpecEncryptionSpecOutput() EncryptionSpecEncryptionSpecOutput {
+	return o
+}
+
+func (o EncryptionSpecEncryptionSpecOutput) ToEncryptionSpecEncryptionSpecOutputWithContext(ctx context.Context) EncryptionSpecEncryptionSpecOutput {
+	return o
+}
+
+func (o EncryptionSpecEncryptionSpecOutput) ToEncryptionSpecEncryptionSpecPtrOutput() EncryptionSpecEncryptionSpecPtrOutput {
+	return o.ToEncryptionSpecEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionSpecEncryptionSpecOutput) ToEncryptionSpecEncryptionSpecPtrOutputWithContext(ctx context.Context) EncryptionSpecEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionSpecEncryptionSpec) *EncryptionSpecEncryptionSpec {
+		return &v
+	}).(EncryptionSpecEncryptionSpecPtrOutput)
+}
+
+// The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
+// If empty, the resource is secured by the default Google encryption key.
+// Only the key in the same location as this resource is allowed to be used for encryption.
+// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
+//
+// ***
+func (o EncryptionSpecEncryptionSpecOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionSpecEncryptionSpec) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+type EncryptionSpecEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionSpecEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionSpecEncryptionSpec)(nil)).Elem()
+}
+
+func (o EncryptionSpecEncryptionSpecPtrOutput) ToEncryptionSpecEncryptionSpecPtrOutput() EncryptionSpecEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o EncryptionSpecEncryptionSpecPtrOutput) ToEncryptionSpecEncryptionSpecPtrOutputWithContext(ctx context.Context) EncryptionSpecEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o EncryptionSpecEncryptionSpecPtrOutput) Elem() EncryptionSpecEncryptionSpecOutput {
+	return o.ApplyT(func(v *EncryptionSpecEncryptionSpec) EncryptionSpecEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionSpecEncryptionSpec
+		return ret
+	}).(EncryptionSpecEncryptionSpecOutput)
+}
+
+// The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
+// If empty, the resource is secured by the default Google encryption key.
+// Only the key in the same location as this resource is allowed to be used for encryption.
+// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
+//
+// ***
+func (o EncryptionSpecEncryptionSpecPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionSpecEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type EntityTypeEntity struct {
 	// A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
 	// could be green onions.
@@ -31805,6 +31962,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryPtrInput)(nil)).Elem(), CxWebhookServiceDirectoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServiceInput)(nil)).Elem(), CxWebhookServiceDirectoryGenericWebServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServicePtrInput)(nil)).Elem(), CxWebhookServiceDirectoryGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionSpecEncryptionSpecInput)(nil)).Elem(), EncryptionSpecEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionSpecEncryptionSpecPtrInput)(nil)).Elem(), EncryptionSpecEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeEntityInput)(nil)).Elem(), EntityTypeEntityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeEntityArrayInput)(nil)).Elem(), EntityTypeEntityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentFeatureInput)(nil)).Elem(), FulfillmentFeatureArgs{})
@@ -32187,6 +32346,8 @@ func init() {
 	pulumi.RegisterOutputType(CxWebhookServiceDirectoryPtrOutput{})
 	pulumi.RegisterOutputType(CxWebhookServiceDirectoryGenericWebServiceOutput{})
 	pulumi.RegisterOutputType(CxWebhookServiceDirectoryGenericWebServicePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionSpecEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(EncryptionSpecEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityArrayOutput{})
 	pulumi.RegisterOutputType(FulfillmentFeatureOutput{})

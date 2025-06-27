@@ -110,7 +110,7 @@ import * as utilities from "../utilities";
  *
  * const myDatastore = new gcp.discoveryengine.DataStore("my_datastore", {
  *     location: "global",
- *     dataStoreId: "datastore-tool-test-_29439",
+ *     dataStoreId: "datastore-tool-test-_79169",
  *     displayName: "datastore for Tool test",
  *     industryVertical: "GENERIC",
  *     contentConfig: "NO_CONTENT",

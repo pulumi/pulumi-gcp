@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .customerName("example_customer")
  *             .interconnectType("DEDICATED")
  *             .linkType("LINK_TYPE_ETHERNET_10G_LR")
- *             .location(String.format("https://www.googleapis.com/compute/v1/projects/%s/global/interconnectLocations/iad-zone1-1", project.name()))
+ *             .location(String.format("https://www.googleapis.com/compute/v1/%s/global/interconnectLocations/iad-zone1-1", project.id()))
  *             .requestedLinkCount(1)
  *             .build());
  * 
@@ -597,7 +597,7 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
      * specified, the default value is false, which allocates non-MACsec capable ports first if
      * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
      * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
      * 
      */
     @Export(name="requestedFeatures", refs={List.class,String.class}, tree="[0,1]")
@@ -609,7 +609,7 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
      * specified, the default value is false, which allocates non-MACsec capable ports first if
      * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
      * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `IF_MACSEC`.
+     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
      * 
      */
     public Output<Optional<List<String>>> requestedFeatures() {
@@ -670,6 +670,22 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+     * deleted if this list is non-empty.
+     * 
+     */
+    @Export(name="wireGroups", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> wireGroups;
+
+    /**
+     * @return A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+     * deleted if this list is non-empty.
+     * 
+     */
+    public Output<List<String>> wireGroups() {
+        return this.wireGroups;
     }
 
     /**

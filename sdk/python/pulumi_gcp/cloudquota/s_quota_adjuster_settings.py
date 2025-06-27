@@ -70,15 +70,19 @@ class _SQuotaAdjusterSettingsState:
                  effective_container: Optional[pulumi.Input[builtins.str]] = None,
                  effective_enablement: Optional[pulumi.Input[builtins.str]] = None,
                  enablement: Optional[pulumi.Input[builtins.str]] = None,
+                 inherited: Optional[pulumi.Input[builtins.bool]] = None,
+                 inherited_from: Optional[pulumi.Input[builtins.str]] = None,
                  parent: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering SQuotaAdjusterSettings resources.
         :param pulumi.Input[builtins.str] effective_container: The resource container that determines if the quota adjuster is set for this project.
-               Expect this field to be empty currently.
         :param pulumi.Input[builtins.str] effective_enablement: Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-               Expect this field to be empty currently.
         :param pulumi.Input[builtins.str] enablement: Required. The configured value of the enablement at the given resource.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[builtins.bool] inherited: Indicates whether the setting is inherited or explicitly specified.
+        :param pulumi.Input[builtins.str] inherited_from: The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+               The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+               The value will be empty when `enablement` is specified on this resource container.
         :param pulumi.Input[builtins.str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
                
                
@@ -90,6 +94,10 @@ class _SQuotaAdjusterSettingsState:
             pulumi.set(__self__, "effective_enablement", effective_enablement)
         if enablement is not None:
             pulumi.set(__self__, "enablement", enablement)
+        if inherited is not None:
+            pulumi.set(__self__, "inherited", inherited)
+        if inherited_from is not None:
+            pulumi.set(__self__, "inherited_from", inherited_from)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
 
@@ -98,7 +106,6 @@ class _SQuotaAdjusterSettingsState:
     def effective_container(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource container that determines if the quota adjuster is set for this project.
-        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_container")
 
@@ -111,7 +118,6 @@ class _SQuotaAdjusterSettingsState:
     def effective_enablement(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_enablement")
 
@@ -131,6 +137,32 @@ class _SQuotaAdjusterSettingsState:
     @enablement.setter
     def enablement(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "enablement", value)
+
+    @property
+    @pulumi.getter
+    def inherited(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether the setting is inherited or explicitly specified.
+        """
+        return pulumi.get(self, "inherited")
+
+    @inherited.setter
+    def inherited(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "inherited", value)
+
+    @property
+    @pulumi.getter(name="inheritedFrom")
+    def inherited_from(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+        The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+        The value will be empty when `enablement` is specified on this resource container.
+        """
+        return pulumi.get(self, "inherited_from")
+
+    @inherited_from.setter
+    def inherited_from(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "inherited_from", value)
 
     @property
     @pulumi.getter
@@ -256,6 +288,8 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
             __props__.__dict__["parent"] = parent
             __props__.__dict__["effective_container"] = None
             __props__.__dict__["effective_enablement"] = None
+            __props__.__dict__["inherited"] = None
+            __props__.__dict__["inherited_from"] = None
         super(SQuotaAdjusterSettings, __self__).__init__(
             'gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings',
             resource_name,
@@ -269,6 +303,8 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
             effective_container: Optional[pulumi.Input[builtins.str]] = None,
             effective_enablement: Optional[pulumi.Input[builtins.str]] = None,
             enablement: Optional[pulumi.Input[builtins.str]] = None,
+            inherited: Optional[pulumi.Input[builtins.bool]] = None,
+            inherited_from: Optional[pulumi.Input[builtins.str]] = None,
             parent: Optional[pulumi.Input[builtins.str]] = None) -> 'SQuotaAdjusterSettings':
         """
         Get an existing SQuotaAdjusterSettings resource's state with the given name, id, and optional extra
@@ -278,11 +314,13 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] effective_container: The resource container that determines if the quota adjuster is set for this project.
-               Expect this field to be empty currently.
         :param pulumi.Input[builtins.str] effective_enablement: Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-               Expect this field to be empty currently.
         :param pulumi.Input[builtins.str] enablement: Required. The configured value of the enablement at the given resource.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[builtins.bool] inherited: Indicates whether the setting is inherited or explicitly specified.
+        :param pulumi.Input[builtins.str] inherited_from: The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+               The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+               The value will be empty when `enablement` is specified on this resource container.
         :param pulumi.Input[builtins.str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
                
                
@@ -295,6 +333,8 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
         __props__.__dict__["effective_container"] = effective_container
         __props__.__dict__["effective_enablement"] = effective_enablement
         __props__.__dict__["enablement"] = enablement
+        __props__.__dict__["inherited"] = inherited
+        __props__.__dict__["inherited_from"] = inherited_from
         __props__.__dict__["parent"] = parent
         return SQuotaAdjusterSettings(resource_name, opts=opts, __props__=__props__)
 
@@ -303,7 +343,6 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
     def effective_container(self) -> pulumi.Output[builtins.str]:
         """
         The resource container that determines if the quota adjuster is set for this project.
-        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_container")
 
@@ -312,7 +351,6 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
     def effective_enablement(self) -> pulumi.Output[builtins.str]:
         """
         Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
-        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_enablement")
 
@@ -324,6 +362,24 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
         Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "enablement")
+
+    @property
+    @pulumi.getter
+    def inherited(self) -> pulumi.Output[builtins.bool]:
+        """
+        Indicates whether the setting is inherited or explicitly specified.
+        """
+        return pulumi.get(self, "inherited")
+
+    @property
+    @pulumi.getter(name="inheritedFrom")
+    def inherited_from(self) -> pulumi.Output[builtins.str]:
+        """
+        The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
+        The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+        The value will be empty when `enablement` is specified on this resource container.
+        """
+        return pulumi.get(self, "inherited_from")
 
     @property
     @pulumi.getter

@@ -90,6 +90,7 @@ public final class GetBucketObjectResult {
      */
     private String selfLink;
     private String source;
+    private String sourceMd5hash;
     /**
      * @return (Computed) The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket&#39;s default
@@ -222,6 +223,9 @@ public final class GetBucketObjectResult {
     public String source() {
         return this.source;
     }
+    public String sourceMd5hash() {
+        return this.sourceMd5hash;
+    }
     /**
      * @return (Computed) The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket&#39;s default
@@ -271,6 +275,7 @@ public final class GetBucketObjectResult {
         private List<GetBucketObjectRetention> retentions;
         private String selfLink;
         private String source;
+        private String sourceMd5hash;
         private String storageClass;
         private Boolean temporaryHold;
         public Builder() {}
@@ -299,6 +304,7 @@ public final class GetBucketObjectResult {
     	      this.retentions = defaults.retentions;
     	      this.selfLink = defaults.selfLink;
     	      this.source = defaults.source;
+    	      this.sourceMd5hash = defaults.sourceMd5hash;
     	      this.storageClass = defaults.storageClass;
     	      this.temporaryHold = defaults.temporaryHold;
         }
@@ -490,6 +496,14 @@ public final class GetBucketObjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceMd5hash(String sourceMd5hash) {
+            if (sourceMd5hash == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "sourceMd5hash");
+            }
+            this.sourceMd5hash = sourceMd5hash;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storageClass(String storageClass) {
             if (storageClass == null) {
               throw new MissingRequiredPropertyException("GetBucketObjectResult", "storageClass");
@@ -530,6 +544,7 @@ public final class GetBucketObjectResult {
             _resultValue.retentions = retentions;
             _resultValue.selfLink = selfLink;
             _resultValue.source = source;
+            _resultValue.sourceMd5hash = sourceMd5hash;
             _resultValue.storageClass = storageClass;
             _resultValue.temporaryHold = temporaryHold;
             return _resultValue;

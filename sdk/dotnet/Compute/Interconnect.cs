@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Compute
     ///         CustomerName = "example_customer",
     ///         InterconnectType = "DEDICATED",
     ///         LinkType = "LINK_TYPE_ETHERNET_10G_LR",
-    ///         Location = $"https://www.googleapis.com/compute/v1/projects/{project.Apply(getProjectResult =&gt; getProjectResult.Name)}/global/interconnectLocations/iad-zone1-1",
+    ///         Location = $"https://www.googleapis.com/compute/v1/{project.Apply(getProjectResult =&gt; getProjectResult.Id)}/global/interconnectLocations/iad-zone1-1",
     ///         RequestedLinkCount = 1,
     ///     });
     /// 
@@ -296,7 +296,7 @@ namespace Pulumi.Gcp.Compute
         /// specified, the default value is false, which allocates non-MACsec capable ports first if
         /// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
         /// does not work with the API, and will be removed in an upcoming major version.
-        /// Each value may be one of: `MACSEC`, `IF_MACSEC`.
+        /// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
         /// </summary>
         [Output("requestedFeatures")]
         public Output<ImmutableArray<string>> RequestedFeatures { get; private set; } = null!;
@@ -325,6 +325,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+        /// deleted if this list is non-empty.
+        /// </summary>
+        [Output("wireGroups")]
+        public Output<ImmutableArray<string>> WireGroups { get; private set; } = null!;
 
 
         /// <summary>
@@ -504,7 +511,7 @@ namespace Pulumi.Gcp.Compute
         /// specified, the default value is false, which allocates non-MACsec capable ports first if
         /// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
         /// does not work with the API, and will be removed in an upcoming major version.
-        /// Each value may be one of: `MACSEC`, `IF_MACSEC`.
+        /// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
         /// </summary>
         public InputList<string> RequestedFeatures
         {
@@ -808,7 +815,7 @@ namespace Pulumi.Gcp.Compute
         /// specified, the default value is false, which allocates non-MACsec capable ports first if
         /// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
         /// does not work with the API, and will be removed in an upcoming major version.
-        /// Each value may be one of: `MACSEC`, `IF_MACSEC`.
+        /// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
         /// </summary>
         public InputList<string> RequestedFeatures
         {
@@ -840,6 +847,19 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("wireGroups")]
+        private InputList<string>? _wireGroups;
+
+        /// <summary>
+        /// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
+        /// deleted if this list is non-empty.
+        /// </summary>
+        public InputList<string> WireGroups
+        {
+            get => _wireGroups ?? (_wireGroups = new InputList<string>());
+            set => _wireGroups = value;
+        }
 
         public InterconnectState()
         {

@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
- *     membershipId: "tf-test-membership_55138",
+ *     membershipId: "tf-test-membership_80332",
  *     endpoint: {
  *         gkeCluster: {
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * const membershipRbacRoleBinding = new gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding", {
- *     membershipRbacRoleBindingId: "tf-test-membership-rbac-role-binding_37559",
+ *     membershipRbacRoleBindingId: "tf-test-membership-rbac-role-binding_13293",
  *     membershipId: membership.membershipId,
  *     user: project.then(project => `service-${project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com`),
  *     role: {

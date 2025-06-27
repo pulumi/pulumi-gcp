@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingDataProviderArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingPublisherArgs;
+import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingPubsubTopicArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingRestrictedExportConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -27,16 +28,16 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    @Import(name="bigqueryDataset", required=true)
-    private Output<ListingBigqueryDatasetArgs> bigqueryDataset;
+    @Import(name="bigqueryDataset")
+    private @Nullable Output<ListingBigqueryDatasetArgs> bigqueryDataset;
 
     /**
      * @return Shared dataset i.e. BigQuery dataset source.
      * Structure is documented below.
      * 
      */
-    public Output<ListingBigqueryDatasetArgs> bigqueryDataset() {
-        return this.bigqueryDataset;
+    public Optional<Output<ListingBigqueryDatasetArgs>> bigqueryDataset() {
+        return Optional.ofNullable(this.bigqueryDataset);
     }
 
     /**
@@ -71,6 +72,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Details of the data provider who owns the source data.
+     * Structure is documented below.
      * 
      */
     @Import(name="dataProvider")
@@ -78,6 +80,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Details of the data provider who owns the source data.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ListingDataProviderArgs>> dataProvider() {
@@ -85,16 +88,14 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * @return Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      * 
      */
     public Optional<Output<String>> description() {
@@ -104,12 +105,16 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can&#39;t start or end with spaces.
      * 
+     * ***
+     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
      * @return Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can&#39;t start or end with spaces.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {
@@ -177,16 +182,14 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-     * querying user.
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
      * 
      */
     @Import(name="logLinkedDatasetQueryUserEmail")
     private @Nullable Output<Boolean> logLinkedDatasetQueryUserEmail;
 
     /**
-     * @return If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-     * querying user.
+     * @return If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
      * 
      */
     public Optional<Output<Boolean>> logLinkedDatasetQueryUserEmail() {
@@ -208,15 +211,26 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.primaryContact);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
      * Details of the publisher who owns the listing and who can share the source data.
+     * Structure is documented below.
      * 
      */
     @Import(name="publisher")
@@ -224,10 +238,28 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Details of the publisher who owns the listing and who can share the source data.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ListingPublisherArgs>> publisher() {
         return Optional.ofNullable(this.publisher);
+    }
+
+    /**
+     * Pub/Sub topic source.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pubsubTopic")
+    private @Nullable Output<ListingPubsubTopicArgs> pubsubTopic;
+
+    /**
+     * @return Pub/Sub topic source.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ListingPubsubTopicArgs>> pubsubTopic() {
+        return Optional.ofNullable(this.pubsubTopic);
     }
 
     /**
@@ -247,6 +279,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
      * 
      */
     @Import(name="restrictedExportConfig")
@@ -254,6 +287,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ListingRestrictedExportConfigArgs>> restrictedExportConfig() {
@@ -277,6 +311,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         this.primaryContact = $.primaryContact;
         this.project = $.project;
         this.publisher = $.publisher;
+        this.pubsubTopic = $.pubsubTopic;
         this.requestAccess = $.requestAccess;
         this.restrictedExportConfig = $.restrictedExportConfig;
     }
@@ -306,7 +341,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder bigqueryDataset(Output<ListingBigqueryDatasetArgs> bigqueryDataset) {
+        public Builder bigqueryDataset(@Nullable Output<ListingBigqueryDatasetArgs> bigqueryDataset) {
             $.bigqueryDataset = bigqueryDataset;
             return this;
         }
@@ -376,6 +411,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataProvider Details of the data provider who owns the source data.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -387,6 +423,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataProvider Details of the data provider who owns the source data.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -396,8 +433,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-         * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+         * @param description Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
          * 
          * @return builder
          * 
@@ -408,8 +444,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
-         * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+         * @param description Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
          * 
          * @return builder
          * 
@@ -421,6 +456,8 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can&#39;t start or end with spaces.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -431,6 +468,8 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can&#39;t start or end with spaces.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -524,8 +563,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logLinkedDatasetQueryUserEmail If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-         * querying user.
+         * @param logLinkedDatasetQueryUserEmail If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
          * 
          * @return builder
          * 
@@ -536,8 +574,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logLinkedDatasetQueryUserEmail If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the
-         * querying user.
+         * @param logLinkedDatasetQueryUserEmail If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
          * 
          * @return builder
          * 
@@ -567,17 +604,32 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
             return primaryContact(Output.of(primaryContact));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
          * @param publisher Details of the publisher who owns the listing and who can share the source data.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -589,12 +641,36 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param publisher Details of the publisher who owns the listing and who can share the source data.
+         * Structure is documented below.
          * 
          * @return builder
          * 
          */
         public Builder publisher(ListingPublisherArgs publisher) {
             return publisher(Output.of(publisher));
+        }
+
+        /**
+         * @param pubsubTopic Pub/Sub topic source.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pubsubTopic(@Nullable Output<ListingPubsubTopicArgs> pubsubTopic) {
+            $.pubsubTopic = pubsubTopic;
+            return this;
+        }
+
+        /**
+         * @param pubsubTopic Pub/Sub topic source.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pubsubTopic(ListingPubsubTopicArgs pubsubTopic) {
+            return pubsubTopic(Output.of(pubsubTopic));
         }
 
         /**
@@ -620,6 +696,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param restrictedExportConfig If set, restricted export configuration will be propagated and enforced on the linked dataset.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -631,6 +708,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param restrictedExportConfig If set, restricted export configuration will be propagated and enforced on the linked dataset.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -640,9 +718,6 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ListingArgs build() {
-            if ($.bigqueryDataset == null) {
-                throw new MissingRequiredPropertyException("ListingArgs", "bigqueryDataset");
-            }
             if ($.dataExchangeId == null) {
                 throw new MissingRequiredPropertyException("ListingArgs", "dataExchangeId");
             }

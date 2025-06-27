@@ -22337,6 +22337,8 @@ func (o ClusterNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNodeConfigWo
 type ClusterNodeConfigAdvancedMachineFeatures struct {
 	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+	// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -22355,6 +22357,8 @@ type ClusterNodeConfigAdvancedMachineFeaturesInput interface {
 type ClusterNodeConfigAdvancedMachineFeaturesArgs struct {
 	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+	// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -22441,6 +22445,11 @@ func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) EnableNestedVirtualizati
 	return o.ApplyT(func(v ClusterNodeConfigAdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }
 
+// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeConfigAdvancedMachineFeatures) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
@@ -22478,6 +22487,16 @@ func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) EnableNestedVirtualiz
 		}
 		return v.EnableNestedVirtualization
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigAdvancedMachineFeatures) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceMonitoringUnit
+	}).(pulumi.StringPtrOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -28937,7 +28956,7 @@ type ClusterNodePoolNetworkConfig struct {
 	AdditionalNodeNetworkConfigs []ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig `pulumi:"additionalNodeNetworkConfigs"`
 	// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
 	AdditionalPodNetworkConfigs []ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig `pulumi:"additionalPodNetworkConfigs"`
-	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
 	CreatePodRange *bool `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
 	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
@@ -28947,7 +28966,7 @@ type ClusterNodePoolNetworkConfig struct {
 	PodCidrOverprovisionConfig *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
-	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+	// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
 	PodRange *string `pulumi:"podRange"`
 }
 
@@ -28967,7 +28986,7 @@ type ClusterNodePoolNetworkConfigArgs struct {
 	AdditionalNodeNetworkConfigs ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput `pulumi:"additionalNodeNetworkConfigs"`
 	// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
 	AdditionalPodNetworkConfigs ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput `pulumi:"additionalPodNetworkConfigs"`
-	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
 	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
@@ -28977,7 +28996,7 @@ type ClusterNodePoolNetworkConfigArgs struct {
 	PodCidrOverprovisionConfig ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
-	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+	// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
 	PodRange pulumi.StringPtrInput `pulumi:"podRange"`
 }
 
@@ -29072,7 +29091,7 @@ func (o ClusterNodePoolNetworkConfigOutput) AdditionalPodNetworkConfigs() Cluste
 	}).(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
 }
 
-// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+// Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
 func (o ClusterNodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
 }
@@ -29101,7 +29120,7 @@ func (o ClusterNodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrO
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
 func (o ClusterNodePoolNetworkConfigOutput) PodRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *string { return v.PodRange }).(pulumi.StringPtrOutput)
 }
@@ -29150,7 +29169,7 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) AdditionalPodNetworkConfigs() Clu
 	}).(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
 }
 
-// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+// Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
 func (o ClusterNodePoolNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *bool {
 		if v == nil {
@@ -29200,7 +29219,7 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
 func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *string {
 		if v == nil {
@@ -30937,6 +30956,8 @@ func (o ClusterNodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNode
 type ClusterNodePoolNodeConfigAdvancedMachineFeatures struct {
 	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+	// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -30955,6 +30976,8 @@ type ClusterNodePoolNodeConfigAdvancedMachineFeaturesInput interface {
 type ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs struct {
 	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+	// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -31041,6 +31064,11 @@ func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) EnableNestedVirt
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigAdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }
 
+// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigAdvancedMachineFeatures) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
@@ -31078,6 +31106,16 @@ func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) EnableNestedV
 		}
 		return v.EnableNestedVirtualization
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigAdvancedMachineFeatures) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceMonitoringUnit
+	}).(pulumi.StringPtrOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -41638,6 +41676,8 @@ func (o NodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() NodePoolNodeConfig
 type NodePoolNodeConfigAdvancedMachineFeatures struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -41656,6 +41696,8 @@ type NodePoolNodeConfigAdvancedMachineFeaturesInput interface {
 type NodePoolNodeConfigAdvancedMachineFeaturesArgs struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -41742,6 +41784,11 @@ func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) EnableNestedVirtualizat
 	return o.ApplyT(func(v NodePoolNodeConfigAdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }
 
+// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigAdvancedMachineFeatures) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
@@ -41779,6 +41826,16 @@ func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) EnableNestedVirtuali
 		}
 		return v.EnableNestedVirtualization
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigAdvancedMachineFeatures) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceMonitoringUnit
+	}).(pulumi.StringPtrOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -54081,6 +54138,8 @@ func (o GetClusterNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNode
 type GetClusterNodeConfigAdvancedMachineFeature struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	PerformanceMonitoringUnit string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -54099,6 +54158,8 @@ type GetClusterNodeConfigAdvancedMachineFeatureInput interface {
 type GetClusterNodeConfigAdvancedMachineFeatureArgs struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	PerformanceMonitoringUnit pulumi.StringInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -54157,6 +54218,11 @@ func (o GetClusterNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNodeConfig
 // Whether the node should have nested virtualization enabled.
 func (o GetClusterNodeConfigAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
+}
+
+// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+func (o GetClusterNodeConfigAdvancedMachineFeatureOutput) PerformanceMonitoringUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigAdvancedMachineFeature) string { return v.PerformanceMonitoringUnit }).(pulumi.StringOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -59953,6 +60019,8 @@ func (o GetClusterNodePoolNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClu
 type GetClusterNodePoolNodeConfigAdvancedMachineFeature struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	PerformanceMonitoringUnit string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -59971,6 +60039,8 @@ type GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput interface {
 type GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	PerformanceMonitoringUnit pulumi.StringInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -60029,6 +60099,11 @@ func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNo
 // Whether the node should have nested virtualization enabled.
 func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
+}
+
+// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) PerformanceMonitoringUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigAdvancedMachineFeature) string { return v.PerformanceMonitoringUnit }).(pulumi.StringOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
