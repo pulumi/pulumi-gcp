@@ -357,6 +357,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VPNGateway{}
 	case "gcp:compute/vPNTunnel:VPNTunnel":
 		r = &VPNTunnel{}
+	case "gcp:compute/wireGroup:WireGroup":
+		r = &WireGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -1208,6 +1210,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/vPNTunnel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/wireGroup",
 		&module{version},
 	)
 }

@@ -28,7 +28,10 @@ class GetRegionDiskResult:
     """
     A collection of values returned by getRegionDisk.
     """
-    def __init__(__self__, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, guest_os_features=None, id=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
+    def __init__(__self__, access_mode=None, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, guest_os_features=None, id=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
+        if access_mode and not isinstance(access_mode, str):
+            raise TypeError("Expected argument 'access_mode' to be a str")
+        pulumi.set(__self__, "access_mode", access_mode)
         if async_primary_disks and not isinstance(async_primary_disks, list):
             raise TypeError("Expected argument 'async_primary_disks' to be a list")
         pulumi.set(__self__, "async_primary_disks", async_primary_disks)
@@ -122,6 +125,11 @@ class GetRegionDiskResult:
         if users and not isinstance(users, list):
             raise TypeError("Expected argument 'users' to be a list")
         pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> builtins.str:
+        return pulumi.get(self, "access_mode")
 
     @property
     @pulumi.getter(name="asyncPrimaryDisks")
@@ -288,6 +296,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
         if False:
             yield self
         return GetRegionDiskResult(
+            access_mode=self.access_mode,
             async_primary_disks=self.async_primary_disks,
             create_snapshot_before_destroy=self.create_snapshot_before_destroy,
             create_snapshot_before_destroy_prefix=self.create_snapshot_before_destroy_prefix,
@@ -346,6 +355,7 @@ def get_region_disk(name: Optional[builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionDisk:getRegionDisk', __args__, opts=opts, typ=GetRegionDiskResult).value
 
     return AwaitableGetRegionDiskResult(
+        access_mode=pulumi.get(__ret__, 'access_mode'),
         async_primary_disks=pulumi.get(__ret__, 'async_primary_disks'),
         create_snapshot_before_destroy=pulumi.get(__ret__, 'create_snapshot_before_destroy'),
         create_snapshot_before_destroy_prefix=pulumi.get(__ret__, 'create_snapshot_before_destroy_prefix'),
@@ -401,6 +411,7 @@ def get_region_disk_output(name: Optional[pulumi.Input[builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegionDisk:getRegionDisk', __args__, opts=opts, typ=GetRegionDiskResult)
     return __ret__.apply(lambda __response__: GetRegionDiskResult(
+        access_mode=pulumi.get(__response__, 'access_mode'),
         async_primary_disks=pulumi.get(__response__, 'async_primary_disks'),
         create_snapshot_before_destroy=pulumi.get(__response__, 'create_snapshot_before_destroy'),
         create_snapshot_before_destroy_prefix=pulumi.get(__response__, 'create_snapshot_before_destroy_prefix'),

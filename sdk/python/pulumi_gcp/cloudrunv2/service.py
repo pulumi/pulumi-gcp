@@ -1645,7 +1645,6 @@ class Service(pulumi.CustomResource):
                 "image_uri": "us-docker.pkg.dev/cloudrun/container/hello",
                 "base_image": "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
                 "enable_automatic_updates": True,
-                "worker_pool": "worker-pool",
                 "environment_variables": {
                     "FOO_KEY": "FOO_VALUE",
                     "BAR_KEY": "BAR_VALUE",
@@ -2266,7 +2265,6 @@ class Service(pulumi.CustomResource):
                 "image_uri": "us-docker.pkg.dev/cloudrun/container/hello",
                 "base_image": "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
                 "enable_automatic_updates": True,
-                "worker_pool": "worker-pool",
                 "environment_variables": {
                     "FOO_KEY": "FOO_VALUE",
                     "BAR_KEY": "BAR_VALUE",

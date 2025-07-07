@@ -224,6 +224,8 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     public readonly queuedProvisioning!: pulumi.Output<outputs.container.NodePoolQueuedProvisioning | undefined>;
     /**
@@ -408,6 +410,8 @@ export interface NodePoolState {
     /**
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     queuedProvisioning?: pulumi.Input<inputs.container.NodePoolQueuedProvisioning>;
     /**
@@ -520,6 +524,8 @@ export interface NodePoolArgs {
     /**
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     queuedProvisioning?: pulumi.Input<inputs.container.NodePoolQueuedProvisioning>;
     /**

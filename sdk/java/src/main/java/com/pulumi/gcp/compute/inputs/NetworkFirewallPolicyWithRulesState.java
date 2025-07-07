@@ -107,6 +107,25 @@ public final class NetworkFirewallPolicyWithRulesState extends com.pulumi.resour
     }
 
     /**
+     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;]
+     * 
+     */
+    @Import(name="policyType")
+    private @Nullable Output<String> policyType;
+
+    /**
+     * @return Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;]
+     * 
+     */
+    public Optional<Output<String>> policyType() {
+        return Optional.ofNullable(this.policyType);
+    }
+
+    /**
      * A list of firewall policy pre-defined rules.
      * Structure is documented below.
      * 
@@ -200,6 +219,7 @@ public final class NetworkFirewallPolicyWithRulesState extends com.pulumi.resour
         this.fingerprint = $.fingerprint;
         this.name = $.name;
         this.networkFirewallPolicyId = $.networkFirewallPolicyId;
+        this.policyType = $.policyType;
         this.predefinedRules = $.predefinedRules;
         this.project = $.project;
         this.ruleTupleCount = $.ruleTupleCount;
@@ -341,6 +361,31 @@ public final class NetworkFirewallPolicyWithRulesState extends com.pulumi.resour
          */
         public Builder networkFirewallPolicyId(String networkFirewallPolicyId) {
             return networkFirewallPolicyId(Output.of(networkFirewallPolicyId));
+        }
+
+        /**
+         * @param policyType Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+         * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+         * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyType(@Nullable Output<String> policyType) {
+            $.policyType = policyType;
+            return this;
+        }
+
+        /**
+         * @param policyType Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+         * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+         * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyType(String policyType) {
+            return policyType(Output.of(policyType));
         }
 
         /**

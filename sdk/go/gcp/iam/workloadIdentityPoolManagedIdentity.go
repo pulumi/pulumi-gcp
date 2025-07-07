@@ -89,6 +89,14 @@ import (
 //				WorkloadIdentityPoolManagedIdentityId: pulumi.String("example-managed-identity"),
 //				Description:                           pulumi.String("Example Managed Identity in a Workload Identity Pool Namespace"),
 //				Disabled:                              pulumi.Bool(true),
+//				AttestationRules: iam.WorkloadIdentityPoolManagedIdentityAttestationRuleArray{
+//					&iam.WorkloadIdentityPoolManagedIdentityAttestationRuleArgs{
+//						GoogleCloudResource: pulumi.String("//compute.googleapis.com/projects/1111111111111/uid/zones/us-central1-a/instances/12345678"),
+//					},
+//					&iam.WorkloadIdentityPoolManagedIdentityAttestationRuleArgs{
+//						GoogleCloudResource: pulumi.String("//run.googleapis.com/projects/1111111111111/name/locations/us-east1/services/my-service"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -125,6 +133,11 @@ import (
 type WorkloadIdentityPoolManagedIdentity struct {
 	pulumi.CustomResourceState
 
+	// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+	// defined under a managed identity, matching workloads may receive that identity. A maximum of
+	// 50 AttestationRules can be set.
+	// Structure is documented below.
+	AttestationRules WorkloadIdentityPoolManagedIdentityAttestationRuleArrayOutput `pulumi:"attestationRules"`
 	// A description of the managed identity. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -206,6 +219,11 @@ func GetWorkloadIdentityPoolManagedIdentity(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkloadIdentityPoolManagedIdentity resources.
 type workloadIdentityPoolManagedIdentityState struct {
+	// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+	// defined under a managed identity, matching workloads may receive that identity. A maximum of
+	// 50 AttestationRules can be set.
+	// Structure is documented below.
+	AttestationRules []WorkloadIdentityPoolManagedIdentityAttestationRule `pulumi:"attestationRules"`
 	// A description of the managed identity. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -249,6 +267,11 @@ type workloadIdentityPoolManagedIdentityState struct {
 }
 
 type WorkloadIdentityPoolManagedIdentityState struct {
+	// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+	// defined under a managed identity, matching workloads may receive that identity. A maximum of
+	// 50 AttestationRules can be set.
+	// Structure is documented below.
+	AttestationRules WorkloadIdentityPoolManagedIdentityAttestationRuleArrayInput
 	// A description of the managed identity. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -296,6 +319,11 @@ func (WorkloadIdentityPoolManagedIdentityState) ElementType() reflect.Type {
 }
 
 type workloadIdentityPoolManagedIdentityArgs struct {
+	// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+	// defined under a managed identity, matching workloads may receive that identity. A maximum of
+	// 50 AttestationRules can be set.
+	// Structure is documented below.
+	AttestationRules []WorkloadIdentityPoolManagedIdentityAttestationRule `pulumi:"attestationRules"`
 	// A description of the managed identity. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -330,6 +358,11 @@ type workloadIdentityPoolManagedIdentityArgs struct {
 
 // The set of arguments for constructing a WorkloadIdentityPoolManagedIdentity resource.
 type WorkloadIdentityPoolManagedIdentityArgs struct {
+	// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+	// defined under a managed identity, matching workloads may receive that identity. A maximum of
+	// 50 AttestationRules can be set.
+	// Structure is documented below.
+	AttestationRules WorkloadIdentityPoolManagedIdentityAttestationRuleArrayInput
 	// A description of the managed identity. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -447,6 +480,16 @@ func (o WorkloadIdentityPoolManagedIdentityOutput) ToWorkloadIdentityPoolManaged
 
 func (o WorkloadIdentityPoolManagedIdentityOutput) ToWorkloadIdentityPoolManagedIdentityOutputWithContext(ctx context.Context) WorkloadIdentityPoolManagedIdentityOutput {
 	return o
+}
+
+// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+// defined under a managed identity, matching workloads may receive that identity. A maximum of
+// 50 AttestationRules can be set.
+// Structure is documented below.
+func (o WorkloadIdentityPoolManagedIdentityOutput) AttestationRules() WorkloadIdentityPoolManagedIdentityAttestationRuleArrayOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolManagedIdentity) WorkloadIdentityPoolManagedIdentityAttestationRuleArrayOutput {
+		return v.AttestationRules
+	}).(WorkloadIdentityPoolManagedIdentityAttestationRuleArrayOutput)
 }
 
 // A description of the managed identity. Cannot exceed 256 characters.

@@ -55,6 +55,7 @@ export interface GetRegionalSecretResult {
     readonly annotations: {[key: string]: string};
     readonly createTime: string;
     readonly customerManagedEncryptions: outputs.secretmanager.GetRegionalSecretCustomerManagedEncryption[];
+    readonly deletionProtection: boolean;
     readonly effectiveAnnotations: {[key: string]: string};
     readonly effectiveLabels: {[key: string]: string};
     readonly expireTime: string;

@@ -746,6 +746,7 @@ class Instance(pulumi.CustomResource):
                 }],
                 "metadata": {
                     "terraform": "true",
+                    "serial-port-logging-enable": "false",
                 },
                 "enable_ip_forwarding": True,
                 "tags": [
@@ -994,6 +995,7 @@ class Instance(pulumi.CustomResource):
                 }],
                 "metadata": {
                     "terraform": "true",
+                    "serial-port-logging-enable": "false",
                 },
                 "enable_ip_forwarding": True,
                 "tags": [

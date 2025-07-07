@@ -283,14 +283,14 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
      * 
      */
     @Export(name="logLinkedDatasetQueryUserEmail", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> logLinkedDatasetQueryUserEmail;
 
     /**
-     * @return If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+     * @return If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
      * 
      */
     public Output<Optional<Boolean>> logLinkedDatasetQueryUserEmail() {

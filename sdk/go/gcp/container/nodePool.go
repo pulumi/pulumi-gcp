@@ -224,6 +224,8 @@ type NodePool struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies node pool-level settings of queued provisioning.
 	// Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	QueuedProvisioning NodePoolQueuedProvisioningPtrOutput `pulumi:"queuedProvisioning"`
 	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -336,6 +338,8 @@ type nodePoolState struct {
 	Project *string `pulumi:"project"`
 	// Specifies node pool-level settings of queued provisioning.
 	// Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	QueuedProvisioning *NodePoolQueuedProvisioning `pulumi:"queuedProvisioning"`
 	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -416,6 +420,8 @@ type NodePoolState struct {
 	Project pulumi.StringPtrInput
 	// Specifies node pool-level settings of queued provisioning.
 	// Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	QueuedProvisioning NodePoolQueuedProvisioningPtrInput
 	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -495,6 +501,8 @@ type nodePoolArgs struct {
 	Project *string `pulumi:"project"`
 	// Specifies node pool-level settings of queued provisioning.
 	// Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	QueuedProvisioning *NodePoolQueuedProvisioning `pulumi:"queuedProvisioning"`
 	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -571,6 +579,8 @@ type NodePoolArgs struct {
 	Project pulumi.StringPtrInput
 	// Specifies node pool-level settings of queued provisioning.
 	// Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	QueuedProvisioning NodePoolQueuedProvisioningPtrInput
 	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -788,6 +798,8 @@ func (o NodePoolOutput) Project() pulumi.StringOutput {
 
 // Specifies node pool-level settings of queued provisioning.
 // Structure is documented below.
+//
+// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 func (o NodePoolOutput) QueuedProvisioning() NodePoolQueuedProvisioningPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolQueuedProvisioningPtrOutput { return v.QueuedProvisioning }).(NodePoolQueuedProvisioningPtrOutput)
 }

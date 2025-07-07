@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchArgs;
+import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleTargetSecureTagArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -191,6 +192,29 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+     * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+     * 
+     */
+    @Import(name="targetSecureTags")
+    private @Nullable Output<List<FirewallPolicyRuleTargetSecureTagArgs>> targetSecureTags;
+
+    /**
+     * @return A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+     * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+     * 
+     */
+    public Optional<Output<List<FirewallPolicyRuleTargetSecureTagArgs>>> targetSecureTags() {
+        return Optional.ofNullable(this.targetSecureTags);
+    }
+
+    /**
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      * 
      */
@@ -235,6 +259,7 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         this.priority = $.priority;
         this.securityProfileGroup = $.securityProfileGroup;
         this.targetResources = $.targetResources;
+        this.targetSecureTags = $.targetSecureTags;
         this.targetServiceAccounts = $.targetServiceAccounts;
         this.tlsInspect = $.tlsInspect;
     }
@@ -496,6 +521,49 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
          */
         public Builder targetResources(String... targetResources) {
             return targetResources(List.of(targetResources));
+        }
+
+        /**
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+         * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+         * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+         * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+         * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSecureTags(@Nullable Output<List<FirewallPolicyRuleTargetSecureTagArgs>> targetSecureTags) {
+            $.targetSecureTags = targetSecureTags;
+            return this;
+        }
+
+        /**
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+         * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+         * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+         * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+         * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSecureTags(List<FirewallPolicyRuleTargetSecureTagArgs> targetSecureTags) {
+            return targetSecureTags(Output.of(targetSecureTags));
+        }
+
+        /**
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+         * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+         * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+         * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+         * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSecureTags(FirewallPolicyRuleTargetSecureTagArgs... targetSecureTags) {
+            return targetSecureTags(List.of(targetSecureTags));
         }
 
         /**

@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "ALPHA",
+    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "ALPHA",
+    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "ALPHA",
+    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Volumes = new[]
@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "ALPHA",
+    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -336,7 +336,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "ALPHA",
+    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Volumes = new[]
@@ -416,7 +416,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "ALPHA",
+    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -425,10 +425,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 {
     ///                     Name = "hello-1",
     ///                     Image = "us-docker.pkg.dev/cloudrun/container/worker-pool",
-    ///                     DependsOns = new[]
-    ///                     {
-    ///                         "hello-2",
-    ///                     },
     ///                     VolumeMounts = new[]
     ///                     {
     ///                         new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerVolumeMountArgs
@@ -483,7 +479,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "ALPHA",
+    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -556,7 +552,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "ALPHA",
+    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -618,7 +614,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "ALPHA",
+    ///         LaunchStage = "BETA",
     ///         CustomAudiences = new[]
     ///         {
     ///             "aud1",

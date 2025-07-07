@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .machineType("e2-medium")
  *             .vmImage(InstanceVmImageArgs.builder()
  *                 .project("deeplearning-platform-release")
- *                 .imageFamily("tf-latest-cpu")
+ *                 .imageFamily("pytorch-latest-cu124")
  *                 .build())
  *             .build());
  * 
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *             .machineType("e2-medium")
  *             .vmImage(InstanceVmImageArgs.builder()
  *                 .project("deeplearning-platform-release")
- *                 .imageFamily("tf-latest-cpu")
+ *                 .imageFamily("pytorch-latest-cu124")
  *                 .build())
  *             .desiredState("STOPPED")
  *             .build());
@@ -203,7 +203,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .vmImage(InstanceVmImageArgs.builder()
  *                 .project("deeplearning-platform-release")
- *                 .imageFamily("tf-latest-gpu")
+ *                 .imageFamily("pytorch-latest-cu124")
  *                 .build())
  *             .build());
  * 
@@ -256,7 +256,7 @@ import javax.annotation.Nullable;
  *             .machineType("e2-medium")
  *             .vmImage(InstanceVmImageArgs.builder()
  *                 .project("deeplearning-platform-release")
- *                 .imageFamily("tf-latest-cpu")
+ *                 .imageFamily("pytorch-latest-cu124")
  *                 .build())
  *             .instanceOwners("my}{@literal @}{@code service-account.com")
  *             .serviceAccount("my}{@literal @}{@code service-account.com")

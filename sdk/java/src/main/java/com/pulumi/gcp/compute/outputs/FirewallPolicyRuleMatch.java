@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.FirewallPolicyRuleMatchLayer4Config;
+import com.pulumi.gcp.compute.outputs.FirewallPolicyRuleMatchSrcSecureTag;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -83,9 +84,15 @@ public final class FirewallPolicyRuleMatch {
      */
     private @Nullable List<String> srcRegionCodes;
     /**
-     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+     * @return List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+     * Structure is documented below.
      * 
      * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * 
+     */
+    private @Nullable List<FirewallPolicyRuleMatchSrcSecureTag> srcSecureTags;
+    /**
+     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
      * 
      */
     private @Nullable List<String> srcThreatIntelligences;
@@ -186,9 +193,17 @@ public final class FirewallPolicyRuleMatch {
         return this.srcRegionCodes == null ? List.of() : this.srcRegionCodes;
     }
     /**
-     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+     * @return List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+     * Structure is documented below.
      * 
      * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * 
+     */
+    public List<FirewallPolicyRuleMatchSrcSecureTag> srcSecureTags() {
+        return this.srcSecureTags == null ? List.of() : this.srcSecureTags;
+    }
+    /**
+     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
      * 
      */
     public List<String> srcThreatIntelligences() {
@@ -217,6 +232,7 @@ public final class FirewallPolicyRuleMatch {
         private @Nullable String srcNetworkScope;
         private @Nullable List<String> srcNetworks;
         private @Nullable List<String> srcRegionCodes;
+        private @Nullable List<FirewallPolicyRuleMatchSrcSecureTag> srcSecureTags;
         private @Nullable List<String> srcThreatIntelligences;
         public Builder() {}
         public Builder(FirewallPolicyRuleMatch defaults) {
@@ -234,6 +250,7 @@ public final class FirewallPolicyRuleMatch {
     	      this.srcNetworkScope = defaults.srcNetworkScope;
     	      this.srcNetworks = defaults.srcNetworks;
     	      this.srcRegionCodes = defaults.srcRegionCodes;
+    	      this.srcSecureTags = defaults.srcSecureTags;
     	      this.srcThreatIntelligences = defaults.srcThreatIntelligences;
         }
 
@@ -351,6 +368,15 @@ public final class FirewallPolicyRuleMatch {
             return srcRegionCodes(List.of(srcRegionCodes));
         }
         @CustomType.Setter
+        public Builder srcSecureTags(@Nullable List<FirewallPolicyRuleMatchSrcSecureTag> srcSecureTags) {
+
+            this.srcSecureTags = srcSecureTags;
+            return this;
+        }
+        public Builder srcSecureTags(FirewallPolicyRuleMatchSrcSecureTag... srcSecureTags) {
+            return srcSecureTags(List.of(srcSecureTags));
+        }
+        @CustomType.Setter
         public Builder srcThreatIntelligences(@Nullable List<String> srcThreatIntelligences) {
 
             this.srcThreatIntelligences = srcThreatIntelligences;
@@ -374,6 +400,7 @@ public final class FirewallPolicyRuleMatch {
             _resultValue.srcNetworkScope = srcNetworkScope;
             _resultValue.srcNetworks = srcNetworks;
             _resultValue.srcRegionCodes = srcRegionCodes;
+            _resultValue.srcSecureTags = srcSecureTags;
             _resultValue.srcThreatIntelligences = srcThreatIntelligences;
             return _resultValue;
         }

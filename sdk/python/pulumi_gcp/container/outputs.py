@@ -128,6 +128,7 @@ __all__ = [
     'ClusterEnterpriseConfig',
     'ClusterFleet',
     'ClusterGatewayApiConfig',
+    'ClusterGkeAutoUpgradeConfig',
     'ClusterIdentityServiceConfig',
     'ClusterIpAllocationPolicy',
     'ClusterIpAllocationPolicyAdditionalPodRangesConfig',
@@ -337,6 +338,7 @@ __all__ = [
     'GetClusterEnterpriseConfigResult',
     'GetClusterFleetResult',
     'GetClusterGatewayApiConfigResult',
+    'GetClusterGkeAutoUpgradeConfigResult',
     'GetClusterIdentityServiceConfigResult',
     'GetClusterIpAllocationPolicyResult',
     'GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult',
@@ -5365,13 +5367,35 @@ class ClusterClusterTelemetry(dict):
 
 @pulumi.output_type
 class ClusterConfidentialNodes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidentialInstanceType":
+            suggest = "confidential_instance_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterConfidentialNodes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterConfidentialNodes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterConfidentialNodes.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: builtins.bool):
+                 enabled: builtins.bool,
+                 confidential_instance_type: Optional[builtins.str] = None):
         """
         :param builtins.bool enabled: Enable Confidential GKE Nodes for this cluster, to
                enforce encryption of data in-use.
+        :param builtins.str confidential_instance_type: Defines the type of technology used
+               by the confidential node.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
 
     @property
     @pulumi.getter
@@ -5381,6 +5405,15 @@ class ClusterConfidentialNodes(dict):
         enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> Optional[builtins.str]:
+        """
+        Defines the type of technology used
+        by the confidential node.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
 
 @pulumi.output_type
@@ -5858,6 +5891,45 @@ class ClusterGatewayApiConfig(dict):
         Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
         """
         return pulumi.get(self, "channel")
+
+
+@pulumi.output_type
+class ClusterGkeAutoUpgradeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "patchMode":
+            suggest = "patch_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGkeAutoUpgradeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGkeAutoUpgradeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGkeAutoUpgradeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 patch_mode: builtins.str):
+        """
+        :param builtins.str patch_mode: The selected patch mode.
+               Accepted values are:
+               * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
+        """
+        pulumi.set(__self__, "patch_mode", patch_mode)
+
+    @property
+    @pulumi.getter(name="patchMode")
+    def patch_mode(self) -> builtins.str:
+        """
+        The selected patch mode.
+        Accepted values are:
+        * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
+        """
+        return pulumi.get(self, "patch_mode")
 
 
 @pulumi.output_type
@@ -7829,13 +7901,35 @@ class ClusterNodeConfigAdvancedMachineFeatures(dict):
 
 @pulumi.output_type
 class ClusterNodeConfigConfidentialNodes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidentialInstanceType":
+            suggest = "confidential_instance_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigConfidentialNodes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigConfidentialNodes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigConfidentialNodes.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: builtins.bool):
+                 enabled: builtins.bool,
+                 confidential_instance_type: Optional[builtins.str] = None):
         """
         :param builtins.bool enabled: Enable Confidential GKE Nodes for this cluster, to
                enforce encryption of data in-use.
+        :param builtins.str confidential_instance_type: Defines the type of technology used
+               by the confidential node.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
 
     @property
     @pulumi.getter
@@ -7845,6 +7939,15 @@ class ClusterNodeConfigConfidentialNodes(dict):
         enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> Optional[builtins.str]:
+        """
+        Defines the type of technology used
+        by the confidential node.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
 
 @pulumi.output_type
@@ -11184,13 +11287,35 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
 
 @pulumi.output_type
 class ClusterNodePoolNodeConfigConfidentialNodes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidentialInstanceType":
+            suggest = "confidential_instance_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigConfidentialNodes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigConfidentialNodes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigConfidentialNodes.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: builtins.bool):
+                 enabled: builtins.bool,
+                 confidential_instance_type: Optional[builtins.str] = None):
         """
         :param builtins.bool enabled: Enable Confidential GKE Nodes for this cluster, to
                enforce encryption of data in-use.
+        :param builtins.str confidential_instance_type: Defines the type of technology used
+               by the confidential node.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
 
     @property
     @pulumi.getter
@@ -11200,6 +11325,15 @@ class ClusterNodePoolNodeConfigConfidentialNodes(dict):
         enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> Optional[builtins.str]:
+        """
+        Defines the type of technology used
+        by the confidential node.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
 
 @pulumi.output_type
@@ -14351,10 +14485,7 @@ class NodePoolNodeConfig(dict):
         :param builtins.str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
         :param Sequence[builtins.str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs.
         :param builtins.bool preemptible: Whether the nodes are created as preemptible VM instances.
-        :param 'NodePoolNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from.
-               Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        :param 'NodePoolNodeConfigReservationAffinityArgs' reservation_affinity: The reservation affinity configuration for the node pool.
         :param Mapping[str, builtins.str] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
         :param Mapping[str, builtins.str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param 'NodePoolNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
@@ -14712,10 +14843,7 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> Optional['outputs.NodePoolNodeConfigReservationAffinity']:
         """
-        The configuration of the desired reservation which instances could take capacity from.
-        Structure is documented below.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        The reservation affinity configuration for the node pool.
         """
         return pulumi.get(self, "reservation_affinity")
 
@@ -14889,12 +15017,33 @@ class NodePoolNodeConfigAdvancedMachineFeatures(dict):
 
 @pulumi.output_type
 class NodePoolNodeConfigConfidentialNodes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidentialInstanceType":
+            suggest = "confidential_instance_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigConfidentialNodes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigConfidentialNodes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigConfidentialNodes.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: builtins.bool):
+                 enabled: builtins.bool,
+                 confidential_instance_type: Optional[builtins.str] = None):
         """
         :param builtins.bool enabled: Whether Confidential Nodes feature is enabled for all nodes in this pool.
+        :param builtins.str confidential_instance_type: Defines the type of technology used by the confidential node.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
 
     @property
     @pulumi.getter
@@ -14903,6 +15052,14 @@ class NodePoolNodeConfigConfidentialNodes(dict):
         Whether Confidential Nodes feature is enabled for all nodes in this pool.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> Optional[builtins.str]:
+        """
+        Defines the type of technology used by the confidential node.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
 
 @pulumi.output_type
@@ -17375,11 +17532,22 @@ class GetClusterClusterTelemetryResult(dict):
 @pulumi.output_type
 class GetClusterConfidentialNodeResult(dict):
     def __init__(__self__, *,
+                 confidential_instance_type: builtins.str,
                  enabled: builtins.bool):
         """
+        :param builtins.str confidential_instance_type: Defines the type of technology used by the confidential node.
         :param builtins.bool enabled: Whether Confidential Nodes feature is enabled for all nodes in this cluster.
         """
+        pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
         pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> builtins.str:
+        """
+        Defines the type of technology used by the confidential node.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter
@@ -17709,6 +17877,26 @@ class GetClusterGatewayApiConfigResult(dict):
         The Gateway API release channel to use for Gateway API.
         """
         return pulumi.get(self, "channel")
+
+
+@pulumi.output_type
+class GetClusterGkeAutoUpgradeConfigResult(dict):
+    def __init__(__self__, *,
+                 patch_mode: builtins.str):
+        """
+        :param builtins.str patch_mode: The selected auto-upgrade patch type. Accepted values are:
+               * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
+        """
+        pulumi.set(__self__, "patch_mode", patch_mode)
+
+    @property
+    @pulumi.getter(name="patchMode")
+    def patch_mode(self) -> builtins.str:
+        """
+        The selected auto-upgrade patch type. Accepted values are:
+        * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
+        """
+        return pulumi.get(self, "patch_mode")
 
 
 @pulumi.output_type
@@ -18867,11 +19055,22 @@ class GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
 @pulumi.output_type
 class GetClusterNodeConfigConfidentialNodeResult(dict):
     def __init__(__self__, *,
+                 confidential_instance_type: builtins.str,
                  enabled: builtins.bool):
         """
+        :param builtins.str confidential_instance_type: Defines the type of technology used by the confidential node.
         :param builtins.bool enabled: Whether Confidential Nodes feature is enabled for all nodes in this pool.
         """
+        pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
         pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> builtins.str:
+        """
+        Defines the type of technology used by the confidential node.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter
@@ -21015,11 +21214,22 @@ class GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolNodeConfigConfidentialNodeResult(dict):
     def __init__(__self__, *,
+                 confidential_instance_type: builtins.str,
                  enabled: builtins.bool):
         """
+        :param builtins.str confidential_instance_type: Defines the type of technology used by the confidential node.
         :param builtins.bool enabled: Whether Confidential Nodes feature is enabled for all nodes in this pool.
         """
+        pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
         pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> builtins.str:
+        """
+        Defines the type of technology used by the confidential node.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter

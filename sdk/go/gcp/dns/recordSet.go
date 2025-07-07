@@ -323,8 +323,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
-//				Name:    pulumi.String("prod-zone"),
-//				DnsName: pulumi.String("prod.mydomain.com."),
+//				Name:       pulumi.String("prod-zone"),
+//				DnsName:    pulumi.String("prod.mydomain.com."),
+//				Visibility: pulumi.String("private"),
 //			})
 //			if err != nil {
 //				return err

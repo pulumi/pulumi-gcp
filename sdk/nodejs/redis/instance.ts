@@ -323,6 +323,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The CIDR range of internal addresses that are reserved for this
+     * instance. If not provided, the service will choose an unused /29
+     * block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+     * unique and non-overlapping with existing subnets in an authorized
+     * network.
+     */
+    public /*out*/ readonly effectiveReservedIpRange!: pulumi.Output<string>;
+    /**
      * Hostname or IP address of the exposed Redis endpoint used by clients
      * to connect to the service.
      */
@@ -500,6 +508,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["customerManagedKey"] = state ? state.customerManagedKey : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["effectiveReservedIpRange"] = state ? state.effectiveReservedIpRange : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["locationId"] = state ? state.locationId : undefined;
@@ -558,6 +567,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentLocationId"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["effectiveReservedIpRange"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["maintenanceSchedules"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
@@ -634,6 +644,14 @@ export interface InstanceState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The CIDR range of internal addresses that are reserved for this
+     * instance. If not provided, the service will choose an unused /29
+     * block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+     * unique and non-overlapping with existing subnets in an authorized
+     * network.
+     */
+    effectiveReservedIpRange?: pulumi.Input<string>;
     /**
      * Hostname or IP address of the exposed Redis endpoint used by clients
      * to connect to the service.

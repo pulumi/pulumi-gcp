@@ -15,6 +15,7 @@ import com.pulumi.gcp.compute.outputs.InstanceGroupManagerAutoHealingPolicies;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerParams;
+import com.pulumi.gcp.compute.outputs.InstanceGroupManagerResourcePolicies;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStandbyPolicy;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulExternalIp;
@@ -204,6 +205,100 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .targetSuspendedSize(2)
  *             .targetStoppedSize(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### With Resource Policies (`Google` Provider)
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicyWorkloadPolicyArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
+ * import com.pulumi.gcp.compute.InstanceGroupManager;
+ * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerResourcePoliciesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-11")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var workloadPolicy = new ResourcePolicy("workloadPolicy", ResourcePolicyArgs.builder()
+ *             .name("tf-test-gce-policy")
+ *             .region("us-central1")
+ *             .workloadPolicy(ResourcePolicyWorkloadPolicyArgs.builder()
+ *                 .type("HIGH_THROUGHPUT")
+ *                 .build())
+ *             .build());
+ * 
+ *         var igm_basic = new InstanceTemplate("igm-basic", InstanceTemplateArgs.builder()
+ *             .name("igm-instance-template")
+ *             .machineType("a4-highgpu-8g")
+ *             .canIpForward(false)
+ *             .tags(            
+ *                 "foo",
+ *                 "bar")
+ *             .disks(InstanceTemplateDiskArgs.builder()
+ *                 .sourceImage(myImage.selfLink())
+ *                 .autoDelete(true)
+ *                 .boot(true)
+ *                 .diskType("hyperdisk-balanced")
+ *                 .build())
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .network("default")
+ *                 .build())
+ *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
+ *                 .scopes(                
+ *                     "userinfo-email",
+ *                     "compute-ro",
+ *                     "storage-ro")
+ *                 .build())
+ *             .build());
+ * 
+ *         var igm_workload_policy = new InstanceGroupManager("igm-workload-policy", InstanceGroupManagerArgs.builder()
+ *             .description("Terraform test instance group manager")
+ *             .name("igm-basic-workload-policy")
+ *             .versions(InstanceGroupManagerVersionArgs.builder()
+ *                 .name("prod")
+ *                 .instanceTemplate(igm_basic.selfLink())
+ *                 .build())
+ *             .baseInstanceName("tf-test-igm-no-tp")
+ *             .zone("us-central1-b")
+ *             .targetSize(0)
+ *             .resourcePolicies(InstanceGroupManagerResourcePoliciesArgs.builder()
+ *                 .workloadPolicy(workloadPolicy.selfLink())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -458,16 +553,12 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
-     * ***
-     * 
      */
     @Export(name="params", refs={InstanceGroupManagerParams.class}, tree="[0]")
     private Output</* @Nullable */ InstanceGroupManagerParams> params;
 
     /**
      * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     * 
-     * ***
      * 
      */
     public Output<Optional<InstanceGroupManagerParams>> params() {
@@ -488,6 +579,24 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Resource policies for this managed instance group. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="resourcePolicies", refs={InstanceGroupManagerResourcePolicies.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceGroupManagerResourcePolicies> resourcePolicies;
+
+    /**
+     * @return Resource policies for this managed instance group. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    public Output<Optional<InstanceGroupManagerResourcePolicies>> resourcePolicies() {
+        return Codegen.optional(this.resourcePolicies);
     }
     /**
      * The URL of the created resource.

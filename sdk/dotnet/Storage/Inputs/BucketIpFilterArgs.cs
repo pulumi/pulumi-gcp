@@ -13,7 +13,19 @@ namespace Pulumi.Gcp.Storage.Inputs
     public sealed class BucketIpFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+        /// While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
+        /// </summary>
+        [Input("allowAllServiceAgentAccess")]
+        public Input<bool>? AllowAllServiceAgentAccess { get; set; }
+
+        /// <summary>
+        /// While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
+        /// </summary>
+        [Input("allowCrossOrgVpcs")]
+        public Input<bool>? AllowCrossOrgVpcs { get; set; }
+
+        /// <summary>
+        /// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;

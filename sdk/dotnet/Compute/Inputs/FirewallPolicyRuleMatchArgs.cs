@@ -159,14 +159,27 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _srcRegionCodes = value;
         }
 
+        [Input("srcSecureTags")]
+        private InputList<Inputs.FirewallPolicyRuleMatchSrcSecureTagArgs>? _srcSecureTags;
+
+        /// <summary>
+        /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        /// Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_match_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
+        /// </summary>
+        public InputList<Inputs.FirewallPolicyRuleMatchSrcSecureTagArgs> SrcSecureTags
+        {
+            get => _srcSecureTags ?? (_srcSecureTags = new InputList<Inputs.FirewallPolicyRuleMatchSrcSecureTagArgs>());
+            set => _srcSecureTags = value;
+        }
+
         [Input("srcThreatIntelligences")]
         private InputList<string>? _srcThreatIntelligences;
 
         /// <summary>
         /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
-        /// 
-        /// 
-        /// &lt;a name="nested_match_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
         /// </summary>
         public InputList<string> SrcThreatIntelligences
         {

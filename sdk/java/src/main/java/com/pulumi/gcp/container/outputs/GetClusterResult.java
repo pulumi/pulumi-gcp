@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.outputs.GetClusterEnableK8sBetaApi;
 import com.pulumi.gcp.container.outputs.GetClusterEnterpriseConfig;
 import com.pulumi.gcp.container.outputs.GetClusterFleet;
 import com.pulumi.gcp.container.outputs.GetClusterGatewayApiConfig;
+import com.pulumi.gcp.container.outputs.GetClusterGkeAutoUpgradeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterLoggingConfig;
@@ -94,6 +95,7 @@ public final class GetClusterResult {
     private List<GetClusterEnterpriseConfig> enterpriseConfigs;
     private List<GetClusterFleet> fleets;
     private List<GetClusterGatewayApiConfig> gatewayApiConfigs;
+    private List<GetClusterGkeAutoUpgradeConfig> gkeAutoUpgradeConfigs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -254,6 +256,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterGatewayApiConfig> gatewayApiConfigs() {
         return this.gatewayApiConfigs;
+    }
+    public List<GetClusterGkeAutoUpgradeConfig> gkeAutoUpgradeConfigs() {
+        return this.gkeAutoUpgradeConfigs;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -462,6 +467,7 @@ public final class GetClusterResult {
         private List<GetClusterEnterpriseConfig> enterpriseConfigs;
         private List<GetClusterFleet> fleets;
         private List<GetClusterGatewayApiConfig> gatewayApiConfigs;
+        private List<GetClusterGkeAutoUpgradeConfig> gkeAutoUpgradeConfigs;
         private String id;
         private List<GetClusterIdentityServiceConfig> identityServiceConfigs;
         private String inTransitEncryptionConfig;
@@ -552,6 +558,7 @@ public final class GetClusterResult {
     	      this.enterpriseConfigs = defaults.enterpriseConfigs;
     	      this.fleets = defaults.fleets;
     	      this.gatewayApiConfigs = defaults.gatewayApiConfigs;
+    	      this.gkeAutoUpgradeConfigs = defaults.gkeAutoUpgradeConfigs;
     	      this.id = defaults.id;
     	      this.identityServiceConfigs = defaults.identityServiceConfigs;
     	      this.inTransitEncryptionConfig = defaults.inTransitEncryptionConfig;
@@ -923,6 +930,17 @@ public final class GetClusterResult {
         }
         public Builder gatewayApiConfigs(GetClusterGatewayApiConfig... gatewayApiConfigs) {
             return gatewayApiConfigs(List.of(gatewayApiConfigs));
+        }
+        @CustomType.Setter
+        public Builder gkeAutoUpgradeConfigs(List<GetClusterGkeAutoUpgradeConfig> gkeAutoUpgradeConfigs) {
+            if (gkeAutoUpgradeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "gkeAutoUpgradeConfigs");
+            }
+            this.gkeAutoUpgradeConfigs = gkeAutoUpgradeConfigs;
+            return this;
+        }
+        public Builder gkeAutoUpgradeConfigs(GetClusterGkeAutoUpgradeConfig... gkeAutoUpgradeConfigs) {
+            return gkeAutoUpgradeConfigs(List.of(gkeAutoUpgradeConfigs));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -1470,6 +1488,7 @@ public final class GetClusterResult {
             _resultValue.enterpriseConfigs = enterpriseConfigs;
             _resultValue.fleets = fleets;
             _resultValue.gatewayApiConfigs = gatewayApiConfigs;
+            _resultValue.gkeAutoUpgradeConfigs = gkeAutoUpgradeConfigs;
             _resultValue.id = id;
             _resultValue.identityServiceConfigs = identityServiceConfigs;
             _resultValue.inTransitEncryptionConfig = inTransitEncryptionConfig;

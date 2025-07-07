@@ -132,6 +132,10 @@ export class GroupMembership extends pulumi.CustomResource {
     }
 
     /**
+     * If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+     */
+    public readonly createIgnoreAlreadyExists!: pulumi.Output<boolean | undefined>;
+    /**
      * The time when the Membership was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -179,6 +183,7 @@ export class GroupMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupMembershipState | undefined;
+            resourceInputs["createIgnoreAlreadyExists"] = state ? state.createIgnoreAlreadyExists : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["memberKey"] = state ? state.memberKey : undefined;
@@ -195,6 +200,7 @@ export class GroupMembership extends pulumi.CustomResource {
             if ((!args || args.roles === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roles'");
             }
+            resourceInputs["createIgnoreAlreadyExists"] = args ? args.createIgnoreAlreadyExists : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["memberKey"] = args ? args.memberKey : undefined;
             resourceInputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
@@ -213,6 +219,10 @@ export class GroupMembership extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GroupMembership resources.
  */
 export interface GroupMembershipState {
+    /**
+     * If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+     */
+    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
     /**
      * The time when the Membership was created.
      */
@@ -253,6 +263,10 @@ export interface GroupMembershipState {
  * The set of arguments for constructing a GroupMembership resource.
  */
 export interface GroupMembershipArgs {
+    /**
+     * If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+     */
+    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
     /**
      * The name of the Group to create this membership in.
      */

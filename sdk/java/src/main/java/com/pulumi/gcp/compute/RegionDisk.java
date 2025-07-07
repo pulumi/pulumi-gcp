@@ -215,6 +215,46 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Disk Hyperdisk Balanced Ha Write Many
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionDisk;
+ * import com.pulumi.gcp.compute.RegionDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new RegionDisk("primary", RegionDiskArgs.builder()
+ *             .name("my-region-hyperdisk")
+ *             .type("hyperdisk-balanced-high-availability")
+ *             .region("us-central1")
+ *             .replicaZones(            
+ *                 "us-central1-a",
+ *                 "us-central1-f")
+ *             .accessMode("READ_WRITE_MANY")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -249,6 +289,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/regionDisk:RegionDisk")
 public class RegionDisk extends com.pulumi.resources.CustomResource {
+    /**
+     * The access mode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     *   The AccessMode is only valid for Hyperdisk disk types.
+     * 
+     */
+    @Export(name="accessMode", refs={String.class}, tree="[0]")
+    private Output<String> accessMode;
+
+    /**
+     * @return The access mode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     *   The AccessMode is only valid for Hyperdisk disk types.
+     * 
+     */
+    public Output<String> accessMode() {
+        return this.accessMode;
+    }
     /**
      * A nested object resource.
      * Structure is documented below.

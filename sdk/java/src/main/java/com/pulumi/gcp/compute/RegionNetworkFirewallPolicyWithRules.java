@@ -154,6 +154,57 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Compute Region Network Firewall Policy With Rules Roce
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyWithRules;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyWithRulesArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyWithRulesRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyWithRulesRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new RegionNetworkFirewallPolicyWithRules("policy", RegionNetworkFirewallPolicyWithRulesArgs.builder()
+ *             .name("rnf-policy")
+ *             .description("Terraform test")
+ *             .policyType("RDMA_ROCE_POLICY")
+ *             .rules(RegionNetworkFirewallPolicyWithRulesRuleArgs.builder()
+ *                 .description("deny all rule")
+ *                 .priority(1000)
+ *                 .enableLogging(true)
+ *                 .action("deny")
+ *                 .direction("INGRESS")
+ *                 .match(RegionNetworkFirewallPolicyWithRulesRuleMatchArgs.builder()
+ *                     .srcIpRanges("0.0.0.0/0")
+ *                     .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                         .ipProtocol("all")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -269,6 +320,24 @@ public class RegionNetworkFirewallPolicyWithRules extends com.pulumi.resources.C
      */
     public Output<String> networkFirewallPolicyId() {
         return this.networkFirewallPolicyId;
+    }
+    /**
+     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;, &#34;RDMA_ROCE_POLICY&#34;]
+     * 
+     */
+    @Export(name="policyType", refs={String.class}, tree="[0]")
+    private Output<String> policyType;
+
+    /**
+     * @return Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;, &#34;RDMA_ROCE_POLICY&#34;]
+     * 
+     */
+    public Output<String> policyType() {
+        return this.policyType;
     }
     /**
      * A list of firewall policy pre-defined rules.

@@ -161,6 +161,93 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
+    /// ### With Resource Policies (`Google` Provider)
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var workloadPolicy = new Gcp.Compute.ResourcePolicy("workload_policy", new()
+    ///     {
+    ///         Name = "tf-test-gce-policy",
+    ///         Region = "us-central1",
+    ///         WorkloadPolicy = new Gcp.Compute.Inputs.ResourcePolicyWorkloadPolicyArgs
+    ///         {
+    ///             Type = "HIGH_THROUGHPUT",
+    ///         },
+    ///     });
+    /// 
+    ///     var igm_basic = new Gcp.Compute.InstanceTemplate("igm-basic", new()
+    ///     {
+    ///         Name = "igm-instance-template",
+    ///         MachineType = "a4-highgpu-8g",
+    ///         CanIpForward = false,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///                 DiskType = "hyperdisk-balanced",
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Scopes = new[]
+    ///             {
+    ///                 "userinfo-email",
+    ///                 "compute-ro",
+    ///                 "storage-ro",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var igm_workload_policy = new Gcp.Compute.InstanceGroupManager("igm-workload-policy", new()
+    ///     {
+    ///         Description = "Terraform test instance group manager",
+    ///         Name = "igm-basic-workload-policy",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///             {
+    ///                 Name = "prod",
+    ///                 InstanceTemplate = igm_basic.SelfLink,
+    ///             },
+    ///         },
+    ///         BaseInstanceName = "tf-test-igm-no-tp",
+    ///         Zone = "us-central1-b",
+    ///         TargetSize = 0,
+    ///         ResourcePolicies = new Gcp.Compute.Inputs.InstanceGroupManagerResourcePoliciesArgs
+    ///         {
+    ///             WorkloadPolicy = workloadPolicy.SelfLink,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Instance group managers can be imported using any of these accepted formats:
@@ -289,8 +376,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Output("params")]
         public Output<Outputs.InstanceGroupManagerParams?> Params { get; private set; } = null!;
@@ -301,6 +386,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource policies for this managed instance group. Structure is documented below.
+        /// 
+        /// - - -
+        /// </summary>
+        [Output("resourcePolicies")]
+        public Output<Outputs.InstanceGroupManagerResourcePolicies?> ResourcePolicies { get; private set; } = null!;
 
         /// <summary>
         /// The URL of the created resource.
@@ -525,8 +618,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Input("params")]
         public Input<Inputs.InstanceGroupManagerParamsArgs>? Params { get; set; }
@@ -537,6 +628,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Resource policies for this managed instance group. Structure is documented below.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("resourcePolicies")]
+        public Input<Inputs.InstanceGroupManagerResourcePoliciesArgs>? ResourcePolicies { get; set; }
 
         /// <summary>
         /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
@@ -768,8 +867,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Input("params")]
         public Input<Inputs.InstanceGroupManagerParamsGetArgs>? Params { get; set; }
@@ -780,6 +877,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Resource policies for this managed instance group. Structure is documented below.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("resourcePolicies")]
+        public Input<Inputs.InstanceGroupManagerResourcePoliciesGetArgs>? ResourcePolicies { get; set; }
 
         /// <summary>
         /// The URL of the created resource.

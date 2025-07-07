@@ -398,6 +398,16 @@ namespace Pulumi.Gcp.Redis
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// The CIDR range of internal addresses that are reserved for this
+        /// instance. If not provided, the service will choose an unused /29
+        /// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+        /// unique and non-overlapping with existing subnets in an authorized
+        /// network.
+        /// </summary>
+        [Output("effectiveReservedIpRange")]
+        public Output<string> EffectiveReservedIpRange { get; private set; } = null!;
+
+        /// <summary>
         /// Hostname or IP address of the exposed Redis endpoint used by clients
         /// to connect to the service.
         /// </summary>
@@ -956,6 +966,16 @@ namespace Pulumi.Gcp.Redis
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The CIDR range of internal addresses that are reserved for this
+        /// instance. If not provided, the service will choose an unused /29
+        /// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+        /// unique and non-overlapping with existing subnets in an authorized
+        /// network.
+        /// </summary>
+        [Input("effectiveReservedIpRange")]
+        public Input<string>? EffectiveReservedIpRange { get; set; }
 
         /// <summary>
         /// Hostname or IP address of the exposed Redis endpoint used by clients

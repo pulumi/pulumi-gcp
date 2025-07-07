@@ -297,7 +297,7 @@ export class Listing extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
      */
     public readonly logLinkedDatasetQueryUserEmail!: pulumi.Output<boolean | undefined>;
     /**
@@ -452,7 +452,7 @@ export interface ListingState {
      */
     location?: pulumi.Input<string>;
     /**
-     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
      */
     logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
     /**
@@ -539,7 +539,7 @@ export interface ListingArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
      */
     logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
     /**

@@ -165,7 +165,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         /// </summary>
         [Output("logLinkedDatasetQueryUserEmail")]
         public Output<bool?> LogLinkedDatasetQueryUserEmail { get; private set; } = null!;
@@ -284,7 +284,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         /// </summary>
         [Input("logLinkedDatasetQueryUserEmail")]
         public Input<bool>? LogLinkedDatasetQueryUserEmail { get; set; }
@@ -364,7 +364,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         /// </summary>
         [Input("logLinkedDatasetQueryUserEmail")]
         public Input<bool>? LogLinkedDatasetQueryUserEmail { get; set; }

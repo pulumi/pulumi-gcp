@@ -13,6 +13,1725 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicy struct {
+	// Maximum age of the snapshot that is allowed to be kept.
+	MaxRetentionDays int `pulumi:"maxRetentionDays"`
+	// Specifies the behavior to apply to scheduled snapshots when
+	// the source disk is deleted. Default value: "KEEP_AUTO_SNAPSHOTS" Possible values: ["KEEP_AUTO_SNAPSHOTS", "APPLY_RETENTION_POLICY"]
+	OnSourceDiskDelete string `pulumi:"onSourceDiskDelete"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyRetentionPolicyInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs and GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyRetentionPolicyInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput
+	ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs struct {
+	// Maximum age of the snapshot that is allowed to be kept.
+	MaxRetentionDays pulumi.IntInput `pulumi:"maxRetentionDays"`
+	// Specifies the behavior to apply to scheduled snapshots when
+	// the source disk is deleted. Default value: "KEEP_AUTO_SNAPSHOTS" Possible values: ["KEEP_AUTO_SNAPSHOTS", "APPLY_RETENTION_POLICY"]
+	OnSourceDiskDelete pulumi.StringInput `pulumi:"onSourceDiskDelete"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray and GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray{ GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray []GetResourcePolicySnapshotSchedulePolicyRetentionPolicyInput
+
+func (GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return o
+}
+
+// Maximum age of the snapshot that is allowed to be kept.
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) MaxRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyRetentionPolicy) int { return v.MaxRetentionDays }).(pulumi.IntOutput)
+}
+
+// Specifies the behavior to apply to scheduled snapshots when
+// the source disk is deleted. Default value: "KEEP_AUTO_SNAPSHOTS" Possible values: ["KEEP_AUTO_SNAPSHOTS", "APPLY_RETENTION_POLICY"]
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) OnSourceDiskDelete() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyRetentionPolicy) string { return v.OnSourceDiskDelete }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicyRetentionPolicy)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicySchedule struct {
+	// The policy will execute every nth day at the specified time.
+	DailySchedules []GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule `pulumi:"dailySchedules"`
+	// The policy will execute every nth hour starting at the specified time.
+	HourlySchedules []GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule `pulumi:"hourlySchedules"`
+	// Allows specifying a snapshot time for each day of the week.
+	WeeklySchedules []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule `pulumi:"weeklySchedules"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleArgs and GetResourcePolicySnapshotSchedulePolicyScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyScheduleArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleArgs struct {
+	// The policy will execute every nth day at the specified time.
+	DailySchedules GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayInput `pulumi:"dailySchedules"`
+	// The policy will execute every nth hour starting at the specified time.
+	HourlySchedules GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayInput `pulumi:"hourlySchedules"`
+	// Allows specifying a snapshot time for each day of the week.
+	WeeklySchedules GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayInput `pulumi:"weeklySchedules"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleArray and GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleArrayInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyScheduleArray{ GetResourcePolicySnapshotSchedulePolicyScheduleArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleArray []GetResourcePolicySnapshotSchedulePolicyScheduleInput
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return o
+}
+
+// The policy will execute every nth day at the specified time.
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) DailySchedules() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
+		return v.DailySchedules
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput)
+}
+
+// The policy will execute every nth hour starting at the specified time.
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) HourlySchedules() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+		return v.HourlySchedules
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput)
+}
+
+// Allows specifying a snapshot time for each day of the week.
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) WeeklySchedules() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
+		return v.WeeklySchedules
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicySchedule {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicySchedule)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule struct {
+	// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
+	DaysInCycle int `pulumi:"daysInCycle"`
+	// This must be in UTC format that resolves to one of
+	// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+	// both 13:00-5 and 08:00 are valid.
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs and GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs struct {
+	// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
+	DaysInCycle pulumi.IntInput `pulumi:"daysInCycle"`
+	// This must be in UTC format that resolves to one of
+	// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+	// both 13:00-5 and 08:00 are valid.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray and GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray{ GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray []GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return o
+}
+
+// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) DaysInCycle() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) int { return v.DaysInCycle }).(pulumi.IntOutput)
+}
+
+// This must be in UTC format that resolves to one of
+// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+// both 13:00-5 and 08:00 are valid.
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule struct {
+	// The number of hours between snapshots.
+	HoursInCycle int `pulumi:"hoursInCycle"`
+	// Time within the window to start the operations.
+	// It must be in an hourly format "HH:MM",
+	// where HH : [00-23] and MM : [00] GMT. eg: 21:00
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs and GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs struct {
+	// The number of hours between snapshots.
+	HoursInCycle pulumi.IntInput `pulumi:"hoursInCycle"`
+	// Time within the window to start the operations.
+	// It must be in an hourly format "HH:MM",
+	// where HH : [00-23] and MM : [00] GMT. eg: 21:00
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray and GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray{ GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray []GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return o
+}
+
+// The number of hours between snapshots.
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) HoursInCycle() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) int { return v.HoursInCycle }).(pulumi.IntOutput)
+}
+
+// Time within the window to start the operations.
+// It must be in an hourly format "HH:MM",
+// where HH : [00-23] and MM : [00] GMT. eg: 21:00
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule struct {
+	// May contain up to seven (one for each day of the week) snapshot times.
+	DayOfWeeks []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek `pulumi:"dayOfWeeks"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs and GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs struct {
+	// May contain up to seven (one for each day of the week) snapshot times.
+	DayOfWeeks GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput `pulumi:"dayOfWeeks"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray and GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray{ GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput {
+	return o
+}
+
+// May contain up to seven (one for each day of the week) snapshot times.
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) DayOfWeeks() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
+		return v.DayOfWeeks
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek struct {
+	// The day of the week to create the snapshot. e.g. MONDAY Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	Day string `pulumi:"day"`
+	// Time within the window to start the operations.
+	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs and GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs struct {
+	// The day of the week to create the snapshot. e.g. MONDAY Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	Day pulumi.StringInput `pulumi:"day"`
+	// Time within the window to start the operations.
+	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray and GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray{ GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput {
+	return o
+}
+
+// The day of the week to create the snapshot. e.g. MONDAY Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Time within the window to start the operations.
+// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek) string {
+		return v.StartTime
+	}).(pulumi.StringOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicySnapshotProperty struct {
+	// Creates the new snapshot in the snapshot chain labeled with the
+	// specified name. The chain name must be 1-63 characters long and comply
+	// with RFC1035.
+	ChainName string `pulumi:"chainName"`
+	// Whether to perform a 'guest aware' snapshot.
+	GuestFlush bool `pulumi:"guestFlush"`
+	// A set of key-value pairs.
+	Labels map[string]string `pulumi:"labels"`
+	// Cloud Storage bucket location to store the auto snapshot
+	// (regional or multi-regional)
+	StorageLocations []string `pulumi:"storageLocations"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs and GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs{...}
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput
+	ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs struct {
+	// Creates the new snapshot in the snapshot chain labeled with the
+	// specified name. The chain name must be 1-63 characters long and comply
+	// with RFC1035.
+	ChainName pulumi.StringInput `pulumi:"chainName"`
+	// Whether to perform a 'guest aware' snapshot.
+	GuestFlush pulumi.BoolInput `pulumi:"guestFlush"`
+	// A set of key-value pairs.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Cloud Storage bucket location to store the auto snapshot
+	// (regional or multi-regional)
+	StorageLocations pulumi.StringArrayInput `pulumi:"storageLocations"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySnapshotProperty)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray and GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray{ GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray []GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput
+
+func (GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicySnapshotProperty)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySnapshotProperty)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput {
+	return o
+}
+
+// Creates the new snapshot in the snapshot chain labeled with the
+// specified name. The chain name must be 1-63 characters long and comply
+// with RFC1035.
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) ChainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySnapshotProperty) string { return v.ChainName }).(pulumi.StringOutput)
+}
+
+// Whether to perform a 'guest aware' snapshot.
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) GuestFlush() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySnapshotProperty) bool { return v.GuestFlush }).(pulumi.BoolOutput)
+}
+
+// A set of key-value pairs.
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySnapshotProperty) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Cloud Storage bucket location to store the auto snapshot
+// (regional or multi-regional)
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) StorageLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySnapshotProperty) []string { return v.StorageLocations }).(pulumi.StringArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicySnapshotProperty)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicySnapshotProperty)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput)
+}
+
+type GetResourcePolicyWorkloadPolicy struct {
+	// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if max topology distance is set.
+	AcceleratorTopology string `pulumi:"acceleratorTopology"`
+	// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if accelerator topology is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
+	MaxTopologyDistance string `pulumi:"maxTopologyDistance"`
+	// The type of workload policy. Possible values: ["HIGH_AVAILABILITY", "HIGH_THROUGHPUT"]
+	Type string `pulumi:"type"`
+}
+
+// GetResourcePolicyWorkloadPolicyInput is an input type that accepts GetResourcePolicyWorkloadPolicyArgs and GetResourcePolicyWorkloadPolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicyWorkloadPolicyInput` via:
+//
+//	GetResourcePolicyWorkloadPolicyArgs{...}
+type GetResourcePolicyWorkloadPolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyWorkloadPolicyOutput() GetResourcePolicyWorkloadPolicyOutput
+	ToGetResourcePolicyWorkloadPolicyOutputWithContext(context.Context) GetResourcePolicyWorkloadPolicyOutput
+}
+
+type GetResourcePolicyWorkloadPolicyArgs struct {
+	// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if max topology distance is set.
+	AcceleratorTopology pulumi.StringInput `pulumi:"acceleratorTopology"`
+	// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+	// and cannot be set if accelerator topology is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
+	MaxTopologyDistance pulumi.StringInput `pulumi:"maxTopologyDistance"`
+	// The type of workload policy. Possible values: ["HIGH_AVAILABILITY", "HIGH_THROUGHPUT"]
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetResourcePolicyWorkloadPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyWorkloadPolicyArgs) ToGetResourcePolicyWorkloadPolicyOutput() GetResourcePolicyWorkloadPolicyOutput {
+	return i.ToGetResourcePolicyWorkloadPolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyWorkloadPolicyArgs) ToGetResourcePolicyWorkloadPolicyOutputWithContext(ctx context.Context) GetResourcePolicyWorkloadPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyWorkloadPolicyOutput)
+}
+
+// GetResourcePolicyWorkloadPolicyArrayInput is an input type that accepts GetResourcePolicyWorkloadPolicyArray and GetResourcePolicyWorkloadPolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyWorkloadPolicyArrayInput` via:
+//
+//	GetResourcePolicyWorkloadPolicyArray{ GetResourcePolicyWorkloadPolicyArgs{...} }
+type GetResourcePolicyWorkloadPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyWorkloadPolicyArrayOutput() GetResourcePolicyWorkloadPolicyArrayOutput
+	ToGetResourcePolicyWorkloadPolicyArrayOutputWithContext(context.Context) GetResourcePolicyWorkloadPolicyArrayOutput
+}
+
+type GetResourcePolicyWorkloadPolicyArray []GetResourcePolicyWorkloadPolicyInput
+
+func (GetResourcePolicyWorkloadPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyWorkloadPolicyArray) ToGetResourcePolicyWorkloadPolicyArrayOutput() GetResourcePolicyWorkloadPolicyArrayOutput {
+	return i.ToGetResourcePolicyWorkloadPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyWorkloadPolicyArray) ToGetResourcePolicyWorkloadPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyWorkloadPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyWorkloadPolicyArrayOutput)
+}
+
+type GetResourcePolicyWorkloadPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyWorkloadPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyWorkloadPolicyOutput) ToGetResourcePolicyWorkloadPolicyOutput() GetResourcePolicyWorkloadPolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicyWorkloadPolicyOutput) ToGetResourcePolicyWorkloadPolicyOutputWithContext(ctx context.Context) GetResourcePolicyWorkloadPolicyOutput {
+	return o
+}
+
+// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+// and cannot be set if max topology distance is set.
+func (o GetResourcePolicyWorkloadPolicyOutput) AcceleratorTopology() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyWorkloadPolicy) string { return v.AcceleratorTopology }).(pulumi.StringOutput)
+}
+
+// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
+// and cannot be set if accelerator topology is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
+func (o GetResourcePolicyWorkloadPolicyOutput) MaxTopologyDistance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyWorkloadPolicy) string { return v.MaxTopologyDistance }).(pulumi.StringOutput)
+}
+
+// The type of workload policy. Possible values: ["HIGH_AVAILABILITY", "HIGH_THROUGHPUT"]
+func (o GetResourcePolicyWorkloadPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyWorkloadPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicyWorkloadPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyWorkloadPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyWorkloadPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyWorkloadPolicyArrayOutput) ToGetResourcePolicyWorkloadPolicyArrayOutput() GetResourcePolicyWorkloadPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyWorkloadPolicyArrayOutput) ToGetResourcePolicyWorkloadPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyWorkloadPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyWorkloadPolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyWorkloadPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyWorkloadPolicy {
+		return vs[0].([]GetResourcePolicyWorkloadPolicy)[vs[1].(int)]
+	}).(GetResourcePolicyWorkloadPolicyOutput)
+}
+
+type GetRouterBgp struct {
+	// User-specified flag to indicate which mode to use for advertisement. Default value: "DEFAULT" Possible values: ["DEFAULT", "CUSTOM"]
+	AdvertiseMode string `pulumi:"advertiseMode"`
+	// User-specified list of prefix groups to advertise in custom mode.
+	// This field can only be populated if advertiseMode is CUSTOM and
+	// is advertised to all peers of the router. These groups will be
+	// advertised in addition to any specified prefixes. Leave this field
+	// blank to advertise no custom groups.
+	//
+	// This enum field has the one valid value: ALL_SUBNETS
+	AdvertisedGroups []string `pulumi:"advertisedGroups"`
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if advertiseMode
+	// is CUSTOM and is advertised to all peers of the router. These IP
+	// ranges will be advertised in addition to any specified groups.
+	// Leave this field blank to advertise no custom IP ranges.
+	AdvertisedIpRanges []GetRouterBgpAdvertisedIpRange `pulumi:"advertisedIpRanges"`
+	// Local BGP Autonomous System Number (ASN). Must be an RFC6996
+	// private ASN, either 16-bit or 32-bit. The value will be fixed for
+	// this router resource. All VPN tunnels that link to this router
+	// will have the same local ASN.
+	Asn int `pulumi:"asn"`
+	// Explicitly specifies a range of valid BGP Identifiers for this Router.
+	// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+	// size at least /30, even if the BGP sessions are over IPv6. It must
+	// not overlap with any IPv4 BGP session ranges. Other vendors commonly
+	// call this router ID.
+	IdentifierRange string `pulumi:"identifierRange"`
+	// The interval in seconds between BGP keepalive messages that are sent
+	// to the peer. Hold time is three times the interval at which keepalive
+	// messages are sent, and the hold time is the maximum number of seconds
+	// allowed to elapse between successive keepalive messages that BGP
+	// receives from a peer.
+	//
+	// BGP will use the smaller of either the local hold time value or the
+	// peer's hold time value as the hold time for the BGP connection
+	// between the two peers. If set, this value must be between 20 and 60.
+	// The default is 20.
+	KeepaliveInterval int `pulumi:"keepaliveInterval"`
+}
+
+// GetRouterBgpInput is an input type that accepts GetRouterBgpArgs and GetRouterBgpOutput values.
+// You can construct a concrete instance of `GetRouterBgpInput` via:
+//
+//	GetRouterBgpArgs{...}
+type GetRouterBgpInput interface {
+	pulumi.Input
+
+	ToGetRouterBgpOutput() GetRouterBgpOutput
+	ToGetRouterBgpOutputWithContext(context.Context) GetRouterBgpOutput
+}
+
+type GetRouterBgpArgs struct {
+	// User-specified flag to indicate which mode to use for advertisement. Default value: "DEFAULT" Possible values: ["DEFAULT", "CUSTOM"]
+	AdvertiseMode pulumi.StringInput `pulumi:"advertiseMode"`
+	// User-specified list of prefix groups to advertise in custom mode.
+	// This field can only be populated if advertiseMode is CUSTOM and
+	// is advertised to all peers of the router. These groups will be
+	// advertised in addition to any specified prefixes. Leave this field
+	// blank to advertise no custom groups.
+	//
+	// This enum field has the one valid value: ALL_SUBNETS
+	AdvertisedGroups pulumi.StringArrayInput `pulumi:"advertisedGroups"`
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if advertiseMode
+	// is CUSTOM and is advertised to all peers of the router. These IP
+	// ranges will be advertised in addition to any specified groups.
+	// Leave this field blank to advertise no custom IP ranges.
+	AdvertisedIpRanges GetRouterBgpAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
+	// Local BGP Autonomous System Number (ASN). Must be an RFC6996
+	// private ASN, either 16-bit or 32-bit. The value will be fixed for
+	// this router resource. All VPN tunnels that link to this router
+	// will have the same local ASN.
+	Asn pulumi.IntInput `pulumi:"asn"`
+	// Explicitly specifies a range of valid BGP Identifiers for this Router.
+	// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+	// size at least /30, even if the BGP sessions are over IPv6. It must
+	// not overlap with any IPv4 BGP session ranges. Other vendors commonly
+	// call this router ID.
+	IdentifierRange pulumi.StringInput `pulumi:"identifierRange"`
+	// The interval in seconds between BGP keepalive messages that are sent
+	// to the peer. Hold time is three times the interval at which keepalive
+	// messages are sent, and the hold time is the maximum number of seconds
+	// allowed to elapse between successive keepalive messages that BGP
+	// receives from a peer.
+	//
+	// BGP will use the smaller of either the local hold time value or the
+	// peer's hold time value as the hold time for the BGP connection
+	// between the two peers. If set, this value must be between 20 and 60.
+	// The default is 20.
+	KeepaliveInterval pulumi.IntInput `pulumi:"keepaliveInterval"`
+}
+
+func (GetRouterBgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterBgp)(nil)).Elem()
+}
+
+func (i GetRouterBgpArgs) ToGetRouterBgpOutput() GetRouterBgpOutput {
+	return i.ToGetRouterBgpOutputWithContext(context.Background())
+}
+
+func (i GetRouterBgpArgs) ToGetRouterBgpOutputWithContext(ctx context.Context) GetRouterBgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterBgpOutput)
+}
+
+// GetRouterBgpArrayInput is an input type that accepts GetRouterBgpArray and GetRouterBgpArrayOutput values.
+// You can construct a concrete instance of `GetRouterBgpArrayInput` via:
+//
+//	GetRouterBgpArray{ GetRouterBgpArgs{...} }
+type GetRouterBgpArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterBgpArrayOutput() GetRouterBgpArrayOutput
+	ToGetRouterBgpArrayOutputWithContext(context.Context) GetRouterBgpArrayOutput
+}
+
+type GetRouterBgpArray []GetRouterBgpInput
+
+func (GetRouterBgpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterBgp)(nil)).Elem()
+}
+
+func (i GetRouterBgpArray) ToGetRouterBgpArrayOutput() GetRouterBgpArrayOutput {
+	return i.ToGetRouterBgpArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterBgpArray) ToGetRouterBgpArrayOutputWithContext(ctx context.Context) GetRouterBgpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterBgpArrayOutput)
+}
+
+type GetRouterBgpOutput struct{ *pulumi.OutputState }
+
+func (GetRouterBgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterBgp)(nil)).Elem()
+}
+
+func (o GetRouterBgpOutput) ToGetRouterBgpOutput() GetRouterBgpOutput {
+	return o
+}
+
+func (o GetRouterBgpOutput) ToGetRouterBgpOutputWithContext(ctx context.Context) GetRouterBgpOutput {
+	return o
+}
+
+// User-specified flag to indicate which mode to use for advertisement. Default value: "DEFAULT" Possible values: ["DEFAULT", "CUSTOM"]
+func (o GetRouterBgpOutput) AdvertiseMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterBgp) string { return v.AdvertiseMode }).(pulumi.StringOutput)
+}
+
+// User-specified list of prefix groups to advertise in custom mode.
+// This field can only be populated if advertiseMode is CUSTOM and
+// is advertised to all peers of the router. These groups will be
+// advertised in addition to any specified prefixes. Leave this field
+// blank to advertise no custom groups.
+//
+// This enum field has the one valid value: ALL_SUBNETS
+func (o GetRouterBgpOutput) AdvertisedGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterBgp) []string { return v.AdvertisedGroups }).(pulumi.StringArrayOutput)
+}
+
+// User-specified list of individual IP ranges to advertise in
+// custom mode. This field can only be populated if advertiseMode
+// is CUSTOM and is advertised to all peers of the router. These IP
+// ranges will be advertised in addition to any specified groups.
+// Leave this field blank to advertise no custom IP ranges.
+func (o GetRouterBgpOutput) AdvertisedIpRanges() GetRouterBgpAdvertisedIpRangeArrayOutput {
+	return o.ApplyT(func(v GetRouterBgp) []GetRouterBgpAdvertisedIpRange { return v.AdvertisedIpRanges }).(GetRouterBgpAdvertisedIpRangeArrayOutput)
+}
+
+// Local BGP Autonomous System Number (ASN). Must be an RFC6996
+// private ASN, either 16-bit or 32-bit. The value will be fixed for
+// this router resource. All VPN tunnels that link to this router
+// will have the same local ASN.
+func (o GetRouterBgpOutput) Asn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouterBgp) int { return v.Asn }).(pulumi.IntOutput)
+}
+
+// Explicitly specifies a range of valid BGP Identifiers for this Router.
+// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+// size at least /30, even if the BGP sessions are over IPv6. It must
+// not overlap with any IPv4 BGP session ranges. Other vendors commonly
+// call this router ID.
+func (o GetRouterBgpOutput) IdentifierRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterBgp) string { return v.IdentifierRange }).(pulumi.StringOutput)
+}
+
+// The interval in seconds between BGP keepalive messages that are sent
+// to the peer. Hold time is three times the interval at which keepalive
+// messages are sent, and the hold time is the maximum number of seconds
+// allowed to elapse between successive keepalive messages that BGP
+// receives from a peer.
+//
+// BGP will use the smaller of either the local hold time value or the
+// peer's hold time value as the hold time for the BGP connection
+// between the two peers. If set, this value must be between 20 and 60.
+// The default is 20.
+func (o GetRouterBgpOutput) KeepaliveInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouterBgp) int { return v.KeepaliveInterval }).(pulumi.IntOutput)
+}
+
+type GetRouterBgpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterBgpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterBgp)(nil)).Elem()
+}
+
+func (o GetRouterBgpArrayOutput) ToGetRouterBgpArrayOutput() GetRouterBgpArrayOutput {
+	return o
+}
+
+func (o GetRouterBgpArrayOutput) ToGetRouterBgpArrayOutputWithContext(ctx context.Context) GetRouterBgpArrayOutput {
+	return o
+}
+
+func (o GetRouterBgpArrayOutput) Index(i pulumi.IntInput) GetRouterBgpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterBgp {
+		return vs[0].([]GetRouterBgp)[vs[1].(int)]
+	}).(GetRouterBgpOutput)
+}
+
+type GetRouterBgpAdvertisedIpRange struct {
+	// User-specified description for the IP range.
+	Description string `pulumi:"description"`
+	// The IP range to advertise. The value must be a
+	// CIDR-formatted string.
+	Range string `pulumi:"range"`
+}
+
+// GetRouterBgpAdvertisedIpRangeInput is an input type that accepts GetRouterBgpAdvertisedIpRangeArgs and GetRouterBgpAdvertisedIpRangeOutput values.
+// You can construct a concrete instance of `GetRouterBgpAdvertisedIpRangeInput` via:
+//
+//	GetRouterBgpAdvertisedIpRangeArgs{...}
+type GetRouterBgpAdvertisedIpRangeInput interface {
+	pulumi.Input
+
+	ToGetRouterBgpAdvertisedIpRangeOutput() GetRouterBgpAdvertisedIpRangeOutput
+	ToGetRouterBgpAdvertisedIpRangeOutputWithContext(context.Context) GetRouterBgpAdvertisedIpRangeOutput
+}
+
+type GetRouterBgpAdvertisedIpRangeArgs struct {
+	// User-specified description for the IP range.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The IP range to advertise. The value must be a
+	// CIDR-formatted string.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (GetRouterBgpAdvertisedIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (i GetRouterBgpAdvertisedIpRangeArgs) ToGetRouterBgpAdvertisedIpRangeOutput() GetRouterBgpAdvertisedIpRangeOutput {
+	return i.ToGetRouterBgpAdvertisedIpRangeOutputWithContext(context.Background())
+}
+
+func (i GetRouterBgpAdvertisedIpRangeArgs) ToGetRouterBgpAdvertisedIpRangeOutputWithContext(ctx context.Context) GetRouterBgpAdvertisedIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterBgpAdvertisedIpRangeOutput)
+}
+
+// GetRouterBgpAdvertisedIpRangeArrayInput is an input type that accepts GetRouterBgpAdvertisedIpRangeArray and GetRouterBgpAdvertisedIpRangeArrayOutput values.
+// You can construct a concrete instance of `GetRouterBgpAdvertisedIpRangeArrayInput` via:
+//
+//	GetRouterBgpAdvertisedIpRangeArray{ GetRouterBgpAdvertisedIpRangeArgs{...} }
+type GetRouterBgpAdvertisedIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterBgpAdvertisedIpRangeArrayOutput() GetRouterBgpAdvertisedIpRangeArrayOutput
+	ToGetRouterBgpAdvertisedIpRangeArrayOutputWithContext(context.Context) GetRouterBgpAdvertisedIpRangeArrayOutput
+}
+
+type GetRouterBgpAdvertisedIpRangeArray []GetRouterBgpAdvertisedIpRangeInput
+
+func (GetRouterBgpAdvertisedIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (i GetRouterBgpAdvertisedIpRangeArray) ToGetRouterBgpAdvertisedIpRangeArrayOutput() GetRouterBgpAdvertisedIpRangeArrayOutput {
+	return i.ToGetRouterBgpAdvertisedIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterBgpAdvertisedIpRangeArray) ToGetRouterBgpAdvertisedIpRangeArrayOutputWithContext(ctx context.Context) GetRouterBgpAdvertisedIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterBgpAdvertisedIpRangeArrayOutput)
+}
+
+type GetRouterBgpAdvertisedIpRangeOutput struct{ *pulumi.OutputState }
+
+func (GetRouterBgpAdvertisedIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (o GetRouterBgpAdvertisedIpRangeOutput) ToGetRouterBgpAdvertisedIpRangeOutput() GetRouterBgpAdvertisedIpRangeOutput {
+	return o
+}
+
+func (o GetRouterBgpAdvertisedIpRangeOutput) ToGetRouterBgpAdvertisedIpRangeOutputWithContext(ctx context.Context) GetRouterBgpAdvertisedIpRangeOutput {
+	return o
+}
+
+// User-specified description for the IP range.
+func (o GetRouterBgpAdvertisedIpRangeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterBgpAdvertisedIpRange) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The IP range to advertise. The value must be a
+// CIDR-formatted string.
+func (o GetRouterBgpAdvertisedIpRangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterBgpAdvertisedIpRange) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type GetRouterBgpAdvertisedIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterBgpAdvertisedIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (o GetRouterBgpAdvertisedIpRangeArrayOutput) ToGetRouterBgpAdvertisedIpRangeArrayOutput() GetRouterBgpAdvertisedIpRangeArrayOutput {
+	return o
+}
+
+func (o GetRouterBgpAdvertisedIpRangeArrayOutput) ToGetRouterBgpAdvertisedIpRangeArrayOutputWithContext(ctx context.Context) GetRouterBgpAdvertisedIpRangeArrayOutput {
+	return o
+}
+
+func (o GetRouterBgpAdvertisedIpRangeArrayOutput) Index(i pulumi.IntInput) GetRouterBgpAdvertisedIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterBgpAdvertisedIpRange {
+		return vs[0].([]GetRouterBgpAdvertisedIpRange)[vs[1].(int)]
+	}).(GetRouterBgpAdvertisedIpRangeOutput)
+}
+
+type GetRouterMd5AuthenticationKey struct {
+	// Value of the key used for MD5 authentication.
+	Key string `pulumi:"key"`
+	// The name of the router.
+	Name string `pulumi:"name"`
+}
+
+// GetRouterMd5AuthenticationKeyInput is an input type that accepts GetRouterMd5AuthenticationKeyArgs and GetRouterMd5AuthenticationKeyOutput values.
+// You can construct a concrete instance of `GetRouterMd5AuthenticationKeyInput` via:
+//
+//	GetRouterMd5AuthenticationKeyArgs{...}
+type GetRouterMd5AuthenticationKeyInput interface {
+	pulumi.Input
+
+	ToGetRouterMd5AuthenticationKeyOutput() GetRouterMd5AuthenticationKeyOutput
+	ToGetRouterMd5AuthenticationKeyOutputWithContext(context.Context) GetRouterMd5AuthenticationKeyOutput
+}
+
+type GetRouterMd5AuthenticationKeyArgs struct {
+	// Value of the key used for MD5 authentication.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The name of the router.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRouterMd5AuthenticationKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (i GetRouterMd5AuthenticationKeyArgs) ToGetRouterMd5AuthenticationKeyOutput() GetRouterMd5AuthenticationKeyOutput {
+	return i.ToGetRouterMd5AuthenticationKeyOutputWithContext(context.Background())
+}
+
+func (i GetRouterMd5AuthenticationKeyArgs) ToGetRouterMd5AuthenticationKeyOutputWithContext(ctx context.Context) GetRouterMd5AuthenticationKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterMd5AuthenticationKeyOutput)
+}
+
+// GetRouterMd5AuthenticationKeyArrayInput is an input type that accepts GetRouterMd5AuthenticationKeyArray and GetRouterMd5AuthenticationKeyArrayOutput values.
+// You can construct a concrete instance of `GetRouterMd5AuthenticationKeyArrayInput` via:
+//
+//	GetRouterMd5AuthenticationKeyArray{ GetRouterMd5AuthenticationKeyArgs{...} }
+type GetRouterMd5AuthenticationKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterMd5AuthenticationKeyArrayOutput() GetRouterMd5AuthenticationKeyArrayOutput
+	ToGetRouterMd5AuthenticationKeyArrayOutputWithContext(context.Context) GetRouterMd5AuthenticationKeyArrayOutput
+}
+
+type GetRouterMd5AuthenticationKeyArray []GetRouterMd5AuthenticationKeyInput
+
+func (GetRouterMd5AuthenticationKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (i GetRouterMd5AuthenticationKeyArray) ToGetRouterMd5AuthenticationKeyArrayOutput() GetRouterMd5AuthenticationKeyArrayOutput {
+	return i.ToGetRouterMd5AuthenticationKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterMd5AuthenticationKeyArray) ToGetRouterMd5AuthenticationKeyArrayOutputWithContext(ctx context.Context) GetRouterMd5AuthenticationKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterMd5AuthenticationKeyArrayOutput)
+}
+
+type GetRouterMd5AuthenticationKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRouterMd5AuthenticationKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (o GetRouterMd5AuthenticationKeyOutput) ToGetRouterMd5AuthenticationKeyOutput() GetRouterMd5AuthenticationKeyOutput {
+	return o
+}
+
+func (o GetRouterMd5AuthenticationKeyOutput) ToGetRouterMd5AuthenticationKeyOutputWithContext(ctx context.Context) GetRouterMd5AuthenticationKeyOutput {
+	return o
+}
+
+// Value of the key used for MD5 authentication.
+func (o GetRouterMd5AuthenticationKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterMd5AuthenticationKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The name of the router.
+func (o GetRouterMd5AuthenticationKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterMd5AuthenticationKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRouterMd5AuthenticationKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterMd5AuthenticationKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (o GetRouterMd5AuthenticationKeyArrayOutput) ToGetRouterMd5AuthenticationKeyArrayOutput() GetRouterMd5AuthenticationKeyArrayOutput {
+	return o
+}
+
+func (o GetRouterMd5AuthenticationKeyArrayOutput) ToGetRouterMd5AuthenticationKeyArrayOutputWithContext(ctx context.Context) GetRouterMd5AuthenticationKeyArrayOutput {
+	return o
+}
+
+func (o GetRouterMd5AuthenticationKeyArrayOutput) Index(i pulumi.IntInput) GetRouterMd5AuthenticationKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterMd5AuthenticationKey {
+		return vs[0].([]GetRouterMd5AuthenticationKey)[vs[1].(int)]
+	}).(GetRouterMd5AuthenticationKeyOutput)
+}
+
+type GetRouterNatLogConfig struct {
+	// Indicates whether or not to export logs.
+	Enable bool `pulumi:"enable"`
+	// Specifies the desired filtering of logs on this NAT. Possible values: ["ERRORS_ONLY", "TRANSLATIONS_ONLY", "ALL"]
+	Filter string `pulumi:"filter"`
+}
+
+// GetRouterNatLogConfigInput is an input type that accepts GetRouterNatLogConfigArgs and GetRouterNatLogConfigOutput values.
+// You can construct a concrete instance of `GetRouterNatLogConfigInput` via:
+//
+//	GetRouterNatLogConfigArgs{...}
+type GetRouterNatLogConfigInput interface {
+	pulumi.Input
+
+	ToGetRouterNatLogConfigOutput() GetRouterNatLogConfigOutput
+	ToGetRouterNatLogConfigOutputWithContext(context.Context) GetRouterNatLogConfigOutput
+}
+
+type GetRouterNatLogConfigArgs struct {
+	// Indicates whether or not to export logs.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Specifies the desired filtering of logs on this NAT. Possible values: ["ERRORS_ONLY", "TRANSLATIONS_ONLY", "ALL"]
+	Filter pulumi.StringInput `pulumi:"filter"`
+}
+
+func (GetRouterNatLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterNatLogConfig)(nil)).Elem()
+}
+
+func (i GetRouterNatLogConfigArgs) ToGetRouterNatLogConfigOutput() GetRouterNatLogConfigOutput {
+	return i.ToGetRouterNatLogConfigOutputWithContext(context.Background())
+}
+
+func (i GetRouterNatLogConfigArgs) ToGetRouterNatLogConfigOutputWithContext(ctx context.Context) GetRouterNatLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterNatLogConfigOutput)
+}
+
+// GetRouterNatLogConfigArrayInput is an input type that accepts GetRouterNatLogConfigArray and GetRouterNatLogConfigArrayOutput values.
+// You can construct a concrete instance of `GetRouterNatLogConfigArrayInput` via:
+//
+//	GetRouterNatLogConfigArray{ GetRouterNatLogConfigArgs{...} }
+type GetRouterNatLogConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterNatLogConfigArrayOutput() GetRouterNatLogConfigArrayOutput
+	ToGetRouterNatLogConfigArrayOutputWithContext(context.Context) GetRouterNatLogConfigArrayOutput
+}
+
+type GetRouterNatLogConfigArray []GetRouterNatLogConfigInput
+
+func (GetRouterNatLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterNatLogConfig)(nil)).Elem()
+}
+
+func (i GetRouterNatLogConfigArray) ToGetRouterNatLogConfigArrayOutput() GetRouterNatLogConfigArrayOutput {
+	return i.ToGetRouterNatLogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterNatLogConfigArray) ToGetRouterNatLogConfigArrayOutputWithContext(ctx context.Context) GetRouterNatLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterNatLogConfigArrayOutput)
+}
+
+type GetRouterNatLogConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRouterNatLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterNatLogConfig)(nil)).Elem()
+}
+
+func (o GetRouterNatLogConfigOutput) ToGetRouterNatLogConfigOutput() GetRouterNatLogConfigOutput {
+	return o
+}
+
+func (o GetRouterNatLogConfigOutput) ToGetRouterNatLogConfigOutputWithContext(ctx context.Context) GetRouterNatLogConfigOutput {
+	return o
+}
+
+// Indicates whether or not to export logs.
+func (o GetRouterNatLogConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRouterNatLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Specifies the desired filtering of logs on this NAT. Possible values: ["ERRORS_ONLY", "TRANSLATIONS_ONLY", "ALL"]
+func (o GetRouterNatLogConfigOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterNatLogConfig) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+type GetRouterNatLogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterNatLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterNatLogConfig)(nil)).Elem()
+}
+
+func (o GetRouterNatLogConfigArrayOutput) ToGetRouterNatLogConfigArrayOutput() GetRouterNatLogConfigArrayOutput {
+	return o
+}
+
+func (o GetRouterNatLogConfigArrayOutput) ToGetRouterNatLogConfigArrayOutputWithContext(ctx context.Context) GetRouterNatLogConfigArrayOutput {
+	return o
+}
+
+func (o GetRouterNatLogConfigArrayOutput) Index(i pulumi.IntInput) GetRouterNatLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterNatLogConfig {
+		return vs[0].([]GetRouterNatLogConfig)[vs[1].(int)]
+	}).(GetRouterNatLogConfigOutput)
+}
+
+type GetRouterNatNat64Subnetwork struct {
+	// Name of the NAT service. The name must be 1-63 characters long and
+	// comply with RFC1035.
+	Name string `pulumi:"name"`
+}
+
+// GetRouterNatNat64SubnetworkInput is an input type that accepts GetRouterNatNat64SubnetworkArgs and GetRouterNatNat64SubnetworkOutput values.
+// You can construct a concrete instance of `GetRouterNatNat64SubnetworkInput` via:
+//
+//	GetRouterNatNat64SubnetworkArgs{...}
+type GetRouterNatNat64SubnetworkInput interface {
+	pulumi.Input
+
+	ToGetRouterNatNat64SubnetworkOutput() GetRouterNatNat64SubnetworkOutput
+	ToGetRouterNatNat64SubnetworkOutputWithContext(context.Context) GetRouterNatNat64SubnetworkOutput
+}
+
+type GetRouterNatNat64SubnetworkArgs struct {
+	// Name of the NAT service. The name must be 1-63 characters long and
+	// comply with RFC1035.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRouterNatNat64SubnetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterNatNat64Subnetwork)(nil)).Elem()
+}
+
+func (i GetRouterNatNat64SubnetworkArgs) ToGetRouterNatNat64SubnetworkOutput() GetRouterNatNat64SubnetworkOutput {
+	return i.ToGetRouterNatNat64SubnetworkOutputWithContext(context.Background())
+}
+
+func (i GetRouterNatNat64SubnetworkArgs) ToGetRouterNatNat64SubnetworkOutputWithContext(ctx context.Context) GetRouterNatNat64SubnetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterNatNat64SubnetworkOutput)
+}
+
+// GetRouterNatNat64SubnetworkArrayInput is an input type that accepts GetRouterNatNat64SubnetworkArray and GetRouterNatNat64SubnetworkArrayOutput values.
+// You can construct a concrete instance of `GetRouterNatNat64SubnetworkArrayInput` via:
+//
+//	GetRouterNatNat64SubnetworkArray{ GetRouterNatNat64SubnetworkArgs{...} }
+type GetRouterNatNat64SubnetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterNatNat64SubnetworkArrayOutput() GetRouterNatNat64SubnetworkArrayOutput
+	ToGetRouterNatNat64SubnetworkArrayOutputWithContext(context.Context) GetRouterNatNat64SubnetworkArrayOutput
+}
+
+type GetRouterNatNat64SubnetworkArray []GetRouterNatNat64SubnetworkInput
+
+func (GetRouterNatNat64SubnetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterNatNat64Subnetwork)(nil)).Elem()
+}
+
+func (i GetRouterNatNat64SubnetworkArray) ToGetRouterNatNat64SubnetworkArrayOutput() GetRouterNatNat64SubnetworkArrayOutput {
+	return i.ToGetRouterNatNat64SubnetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterNatNat64SubnetworkArray) ToGetRouterNatNat64SubnetworkArrayOutputWithContext(ctx context.Context) GetRouterNatNat64SubnetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterNatNat64SubnetworkArrayOutput)
+}
+
+type GetRouterNatNat64SubnetworkOutput struct{ *pulumi.OutputState }
+
+func (GetRouterNatNat64SubnetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterNatNat64Subnetwork)(nil)).Elem()
+}
+
+func (o GetRouterNatNat64SubnetworkOutput) ToGetRouterNatNat64SubnetworkOutput() GetRouterNatNat64SubnetworkOutput {
+	return o
+}
+
+func (o GetRouterNatNat64SubnetworkOutput) ToGetRouterNatNat64SubnetworkOutputWithContext(ctx context.Context) GetRouterNatNat64SubnetworkOutput {
+	return o
+}
+
+// Name of the NAT service. The name must be 1-63 characters long and
+// comply with RFC1035.
+func (o GetRouterNatNat64SubnetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterNatNat64Subnetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRouterNatNat64SubnetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterNatNat64SubnetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterNatNat64Subnetwork)(nil)).Elem()
+}
+
+func (o GetRouterNatNat64SubnetworkArrayOutput) ToGetRouterNatNat64SubnetworkArrayOutput() GetRouterNatNat64SubnetworkArrayOutput {
+	return o
+}
+
+func (o GetRouterNatNat64SubnetworkArrayOutput) ToGetRouterNatNat64SubnetworkArrayOutputWithContext(ctx context.Context) GetRouterNatNat64SubnetworkArrayOutput {
+	return o
+}
+
+func (o GetRouterNatNat64SubnetworkArrayOutput) Index(i pulumi.IntInput) GetRouterNatNat64SubnetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterNatNat64Subnetwork {
+		return vs[0].([]GetRouterNatNat64Subnetwork)[vs[1].(int)]
+	}).(GetRouterNatNat64SubnetworkOutput)
+}
+
+type GetRouterNatRule struct {
+	// The action to be enforced for traffic that matches this rule.
+	Actions []GetRouterNatRuleAction `pulumi:"actions"`
+	// An optional description of this rule.
+	Description string `pulumi:"description"`
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+	// If it evaluates to true, the corresponding action is enforced.
+	//
+	// The following examples are valid match expressions for public NAT:
+	//
+	// "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+	//
+	// "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+	//
+	// The following example is a valid match expression for private NAT:
+	//
+	// "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+	Match string `pulumi:"match"`
+	// An integer uniquely identifying a rule in the list.
+	// The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+	RuleNumber int `pulumi:"ruleNumber"`
+}
+
+// GetRouterNatRuleInput is an input type that accepts GetRouterNatRuleArgs and GetRouterNatRuleOutput values.
+// You can construct a concrete instance of `GetRouterNatRuleInput` via:
+//
+//	GetRouterNatRuleArgs{...}
+type GetRouterNatRuleInput interface {
+	pulumi.Input
+
+	ToGetRouterNatRuleOutput() GetRouterNatRuleOutput
+	ToGetRouterNatRuleOutputWithContext(context.Context) GetRouterNatRuleOutput
+}
+
+type GetRouterNatRuleArgs struct {
+	// The action to be enforced for traffic that matches this rule.
+	Actions GetRouterNatRuleActionArrayInput `pulumi:"actions"`
+	// An optional description of this rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+	// If it evaluates to true, the corresponding action is enforced.
+	//
+	// The following examples are valid match expressions for public NAT:
+	//
+	// "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+	//
+	// "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+	//
+	// The following example is a valid match expression for private NAT:
+	//
+	// "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+	Match pulumi.StringInput `pulumi:"match"`
+	// An integer uniquely identifying a rule in the list.
+	// The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+	RuleNumber pulumi.IntInput `pulumi:"ruleNumber"`
+}
+
+func (GetRouterNatRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterNatRule)(nil)).Elem()
+}
+
+func (i GetRouterNatRuleArgs) ToGetRouterNatRuleOutput() GetRouterNatRuleOutput {
+	return i.ToGetRouterNatRuleOutputWithContext(context.Background())
+}
+
+func (i GetRouterNatRuleArgs) ToGetRouterNatRuleOutputWithContext(ctx context.Context) GetRouterNatRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterNatRuleOutput)
+}
+
+// GetRouterNatRuleArrayInput is an input type that accepts GetRouterNatRuleArray and GetRouterNatRuleArrayOutput values.
+// You can construct a concrete instance of `GetRouterNatRuleArrayInput` via:
+//
+//	GetRouterNatRuleArray{ GetRouterNatRuleArgs{...} }
+type GetRouterNatRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterNatRuleArrayOutput() GetRouterNatRuleArrayOutput
+	ToGetRouterNatRuleArrayOutputWithContext(context.Context) GetRouterNatRuleArrayOutput
+}
+
+type GetRouterNatRuleArray []GetRouterNatRuleInput
+
+func (GetRouterNatRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterNatRule)(nil)).Elem()
+}
+
+func (i GetRouterNatRuleArray) ToGetRouterNatRuleArrayOutput() GetRouterNatRuleArrayOutput {
+	return i.ToGetRouterNatRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterNatRuleArray) ToGetRouterNatRuleArrayOutputWithContext(ctx context.Context) GetRouterNatRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterNatRuleArrayOutput)
+}
+
+type GetRouterNatRuleOutput struct{ *pulumi.OutputState }
+
+func (GetRouterNatRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterNatRule)(nil)).Elem()
+}
+
+func (o GetRouterNatRuleOutput) ToGetRouterNatRuleOutput() GetRouterNatRuleOutput {
+	return o
+}
+
+func (o GetRouterNatRuleOutput) ToGetRouterNatRuleOutputWithContext(ctx context.Context) GetRouterNatRuleOutput {
+	return o
+}
+
+// The action to be enforced for traffic that matches this rule.
+func (o GetRouterNatRuleOutput) Actions() GetRouterNatRuleActionArrayOutput {
+	return o.ApplyT(func(v GetRouterNatRule) []GetRouterNatRuleAction { return v.Actions }).(GetRouterNatRuleActionArrayOutput)
+}
+
+// An optional description of this rule.
+func (o GetRouterNatRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterNatRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+// If it evaluates to true, the corresponding action is enforced.
+//
+// The following examples are valid match expressions for public NAT:
+//
+// "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+//
+// "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+//
+// The following example is a valid match expression for private NAT:
+//
+// "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+func (o GetRouterNatRuleOutput) Match() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterNatRule) string { return v.Match }).(pulumi.StringOutput)
+}
+
+// An integer uniquely identifying a rule in the list.
+// The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+func (o GetRouterNatRuleOutput) RuleNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouterNatRule) int { return v.RuleNumber }).(pulumi.IntOutput)
+}
+
+type GetRouterNatRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterNatRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterNatRule)(nil)).Elem()
+}
+
+func (o GetRouterNatRuleArrayOutput) ToGetRouterNatRuleArrayOutput() GetRouterNatRuleArrayOutput {
+	return o
+}
+
+func (o GetRouterNatRuleArrayOutput) ToGetRouterNatRuleArrayOutputWithContext(ctx context.Context) GetRouterNatRuleArrayOutput {
+	return o
+}
+
+func (o GetRouterNatRuleArrayOutput) Index(i pulumi.IntInput) GetRouterNatRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterNatRule {
+		return vs[0].([]GetRouterNatRule)[vs[1].(int)]
+	}).(GetRouterNatRuleOutput)
+}
+
 type GetRouterNatRuleAction struct {
 	// A list of URLs of the IP resources used for this NAT rule.
 	// These IP addresses must be valid static external IP addresses assigned to the project.
@@ -5800,6 +7519,34 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyRetentionPolicyInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleArrayInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyWorkloadPolicyInput)(nil)).Elem(), GetResourcePolicyWorkloadPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyWorkloadPolicyArrayInput)(nil)).Elem(), GetResourcePolicyWorkloadPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterBgpInput)(nil)).Elem(), GetRouterBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterBgpArrayInput)(nil)).Elem(), GetRouterBgpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterBgpAdvertisedIpRangeInput)(nil)).Elem(), GetRouterBgpAdvertisedIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterBgpAdvertisedIpRangeArrayInput)(nil)).Elem(), GetRouterBgpAdvertisedIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterMd5AuthenticationKeyInput)(nil)).Elem(), GetRouterMd5AuthenticationKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterMd5AuthenticationKeyArrayInput)(nil)).Elem(), GetRouterMd5AuthenticationKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatLogConfigInput)(nil)).Elem(), GetRouterNatLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatLogConfigArrayInput)(nil)).Elem(), GetRouterNatLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatNat64SubnetworkInput)(nil)).Elem(), GetRouterNatNat64SubnetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatNat64SubnetworkArrayInput)(nil)).Elem(), GetRouterNatNat64SubnetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatRuleInput)(nil)).Elem(), GetRouterNatRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatRuleArrayInput)(nil)).Elem(), GetRouterNatRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatRuleActionInput)(nil)).Elem(), GetRouterNatRuleActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatRuleActionArrayInput)(nil)).Elem(), GetRouterNatRuleActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatSubnetworkInput)(nil)).Elem(), GetRouterNatSubnetworkArgs{})
@@ -5886,6 +7633,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyWorkloadPolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyWorkloadPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterBgpOutput{})
+	pulumi.RegisterOutputType(GetRouterBgpArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterBgpAdvertisedIpRangeOutput{})
+	pulumi.RegisterOutputType(GetRouterBgpAdvertisedIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterMd5AuthenticationKeyOutput{})
+	pulumi.RegisterOutputType(GetRouterMd5AuthenticationKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterNatLogConfigOutput{})
+	pulumi.RegisterOutputType(GetRouterNatLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterNatNat64SubnetworkOutput{})
+	pulumi.RegisterOutputType(GetRouterNatNat64SubnetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterNatRuleOutput{})
+	pulumi.RegisterOutputType(GetRouterNatRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterNatRuleActionOutput{})
 	pulumi.RegisterOutputType(GetRouterNatRuleActionArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterNatSubnetworkOutput{})

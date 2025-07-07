@@ -32,6 +32,7 @@ class FirewallPolicyRuleArgs:
                  enable_logging: Optional[pulumi.Input[builtins.bool]] = None,
                  security_profile_group: Optional[pulumi.Input[builtins.str]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tls_inspect: Optional[pulumi.Input[builtins.bool]] = None):
         """
@@ -56,6 +57,11 @@ class FirewallPolicyRuleArgs:
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
                this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+               the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+               targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+               time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+               applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
                'apply_security_profile_group' and cannot be set for other actions.
@@ -75,6 +81,8 @@ class FirewallPolicyRuleArgs:
             pulumi.set(__self__, "security_profile_group", security_profile_group)
         if target_resources is not None:
             pulumi.set(__self__, "target_resources", target_resources)
+        if target_secure_tags is not None:
+            pulumi.set(__self__, "target_secure_tags", target_secure_tags)
         if target_service_accounts is not None:
             pulumi.set(__self__, "target_service_accounts", target_service_accounts)
         if tls_inspect is not None:
@@ -211,6 +219,22 @@ class FirewallPolicyRuleArgs:
         pulumi.set(self, "target_resources", value)
 
     @property
+    @pulumi.getter(name="targetSecureTags")
+    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]]]:
+        """
+        A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+        the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+        targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+        time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+        applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        """
+        return pulumi.get(self, "target_secure_tags")
+
+    @target_secure_tags.setter
+    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]]]):
+        pulumi.set(self, "target_secure_tags", value)
+
+    @property
     @pulumi.getter(name="targetServiceAccounts")
     def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
@@ -252,6 +276,7 @@ class _FirewallPolicyRuleState:
                  rule_tuple_count: Optional[pulumi.Input[builtins.int]] = None,
                  security_profile_group: Optional[pulumi.Input[builtins.str]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tls_inspect: Optional[pulumi.Input[builtins.bool]] = None):
         """
@@ -279,6 +304,11 @@ class _FirewallPolicyRuleState:
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
                this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+               the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+               targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+               time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+               applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
                'apply_security_profile_group' and cannot be set for other actions.
@@ -309,6 +339,8 @@ class _FirewallPolicyRuleState:
             pulumi.set(__self__, "security_profile_group", security_profile_group)
         if target_resources is not None:
             pulumi.set(__self__, "target_resources", target_resources)
+        if target_secure_tags is not None:
+            pulumi.set(__self__, "target_secure_tags", target_secure_tags)
         if target_service_accounts is not None:
             pulumi.set(__self__, "target_service_accounts", target_service_accounts)
         if tls_inspect is not None:
@@ -481,6 +513,22 @@ class _FirewallPolicyRuleState:
         pulumi.set(self, "target_resources", value)
 
     @property
+    @pulumi.getter(name="targetSecureTags")
+    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]]]:
+        """
+        A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+        the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+        targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+        time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+        applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        """
+        return pulumi.get(self, "target_secure_tags")
+
+    @target_secure_tags.setter
+    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]]]):
+        pulumi.set(self, "target_secure_tags", value)
+
+    @property
     @pulumi.getter(name="targetServiceAccounts")
     def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
@@ -522,6 +570,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  security_profile_group: Optional[pulumi.Input[builtins.str]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tls_inspect: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
@@ -583,6 +632,18 @@ class FirewallPolicyRule(pulumi.CustomResource):
                     },
                 ],
             })
+        basic_key = gcp.tags.TagKey("basic_key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            purpose="GCE_FIREWALL",
+            short_name="tag-key",
+            purpose_data={
+                "organization": "auto",
+            })
+        basic_value = gcp.tags.TagValue("basic_value",
+            description="For valuename resources.",
+            parent=basic_key.id,
+            short_name="tag-value")
         ```
         ### Firewall Policy Rule Network Scope
 
@@ -612,6 +673,60 @@ class FirewallPolicyRule(pulumi.CustomResource):
                 "src_ip_ranges": ["11.100.0.1/32"],
                 "src_network_scope": "VPC_NETWORKS",
                 "src_networks": [network.id],
+                "layer4_configs": [
+                    {
+                        "ip_protocol": "tcp",
+                        "ports": ["8080"],
+                    },
+                    {
+                        "ip_protocol": "udp",
+                        "ports": ["22"],
+                    },
+                ],
+            })
+        ```
+        ### Firewall Policy Rule Secure Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.organizations.Folder("folder",
+            display_name="folder",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        default = gcp.compute.FirewallPolicy("default",
+            parent=folder.id,
+            short_name="fw-policy",
+            description="Resource created for Terraform acceptance testing")
+        basic_key = gcp.tags.TagKey("basic_key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            purpose="GCE_FIREWALL",
+            short_name="tag-key",
+            purpose_data={
+                "organization": "auto",
+            })
+        basic_value = gcp.tags.TagValue("basic_value",
+            description="For valuename resources.",
+            parent=basic_key.id,
+            short_name="tag-value")
+        primary = gcp.compute.FirewallPolicyRule("primary",
+            firewall_policy=default.name,
+            description="Resource created for Terraform acceptance testing",
+            priority=9000,
+            enable_logging=True,
+            action="allow",
+            direction="INGRESS",
+            disabled=False,
+            target_secure_tags=[{
+                "name": basic_value.id,
+            }],
+            match={
+                "src_ip_ranges": ["11.100.0.1/32"],
+                "src_secure_tags": [{
+                    "name": basic_value.id,
+                }],
                 "layer4_configs": [
                     {
                         "ip_protocol": "tcp",
@@ -665,6 +780,11 @@ class FirewallPolicyRule(pulumi.CustomResource):
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
                this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+               the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+               targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+               time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+               applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
                'apply_security_profile_group' and cannot be set for other actions.
@@ -733,6 +853,18 @@ class FirewallPolicyRule(pulumi.CustomResource):
                     },
                 ],
             })
+        basic_key = gcp.tags.TagKey("basic_key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            purpose="GCE_FIREWALL",
+            short_name="tag-key",
+            purpose_data={
+                "organization": "auto",
+            })
+        basic_value = gcp.tags.TagValue("basic_value",
+            description="For valuename resources.",
+            parent=basic_key.id,
+            short_name="tag-value")
         ```
         ### Firewall Policy Rule Network Scope
 
@@ -762,6 +894,60 @@ class FirewallPolicyRule(pulumi.CustomResource):
                 "src_ip_ranges": ["11.100.0.1/32"],
                 "src_network_scope": "VPC_NETWORKS",
                 "src_networks": [network.id],
+                "layer4_configs": [
+                    {
+                        "ip_protocol": "tcp",
+                        "ports": ["8080"],
+                    },
+                    {
+                        "ip_protocol": "udp",
+                        "ports": ["22"],
+                    },
+                ],
+            })
+        ```
+        ### Firewall Policy Rule Secure Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.organizations.Folder("folder",
+            display_name="folder",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        default = gcp.compute.FirewallPolicy("default",
+            parent=folder.id,
+            short_name="fw-policy",
+            description="Resource created for Terraform acceptance testing")
+        basic_key = gcp.tags.TagKey("basic_key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            purpose="GCE_FIREWALL",
+            short_name="tag-key",
+            purpose_data={
+                "organization": "auto",
+            })
+        basic_value = gcp.tags.TagValue("basic_value",
+            description="For valuename resources.",
+            parent=basic_key.id,
+            short_name="tag-value")
+        primary = gcp.compute.FirewallPolicyRule("primary",
+            firewall_policy=default.name,
+            description="Resource created for Terraform acceptance testing",
+            priority=9000,
+            enable_logging=True,
+            action="allow",
+            direction="INGRESS",
+            disabled=False,
+            target_secure_tags=[{
+                "name": basic_value.id,
+            }],
+            match={
+                "src_ip_ranges": ["11.100.0.1/32"],
+                "src_secure_tags": [{
+                    "name": basic_value.id,
+                }],
                 "layer4_configs": [
                     {
                         "ip_protocol": "tcp",
@@ -818,6 +1004,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  security_profile_group: Optional[pulumi.Input[builtins.str]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tls_inspect: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
@@ -849,6 +1036,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
             __props__.__dict__["priority"] = priority
             __props__.__dict__["security_profile_group"] = security_profile_group
             __props__.__dict__["target_resources"] = target_resources
+            __props__.__dict__["target_secure_tags"] = target_secure_tags
             __props__.__dict__["target_service_accounts"] = target_service_accounts
             __props__.__dict__["tls_inspect"] = tls_inspect
             __props__.__dict__["creation_timestamp"] = None
@@ -877,6 +1065,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
             rule_tuple_count: Optional[pulumi.Input[builtins.int]] = None,
             security_profile_group: Optional[pulumi.Input[builtins.str]] = None,
             target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             tls_inspect: Optional[pulumi.Input[builtins.bool]] = None) -> 'FirewallPolicyRule':
         """
@@ -909,6 +1098,11 @@ class FirewallPolicyRule(pulumi.CustomResource):
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
                this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+               the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+               targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+               time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+               applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
                'apply_security_profile_group' and cannot be set for other actions.
@@ -930,6 +1124,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
         __props__.__dict__["rule_tuple_count"] = rule_tuple_count
         __props__.__dict__["security_profile_group"] = security_profile_group
         __props__.__dict__["target_resources"] = target_resources
+        __props__.__dict__["target_secure_tags"] = target_secure_tags
         __props__.__dict__["target_service_accounts"] = target_service_accounts
         __props__.__dict__["tls_inspect"] = tls_inspect
         return FirewallPolicyRule(resource_name, opts=opts, __props__=__props__)
@@ -1047,6 +1242,18 @@ class FirewallPolicyRule(pulumi.CustomResource):
         this rule. If this field is left blank, all VMs within the organization will receive the rule.
         """
         return pulumi.get(self, "target_resources")
+
+    @property
+    @pulumi.getter(name="targetSecureTags")
+    def target_secure_tags(self) -> pulumi.Output[Optional[Sequence['outputs.FirewallPolicyRuleTargetSecureTag']]]:
+        """
+        A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+        the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+        targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+        time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+        applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        """
+        return pulumi.get(self, "target_secure_tags")
 
     @property
     @pulumi.getter(name="targetServiceAccounts")

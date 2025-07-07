@@ -48,7 +48,7 @@ import (
 //				MachineType: pulumi.String("e2-medium"),
 //				VmImage: &notebooks.InstanceVmImageArgs{
 //					Project:     pulumi.String("deeplearning-platform-release"),
-//					ImageFamily: pulumi.String("tf-latest-cpu"),
+//					ImageFamily: pulumi.String("pytorch-latest-cu124"),
 //				},
 //			})
 //			if err != nil {
@@ -79,7 +79,7 @@ import (
 //				MachineType: pulumi.String("e2-medium"),
 //				VmImage: &notebooks.InstanceVmImageArgs{
 //					Project:     pulumi.String("deeplearning-platform-release"),
-//					ImageFamily: pulumi.String("tf-latest-cpu"),
+//					ImageFamily: pulumi.String("pytorch-latest-cu124"),
 //				},
 //				DesiredState: pulumi.String("STOPPED"),
 //			})
@@ -150,7 +150,7 @@ import (
 //				},
 //				VmImage: &notebooks.InstanceVmImageArgs{
 //					Project:     pulumi.String("deeplearning-platform-release"),
-//					ImageFamily: pulumi.String("tf-latest-gpu"),
+//					ImageFamily: pulumi.String("pytorch-latest-cu124"),
 //				},
 //			})
 //			if err != nil {
@@ -195,7 +195,7 @@ import (
 //				MachineType: pulumi.String("e2-medium"),
 //				VmImage: &notebooks.InstanceVmImageArgs{
 //					Project:     pulumi.String("deeplearning-platform-release"),
-//					ImageFamily: pulumi.String("tf-latest-cpu"),
+//					ImageFamily: pulumi.String("pytorch-latest-cu124"),
 //				},
 //				InstanceOwners: pulumi.StringArray{
 //					pulumi.String("my@service-account.com"),

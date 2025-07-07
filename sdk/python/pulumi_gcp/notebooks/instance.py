@@ -1410,7 +1410,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "image_family": "tf-latest-cpu",
+                "image_family": "pytorch-latest-cu124",
             })
         ```
         ### Notebook Instance Basic Stopped
@@ -1425,7 +1425,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "image_family": "tf-latest-cpu",
+                "image_family": "pytorch-latest-cu124",
             },
             desired_state="STOPPED")
         ```
@@ -1464,7 +1464,7 @@ class Instance(pulumi.CustomResource):
             },
             vm_image={
                 "project": "deeplearning-platform-release",
-                "image_family": "tf-latest-gpu",
+                "image_family": "pytorch-latest-cu124",
             })
         ```
         ### Notebook Instance Full
@@ -1482,7 +1482,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "image_family": "tf-latest-cpu",
+                "image_family": "pytorch-latest-cu124",
             },
             instance_owners=["my@service-account.com"],
             service_account="my@service-account.com",
@@ -1654,7 +1654,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "image_family": "tf-latest-cpu",
+                "image_family": "pytorch-latest-cu124",
             })
         ```
         ### Notebook Instance Basic Stopped
@@ -1669,7 +1669,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "image_family": "tf-latest-cpu",
+                "image_family": "pytorch-latest-cu124",
             },
             desired_state="STOPPED")
         ```
@@ -1708,7 +1708,7 @@ class Instance(pulumi.CustomResource):
             },
             vm_image={
                 "project": "deeplearning-platform-release",
-                "image_family": "tf-latest-gpu",
+                "image_family": "pytorch-latest-cu124",
             })
         ```
         ### Notebook Instance Full
@@ -1726,7 +1726,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "image_family": "tf-latest-cpu",
+                "image_family": "pytorch-latest-cu124",
             },
             instance_owners=["my@service-account.com"],
             service_account="my@service-account.com",

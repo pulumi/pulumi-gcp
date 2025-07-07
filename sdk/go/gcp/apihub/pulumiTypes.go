@@ -714,6 +714,1331 @@ func (o CurationPluginInstanceActionArrayOutput) Index(i pulumi.IntInput) Curati
 	}).(CurationPluginInstanceActionOutput)
 }
 
+type PluginActionsConfig struct {
+	// The description of the operation performed by the action.
+	Description string `pulumi:"description"`
+	// The display name of the action.
+	DisplayName string `pulumi:"displayName"`
+	// The id of the action.
+	Id string `pulumi:"id"`
+	// The trigger mode supported by the action.
+	// Possible values:
+	// TRIGGER_MODE_UNSPECIFIED
+	// API_HUB_ON_DEMAND_TRIGGER
+	// API_HUB_SCHEDULE_TRIGGER
+	// NON_API_HUB_MANAGED
+	TriggerMode string `pulumi:"triggerMode"`
+}
+
+// PluginActionsConfigInput is an input type that accepts PluginActionsConfigArgs and PluginActionsConfigOutput values.
+// You can construct a concrete instance of `PluginActionsConfigInput` via:
+//
+//	PluginActionsConfigArgs{...}
+type PluginActionsConfigInput interface {
+	pulumi.Input
+
+	ToPluginActionsConfigOutput() PluginActionsConfigOutput
+	ToPluginActionsConfigOutputWithContext(context.Context) PluginActionsConfigOutput
+}
+
+type PluginActionsConfigArgs struct {
+	// The description of the operation performed by the action.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The display name of the action.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The id of the action.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The trigger mode supported by the action.
+	// Possible values:
+	// TRIGGER_MODE_UNSPECIFIED
+	// API_HUB_ON_DEMAND_TRIGGER
+	// API_HUB_SCHEDULE_TRIGGER
+	// NON_API_HUB_MANAGED
+	TriggerMode pulumi.StringInput `pulumi:"triggerMode"`
+}
+
+func (PluginActionsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginActionsConfig)(nil)).Elem()
+}
+
+func (i PluginActionsConfigArgs) ToPluginActionsConfigOutput() PluginActionsConfigOutput {
+	return i.ToPluginActionsConfigOutputWithContext(context.Background())
+}
+
+func (i PluginActionsConfigArgs) ToPluginActionsConfigOutputWithContext(ctx context.Context) PluginActionsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginActionsConfigOutput)
+}
+
+// PluginActionsConfigArrayInput is an input type that accepts PluginActionsConfigArray and PluginActionsConfigArrayOutput values.
+// You can construct a concrete instance of `PluginActionsConfigArrayInput` via:
+//
+//	PluginActionsConfigArray{ PluginActionsConfigArgs{...} }
+type PluginActionsConfigArrayInput interface {
+	pulumi.Input
+
+	ToPluginActionsConfigArrayOutput() PluginActionsConfigArrayOutput
+	ToPluginActionsConfigArrayOutputWithContext(context.Context) PluginActionsConfigArrayOutput
+}
+
+type PluginActionsConfigArray []PluginActionsConfigInput
+
+func (PluginActionsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginActionsConfig)(nil)).Elem()
+}
+
+func (i PluginActionsConfigArray) ToPluginActionsConfigArrayOutput() PluginActionsConfigArrayOutput {
+	return i.ToPluginActionsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i PluginActionsConfigArray) ToPluginActionsConfigArrayOutputWithContext(ctx context.Context) PluginActionsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginActionsConfigArrayOutput)
+}
+
+type PluginActionsConfigOutput struct{ *pulumi.OutputState }
+
+func (PluginActionsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginActionsConfig)(nil)).Elem()
+}
+
+func (o PluginActionsConfigOutput) ToPluginActionsConfigOutput() PluginActionsConfigOutput {
+	return o
+}
+
+func (o PluginActionsConfigOutput) ToPluginActionsConfigOutputWithContext(ctx context.Context) PluginActionsConfigOutput {
+	return o
+}
+
+// The description of the operation performed by the action.
+func (o PluginActionsConfigOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginActionsConfig) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of the action.
+func (o PluginActionsConfigOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginActionsConfig) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The id of the action.
+func (o PluginActionsConfigOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginActionsConfig) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The trigger mode supported by the action.
+// Possible values:
+// TRIGGER_MODE_UNSPECIFIED
+// API_HUB_ON_DEMAND_TRIGGER
+// API_HUB_SCHEDULE_TRIGGER
+// NON_API_HUB_MANAGED
+func (o PluginActionsConfigOutput) TriggerMode() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginActionsConfig) string { return v.TriggerMode }).(pulumi.StringOutput)
+}
+
+type PluginActionsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (PluginActionsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginActionsConfig)(nil)).Elem()
+}
+
+func (o PluginActionsConfigArrayOutput) ToPluginActionsConfigArrayOutput() PluginActionsConfigArrayOutput {
+	return o
+}
+
+func (o PluginActionsConfigArrayOutput) ToPluginActionsConfigArrayOutputWithContext(ctx context.Context) PluginActionsConfigArrayOutput {
+	return o
+}
+
+func (o PluginActionsConfigArrayOutput) Index(i pulumi.IntInput) PluginActionsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PluginActionsConfig {
+		return vs[0].([]PluginActionsConfig)[vs[1].(int)]
+	}).(PluginActionsConfigOutput)
+}
+
+type PluginConfigTemplate struct {
+	// The list of additional configuration variables for the plugin's
+	// configuration.
+	// Structure is documented below.
+	AdditionalConfigTemplates []PluginConfigTemplateAdditionalConfigTemplate `pulumi:"additionalConfigTemplates"`
+	// AuthConfigTemplate represents the authentication template for a plugin.
+	// Structure is documented below.
+	AuthConfigTemplate *PluginConfigTemplateAuthConfigTemplate `pulumi:"authConfigTemplate"`
+}
+
+// PluginConfigTemplateInput is an input type that accepts PluginConfigTemplateArgs and PluginConfigTemplateOutput values.
+// You can construct a concrete instance of `PluginConfigTemplateInput` via:
+//
+//	PluginConfigTemplateArgs{...}
+type PluginConfigTemplateInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplateOutput() PluginConfigTemplateOutput
+	ToPluginConfigTemplateOutputWithContext(context.Context) PluginConfigTemplateOutput
+}
+
+type PluginConfigTemplateArgs struct {
+	// The list of additional configuration variables for the plugin's
+	// configuration.
+	// Structure is documented below.
+	AdditionalConfigTemplates PluginConfigTemplateAdditionalConfigTemplateArrayInput `pulumi:"additionalConfigTemplates"`
+	// AuthConfigTemplate represents the authentication template for a plugin.
+	// Structure is documented below.
+	AuthConfigTemplate PluginConfigTemplateAuthConfigTemplatePtrInput `pulumi:"authConfigTemplate"`
+}
+
+func (PluginConfigTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplate)(nil)).Elem()
+}
+
+func (i PluginConfigTemplateArgs) ToPluginConfigTemplateOutput() PluginConfigTemplateOutput {
+	return i.ToPluginConfigTemplateOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateArgs) ToPluginConfigTemplateOutputWithContext(ctx context.Context) PluginConfigTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateOutput)
+}
+
+func (i PluginConfigTemplateArgs) ToPluginConfigTemplatePtrOutput() PluginConfigTemplatePtrOutput {
+	return i.ToPluginConfigTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateArgs) ToPluginConfigTemplatePtrOutputWithContext(ctx context.Context) PluginConfigTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateOutput).ToPluginConfigTemplatePtrOutputWithContext(ctx)
+}
+
+// PluginConfigTemplatePtrInput is an input type that accepts PluginConfigTemplateArgs, PluginConfigTemplatePtr and PluginConfigTemplatePtrOutput values.
+// You can construct a concrete instance of `PluginConfigTemplatePtrInput` via:
+//
+//	        PluginConfigTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginConfigTemplatePtrInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplatePtrOutput() PluginConfigTemplatePtrOutput
+	ToPluginConfigTemplatePtrOutputWithContext(context.Context) PluginConfigTemplatePtrOutput
+}
+
+type pluginConfigTemplatePtrType PluginConfigTemplateArgs
+
+func PluginConfigTemplatePtr(v *PluginConfigTemplateArgs) PluginConfigTemplatePtrInput {
+	return (*pluginConfigTemplatePtrType)(v)
+}
+
+func (*pluginConfigTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginConfigTemplate)(nil)).Elem()
+}
+
+func (i *pluginConfigTemplatePtrType) ToPluginConfigTemplatePtrOutput() PluginConfigTemplatePtrOutput {
+	return i.ToPluginConfigTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *pluginConfigTemplatePtrType) ToPluginConfigTemplatePtrOutputWithContext(ctx context.Context) PluginConfigTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplatePtrOutput)
+}
+
+type PluginConfigTemplateOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplate)(nil)).Elem()
+}
+
+func (o PluginConfigTemplateOutput) ToPluginConfigTemplateOutput() PluginConfigTemplateOutput {
+	return o
+}
+
+func (o PluginConfigTemplateOutput) ToPluginConfigTemplateOutputWithContext(ctx context.Context) PluginConfigTemplateOutput {
+	return o
+}
+
+func (o PluginConfigTemplateOutput) ToPluginConfigTemplatePtrOutput() PluginConfigTemplatePtrOutput {
+	return o.ToPluginConfigTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o PluginConfigTemplateOutput) ToPluginConfigTemplatePtrOutputWithContext(ctx context.Context) PluginConfigTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginConfigTemplate) *PluginConfigTemplate {
+		return &v
+	}).(PluginConfigTemplatePtrOutput)
+}
+
+// The list of additional configuration variables for the plugin's
+// configuration.
+// Structure is documented below.
+func (o PluginConfigTemplateOutput) AdditionalConfigTemplates() PluginConfigTemplateAdditionalConfigTemplateArrayOutput {
+	return o.ApplyT(func(v PluginConfigTemplate) []PluginConfigTemplateAdditionalConfigTemplate {
+		return v.AdditionalConfigTemplates
+	}).(PluginConfigTemplateAdditionalConfigTemplateArrayOutput)
+}
+
+// AuthConfigTemplate represents the authentication template for a plugin.
+// Structure is documented below.
+func (o PluginConfigTemplateOutput) AuthConfigTemplate() PluginConfigTemplateAuthConfigTemplatePtrOutput {
+	return o.ApplyT(func(v PluginConfigTemplate) *PluginConfigTemplateAuthConfigTemplate { return v.AuthConfigTemplate }).(PluginConfigTemplateAuthConfigTemplatePtrOutput)
+}
+
+type PluginConfigTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginConfigTemplate)(nil)).Elem()
+}
+
+func (o PluginConfigTemplatePtrOutput) ToPluginConfigTemplatePtrOutput() PluginConfigTemplatePtrOutput {
+	return o
+}
+
+func (o PluginConfigTemplatePtrOutput) ToPluginConfigTemplatePtrOutputWithContext(ctx context.Context) PluginConfigTemplatePtrOutput {
+	return o
+}
+
+func (o PluginConfigTemplatePtrOutput) Elem() PluginConfigTemplateOutput {
+	return o.ApplyT(func(v *PluginConfigTemplate) PluginConfigTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret PluginConfigTemplate
+		return ret
+	}).(PluginConfigTemplateOutput)
+}
+
+// The list of additional configuration variables for the plugin's
+// configuration.
+// Structure is documented below.
+func (o PluginConfigTemplatePtrOutput) AdditionalConfigTemplates() PluginConfigTemplateAdditionalConfigTemplateArrayOutput {
+	return o.ApplyT(func(v *PluginConfigTemplate) []PluginConfigTemplateAdditionalConfigTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalConfigTemplates
+	}).(PluginConfigTemplateAdditionalConfigTemplateArrayOutput)
+}
+
+// AuthConfigTemplate represents the authentication template for a plugin.
+// Structure is documented below.
+func (o PluginConfigTemplatePtrOutput) AuthConfigTemplate() PluginConfigTemplateAuthConfigTemplatePtrOutput {
+	return o.ApplyT(func(v *PluginConfigTemplate) *PluginConfigTemplateAuthConfigTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.AuthConfigTemplate
+	}).(PluginConfigTemplateAuthConfigTemplatePtrOutput)
+}
+
+type PluginConfigTemplateAdditionalConfigTemplate struct {
+	// Description.
+	Description *string `pulumi:"description"`
+	// Enum options. To be populated if `ValueType` is `ENUM`.
+	// Structure is documented below.
+	EnumOptions []PluginConfigTemplateAdditionalConfigTemplateEnumOption `pulumi:"enumOptions"`
+	// ID of the config variable. Must be unique within the configuration.
+	Id string `pulumi:"id"`
+	// Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
+	// Structure is documented below.
+	MultiSelectOptions []PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption `pulumi:"multiSelectOptions"`
+	// Flag represents that this `ConfigVariable` must be provided for a
+	// PluginInstance.
+	Required *bool `pulumi:"required"`
+	// Regular expression in RE2 syntax used for validating the `value` of a
+	// `ConfigVariable`.
+	ValidationRegex *string `pulumi:"validationRegex"`
+	// Type of the parameter: string, int, bool etc.
+	// Possible values:
+	// VALUE_TYPE_UNSPECIFIED
+	// STRING
+	// INT
+	// BOOL
+	// SECRET
+	// ENUM
+	// MULTI_SELECT
+	// MULTI_STRING
+	// MULTI_INT
+	ValueType string `pulumi:"valueType"`
+}
+
+// PluginConfigTemplateAdditionalConfigTemplateInput is an input type that accepts PluginConfigTemplateAdditionalConfigTemplateArgs and PluginConfigTemplateAdditionalConfigTemplateOutput values.
+// You can construct a concrete instance of `PluginConfigTemplateAdditionalConfigTemplateInput` via:
+//
+//	PluginConfigTemplateAdditionalConfigTemplateArgs{...}
+type PluginConfigTemplateAdditionalConfigTemplateInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplateAdditionalConfigTemplateOutput() PluginConfigTemplateAdditionalConfigTemplateOutput
+	ToPluginConfigTemplateAdditionalConfigTemplateOutputWithContext(context.Context) PluginConfigTemplateAdditionalConfigTemplateOutput
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateArgs struct {
+	// Description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Enum options. To be populated if `ValueType` is `ENUM`.
+	// Structure is documented below.
+	EnumOptions PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayInput `pulumi:"enumOptions"`
+	// ID of the config variable. Must be unique within the configuration.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
+	// Structure is documented below.
+	MultiSelectOptions PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayInput `pulumi:"multiSelectOptions"`
+	// Flag represents that this `ConfigVariable` must be provided for a
+	// PluginInstance.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// Regular expression in RE2 syntax used for validating the `value` of a
+	// `ConfigVariable`.
+	ValidationRegex pulumi.StringPtrInput `pulumi:"validationRegex"`
+	// Type of the parameter: string, int, bool etc.
+	// Possible values:
+	// VALUE_TYPE_UNSPECIFIED
+	// STRING
+	// INT
+	// BOOL
+	// SECRET
+	// ENUM
+	// MULTI_SELECT
+	// MULTI_STRING
+	// MULTI_INT
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (PluginConfigTemplateAdditionalConfigTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplate)(nil)).Elem()
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateArgs) ToPluginConfigTemplateAdditionalConfigTemplateOutput() PluginConfigTemplateAdditionalConfigTemplateOutput {
+	return i.ToPluginConfigTemplateAdditionalConfigTemplateOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateArgs) ToPluginConfigTemplateAdditionalConfigTemplateOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAdditionalConfigTemplateOutput)
+}
+
+// PluginConfigTemplateAdditionalConfigTemplateArrayInput is an input type that accepts PluginConfigTemplateAdditionalConfigTemplateArray and PluginConfigTemplateAdditionalConfigTemplateArrayOutput values.
+// You can construct a concrete instance of `PluginConfigTemplateAdditionalConfigTemplateArrayInput` via:
+//
+//	PluginConfigTemplateAdditionalConfigTemplateArray{ PluginConfigTemplateAdditionalConfigTemplateArgs{...} }
+type PluginConfigTemplateAdditionalConfigTemplateArrayInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplateAdditionalConfigTemplateArrayOutput() PluginConfigTemplateAdditionalConfigTemplateArrayOutput
+	ToPluginConfigTemplateAdditionalConfigTemplateArrayOutputWithContext(context.Context) PluginConfigTemplateAdditionalConfigTemplateArrayOutput
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateArray []PluginConfigTemplateAdditionalConfigTemplateInput
+
+func (PluginConfigTemplateAdditionalConfigTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginConfigTemplateAdditionalConfigTemplate)(nil)).Elem()
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateArray) ToPluginConfigTemplateAdditionalConfigTemplateArrayOutput() PluginConfigTemplateAdditionalConfigTemplateArrayOutput {
+	return i.ToPluginConfigTemplateAdditionalConfigTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateArray) ToPluginConfigTemplateAdditionalConfigTemplateArrayOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAdditionalConfigTemplateArrayOutput)
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplateAdditionalConfigTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplate)(nil)).Elem()
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateOutput) ToPluginConfigTemplateAdditionalConfigTemplateOutput() PluginConfigTemplateAdditionalConfigTemplateOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateOutput) ToPluginConfigTemplateAdditionalConfigTemplateOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateOutput {
+	return o
+}
+
+// Description.
+func (o PluginConfigTemplateAdditionalConfigTemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplate) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum options. To be populated if `ValueType` is `ENUM`.
+// Structure is documented below.
+func (o PluginConfigTemplateAdditionalConfigTemplateOutput) EnumOptions() PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplate) []PluginConfigTemplateAdditionalConfigTemplateEnumOption {
+		return v.EnumOptions
+	}).(PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput)
+}
+
+// ID of the config variable. Must be unique within the configuration.
+func (o PluginConfigTemplateAdditionalConfigTemplateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
+// Structure is documented below.
+func (o PluginConfigTemplateAdditionalConfigTemplateOutput) MultiSelectOptions() PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplate) []PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption {
+		return v.MultiSelectOptions
+	}).(PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput)
+}
+
+// Flag represents that this `ConfigVariable` must be provided for a
+// PluginInstance.
+func (o PluginConfigTemplateAdditionalConfigTemplateOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplate) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// Regular expression in RE2 syntax used for validating the `value` of a
+// `ConfigVariable`.
+func (o PluginConfigTemplateAdditionalConfigTemplateOutput) ValidationRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplate) *string { return v.ValidationRegex }).(pulumi.StringPtrOutput)
+}
+
+// Type of the parameter: string, int, bool etc.
+// Possible values:
+// VALUE_TYPE_UNSPECIFIED
+// STRING
+// INT
+// BOOL
+// SECRET
+// ENUM
+// MULTI_SELECT
+// MULTI_STRING
+// MULTI_INT
+func (o PluginConfigTemplateAdditionalConfigTemplateOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplate) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplateAdditionalConfigTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginConfigTemplateAdditionalConfigTemplate)(nil)).Elem()
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateArrayOutput) ToPluginConfigTemplateAdditionalConfigTemplateArrayOutput() PluginConfigTemplateAdditionalConfigTemplateArrayOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateArrayOutput) ToPluginConfigTemplateAdditionalConfigTemplateArrayOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateArrayOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateArrayOutput) Index(i pulumi.IntInput) PluginConfigTemplateAdditionalConfigTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PluginConfigTemplateAdditionalConfigTemplate {
+		return vs[0].([]PluginConfigTemplateAdditionalConfigTemplate)[vs[1].(int)]
+	}).(PluginConfigTemplateAdditionalConfigTemplateOutput)
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateEnumOption struct {
+	// Description of the option.
+	Description *string `pulumi:"description"`
+	// Display name of the option.
+	DisplayName string `pulumi:"displayName"`
+	// Id of the option.
+	Id string `pulumi:"id"`
+}
+
+// PluginConfigTemplateAdditionalConfigTemplateEnumOptionInput is an input type that accepts PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs and PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput values.
+// You can construct a concrete instance of `PluginConfigTemplateAdditionalConfigTemplateEnumOptionInput` via:
+//
+//	PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs{...}
+type PluginConfigTemplateAdditionalConfigTemplateEnumOptionInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput() PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput
+	ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionOutputWithContext(context.Context) PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs struct {
+	// Description of the option.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Display name of the option.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Id of the option.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplateEnumOption)(nil)).Elem()
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs) ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput() PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput {
+	return i.ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs) ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput)
+}
+
+// PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayInput is an input type that accepts PluginConfigTemplateAdditionalConfigTemplateEnumOptionArray and PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput values.
+// You can construct a concrete instance of `PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayInput` via:
+//
+//	PluginConfigTemplateAdditionalConfigTemplateEnumOptionArray{ PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs{...} }
+type PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput() PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput
+	ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutputWithContext(context.Context) PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateEnumOptionArray []PluginConfigTemplateAdditionalConfigTemplateEnumOptionInput
+
+func (PluginConfigTemplateAdditionalConfigTemplateEnumOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginConfigTemplateAdditionalConfigTemplateEnumOption)(nil)).Elem()
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateEnumOptionArray) ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput() PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput {
+	return i.ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateEnumOptionArray) ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput)
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplateEnumOption)(nil)).Elem()
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput) ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput() PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput) ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput {
+	return o
+}
+
+// Description of the option.
+func (o PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplateEnumOption) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of the option.
+func (o PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplateEnumOption) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Id of the option.
+func (o PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplateEnumOption) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginConfigTemplateAdditionalConfigTemplateEnumOption)(nil)).Elem()
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput) ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput() PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput) ToPluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput) Index(i pulumi.IntInput) PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PluginConfigTemplateAdditionalConfigTemplateEnumOption {
+		return vs[0].([]PluginConfigTemplateAdditionalConfigTemplateEnumOption)[vs[1].(int)]
+	}).(PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput)
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption struct {
+	// Description of the option.
+	Description *string `pulumi:"description"`
+	// Display name of the option.
+	DisplayName string `pulumi:"displayName"`
+	// Id of the option.
+	Id string `pulumi:"id"`
+}
+
+// PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionInput is an input type that accepts PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs and PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput values.
+// You can construct a concrete instance of `PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionInput` via:
+//
+//	PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs{...}
+type PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput() PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput
+	ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutputWithContext(context.Context) PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs struct {
+	// Description of the option.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Display name of the option.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Id of the option.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption)(nil)).Elem()
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs) ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput() PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput {
+	return i.ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs) ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput)
+}
+
+// PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayInput is an input type that accepts PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArray and PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput values.
+// You can construct a concrete instance of `PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayInput` via:
+//
+//	PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArray{ PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs{...} }
+type PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput() PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput
+	ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutputWithContext(context.Context) PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArray []PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionInput
+
+func (PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption)(nil)).Elem()
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArray) ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput() PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput {
+	return i.ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArray) ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput)
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption)(nil)).Elem()
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput) ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput() PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput) ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput {
+	return o
+}
+
+// Description of the option.
+func (o PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of the option.
+func (o PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Id of the option.
+func (o PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption)(nil)).Elem()
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput) ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput() PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput) ToPluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutputWithContext(ctx context.Context) PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput) Index(i pulumi.IntInput) PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption {
+		return vs[0].([]PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption)[vs[1].(int)]
+	}).(PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput)
+}
+
+type PluginConfigTemplateAuthConfigTemplate struct {
+	// Config for Google service account authentication.
+	// Structure is documented below.
+	ServiceAccount *PluginConfigTemplateAuthConfigTemplateServiceAccount `pulumi:"serviceAccount"`
+	// The list of authentication types supported by the plugin.
+	SupportedAuthTypes []string `pulumi:"supportedAuthTypes"`
+}
+
+// PluginConfigTemplateAuthConfigTemplateInput is an input type that accepts PluginConfigTemplateAuthConfigTemplateArgs and PluginConfigTemplateAuthConfigTemplateOutput values.
+// You can construct a concrete instance of `PluginConfigTemplateAuthConfigTemplateInput` via:
+//
+//	PluginConfigTemplateAuthConfigTemplateArgs{...}
+type PluginConfigTemplateAuthConfigTemplateInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplateAuthConfigTemplateOutput() PluginConfigTemplateAuthConfigTemplateOutput
+	ToPluginConfigTemplateAuthConfigTemplateOutputWithContext(context.Context) PluginConfigTemplateAuthConfigTemplateOutput
+}
+
+type PluginConfigTemplateAuthConfigTemplateArgs struct {
+	// Config for Google service account authentication.
+	// Structure is documented below.
+	ServiceAccount PluginConfigTemplateAuthConfigTemplateServiceAccountPtrInput `pulumi:"serviceAccount"`
+	// The list of authentication types supported by the plugin.
+	SupportedAuthTypes pulumi.StringArrayInput `pulumi:"supportedAuthTypes"`
+}
+
+func (PluginConfigTemplateAuthConfigTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplateAuthConfigTemplate)(nil)).Elem()
+}
+
+func (i PluginConfigTemplateAuthConfigTemplateArgs) ToPluginConfigTemplateAuthConfigTemplateOutput() PluginConfigTemplateAuthConfigTemplateOutput {
+	return i.ToPluginConfigTemplateAuthConfigTemplateOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateAuthConfigTemplateArgs) ToPluginConfigTemplateAuthConfigTemplateOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAuthConfigTemplateOutput)
+}
+
+func (i PluginConfigTemplateAuthConfigTemplateArgs) ToPluginConfigTemplateAuthConfigTemplatePtrOutput() PluginConfigTemplateAuthConfigTemplatePtrOutput {
+	return i.ToPluginConfigTemplateAuthConfigTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateAuthConfigTemplateArgs) ToPluginConfigTemplateAuthConfigTemplatePtrOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAuthConfigTemplateOutput).ToPluginConfigTemplateAuthConfigTemplatePtrOutputWithContext(ctx)
+}
+
+// PluginConfigTemplateAuthConfigTemplatePtrInput is an input type that accepts PluginConfigTemplateAuthConfigTemplateArgs, PluginConfigTemplateAuthConfigTemplatePtr and PluginConfigTemplateAuthConfigTemplatePtrOutput values.
+// You can construct a concrete instance of `PluginConfigTemplateAuthConfigTemplatePtrInput` via:
+//
+//	        PluginConfigTemplateAuthConfigTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginConfigTemplateAuthConfigTemplatePtrInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplateAuthConfigTemplatePtrOutput() PluginConfigTemplateAuthConfigTemplatePtrOutput
+	ToPluginConfigTemplateAuthConfigTemplatePtrOutputWithContext(context.Context) PluginConfigTemplateAuthConfigTemplatePtrOutput
+}
+
+type pluginConfigTemplateAuthConfigTemplatePtrType PluginConfigTemplateAuthConfigTemplateArgs
+
+func PluginConfigTemplateAuthConfigTemplatePtr(v *PluginConfigTemplateAuthConfigTemplateArgs) PluginConfigTemplateAuthConfigTemplatePtrInput {
+	return (*pluginConfigTemplateAuthConfigTemplatePtrType)(v)
+}
+
+func (*pluginConfigTemplateAuthConfigTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginConfigTemplateAuthConfigTemplate)(nil)).Elem()
+}
+
+func (i *pluginConfigTemplateAuthConfigTemplatePtrType) ToPluginConfigTemplateAuthConfigTemplatePtrOutput() PluginConfigTemplateAuthConfigTemplatePtrOutput {
+	return i.ToPluginConfigTemplateAuthConfigTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *pluginConfigTemplateAuthConfigTemplatePtrType) ToPluginConfigTemplateAuthConfigTemplatePtrOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAuthConfigTemplatePtrOutput)
+}
+
+type PluginConfigTemplateAuthConfigTemplateOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplateAuthConfigTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplateAuthConfigTemplate)(nil)).Elem()
+}
+
+func (o PluginConfigTemplateAuthConfigTemplateOutput) ToPluginConfigTemplateAuthConfigTemplateOutput() PluginConfigTemplateAuthConfigTemplateOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAuthConfigTemplateOutput) ToPluginConfigTemplateAuthConfigTemplateOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplateOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAuthConfigTemplateOutput) ToPluginConfigTemplateAuthConfigTemplatePtrOutput() PluginConfigTemplateAuthConfigTemplatePtrOutput {
+	return o.ToPluginConfigTemplateAuthConfigTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o PluginConfigTemplateAuthConfigTemplateOutput) ToPluginConfigTemplateAuthConfigTemplatePtrOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginConfigTemplateAuthConfigTemplate) *PluginConfigTemplateAuthConfigTemplate {
+		return &v
+	}).(PluginConfigTemplateAuthConfigTemplatePtrOutput)
+}
+
+// Config for Google service account authentication.
+// Structure is documented below.
+func (o PluginConfigTemplateAuthConfigTemplateOutput) ServiceAccount() PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAuthConfigTemplate) *PluginConfigTemplateAuthConfigTemplateServiceAccount {
+		return v.ServiceAccount
+	}).(PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput)
+}
+
+// The list of authentication types supported by the plugin.
+func (o PluginConfigTemplateAuthConfigTemplateOutput) SupportedAuthTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAuthConfigTemplate) []string { return v.SupportedAuthTypes }).(pulumi.StringArrayOutput)
+}
+
+type PluginConfigTemplateAuthConfigTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplateAuthConfigTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginConfigTemplateAuthConfigTemplate)(nil)).Elem()
+}
+
+func (o PluginConfigTemplateAuthConfigTemplatePtrOutput) ToPluginConfigTemplateAuthConfigTemplatePtrOutput() PluginConfigTemplateAuthConfigTemplatePtrOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAuthConfigTemplatePtrOutput) ToPluginConfigTemplateAuthConfigTemplatePtrOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplatePtrOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAuthConfigTemplatePtrOutput) Elem() PluginConfigTemplateAuthConfigTemplateOutput {
+	return o.ApplyT(func(v *PluginConfigTemplateAuthConfigTemplate) PluginConfigTemplateAuthConfigTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret PluginConfigTemplateAuthConfigTemplate
+		return ret
+	}).(PluginConfigTemplateAuthConfigTemplateOutput)
+}
+
+// Config for Google service account authentication.
+// Structure is documented below.
+func (o PluginConfigTemplateAuthConfigTemplatePtrOutput) ServiceAccount() PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput {
+	return o.ApplyT(func(v *PluginConfigTemplateAuthConfigTemplate) *PluginConfigTemplateAuthConfigTemplateServiceAccount {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput)
+}
+
+// The list of authentication types supported by the plugin.
+func (o PluginConfigTemplateAuthConfigTemplatePtrOutput) SupportedAuthTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PluginConfigTemplateAuthConfigTemplate) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SupportedAuthTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type PluginConfigTemplateAuthConfigTemplateServiceAccount struct {
+	// The service account to be used for authenticating request.
+	// The `iam.serviceAccounts.getAccessToken` permission should be granted on
+	// this service account to the impersonator service account.
+	ServiceAccount string `pulumi:"serviceAccount"`
+}
+
+// PluginConfigTemplateAuthConfigTemplateServiceAccountInput is an input type that accepts PluginConfigTemplateAuthConfigTemplateServiceAccountArgs and PluginConfigTemplateAuthConfigTemplateServiceAccountOutput values.
+// You can construct a concrete instance of `PluginConfigTemplateAuthConfigTemplateServiceAccountInput` via:
+//
+//	PluginConfigTemplateAuthConfigTemplateServiceAccountArgs{...}
+type PluginConfigTemplateAuthConfigTemplateServiceAccountInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplateAuthConfigTemplateServiceAccountOutput() PluginConfigTemplateAuthConfigTemplateServiceAccountOutput
+	ToPluginConfigTemplateAuthConfigTemplateServiceAccountOutputWithContext(context.Context) PluginConfigTemplateAuthConfigTemplateServiceAccountOutput
+}
+
+type PluginConfigTemplateAuthConfigTemplateServiceAccountArgs struct {
+	// The service account to be used for authenticating request.
+	// The `iam.serviceAccounts.getAccessToken` permission should be granted on
+	// this service account to the impersonator service account.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+}
+
+func (PluginConfigTemplateAuthConfigTemplateServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplateAuthConfigTemplateServiceAccount)(nil)).Elem()
+}
+
+func (i PluginConfigTemplateAuthConfigTemplateServiceAccountArgs) ToPluginConfigTemplateAuthConfigTemplateServiceAccountOutput() PluginConfigTemplateAuthConfigTemplateServiceAccountOutput {
+	return i.ToPluginConfigTemplateAuthConfigTemplateServiceAccountOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateAuthConfigTemplateServiceAccountArgs) ToPluginConfigTemplateAuthConfigTemplateServiceAccountOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplateServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAuthConfigTemplateServiceAccountOutput)
+}
+
+func (i PluginConfigTemplateAuthConfigTemplateServiceAccountArgs) ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput() PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput {
+	return i.ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i PluginConfigTemplateAuthConfigTemplateServiceAccountArgs) ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAuthConfigTemplateServiceAccountOutput).ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutputWithContext(ctx)
+}
+
+// PluginConfigTemplateAuthConfigTemplateServiceAccountPtrInput is an input type that accepts PluginConfigTemplateAuthConfigTemplateServiceAccountArgs, PluginConfigTemplateAuthConfigTemplateServiceAccountPtr and PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput values.
+// You can construct a concrete instance of `PluginConfigTemplateAuthConfigTemplateServiceAccountPtrInput` via:
+//
+//	        PluginConfigTemplateAuthConfigTemplateServiceAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginConfigTemplateAuthConfigTemplateServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput() PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput
+	ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutputWithContext(context.Context) PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput
+}
+
+type pluginConfigTemplateAuthConfigTemplateServiceAccountPtrType PluginConfigTemplateAuthConfigTemplateServiceAccountArgs
+
+func PluginConfigTemplateAuthConfigTemplateServiceAccountPtr(v *PluginConfigTemplateAuthConfigTemplateServiceAccountArgs) PluginConfigTemplateAuthConfigTemplateServiceAccountPtrInput {
+	return (*pluginConfigTemplateAuthConfigTemplateServiceAccountPtrType)(v)
+}
+
+func (*pluginConfigTemplateAuthConfigTemplateServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginConfigTemplateAuthConfigTemplateServiceAccount)(nil)).Elem()
+}
+
+func (i *pluginConfigTemplateAuthConfigTemplateServiceAccountPtrType) ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput() PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput {
+	return i.ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginConfigTemplateAuthConfigTemplateServiceAccountPtrType) ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput)
+}
+
+type PluginConfigTemplateAuthConfigTemplateServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplateAuthConfigTemplateServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginConfigTemplateAuthConfigTemplateServiceAccount)(nil)).Elem()
+}
+
+func (o PluginConfigTemplateAuthConfigTemplateServiceAccountOutput) ToPluginConfigTemplateAuthConfigTemplateServiceAccountOutput() PluginConfigTemplateAuthConfigTemplateServiceAccountOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAuthConfigTemplateServiceAccountOutput) ToPluginConfigTemplateAuthConfigTemplateServiceAccountOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplateServiceAccountOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAuthConfigTemplateServiceAccountOutput) ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput() PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput {
+	return o.ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o PluginConfigTemplateAuthConfigTemplateServiceAccountOutput) ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginConfigTemplateAuthConfigTemplateServiceAccount) *PluginConfigTemplateAuthConfigTemplateServiceAccount {
+		return &v
+	}).(PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput)
+}
+
+// The service account to be used for authenticating request.
+// The `iam.serviceAccounts.getAccessToken` permission should be granted on
+// this service account to the impersonator service account.
+func (o PluginConfigTemplateAuthConfigTemplateServiceAccountOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v PluginConfigTemplateAuthConfigTemplateServiceAccount) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+type PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginConfigTemplateAuthConfigTemplateServiceAccount)(nil)).Elem()
+}
+
+func (o PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput) ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput() PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput) ToPluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutputWithContext(ctx context.Context) PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput {
+	return o
+}
+
+func (o PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput) Elem() PluginConfigTemplateAuthConfigTemplateServiceAccountOutput {
+	return o.ApplyT(func(v *PluginConfigTemplateAuthConfigTemplateServiceAccount) PluginConfigTemplateAuthConfigTemplateServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret PluginConfigTemplateAuthConfigTemplateServiceAccount
+		return ret
+	}).(PluginConfigTemplateAuthConfigTemplateServiceAccountOutput)
+}
+
+// The service account to be used for authenticating request.
+// The `iam.serviceAccounts.getAccessToken` permission should be granted on
+// this service account to the impersonator service account.
+func (o PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginConfigTemplateAuthConfigTemplateServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type PluginDocumentation struct {
+	// The uri of the externally hosted documentation.
+	ExternalUri *string `pulumi:"externalUri"`
+}
+
+// PluginDocumentationInput is an input type that accepts PluginDocumentationArgs and PluginDocumentationOutput values.
+// You can construct a concrete instance of `PluginDocumentationInput` via:
+//
+//	PluginDocumentationArgs{...}
+type PluginDocumentationInput interface {
+	pulumi.Input
+
+	ToPluginDocumentationOutput() PluginDocumentationOutput
+	ToPluginDocumentationOutputWithContext(context.Context) PluginDocumentationOutput
+}
+
+type PluginDocumentationArgs struct {
+	// The uri of the externally hosted documentation.
+	ExternalUri pulumi.StringPtrInput `pulumi:"externalUri"`
+}
+
+func (PluginDocumentationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginDocumentation)(nil)).Elem()
+}
+
+func (i PluginDocumentationArgs) ToPluginDocumentationOutput() PluginDocumentationOutput {
+	return i.ToPluginDocumentationOutputWithContext(context.Background())
+}
+
+func (i PluginDocumentationArgs) ToPluginDocumentationOutputWithContext(ctx context.Context) PluginDocumentationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginDocumentationOutput)
+}
+
+func (i PluginDocumentationArgs) ToPluginDocumentationPtrOutput() PluginDocumentationPtrOutput {
+	return i.ToPluginDocumentationPtrOutputWithContext(context.Background())
+}
+
+func (i PluginDocumentationArgs) ToPluginDocumentationPtrOutputWithContext(ctx context.Context) PluginDocumentationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginDocumentationOutput).ToPluginDocumentationPtrOutputWithContext(ctx)
+}
+
+// PluginDocumentationPtrInput is an input type that accepts PluginDocumentationArgs, PluginDocumentationPtr and PluginDocumentationPtrOutput values.
+// You can construct a concrete instance of `PluginDocumentationPtrInput` via:
+//
+//	        PluginDocumentationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginDocumentationPtrInput interface {
+	pulumi.Input
+
+	ToPluginDocumentationPtrOutput() PluginDocumentationPtrOutput
+	ToPluginDocumentationPtrOutputWithContext(context.Context) PluginDocumentationPtrOutput
+}
+
+type pluginDocumentationPtrType PluginDocumentationArgs
+
+func PluginDocumentationPtr(v *PluginDocumentationArgs) PluginDocumentationPtrInput {
+	return (*pluginDocumentationPtrType)(v)
+}
+
+func (*pluginDocumentationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginDocumentation)(nil)).Elem()
+}
+
+func (i *pluginDocumentationPtrType) ToPluginDocumentationPtrOutput() PluginDocumentationPtrOutput {
+	return i.ToPluginDocumentationPtrOutputWithContext(context.Background())
+}
+
+func (i *pluginDocumentationPtrType) ToPluginDocumentationPtrOutputWithContext(ctx context.Context) PluginDocumentationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginDocumentationPtrOutput)
+}
+
+type PluginDocumentationOutput struct{ *pulumi.OutputState }
+
+func (PluginDocumentationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginDocumentation)(nil)).Elem()
+}
+
+func (o PluginDocumentationOutput) ToPluginDocumentationOutput() PluginDocumentationOutput {
+	return o
+}
+
+func (o PluginDocumentationOutput) ToPluginDocumentationOutputWithContext(ctx context.Context) PluginDocumentationOutput {
+	return o
+}
+
+func (o PluginDocumentationOutput) ToPluginDocumentationPtrOutput() PluginDocumentationPtrOutput {
+	return o.ToPluginDocumentationPtrOutputWithContext(context.Background())
+}
+
+func (o PluginDocumentationOutput) ToPluginDocumentationPtrOutputWithContext(ctx context.Context) PluginDocumentationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginDocumentation) *PluginDocumentation {
+		return &v
+	}).(PluginDocumentationPtrOutput)
+}
+
+// The uri of the externally hosted documentation.
+func (o PluginDocumentationOutput) ExternalUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginDocumentation) *string { return v.ExternalUri }).(pulumi.StringPtrOutput)
+}
+
+type PluginDocumentationPtrOutput struct{ *pulumi.OutputState }
+
+func (PluginDocumentationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginDocumentation)(nil)).Elem()
+}
+
+func (o PluginDocumentationPtrOutput) ToPluginDocumentationPtrOutput() PluginDocumentationPtrOutput {
+	return o
+}
+
+func (o PluginDocumentationPtrOutput) ToPluginDocumentationPtrOutputWithContext(ctx context.Context) PluginDocumentationPtrOutput {
+	return o
+}
+
+func (o PluginDocumentationPtrOutput) Elem() PluginDocumentationOutput {
+	return o.ApplyT(func(v *PluginDocumentation) PluginDocumentation {
+		if v != nil {
+			return *v
+		}
+		var ret PluginDocumentation
+		return ret
+	}).(PluginDocumentationOutput)
+}
+
+// The uri of the externally hosted documentation.
+func (o PluginDocumentationPtrOutput) ExternalUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginDocumentation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type PluginHostingService struct {
+	// The URI of the service implemented by the plugin developer, used to
+	// invoke the plugin's functionality. This information is only required for
+	// user defined plugins.
+	ServiceUri *string `pulumi:"serviceUri"`
+}
+
+// PluginHostingServiceInput is an input type that accepts PluginHostingServiceArgs and PluginHostingServiceOutput values.
+// You can construct a concrete instance of `PluginHostingServiceInput` via:
+//
+//	PluginHostingServiceArgs{...}
+type PluginHostingServiceInput interface {
+	pulumi.Input
+
+	ToPluginHostingServiceOutput() PluginHostingServiceOutput
+	ToPluginHostingServiceOutputWithContext(context.Context) PluginHostingServiceOutput
+}
+
+type PluginHostingServiceArgs struct {
+	// The URI of the service implemented by the plugin developer, used to
+	// invoke the plugin's functionality. This information is only required for
+	// user defined plugins.
+	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
+}
+
+func (PluginHostingServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginHostingService)(nil)).Elem()
+}
+
+func (i PluginHostingServiceArgs) ToPluginHostingServiceOutput() PluginHostingServiceOutput {
+	return i.ToPluginHostingServiceOutputWithContext(context.Background())
+}
+
+func (i PluginHostingServiceArgs) ToPluginHostingServiceOutputWithContext(ctx context.Context) PluginHostingServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginHostingServiceOutput)
+}
+
+func (i PluginHostingServiceArgs) ToPluginHostingServicePtrOutput() PluginHostingServicePtrOutput {
+	return i.ToPluginHostingServicePtrOutputWithContext(context.Background())
+}
+
+func (i PluginHostingServiceArgs) ToPluginHostingServicePtrOutputWithContext(ctx context.Context) PluginHostingServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginHostingServiceOutput).ToPluginHostingServicePtrOutputWithContext(ctx)
+}
+
+// PluginHostingServicePtrInput is an input type that accepts PluginHostingServiceArgs, PluginHostingServicePtr and PluginHostingServicePtrOutput values.
+// You can construct a concrete instance of `PluginHostingServicePtrInput` via:
+//
+//	        PluginHostingServiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PluginHostingServicePtrInput interface {
+	pulumi.Input
+
+	ToPluginHostingServicePtrOutput() PluginHostingServicePtrOutput
+	ToPluginHostingServicePtrOutputWithContext(context.Context) PluginHostingServicePtrOutput
+}
+
+type pluginHostingServicePtrType PluginHostingServiceArgs
+
+func PluginHostingServicePtr(v *PluginHostingServiceArgs) PluginHostingServicePtrInput {
+	return (*pluginHostingServicePtrType)(v)
+}
+
+func (*pluginHostingServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginHostingService)(nil)).Elem()
+}
+
+func (i *pluginHostingServicePtrType) ToPluginHostingServicePtrOutput() PluginHostingServicePtrOutput {
+	return i.ToPluginHostingServicePtrOutputWithContext(context.Background())
+}
+
+func (i *pluginHostingServicePtrType) ToPluginHostingServicePtrOutputWithContext(ctx context.Context) PluginHostingServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PluginHostingServicePtrOutput)
+}
+
+type PluginHostingServiceOutput struct{ *pulumi.OutputState }
+
+func (PluginHostingServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PluginHostingService)(nil)).Elem()
+}
+
+func (o PluginHostingServiceOutput) ToPluginHostingServiceOutput() PluginHostingServiceOutput {
+	return o
+}
+
+func (o PluginHostingServiceOutput) ToPluginHostingServiceOutputWithContext(ctx context.Context) PluginHostingServiceOutput {
+	return o
+}
+
+func (o PluginHostingServiceOutput) ToPluginHostingServicePtrOutput() PluginHostingServicePtrOutput {
+	return o.ToPluginHostingServicePtrOutputWithContext(context.Background())
+}
+
+func (o PluginHostingServiceOutput) ToPluginHostingServicePtrOutputWithContext(ctx context.Context) PluginHostingServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PluginHostingService) *PluginHostingService {
+		return &v
+	}).(PluginHostingServicePtrOutput)
+}
+
+// The URI of the service implemented by the plugin developer, used to
+// invoke the plugin's functionality. This information is only required for
+// user defined plugins.
+func (o PluginHostingServiceOutput) ServiceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PluginHostingService) *string { return v.ServiceUri }).(pulumi.StringPtrOutput)
+}
+
+type PluginHostingServicePtrOutput struct{ *pulumi.OutputState }
+
+func (PluginHostingServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PluginHostingService)(nil)).Elem()
+}
+
+func (o PluginHostingServicePtrOutput) ToPluginHostingServicePtrOutput() PluginHostingServicePtrOutput {
+	return o
+}
+
+func (o PluginHostingServicePtrOutput) ToPluginHostingServicePtrOutputWithContext(ctx context.Context) PluginHostingServicePtrOutput {
+	return o
+}
+
+func (o PluginHostingServicePtrOutput) Elem() PluginHostingServiceOutput {
+	return o.ApplyT(func(v *PluginHostingService) PluginHostingService {
+		if v != nil {
+			return *v
+		}
+		var ret PluginHostingService
+		return ret
+	}).(PluginHostingServiceOutput)
+}
+
+// The URI of the service implemented by the plugin developer, used to
+// invoke the plugin's functionality. This information is only required for
+// user defined plugins.
+func (o PluginHostingServicePtrOutput) ServiceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginHostingService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceUri
+	}).(pulumi.StringPtrOutput)
+}
+
 type PluginInstanceAction struct {
 	// This should map to one of the action id specified
 	// in actionsConfig in the plugin.
@@ -2884,6 +4209,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CurationEndpointApplicationIntegrationEndpointDetailsPtrInput)(nil)).Elem(), CurationEndpointApplicationIntegrationEndpointDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CurationPluginInstanceActionInput)(nil)).Elem(), CurationPluginInstanceActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CurationPluginInstanceActionArrayInput)(nil)).Elem(), CurationPluginInstanceActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginActionsConfigInput)(nil)).Elem(), PluginActionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginActionsConfigArrayInput)(nil)).Elem(), PluginActionsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplateInput)(nil)).Elem(), PluginConfigTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplatePtrInput)(nil)).Elem(), PluginConfigTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplateInput)(nil)).Elem(), PluginConfigTemplateAdditionalConfigTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplateArrayInput)(nil)).Elem(), PluginConfigTemplateAdditionalConfigTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplateEnumOptionInput)(nil)).Elem(), PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayInput)(nil)).Elem(), PluginConfigTemplateAdditionalConfigTemplateEnumOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionInput)(nil)).Elem(), PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayInput)(nil)).Elem(), PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplateAuthConfigTemplateInput)(nil)).Elem(), PluginConfigTemplateAuthConfigTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplateAuthConfigTemplatePtrInput)(nil)).Elem(), PluginConfigTemplateAuthConfigTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplateAuthConfigTemplateServiceAccountInput)(nil)).Elem(), PluginConfigTemplateAuthConfigTemplateServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginConfigTemplateAuthConfigTemplateServiceAccountPtrInput)(nil)).Elem(), PluginConfigTemplateAuthConfigTemplateServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginDocumentationInput)(nil)).Elem(), PluginDocumentationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginDocumentationPtrInput)(nil)).Elem(), PluginDocumentationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginHostingServiceInput)(nil)).Elem(), PluginHostingServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PluginHostingServicePtrInput)(nil)).Elem(), PluginHostingServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionInput)(nil)).Elem(), PluginInstanceActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionArrayInput)(nil)).Elem(), PluginInstanceActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceActionCurationConfigInput)(nil)).Elem(), PluginInstanceActionCurationConfigArgs{})
@@ -2918,6 +4261,24 @@ func init() {
 	pulumi.RegisterOutputType(CurationEndpointApplicationIntegrationEndpointDetailsPtrOutput{})
 	pulumi.RegisterOutputType(CurationPluginInstanceActionOutput{})
 	pulumi.RegisterOutputType(CurationPluginInstanceActionArrayOutput{})
+	pulumi.RegisterOutputType(PluginActionsConfigOutput{})
+	pulumi.RegisterOutputType(PluginActionsConfigArrayOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplateOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplatePtrOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplateAdditionalConfigTemplateOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplateAdditionalConfigTemplateArrayOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplateAdditionalConfigTemplateEnumOptionOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplateAdditionalConfigTemplateEnumOptionArrayOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArrayOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplateAuthConfigTemplateOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplateAuthConfigTemplatePtrOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplateAuthConfigTemplateServiceAccountOutput{})
+	pulumi.RegisterOutputType(PluginConfigTemplateAuthConfigTemplateServiceAccountPtrOutput{})
+	pulumi.RegisterOutputType(PluginDocumentationOutput{})
+	pulumi.RegisterOutputType(PluginDocumentationPtrOutput{})
+	pulumi.RegisterOutputType(PluginHostingServiceOutput{})
+	pulumi.RegisterOutputType(PluginHostingServicePtrOutput{})
 	pulumi.RegisterOutputType(PluginInstanceActionOutput{})
 	pulumi.RegisterOutputType(PluginInstanceActionArrayOutput{})
 	pulumi.RegisterOutputType(PluginInstanceActionCurationConfigOutput{})

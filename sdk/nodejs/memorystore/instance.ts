@@ -107,6 +107,7 @@ import * as utilities from "../utilities";
  *     nodeType: "SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_DISABLED",
  *     authorizationMode: "AUTH_DISABLED",
+ *     kmsKey: "my-key",
  *     engineConfigs: {
  *         "maxmemory-policy": "volatile-ttl",
  *     },
@@ -448,6 +449,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
+     * The KMS key used to encrypt the at-rest data of the cluster
+     */
+    public readonly kmsKey!: pulumi.Output<string | undefined>;
+    /**
      * Optional. Labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -598,6 +603,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
             resourceInputs["gcsSource"] = state ? state.gcsSource : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
@@ -641,6 +647,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
             resourceInputs["gcsSource"] = args ? args.gcsSource : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
@@ -764,6 +771,10 @@ export interface InstanceState {
      * - - -
      */
     instanceId?: pulumi.Input<string>;
+    /**
+     * The KMS key used to encrypt the at-rest data of the cluster
+     */
+    kmsKey?: pulumi.Input<string>;
     /**
      * Optional. Labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -949,6 +960,10 @@ export interface InstanceArgs {
      * - - -
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * The KMS key used to encrypt the at-rest data of the cluster
+     */
+    kmsKey?: pulumi.Input<string>;
     /**
      * Optional. Labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

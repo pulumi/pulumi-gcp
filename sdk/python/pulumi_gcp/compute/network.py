@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['NetworkArgs', 'Network']
 
@@ -32,6 +34,7 @@ class NetworkArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input[builtins.str]] = None,
                  network_profile: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input['NetworkParamsArgs']] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  routing_mode: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -81,6 +84,8 @@ class NetworkArgs:
                following are valid URLs:
                * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
                * projects/{projectId}/global/networkProfiles/{network_profile_name}
+        :param pulumi.Input['NetworkParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -114,6 +119,8 @@ class NetworkArgs:
             pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
         if network_profile is not None:
             pulumi.set(__self__, "network_profile", network_profile)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if routing_mode is not None:
@@ -298,6 +305,19 @@ class NetworkArgs:
 
     @property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['NetworkParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['NetworkParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -345,6 +365,7 @@ class _NetworkState:
                  network_id: Optional[pulumi.Input[builtins.str]] = None,
                  network_profile: Optional[pulumi.Input[builtins.str]] = None,
                  numeric_id: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input['NetworkParamsArgs']] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  routing_mode: Optional[pulumi.Input[builtins.str]] = None,
                  self_link: Optional[pulumi.Input[builtins.str]] = None):
@@ -400,6 +421,8 @@ class _NetworkState:
                * projects/{projectId}/global/networkProfiles/{network_profile_name}
         :param pulumi.Input[builtins.str] numeric_id: (Deprecated)
                The unique identifier for the resource. This identifier is defined by the server.
+        :param pulumi.Input['NetworkParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -443,6 +466,8 @@ class _NetworkState:
             pulumi.log.warn("""numeric_id is deprecated: `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.""")
         if numeric_id is not None:
             pulumi.set(__self__, "numeric_id", numeric_id)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if routing_mode is not None:
@@ -668,6 +693,19 @@ class _NetworkState:
 
     @property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['NetworkParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['NetworkParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -727,6 +765,7 @@ class Network(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input[builtins.str]] = None,
                  network_profile: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  routing_mode: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -882,6 +921,8 @@ class Network(pulumi.CustomResource):
                following are valid URLs:
                * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
                * projects/{projectId}/global/networkProfiles/{network_profile_name}
+        :param pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -1029,6 +1070,7 @@ class Network(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input[builtins.str]] = None,
                  network_profile: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  routing_mode: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -1052,6 +1094,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_firewall_policy_enforcement_order"] = network_firewall_policy_enforcement_order
             __props__.__dict__["network_profile"] = network_profile
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["routing_mode"] = routing_mode
             __props__.__dict__["gateway_ipv4"] = None
@@ -1083,6 +1126,7 @@ class Network(pulumi.CustomResource):
             network_id: Optional[pulumi.Input[builtins.str]] = None,
             network_profile: Optional[pulumi.Input[builtins.str]] = None,
             numeric_id: Optional[pulumi.Input[builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             routing_mode: Optional[pulumi.Input[builtins.str]] = None,
             self_link: Optional[pulumi.Input[builtins.str]] = None) -> 'Network':
@@ -1143,6 +1187,8 @@ class Network(pulumi.CustomResource):
                * projects/{projectId}/global/networkProfiles/{network_profile_name}
         :param pulumi.Input[builtins.str] numeric_id: (Deprecated)
                The unique identifier for the resource. This identifier is defined by the server.
+        :param pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -1172,6 +1218,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["network_id"] = network_id
         __props__.__dict__["network_profile"] = network_profile
         __props__.__dict__["numeric_id"] = numeric_id
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["routing_mode"] = routing_mode
         __props__.__dict__["self_link"] = self_link
@@ -1332,6 +1379,15 @@ class Network(pulumi.CustomResource):
         The unique identifier for the resource. This identifier is defined by the server.
         """
         return pulumi.get(self, "numeric_id")
+
+    @property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.NetworkParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @property
     @pulumi.getter

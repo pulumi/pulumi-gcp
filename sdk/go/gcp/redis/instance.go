@@ -407,6 +407,12 @@ type Instance struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// The CIDR range of internal addresses that are reserved for this
+	// instance. If not provided, the service will choose an unused /29
+	// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+	// unique and non-overlapping with existing subnets in an authorized
+	// network.
+	EffectiveReservedIpRange pulumi.StringOutput `pulumi:"effectiveReservedIpRange"`
 	// Hostname or IP address of the exposed Redis endpoint used by clients
 	// to connect to the service.
 	Host pulumi.StringOutput `pulumi:"host"`
@@ -584,6 +590,12 @@ type instanceState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The CIDR range of internal addresses that are reserved for this
+	// instance. If not provided, the service will choose an unused /29
+	// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+	// unique and non-overlapping with existing subnets in an authorized
+	// network.
+	EffectiveReservedIpRange *string `pulumi:"effectiveReservedIpRange"`
 	// Hostname or IP address of the exposed Redis endpoint used by clients
 	// to connect to the service.
 	Host *string `pulumi:"host"`
@@ -723,6 +735,12 @@ type InstanceState struct {
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// The CIDR range of internal addresses that are reserved for this
+	// instance. If not provided, the service will choose an unused /29
+	// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+	// unique and non-overlapping with existing subnets in an authorized
+	// network.
+	EffectiveReservedIpRange pulumi.StringPtrInput
 	// Hostname or IP address of the exposed Redis endpoint used by clients
 	// to connect to the service.
 	Host pulumi.StringPtrInput
@@ -1175,6 +1193,15 @@ func (o InstanceOutput) DisplayName() pulumi.StringPtrOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// The CIDR range of internal addresses that are reserved for this
+// instance. If not provided, the service will choose an unused /29
+// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+// unique and non-overlapping with existing subnets in an authorized
+// network.
+func (o InstanceOutput) EffectiveReservedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EffectiveReservedIpRange }).(pulumi.StringOutput)
 }
 
 // Hostname or IP address of the exposed Redis endpoint used by clients

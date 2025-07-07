@@ -373,7 +373,7 @@ type Listing struct {
 	ListingId pulumi.StringOutput `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
 	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrOutput `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -461,7 +461,7 @@ type listingState struct {
 	ListingId *string `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	Location *string `pulumi:"location"`
-	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
 	LogLinkedDatasetQueryUserEmail *bool `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name *string `pulumi:"name"`
@@ -508,7 +508,7 @@ type ListingState struct {
 	ListingId pulumi.StringPtrInput
 	// The name of the location this data exchange listing.
 	Location pulumi.StringPtrInput
-	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
 	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrInput
 	// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
 	Name pulumi.StringPtrInput
@@ -559,7 +559,7 @@ type listingArgs struct {
 	ListingId string `pulumi:"listingId"`
 	// The name of the location this data exchange listing.
 	Location string `pulumi:"location"`
-	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
 	LogLinkedDatasetQueryUserEmail *bool `pulumi:"logLinkedDatasetQueryUserEmail"`
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact *string `pulumi:"primaryContact"`
@@ -605,7 +605,7 @@ type ListingArgs struct {
 	ListingId pulumi.StringInput
 	// The name of the location this data exchange listing.
 	Location pulumi.StringInput
-	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+	// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
 	LogLinkedDatasetQueryUserEmail pulumi.BoolPtrInput
 	// Email or URL of the primary point of contact of the listing.
 	PrimaryContact pulumi.StringPtrInput
@@ -766,7 +766,7 @@ func (o ListingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
 func (o ListingOutput) LogLinkedDatasetQueryUserEmail() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Listing) pulumi.BoolPtrOutput { return v.LogLinkedDatasetQueryUserEmail }).(pulumi.BoolPtrOutput)
 }

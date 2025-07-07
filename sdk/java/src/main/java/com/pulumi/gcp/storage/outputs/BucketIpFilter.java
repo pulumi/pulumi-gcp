@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.BucketIpFilterPublicNetworkSource;
 import com.pulumi.gcp.storage.outputs.BucketIpFilterVpcNetworkSource;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +17,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketIpFilter {
     /**
-     * @return The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+     * @return While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
+     * 
+     */
+    private @Nullable Boolean allowAllServiceAgentAccess;
+    /**
+     * @return While set `true`, allows cross-org VPCs in the bucket&#39;s IP filter configuration.
+     * 
+     */
+    private @Nullable Boolean allowCrossOrgVpcs;
+    /**
+     * @return The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
      * 
      */
     private String mode;
@@ -33,7 +44,21 @@ public final class BucketIpFilter {
 
     private BucketIpFilter() {}
     /**
-     * @return The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+     * @return While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
+     * 
+     */
+    public Optional<Boolean> allowAllServiceAgentAccess() {
+        return Optional.ofNullable(this.allowAllServiceAgentAccess);
+    }
+    /**
+     * @return While set `true`, allows cross-org VPCs in the bucket&#39;s IP filter configuration.
+     * 
+     */
+    public Optional<Boolean> allowCrossOrgVpcs() {
+        return Optional.ofNullable(this.allowCrossOrgVpcs);
+    }
+    /**
+     * @return The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
      * 
      */
     public String mode() {
@@ -63,17 +88,33 @@ public final class BucketIpFilter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean allowAllServiceAgentAccess;
+        private @Nullable Boolean allowCrossOrgVpcs;
         private String mode;
         private @Nullable BucketIpFilterPublicNetworkSource publicNetworkSource;
         private @Nullable List<BucketIpFilterVpcNetworkSource> vpcNetworkSources;
         public Builder() {}
         public Builder(BucketIpFilter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowAllServiceAgentAccess = defaults.allowAllServiceAgentAccess;
+    	      this.allowCrossOrgVpcs = defaults.allowCrossOrgVpcs;
     	      this.mode = defaults.mode;
     	      this.publicNetworkSource = defaults.publicNetworkSource;
     	      this.vpcNetworkSources = defaults.vpcNetworkSources;
         }
 
+        @CustomType.Setter
+        public Builder allowAllServiceAgentAccess(@Nullable Boolean allowAllServiceAgentAccess) {
+
+            this.allowAllServiceAgentAccess = allowAllServiceAgentAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allowCrossOrgVpcs(@Nullable Boolean allowCrossOrgVpcs) {
+
+            this.allowCrossOrgVpcs = allowCrossOrgVpcs;
+            return this;
+        }
         @CustomType.Setter
         public Builder mode(String mode) {
             if (mode == null) {
@@ -99,6 +140,8 @@ public final class BucketIpFilter {
         }
         public BucketIpFilter build() {
             final var _resultValue = new BucketIpFilter();
+            _resultValue.allowAllServiceAgentAccess = allowAllServiceAgentAccess;
+            _resultValue.allowCrossOrgVpcs = allowCrossOrgVpcs;
             _resultValue.mode = mode;
             _resultValue.publicNetworkSource = publicNetworkSource;
             _resultValue.vpcNetworkSources = vpcNetworkSources;

@@ -93,6 +93,7 @@ export interface GetClusterResult {
     readonly enterpriseConfigs: outputs.container.GetClusterEnterpriseConfig[];
     readonly fleets: outputs.container.GetClusterFleet[];
     readonly gatewayApiConfigs: outputs.container.GetClusterGatewayApiConfig[];
+    readonly gkeAutoUpgradeConfigs: outputs.container.GetClusterGkeAutoUpgradeConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */

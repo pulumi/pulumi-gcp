@@ -902,7 +902,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///             ImageUri = "us-docker.pkg.dev/cloudrun/container/hello",
     ///             BaseImage = "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
     ///             EnableAutomaticUpdates = true,
-    ///             WorkerPool = "worker-pool",
     ///             EnvironmentVariables = 
     ///             {
     ///                 { "FOO_KEY", "FOO_VALUE" },

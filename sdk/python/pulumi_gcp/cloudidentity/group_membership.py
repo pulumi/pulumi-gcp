@@ -24,6 +24,7 @@ class GroupMembershipArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[builtins.str],
                  roles: pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]],
+                 create_ignore_already_exists: Optional[pulumi.Input[builtins.bool]] = None,
                  member_key: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']] = None,
                  preferred_member_key: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']] = None):
         """
@@ -32,11 +33,14 @@ class GroupMembershipArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
+        :param pulumi.Input[builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: EntityKey of the member.
         :param pulumi.Input['GroupMembershipPreferredMemberKeyArgs'] preferred_member_key: EntityKey of the member.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "roles", roles)
+        if create_ignore_already_exists is not None:
+            pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if member_key is not None:
             pulumi.set(__self__, "member_key", member_key)
         if preferred_member_key is not None:
@@ -69,6 +73,18 @@ class GroupMembershipArgs:
         pulumi.set(self, "roles", value)
 
     @property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
+
+    @create_ignore_already_exists.setter
+    def create_ignore_already_exists(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "create_ignore_already_exists", value)
+
+    @property
     @pulumi.getter(name="memberKey")
     def member_key(self) -> Optional[pulumi.Input['GroupMembershipMemberKeyArgs']]:
         """
@@ -96,6 +112,7 @@ class GroupMembershipArgs:
 @pulumi.input_type
 class _GroupMembershipState:
     def __init__(__self__, *,
+                 create_ignore_already_exists: Optional[pulumi.Input[builtins.bool]] = None,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
                  group: Optional[pulumi.Input[builtins.str]] = None,
                  member_key: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']] = None,
@@ -106,6 +123,7 @@ class _GroupMembershipState:
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupMembership resources.
+        :param pulumi.Input[builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param pulumi.Input[builtins.str] create_time: The time when the Membership was created.
         :param pulumi.Input[builtins.str] group: The name of the Group to create this membership in.
         :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: EntityKey of the member.
@@ -117,6 +135,8 @@ class _GroupMembershipState:
         :param pulumi.Input[builtins.str] type: The type of the membership.
         :param pulumi.Input[builtins.str] update_time: The time when the Membership was last updated.
         """
+        if create_ignore_already_exists is not None:
+            pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if group is not None:
@@ -133,6 +153,18 @@ class _GroupMembershipState:
             pulumi.set(__self__, "type", type)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
+
+    @create_ignore_already_exists.setter
+    def create_ignore_already_exists(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "create_ignore_already_exists", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -239,6 +271,7 @@ class GroupMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 create_ignore_already_exists: Optional[pulumi.Input[builtins.bool]] = None,
                  group: Optional[pulumi.Input[builtins.str]] = None,
                  member_key: Optional[pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
                  preferred_member_key: Optional[pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']]] = None,
@@ -338,6 +371,7 @@ class GroupMembership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param pulumi.Input[builtins.str] group: The name of the Group to create this membership in.
         :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: EntityKey of the member.
         :param pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']] preferred_member_key: EntityKey of the member.
@@ -458,6 +492,7 @@ class GroupMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 create_ignore_already_exists: Optional[pulumi.Input[builtins.bool]] = None,
                  group: Optional[pulumi.Input[builtins.str]] = None,
                  member_key: Optional[pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
                  preferred_member_key: Optional[pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']]] = None,
@@ -471,6 +506,7 @@ class GroupMembership(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupMembershipArgs.__new__(GroupMembershipArgs)
 
+            __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
@@ -493,6 +529,7 @@ class GroupMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_ignore_already_exists: Optional[pulumi.Input[builtins.bool]] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
             group: Optional[pulumi.Input[builtins.str]] = None,
             member_key: Optional[pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
@@ -508,6 +545,7 @@ class GroupMembership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param pulumi.Input[builtins.str] create_time: The time when the Membership was created.
         :param pulumi.Input[builtins.str] group: The name of the Group to create this membership in.
         :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: EntityKey of the member.
@@ -523,6 +561,7 @@ class GroupMembership(pulumi.CustomResource):
 
         __props__ = _GroupMembershipState.__new__(_GroupMembershipState)
 
+        __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["group"] = group
         __props__.__dict__["member_key"] = member_key
@@ -532,6 +571,14 @@ class GroupMembership(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         return GroupMembership(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
 
     @property
     @pulumi.getter(name="createTime")

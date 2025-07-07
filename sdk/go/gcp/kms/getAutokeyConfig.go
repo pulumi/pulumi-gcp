@@ -55,6 +55,7 @@ type LookupAutokeyConfigArgs struct {
 
 // A collection of values returned by getAutokeyConfig.
 type LookupAutokeyConfigResult struct {
+	Etag   string `pulumi:"etag"`
 	Folder string `pulumi:"folder"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -95,6 +96,10 @@ func (o LookupAutokeyConfigResultOutput) ToLookupAutokeyConfigResultOutput() Loo
 
 func (o LookupAutokeyConfigResultOutput) ToLookupAutokeyConfigResultOutputWithContext(ctx context.Context) LookupAutokeyConfigResultOutput {
 	return o
+}
+
+func (o LookupAutokeyConfigResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutokeyConfigResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 func (o LookupAutokeyConfigResultOutput) Folder() pulumi.StringOutput {

@@ -431,7 +431,8 @@ class RecordSet(pulumi.CustomResource):
 
         prod = gcp.dns.ManagedZone("prod",
             name="prod-zone",
-            dns_name="prod.mydomain.com.")
+            dns_name="prod.mydomain.com.",
+            visibility="private")
         prod_region_backend_service = gcp.compute.RegionBackendService("prod",
             name="prod-backend",
             region="us-central1")
@@ -710,7 +711,8 @@ class RecordSet(pulumi.CustomResource):
 
         prod = gcp.dns.ManagedZone("prod",
             name="prod-zone",
-            dns_name="prod.mydomain.com.")
+            dns_name="prod.mydomain.com.",
+            visibility="private")
         prod_region_backend_service = gcp.compute.RegionBackendService("prod",
             name="prod-backend",
             region="us-central1")

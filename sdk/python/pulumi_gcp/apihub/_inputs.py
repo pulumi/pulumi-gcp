@@ -24,6 +24,24 @@ __all__ = [
     'CurationEndpointApplicationIntegrationEndpointDetailsArgsDict',
     'CurationPluginInstanceActionArgs',
     'CurationPluginInstanceActionArgsDict',
+    'PluginActionsConfigArgs',
+    'PluginActionsConfigArgsDict',
+    'PluginConfigTemplateArgs',
+    'PluginConfigTemplateArgsDict',
+    'PluginConfigTemplateAdditionalConfigTemplateArgs',
+    'PluginConfigTemplateAdditionalConfigTemplateArgsDict',
+    'PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs',
+    'PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict',
+    'PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs',
+    'PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict',
+    'PluginConfigTemplateAuthConfigTemplateArgs',
+    'PluginConfigTemplateAuthConfigTemplateArgsDict',
+    'PluginConfigTemplateAuthConfigTemplateServiceAccountArgs',
+    'PluginConfigTemplateAuthConfigTemplateServiceAccountArgsDict',
+    'PluginDocumentationArgs',
+    'PluginDocumentationArgsDict',
+    'PluginHostingServiceArgs',
+    'PluginHostingServiceArgsDict',
     'PluginInstanceActionArgs',
     'PluginInstanceActionArgsDict',
     'PluginInstanceActionCurationConfigArgs',
@@ -361,6 +379,663 @@ class CurationPluginInstanceActionArgs:
     @plugin_instance.setter
     def plugin_instance(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "plugin_instance", value)
+
+
+if not MYPY:
+    class PluginActionsConfigArgsDict(TypedDict):
+        description: pulumi.Input[builtins.str]
+        """
+        The description of the operation performed by the action.
+        """
+        display_name: pulumi.Input[builtins.str]
+        """
+        The display name of the action.
+        """
+        id: pulumi.Input[builtins.str]
+        """
+        The id of the action.
+        """
+        trigger_mode: pulumi.Input[builtins.str]
+        """
+        The trigger mode supported by the action.
+        Possible values:
+        TRIGGER_MODE_UNSPECIFIED
+        API_HUB_ON_DEMAND_TRIGGER
+        API_HUB_SCHEDULE_TRIGGER
+        NON_API_HUB_MANAGED
+        """
+elif False:
+    PluginActionsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PluginActionsConfigArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[builtins.str],
+                 display_name: pulumi.Input[builtins.str],
+                 id: pulumi.Input[builtins.str],
+                 trigger_mode: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] description: The description of the operation performed by the action.
+        :param pulumi.Input[builtins.str] display_name: The display name of the action.
+        :param pulumi.Input[builtins.str] id: The id of the action.
+        :param pulumi.Input[builtins.str] trigger_mode: The trigger mode supported by the action.
+               Possible values:
+               TRIGGER_MODE_UNSPECIFIED
+               API_HUB_ON_DEMAND_TRIGGER
+               API_HUB_SCHEDULE_TRIGGER
+               NON_API_HUB_MANAGED
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "trigger_mode", trigger_mode)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[builtins.str]:
+        """
+        The description of the operation performed by the action.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The display name of the action.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[builtins.str]:
+        """
+        The id of the action.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="triggerMode")
+    def trigger_mode(self) -> pulumi.Input[builtins.str]:
+        """
+        The trigger mode supported by the action.
+        Possible values:
+        TRIGGER_MODE_UNSPECIFIED
+        API_HUB_ON_DEMAND_TRIGGER
+        API_HUB_SCHEDULE_TRIGGER
+        NON_API_HUB_MANAGED
+        """
+        return pulumi.get(self, "trigger_mode")
+
+    @trigger_mode.setter
+    def trigger_mode(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "trigger_mode", value)
+
+
+if not MYPY:
+    class PluginConfigTemplateArgsDict(TypedDict):
+        additional_config_templates: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgsDict']]]]
+        """
+        The list of additional configuration variables for the plugin's
+        configuration.
+        Structure is documented below.
+        """
+        auth_config_template: NotRequired[pulumi.Input['PluginConfigTemplateAuthConfigTemplateArgsDict']]
+        """
+        AuthConfigTemplate represents the authentication template for a plugin.
+        Structure is documented below.
+        """
+elif False:
+    PluginConfigTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PluginConfigTemplateArgs:
+    def __init__(__self__, *,
+                 additional_config_templates: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]]] = None,
+                 auth_config_template: Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]] additional_config_templates: The list of additional configuration variables for the plugin's
+               configuration.
+               Structure is documented below.
+        :param pulumi.Input['PluginConfigTemplateAuthConfigTemplateArgs'] auth_config_template: AuthConfigTemplate represents the authentication template for a plugin.
+               Structure is documented below.
+        """
+        if additional_config_templates is not None:
+            pulumi.set(__self__, "additional_config_templates", additional_config_templates)
+        if auth_config_template is not None:
+            pulumi.set(__self__, "auth_config_template", auth_config_template)
+
+    @property
+    @pulumi.getter(name="additionalConfigTemplates")
+    def additional_config_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]]]:
+        """
+        The list of additional configuration variables for the plugin's
+        configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_config_templates")
+
+    @additional_config_templates.setter
+    def additional_config_templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]]]):
+        pulumi.set(self, "additional_config_templates", value)
+
+    @property
+    @pulumi.getter(name="authConfigTemplate")
+    def auth_config_template(self) -> Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateArgs']]:
+        """
+        AuthConfigTemplate represents the authentication template for a plugin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auth_config_template")
+
+    @auth_config_template.setter
+    def auth_config_template(self, value: Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateArgs']]):
+        pulumi.set(self, "auth_config_template", value)
+
+
+if not MYPY:
+    class PluginConfigTemplateAdditionalConfigTemplateArgsDict(TypedDict):
+        id: pulumi.Input[builtins.str]
+        """
+        ID of the config variable. Must be unique within the configuration.
+        """
+        value_type: pulumi.Input[builtins.str]
+        """
+        Type of the parameter: string, int, bool etc.
+        Possible values:
+        VALUE_TYPE_UNSPECIFIED
+        STRING
+        INT
+        BOOL
+        SECRET
+        ENUM
+        MULTI_SELECT
+        MULTI_STRING
+        MULTI_INT
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Description.
+        """
+        enum_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict']]]]
+        """
+        Enum options. To be populated if `ValueType` is `ENUM`.
+        Structure is documented below.
+        """
+        multi_select_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict']]]]
+        """
+        Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
+        Structure is documented below.
+        """
+        required: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Flag represents that this `ConfigVariable` must be provided for a
+        PluginInstance.
+        """
+        validation_regex: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Regular expression in RE2 syntax used for validating the `value` of a
+        `ConfigVariable`.
+        """
+elif False:
+    PluginConfigTemplateAdditionalConfigTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PluginConfigTemplateAdditionalConfigTemplateArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[builtins.str],
+                 value_type: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None,
+                 enum_options: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]]] = None,
+                 multi_select_options: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]]] = None,
+                 required: Optional[pulumi.Input[builtins.bool]] = None,
+                 validation_regex: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] id: ID of the config variable. Must be unique within the configuration.
+        :param pulumi.Input[builtins.str] value_type: Type of the parameter: string, int, bool etc.
+               Possible values:
+               VALUE_TYPE_UNSPECIFIED
+               STRING
+               INT
+               BOOL
+               SECRET
+               ENUM
+               MULTI_SELECT
+               MULTI_STRING
+               MULTI_INT
+        :param pulumi.Input[builtins.str] description: Description.
+        :param pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]] enum_options: Enum options. To be populated if `ValueType` is `ENUM`.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]] multi_select_options: Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
+               Structure is documented below.
+        :param pulumi.Input[builtins.bool] required: Flag represents that this `ConfigVariable` must be provided for a
+               PluginInstance.
+        :param pulumi.Input[builtins.str] validation_regex: Regular expression in RE2 syntax used for validating the `value` of a
+               `ConfigVariable`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "value_type", value_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enum_options is not None:
+            pulumi.set(__self__, "enum_options", enum_options)
+        if multi_select_options is not None:
+            pulumi.set(__self__, "multi_select_options", multi_select_options)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if validation_regex is not None:
+            pulumi.set(__self__, "validation_regex", validation_regex)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[builtins.str]:
+        """
+        ID of the config variable. Must be unique within the configuration.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> pulumi.Input[builtins.str]:
+        """
+        Type of the parameter: string, int, bool etc.
+        Possible values:
+        VALUE_TYPE_UNSPECIFIED
+        STRING
+        INT
+        BOOL
+        SECRET
+        ENUM
+        MULTI_SELECT
+        MULTI_STRING
+        MULTI_INT
+        """
+        return pulumi.get(self, "value_type")
+
+    @value_type.setter
+    def value_type(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "value_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enumOptions")
+    def enum_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]]]:
+        """
+        Enum options. To be populated if `ValueType` is `ENUM`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "enum_options")
+
+    @enum_options.setter
+    def enum_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]]]):
+        pulumi.set(self, "enum_options", value)
+
+    @property
+    @pulumi.getter(name="multiSelectOptions")
+    def multi_select_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]]]:
+        """
+        Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "multi_select_options")
+
+    @multi_select_options.setter
+    def multi_select_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]]]):
+        pulumi.set(self, "multi_select_options", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Flag represents that this `ConfigVariable` must be provided for a
+        PluginInstance.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter(name="validationRegex")
+    def validation_regex(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Regular expression in RE2 syntax used for validating the `value` of a
+        `ConfigVariable`.
+        """
+        return pulumi.get(self, "validation_regex")
+
+    @validation_regex.setter
+    def validation_regex(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "validation_regex", value)
+
+
+if not MYPY:
+    class PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict(TypedDict):
+        display_name: pulumi.Input[builtins.str]
+        """
+        Display name of the option.
+        """
+        id: pulumi.Input[builtins.str]
+        """
+        Id of the option.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Description of the option.
+        """
+elif False:
+    PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[builtins.str],
+                 id: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] display_name: Display name of the option.
+        :param pulumi.Input[builtins.str] id: Id of the option.
+        :param pulumi.Input[builtins.str] description: Description of the option.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[builtins.str]:
+        """
+        Display name of the option.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[builtins.str]:
+        """
+        Id of the option.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Description of the option.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict(TypedDict):
+        display_name: pulumi.Input[builtins.str]
+        """
+        Display name of the option.
+        """
+        id: pulumi.Input[builtins.str]
+        """
+        Id of the option.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Description of the option.
+        """
+elif False:
+    PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[builtins.str],
+                 id: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] display_name: Display name of the option.
+        :param pulumi.Input[builtins.str] id: Id of the option.
+        :param pulumi.Input[builtins.str] description: Description of the option.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[builtins.str]:
+        """
+        Display name of the option.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[builtins.str]:
+        """
+        Id of the option.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Description of the option.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class PluginConfigTemplateAuthConfigTemplateArgsDict(TypedDict):
+        supported_auth_types: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        """
+        The list of authentication types supported by the plugin.
+        """
+        service_account: NotRequired[pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgsDict']]
+        """
+        Config for Google service account authentication.
+        Structure is documented below.
+        """
+elif False:
+    PluginConfigTemplateAuthConfigTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PluginConfigTemplateAuthConfigTemplateArgs:
+    def __init__(__self__, *,
+                 supported_auth_types: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
+                 service_account: Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] supported_auth_types: The list of authentication types supported by the plugin.
+        :param pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs'] service_account: Config for Google service account authentication.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "supported_auth_types", supported_auth_types)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="supportedAuthTypes")
+    def supported_auth_types(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+        """
+        The list of authentication types supported by the plugin.
+        """
+        return pulumi.get(self, "supported_auth_types")
+
+    @supported_auth_types.setter
+    def supported_auth_types(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        pulumi.set(self, "supported_auth_types", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs']]:
+        """
+        Config for Google service account authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs']]):
+        pulumi.set(self, "service_account", value)
+
+
+if not MYPY:
+    class PluginConfigTemplateAuthConfigTemplateServiceAccountArgsDict(TypedDict):
+        service_account: pulumi.Input[builtins.str]
+        """
+        The service account to be used for authenticating request.
+        The `iam.serviceAccounts.getAccessToken` permission should be granted on
+        this service account to the impersonator service account.
+        """
+elif False:
+    PluginConfigTemplateAuthConfigTemplateServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PluginConfigTemplateAuthConfigTemplateServiceAccountArgs:
+    def __init__(__self__, *,
+                 service_account: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] service_account: The service account to be used for authenticating request.
+               The `iam.serviceAccounts.getAccessToken` permission should be granted on
+               this service account to the impersonator service account.
+        """
+        pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[builtins.str]:
+        """
+        The service account to be used for authenticating request.
+        The `iam.serviceAccounts.getAccessToken` permission should be granted on
+        this service account to the impersonator service account.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "service_account", value)
+
+
+if not MYPY:
+    class PluginDocumentationArgsDict(TypedDict):
+        external_uri: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The uri of the externally hosted documentation.
+        """
+elif False:
+    PluginDocumentationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PluginDocumentationArgs:
+    def __init__(__self__, *,
+                 external_uri: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] external_uri: The uri of the externally hosted documentation.
+        """
+        if external_uri is not None:
+            pulumi.set(__self__, "external_uri", external_uri)
+
+    @property
+    @pulumi.getter(name="externalUri")
+    def external_uri(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The uri of the externally hosted documentation.
+        """
+        return pulumi.get(self, "external_uri")
+
+    @external_uri.setter
+    def external_uri(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "external_uri", value)
+
+
+if not MYPY:
+    class PluginHostingServiceArgsDict(TypedDict):
+        service_uri: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The URI of the service implemented by the plugin developer, used to
+        invoke the plugin's functionality. This information is only required for
+        user defined plugins.
+        """
+elif False:
+    PluginHostingServiceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PluginHostingServiceArgs:
+    def __init__(__self__, *,
+                 service_uri: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] service_uri: The URI of the service implemented by the plugin developer, used to
+               invoke the plugin's functionality. This information is only required for
+               user defined plugins.
+        """
+        if service_uri is not None:
+            pulumi.set(__self__, "service_uri", service_uri)
+
+    @property
+    @pulumi.getter(name="serviceUri")
+    def service_uri(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The URI of the service implemented by the plugin developer, used to
+        invoke the plugin's functionality. This information is only required for
+        user defined plugins.
+        """
+        return pulumi.get(self, "service_uri")
+
+    @service_uri.setter
+    def service_uri(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "service_uri", value)
 
 
 if not MYPY:

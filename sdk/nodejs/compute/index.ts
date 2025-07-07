@@ -1170,6 +1170,11 @@ export type VPNTunnel = import("./vpntunnel").VPNTunnel;
 export const VPNTunnel: typeof import("./vpntunnel").VPNTunnel = null as any;
 utilities.lazyLoad(exports, ["VPNTunnel"], () => require("./vpntunnel"));
 
+export { WireGroupArgs, WireGroupState } from "./wireGroup";
+export type WireGroup = import("./wireGroup").WireGroup;
+export const WireGroup: typeof import("./wireGroup").WireGroup = null as any;
+utilities.lazyLoad(exports, ["WireGroup"], () => require("./wireGroup"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -1511,6 +1516,8 @@ const _module = {
                 return new VPNGateway(name, <any>undefined, { urn })
             case "gcp:compute/vPNTunnel:VPNTunnel":
                 return new VPNTunnel(name, <any>undefined, { urn })
+            case "gcp:compute/wireGroup:WireGroup":
+                return new WireGroup(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -1684,3 +1691,4 @@ pulumi.runtime.registerResourceModule("gcp", "compute/targetTCPProxy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/uRLMap", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/vPNGateway", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/vPNTunnel", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/wireGroup", _module)

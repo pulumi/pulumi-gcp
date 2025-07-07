@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerAutoHealingPolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerParam;
+import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerResourcePolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStandbyPolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulExternalIp;
@@ -47,6 +48,7 @@ public final class GetInstanceGroupManagerResult {
     private String operation;
     private List<GetInstanceGroupManagerParam> params;
     private @Nullable String project;
+    private List<GetInstanceGroupManagerResourcePolicy> resourcePolicies;
     private @Nullable String selfLink;
     private List<GetInstanceGroupManagerStandbyPolicy> standbyPolicies;
     private List<GetInstanceGroupManagerStatefulDisk> statefulDisks;
@@ -115,6 +117,9 @@ public final class GetInstanceGroupManagerResult {
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    public List<GetInstanceGroupManagerResourcePolicy> resourcePolicies() {
+        return this.resourcePolicies;
     }
     public Optional<String> selfLink() {
         return Optional.ofNullable(this.selfLink);
@@ -187,6 +192,7 @@ public final class GetInstanceGroupManagerResult {
         private String operation;
         private List<GetInstanceGroupManagerParam> params;
         private @Nullable String project;
+        private List<GetInstanceGroupManagerResourcePolicy> resourcePolicies;
         private @Nullable String selfLink;
         private List<GetInstanceGroupManagerStandbyPolicy> standbyPolicies;
         private List<GetInstanceGroupManagerStatefulDisk> statefulDisks;
@@ -221,6 +227,7 @@ public final class GetInstanceGroupManagerResult {
     	      this.operation = defaults.operation;
     	      this.params = defaults.params;
     	      this.project = defaults.project;
+    	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.selfLink = defaults.selfLink;
     	      this.standbyPolicies = defaults.standbyPolicies;
     	      this.statefulDisks = defaults.statefulDisks;
@@ -376,6 +383,17 @@ public final class GetInstanceGroupManagerResult {
 
             this.project = project;
             return this;
+        }
+        @CustomType.Setter
+        public Builder resourcePolicies(List<GetInstanceGroupManagerResourcePolicy> resourcePolicies) {
+            if (resourcePolicies == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "resourcePolicies");
+            }
+            this.resourcePolicies = resourcePolicies;
+            return this;
+        }
+        public Builder resourcePolicies(GetInstanceGroupManagerResourcePolicy... resourcePolicies) {
+            return resourcePolicies(List.of(resourcePolicies));
         }
         @CustomType.Setter
         public Builder selfLink(@Nullable String selfLink) {
@@ -535,6 +553,7 @@ public final class GetInstanceGroupManagerResult {
             _resultValue.operation = operation;
             _resultValue.params = params;
             _resultValue.project = project;
+            _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.selfLink = selfLink;
             _resultValue.standbyPolicies = standbyPolicies;
             _resultValue.statefulDisks = statefulDisks;

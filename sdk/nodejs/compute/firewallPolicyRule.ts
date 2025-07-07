@@ -68,6 +68,20 @@ import * as utilities from "../utilities";
  *         ],
  *     },
  * });
+ * const basicKey = new gcp.tags.TagKey("basic_key", {
+ *     description: "For keyname resources.",
+ *     parent: "organizations/123456789",
+ *     purpose: "GCE_FIREWALL",
+ *     shortName: "tag-key",
+ *     purposeData: {
+ *         organization: "auto",
+ *     },
+ * });
+ * const basicValue = new gcp.tags.TagValue("basic_value", {
+ *     description: "For valuename resources.",
+ *     parent: basicKey.id,
+ *     shortName: "tag-value",
+ * });
  * ```
  * ### Firewall Policy Rule Network Scope
  *
@@ -100,6 +114,65 @@ import * as utilities from "../utilities";
  *         srcIpRanges: ["11.100.0.1/32"],
  *         srcNetworkScope: "VPC_NETWORKS",
  *         srcNetworks: [network.id],
+ *         layer4Configs: [
+ *             {
+ *                 ipProtocol: "tcp",
+ *                 ports: ["8080"],
+ *             },
+ *             {
+ *                 ipProtocol: "udp",
+ *                 ports: ["22"],
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ * ### Firewall Policy Rule Secure Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.organizations.Folder("folder", {
+ *     displayName: "folder",
+ *     parent: "organizations/123456789",
+ *     deletionProtection: false,
+ * });
+ * const _default = new gcp.compute.FirewallPolicy("default", {
+ *     parent: folder.id,
+ *     shortName: "fw-policy",
+ *     description: "Resource created for Terraform acceptance testing",
+ * });
+ * const basicKey = new gcp.tags.TagKey("basic_key", {
+ *     description: "For keyname resources.",
+ *     parent: "organizations/123456789",
+ *     purpose: "GCE_FIREWALL",
+ *     shortName: "tag-key",
+ *     purposeData: {
+ *         organization: "auto",
+ *     },
+ * });
+ * const basicValue = new gcp.tags.TagValue("basic_value", {
+ *     description: "For valuename resources.",
+ *     parent: basicKey.id,
+ *     shortName: "tag-value",
+ * });
+ * const primary = new gcp.compute.FirewallPolicyRule("primary", {
+ *     firewallPolicy: _default.name,
+ *     description: "Resource created for Terraform acceptance testing",
+ *     priority: 9000,
+ *     enableLogging: true,
+ *     action: "allow",
+ *     direction: "INGRESS",
+ *     disabled: false,
+ *     targetSecureTags: [{
+ *         name: basicValue.id,
+ *     }],
+ *     match: {
+ *         srcIpRanges: ["11.100.0.1/32"],
+ *         srcSecureTags: [{
+ *             name: basicValue.id,
+ *         }],
  *         layer4Configs: [
  *             {
  *                 ipProtocol: "tcp",
@@ -223,6 +296,14 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      */
     public readonly targetResources!: pulumi.Output<string[] | undefined>;
     /**
+     * A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+     * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+     */
+    public readonly targetSecureTags!: pulumi.Output<outputs.compute.FirewallPolicyRuleTargetSecureTag[] | undefined>;
+    /**
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
     public readonly targetServiceAccounts!: pulumi.Output<string[] | undefined>;
@@ -258,6 +339,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
             resourceInputs["ruleTupleCount"] = state ? state.ruleTupleCount : undefined;
             resourceInputs["securityProfileGroup"] = state ? state.securityProfileGroup : undefined;
             resourceInputs["targetResources"] = state ? state.targetResources : undefined;
+            resourceInputs["targetSecureTags"] = state ? state.targetSecureTags : undefined;
             resourceInputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
             resourceInputs["tlsInspect"] = state ? state.tlsInspect : undefined;
         } else {
@@ -287,6 +369,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["securityProfileGroup"] = args ? args.securityProfileGroup : undefined;
             resourceInputs["targetResources"] = args ? args.targetResources : undefined;
+            resourceInputs["targetSecureTags"] = args ? args.targetSecureTags : undefined;
             resourceInputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
             resourceInputs["tlsInspect"] = args ? args.tlsInspect : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -365,6 +448,14 @@ export interface FirewallPolicyRuleState {
      */
     targetResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+     * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+     */
+    targetSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyRuleTargetSecureTag>[]>;
+    /**
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
     targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
@@ -429,6 +520,14 @@ export interface FirewallPolicyRuleArgs {
      * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      */
     targetResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+     * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+     */
+    targetSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyRuleTargetSecureTag>[]>;
     /**
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      */

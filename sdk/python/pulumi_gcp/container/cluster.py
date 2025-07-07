@@ -54,6 +54,7 @@ class ClusterArgs:
                  enterprise_config: Optional[pulumi.Input['ClusterEnterpriseConfigArgs']] = None,
                  fleet: Optional[pulumi.Input['ClusterFleetArgs']] = None,
                  gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
+                 gke_auto_upgrade_config: Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
                  in_transit_encryption_config: Optional[pulumi.Input[builtins.str]] = None,
                  initial_node_count: Optional[pulumi.Input[builtins.int]] = None,
@@ -166,6 +167,8 @@ class ClusterArgs:
                <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        :param pulumi.Input['ClusterGkeAutoUpgradeConfigArgs'] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+               Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
         :param pulumi.Input[builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[builtins.int] initial_node_count: The number of nodes to create in this
@@ -383,6 +386,8 @@ class ClusterArgs:
             pulumi.set(__self__, "fleet", fleet)
         if gateway_api_config is not None:
             pulumi.set(__self__, "gateway_api_config", gateway_api_config)
+        if gke_auto_upgrade_config is not None:
+            pulumi.set(__self__, "gke_auto_upgrade_config", gke_auto_upgrade_config)
         if identity_service_config is not None:
             pulumi.set(__self__, "identity_service_config", identity_service_config)
         if in_transit_encryption_config is not None:
@@ -888,6 +893,19 @@ class ClusterArgs:
     @gateway_api_config.setter
     def gateway_api_config(self, value: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']]):
         pulumi.set(self, "gateway_api_config", value)
+
+    @property
+    @pulumi.getter(name="gkeAutoUpgradeConfig")
+    def gke_auto_upgrade_config(self) -> Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']]:
+        """
+        Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gke_auto_upgrade_config")
+
+    @gke_auto_upgrade_config.setter
+    def gke_auto_upgrade_config(self, value: Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']]):
+        pulumi.set(self, "gke_auto_upgrade_config", value)
 
     @property
     @pulumi.getter(name="identityServiceConfig")
@@ -1574,6 +1592,7 @@ class _ClusterState:
                  enterprise_config: Optional[pulumi.Input['ClusterEnterpriseConfigArgs']] = None,
                  fleet: Optional[pulumi.Input['ClusterFleetArgs']] = None,
                  gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
+                 gke_auto_upgrade_config: Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
                  in_transit_encryption_config: Optional[pulumi.Input[builtins.str]] = None,
                  initial_node_count: Optional[pulumi.Input[builtins.int]] = None,
@@ -1695,6 +1714,8 @@ class _ClusterState:
                <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        :param pulumi.Input['ClusterGkeAutoUpgradeConfigArgs'] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+               Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
         :param pulumi.Input[builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[builtins.int] initial_node_count: The number of nodes to create in this
@@ -1929,6 +1950,8 @@ class _ClusterState:
             pulumi.set(__self__, "fleet", fleet)
         if gateway_api_config is not None:
             pulumi.set(__self__, "gateway_api_config", gateway_api_config)
+        if gke_auto_upgrade_config is not None:
+            pulumi.set(__self__, "gke_auto_upgrade_config", gke_auto_upgrade_config)
         if identity_service_config is not None:
             pulumi.set(__self__, "identity_service_config", identity_service_config)
         if in_transit_encryption_config is not None:
@@ -2472,6 +2495,19 @@ class _ClusterState:
     @gateway_api_config.setter
     def gateway_api_config(self, value: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']]):
         pulumi.set(self, "gateway_api_config", value)
+
+    @property
+    @pulumi.getter(name="gkeAutoUpgradeConfig")
+    def gke_auto_upgrade_config(self) -> Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']]:
+        """
+        Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gke_auto_upgrade_config")
+
+    @gke_auto_upgrade_config.setter
+    def gke_auto_upgrade_config(self, value: Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']]):
+        pulumi.set(self, "gke_auto_upgrade_config", value)
 
     @property
     @pulumi.getter(name="identityServiceConfig")
@@ -3247,6 +3283,7 @@ class Cluster(pulumi.CustomResource):
                  enterprise_config: Optional[pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
                  fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
                  gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
+                 gke_auto_upgrade_config: Optional[pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
                  identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
                  in_transit_encryption_config: Optional[pulumi.Input[builtins.str]] = None,
                  initial_node_count: Optional[pulumi.Input[builtins.int]] = None,
@@ -3481,6 +3518,8 @@ class Cluster(pulumi.CustomResource):
                <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+               Structure is documented below.
         :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']] identity_service_config: . Structure is documented below.
         :param pulumi.Input[builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[builtins.int] initial_node_count: The number of nodes to create in this
@@ -3808,6 +3847,7 @@ class Cluster(pulumi.CustomResource):
                  enterprise_config: Optional[pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
                  fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
                  gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
+                 gke_auto_upgrade_config: Optional[pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
                  identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
                  in_transit_encryption_config: Optional[pulumi.Input[builtins.str]] = None,
                  initial_node_count: Optional[pulumi.Input[builtins.int]] = None,
@@ -3894,6 +3934,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["enterprise_config"] = enterprise_config
             __props__.__dict__["fleet"] = fleet
             __props__.__dict__["gateway_api_config"] = gateway_api_config
+            __props__.__dict__["gke_auto_upgrade_config"] = gke_auto_upgrade_config
             __props__.__dict__["identity_service_config"] = identity_service_config
             __props__.__dict__["in_transit_encryption_config"] = in_transit_encryption_config
             __props__.__dict__["initial_node_count"] = initial_node_count
@@ -3994,6 +4035,7 @@ class Cluster(pulumi.CustomResource):
             enterprise_config: Optional[pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
             fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
             gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
+            gke_auto_upgrade_config: Optional[pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
             identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
             in_transit_encryption_config: Optional[pulumi.Input[builtins.str]] = None,
             initial_node_count: Optional[pulumi.Input[builtins.int]] = None,
@@ -4120,6 +4162,8 @@ class Cluster(pulumi.CustomResource):
                <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+               Structure is documented below.
         :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']] identity_service_config: . Structure is documented below.
         :param pulumi.Input[builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[builtins.int] initial_node_count: The number of nodes to create in this
@@ -4324,6 +4368,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["enterprise_config"] = enterprise_config
         __props__.__dict__["fleet"] = fleet
         __props__.__dict__["gateway_api_config"] = gateway_api_config
+        __props__.__dict__["gke_auto_upgrade_config"] = gke_auto_upgrade_config
         __props__.__dict__["identity_service_config"] = identity_service_config
         __props__.__dict__["in_transit_encryption_config"] = in_transit_encryption_config
         __props__.__dict__["initial_node_count"] = initial_node_count
@@ -4680,6 +4725,15 @@ class Cluster(pulumi.CustomResource):
         Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         """
         return pulumi.get(self, "gateway_api_config")
+
+    @property
+    @pulumi.getter(name="gkeAutoUpgradeConfig")
+    def gke_auto_upgrade_config(self) -> pulumi.Output['outputs.ClusterGkeAutoUpgradeConfig']:
+        """
+        Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gke_auto_upgrade_config")
 
     @property
     @pulumi.getter(name="identityServiceConfig")

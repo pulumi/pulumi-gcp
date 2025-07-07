@@ -28,7 +28,7 @@ class GetInstanceGroupManagerResult:
     """
     A collection of values returned by getInstanceGroupManager.
     """
-    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, fingerprint=None, id=None, instance_group=None, instance_group_manager_id=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, params=None, project=None, self_link=None, standby_policies=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
+    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, fingerprint=None, id=None, instance_group=None, instance_group_manager_id=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, params=None, project=None, resource_policies=None, self_link=None, standby_policies=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
         if all_instances_configs and not isinstance(all_instances_configs, list):
             raise TypeError("Expected argument 'all_instances_configs' to be a list")
         pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -77,6 +77,9 @@ class GetInstanceGroupManagerResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if resource_policies and not isinstance(resource_policies, list):
+            raise TypeError("Expected argument 'resource_policies' to be a list")
+        pulumi.set(__self__, "resource_policies", resource_policies)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -207,6 +210,11 @@ class GetInstanceGroupManagerResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Sequence['outputs.GetInstanceGroupManagerResourcePolicyResult']:
+        return pulumi.get(self, "resource_policies")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[builtins.str]:
         return pulumi.get(self, "self_link")
@@ -304,6 +312,7 @@ class AwaitableGetInstanceGroupManagerResult(GetInstanceGroupManagerResult):
             operation=self.operation,
             params=self.params,
             project=self.project,
+            resource_policies=self.resource_policies,
             self_link=self.self_link,
             standby_policies=self.standby_policies,
             stateful_disks=self.stateful_disks,
@@ -373,6 +382,7 @@ def get_instance_group_manager(name: Optional[builtins.str] = None,
         operation=pulumi.get(__ret__, 'operation'),
         params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
+        resource_policies=pulumi.get(__ret__, 'resource_policies'),
         self_link=pulumi.get(__ret__, 'self_link'),
         standby_policies=pulumi.get(__ret__, 'standby_policies'),
         stateful_disks=pulumi.get(__ret__, 'stateful_disks'),
@@ -439,6 +449,7 @@ def get_instance_group_manager_output(name: Optional[pulumi.Input[Optional[built
         operation=pulumi.get(__response__, 'operation'),
         params=pulumi.get(__response__, 'params'),
         project=pulumi.get(__response__, 'project'),
+        resource_policies=pulumi.get(__response__, 'resource_policies'),
         self_link=pulumi.get(__response__, 'self_link'),
         standby_policies=pulumi.get(__response__, 'standby_policies'),
         stateful_disks=pulumi.get(__response__, 'stateful_disks'),

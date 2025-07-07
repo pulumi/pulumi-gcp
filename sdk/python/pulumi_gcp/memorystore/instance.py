@@ -34,6 +34,7 @@ class InstanceArgs:
                  engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  engine_version: Optional[pulumi.Input[builtins.str]] = None,
                  gcs_source: Optional[pulumi.Input['InstanceGcsSourceArgs']] = None,
+                 kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
                  managed_backup_source: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']] = None,
@@ -73,6 +74,7 @@ class InstanceArgs:
         :param pulumi.Input[builtins.str] engine_version: Optional. Engine version of the instance.
         :param pulumi.Input['InstanceGcsSourceArgs'] gcs_source: GCS source for the instance.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -127,6 +129,8 @@ class InstanceArgs:
             pulumi.set(__self__, "engine_version", engine_version)
         if gcs_source is not None:
             pulumi.set(__self__, "gcs_source", gcs_source)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if maintenance_policy is not None:
@@ -309,6 +313,18 @@ class InstanceArgs:
         pulumi.set(self, "gcs_source", value)
 
     @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The KMS key used to encrypt the at-rest data of the cluster
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
@@ -466,6 +482,7 @@ class _InstanceState:
                  engine_version: Optional[pulumi.Input[builtins.str]] = None,
                  gcs_source: Optional[pulumi.Input['InstanceGcsSourceArgs']] = None,
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
@@ -525,6 +542,7 @@ class _InstanceState:
                
                
                - - -
+        :param pulumi.Input[builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -616,6 +634,8 @@ class _InstanceState:
             pulumi.set(__self__, "gcs_source", gcs_source)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -865,6 +885,18 @@ class _InstanceState:
     @instance_id.setter
     def instance_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The KMS key used to encrypt the at-rest data of the cluster
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key", value)
 
     @property
     @pulumi.getter
@@ -1180,6 +1212,7 @@ class Instance(pulumi.CustomResource):
                  engine_version: Optional[pulumi.Input[builtins.str]] = None,
                  gcs_source: Optional[pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
@@ -1286,6 +1319,7 @@ class Instance(pulumi.CustomResource):
             node_type="SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_DISABLED",
             authorization_mode="AUTH_DISABLED",
+            kms_key="my-key",
             engine_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
@@ -1524,6 +1558,7 @@ class Instance(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -1655,6 +1690,7 @@ class Instance(pulumi.CustomResource):
             node_type="SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_DISABLED",
             authorization_mode="AUTH_DISABLED",
+            kms_key="my-key",
             engine_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
@@ -1891,6 +1927,7 @@ class Instance(pulumi.CustomResource):
                  engine_version: Optional[pulumi.Input[builtins.str]] = None,
                  gcs_source: Optional[pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
@@ -1924,6 +1961,7 @@ class Instance(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -1982,6 +2020,7 @@ class Instance(pulumi.CustomResource):
             engine_version: Optional[pulumi.Input[builtins.str]] = None,
             gcs_source: Optional[pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
             instance_id: Optional[pulumi.Input[builtins.str]] = None,
+            kms_key: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             location: Optional[pulumi.Input[builtins.str]] = None,
             maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
@@ -2046,6 +2085,7 @@ class Instance(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -2120,6 +2160,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["gcs_source"] = gcs_source
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["kms_key"] = kms_key
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["maintenance_policy"] = maintenance_policy
@@ -2285,6 +2326,14 @@ class Instance(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The KMS key used to encrypt the at-rest data of the cluster
+        """
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter

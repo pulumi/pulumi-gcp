@@ -393,6 +393,7 @@ class GetGroupLookupGroupKeyResult(dict):
 @pulumi.output_type
 class GetGroupMembershipsMembershipResult(dict):
     def __init__(__self__, *,
+                 create_ignore_already_exists: builtins.bool,
                  create_time: builtins.str,
                  group: builtins.str,
                  member_keys: Sequence['outputs.GetGroupMembershipsMembershipMemberKeyResult'],
@@ -402,6 +403,7 @@ class GetGroupMembershipsMembershipResult(dict):
                  type: builtins.str,
                  update_time: builtins.str):
         """
+        :param builtins.bool create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param builtins.str create_time: The time when the Membership was created.
         :param builtins.str group: The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
         :param Sequence['GetGroupMembershipsMembershipMemberKeyArgs'] member_keys: EntityKey of the member.  Structure is documented below.
@@ -411,6 +413,7 @@ class GetGroupMembershipsMembershipResult(dict):
         :param builtins.str type: The type of the membership.
         :param builtins.str update_time: The time when the Membership was last updated.
         """
+        pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "member_keys", member_keys)
@@ -419,6 +422,14 @@ class GetGroupMembershipsMembershipResult(dict):
         pulumi.set(__self__, "roles", roles)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> builtins.bool:
+        """
+        If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
 
     @property
     @pulumi.getter(name="createTime")

@@ -174,6 +174,50 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Compute Region Network Firewall Policy With Rules Roce
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.RegionNetworkFirewallPolicyWithRules("policy", new()
+    ///     {
+    ///         Name = "rnf-policy",
+    ///         Description = "Terraform test",
+    ///         PolicyType = "RDMA_ROCE_POLICY",
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyWithRulesRuleArgs
+    ///             {
+    ///                 Description = "deny all rule",
+    ///                 Priority = 1000,
+    ///                 EnableLogging = true,
+    ///                 Action = "deny",
+    ///                 Direction = "INGRESS",
+    ///                 Match = new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyWithRulesRuleMatchArgs
+    ///                 {
+    ///                     SrcIpRanges = new[]
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                     },
+    ///                     Layer4Configs = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
+    ///                         {
+    ///                             IpProtocol = "all",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -243,6 +287,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("networkFirewallPolicyId")]
         public Output<string> NetworkFirewallPolicyId { get; private set; } = null!;
+
+        /// <summary>
+        /// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+        /// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+        /// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+        /// </summary>
+        [Output("policyType")]
+        public Output<string> PolicyType { get; private set; } = null!;
 
         /// <summary>
         /// A list of firewall policy pre-defined rules.
@@ -349,6 +401,14 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+        /// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+        /// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -414,6 +474,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("networkFirewallPolicyId")]
         public Input<string>? NetworkFirewallPolicyId { get; set; }
+
+        /// <summary>
+        /// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+        /// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+        /// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
 
         [Input("predefinedRules")]
         private InputList<Inputs.RegionNetworkFirewallPolicyWithRulesPredefinedRuleGetArgs>? _predefinedRules;

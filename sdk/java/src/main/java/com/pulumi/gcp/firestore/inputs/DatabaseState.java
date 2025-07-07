@@ -110,21 +110,9 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deleteProtectionState);
     }
 
-    /**
-     * @deprecated
-     * `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.
-     * 
-     */
-    @Deprecated /* `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead. */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
-    /**
-     * @deprecated
-     * `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.
-     * 
-     */
-    @Deprecated /* `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead. */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
     }
@@ -517,27 +505,11 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
             return deleteProtectionState(Output.of(deleteProtectionState));
         }
 
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.
-         * 
-         */
-        @Deprecated /* `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead. */
         public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
             $.deletionPolicy = deletionPolicy;
             return this;
         }
 
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.
-         * 
-         */
-        @Deprecated /* `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead. */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
         }

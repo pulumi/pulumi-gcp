@@ -30,6 +30,11 @@ export type CxFlow = import("./cxFlow").CxFlow;
 export const CxFlow: typeof import("./cxFlow").CxFlow = null as any;
 utilities.lazyLoad(exports, ["CxFlow"], () => require("./cxFlow"));
 
+export { CxGenerativeSettingsArgs, CxGenerativeSettingsState } from "./cxGenerativeSettings";
+export type CxGenerativeSettings = import("./cxGenerativeSettings").CxGenerativeSettings;
+export const CxGenerativeSettings: typeof import("./cxGenerativeSettings").CxGenerativeSettings = null as any;
+utilities.lazyLoad(exports, ["CxGenerativeSettings"], () => require("./cxGenerativeSettings"));
+
 export { CxIntentArgs, CxIntentState } from "./cxIntent";
 export type CxIntent = import("./cxIntent").CxIntent;
 export const CxIntent: typeof import("./cxIntent").CxIntent = null as any;
@@ -100,6 +105,8 @@ const _module = {
                 return new CxEnvironment(name, <any>undefined, { urn })
             case "gcp:diagflow/cxFlow:CxFlow":
                 return new CxFlow(name, <any>undefined, { urn })
+            case "gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings":
+                return new CxGenerativeSettings(name, <any>undefined, { urn })
             case "gcp:diagflow/cxIntent:CxIntent":
                 return new CxIntent(name, <any>undefined, { urn })
             case "gcp:diagflow/cxPage:CxPage":
@@ -132,6 +139,7 @@ pulumi.runtime.registerResourceModule("gcp", "diagflow/cxAgent", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxEntityType", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxEnvironment", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxFlow", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/cxGenerativeSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxIntent", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxPage", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxSecuritySettings", _module)

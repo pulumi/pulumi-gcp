@@ -41,6 +41,33 @@ import (
 //	}
 //
 // ```
+// ### Region Network Firewall Policy Roce
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionNetworkFirewallPolicy(ctx, "policy", &compute.RegionNetworkFirewallPolicyArgs{
+//				Name:        pulumi.String("rnf-policy"),
+//				Description: pulumi.String("Terraform test"),
+//				PolicyType:  pulumi.String("RDMA_ROCE_POLICY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -84,6 +111,11 @@ type RegionNetworkFirewallPolicy struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Policy type is used to determine which resources (networks) the policy can be associated with.
+	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
+	// Different policy types may support some of the Firewall Rules features.
+	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+	PolicyType pulumi.StringOutput `pulumi:"policyType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -139,6 +171,11 @@ type regionNetworkFirewallPolicyState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Policy type is used to determine which resources (networks) the policy can be associated with.
+	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
+	// Different policy types may support some of the Firewall Rules features.
+	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+	PolicyType *string `pulumi:"policyType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -165,6 +202,11 @@ type RegionNetworkFirewallPolicyState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Policy type is used to determine which resources (networks) the policy can be associated with.
+	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
+	// Different policy types may support some of the Firewall Rules features.
+	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+	PolicyType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -191,6 +233,11 @@ type regionNetworkFirewallPolicyArgs struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Policy type is used to determine which resources (networks) the policy can be associated with.
+	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
+	// Different policy types may support some of the Firewall Rules features.
+	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+	PolicyType *string `pulumi:"policyType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -206,6 +253,11 @@ type RegionNetworkFirewallPolicyArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Policy type is used to determine which resources (networks) the policy can be associated with.
+	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
+	// Different policy types may support some of the Firewall Rules features.
+	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+	PolicyType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -320,6 +372,14 @@ func (o RegionNetworkFirewallPolicyOutput) Fingerprint() pulumi.StringOutput {
 // ***
 func (o RegionNetworkFirewallPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkFirewallPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Policy type is used to determine which resources (networks) the policy can be associated with.
+// A policy can be associated with a network only if the network has the matching policyType in its network profile.
+// Different policy types may support some of the Firewall Rules features.
+// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+func (o RegionNetworkFirewallPolicyOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionNetworkFirewallPolicy) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

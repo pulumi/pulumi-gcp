@@ -370,6 +370,7 @@ import javax.annotation.Nullable;
  *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
  *             .name("prod-zone")
  *             .dnsName("prod.mydomain.com.")
+ *             .visibility("private")
  *             .build());
  * 
  *         var prodRegionBackendService = new RegionBackendService("prodRegionBackendService", RegionBackendServiceArgs.builder()

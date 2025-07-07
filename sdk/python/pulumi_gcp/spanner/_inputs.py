@@ -71,6 +71,11 @@ if not MYPY:
         The resource name of the Cloud KMS key to use for encryption.
         Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
         """
+        kms_key_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+        in the same locations as the Spanner Database.
+        """
 elif False:
     BackupScheduleEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -78,7 +83,8 @@ elif False:
 class BackupScheduleEncryptionConfigArgs:
     def __init__(__self__, *,
                  encryption_type: pulumi.Input[builtins.str],
-                 kms_key_name: Optional[pulumi.Input[builtins.str]] = None):
+                 kms_key_name: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[builtins.str] encryption_type: The encryption type of backups created by the backup schedule.
                Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
@@ -87,10 +93,14 @@ class BackupScheduleEncryptionConfigArgs:
                Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
         :param pulumi.Input[builtins.str] kms_key_name: The resource name of the Cloud KMS key to use for encryption.
                Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] kms_key_names: Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+               in the same locations as the Spanner Database.
         """
         pulumi.set(__self__, "encryption_type", encryption_type)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_names is not None:
+            pulumi.set(__self__, "kms_key_names", kms_key_names)
 
     @property
     @pulumi.getter(name="encryptionType")
@@ -120,6 +130,19 @@ class BackupScheduleEncryptionConfigArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyNames")
+    def kms_key_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+        in the same locations as the Spanner Database.
+        """
+        return pulumi.get(self, "kms_key_names")
+
+    @kms_key_names.setter
+    def kms_key_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "kms_key_names", value)
 
 
 if not MYPY:

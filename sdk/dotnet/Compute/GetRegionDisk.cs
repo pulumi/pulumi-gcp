@@ -99,6 +99,7 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetRegionDiskResult
     {
+        public readonly string AccessMode;
         public readonly ImmutableArray<Outputs.GetRegionDiskAsyncPrimaryDiskResult> AsyncPrimaryDisks;
         public readonly bool CreateSnapshotBeforeDestroy;
         public readonly string CreateSnapshotBeforeDestroyPrefix;
@@ -136,6 +137,8 @@ namespace Pulumi.Gcp.Compute
 
         [OutputConstructor]
         private GetRegionDiskResult(
+            string accessMode,
+
             ImmutableArray<Outputs.GetRegionDiskAsyncPrimaryDiskResult> asyncPrimaryDisks,
 
             bool createSnapshotBeforeDestroy,
@@ -198,6 +201,7 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<string> users)
         {
+            AccessMode = accessMode;
             AsyncPrimaryDisks = asyncPrimaryDisks;
             CreateSnapshotBeforeDestroy = createSnapshotBeforeDestroy;
             CreateSnapshotBeforeDestroyPrefix = createSnapshotBeforeDestroyPrefix;

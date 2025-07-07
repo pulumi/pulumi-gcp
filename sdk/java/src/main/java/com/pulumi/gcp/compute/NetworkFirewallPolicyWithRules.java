@@ -298,6 +298,24 @@ public class NetworkFirewallPolicyWithRules extends com.pulumi.resources.CustomR
         return this.networkFirewallPolicyId;
     }
     /**
+     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;]
+     * 
+     */
+    @Export(name="policyType", refs={String.class}, tree="[0]")
+    private Output<String> policyType;
+
+    /**
+     * @return Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;]
+     * 
+     */
+    public Output<String> policyType() {
+        return this.policyType;
+    }
+    /**
      * A list of firewall policy pre-defined rules.
      * Structure is documented below.
      * 

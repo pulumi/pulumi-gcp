@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipMemberKeyArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipPreferredMemberKeyArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipRoleArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,21 @@ import javax.annotation.Nullable;
 public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GroupMembershipArgs Empty = new GroupMembershipArgs();
+
+    /**
+     * If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+     * 
+     */
+    @Import(name="createIgnoreAlreadyExists")
+    private @Nullable Output<Boolean> createIgnoreAlreadyExists;
+
+    /**
+     * @return If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> createIgnoreAlreadyExists() {
+        return Optional.ofNullable(this.createIgnoreAlreadyExists);
+    }
 
     /**
      * The name of the Group to create this membership in.
@@ -87,6 +103,7 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
     private GroupMembershipArgs() {}
 
     private GroupMembershipArgs(GroupMembershipArgs $) {
+        this.createIgnoreAlreadyExists = $.createIgnoreAlreadyExists;
         this.group = $.group;
         this.memberKey = $.memberKey;
         this.preferredMemberKey = $.preferredMemberKey;
@@ -109,6 +126,27 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(GroupMembershipArgs defaults) {
             $ = new GroupMembershipArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createIgnoreAlreadyExists If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createIgnoreAlreadyExists(@Nullable Output<Boolean> createIgnoreAlreadyExists) {
+            $.createIgnoreAlreadyExists = createIgnoreAlreadyExists;
+            return this;
+        }
+
+        /**
+         * @param createIgnoreAlreadyExists If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createIgnoreAlreadyExists(Boolean createIgnoreAlreadyExists) {
+            return createIgnoreAlreadyExists(Output.of(createIgnoreAlreadyExists));
         }
 
         /**

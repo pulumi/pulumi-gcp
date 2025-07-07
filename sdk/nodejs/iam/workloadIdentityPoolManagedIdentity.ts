@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -47,6 +49,14 @@ import * as utilities from "../utilities";
  *     workloadIdentityPoolManagedIdentityId: "example-managed-identity",
  *     description: "Example Managed Identity in a Workload Identity Pool Namespace",
  *     disabled: true,
+ *     attestationRules: [
+ *         {
+ *             googleCloudResource: "//compute.googleapis.com/projects/1111111111111/uid/zones/us-central1-a/instances/12345678",
+ *         },
+ *         {
+ *             googleCloudResource: "//run.googleapis.com/projects/1111111111111/name/locations/us-east1/services/my-service",
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -102,6 +112,13 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkloadIdentityPoolManagedIdentity.__pulumiType;
     }
 
+    /**
+     * Defines which workloads can receive an identity within a pool. When an AttestationRule is
+     * defined under a managed identity, matching workloads may receive that identity. A maximum of
+     * 50 AttestationRules can be set.
+     * Structure is documented below.
+     */
+    public readonly attestationRules!: pulumi.Output<outputs.iam.WorkloadIdentityPoolManagedIdentityAttestationRule[] | undefined>;
     /**
      * A description of the managed identity. Cannot exceed 256 characters.
      */
@@ -173,6 +190,7 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkloadIdentityPoolManagedIdentityState | undefined;
+            resourceInputs["attestationRules"] = state ? state.attestationRules : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -192,6 +210,7 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
             if ((!args || args.workloadIdentityPoolNamespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolNamespaceId'");
             }
+            resourceInputs["attestationRules"] = args ? args.attestationRules : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -210,6 +229,13 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkloadIdentityPoolManagedIdentity resources.
  */
 export interface WorkloadIdentityPoolManagedIdentityState {
+    /**
+     * Defines which workloads can receive an identity within a pool. When an AttestationRule is
+     * defined under a managed identity, matching workloads may receive that identity. A maximum of
+     * 50 AttestationRules can be set.
+     * Structure is documented below.
+     */
+    attestationRules?: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolManagedIdentityAttestationRule>[]>;
     /**
      * A description of the managed identity. Cannot exceed 256 characters.
      */
@@ -273,6 +299,13 @@ export interface WorkloadIdentityPoolManagedIdentityState {
  * The set of arguments for constructing a WorkloadIdentityPoolManagedIdentity resource.
  */
 export interface WorkloadIdentityPoolManagedIdentityArgs {
+    /**
+     * Defines which workloads can receive an identity within a pool. When an AttestationRule is
+     * defined under a managed identity, matching workloads may receive that identity. A maximum of
+     * 50 AttestationRules can be set.
+     * Structure is documented below.
+     */
+    attestationRules?: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolManagedIdentityAttestationRule>[]>;
     /**
      * A description of the managed identity. Cannot exceed 256 characters.
      */

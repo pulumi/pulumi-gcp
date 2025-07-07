@@ -113,6 +113,7 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class GetAutokeyConfigResult
     {
+        public readonly string Etag;
         public readonly string Folder;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -125,12 +126,15 @@ namespace Pulumi.Gcp.Kms
 
         [OutputConstructor]
         private GetAutokeyConfigResult(
+            string etag,
+
             string folder,
 
             string id,
 
             string keyProject)
         {
+            Etag = etag;
             Folder = folder;
             Id = id;
             KeyProject = keyProject;

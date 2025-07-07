@@ -54,6 +54,8 @@ __all__ = [
     'JobTemplateTemplateContainerStartupProbeTcpSocketArgsDict',
     'JobTemplateTemplateContainerVolumeMountArgs',
     'JobTemplateTemplateContainerVolumeMountArgsDict',
+    'JobTemplateTemplateNodeSelectorArgs',
+    'JobTemplateTemplateNodeSelectorArgsDict',
     'JobTemplateTemplateVolumeArgs',
     'JobTemplateTemplateVolumeArgsDict',
     'JobTemplateTemplateVolumeCloudSqlInstanceArgs',
@@ -812,6 +814,11 @@ if not MYPY:
         """
         Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
         """
+        node_selector: NotRequired[pulumi.Input['JobTemplateTemplateNodeSelectorArgsDict']]
+        """
+        Node Selector describes the hardware requirements of the resources.
+        Structure is documented below.
+        """
         service_account: NotRequired[pulumi.Input[builtins.str]]
         """
         Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
@@ -841,6 +848,7 @@ class JobTemplateTemplateArgs:
                  encryption_key: Optional[pulumi.Input[builtins.str]] = None,
                  execution_environment: Optional[pulumi.Input[builtins.str]] = None,
                  max_retries: Optional[pulumi.Input[builtins.int]] = None,
+                 node_selector: Optional[pulumi.Input['JobTemplateTemplateNodeSelectorArgs']] = None,
                  service_account: Optional[pulumi.Input[builtins.str]] = None,
                  timeout: Optional[pulumi.Input[builtins.str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]] = None,
@@ -852,6 +860,8 @@ class JobTemplateTemplateArgs:
         :param pulumi.Input[builtins.str] execution_environment: The execution environment being used to host this Task.
                Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         :param pulumi.Input[builtins.int] max_retries: Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
+        :param pulumi.Input['JobTemplateTemplateNodeSelectorArgs'] node_selector: Node Selector describes the hardware requirements of the resources.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] service_account: Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         :param pulumi.Input[builtins.str] timeout: Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -868,6 +878,8 @@ class JobTemplateTemplateArgs:
             pulumi.set(__self__, "execution_environment", execution_environment)
         if max_retries is not None:
             pulumi.set(__self__, "max_retries", max_retries)
+        if node_selector is not None:
+            pulumi.set(__self__, "node_selector", node_selector)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if timeout is not None:
@@ -926,6 +938,19 @@ class JobTemplateTemplateArgs:
     @max_retries.setter
     def max_retries(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "max_retries", value)
+
+    @property
+    @pulumi.getter(name="nodeSelector")
+    def node_selector(self) -> Optional[pulumi.Input['JobTemplateTemplateNodeSelectorArgs']]:
+        """
+        Node Selector describes the hardware requirements of the resources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_selector")
+
+    @node_selector.setter
+    def node_selector(self, value: Optional[pulumi.Input['JobTemplateTemplateNodeSelectorArgs']]):
+        pulumi.set(self, "node_selector", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -1449,7 +1474,7 @@ if not MYPY:
     class JobTemplateTemplateContainerResourcesArgsDict(TypedDict):
         limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
         """
-        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
 elif False:
     JobTemplateTemplateContainerResourcesArgsDict: TypeAlias = Mapping[str, Any]
@@ -1459,7 +1484,7 @@ class JobTemplateTemplateContainerResourcesArgs:
     def __init__(__self__, *,
                  limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] limits: Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
@@ -1468,7 +1493,7 @@ class JobTemplateTemplateContainerResourcesArgs:
     @pulumi.getter
     def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
@@ -1929,6 +1954,43 @@ class JobTemplateTemplateContainerVolumeMountArgs:
     @name.setter
     def name(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class JobTemplateTemplateNodeSelectorArgsDict(TypedDict):
+        accelerator: pulumi.Input[builtins.str]
+        """
+        The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+
+        - - -
+        """
+elif False:
+    JobTemplateTemplateNodeSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTemplateTemplateNodeSelectorArgs:
+    def __init__(__self__, *,
+                 accelerator: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] accelerator: The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+               
+               - - -
+        """
+        pulumi.set(__self__, "accelerator", accelerator)
+
+    @property
+    @pulumi.getter
+    def accelerator(self) -> pulumi.Input[builtins.str]:
+        """
+        The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+
+        - - -
+        """
+        return pulumi.get(self, "accelerator")
+
+    @accelerator.setter
+    def accelerator(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "accelerator", value)
 
 
 if not MYPY:
@@ -2551,8 +2613,6 @@ if not MYPY:
         tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
         Network tags applied to this Cloud Run job.
-
-        - - -
         """
 elif False:
     JobTemplateTemplateVpcAccessNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
@@ -2571,8 +2631,6 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
                network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
                subnetwork with the same name with the network will be used.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Network tags applied to this Cloud Run job.
-               
-               - - -
         """
         if network is not None:
             pulumi.set(__self__, "network", network)
@@ -2614,8 +2672,6 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         Network tags applied to this Cloud Run job.
-
-        - - -
         """
         return pulumi.get(self, "tags")
 

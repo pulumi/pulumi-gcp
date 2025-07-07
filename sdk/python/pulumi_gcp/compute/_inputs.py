@@ -142,6 +142,10 @@ __all__ = [
     'FirewallPolicyRuleMatchArgsDict',
     'FirewallPolicyRuleMatchLayer4ConfigArgs',
     'FirewallPolicyRuleMatchLayer4ConfigArgsDict',
+    'FirewallPolicyRuleMatchSrcSecureTagArgs',
+    'FirewallPolicyRuleMatchSrcSecureTagArgsDict',
+    'FirewallPolicyRuleTargetSecureTagArgs',
+    'FirewallPolicyRuleTargetSecureTagArgsDict',
     'FirewallPolicyWithRulesPredefinedRuleArgs',
     'FirewallPolicyWithRulesPredefinedRuleArgsDict',
     'FirewallPolicyWithRulesPredefinedRuleMatchArgs',
@@ -386,6 +390,8 @@ __all__ = [
     'InstanceGroupManagerNamedPortArgsDict',
     'InstanceGroupManagerParamsArgs',
     'InstanceGroupManagerParamsArgsDict',
+    'InstanceGroupManagerResourcePoliciesArgs',
+    'InstanceGroupManagerResourcePoliciesArgsDict',
     'InstanceGroupManagerStandbyPolicyArgs',
     'InstanceGroupManagerStandbyPolicyArgsDict',
     'InstanceGroupManagerStatefulDiskArgs',
@@ -608,6 +614,8 @@ __all__ = [
     'NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgsDict',
     'NetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs',
     'NetworkFirewallPolicyWithRulesRuleTargetSecureTagArgsDict',
+    'NetworkParamsArgs',
+    'NetworkParamsArgsDict',
     'NodeGroupAutoscalingPolicyArgs',
     'NodeGroupAutoscalingPolicyArgsDict',
     'NodeGroupMaintenanceWindowArgs',
@@ -1534,6 +1542,24 @@ __all__ = [
     'VPNTunnelCipherSuitePhase1ArgsDict',
     'VPNTunnelCipherSuitePhase2Args',
     'VPNTunnelCipherSuitePhase2ArgsDict',
+    'WireGroupEndpointArgs',
+    'WireGroupEndpointArgsDict',
+    'WireGroupEndpointInterconnectArgs',
+    'WireGroupEndpointInterconnectArgsDict',
+    'WireGroupTopologyArgs',
+    'WireGroupTopologyArgsDict',
+    'WireGroupTopologyEndpointArgs',
+    'WireGroupTopologyEndpointArgsDict',
+    'WireGroupWireArgs',
+    'WireGroupWireArgsDict',
+    'WireGroupWireEndpointArgs',
+    'WireGroupWireEndpointArgsDict',
+    'WireGroupWireGroupPropertiesArgs',
+    'WireGroupWireGroupPropertiesArgsDict',
+    'WireGroupWirePropertiesArgs',
+    'WireGroupWirePropertiesArgsDict',
+    'WireGroupWireWirePropertyArgs',
+    'WireGroupWireWirePropertyArgsDict',
 ]
 
 MYPY = False
@@ -7472,12 +7498,17 @@ if not MYPY:
         """
         Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         """
-        src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        src_secure_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchSrcSecureTagArgsDict']]]]
         """
-        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+        List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        Structure is documented below.
 
 
         <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        """
+        src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
         """
 elif False:
     FirewallPolicyRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
@@ -7498,6 +7529,7 @@ class FirewallPolicyRuleMatchArgs:
                  src_network_scope: Optional[pulumi.Input[builtins.str]] = None,
                  src_networks: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchSrcSecureTagArgs']]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
@@ -7516,10 +7548,12 @@ class FirewallPolicyRuleMatchArgs:
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] src_networks: Networks of the traffic source. It can be either a full or partial url.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+               Structure is documented below.
                
                
                <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -7546,6 +7580,8 @@ class FirewallPolicyRuleMatchArgs:
             pulumi.set(__self__, "src_networks", src_networks)
         if src_region_codes is not None:
             pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if src_secure_tags is not None:
+            pulumi.set(__self__, "src_secure_tags", src_secure_tags)
         if src_threat_intelligences is not None:
             pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
 
@@ -7709,13 +7745,26 @@ class FirewallPolicyRuleMatchArgs:
         pulumi.set(self, "src_region_codes", value)
 
     @property
+    @pulumi.getter(name="srcSecureTags")
+    def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchSrcSecureTagArgs']]]]:
+        """
+        List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+
+
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        """
+        return pulumi.get(self, "src_secure_tags")
+
+    @src_secure_tags.setter
+    def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchSrcSecureTagArgs']]]]):
+        pulumi.set(self, "src_secure_tags", value)
+
+    @property
     @pulumi.getter(name="srcThreatIntelligences")
     def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
-
-
-        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -7779,6 +7828,122 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
     @ports.setter
     def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "ports", value)
+
+
+if not MYPY:
+    class FirewallPolicyRuleMatchSrcSecureTagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        """
+        state: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+
+        - - -
+        """
+elif False:
+    FirewallPolicyRuleMatchSrcSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FirewallPolicyRuleMatchSrcSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 state: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] name: Name of the secure tag, created with TagManager's TagValue API.
+        :param pulumi.Input[builtins.str] state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+               
+               - - -
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+
+        - - -
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class FirewallPolicyRuleTargetSecureTagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        """
+        state: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+elif False:
+    FirewallPolicyRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FirewallPolicyRuleTargetSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 state: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] name: Name of the secure tag, created with TagManager's TagValue API.
+        :param pulumi.Input[builtins.str] state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:
@@ -21316,6 +21481,8 @@ if not MYPY:
         resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
         """
         Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+
+        - - -
         """
 elif False:
     InstanceGroupManagerParamsArgsDict: TypeAlias = Mapping[str, Any]
@@ -21326,6 +21493,8 @@ class InstanceGroupManagerParamsArgs:
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+               
+               - - -
         """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
@@ -21335,12 +21504,46 @@ class InstanceGroupManagerParamsArgs:
     def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
         Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+
+        - - -
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
     def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "resource_manager_tags", value)
+
+
+if not MYPY:
+    class InstanceGroupManagerResourcePoliciesArgsDict(TypedDict):
+        workload_policy: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+        """
+elif False:
+    InstanceGroupManagerResourcePoliciesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceGroupManagerResourcePoliciesArgs:
+    def __init__(__self__, *,
+                 workload_policy: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] workload_policy: The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+        """
+        if workload_policy is not None:
+            pulumi.set(__self__, "workload_policy", workload_policy)
+
+    @property
+    @pulumi.getter(name="workloadPolicy")
+    def workload_policy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+        """
+        return pulumi.get(self, "workload_policy")
+
+    @workload_policy.setter
+    def workload_policy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "workload_policy", value)
 
 
 if not MYPY:
@@ -32320,6 +32523,44 @@ class NetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class NetworkParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        Resource manager tags to be bound to the network. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+elif False:
+    NetworkParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] resource_manager_tags: Resource manager tags to be bound to the network. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Resource manager tags to be bound to the network. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 if not MYPY:
@@ -76682,5 +76923,521 @@ class VPNTunnelCipherSuitePhase2Args:
     @pfs.setter
     def pfs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "pfs", value)
+
+
+if not MYPY:
+    class WireGroupEndpointArgsDict(TypedDict):
+        endpoint: pulumi.Input[builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        interconnects: NotRequired[pulumi.Input[Sequence[pulumi.Input['WireGroupEndpointInterconnectArgsDict']]]]
+        """
+        Structure is documented below.
+        """
+elif False:
+    WireGroupEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WireGroupEndpointArgs:
+    def __init__(__self__, *,
+                 endpoint: pulumi.Input[builtins.str],
+                 interconnects: Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupEndpointInterconnectArgs']]]] = None):
+        """
+        :param pulumi.Input[builtins.str] endpoint: The identifier for this object. Format specified above.
+        :param pulumi.Input[Sequence[pulumi.Input['WireGroupEndpointInterconnectArgs']]] interconnects: Structure is documented below.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        if interconnects is not None:
+            pulumi.set(__self__, "interconnects", interconnects)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Input[builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter
+    def interconnects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupEndpointInterconnectArgs']]]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "interconnects")
+
+    @interconnects.setter
+    def interconnects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupEndpointInterconnectArgs']]]]):
+        pulumi.set(self, "interconnects", value)
+
+
+if not MYPY:
+    class WireGroupEndpointInterconnectArgsDict(TypedDict):
+        interconnect_name: pulumi.Input[builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        interconnect: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Optional)
+        """
+        vlan_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]
+        """
+        VLAN tags for the interconnect.
+        """
+elif False:
+    WireGroupEndpointInterconnectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WireGroupEndpointInterconnectArgs:
+    def __init__(__self__, *,
+                 interconnect_name: pulumi.Input[builtins.str],
+                 interconnect: Optional[pulumi.Input[builtins.str]] = None,
+                 vlan_tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None):
+        """
+        :param pulumi.Input[builtins.str] interconnect_name: The identifier for this object. Format specified above.
+        :param pulumi.Input[builtins.str] interconnect: (Optional)
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] vlan_tags: VLAN tags for the interconnect.
+        """
+        pulumi.set(__self__, "interconnect_name", interconnect_name)
+        if interconnect is not None:
+            pulumi.set(__self__, "interconnect", interconnect)
+        if vlan_tags is not None:
+            pulumi.set(__self__, "vlan_tags", vlan_tags)
+
+    @property
+    @pulumi.getter(name="interconnectName")
+    def interconnect_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "interconnect_name")
+
+    @interconnect_name.setter
+    def interconnect_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "interconnect_name", value)
+
+    @property
+    @pulumi.getter
+    def interconnect(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "interconnect")
+
+    @interconnect.setter
+    def interconnect(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "interconnect", value)
+
+    @property
+    @pulumi.getter(name="vlanTags")
+    def vlan_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]:
+        """
+        VLAN tags for the interconnect.
+        """
+        return pulumi.get(self, "vlan_tags")
+
+    @vlan_tags.setter
+    def vlan_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]):
+        pulumi.set(self, "vlan_tags", value)
+
+
+if not MYPY:
+    class WireGroupTopologyArgsDict(TypedDict):
+        endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input['WireGroupTopologyEndpointArgsDict']]]]
+        """
+        Endpoints grouped by location, each mapping to interconnect configurations.
+        Structure is documented below.
+        """
+elif False:
+    WireGroupTopologyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WireGroupTopologyArgs:
+    def __init__(__self__, *,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupTopologyEndpointArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WireGroupTopologyEndpointArgs']]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
+               Structure is documented below.
+        """
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupTopologyEndpointArgs']]]]:
+        """
+        Endpoints grouped by location, each mapping to interconnect configurations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @endpoints.setter
+    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupTopologyEndpointArgs']]]]):
+        pulumi.set(self, "endpoints", value)
+
+
+if not MYPY:
+    class WireGroupTopologyEndpointArgsDict(TypedDict):
+        city: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        """
+        label: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        """
+elif False:
+    WireGroupTopologyEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WireGroupTopologyEndpointArgs:
+    def __init__(__self__, *,
+                 city: Optional[pulumi.Input[builtins.str]] = None,
+                 label: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] city: (Output)
+        :param pulumi.Input[builtins.str] label: (Output)
+        """
+        if city is not None:
+            pulumi.set(__self__, "city", city)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+
+    @property
+    @pulumi.getter
+    def city(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "city")
+
+    @city.setter
+    def city(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "city", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "label", value)
+
+
+if not MYPY:
+    class WireGroupWireArgsDict(TypedDict):
+        admin_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Indicates whether the wire group is administratively enabled.
+        """
+        endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input['WireGroupWireEndpointArgsDict']]]]
+        """
+        Endpoints grouped by location, each mapping to interconnect configurations.
+        Structure is documented below.
+        """
+        label: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        """
+        wire_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['WireGroupWireWirePropertyArgsDict']]]]
+        """
+        Default properties for wires within the group.
+        Structure is documented below.
+        """
+elif False:
+    WireGroupWireArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WireGroupWireArgs:
+    def __init__(__self__, *,
+                 admin_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupWireEndpointArgs']]]] = None,
+                 label: Optional[pulumi.Input[builtins.str]] = None,
+                 wire_properties: Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupWireWirePropertyArgs']]]] = None):
+        """
+        :param pulumi.Input[builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['WireGroupWireEndpointArgs']]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] label: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['WireGroupWireWirePropertyArgs']]] wire_properties: Default properties for wires within the group.
+               Structure is documented below.
+        """
+        if admin_enabled is not None:
+            pulumi.set(__self__, "admin_enabled", admin_enabled)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if wire_properties is not None:
+            pulumi.set(__self__, "wire_properties", wire_properties)
+
+    @property
+    @pulumi.getter(name="adminEnabled")
+    def admin_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether the wire group is administratively enabled.
+        """
+        return pulumi.get(self, "admin_enabled")
+
+    @admin_enabled.setter
+    def admin_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "admin_enabled", value)
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupWireEndpointArgs']]]]:
+        """
+        Endpoints grouped by location, each mapping to interconnect configurations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @endpoints.setter
+    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupWireEndpointArgs']]]]):
+        pulumi.set(self, "endpoints", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="wireProperties")
+    def wire_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupWireWirePropertyArgs']]]]:
+        """
+        Default properties for wires within the group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wire_properties")
+
+    @wire_properties.setter
+    def wire_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WireGroupWireWirePropertyArgs']]]]):
+        pulumi.set(self, "wire_properties", value)
+
+
+if not MYPY:
+    class WireGroupWireEndpointArgsDict(TypedDict):
+        interconnect: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        """
+        vlan_tag: NotRequired[pulumi.Input[builtins.int]]
+        """
+        (Output)
+        """
+elif False:
+    WireGroupWireEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WireGroupWireEndpointArgs:
+    def __init__(__self__, *,
+                 interconnect: Optional[pulumi.Input[builtins.str]] = None,
+                 vlan_tag: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.str] interconnect: (Output)
+        :param pulumi.Input[builtins.int] vlan_tag: (Output)
+        """
+        if interconnect is not None:
+            pulumi.set(__self__, "interconnect", interconnect)
+        if vlan_tag is not None:
+            pulumi.set(__self__, "vlan_tag", vlan_tag)
+
+    @property
+    @pulumi.getter
+    def interconnect(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "interconnect")
+
+    @interconnect.setter
+    def interconnect(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "interconnect", value)
+
+    @property
+    @pulumi.getter(name="vlanTag")
+    def vlan_tag(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "vlan_tag")
+
+    @vlan_tag.setter
+    def vlan_tag(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "vlan_tag", value)
+
+
+if not MYPY:
+    class WireGroupWireGroupPropertiesArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Type of wire group (enum).
+        WIRE: a single pseudowire over two Interconnect connections   with no redundancy.
+        REDUNDANT: two pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
+        BOX_AND_CROSS: four pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
+        """
+elif False:
+    WireGroupWireGroupPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WireGroupWireGroupPropertiesArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] type: Type of wire group (enum).
+               WIRE: a single pseudowire over two Interconnect connections   with no redundancy.
+               REDUNDANT: two pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
+               BOX_AND_CROSS: four pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Type of wire group (enum).
+        WIRE: a single pseudowire over two Interconnect connections   with no redundancy.
+        REDUNDANT: two pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
+        BOX_AND_CROSS: four pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class WireGroupWirePropertiesArgsDict(TypedDict):
+        bandwidth_unmetered: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The unmetered bandwidth setting.
+        """
+        fault_response: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Response when a fault is detected in a pseudowire:
+        NONE: default.
+        DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
+        """
+elif False:
+    WireGroupWirePropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WireGroupWirePropertiesArgs:
+    def __init__(__self__, *,
+                 bandwidth_unmetered: Optional[pulumi.Input[builtins.int]] = None,
+                 fault_response: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] bandwidth_unmetered: The unmetered bandwidth setting.
+        :param pulumi.Input[builtins.str] fault_response: Response when a fault is detected in a pseudowire:
+               NONE: default.
+               DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
+        """
+        if bandwidth_unmetered is not None:
+            pulumi.set(__self__, "bandwidth_unmetered", bandwidth_unmetered)
+        if fault_response is not None:
+            pulumi.set(__self__, "fault_response", fault_response)
+
+    @property
+    @pulumi.getter(name="bandwidthUnmetered")
+    def bandwidth_unmetered(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The unmetered bandwidth setting.
+        """
+        return pulumi.get(self, "bandwidth_unmetered")
+
+    @bandwidth_unmetered.setter
+    def bandwidth_unmetered(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "bandwidth_unmetered", value)
+
+    @property
+    @pulumi.getter(name="faultResponse")
+    def fault_response(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Response when a fault is detected in a pseudowire:
+        NONE: default.
+        DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
+        """
+        return pulumi.get(self, "fault_response")
+
+    @fault_response.setter
+    def fault_response(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "fault_response", value)
+
+
+if not MYPY:
+    class WireGroupWireWirePropertyArgsDict(TypedDict):
+        bandwidth_unmetered: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The unmetered bandwidth setting.
+        """
+        fault_response: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Response when a fault is detected in a pseudowire:
+        NONE: default.
+        DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
+        """
+elif False:
+    WireGroupWireWirePropertyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WireGroupWireWirePropertyArgs:
+    def __init__(__self__, *,
+                 bandwidth_unmetered: Optional[pulumi.Input[builtins.int]] = None,
+                 fault_response: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] bandwidth_unmetered: The unmetered bandwidth setting.
+        :param pulumi.Input[builtins.str] fault_response: Response when a fault is detected in a pseudowire:
+               NONE: default.
+               DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
+        """
+        if bandwidth_unmetered is not None:
+            pulumi.set(__self__, "bandwidth_unmetered", bandwidth_unmetered)
+        if fault_response is not None:
+            pulumi.set(__self__, "fault_response", fault_response)
+
+    @property
+    @pulumi.getter(name="bandwidthUnmetered")
+    def bandwidth_unmetered(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The unmetered bandwidth setting.
+        """
+        return pulumi.get(self, "bandwidth_unmetered")
+
+    @bandwidth_unmetered.setter
+    def bandwidth_unmetered(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "bandwidth_unmetered", value)
+
+    @property
+    @pulumi.getter(name="faultResponse")
+    def fault_response(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Response when a fault is detected in a pseudowire:
+        NONE: default.
+        DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
+        """
+        return pulumi.get(self, "fault_response")
+
+    @fault_response.setter
+    def fault_response(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "fault_response", value)
 
 

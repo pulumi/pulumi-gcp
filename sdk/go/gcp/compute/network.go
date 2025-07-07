@@ -280,6 +280,9 @@ type Network struct {
 	//
 	// Deprecated: `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 	NumericId pulumi.StringOutput `pulumi:"numericId"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params NetworkParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -390,6 +393,9 @@ type networkState struct {
 	//
 	// Deprecated: `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 	NumericId *string `pulumi:"numericId"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *NetworkParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -471,6 +477,9 @@ type NetworkState struct {
 	//
 	// Deprecated: `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 	NumericId pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params NetworkParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -546,6 +555,9 @@ type networkArgs struct {
 	// * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
 	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
 	NetworkProfile *string `pulumi:"networkProfile"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *NetworkParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -616,6 +628,9 @@ type NetworkArgs struct {
 	// * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
 	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
 	NetworkProfile pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params NetworkParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -824,6 +839,12 @@ func (o NetworkOutput) NetworkProfile() pulumi.StringPtrOutput {
 // Deprecated: `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 func (o NetworkOutput) NumericId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.NumericId }).(pulumi.StringOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o NetworkOutput) Params() NetworkParamsPtrOutput {
+	return o.ApplyT(func(v *Network) NetworkParamsPtrOutput { return v.Params }).(NetworkParamsPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

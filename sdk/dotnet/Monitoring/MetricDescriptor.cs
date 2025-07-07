@@ -130,16 +130,13 @@ namespace Pulumi.Gcp.Monitoring
         /// A detailed description of the metric, which can be used in documentation.
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
-        public Output<string> DisplayName { get; private set; } = null!;
+        public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
@@ -219,6 +216,9 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("valueType")]
         public Output<string> ValueType { get; private set; } = null!;
@@ -272,17 +272,14 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// A detailed description of the metric, which can be used in documentation.
         /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
-        [Input("displayName", required: true)]
-        public Input<string> DisplayName { get; set; } = null!;
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         [Input("labels")]
         private InputList<Inputs.MetricDescriptorLabelArgs>? _labels;
@@ -356,6 +353,9 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("valueType", required: true)]
         public Input<string> ValueType { get; set; } = null!;
@@ -376,9 +376,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -473,6 +470,9 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("valueType")]
         public Input<string>? ValueType { get; set; }

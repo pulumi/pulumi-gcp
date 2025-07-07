@@ -39,6 +39,7 @@ type LookupRegionDiskArgs struct {
 
 // A collection of values returned by getRegionDisk.
 type LookupRegionDiskResult struct {
+	AccessMode                        string                           `pulumi:"accessMode"`
 	AsyncPrimaryDisks                 []GetRegionDiskAsyncPrimaryDisk  `pulumi:"asyncPrimaryDisks"`
 	CreateSnapshotBeforeDestroy       bool                             `pulumi:"createSnapshotBeforeDestroy"`
 	CreateSnapshotBeforeDestroyPrefix string                           `pulumi:"createSnapshotBeforeDestroyPrefix"`
@@ -112,6 +113,10 @@ func (o LookupRegionDiskResultOutput) ToLookupRegionDiskResultOutput() LookupReg
 
 func (o LookupRegionDiskResultOutput) ToLookupRegionDiskResultOutputWithContext(ctx context.Context) LookupRegionDiskResultOutput {
 	return o
+}
+
+func (o LookupRegionDiskResultOutput) AccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.AccessMode }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionDiskResultOutput) AsyncPrimaryDisks() GetRegionDiskAsyncPrimaryDiskArrayOutput {

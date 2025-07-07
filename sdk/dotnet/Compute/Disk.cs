@@ -169,11 +169,12 @@ namespace Pulumi.Gcp.Compute
     public partial class Disk : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The accessMode of the disk.
+        /// The access mode of the disk.
         /// For example:
-        /// * READ_WRITE_SINGLE
-        /// * READ_WRITE_MANY
-        /// * READ_ONLY_SINGLE
+        /// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+        /// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+        /// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+        /// The AccessMode is only valid for Hyperdisk disk types.
         /// </summary>
         [Output("accessMode")]
         public Output<string> AccessMode { get; private set; } = null!;
@@ -601,11 +602,12 @@ namespace Pulumi.Gcp.Compute
     public sealed class DiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The accessMode of the disk.
+        /// The access mode of the disk.
         /// For example:
-        /// * READ_WRITE_SINGLE
-        /// * READ_WRITE_MANY
-        /// * READ_ONLY_SINGLE
+        /// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+        /// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+        /// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+        /// The AccessMode is only valid for Hyperdisk disk types.
         /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
@@ -918,11 +920,12 @@ namespace Pulumi.Gcp.Compute
     public sealed class DiskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The accessMode of the disk.
+        /// The access mode of the disk.
         /// For example:
-        /// * READ_WRITE_SINGLE
-        /// * READ_WRITE_MANY
-        /// * READ_ONLY_SINGLE
+        /// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+        /// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+        /// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+        /// The AccessMode is only valid for Hyperdisk disk types.
         /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }

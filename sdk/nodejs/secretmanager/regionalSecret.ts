@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *         key2: "value2",
  *         key3: "value3",
  *     },
+ *     deletionProtection: false,
  * });
  * ```
  * ### Regional Secret With Cmek
@@ -223,6 +224,7 @@ export class RegionalSecret extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly customerManagedEncryption!: pulumi.Output<outputs.secretmanager.RegionalSecretCustomerManagedEncryption | undefined>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -328,6 +330,7 @@ export class RegionalSecret extends pulumi.CustomResource {
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["customerManagedEncryption"] = state ? state.customerManagedEncryption : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["expireTime"] = state ? state.expireTime : undefined;
@@ -352,6 +355,7 @@ export class RegionalSecret extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["customerManagedEncryption"] = args ? args.customerManagedEncryption : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["expireTime"] = args ? args.expireTime : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -404,6 +408,7 @@ export interface RegionalSecretState {
      * Structure is documented below.
      */
     customerManagedEncryption?: pulumi.Input<inputs.secretmanager.RegionalSecretCustomerManagedEncryption>;
+    deletionProtection?: pulumi.Input<boolean>;
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -519,6 +524,7 @@ export interface RegionalSecretArgs {
      * Structure is documented below.
      */
     customerManagedEncryption?: pulumi.Input<inputs.secretmanager.RegionalSecretCustomerManagedEncryption>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
      * output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with

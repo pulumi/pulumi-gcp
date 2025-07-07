@@ -171,6 +171,93 @@ import (
 //
 // ```
 //
+// ### With Resource Policies (`Google` Provider)
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			workloadPolicy, err := compute.NewResourcePolicy(ctx, "workload_policy", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("tf-test-gce-policy"),
+//				Region: pulumi.String("us-central1"),
+//				WorkloadPolicy: &compute.ResourcePolicyWorkloadPolicyArgs{
+//					Type: pulumi.String("HIGH_THROUGHPUT"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			igm_basic, err := compute.NewInstanceTemplate(ctx, "igm-basic", &compute.InstanceTemplateArgs{
+//				Name:         pulumi.String("igm-instance-template"),
+//				MachineType:  pulumi.String("a4-highgpu-8g"),
+//				CanIpForward: pulumi.Bool(false),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String(myImage.SelfLink),
+//						AutoDelete:  pulumi.Bool(true),
+//						Boot:        pulumi.Bool(true),
+//						DiskType:    pulumi.String("hyperdisk-balanced"),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("userinfo-email"),
+//						pulumi.String("compute-ro"),
+//						pulumi.String("storage-ro"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceGroupManager(ctx, "igm-workload-policy", &compute.InstanceGroupManagerArgs{
+//				Description: pulumi.String("Terraform test instance group manager"),
+//				Name:        pulumi.String("igm-basic-workload-policy"),
+//				Versions: compute.InstanceGroupManagerVersionArray{
+//					&compute.InstanceGroupManagerVersionArgs{
+//						Name:             pulumi.String("prod"),
+//						InstanceTemplate: igm_basic.SelfLink,
+//					},
+//				},
+//				BaseInstanceName: pulumi.String("tf-test-igm-no-tp"),
+//				Zone:             pulumi.String("us-central1-b"),
+//				TargetSize:       pulumi.Int(0),
+//				ResourcePolicies: &compute.InstanceGroupManagerResourcePoliciesArgs{
+//					WorkloadPolicy: workloadPolicy.SelfLink,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Instance group managers can be imported using any of these accepted formats:
@@ -247,12 +334,14 @@ type InstanceGroupManager struct {
 	NamedPorts InstanceGroupManagerNamedPortArrayOutput `pulumi:"namedPorts"`
 	Operation  pulumi.StringOutput                      `pulumi:"operation"`
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params InstanceGroupManagerParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Resource policies for this managed instance group. Structure is documented below.
+	//
+	// ***
+	ResourcePolicies InstanceGroupManagerResourcePoliciesPtrOutput `pulumi:"resourcePolicies"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
@@ -378,12 +467,14 @@ type instanceGroupManagerState struct {
 	NamedPorts []InstanceGroupManagerNamedPort `pulumi:"namedPorts"`
 	Operation  *string                         `pulumi:"operation"`
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params *InstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Resource policies for this managed instance group. Structure is documented below.
+	//
+	// ***
+	ResourcePolicies *InstanceGroupManagerResourcePolicies `pulumi:"resourcePolicies"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
@@ -474,12 +565,14 @@ type InstanceGroupManagerState struct {
 	NamedPorts InstanceGroupManagerNamedPortArrayInput
 	Operation  pulumi.StringPtrInput
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params InstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Resource policies for this managed instance group. Structure is documented below.
+	//
+	// ***
+	ResourcePolicies InstanceGroupManagerResourcePoliciesPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
@@ -565,12 +658,14 @@ type instanceGroupManagerArgs struct {
 	// for details on configuration.
 	NamedPorts []InstanceGroupManagerNamedPort `pulumi:"namedPorts"`
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params *InstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Resource policies for this managed instance group. Structure is documented below.
+	//
+	// ***
+	ResourcePolicies *InstanceGroupManagerResourcePolicies `pulumi:"resourcePolicies"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy *InstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -649,12 +744,14 @@ type InstanceGroupManagerArgs struct {
 	// for details on configuration.
 	NamedPorts InstanceGroupManagerNamedPortArrayInput
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params InstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Resource policies for this managed instance group. Structure is documented below.
+	//
+	// ***
+	ResourcePolicies InstanceGroupManagerResourcePoliciesPtrInput
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy InstanceGroupManagerStandbyPolicyPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -872,8 +969,6 @@ func (o InstanceGroupManagerOutput) Operation() pulumi.StringOutput {
 }
 
 // Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-//
-// ***
 func (o InstanceGroupManagerOutput) Params() InstanceGroupManagerParamsPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerParamsPtrOutput { return v.Params }).(InstanceGroupManagerParamsPtrOutput)
 }
@@ -882,6 +977,13 @@ func (o InstanceGroupManagerOutput) Params() InstanceGroupManagerParamsPtrOutput
 // is not provided, the provider project is used.
 func (o InstanceGroupManagerOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Resource policies for this managed instance group. Structure is documented below.
+//
+// ***
+func (o InstanceGroupManagerOutput) ResourcePolicies() InstanceGroupManagerResourcePoliciesPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerResourcePoliciesPtrOutput { return v.ResourcePolicies }).(InstanceGroupManagerResourcePoliciesPtrOutput)
 }
 
 // The URL of the created resource.

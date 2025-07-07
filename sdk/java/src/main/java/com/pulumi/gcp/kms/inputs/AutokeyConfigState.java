@@ -16,6 +16,21 @@ public final class AutokeyConfigState extends com.pulumi.resources.ResourceArgs 
     public static final AutokeyConfigState Empty = new AutokeyConfigState();
 
     /**
+     * The etag of the AutokeyConfig for optimistic concurrency control.
+     * 
+     */
+    @Import(name="etag")
+    private @Nullable Output<String> etag;
+
+    /**
+     * @return The etag of the AutokeyConfig for optimistic concurrency control.
+     * 
+     */
+    public Optional<Output<String>> etag() {
+        return Optional.ofNullable(this.etag);
+    }
+
+    /**
      * The folder for which to retrieve config.
      * 
      * ***
@@ -56,6 +71,7 @@ public final class AutokeyConfigState extends com.pulumi.resources.ResourceArgs 
     private AutokeyConfigState() {}
 
     private AutokeyConfigState(AutokeyConfigState $) {
+        this.etag = $.etag;
         this.folder = $.folder;
         this.keyProject = $.keyProject;
     }
@@ -76,6 +92,27 @@ public final class AutokeyConfigState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(AutokeyConfigState defaults) {
             $ = new AutokeyConfigState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param etag The etag of the AutokeyConfig for optimistic concurrency control.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(@Nullable Output<String> etag) {
+            $.etag = etag;
+            return this;
+        }
+
+        /**
+         * @param etag The etag of the AutokeyConfig for optimistic concurrency control.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(String etag) {
+            return etag(Output.of(etag));
         }
 
         /**

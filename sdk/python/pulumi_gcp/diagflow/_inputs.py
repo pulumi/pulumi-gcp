@@ -138,6 +138,18 @@ __all__ = [
     'CxFlowTransitionRouteTriggerFulfillmentMessageTextArgsDict',
     'CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs',
     'CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgsDict',
+    'CxGenerativeSettingsFallbackSettingsArgs',
+    'CxGenerativeSettingsFallbackSettingsArgsDict',
+    'CxGenerativeSettingsFallbackSettingsPromptTemplateArgs',
+    'CxGenerativeSettingsFallbackSettingsPromptTemplateArgsDict',
+    'CxGenerativeSettingsGenerativeSafetySettingsArgs',
+    'CxGenerativeSettingsGenerativeSafetySettingsArgsDict',
+    'CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs',
+    'CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgsDict',
+    'CxGenerativeSettingsKnowledgeConnectorSettingsArgs',
+    'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict',
+    'CxGenerativeSettingsLlmModelSettingsArgs',
+    'CxGenerativeSettingsLlmModelSettingsArgsDict',
     'CxIntentParameterArgs',
     'CxIntentParameterArgsDict',
     'CxIntentTrainingPhraseArgs',
@@ -5176,6 +5188,425 @@ class CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class CxGenerativeSettingsFallbackSettingsArgsDict(TypedDict):
+        prompt_templates: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsFallbackSettingsPromptTemplateArgsDict']]]]
+        """
+        Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
+        Structure is documented below.
+        """
+        selected_prompt: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Display name of the selected prompt.
+        """
+elif False:
+    CxGenerativeSettingsFallbackSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxGenerativeSettingsFallbackSettingsArgs:
+    def __init__(__self__, *,
+                 prompt_templates: Optional[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsFallbackSettingsPromptTemplateArgs']]]] = None,
+                 selected_prompt: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsFallbackSettingsPromptTemplateArgs']]] prompt_templates: Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] selected_prompt: Display name of the selected prompt.
+        """
+        if prompt_templates is not None:
+            pulumi.set(__self__, "prompt_templates", prompt_templates)
+        if selected_prompt is not None:
+            pulumi.set(__self__, "selected_prompt", selected_prompt)
+
+    @property
+    @pulumi.getter(name="promptTemplates")
+    def prompt_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsFallbackSettingsPromptTemplateArgs']]]]:
+        """
+        Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "prompt_templates")
+
+    @prompt_templates.setter
+    def prompt_templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsFallbackSettingsPromptTemplateArgs']]]]):
+        pulumi.set(self, "prompt_templates", value)
+
+    @property
+    @pulumi.getter(name="selectedPrompt")
+    def selected_prompt(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Display name of the selected prompt.
+        """
+        return pulumi.get(self, "selected_prompt")
+
+    @selected_prompt.setter
+    def selected_prompt(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "selected_prompt", value)
+
+
+if not MYPY:
+    class CxGenerativeSettingsFallbackSettingsPromptTemplateArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Prompt name.
+        """
+        frozen: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If the flag is true, the prompt is frozen and cannot be modified by users.
+        """
+        prompt_text: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
+        """
+elif False:
+    CxGenerativeSettingsFallbackSettingsPromptTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxGenerativeSettingsFallbackSettingsPromptTemplateArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[builtins.str]] = None,
+                 frozen: Optional[pulumi.Input[builtins.bool]] = None,
+                 prompt_text: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] display_name: Prompt name.
+        :param pulumi.Input[builtins.bool] frozen: If the flag is true, the prompt is frozen and cannot be modified by users.
+        :param pulumi.Input[builtins.str] prompt_text: Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if frozen is not None:
+            pulumi.set(__self__, "frozen", frozen)
+        if prompt_text is not None:
+            pulumi.set(__self__, "prompt_text", prompt_text)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Prompt name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def frozen(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If the flag is true, the prompt is frozen and cannot be modified by users.
+        """
+        return pulumi.get(self, "frozen")
+
+    @frozen.setter
+    def frozen(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "frozen", value)
+
+    @property
+    @pulumi.getter(name="promptText")
+    def prompt_text(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
+        """
+        return pulumi.get(self, "prompt_text")
+
+    @prompt_text.setter
+    def prompt_text(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "prompt_text", value)
+
+
+if not MYPY:
+    class CxGenerativeSettingsGenerativeSafetySettingsArgsDict(TypedDict):
+        banned_phrases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgsDict']]]]
+        """
+        Banned phrases for generated text.
+        Structure is documented below.
+        """
+        default_banned_phrase_match_strategy: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Optional. Default phrase match strategy for banned phrases.
+        See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
+        """
+elif False:
+    CxGenerativeSettingsGenerativeSafetySettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxGenerativeSettingsGenerativeSafetySettingsArgs:
+    def __init__(__self__, *,
+                 banned_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs']]]] = None,
+                 default_banned_phrase_match_strategy: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs']]] banned_phrases: Banned phrases for generated text.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] default_banned_phrase_match_strategy: Optional. Default phrase match strategy for banned phrases.
+               See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
+        """
+        if banned_phrases is not None:
+            pulumi.set(__self__, "banned_phrases", banned_phrases)
+        if default_banned_phrase_match_strategy is not None:
+            pulumi.set(__self__, "default_banned_phrase_match_strategy", default_banned_phrase_match_strategy)
+
+    @property
+    @pulumi.getter(name="bannedPhrases")
+    def banned_phrases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs']]]]:
+        """
+        Banned phrases for generated text.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "banned_phrases")
+
+    @banned_phrases.setter
+    def banned_phrases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs']]]]):
+        pulumi.set(self, "banned_phrases", value)
+
+    @property
+    @pulumi.getter(name="defaultBannedPhraseMatchStrategy")
+    def default_banned_phrase_match_strategy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional. Default phrase match strategy for banned phrases.
+        See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
+        """
+        return pulumi.get(self, "default_banned_phrase_match_strategy")
+
+    @default_banned_phrase_match_strategy.setter
+    def default_banned_phrase_match_strategy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "default_banned_phrase_match_strategy", value)
+
+
+if not MYPY:
+    class CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgsDict(TypedDict):
+        language_code: pulumi.Input[builtins.str]
+        """
+        Language code of the phrase.
+        """
+        text: pulumi.Input[builtins.str]
+        """
+        Text input which can be used for prompt or banned phrases.
+        """
+elif False:
+    CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs:
+    def __init__(__self__, *,
+                 language_code: pulumi.Input[builtins.str],
+                 text: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] language_code: Language code of the phrase.
+        :param pulumi.Input[builtins.str] text: Text input which can be used for prompt or banned phrases.
+        """
+        pulumi.set(__self__, "language_code", language_code)
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Input[builtins.str]:
+        """
+        Language code of the phrase.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "language_code", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[builtins.str]:
+        """
+        Text input which can be used for prompt or banned phrases.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "text", value)
+
+
+if not MYPY:
+    class CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict(TypedDict):
+        agent: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of the virtual agent. Used for LLM prompt. Can be left empty.
+        """
+        agent_identity: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Identity of the agent, e.g. "virtual agent", "AI assistant".
+        """
+        agent_scope: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
+        """
+        business: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+        """
+        business_description: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
+        """
+        disable_data_store_fallback: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
+        """
+elif False:
+    CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxGenerativeSettingsKnowledgeConnectorSettingsArgs:
+    def __init__(__self__, *,
+                 agent: Optional[pulumi.Input[builtins.str]] = None,
+                 agent_identity: Optional[pulumi.Input[builtins.str]] = None,
+                 agent_scope: Optional[pulumi.Input[builtins.str]] = None,
+                 business: Optional[pulumi.Input[builtins.str]] = None,
+                 business_description: Optional[pulumi.Input[builtins.str]] = None,
+                 disable_data_store_fallback: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.str] agent: Name of the virtual agent. Used for LLM prompt. Can be left empty.
+        :param pulumi.Input[builtins.str] agent_identity: Identity of the agent, e.g. "virtual agent", "AI assistant".
+        :param pulumi.Input[builtins.str] agent_scope: Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
+        :param pulumi.Input[builtins.str] business: Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+        :param pulumi.Input[builtins.str] business_description: Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
+        :param pulumi.Input[builtins.bool] disable_data_store_fallback: Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
+        """
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+        if agent_identity is not None:
+            pulumi.set(__self__, "agent_identity", agent_identity)
+        if agent_scope is not None:
+            pulumi.set(__self__, "agent_scope", agent_scope)
+        if business is not None:
+            pulumi.set(__self__, "business", business)
+        if business_description is not None:
+            pulumi.set(__self__, "business_description", business_description)
+        if disable_data_store_fallback is not None:
+            pulumi.set(__self__, "disable_data_store_fallback", disable_data_store_fallback)
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the virtual agent. Used for LLM prompt. Can be left empty.
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "agent", value)
+
+    @property
+    @pulumi.getter(name="agentIdentity")
+    def agent_identity(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Identity of the agent, e.g. "virtual agent", "AI assistant".
+        """
+        return pulumi.get(self, "agent_identity")
+
+    @agent_identity.setter
+    def agent_identity(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "agent_identity", value)
+
+    @property
+    @pulumi.getter(name="agentScope")
+    def agent_scope(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
+        """
+        return pulumi.get(self, "agent_scope")
+
+    @agent_scope.setter
+    def agent_scope(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "agent_scope", value)
+
+    @property
+    @pulumi.getter
+    def business(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+        """
+        return pulumi.get(self, "business")
+
+    @business.setter
+    def business(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "business", value)
+
+    @property
+    @pulumi.getter(name="businessDescription")
+    def business_description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
+        """
+        return pulumi.get(self, "business_description")
+
+    @business_description.setter
+    def business_description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "business_description", value)
+
+    @property
+    @pulumi.getter(name="disableDataStoreFallback")
+    def disable_data_store_fallback(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
+        """
+        return pulumi.get(self, "disable_data_store_fallback")
+
+    @disable_data_store_fallback.setter
+    def disable_data_store_fallback(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "disable_data_store_fallback", value)
+
+
+if not MYPY:
+    class CxGenerativeSettingsLlmModelSettingsArgsDict(TypedDict):
+        model: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The selected LLM model.
+        """
+        prompt_text: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The custom prompt to use.
+        """
+elif False:
+    CxGenerativeSettingsLlmModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxGenerativeSettingsLlmModelSettingsArgs:
+    def __init__(__self__, *,
+                 model: Optional[pulumi.Input[builtins.str]] = None,
+                 prompt_text: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] model: The selected LLM model.
+        :param pulumi.Input[builtins.str] prompt_text: The custom prompt to use.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if prompt_text is not None:
+            pulumi.set(__self__, "prompt_text", prompt_text)
+
+    @property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The selected LLM model.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "model", value)
+
+    @property
+    @pulumi.getter(name="promptText")
+    def prompt_text(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The custom prompt to use.
+        """
+        return pulumi.get(self, "prompt_text")
+
+    @prompt_text.setter
+    def prompt_text(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "prompt_text", value)
 
 
 if not MYPY:

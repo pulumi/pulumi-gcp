@@ -36,6 +36,7 @@ __all__ = [
     'JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader',
     'JobTemplateTemplateContainerStartupProbeTcpSocket',
     'JobTemplateTemplateContainerVolumeMount',
+    'JobTemplateTemplateNodeSelector',
     'JobTemplateTemplateVolume',
     'JobTemplateTemplateVolumeCloudSqlInstance',
     'JobTemplateTemplateVolumeEmptyDir',
@@ -128,6 +129,7 @@ __all__ = [
     'GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderResult',
     'GetJobTemplateTemplateContainerStartupProbeTcpSocketResult',
     'GetJobTemplateTemplateContainerVolumeMountResult',
+    'GetJobTemplateTemplateNodeSelectorResult',
     'GetJobTemplateTemplateVolumeResult',
     'GetJobTemplateTemplateVolumeCloudSqlInstanceResult',
     'GetJobTemplateTemplateVolumeEmptyDirResult',
@@ -639,6 +641,8 @@ class JobTemplateTemplate(dict):
             suggest = "execution_environment"
         elif key == "maxRetries":
             suggest = "max_retries"
+        elif key == "nodeSelector":
+            suggest = "node_selector"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "vpcAccess":
@@ -660,6 +664,7 @@ class JobTemplateTemplate(dict):
                  encryption_key: Optional[builtins.str] = None,
                  execution_environment: Optional[builtins.str] = None,
                  max_retries: Optional[builtins.int] = None,
+                 node_selector: Optional['outputs.JobTemplateTemplateNodeSelector'] = None,
                  service_account: Optional[builtins.str] = None,
                  timeout: Optional[builtins.str] = None,
                  volumes: Optional[Sequence['outputs.JobTemplateTemplateVolume']] = None,
@@ -671,6 +676,8 @@ class JobTemplateTemplate(dict):
         :param builtins.str execution_environment: The execution environment being used to host this Task.
                Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         :param builtins.int max_retries: Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
+        :param 'JobTemplateTemplateNodeSelectorArgs' node_selector: Node Selector describes the hardware requirements of the resources.
+               Structure is documented below.
         :param builtins.str service_account: Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         :param builtins.str timeout: Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -687,6 +694,8 @@ class JobTemplateTemplate(dict):
             pulumi.set(__self__, "execution_environment", execution_environment)
         if max_retries is not None:
             pulumi.set(__self__, "max_retries", max_retries)
+        if node_selector is not None:
+            pulumi.set(__self__, "node_selector", node_selector)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if timeout is not None:
@@ -729,6 +738,15 @@ class JobTemplateTemplate(dict):
         Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
         """
         return pulumi.get(self, "max_retries")
+
+    @property
+    @pulumi.getter(name="nodeSelector")
+    def node_selector(self) -> Optional['outputs.JobTemplateTemplateNodeSelector']:
+        """
+        Node Selector describes the hardware requirements of the resources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_selector")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -1124,7 +1142,7 @@ class JobTemplateTemplateContainerResources(dict):
     def __init__(__self__, *,
                  limits: Optional[Mapping[str, builtins.str]] = None):
         """
-        :param Mapping[str, builtins.str] limits: Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param Mapping[str, builtins.str] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
@@ -1133,7 +1151,7 @@ class JobTemplateTemplateContainerResources(dict):
     @pulumi.getter
     def limits(self) -> Optional[Mapping[str, builtins.str]]:
         """
-        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
@@ -1470,6 +1488,28 @@ class JobTemplateTemplateContainerVolumeMount(dict):
         This must match the Name of a Volume.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class JobTemplateTemplateNodeSelector(dict):
+    def __init__(__self__, *,
+                 accelerator: builtins.str):
+        """
+        :param builtins.str accelerator: The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+               
+               - - -
+        """
+        pulumi.set(__self__, "accelerator", accelerator)
+
+    @property
+    @pulumi.getter
+    def accelerator(self) -> builtins.str:
+        """
+        The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+
+        - - -
+        """
+        return pulumi.get(self, "accelerator")
 
 
 @pulumi.output_type
@@ -1952,8 +1992,6 @@ class JobTemplateTemplateVpcAccessNetworkInterface(dict):
                network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
                subnetwork with the same name with the network will be used.
         :param Sequence[builtins.str] tags: Network tags applied to this Cloud Run job.
-               
-               - - -
         """
         if network is not None:
             pulumi.set(__self__, "network", network)
@@ -1987,8 +2025,6 @@ class JobTemplateTemplateVpcAccessNetworkInterface(dict):
     def tags(self) -> Optional[Sequence[builtins.str]]:
         """
         Network tags applied to this Cloud Run job.
-
-        - - -
         """
         return pulumi.get(self, "tags")
 
@@ -6788,6 +6824,7 @@ class GetJobTemplateTemplateResult(dict):
                  encryption_key: builtins.str,
                  execution_environment: builtins.str,
                  max_retries: builtins.int,
+                 node_selectors: Sequence['outputs.GetJobTemplateTemplateNodeSelectorResult'],
                  service_account: builtins.str,
                  timeout: builtins.str,
                  volumes: Sequence['outputs.GetJobTemplateTemplateVolumeResult'],
@@ -6797,6 +6834,7 @@ class GetJobTemplateTemplateResult(dict):
         :param builtins.str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param builtins.str execution_environment: The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
         :param builtins.int max_retries: Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
+        :param Sequence['GetJobTemplateTemplateNodeSelectorArgs'] node_selectors: Node Selector describes the hardware requirements of the resources.
         :param builtins.str service_account: Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         :param builtins.str timeout: Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
                
@@ -6808,6 +6846,7 @@ class GetJobTemplateTemplateResult(dict):
         pulumi.set(__self__, "encryption_key", encryption_key)
         pulumi.set(__self__, "execution_environment", execution_environment)
         pulumi.set(__self__, "max_retries", max_retries)
+        pulumi.set(__self__, "node_selectors", node_selectors)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "timeout", timeout)
         pulumi.set(__self__, "volumes", volumes)
@@ -6844,6 +6883,14 @@ class GetJobTemplateTemplateResult(dict):
         Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
         """
         return pulumi.get(self, "max_retries")
+
+    @property
+    @pulumi.getter(name="nodeSelectors")
+    def node_selectors(self) -> Sequence['outputs.GetJobTemplateTemplateNodeSelectorResult']:
+        """
+        Node Selector describes the hardware requirements of the resources.
+        """
+        return pulumi.get(self, "node_selectors")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -7137,7 +7184,7 @@ class GetJobTemplateTemplateContainerResourceResult(dict):
     def __init__(__self__, *,
                  limits: Mapping[str, builtins.str]):
         """
-        :param Mapping[str, builtins.str] limits: Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param Mapping[str, builtins.str] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit, 'nvidia.com/gpu' for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         pulumi.set(__self__, "limits", limits)
 
@@ -7145,7 +7192,7 @@ class GetJobTemplateTemplateContainerResourceResult(dict):
     @pulumi.getter
     def limits(self) -> Mapping[str, builtins.str]:
         """
-        Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit, 'nvidia.com/gpu' for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
@@ -7399,6 +7446,24 @@ class GetJobTemplateTemplateContainerVolumeMountResult(dict):
         The name of the Cloud Run v2 Job.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetJobTemplateTemplateNodeSelectorResult(dict):
+    def __init__(__self__, *,
+                 accelerator: builtins.str):
+        """
+        :param builtins.str accelerator: The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+        """
+        pulumi.set(__self__, "accelerator", accelerator)
+
+    @property
+    @pulumi.getter
+    def accelerator(self) -> builtins.str:
+        """
+        The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+        """
+        return pulumi.get(self, "accelerator")
 
 
 @pulumi.output_type

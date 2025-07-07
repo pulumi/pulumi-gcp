@@ -32,6 +32,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly int? MaxRetries;
         /// <summary>
+        /// Node Selector describes the hardware requirements of the resources.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.JobTemplateTemplateNodeSelector? NodeSelector;
+        /// <summary>
         /// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         /// </summary>
         public readonly string? ServiceAccount;
@@ -61,6 +66,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             int? maxRetries,
 
+            Outputs.JobTemplateTemplateNodeSelector? nodeSelector,
+
             string? serviceAccount,
 
             string? timeout,
@@ -73,6 +80,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             EncryptionKey = encryptionKey;
             ExecutionEnvironment = executionEnvironment;
             MaxRetries = maxRetries;
+            NodeSelector = nodeSelector;
             ServiceAccount = serviceAccount;
             Timeout = timeout;
             Volumes = volumes;

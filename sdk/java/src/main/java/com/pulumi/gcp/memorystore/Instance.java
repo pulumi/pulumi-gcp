@@ -215,6 +215,7 @@ import javax.annotation.Nullable;
  *             .nodeType("SHARED_CORE_NANO")
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_DISABLED")
  *             .authorizationMode("AUTH_DISABLED")
+ *             .kmsKey("my-key")
  *             .engineConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
  *             .zoneDistributionConfig(InstanceZoneDistributionConfigArgs.builder()
  *                 .mode("SINGLE_ZONE")
@@ -785,6 +786,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceId() {
         return this.instanceId;
+    }
+    /**
+     * The KMS key used to encrypt the at-rest data of the cluster
+     * 
+     */
+    @Export(name="kmsKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKey;
+
+    /**
+     * @return The KMS key used to encrypt the at-rest data of the cluster
+     * 
+     */
+    public Output<Optional<String>> kmsKey() {
+        return Codegen.optional(this.kmsKey);
     }
     /**
      * Optional. Labels to represent user-provided metadata.

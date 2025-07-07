@@ -10213,6 +10213,945 @@ func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) In
 	}).(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput)
 }
 
+type CxGenerativeSettingsFallbackSettings struct {
+	// Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
+	// Structure is documented below.
+	PromptTemplates []CxGenerativeSettingsFallbackSettingsPromptTemplate `pulumi:"promptTemplates"`
+	// Display name of the selected prompt.
+	SelectedPrompt *string `pulumi:"selectedPrompt"`
+}
+
+// CxGenerativeSettingsFallbackSettingsInput is an input type that accepts CxGenerativeSettingsFallbackSettingsArgs and CxGenerativeSettingsFallbackSettingsOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsFallbackSettingsInput` via:
+//
+//	CxGenerativeSettingsFallbackSettingsArgs{...}
+type CxGenerativeSettingsFallbackSettingsInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsFallbackSettingsOutput() CxGenerativeSettingsFallbackSettingsOutput
+	ToCxGenerativeSettingsFallbackSettingsOutputWithContext(context.Context) CxGenerativeSettingsFallbackSettingsOutput
+}
+
+type CxGenerativeSettingsFallbackSettingsArgs struct {
+	// Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
+	// Structure is documented below.
+	PromptTemplates CxGenerativeSettingsFallbackSettingsPromptTemplateArrayInput `pulumi:"promptTemplates"`
+	// Display name of the selected prompt.
+	SelectedPrompt pulumi.StringPtrInput `pulumi:"selectedPrompt"`
+}
+
+func (CxGenerativeSettingsFallbackSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsFallbackSettings)(nil)).Elem()
+}
+
+func (i CxGenerativeSettingsFallbackSettingsArgs) ToCxGenerativeSettingsFallbackSettingsOutput() CxGenerativeSettingsFallbackSettingsOutput {
+	return i.ToCxGenerativeSettingsFallbackSettingsOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsFallbackSettingsArgs) ToCxGenerativeSettingsFallbackSettingsOutputWithContext(ctx context.Context) CxGenerativeSettingsFallbackSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsFallbackSettingsOutput)
+}
+
+func (i CxGenerativeSettingsFallbackSettingsArgs) ToCxGenerativeSettingsFallbackSettingsPtrOutput() CxGenerativeSettingsFallbackSettingsPtrOutput {
+	return i.ToCxGenerativeSettingsFallbackSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsFallbackSettingsArgs) ToCxGenerativeSettingsFallbackSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsFallbackSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsFallbackSettingsOutput).ToCxGenerativeSettingsFallbackSettingsPtrOutputWithContext(ctx)
+}
+
+// CxGenerativeSettingsFallbackSettingsPtrInput is an input type that accepts CxGenerativeSettingsFallbackSettingsArgs, CxGenerativeSettingsFallbackSettingsPtr and CxGenerativeSettingsFallbackSettingsPtrOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsFallbackSettingsPtrInput` via:
+//
+//	        CxGenerativeSettingsFallbackSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxGenerativeSettingsFallbackSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsFallbackSettingsPtrOutput() CxGenerativeSettingsFallbackSettingsPtrOutput
+	ToCxGenerativeSettingsFallbackSettingsPtrOutputWithContext(context.Context) CxGenerativeSettingsFallbackSettingsPtrOutput
+}
+
+type cxGenerativeSettingsFallbackSettingsPtrType CxGenerativeSettingsFallbackSettingsArgs
+
+func CxGenerativeSettingsFallbackSettingsPtr(v *CxGenerativeSettingsFallbackSettingsArgs) CxGenerativeSettingsFallbackSettingsPtrInput {
+	return (*cxGenerativeSettingsFallbackSettingsPtrType)(v)
+}
+
+func (*cxGenerativeSettingsFallbackSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGenerativeSettingsFallbackSettings)(nil)).Elem()
+}
+
+func (i *cxGenerativeSettingsFallbackSettingsPtrType) ToCxGenerativeSettingsFallbackSettingsPtrOutput() CxGenerativeSettingsFallbackSettingsPtrOutput {
+	return i.ToCxGenerativeSettingsFallbackSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxGenerativeSettingsFallbackSettingsPtrType) ToCxGenerativeSettingsFallbackSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsFallbackSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsFallbackSettingsPtrOutput)
+}
+
+type CxGenerativeSettingsFallbackSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsFallbackSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsFallbackSettings)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsFallbackSettingsOutput) ToCxGenerativeSettingsFallbackSettingsOutput() CxGenerativeSettingsFallbackSettingsOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsFallbackSettingsOutput) ToCxGenerativeSettingsFallbackSettingsOutputWithContext(ctx context.Context) CxGenerativeSettingsFallbackSettingsOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsFallbackSettingsOutput) ToCxGenerativeSettingsFallbackSettingsPtrOutput() CxGenerativeSettingsFallbackSettingsPtrOutput {
+	return o.ToCxGenerativeSettingsFallbackSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxGenerativeSettingsFallbackSettingsOutput) ToCxGenerativeSettingsFallbackSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsFallbackSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxGenerativeSettingsFallbackSettings) *CxGenerativeSettingsFallbackSettings {
+		return &v
+	}).(CxGenerativeSettingsFallbackSettingsPtrOutput)
+}
+
+// Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
+// Structure is documented below.
+func (o CxGenerativeSettingsFallbackSettingsOutput) PromptTemplates() CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsFallbackSettings) []CxGenerativeSettingsFallbackSettingsPromptTemplate {
+		return v.PromptTemplates
+	}).(CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput)
+}
+
+// Display name of the selected prompt.
+func (o CxGenerativeSettingsFallbackSettingsOutput) SelectedPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsFallbackSettings) *string { return v.SelectedPrompt }).(pulumi.StringPtrOutput)
+}
+
+type CxGenerativeSettingsFallbackSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsFallbackSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGenerativeSettingsFallbackSettings)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsFallbackSettingsPtrOutput) ToCxGenerativeSettingsFallbackSettingsPtrOutput() CxGenerativeSettingsFallbackSettingsPtrOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsFallbackSettingsPtrOutput) ToCxGenerativeSettingsFallbackSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsFallbackSettingsPtrOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsFallbackSettingsPtrOutput) Elem() CxGenerativeSettingsFallbackSettingsOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsFallbackSettings) CxGenerativeSettingsFallbackSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxGenerativeSettingsFallbackSettings
+		return ret
+	}).(CxGenerativeSettingsFallbackSettingsOutput)
+}
+
+// Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
+// Structure is documented below.
+func (o CxGenerativeSettingsFallbackSettingsPtrOutput) PromptTemplates() CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsFallbackSettings) []CxGenerativeSettingsFallbackSettingsPromptTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.PromptTemplates
+	}).(CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput)
+}
+
+// Display name of the selected prompt.
+func (o CxGenerativeSettingsFallbackSettingsPtrOutput) SelectedPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsFallbackSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SelectedPrompt
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxGenerativeSettingsFallbackSettingsPromptTemplate struct {
+	// Prompt name.
+	DisplayName *string `pulumi:"displayName"`
+	// If the flag is true, the prompt is frozen and cannot be modified by users.
+	Frozen *bool `pulumi:"frozen"`
+	// Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
+	PromptText *string `pulumi:"promptText"`
+}
+
+// CxGenerativeSettingsFallbackSettingsPromptTemplateInput is an input type that accepts CxGenerativeSettingsFallbackSettingsPromptTemplateArgs and CxGenerativeSettingsFallbackSettingsPromptTemplateOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsFallbackSettingsPromptTemplateInput` via:
+//
+//	CxGenerativeSettingsFallbackSettingsPromptTemplateArgs{...}
+type CxGenerativeSettingsFallbackSettingsPromptTemplateInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsFallbackSettingsPromptTemplateOutput() CxGenerativeSettingsFallbackSettingsPromptTemplateOutput
+	ToCxGenerativeSettingsFallbackSettingsPromptTemplateOutputWithContext(context.Context) CxGenerativeSettingsFallbackSettingsPromptTemplateOutput
+}
+
+type CxGenerativeSettingsFallbackSettingsPromptTemplateArgs struct {
+	// Prompt name.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// If the flag is true, the prompt is frozen and cannot be modified by users.
+	Frozen pulumi.BoolPtrInput `pulumi:"frozen"`
+	// Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
+	PromptText pulumi.StringPtrInput `pulumi:"promptText"`
+}
+
+func (CxGenerativeSettingsFallbackSettingsPromptTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsFallbackSettingsPromptTemplate)(nil)).Elem()
+}
+
+func (i CxGenerativeSettingsFallbackSettingsPromptTemplateArgs) ToCxGenerativeSettingsFallbackSettingsPromptTemplateOutput() CxGenerativeSettingsFallbackSettingsPromptTemplateOutput {
+	return i.ToCxGenerativeSettingsFallbackSettingsPromptTemplateOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsFallbackSettingsPromptTemplateArgs) ToCxGenerativeSettingsFallbackSettingsPromptTemplateOutputWithContext(ctx context.Context) CxGenerativeSettingsFallbackSettingsPromptTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsFallbackSettingsPromptTemplateOutput)
+}
+
+// CxGenerativeSettingsFallbackSettingsPromptTemplateArrayInput is an input type that accepts CxGenerativeSettingsFallbackSettingsPromptTemplateArray and CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsFallbackSettingsPromptTemplateArrayInput` via:
+//
+//	CxGenerativeSettingsFallbackSettingsPromptTemplateArray{ CxGenerativeSettingsFallbackSettingsPromptTemplateArgs{...} }
+type CxGenerativeSettingsFallbackSettingsPromptTemplateArrayInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput() CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput
+	ToCxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutputWithContext(context.Context) CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput
+}
+
+type CxGenerativeSettingsFallbackSettingsPromptTemplateArray []CxGenerativeSettingsFallbackSettingsPromptTemplateInput
+
+func (CxGenerativeSettingsFallbackSettingsPromptTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxGenerativeSettingsFallbackSettingsPromptTemplate)(nil)).Elem()
+}
+
+func (i CxGenerativeSettingsFallbackSettingsPromptTemplateArray) ToCxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput() CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput {
+	return i.ToCxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsFallbackSettingsPromptTemplateArray) ToCxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutputWithContext(ctx context.Context) CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput)
+}
+
+type CxGenerativeSettingsFallbackSettingsPromptTemplateOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsFallbackSettingsPromptTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsFallbackSettingsPromptTemplate)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsFallbackSettingsPromptTemplateOutput) ToCxGenerativeSettingsFallbackSettingsPromptTemplateOutput() CxGenerativeSettingsFallbackSettingsPromptTemplateOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsFallbackSettingsPromptTemplateOutput) ToCxGenerativeSettingsFallbackSettingsPromptTemplateOutputWithContext(ctx context.Context) CxGenerativeSettingsFallbackSettingsPromptTemplateOutput {
+	return o
+}
+
+// Prompt name.
+func (o CxGenerativeSettingsFallbackSettingsPromptTemplateOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsFallbackSettingsPromptTemplate) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// If the flag is true, the prompt is frozen and cannot be modified by users.
+func (o CxGenerativeSettingsFallbackSettingsPromptTemplateOutput) Frozen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsFallbackSettingsPromptTemplate) *bool { return v.Frozen }).(pulumi.BoolPtrOutput)
+}
+
+// Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
+func (o CxGenerativeSettingsFallbackSettingsPromptTemplateOutput) PromptText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsFallbackSettingsPromptTemplate) *string { return v.PromptText }).(pulumi.StringPtrOutput)
+}
+
+type CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxGenerativeSettingsFallbackSettingsPromptTemplate)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput) ToCxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput() CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput) ToCxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutputWithContext(ctx context.Context) CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput) Index(i pulumi.IntInput) CxGenerativeSettingsFallbackSettingsPromptTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxGenerativeSettingsFallbackSettingsPromptTemplate {
+		return vs[0].([]CxGenerativeSettingsFallbackSettingsPromptTemplate)[vs[1].(int)]
+	}).(CxGenerativeSettingsFallbackSettingsPromptTemplateOutput)
+}
+
+type CxGenerativeSettingsGenerativeSafetySettings struct {
+	// Banned phrases for generated text.
+	// Structure is documented below.
+	BannedPhrases []CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase `pulumi:"bannedPhrases"`
+	// Optional. Default phrase match strategy for banned phrases.
+	// See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
+	DefaultBannedPhraseMatchStrategy *string `pulumi:"defaultBannedPhraseMatchStrategy"`
+}
+
+// CxGenerativeSettingsGenerativeSafetySettingsInput is an input type that accepts CxGenerativeSettingsGenerativeSafetySettingsArgs and CxGenerativeSettingsGenerativeSafetySettingsOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsGenerativeSafetySettingsInput` via:
+//
+//	CxGenerativeSettingsGenerativeSafetySettingsArgs{...}
+type CxGenerativeSettingsGenerativeSafetySettingsInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsGenerativeSafetySettingsOutput() CxGenerativeSettingsGenerativeSafetySettingsOutput
+	ToCxGenerativeSettingsGenerativeSafetySettingsOutputWithContext(context.Context) CxGenerativeSettingsGenerativeSafetySettingsOutput
+}
+
+type CxGenerativeSettingsGenerativeSafetySettingsArgs struct {
+	// Banned phrases for generated text.
+	// Structure is documented below.
+	BannedPhrases CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayInput `pulumi:"bannedPhrases"`
+	// Optional. Default phrase match strategy for banned phrases.
+	// See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
+	DefaultBannedPhraseMatchStrategy pulumi.StringPtrInput `pulumi:"defaultBannedPhraseMatchStrategy"`
+}
+
+func (CxGenerativeSettingsGenerativeSafetySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsGenerativeSafetySettings)(nil)).Elem()
+}
+
+func (i CxGenerativeSettingsGenerativeSafetySettingsArgs) ToCxGenerativeSettingsGenerativeSafetySettingsOutput() CxGenerativeSettingsGenerativeSafetySettingsOutput {
+	return i.ToCxGenerativeSettingsGenerativeSafetySettingsOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsGenerativeSafetySettingsArgs) ToCxGenerativeSettingsGenerativeSafetySettingsOutputWithContext(ctx context.Context) CxGenerativeSettingsGenerativeSafetySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsGenerativeSafetySettingsOutput)
+}
+
+func (i CxGenerativeSettingsGenerativeSafetySettingsArgs) ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutput() CxGenerativeSettingsGenerativeSafetySettingsPtrOutput {
+	return i.ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsGenerativeSafetySettingsArgs) ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsGenerativeSafetySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsGenerativeSafetySettingsOutput).ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutputWithContext(ctx)
+}
+
+// CxGenerativeSettingsGenerativeSafetySettingsPtrInput is an input type that accepts CxGenerativeSettingsGenerativeSafetySettingsArgs, CxGenerativeSettingsGenerativeSafetySettingsPtr and CxGenerativeSettingsGenerativeSafetySettingsPtrOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsGenerativeSafetySettingsPtrInput` via:
+//
+//	        CxGenerativeSettingsGenerativeSafetySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxGenerativeSettingsGenerativeSafetySettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutput() CxGenerativeSettingsGenerativeSafetySettingsPtrOutput
+	ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutputWithContext(context.Context) CxGenerativeSettingsGenerativeSafetySettingsPtrOutput
+}
+
+type cxGenerativeSettingsGenerativeSafetySettingsPtrType CxGenerativeSettingsGenerativeSafetySettingsArgs
+
+func CxGenerativeSettingsGenerativeSafetySettingsPtr(v *CxGenerativeSettingsGenerativeSafetySettingsArgs) CxGenerativeSettingsGenerativeSafetySettingsPtrInput {
+	return (*cxGenerativeSettingsGenerativeSafetySettingsPtrType)(v)
+}
+
+func (*cxGenerativeSettingsGenerativeSafetySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGenerativeSettingsGenerativeSafetySettings)(nil)).Elem()
+}
+
+func (i *cxGenerativeSettingsGenerativeSafetySettingsPtrType) ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutput() CxGenerativeSettingsGenerativeSafetySettingsPtrOutput {
+	return i.ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxGenerativeSettingsGenerativeSafetySettingsPtrType) ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsGenerativeSafetySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsGenerativeSafetySettingsPtrOutput)
+}
+
+type CxGenerativeSettingsGenerativeSafetySettingsOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsGenerativeSafetySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsGenerativeSafetySettings)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsOutput) ToCxGenerativeSettingsGenerativeSafetySettingsOutput() CxGenerativeSettingsGenerativeSafetySettingsOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsOutput) ToCxGenerativeSettingsGenerativeSafetySettingsOutputWithContext(ctx context.Context) CxGenerativeSettingsGenerativeSafetySettingsOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsOutput) ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutput() CxGenerativeSettingsGenerativeSafetySettingsPtrOutput {
+	return o.ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsOutput) ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsGenerativeSafetySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxGenerativeSettingsGenerativeSafetySettings) *CxGenerativeSettingsGenerativeSafetySettings {
+		return &v
+	}).(CxGenerativeSettingsGenerativeSafetySettingsPtrOutput)
+}
+
+// Banned phrases for generated text.
+// Structure is documented below.
+func (o CxGenerativeSettingsGenerativeSafetySettingsOutput) BannedPhrases() CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsGenerativeSafetySettings) []CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase {
+		return v.BannedPhrases
+	}).(CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput)
+}
+
+// Optional. Default phrase match strategy for banned phrases.
+// See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
+func (o CxGenerativeSettingsGenerativeSafetySettingsOutput) DefaultBannedPhraseMatchStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsGenerativeSafetySettings) *string {
+		return v.DefaultBannedPhraseMatchStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxGenerativeSettingsGenerativeSafetySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsGenerativeSafetySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGenerativeSettingsGenerativeSafetySettings)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsPtrOutput) ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutput() CxGenerativeSettingsGenerativeSafetySettingsPtrOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsPtrOutput) ToCxGenerativeSettingsGenerativeSafetySettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsGenerativeSafetySettingsPtrOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsPtrOutput) Elem() CxGenerativeSettingsGenerativeSafetySettingsOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsGenerativeSafetySettings) CxGenerativeSettingsGenerativeSafetySettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxGenerativeSettingsGenerativeSafetySettings
+		return ret
+	}).(CxGenerativeSettingsGenerativeSafetySettingsOutput)
+}
+
+// Banned phrases for generated text.
+// Structure is documented below.
+func (o CxGenerativeSettingsGenerativeSafetySettingsPtrOutput) BannedPhrases() CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsGenerativeSafetySettings) []CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase {
+		if v == nil {
+			return nil
+		}
+		return v.BannedPhrases
+	}).(CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput)
+}
+
+// Optional. Default phrase match strategy for banned phrases.
+// See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
+func (o CxGenerativeSettingsGenerativeSafetySettingsPtrOutput) DefaultBannedPhraseMatchStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsGenerativeSafetySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultBannedPhraseMatchStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase struct {
+	// Language code of the phrase.
+	LanguageCode string `pulumi:"languageCode"`
+	// Text input which can be used for prompt or banned phrases.
+	Text string `pulumi:"text"`
+}
+
+// CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseInput is an input type that accepts CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs and CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseInput` via:
+//
+//	CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs{...}
+type CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput() CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput
+	ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutputWithContext(context.Context) CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput
+}
+
+type CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs struct {
+	// Language code of the phrase.
+	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
+	// Text input which can be used for prompt or banned phrases.
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+func (CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase)(nil)).Elem()
+}
+
+func (i CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs) ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput() CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput {
+	return i.ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs) ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutputWithContext(ctx context.Context) CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput)
+}
+
+// CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayInput is an input type that accepts CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArray and CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayInput` via:
+//
+//	CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArray{ CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs{...} }
+type CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput() CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput
+	ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutputWithContext(context.Context) CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput
+}
+
+type CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArray []CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseInput
+
+func (CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase)(nil)).Elem()
+}
+
+func (i CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArray) ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput() CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput {
+	return i.ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArray) ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutputWithContext(ctx context.Context) CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput)
+}
+
+type CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput) ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput() CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput) ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutputWithContext(ctx context.Context) CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput {
+	return o
+}
+
+// Language code of the phrase.
+func (o CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// Text input which can be used for prompt or banned phrases.
+func (o CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput) ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput() CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput) ToCxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutputWithContext(ctx context.Context) CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput) Index(i pulumi.IntInput) CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase {
+		return vs[0].([]CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase)[vs[1].(int)]
+	}).(CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput)
+}
+
+type CxGenerativeSettingsKnowledgeConnectorSettings struct {
+	// Name of the virtual agent. Used for LLM prompt. Can be left empty.
+	Agent *string `pulumi:"agent"`
+	// Identity of the agent, e.g. "virtual agent", "AI assistant".
+	AgentIdentity *string `pulumi:"agentIdentity"`
+	// Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
+	AgentScope *string `pulumi:"agentScope"`
+	// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+	Business *string `pulumi:"business"`
+	// Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
+	BusinessDescription *string `pulumi:"businessDescription"`
+	// Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
+	DisableDataStoreFallback *bool `pulumi:"disableDataStoreFallback"`
+}
+
+// CxGenerativeSettingsKnowledgeConnectorSettingsInput is an input type that accepts CxGenerativeSettingsKnowledgeConnectorSettingsArgs and CxGenerativeSettingsKnowledgeConnectorSettingsOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsKnowledgeConnectorSettingsInput` via:
+//
+//	CxGenerativeSettingsKnowledgeConnectorSettingsArgs{...}
+type CxGenerativeSettingsKnowledgeConnectorSettingsInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsKnowledgeConnectorSettingsOutput() CxGenerativeSettingsKnowledgeConnectorSettingsOutput
+	ToCxGenerativeSettingsKnowledgeConnectorSettingsOutputWithContext(context.Context) CxGenerativeSettingsKnowledgeConnectorSettingsOutput
+}
+
+type CxGenerativeSettingsKnowledgeConnectorSettingsArgs struct {
+	// Name of the virtual agent. Used for LLM prompt. Can be left empty.
+	Agent pulumi.StringPtrInput `pulumi:"agent"`
+	// Identity of the agent, e.g. "virtual agent", "AI assistant".
+	AgentIdentity pulumi.StringPtrInput `pulumi:"agentIdentity"`
+	// Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
+	AgentScope pulumi.StringPtrInput `pulumi:"agentScope"`
+	// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+	Business pulumi.StringPtrInput `pulumi:"business"`
+	// Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
+	BusinessDescription pulumi.StringPtrInput `pulumi:"businessDescription"`
+	// Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
+	DisableDataStoreFallback pulumi.BoolPtrInput `pulumi:"disableDataStoreFallback"`
+}
+
+func (CxGenerativeSettingsKnowledgeConnectorSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (i CxGenerativeSettingsKnowledgeConnectorSettingsArgs) ToCxGenerativeSettingsKnowledgeConnectorSettingsOutput() CxGenerativeSettingsKnowledgeConnectorSettingsOutput {
+	return i.ToCxGenerativeSettingsKnowledgeConnectorSettingsOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsKnowledgeConnectorSettingsArgs) ToCxGenerativeSettingsKnowledgeConnectorSettingsOutputWithContext(ctx context.Context) CxGenerativeSettingsKnowledgeConnectorSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsKnowledgeConnectorSettingsOutput)
+}
+
+func (i CxGenerativeSettingsKnowledgeConnectorSettingsArgs) ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput() CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput {
+	return i.ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsKnowledgeConnectorSettingsArgs) ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsKnowledgeConnectorSettingsOutput).ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutputWithContext(ctx)
+}
+
+// CxGenerativeSettingsKnowledgeConnectorSettingsPtrInput is an input type that accepts CxGenerativeSettingsKnowledgeConnectorSettingsArgs, CxGenerativeSettingsKnowledgeConnectorSettingsPtr and CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsKnowledgeConnectorSettingsPtrInput` via:
+//
+//	        CxGenerativeSettingsKnowledgeConnectorSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxGenerativeSettingsKnowledgeConnectorSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput() CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput
+	ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutputWithContext(context.Context) CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput
+}
+
+type cxGenerativeSettingsKnowledgeConnectorSettingsPtrType CxGenerativeSettingsKnowledgeConnectorSettingsArgs
+
+func CxGenerativeSettingsKnowledgeConnectorSettingsPtr(v *CxGenerativeSettingsKnowledgeConnectorSettingsArgs) CxGenerativeSettingsKnowledgeConnectorSettingsPtrInput {
+	return (*cxGenerativeSettingsKnowledgeConnectorSettingsPtrType)(v)
+}
+
+func (*cxGenerativeSettingsKnowledgeConnectorSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGenerativeSettingsKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (i *cxGenerativeSettingsKnowledgeConnectorSettingsPtrType) ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput() CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput {
+	return i.ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxGenerativeSettingsKnowledgeConnectorSettingsPtrType) ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput)
+}
+
+type CxGenerativeSettingsKnowledgeConnectorSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsKnowledgeConnectorSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsOutput) ToCxGenerativeSettingsKnowledgeConnectorSettingsOutput() CxGenerativeSettingsKnowledgeConnectorSettingsOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsOutput) ToCxGenerativeSettingsKnowledgeConnectorSettingsOutputWithContext(ctx context.Context) CxGenerativeSettingsKnowledgeConnectorSettingsOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsOutput) ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput() CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput {
+	return o.ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsOutput) ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxGenerativeSettingsKnowledgeConnectorSettings) *CxGenerativeSettingsKnowledgeConnectorSettings {
+		return &v
+	}).(CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput)
+}
+
+// Name of the virtual agent. Used for LLM prompt. Can be left empty.
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsKnowledgeConnectorSettings) *string { return v.Agent }).(pulumi.StringPtrOutput)
+}
+
+// Identity of the agent, e.g. "virtual agent", "AI assistant".
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsOutput) AgentIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsKnowledgeConnectorSettings) *string { return v.AgentIdentity }).(pulumi.StringPtrOutput)
+}
+
+// Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsOutput) AgentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsKnowledgeConnectorSettings) *string { return v.AgentScope }).(pulumi.StringPtrOutput)
+}
+
+// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsOutput) Business() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsKnowledgeConnectorSettings) *string { return v.Business }).(pulumi.StringPtrOutput)
+}
+
+// Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".“
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsOutput) BusinessDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsKnowledgeConnectorSettings) *string { return v.BusinessDescription }).(pulumi.StringPtrOutput)
+}
+
+// Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsOutput) DisableDataStoreFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsKnowledgeConnectorSettings) *bool { return v.DisableDataStoreFallback }).(pulumi.BoolPtrOutput)
+}
+
+type CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGenerativeSettingsKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput) ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput() CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput) ToCxGenerativeSettingsKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput) Elem() CxGenerativeSettingsKnowledgeConnectorSettingsOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsKnowledgeConnectorSettings) CxGenerativeSettingsKnowledgeConnectorSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxGenerativeSettingsKnowledgeConnectorSettings
+		return ret
+	}).(CxGenerativeSettingsKnowledgeConnectorSettingsOutput)
+}
+
+// Name of the virtual agent. Used for LLM prompt. Can be left empty.
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsKnowledgeConnectorSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity of the agent, e.g. "virtual agent", "AI assistant".
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput) AgentIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsKnowledgeConnectorSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput) AgentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsKnowledgeConnectorSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput) Business() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsKnowledgeConnectorSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Business
+	}).(pulumi.StringPtrOutput)
+}
+
+// Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".“
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput) BusinessDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsKnowledgeConnectorSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BusinessDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
+func (o CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput) DisableDataStoreFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsKnowledgeConnectorSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableDataStoreFallback
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxGenerativeSettingsLlmModelSettings struct {
+	// The selected LLM model.
+	Model *string `pulumi:"model"`
+	// The custom prompt to use.
+	PromptText *string `pulumi:"promptText"`
+}
+
+// CxGenerativeSettingsLlmModelSettingsInput is an input type that accepts CxGenerativeSettingsLlmModelSettingsArgs and CxGenerativeSettingsLlmModelSettingsOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsLlmModelSettingsInput` via:
+//
+//	CxGenerativeSettingsLlmModelSettingsArgs{...}
+type CxGenerativeSettingsLlmModelSettingsInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsLlmModelSettingsOutput() CxGenerativeSettingsLlmModelSettingsOutput
+	ToCxGenerativeSettingsLlmModelSettingsOutputWithContext(context.Context) CxGenerativeSettingsLlmModelSettingsOutput
+}
+
+type CxGenerativeSettingsLlmModelSettingsArgs struct {
+	// The selected LLM model.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// The custom prompt to use.
+	PromptText pulumi.StringPtrInput `pulumi:"promptText"`
+}
+
+func (CxGenerativeSettingsLlmModelSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsLlmModelSettings)(nil)).Elem()
+}
+
+func (i CxGenerativeSettingsLlmModelSettingsArgs) ToCxGenerativeSettingsLlmModelSettingsOutput() CxGenerativeSettingsLlmModelSettingsOutput {
+	return i.ToCxGenerativeSettingsLlmModelSettingsOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsLlmModelSettingsArgs) ToCxGenerativeSettingsLlmModelSettingsOutputWithContext(ctx context.Context) CxGenerativeSettingsLlmModelSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsLlmModelSettingsOutput)
+}
+
+func (i CxGenerativeSettingsLlmModelSettingsArgs) ToCxGenerativeSettingsLlmModelSettingsPtrOutput() CxGenerativeSettingsLlmModelSettingsPtrOutput {
+	return i.ToCxGenerativeSettingsLlmModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxGenerativeSettingsLlmModelSettingsArgs) ToCxGenerativeSettingsLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsLlmModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsLlmModelSettingsOutput).ToCxGenerativeSettingsLlmModelSettingsPtrOutputWithContext(ctx)
+}
+
+// CxGenerativeSettingsLlmModelSettingsPtrInput is an input type that accepts CxGenerativeSettingsLlmModelSettingsArgs, CxGenerativeSettingsLlmModelSettingsPtr and CxGenerativeSettingsLlmModelSettingsPtrOutput values.
+// You can construct a concrete instance of `CxGenerativeSettingsLlmModelSettingsPtrInput` via:
+//
+//	        CxGenerativeSettingsLlmModelSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxGenerativeSettingsLlmModelSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxGenerativeSettingsLlmModelSettingsPtrOutput() CxGenerativeSettingsLlmModelSettingsPtrOutput
+	ToCxGenerativeSettingsLlmModelSettingsPtrOutputWithContext(context.Context) CxGenerativeSettingsLlmModelSettingsPtrOutput
+}
+
+type cxGenerativeSettingsLlmModelSettingsPtrType CxGenerativeSettingsLlmModelSettingsArgs
+
+func CxGenerativeSettingsLlmModelSettingsPtr(v *CxGenerativeSettingsLlmModelSettingsArgs) CxGenerativeSettingsLlmModelSettingsPtrInput {
+	return (*cxGenerativeSettingsLlmModelSettingsPtrType)(v)
+}
+
+func (*cxGenerativeSettingsLlmModelSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGenerativeSettingsLlmModelSettings)(nil)).Elem()
+}
+
+func (i *cxGenerativeSettingsLlmModelSettingsPtrType) ToCxGenerativeSettingsLlmModelSettingsPtrOutput() CxGenerativeSettingsLlmModelSettingsPtrOutput {
+	return i.ToCxGenerativeSettingsLlmModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxGenerativeSettingsLlmModelSettingsPtrType) ToCxGenerativeSettingsLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsLlmModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGenerativeSettingsLlmModelSettingsPtrOutput)
+}
+
+type CxGenerativeSettingsLlmModelSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsLlmModelSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGenerativeSettingsLlmModelSettings)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsLlmModelSettingsOutput) ToCxGenerativeSettingsLlmModelSettingsOutput() CxGenerativeSettingsLlmModelSettingsOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsLlmModelSettingsOutput) ToCxGenerativeSettingsLlmModelSettingsOutputWithContext(ctx context.Context) CxGenerativeSettingsLlmModelSettingsOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsLlmModelSettingsOutput) ToCxGenerativeSettingsLlmModelSettingsPtrOutput() CxGenerativeSettingsLlmModelSettingsPtrOutput {
+	return o.ToCxGenerativeSettingsLlmModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxGenerativeSettingsLlmModelSettingsOutput) ToCxGenerativeSettingsLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsLlmModelSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxGenerativeSettingsLlmModelSettings) *CxGenerativeSettingsLlmModelSettings {
+		return &v
+	}).(CxGenerativeSettingsLlmModelSettingsPtrOutput)
+}
+
+// The selected LLM model.
+func (o CxGenerativeSettingsLlmModelSettingsOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsLlmModelSettings) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// The custom prompt to use.
+func (o CxGenerativeSettingsLlmModelSettingsOutput) PromptText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGenerativeSettingsLlmModelSettings) *string { return v.PromptText }).(pulumi.StringPtrOutput)
+}
+
+type CxGenerativeSettingsLlmModelSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxGenerativeSettingsLlmModelSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGenerativeSettingsLlmModelSettings)(nil)).Elem()
+}
+
+func (o CxGenerativeSettingsLlmModelSettingsPtrOutput) ToCxGenerativeSettingsLlmModelSettingsPtrOutput() CxGenerativeSettingsLlmModelSettingsPtrOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsLlmModelSettingsPtrOutput) ToCxGenerativeSettingsLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxGenerativeSettingsLlmModelSettingsPtrOutput {
+	return o
+}
+
+func (o CxGenerativeSettingsLlmModelSettingsPtrOutput) Elem() CxGenerativeSettingsLlmModelSettingsOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsLlmModelSettings) CxGenerativeSettingsLlmModelSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxGenerativeSettingsLlmModelSettings
+		return ret
+	}).(CxGenerativeSettingsLlmModelSettingsOutput)
+}
+
+// The selected LLM model.
+func (o CxGenerativeSettingsLlmModelSettingsPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsLlmModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// The custom prompt to use.
+func (o CxGenerativeSettingsLlmModelSettingsPtrOutput) PromptText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGenerativeSettingsLlmModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PromptText
+	}).(pulumi.StringPtrOutput)
+}
+
 type CxIntentParameter struct {
 	// The entity type of the parameter.
 	// Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
@@ -31710,6 +32649,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsFallbackSettingsInput)(nil)).Elem(), CxGenerativeSettingsFallbackSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsFallbackSettingsPtrInput)(nil)).Elem(), CxGenerativeSettingsFallbackSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsFallbackSettingsPromptTemplateInput)(nil)).Elem(), CxGenerativeSettingsFallbackSettingsPromptTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsFallbackSettingsPromptTemplateArrayInput)(nil)).Elem(), CxGenerativeSettingsFallbackSettingsPromptTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsGenerativeSafetySettingsInput)(nil)).Elem(), CxGenerativeSettingsGenerativeSafetySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsGenerativeSafetySettingsPtrInput)(nil)).Elem(), CxGenerativeSettingsGenerativeSafetySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseInput)(nil)).Elem(), CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayInput)(nil)).Elem(), CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsKnowledgeConnectorSettingsInput)(nil)).Elem(), CxGenerativeSettingsKnowledgeConnectorSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsKnowledgeConnectorSettingsPtrInput)(nil)).Elem(), CxGenerativeSettingsKnowledgeConnectorSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsLlmModelSettingsInput)(nil)).Elem(), CxGenerativeSettingsLlmModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsLlmModelSettingsPtrInput)(nil)).Elem(), CxGenerativeSettingsLlmModelSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentParameterInput)(nil)).Elem(), CxIntentParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentParameterArrayInput)(nil)).Elem(), CxIntentParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentTrainingPhraseInput)(nil)).Elem(), CxIntentTrainingPhraseArgs{})
@@ -32094,6 +33045,18 @@ func init() {
 	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput{})
 	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput{})
 	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsFallbackSettingsOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsFallbackSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsFallbackSettingsPromptTemplateOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsFallbackSettingsPromptTemplateArrayOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsGenerativeSafetySettingsOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsGenerativeSafetySettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArrayOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsKnowledgeConnectorSettingsOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsLlmModelSettingsOutput{})
+	pulumi.RegisterOutputType(CxGenerativeSettingsLlmModelSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxIntentParameterOutput{})
 	pulumi.RegisterOutputType(CxIntentParameterArrayOutput{})
 	pulumi.RegisterOutputType(CxIntentTrainingPhraseOutput{})

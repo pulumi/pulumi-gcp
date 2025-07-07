@@ -11,6 +11,7 @@ import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAutoHealingPoliciesArgs
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerInstanceLifecyclePolicyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerNamedPortArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerParamsArgs;
+import com.pulumi.gcp.compute.inputs.InstanceGroupManagerResourcePoliciesArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStandbyPolicyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulExternalIpArgs;
@@ -189,16 +190,12 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
-     * ***
-     * 
      */
     @Import(name="params")
     private @Nullable Output<InstanceGroupManagerParamsArgs> params;
 
     /**
      * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     * 
-     * ***
      * 
      */
     public Optional<Output<InstanceGroupManagerParamsArgs>> params() {
@@ -220,6 +217,25 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * Resource policies for this managed instance group. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="resourcePolicies")
+    private @Nullable Output<InstanceGroupManagerResourcePoliciesArgs> resourcePolicies;
+
+    /**
+     * @return Resource policies for this managed instance group. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<InstanceGroupManagerResourcePoliciesArgs>> resourcePolicies() {
+        return Optional.ofNullable(this.resourcePolicies);
     }
 
     /**
@@ -456,6 +472,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         this.namedPorts = $.namedPorts;
         this.params = $.params;
         this.project = $.project;
+        this.resourcePolicies = $.resourcePolicies;
         this.standbyPolicy = $.standbyPolicy;
         this.statefulDisks = $.statefulDisks;
         this.statefulExternalIps = $.statefulExternalIps;
@@ -707,8 +724,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         /**
          * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -719,8 +734,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -750,6 +763,31 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param resourcePolicies Resource policies for this managed instance group. Structure is documented below.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePolicies(@Nullable Output<InstanceGroupManagerResourcePoliciesArgs> resourcePolicies) {
+            $.resourcePolicies = resourcePolicies;
+            return this;
+        }
+
+        /**
+         * @param resourcePolicies Resource policies for this managed instance group. Structure is documented below.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePolicies(InstanceGroupManagerResourcePoliciesArgs resourcePolicies) {
+            return resourcePolicies(Output.of(resourcePolicies));
         }
 
         /**

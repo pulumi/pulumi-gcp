@@ -33,8 +33,6 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
 
         /// <summary>
         /// Network tags applied to this Cloud Run job.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> Tags
         {

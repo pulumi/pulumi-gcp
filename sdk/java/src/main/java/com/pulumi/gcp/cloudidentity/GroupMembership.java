@@ -13,8 +13,10 @@ import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipState;
 import com.pulumi.gcp.cloudidentity.outputs.GroupMembershipMemberKey;
 import com.pulumi.gcp.cloudidentity.outputs.GroupMembershipPreferredMemberKey;
 import com.pulumi.gcp.cloudidentity.outputs.GroupMembershipRole;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -171,6 +173,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:cloudidentity/groupMembership:GroupMembership")
 public class GroupMembership extends com.pulumi.resources.CustomResource {
+    /**
+     * If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+     * 
+     */
+    @Export(name="createIgnoreAlreadyExists", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> createIgnoreAlreadyExists;
+
+    /**
+     * @return If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+     * 
+     */
+    public Output<Optional<Boolean>> createIgnoreAlreadyExists() {
+        return Codegen.optional(this.createIgnoreAlreadyExists);
+    }
     /**
      * The time when the Membership was created.
      * 

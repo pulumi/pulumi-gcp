@@ -415,6 +415,13 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterGatewayApiConfig> GatewayApiConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("gkeAutoUpgradeConfig")]
+        public Output<Outputs.ClusterGkeAutoUpgradeConfig> GkeAutoUpgradeConfig { get; private set; } = null!;
+
+        /// <summary>
         /// . Structure is documented below.
         /// </summary>
         [Output("identityServiceConfig")]
@@ -1112,6 +1119,13 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterGatewayApiConfigArgs>? GatewayApiConfig { get; set; }
 
         /// <summary>
+        /// Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gkeAutoUpgradeConfig")]
+        public Input<Inputs.ClusterGkeAutoUpgradeConfigArgs>? GkeAutoUpgradeConfig { get; set; }
+
+        /// <summary>
         /// . Structure is documented below.
         /// </summary>
         [Input("identityServiceConfig")]
@@ -1758,6 +1772,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("gatewayApiConfig")]
         public Input<Inputs.ClusterGatewayApiConfigGetArgs>? GatewayApiConfig { get; set; }
+
+        /// <summary>
+        /// Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gkeAutoUpgradeConfig")]
+        public Input<Inputs.ClusterGkeAutoUpgradeConfigGetArgs>? GkeAutoUpgradeConfig { get; set; }
 
         /// <summary>
         /// . Structure is documented below.

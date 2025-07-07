@@ -220,6 +220,12 @@ export class NetworkFirewallPolicyWithRules extends pulumi.CustomResource {
      */
     public /*out*/ readonly networkFirewallPolicyId!: pulumi.Output<string>;
     /**
+     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+     */
+    public readonly policyType!: pulumi.Output<string>;
+    /**
      * A list of firewall policy pre-defined rules.
      * Structure is documented below.
      */
@@ -261,6 +267,7 @@ export class NetworkFirewallPolicyWithRules extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkFirewallPolicyId"] = state ? state.networkFirewallPolicyId : undefined;
+            resourceInputs["policyType"] = state ? state.policyType : undefined;
             resourceInputs["predefinedRules"] = state ? state.predefinedRules : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["ruleTupleCount"] = state ? state.ruleTupleCount : undefined;
@@ -274,6 +281,7 @@ export class NetworkFirewallPolicyWithRules extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["policyType"] = args ? args.policyType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -320,6 +328,12 @@ export interface NetworkFirewallPolicyWithRulesState {
      */
     networkFirewallPolicyId?: pulumi.Input<string>;
     /**
+     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+     */
+    policyType?: pulumi.Input<string>;
+    /**
      * A list of firewall policy pre-defined rules.
      * Structure is documented below.
      */
@@ -362,6 +376,12 @@ export interface NetworkFirewallPolicyWithRulesArgs {
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+     */
+    policyType?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * A list of firewall policy rules.

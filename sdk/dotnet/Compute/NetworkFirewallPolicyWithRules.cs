@@ -282,6 +282,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> NetworkFirewallPolicyId { get; private set; } = null!;
 
         /// <summary>
+        /// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+        /// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+        /// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+        /// </summary>
+        [Output("policyType")]
+        public Output<string> PolicyType { get; private set; } = null!;
+
+        /// <summary>
         /// A list of firewall policy pre-defined rules.
         /// Structure is documented below.
         /// </summary>
@@ -380,6 +388,14 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+        /// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+        /// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -439,6 +455,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("networkFirewallPolicyId")]
         public Input<string>? NetworkFirewallPolicyId { get; set; }
+
+        /// <summary>
+        /// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+        /// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+        /// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
 
         [Input("predefinedRules")]
         private InputList<Inputs.NetworkFirewallPolicyWithRulesPredefinedRuleGetArgs>? _predefinedRules;

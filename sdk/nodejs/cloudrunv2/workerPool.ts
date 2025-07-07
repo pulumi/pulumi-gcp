@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "ALPHA",
+ *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "ALPHA",
+ *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
@@ -88,7 +88,7 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "ALPHA",
+ *     launchStage: "BETA",
  *     template: {
  *         volumes: [{
  *             name: "cloudsql",
@@ -145,7 +145,7 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "ALPHA",
+ *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
@@ -212,7 +212,7 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "ALPHA",
+ *     launchStage: "BETA",
  *     template: {
  *         volumes: [{
  *             name: "a-volume",
@@ -256,13 +256,12 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "ALPHA",
+ *     launchStage: "BETA",
  *     template: {
  *         containers: [
  *             {
  *                 name: "hello-1",
  *                 image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
- *                 dependsOns: ["hello-2"],
  *                 volumeMounts: [{
  *                     name: "empty-dir-volume",
  *                     mountPath: "/mnt",
@@ -298,7 +297,7 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "ALPHA",
+ *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
@@ -340,7 +339,7 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "ALPHA",
+ *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool:latest",
@@ -376,7 +375,7 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "ALPHA",
+ *     launchStage: "BETA",
  *     customAudiences: ["aud1"],
  *     template: {
  *         containers: [{

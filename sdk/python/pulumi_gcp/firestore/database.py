@@ -83,9 +83,6 @@ class DatabaseArgs:
         if delete_protection_state is not None:
             pulumi.set(__self__, "delete_protection_state", delete_protection_state)
         if deletion_policy is not None:
-            warnings.warn("""`deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.""", DeprecationWarning)
-            pulumi.log.warn("""deletion_policy is deprecated: `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.""")
-        if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -190,7 +187,6 @@ class DatabaseArgs:
 
     @property
     @pulumi.getter(name="deletionPolicy")
-    @_utilities.deprecated("""`deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.""")
     def deletion_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "deletion_policy")
 
@@ -335,9 +331,6 @@ class _DatabaseState:
         if delete_protection_state is not None:
             pulumi.set(__self__, "delete_protection_state", delete_protection_state)
         if deletion_policy is not None:
-            warnings.warn("""`deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.""", DeprecationWarning)
-            pulumi.log.warn("""deletion_policy is deprecated: `deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.""")
-        if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if earliest_version_time is not None:
             pulumi.set(__self__, "earliest_version_time", earliest_version_time)
@@ -439,7 +432,6 @@ class _DatabaseState:
 
     @property
     @pulumi.getter(name="deletionPolicy")
-    @_utilities.deprecated("""`deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.""")
     def deletion_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "deletion_policy")
 
@@ -1251,7 +1243,6 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deletionPolicy")
-    @_utilities.deprecated("""`deletion_policy` is deprecated and will be removed in a future major release. Use `delete_protection_state` instead.""")
     def deletion_policy(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "deletion_policy")
 

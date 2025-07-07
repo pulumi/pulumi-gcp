@@ -22,6 +22,7 @@ class NetworkFirewallPolicyArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 policy_type: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkFirewallPolicy resource.
@@ -30,6 +31,10 @@ class NetworkFirewallPolicyArgs:
                
                
                - - -
+        :param pulumi.Input[builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
+               A policy can be associated with a network only if the network has the matching policyType in its network profile.
+               Different policy types may support some of the Firewall Rules features.
+               Possible values are: `VPC_POLICY`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -37,6 +42,8 @@ class NetworkFirewallPolicyArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if policy_type is not None:
+            pulumi.set(__self__, "policy_type", policy_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -68,6 +75,21 @@ class NetworkFirewallPolicyArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Policy type is used to determine which resources (networks) the policy can be associated with.
+        A policy can be associated with a network only if the network has the matching policyType in its network profile.
+        Different policy types may support some of the Firewall Rules features.
+        Possible values are: `VPC_POLICY`.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @policy_type.setter
+    def policy_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "policy_type", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -89,6 +111,7 @@ class _NetworkFirewallPolicyState:
                  fingerprint: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  network_firewall_policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 policy_type: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  rule_tuple_count: Optional[pulumi.Input[builtins.int]] = None,
                  self_link: Optional[pulumi.Input[builtins.str]] = None,
@@ -103,6 +126,10 @@ class _NetworkFirewallPolicyState:
                
                - - -
         :param pulumi.Input[builtins.str] network_firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
+        :param pulumi.Input[builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
+               A policy can be associated with a network only if the network has the matching policyType in its network profile.
+               Different policy types may support some of the Firewall Rules features.
+               Possible values are: `VPC_POLICY`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
@@ -119,6 +146,8 @@ class _NetworkFirewallPolicyState:
             pulumi.set(__self__, "name", name)
         if network_firewall_policy_id is not None:
             pulumi.set(__self__, "network_firewall_policy_id", network_firewall_policy_id)
+        if policy_type is not None:
+            pulumi.set(__self__, "policy_type", policy_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if rule_tuple_count is not None:
@@ -192,6 +221,21 @@ class _NetworkFirewallPolicyState:
         pulumi.set(self, "network_firewall_policy_id", value)
 
     @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Policy type is used to determine which resources (networks) the policy can be associated with.
+        A policy can be associated with a network only if the network has the matching policyType in its network profile.
+        Different policy types may support some of the Firewall Rules features.
+        Possible values are: `VPC_POLICY`.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @policy_type.setter
+    def policy_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "policy_type", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -249,6 +293,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 policy_type: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
@@ -298,6 +343,10 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
+               A policy can be associated with a network only if the network has the matching policyType in its network profile.
+               Different policy types may support some of the Firewall Rules features.
+               Possible values are: `VPC_POLICY`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -364,6 +413,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 policy_type: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -376,6 +426,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            __props__.__dict__["policy_type"] = policy_type
             __props__.__dict__["project"] = project
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
@@ -398,6 +449,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
             fingerprint: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             network_firewall_policy_id: Optional[pulumi.Input[builtins.str]] = None,
+            policy_type: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             rule_tuple_count: Optional[pulumi.Input[builtins.int]] = None,
             self_link: Optional[pulumi.Input[builtins.str]] = None,
@@ -417,6 +469,10 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[builtins.str] network_firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
+        :param pulumi.Input[builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
+               A policy can be associated with a network only if the network has the matching policyType in its network profile.
+               Different policy types may support some of the Firewall Rules features.
+               Possible values are: `VPC_POLICY`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
@@ -432,6 +488,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["name"] = name
         __props__.__dict__["network_firewall_policy_id"] = network_firewall_policy_id
+        __props__.__dict__["policy_type"] = policy_type
         __props__.__dict__["project"] = project
         __props__.__dict__["rule_tuple_count"] = rule_tuple_count
         __props__.__dict__["self_link"] = self_link
@@ -480,6 +537,17 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         The unique identifier for the resource. This identifier is defined by the server.
         """
         return pulumi.get(self, "network_firewall_policy_id")
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> pulumi.Output[builtins.str]:
+        """
+        Policy type is used to determine which resources (networks) the policy can be associated with.
+        A policy can be associated with a network only if the network has the matching policyType in its network profile.
+        Different policy types may support some of the Firewall Rules features.
+        Possible values are: `VPC_POLICY`.
+        """
+        return pulumi.get(self, "policy_type")
 
     @property
     @pulumi.getter

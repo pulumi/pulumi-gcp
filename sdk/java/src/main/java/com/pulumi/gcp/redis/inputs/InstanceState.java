@@ -205,6 +205,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The CIDR range of internal addresses that are reserved for this
+     * instance. If not provided, the service will choose an unused /29
+     * block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+     * unique and non-overlapping with existing subnets in an authorized
+     * network.
+     * 
+     */
+    @Import(name="effectiveReservedIpRange")
+    private @Nullable Output<String> effectiveReservedIpRange;
+
+    /**
+     * @return The CIDR range of internal addresses that are reserved for this
+     * instance. If not provided, the service will choose an unused /29
+     * block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+     * unique and non-overlapping with existing subnets in an authorized
+     * network.
+     * 
+     */
+    public Optional<Output<String>> effectiveReservedIpRange() {
+        return Optional.ofNullable(this.effectiveReservedIpRange);
+    }
+
+    /**
      * Hostname or IP address of the exposed Redis endpoint used by clients
      * to connect to the service.
      * 
@@ -705,6 +728,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.customerManagedKey = $.customerManagedKey;
         this.displayName = $.displayName;
         this.effectiveLabels = $.effectiveLabels;
+        this.effectiveReservedIpRange = $.effectiveReservedIpRange;
         this.host = $.host;
         this.labels = $.labels;
         this.locationId = $.locationId;
@@ -989,6 +1013,35 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param effectiveReservedIpRange The CIDR range of internal addresses that are reserved for this
+         * instance. If not provided, the service will choose an unused /29
+         * block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+         * unique and non-overlapping with existing subnets in an authorized
+         * network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveReservedIpRange(@Nullable Output<String> effectiveReservedIpRange) {
+            $.effectiveReservedIpRange = effectiveReservedIpRange;
+            return this;
+        }
+
+        /**
+         * @param effectiveReservedIpRange The CIDR range of internal addresses that are reserved for this
+         * instance. If not provided, the service will choose an unused /29
+         * block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+         * unique and non-overlapping with existing subnets in an authorized
+         * network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveReservedIpRange(String effectiveReservedIpRange) {
+            return effectiveReservedIpRange(Output.of(effectiveReservedIpRange));
         }
 
         /**

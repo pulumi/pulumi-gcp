@@ -23,34 +23,30 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
      * A detailed description of the metric, which can be used in documentation.
      * 
      */
-    @Import(name="description", required=true)
-    private Output<String> description;
+    @Import(name="description")
+    private @Nullable Output<String> description;
 
     /**
      * @return A detailed description of the metric, which can be used in documentation.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
      * 
-     * ***
-     * 
      */
-    @Import(name="displayName", required=true)
-    private Output<String> displayName;
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
 
     /**
      * @return A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
      * 
-     * ***
-     * 
      */
-    public Output<String> displayName() {
-        return this.displayName;
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
     }
 
     /**
@@ -204,6 +200,8 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      * 
+     * ***
+     * 
      */
     @Import(name="valueType", required=true)
     private Output<String> valueType;
@@ -211,6 +209,8 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+     * 
+     * ***
      * 
      */
     public Output<String> valueType() {
@@ -256,7 +256,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder description(Output<String> description) {
+        public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
@@ -274,20 +274,16 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param displayName A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
-        public Builder displayName(Output<String> displayName) {
+        public Builder displayName(@Nullable Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
 
         /**
          * @param displayName A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -500,6 +496,8 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
          * @param valueType Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
          * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -512,6 +510,8 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
          * @param valueType Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
          * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -520,12 +520,6 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
         }
 
         public MetricDescriptorArgs build() {
-            if ($.description == null) {
-                throw new MissingRequiredPropertyException("MetricDescriptorArgs", "description");
-            }
-            if ($.displayName == null) {
-                throw new MissingRequiredPropertyException("MetricDescriptorArgs", "displayName");
-            }
             if ($.metricKind == null) {
                 throw new MissingRequiredPropertyException("MetricDescriptorArgs", "metricKind");
             }

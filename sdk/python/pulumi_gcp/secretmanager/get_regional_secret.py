@@ -28,7 +28,7 @@ class GetRegionalSecretResult:
     """
     A collection of values returned by getRegionalSecret.
     """
-    def __init__(__self__, annotations=None, create_time=None, customer_managed_encryptions=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, rotations=None, secret_id=None, topics=None, ttl=None, version_aliases=None, version_destroy_ttl=None):
+    def __init__(__self__, annotations=None, create_time=None, customer_managed_encryptions=None, deletion_protection=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, rotations=None, secret_id=None, topics=None, ttl=None, version_aliases=None, version_destroy_ttl=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -38,6 +38,9 @@ class GetRegionalSecretResult:
         if customer_managed_encryptions and not isinstance(customer_managed_encryptions, list):
             raise TypeError("Expected argument 'customer_managed_encryptions' to be a list")
         pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if effective_annotations and not isinstance(effective_annotations, dict):
             raise TypeError("Expected argument 'effective_annotations' to be a dict")
         pulumi.set(__self__, "effective_annotations", effective_annotations)
@@ -98,6 +101,11 @@ class GetRegionalSecretResult:
     @pulumi.getter(name="customerManagedEncryptions")
     def customer_managed_encryptions(self) -> Sequence['outputs.GetRegionalSecretCustomerManagedEncryptionResult']:
         return pulumi.get(self, "customer_managed_encryptions")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> builtins.bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
@@ -187,6 +195,7 @@ class AwaitableGetRegionalSecretResult(GetRegionalSecretResult):
             annotations=self.annotations,
             create_time=self.create_time,
             customer_managed_encryptions=self.customer_managed_encryptions,
+            deletion_protection=self.deletion_protection,
             effective_annotations=self.effective_annotations,
             effective_labels=self.effective_labels,
             expire_time=self.expire_time,
@@ -237,6 +246,7 @@ def get_regional_secret(location: Optional[builtins.str] = None,
         annotations=pulumi.get(__ret__, 'annotations'),
         create_time=pulumi.get(__ret__, 'create_time'),
         customer_managed_encryptions=pulumi.get(__ret__, 'customer_managed_encryptions'),
+        deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         effective_annotations=pulumi.get(__ret__, 'effective_annotations'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
@@ -284,6 +294,7 @@ def get_regional_secret_output(location: Optional[pulumi.Input[builtins.str]] = 
         annotations=pulumi.get(__response__, 'annotations'),
         create_time=pulumi.get(__response__, 'create_time'),
         customer_managed_encryptions=pulumi.get(__response__, 'customer_managed_encryptions'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         effective_annotations=pulumi.get(__response__, 'effective_annotations'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         expire_time=pulumi.get(__response__, 'expire_time'),

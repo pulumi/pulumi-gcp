@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.inputs.RegionalSecretCustomerManagedEncryptionArgs;
 import com.pulumi.gcp.secretmanager.inputs.RegionalSecretRotationArgs;
 import com.pulumi.gcp.secretmanager.inputs.RegionalSecretTopicArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -75,6 +76,13 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<RegionalSecretCustomerManagedEncryptionArgs>> customerManagedEncryption() {
         return Optional.ofNullable(this.customerManagedEncryption);
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -296,6 +304,7 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
     private RegionalSecretArgs(RegionalSecretArgs $) {
         this.annotations = $.annotations;
         this.customerManagedEncryption = $.customerManagedEncryption;
+        this.deletionProtection = $.deletionProtection;
         this.expireTime = $.expireTime;
         this.labels = $.labels;
         this.location = $.location;
@@ -392,6 +401,15 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder customerManagedEncryption(RegionalSecretCustomerManagedEncryptionArgs customerManagedEncryption) {
             return customerManagedEncryption(Output.of(customerManagedEncryption));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

@@ -78,6 +78,12 @@ __all__ = [
     'CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall',
     'CxFlowTransitionRouteTriggerFulfillmentMessageText',
     'CxFlowTransitionRouteTriggerFulfillmentSetParameterAction',
+    'CxGenerativeSettingsFallbackSettings',
+    'CxGenerativeSettingsFallbackSettingsPromptTemplate',
+    'CxGenerativeSettingsGenerativeSafetySettings',
+    'CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase',
+    'CxGenerativeSettingsKnowledgeConnectorSettings',
+    'CxGenerativeSettingsLlmModelSettings',
     'CxIntentParameter',
     'CxIntentTrainingPhrase',
     'CxIntentTrainingPhrasePart',
@@ -3910,6 +3916,370 @@ class CxFlowTransitionRouteTriggerFulfillmentSetParameterAction(dict):
         The new JSON-encoded value of the parameter. A null value clears the parameter.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class CxGenerativeSettingsFallbackSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "promptTemplates":
+            suggest = "prompt_templates"
+        elif key == "selectedPrompt":
+            suggest = "selected_prompt"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxGenerativeSettingsFallbackSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxGenerativeSettingsFallbackSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxGenerativeSettingsFallbackSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prompt_templates: Optional[Sequence['outputs.CxGenerativeSettingsFallbackSettingsPromptTemplate']] = None,
+                 selected_prompt: Optional[builtins.str] = None):
+        """
+        :param Sequence['CxGenerativeSettingsFallbackSettingsPromptTemplateArgs'] prompt_templates: Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
+               Structure is documented below.
+        :param builtins.str selected_prompt: Display name of the selected prompt.
+        """
+        if prompt_templates is not None:
+            pulumi.set(__self__, "prompt_templates", prompt_templates)
+        if selected_prompt is not None:
+            pulumi.set(__self__, "selected_prompt", selected_prompt)
+
+    @property
+    @pulumi.getter(name="promptTemplates")
+    def prompt_templates(self) -> Optional[Sequence['outputs.CxGenerativeSettingsFallbackSettingsPromptTemplate']]:
+        """
+        Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "prompt_templates")
+
+    @property
+    @pulumi.getter(name="selectedPrompt")
+    def selected_prompt(self) -> Optional[builtins.str]:
+        """
+        Display name of the selected prompt.
+        """
+        return pulumi.get(self, "selected_prompt")
+
+
+@pulumi.output_type
+class CxGenerativeSettingsFallbackSettingsPromptTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "promptText":
+            suggest = "prompt_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxGenerativeSettingsFallbackSettingsPromptTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxGenerativeSettingsFallbackSettingsPromptTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxGenerativeSettingsFallbackSettingsPromptTemplate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[builtins.str] = None,
+                 frozen: Optional[builtins.bool] = None,
+                 prompt_text: Optional[builtins.str] = None):
+        """
+        :param builtins.str display_name: Prompt name.
+        :param builtins.bool frozen: If the flag is true, the prompt is frozen and cannot be modified by users.
+        :param builtins.str prompt_text: Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if frozen is not None:
+            pulumi.set(__self__, "frozen", frozen)
+        if prompt_text is not None:
+            pulumi.set(__self__, "prompt_text", prompt_text)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[builtins.str]:
+        """
+        Prompt name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def frozen(self) -> Optional[builtins.bool]:
+        """
+        If the flag is true, the prompt is frozen and cannot be modified by users.
+        """
+        return pulumi.get(self, "frozen")
+
+    @property
+    @pulumi.getter(name="promptText")
+    def prompt_text(self) -> Optional[builtins.str]:
+        """
+        Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
+        """
+        return pulumi.get(self, "prompt_text")
+
+
+@pulumi.output_type
+class CxGenerativeSettingsGenerativeSafetySettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bannedPhrases":
+            suggest = "banned_phrases"
+        elif key == "defaultBannedPhraseMatchStrategy":
+            suggest = "default_banned_phrase_match_strategy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxGenerativeSettingsGenerativeSafetySettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxGenerativeSettingsGenerativeSafetySettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxGenerativeSettingsGenerativeSafetySettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 banned_phrases: Optional[Sequence['outputs.CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase']] = None,
+                 default_banned_phrase_match_strategy: Optional[builtins.str] = None):
+        """
+        :param Sequence['CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs'] banned_phrases: Banned phrases for generated text.
+               Structure is documented below.
+        :param builtins.str default_banned_phrase_match_strategy: Optional. Default phrase match strategy for banned phrases.
+               See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
+        """
+        if banned_phrases is not None:
+            pulumi.set(__self__, "banned_phrases", banned_phrases)
+        if default_banned_phrase_match_strategy is not None:
+            pulumi.set(__self__, "default_banned_phrase_match_strategy", default_banned_phrase_match_strategy)
+
+    @property
+    @pulumi.getter(name="bannedPhrases")
+    def banned_phrases(self) -> Optional[Sequence['outputs.CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase']]:
+        """
+        Banned phrases for generated text.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "banned_phrases")
+
+    @property
+    @pulumi.getter(name="defaultBannedPhraseMatchStrategy")
+    def default_banned_phrase_match_strategy(self) -> Optional[builtins.str]:
+        """
+        Optional. Default phrase match strategy for banned phrases.
+        See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
+        """
+        return pulumi.get(self, "default_banned_phrase_match_strategy")
+
+
+@pulumi.output_type
+class CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "languageCode":
+            suggest = "language_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 language_code: builtins.str,
+                 text: builtins.str):
+        """
+        :param builtins.str language_code: Language code of the phrase.
+        :param builtins.str text: Text input which can be used for prompt or banned phrases.
+        """
+        pulumi.set(__self__, "language_code", language_code)
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> builtins.str:
+        """
+        Language code of the phrase.
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter
+    def text(self) -> builtins.str:
+        """
+        Text input which can be used for prompt or banned phrases.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxGenerativeSettingsKnowledgeConnectorSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agentIdentity":
+            suggest = "agent_identity"
+        elif key == "agentScope":
+            suggest = "agent_scope"
+        elif key == "businessDescription":
+            suggest = "business_description"
+        elif key == "disableDataStoreFallback":
+            suggest = "disable_data_store_fallback"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxGenerativeSettingsKnowledgeConnectorSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxGenerativeSettingsKnowledgeConnectorSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxGenerativeSettingsKnowledgeConnectorSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 agent: Optional[builtins.str] = None,
+                 agent_identity: Optional[builtins.str] = None,
+                 agent_scope: Optional[builtins.str] = None,
+                 business: Optional[builtins.str] = None,
+                 business_description: Optional[builtins.str] = None,
+                 disable_data_store_fallback: Optional[builtins.bool] = None):
+        """
+        :param builtins.str agent: Name of the virtual agent. Used for LLM prompt. Can be left empty.
+        :param builtins.str agent_identity: Identity of the agent, e.g. "virtual agent", "AI assistant".
+        :param builtins.str agent_scope: Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
+        :param builtins.str business: Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+        :param builtins.str business_description: Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
+        :param builtins.bool disable_data_store_fallback: Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
+        """
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+        if agent_identity is not None:
+            pulumi.set(__self__, "agent_identity", agent_identity)
+        if agent_scope is not None:
+            pulumi.set(__self__, "agent_scope", agent_scope)
+        if business is not None:
+            pulumi.set(__self__, "business", business)
+        if business_description is not None:
+            pulumi.set(__self__, "business_description", business_description)
+        if disable_data_store_fallback is not None:
+            pulumi.set(__self__, "disable_data_store_fallback", disable_data_store_fallback)
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[builtins.str]:
+        """
+        Name of the virtual agent. Used for LLM prompt. Can be left empty.
+        """
+        return pulumi.get(self, "agent")
+
+    @property
+    @pulumi.getter(name="agentIdentity")
+    def agent_identity(self) -> Optional[builtins.str]:
+        """
+        Identity of the agent, e.g. "virtual agent", "AI assistant".
+        """
+        return pulumi.get(self, "agent_identity")
+
+    @property
+    @pulumi.getter(name="agentScope")
+    def agent_scope(self) -> Optional[builtins.str]:
+        """
+        Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
+        """
+        return pulumi.get(self, "agent_scope")
+
+    @property
+    @pulumi.getter
+    def business(self) -> Optional[builtins.str]:
+        """
+        Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+        """
+        return pulumi.get(self, "business")
+
+    @property
+    @pulumi.getter(name="businessDescription")
+    def business_description(self) -> Optional[builtins.str]:
+        """
+        Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
+        """
+        return pulumi.get(self, "business_description")
+
+    @property
+    @pulumi.getter(name="disableDataStoreFallback")
+    def disable_data_store_fallback(self) -> Optional[builtins.bool]:
+        """
+        Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
+        """
+        return pulumi.get(self, "disable_data_store_fallback")
+
+
+@pulumi.output_type
+class CxGenerativeSettingsLlmModelSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "promptText":
+            suggest = "prompt_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxGenerativeSettingsLlmModelSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxGenerativeSettingsLlmModelSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxGenerativeSettingsLlmModelSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 model: Optional[builtins.str] = None,
+                 prompt_text: Optional[builtins.str] = None):
+        """
+        :param builtins.str model: The selected LLM model.
+        :param builtins.str prompt_text: The custom prompt to use.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if prompt_text is not None:
+            pulumi.set(__self__, "prompt_text", prompt_text)
+
+    @property
+    @pulumi.getter
+    def model(self) -> Optional[builtins.str]:
+        """
+        The selected LLM model.
+        """
+        return pulumi.get(self, "model")
+
+    @property
+    @pulumi.getter(name="promptText")
+    def prompt_text(self) -> Optional[builtins.str]:
+        """
+        The custom prompt to use.
+        """
+        return pulumi.get(self, "prompt_text")
 
 
 @pulumi.output_type

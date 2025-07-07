@@ -8,12 +8,18 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsMembershipMemberKey;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsMembershipPreferredMemberKey;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsMembershipRole;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetGroupMembershipsMembership {
+    /**
+     * @return If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+     * 
+     */
+    private Boolean createIgnoreAlreadyExists;
     /**
      * @return The time when the Membership was created.
      * 
@@ -56,6 +62,13 @@ public final class GetGroupMembershipsMembership {
     private String updateTime;
 
     private GetGroupMembershipsMembership() {}
+    /**
+     * @return If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+     * 
+     */
+    public Boolean createIgnoreAlreadyExists() {
+        return this.createIgnoreAlreadyExists;
+    }
     /**
      * @return The time when the Membership was created.
      * 
@@ -122,6 +135,7 @@ public final class GetGroupMembershipsMembership {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean createIgnoreAlreadyExists;
         private String createTime;
         private String group;
         private List<GetGroupMembershipsMembershipMemberKey> memberKeys;
@@ -133,6 +147,7 @@ public final class GetGroupMembershipsMembership {
         public Builder() {}
         public Builder(GetGroupMembershipsMembership defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.createIgnoreAlreadyExists = defaults.createIgnoreAlreadyExists;
     	      this.createTime = defaults.createTime;
     	      this.group = defaults.group;
     	      this.memberKeys = defaults.memberKeys;
@@ -143,6 +158,14 @@ public final class GetGroupMembershipsMembership {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
+        public Builder createIgnoreAlreadyExists(Boolean createIgnoreAlreadyExists) {
+            if (createIgnoreAlreadyExists == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembership", "createIgnoreAlreadyExists");
+            }
+            this.createIgnoreAlreadyExists = createIgnoreAlreadyExists;
+            return this;
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
@@ -218,6 +241,7 @@ public final class GetGroupMembershipsMembership {
         }
         public GetGroupMembershipsMembership build() {
             final var _resultValue = new GetGroupMembershipsMembership();
+            _resultValue.createIgnoreAlreadyExists = createIgnoreAlreadyExists;
             _resultValue.createTime = createTime;
             _resultValue.group = group;
             _resultValue.memberKeys = memberKeys;

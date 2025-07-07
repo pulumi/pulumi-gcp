@@ -25,6 +25,7 @@ import com.pulumi.gcp.container.outputs.ClusterEnableK8sBetaApis;
 import com.pulumi.gcp.container.outputs.ClusterEnterpriseConfig;
 import com.pulumi.gcp.container.outputs.ClusterFleet;
 import com.pulumi.gcp.container.outputs.ClusterGatewayApiConfig;
+import com.pulumi.gcp.container.outputs.ClusterGkeAutoUpgradeConfig;
 import com.pulumi.gcp.container.outputs.ClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicy;
 import com.pulumi.gcp.container.outputs.ClusterLoggingConfig;
@@ -809,6 +810,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<ClusterGatewayApiConfig> gatewayApiConfig() {
         return this.gatewayApiConfig;
+    }
+    /**
+     * Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="gkeAutoUpgradeConfig", refs={ClusterGkeAutoUpgradeConfig.class}, tree="[0]")
+    private Output<ClusterGkeAutoUpgradeConfig> gkeAutoUpgradeConfig;
+
+    /**
+     * @return Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+     * Structure is documented below.
+     * 
+     */
+    public Output<ClusterGkeAutoUpgradeConfig> gkeAutoUpgradeConfig() {
+        return this.gkeAutoUpgradeConfig;
     }
     /**
      * . Structure is documented below.

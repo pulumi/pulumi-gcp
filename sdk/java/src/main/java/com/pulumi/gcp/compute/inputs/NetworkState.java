@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.NetworkParamsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -319,6 +320,23 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<NetworkParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<NetworkParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -393,6 +411,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         this.networkId = $.networkId;
         this.networkProfile = $.networkProfile;
         this.numericId = $.numericId;
+        this.params = $.params;
         this.project = $.project;
         this.routingMode = $.routingMode;
         this.selfLink = $.selfLink;
@@ -805,6 +824,29 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead. */
         public Builder numericId(String numericId) {
             return numericId(Output.of(numericId));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<NetworkParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(NetworkParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

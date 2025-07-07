@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.SecretManager
     ///             { "key2", "value2" },
     ///             { "key3", "value3" },
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     /// });
@@ -281,6 +282,9 @@ namespace Pulumi.Gcp.SecretManager
         [Output("customerManagedEncryption")]
         public Output<Outputs.RegionalSecretCustomerManagedEncryption?> CustomerManagedEncryption { get; private set; } = null!;
 
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -479,6 +483,9 @@ namespace Pulumi.Gcp.SecretManager
         [Input("customerManagedEncryption")]
         public Input<Inputs.RegionalSecretCustomerManagedEncryptionArgs>? CustomerManagedEncryption { get; set; }
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
         /// output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
@@ -634,6 +641,9 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("customerManagedEncryption")]
         public Input<Inputs.RegionalSecretCustomerManagedEncryptionGetArgs>? CustomerManagedEncryption { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;

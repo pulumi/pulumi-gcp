@@ -38,6 +38,7 @@ export interface GetAutokeyConfigArgs {
  * A collection of values returned by getAutokeyConfig.
  */
 export interface GetAutokeyConfigResult {
+    readonly etag: string;
     readonly folder: string;
     /**
      * The provider-assigned unique ID for this managed resource.

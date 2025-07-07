@@ -924,7 +924,6 @@ import (
 //					ImageUri:               pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
 //					BaseImage:              pulumi.String("us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22"),
 //					EnableAutomaticUpdates: pulumi.Bool(true),
-//					WorkerPool:             pulumi.String("worker-pool"),
 //					EnvironmentVariables: pulumi.StringMap{
 //						"FOO_KEY": pulumi.String("FOO_VALUE"),
 //						"BAR_KEY": pulumi.String("BAR_VALUE"),

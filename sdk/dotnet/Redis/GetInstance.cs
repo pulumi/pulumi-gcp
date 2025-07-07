@@ -177,6 +177,7 @@ namespace Pulumi.Gcp.Redis
         public readonly string CustomerManagedKey;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
+        public readonly string EffectiveReservedIpRange;
         public readonly string Host;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -229,6 +230,8 @@ namespace Pulumi.Gcp.Redis
             string displayName,
 
             ImmutableDictionary<string, string> effectiveLabels,
+
+            string effectiveReservedIpRange,
 
             string host,
 
@@ -294,6 +297,7 @@ namespace Pulumi.Gcp.Redis
             CustomerManagedKey = customerManagedKey;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
+            EffectiveReservedIpRange = effectiveReservedIpRange;
             Host = host;
             Id = id;
             Labels = labels;

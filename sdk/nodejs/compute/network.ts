@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -240,6 +242,11 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly numericId!: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.NetworkParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -286,6 +293,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["networkId"] = state ? state.networkId : undefined;
             resourceInputs["networkProfile"] = state ? state.networkProfile : undefined;
             resourceInputs["numericId"] = state ? state.numericId : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["routingMode"] = state ? state.routingMode : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -303,6 +311,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkFirewallPolicyEnforcementOrder"] = args ? args.networkFirewallPolicyEnforcementOrder : undefined;
             resourceInputs["networkProfile"] = args ? args.networkProfile : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["routingMode"] = args ? args.routingMode : undefined;
             resourceInputs["gatewayIpv4"] = undefined /*out*/;
@@ -417,6 +426,11 @@ export interface NetworkState {
      */
     numericId?: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.NetworkParams>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -521,6 +535,11 @@ export interface NetworkArgs {
      * * projects/{projectId}/global/networkProfiles/{network_profile_name}
      */
     networkProfile?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.NetworkParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

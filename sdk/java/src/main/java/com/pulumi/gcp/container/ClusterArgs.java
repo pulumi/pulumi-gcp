@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.inputs.ClusterEnableK8sBetaApisArgs;
 import com.pulumi.gcp.container.inputs.ClusterEnterpriseConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterFleetArgs;
 import com.pulumi.gcp.container.inputs.ClusterGatewayApiConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterGkeAutoUpgradeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIdentityServiceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterLoggingConfigArgs;
@@ -599,6 +600,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterGatewayApiConfigArgs>> gatewayApiConfig() {
         return Optional.ofNullable(this.gatewayApiConfig);
+    }
+
+    /**
+     * Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gkeAutoUpgradeConfig")
+    private @Nullable Output<ClusterGkeAutoUpgradeConfigArgs> gkeAutoUpgradeConfig;
+
+    /**
+     * @return Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterGkeAutoUpgradeConfigArgs>> gkeAutoUpgradeConfig() {
+        return Optional.ofNullable(this.gkeAutoUpgradeConfig);
     }
 
     /**
@@ -1525,6 +1543,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.enterpriseConfig = $.enterpriseConfig;
         this.fleet = $.fleet;
         this.gatewayApiConfig = $.gatewayApiConfig;
+        this.gkeAutoUpgradeConfig = $.gkeAutoUpgradeConfig;
         this.identityServiceConfig = $.identityServiceConfig;
         this.inTransitEncryptionConfig = $.inTransitEncryptionConfig;
         this.initialNodeCount = $.initialNodeCount;
@@ -2314,6 +2333,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gatewayApiConfig(ClusterGatewayApiConfigArgs gatewayApiConfig) {
             return gatewayApiConfig(Output.of(gatewayApiConfig));
+        }
+
+        /**
+         * @param gkeAutoUpgradeConfig Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeAutoUpgradeConfig(@Nullable Output<ClusterGkeAutoUpgradeConfigArgs> gkeAutoUpgradeConfig) {
+            $.gkeAutoUpgradeConfig = gkeAutoUpgradeConfig;
+            return this;
+        }
+
+        /**
+         * @param gkeAutoUpgradeConfig Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeAutoUpgradeConfig(ClusterGkeAutoUpgradeConfigArgs gkeAutoUpgradeConfig) {
+            return gkeAutoUpgradeConfig(Output.of(gkeAutoUpgradeConfig));
         }
 
         /**

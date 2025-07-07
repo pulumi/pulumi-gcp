@@ -11,6 +11,7 @@ from .cx_agent import *
 from .cx_entity_type import *
 from .cx_environment import *
 from .cx_flow import *
+from .cx_generative_settings import *
 from .cx_intent import *
 from .cx_page import *
 from .cx_security_settings import *

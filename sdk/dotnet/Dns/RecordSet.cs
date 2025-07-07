@@ -258,6 +258,7 @@ namespace Pulumi.Gcp.Dns
     ///     {
     ///         Name = "prod-zone",
     ///         DnsName = "prod.mydomain.com.",
+    ///         Visibility = "private",
     ///     });
     /// 
     ///     var prodRegionBackendService = new Gcp.Compute.RegionBackendService("prod", new()

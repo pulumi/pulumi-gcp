@@ -26,15 +26,23 @@ namespace Pulumi.Gcp.Spanner.Outputs
         /// Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
         /// </summary>
         public readonly string? KmsKeyName;
+        /// <summary>
+        /// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+        /// in the same locations as the Spanner Database.
+        /// </summary>
+        public readonly ImmutableArray<string> KmsKeyNames;
 
         [OutputConstructor]
         private BackupScheduleEncryptionConfig(
             string encryptionType,
 
-            string? kmsKeyName)
+            string? kmsKeyName,
+
+            ImmutableArray<string> kmsKeyNames)
         {
             EncryptionType = encryptionType;
             KmsKeyName = kmsKeyName;
+            KmsKeyNames = kmsKeyNames;
         }
     }
 }

@@ -2760,6 +2760,7 @@ type GetRegionalSecretsSecret struct {
 	// Customer Managed Encryption for the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryptions []GetRegionalSecretsSecretCustomerManagedEncryption `pulumi:"customerManagedEncryptions"`
+	DeletionProtection         bool                                                `pulumi:"deletionProtection"`
 	EffectiveAnnotations       map[string]string                                   `pulumi:"effectiveAnnotations"`
 	EffectiveLabels            map[string]string                                   `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the regional secret is scheduled to expire.
@@ -2811,6 +2812,7 @@ type GetRegionalSecretsSecretArgs struct {
 	// Customer Managed Encryption for the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryptions GetRegionalSecretsSecretCustomerManagedEncryptionArrayInput `pulumi:"customerManagedEncryptions"`
+	DeletionProtection         pulumi.BoolInput                                            `pulumi:"deletionProtection"`
 	EffectiveAnnotations       pulumi.StringMapInput                                       `pulumi:"effectiveAnnotations"`
 	EffectiveLabels            pulumi.StringMapInput                                       `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the regional secret is scheduled to expire.
@@ -2910,6 +2912,10 @@ func (o GetRegionalSecretsSecretOutput) CustomerManagedEncryptions() GetRegional
 	return o.ApplyT(func(v GetRegionalSecretsSecret) []GetRegionalSecretsSecretCustomerManagedEncryption {
 		return v.CustomerManagedEncryptions
 	}).(GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput)
+}
+
+func (o GetRegionalSecretsSecretOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 func (o GetRegionalSecretsSecretOutput) EffectiveAnnotations() pulumi.StringMapOutput {
