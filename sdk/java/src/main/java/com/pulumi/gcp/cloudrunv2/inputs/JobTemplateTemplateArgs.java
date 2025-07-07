@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateNodeSelectorArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVpcAccessArgs;
 import java.lang.Integer;
@@ -85,6 +86,23 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Node Selector describes the hardware requirements of the resources.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="nodeSelector")
+    private @Nullable Output<JobTemplateTemplateNodeSelectorArgs> nodeSelector;
+
+    /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<JobTemplateTemplateNodeSelectorArgs>> nodeSelector() {
+        return Optional.ofNullable(this.nodeSelector);
+    }
+
+    /**
      * Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
      * 
      */
@@ -157,6 +175,7 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
         this.encryptionKey = $.encryptionKey;
         this.executionEnvironment = $.executionEnvironment;
         this.maxRetries = $.maxRetries;
+        this.nodeSelector = $.nodeSelector;
         this.serviceAccount = $.serviceAccount;
         this.timeout = $.timeout;
         this.volumes = $.volumes;
@@ -278,6 +297,29 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
          */
         public Builder maxRetries(Integer maxRetries) {
             return maxRetries(Output.of(maxRetries));
+        }
+
+        /**
+         * @param nodeSelector Node Selector describes the hardware requirements of the resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeSelector(@Nullable Output<JobTemplateTemplateNodeSelectorArgs> nodeSelector) {
+            $.nodeSelector = nodeSelector;
+            return this;
+        }
+
+        /**
+         * @param nodeSelector Node Selector describes the hardware requirements of the resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeSelector(JobTemplateTemplateNodeSelectorArgs nodeSelector) {
+            return nodeSelector(Output.of(nodeSelector));
         }
 
         /**

@@ -123,6 +123,23 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Region Disk Hyperdisk Balanced Ha Write Many
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.compute.RegionDisk("primary", {
+ *     name: "my-region-hyperdisk",
+ *     type: "hyperdisk-balanced-high-availability",
+ *     region: "us-central1",
+ *     replicaZones: [
+ *         "us-central1-a",
+ *         "us-central1-f",
+ *     ],
+ *     accessMode: "READ_WRITE_MANY",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -182,6 +199,15 @@ export class RegionDisk extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegionDisk.__pulumiType;
     }
 
+    /**
+     * The access mode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     * The AccessMode is only valid for Hyperdisk disk types.
+     */
+    public readonly accessMode!: pulumi.Output<string>;
     /**
      * A nested object resource.
      * Structure is documented below.
@@ -384,6 +410,7 @@ export class RegionDisk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionDiskState | undefined;
+            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
             resourceInputs["asyncPrimaryDisk"] = state ? state.asyncPrimaryDisk : undefined;
             resourceInputs["createSnapshotBeforeDestroy"] = state ? state.createSnapshotBeforeDestroy : undefined;
             resourceInputs["createSnapshotBeforeDestroyPrefix"] = state ? state.createSnapshotBeforeDestroyPrefix : undefined;
@@ -419,6 +446,7 @@ export class RegionDisk extends pulumi.CustomResource {
             if ((!args || args.replicaZones === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'replicaZones'");
             }
+            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
             resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["createSnapshotBeforeDestroy"] = args ? args.createSnapshotBeforeDestroy : undefined;
             resourceInputs["createSnapshotBeforeDestroyPrefix"] = args ? args.createSnapshotBeforeDestroyPrefix : undefined;
@@ -461,6 +489,15 @@ export class RegionDisk extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegionDisk resources.
  */
 export interface RegionDiskState {
+    /**
+     * The access mode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     * The AccessMode is only valid for Hyperdisk disk types.
+     */
+    accessMode?: pulumi.Input<string>;
     /**
      * A nested object resource.
      * Structure is documented below.
@@ -655,6 +692,15 @@ export interface RegionDiskState {
  * The set of arguments for constructing a RegionDisk resource.
  */
 export interface RegionDiskArgs {
+    /**
+     * The access mode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     * The AccessMode is only valid for Hyperdisk disk types.
+     */
+    accessMode?: pulumi.Input<string>;
     /**
      * A nested object resource.
      * Structure is documented below.

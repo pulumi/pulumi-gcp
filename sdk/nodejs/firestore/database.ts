@@ -256,9 +256,6 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly databaseEdition!: pulumi.Output<string>;
     public readonly deleteProtectionState!: pulumi.Output<string>;
-    /**
-     * @deprecated `deletionPolicy` is deprecated and will be removed in a future major release. Use `deleteProtectionState` instead.
-     */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
@@ -428,9 +425,6 @@ export interface DatabaseState {
      */
     databaseEdition?: pulumi.Input<string>;
     deleteProtectionState?: pulumi.Input<string>;
-    /**
-     * @deprecated `deletionPolicy` is deprecated and will be removed in a future major release. Use `deleteProtectionState` instead.
-     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
@@ -534,9 +528,6 @@ export interface DatabaseArgs {
      */
     databaseEdition?: pulumi.Input<string>;
     deleteProtectionState?: pulumi.Input<string>;
-    /**
-     * @deprecated `deletionPolicy` is deprecated and will be removed in a future major release. Use `deleteProtectionState` instead.
-     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The location of the database. Available locations are listed at

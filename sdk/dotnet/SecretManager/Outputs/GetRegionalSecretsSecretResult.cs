@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.SecretManager.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionalSecretsSecretCustomerManagedEncryptionResult> CustomerManagedEncryptions;
+        public readonly bool DeletionProtection;
         public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
@@ -89,6 +90,8 @@ namespace Pulumi.Gcp.SecretManager.Outputs
 
             ImmutableArray<Outputs.GetRegionalSecretsSecretCustomerManagedEncryptionResult> customerManagedEncryptions,
 
+            bool deletionProtection,
+
             ImmutableDictionary<string, string> effectiveAnnotations,
 
             ImmutableDictionary<string, string> effectiveLabels,
@@ -120,6 +123,7 @@ namespace Pulumi.Gcp.SecretManager.Outputs
             Annotations = annotations;
             CreateTime = createTime;
             CustomerManagedEncryptions = customerManagedEncryptions;
+            DeletionProtection = deletionProtection;
             EffectiveAnnotations = effectiveAnnotations;
             EffectiveLabels = effectiveLabels;
             ExpireTime = expireTime;

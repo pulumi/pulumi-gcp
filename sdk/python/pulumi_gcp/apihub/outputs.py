@@ -21,6 +21,15 @@ __all__ = [
     'CurationEndpoint',
     'CurationEndpointApplicationIntegrationEndpointDetails',
     'CurationPluginInstanceAction',
+    'PluginActionsConfig',
+    'PluginConfigTemplate',
+    'PluginConfigTemplateAdditionalConfigTemplate',
+    'PluginConfigTemplateAdditionalConfigTemplateEnumOption',
+    'PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption',
+    'PluginConfigTemplateAuthConfigTemplate',
+    'PluginConfigTemplateAuthConfigTemplateServiceAccount',
+    'PluginDocumentation',
+    'PluginHostingService',
     'PluginInstanceAction',
     'PluginInstanceActionCurationConfig',
     'PluginInstanceActionCurationConfigCustomCuration',
@@ -299,6 +308,564 @@ class CurationPluginInstanceAction(dict):
         `projects/{project}/locations/{locati on}/plugins/{plugin}/instances/{instance}`
         """
         return pulumi.get(self, "plugin_instance")
+
+
+@pulumi.output_type
+class PluginActionsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "triggerMode":
+            suggest = "trigger_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginActionsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginActionsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginActionsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 display_name: builtins.str,
+                 id: builtins.str,
+                 trigger_mode: builtins.str):
+        """
+        :param builtins.str description: The description of the operation performed by the action.
+        :param builtins.str display_name: The display name of the action.
+        :param builtins.str id: The id of the action.
+        :param builtins.str trigger_mode: The trigger mode supported by the action.
+               Possible values:
+               TRIGGER_MODE_UNSPECIFIED
+               API_HUB_ON_DEMAND_TRIGGER
+               API_HUB_SCHEDULE_TRIGGER
+               NON_API_HUB_MANAGED
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "trigger_mode", trigger_mode)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        """
+        The description of the operation performed by the action.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> builtins.str:
+        """
+        The display name of the action.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        The id of the action.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="triggerMode")
+    def trigger_mode(self) -> builtins.str:
+        """
+        The trigger mode supported by the action.
+        Possible values:
+        TRIGGER_MODE_UNSPECIFIED
+        API_HUB_ON_DEMAND_TRIGGER
+        API_HUB_SCHEDULE_TRIGGER
+        NON_API_HUB_MANAGED
+        """
+        return pulumi.get(self, "trigger_mode")
+
+
+@pulumi.output_type
+class PluginConfigTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalConfigTemplates":
+            suggest = "additional_config_templates"
+        elif key == "authConfigTemplate":
+            suggest = "auth_config_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginConfigTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginConfigTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginConfigTemplate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_config_templates: Optional[Sequence['outputs.PluginConfigTemplateAdditionalConfigTemplate']] = None,
+                 auth_config_template: Optional['outputs.PluginConfigTemplateAuthConfigTemplate'] = None):
+        """
+        :param Sequence['PluginConfigTemplateAdditionalConfigTemplateArgs'] additional_config_templates: The list of additional configuration variables for the plugin's
+               configuration.
+               Structure is documented below.
+        :param 'PluginConfigTemplateAuthConfigTemplateArgs' auth_config_template: AuthConfigTemplate represents the authentication template for a plugin.
+               Structure is documented below.
+        """
+        if additional_config_templates is not None:
+            pulumi.set(__self__, "additional_config_templates", additional_config_templates)
+        if auth_config_template is not None:
+            pulumi.set(__self__, "auth_config_template", auth_config_template)
+
+    @property
+    @pulumi.getter(name="additionalConfigTemplates")
+    def additional_config_templates(self) -> Optional[Sequence['outputs.PluginConfigTemplateAdditionalConfigTemplate']]:
+        """
+        The list of additional configuration variables for the plugin's
+        configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_config_templates")
+
+    @property
+    @pulumi.getter(name="authConfigTemplate")
+    def auth_config_template(self) -> Optional['outputs.PluginConfigTemplateAuthConfigTemplate']:
+        """
+        AuthConfigTemplate represents the authentication template for a plugin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auth_config_template")
+
+
+@pulumi.output_type
+class PluginConfigTemplateAdditionalConfigTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueType":
+            suggest = "value_type"
+        elif key == "enumOptions":
+            suggest = "enum_options"
+        elif key == "multiSelectOptions":
+            suggest = "multi_select_options"
+        elif key == "validationRegex":
+            suggest = "validation_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginConfigTemplateAdditionalConfigTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginConfigTemplateAdditionalConfigTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginConfigTemplateAdditionalConfigTemplate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: builtins.str,
+                 value_type: builtins.str,
+                 description: Optional[builtins.str] = None,
+                 enum_options: Optional[Sequence['outputs.PluginConfigTemplateAdditionalConfigTemplateEnumOption']] = None,
+                 multi_select_options: Optional[Sequence['outputs.PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption']] = None,
+                 required: Optional[builtins.bool] = None,
+                 validation_regex: Optional[builtins.str] = None):
+        """
+        :param builtins.str id: ID of the config variable. Must be unique within the configuration.
+        :param builtins.str value_type: Type of the parameter: string, int, bool etc.
+               Possible values:
+               VALUE_TYPE_UNSPECIFIED
+               STRING
+               INT
+               BOOL
+               SECRET
+               ENUM
+               MULTI_SELECT
+               MULTI_STRING
+               MULTI_INT
+        :param builtins.str description: Description.
+        :param Sequence['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs'] enum_options: Enum options. To be populated if `ValueType` is `ENUM`.
+               Structure is documented below.
+        :param Sequence['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs'] multi_select_options: Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
+               Structure is documented below.
+        :param builtins.bool required: Flag represents that this `ConfigVariable` must be provided for a
+               PluginInstance.
+        :param builtins.str validation_regex: Regular expression in RE2 syntax used for validating the `value` of a
+               `ConfigVariable`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "value_type", value_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enum_options is not None:
+            pulumi.set(__self__, "enum_options", enum_options)
+        if multi_select_options is not None:
+            pulumi.set(__self__, "multi_select_options", multi_select_options)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if validation_regex is not None:
+            pulumi.set(__self__, "validation_regex", validation_regex)
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        ID of the config variable. Must be unique within the configuration.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> builtins.str:
+        """
+        Type of the parameter: string, int, bool etc.
+        Possible values:
+        VALUE_TYPE_UNSPECIFIED
+        STRING
+        INT
+        BOOL
+        SECRET
+        ENUM
+        MULTI_SELECT
+        MULTI_STRING
+        MULTI_INT
+        """
+        return pulumi.get(self, "value_type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        """
+        Description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enumOptions")
+    def enum_options(self) -> Optional[Sequence['outputs.PluginConfigTemplateAdditionalConfigTemplateEnumOption']]:
+        """
+        Enum options. To be populated if `ValueType` is `ENUM`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "enum_options")
+
+    @property
+    @pulumi.getter(name="multiSelectOptions")
+    def multi_select_options(self) -> Optional[Sequence['outputs.PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption']]:
+        """
+        Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "multi_select_options")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[builtins.bool]:
+        """
+        Flag represents that this `ConfigVariable` must be provided for a
+        PluginInstance.
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter(name="validationRegex")
+    def validation_regex(self) -> Optional[builtins.str]:
+        """
+        Regular expression in RE2 syntax used for validating the `value` of a
+        `ConfigVariable`.
+        """
+        return pulumi.get(self, "validation_regex")
+
+
+@pulumi.output_type
+class PluginConfigTemplateAdditionalConfigTemplateEnumOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginConfigTemplateAdditionalConfigTemplateEnumOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginConfigTemplateAdditionalConfigTemplateEnumOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginConfigTemplateAdditionalConfigTemplateEnumOption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: builtins.str,
+                 id: builtins.str,
+                 description: Optional[builtins.str] = None):
+        """
+        :param builtins.str display_name: Display name of the option.
+        :param builtins.str id: Id of the option.
+        :param builtins.str description: Description of the option.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> builtins.str:
+        """
+        Display name of the option.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        Id of the option.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        """
+        Description of the option.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: builtins.str,
+                 id: builtins.str,
+                 description: Optional[builtins.str] = None):
+        """
+        :param builtins.str display_name: Display name of the option.
+        :param builtins.str id: Id of the option.
+        :param builtins.str description: Description of the option.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> builtins.str:
+        """
+        Display name of the option.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        Id of the option.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        """
+        Description of the option.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class PluginConfigTemplateAuthConfigTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "supportedAuthTypes":
+            suggest = "supported_auth_types"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginConfigTemplateAuthConfigTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginConfigTemplateAuthConfigTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginConfigTemplateAuthConfigTemplate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 supported_auth_types: Sequence[builtins.str],
+                 service_account: Optional['outputs.PluginConfigTemplateAuthConfigTemplateServiceAccount'] = None):
+        """
+        :param Sequence[builtins.str] supported_auth_types: The list of authentication types supported by the plugin.
+        :param 'PluginConfigTemplateAuthConfigTemplateServiceAccountArgs' service_account: Config for Google service account authentication.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "supported_auth_types", supported_auth_types)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="supportedAuthTypes")
+    def supported_auth_types(self) -> Sequence[builtins.str]:
+        """
+        The list of authentication types supported by the plugin.
+        """
+        return pulumi.get(self, "supported_auth_types")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional['outputs.PluginConfigTemplateAuthConfigTemplateServiceAccount']:
+        """
+        Config for Google service account authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_account")
+
+
+@pulumi.output_type
+class PluginConfigTemplateAuthConfigTemplateServiceAccount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginConfigTemplateAuthConfigTemplateServiceAccount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginConfigTemplateAuthConfigTemplateServiceAccount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginConfigTemplateAuthConfigTemplateServiceAccount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account: builtins.str):
+        """
+        :param builtins.str service_account: The service account to be used for authenticating request.
+               The `iam.serviceAccounts.getAccessToken` permission should be granted on
+               this service account to the impersonator service account.
+        """
+        pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> builtins.str:
+        """
+        The service account to be used for authenticating request.
+        The `iam.serviceAccounts.getAccessToken` permission should be granted on
+        this service account to the impersonator service account.
+        """
+        return pulumi.get(self, "service_account")
+
+
+@pulumi.output_type
+class PluginDocumentation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalUri":
+            suggest = "external_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginDocumentation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginDocumentation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginDocumentation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 external_uri: Optional[builtins.str] = None):
+        """
+        :param builtins.str external_uri: The uri of the externally hosted documentation.
+        """
+        if external_uri is not None:
+            pulumi.set(__self__, "external_uri", external_uri)
+
+    @property
+    @pulumi.getter(name="externalUri")
+    def external_uri(self) -> Optional[builtins.str]:
+        """
+        The uri of the externally hosted documentation.
+        """
+        return pulumi.get(self, "external_uri")
+
+
+@pulumi.output_type
+class PluginHostingService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceUri":
+            suggest = "service_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PluginHostingService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PluginHostingService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PluginHostingService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_uri: Optional[builtins.str] = None):
+        """
+        :param builtins.str service_uri: The URI of the service implemented by the plugin developer, used to
+               invoke the plugin's functionality. This information is only required for
+               user defined plugins.
+        """
+        if service_uri is not None:
+            pulumi.set(__self__, "service_uri", service_uri)
+
+    @property
+    @pulumi.getter(name="serviceUri")
+    def service_uri(self) -> Optional[builtins.str]:
+        """
+        The URI of the service implemented by the plugin developer, used to
+        invoke the plugin's functionality. This information is only required for
+        user defined plugins.
+        """
+        return pulumi.get(self, "service_uri")
 
 
 @pulumi.output_type

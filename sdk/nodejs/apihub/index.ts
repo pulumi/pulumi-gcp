@@ -20,6 +20,11 @@ export type HostProjectRegistration = import("./hostProjectRegistration").HostPr
 export const HostProjectRegistration: typeof import("./hostProjectRegistration").HostProjectRegistration = null as any;
 utilities.lazyLoad(exports, ["HostProjectRegistration"], () => require("./hostProjectRegistration"));
 
+export { PluginArgs, PluginState } from "./plugin";
+export type Plugin = import("./plugin").Plugin;
+export const Plugin: typeof import("./plugin").Plugin = null as any;
+utilities.lazyLoad(exports, ["Plugin"], () => require("./plugin"));
+
 export { PluginInstanceArgs, PluginInstanceState } from "./pluginInstance";
 export type PluginInstance = import("./pluginInstance").PluginInstance;
 export const PluginInstance: typeof import("./pluginInstance").PluginInstance = null as any;
@@ -36,6 +41,8 @@ const _module = {
                 return new Curation(name, <any>undefined, { urn })
             case "gcp:apihub/hostProjectRegistration:HostProjectRegistration":
                 return new HostProjectRegistration(name, <any>undefined, { urn })
+            case "gcp:apihub/plugin:Plugin":
+                return new Plugin(name, <any>undefined, { urn })
             case "gcp:apihub/pluginInstance:PluginInstance":
                 return new PluginInstance(name, <any>undefined, { urn })
             default:
@@ -46,4 +53,5 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "apihub/apiHubInstance", _module)
 pulumi.runtime.registerResourceModule("gcp", "apihub/curation", _module)
 pulumi.runtime.registerResourceModule("gcp", "apihub/hostProjectRegistration", _module)
+pulumi.runtime.registerResourceModule("gcp", "apihub/plugin", _module)
 pulumi.runtime.registerResourceModule("gcp", "apihub/pluginInstance", _module)

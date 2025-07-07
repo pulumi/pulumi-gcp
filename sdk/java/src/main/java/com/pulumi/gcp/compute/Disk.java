@@ -221,22 +221,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/disk:Disk")
 public class Disk extends com.pulumi.resources.CustomResource {
     /**
-     * The accessMode of the disk.
+     * The access mode of the disk.
      * For example:
-     * * READ_WRITE_SINGLE
-     * * READ_WRITE_MANY
-     * * READ_ONLY_SINGLE
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     *   The AccessMode is only valid for Hyperdisk disk types.
      * 
      */
     @Export(name="accessMode", refs={String.class}, tree="[0]")
     private Output<String> accessMode;
 
     /**
-     * @return The accessMode of the disk.
+     * @return The access mode of the disk.
      * For example:
-     * * READ_WRITE_SINGLE
-     * * READ_WRITE_MANY
-     * * READ_ONLY_SINGLE
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     *   The AccessMode is only valid for Hyperdisk disk types.
      * 
      */
     public Output<String> accessMode() {

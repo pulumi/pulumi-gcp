@@ -244,6 +244,7 @@ namespace Pulumi.Gcp.Workbench
     ///             Metadata = 
     ///             {
     ///                 { "terraform", "true" },
+    ///                 { "serial-port-logging-enable", "false" },
     ///             },
     ///             EnableIpForwarding = true,
     ///             Tags = new[]

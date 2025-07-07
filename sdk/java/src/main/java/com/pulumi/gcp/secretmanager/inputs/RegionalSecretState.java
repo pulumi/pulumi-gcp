@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.secretmanager.inputs.RegionalSecretCustomerManagedEncryptionArgs;
 import com.pulumi.gcp.secretmanager.inputs.RegionalSecretRotationArgs;
 import com.pulumi.gcp.secretmanager.inputs.RegionalSecretTopicArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -89,6 +90,13 @@ public final class RegionalSecretState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<RegionalSecretCustomerManagedEncryptionArgs>> customerManagedEncryption() {
         return Optional.ofNullable(this.customerManagedEncryption);
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     @Import(name="effectiveAnnotations")
@@ -367,6 +375,7 @@ public final class RegionalSecretState extends com.pulumi.resources.ResourceArgs
         this.annotations = $.annotations;
         this.createTime = $.createTime;
         this.customerManagedEncryption = $.customerManagedEncryption;
+        this.deletionProtection = $.deletionProtection;
         this.effectiveAnnotations = $.effectiveAnnotations;
         this.effectiveLabels = $.effectiveLabels;
         this.expireTime = $.expireTime;
@@ -488,6 +497,15 @@ public final class RegionalSecretState extends com.pulumi.resources.ResourceArgs
          */
         public Builder customerManagedEncryption(RegionalSecretCustomerManagedEncryptionArgs customerManagedEncryption) {
             return customerManagedEncryption(Output.of(customerManagedEncryption));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {

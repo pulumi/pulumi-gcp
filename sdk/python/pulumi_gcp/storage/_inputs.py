@@ -1082,7 +1082,15 @@ if not MYPY:
     class BucketIpFilterArgsDict(TypedDict):
         mode: pulumi.Input[builtins.str]
         """
-        The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+        The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
+        """
+        allow_all_service_agent_access: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
+        """
+        allow_cross_org_vpcs: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
         """
         public_network_source: NotRequired[pulumi.Input['BucketIpFilterPublicNetworkSourceArgsDict']]
         """
@@ -1099,14 +1107,22 @@ elif False:
 class BucketIpFilterArgs:
     def __init__(__self__, *,
                  mode: pulumi.Input[builtins.str],
+                 allow_all_service_agent_access: Optional[pulumi.Input[builtins.bool]] = None,
+                 allow_cross_org_vpcs: Optional[pulumi.Input[builtins.bool]] = None,
                  public_network_source: Optional[pulumi.Input['BucketIpFilterPublicNetworkSourceArgs']] = None,
                  vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgs']]]] = None):
         """
-        :param pulumi.Input[builtins.str] mode: The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+        :param pulumi.Input[builtins.str] mode: The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
+        :param pulumi.Input[builtins.bool] allow_all_service_agent_access: While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
+        :param pulumi.Input[builtins.bool] allow_cross_org_vpcs: While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
         :param pulumi.Input['BucketIpFilterPublicNetworkSourceArgs'] public_network_source: The public network IP address ranges that can access the bucket and its data. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgs']]] vpc_network_sources: The list of VPC networks that can access the bucket. Structure is documented below.
         """
         pulumi.set(__self__, "mode", mode)
+        if allow_all_service_agent_access is not None:
+            pulumi.set(__self__, "allow_all_service_agent_access", allow_all_service_agent_access)
+        if allow_cross_org_vpcs is not None:
+            pulumi.set(__self__, "allow_cross_org_vpcs", allow_cross_org_vpcs)
         if public_network_source is not None:
             pulumi.set(__self__, "public_network_source", public_network_source)
         if vpc_network_sources is not None:
@@ -1116,13 +1132,37 @@ class BucketIpFilterArgs:
     @pulumi.getter
     def mode(self) -> pulumi.Input[builtins.str]:
         """
-        The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+        The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
     def mode(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="allowAllServiceAgentAccess")
+    def allow_all_service_agent_access(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
+        """
+        return pulumi.get(self, "allow_all_service_agent_access")
+
+    @allow_all_service_agent_access.setter
+    def allow_all_service_agent_access(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "allow_all_service_agent_access", value)
+
+    @property
+    @pulumi.getter(name="allowCrossOrgVpcs")
+    def allow_cross_org_vpcs(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
+        """
+        return pulumi.get(self, "allow_cross_org_vpcs")
+
+    @allow_cross_org_vpcs.setter
+    def allow_cross_org_vpcs(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "allow_cross_org_vpcs", value)
 
     @property
     @pulumi.getter(name="publicNetworkSource")

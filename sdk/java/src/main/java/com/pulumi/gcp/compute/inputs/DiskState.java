@@ -26,22 +26,24 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     public static final DiskState Empty = new DiskState();
 
     /**
-     * The accessMode of the disk.
+     * The access mode of the disk.
      * For example:
-     * * READ_WRITE_SINGLE
-     * * READ_WRITE_MANY
-     * * READ_ONLY_SINGLE
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     *   The AccessMode is only valid for Hyperdisk disk types.
      * 
      */
     @Import(name="accessMode")
     private @Nullable Output<String> accessMode;
 
     /**
-     * @return The accessMode of the disk.
+     * @return The access mode of the disk.
      * For example:
-     * * READ_WRITE_SINGLE
-     * * READ_WRITE_MANY
-     * * READ_ONLY_SINGLE
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     *   The AccessMode is only valid for Hyperdisk disk types.
      * 
      */
     public Optional<Output<String>> accessMode() {
@@ -993,11 +995,12 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessMode The accessMode of the disk.
+         * @param accessMode The access mode of the disk.
          * For example:
-         * * READ_WRITE_SINGLE
-         * * READ_WRITE_MANY
-         * * READ_ONLY_SINGLE
+         * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+         * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+         * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+         *   The AccessMode is only valid for Hyperdisk disk types.
          * 
          * @return builder
          * 
@@ -1008,11 +1011,12 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessMode The accessMode of the disk.
+         * @param accessMode The access mode of the disk.
          * For example:
-         * * READ_WRITE_SINGLE
-         * * READ_WRITE_MANY
-         * * READ_ONLY_SINGLE
+         * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+         * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+         * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+         *   The AccessMode is only valid for Hyperdisk disk types.
          * 
          * @return builder
          * 

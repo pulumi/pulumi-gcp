@@ -54,6 +54,8 @@ class BackupScheduleEncryptionConfig(dict):
             suggest = "encryption_type"
         elif key == "kmsKeyName":
             suggest = "kms_key_name"
+        elif key == "kmsKeyNames":
+            suggest = "kms_key_names"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in BackupScheduleEncryptionConfig. Access the value via the '{suggest}' property getter instead.")
@@ -68,7 +70,8 @@ class BackupScheduleEncryptionConfig(dict):
 
     def __init__(__self__, *,
                  encryption_type: builtins.str,
-                 kms_key_name: Optional[builtins.str] = None):
+                 kms_key_name: Optional[builtins.str] = None,
+                 kms_key_names: Optional[Sequence[builtins.str]] = None):
         """
         :param builtins.str encryption_type: The encryption type of backups created by the backup schedule.
                Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
@@ -77,10 +80,14 @@ class BackupScheduleEncryptionConfig(dict):
                Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
         :param builtins.str kms_key_name: The resource name of the Cloud KMS key to use for encryption.
                Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+        :param Sequence[builtins.str] kms_key_names: Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+               in the same locations as the Spanner Database.
         """
         pulumi.set(__self__, "encryption_type", encryption_type)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_names is not None:
+            pulumi.set(__self__, "kms_key_names", kms_key_names)
 
     @property
     @pulumi.getter(name="encryptionType")
@@ -102,6 +109,15 @@ class BackupScheduleEncryptionConfig(dict):
         Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
         """
         return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyNames")
+    def kms_key_names(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+        in the same locations as the Spanner Database.
+        """
+        return pulumi.get(self, "kms_key_names")
 
 
 @pulumi.output_type

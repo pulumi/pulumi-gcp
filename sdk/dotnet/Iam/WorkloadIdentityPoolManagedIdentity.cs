@@ -72,6 +72,17 @@ namespace Pulumi.Gcp.Iam
     ///         WorkloadIdentityPoolManagedIdentityId = "example-managed-identity",
     ///         Description = "Example Managed Identity in a Workload Identity Pool Namespace",
     ///         Disabled = true,
+    ///         AttestationRules = new[]
+    ///         {
+    ///             new Gcp.Iam.Inputs.WorkloadIdentityPoolManagedIdentityAttestationRuleArgs
+    ///             {
+    ///                 GoogleCloudResource = "//compute.googleapis.com/projects/1111111111111/uid/zones/us-central1-a/instances/12345678",
+    ///             },
+    ///             new Gcp.Iam.Inputs.WorkloadIdentityPoolManagedIdentityAttestationRuleArgs
+    ///             {
+    ///                 GoogleCloudResource = "//run.googleapis.com/projects/1111111111111/name/locations/us-east1/services/my-service",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -104,6 +115,15 @@ namespace Pulumi.Gcp.Iam
     [GcpResourceType("gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity")]
     public partial class WorkloadIdentityPoolManagedIdentity : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+        /// defined under a managed identity, matching workloads may receive that identity. A maximum of
+        /// 50 AttestationRules can be set.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("attestationRules")]
+        public Output<ImmutableArray<Outputs.WorkloadIdentityPoolManagedIdentityAttestationRule>> AttestationRules { get; private set; } = null!;
+
         /// <summary>
         /// A description of the managed identity. Cannot exceed 256 characters.
         /// </summary>
@@ -223,6 +243,21 @@ namespace Pulumi.Gcp.Iam
 
     public sealed class WorkloadIdentityPoolManagedIdentityArgs : global::Pulumi.ResourceArgs
     {
+        [Input("attestationRules")]
+        private InputList<Inputs.WorkloadIdentityPoolManagedIdentityAttestationRuleArgs>? _attestationRules;
+
+        /// <summary>
+        /// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+        /// defined under a managed identity, matching workloads may receive that identity. A maximum of
+        /// 50 AttestationRules can be set.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkloadIdentityPoolManagedIdentityAttestationRuleArgs> AttestationRules
+        {
+            get => _attestationRules ?? (_attestationRules = new InputList<Inputs.WorkloadIdentityPoolManagedIdentityAttestationRuleArgs>());
+            set => _attestationRules = value;
+        }
+
         /// <summary>
         /// A description of the managed identity. Cannot exceed 256 characters.
         /// </summary>
@@ -286,6 +321,21 @@ namespace Pulumi.Gcp.Iam
 
     public sealed class WorkloadIdentityPoolManagedIdentityState : global::Pulumi.ResourceArgs
     {
+        [Input("attestationRules")]
+        private InputList<Inputs.WorkloadIdentityPoolManagedIdentityAttestationRuleGetArgs>? _attestationRules;
+
+        /// <summary>
+        /// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+        /// defined under a managed identity, matching workloads may receive that identity. A maximum of
+        /// 50 AttestationRules can be set.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkloadIdentityPoolManagedIdentityAttestationRuleGetArgs> AttestationRules
+        {
+            get => _attestationRules ?? (_attestationRules = new InputList<Inputs.WorkloadIdentityPoolManagedIdentityAttestationRuleGetArgs>());
+            set => _attestationRules = value;
+        }
+
         /// <summary>
         /// A description of the managed identity. Cannot exceed 256 characters.
         /// </summary>

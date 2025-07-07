@@ -7,12 +7,23 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.GetBucketIpFilterPublicNetworkSource;
 import com.pulumi.gcp.storage.outputs.GetBucketIpFilterVpcNetworkSource;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetBucketIpFilter {
+    /**
+     * @return Whether to allow all service agents to access the bucket regardless of the IP filter configuration.
+     * 
+     */
+    private Boolean allowAllServiceAgentAccess;
+    /**
+     * @return Whether to allow cross-org VPCs in the bucket&#39;s IP filter configuration.
+     * 
+     */
+    private Boolean allowCrossOrgVpcs;
     /**
      * @return The mode of the IP filter. Valid values are &#39;Enabled&#39; and &#39;Disabled&#39;.
      * 
@@ -30,6 +41,20 @@ public final class GetBucketIpFilter {
     private List<GetBucketIpFilterVpcNetworkSource> vpcNetworkSources;
 
     private GetBucketIpFilter() {}
+    /**
+     * @return Whether to allow all service agents to access the bucket regardless of the IP filter configuration.
+     * 
+     */
+    public Boolean allowAllServiceAgentAccess() {
+        return this.allowAllServiceAgentAccess;
+    }
+    /**
+     * @return Whether to allow cross-org VPCs in the bucket&#39;s IP filter configuration.
+     * 
+     */
+    public Boolean allowCrossOrgVpcs() {
+        return this.allowCrossOrgVpcs;
+    }
     /**
      * @return The mode of the IP filter. Valid values are &#39;Enabled&#39; and &#39;Disabled&#39;.
      * 
@@ -61,17 +86,37 @@ public final class GetBucketIpFilter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean allowAllServiceAgentAccess;
+        private Boolean allowCrossOrgVpcs;
         private String mode;
         private List<GetBucketIpFilterPublicNetworkSource> publicNetworkSources;
         private List<GetBucketIpFilterVpcNetworkSource> vpcNetworkSources;
         public Builder() {}
         public Builder(GetBucketIpFilter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowAllServiceAgentAccess = defaults.allowAllServiceAgentAccess;
+    	      this.allowCrossOrgVpcs = defaults.allowCrossOrgVpcs;
     	      this.mode = defaults.mode;
     	      this.publicNetworkSources = defaults.publicNetworkSources;
     	      this.vpcNetworkSources = defaults.vpcNetworkSources;
         }
 
+        @CustomType.Setter
+        public Builder allowAllServiceAgentAccess(Boolean allowAllServiceAgentAccess) {
+            if (allowAllServiceAgentAccess == null) {
+              throw new MissingRequiredPropertyException("GetBucketIpFilter", "allowAllServiceAgentAccess");
+            }
+            this.allowAllServiceAgentAccess = allowAllServiceAgentAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allowCrossOrgVpcs(Boolean allowCrossOrgVpcs) {
+            if (allowCrossOrgVpcs == null) {
+              throw new MissingRequiredPropertyException("GetBucketIpFilter", "allowCrossOrgVpcs");
+            }
+            this.allowCrossOrgVpcs = allowCrossOrgVpcs;
+            return this;
+        }
         @CustomType.Setter
         public Builder mode(String mode) {
             if (mode == null) {
@@ -104,6 +149,8 @@ public final class GetBucketIpFilter {
         }
         public GetBucketIpFilter build() {
             final var _resultValue = new GetBucketIpFilter();
+            _resultValue.allowAllServiceAgentAccess = allowAllServiceAgentAccess;
+            _resultValue.allowCrossOrgVpcs = allowCrossOrgVpcs;
             _resultValue.mode = mode;
             _resultValue.publicNetworkSources = publicNetworkSources;
             _resultValue.vpcNetworkSources = vpcNetworkSources;

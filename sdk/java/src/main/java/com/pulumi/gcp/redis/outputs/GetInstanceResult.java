@@ -31,6 +31,7 @@ public final class GetInstanceResult {
     private String customerManagedKey;
     private String displayName;
     private Map<String,String> effectiveLabels;
+    private String effectiveReservedIpRange;
     private String host;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -93,6 +94,9 @@ public final class GetInstanceResult {
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    public String effectiveReservedIpRange() {
+        return this.effectiveReservedIpRange;
     }
     public String host() {
         return this.host;
@@ -199,6 +203,7 @@ public final class GetInstanceResult {
         private String customerManagedKey;
         private String displayName;
         private Map<String,String> effectiveLabels;
+        private String effectiveReservedIpRange;
         private String host;
         private String id;
         private Map<String,String> labels;
@@ -239,6 +244,7 @@ public final class GetInstanceResult {
     	      this.customerManagedKey = defaults.customerManagedKey;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
+    	      this.effectiveReservedIpRange = defaults.effectiveReservedIpRange;
     	      this.host = defaults.host;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -346,6 +352,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "effectiveLabels");
             }
             this.effectiveLabels = effectiveLabels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveReservedIpRange(String effectiveReservedIpRange) {
+            if (effectiveReservedIpRange == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "effectiveReservedIpRange");
+            }
+            this.effectiveReservedIpRange = effectiveReservedIpRange;
             return this;
         }
         @CustomType.Setter
@@ -587,6 +601,7 @@ public final class GetInstanceResult {
             _resultValue.customerManagedKey = customerManagedKey;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.effectiveReservedIpRange = effectiveReservedIpRange;
             _resultValue.host = host;
             _resultValue.id = id;
             _resultValue.labels = labels;

@@ -30,6 +30,7 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/tags"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -107,6 +108,26 @@ import (
 //						},
 //					},
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicKey, err := tags.NewTagKey(ctx, "basic_key", &tags.TagKeyArgs{
+//				Description: pulumi.String("For keyname resources."),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				Purpose:     pulumi.String("GCE_FIREWALL"),
+//				ShortName:   pulumi.String("tag-key"),
+//				PurposeData: pulumi.StringMap{
+//					"organization": pulumi.String("auto"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
+//				Description: pulumi.String("For valuename resources."),
+//				Parent:      basicKey.ID(),
+//				ShortName:   pulumi.String("tag-value"),
 //			})
 //			if err != nil {
 //				return err
@@ -193,6 +214,104 @@ import (
 //	}
 //
 // ```
+// ### Firewall Policy Rule Secure Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
+//				DisplayName:        pulumi.String("folder"),
+//				Parent:             pulumi.String("organizations/123456789"),
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
+//				Parent:      folder.ID(),
+//				ShortName:   pulumi.String("fw-policy"),
+//				Description: pulumi.String("Resource created for Terraform acceptance testing"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicKey, err := tags.NewTagKey(ctx, "basic_key", &tags.TagKeyArgs{
+//				Description: pulumi.String("For keyname resources."),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				Purpose:     pulumi.String("GCE_FIREWALL"),
+//				ShortName:   pulumi.String("tag-key"),
+//				PurposeData: pulumi.StringMap{
+//					"organization": pulumi.String("auto"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
+//				Description: pulumi.String("For valuename resources."),
+//				Parent:      basicKey.ID(),
+//				ShortName:   pulumi.String("tag-value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewallPolicyRule(ctx, "primary", &compute.FirewallPolicyRuleArgs{
+//				FirewallPolicy: _default.Name,
+//				Description:    pulumi.String("Resource created for Terraform acceptance testing"),
+//				Priority:       pulumi.Int(9000),
+//				EnableLogging:  pulumi.Bool(true),
+//				Action:         pulumi.String("allow"),
+//				Direction:      pulumi.String("INGRESS"),
+//				Disabled:       pulumi.Bool(false),
+//				TargetSecureTags: compute.FirewallPolicyRuleTargetSecureTagArray{
+//					&compute.FirewallPolicyRuleTargetSecureTagArgs{
+//						Name: basicValue.ID(),
+//					},
+//				},
+//				Match: &compute.FirewallPolicyRuleMatchArgs{
+//					SrcIpRanges: pulumi.StringArray{
+//						pulumi.String("11.100.0.1/32"),
+//					},
+//					SrcSecureTags: compute.FirewallPolicyRuleMatchSrcSecureTagArray{
+//						&compute.FirewallPolicyRuleMatchSrcSecureTagArgs{
+//							Name: basicValue.ID(),
+//						},
+//					},
+//					Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
+//						&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
+//							IpProtocol: pulumi.String("tcp"),
+//							Ports: pulumi.StringArray{
+//								pulumi.String("8080"),
+//							},
+//						},
+//						&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
+//							IpProtocol: pulumi.String("udp"),
+//							Ports: pulumi.StringArray{
+//								pulumi.String("22"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -250,6 +369,12 @@ type FirewallPolicyRule struct {
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayOutput `pulumi:"targetResources"`
+	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+	// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+	// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+	// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+	// applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+	TargetSecureTags FirewallPolicyRuleTargetSecureTagArrayOutput `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayOutput `pulumi:"targetServiceAccounts"`
 	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
@@ -338,6 +463,12 @@ type firewallPolicyRuleState struct {
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
+	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+	// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+	// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+	// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+	// applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+	TargetSecureTags []FirewallPolicyRuleTargetSecureTag `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
 	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
@@ -382,6 +513,12 @@ type FirewallPolicyRuleState struct {
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput
+	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+	// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+	// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+	// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+	// applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+	TargetSecureTags FirewallPolicyRuleTargetSecureTagArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
 	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
@@ -424,6 +561,12 @@ type firewallPolicyRuleArgs struct {
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
+	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+	// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+	// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+	// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+	// applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+	TargetSecureTags []FirewallPolicyRuleTargetSecureTag `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
 	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
@@ -463,6 +606,12 @@ type FirewallPolicyRuleArgs struct {
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput
+	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+	// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+	// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+	// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+	// applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+	TargetSecureTags FirewallPolicyRuleTargetSecureTagArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
 	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
@@ -630,6 +779,15 @@ func (o FirewallPolicyRuleOutput) SecurityProfileGroup() pulumi.StringPtrOutput 
 // this rule. If this field is left blank, all VMs within the organization will receive the rule.
 func (o FirewallPolicyRuleOutput) TargetResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringArrayOutput { return v.TargetResources }).(pulumi.StringArrayOutput)
+}
+
+// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+// applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+func (o FirewallPolicyRuleOutput) TargetSecureTags() FirewallPolicyRuleTargetSecureTagArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicyRule) FirewallPolicyRuleTargetSecureTagArrayOutput { return v.TargetSecureTags }).(FirewallPolicyRuleTargetSecureTagArrayOutput)
 }
 
 // A list of service accounts indicating the sets of instances that are applied with this rule.

@@ -252,6 +252,10 @@ type NetworkFirewallPolicyWithRules struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NetworkFirewallPolicyId pulumi.StringOutput `pulumi:"networkFirewallPolicyId"`
+	// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+	// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+	// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+	PolicyType pulumi.StringOutput `pulumi:"policyType"`
 	// A list of firewall policy pre-defined rules.
 	// Structure is documented below.
 	PredefinedRules NetworkFirewallPolicyWithRulesPredefinedRuleArrayOutput `pulumi:"predefinedRules"`
@@ -316,6 +320,10 @@ type networkFirewallPolicyWithRulesState struct {
 	Name *string `pulumi:"name"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NetworkFirewallPolicyId *string `pulumi:"networkFirewallPolicyId"`
+	// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+	// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+	// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+	PolicyType *string `pulumi:"policyType"`
 	// A list of firewall policy pre-defined rules.
 	// Structure is documented below.
 	PredefinedRules []NetworkFirewallPolicyWithRulesPredefinedRule `pulumi:"predefinedRules"`
@@ -348,6 +356,10 @@ type NetworkFirewallPolicyWithRulesState struct {
 	Name pulumi.StringPtrInput
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NetworkFirewallPolicyId pulumi.StringPtrInput
+	// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+	// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+	// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+	PolicyType pulumi.StringPtrInput
 	// A list of firewall policy pre-defined rules.
 	// Structure is documented below.
 	PredefinedRules NetworkFirewallPolicyWithRulesPredefinedRuleArrayInput
@@ -377,8 +389,12 @@ type networkFirewallPolicyWithRulesArgs struct {
 	// the name must be 1-63 characters long and match the regular expression a-z?
 	// which means the first character must be a lowercase letter, and all following characters must be a dash,
 	// lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Name *string `pulumi:"name"`
+	// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+	// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+	// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+	PolicyType *string `pulumi:"policyType"`
+	Project    *string `pulumi:"project"`
 	// A list of firewall policy rules.
 	// Structure is documented below.
 	Rules []NetworkFirewallPolicyWithRulesRule `pulumi:"rules"`
@@ -395,8 +411,12 @@ type NetworkFirewallPolicyWithRulesArgs struct {
 	// the name must be 1-63 characters long and match the regular expression a-z?
 	// which means the first character must be a lowercase letter, and all following characters must be a dash,
 	// lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+	// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+	// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+	PolicyType pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
 	// A list of firewall policy rules.
 	// Structure is documented below.
 	Rules NetworkFirewallPolicyWithRulesRuleArrayInput
@@ -518,6 +538,13 @@ func (o NetworkFirewallPolicyWithRulesOutput) Name() pulumi.StringOutput {
 // The unique identifier for the resource. This identifier is defined by the server.
 func (o NetworkFirewallPolicyWithRulesOutput) NetworkFirewallPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyWithRules) pulumi.StringOutput { return v.NetworkFirewallPolicyId }).(pulumi.StringOutput)
+}
+
+// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+// associated with a network only if the network has the matching policyType in its network profile. Different policy types
+// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY"]
+func (o NetworkFirewallPolicyWithRulesOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkFirewallPolicyWithRules) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }
 
 // A list of firewall policy pre-defined rules.

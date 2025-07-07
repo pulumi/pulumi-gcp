@@ -27,7 +27,10 @@ class GetAutokeyConfigResult:
     """
     A collection of values returned by getAutokeyConfig.
     """
-    def __init__(__self__, folder=None, id=None, key_project=None):
+    def __init__(__self__, etag=None, folder=None, id=None, key_project=None):
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if folder and not isinstance(folder, str):
             raise TypeError("Expected argument 'folder' to be a str")
         pulumi.set(__self__, "folder", folder)
@@ -37,6 +40,11 @@ class GetAutokeyConfigResult:
         if key_project and not isinstance(key_project, str):
             raise TypeError("Expected argument 'key_project' to be a str")
         pulumi.set(__self__, "key_project", key_project)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> builtins.str:
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
@@ -66,6 +74,7 @@ class AwaitableGetAutokeyConfigResult(GetAutokeyConfigResult):
         if False:
             yield self
         return GetAutokeyConfigResult(
+            etag=self.etag,
             folder=self.folder,
             id=self.id,
             key_project=self.key_project)
@@ -93,6 +102,7 @@ def get_autokey_config(folder: Optional[builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getAutokeyConfig:getAutokeyConfig', __args__, opts=opts, typ=GetAutokeyConfigResult).value
 
     return AwaitableGetAutokeyConfigResult(
+        etag=pulumi.get(__ret__, 'etag'),
         folder=pulumi.get(__ret__, 'folder'),
         id=pulumi.get(__ret__, 'id'),
         key_project=pulumi.get(__ret__, 'key_project'))
@@ -117,6 +127,7 @@ def get_autokey_config_output(folder: Optional[pulumi.Input[builtins.str]] = Non
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:kms/getAutokeyConfig:getAutokeyConfig', __args__, opts=opts, typ=GetAutokeyConfigResult)
     return __ret__.apply(lambda __response__: GetAutokeyConfigResult(
+        etag=pulumi.get(__response__, 'etag'),
         folder=pulumi.get(__response__, 'folder'),
         id=pulumi.get(__response__, 'id'),
         key_project=pulumi.get(__response__, 'key_project')))

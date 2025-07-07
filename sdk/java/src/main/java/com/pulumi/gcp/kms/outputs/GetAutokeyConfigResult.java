@@ -10,6 +10,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAutokeyConfigResult {
+    private String etag;
     private String folder;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,6 +24,9 @@ public final class GetAutokeyConfigResult {
     private String keyProject;
 
     private GetAutokeyConfigResult() {}
+    public String etag() {
+        return this.etag;
+    }
     public String folder() {
         return this.folder;
     }
@@ -50,17 +54,27 @@ public final class GetAutokeyConfigResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String etag;
         private String folder;
         private String id;
         private String keyProject;
         public Builder() {}
         public Builder(GetAutokeyConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.etag = defaults.etag;
     	      this.folder = defaults.folder;
     	      this.id = defaults.id;
     	      this.keyProject = defaults.keyProject;
         }
 
+        @CustomType.Setter
+        public Builder etag(String etag) {
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetAutokeyConfigResult", "etag");
+            }
+            this.etag = etag;
+            return this;
+        }
         @CustomType.Setter
         public Builder folder(String folder) {
             if (folder == null) {
@@ -87,6 +101,7 @@ public final class GetAutokeyConfigResult {
         }
         public GetAutokeyConfigResult build() {
             final var _resultValue = new GetAutokeyConfigResult();
+            _resultValue.etag = etag;
             _resultValue.folder = folder;
             _resultValue.id = id;
             _resultValue.keyProject = keyProject;

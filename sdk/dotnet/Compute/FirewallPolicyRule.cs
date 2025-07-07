@@ -111,6 +111,25 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
+    ///     var basicKey = new Gcp.Tags.TagKey("basic_key", new()
+    ///     {
+    ///         Description = "For keyname resources.",
+    ///         Parent = "organizations/123456789",
+    ///         Purpose = "GCE_FIREWALL",
+    ///         ShortName = "tag-key",
+    ///         PurposeData = 
+    ///         {
+    ///             { "organization", "auto" },
+    ///         },
+    ///     });
+    /// 
+    ///     var basicValue = new Gcp.Tags.TagValue("basic_value", new()
+    ///     {
+    ///         Description = "For valuename resources.",
+    ///         Parent = basicKey.Id,
+    ///         ShortName = "tag-value",
+    ///     });
+    /// 
     /// });
     /// ```
     /// ### Firewall Policy Rule Network Scope
@@ -161,6 +180,102 @@ namespace Pulumi.Gcp.Compute
     ///             SrcNetworks = new[]
     ///             {
     ///                 network.Id,
+    ///             },
+    ///             Layer4Configs = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "tcp",
+    ///                     Ports = new[]
+    ///                     {
+    ///                         "8080",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "udp",
+    ///                     Ports = new[]
+    ///                     {
+    ///                         "22",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firewall Policy Rule Secure Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Organizations.Folder("folder", new()
+    ///     {
+    ///         DisplayName = "folder",
+    ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
+    ///     {
+    ///         Parent = folder.Id,
+    ///         ShortName = "fw-policy",
+    ///         Description = "Resource created for Terraform acceptance testing",
+    ///     });
+    /// 
+    ///     var basicKey = new Gcp.Tags.TagKey("basic_key", new()
+    ///     {
+    ///         Description = "For keyname resources.",
+    ///         Parent = "organizations/123456789",
+    ///         Purpose = "GCE_FIREWALL",
+    ///         ShortName = "tag-key",
+    ///         PurposeData = 
+    ///         {
+    ///             { "organization", "auto" },
+    ///         },
+    ///     });
+    /// 
+    ///     var basicValue = new Gcp.Tags.TagValue("basic_value", new()
+    ///     {
+    ///         Description = "For valuename resources.",
+    ///         Parent = basicKey.Id,
+    ///         ShortName = "tag-value",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Compute.FirewallPolicyRule("primary", new()
+    ///     {
+    ///         FirewallPolicy = @default.Name,
+    ///         Description = "Resource created for Terraform acceptance testing",
+    ///         Priority = 9000,
+    ///         EnableLogging = true,
+    ///         Action = "allow",
+    ///         Direction = "INGRESS",
+    ///         Disabled = false,
+    ///         TargetSecureTags = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallPolicyRuleTargetSecureTagArgs
+    ///             {
+    ///                 Name = basicValue.Id,
+    ///             },
+    ///         },
+    ///         Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
+    ///         {
+    ///             SrcIpRanges = new[]
+    ///             {
+    ///                 "11.100.0.1/32",
+    ///             },
+    ///             SrcSecureTags = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchSrcSecureTagArgs
+    ///                 {
+    ///                     Name = basicValue.Id,
+    ///                 },
     ///             },
     ///             Layer4Configs = new[]
     ///             {
@@ -297,6 +412,16 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> TargetResources { get; private set; } = null!;
 
         /// <summary>
+        /// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+        /// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+        /// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+        /// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+        /// applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        /// </summary>
+        [Output("targetSecureTags")]
+        public Output<ImmutableArray<Outputs.FirewallPolicyRuleTargetSecureTag>> TargetSecureTags { get; private set; } = null!;
+
+        /// <summary>
         /// A list of service accounts indicating the sets of instances that are applied with this rule.
         /// </summary>
         [Output("targetServiceAccounts")]
@@ -431,6 +556,22 @@ namespace Pulumi.Gcp.Compute
             set => _targetResources = value;
         }
 
+        [Input("targetSecureTags")]
+        private InputList<Inputs.FirewallPolicyRuleTargetSecureTagArgs>? _targetSecureTags;
+
+        /// <summary>
+        /// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+        /// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+        /// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+        /// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+        /// applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        /// </summary>
+        public InputList<Inputs.FirewallPolicyRuleTargetSecureTagArgs> TargetSecureTags
+        {
+            get => _targetSecureTags ?? (_targetSecureTags = new InputList<Inputs.FirewallPolicyRuleTargetSecureTagArgs>());
+            set => _targetSecureTags = value;
+        }
+
         [Input("targetServiceAccounts")]
         private InputList<string>? _targetServiceAccounts;
 
@@ -550,6 +691,22 @@ namespace Pulumi.Gcp.Compute
         {
             get => _targetResources ?? (_targetResources = new InputList<string>());
             set => _targetResources = value;
+        }
+
+        [Input("targetSecureTags")]
+        private InputList<Inputs.FirewallPolicyRuleTargetSecureTagGetArgs>? _targetSecureTags;
+
+        /// <summary>
+        /// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+        /// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+        /// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+        /// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+        /// applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        /// </summary>
+        public InputList<Inputs.FirewallPolicyRuleTargetSecureTagGetArgs> TargetSecureTags
+        {
+            get => _targetSecureTags ?? (_targetSecureTags = new InputList<Inputs.FirewallPolicyRuleTargetSecureTagGetArgs>());
+            set => _targetSecureTags = value;
         }
 
         [Input("targetServiceAccounts")]

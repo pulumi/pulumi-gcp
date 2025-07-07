@@ -550,7 +550,6 @@ import * as utilities from "../utilities";
  *         imageUri: "us-docker.pkg.dev/cloudrun/container/hello",
  *         baseImage: "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
  *         enableAutomaticUpdates: true,
- *         workerPool: "worker-pool",
  *         environmentVariables: {
  *             FOO_KEY: "FOO_VALUE",
  *             BAR_KEY: "BAR_VALUE",

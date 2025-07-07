@@ -125,14 +125,11 @@ export class MetricDescriptor extends pulumi.CustomResource {
     /**
      * A detailed description of the metric, which can be used in documentation.
      */
-    public readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-     *
-     *
-     * - - -
      */
-    public readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
      * Structure is documented below.
@@ -193,6 +190,9 @@ export class MetricDescriptor extends pulumi.CustomResource {
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+     *
+     *
+     * - - -
      */
     public readonly valueType!: pulumi.Output<string>;
 
@@ -223,12 +223,6 @@ export class MetricDescriptor extends pulumi.CustomResource {
             resourceInputs["valueType"] = state ? state.valueType : undefined;
         } else {
             const args = argsOrState as MetricDescriptorArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'description'");
-            }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'displayName'");
-            }
             if ((!args || args.metricKind === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metricKind'");
             }
@@ -266,9 +260,6 @@ export interface MetricDescriptorState {
     description?: pulumi.Input<string>;
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -331,6 +322,9 @@ export interface MetricDescriptorState {
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+     *
+     *
+     * - - -
      */
     valueType?: pulumi.Input<string>;
 }
@@ -342,14 +336,11 @@ export interface MetricDescriptorArgs {
     /**
      * A detailed description of the metric, which can be used in documentation.
      */
-    description: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-     *
-     *
-     * - - -
      */
-    displayName: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
      * Structure is documented below.
@@ -402,6 +393,9 @@ export interface MetricDescriptorArgs {
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+     *
+     *
+     * - - -
      */
     valueType: pulumi.Input<string>;
 }

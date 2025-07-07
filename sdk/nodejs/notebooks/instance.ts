@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     machineType: "e2-medium",
  *     vmImage: {
  *         project: "deeplearning-platform-release",
- *         imageFamily: "tf-latest-cpu",
+ *         imageFamily: "pytorch-latest-cu124",
  *     },
  * });
  * ```
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     machineType: "e2-medium",
  *     vmImage: {
  *         project: "deeplearning-platform-release",
- *         imageFamily: "tf-latest-cpu",
+ *         imageFamily: "pytorch-latest-cu124",
  *     },
  *     desiredState: "STOPPED",
  * });
@@ -92,7 +92,7 @@ import * as utilities from "../utilities";
  *     },
  *     vmImage: {
  *         project: "deeplearning-platform-release",
- *         imageFamily: "tf-latest-gpu",
+ *         imageFamily: "pytorch-latest-cu124",
  *     },
  * });
  * ```
@@ -115,7 +115,7 @@ import * as utilities from "../utilities";
  *     machineType: "e2-medium",
  *     vmImage: {
  *         project: "deeplearning-platform-release",
- *         imageFamily: "tf-latest-cpu",
+ *         imageFamily: "pytorch-latest-cu124",
  *     },
  *     instanceOwners: ["my@service-account.com"],
  *     serviceAccount: "my@service-account.com",

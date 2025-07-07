@@ -23,6 +23,7 @@ __all__ = ['RegionDiskArgs', 'RegionDisk']
 class RegionDiskArgs:
     def __init__(__self__, *,
                  replica_zones: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
+                 access_mode: Optional[pulumi.Input[builtins.str]] = None,
                  async_primary_disk: Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']] = None,
                  create_snapshot_before_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  create_snapshot_before_destroy_prefix: Optional[pulumi.Input[builtins.str]] = None,
@@ -47,6 +48,12 @@ class RegionDiskArgs:
                
                
                - - -
+        :param pulumi.Input[builtins.str] access_mode: The access mode of the disk.
+               For example:
+               * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+               * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+               * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+               The AccessMode is only valid for Hyperdisk disk types.
         :param pulumi.Input['RegionDiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] create_snapshot_before_destroy: If set to true, a snapshot of the disk will be created before it is destroyed.
@@ -120,6 +127,8 @@ class RegionDiskArgs:
                create the disk. Provide this when creating the disk.
         """
         pulumi.set(__self__, "replica_zones", replica_zones)
+        if access_mode is not None:
+            pulumi.set(__self__, "access_mode", access_mode)
         if async_primary_disk is not None:
             pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         if create_snapshot_before_destroy is not None:
@@ -174,6 +183,23 @@ class RegionDiskArgs:
     @replica_zones.setter
     def replica_zones(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
         pulumi.set(self, "replica_zones", value)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The access mode of the disk.
+        For example:
+        * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+        * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+        * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+        The AccessMode is only valid for Hyperdisk disk types.
+        """
+        return pulumi.get(self, "access_mode")
+
+    @access_mode.setter
+    def access_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "access_mode", value)
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")
@@ -449,6 +475,7 @@ class RegionDiskArgs:
 @pulumi.input_type
 class _RegionDiskState:
     def __init__(__self__, *,
+                 access_mode: Optional[pulumi.Input[builtins.str]] = None,
                  async_primary_disk: Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']] = None,
                  create_snapshot_before_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  create_snapshot_before_destroy_prefix: Optional[pulumi.Input[builtins.str]] = None,
@@ -481,6 +508,12 @@ class _RegionDiskState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering RegionDisk resources.
+        :param pulumi.Input[builtins.str] access_mode: The access mode of the disk.
+               For example:
+               * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+               * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+               * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+               The AccessMode is only valid for Hyperdisk disk types.
         :param pulumi.Input['RegionDiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] create_snapshot_before_destroy: If set to true, a snapshot of the disk will be created before it is destroyed.
@@ -578,6 +611,8 @@ class _RegionDiskState:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] users: Links to the users of the disk (attached instances) in form:
                project/zones/zone/instances/instance
         """
+        if access_mode is not None:
+            pulumi.set(__self__, "access_mode", access_mode)
         if async_primary_disk is not None:
             pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         if create_snapshot_before_destroy is not None:
@@ -641,6 +676,23 @@ class _RegionDiskState:
             pulumi.set(__self__, "type", type)
         if users is not None:
             pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The access mode of the disk.
+        For example:
+        * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+        * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+        * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+        The AccessMode is only valid for Hyperdisk disk types.
+        """
+        return pulumi.get(self, "access_mode")
+
+    @access_mode.setter
+    def access_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "access_mode", value)
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")
@@ -1076,6 +1128,7 @@ class RegionDisk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_mode: Optional[pulumi.Input[builtins.str]] = None,
                  async_primary_disk: Optional[pulumi.Input[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict']]] = None,
                  create_snapshot_before_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  create_snapshot_before_destroy_prefix: Optional[pulumi.Input[builtins.str]] = None,
@@ -1207,6 +1260,22 @@ class RegionDisk(pulumi.CustomResource):
                 "us-central1-f",
             ])
         ```
+        ### Region Disk Hyperdisk Balanced Ha Write Many
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.RegionDisk("primary",
+            name="my-region-hyperdisk",
+            type="hyperdisk-balanced-high-availability",
+            region="us-central1",
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ],
+            access_mode="READ_WRITE_MANY")
+        ```
 
         ## Import
 
@@ -1240,6 +1309,12 @@ class RegionDisk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] access_mode: The access mode of the disk.
+               For example:
+               * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+               * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+               * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+               The AccessMode is only valid for Hyperdisk disk types.
         :param pulumi.Input[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] create_snapshot_before_destroy: If set to true, a snapshot of the disk will be created before it is destroyed.
@@ -1433,6 +1508,22 @@ class RegionDisk(pulumi.CustomResource):
                 "us-central1-f",
             ])
         ```
+        ### Region Disk Hyperdisk Balanced Ha Write Many
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.RegionDisk("primary",
+            name="my-region-hyperdisk",
+            type="hyperdisk-balanced-high-availability",
+            region="us-central1",
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ],
+            access_mode="READ_WRITE_MANY")
+        ```
 
         ## Import
 
@@ -1479,6 +1570,7 @@ class RegionDisk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_mode: Optional[pulumi.Input[builtins.str]] = None,
                  async_primary_disk: Optional[pulumi.Input[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict']]] = None,
                  create_snapshot_before_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  create_snapshot_before_destroy_prefix: Optional[pulumi.Input[builtins.str]] = None,
@@ -1507,6 +1599,7 @@ class RegionDisk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionDiskArgs.__new__(RegionDiskArgs)
 
+            __props__.__dict__["access_mode"] = access_mode
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["create_snapshot_before_destroy"] = create_snapshot_before_destroy
             __props__.__dict__["create_snapshot_before_destroy_prefix"] = create_snapshot_before_destroy_prefix
@@ -1551,6 +1644,7 @@ class RegionDisk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: Optional[pulumi.Input[builtins.str]] = None,
             async_primary_disk: Optional[pulumi.Input[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict']]] = None,
             create_snapshot_before_destroy: Optional[pulumi.Input[builtins.bool]] = None,
             create_snapshot_before_destroy_prefix: Optional[pulumi.Input[builtins.str]] = None,
@@ -1588,6 +1682,12 @@ class RegionDisk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] access_mode: The access mode of the disk.
+               For example:
+               * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+               * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+               * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+               The AccessMode is only valid for Hyperdisk disk types.
         :param pulumi.Input[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] create_snapshot_before_destroy: If set to true, a snapshot of the disk will be created before it is destroyed.
@@ -1689,6 +1789,7 @@ class RegionDisk(pulumi.CustomResource):
 
         __props__ = _RegionDiskState.__new__(_RegionDiskState)
 
+        __props__.__dict__["access_mode"] = access_mode
         __props__.__dict__["async_primary_disk"] = async_primary_disk
         __props__.__dict__["create_snapshot_before_destroy"] = create_snapshot_before_destroy
         __props__.__dict__["create_snapshot_before_destroy_prefix"] = create_snapshot_before_destroy_prefix
@@ -1720,6 +1821,19 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["users"] = users
         return RegionDisk(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> pulumi.Output[builtins.str]:
+        """
+        The access mode of the disk.
+        For example:
+        * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+        * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+        * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+        The AccessMode is only valid for Hyperdisk disk types.
+        """
+        return pulumi.get(self, "access_mode")
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")

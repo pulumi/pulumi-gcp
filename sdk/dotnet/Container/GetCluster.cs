@@ -205,6 +205,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterEnterpriseConfigResult> EnterpriseConfigs;
         public readonly ImmutableArray<Outputs.GetClusterFleetResult> Fleets;
         public readonly ImmutableArray<Outputs.GetClusterGatewayApiConfigResult> GatewayApiConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterGkeAutoUpgradeConfigResult> GkeAutoUpgradeConfigs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -331,6 +332,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterFleetResult> fleets,
 
             ImmutableArray<Outputs.GetClusterGatewayApiConfigResult> gatewayApiConfigs,
+
+            ImmutableArray<Outputs.GetClusterGkeAutoUpgradeConfigResult> gkeAutoUpgradeConfigs,
 
             string id,
 
@@ -472,6 +475,7 @@ namespace Pulumi.Gcp.Container
             EnterpriseConfigs = enterpriseConfigs;
             Fleets = fleets;
             GatewayApiConfigs = gatewayApiConfigs;
+            GkeAutoUpgradeConfigs = gkeAutoUpgradeConfigs;
             Id = id;
             IdentityServiceConfigs = identityServiceConfigs;
             InTransitEncryptionConfig = inTransitEncryptionConfig;

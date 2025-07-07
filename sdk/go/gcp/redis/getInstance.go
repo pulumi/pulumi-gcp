@@ -67,17 +67,18 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	AlternativeLocationId string            `pulumi:"alternativeLocationId"`
-	AuthEnabled           bool              `pulumi:"authEnabled"`
-	AuthString            string            `pulumi:"authString"`
-	AuthorizedNetwork     string            `pulumi:"authorizedNetwork"`
-	ConnectMode           string            `pulumi:"connectMode"`
-	CreateTime            string            `pulumi:"createTime"`
-	CurrentLocationId     string            `pulumi:"currentLocationId"`
-	CustomerManagedKey    string            `pulumi:"customerManagedKey"`
-	DisplayName           string            `pulumi:"displayName"`
-	EffectiveLabels       map[string]string `pulumi:"effectiveLabels"`
-	Host                  string            `pulumi:"host"`
+	AlternativeLocationId    string            `pulumi:"alternativeLocationId"`
+	AuthEnabled              bool              `pulumi:"authEnabled"`
+	AuthString               string            `pulumi:"authString"`
+	AuthorizedNetwork        string            `pulumi:"authorizedNetwork"`
+	ConnectMode              string            `pulumi:"connectMode"`
+	CreateTime               string            `pulumi:"createTime"`
+	CurrentLocationId        string            `pulumi:"currentLocationId"`
+	CustomerManagedKey       string            `pulumi:"customerManagedKey"`
+	DisplayName              string            `pulumi:"displayName"`
+	EffectiveLabels          map[string]string `pulumi:"effectiveLabels"`
+	EffectiveReservedIpRange string            `pulumi:"effectiveReservedIpRange"`
+	Host                     string            `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                     string                           `pulumi:"id"`
 	Labels                 map[string]string                `pulumi:"labels"`
@@ -187,6 +188,10 @@ func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupInstanceResultOutput) EffectiveReservedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.EffectiveReservedIpRange }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) Host() pulumi.StringOutput {

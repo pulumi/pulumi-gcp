@@ -126,6 +126,10 @@ export class AutokeyConfig extends pulumi.CustomResource {
     }
 
     /**
+     * The etag of the AutokeyConfig for optimistic concurrency control.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
      * The folder for which to retrieve config.
      *
      *
@@ -152,6 +156,7 @@ export class AutokeyConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutokeyConfigState | undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["folder"] = state ? state.folder : undefined;
             resourceInputs["keyProject"] = state ? state.keyProject : undefined;
         } else {
@@ -161,6 +166,7 @@ export class AutokeyConfig extends pulumi.CustomResource {
             }
             resourceInputs["folder"] = args ? args.folder : undefined;
             resourceInputs["keyProject"] = args ? args.keyProject : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AutokeyConfig.__pulumiType, name, resourceInputs, opts);
@@ -171,6 +177,10 @@ export class AutokeyConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AutokeyConfig resources.
  */
 export interface AutokeyConfigState {
+    /**
+     * The etag of the AutokeyConfig for optimistic concurrency control.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * The folder for which to retrieve config.
      *

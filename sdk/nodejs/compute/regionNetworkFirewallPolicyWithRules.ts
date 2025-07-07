@@ -113,6 +113,31 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Compute Region Network Firewall Policy With Rules Roce
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.RegionNetworkFirewallPolicyWithRules("policy", {
+ *     name: "rnf-policy",
+ *     description: "Terraform test",
+ *     policyType: "RDMA_ROCE_POLICY",
+ *     rules: [{
+ *         description: "deny all rule",
+ *         priority: 1000,
+ *         enableLogging: true,
+ *         action: "deny",
+ *         direction: "INGRESS",
+ *         match: {
+ *             srcIpRanges: ["0.0.0.0/0"],
+ *             layer4Configs: [{
+ *                 ipProtocol: "all",
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -199,6 +224,12 @@ export class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource 
      */
     public /*out*/ readonly networkFirewallPolicyId!: pulumi.Output<string>;
     /**
+     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+     */
+    public readonly policyType!: pulumi.Output<string>;
+    /**
      * A list of firewall policy pre-defined rules.
      * Structure is documented below.
      */
@@ -244,6 +275,7 @@ export class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource 
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkFirewallPolicyId"] = state ? state.networkFirewallPolicyId : undefined;
+            resourceInputs["policyType"] = state ? state.policyType : undefined;
             resourceInputs["predefinedRules"] = state ? state.predefinedRules : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -258,6 +290,7 @@ export class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource 
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["policyType"] = args ? args.policyType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
@@ -305,6 +338,12 @@ export interface RegionNetworkFirewallPolicyWithRulesState {
      */
     networkFirewallPolicyId?: pulumi.Input<string>;
     /**
+     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+     */
+    policyType?: pulumi.Input<string>;
+    /**
      * A list of firewall policy pre-defined rules.
      * Structure is documented below.
      */
@@ -351,6 +390,12 @@ export interface RegionNetworkFirewallPolicyWithRulesArgs {
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+     */
+    policyType?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * The region of this resource.

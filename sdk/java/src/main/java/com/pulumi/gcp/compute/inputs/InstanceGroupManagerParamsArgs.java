@@ -19,12 +19,16 @@ public final class InstanceGroupManagerParamsArgs extends com.pulumi.resources.R
     /**
      * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
      * 
+     * ***
+     * 
      */
     @Import(name="resourceManagerTags")
     private @Nullable Output<Map<String,String>> resourceManagerTags;
 
     /**
      * @return Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+     * 
+     * ***
      * 
      */
     public Optional<Output<Map<String,String>>> resourceManagerTags() {
@@ -58,6 +62,8 @@ public final class InstanceGroupManagerParamsArgs extends com.pulumi.resources.R
         /**
          * @param resourceManagerTags Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -68,6 +74,8 @@ public final class InstanceGroupManagerParamsArgs extends com.pulumi.resources.R
 
         /**
          * @param resourceManagerTags Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+         * 
+         * ***
          * 
          * @return builder
          * 

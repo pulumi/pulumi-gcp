@@ -113,14 +113,14 @@ public final class DataExchangeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+     * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
      * 
      */
     @Import(name="logLinkedDatasetQueryUserEmail")
     private @Nullable Output<Boolean> logLinkedDatasetQueryUserEmail;
 
     /**
-     * @return If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+     * @return If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
      * 
      */
     public Optional<Output<Boolean>> logLinkedDatasetQueryUserEmail() {
@@ -342,7 +342,7 @@ public final class DataExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logLinkedDatasetQueryUserEmail If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+         * @param logLinkedDatasetQueryUserEmail If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class DataExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logLinkedDatasetQueryUserEmail If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+         * @param logLinkedDatasetQueryUserEmail If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
          * 
          * @return builder
          * 

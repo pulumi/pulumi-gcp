@@ -6,10 +6,18 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigConfidentialNodes {
+    /**
+     * @return Defines the type of technology used by the confidential node.
+     * 
+     */
+    private @Nullable String confidentialInstanceType;
     /**
      * @return Whether Confidential Nodes feature is enabled for all nodes in this pool.
      * 
@@ -17,6 +25,13 @@ public final class NodePoolNodeConfigConfidentialNodes {
     private Boolean enabled;
 
     private NodePoolNodeConfigConfidentialNodes() {}
+    /**
+     * @return Defines the type of technology used by the confidential node.
+     * 
+     */
+    public Optional<String> confidentialInstanceType() {
+        return Optional.ofNullable(this.confidentialInstanceType);
+    }
     /**
      * @return Whether Confidential Nodes feature is enabled for all nodes in this pool.
      * 
@@ -34,13 +49,21 @@ public final class NodePoolNodeConfigConfidentialNodes {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String confidentialInstanceType;
         private Boolean enabled;
         public Builder() {}
         public Builder(NodePoolNodeConfigConfidentialNodes defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.confidentialInstanceType = defaults.confidentialInstanceType;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
+        public Builder confidentialInstanceType(@Nullable String confidentialInstanceType) {
+
+            this.confidentialInstanceType = confidentialInstanceType;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
@@ -51,6 +74,7 @@ public final class NodePoolNodeConfigConfidentialNodes {
         }
         public NodePoolNodeConfigConfidentialNodes build() {
             final var _resultValue = new NodePoolNodeConfigConfidentialNodes();
+            _resultValue.confidentialInstanceType = confidentialInstanceType;
             _resultValue.enabled = enabled;
             return _resultValue;
         }

@@ -6,10 +6,16 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigConfidentialNode {
+    /**
+     * @return Defines the type of technology used by the confidential node.
+     * 
+     */
+    private String confidentialInstanceType;
     /**
      * @return Whether Confidential Nodes feature is enabled for all nodes in this pool.
      * 
@@ -17,6 +23,13 @@ public final class GetClusterNodeConfigConfidentialNode {
     private Boolean enabled;
 
     private GetClusterNodeConfigConfidentialNode() {}
+    /**
+     * @return Defines the type of technology used by the confidential node.
+     * 
+     */
+    public String confidentialInstanceType() {
+        return this.confidentialInstanceType;
+    }
     /**
      * @return Whether Confidential Nodes feature is enabled for all nodes in this pool.
      * 
@@ -34,13 +47,23 @@ public final class GetClusterNodeConfigConfidentialNode {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String confidentialInstanceType;
         private Boolean enabled;
         public Builder() {}
         public Builder(GetClusterNodeConfigConfidentialNode defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.confidentialInstanceType = defaults.confidentialInstanceType;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
+        public Builder confidentialInstanceType(String confidentialInstanceType) {
+            if (confidentialInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigConfidentialNode", "confidentialInstanceType");
+            }
+            this.confidentialInstanceType = confidentialInstanceType;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
@@ -51,6 +74,7 @@ public final class GetClusterNodeConfigConfidentialNode {
         }
         public GetClusterNodeConfigConfidentialNode build() {
             final var _resultValue = new GetClusterNodeConfigConfidentialNode();
+            _resultValue.confidentialInstanceType = confidentialInstanceType;
             _resultValue.enabled = enabled;
             return _resultValue;
         }

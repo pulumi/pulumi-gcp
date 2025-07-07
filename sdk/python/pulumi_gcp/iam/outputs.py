@@ -49,6 +49,7 @@ __all__ = [
     'WorkloadIdentityPoolInlineTrustConfig',
     'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle',
     'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor',
+    'WorkloadIdentityPoolManagedIdentityAttestationRule',
     'WorkloadIdentityPoolNamespaceOwnerService',
     'WorkloadIdentityPoolProviderAws',
     'WorkloadIdentityPoolProviderOidc',
@@ -1966,6 +1967,43 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor(dict
         certificate(either root or intermediate cert).
         """
         return pulumi.get(self, "pem_certificate")
+
+
+@pulumi.output_type
+class WorkloadIdentityPoolManagedIdentityAttestationRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleCloudResource":
+            suggest = "google_cloud_resource"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolManagedIdentityAttestationRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolManagedIdentityAttestationRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolManagedIdentityAttestationRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 google_cloud_resource: builtins.str):
+        """
+        :param builtins.str google_cloud_resource: A single workload operating on Google Cloud. For example:
+               `//compute.googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345678`.
+        """
+        pulumi.set(__self__, "google_cloud_resource", google_cloud_resource)
+
+    @property
+    @pulumi.getter(name="googleCloudResource")
+    def google_cloud_resource(self) -> builtins.str:
+        """
+        A single workload operating on Google Cloud. For example:
+        `//compute.googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345678`.
+        """
+        return pulumi.get(self, "google_cloud_resource")
 
 
 @pulumi.output_type

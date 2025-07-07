@@ -1084,6 +1084,9 @@ type JobTemplateTemplate struct {
 	ExecutionEnvironment *string `pulumi:"executionEnvironment"`
 	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries *int `pulumi:"maxRetries"`
+	// Node Selector describes the hardware requirements of the resources.
+	// Structure is documented below.
+	NodeSelector *JobTemplateTemplateNodeSelector `pulumi:"nodeSelector"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
@@ -1119,6 +1122,9 @@ type JobTemplateTemplateArgs struct {
 	ExecutionEnvironment pulumi.StringPtrInput `pulumi:"executionEnvironment"`
 	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
+	// Node Selector describes the hardware requirements of the resources.
+	// Structure is documented below.
+	NodeSelector JobTemplateTemplateNodeSelectorPtrInput `pulumi:"nodeSelector"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
@@ -1231,6 +1237,12 @@ func (o JobTemplateTemplateOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplate) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
 }
 
+// Node Selector describes the hardware requirements of the resources.
+// Structure is documented below.
+func (o JobTemplateTemplateOutput) NodeSelector() JobTemplateTemplateNodeSelectorPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplate) *JobTemplateTemplateNodeSelector { return v.NodeSelector }).(JobTemplateTemplateNodeSelectorPtrOutput)
+}
+
 // Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 func (o JobTemplateTemplateOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
@@ -1318,6 +1330,17 @@ func (o JobTemplateTemplatePtrOutput) MaxRetries() pulumi.IntPtrOutput {
 		}
 		return v.MaxRetries
 	}).(pulumi.IntPtrOutput)
+}
+
+// Node Selector describes the hardware requirements of the resources.
+// Structure is documented below.
+func (o JobTemplateTemplatePtrOutput) NodeSelector() JobTemplateTemplateNodeSelectorPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplate) *JobTemplateTemplateNodeSelector {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSelector
+	}).(JobTemplateTemplateNodeSelectorPtrOutput)
 }
 
 // Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
@@ -2100,7 +2123,7 @@ func (o JobTemplateTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) Jo
 }
 
 type JobTemplateTemplateContainerResources struct {
-	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
 }
 
@@ -2116,7 +2139,7 @@ type JobTemplateTemplateContainerResourcesInput interface {
 }
 
 type JobTemplateTemplateContainerResourcesArgs struct {
-	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 }
 
@@ -2197,7 +2220,7 @@ func (o JobTemplateTemplateContainerResourcesOutput) ToJobTemplateTemplateContai
 	}).(JobTemplateTemplateContainerResourcesPtrOutput)
 }
 
-// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o JobTemplateTemplateContainerResourcesOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -2226,7 +2249,7 @@ func (o JobTemplateTemplateContainerResourcesPtrOutput) Elem() JobTemplateTempla
 	}).(JobTemplateTemplateContainerResourcesOutput)
 }
 
-// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o JobTemplateTemplateContainerResourcesPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateContainerResources) map[string]string {
 		if v == nil {
@@ -3233,6 +3256,151 @@ func (o JobTemplateTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTemplateTemplateContainerVolumeMount {
 		return vs[0].([]JobTemplateTemplateContainerVolumeMount)[vs[1].(int)]
 	}).(JobTemplateTemplateContainerVolumeMountOutput)
+}
+
+type JobTemplateTemplateNodeSelector struct {
+	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+	//
+	// ***
+	Accelerator string `pulumi:"accelerator"`
+}
+
+// JobTemplateTemplateNodeSelectorInput is an input type that accepts JobTemplateTemplateNodeSelectorArgs and JobTemplateTemplateNodeSelectorOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateNodeSelectorInput` via:
+//
+//	JobTemplateTemplateNodeSelectorArgs{...}
+type JobTemplateTemplateNodeSelectorInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateNodeSelectorOutput() JobTemplateTemplateNodeSelectorOutput
+	ToJobTemplateTemplateNodeSelectorOutputWithContext(context.Context) JobTemplateTemplateNodeSelectorOutput
+}
+
+type JobTemplateTemplateNodeSelectorArgs struct {
+	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+	//
+	// ***
+	Accelerator pulumi.StringInput `pulumi:"accelerator"`
+}
+
+func (JobTemplateTemplateNodeSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateNodeSelector)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateNodeSelectorArgs) ToJobTemplateTemplateNodeSelectorOutput() JobTemplateTemplateNodeSelectorOutput {
+	return i.ToJobTemplateTemplateNodeSelectorOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateNodeSelectorArgs) ToJobTemplateTemplateNodeSelectorOutputWithContext(ctx context.Context) JobTemplateTemplateNodeSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateNodeSelectorOutput)
+}
+
+func (i JobTemplateTemplateNodeSelectorArgs) ToJobTemplateTemplateNodeSelectorPtrOutput() JobTemplateTemplateNodeSelectorPtrOutput {
+	return i.ToJobTemplateTemplateNodeSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateNodeSelectorArgs) ToJobTemplateTemplateNodeSelectorPtrOutputWithContext(ctx context.Context) JobTemplateTemplateNodeSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateNodeSelectorOutput).ToJobTemplateTemplateNodeSelectorPtrOutputWithContext(ctx)
+}
+
+// JobTemplateTemplateNodeSelectorPtrInput is an input type that accepts JobTemplateTemplateNodeSelectorArgs, JobTemplateTemplateNodeSelectorPtr and JobTemplateTemplateNodeSelectorPtrOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateNodeSelectorPtrInput` via:
+//
+//	        JobTemplateTemplateNodeSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTemplateTemplateNodeSelectorPtrInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateNodeSelectorPtrOutput() JobTemplateTemplateNodeSelectorPtrOutput
+	ToJobTemplateTemplateNodeSelectorPtrOutputWithContext(context.Context) JobTemplateTemplateNodeSelectorPtrOutput
+}
+
+type jobTemplateTemplateNodeSelectorPtrType JobTemplateTemplateNodeSelectorArgs
+
+func JobTemplateTemplateNodeSelectorPtr(v *JobTemplateTemplateNodeSelectorArgs) JobTemplateTemplateNodeSelectorPtrInput {
+	return (*jobTemplateTemplateNodeSelectorPtrType)(v)
+}
+
+func (*jobTemplateTemplateNodeSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateNodeSelector)(nil)).Elem()
+}
+
+func (i *jobTemplateTemplateNodeSelectorPtrType) ToJobTemplateTemplateNodeSelectorPtrOutput() JobTemplateTemplateNodeSelectorPtrOutput {
+	return i.ToJobTemplateTemplateNodeSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTemplateTemplateNodeSelectorPtrType) ToJobTemplateTemplateNodeSelectorPtrOutputWithContext(ctx context.Context) JobTemplateTemplateNodeSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateNodeSelectorPtrOutput)
+}
+
+type JobTemplateTemplateNodeSelectorOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateNodeSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateNodeSelector)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateNodeSelectorOutput) ToJobTemplateTemplateNodeSelectorOutput() JobTemplateTemplateNodeSelectorOutput {
+	return o
+}
+
+func (o JobTemplateTemplateNodeSelectorOutput) ToJobTemplateTemplateNodeSelectorOutputWithContext(ctx context.Context) JobTemplateTemplateNodeSelectorOutput {
+	return o
+}
+
+func (o JobTemplateTemplateNodeSelectorOutput) ToJobTemplateTemplateNodeSelectorPtrOutput() JobTemplateTemplateNodeSelectorPtrOutput {
+	return o.ToJobTemplateTemplateNodeSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o JobTemplateTemplateNodeSelectorOutput) ToJobTemplateTemplateNodeSelectorPtrOutputWithContext(ctx context.Context) JobTemplateTemplateNodeSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateNodeSelector) *JobTemplateTemplateNodeSelector {
+		return &v
+	}).(JobTemplateTemplateNodeSelectorPtrOutput)
+}
+
+// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+//
+// ***
+func (o JobTemplateTemplateNodeSelectorOutput) Accelerator() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTemplateTemplateNodeSelector) string { return v.Accelerator }).(pulumi.StringOutput)
+}
+
+type JobTemplateTemplateNodeSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateNodeSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateNodeSelector)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateNodeSelectorPtrOutput) ToJobTemplateTemplateNodeSelectorPtrOutput() JobTemplateTemplateNodeSelectorPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateNodeSelectorPtrOutput) ToJobTemplateTemplateNodeSelectorPtrOutputWithContext(ctx context.Context) JobTemplateTemplateNodeSelectorPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateNodeSelectorPtrOutput) Elem() JobTemplateTemplateNodeSelectorOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateNodeSelector) JobTemplateTemplateNodeSelector {
+		if v != nil {
+			return *v
+		}
+		var ret JobTemplateTemplateNodeSelector
+		return ret
+	}).(JobTemplateTemplateNodeSelectorOutput)
+}
+
+// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+//
+// ***
+func (o JobTemplateTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateNodeSelector) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Accelerator
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobTemplateTemplateVolume struct {
@@ -4538,8 +4706,6 @@ type JobTemplateTemplateVpcAccessNetworkInterface struct {
 	// subnetwork with the same name with the network will be used.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// Network tags applied to this Cloud Run job.
-	//
-	// ***
 	Tags []string `pulumi:"tags"`
 }
 
@@ -4564,8 +4730,6 @@ type JobTemplateTemplateVpcAccessNetworkInterfaceArgs struct {
 	// subnetwork with the same name with the network will be used.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 	// Network tags applied to this Cloud Run job.
-	//
-	// ***
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -4635,8 +4799,6 @@ func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) Subnetwork() pulumi.
 }
 
 // Network tags applied to this Cloud Run job.
-//
-// ***
 func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVpcAccessNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -16442,6 +16604,8 @@ type GetJobTemplateTemplate struct {
 	ExecutionEnvironment string `pulumi:"executionEnvironment"`
 	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries int `pulumi:"maxRetries"`
+	// Node Selector describes the hardware requirements of the resources.
+	NodeSelectors []GetJobTemplateTemplateNodeSelector `pulumi:"nodeSelectors"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
@@ -16474,6 +16638,8 @@ type GetJobTemplateTemplateArgs struct {
 	ExecutionEnvironment pulumi.StringInput `pulumi:"executionEnvironment"`
 	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
+	// Node Selector describes the hardware requirements of the resources.
+	NodeSelectors GetJobTemplateTemplateNodeSelectorArrayInput `pulumi:"nodeSelectors"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
@@ -16555,6 +16721,11 @@ func (o GetJobTemplateTemplateOutput) ExecutionEnvironment() pulumi.StringOutput
 // Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 func (o GetJobTemplateTemplateOutput) MaxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) int { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+// Node Selector describes the hardware requirements of the resources.
+func (o GetJobTemplateTemplateOutput) NodeSelectors() GetJobTemplateTemplateNodeSelectorArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) []GetJobTemplateTemplateNodeSelector { return v.NodeSelectors }).(GetJobTemplateTemplateNodeSelectorArrayOutput)
 }
 
 // Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
@@ -17231,7 +17402,7 @@ func (o GetJobTemplateTemplateContainerPortArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetJobTemplateTemplateContainerResource struct {
-	// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory, CPU, and nvidia.com/gpu are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit, 'nvidia.com/gpu' for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
 }
 
@@ -17247,7 +17418,7 @@ type GetJobTemplateTemplateContainerResourceInput interface {
 }
 
 type GetJobTemplateTemplateContainerResourceArgs struct {
-	// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory, CPU, and nvidia.com/gpu are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit, 'nvidia.com/gpu' for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 }
 
@@ -17302,7 +17473,7 @@ func (o GetJobTemplateTemplateContainerResourceOutput) ToGetJobTemplateTemplateC
 	return o
 }
 
-// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory, CPU, and nvidia.com/gpu are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit, 'nvidia.com/gpu' for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o GetJobTemplateTemplateContainerResourceOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerResource) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -18047,6 +18218,103 @@ func (o GetJobTemplateTemplateContainerVolumeMountArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerVolumeMount {
 		return vs[0].([]GetJobTemplateTemplateContainerVolumeMount)[vs[1].(int)]
 	}).(GetJobTemplateTemplateContainerVolumeMountOutput)
+}
+
+type GetJobTemplateTemplateNodeSelector struct {
+	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+	Accelerator string `pulumi:"accelerator"`
+}
+
+// GetJobTemplateTemplateNodeSelectorInput is an input type that accepts GetJobTemplateTemplateNodeSelectorArgs and GetJobTemplateTemplateNodeSelectorOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateNodeSelectorInput` via:
+//
+//	GetJobTemplateTemplateNodeSelectorArgs{...}
+type GetJobTemplateTemplateNodeSelectorInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateNodeSelectorOutput() GetJobTemplateTemplateNodeSelectorOutput
+	ToGetJobTemplateTemplateNodeSelectorOutputWithContext(context.Context) GetJobTemplateTemplateNodeSelectorOutput
+}
+
+type GetJobTemplateTemplateNodeSelectorArgs struct {
+	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+	Accelerator pulumi.StringInput `pulumi:"accelerator"`
+}
+
+func (GetJobTemplateTemplateNodeSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateNodeSelector)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateNodeSelectorArgs) ToGetJobTemplateTemplateNodeSelectorOutput() GetJobTemplateTemplateNodeSelectorOutput {
+	return i.ToGetJobTemplateTemplateNodeSelectorOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateNodeSelectorArgs) ToGetJobTemplateTemplateNodeSelectorOutputWithContext(ctx context.Context) GetJobTemplateTemplateNodeSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateNodeSelectorOutput)
+}
+
+// GetJobTemplateTemplateNodeSelectorArrayInput is an input type that accepts GetJobTemplateTemplateNodeSelectorArray and GetJobTemplateTemplateNodeSelectorArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateNodeSelectorArrayInput` via:
+//
+//	GetJobTemplateTemplateNodeSelectorArray{ GetJobTemplateTemplateNodeSelectorArgs{...} }
+type GetJobTemplateTemplateNodeSelectorArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateNodeSelectorArrayOutput() GetJobTemplateTemplateNodeSelectorArrayOutput
+	ToGetJobTemplateTemplateNodeSelectorArrayOutputWithContext(context.Context) GetJobTemplateTemplateNodeSelectorArrayOutput
+}
+
+type GetJobTemplateTemplateNodeSelectorArray []GetJobTemplateTemplateNodeSelectorInput
+
+func (GetJobTemplateTemplateNodeSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateNodeSelector)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateNodeSelectorArray) ToGetJobTemplateTemplateNodeSelectorArrayOutput() GetJobTemplateTemplateNodeSelectorArrayOutput {
+	return i.ToGetJobTemplateTemplateNodeSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateNodeSelectorArray) ToGetJobTemplateTemplateNodeSelectorArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateNodeSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateNodeSelectorArrayOutput)
+}
+
+type GetJobTemplateTemplateNodeSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateNodeSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateNodeSelector)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateNodeSelectorOutput) ToGetJobTemplateTemplateNodeSelectorOutput() GetJobTemplateTemplateNodeSelectorOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateNodeSelectorOutput) ToGetJobTemplateTemplateNodeSelectorOutputWithContext(ctx context.Context) GetJobTemplateTemplateNodeSelectorOutput {
+	return o
+}
+
+// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
+func (o GetJobTemplateTemplateNodeSelectorOutput) Accelerator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateNodeSelector) string { return v.Accelerator }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateNodeSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateNodeSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateNodeSelector)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateNodeSelectorArrayOutput) ToGetJobTemplateTemplateNodeSelectorArrayOutput() GetJobTemplateTemplateNodeSelectorArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateNodeSelectorArrayOutput) ToGetJobTemplateTemplateNodeSelectorArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateNodeSelectorArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateNodeSelectorArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateNodeSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateNodeSelector {
+		return vs[0].([]GetJobTemplateTemplateNodeSelector)[vs[1].(int)]
+	}).(GetJobTemplateTemplateNodeSelectorOutput)
 }
 
 type GetJobTemplateTemplateVolume struct {
@@ -26956,6 +27224,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerStartupProbeTcpSocketPtrInput)(nil)).Elem(), JobTemplateTemplateContainerStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerVolumeMountInput)(nil)).Elem(), JobTemplateTemplateContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerVolumeMountArrayInput)(nil)).Elem(), JobTemplateTemplateContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateNodeSelectorInput)(nil)).Elem(), JobTemplateTemplateNodeSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateNodeSelectorPtrInput)(nil)).Elem(), JobTemplateTemplateNodeSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeInput)(nil)).Elem(), JobTemplateTemplateVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeArrayInput)(nil)).Elem(), JobTemplateTemplateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), JobTemplateTemplateVolumeCloudSqlInstanceArgs{})
@@ -27140,6 +27410,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerStartupProbeTcpSocketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerVolumeMountInput)(nil)).Elem(), GetJobTemplateTemplateContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerVolumeMountArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateNodeSelectorInput)(nil)).Elem(), GetJobTemplateTemplateNodeSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateNodeSelectorArrayInput)(nil)).Elem(), GetJobTemplateTemplateNodeSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeInput)(nil)).Elem(), GetJobTemplateTemplateVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), GetJobTemplateTemplateVolumeCloudSqlInstanceArgs{})
@@ -27320,6 +27592,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateContainerVolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateNodeSelectorOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateNodeSelectorPtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeCloudSqlInstanceOutput{})
@@ -27504,6 +27778,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerStartupProbeTcpSocketArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerVolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateNodeSelectorOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateNodeSelectorArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeCloudSqlInstanceOutput{})

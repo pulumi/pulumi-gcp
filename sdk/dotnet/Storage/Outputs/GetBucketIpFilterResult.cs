@@ -14,6 +14,14 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class GetBucketIpFilterResult
     {
         /// <summary>
+        /// Whether to allow all service agents to access the bucket regardless of the IP filter configuration.
+        /// </summary>
+        public readonly bool AllowAllServiceAgentAccess;
+        /// <summary>
+        /// Whether to allow cross-org VPCs in the bucket's IP filter configuration.
+        /// </summary>
+        public readonly bool AllowCrossOrgVpcs;
+        /// <summary>
         /// The mode of the IP filter. Valid values are 'Enabled' and 'Disabled'.
         /// </summary>
         public readonly string Mode;
@@ -28,12 +36,18 @@ namespace Pulumi.Gcp.Storage.Outputs
 
         [OutputConstructor]
         private GetBucketIpFilterResult(
+            bool allowAllServiceAgentAccess,
+
+            bool allowCrossOrgVpcs,
+
             string mode,
 
             ImmutableArray<Outputs.GetBucketIpFilterPublicNetworkSourceResult> publicNetworkSources,
 
             ImmutableArray<Outputs.GetBucketIpFilterVpcNetworkSourceResult> vpcNetworkSources)
         {
+            AllowAllServiceAgentAccess = allowAllServiceAgentAccess;
+            AllowCrossOrgVpcs = allowCrossOrgVpcs;
             Mode = mode;
             PublicNetworkSources = publicNetworkSources;
             VpcNetworkSources = vpcNetworkSources;

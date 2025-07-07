@@ -175,6 +175,7 @@ import (
 //				NodeType:              pulumi.String("SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_DISABLED"),
 //				AuthorizationMode:     pulumi.String("AUTH_DISABLED"),
+//				KmsKey:                pulumi.String("my-key"),
 //				EngineConfigs: pulumi.StringMap{
 //					"maxmemory-policy": pulumi.String("volatile-ttl"),
 //				},
@@ -551,6 +552,8 @@ type Instance struct {
 	//
 	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// The KMS key used to encrypt the at-rest data of the cluster
+	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
 	// Optional. Labels to represent user-provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -728,6 +731,8 @@ type instanceState struct {
 	//
 	// ***
 	InstanceId *string `pulumi:"instanceId"`
+	// The KMS key used to encrypt the at-rest data of the cluster
+	KmsKey *string `pulumi:"kmsKey"`
 	// Optional. Labels to represent user-provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -862,6 +867,8 @@ type InstanceState struct {
 	//
 	// ***
 	InstanceId pulumi.StringPtrInput
+	// The KMS key used to encrypt the at-rest data of the cluster
+	KmsKey pulumi.StringPtrInput
 	// Optional. Labels to represent user-provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -983,6 +990,8 @@ type instanceArgs struct {
 	//
 	// ***
 	InstanceId string `pulumi:"instanceId"`
+	// The KMS key used to encrypt the at-rest data of the cluster
+	KmsKey *string `pulumi:"kmsKey"`
 	// Optional. Labels to represent user-provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -1066,6 +1075,8 @@ type InstanceArgs struct {
 	//
 	// ***
 	InstanceId pulumi.StringInput
+	// The KMS key used to encrypt the at-rest data of the cluster
+	KmsKey pulumi.StringPtrInput
 	// Optional. Labels to represent user-provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -1296,6 +1307,11 @@ func (o InstanceOutput) GcsSource() InstanceGcsSourcePtrOutput {
 // ***
 func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The KMS key used to encrypt the at-rest data of the cluster
+func (o InstanceOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
 // Optional. Labels to represent user-provided metadata.

@@ -781,6 +781,7 @@ class GetRegionalSecretsSecretResult(dict):
                  annotations: Mapping[str, builtins.str],
                  create_time: builtins.str,
                  customer_managed_encryptions: Sequence['outputs.GetRegionalSecretsSecretCustomerManagedEncryptionResult'],
+                 deletion_protection: builtins.bool,
                  effective_annotations: Mapping[str, builtins.str],
                  effective_labels: Mapping[str, builtins.str],
                  expire_time: builtins.str,
@@ -820,6 +821,7 @@ class GetRegionalSecretsSecretResult(dict):
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "effective_annotations", effective_annotations)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "expire_time", expire_time)
@@ -859,6 +861,11 @@ class GetRegionalSecretsSecretResult(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "customer_managed_encryptions")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> builtins.bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="effectiveAnnotations")

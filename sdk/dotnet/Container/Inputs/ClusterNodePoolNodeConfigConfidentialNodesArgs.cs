@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodePoolNodeConfigConfidentialNodesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Defines the type of technology used
+        /// by the confidential node.
+        /// </summary>
+        [Input("confidentialInstanceType")]
+        public Input<string>? ConfidentialInstanceType { get; set; }
+
+        /// <summary>
         /// Enable Confidential GKE Nodes for this cluster, to
         /// enforce encryption of data in-use.
         /// </summary>

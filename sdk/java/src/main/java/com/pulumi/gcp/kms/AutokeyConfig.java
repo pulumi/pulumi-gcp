@@ -164,6 +164,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:kms/autokeyConfig:AutokeyConfig")
 public class AutokeyConfig extends com.pulumi.resources.CustomResource {
     /**
+     * The etag of the AutokeyConfig for optimistic concurrency control.
+     * 
+     */
+    @Export(name="etag", refs={String.class}, tree="[0]")
+    private Output<String> etag;
+
+    /**
+     * @return The etag of the AutokeyConfig for optimistic concurrency control.
+     * 
+     */
+    public Output<String> etag() {
+        return this.etag;
+    }
+    /**
      * The folder for which to retrieve config.
      * 
      * ***

@@ -1109,6 +1109,8 @@ func (o GetGroupLookupGroupKeyOutput) Namespace() pulumi.StringPtrOutput {
 }
 
 type GetGroupMembershipsMembership struct {
+	// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+	CreateIgnoreAlreadyExists bool `pulumi:"createIgnoreAlreadyExists"`
 	// The time when the Membership was created.
 	CreateTime string `pulumi:"createTime"`
 	// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
@@ -1139,6 +1141,8 @@ type GetGroupMembershipsMembershipInput interface {
 }
 
 type GetGroupMembershipsMembershipArgs struct {
+	// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+	CreateIgnoreAlreadyExists pulumi.BoolInput `pulumi:"createIgnoreAlreadyExists"`
 	// The time when the Membership was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
@@ -1206,6 +1210,11 @@ func (o GetGroupMembershipsMembershipOutput) ToGetGroupMembershipsMembershipOutp
 
 func (o GetGroupMembershipsMembershipOutput) ToGetGroupMembershipsMembershipOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipOutput {
 	return o
+}
+
+// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+func (o GetGroupMembershipsMembershipOutput) CreateIgnoreAlreadyExists() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupMembershipsMembership) bool { return v.CreateIgnoreAlreadyExists }).(pulumi.BoolOutput)
 }
 
 // The time when the Membership was created.

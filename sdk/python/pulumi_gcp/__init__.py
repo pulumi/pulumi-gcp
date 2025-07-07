@@ -995,6 +995,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apihub/plugin",
+  "fqn": "pulumi_gcp.apihub",
+  "classes": {
+   "gcp:apihub/plugin:Plugin": "Plugin"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apihub/pluginInstance",
   "fqn": "pulumi_gcp.apihub",
   "classes": {
@@ -3915,6 +3923,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/wireGroup",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/wireGroup:WireGroup": "WireGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "contactcenterinsights/view",
   "fqn": "pulumi_gcp.contactcenterinsights",
   "classes": {
@@ -4983,6 +4999,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
    "gcp:diagflow/cxFlow:CxFlow": "CxFlow"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "diagflow/cxGenerativeSettings",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings": "CxGenerativeSettings"
   }
  },
  {

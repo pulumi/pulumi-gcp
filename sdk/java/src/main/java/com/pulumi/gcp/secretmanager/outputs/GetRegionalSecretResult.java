@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretCustomerManagedEncryption;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretRotation;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretTopic;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ public final class GetRegionalSecretResult {
     private Map<String,String> annotations;
     private String createTime;
     private List<GetRegionalSecretCustomerManagedEncryption> customerManagedEncryptions;
+    private Boolean deletionProtection;
     private Map<String,String> effectiveAnnotations;
     private Map<String,String> effectiveLabels;
     private String expireTime;
@@ -49,6 +51,9 @@ public final class GetRegionalSecretResult {
     }
     public List<GetRegionalSecretCustomerManagedEncryption> customerManagedEncryptions() {
         return this.customerManagedEncryptions;
+    }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
     }
     public Map<String,String> effectiveAnnotations() {
         return this.effectiveAnnotations;
@@ -112,6 +117,7 @@ public final class GetRegionalSecretResult {
         private Map<String,String> annotations;
         private String createTime;
         private List<GetRegionalSecretCustomerManagedEncryption> customerManagedEncryptions;
+        private Boolean deletionProtection;
         private Map<String,String> effectiveAnnotations;
         private Map<String,String> effectiveLabels;
         private String expireTime;
@@ -133,6 +139,7 @@ public final class GetRegionalSecretResult {
     	      this.annotations = defaults.annotations;
     	      this.createTime = defaults.createTime;
     	      this.customerManagedEncryptions = defaults.customerManagedEncryptions;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.expireTime = defaults.expireTime;
@@ -176,6 +183,14 @@ public final class GetRegionalSecretResult {
         }
         public Builder customerManagedEncryptions(GetRegionalSecretCustomerManagedEncryption... customerManagedEncryptions) {
             return customerManagedEncryptions(List.of(customerManagedEncryptions));
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetRegionalSecretResult", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
+            return this;
         }
         @CustomType.Setter
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
@@ -306,6 +321,7 @@ public final class GetRegionalSecretResult {
             _resultValue.annotations = annotations;
             _resultValue.createTime = createTime;
             _resultValue.customerManagedEncryptions = customerManagedEncryptions;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.effectiveAnnotations = effectiveAnnotations;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.expireTime = expireTime;

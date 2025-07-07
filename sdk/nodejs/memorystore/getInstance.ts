@@ -71,6 +71,7 @@ export interface GetInstanceResult {
      */
     readonly id: string;
     readonly instanceId: string;
+    readonly kmsKey: string;
     readonly labels: {[key: string]: string};
     readonly location?: string;
     readonly maintenancePolicies: outputs.memorystore.GetInstanceMaintenancePolicy[];

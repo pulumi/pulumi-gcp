@@ -229,10 +229,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? Preemptible { get; set; }
 
         /// <summary>
-        /// The configuration of the desired reservation which instances could take capacity from.
-        /// Structure is documented below.
-        /// 
-        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+        /// The reservation affinity configuration for the node pool.
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.NodePoolNodeConfigReservationAffinityGetArgs>? ReservationAffinity { get; set; }

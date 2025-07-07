@@ -627,7 +627,7 @@ index 4c0f23475..e298f9d8e 100644
  ## Example Usage - Backend Service Signed Url Key
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index f164e6bc1..b770c7032 100644
+index ea05fdd2b..fd4d99572 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -45,9 +45,6 @@ To get more information about Disk, see:
@@ -819,10 +819,10 @@ index d331034d3..c902472f8 100644
    instances = [
      google_compute_instance.test.id,
 diff --git a/website/docs/r/compute_instance_group_manager.html.markdown b/website/docs/r/compute_instance_group_manager.html.markdown
-index 8aa63d568..100549ac2 100644
+index 368fd2b5c..e9c72d4e2 100644
 --- a/website/docs/r/compute_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_instance_group_manager.html.markdown
-@@ -178,7 +178,7 @@ The following arguments are supported:
+@@ -234,7 +234,7 @@ The following arguments are supported:
      not affect existing instances.
  
  * `wait_for_instances` - (Optional) Whether to wait for all instances to be created/updated before
@@ -1112,7 +1112,7 @@ index fd50d7ada..5f5ff68d4 100644
  
  ## Example Usage
 diff --git a/website/docs/r/compute_region_disk.html.markdown b/website/docs/r/compute_region_disk.html.markdown
-index bed481434..8350f9894 100644
+index 086d8640d..3b550c112 100644
 --- a/website/docs/r/compute_region_disk.html.markdown
 +++ b/website/docs/r/compute_region_disk.html.markdown
 @@ -47,7 +47,6 @@ To get more information about RegionDisk, see:
@@ -1914,7 +1914,7 @@ index 88a87baed..b1bfb7b30 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 8c12ecf32..91012b9b9 100644
+index 0887a61c1..4d8f804f7 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
@@ -2005,7 +2005,7 @@ index 8c12ecf32..91012b9b9 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -934,10 +952,6 @@ gvnic {
+@@ -938,10 +956,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -2016,7 +2016,7 @@ index 8c12ecf32..91012b9b9 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -964,7 +978,7 @@ gvnic {
+@@ -968,7 +982,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -2025,7 +2025,7 @@ index 8c12ecf32..91012b9b9 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -989,10 +1003,7 @@ gvnic {
+@@ -993,10 +1007,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -2037,7 +2037,7 @@ index 8c12ecf32..91012b9b9 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -1006,13 +1017,14 @@ gvnic {
+@@ -1010,13 +1021,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -2059,7 +2059,7 @@ index 8c12ecf32..91012b9b9 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1293,7 +1305,7 @@ for more details. This field only applies to private clusters, when
+@@ -1303,7 +1315,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -2068,7 +2068,7 @@ index 8c12ecf32..91012b9b9 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1395,9 +1407,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1411,9 +1423,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2082,7 +2082,7 @@ index 8c12ecf32..91012b9b9 100644
  <a name="nested_kubelet_config"></a>The `kubelet_config` block supports:
  
 diff --git a/website/docs/r/container_node_pool.html.markdown b/website/docs/r/container_node_pool.html.markdown
-index 11393321e..5c865eeb9 100644
+index 31c846fba..1ee9aae18 100644
 --- a/website/docs/r/container_node_pool.html.markdown
 +++ b/website/docs/r/container_node_pool.html.markdown
 @@ -20,14 +20,11 @@ description: |-
@@ -3638,7 +3638,7 @@ index 213a71916..3a5528004 100644
  ## Example Usage - Uptime Check Config Http
  
 diff --git a/website/docs/r/notebooks_instance.html.markdown b/website/docs/r/notebooks_instance.html.markdown
-index 3bd2c0ec7..4c73c36ca 100644
+index 9af934e76..af09321ca 100644
 --- a/website/docs/r/notebooks_instance.html.markdown
 +++ b/website/docs/r/notebooks_instance.html.markdown
 @@ -90,7 +90,6 @@ resource "google_notebooks_instance" "instance" {
@@ -3678,7 +3678,7 @@ index bc1d673a0..a19ec47e2 100644
  
  ~> **Note:** Once created, this resource cannot be updated or destroyed. These
 diff --git a/website/docs/r/redis_instance.html.markdown b/website/docs/r/redis_instance.html.markdown
-index 8d5c24c10..d3420764c 100644
+index dc9cbf85d..e90fb94c6 100644
 --- a/website/docs/r/redis_instance.html.markdown
 +++ b/website/docs/r/redis_instance.html.markdown
 @@ -68,7 +68,7 @@ resource "google_redis_instance" "cache" {
@@ -4003,7 +4003,7 @@ index 1afac262e..5fafa3a4f 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index cedf0a717..62b065c70 100644
+index 06001a01b..46be8503a 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
 @@ -143,7 +143,7 @@ The following arguments are supported:

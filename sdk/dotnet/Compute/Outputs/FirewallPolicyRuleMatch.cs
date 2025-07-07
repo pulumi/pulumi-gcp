@@ -69,10 +69,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SrcRegionCodes;
         /// <summary>
-        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+        /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        /// Structure is documented below.
         /// 
         /// 
         /// &lt;a name="nested_match_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatchSrcSecureTag> SrcSecureTags;
+        /// <summary>
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
         /// </summary>
         public readonly ImmutableArray<string> SrcThreatIntelligences;
 
@@ -104,6 +109,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<string> srcRegionCodes,
 
+            ImmutableArray<Outputs.FirewallPolicyRuleMatchSrcSecureTag> srcSecureTags,
+
             ImmutableArray<string> srcThreatIntelligences)
         {
             DestAddressGroups = destAddressGroups;
@@ -119,6 +126,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             SrcNetworkScope = srcNetworkScope;
             SrcNetworks = srcNetworks;
             SrcRegionCodes = srcRegionCodes;
+            SrcSecureTags = srcSecureTags;
             SrcThreatIntelligences = srcThreatIntelligences;
         }
     }

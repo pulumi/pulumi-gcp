@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchLayer4ConfigArgs;
+import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchSrcSecureTagArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -220,9 +221,28 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+     * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+     * Structure is documented below.
      * 
      * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * 
+     */
+    @Import(name="srcSecureTags")
+    private @Nullable Output<List<FirewallPolicyRuleMatchSrcSecureTagArgs>> srcSecureTags;
+
+    /**
+     * @return List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+     * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * 
+     */
+    public Optional<Output<List<FirewallPolicyRuleMatchSrcSecureTagArgs>>> srcSecureTags() {
+        return Optional.ofNullable(this.srcSecureTags);
+    }
+
+    /**
+     * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
      * 
      */
     @Import(name="srcThreatIntelligences")
@@ -230,8 +250,6 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
-     * 
-     * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
      * 
      */
     public Optional<Output<List<String>>> srcThreatIntelligences() {
@@ -254,6 +272,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         this.srcNetworkScope = $.srcNetworkScope;
         this.srcNetworks = $.srcNetworks;
         this.srcRegionCodes = $.srcRegionCodes;
+        this.srcSecureTags = $.srcSecureTags;
         this.srcThreatIntelligences = $.srcThreatIntelligences;
     }
 
@@ -666,9 +685,47 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+         * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
          * 
          * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcSecureTags(@Nullable Output<List<FirewallPolicyRuleMatchSrcSecureTagArgs>> srcSecureTags) {
+            $.srcSecureTags = srcSecureTags;
+            return this;
+        }
+
+        /**
+         * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcSecureTags(List<FirewallPolicyRuleMatchSrcSecureTagArgs> srcSecureTags) {
+            return srcSecureTags(Output.of(srcSecureTags));
+        }
+
+        /**
+         * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcSecureTags(FirewallPolicyRuleMatchSrcSecureTagArgs... srcSecureTags) {
+            return srcSecureTags(List.of(srcSecureTags));
+        }
+
+        /**
+         * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          * 
          * @return builder
          * 
@@ -681,8 +738,6 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         /**
          * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          * 
-         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
-         * 
          * @return builder
          * 
          */
@@ -692,8 +747,6 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
 
         /**
          * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
-         * 
-         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
          * 
          * @return builder
          * 

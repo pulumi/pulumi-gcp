@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.FirewallPolicyRuleArgs;
 import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleState;
 import com.pulumi.gcp.compute.outputs.FirewallPolicyRuleMatch;
+import com.pulumi.gcp.compute.outputs.FirewallPolicyRuleTargetSecureTag;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -46,6 +47,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.FirewallPolicyRule;
  * import com.pulumi.gcp.compute.FirewallPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -107,6 +112,20 @@ import javax.annotation.Nullable;
  *                         .ports("22")
  *                         .build())
  *                 .build())
+ *             .build());
+ * 
+ *         var basicKey = new TagKey("basicKey", TagKeyArgs.builder()
+ *             .description("For keyname resources.")
+ *             .parent("organizations/123456789")
+ *             .purpose("GCE_FIREWALL")
+ *             .shortName("tag-key")
+ *             .purposeData(Map.of("organization", "auto"))
+ *             .build());
+ * 
+ *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()
+ *             .description("For valuename resources.")
+ *             .parent(basicKey.id())
+ *             .shortName("tag-value")
  *             .build());
  * 
  *     }}{@code
@@ -174,6 +193,100 @@ import javax.annotation.Nullable;
  *                 .srcIpRanges("11.100.0.1/32")
  *                 .srcNetworkScope("VPC_NETWORKS")
  *                 .srcNetworks(network.id())
+ *                 .layer4Configs(                
+ *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                         .ipProtocol("tcp")
+ *                         .ports("8080")
+ *                         .build(),
+ *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                         .ipProtocol("udp")
+ *                         .ports("22")
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firewall Policy Rule Secure Tags
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Folder;
+ * import com.pulumi.gcp.organizations.FolderArgs;
+ * import com.pulumi.gcp.compute.FirewallPolicy;
+ * import com.pulumi.gcp.compute.FirewallPolicyArgs;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.compute.FirewallPolicyRule;
+ * import com.pulumi.gcp.compute.FirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleTargetSecureTagArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var folder = new Folder("folder", FolderArgs.builder()
+ *             .displayName("folder")
+ *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()
+ *             .parent(folder.id())
+ *             .shortName("fw-policy")
+ *             .description("Resource created for Terraform acceptance testing")
+ *             .build());
+ * 
+ *         var basicKey = new TagKey("basicKey", TagKeyArgs.builder()
+ *             .description("For keyname resources.")
+ *             .parent("organizations/123456789")
+ *             .purpose("GCE_FIREWALL")
+ *             .shortName("tag-key")
+ *             .purposeData(Map.of("organization", "auto"))
+ *             .build());
+ * 
+ *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()
+ *             .description("For valuename resources.")
+ *             .parent(basicKey.id())
+ *             .shortName("tag-value")
+ *             .build());
+ * 
+ *         var primary = new FirewallPolicyRule("primary", FirewallPolicyRuleArgs.builder()
+ *             .firewallPolicy(default_.name())
+ *             .description("Resource created for Terraform acceptance testing")
+ *             .priority(9000)
+ *             .enableLogging(true)
+ *             .action("allow")
+ *             .direction("INGRESS")
+ *             .disabled(false)
+ *             .targetSecureTags(FirewallPolicyRuleTargetSecureTagArgs.builder()
+ *                 .name(basicValue.id())
+ *                 .build())
+ *             .match(FirewallPolicyRuleMatchArgs.builder()
+ *                 .srcIpRanges("11.100.0.1/32")
+ *                 .srcSecureTags(FirewallPolicyRuleMatchSrcSecureTagArgs.builder()
+ *                     .name(basicValue.id())
+ *                     .build())
  *                 .layer4Configs(                
  *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
  *                         .ipProtocol("tcp")
@@ -414,6 +527,28 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> targetResources() {
         return Codegen.optional(this.targetResources);
+    }
+    /**
+     * A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+     * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+     * 
+     */
+    @Export(name="targetSecureTags", refs={List.class,FirewallPolicyRuleTargetSecureTag.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<FirewallPolicyRuleTargetSecureTag>> targetSecureTags;
+
+    /**
+     * @return A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+     * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+     * 
+     */
+    public Output<Optional<List<FirewallPolicyRuleTargetSecureTag>>> targetSecureTags() {
+        return Codegen.optional(this.targetSecureTags);
     }
     /**
      * A list of service accounts indicating the sets of instances that are applied with this rule.

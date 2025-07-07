@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterConfidentialNodeResult
     {
         /// <summary>
+        /// Defines the type of technology used by the confidential node.
+        /// </summary>
+        public readonly string ConfidentialInstanceType;
+        /// <summary>
         /// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
         /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]
-        private GetClusterConfidentialNodeResult(bool enabled)
+        private GetClusterConfidentialNodeResult(
+            string confidentialInstanceType,
+
+            bool enabled)
         {
+            ConfidentialInstanceType = confidentialInstanceType;
             Enabled = enabled;
         }
     }

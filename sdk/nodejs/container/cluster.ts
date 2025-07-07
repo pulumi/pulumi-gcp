@@ -330,6 +330,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly gatewayApiConfig!: pulumi.Output<outputs.container.ClusterGatewayApiConfig>;
     /**
+     * Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+     * Structure is documented below.
+     */
+    public readonly gkeAutoUpgradeConfig!: pulumi.Output<outputs.container.ClusterGkeAutoUpgradeConfig>;
+    /**
      * . Structure is documented below.
      */
     public readonly identityServiceConfig!: pulumi.Output<outputs.container.ClusterIdentityServiceConfig>;
@@ -696,6 +701,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enterpriseConfig"] = state ? state.enterpriseConfig : undefined;
             resourceInputs["fleet"] = state ? state.fleet : undefined;
             resourceInputs["gatewayApiConfig"] = state ? state.gatewayApiConfig : undefined;
+            resourceInputs["gkeAutoUpgradeConfig"] = state ? state.gkeAutoUpgradeConfig : undefined;
             resourceInputs["identityServiceConfig"] = state ? state.identityServiceConfig : undefined;
             resourceInputs["inTransitEncryptionConfig"] = state ? state.inTransitEncryptionConfig : undefined;
             resourceInputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
@@ -782,6 +788,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enterpriseConfig"] = args ? args.enterpriseConfig : undefined;
             resourceInputs["fleet"] = args ? args.fleet : undefined;
             resourceInputs["gatewayApiConfig"] = args ? args.gatewayApiConfig : undefined;
+            resourceInputs["gkeAutoUpgradeConfig"] = args ? args.gkeAutoUpgradeConfig : undefined;
             resourceInputs["identityServiceConfig"] = args ? args.identityServiceConfig : undefined;
             resourceInputs["inTransitEncryptionConfig"] = args ? args.inTransitEncryptionConfig : undefined;
             resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
@@ -1015,6 +1022,11 @@ export interface ClusterState {
      * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
      */
     gatewayApiConfig?: pulumi.Input<inputs.container.ClusterGatewayApiConfig>;
+    /**
+     * Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+     * Structure is documented below.
+     */
+    gkeAutoUpgradeConfig?: pulumi.Input<inputs.container.ClusterGkeAutoUpgradeConfig>;
     /**
      * . Structure is documented below.
      */
@@ -1499,6 +1511,11 @@ export interface ClusterArgs {
      * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
      */
     gatewayApiConfig?: pulumi.Input<inputs.container.ClusterGatewayApiConfig>;
+    /**
+     * Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+     * Structure is documented below.
+     */
+    gkeAutoUpgradeConfig?: pulumi.Input<inputs.container.ClusterGkeAutoUpgradeConfig>;
     /**
      * . Structure is documented below.
      */

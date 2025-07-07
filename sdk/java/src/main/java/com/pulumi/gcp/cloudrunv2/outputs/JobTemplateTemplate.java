@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainer;
+import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateNodeSelector;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVpcAccess;
 import java.lang.Integer;
@@ -38,6 +39,12 @@ public final class JobTemplateTemplate {
      * 
      */
     private @Nullable Integer maxRetries;
+    /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable JobTemplateTemplateNodeSelector nodeSelector;
     /**
      * @return Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
      * 
@@ -94,6 +101,14 @@ public final class JobTemplateTemplate {
         return Optional.ofNullable(this.maxRetries);
     }
     /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<JobTemplateTemplateNodeSelector> nodeSelector() {
+        return Optional.ofNullable(this.nodeSelector);
+    }
+    /**
      * @return Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
      * 
      */
@@ -138,6 +153,7 @@ public final class JobTemplateTemplate {
         private @Nullable String encryptionKey;
         private @Nullable String executionEnvironment;
         private @Nullable Integer maxRetries;
+        private @Nullable JobTemplateTemplateNodeSelector nodeSelector;
         private @Nullable String serviceAccount;
         private @Nullable String timeout;
         private @Nullable List<JobTemplateTemplateVolume> volumes;
@@ -149,6 +165,7 @@ public final class JobTemplateTemplate {
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.executionEnvironment = defaults.executionEnvironment;
     	      this.maxRetries = defaults.maxRetries;
+    	      this.nodeSelector = defaults.nodeSelector;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.timeout = defaults.timeout;
     	      this.volumes = defaults.volumes;
@@ -180,6 +197,12 @@ public final class JobTemplateTemplate {
         public Builder maxRetries(@Nullable Integer maxRetries) {
 
             this.maxRetries = maxRetries;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nodeSelector(@Nullable JobTemplateTemplateNodeSelector nodeSelector) {
+
+            this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
@@ -215,6 +238,7 @@ public final class JobTemplateTemplate {
             _resultValue.encryptionKey = encryptionKey;
             _resultValue.executionEnvironment = executionEnvironment;
             _resultValue.maxRetries = maxRetries;
+            _resultValue.nodeSelector = nodeSelector;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.timeout = timeout;
             _resultValue.volumes = volumes;

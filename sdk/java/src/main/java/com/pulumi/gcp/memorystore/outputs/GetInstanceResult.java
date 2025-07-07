@@ -52,6 +52,7 @@ public final class GetInstanceResult {
      */
     private String id;
     private String instanceId;
+    private String kmsKey;
     private Map<String,String> labels;
     private @Nullable String location;
     private List<GetInstanceMaintenancePolicy> maintenancePolicies;
@@ -127,6 +128,9 @@ public final class GetInstanceResult {
     }
     public String instanceId() {
         return this.instanceId;
+    }
+    public String kmsKey() {
+        return this.kmsKey;
     }
     public Map<String,String> labels() {
         return this.labels;
@@ -220,6 +224,7 @@ public final class GetInstanceResult {
         private List<GetInstanceGcsSource> gcsSources;
         private String id;
         private String instanceId;
+        private String kmsKey;
         private Map<String,String> labels;
         private @Nullable String location;
         private List<GetInstanceMaintenancePolicy> maintenancePolicies;
@@ -261,6 +266,7 @@ public final class GetInstanceResult {
     	      this.gcsSources = defaults.gcsSources;
     	      this.id = defaults.id;
     	      this.instanceId = defaults.instanceId;
+    	      this.kmsKey = defaults.kmsKey;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
@@ -432,6 +438,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "instanceId");
             }
             this.instanceId = instanceId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKey(String kmsKey) {
+            if (kmsKey == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "kmsKey");
+            }
+            this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
@@ -651,6 +665,7 @@ public final class GetInstanceResult {
             _resultValue.gcsSources = gcsSources;
             _resultValue.id = id;
             _resultValue.instanceId = instanceId;
+            _resultValue.kmsKey = kmsKey;
             _resultValue.labels = labels;
             _resultValue.location = location;
             _resultValue.maintenancePolicies = maintenancePolicies;

@@ -40,7 +40,7 @@ import (
 //				Name:               pulumi.String("cloudrun-worker-pool"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("ALPHA"),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.WorkerPoolTemplateArgs{
 //					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
 //						&cloudrunv2.WorkerPoolTemplateContainerArgs{
@@ -75,7 +75,7 @@ import (
 //				Name:               pulumi.String("cloudrun-worker-pool"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("ALPHA"),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.WorkerPoolTemplateArgs{
 //					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
 //						&cloudrunv2.WorkerPoolTemplateContainerArgs{
@@ -149,7 +149,7 @@ import (
 //				Name:               pulumi.String("cloudrun-worker-pool"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("ALPHA"),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.WorkerPoolTemplateArgs{
 //					Volumes: cloudrunv2.WorkerPoolTemplateVolumeArray{
 //						&cloudrunv2.WorkerPoolTemplateVolumeArgs{
@@ -237,7 +237,7 @@ import (
 //				Name:               pulumi.String("cloudrun-worker-pool"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("ALPHA"),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.WorkerPoolTemplateArgs{
 //					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
 //						&cloudrunv2.WorkerPoolTemplateContainerArgs{
@@ -350,7 +350,7 @@ import (
 //				Name:               pulumi.String("cloudrun-worker-pool"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("ALPHA"),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.WorkerPoolTemplateArgs{
 //					Volumes: cloudrunv2.WorkerPoolTemplateVolumeArray{
 //						&cloudrunv2.WorkerPoolTemplateVolumeArgs{
@@ -423,15 +423,12 @@ import (
 //				Name:               pulumi.String("cloudrun-worker-pool"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("ALPHA"),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.WorkerPoolTemplateArgs{
 //					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
 //						&cloudrunv2.WorkerPoolTemplateContainerArgs{
 //							Name:  pulumi.String("hello-1"),
 //							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/worker-pool"),
-//							DependsOns: pulumi.StringArray{
-//								pulumi.String("hello-2"),
-//							},
 //							VolumeMounts: cloudrunv2.WorkerPoolTemplateContainerVolumeMountArray{
 //								&cloudrunv2.WorkerPoolTemplateContainerVolumeMountArgs{
 //									Name:      pulumi.String("empty-dir-volume"),
@@ -490,7 +487,7 @@ import (
 //				Name:               pulumi.String("cloudrun-worker-pool"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("ALPHA"),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.WorkerPoolTemplateArgs{
 //					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
 //						&cloudrunv2.WorkerPoolTemplateContainerArgs{
@@ -561,7 +558,7 @@ import (
 //				Name:               pulumi.String("cloudrun-worker-pool"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("ALPHA"),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.WorkerPoolTemplateArgs{
 //					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
 //						&cloudrunv2.WorkerPoolTemplateContainerArgs{
@@ -622,7 +619,7 @@ import (
 //				Name:               pulumi.String("cloudrun-worker-pool"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("ALPHA"),
+//				LaunchStage:        pulumi.String("BETA"),
 //				CustomAudiences: pulumi.StringArray{
 //					pulumi.String("aud1"),
 //				},

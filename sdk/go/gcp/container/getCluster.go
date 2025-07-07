@@ -102,6 +102,7 @@ type LookupClusterResult struct {
 	EnterpriseConfigs                    []GetClusterEnterpriseConfig            `pulumi:"enterpriseConfigs"`
 	Fleets                               []GetClusterFleet                       `pulumi:"fleets"`
 	GatewayApiConfigs                    []GetClusterGatewayApiConfig            `pulumi:"gatewayApiConfigs"`
+	GkeAutoUpgradeConfigs                []GetClusterGkeAutoUpgradeConfig        `pulumi:"gkeAutoUpgradeConfigs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                              string                                     `pulumi:"id"`
 	IdentityServiceConfigs          []GetClusterIdentityServiceConfig          `pulumi:"identityServiceConfigs"`
@@ -335,6 +336,10 @@ func (o LookupClusterResultOutput) Fleets() GetClusterFleetArrayOutput {
 
 func (o LookupClusterResultOutput) GatewayApiConfigs() GetClusterGatewayApiConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterGatewayApiConfig { return v.GatewayApiConfigs }).(GetClusterGatewayApiConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) GkeAutoUpgradeConfigs() GetClusterGkeAutoUpgradeConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterGkeAutoUpgradeConfig { return v.GkeAutoUpgradeConfigs }).(GetClusterGkeAutoUpgradeConfigArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

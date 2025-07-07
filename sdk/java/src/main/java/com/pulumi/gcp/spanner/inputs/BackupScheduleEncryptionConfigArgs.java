@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -56,11 +57,29 @@ public final class BackupScheduleEncryptionConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.kmsKeyName);
     }
 
+    /**
+     * Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+     * in the same locations as the Spanner Database.
+     * 
+     */
+    @Import(name="kmsKeyNames")
+    private @Nullable Output<List<String>> kmsKeyNames;
+
+    /**
+     * @return Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+     * in the same locations as the Spanner Database.
+     * 
+     */
+    public Optional<Output<List<String>>> kmsKeyNames() {
+        return Optional.ofNullable(this.kmsKeyNames);
+    }
+
     private BackupScheduleEncryptionConfigArgs() {}
 
     private BackupScheduleEncryptionConfigArgs(BackupScheduleEncryptionConfigArgs $) {
         this.encryptionType = $.encryptionType;
         this.kmsKeyName = $.kmsKeyName;
+        this.kmsKeyNames = $.kmsKeyNames;
     }
 
     public static Builder builder() {
@@ -131,6 +150,40 @@ public final class BackupScheduleEncryptionConfigArgs extends com.pulumi.resourc
          */
         public Builder kmsKeyName(String kmsKeyName) {
             return kmsKeyName(Output.of(kmsKeyName));
+        }
+
+        /**
+         * @param kmsKeyNames Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+         * in the same locations as the Spanner Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyNames(@Nullable Output<List<String>> kmsKeyNames) {
+            $.kmsKeyNames = kmsKeyNames;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyNames Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+         * in the same locations as the Spanner Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyNames(List<String> kmsKeyNames) {
+            return kmsKeyNames(Output.of(kmsKeyNames));
+        }
+
+        /**
+         * @param kmsKeyNames Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+         * in the same locations as the Spanner Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyNames(String... kmsKeyNames) {
+            return kmsKeyNames(List.of(kmsKeyNames));
         }
 
         public BackupScheduleEncryptionConfigArgs build() {

@@ -33,6 +33,7 @@ class InstanceGroupManagerArgs:
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]] = None,
                  params: Optional[pulumi.Input['InstanceGroupManagerParamsArgs']] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_policies: Optional[pulumi.Input['InstanceGroupManagerResourcePoliciesArgs']] = None,
                  standby_policy: Optional[pulumi.Input['InstanceGroupManagerStandbyPolicyArgs']] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]] = None,
                  stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]]] = None,
@@ -77,10 +78,11 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input['InstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input['InstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
+               
+               - - -
         :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -125,6 +127,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
         if standby_policy is not None:
             pulumi.set(__self__, "standby_policy", standby_policy)
         if stateful_disks is not None:
@@ -283,8 +287,6 @@ class InstanceGroupManagerArgs:
     def params(self) -> Optional[pulumi.Input['InstanceGroupManagerParamsArgs']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -304,6 +306,20 @@ class InstanceGroupManagerArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[pulumi.Input['InstanceGroupManagerResourcePoliciesArgs']]:
+        """
+        Resource policies for this managed instance group. Structure is documented below.
+
+        - - -
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @resource_policies.setter
+    def resource_policies(self, value: Optional[pulumi.Input['InstanceGroupManagerResourcePoliciesArgs']]):
+        pulumi.set(self, "resource_policies", value)
 
     @property
     @pulumi.getter(name="standbyPolicy")
@@ -479,6 +495,7 @@ class _InstanceGroupManagerState:
                  operation: Optional[pulumi.Input[builtins.str]] = None,
                  params: Optional[pulumi.Input['InstanceGroupManagerParamsArgs']] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_policies: Optional[pulumi.Input['InstanceGroupManagerResourcePoliciesArgs']] = None,
                  self_link: Optional[pulumi.Input[builtins.str]] = None,
                  standby_policy: Optional[pulumi.Input['InstanceGroupManagerStandbyPolicyArgs']] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]] = None,
@@ -527,10 +544,11 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input['InstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input['InstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
+               
+               - - -
         :param pulumi.Input[builtins.str] self_link: The URL of the created resource.
         :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -590,6 +608,8 @@ class _InstanceGroupManagerState:
             pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if standby_policy is not None:
@@ -797,8 +817,6 @@ class _InstanceGroupManagerState:
     def params(self) -> Optional[pulumi.Input['InstanceGroupManagerParamsArgs']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -818,6 +836,20 @@ class _InstanceGroupManagerState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[pulumi.Input['InstanceGroupManagerResourcePoliciesArgs']]:
+        """
+        Resource policies for this managed instance group. Structure is documented below.
+
+        - - -
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @resource_policies.setter
+    def resource_policies(self, value: Optional[pulumi.Input['InstanceGroupManagerResourcePoliciesArgs']]):
+        pulumi.set(self, "resource_policies", value)
 
     @property
     @pulumi.getter(name="selfLink")
@@ -1029,6 +1061,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerNamedPortArgs', 'InstanceGroupManagerNamedPortArgsDict']]]]] = None,
                  params: Optional[pulumi.Input[Union['InstanceGroupManagerParamsArgs', 'InstanceGroupManagerParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_policies: Optional[pulumi.Input[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict']]] = None,
                  standby_policy: Optional[pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict']]]]] = None,
                  stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict']]]]] = None,
@@ -1143,6 +1176,58 @@ class InstanceGroupManager(pulumi.CustomResource):
             target_stopped_size=1)
         ```
 
+        ### With Resource Policies (`Google` Provider)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        workload_policy = gcp.compute.ResourcePolicy("workload_policy",
+            name="tf-test-gce-policy",
+            region="us-central1",
+            workload_policy={
+                "type": "HIGH_THROUGHPUT",
+            })
+        igm_basic = gcp.compute.InstanceTemplate("igm-basic",
+            name="igm-instance-template",
+            machine_type="a4-highgpu-8g",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[{
+                "source_image": my_image.self_link,
+                "auto_delete": True,
+                "boot": True,
+                "disk_type": "hyperdisk-balanced",
+            }],
+            network_interfaces=[{
+                "network": "default",
+            }],
+            service_account={
+                "scopes": [
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            })
+        igm_workload_policy = gcp.compute.InstanceGroupManager("igm-workload-policy",
+            description="Terraform test instance group manager",
+            name="igm-basic-workload-policy",
+            versions=[{
+                "name": "prod",
+                "instance_template": igm_basic.self_link,
+            }],
+            base_instance_name="tf-test-igm-no-tp",
+            zone="us-central1-b",
+            target_size=0,
+            resource_policies={
+                "workload_policy": workload_policy.self_link,
+            })
+        ```
+
         ## Import
 
         Instance group managers can be imported using any of these accepted formats:
@@ -1202,10 +1287,11 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerNamedPortArgs', 'InstanceGroupManagerNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[Union['InstanceGroupManagerParamsArgs', 'InstanceGroupManagerParamsArgsDict']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
+               
+               - - -
         :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict']]]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -1339,6 +1425,58 @@ class InstanceGroupManager(pulumi.CustomResource):
             target_stopped_size=1)
         ```
 
+        ### With Resource Policies (`Google` Provider)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        workload_policy = gcp.compute.ResourcePolicy("workload_policy",
+            name="tf-test-gce-policy",
+            region="us-central1",
+            workload_policy={
+                "type": "HIGH_THROUGHPUT",
+            })
+        igm_basic = gcp.compute.InstanceTemplate("igm-basic",
+            name="igm-instance-template",
+            machine_type="a4-highgpu-8g",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[{
+                "source_image": my_image.self_link,
+                "auto_delete": True,
+                "boot": True,
+                "disk_type": "hyperdisk-balanced",
+            }],
+            network_interfaces=[{
+                "network": "default",
+            }],
+            service_account={
+                "scopes": [
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            })
+        igm_workload_policy = gcp.compute.InstanceGroupManager("igm-workload-policy",
+            description="Terraform test instance group manager",
+            name="igm-basic-workload-policy",
+            versions=[{
+                "name": "prod",
+                "instance_template": igm_basic.self_link,
+            }],
+            base_instance_name="tf-test-igm-no-tp",
+            zone="us-central1-b",
+            target_size=0,
+            resource_policies={
+                "workload_policy": workload_policy.self_link,
+            })
+        ```
+
         ## Import
 
         Instance group managers can be imported using any of these accepted formats:
@@ -1394,6 +1532,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerNamedPortArgs', 'InstanceGroupManagerNamedPortArgsDict']]]]] = None,
                  params: Optional[pulumi.Input[Union['InstanceGroupManagerParamsArgs', 'InstanceGroupManagerParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_policies: Optional[pulumi.Input[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict']]] = None,
                  standby_policy: Optional[pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict']]]]] = None,
                  stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict']]]]] = None,
@@ -1428,6 +1567,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["named_ports"] = named_ports
             __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
+            __props__.__dict__["resource_policies"] = resource_policies
             __props__.__dict__["standby_policy"] = standby_policy
             __props__.__dict__["stateful_disks"] = stateful_disks
             __props__.__dict__["stateful_external_ips"] = stateful_external_ips
@@ -1475,6 +1615,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             operation: Optional[pulumi.Input[builtins.str]] = None,
             params: Optional[pulumi.Input[Union['InstanceGroupManagerParamsArgs', 'InstanceGroupManagerParamsArgsDict']]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
+            resource_policies: Optional[pulumi.Input[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict']]] = None,
             self_link: Optional[pulumi.Input[builtins.str]] = None,
             standby_policy: Optional[pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']]] = None,
             stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict']]]]] = None,
@@ -1528,10 +1669,11 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerNamedPortArgs', 'InstanceGroupManagerNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[Union['InstanceGroupManagerParamsArgs', 'InstanceGroupManagerParamsArgsDict']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
+               
+               - - -
         :param pulumi.Input[builtins.str] self_link: The URL of the created resource.
         :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -1580,6 +1722,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["operation"] = operation
         __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
+        __props__.__dict__["resource_policies"] = resource_policies
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["standby_policy"] = standby_policy
         __props__.__dict__["stateful_disks"] = stateful_disks
@@ -1721,8 +1864,6 @@ class InstanceGroupManager(pulumi.CustomResource):
     def params(self) -> pulumi.Output[Optional['outputs.InstanceGroupManagerParams']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -1734,6 +1875,16 @@ class InstanceGroupManager(pulumi.CustomResource):
         is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> pulumi.Output[Optional['outputs.InstanceGroupManagerResourcePolicies']]:
+        """
+        Resource policies for this managed instance group. Structure is documented below.
+
+        - - -
+        """
+        return pulumi.get(self, "resource_policies")
 
     @property
     @pulumi.getter(name="selfLink")

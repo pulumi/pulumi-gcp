@@ -164,6 +164,7 @@ import * as utilities from "../utilities";
  * const prod = new gcp.dns.ManagedZone("prod", {
  *     name: "prod-zone",
  *     dnsName: "prod.mydomain.com.",
+ *     visibility: "private",
  * });
  * const prodRegionBackendService = new gcp.compute.RegionBackendService("prod", {
  *     name: "prod-backend",

@@ -57,16 +57,12 @@ public final class JobTemplateTemplateVpcAccessNetworkInterfaceArgs extends com.
     /**
      * Network tags applied to this Cloud Run job.
      * 
-     * ***
-     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
      * @return Network tags applied to this Cloud Run job.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -152,8 +148,6 @@ public final class JobTemplateTemplateVpcAccessNetworkInterfaceArgs extends com.
         /**
          * @param tags Network tags applied to this Cloud Run job.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -165,8 +159,6 @@ public final class JobTemplateTemplateVpcAccessNetworkInterfaceArgs extends com.
         /**
          * @param tags Network tags applied to this Cloud Run job.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -176,8 +168,6 @@ public final class JobTemplateTemplateVpcAccessNetworkInterfaceArgs extends com.
 
         /**
          * @param tags Network tags applied to this Cloud Run job.
-         * 
-         * ***
          * 
          * @return builder
          * 

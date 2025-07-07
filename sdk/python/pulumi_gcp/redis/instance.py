@@ -505,6 +505,7 @@ class _InstanceState:
                  customer_managed_key: Optional[pulumi.Input[builtins.str]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 effective_reserved_ip_range: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -558,6 +559,11 @@ class _InstanceState:
                instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[builtins.str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[builtins.str] effective_reserved_ip_range: The CIDR range of internal addresses that are reserved for this
+               instance. If not provided, the service will choose an unused /29
+               block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+               unique and non-overlapping with existing subnets in an authorized
+               network.
         :param pulumi.Input[builtins.str] host: Hostname or IP address of the exposed Redis endpoint used by clients
                to connect to the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata.
@@ -655,6 +661,8 @@ class _InstanceState:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if effective_reserved_ip_range is not None:
+            pulumi.set(__self__, "effective_reserved_ip_range", effective_reserved_ip_range)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if labels is not None:
@@ -842,6 +850,22 @@ class _InstanceState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="effectiveReservedIpRange")
+    def effective_reserved_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The CIDR range of internal addresses that are reserved for this
+        instance. If not provided, the service will choose an unused /29
+        block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+        unique and non-overlapping with existing subnets in an authorized
+        network.
+        """
+        return pulumi.get(self, "effective_reserved_ip_range")
+
+    @effective_reserved_ip_range.setter
+    def effective_reserved_ip_range(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "effective_reserved_ip_range", value)
 
     @property
     @pulumi.getter
@@ -1825,6 +1849,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_location_id"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["effective_reserved_ip_range"] = None
             __props__.__dict__["host"] = None
             __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["nodes"] = None
@@ -1856,6 +1881,7 @@ class Instance(pulumi.CustomResource):
             customer_managed_key: Optional[pulumi.Input[builtins.str]] = None,
             display_name: Optional[pulumi.Input[builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+            effective_reserved_ip_range: Optional[pulumi.Input[builtins.str]] = None,
             host: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             location_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1914,6 +1940,11 @@ class Instance(pulumi.CustomResource):
                instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[builtins.str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[builtins.str] effective_reserved_ip_range: The CIDR range of internal addresses that are reserved for this
+               instance. If not provided, the service will choose an unused /29
+               block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+               unique and non-overlapping with existing subnets in an authorized
+               network.
         :param pulumi.Input[builtins.str] host: Hostname or IP address of the exposed Redis endpoint used by clients
                to connect to the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata.
@@ -2005,6 +2036,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["customer_managed_key"] = customer_managed_key
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["effective_reserved_ip_range"] = effective_reserved_ip_range
         __props__.__dict__["host"] = host
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location_id"] = location_id
@@ -2127,6 +2159,18 @@ class Instance(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="effectiveReservedIpRange")
+    def effective_reserved_ip_range(self) -> pulumi.Output[builtins.str]:
+        """
+        The CIDR range of internal addresses that are reserved for this
+        instance. If not provided, the service will choose an unused /29
+        block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+        unique and non-overlapping with existing subnets in an authorized
+        network.
+        """
+        return pulumi.get(self, "effective_reserved_ip_range")
 
     @property
     @pulumi.getter

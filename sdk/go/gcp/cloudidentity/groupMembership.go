@@ -153,6 +153,8 @@ import (
 type GroupMembership struct {
 	pulumi.CustomResourceState
 
+	// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+	CreateIgnoreAlreadyExists pulumi.BoolPtrOutput `pulumi:"createIgnoreAlreadyExists"`
 	// The time when the Membership was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The name of the Group to create this membership in.
@@ -209,6 +211,8 @@ func GetGroupMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupMembership resources.
 type groupMembershipState struct {
+	// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// The time when the Membership was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The name of the Group to create this membership in.
@@ -230,6 +234,8 @@ type groupMembershipState struct {
 }
 
 type GroupMembershipState struct {
+	// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// The time when the Membership was created.
 	CreateTime pulumi.StringPtrInput
 	// The name of the Group to create this membership in.
@@ -255,6 +261,8 @@ func (GroupMembershipState) ElementType() reflect.Type {
 }
 
 type groupMembershipArgs struct {
+	// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// The name of the Group to create this membership in.
 	Group string `pulumi:"group"`
 	// EntityKey of the member.
@@ -269,6 +277,8 @@ type groupMembershipArgs struct {
 
 // The set of arguments for constructing a GroupMembership resource.
 type GroupMembershipArgs struct {
+	// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// The name of the Group to create this membership in.
 	Group pulumi.StringInput
 	// EntityKey of the member.
@@ -366,6 +376,11 @@ func (o GroupMembershipOutput) ToGroupMembershipOutput() GroupMembershipOutput {
 
 func (o GroupMembershipOutput) ToGroupMembershipOutputWithContext(ctx context.Context) GroupMembershipOutput {
 	return o
+}
+
+// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+func (o GroupMembershipOutput) CreateIgnoreAlreadyExists() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.BoolPtrOutput { return v.CreateIgnoreAlreadyExists }).(pulumi.BoolPtrOutput)
 }
 
 // The time when the Membership was created.

@@ -193,10 +193,7 @@ public final class NodePoolNodeConfig {
      */
     private @Nullable Boolean preemptible;
     /**
-     * @return The configuration of the desired reservation which instances could take capacity from.
-     * Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * @return The reservation affinity configuration for the node pool.
      * 
      */
     private @Nullable NodePoolNodeConfigReservationAffinity reservationAffinity;
@@ -485,10 +482,7 @@ public final class NodePoolNodeConfig {
         return Optional.ofNullable(this.preemptible);
     }
     /**
-     * @return The configuration of the desired reservation which instances could take capacity from.
-     * Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * @return The reservation affinity configuration for the node pool.
      * 
      */
     public Optional<NodePoolNodeConfigReservationAffinity> reservationAffinity() {

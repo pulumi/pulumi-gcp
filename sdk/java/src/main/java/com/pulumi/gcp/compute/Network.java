@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.NetworkArgs;
 import com.pulumi.gcp.compute.inputs.NetworkState;
+import com.pulumi.gcp.compute.outputs.NetworkParams;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -556,6 +557,22 @@ public class Network extends com.pulumi.resources.CustomResource {
      */
     public Output<String> numericId() {
         return this.numericId;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={NetworkParams.class}, tree="[0]")
+    private Output</* @Nullable */ NetworkParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<NetworkParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

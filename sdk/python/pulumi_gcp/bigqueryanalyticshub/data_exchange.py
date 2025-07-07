@@ -43,7 +43,7 @@ class DataExchangeArgs:
         :param pulumi.Input[builtins.str] description: Description of the data exchange.
         :param pulumi.Input[builtins.str] documentation: Documentation describing the data exchange.
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the data exchange.
-        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         :param pulumi.Input[builtins.str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -148,7 +148,7 @@ class DataExchangeArgs:
     @pulumi.getter(name="logLinkedDatasetQueryUserEmail")
     def log_linked_dataset_query_user_email(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         """
         return pulumi.get(self, "log_linked_dataset_query_user_email")
 
@@ -223,7 +223,7 @@ class _DataExchangeState:
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[builtins.int] listing_count: Number of listings contained in the data exchange.
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange.
-        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         :param pulumi.Input[builtins.str] name: The resource name of the data exchange, for example:
                "projects/myproject/locations/US/dataExchanges/123"
         :param pulumi.Input[builtins.str] primary_contact: Email or URL of the primary point of contact of the data exchange.
@@ -349,7 +349,7 @@ class _DataExchangeState:
     @pulumi.getter(name="logLinkedDatasetQueryUserEmail")
     def log_linked_dataset_query_user_email(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         """
         return pulumi.get(self, "log_linked_dataset_query_user_email")
 
@@ -520,7 +520,7 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] documentation: Documentation describing the data exchange.
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange.
-        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         :param pulumi.Input[builtins.str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -707,7 +707,7 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[builtins.int] listing_count: Number of listings contained in the data exchange.
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange.
-        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        :param pulumi.Input[builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         :param pulumi.Input[builtins.str] name: The resource name of the data exchange, for example:
                "projects/myproject/locations/US/dataExchanges/123"
         :param pulumi.Input[builtins.str] primary_contact: Email or URL of the primary point of contact of the data exchange.
@@ -798,7 +798,7 @@ class DataExchange(pulumi.CustomResource):
     @pulumi.getter(name="logLinkedDatasetQueryUserEmail")
     def log_linked_dataset_query_user_email(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.
+        If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         """
         return pulumi.get(self, "log_linked_dataset_query_user_email")
 

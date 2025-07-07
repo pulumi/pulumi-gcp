@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.BucketIpFilterPublicNetworkSourceArgs;
 import com.pulumi.gcp.storage.inputs.BucketIpFilterVpcNetworkSourceArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,14 +21,44 @@ public final class BucketIpFilterArgs extends com.pulumi.resources.ResourceArgs 
     public static final BucketIpFilterArgs Empty = new BucketIpFilterArgs();
 
     /**
-     * The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+     * While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
+     * 
+     */
+    @Import(name="allowAllServiceAgentAccess")
+    private @Nullable Output<Boolean> allowAllServiceAgentAccess;
+
+    /**
+     * @return While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
+     * 
+     */
+    public Optional<Output<Boolean>> allowAllServiceAgentAccess() {
+        return Optional.ofNullable(this.allowAllServiceAgentAccess);
+    }
+
+    /**
+     * While set `true`, allows cross-org VPCs in the bucket&#39;s IP filter configuration.
+     * 
+     */
+    @Import(name="allowCrossOrgVpcs")
+    private @Nullable Output<Boolean> allowCrossOrgVpcs;
+
+    /**
+     * @return While set `true`, allows cross-org VPCs in the bucket&#39;s IP filter configuration.
+     * 
+     */
+    public Optional<Output<Boolean>> allowCrossOrgVpcs() {
+        return Optional.ofNullable(this.allowCrossOrgVpcs);
+    }
+
+    /**
+     * The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
      * 
      */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
     /**
-     * @return The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+     * @return The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
      * 
      */
     public Output<String> mode() {
@@ -67,6 +98,8 @@ public final class BucketIpFilterArgs extends com.pulumi.resources.ResourceArgs 
     private BucketIpFilterArgs() {}
 
     private BucketIpFilterArgs(BucketIpFilterArgs $) {
+        this.allowAllServiceAgentAccess = $.allowAllServiceAgentAccess;
+        this.allowCrossOrgVpcs = $.allowCrossOrgVpcs;
         this.mode = $.mode;
         this.publicNetworkSource = $.publicNetworkSource;
         this.vpcNetworkSources = $.vpcNetworkSources;
@@ -91,7 +124,49 @@ public final class BucketIpFilterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param mode The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+         * @param allowAllServiceAgentAccess While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAllServiceAgentAccess(@Nullable Output<Boolean> allowAllServiceAgentAccess) {
+            $.allowAllServiceAgentAccess = allowAllServiceAgentAccess;
+            return this;
+        }
+
+        /**
+         * @param allowAllServiceAgentAccess While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAllServiceAgentAccess(Boolean allowAllServiceAgentAccess) {
+            return allowAllServiceAgentAccess(Output.of(allowAllServiceAgentAccess));
+        }
+
+        /**
+         * @param allowCrossOrgVpcs While set `true`, allows cross-org VPCs in the bucket&#39;s IP filter configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowCrossOrgVpcs(@Nullable Output<Boolean> allowCrossOrgVpcs) {
+            $.allowCrossOrgVpcs = allowCrossOrgVpcs;
+            return this;
+        }
+
+        /**
+         * @param allowCrossOrgVpcs While set `true`, allows cross-org VPCs in the bucket&#39;s IP filter configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowCrossOrgVpcs(Boolean allowCrossOrgVpcs) {
+            return allowCrossOrgVpcs(Output.of(allowCrossOrgVpcs));
+        }
+
+        /**
+         * @param mode The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
          * 
          * @return builder
          * 
@@ -102,7 +177,7 @@ public final class BucketIpFilterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param mode The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+         * @param mode The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
          * 
          * @return builder
          * 

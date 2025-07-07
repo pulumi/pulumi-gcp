@@ -145,6 +145,12 @@ namespace Pulumi.Gcp.CloudIdentity
     public partial class GroupMembership : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+        /// </summary>
+        [Output("createIgnoreAlreadyExists")]
+        public Output<bool?> CreateIgnoreAlreadyExists { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the Membership was created.
         /// </summary>
         [Output("createTime")]
@@ -241,6 +247,12 @@ namespace Pulumi.Gcp.CloudIdentity
     public sealed class GroupMembershipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+        /// </summary>
+        [Input("createIgnoreAlreadyExists")]
+        public Input<bool>? CreateIgnoreAlreadyExists { get; set; }
+
+        /// <summary>
         /// The name of the Group to create this membership in.
         /// </summary>
         [Input("group", required: true)]
@@ -280,6 +292,12 @@ namespace Pulumi.Gcp.CloudIdentity
 
     public sealed class GroupMembershipState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+        /// </summary>
+        [Input("createIgnoreAlreadyExists")]
+        public Input<bool>? CreateIgnoreAlreadyExists { get; set; }
+
         /// <summary>
         /// The time when the Membership was created.
         /// </summary>

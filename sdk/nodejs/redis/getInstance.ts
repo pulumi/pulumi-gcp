@@ -68,6 +68,7 @@ export interface GetInstanceResult {
     readonly customerManagedKey: string;
     readonly displayName: string;
     readonly effectiveLabels: {[key: string]: string};
+    readonly effectiveReservedIpRange: string;
     readonly host: string;
     /**
      * The provider-assigned unique ID for this managed resource.

@@ -26,6 +26,7 @@ class RegionalSecretArgs:
                  secret_id: pulumi.Input[builtins.str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  customer_managed_encryption: Optional[pulumi.Input['RegionalSecretCustomerManagedEncryptionArgs']] = None,
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  expire_time: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -101,6 +102,8 @@ class RegionalSecretArgs:
             pulumi.set(__self__, "annotations", annotations)
         if customer_managed_encryption is not None:
             pulumi.set(__self__, "customer_managed_encryption", customer_managed_encryption)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if labels is not None:
@@ -181,6 +184,15 @@ class RegionalSecretArgs:
     @customer_managed_encryption.setter
     def customer_managed_encryption(self, value: Optional[pulumi.Input['RegionalSecretCustomerManagedEncryptionArgs']]):
         pulumi.set(self, "customer_managed_encryption", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -315,6 +327,7 @@ class _RegionalSecretState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
                  customer_managed_encryption: Optional[pulumi.Input['RegionalSecretCustomerManagedEncryptionArgs']] = None,
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  expire_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -402,6 +415,8 @@ class _RegionalSecretState:
             pulumi.set(__self__, "create_time", create_time)
         if customer_managed_encryption is not None:
             pulumi.set(__self__, "customer_managed_encryption", customer_managed_encryption)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if effective_annotations is not None:
             pulumi.set(__self__, "effective_annotations", effective_annotations)
         if effective_labels is not None:
@@ -479,6 +494,15 @@ class _RegionalSecretState:
     @customer_managed_encryption.setter
     def customer_managed_encryption(self, value: Optional[pulumi.Input['RegionalSecretCustomerManagedEncryptionArgs']]):
         pulumi.set(self, "customer_managed_encryption", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
@@ -689,6 +713,7 @@ class RegionalSecret(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  customer_managed_encryption: Optional[pulumi.Input[Union['RegionalSecretCustomerManagedEncryptionArgs', 'RegionalSecretCustomerManagedEncryptionArgsDict']]] = None,
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  expire_time: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
@@ -727,7 +752,8 @@ class RegionalSecret(pulumi.CustomResource):
                 "key1": "value1",
                 "key2": "value2",
                 "key3": "value3",
-            })
+            },
+            deletion_protection=False)
         ```
         ### Regional Secret With Cmek
 
@@ -948,7 +974,8 @@ class RegionalSecret(pulumi.CustomResource):
                 "key1": "value1",
                 "key2": "value2",
                 "key3": "value3",
-            })
+            },
+            deletion_protection=False)
         ```
         ### Regional Secret With Cmek
 
@@ -1092,6 +1119,7 @@ class RegionalSecret(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  customer_managed_encryption: Optional[pulumi.Input[Union['RegionalSecretCustomerManagedEncryptionArgs', 'RegionalSecretCustomerManagedEncryptionArgsDict']]] = None,
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  expire_time: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
@@ -1113,6 +1141,7 @@ class RegionalSecret(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["customer_managed_encryption"] = customer_managed_encryption
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -1147,6 +1176,7 @@ class RegionalSecret(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
             customer_managed_encryption: Optional[pulumi.Input[Union['RegionalSecretCustomerManagedEncryptionArgs', 'RegionalSecretCustomerManagedEncryptionArgsDict']]] = None,
+            deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             expire_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -1240,6 +1270,7 @@ class RegionalSecret(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["customer_managed_encryption"] = customer_managed_encryption
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["expire_time"] = expire_time
@@ -1292,6 +1323,11 @@ class RegionalSecret(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "customer_managed_encryption")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="effectiveAnnotations")

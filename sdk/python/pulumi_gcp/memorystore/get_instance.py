@@ -28,7 +28,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, managed_backup_sources=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, managed_backup_sources=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -77,6 +77,9 @@ class GetInstanceResult:
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
+        if kms_key and not isinstance(kms_key, str):
+            raise TypeError("Expected argument 'kms_key' to be a str")
+        pulumi.set(__self__, "kms_key", kms_key)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -228,6 +231,11 @@ class GetInstanceResult:
         return pulumi.get(self, "instance_id")
 
     @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> builtins.str:
+        return pulumi.get(self, "kms_key")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, builtins.str]:
         return pulumi.get(self, "labels")
@@ -360,6 +368,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             gcs_sources=self.gcs_sources,
             id=self.id,
             instance_id=self.instance_id,
+            kms_key=self.kms_key,
             labels=self.labels,
             location=self.location,
             maintenance_policies=self.maintenance_policies,
@@ -432,6 +441,7 @@ def get_instance(instance_id: Optional[builtins.str] = None,
         gcs_sources=pulumi.get(__ret__, 'gcs_sources'),
         id=pulumi.get(__ret__, 'id'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
+        kms_key=pulumi.get(__ret__, 'kms_key'),
         labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
         maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
@@ -501,6 +511,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[builtins.str]] = None
         gcs_sources=pulumi.get(__response__, 'gcs_sources'),
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),
+        kms_key=pulumi.get(__response__, 'kms_key'),
         labels=pulumi.get(__response__, 'labels'),
         location=pulumi.get(__response__, 'location'),
         maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),

@@ -364,10 +364,9 @@ type Database struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The database edition.
 	// Possible values are: `STANDARD`, `ENTERPRISE`.
-	DatabaseEdition       pulumi.StringOutput `pulumi:"databaseEdition"`
-	DeleteProtectionState pulumi.StringOutput `pulumi:"deleteProtectionState"`
-	// Deprecated: `deletionPolicy` is deprecated and will be removed in a future major release. Use `deleteProtectionState` instead.
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	DatabaseEdition       pulumi.StringOutput    `pulumi:"databaseEdition"`
+	DeleteProtectionState pulumi.StringOutput    `pulumi:"deleteProtectionState"`
+	DeletionPolicy        pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
 	// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -473,8 +472,7 @@ type databaseState struct {
 	// Possible values are: `STANDARD`, `ENTERPRISE`.
 	DatabaseEdition       *string `pulumi:"databaseEdition"`
 	DeleteProtectionState *string `pulumi:"deleteProtectionState"`
-	// Deprecated: `deletionPolicy` is deprecated and will be removed in a future major release. Use `deleteProtectionState` instead.
-	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	DeletionPolicy        *string `pulumi:"deletionPolicy"`
 	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
 	// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -545,8 +543,7 @@ type DatabaseState struct {
 	// Possible values are: `STANDARD`, `ENTERPRISE`.
 	DatabaseEdition       pulumi.StringPtrInput
 	DeleteProtectionState pulumi.StringPtrInput
-	// Deprecated: `deletionPolicy` is deprecated and will be removed in a future major release. Use `deleteProtectionState` instead.
-	DeletionPolicy pulumi.StringPtrInput
+	DeletionPolicy        pulumi.StringPtrInput
 	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
 	// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -619,8 +616,7 @@ type databaseArgs struct {
 	// Possible values are: `STANDARD`, `ENTERPRISE`.
 	DatabaseEdition       *string `pulumi:"databaseEdition"`
 	DeleteProtectionState *string `pulumi:"deleteProtectionState"`
-	// Deprecated: `deletionPolicy` is deprecated and will be removed in a future major release. Use `deleteProtectionState` instead.
-	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	DeletionPolicy        *string `pulumi:"deletionPolicy"`
 	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId string `pulumi:"locationId"`
@@ -668,8 +664,7 @@ type DatabaseArgs struct {
 	// Possible values are: `STANDARD`, `ENTERPRISE`.
 	DatabaseEdition       pulumi.StringPtrInput
 	DeleteProtectionState pulumi.StringPtrInput
-	// Deprecated: `deletionPolicy` is deprecated and will be removed in a future major release. Use `deleteProtectionState` instead.
-	DeletionPolicy pulumi.StringPtrInput
+	DeletionPolicy        pulumi.StringPtrInput
 	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId pulumi.StringInput
@@ -822,7 +817,6 @@ func (o DatabaseOutput) DeleteProtectionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DeleteProtectionState }).(pulumi.StringOutput)
 }
 
-// Deprecated: `deletionPolicy` is deprecated and will be removed in a future major release. Use `deleteProtectionState` instead.
 func (o DatabaseOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }

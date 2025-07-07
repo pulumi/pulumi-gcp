@@ -184,6 +184,38 @@ import (
 //	}
 //
 // ```
+// ### Region Disk Hyperdisk Balanced Ha Write Many
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionDisk(ctx, "primary", &compute.RegionDiskArgs{
+//				Name:   pulumi.String("my-region-hyperdisk"),
+//				Type:   pulumi.String("hyperdisk-balanced-high-availability"),
+//				Region: pulumi.String("us-central1"),
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-central1-a"),
+//					pulumi.String("us-central1-f"),
+//				},
+//				AccessMode: pulumi.String("READ_WRITE_MANY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -217,6 +249,13 @@ import (
 type RegionDisk struct {
 	pulumi.CustomResourceState
 
+	// The access mode of the disk.
+	// For example:
+	// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+	// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+	// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+	//   The AccessMode is only valid for Hyperdisk disk types.
+	AccessMode pulumi.StringOutput `pulumi:"accessMode"`
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk RegionDiskAsyncPrimaryDiskPtrOutput `pulumi:"asyncPrimaryDisk"`
@@ -384,6 +423,13 @@ func GetRegionDisk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionDisk resources.
 type regionDiskState struct {
+	// The access mode of the disk.
+	// For example:
+	// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+	// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+	// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+	//   The AccessMode is only valid for Hyperdisk disk types.
+	AccessMode *string `pulumi:"accessMode"`
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *RegionDiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
@@ -514,6 +560,13 @@ type regionDiskState struct {
 }
 
 type RegionDiskState struct {
+	// The access mode of the disk.
+	// For example:
+	// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+	// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+	// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+	//   The AccessMode is only valid for Hyperdisk disk types.
+	AccessMode pulumi.StringPtrInput
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk RegionDiskAsyncPrimaryDiskPtrInput
@@ -648,6 +701,13 @@ func (RegionDiskState) ElementType() reflect.Type {
 }
 
 type regionDiskArgs struct {
+	// The access mode of the disk.
+	// For example:
+	// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+	// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+	// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+	//   The AccessMode is only valid for Hyperdisk disk types.
+	AccessMode *string `pulumi:"accessMode"`
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *RegionDiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
@@ -747,6 +807,13 @@ type regionDiskArgs struct {
 
 // The set of arguments for constructing a RegionDisk resource.
 type RegionDiskArgs struct {
+	// The access mode of the disk.
+	// For example:
+	// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+	// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+	// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+	//   The AccessMode is only valid for Hyperdisk disk types.
+	AccessMode pulumi.StringPtrInput
 	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk RegionDiskAsyncPrimaryDiskPtrInput
@@ -929,6 +996,16 @@ func (o RegionDiskOutput) ToRegionDiskOutput() RegionDiskOutput {
 
 func (o RegionDiskOutput) ToRegionDiskOutputWithContext(ctx context.Context) RegionDiskOutput {
 	return o
+}
+
+// The access mode of the disk.
+// For example:
+//   - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+//   - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+//   - READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+//     The AccessMode is only valid for Hyperdisk disk types.
+func (o RegionDiskOutput) AccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.AccessMode }).(pulumi.StringOutput)
 }
 
 // A nested object resource.

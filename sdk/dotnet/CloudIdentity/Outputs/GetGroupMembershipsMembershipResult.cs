@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     public sealed class GetGroupMembershipsMembershipResult
     {
         /// <summary>
+        /// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+        /// </summary>
+        public readonly bool CreateIgnoreAlreadyExists;
+        /// <summary>
         /// The time when the Membership was created.
         /// </summary>
         public readonly string CreateTime;
@@ -48,6 +52,8 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
 
         [OutputConstructor]
         private GetGroupMembershipsMembershipResult(
+            bool createIgnoreAlreadyExists,
+
             string createTime,
 
             string group,
@@ -64,6 +70,7 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
 
             string updateTime)
         {
+            CreateIgnoreAlreadyExists = createIgnoreAlreadyExists;
             CreateTime = createTime;
             Group = group;
             MemberKeys = memberKeys;

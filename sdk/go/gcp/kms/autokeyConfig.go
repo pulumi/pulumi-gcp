@@ -164,6 +164,8 @@ import (
 type AutokeyConfig struct {
 	pulumi.CustomResourceState
 
+	// The etag of the AutokeyConfig for optimistic concurrency control.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The folder for which to retrieve config.
 	//
 	// ***
@@ -207,6 +209,8 @@ func GetAutokeyConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AutokeyConfig resources.
 type autokeyConfigState struct {
+	// The etag of the AutokeyConfig for optimistic concurrency control.
+	Etag *string `pulumi:"etag"`
 	// The folder for which to retrieve config.
 	//
 	// ***
@@ -218,6 +222,8 @@ type autokeyConfigState struct {
 }
 
 type AutokeyConfigState struct {
+	// The etag of the AutokeyConfig for optimistic concurrency control.
+	Etag pulumi.StringPtrInput
 	// The folder for which to retrieve config.
 	//
 	// ***
@@ -340,6 +346,11 @@ func (o AutokeyConfigOutput) ToAutokeyConfigOutput() AutokeyConfigOutput {
 
 func (o AutokeyConfigOutput) ToAutokeyConfigOutputWithContext(ctx context.Context) AutokeyConfigOutput {
 	return o
+}
+
+// The etag of the AutokeyConfig for optimistic concurrency control.
+func (o AutokeyConfigOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutokeyConfig) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The folder for which to retrieve config.

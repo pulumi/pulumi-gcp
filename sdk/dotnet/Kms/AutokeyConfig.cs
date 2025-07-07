@@ -175,6 +175,12 @@ namespace Pulumi.Gcp.Kms
     public partial class AutokeyConfig : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The etag of the AutokeyConfig for optimistic concurrency control.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
         /// The folder for which to retrieve config.
         /// 
         /// 
@@ -262,6 +268,12 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class AutokeyConfigState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The etag of the AutokeyConfig for optimistic concurrency control.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
         /// <summary>
         /// The folder for which to retrieve config.
         /// 

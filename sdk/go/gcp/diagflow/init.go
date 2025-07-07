@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CxEnvironment{}
 	case "gcp:diagflow/cxFlow:CxFlow":
 		r = &CxFlow{}
+	case "gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings":
+		r = &CxGenerativeSettings{}
 	case "gcp:diagflow/cxIntent:CxIntent":
 		r = &CxIntent{}
 	case "gcp:diagflow/cxPage:CxPage":
@@ -89,6 +91,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"diagflow/cxFlow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"diagflow/cxGenerativeSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

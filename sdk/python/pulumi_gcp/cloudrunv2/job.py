@@ -1151,6 +1151,28 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
+        ### Cloudrunv2 Job Gpu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "template": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/job",
+                    }],
+                    "node_selector": {
+                        "accelerator": "nvidia-l4",
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -1526,6 +1548,28 @@ class Job(pulumi.CustomResource):
                             "image": "us-docker.pkg.dev/cloudrun/container/job",
                         },
                     ],
+                },
+            })
+        ```
+        ### Cloudrunv2 Job Gpu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "template": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/job",
+                    }],
+                    "node_selector": {
+                        "accelerator": "nvidia-l4",
+                    },
                 },
             })
         ```

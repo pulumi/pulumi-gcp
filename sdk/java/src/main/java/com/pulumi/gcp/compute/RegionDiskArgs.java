@@ -25,6 +25,31 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     public static final RegionDiskArgs Empty = new RegionDiskArgs();
 
     /**
+     * The access mode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     *   The AccessMode is only valid for Hyperdisk disk types.
+     * 
+     */
+    @Import(name="accessMode")
+    private @Nullable Output<String> accessMode;
+
+    /**
+     * @return The access mode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     *   The AccessMode is only valid for Hyperdisk disk types.
+     * 
+     */
+    public Optional<Output<String>> accessMode() {
+        return Optional.ofNullable(this.accessMode);
+    }
+
+    /**
      * A nested object resource.
      * Structure is documented below.
      * 
@@ -430,6 +455,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     private RegionDiskArgs() {}
 
     private RegionDiskArgs(RegionDiskArgs $) {
+        this.accessMode = $.accessMode;
         this.asyncPrimaryDisk = $.asyncPrimaryDisk;
         this.createSnapshotBeforeDestroy = $.createSnapshotBeforeDestroy;
         this.createSnapshotBeforeDestroyPrefix = $.createSnapshotBeforeDestroyPrefix;
@@ -467,6 +493,37 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RegionDiskArgs defaults) {
             $ = new RegionDiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessMode The access mode of the disk.
+         * For example:
+         * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+         * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+         * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+         *   The AccessMode is only valid for Hyperdisk disk types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessMode(@Nullable Output<String> accessMode) {
+            $.accessMode = accessMode;
+            return this;
+        }
+
+        /**
+         * @param accessMode The access mode of the disk.
+         * For example:
+         * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+         * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+         * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+         *   The AccessMode is only valid for Hyperdisk disk types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessMode(String accessMode) {
+            return accessMode(Output.of(accessMode));
         }
 
         /**

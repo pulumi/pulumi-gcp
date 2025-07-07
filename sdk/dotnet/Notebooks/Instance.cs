@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Notebooks
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
     ///             Project = "deeplearning-platform-release",
-    ///             ImageFamily = "tf-latest-cpu",
+    ///             ImageFamily = "pytorch-latest-cu124",
     ///         },
     ///     });
     /// 
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Notebooks
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
     ///             Project = "deeplearning-platform-release",
-    ///             ImageFamily = "tf-latest-cpu",
+    ///             ImageFamily = "pytorch-latest-cu124",
     ///         },
     ///         DesiredState = "STOPPED",
     ///     });
@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.Notebooks
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
     ///             Project = "deeplearning-platform-release",
-    ///             ImageFamily = "tf-latest-gpu",
+    ///             ImageFamily = "pytorch-latest-cu124",
     ///         },
     ///     });
     /// 
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.Notebooks
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
     ///             Project = "deeplearning-platform-release",
-    ///             ImageFamily = "tf-latest-cpu",
+    ///             ImageFamily = "pytorch-latest-cu124",
     ///         },
     ///         InstanceOwners = new[]
     ///         {

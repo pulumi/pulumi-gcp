@@ -1011,7 +1011,6 @@ import javax.annotation.Nullable;
  *                 .imageUri("us-docker.pkg.dev/cloudrun/container/hello")
  *                 .baseImage("us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22")
  *                 .enableAutomaticUpdates(true)
- *                 .workerPool("worker-pool")
  *                 .environmentVariables(Map.ofEntries(
  *                     Map.entry("FOO_KEY", "FOO_VALUE"),
  *                     Map.entry("BAR_KEY", "BAR_VALUE")

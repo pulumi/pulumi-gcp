@@ -78,6 +78,7 @@ type LookupInstanceResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                      string                              `pulumi:"id"`
 	InstanceId              string                              `pulumi:"instanceId"`
+	KmsKey                  string                              `pulumi:"kmsKey"`
 	Labels                  map[string]string                   `pulumi:"labels"`
 	Location                *string                             `pulumi:"location"`
 	MaintenancePolicies     []GetInstanceMaintenancePolicy      `pulumi:"maintenancePolicies"`
@@ -210,6 +211,10 @@ func (o LookupInstanceResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {

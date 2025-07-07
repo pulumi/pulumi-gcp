@@ -69,10 +69,12 @@ class AutokeyConfigArgs:
 @pulumi.input_type
 class _AutokeyConfigState:
     def __init__(__self__, *,
+                 etag: Optional[pulumi.Input[builtins.str]] = None,
                  folder: Optional[pulumi.Input[builtins.str]] = None,
                  key_project: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutokeyConfig resources.
+        :param pulumi.Input[builtins.str] etag: The etag of the AutokeyConfig for optimistic concurrency control.
         :param pulumi.Input[builtins.str] folder: The folder for which to retrieve config.
                
                
@@ -81,10 +83,24 @@ class _AutokeyConfigState:
                CryptoKey for any new KeyHandle the Developer creates. Should have the form
                `projects/<project_id_or_number>`.
         """
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if folder is not None:
             pulumi.set(__self__, "folder", folder)
         if key_project is not None:
             pulumi.set(__self__, "key_project", key_project)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The etag of the AutokeyConfig for optimistic concurrency control.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "etag", value)
 
     @property
     @pulumi.getter
@@ -327,6 +343,7 @@ class AutokeyConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'folder'")
             __props__.__dict__["folder"] = folder
             __props__.__dict__["key_project"] = key_project
+            __props__.__dict__["etag"] = None
         super(AutokeyConfig, __self__).__init__(
             'gcp:kms/autokeyConfig:AutokeyConfig',
             resource_name,
@@ -337,6 +354,7 @@ class AutokeyConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            etag: Optional[pulumi.Input[builtins.str]] = None,
             folder: Optional[pulumi.Input[builtins.str]] = None,
             key_project: Optional[pulumi.Input[builtins.str]] = None) -> 'AutokeyConfig':
         """
@@ -346,6 +364,7 @@ class AutokeyConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] etag: The etag of the AutokeyConfig for optimistic concurrency control.
         :param pulumi.Input[builtins.str] folder: The folder for which to retrieve config.
                
                
@@ -358,9 +377,18 @@ class AutokeyConfig(pulumi.CustomResource):
 
         __props__ = _AutokeyConfigState.__new__(_AutokeyConfigState)
 
+        __props__.__dict__["etag"] = etag
         __props__.__dict__["folder"] = folder
         __props__.__dict__["key_project"] = key_project
         return AutokeyConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[builtins.str]:
+        """
+        The etag of the AutokeyConfig for optimistic concurrency control.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter

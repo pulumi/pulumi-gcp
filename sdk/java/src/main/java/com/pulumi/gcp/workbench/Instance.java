@@ -306,7 +306,10 @@ import javax.annotation.Nullable;
  *                         .externalIp(static_.address())
  *                         .build())
  *                     .build())
- *                 .metadata(Map.of("terraform", "true"))
+ *                 .metadata(Map.ofEntries(
+ *                     Map.entry("terraform", "true"),
+ *                     Map.entry("serial-port-logging-enable", "false")
+ *                 ))
  *                 .enableIpForwarding(true)
  *                 .tags(                
  *                     "abc",

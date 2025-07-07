@@ -158,11 +158,12 @@ export class Disk extends pulumi.CustomResource {
     }
 
     /**
-     * The accessMode of the disk.
+     * The access mode of the disk.
      * For example:
-     * * READ_WRITE_SINGLE
-     * * READ_WRITE_MANY
-     * * READ_ONLY_SINGLE
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     * The AccessMode is only valid for Hyperdisk disk types.
      */
     public readonly accessMode!: pulumi.Output<string>;
     /**
@@ -569,11 +570,12 @@ export class Disk extends pulumi.CustomResource {
  */
 export interface DiskState {
     /**
-     * The accessMode of the disk.
+     * The access mode of the disk.
      * For example:
-     * * READ_WRITE_SINGLE
-     * * READ_WRITE_MANY
-     * * READ_ONLY_SINGLE
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     * The AccessMode is only valid for Hyperdisk disk types.
      */
     accessMode?: pulumi.Input<string>;
     /**
@@ -870,11 +872,12 @@ export interface DiskState {
  */
 export interface DiskArgs {
     /**
-     * The accessMode of the disk.
+     * The access mode of the disk.
      * For example:
-     * * READ_WRITE_SINGLE
-     * * READ_WRITE_MANY
-     * * READ_ONLY_SINGLE
+     * * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+     * * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+     * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+     * The AccessMode is only valid for Hyperdisk disk types.
      */
     accessMode?: pulumi.Input<string>;
     /**

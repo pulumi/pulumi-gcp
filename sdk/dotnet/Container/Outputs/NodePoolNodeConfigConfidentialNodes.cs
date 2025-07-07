@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolNodeConfigConfidentialNodes
     {
         /// <summary>
+        /// Defines the type of technology used by the confidential node.
+        /// </summary>
+        public readonly string? ConfidentialInstanceType;
+        /// <summary>
         /// Whether Confidential Nodes feature is enabled for all nodes in this pool.
         /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]
-        private NodePoolNodeConfigConfidentialNodes(bool enabled)
+        private NodePoolNodeConfigConfidentialNodes(
+            string? confidentialInstanceType,
+
+            bool enabled)
         {
+            ConfidentialInstanceType = confidentialInstanceType;
             Enabled = enabled;
         }
     }

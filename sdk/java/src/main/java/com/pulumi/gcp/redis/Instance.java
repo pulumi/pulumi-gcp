@@ -603,6 +603,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * The CIDR range of internal addresses that are reserved for this
+     * instance. If not provided, the service will choose an unused /29
+     * block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+     * unique and non-overlapping with existing subnets in an authorized
+     * network.
+     * 
+     */
+    @Export(name="effectiveReservedIpRange", refs={String.class}, tree="[0]")
+    private Output<String> effectiveReservedIpRange;
+
+    /**
+     * @return The CIDR range of internal addresses that are reserved for this
+     * instance. If not provided, the service will choose an unused /29
+     * block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
+     * unique and non-overlapping with existing subnets in an authorized
+     * network.
+     * 
+     */
+    public Output<String> effectiveReservedIpRange() {
+        return this.effectiveReservedIpRange;
+    }
+    /**
      * Hostname or IP address of the exposed Redis endpoint used by clients
      * to connect to the service.
      * 

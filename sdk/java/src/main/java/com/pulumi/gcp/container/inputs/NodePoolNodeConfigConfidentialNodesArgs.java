@@ -7,12 +7,30 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NodePoolNodeConfigConfidentialNodesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolNodeConfigConfidentialNodesArgs Empty = new NodePoolNodeConfigConfidentialNodesArgs();
+
+    /**
+     * Defines the type of technology used by the confidential node.
+     * 
+     */
+    @Import(name="confidentialInstanceType")
+    private @Nullable Output<String> confidentialInstanceType;
+
+    /**
+     * @return Defines the type of technology used by the confidential node.
+     * 
+     */
+    public Optional<Output<String>> confidentialInstanceType() {
+        return Optional.ofNullable(this.confidentialInstanceType);
+    }
 
     /**
      * Whether Confidential Nodes feature is enabled for all nodes in this pool.
@@ -32,6 +50,7 @@ public final class NodePoolNodeConfigConfidentialNodesArgs extends com.pulumi.re
     private NodePoolNodeConfigConfidentialNodesArgs() {}
 
     private NodePoolNodeConfigConfidentialNodesArgs(NodePoolNodeConfigConfidentialNodesArgs $) {
+        this.confidentialInstanceType = $.confidentialInstanceType;
         this.enabled = $.enabled;
     }
 
@@ -51,6 +70,27 @@ public final class NodePoolNodeConfigConfidentialNodesArgs extends com.pulumi.re
 
         public Builder(NodePoolNodeConfigConfidentialNodesArgs defaults) {
             $ = new NodePoolNodeConfigConfidentialNodesArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param confidentialInstanceType Defines the type of technology used by the confidential node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialInstanceType(@Nullable Output<String> confidentialInstanceType) {
+            $.confidentialInstanceType = confidentialInstanceType;
+            return this;
+        }
+
+        /**
+         * @param confidentialInstanceType Defines the type of technology used by the confidential node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialInstanceType(String confidentialInstanceType) {
+            return confidentialInstanceType(Output.of(confidentialInstanceType));
         }
 
         /**

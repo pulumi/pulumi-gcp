@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///         NodeType = "SHARED_CORE_NANO",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_DISABLED",
     ///         AuthorizationMode = "AUTH_DISABLED",
+    ///         KmsKey = "my-key",
     ///         EngineConfigs = 
     ///         {
     ///             { "maxmemory-policy", "volatile-ttl" },
@@ -607,6 +608,12 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
+        /// The KMS key used to encrypt the at-rest data of the cluster
+        /// </summary>
+        [Output("kmsKey")]
+        public Output<string?> KmsKey { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Labels to represent user-provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -915,6 +922,12 @@ namespace Pulumi.Gcp.MemoryStore
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// The KMS key used to encrypt the at-rest data of the cluster
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -1171,6 +1184,12 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// The KMS key used to encrypt the at-rest data of the cluster
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

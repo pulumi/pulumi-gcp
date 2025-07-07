@@ -47,6 +47,7 @@ import (
 //					"key2": pulumi.String("value2"),
 //					"key3": pulumi.String("value3"),
 //				},
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -313,6 +314,7 @@ type RegionalSecret struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption RegionalSecretCustomerManagedEncryptionPtrOutput `pulumi:"customerManagedEncryption"`
+	DeletionProtection        pulumi.BoolPtrOutput                             `pulumi:"deletionProtection"`
 	EffectiveAnnotations      pulumi.StringMapOutput                           `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -436,6 +438,7 @@ type regionalSecretState struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption *RegionalSecretCustomerManagedEncryption `pulumi:"customerManagedEncryption"`
+	DeletionProtection        *bool                                    `pulumi:"deletionProtection"`
 	EffectiveAnnotations      map[string]string                        `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -519,6 +522,7 @@ type RegionalSecretState struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption RegionalSecretCustomerManagedEncryptionPtrInput
+	DeletionProtection        pulumi.BoolPtrInput
 	EffectiveAnnotations      pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -604,6 +608,7 @@ type regionalSecretArgs struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption *RegionalSecretCustomerManagedEncryption `pulumi:"customerManagedEncryption"`
+	DeletionProtection        *bool                                    `pulumi:"deletionProtection"`
 	// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
 	// output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
 	// nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
@@ -677,6 +682,7 @@ type RegionalSecretArgs struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption RegionalSecretCustomerManagedEncryptionPtrInput
+	DeletionProtection        pulumi.BoolPtrInput
 	// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
 	// output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
 	// nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
@@ -846,6 +852,10 @@ func (o RegionalSecretOutput) CustomerManagedEncryption() RegionalSecretCustomer
 	return o.ApplyT(func(v *RegionalSecret) RegionalSecretCustomerManagedEncryptionPtrOutput {
 		return v.CustomerManagedEncryption
 	}).(RegionalSecretCustomerManagedEncryptionPtrOutput)
+}
+
+func (o RegionalSecretOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionalSecret) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 func (o RegionalSecretOutput) EffectiveAnnotations() pulumi.StringMapOutput {

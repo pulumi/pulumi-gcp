@@ -80,6 +80,8 @@ __all__ = [
     'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict',
     'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs',
     'WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict',
+    'WorkloadIdentityPoolManagedIdentityAttestationRuleArgs',
+    'WorkloadIdentityPoolManagedIdentityAttestationRuleArgsDict',
     'WorkloadIdentityPoolNamespaceOwnerServiceArgs',
     'WorkloadIdentityPoolNamespaceOwnerServiceArgsDict',
     'WorkloadIdentityPoolProviderAwsArgs',
@@ -2592,6 +2594,40 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs:
     @pem_certificate.setter
     def pem_certificate(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "pem_certificate", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolManagedIdentityAttestationRuleArgsDict(TypedDict):
+        google_cloud_resource: pulumi.Input[builtins.str]
+        """
+        A single workload operating on Google Cloud. For example:
+        `//compute.googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345678`.
+        """
+elif False:
+    WorkloadIdentityPoolManagedIdentityAttestationRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolManagedIdentityAttestationRuleArgs:
+    def __init__(__self__, *,
+                 google_cloud_resource: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] google_cloud_resource: A single workload operating on Google Cloud. For example:
+               `//compute.googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345678`.
+        """
+        pulumi.set(__self__, "google_cloud_resource", google_cloud_resource)
+
+    @property
+    @pulumi.getter(name="googleCloudResource")
+    def google_cloud_resource(self) -> pulumi.Input[builtins.str]:
+        """
+        A single workload operating on Google Cloud. For example:
+        `//compute.googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345678`.
+        """
+        return pulumi.get(self, "google_cloud_resource")
+
+    @google_cloud_resource.setter
+    def google_cloud_resource(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "google_cloud_resource", value)
 
 
 if not MYPY:

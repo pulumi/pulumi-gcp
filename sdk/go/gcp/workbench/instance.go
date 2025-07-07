@@ -260,7 +260,8 @@ import (
 //						},
 //					},
 //					Metadata: pulumi.StringMap{
-//						"terraform": pulumi.String("true"),
+//						"terraform":                  pulumi.String("true"),
+//						"serial-port-logging-enable": pulumi.String("false"),
 //					},
 //					EnableIpForwarding: pulumi.Bool(true),
 //					Tags: pulumi.StringArray{

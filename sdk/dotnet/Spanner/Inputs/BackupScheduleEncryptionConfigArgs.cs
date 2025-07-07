@@ -29,6 +29,19 @@ namespace Pulumi.Gcp.Spanner.Inputs
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
 
+        [Input("kmsKeyNames")]
+        private InputList<string>? _kmsKeyNames;
+
+        /// <summary>
+        /// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+        /// in the same locations as the Spanner Database.
+        /// </summary>
+        public InputList<string> KmsKeyNames
+        {
+            get => _kmsKeyNames ?? (_kmsKeyNames = new InputList<string>());
+            set => _kmsKeyNames = value;
+        }
+
         public BackupScheduleEncryptionConfigArgs()
         {
         }

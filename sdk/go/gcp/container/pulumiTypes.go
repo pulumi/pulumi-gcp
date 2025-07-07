@@ -15869,6 +15869,9 @@ func (o ClusterClusterTelemetryPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type ClusterConfidentialNodes struct {
+	// Defines the type of technology used
+	// by the confidential node.
+	ConfidentialInstanceType *string `pulumi:"confidentialInstanceType"`
 	// Enable Confidential GKE Nodes for this cluster, to
 	// enforce encryption of data in-use.
 	Enabled bool `pulumi:"enabled"`
@@ -15886,6 +15889,9 @@ type ClusterConfidentialNodesInput interface {
 }
 
 type ClusterConfidentialNodesArgs struct {
+	// Defines the type of technology used
+	// by the confidential node.
+	ConfidentialInstanceType pulumi.StringPtrInput `pulumi:"confidentialInstanceType"`
 	// Enable Confidential GKE Nodes for this cluster, to
 	// enforce encryption of data in-use.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
@@ -15968,6 +15974,12 @@ func (o ClusterConfidentialNodesOutput) ToClusterConfidentialNodesPtrOutputWithC
 	}).(ClusterConfidentialNodesPtrOutput)
 }
 
+// Defines the type of technology used
+// by the confidential node.
+func (o ClusterConfidentialNodesOutput) ConfidentialInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterConfidentialNodes) *string { return v.ConfidentialInstanceType }).(pulumi.StringPtrOutput)
+}
+
 // Enable Confidential GKE Nodes for this cluster, to
 // enforce encryption of data in-use.
 func (o ClusterConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
@@ -15996,6 +16008,17 @@ func (o ClusterConfidentialNodesPtrOutput) Elem() ClusterConfidentialNodesOutput
 		var ret ClusterConfidentialNodes
 		return ret
 	}).(ClusterConfidentialNodesOutput)
+}
+
+// Defines the type of technology used
+// by the confidential node.
+func (o ClusterConfidentialNodesPtrOutput) ConfidentialInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterConfidentialNodes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialInstanceType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Enable Confidential GKE Nodes for this cluster, to
@@ -17742,6 +17765,151 @@ func (o ClusterGatewayApiConfigPtrOutput) Channel() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Channel
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterGkeAutoUpgradeConfig struct {
+	// The selected patch mode.
+	// Accepted values are:
+	// * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
+	PatchMode string `pulumi:"patchMode"`
+}
+
+// ClusterGkeAutoUpgradeConfigInput is an input type that accepts ClusterGkeAutoUpgradeConfigArgs and ClusterGkeAutoUpgradeConfigOutput values.
+// You can construct a concrete instance of `ClusterGkeAutoUpgradeConfigInput` via:
+//
+//	ClusterGkeAutoUpgradeConfigArgs{...}
+type ClusterGkeAutoUpgradeConfigInput interface {
+	pulumi.Input
+
+	ToClusterGkeAutoUpgradeConfigOutput() ClusterGkeAutoUpgradeConfigOutput
+	ToClusterGkeAutoUpgradeConfigOutputWithContext(context.Context) ClusterGkeAutoUpgradeConfigOutput
+}
+
+type ClusterGkeAutoUpgradeConfigArgs struct {
+	// The selected patch mode.
+	// Accepted values are:
+	// * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
+	PatchMode pulumi.StringInput `pulumi:"patchMode"`
+}
+
+func (ClusterGkeAutoUpgradeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterGkeAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (i ClusterGkeAutoUpgradeConfigArgs) ToClusterGkeAutoUpgradeConfigOutput() ClusterGkeAutoUpgradeConfigOutput {
+	return i.ToClusterGkeAutoUpgradeConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterGkeAutoUpgradeConfigArgs) ToClusterGkeAutoUpgradeConfigOutputWithContext(ctx context.Context) ClusterGkeAutoUpgradeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGkeAutoUpgradeConfigOutput)
+}
+
+func (i ClusterGkeAutoUpgradeConfigArgs) ToClusterGkeAutoUpgradeConfigPtrOutput() ClusterGkeAutoUpgradeConfigPtrOutput {
+	return i.ToClusterGkeAutoUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterGkeAutoUpgradeConfigArgs) ToClusterGkeAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) ClusterGkeAutoUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGkeAutoUpgradeConfigOutput).ToClusterGkeAutoUpgradeConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterGkeAutoUpgradeConfigPtrInput is an input type that accepts ClusterGkeAutoUpgradeConfigArgs, ClusterGkeAutoUpgradeConfigPtr and ClusterGkeAutoUpgradeConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterGkeAutoUpgradeConfigPtrInput` via:
+//
+//	        ClusterGkeAutoUpgradeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterGkeAutoUpgradeConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterGkeAutoUpgradeConfigPtrOutput() ClusterGkeAutoUpgradeConfigPtrOutput
+	ToClusterGkeAutoUpgradeConfigPtrOutputWithContext(context.Context) ClusterGkeAutoUpgradeConfigPtrOutput
+}
+
+type clusterGkeAutoUpgradeConfigPtrType ClusterGkeAutoUpgradeConfigArgs
+
+func ClusterGkeAutoUpgradeConfigPtr(v *ClusterGkeAutoUpgradeConfigArgs) ClusterGkeAutoUpgradeConfigPtrInput {
+	return (*clusterGkeAutoUpgradeConfigPtrType)(v)
+}
+
+func (*clusterGkeAutoUpgradeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterGkeAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (i *clusterGkeAutoUpgradeConfigPtrType) ToClusterGkeAutoUpgradeConfigPtrOutput() ClusterGkeAutoUpgradeConfigPtrOutput {
+	return i.ToClusterGkeAutoUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterGkeAutoUpgradeConfigPtrType) ToClusterGkeAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) ClusterGkeAutoUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGkeAutoUpgradeConfigPtrOutput)
+}
+
+type ClusterGkeAutoUpgradeConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterGkeAutoUpgradeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterGkeAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (o ClusterGkeAutoUpgradeConfigOutput) ToClusterGkeAutoUpgradeConfigOutput() ClusterGkeAutoUpgradeConfigOutput {
+	return o
+}
+
+func (o ClusterGkeAutoUpgradeConfigOutput) ToClusterGkeAutoUpgradeConfigOutputWithContext(ctx context.Context) ClusterGkeAutoUpgradeConfigOutput {
+	return o
+}
+
+func (o ClusterGkeAutoUpgradeConfigOutput) ToClusterGkeAutoUpgradeConfigPtrOutput() ClusterGkeAutoUpgradeConfigPtrOutput {
+	return o.ToClusterGkeAutoUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterGkeAutoUpgradeConfigOutput) ToClusterGkeAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) ClusterGkeAutoUpgradeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterGkeAutoUpgradeConfig) *ClusterGkeAutoUpgradeConfig {
+		return &v
+	}).(ClusterGkeAutoUpgradeConfigPtrOutput)
+}
+
+// The selected patch mode.
+// Accepted values are:
+// * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
+func (o ClusterGkeAutoUpgradeConfigOutput) PatchMode() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterGkeAutoUpgradeConfig) string { return v.PatchMode }).(pulumi.StringOutput)
+}
+
+type ClusterGkeAutoUpgradeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterGkeAutoUpgradeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterGkeAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (o ClusterGkeAutoUpgradeConfigPtrOutput) ToClusterGkeAutoUpgradeConfigPtrOutput() ClusterGkeAutoUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterGkeAutoUpgradeConfigPtrOutput) ToClusterGkeAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) ClusterGkeAutoUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterGkeAutoUpgradeConfigPtrOutput) Elem() ClusterGkeAutoUpgradeConfigOutput {
+	return o.ApplyT(func(v *ClusterGkeAutoUpgradeConfig) ClusterGkeAutoUpgradeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterGkeAutoUpgradeConfig
+		return ret
+	}).(ClusterGkeAutoUpgradeConfigOutput)
+}
+
+// The selected patch mode.
+// Accepted values are:
+// * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
+func (o ClusterGkeAutoUpgradeConfigPtrOutput) PatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterGkeAutoUpgradeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PatchMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -22510,6 +22678,9 @@ func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulu
 }
 
 type ClusterNodeConfigConfidentialNodes struct {
+	// Defines the type of technology used
+	// by the confidential node.
+	ConfidentialInstanceType *string `pulumi:"confidentialInstanceType"`
 	// Enable Confidential GKE Nodes for this cluster, to
 	// enforce encryption of data in-use.
 	Enabled bool `pulumi:"enabled"`
@@ -22527,6 +22698,9 @@ type ClusterNodeConfigConfidentialNodesInput interface {
 }
 
 type ClusterNodeConfigConfidentialNodesArgs struct {
+	// Defines the type of technology used
+	// by the confidential node.
+	ConfidentialInstanceType pulumi.StringPtrInput `pulumi:"confidentialInstanceType"`
 	// Enable Confidential GKE Nodes for this cluster, to
 	// enforce encryption of data in-use.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
@@ -22609,6 +22783,12 @@ func (o ClusterNodeConfigConfidentialNodesOutput) ToClusterNodeConfigConfidentia
 	}).(ClusterNodeConfigConfidentialNodesPtrOutput)
 }
 
+// Defines the type of technology used
+// by the confidential node.
+func (o ClusterNodeConfigConfidentialNodesOutput) ConfidentialInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigConfidentialNodes) *string { return v.ConfidentialInstanceType }).(pulumi.StringPtrOutput)
+}
+
 // Enable Confidential GKE Nodes for this cluster, to
 // enforce encryption of data in-use.
 func (o ClusterNodeConfigConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
@@ -22637,6 +22817,17 @@ func (o ClusterNodeConfigConfidentialNodesPtrOutput) Elem() ClusterNodeConfigCon
 		var ret ClusterNodeConfigConfidentialNodes
 		return ret
 	}).(ClusterNodeConfigConfidentialNodesOutput)
+}
+
+// Defines the type of technology used
+// by the confidential node.
+func (o ClusterNodeConfigConfidentialNodesPtrOutput) ConfidentialInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigConfidentialNodes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialInstanceType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Enable Confidential GKE Nodes for this cluster, to
@@ -31129,6 +31320,9 @@ func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCor
 }
 
 type ClusterNodePoolNodeConfigConfidentialNodes struct {
+	// Defines the type of technology used
+	// by the confidential node.
+	ConfidentialInstanceType *string `pulumi:"confidentialInstanceType"`
 	// Enable Confidential GKE Nodes for this cluster, to
 	// enforce encryption of data in-use.
 	Enabled bool `pulumi:"enabled"`
@@ -31146,6 +31340,9 @@ type ClusterNodePoolNodeConfigConfidentialNodesInput interface {
 }
 
 type ClusterNodePoolNodeConfigConfidentialNodesArgs struct {
+	// Defines the type of technology used
+	// by the confidential node.
+	ConfidentialInstanceType pulumi.StringPtrInput `pulumi:"confidentialInstanceType"`
 	// Enable Confidential GKE Nodes for this cluster, to
 	// enforce encryption of data in-use.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
@@ -31228,6 +31425,12 @@ func (o ClusterNodePoolNodeConfigConfidentialNodesOutput) ToClusterNodePoolNodeC
 	}).(ClusterNodePoolNodeConfigConfidentialNodesPtrOutput)
 }
 
+// Defines the type of technology used
+// by the confidential node.
+func (o ClusterNodePoolNodeConfigConfidentialNodesOutput) ConfidentialInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigConfidentialNodes) *string { return v.ConfidentialInstanceType }).(pulumi.StringPtrOutput)
+}
+
 // Enable Confidential GKE Nodes for this cluster, to
 // enforce encryption of data in-use.
 func (o ClusterNodePoolNodeConfigConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
@@ -31256,6 +31459,17 @@ func (o ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) Elem() ClusterNodeP
 		var ret ClusterNodePoolNodeConfigConfidentialNodes
 		return ret
 	}).(ClusterNodePoolNodeConfigConfidentialNodesOutput)
+}
+
+// Defines the type of technology used
+// by the confidential node.
+func (o ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) ConfidentialInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigConfidentialNodes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialInstanceType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Enable Confidential GKE Nodes for this cluster, to
@@ -40745,10 +40959,7 @@ type NodePoolNodeConfig struct {
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// Whether the nodes are created as preemptible VM instances.
 	Preemptible *bool `pulumi:"preemptible"`
-	// The configuration of the desired reservation which instances could take capacity from.
-	// Structure is documented below.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	// The reservation affinity configuration for the node pool.
 	ReservationAffinity *NodePoolNodeConfigReservationAffinity `pulumi:"reservationAffinity"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
@@ -40852,10 +41063,7 @@ type NodePoolNodeConfigArgs struct {
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// Whether the nodes are created as preemptible VM instances.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// The configuration of the desired reservation which instances could take capacity from.
-	// Structure is documented below.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	// The reservation affinity configuration for the node pool.
 	ReservationAffinity NodePoolNodeConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
@@ -41123,10 +41331,7 @@ func (o NodePoolNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of the desired reservation which instances could take capacity from.
-// Structure is documented below.
-//
-// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+// The reservation affinity configuration for the node pool.
 func (o NodePoolNodeConfigOutput) ReservationAffinity() NodePoolNodeConfigReservationAffinityPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigReservationAffinity { return v.ReservationAffinity }).(NodePoolNodeConfigReservationAffinityPtrOutput)
 }
@@ -41530,10 +41735,7 @@ func (o NodePoolNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of the desired reservation which instances could take capacity from.
-// Structure is documented below.
-//
-// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+// The reservation affinity configuration for the node pool.
 func (o NodePoolNodeConfigPtrOutput) ReservationAffinity() NodePoolNodeConfigReservationAffinityPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigReservationAffinity {
 		if v == nil {
@@ -41849,6 +42051,8 @@ func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pul
 }
 
 type NodePoolNodeConfigConfidentialNodes struct {
+	// Defines the type of technology used by the confidential node.
+	ConfidentialInstanceType *string `pulumi:"confidentialInstanceType"`
 	// Whether Confidential Nodes feature is enabled for all nodes in this pool.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -41865,6 +42069,8 @@ type NodePoolNodeConfigConfidentialNodesInput interface {
 }
 
 type NodePoolNodeConfigConfidentialNodesArgs struct {
+	// Defines the type of technology used by the confidential node.
+	ConfidentialInstanceType pulumi.StringPtrInput `pulumi:"confidentialInstanceType"`
 	// Whether Confidential Nodes feature is enabled for all nodes in this pool.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -41946,6 +42152,11 @@ func (o NodePoolNodeConfigConfidentialNodesOutput) ToNodePoolNodeConfigConfident
 	}).(NodePoolNodeConfigConfidentialNodesPtrOutput)
 }
 
+// Defines the type of technology used by the confidential node.
+func (o NodePoolNodeConfigConfidentialNodesOutput) ConfidentialInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigConfidentialNodes) *string { return v.ConfidentialInstanceType }).(pulumi.StringPtrOutput)
+}
+
 // Whether Confidential Nodes feature is enabled for all nodes in this pool.
 func (o NodePoolNodeConfigConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigConfidentialNodes) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -41973,6 +42184,16 @@ func (o NodePoolNodeConfigConfidentialNodesPtrOutput) Elem() NodePoolNodeConfigC
 		var ret NodePoolNodeConfigConfidentialNodes
 		return ret
 	}).(NodePoolNodeConfigConfidentialNodesOutput)
+}
+
+// Defines the type of technology used by the confidential node.
+func (o NodePoolNodeConfigConfidentialNodesPtrOutput) ConfidentialInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigConfidentialNodes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialInstanceType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether Confidential Nodes feature is enabled for all nodes in this pool.
@@ -50102,6 +50323,8 @@ func (o GetClusterClusterTelemetryArrayOutput) Index(i pulumi.IntInput) GetClust
 }
 
 type GetClusterConfidentialNode struct {
+	// Defines the type of technology used by the confidential node.
+	ConfidentialInstanceType string `pulumi:"confidentialInstanceType"`
 	// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -50118,6 +50341,8 @@ type GetClusterConfidentialNodeInput interface {
 }
 
 type GetClusterConfidentialNodeArgs struct {
+	// Defines the type of technology used by the confidential node.
+	ConfidentialInstanceType pulumi.StringInput `pulumi:"confidentialInstanceType"`
 	// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -50171,6 +50396,11 @@ func (o GetClusterConfidentialNodeOutput) ToGetClusterConfidentialNodeOutput() G
 
 func (o GetClusterConfidentialNodeOutput) ToGetClusterConfidentialNodeOutputWithContext(ctx context.Context) GetClusterConfidentialNodeOutput {
 	return o
+}
+
+// Defines the type of technology used by the confidential node.
+func (o GetClusterConfidentialNodeOutput) ConfidentialInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterConfidentialNode) string { return v.ConfidentialInstanceType }).(pulumi.StringOutput)
 }
 
 // Whether Confidential Nodes feature is enabled for all nodes in this cluster.
@@ -51369,6 +51599,106 @@ func (o GetClusterGatewayApiConfigArrayOutput) Index(i pulumi.IntInput) GetClust
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterGatewayApiConfig {
 		return vs[0].([]GetClusterGatewayApiConfig)[vs[1].(int)]
 	}).(GetClusterGatewayApiConfigOutput)
+}
+
+type GetClusterGkeAutoUpgradeConfig struct {
+	// The selected auto-upgrade patch type. Accepted values are:
+	// * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
+	PatchMode string `pulumi:"patchMode"`
+}
+
+// GetClusterGkeAutoUpgradeConfigInput is an input type that accepts GetClusterGkeAutoUpgradeConfigArgs and GetClusterGkeAutoUpgradeConfigOutput values.
+// You can construct a concrete instance of `GetClusterGkeAutoUpgradeConfigInput` via:
+//
+//	GetClusterGkeAutoUpgradeConfigArgs{...}
+type GetClusterGkeAutoUpgradeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterGkeAutoUpgradeConfigOutput() GetClusterGkeAutoUpgradeConfigOutput
+	ToGetClusterGkeAutoUpgradeConfigOutputWithContext(context.Context) GetClusterGkeAutoUpgradeConfigOutput
+}
+
+type GetClusterGkeAutoUpgradeConfigArgs struct {
+	// The selected auto-upgrade patch type. Accepted values are:
+	// * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
+	PatchMode pulumi.StringInput `pulumi:"patchMode"`
+}
+
+func (GetClusterGkeAutoUpgradeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterGkeAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (i GetClusterGkeAutoUpgradeConfigArgs) ToGetClusterGkeAutoUpgradeConfigOutput() GetClusterGkeAutoUpgradeConfigOutput {
+	return i.ToGetClusterGkeAutoUpgradeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterGkeAutoUpgradeConfigArgs) ToGetClusterGkeAutoUpgradeConfigOutputWithContext(ctx context.Context) GetClusterGkeAutoUpgradeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterGkeAutoUpgradeConfigOutput)
+}
+
+// GetClusterGkeAutoUpgradeConfigArrayInput is an input type that accepts GetClusterGkeAutoUpgradeConfigArray and GetClusterGkeAutoUpgradeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterGkeAutoUpgradeConfigArrayInput` via:
+//
+//	GetClusterGkeAutoUpgradeConfigArray{ GetClusterGkeAutoUpgradeConfigArgs{...} }
+type GetClusterGkeAutoUpgradeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterGkeAutoUpgradeConfigArrayOutput() GetClusterGkeAutoUpgradeConfigArrayOutput
+	ToGetClusterGkeAutoUpgradeConfigArrayOutputWithContext(context.Context) GetClusterGkeAutoUpgradeConfigArrayOutput
+}
+
+type GetClusterGkeAutoUpgradeConfigArray []GetClusterGkeAutoUpgradeConfigInput
+
+func (GetClusterGkeAutoUpgradeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterGkeAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (i GetClusterGkeAutoUpgradeConfigArray) ToGetClusterGkeAutoUpgradeConfigArrayOutput() GetClusterGkeAutoUpgradeConfigArrayOutput {
+	return i.ToGetClusterGkeAutoUpgradeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterGkeAutoUpgradeConfigArray) ToGetClusterGkeAutoUpgradeConfigArrayOutputWithContext(ctx context.Context) GetClusterGkeAutoUpgradeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterGkeAutoUpgradeConfigArrayOutput)
+}
+
+type GetClusterGkeAutoUpgradeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterGkeAutoUpgradeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterGkeAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (o GetClusterGkeAutoUpgradeConfigOutput) ToGetClusterGkeAutoUpgradeConfigOutput() GetClusterGkeAutoUpgradeConfigOutput {
+	return o
+}
+
+func (o GetClusterGkeAutoUpgradeConfigOutput) ToGetClusterGkeAutoUpgradeConfigOutputWithContext(ctx context.Context) GetClusterGkeAutoUpgradeConfigOutput {
+	return o
+}
+
+// The selected auto-upgrade patch type. Accepted values are:
+// * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
+func (o GetClusterGkeAutoUpgradeConfigOutput) PatchMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterGkeAutoUpgradeConfig) string { return v.PatchMode }).(pulumi.StringOutput)
+}
+
+type GetClusterGkeAutoUpgradeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterGkeAutoUpgradeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterGkeAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (o GetClusterGkeAutoUpgradeConfigArrayOutput) ToGetClusterGkeAutoUpgradeConfigArrayOutput() GetClusterGkeAutoUpgradeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterGkeAutoUpgradeConfigArrayOutput) ToGetClusterGkeAutoUpgradeConfigArrayOutputWithContext(ctx context.Context) GetClusterGkeAutoUpgradeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterGkeAutoUpgradeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterGkeAutoUpgradeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterGkeAutoUpgradeConfig {
+		return vs[0].([]GetClusterGkeAutoUpgradeConfig)[vs[1].(int)]
+	}).(GetClusterGkeAutoUpgradeConfigOutput)
 }
 
 type GetClusterIdentityServiceConfig struct {
@@ -54251,6 +54581,8 @@ func (o GetClusterNodeConfigAdvancedMachineFeatureArrayOutput) Index(i pulumi.In
 }
 
 type GetClusterNodeConfigConfidentialNode struct {
+	// Defines the type of technology used by the confidential node.
+	ConfidentialInstanceType string `pulumi:"confidentialInstanceType"`
 	// Whether Confidential Nodes feature is enabled for all nodes in this pool.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -54267,6 +54599,8 @@ type GetClusterNodeConfigConfidentialNodeInput interface {
 }
 
 type GetClusterNodeConfigConfidentialNodeArgs struct {
+	// Defines the type of technology used by the confidential node.
+	ConfidentialInstanceType pulumi.StringInput `pulumi:"confidentialInstanceType"`
 	// Whether Confidential Nodes feature is enabled for all nodes in this pool.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -54320,6 +54654,11 @@ func (o GetClusterNodeConfigConfidentialNodeOutput) ToGetClusterNodeConfigConfid
 
 func (o GetClusterNodeConfigConfidentialNodeOutput) ToGetClusterNodeConfigConfidentialNodeOutputWithContext(ctx context.Context) GetClusterNodeConfigConfidentialNodeOutput {
 	return o
+}
+
+// Defines the type of technology used by the confidential node.
+func (o GetClusterNodeConfigConfidentialNodeOutput) ConfidentialInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigConfidentialNode) string { return v.ConfidentialInstanceType }).(pulumi.StringOutput)
 }
 
 // Whether Confidential Nodes feature is enabled for all nodes in this pool.
@@ -60132,6 +60471,8 @@ func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput) Index(i p
 }
 
 type GetClusterNodePoolNodeConfigConfidentialNode struct {
+	// Defines the type of technology used by the confidential node.
+	ConfidentialInstanceType string `pulumi:"confidentialInstanceType"`
 	// Whether Confidential Nodes feature is enabled for all nodes in this pool.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -60148,6 +60489,8 @@ type GetClusterNodePoolNodeConfigConfidentialNodeInput interface {
 }
 
 type GetClusterNodePoolNodeConfigConfidentialNodeArgs struct {
+	// Defines the type of technology used by the confidential node.
+	ConfidentialInstanceType pulumi.StringInput `pulumi:"confidentialInstanceType"`
 	// Whether Confidential Nodes feature is enabled for all nodes in this pool.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -60201,6 +60544,11 @@ func (o GetClusterNodePoolNodeConfigConfidentialNodeOutput) ToGetClusterNodePool
 
 func (o GetClusterNodePoolNodeConfigConfidentialNodeOutput) ToGetClusterNodePoolNodeConfigConfidentialNodeOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigConfidentialNodeOutput {
 	return o
+}
+
+// Defines the type of technology used by the confidential node.
+func (o GetClusterNodePoolNodeConfigConfidentialNodeOutput) ConfidentialInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigConfidentialNode) string { return v.ConfidentialInstanceType }).(pulumi.StringOutput)
 }
 
 // Whether Confidential Nodes feature is enabled for all nodes in this pool.
@@ -66118,6 +66466,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetPtrInput)(nil)).Elem(), ClusterFleetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGatewayApiConfigInput)(nil)).Elem(), ClusterGatewayApiConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGatewayApiConfigPtrInput)(nil)).Elem(), ClusterGatewayApiConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGkeAutoUpgradeConfigInput)(nil)).Elem(), ClusterGkeAutoUpgradeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGkeAutoUpgradeConfigPtrInput)(nil)).Elem(), ClusterGkeAutoUpgradeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIdentityServiceConfigInput)(nil)).Elem(), ClusterIdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIdentityServiceConfigPtrInput)(nil)).Elem(), ClusterIdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyInput)(nil)).Elem(), ClusterIpAllocationPolicyArgs{})
@@ -66532,6 +66882,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterFleetArrayInput)(nil)).Elem(), GetClusterFleetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterGatewayApiConfigInput)(nil)).Elem(), GetClusterGatewayApiConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterGatewayApiConfigArrayInput)(nil)).Elem(), GetClusterGatewayApiConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterGkeAutoUpgradeConfigInput)(nil)).Elem(), GetClusterGkeAutoUpgradeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterGkeAutoUpgradeConfigArrayInput)(nil)).Elem(), GetClusterGkeAutoUpgradeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIdentityServiceConfigInput)(nil)).Elem(), GetClusterIdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIdentityServiceConfigArrayInput)(nil)).Elem(), GetClusterIdentityServiceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyInput)(nil)).Elem(), GetClusterIpAllocationPolicyArgs{})
@@ -67004,6 +67356,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterFleetPtrOutput{})
 	pulumi.RegisterOutputType(ClusterGatewayApiConfigOutput{})
 	pulumi.RegisterOutputType(ClusterGatewayApiConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterGkeAutoUpgradeConfigOutput{})
+	pulumi.RegisterOutputType(ClusterGkeAutoUpgradeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIdentityServiceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterIdentityServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyOutput{})
@@ -67418,6 +67772,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterFleetArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterGatewayApiConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterGatewayApiConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterGkeAutoUpgradeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterGkeAutoUpgradeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIdentityServiceConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterIdentityServiceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyOutput{})

@@ -185,11 +185,12 @@ import (
 type Disk struct {
 	pulumi.CustomResourceState
 
-	// The accessMode of the disk.
+	// The access mode of the disk.
 	// For example:
-	// * READ_WRITE_SINGLE
-	// * READ_WRITE_MANY
-	// * READ_ONLY_SINGLE
+	// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+	// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+	// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+	//   The AccessMode is only valid for Hyperdisk disk types.
 	AccessMode pulumi.StringOutput `pulumi:"accessMode"`
 	// The architecture of the disk. Values include `X86_64`, `ARM64`.
 	Architecture pulumi.StringPtrOutput `pulumi:"architecture"`
@@ -428,11 +429,12 @@ func GetDisk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Disk resources.
 type diskState struct {
-	// The accessMode of the disk.
+	// The access mode of the disk.
 	// For example:
-	// * READ_WRITE_SINGLE
-	// * READ_WRITE_MANY
-	// * READ_ONLY_SINGLE
+	// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+	// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+	// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+	//   The AccessMode is only valid for Hyperdisk disk types.
 	AccessMode *string `pulumi:"accessMode"`
 	// The architecture of the disk. Values include `X86_64`, `ARM64`.
 	Architecture *string `pulumi:"architecture"`
@@ -637,11 +639,12 @@ type diskState struct {
 }
 
 type DiskState struct {
-	// The accessMode of the disk.
+	// The access mode of the disk.
 	// For example:
-	// * READ_WRITE_SINGLE
-	// * READ_WRITE_MANY
-	// * READ_ONLY_SINGLE
+	// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+	// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+	// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+	//   The AccessMode is only valid for Hyperdisk disk types.
 	AccessMode pulumi.StringPtrInput
 	// The architecture of the disk. Values include `X86_64`, `ARM64`.
 	Architecture pulumi.StringPtrInput
@@ -850,11 +853,12 @@ func (DiskState) ElementType() reflect.Type {
 }
 
 type diskArgs struct {
-	// The accessMode of the disk.
+	// The access mode of the disk.
 	// For example:
-	// * READ_WRITE_SINGLE
-	// * READ_WRITE_MANY
-	// * READ_ONLY_SINGLE
+	// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+	// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+	// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+	//   The AccessMode is only valid for Hyperdisk disk types.
 	AccessMode *string `pulumi:"accessMode"`
 	// The architecture of the disk. Values include `X86_64`, `ARM64`.
 	Architecture *string `pulumi:"architecture"`
@@ -1016,11 +1020,12 @@ type diskArgs struct {
 
 // The set of arguments for constructing a Disk resource.
 type DiskArgs struct {
-	// The accessMode of the disk.
+	// The access mode of the disk.
 	// For example:
-	// * READ_WRITE_SINGLE
-	// * READ_WRITE_MANY
-	// * READ_ONLY_SINGLE
+	// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+	// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+	// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+	//   The AccessMode is only valid for Hyperdisk disk types.
 	AccessMode pulumi.StringPtrInput
 	// The architecture of the disk. Values include `X86_64`, `ARM64`.
 	Architecture pulumi.StringPtrInput
@@ -1267,11 +1272,12 @@ func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
 }
 
-// The accessMode of the disk.
+// The access mode of the disk.
 // For example:
-// * READ_WRITE_SINGLE
-// * READ_WRITE_MANY
-// * READ_ONLY_SINGLE
+//   - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+//   - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+//   - READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+//     The AccessMode is only valid for Hyperdisk disk types.
 func (o DiskOutput) AccessMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.AccessMode }).(pulumi.StringOutput)
 }

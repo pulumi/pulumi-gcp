@@ -13,6 +13,7 @@ import com.pulumi.gcp.secretmanager.inputs.RegionalSecretState;
 import com.pulumi.gcp.secretmanager.outputs.RegionalSecretCustomerManagedEncryption;
 import com.pulumi.gcp.secretmanager.outputs.RegionalSecretRotation;
 import com.pulumi.gcp.secretmanager.outputs.RegionalSecretTopic;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -64,6 +65,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("key2", "value2"),
  *                 Map.entry("key3", "value3")
  *             ))
+ *             .deletionProtection(false)
  *             .build());
  * 
  *     }
@@ -413,6 +415,12 @@ public class RegionalSecret extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<RegionalSecretCustomerManagedEncryption>> customerManagedEncryption() {
         return Codegen.optional(this.customerManagedEncryption);
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;

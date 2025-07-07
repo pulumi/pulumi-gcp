@@ -157,6 +157,7 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         public readonly string Id;
         public readonly string InstanceId;
+        public readonly string KmsKey;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string? Location;
         public readonly ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> MaintenancePolicies;
@@ -213,6 +214,8 @@ namespace Pulumi.Gcp.MemoryStore
             string id,
 
             string instanceId,
+
+            string kmsKey,
 
             ImmutableDictionary<string, string> labels,
 
@@ -274,6 +277,7 @@ namespace Pulumi.Gcp.MemoryStore
             GcsSources = gcsSources;
             Id = id;
             InstanceId = instanceId;
+            KmsKey = kmsKey;
             Labels = labels;
             Location = location;
             MaintenancePolicies = maintenancePolicies;

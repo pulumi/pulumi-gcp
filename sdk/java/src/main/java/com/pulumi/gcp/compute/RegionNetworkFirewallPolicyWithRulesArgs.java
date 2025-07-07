@@ -60,6 +60,25 @@ public final class RegionNetworkFirewallPolicyWithRulesArgs extends com.pulumi.r
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;, &#34;RDMA_ROCE_POLICY&#34;]
+     * 
+     */
+    @Import(name="policyType")
+    private @Nullable Output<String> policyType;
+
+    /**
+     * @return Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;, &#34;RDMA_ROCE_POLICY&#34;]
+     * 
+     */
+    public Optional<Output<String>> policyType() {
+        return Optional.ofNullable(this.policyType);
+    }
+
     @Import(name="project")
     private @Nullable Output<String> project;
 
@@ -104,6 +123,7 @@ public final class RegionNetworkFirewallPolicyWithRulesArgs extends com.pulumi.r
     private RegionNetworkFirewallPolicyWithRulesArgs(RegionNetworkFirewallPolicyWithRulesArgs $) {
         this.description = $.description;
         this.name = $.name;
+        this.policyType = $.policyType;
         this.project = $.project;
         this.region = $.region;
         this.rules = $.rules;
@@ -179,6 +199,31 @@ public final class RegionNetworkFirewallPolicyWithRulesArgs extends com.pulumi.r
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param policyType Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+         * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+         * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;, &#34;RDMA_ROCE_POLICY&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyType(@Nullable Output<String> policyType) {
+            $.policyType = policyType;
+            return this;
+        }
+
+        /**
+         * @param policyType Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
+         * associated with a network only if the network has the matching policyType in its network profile. Different policy types
+         * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;, &#34;RDMA_ROCE_POLICY&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyType(String policyType) {
+            return policyType(Output.of(policyType));
         }
 
         public Builder project(@Nullable Output<String> project) {

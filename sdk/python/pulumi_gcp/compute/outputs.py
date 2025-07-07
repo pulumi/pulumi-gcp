@@ -80,6 +80,8 @@ __all__ = [
     'FirewallLogConfig',
     'FirewallPolicyRuleMatch',
     'FirewallPolicyRuleMatchLayer4Config',
+    'FirewallPolicyRuleMatchSrcSecureTag',
+    'FirewallPolicyRuleTargetSecureTag',
     'FirewallPolicyWithRulesPredefinedRule',
     'FirewallPolicyWithRulesPredefinedRuleMatch',
     'FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config',
@@ -202,6 +204,7 @@ __all__ = [
     'InstanceGroupManagerInstanceLifecyclePolicy',
     'InstanceGroupManagerNamedPort',
     'InstanceGroupManagerParams',
+    'InstanceGroupManagerResourcePolicies',
     'InstanceGroupManagerStandbyPolicy',
     'InstanceGroupManagerStatefulDisk',
     'InstanceGroupManagerStatefulExternalIp',
@@ -313,6 +316,7 @@ __all__ = [
     'NetworkFirewallPolicyWithRulesRuleMatchLayer4Config',
     'NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag',
     'NetworkFirewallPolicyWithRulesRuleTargetSecureTag',
+    'NetworkParams',
     'NodeGroupAutoscalingPolicy',
     'NodeGroupMaintenanceWindow',
     'NodeGroupShareSettings',
@@ -784,6 +788,15 @@ __all__ = [
     'VPNTunnelCipherSuite',
     'VPNTunnelCipherSuitePhase1',
     'VPNTunnelCipherSuitePhase2',
+    'WireGroupEndpoint',
+    'WireGroupEndpointInterconnect',
+    'WireGroupTopology',
+    'WireGroupTopologyEndpoint',
+    'WireGroupWire',
+    'WireGroupWireEndpoint',
+    'WireGroupWireGroupProperties',
+    'WireGroupWireProperties',
+    'WireGroupWireWireProperty',
     'GetAddressesAddressResult',
     'GetBackendBucketCdnPolicyResult',
     'GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderResult',
@@ -854,6 +867,7 @@ __all__ = [
     'GetInstanceGroupManagerInstanceLifecyclePolicyResult',
     'GetInstanceGroupManagerNamedPortResult',
     'GetInstanceGroupManagerParamResult',
+    'GetInstanceGroupManagerResourcePolicyResult',
     'GetInstanceGroupManagerStandbyPolicyResult',
     'GetInstanceGroupManagerStatefulDiskResult',
     'GetInstanceGroupManagerStatefulExternalIpResult',
@@ -5403,6 +5417,8 @@ class FirewallPolicyRuleMatch(dict):
             suggest = "src_networks"
         elif key == "srcRegionCodes":
             suggest = "src_region_codes"
+        elif key == "srcSecureTags":
+            suggest = "src_secure_tags"
         elif key == "srcThreatIntelligences":
             suggest = "src_threat_intelligences"
 
@@ -5431,6 +5447,7 @@ class FirewallPolicyRuleMatch(dict):
                  src_network_scope: Optional[builtins.str] = None,
                  src_networks: Optional[Sequence[builtins.str]] = None,
                  src_region_codes: Optional[Sequence[builtins.str]] = None,
+                 src_secure_tags: Optional[Sequence['outputs.FirewallPolicyRuleMatchSrcSecureTag']] = None,
                  src_threat_intelligences: Optional[Sequence[builtins.str]] = None):
         """
         :param Sequence['FirewallPolicyRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
@@ -5449,10 +5466,12 @@ class FirewallPolicyRuleMatch(dict):
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param Sequence[builtins.str] src_networks: Networks of the traffic source. It can be either a full or partial url.
         :param Sequence[builtins.str] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
-        :param Sequence[builtins.str] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+        :param Sequence['FirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+               Structure is documented below.
                
                
                <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        :param Sequence[builtins.str] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -5479,6 +5498,8 @@ class FirewallPolicyRuleMatch(dict):
             pulumi.set(__self__, "src_networks", src_networks)
         if src_region_codes is not None:
             pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if src_secure_tags is not None:
+            pulumi.set(__self__, "src_secure_tags", src_secure_tags)
         if src_threat_intelligences is not None:
             pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
 
@@ -5590,13 +5611,22 @@ class FirewallPolicyRuleMatch(dict):
         return pulumi.get(self, "src_region_codes")
 
     @property
+    @pulumi.getter(name="srcSecureTags")
+    def src_secure_tags(self) -> Optional[Sequence['outputs.FirewallPolicyRuleMatchSrcSecureTag']]:
+        """
+        List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+
+
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        """
+        return pulumi.get(self, "src_secure_tags")
+
+    @property
     @pulumi.getter(name="srcThreatIntelligences")
     def src_threat_intelligences(self) -> Optional[Sequence[builtins.str]]:
         """
         Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
-
-
-        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -5650,6 +5680,76 @@ class FirewallPolicyRuleMatchLayer4Config(dict):
         Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
         """
         return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class FirewallPolicyRuleMatchSrcSecureTag(dict):
+    def __init__(__self__, *,
+                 name: Optional[builtins.str] = None,
+                 state: Optional[builtins.str] = None):
+        """
+        :param builtins.str name: Name of the secure tag, created with TagManager's TagValue API.
+        :param builtins.str state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+               
+               - - -
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+
+        - - -
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class FirewallPolicyRuleTargetSecureTag(dict):
+    def __init__(__self__, *,
+                 name: Optional[builtins.str] = None,
+                 state: Optional[builtins.str] = None):
+        """
+        :param builtins.str name: Name of the secure tag, created with TagManager's TagValue API.
+        :param builtins.str state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -16014,6 +16114,8 @@ class InstanceGroupManagerParams(dict):
                  resource_manager_tags: Optional[Mapping[str, builtins.str]] = None):
         """
         :param Mapping[str, builtins.str] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+               
+               - - -
         """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
@@ -16023,8 +16125,46 @@ class InstanceGroupManagerParams(dict):
     def resource_manager_tags(self) -> Optional[Mapping[str, builtins.str]]:
         """
         Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+
+        - - -
         """
         return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
+class InstanceGroupManagerResourcePolicies(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workloadPolicy":
+            suggest = "workload_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerResourcePolicies. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerResourcePolicies.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerResourcePolicies.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workload_policy: Optional[builtins.str] = None):
+        """
+        :param builtins.str workload_policy: The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+        """
+        if workload_policy is not None:
+            pulumi.set(__self__, "workload_policy", workload_policy)
+
+    @property
+    @pulumi.getter(name="workloadPolicy")
+    def workload_policy(self) -> Optional[builtins.str]:
+        """
+        The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+        """
+        return pulumi.get(self, "workload_policy")
 
 
 @pulumi.output_type
@@ -24131,6 +24271,46 @@ class NetworkFirewallPolicyWithRulesRuleTargetSecureTag(dict):
         - - -
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class NetworkParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, builtins.str]] = None):
+        """
+        :param Mapping[str, builtins.str] resource_manager_tags: Resource manager tags to be bound to the network. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        Resource manager tags to be bound to the network. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -58633,6 +58813,408 @@ class VPNTunnelCipherSuitePhase2(dict):
 
 
 @pulumi.output_type
+class WireGroupEndpoint(dict):
+    def __init__(__self__, *,
+                 endpoint: builtins.str,
+                 interconnects: Optional[Sequence['outputs.WireGroupEndpointInterconnect']] = None):
+        """
+        :param builtins.str endpoint: The identifier for this object. Format specified above.
+        :param Sequence['WireGroupEndpointInterconnectArgs'] interconnects: Structure is documented below.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        if interconnects is not None:
+            pulumi.set(__self__, "interconnects", interconnects)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def interconnects(self) -> Optional[Sequence['outputs.WireGroupEndpointInterconnect']]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "interconnects")
+
+
+@pulumi.output_type
+class WireGroupEndpointInterconnect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "interconnectName":
+            suggest = "interconnect_name"
+        elif key == "vlanTags":
+            suggest = "vlan_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WireGroupEndpointInterconnect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WireGroupEndpointInterconnect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WireGroupEndpointInterconnect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 interconnect_name: builtins.str,
+                 interconnect: Optional[builtins.str] = None,
+                 vlan_tags: Optional[Sequence[builtins.int]] = None):
+        """
+        :param builtins.str interconnect_name: The identifier for this object. Format specified above.
+        :param builtins.str interconnect: (Optional)
+        :param Sequence[builtins.int] vlan_tags: VLAN tags for the interconnect.
+        """
+        pulumi.set(__self__, "interconnect_name", interconnect_name)
+        if interconnect is not None:
+            pulumi.set(__self__, "interconnect", interconnect)
+        if vlan_tags is not None:
+            pulumi.set(__self__, "vlan_tags", vlan_tags)
+
+    @property
+    @pulumi.getter(name="interconnectName")
+    def interconnect_name(self) -> builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "interconnect_name")
+
+    @property
+    @pulumi.getter
+    def interconnect(self) -> Optional[builtins.str]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "interconnect")
+
+    @property
+    @pulumi.getter(name="vlanTags")
+    def vlan_tags(self) -> Optional[Sequence[builtins.int]]:
+        """
+        VLAN tags for the interconnect.
+        """
+        return pulumi.get(self, "vlan_tags")
+
+
+@pulumi.output_type
+class WireGroupTopology(dict):
+    def __init__(__self__, *,
+                 endpoints: Optional[Sequence['outputs.WireGroupTopologyEndpoint']] = None):
+        """
+        :param Sequence['WireGroupTopologyEndpointArgs'] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
+               Structure is documented below.
+        """
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Optional[Sequence['outputs.WireGroupTopologyEndpoint']]:
+        """
+        Endpoints grouped by location, each mapping to interconnect configurations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoints")
+
+
+@pulumi.output_type
+class WireGroupTopologyEndpoint(dict):
+    def __init__(__self__, *,
+                 city: Optional[builtins.str] = None,
+                 label: Optional[builtins.str] = None):
+        """
+        :param builtins.str city: (Output)
+        :param builtins.str label: (Output)
+        """
+        if city is not None:
+            pulumi.set(__self__, "city", city)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+
+    @property
+    @pulumi.getter
+    def city(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "city")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "label")
+
+
+@pulumi.output_type
+class WireGroupWire(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminEnabled":
+            suggest = "admin_enabled"
+        elif key == "wireProperties":
+            suggest = "wire_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WireGroupWire. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WireGroupWire.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WireGroupWire.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_enabled: Optional[builtins.bool] = None,
+                 endpoints: Optional[Sequence['outputs.WireGroupWireEndpoint']] = None,
+                 label: Optional[builtins.str] = None,
+                 wire_properties: Optional[Sequence['outputs.WireGroupWireWireProperty']] = None):
+        """
+        :param builtins.bool admin_enabled: Indicates whether the wire group is administratively enabled.
+        :param Sequence['WireGroupWireEndpointArgs'] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
+               Structure is documented below.
+        :param builtins.str label: (Output)
+        :param Sequence['WireGroupWireWirePropertyArgs'] wire_properties: Default properties for wires within the group.
+               Structure is documented below.
+        """
+        if admin_enabled is not None:
+            pulumi.set(__self__, "admin_enabled", admin_enabled)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if wire_properties is not None:
+            pulumi.set(__self__, "wire_properties", wire_properties)
+
+    @property
+    @pulumi.getter(name="adminEnabled")
+    def admin_enabled(self) -> Optional[builtins.bool]:
+        """
+        Indicates whether the wire group is administratively enabled.
+        """
+        return pulumi.get(self, "admin_enabled")
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Optional[Sequence['outputs.WireGroupWireEndpoint']]:
+        """
+        Endpoints grouped by location, each mapping to interconnect configurations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="wireProperties")
+    def wire_properties(self) -> Optional[Sequence['outputs.WireGroupWireWireProperty']]:
+        """
+        Default properties for wires within the group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wire_properties")
+
+
+@pulumi.output_type
+class WireGroupWireEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vlanTag":
+            suggest = "vlan_tag"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WireGroupWireEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WireGroupWireEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WireGroupWireEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 interconnect: Optional[builtins.str] = None,
+                 vlan_tag: Optional[builtins.int] = None):
+        """
+        :param builtins.str interconnect: (Output)
+        :param builtins.int vlan_tag: (Output)
+        """
+        if interconnect is not None:
+            pulumi.set(__self__, "interconnect", interconnect)
+        if vlan_tag is not None:
+            pulumi.set(__self__, "vlan_tag", vlan_tag)
+
+    @property
+    @pulumi.getter
+    def interconnect(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "interconnect")
+
+    @property
+    @pulumi.getter(name="vlanTag")
+    def vlan_tag(self) -> Optional[builtins.int]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "vlan_tag")
+
+
+@pulumi.output_type
+class WireGroupWireGroupProperties(dict):
+    def __init__(__self__, *,
+                 type: Optional[builtins.str] = None):
+        """
+        :param builtins.str type: Type of wire group (enum).
+               WIRE: a single pseudowire over two Interconnect connections   with no redundancy.
+               REDUNDANT: two pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
+               BOX_AND_CROSS: four pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        """
+        Type of wire group (enum).
+        WIRE: a single pseudowire over two Interconnect connections   with no redundancy.
+        REDUNDANT: two pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
+        BOX_AND_CROSS: four pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class WireGroupWireProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bandwidthUnmetered":
+            suggest = "bandwidth_unmetered"
+        elif key == "faultResponse":
+            suggest = "fault_response"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WireGroupWireProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WireGroupWireProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WireGroupWireProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bandwidth_unmetered: Optional[builtins.int] = None,
+                 fault_response: Optional[builtins.str] = None):
+        """
+        :param builtins.int bandwidth_unmetered: The unmetered bandwidth setting.
+        :param builtins.str fault_response: Response when a fault is detected in a pseudowire:
+               NONE: default.
+               DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
+        """
+        if bandwidth_unmetered is not None:
+            pulumi.set(__self__, "bandwidth_unmetered", bandwidth_unmetered)
+        if fault_response is not None:
+            pulumi.set(__self__, "fault_response", fault_response)
+
+    @property
+    @pulumi.getter(name="bandwidthUnmetered")
+    def bandwidth_unmetered(self) -> Optional[builtins.int]:
+        """
+        The unmetered bandwidth setting.
+        """
+        return pulumi.get(self, "bandwidth_unmetered")
+
+    @property
+    @pulumi.getter(name="faultResponse")
+    def fault_response(self) -> Optional[builtins.str]:
+        """
+        Response when a fault is detected in a pseudowire:
+        NONE: default.
+        DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
+        """
+        return pulumi.get(self, "fault_response")
+
+
+@pulumi.output_type
+class WireGroupWireWireProperty(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bandwidthUnmetered":
+            suggest = "bandwidth_unmetered"
+        elif key == "faultResponse":
+            suggest = "fault_response"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WireGroupWireWireProperty. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WireGroupWireWireProperty.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WireGroupWireWireProperty.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bandwidth_unmetered: Optional[builtins.int] = None,
+                 fault_response: Optional[builtins.str] = None):
+        """
+        :param builtins.int bandwidth_unmetered: The unmetered bandwidth setting.
+        :param builtins.str fault_response: Response when a fault is detected in a pseudowire:
+               NONE: default.
+               DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
+        """
+        if bandwidth_unmetered is not None:
+            pulumi.set(__self__, "bandwidth_unmetered", bandwidth_unmetered)
+        if fault_response is not None:
+            pulumi.set(__self__, "fault_response", fault_response)
+
+    @property
+    @pulumi.getter(name="bandwidthUnmetered")
+    def bandwidth_unmetered(self) -> Optional[builtins.int]:
+        """
+        The unmetered bandwidth setting.
+        """
+        return pulumi.get(self, "bandwidth_unmetered")
+
+    @property
+    @pulumi.getter(name="faultResponse")
+    def fault_response(self) -> Optional[builtins.str]:
+        """
+        Response when a fault is detected in a pseudowire:
+        NONE: default.
+        DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
+        """
+        return pulumi.get(self, "fault_response")
+
+
+@pulumi.output_type
 class GetAddressesAddressResult(dict):
     def __init__(__self__, *,
                  address: builtins.str,
@@ -63821,6 +64403,24 @@ class GetInstanceGroupManagerParamResult(dict):
         Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
         """
         return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerResourcePolicyResult(dict):
+    def __init__(__self__, *,
+                 workload_policy: builtins.str):
+        """
+        :param builtins.str workload_policy: The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+        """
+        pulumi.set(__self__, "workload_policy", workload_policy)
+
+    @property
+    @pulumi.getter(name="workloadPolicy")
+    def workload_policy(self) -> builtins.str:
+        """
+        The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+        """
+        return pulumi.get(self, "workload_policy")
 
 
 @pulumi.output_type

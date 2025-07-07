@@ -315,6 +315,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The KMS key used to encrypt the at-rest data of the cluster
+     * 
+     */
+    @Import(name="kmsKey")
+    private @Nullable Output<String> kmsKey;
+
+    /**
+     * @return The KMS key used to encrypt the at-rest data of the cluster
+     * 
+     */
+    public Optional<Output<String>> kmsKey() {
+        return Optional.ofNullable(this.kmsKey);
+    }
+
+    /**
      * Optional. Labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -734,6 +749,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.engineVersion = $.engineVersion;
         this.gcsSource = $.gcsSource;
         this.instanceId = $.instanceId;
+        this.kmsKey = $.kmsKey;
         this.labels = $.labels;
         this.location = $.location;
         this.maintenancePolicy = $.maintenancePolicy;
@@ -1195,6 +1211,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param kmsKey The KMS key used to encrypt the at-rest data of the cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(@Nullable Output<String> kmsKey) {
+            $.kmsKey = kmsKey;
+            return this;
+        }
+
+        /**
+         * @param kmsKey The KMS key used to encrypt the at-rest data of the cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(String kmsKey) {
+            return kmsKey(Output.of(kmsKey));
         }
 
         /**

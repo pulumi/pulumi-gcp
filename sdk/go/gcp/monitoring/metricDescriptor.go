@@ -143,11 +143,9 @@ type MetricDescriptor struct {
 	pulumi.CustomResourceState
 
 	// A detailed description of the metric, which can be used in documentation.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
 	Labels MetricDescriptorLabelArrayOutput `pulumi:"labels"`
@@ -189,6 +187,8 @@ type MetricDescriptor struct {
 	Unit pulumi.StringPtrOutput `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+	//
+	// ***
 	ValueType pulumi.StringOutput `pulumi:"valueType"`
 }
 
@@ -199,12 +199,6 @@ func NewMetricDescriptor(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Description == nil {
-		return nil, errors.New("invalid value for required argument 'Description'")
-	}
-	if args.DisplayName == nil {
-		return nil, errors.New("invalid value for required argument 'DisplayName'")
-	}
 	if args.MetricKind == nil {
 		return nil, errors.New("invalid value for required argument 'MetricKind'")
 	}
@@ -240,8 +234,6 @@ type metricDescriptorState struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description *string `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -284,6 +276,8 @@ type metricDescriptorState struct {
 	Unit *string `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+	//
+	// ***
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -291,8 +285,6 @@ type MetricDescriptorState struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description pulumi.StringPtrInput
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -335,6 +327,8 @@ type MetricDescriptorState struct {
 	Unit pulumi.StringPtrInput
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+	//
+	// ***
 	ValueType pulumi.StringPtrInput
 }
 
@@ -344,11 +338,9 @@ func (MetricDescriptorState) ElementType() reflect.Type {
 
 type metricDescriptorArgs struct {
 	// A detailed description of the metric, which can be used in documentation.
-	Description string `pulumi:"description"`
+	Description *string `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
-	DisplayName string `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
 	Labels []MetricDescriptorLabel `pulumi:"labels"`
@@ -386,17 +378,17 @@ type metricDescriptorArgs struct {
 	Unit *string `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+	//
+	// ***
 	ValueType string `pulumi:"valueType"`
 }
 
 // The set of arguments for constructing a MetricDescriptor resource.
 type MetricDescriptorArgs struct {
 	// A detailed description of the metric, which can be used in documentation.
-	Description pulumi.StringInput
+	Description pulumi.StringPtrInput
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
-	DisplayName pulumi.StringInput
+	DisplayName pulumi.StringPtrInput
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
 	Labels MetricDescriptorLabelArrayInput
@@ -434,6 +426,8 @@ type MetricDescriptorArgs struct {
 	Unit pulumi.StringPtrInput
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+	//
+	// ***
 	ValueType pulumi.StringInput
 }
 
@@ -525,15 +519,13 @@ func (o MetricDescriptorOutput) ToMetricDescriptorOutputWithContext(ctx context.
 }
 
 // A detailed description of the metric, which can be used in documentation.
-func (o MetricDescriptorOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+func (o MetricDescriptorOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-//
-// ***
-func (o MetricDescriptorOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+func (o MetricDescriptorOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
@@ -604,6 +596,8 @@ func (o MetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
 
 // Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 // Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+//
+// ***
 func (o MetricDescriptorOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringOutput { return v.ValueType }).(pulumi.StringOutput)
 }

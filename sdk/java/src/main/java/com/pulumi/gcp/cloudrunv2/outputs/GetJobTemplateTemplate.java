@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainer;
+import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateNodeSelector;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVpcAccess;
 import java.lang.Integer;
@@ -35,6 +36,11 @@ public final class GetJobTemplateTemplate {
      * 
      */
     private Integer maxRetries;
+    /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * 
+     */
+    private List<GetJobTemplateTemplateNodeSelector> nodeSelectors;
     /**
      * @return Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
      * 
@@ -88,6 +94,13 @@ public final class GetJobTemplateTemplate {
         return this.maxRetries;
     }
     /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * 
+     */
+    public List<GetJobTemplateTemplateNodeSelector> nodeSelectors() {
+        return this.nodeSelectors;
+    }
+    /**
      * @return Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
      * 
      */
@@ -131,6 +144,7 @@ public final class GetJobTemplateTemplate {
         private String encryptionKey;
         private String executionEnvironment;
         private Integer maxRetries;
+        private List<GetJobTemplateTemplateNodeSelector> nodeSelectors;
         private String serviceAccount;
         private String timeout;
         private List<GetJobTemplateTemplateVolume> volumes;
@@ -142,6 +156,7 @@ public final class GetJobTemplateTemplate {
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.executionEnvironment = defaults.executionEnvironment;
     	      this.maxRetries = defaults.maxRetries;
+    	      this.nodeSelectors = defaults.nodeSelectors;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.timeout = defaults.timeout;
     	      this.volumes = defaults.volumes;
@@ -182,6 +197,17 @@ public final class GetJobTemplateTemplate {
             }
             this.maxRetries = maxRetries;
             return this;
+        }
+        @CustomType.Setter
+        public Builder nodeSelectors(List<GetJobTemplateTemplateNodeSelector> nodeSelectors) {
+            if (nodeSelectors == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "nodeSelectors");
+            }
+            this.nodeSelectors = nodeSelectors;
+            return this;
+        }
+        public Builder nodeSelectors(GetJobTemplateTemplateNodeSelector... nodeSelectors) {
+            return nodeSelectors(List.of(nodeSelectors));
         }
         @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
@@ -227,6 +253,7 @@ public final class GetJobTemplateTemplate {
             _resultValue.encryptionKey = encryptionKey;
             _resultValue.executionEnvironment = executionEnvironment;
             _resultValue.maxRetries = maxRetries;
+            _resultValue.nodeSelectors = nodeSelectors;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.timeout = timeout;
             _resultValue.volumes = volumes;

@@ -110,6 +110,63 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### With Resource Policies (`Google` Provider)
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const workloadPolicy = new gcp.compute.ResourcePolicy("workload_policy", {
+ *     name: "tf-test-gce-policy",
+ *     region: "us-central1",
+ *     workloadPolicy: {
+ *         type: "HIGH_THROUGHPUT",
+ *     },
+ * });
+ * const igm_basic = new gcp.compute.InstanceTemplate("igm-basic", {
+ *     name: "igm-instance-template",
+ *     machineType: "a4-highgpu-8g",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     disks: [{
+ *         sourceImage: myImage.then(myImage => myImage.selfLink),
+ *         autoDelete: true,
+ *         boot: true,
+ *         diskType: "hyperdisk-balanced",
+ *     }],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ * });
+ * const igm_workload_policy = new gcp.compute.InstanceGroupManager("igm-workload-policy", {
+ *     description: "Terraform test instance group manager",
+ *     name: "igm-basic-workload-policy",
+ *     versions: [{
+ *         name: "prod",
+ *         instanceTemplate: igm_basic.selfLink,
+ *     }],
+ *     baseInstanceName: "tf-test-igm-no-tp",
+ *     zone: "us-central1-b",
+ *     targetSize: 0,
+ *     resourcePolicies: {
+ *         workloadPolicy: workloadPolicy.selfLink,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Instance group managers can be imported using any of these accepted formats:
@@ -237,8 +294,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     public readonly params!: pulumi.Output<outputs.compute.InstanceGroupManagerParams | undefined>;
     /**
@@ -246,6 +301,12 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Resource policies for this managed instance group. Structure is documented below.
+     *
+     * - - -
+     */
+    public readonly resourcePolicies!: pulumi.Output<outputs.compute.InstanceGroupManagerResourcePolicies | undefined>;
     /**
      * The URL of the created resource.
      */
@@ -348,6 +409,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["operation"] = state ? state.operation : undefined;
             resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["standbyPolicy"] = state ? state.standbyPolicy : undefined;
             resourceInputs["statefulDisks"] = state ? state.statefulDisks : undefined;
@@ -381,6 +443,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
             resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             resourceInputs["standbyPolicy"] = args ? args.standbyPolicy : undefined;
             resourceInputs["statefulDisks"] = args ? args.statefulDisks : undefined;
             resourceInputs["statefulExternalIps"] = args ? args.statefulExternalIps : undefined;
@@ -480,8 +543,6 @@ export interface InstanceGroupManagerState {
     operation?: pulumi.Input<string>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     params?: pulumi.Input<inputs.compute.InstanceGroupManagerParams>;
     /**
@@ -489,6 +550,12 @@ export interface InstanceGroupManagerState {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Resource policies for this managed instance group. Structure is documented below.
+     *
+     * - - -
+     */
+    resourcePolicies?: pulumi.Input<inputs.compute.InstanceGroupManagerResourcePolicies>;
     /**
      * The URL of the created resource.
      */
@@ -620,8 +687,6 @@ export interface InstanceGroupManagerArgs {
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerNamedPort>[]>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     params?: pulumi.Input<inputs.compute.InstanceGroupManagerParams>;
     /**
@@ -629,6 +694,12 @@ export interface InstanceGroupManagerArgs {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Resource policies for this managed instance group. Structure is documented below.
+     *
+     * - - -
+     */
+    resourcePolicies?: pulumi.Input<inputs.compute.InstanceGroupManagerResourcePolicies>;
     /**
      * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      */

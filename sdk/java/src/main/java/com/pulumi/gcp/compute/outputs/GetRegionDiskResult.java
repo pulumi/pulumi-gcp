@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegionDiskResult {
+    private String accessMode;
     private List<GetRegionDiskAsyncPrimaryDisk> asyncPrimaryDisks;
     private Boolean createSnapshotBeforeDestroy;
     private String createSnapshotBeforeDestroyPrefix;
@@ -57,6 +58,9 @@ public final class GetRegionDiskResult {
     private List<String> users;
 
     private GetRegionDiskResult() {}
+    public String accessMode() {
+        return this.accessMode;
+    }
     public List<GetRegionDiskAsyncPrimaryDisk> asyncPrimaryDisks() {
         return this.asyncPrimaryDisks;
     }
@@ -164,6 +168,7 @@ public final class GetRegionDiskResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String accessMode;
         private List<GetRegionDiskAsyncPrimaryDisk> asyncPrimaryDisks;
         private Boolean createSnapshotBeforeDestroy;
         private String createSnapshotBeforeDestroyPrefix;
@@ -198,6 +203,7 @@ public final class GetRegionDiskResult {
         public Builder() {}
         public Builder(GetRegionDiskResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessMode = defaults.accessMode;
     	      this.asyncPrimaryDisks = defaults.asyncPrimaryDisks;
     	      this.createSnapshotBeforeDestroy = defaults.createSnapshotBeforeDestroy;
     	      this.createSnapshotBeforeDestroyPrefix = defaults.createSnapshotBeforeDestroyPrefix;
@@ -231,6 +237,14 @@ public final class GetRegionDiskResult {
     	      this.users = defaults.users;
         }
 
+        @CustomType.Setter
+        public Builder accessMode(String accessMode) {
+            if (accessMode == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "accessMode");
+            }
+            this.accessMode = accessMode;
+            return this;
+        }
         @CustomType.Setter
         public Builder asyncPrimaryDisks(List<GetRegionDiskAsyncPrimaryDisk> asyncPrimaryDisks) {
             if (asyncPrimaryDisks == null) {
@@ -498,6 +512,7 @@ public final class GetRegionDiskResult {
         }
         public GetRegionDiskResult build() {
             final var _resultValue = new GetRegionDiskResult();
+            _resultValue.accessMode = accessMode;
             _resultValue.asyncPrimaryDisks = asyncPrimaryDisks;
             _resultValue.createSnapshotBeforeDestroy = createSnapshotBeforeDestroy;
             _resultValue.createSnapshotBeforeDestroyPrefix = createSnapshotBeforeDestroyPrefix;

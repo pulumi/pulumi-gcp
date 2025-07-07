@@ -22,11 +22,11 @@ __all__ = ['MetricDescriptorArgs', 'MetricDescriptor']
 @pulumi.input_type
 class MetricDescriptorArgs:
     def __init__(__self__, *,
-                 description: pulumi.Input[builtins.str],
-                 display_name: pulumi.Input[builtins.str],
                  metric_kind: pulumi.Input[builtins.str],
                  type: pulumi.Input[builtins.str],
                  value_type: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None,
+                 display_name: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]]] = None,
                  launch_stage: Optional[pulumi.Input[builtins.str]] = None,
                  metadata: Optional[pulumi.Input['MetricDescriptorMetadataArgs']] = None,
@@ -34,16 +34,16 @@ class MetricDescriptorArgs:
                  unit: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a MetricDescriptor resource.
-        :param pulumi.Input[builtins.str] description: A detailed description of the metric, which can be used in documentation.
-        :param pulumi.Input[builtins.str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
         :param pulumi.Input[builtins.str] type: The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
         :param pulumi.Input[builtins.str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+               
+               
+               - - -
+        :param pulumi.Input[builtins.str] description: A detailed description of the metric, which can be used in documentation.
+        :param pulumi.Input[builtins.str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
         :param pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[builtins.str] launch_stage: The launch stage of the metric definition.
@@ -70,11 +70,13 @@ class MetricDescriptorArgs:
                More info can be found in the API documentation
                (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "metric_kind", metric_kind)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "value_type", value_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if launch_stage is not None:
@@ -85,33 +87,6 @@ class MetricDescriptorArgs:
             pulumi.set(__self__, "project", project)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def description(self) -> pulumi.Input[builtins.str]:
-        """
-        A detailed description of the metric, which can be used in documentation.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Input[builtins.str]:
-        """
-        A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-
-
-        - - -
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="metricKind")
@@ -144,12 +119,39 @@ class MetricDescriptorArgs:
         """
         Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+
+
+        - - -
         """
         return pulumi.get(self, "value_type")
 
     @value_type.setter
     def value_type(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "value_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A detailed description of the metric, which can be used in documentation.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -251,9 +253,6 @@ class _MetricDescriptorState:
         Input properties used for looking up and filtering MetricDescriptor resources.
         :param pulumi.Input[builtins.str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[builtins.str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[builtins.str] launch_stage: The launch stage of the metric definition.
@@ -286,6 +285,9 @@ class _MetricDescriptorState:
                (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
         :param pulumi.Input[builtins.str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+               
+               
+               - - -
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -329,9 +331,6 @@ class _MetricDescriptorState:
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -474,6 +473,9 @@ class _MetricDescriptorState:
         """
         Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+
+
+        - - -
         """
         return pulumi.get(self, "value_type")
 
@@ -588,9 +590,6 @@ class MetricDescriptor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[builtins.str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[builtins.str] launch_stage: The launch stage of the metric definition.
@@ -621,6 +620,9 @@ class MetricDescriptor(pulumi.CustomResource):
                (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
         :param pulumi.Input[builtins.str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -747,11 +749,7 @@ class MetricDescriptor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MetricDescriptorArgs.__new__(MetricDescriptorArgs)
 
-            if description is None and not opts.urn:
-                raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
-            if display_name is None and not opts.urn:
-                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["launch_stage"] = launch_stage
@@ -800,9 +798,6 @@ class MetricDescriptor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[builtins.str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[builtins.str] launch_stage: The launch stage of the metric definition.
@@ -835,6 +830,9 @@ class MetricDescriptor(pulumi.CustomResource):
                (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
         :param pulumi.Input[builtins.str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -856,7 +854,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[builtins.str]:
+    def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         A detailed description of the metric, which can be used in documentation.
         """
@@ -864,12 +862,9 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Output[builtins.str]:
+    def display_name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -972,6 +967,9 @@ class MetricDescriptor(pulumi.CustomResource):
         """
         Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
+
+
+        - - -
         """
         return pulumi.get(self, "value_type")
 

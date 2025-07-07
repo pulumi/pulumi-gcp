@@ -304,6 +304,9 @@ type Cluster struct {
 	Fleet ClusterFleetPtrOutput `pulumi:"fleet"`
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig ClusterGatewayApiConfigOutput `pulumi:"gatewayApiConfig"`
+	// Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+	// Structure is documented below.
+	GkeAutoUpgradeConfig ClusterGkeAutoUpgradeConfigOutput `pulumi:"gkeAutoUpgradeConfig"`
 	// . Structure is documented below.
 	IdentityServiceConfig ClusterIdentityServiceConfigOutput `pulumi:"identityServiceConfig"`
 	// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
@@ -658,6 +661,9 @@ type clusterState struct {
 	Fleet *ClusterFleet `pulumi:"fleet"`
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig *ClusterGatewayApiConfig `pulumi:"gatewayApiConfig"`
+	// Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+	// Structure is documented below.
+	GkeAutoUpgradeConfig *ClusterGkeAutoUpgradeConfig `pulumi:"gkeAutoUpgradeConfig"`
 	// . Structure is documented below.
 	IdentityServiceConfig *ClusterIdentityServiceConfig `pulumi:"identityServiceConfig"`
 	// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
@@ -978,6 +984,9 @@ type ClusterState struct {
 	Fleet ClusterFleetPtrInput
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig ClusterGatewayApiConfigPtrInput
+	// Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+	// Structure is documented below.
+	GkeAutoUpgradeConfig ClusterGkeAutoUpgradeConfigPtrInput
 	// . Structure is documented below.
 	IdentityServiceConfig ClusterIdentityServiceConfigPtrInput
 	// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
@@ -1298,6 +1307,9 @@ type clusterArgs struct {
 	Fleet *ClusterFleet `pulumi:"fleet"`
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig *ClusterGatewayApiConfig `pulumi:"gatewayApiConfig"`
+	// Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+	// Structure is documented below.
+	GkeAutoUpgradeConfig *ClusterGkeAutoUpgradeConfig `pulumi:"gkeAutoUpgradeConfig"`
 	// . Structure is documented below.
 	IdentityServiceConfig *ClusterIdentityServiceConfig `pulumi:"identityServiceConfig"`
 	// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
@@ -1595,6 +1607,9 @@ type ClusterArgs struct {
 	Fleet ClusterFleetPtrInput
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig ClusterGatewayApiConfigPtrInput
+	// Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+	// Structure is documented below.
+	GkeAutoUpgradeConfig ClusterGkeAutoUpgradeConfigPtrInput
 	// . Structure is documented below.
 	IdentityServiceConfig ClusterIdentityServiceConfigPtrInput
 	// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
@@ -2081,6 +2096,12 @@ func (o ClusterOutput) Fleet() ClusterFleetPtrOutput {
 // Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 func (o ClusterOutput) GatewayApiConfig() ClusterGatewayApiConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterGatewayApiConfigOutput { return v.GatewayApiConfig }).(ClusterGatewayApiConfigOutput)
+}
+
+// Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+// Structure is documented below.
+func (o ClusterOutput) GkeAutoUpgradeConfig() ClusterGkeAutoUpgradeConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterGkeAutoUpgradeConfigOutput { return v.GkeAutoUpgradeConfig }).(ClusterGkeAutoUpgradeConfigOutput)
 }
 
 // . Structure is documented below.

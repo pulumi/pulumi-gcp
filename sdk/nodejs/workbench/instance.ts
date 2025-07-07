@@ -158,6 +158,7 @@ import * as utilities from "../utilities";
  *         }],
  *         metadata: {
  *             terraform: "true",
+ *             "serial-port-logging-enable": "false",
  *         },
  *         enableIpForwarding: true,
  *         tags: [
