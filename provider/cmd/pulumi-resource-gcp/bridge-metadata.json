@@ -1724,6 +1724,54 @@
                 "current": "gcp:apihub/hostProjectRegistration:HostProjectRegistration",
                 "majorVersion": 8
             },
+            "google_apihub_plugin": {
+                "current": "gcp:apihub/plugin:Plugin",
+                "majorVersion": 8,
+                "fields": {
+                    "actions_config": {
+                        "maxItemsOne": false
+                    },
+                    "config_template": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_config_template": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "enum_options": {
+                                                "maxItemsOne": false
+                                            },
+                                            "multi_select_options": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "auth_config_template": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "service_account": {
+                                                "maxItemsOne": true
+                                            },
+                                            "supported_auth_types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "documentation": {
+                        "maxItemsOne": true
+                    },
+                    "hosting_service": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_apihub_plugin_instance": {
                 "current": "gcp:apihub/pluginInstance:PluginInstance",
                 "majorVersion": 8,
@@ -4478,6 +4526,9 @@
                                                     }
                                                 }
                                             },
+                                            "node_selector": {
+                                                "maxItemsOne": true
+                                            },
                                             "volumes": {
                                                 "maxItemsOne": false,
                                                 "elem": {
@@ -6952,6 +7003,9 @@
                                 "src_region_codes": {
                                     "maxItemsOne": false
                                 },
+                                "src_secure_tags": {
+                                    "maxItemsOne": false
+                                },
                                 "src_threat_intelligences": {
                                     "maxItemsOne": false
                                 }
@@ -6959,6 +7013,9 @@
                         }
                     },
                     "target_resources": {
+                        "maxItemsOne": false
+                    },
+                    "target_secure_tags": {
                         "maxItemsOne": false
                     },
                     "target_service_accounts": {
@@ -7862,6 +7919,9 @@
                     "params": {
                         "maxItemsOne": true
                     },
+                    "resource_policies": {
+                        "maxItemsOne": true
+                    },
                     "standby_policy": {
                         "maxItemsOne": true
                     },
@@ -8434,7 +8494,12 @@
             },
             "google_compute_network": {
                 "current": "gcp:compute/network:Network",
-                "majorVersion": 8
+                "majorVersion": 8,
+                "fields": {
+                    "params": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "google_compute_network_attachment": {
                 "current": "gcp:compute/networkAttachment:NetworkAttachment",
@@ -12142,6 +12207,58 @@
                     }
                 }
             },
+            "google_compute_wire_group": {
+                "current": "gcp:compute/wireGroup:WireGroup",
+                "majorVersion": 8,
+                "fields": {
+                    "endpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "interconnects": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "vlan_tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "topology": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "endpoints": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "wire_group_properties": {
+                        "maxItemsOne": true
+                    },
+                    "wire_properties": {
+                        "maxItemsOne": true
+                    },
+                    "wires": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "endpoints": {
+                                    "maxItemsOne": false
+                                },
+                                "wire_properties": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_contact_center_insights_view": {
                 "current": "gcp:contactcenterinsights/view:View",
                 "majorVersion": 8
@@ -12745,6 +12862,9 @@
                         "maxItemsOne": true
                     },
                     "gateway_api_config": {
+                        "maxItemsOne": true
+                    },
+                    "gke_auto_upgrade_config": {
                         "maxItemsOne": true
                     },
                     "identity_service_config": {
@@ -19220,6 +19340,38 @@
                     }
                 }
             },
+            "google_dialogflow_cx_generative_settings": {
+                "current": "gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings",
+                "majorVersion": 8,
+                "fields": {
+                    "fallback_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "prompt_templates": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "generative_safety_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "banned_phrases": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "knowledge_connector_settings": {
+                        "maxItemsOne": true
+                    },
+                    "llm_model_settings": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_dialogflow_cx_intent": {
                 "current": "gcp:diagflow/cxIntent:CxIntent",
                 "majorVersion": 8,
@@ -23748,7 +23900,12 @@
             },
             "google_iam_workload_identity_pool_managed_identity": {
                 "current": "gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity",
-                "majorVersion": 8
+                "majorVersion": 8,
+                "fields": {
+                    "attestation_rules": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_iam_workload_identity_pool_namespace": {
                 "current": "gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace",
@@ -32223,7 +32380,14 @@
                 "majorVersion": 8,
                 "fields": {
                     "encryption_config": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "kms_key_names": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "full_backup_spec": {
                         "maxItemsOne": true
@@ -36075,6 +36239,9 @@
                                                     }
                                                 }
                                             },
+                                            "node_selector": {
+                                                "maxItemsOne": false
+                                            },
                                             "volumes": {
                                                 "maxItemsOne": false,
                                                 "elem": {
@@ -37539,6 +37706,9 @@
                         "maxItemsOne": false
                     },
                     "params": {
+                        "maxItemsOne": false
+                    },
+                    "resource_policies": {
                         "maxItemsOne": false
                     },
                     "standby_policy": {
@@ -39058,6 +39228,9 @@
                         "maxItemsOne": false
                     },
                     "gateway_api_config": {
+                        "maxItemsOne": false
+                    },
+                    "gke_auto_upgrade_config": {
                         "maxItemsOne": false
                     },
                     "identity_service_config": {
@@ -44728,6 +44901,7 @@
             "gcp:apihub/apiHubInstance:ApiHubInstance": 0,
             "gcp:apihub/curation:Curation": 0,
             "gcp:apihub/hostProjectRegistration:HostProjectRegistration": 0,
+            "gcp:apihub/plugin:Plugin": 0,
             "gcp:apihub/pluginInstance:PluginInstance": 0,
             "gcp:appengine/application:Application": 0,
             "gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules": 0,
@@ -45093,6 +45267,7 @@
             "gcp:compute/uRLMap:URLMap": 0,
             "gcp:compute/vPNGateway:VPNGateway": 0,
             "gcp:compute/vPNTunnel:VPNTunnel": 0,
+            "gcp:compute/wireGroup:WireGroup": 0,
             "gcp:contactcenterinsights/view:View": 0,
             "gcp:container/attachedCluster:AttachedCluster": 0,
             "gcp:container/awsCluster:AwsCluster": 0,
@@ -45227,6 +45402,7 @@
             "gcp:diagflow/cxEntityType:CxEntityType": 0,
             "gcp:diagflow/cxEnvironment:CxEnvironment": 0,
             "gcp:diagflow/cxFlow:CxFlow": 0,
+            "gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings": 0,
             "gcp:diagflow/cxIntent:CxIntent": 0,
             "gcp:diagflow/cxPage:CxPage": 0,
             "gcp:diagflow/cxSecuritySettings:CxSecuritySettings": 0,
